@@ -22,7 +22,7 @@ import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.handlers.RegistryHandler;
 
 @Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION)
-public class Main
+public class Main 
 {
 	
 	@Instance
