@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        "#BX",
+        " X "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:red_mushroom",
+			"data": 0
+        },
+        "B": {
+            "item": "wbtc:blank_vinyl"
+        },
+		"X": {
+			"item": "minecraft:brown_mushroom",
+			"data": 0
+		}
+    },
+    "result": 
+    {
+        "item": "wbtc:dolan",
+        "count": 1
+    }
+}

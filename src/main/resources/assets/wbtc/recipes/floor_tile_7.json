@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:quartz_block",
+			"data": 1
+        },
+        {
+            "item": "minecraft:dye",
+			"data": 0
+        }
+    ],
+    "result": {
+        "item": "wbtc:wbtc_floor_7",
+        "count": 4
+    }
+}

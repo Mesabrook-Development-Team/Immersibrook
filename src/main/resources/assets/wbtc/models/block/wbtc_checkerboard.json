@@ -1,0 +1,12 @@
+{
+   "parent": "block/cube",
+   "textures": {
+	   "particle": "wbtc:blocks/floor_checkerboard",
+       "up": "wbtc:blocks/floor_checkerboard",
+       "down": "wbtc:blocks/floor_checkerboard",
+       "south": "wbtc:blocks/floor_checkerboard",
+       "north": "wbtc:blocks/floor_checkerboard",
+       "west": "wbtc:blocks/floor_checkerboard",
+       "east": "wbtc:blocks/floor_checkerboard"
+   }
+}

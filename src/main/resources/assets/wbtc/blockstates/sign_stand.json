@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:sign_stand" },
+        "facing=south": { "model": "wbtc:sign_stand", "y": 180 },
+        "facing=west":  { "model": "wbtc:sign_stand", "y": 270 },
+        "facing=east":  { "model": "wbtc:sign_stand", "y": 90 }
+    }
+}

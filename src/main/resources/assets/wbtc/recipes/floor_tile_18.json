@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "$#",
+    "#$"
+  ],
+  "key": {
+    "$": {
+      "item": "minecraft:concrete",
+      "data": 11
+    },
+	"#": {
+	  "item": "minecraft:lapis_block"
+	}
+  },
+  "result": {
+    "item": "wbtc:wbtc_floor_18",
+    "count": 4
+  }
+}

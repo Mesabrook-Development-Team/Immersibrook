@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    " # ",
+	"###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:quartz_block",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "wbtc:pillar_base",
+    "count": 2
+  }
+}

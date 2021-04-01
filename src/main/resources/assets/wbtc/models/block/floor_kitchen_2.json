@@ -1,0 +1,12 @@
+{
+   "parent": "block/cube",
+   "textures": {
+	   "particle": "wbtc:blocks/floor_kitchen_2",
+       "up": "wbtc:blocks/floor_kitchen_2",
+       "down": "wbtc:blocks/floor_kitchen_2",
+       "south": "wbtc:blocks/floor_kitchen_2",
+       "north": "wbtc:blocks/floor_kitchen_2",
+       "west": "wbtc:blocks/floor_kitchen_2",
+       "east": "wbtc:blocks/floor_kitchen_2"
+   }
+}

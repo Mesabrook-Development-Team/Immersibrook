@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "yyy",
+    "yxy",
+	"yyy"
+  ],
+  "key": {
+	"y": {
+	  "item": "wbtc:green_plastic"
+	},
+	"x": {
+	  "item": "minecraft:glowstone_dust"
+	}
+  },
+  "result": {
+    "item": "wbtc:synthetic_turf",
+    "count": 6
+  }
+}

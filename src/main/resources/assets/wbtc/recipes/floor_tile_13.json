@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "$#$",
+    "#$#",
+	"$#$"
+  ],
+  "key": {
+    "$": {
+      "item": "minecraft:dye",
+      "data": 8
+    },
+	"#": {
+	  "item": "minecraft:quartz_block",
+	  "data": 0
+	}
+  },
+  "result": {
+    "item": "wbtc:wbtc_floor_13",
+    "count": 9
+  }
+}

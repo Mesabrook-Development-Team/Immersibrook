@@ -1,0 +1,12 @@
+{
+   "parent": "block/cube",
+   "textures": {
+	   "particle": "wbtc:blocks/plastic_cube_cyan",
+       "up": "wbtc:blocks/plastic_cube_cyan",
+       "down": "wbtc:blocks/plastic_cube_cyan",
+       "south": "wbtc:blocks/plastic_cube_cyan",
+       "north": "wbtc:blocks/plastic_cube_cyan",
+       "west": "wbtc:blocks/plastic_cube_cyan",
+       "east": "wbtc:blocks/plastic_cube_cyan"
+   }
+}

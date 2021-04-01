@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        "#P#",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "wbtc:black_plastic"
+        },
+		"P": {
+			"item": "minecraft:paper"
+		}
+    },
+    "result": 
+    {
+        "item": "wbtc:blank_vinyl",
+        "count": 2
+    }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+	"###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:mutton"
+    }
+  },
+  "result": {
+    "item": "wbtc:cube_mutton",
+    "count": 1
+  }
+}

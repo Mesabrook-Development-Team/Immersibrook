@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        "#BX",
+        " X "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:fish",
+			"data": 0
+        },
+        "B": {
+            "item": "wbtc:blank_vinyl"
+        },
+		"X": {
+			"item": "minecraft:fish",
+			"data": 1
+		}
+    },
+    "result": 
+    {
+        "item": "wbtc:baba_booey",
+        "count": 1
+    }
+}

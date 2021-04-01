@@ -1,0 +1,8 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "wbtc:blocks/cube_apples",
+        "front": "wbtc:blocks/cube_apples_face",
+        "side": "wbtc:blocks/cube_apples"
+    }
+}

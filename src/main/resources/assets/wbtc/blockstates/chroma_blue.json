@@ -1,0 +1,30 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"textures": {
+			"1": "blocks/iron_block",
+			"2": "blocks/iron_block"
+		},
+		"model": "wbtc:chroma_blue"
+	},
+	"variants": {
+		"inventory": [{
+			"model": "wbtc:chroma_blue"
+		}],
+		"facing=north": {
+			"model": "wbtc:chroma_blue",
+			"y": 270
+		},
+		"facing=south": {
+			"model": "wbtc:chroma_blue",
+			"y": 90
+		},
+		"facing=east": {
+			"model": "wbtc:chroma_blue"
+		},
+		"facing=west": {
+			"model": "wbtc:chroma_blue",
+			"y": 180
+		}
+	}
+}

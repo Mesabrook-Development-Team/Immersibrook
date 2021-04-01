@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        " x ",
+        " x ",
+        "zxz"
+    ],
+    "key":
+    {
+        "x":
+        {
+            "type": "forge:ore_dict",
+            "ore": "stickAluminum"
+        },
+		"z":
+		{
+			"item": "minecraft:dye",
+			"data": 14
+		}
+    },
+    "result":
+    {
+        "item": "wbtc:sign_stand",
+        "count": 1
+    }
+}

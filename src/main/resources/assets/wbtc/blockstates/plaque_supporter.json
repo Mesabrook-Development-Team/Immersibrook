@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:plaque_supporter" },
+        "facing=south": { "model": "wbtc:plaque_supporter", "y": 180 },
+        "facing=west":  { "model": "wbtc:plaque_supporter", "y": 270 },
+        "facing=east":  { "model": "wbtc:plaque_supporter", "y": 90 }
+    }
+}

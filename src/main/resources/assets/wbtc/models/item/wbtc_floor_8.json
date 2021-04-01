@@ -1,0 +1,10 @@
+{
+   "parent": "wbtc:block/wbtc_floor_8",
+   "display": {
+       "thirdperson": {
+           "rotation": [ 10, -45, 180 ],
+           "translation": [ 0, 1.5, -2.85 ],
+           "scale": [ 0.385, 0.385, 0.385 ]
+       }
+   }
+}

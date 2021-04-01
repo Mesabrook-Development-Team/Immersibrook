@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wbtc:cube_pork"
+        }
+    ],
+    "result": {
+        "item": "minecraft:porkchop",
+        "count": 9
+    }
+}

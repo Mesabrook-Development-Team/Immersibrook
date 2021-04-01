@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "yyy",
+    "###",
+	"##x"
+  ],
+  "key": {
+    "#": {
+      "item": "wbtc:gray_plastic"
+    },
+	"y": {
+	  "item": "wbtc:silver_plastic"
+	},
+	"x": {
+	  "item": "wbtc:black_plastic"
+	}
+  },
+  "result": {
+    "item": "wbtc:rubbish_bin",
+    "count": 1
+  }
+}

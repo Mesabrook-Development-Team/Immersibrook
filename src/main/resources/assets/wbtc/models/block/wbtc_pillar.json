@@ -1,0 +1,55 @@
+{
+    "__comment": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
+    "textures": {
+        "pillar": "wbtc:blocks/pillar",
+        "pillar_top": "wbtc:blocks/pillar_top",
+		"particle": "wbtc:blocks/pillar"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "Cube",
+            "from": [ 4, 0, 4 ], 
+            "to": [ 12, 16, 12 ], 
+            "faces": {
+                "north": { "texture": "#pillar", "uv": [ 0, 0, 8, 16 ] },
+                "east": { "texture": "#pillar", "uv": [ 0, 0, 8, 16 ] },
+                "south": { "texture": "#pillar", "uv": [ 8, 0, 16, 16 ] },
+                "west": { "texture": "#pillar", "uv": [ 0, 0, 8, 16 ] },
+                "up": { "texture": "#pillar_top", "uv": [ 0, 16, 16, 0 ] },
+                "down": { "texture": "#pillar_top", "uv": [ 0, 0, 8, 8 ] }
+            }
+        }
+    ]
+}

@@ -1,0 +1,12 @@
+{
+   "parent": "block/cube",
+   "textures": {
+	   "particle": "wbtc:blocks/synthetic_turf",
+       "up": "wbtc:blocks/synthetic_turf",
+       "down": "wbtc:blocks/synthetic_turf",
+       "south": "wbtc:blocks/synthetic_turf",
+       "north": "wbtc:blocks/synthetic_turf",
+       "west": "wbtc:blocks/synthetic_turf",
+       "east": "wbtc:blocks/synthetic_turf"
+   }
+}

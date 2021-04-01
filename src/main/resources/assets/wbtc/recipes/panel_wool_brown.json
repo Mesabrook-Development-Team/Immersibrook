@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "$",
+    "#"
+  ],
+  "key": {
+    "$": {
+      "item": "minecraft:carpet",
+	  "data": 12
+    },
+	"#": {
+	  "item": "wbtc:panel_ceiling"
+	}
+  },
+  "result": {
+    "item": "wbtc:panel_wool_brown",
+    "count": 9
+  }
+}

@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wbtc:raw_plastic"
+        },
+        {
+            "item": "minecraft:dye",
+			"data": 14
+        }
+    ],
+    "result": {
+        "item": "wbtc:raw_orange_plastic",
+        "count": 1
+    }
+}

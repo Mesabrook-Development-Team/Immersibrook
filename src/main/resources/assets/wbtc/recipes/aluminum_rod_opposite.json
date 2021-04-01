@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "x  ",
+        " x ",
+        "  x"
+    ],
+    "key":
+    {
+        "x":
+        {
+            "type": "forge:ore_dict",
+            "ore": "nuggetAluminum"
+        }
+    },
+    "result":
+    {
+        "item": "wbtc:aluminum_rod",
+        "count": 3
+    }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "$",
+    "#"
+  ],
+  "key": {
+    "$": {
+      "item": "wbtc:floor_danger_1"
+    },
+	"#": {
+	  "item": "wbtc:panel_ceiling"
+	}
+  },
+  "result": {
+    "item": "wbtc:panel_floor_danger_1",
+    "count": 9
+  }
+}

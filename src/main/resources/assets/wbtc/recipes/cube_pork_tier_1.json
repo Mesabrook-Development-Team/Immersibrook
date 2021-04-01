@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+	"###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:porkchop"
+    }
+  },
+  "result": {
+    "item": "wbtc:cube_pork",
+    "count": 1
+  }
+}

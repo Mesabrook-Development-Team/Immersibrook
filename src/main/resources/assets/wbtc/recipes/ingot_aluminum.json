@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+	"###"
+  ],
+  "key": {
+    "#": {
+      "item": "wbtc:nugget_aluminum"
+    }
+  },
+  "result": {
+    "item": "wbtc:ingot_aluminum",
+    "count": 1
+  }
+}

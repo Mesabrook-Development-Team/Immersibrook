@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        "#B$",
+        " $ "
+    ],
+    "key": {
+        "#": {
+            "item": "wbtc:red_plastic"
+        },
+        "B": {
+            "item": "wbtc:blank_vinyl"
+        },
+		"$": {
+		    "item": "minecraft:blaze_powder"
+		}
+    },
+    "result": 
+    {
+        "item": "wbtc:pigstep",
+        "count": 1
+    }
+}

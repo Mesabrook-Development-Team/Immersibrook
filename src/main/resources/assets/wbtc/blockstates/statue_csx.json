@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:statue_csx" },
+        "facing=south": { "model": "wbtc:statue_csx", "y": 180 },
+        "facing=west":  { "model": "wbtc:statue_csx", "y": 270 },
+        "facing=east":  { "model": "wbtc:statue_csx", "y": 90 }
+    }
+}

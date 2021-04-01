@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "$"
+  ],
+  "key": {
+    "#": {
+      "item": "wbtc:silver_plastic"
+    },
+	"$": {
+	  "item": "wbtc:gray_plastic"
+	}
+  },
+  "result": {
+    "item": "wbtc:pc_mouse",
+    "count": 1
+  }
+}

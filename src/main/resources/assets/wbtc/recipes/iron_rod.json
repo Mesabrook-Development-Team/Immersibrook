@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "  x",
+        " x ",
+        "x  "
+    ],
+    "key":
+    {
+        "x":
+        {
+            "type": "forge:ore_dict",
+            "ore": "nuggetIron"
+        }
+    },
+    "result":
+    {
+        "item": "wbtc:iron_rod",
+        "count": 3
+    }
+}

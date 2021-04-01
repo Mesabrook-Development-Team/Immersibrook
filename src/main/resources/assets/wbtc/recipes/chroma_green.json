@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "xy",
+        "xy",
+        "xy"
+    ],
+    "key":
+    {
+        "x":
+        {
+            "type": "forge:ore_dict",
+            "ore": "stickIron"
+        },
+		"y":
+		{
+			"item": "minecraft:concrete",
+			"data": 5
+		}
+    },
+    "result":
+    {
+        "item": "wbtc:chroma_green",
+        "count": 3
+    }
+}

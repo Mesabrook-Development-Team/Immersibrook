@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "$#$",
+    "###",
+    "$#$"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:concrete",
+      "data": 0
+    },
+	"$": {
+	  "item": "minecraft:hardened_clay"
+	}
+  },
+  "result": {
+    "item": "wbtc:floor_kitchen_1",
+    "count": 8
+  }
+}

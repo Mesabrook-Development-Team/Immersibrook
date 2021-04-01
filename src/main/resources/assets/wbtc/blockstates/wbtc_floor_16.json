@@ -1,0 +1,5 @@
+{
+   "variants": {
+          "normal": { "model": "wbtc:wbtc_floor_16" }
+   }
+}

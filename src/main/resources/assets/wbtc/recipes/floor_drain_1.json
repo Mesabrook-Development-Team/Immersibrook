@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wbtc:floor_kitchen_1"
+        },
+        {
+            "item": "minecraft:iron_bars"
+        }
+    ],
+    "result": {
+        "item": "wbtc:floor_drain_1",
+        "count": 1
+    }
+}

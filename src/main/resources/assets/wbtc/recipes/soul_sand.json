@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "yyy",
+    "yxy",
+	"yyy"
+  ],
+  "key": {
+	"y": {
+	  "item": "minecraft:sand",
+	  "data": 0
+	},
+	"x": {
+	  "item": "minecraft:skull",
+	  "data": 1
+	}
+  },
+  "result": {
+    "item": "minecraft:soul_sand",
+    "count": 4
+  }
+}

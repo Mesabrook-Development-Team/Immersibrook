@@ -1,0 +1,8 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "wbtc:blocks/potato_side",
+        "front": "wbtc:blocks/potato_face",
+        "side": "wbtc:blocks/potato_side"
+    }
+}

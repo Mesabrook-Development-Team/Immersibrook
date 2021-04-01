@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:cube_potato" },
+        "facing=south": { "model": "wbtc:cube_potato", "y": 180 },
+        "facing=west":  { "model": "wbtc:cube_potato", "y": 270 },
+        "facing=east":  { "model": "wbtc:cube_potato", "y": 90 }
+    }
+}

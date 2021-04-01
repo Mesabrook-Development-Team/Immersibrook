@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#$#",
+	"###"
+  ],
+  "key": {
+    "$": {
+      "item": "minecraft:cobblestone"
+    },
+	"#": {
+	  "item": "minecraft:dye",
+	  "data": 15
+	}
+  },
+  "result": {
+    "item": "wbtc:panel_ceiling",
+    "count": 9
+  }
+}

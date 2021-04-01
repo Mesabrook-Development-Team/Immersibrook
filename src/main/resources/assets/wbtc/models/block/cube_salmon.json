@@ -1,0 +1,8 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "wbtc:blocks/cube_salmon_side",
+        "front": "wbtc:blocks/cube_salmon_face",
+        "side": "wbtc:blocks/cube_salmon_side"
+    }
+}

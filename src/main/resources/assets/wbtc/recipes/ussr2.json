@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        "#B#",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:redstone"
+        },
+        "B": {
+            "item": "wbtc:blank_vinyl"
+        }
+    },
+    "result": 
+    {
+        "item": "wbtc:ussr2",
+        "count": 1
+    }
+}

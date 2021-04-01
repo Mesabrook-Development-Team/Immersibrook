@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wbtc:cube_mutton"
+        }
+    ],
+    "result": {
+        "item": "minecraft:mutton",
+        "count": 9
+    }
+}

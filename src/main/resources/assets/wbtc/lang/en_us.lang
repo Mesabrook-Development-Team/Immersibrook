@@ -1,0 +1,266 @@
+//Config
+wbtc.config.title=Configuration File for Mesalleaneous
+
+//Creative Tabs
+itemGroup.wbtc_tab=[Mesalleaneous] - Floor Blocks
+itemGroup.wbtc_tab_ceiling=[Mesalleaneous] - Ceiling Panels
+itemGroup.wbtc_tab_trophy=[Mesalleaneous] - Trophies
+itemGroup.wbtc_tab_household=[Mesalleaneous] - Household Blocks
+
+//Containers
+container.rubbish_bin:Wheelie Bin
+
+//Deco
+tile.pc_mouse.name=PC Mouse
+
+//Signs
+tile.exit_sign.name=Exit Sign
+
+//Items
+item.wood_sod.name=Wooden Sod
+item.stone_sod.name=Stone Sod
+item.iron_sod.name=Iron Sod
+item.gold_sod.name=Golden Sod
+item.diamond_sod.name=Diamond Sod
+item.iron_rod.name=Iron Rod
+item.aluminum_rod.name=Aluminum Rod
+item.ingot_aluminum.name=Aluminum Ingot
+item.nugget_aluminum.name=Aluminum Nugget
+item.aluminum_dust.name=Aluminum Grit
+
+//Smooth Wood Blocks
+tile.smooth_oak.name=Smooth Oak Wood
+tile.smooth_spruce.name=Smooth Spruce Wood
+tile.smooth_birch.name=Smooth Birch Wood
+tile.smooth_jungle.name=Smooth Jungle Wood
+tile.smooth_acacia.name=Smooth Acacia Wood
+tile.smooth_dark_oak.name=Smooth Dark Oak Wood
+
+// Plastic
+item.raw_plastic.name=Raw Plastic
+item.raw_white_plastic.name=Raw White Plastic
+item.raw_orange_plastic.name=Raw Orange Plastic
+item.raw_magenta_plastic.name=Raw Magenta Plastic
+item.raw_lblue_plastic.name=Raw Light Blue Plastic
+item.raw_yellow_plastic.name=Raw Yellow Plastic
+item.raw_lime_plastic.name=Raw Lime Plastic
+item.raw_pink_plastic.name=Raw Pink Plastic
+item.raw_gray_plastic.name=Raw Gray Plastic
+item.raw_silver_plastic.name=Raw Light Gray Plastic
+item.raw_cyan_plastic.name=Raw Cyan Plastic
+item.raw_purple_plastic.name=Raw Purple Plastic
+item.raw_blue_plastic.name=Raw Blue Plastic
+item.raw_brown_plastic.name=Raw Brown Plastic
+item.raw_green_plastic.name=Raw Green Plastic
+item.raw_red_plastic.name=Raw Red Plastic
+item.raw_black_plastic.name=Raw Black Plastic
+
+item.white_plastic.name=White Plastic
+item.orange_plastic.name=Orange Plastic
+item.magenta_plastic.name=Magenta Plastic
+item.lblue_plastic.name=Light Blue Plastic
+item.yellow_plastic.name=Yellow Plastic
+item.lime_plastic.name=Lime Plastic
+item.pink_plastic.name=Pink Plastic
+item.gray_plastic.name=Gray Plastic
+item.silver_plastic.name=Light Gray Plastic
+item.cyan_plastic.name=Cyan Plastic
+item.purple_plastic.name=Purple Plastic
+item.blue_plastic.name=Blue Plastic
+item.brown_plastic.name=Brown Plastic
+item.green_plastic.name=Green Plastic
+item.red_plastic.name=Red Plastic
+item.black_plastic.name=Black Plastic
+
+//Plastic Blocks
+tile.plastic_cube_white.name=White Plastic Block
+tile.plastic_cube_orange.name=Orange Plastic Block
+tile.plastic_cube_magenta.name=Magenta Plastic Block
+tile.plastic_cube_lblue.name=Light Blue Plastic Block
+tile.plastic_cube_yellow.name=Yellow Plastic Block
+tile.plastic_cube_lime.name=Lime Plastic Block
+tile.plastic_cube_pink.name=Pink Plastic Block
+tile.plastic_cube_gray.name=Gray Plastic Block
+tile.plastic_cube_silver.name=Light Gray Plastic Block
+tile.plastic_cube_purple.name=Purple Plastic Block
+tile.plastic_cube_cyan.name=Cyan Plastic Block
+tile.plastic_cube_brown.name=Brown Plastic Block
+tile.plastic_cube_blue.name=Blue Plastic Block
+tile.plastic_cube_green.name=Green Plastic Block
+tile.plastic_cube_red.name=Red Plastic Block
+tile.plastic_cube_black.name=Black Plastic Block
+
+//Misc Blocks
+tile.aluminum_block.name=Block of Aluminum
+tile.wbtc_aluminum_ore.name=Aluminum Ore
+tile.rubbish_bin.name=Wheelie Bin
+tile.synthetic_turf.name=Synthetic Turf
+
+//Sign stand
+tile.sign_stand.name=Portable Road Sign Stand
+
+//Handrails
+tile.iron_handrail.name=Iron Handrail
+tile.wood_handrail.name=Wooden Handrail
+
+//Chroma Panels
+tile.chroma_green.name=Green Screen Panel
+tile.chroma_blue.name=Blue Screen Panel
+
+//Food blocks
+tile.cube_pork.name=Pork Cube
+tile.cube_beef.name=Beef Cube
+tile.cube_chicken.name=Chicken Cube
+tile.cube_mutton.name=Mutton Cube
+tile.cube_rabbit.name=Rabbit Cube
+tile.cube_apples.name=Apple Cube
+tile.cube_cheese.name=Mesabrookian Cheese Cube
+tile.cube_carrot.name=Carrot Cube
+tile.cube_potato.name=Potato Cube
+tile.cube_pumpkin_pie.name=Comically Large Pumpkin Pie
+tile.cube_beetroot.name=Beetroot Cube
+tile.cube_cookie.name=Cookie Cube
+tile.cube_gapple.name=Golden Apple Cube
+tile.cube_bread.name=Bread Cube
+tile.cube_fish.name=Fish Cube
+tile.cube_salmon.name=Salmon Cube
+tile.cube_nemo.name=Clownfish Cube
+tile.cube_pufferfish.name=Pufferfish Cube
+
+//Statues
+tile.statue_owo.name=Trophy - Outstanding OwO Behavior
+tile.statue_rz.name=Trophy for RavenholmZombie - Mesabrook Founders Award
+tile.statue_csx.name=Trophy for CSX8600 - Mesabrook Founders Award
+tile.statue_td.name=Trophy for TrainDevil - Mesabrook Founders Award
+tile.statue_tlz.name=Trophy for timelady_zoe - Mesabrook Founders Award
+tile.statue_md.name=Trophy for MineDouble - Mesabrook Founders Award
+tile.statue_lw.name=Trophy for lilWeece - Mesabrook Founders Award
+tile.statue_svv.name=Trophy for StarVicVader - Mesabrook Founders Award
+
+//Plaques
+tile.plaque_test.name=Award - Test Plaque
+tile.plaque_dev.name=Developer's Award
+tile.plaque_supporter.name=Supporter Award
+
+//Ceiling Tile Block
+tile.panel_ceiling.name=Ceiling Panel
+
+//Ceiling Tiles
+tile.panel_oak_l.name=Ceiling Panel - Oak Laminate
+tile.panel_spruce_l.name=Ceiling Panel - Spruce Laminate
+tile.panel_birch_l.name=Ceiling Panel - Birch Laminate
+tile.panel_jungle_l.name=Ceiling Panel - Jungle Laminate
+tile.panel_acacia_l.name=Ceiling Panel - Acacia Laminate
+tile.panel_dark_oak_l.name=Ceiling Panel - Dark Oak Laminate
+tile.panel_checkerboard.name=Ceiling Panel - Missing with Style
+tile.panel_floor_tile_1.name=Ceiling Panel - Crossing Diamonds
+tile.panel_floor_tile_2.name=Ceiling Panel - Four Square
+tile.panel_floor_tile_3.name=Ceiling Panel - Bordered
+tile.panel_floor_tile_4.name=Ceiling Panel - Bordered Four Square
+tile.panel_floor_tile_5.name=Ceiling Panel - Bordered Crossing Diamonds
+tile.panel_floor_tile_6.name=Ceiling Panel - Retro Arcade Carpet
+tile.panel_floor_tile_7.name=Ceiling Panel - Jigsaw
+tile.panel_floor_tile_8.name=Ceiling Panel - Small Tiles
+tile.panel_floor_tile_9.name=Ceiling Panel - Quartz Tiles
+tile.panel_floor_tile_10.name=Ceiling Panel - Coffee Tiles
+tile.panel_floor_tile_11.name=Ceiling Panel - Coarse Tiles
+tile.panel_floor_tile_12.name=Ceiling Panel - Classic Diamonds
+tile.panel_floor_tile_13.name=Ceiling Panel - Dark Quartz Regions
+tile.panel_floor_tile_14.name=Ceiling Panel - Dark Quartz Tiles
+tile.panel_floor_tile_15.name=Ceiling Panel - Cubic Tiles
+tile.panel_floor_tile_16.name=Ceiling Panel - Rotating Laminate
+tile.panel_floor_tile_17.name=Ceiling Panel - Patio Bricks
+tile.panel_floor_tile_18.name=Ceiling Panel - Atlantis
+tile.panel_floor_danger_1.name=Ceiling Panel - Yellow Warning Stripes
+tile.panel_floor_danger_2.name=Ceiling Panel - Orange Warning Stripes
+tile.panel_floor_danger_3.name=Ceiling Panel - Red Warning Stripes
+tile.panel_floor_danger_4.name=Ceiling Panel - White Warning Stripes
+tile.panel_floor_kitchen_1.name=Ceiling Panel - Commercial Kitchen Floor
+tile.panel_floor_kitchen_2.name=Ceiling Panel - Commercial Kitchen Floor
+tile.panel_floor_drain_1.name=Ceiling Panel - Commercial Kitchen Floor w/Drain
+tile.panel_floor_drain_2.name=Ceiling Panel - Commercial Kitchen Floor w/Drain
+
+
+tile.panel_wool_white.name=Ceiling Panel - White Carpet
+tile.panel_wool_orange.name=Ceiling Panel - Orange Carpet
+tile.panel_wool_magenta.name=Ceiling Panel - Magenta Carpet
+tile.panel_wool_lblue.name=Ceiling Panel - Light Blue Carpet
+tile.panel_wool_yellow.name=Ceiling Panel - Yellow Carpet
+tile.panel_wool_lime.name=Ceiling Panel - Lime Carpet
+tile.panel_wool_pink.name=Ceiling Panel - Pink Carpet
+tile.panel_wool_gray.name=Ceiling Panel - Gray Carpet
+tile.panel_wool_silver.name=Ceiling Panel - Light Gray Carpet
+tile.panel_wool_cyan.name=Ceiling Panel - Cyan Carpet
+tile.panel_wool_purple.name=Ceiling Panel - Purple Carpet
+tile.panel_wool_blue.name=Ceiling Panel - Blue Carpet
+tile.panel_wool_brown.name=Ceiling Panel - Brown Carpet
+tile.panel_wool_green.name=Ceiling Panel - Green Carpet
+tile.panel_wool_red.name=Ceiling Panel - Red Carpet
+tile.panel_wool_black.name=Ceiling Panel - Black Carpet
+
+//Laminate Floor Blocks
+tile.wbtc_oak.name=Oak Wood Laminate Floor
+tile.wbtc_spruce.name=Spruce Wood Laminate Floor
+tile.wbtc_birch.name=Birch Wood Laminate Floor
+tile.wbtc_jungle.name=Jungle Wood Laminate Floor
+tile.wbtc_acacia.name=Acacia Wood Laminate Floor
+tile.wbtc_dark_oak.name=Dark Oak Wood Laminate Floor
+
+//Floor Blocks
+tile.wbtc_checkerboard.name=Floor Tile - Missing with Style
+tile.wbtc_floor_1.name=Floor Tile - Crossing Diamonds
+tile.wbtc_floor_2.name=Floor Tile - Four Square
+tile.wbtc_floor_3.name=Floor Tile - Bordered
+tile.wbtc_floor_4.name=Floor Tile - Bordered Four Square
+tile.wbtc_floor_5.name=Floor Tile - Bordered Crossing Diamonds
+tile.wbtc_floor_6.name=Floor Tile - Retro Arcade Carpet
+tile.wbtc_floor_7.name=Floor Tile - Jigsaw
+tile.wbtc_floor_8.name=Floor Tile - Small Tiles
+tile.wbtc_floor_9.name=Floor Tile - Quartz Tiles
+tile.wbtc_floor_10.name=Floor Tile - Coffee Tiles
+tile.wbtc_floor_11.name=Floor Tile - Coarse Tiles
+tile.wbtc_floor_12.name=Floor Tile - Classic Diamonds
+tile.wbtc_floor_13.name=Floor Tile - Dark Quartz Regions
+tile.wbtc_floor_14.name=Floor Tile - Dark Quartz Tiles
+tile.wbtc_floor_15.name=Floor Tile - Cubic Tiles
+tile.wbtc_floor_16.name=Floor Tile - Rotating Laminate
+tile.wbtc_floor_17.name=Floor Tile - Patio Bricks
+tile.wbtc_floor_18.name=Floor Tile - Atlantis
+tile.floor_kitchen_1.name=Kitchen Floor Tile - Commercial Kitchen
+tile.floor_kitchen_2.name=Kitchen Floor Tile - Commercial Kitchen
+tile.floor_drain_1.name=Kitchen Floor Tile - Commercial Kitchen w/Drain
+tile.floor_drain_2.name=Kitchen Floor Tile - Commercial Kitchen w/Drain
+tile.floor_danger_1.name=Industrial Floor Tile - Yellow Warning Stripes
+tile.floor_danger_2.name=Industrial Floor Tile - Orange Warning Stripes
+tile.floor_danger_3.name=Industrial Floor Tile - Red Warning Stripes
+tile.floor_danger_4.name=Industrial Floor Tile - White Warning Stripes
+
+//Pillar
+tile.pillar_base.name=Pillar Base
+tile.wbtc_pillar.name=Pillar
+tile.pillar_top.name=Pillar Top
+
+//Misc Blocks
+tile.white_stone.name=Chalked Stone
+tile.smoothed_stone.name=Smoothed Stone
+
+//Record Names
+item.blank_vinyl.name=Blank Record
+item.amalthea.name=Music Disc
+item.nyan.name=Music Disc
+item.ussr1.name=Damaged Music Disc
+item.ussr2.name=Music Disc
+item.baba_booey.name=Music Disc
+item.dolan.name=Music Disc
+item.murica.name=Music Disc
+item.pigstep.name=Music Disc
+
+//Record Descriptions
+item.record.amalthea.desc=Amalthea
+item.record.nyan.desc=Nyan Cat
+item.record.ussr1.desc=US$R
+item.record.ussr2.desc=Anthem of the Soviet Union
+item.record.baba_booey.desc=Baba Booey Cat
+item.record.dolan.desc=Vinesauce - Dolan Karaoke 
+item.record.murica.desc=Murica, Fuck Yeah!
+item.record.pigstep.desc=Lena Raine - Pigstep

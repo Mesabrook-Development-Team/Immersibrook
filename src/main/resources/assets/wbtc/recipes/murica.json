@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        "#BX",
+        " X "
+    ],
+    "key": {
+        "#": {
+            "item": "wbtc:blue_plastic"
+        },
+        "B": {
+            "item": "wbtc:blank_vinyl"
+        },
+		"X": {
+			"item": "wbtc:red_plastic"
+		}
+    },
+    "result": 
+    {
+        "item": "wbtc:murica",
+        "count": 1
+    }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "$$",
+    "$$"
+  ],
+  "key": {
+    "$": {
+      "item": "wbtc:wbtc_floor_13"
+    }
+  },
+  "result": {
+    "item": "wbtc:wbtc_floor_14",
+    "count": 4
+  }
+}

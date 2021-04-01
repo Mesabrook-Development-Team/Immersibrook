@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "yyy",
+    "zxz",
+	"yyy"
+  ],
+  "key": {
+	"y": {
+	  "item": "wbtc:silver_plastic"
+	},
+	"x": {
+	  "item": "minecraft:glowstone_dust"
+	},
+	"z": {
+	  "item": "wbtc:red_plastic"
+	}
+  },
+  "result": {
+    "item": "wbtc:exit_sign",
+    "count": 2
+  }
+}

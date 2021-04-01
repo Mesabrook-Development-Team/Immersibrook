@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        "#B#",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "wbtc:plastic_cube_red"
+        },
+        "B": {
+            "item": "wbtc:ussr1"
+        }
+    },
+    "result": 
+    {
+        "item": "wbtc:ussr2",
+        "count": 1
+    }
+}

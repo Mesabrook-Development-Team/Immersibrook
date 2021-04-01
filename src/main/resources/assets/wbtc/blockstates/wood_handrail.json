@@ -1,0 +1,30 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"textures": {
+			"1": "blocks/iron_block",
+			"2": "blocks/iron_block"
+		},
+		"model": "wbtc:wood_handrail"
+	},
+	"variants": {
+		"inventory": [{
+			"model": "wbtc:wood_handrail"
+		}],
+		"facing=north": {
+			"model": "wbtc:wood_handrail",
+			"y": 270
+		},
+		"facing=south": {
+			"model": "wbtc:wood_handrail",
+			"y": 90
+		},
+		"facing=east": {
+			"model": "wbtc:wood_handrail"
+		},
+		"facing=west": {
+			"model": "wbtc:wood_handrail",
+			"y": 180
+		}
+	}
+}

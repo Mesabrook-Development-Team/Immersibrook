@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+	"###"
+  ],
+  "key": {
+    "#": {
+      "item": "wbtc:orange_plastic"
+    }
+  },
+  "result": {
+    "item": "wbtc:plastic_cube_orange",
+    "count": 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wbtc:plastic_cube_yellow"
+        }
+    ],
+    "result": {
+        "item": "wbtc:yellow_plastic",
+        "count": 9
+    }
+}

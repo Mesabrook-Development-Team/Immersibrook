@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+	"X": {
+	  "item": "minecraft:cobblestone",
+	  "data": 0
+	}
+  },
+  "result": {
+    "item": "wbtc:stone_sod"
+  }
+}

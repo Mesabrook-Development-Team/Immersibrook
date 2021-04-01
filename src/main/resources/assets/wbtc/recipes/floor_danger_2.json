@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "$$#",
+    "#$#",
+    "#$$"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:concrete",
+      "data": 7
+    },
+	"$": {
+	  "item": "minecraft:concrete",
+	  "data": 1
+	}
+  },
+  "result": {
+    "item": "wbtc:floor_danger_2",
+    "count": 5
+  }
+}

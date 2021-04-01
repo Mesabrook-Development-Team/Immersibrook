@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        "#B$",
+        " $ "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:sand",
+			"data": 1
+        },
+        "B": {
+            "item": "wbtc:blank_vinyl"
+        },
+		"$": {
+		    "item": "wbtc:red_plastic"
+		}
+    },
+    "result": 
+    {
+        "item": "wbtc:amalthea",
+        "count": 1
+    }
+}

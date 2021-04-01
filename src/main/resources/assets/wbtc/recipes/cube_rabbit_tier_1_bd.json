@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wbtc:cube_rabbit"
+        }
+    ],
+    "result": {
+        "item": "minecraft:rabbit",
+        "count": 9
+    }
+}

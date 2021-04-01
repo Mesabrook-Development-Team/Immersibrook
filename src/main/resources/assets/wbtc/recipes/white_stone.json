@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:stone",
+			"data": 0
+        },
+        {
+            "item": "minecraft:dye",
+			"data": 15
+        }
+    ],
+    "result": {
+        "item": "wbtc:white_stone",
+        "count": 4
+    }
+}

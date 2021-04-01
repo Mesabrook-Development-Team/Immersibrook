@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "xxx",
+        "xxx",
+        "x x"
+    ],
+    "key":
+    {
+        "x":
+        {
+            "type": "forge:ore_dict",
+            "ore": "stickIron"
+        }
+    },
+    "result":
+    {
+        "item": "wbtc:iron_handrail",
+        "count": 8
+    }
+}
