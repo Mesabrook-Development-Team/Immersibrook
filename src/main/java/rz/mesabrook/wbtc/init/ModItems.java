@@ -11,6 +11,7 @@ import net.minecraftforge.common.util.EnumHelper;
 import rz.mesabrook.wbtc.items.drinks.WBTC_Beverage;
 import rz.mesabrook.wbtc.items.misc.MiscItem;
 import rz.mesabrook.wbtc.items.record.MemeRecord;
+import rz.mesabrook.wbtc.items.weapons.ItemCane;
 import rz.mesabrook.wbtc.items.weapons.ItemSod;
 
 public class ModItems 
@@ -30,6 +31,9 @@ public class ModItems
 	public static final Item IRON_SOD = new ItemSod("iron_sod", SOD_IRON);
 	public static final Item GOLD_SOD = new ItemSod("gold_sod", SOD_GOLD);
 	public static final Item DIAMOND_SOD = new ItemSod("diamond_sod", SOD_DIAMOND);
+	
+	// Special Cane
+	public static final Item ZOE_CANE = new ItemCane("zoe_cane", ToolMaterial.DIAMOND);
 	
 	// Metals
 	public static final Item IRON_ROD = new MiscItem("iron_rod", CreativeTabs.MISC, 64);
@@ -87,5 +91,7 @@ public class ModItems
 	public static final Item DISC_DOLAN = new MemeRecord("dolan", SoundInit.DOLAN);
 	public static final Item DISC_MURICA = new MemeRecord("murica", SoundInit.MURICA);
 	public static final Item DISC_PIGSTEP = new MemeRecord("pigstep", SoundInit.PIGSTEP);
+	public static final Item DISC_KRAB_BORG = new MemeRecord("krab_borg", SoundInit.KRAB_BORG);
+	public static final Item DISC_KRAB_BORG_FULL = new MemeRecord("krab_borg_full", SoundInit.KRAB_BORG_FULL);
 	
 }

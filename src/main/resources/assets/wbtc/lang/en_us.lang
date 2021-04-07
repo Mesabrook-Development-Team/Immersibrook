@@ -12,6 +12,7 @@ container.rubbish_bin:Wheelie Bin
 
 //Deco
 tile.pc_mouse.name=PC Mouse
+item.zoe_cane.name=Cane of Distinction
 
 //Signs
 tile.exit_sign.name=Exit Sign
@@ -254,6 +255,8 @@ item.baba_booey.name=Music Disc
 item.dolan.name=Music Disc
 item.murica.name=Music Disc
 item.pigstep.name=Music Disc
+item.krab_borg.name=Music Disc
+item.krab_borg_full.name=Music Disc
 
 //Record Descriptions
 item.record.amalthea.desc=Amalthea
@@ -264,3 +267,5 @@ item.record.baba_booey.desc=Baba Booey Cat
 item.record.dolan.desc=Vinesauce - Dolan Karaoke 
 item.record.murica.desc=Murica, Fuck Yeah!
 item.record.pigstep.desc=Lena Raine - Pigstep
+item.record.krab_borg.desc=Anijesterx Music - Death by Krab Borg (Shortened)
+item.record.krab_borg_full.desc=Anijesterx Music - Death by Krab Borg (Full)

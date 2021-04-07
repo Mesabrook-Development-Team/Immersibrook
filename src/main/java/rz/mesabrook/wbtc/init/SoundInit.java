@@ -36,6 +36,8 @@ public class SoundInit
 	public static final SoundEvent DOLAN;
 	public static final SoundEvent MURICA;
 	public static final SoundEvent PIGSTEP;
+	public static final SoundEvent KRAB_BORG;
+	public static final SoundEvent KRAB_BORG_FULL;
 	
 	static
 	{
@@ -64,6 +66,8 @@ public class SoundInit
 		DOLAN = addSoundsToRegistry("dolan");
 		MURICA = addSoundsToRegistry("murica");
 		PIGSTEP = addSoundsToRegistry("pigstep");
+		KRAB_BORG = addSoundsToRegistry("krab_borg");
+		KRAB_BORG_FULL = addSoundsToRegistry("krab_borg_full");
 	}
 	
 	private static SoundEvent addSoundsToRegistry(String soundId)
@@ -104,6 +108,8 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.DOLAN);
 				event.getRegistry().registerAll(SoundInit.MURICA);
 				event.getRegistry().registerAll(SoundInit.PIGSTEP);
+				event.getRegistry().registerAll(SoundInit.KRAB_BORG);
+				event.getRegistry().registerAll(SoundInit.KRAB_BORG_FULL);
 				
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 			}

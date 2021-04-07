@@ -21,5 +21,7 @@
 	"baba_booey": {"category": "master","sounds": [{"name": "wbtc:baba_booey","stream": true}]},
 	"dolan": {"category": "master","sounds": [{"name": "wbtc:dolan","stream": true}]},
 	"murica": {"category": "master","sounds": [{"name": "wbtc:murica","stream": true}]},
-	"pigstep": {"category": "master","sounds": [{"name": "wbtc:pigstep","stream": true}]}
+	"pigstep": {"category": "master","sounds": [{"name": "wbtc:pigstep","stream": true}]},
+	"krab_borg": {"category": "master","sounds": [{"name": "wbtc:krab_borg","stream": true}]},
+	"krab_borg_full": {"category": "master","sounds": [{"name": "wbtc:krab_borg_full","stream": true}]}
 }
