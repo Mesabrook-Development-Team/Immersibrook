@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        "#B#",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:gold_block"
+        },
+        "B": {
+            "item": "wbtc:krab_borg"
+        }
+    },
+    "result": 
+    {
+        "item": "wbtc:krab_borg_full",
+        "count": 1
+    }
+}

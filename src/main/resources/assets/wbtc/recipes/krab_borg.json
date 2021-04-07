@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        "#B$",
+        " $ "
+    ],
+    "key": {
+        "#": {
+            "item": "wbtc:magenta_plastic"
+        },
+        "B": {
+            "item": "wbtc:blank_vinyl"
+        },
+		"$": {
+			"item": "wbtc:purple_plastic"
+		}
+    },
+    "result": 
+    {
+        "item": "wbtc:krab_borg",
+        "count": 1
+    }
+}
