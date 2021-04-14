@@ -18,7 +18,7 @@ import rz.mesabrook.wbtc.util.Reference;
 
 public class CommandTeleportDimension extends CommandBase
 {
-	private final List<String> aliases = Lists.newArrayList(Reference.MODID, "TP", "tp", "tpdim", "tpdimension", "teleport");
+	private final List<String> aliases = Lists.newArrayList(Reference.MODID, "TPDIM", "tpdim", "tpdimension");
 	
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException
@@ -62,10 +62,10 @@ public class CommandTeleportDimension extends CommandBase
 	}
 	
 	@Override
-	public boolean checkPermission(MinecraftServer server, ICommandSender sender) 
-	{
-		return true;
-	}
+    public int getRequiredPermissionLevel()
+    {
+        return 2;
+    }
 	
 	@Override
 	public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, BlockPos targetPos) 

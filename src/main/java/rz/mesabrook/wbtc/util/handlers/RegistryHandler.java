@@ -127,7 +127,7 @@ public class RegistryHandler
 		
     	SmeltingRecipes.registerSmeltingRecipes();
     	
-    	Main.logger.info("[Mesalleaneous] Version " + Reference.VERSION + " (The Grubdate) loaded.");
+    	Main.logger.info("[Mesalleaneous] Version " + Reference.VERSION + " loaded.");
 	}
 	
 	public static void serverRegistries(FMLServerStartingEvent event)
