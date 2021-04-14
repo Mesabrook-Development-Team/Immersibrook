@@ -23,6 +23,12 @@ public final class ModConfig
 	@Comment("Set to false if you want to disable the Leather = Saddle smelting recipe.")
 	public static boolean smeltingLeatherForASaddle = true;
 	
+	@Comment("Set to false if you don't want the Golden Apple Food Cube to give the player random potion effects when right-clicked.")
+	public static boolean goldenAppleCubeGivesPotionEffects = true;
+	
+	@Comment("Set to false if you want to disable Mesalleaneous' /tpdim command.")
+	public static boolean tpdimCommand = true;
+	
 	@Mod.EventBusSubscriber(modid = Reference.MODID)
 	private static class EventHandler
 	{

@@ -21,10 +21,12 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -329,6 +331,46 @@ public class FoodBlock extends Block implements IHasModel
 				else if(this.getUnlocalizedName().contains("cube_pumpkin_pie"))
 				{
 					world.playSound(player, pos, SoundInit.PIE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+				}
+				else if(this.getUnlocalizedName().contains("cube_gapple"))
+				{
+					world.playSound(player, pos, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 1.0F, 1.0F);
+					
+					if(ModConfig.goldenAppleCubeGivesPotionEffects)
+					{
+						if(player instanceof EntityPlayer)
+						{
+							int duration = 1000;
+							
+							Random rand = new Random();
+							int effects;
+							int level;
+							effects = rand.nextInt(6);
+							level = rand.nextInt(8);
+							
+							switch(effects)
+							{
+							case 1:
+								player.addPotionEffect(new PotionEffect(MobEffects.SPEED, duration, level, true, false));
+								break;
+							case 2:
+								player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, duration, level, true, false));
+								break;
+							case 3:
+								player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, duration, level, true, false));
+								break;
+							case 4:
+								player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, duration, level, true, false));
+								break;
+							case 5:
+								player.addPotionEffect(new PotionEffect(MobEffects.GLOWING, duration, level, true, false));
+								break;
+							case 6:
+								player.clearActivePotions();
+								break;
+							}
+						}
+					}
 				}
 				else
 				{

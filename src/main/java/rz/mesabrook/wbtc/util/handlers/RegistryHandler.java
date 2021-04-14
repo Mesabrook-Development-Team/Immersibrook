@@ -24,6 +24,7 @@ import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.TooltipRandomizer;
+import rz.mesabrook.wbtc.util.config.ModConfig;
 import rz.mesabrook.wbtc.util.recipe.SmeltingRecipes;
 import rz.mesabrook.wbtc.world.generation.WorldGenWBTCOres;
 
@@ -131,7 +132,14 @@ public class RegistryHandler
 	
 	public static void serverRegistries(FMLServerStartingEvent event)
 	{
-		Main.logger.info("[Mesalleaneous] Registering Teleport Command");
-		event.registerServerCommand(new CommandTeleportDimension());
+		if(ModConfig.tpdimCommand)
+		{
+			Main.logger.info("[Mesalleaneous] Registering Teleport Command");
+			event.registerServerCommand(new CommandTeleportDimension());
+		}
+		else
+		{
+			Main.logger.info("[Mesalleaneous] /tpdim command has been disabled in the config.");
+		}
 	}
 }
