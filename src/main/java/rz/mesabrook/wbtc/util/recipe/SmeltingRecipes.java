@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
+import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.config.ModConfig;
 
 public class SmeltingRecipes 
@@ -49,11 +50,11 @@ public class SmeltingRecipes
 			if(ModConfig.smeltingLeatherForASaddle)
 			{
 				GameRegistry.addSmelting(Items.LEATHER, new ItemStack(Items.SADDLE, 1), 69F);
-				Main.logger.info("[Mesalleaneous] Leather to Saddle Smelting Recipe Registered.");
+				Main.logger.info("[" + Reference.MODNAME + "] Leather to Saddle Smelting Recipe Registered.");
 			}
 			else
 			{
-				Main.logger.info("[Mesalleaneous] Leather to Saddle Smelting Recipe Disasbled.");
+				Main.logger.info("[" + Reference.MODNAME + "] Leather to Saddle Smelting Recipe Disasbled.");
 			}
 			
 			Main.logger.info("Smelting Recipes Registered.");

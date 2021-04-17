@@ -1,11 +1,11 @@
 [
 {
   "modid": "wbtc",
-  "name": "Mesalleaneous",
-  "description": "A mod that adds a bunch of stuff!",
+  "name": "Immersibrook",
+  "description": "A special mod designed for the Mesabrook Minecraft server!",
   "version": "0.0.5",
   "mcversion": "1.12.2",
-  "url": "http://rzmc.tk",
+  "url": "https://mesabrook.com",
   "updateUrl": "",
   "authorList": ["RavenholmZombie"],
   "credits": "TrainDevil for the mod's name. | CSX8600 for his work on the Award Plaques",

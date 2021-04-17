@@ -112,10 +112,11 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.KRAB_BORG_FULL);
 				
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
+				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");
 			}
 			catch(Exception ex)
 			{
-				Main.logger.error("[Mesalleaneous SoundLoader] ERROR: " + ex);
+				Main.logger.error("[" + Reference.MODNAME + " SoundLoader] ERROR: " + ex);
 			}
 		}
 	}

@@ -3,7 +3,7 @@ package rz.mesabrook.wbtc.util;
 public class Reference 
 {
 	public static final String MODID = "wbtc";
-	public static final String MODNAME = "Mesalleaneous";
+	public static final String MODNAME = "Immersibrook";
 	public static final String AUTHOR = "RavenholmZombie";
 	public static final String VERSION = "0.0.5";
 	

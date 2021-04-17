@@ -17,7 +17,7 @@ public final class ModConfig
 	@Comment("Set to false to disable sound effects for Food Cube blocks.")
 	public static boolean foodCubeSounds = true;
 	
-	@Comment("Set to false to disable the random quote shown in tooltips attached to Mesalleaneous blocks and items.")
+	@Comment("Set to false to disable the random quote shown in tooltips attached to Immersibrook's blocks and items.")
 	public static boolean funnyTooltips = true;
 	
 	@Comment("Set to false if you want to disable the Leather = Saddle smelting recipe.")
@@ -26,7 +26,7 @@ public final class ModConfig
 	@Comment("Set to false if you don't want the Golden Apple Food Cube to give the player random potion effects when right-clicked.")
 	public static boolean goldenAppleCubeGivesPotionEffects = true;
 	
-	@Comment("Set to false if you want to disable Mesalleaneous' /tpdim command.")
+	@Comment("Set to false if you want to disable Immersibrook's /tpdim command.")
 	public static boolean tpdimCommand = true;
 	
 	@Mod.EventBusSubscriber(modid = Reference.MODID)

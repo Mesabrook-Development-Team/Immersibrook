@@ -67,29 +67,29 @@ public class RegistryHandler
 	
 	public static void preInitRegistries(FMLPreInitializationEvent event)
 	{
-		Main.logger.info("[Mesalleaneous] Version " + Reference.VERSION + " (The Grubdate) loading...");
+		Main.logger.info("[Immersibrook] Version " + Reference.VERSION + " loading...");
         Main.IE_LOADED = Loader.isModLoaded("immersiveengineering");
         Main.JABCM_LOADED = Loader.isModLoaded("jabcm");
         Main.FURENIKUS_CITIES = Loader.isModLoaded("furenikuscities");
         
         if(Main.FURENIKUS_CITIES)
         {
-        	Main.logger.warn("[Mesalleaneous] Fureniku's Cities detected. There may be some overlap when it comes to blocks since both mods are meant for a similar purpose. We recommend using either Mesalleaneous or FC separately to avoid any potential conflicts.");
+        	Main.logger.warn("[" + Reference.MODNAME + "] Fureniku's Cities detected. There may be some overlap when it comes to blocks since both mods are meant for a similar purpose. We recommend using either Immersibrook or FC separately to avoid any potential conflicts.");
         }
 		
 		if(!Main.IE_LOADED)
 		{
-			Main.logger.info("Immersive Engineering NOT detected. Mesalleaneous Aluminum Ore gen enabled.");
+			Main.logger.info("Immersive Engineering NOT detected. Immersibrook Aluminum Ore gen enabled.");
 			GameRegistry.registerWorldGenerator(new WorldGenWBTCOres(), 0);
 		}
 		else 
 		{
-			Main.logger.warn("Immersive Engineering detected. Mesalleaneous Aluminum Ore gen disabled. Use IE's ore instead.");
+			Main.logger.warn("Immersive Engineering detected. Immersibrook Aluminum Ore gen disabled. Use IE's ore instead.");
 		}
 		
 		if(!Main.JABCM_LOADED)
 		{
-			Main.logger.info("Mesalleaneous goes great with the Just A Basic Concrete Mod!");
+			Main.logger.info("Immersibrook goes great with the Just A Basic Concrete Mod!");
 			Main.logger.info("Download it today! https://bit.ly/2NNXJL4");
 		}
 		else
@@ -102,13 +102,13 @@ public class RegistryHandler
 	
 	public static void initRegistries()
 	{
-		Main.logger.info("[Mesalleaneous] Initialization");
+		Main.logger.info("[" + Reference.MODNAME + "] Initialization");
 		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new GuiHandler());
 	}
 	
 	public static void postInitRegistries(FMLPostInitializationEvent event)
 	{
-		Main.logger.info("[Mesalleaneous] Post Initialization");
+		Main.logger.info("[" + Reference.MODNAME + "] Post Initialization");
 		
     	NonNullList<ItemStack> ironStick = OreDictionary.getOres("stickIron");
     	NonNullList<ItemStack> aluminumStick = OreDictionary.getOres("stickAluminum");
@@ -121,25 +121,25 @@ public class RegistryHandler
     	NonNullList<ItemStack> plastics = OreDictionary.getOres("itemPlastic");
     	NonNullList<ItemStack> dairy = OreDictionary.getOres("blockCheese");
     	
-    	Main.logger.info("[Mesalleaneous] Checking to ensure our items are in the OD " + ironStick + aluminumStick + aluminumIngot + aluminumNug + aluminumBlock + aluminumOre + aluminumDust + dairy);
-		Main.logger.info("[Mesalleaneous] Scanning for plastics..." + rawPlastics + plastics);
+    	Main.logger.info("[" + Reference.MODNAME + "] Checking to ensure our items are in the OD " + ironStick + aluminumStick + aluminumIngot + aluminumNug + aluminumBlock + aluminumOre + aluminumDust + dairy);
+		Main.logger.info("[" + Reference.MODNAME + "] Scanning for plastics..." + rawPlastics + plastics);
     	TooltipRandomizer.ChosenTooltip();
 		
     	SmeltingRecipes.registerSmeltingRecipes();
     	
-    	Main.logger.info("[Mesalleaneous] Version " + Reference.VERSION + " loaded.");
+    	Main.logger.info("[Immersibrook] Version " + Reference.VERSION + " loaded.");
 	}
 	
 	public static void serverRegistries(FMLServerStartingEvent event)
 	{
 		if(ModConfig.tpdimCommand)
 		{
-			Main.logger.info("[Mesalleaneous] Registering Teleport Command");
+			Main.logger.info("[" + Reference.MODNAME + "] Registering Teleport Command");
 			event.registerServerCommand(new CommandTeleportDimension());
 		}
 		else
 		{
-			Main.logger.info("[Mesalleaneous] /tpdim command has been disabled in the config.");
+			Main.logger.info("[" + Reference.MODNAME + "] /tpdim command has been disabled in the config.");
 		}
 	}
 }
