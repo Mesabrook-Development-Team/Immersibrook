@@ -21,7 +21,7 @@ import rz.mesabrook.wbtc.tab.WBTCTrophyTab;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.handlers.RegistryHandler;
 
-@Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION, dependencies = "required-after:xlfoodmod")
+@Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION, dependencies = "required-after:harvestcraft")
 public class Main 
 {
 	

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+	"###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:fish",
+	  "data": 2
+    }
+  },
+  "result": {
+    "item": "wbtc:cube_nemo",
+    "count": 1
+  }
+}

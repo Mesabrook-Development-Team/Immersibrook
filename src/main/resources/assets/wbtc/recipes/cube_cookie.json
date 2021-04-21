@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+	"###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:cookie"
+    }
+  },
+  "result": {
+    "item": "wbtc:cube_cookie",
+    "count": 1
+  }
+}

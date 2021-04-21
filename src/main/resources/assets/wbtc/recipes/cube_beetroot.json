@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+	"###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:beetroot"
+    }
+  },
+  "result": {
+    "item": "wbtc:cube_beetroot",
+    "count": 1
+  }
+}

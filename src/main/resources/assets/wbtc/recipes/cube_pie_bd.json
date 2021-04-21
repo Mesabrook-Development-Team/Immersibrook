@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wbtc:cube_pumpkin_pie"
+        }
+    ],
+    "result": {
+        "item": "minecraft:pumpkin_pie",
+        "count": 9
+    }
+}

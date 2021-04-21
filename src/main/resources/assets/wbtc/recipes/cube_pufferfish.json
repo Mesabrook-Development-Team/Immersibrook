@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+	"###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:fish",
+	  "data": 3
+    }
+  },
+  "result": {
+    "item": "wbtc:cube_pufferfish",
+    "count": 1
+  }
+}

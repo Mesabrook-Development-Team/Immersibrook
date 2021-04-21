@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+	"###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:golden_apple",
+	  "data": 0
+    }
+  },
+  "result": {
+    "item": "wbtc:cube_gapple",
+    "count": 1
+  }
+}

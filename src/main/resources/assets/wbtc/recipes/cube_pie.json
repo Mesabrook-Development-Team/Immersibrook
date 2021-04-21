@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+	"###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:pumpkin_pie"
+    }
+  },
+  "result": {
+    "item": "wbtc:cube_pumpkin_pie",
+    "count": 1
+  }
+}

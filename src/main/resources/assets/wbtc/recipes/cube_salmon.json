@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+	"###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:fish",
+	  "data": 1
+    }
+  },
+  "result": {
+    "item": "wbtc:cube_salmon",
+    "count": 1
+  }
+}

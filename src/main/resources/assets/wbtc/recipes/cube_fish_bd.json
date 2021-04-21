@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wbtc:cube_fish"
+        }
+    ],
+    "result": {
+        "item": "minecraft:fish",
+		"data: 0,
+        "count": 9
+    }
+}

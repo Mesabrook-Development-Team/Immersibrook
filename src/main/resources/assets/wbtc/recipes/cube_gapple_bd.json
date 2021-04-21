@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wbtc:cube_gapple"
+        }
+    ],
+    "result": {
+        "item": "minecraft:golden_apple",
+		"data: 0,
+        "count": 9
+    }
+}

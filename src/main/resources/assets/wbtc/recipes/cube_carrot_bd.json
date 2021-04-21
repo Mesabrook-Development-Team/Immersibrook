@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wbtc:cube_carrot"
+        }
+    ],
+    "result": {
+        "item": "minecraft:carrot",
+        "count": 9
+    }
+}

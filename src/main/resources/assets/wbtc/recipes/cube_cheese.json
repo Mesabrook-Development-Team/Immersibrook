@@ -1,17 +1,22 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "###",
-    "###",
-	"###"
-  ],
-  "key": {
-    "#": {
-      "item": "xlfoodmod:cheese"
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "xxx",
+        "xxx",
+        "xxx"
+    ],
+    "key":
+    {
+        "x":
+        {
+            "type": "forge:ore_dict",
+            "ore": "foodCheese"
+        }
+    },
+    "result":
+    {
+        "item": "wbtc:cube_cheese",
+        "count": 3
     }
-  },
-  "result": {
-    "item": "wbtc:cube_cheese",
-    "count": 1
-  }
 }
