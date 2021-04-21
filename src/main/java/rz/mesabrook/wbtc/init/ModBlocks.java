@@ -164,7 +164,7 @@ public class ModBlocks
 	public static final Block CUBE_PUMPKIN_PIE = new FoodBlock("cube_pumpkin_pie", MapColor.ORANGE_STAINED_HARDENED_CLAY, SoundType.SLIME, CreativeTabs.FOOD);
 	public static final Block CUBE_BEET = new FoodBlock("cube_beetroot", MapColor.RED, SoundType.SLIME, CreativeTabs.FOOD);
 	public static final Block CUBE_COOKIE = new FoodBlock("cube_cookie", MapColor.BROWN, SoundType.WOOD, CreativeTabs.FOOD);
-	public static final Block CUBE_GAPPLE = new FoodBlock("cube_gapple", MapColor.GOLD, SoundType.WOOD, CreativeTabs.FOOD);
+	public static final Block CUBE_GAPPLE = new FoodBlock("cube_gapple", MapColor.GOLD, SoundType.ANVIL, CreativeTabs.FOOD);
 	public static final Block CUBE_BREAD = new FoodBlock("cube_bread", MapColor.BROWN, SoundType.WOOD, CreativeTabs.FOOD);
 	public static final Block CUBE_FISH = new FoodBlock("cube_fish", MapColor.GRAY, SoundType.SLIME, CreativeTabs.FOOD);
 	public static final Block CUBE_SALMON = new FoodBlock("cube_salmon", MapColor.PINK, SoundType.SLIME, CreativeTabs.FOOD);
