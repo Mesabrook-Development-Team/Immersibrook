@@ -183,6 +183,7 @@ tile.panel_floor_kitchen_1.name=Ceiling Panel - Commercial Kitchen Floor
 tile.panel_floor_kitchen_2.name=Ceiling Panel - Commercial Kitchen Floor
 tile.panel_floor_drain_1.name=Ceiling Panel - Commercial Kitchen Floor w/Drain
 tile.panel_floor_drain_2.name=Ceiling Panel - Commercial Kitchen Floor w/Drain
+tile.panel_tileboard.name=Ceiling Panel - Classic Tiles
 
 
 tile.panel_wool_white.name=Ceiling Panel - White Carpet
@@ -212,6 +213,7 @@ tile.wbtc_dark_oak.name=Dark Oak Wood Laminate Floor
 
 //Floor Blocks
 tile.wbtc_checkerboard.name=Floor Tile - Missing with Style
+tile.tileboard.name=Floor Tile - Classic Tiles
 tile.wbtc_floor_1.name=Floor Tile - Crossing Diamonds
 tile.wbtc_floor_2.name=Floor Tile - Four Square
 tile.wbtc_floor_3.name=Floor Tile - Bordered

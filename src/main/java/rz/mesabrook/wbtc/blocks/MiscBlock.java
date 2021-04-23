@@ -59,6 +59,10 @@ public class MiscBlock extends Block implements IHasModel
 		{
 			tooltip.add(TextFormatting.GOLD + "It glows in the dark and is not approved by the NFL.");
 		}
+		else if(this.getUnlocalizedName().contains("tileboard"))
+		{
+			tooltip.add(TextFormatting.AQUA + "It's baaaaack");
+		}
 		
 		super.addInformation(stack, world, tooltip, flag);
 	}

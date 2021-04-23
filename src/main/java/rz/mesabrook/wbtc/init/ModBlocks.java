@@ -40,6 +40,7 @@ public class ModBlocks
 	public static final Block PANEL_ACACIA_L = new MiscBlock("panel_acacia_l", Material.ROCK, SoundType.STONE, Main.WBTC_TAB_CEILING, 0F);
 	public static final Block PANEL_DARK_OAK_L = new MiscBlock("panel_dark_oak_l", Material.ROCK, SoundType.STONE, Main.WBTC_TAB_CEILING, 0F);
 	public static final Block PANEL_CHECKERBOARD = new MiscBlock("panel_checkerboard", Material.ROCK, SoundType.STONE, Main.WBTC_TAB_CEILING, 0F);
+	public static final Block PANEL_CHECKERBOARD_OLD = new MiscBlock("panel_tileboard", Material.ROCK, SoundType.STONE, Main.WBTC_TAB_CEILING, 0F);
 	public static final Block PANEL_TILE_1 = new MiscBlock("panel_floor_tile_1", Material.ROCK, SoundType.STONE, Main.WBTC_TAB_CEILING, 0F);
 	public static final Block PANEL_TILE_2 = new MiscBlock("panel_floor_tile_2", Material.ROCK, SoundType.STONE, Main.WBTC_TAB_CEILING, 0F);
 	public static final Block PANEL_TILE_3 = new MiscBlock("panel_floor_tile_3", Material.ROCK, SoundType.STONE, Main.WBTC_TAB_CEILING, 0F);
@@ -102,6 +103,7 @@ public class ModBlocks
 	
 	// Floor Blocks
 	public static final Block FLOOR_CHECKERBOARD = new MiscBlock("wbtc_checkerboard", Material.ROCK, SoundType.STONE, Main.WBTC_TAB, 0F);
+	public static final Block FLOOR_OLD_CHECKERBOARD = new MiscBlock("tileboard", Material.ROCK, SoundType.STONE, Main.WBTC_TAB, 0F);
 	public static final Block FLOOR_TILE_1 = new MiscBlock("wbtc_floor_1", Material.ROCK, SoundType.STONE, Main.WBTC_TAB, 0F);
 	public static final Block FLOOR_TILE_2 = new MiscBlock("wbtc_floor_2", Material.ROCK, SoundType.STONE, Main.WBTC_TAB, 0F);
 	public static final Block FLOOR_TILE_3 = new MiscBlock("wbtc_floor_3", Material.ROCK, SoundType.STONE, Main.WBTC_TAB, 0F);
