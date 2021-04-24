@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wbtc:cube_cheese"
+        }
+    ],
+    "result": {
+        "item": "harvestcraft:cheeseitem",
+        "count": 9
+    }
+}
