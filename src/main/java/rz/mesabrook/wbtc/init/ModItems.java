@@ -9,6 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.common.util.EnumHelper;
 import rz.mesabrook.wbtc.items.drinks.WBTC_Beverage;
+import rz.mesabrook.wbtc.items.misc.ItemFirstAidKit;
 import rz.mesabrook.wbtc.items.misc.MiscItem;
 import rz.mesabrook.wbtc.items.record.MemeRecord;
 import rz.mesabrook.wbtc.items.weapons.ItemCane;
@@ -93,5 +94,8 @@ public class ModItems
 	public static final Item DISC_PIGSTEP = new MemeRecord("pigstep", SoundInit.PIGSTEP);
 	public static final Item DISC_KRAB_BORG = new MemeRecord("krab_borg", SoundInit.KRAB_BORG);
 	public static final Item DISC_KRAB_BORG_FULL = new MemeRecord("krab_borg_full", SoundInit.KRAB_BORG_FULL);
+	
+	// First Aid Kit
+	public static final Item FIRST_AID_KIT = new ItemFirstAidKit("first_aid", CreativeTabs.TOOLS);
 	
 }
