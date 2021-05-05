@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "$#$",
+    "$@$",
+	"###"
+  ],
+  "key": {
+    "$": {
+      "item": "wbtc:green_plastic"
+    },
+	"#": {
+	  "item": "wbtc:white_plastic"
+	},
+	"@": {
+	  "item": "minecraft:golden_apple",
+	  "data": 0
+	}
+  },
+  "result": {
+    "item": "wbtc:first_aid",
+    "count": 1
+  }
+}

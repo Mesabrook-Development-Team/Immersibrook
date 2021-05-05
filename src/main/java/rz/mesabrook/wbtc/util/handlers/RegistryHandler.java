@@ -21,6 +21,7 @@ import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.cmds.CommandTeleportDimension;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
+import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.TooltipRandomizer;
@@ -123,8 +124,8 @@ public class RegistryHandler
     	
     	Main.logger.info("[" + Reference.MODNAME + "] Checking to ensure our items are in the OD " + ironStick + aluminumStick + aluminumIngot + aluminumNug + aluminumBlock + aluminumOre + aluminumDust + dairy);
 		Main.logger.info("[" + Reference.MODNAME + "] Scanning for plastics..." + rawPlastics + plastics);
-    	TooltipRandomizer.ChosenTooltip();
-		
+    	
+		TooltipRandomizer.ChosenTooltip();
     	SmeltingRecipes.registerSmeltingRecipes();
     	
     	Main.logger.info("[Immersibrook] Version " + Reference.VERSION + " loaded.");

@@ -1,6 +1,9 @@
 //Config
 wbtc.config.title=Configuration File for Immersibrook
 
+//First Aid
+item.first_aid.name=MDPH Approved First Aid Kit
+
 //Creative Tabs
 itemGroup.wbtc_tab=[Immersibrook] - Floor Blocks
 itemGroup.wbtc_tab_ceiling=[Immersibrook] - Ceiling Panels

@@ -17,12 +17,14 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModItems;
+import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.util.IHasModel;
 
 public class ItemFirstAidKit extends Item implements IHasModel
@@ -35,7 +37,7 @@ public class ItemFirstAidKit extends Item implements IHasModel
 		setRegistryName(name);
 		setCreativeTab(tab);
 		setMaxStackSize(1);
-		setMaxDamage(6);
+		setMaxDamage(12);
 		setCreativeTab(tab);
 		
 		ModItems.ITEMS.add(this);
@@ -58,13 +60,15 @@ public class ItemFirstAidKit extends Item implements IHasModel
 			}
 			else
 			{
-				world.playSound(player, player.getPosition(), SoundEvents.ENTITY_ENDERMEN_STARE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+				world.playSound(player, player.getPosition(), SoundEvents.ENTITY_ENDERMEN_AMBIENT, SoundCategory.BLOCKS, 1.0F, 1.0F);
+				player.sendMessage(new TextComponentString(TextFormatting.RED + "You're already fully healed, you silly goose :3"));
 				return new ActionResult<ItemStack>(EnumActionResult.FAIL, item);
 			}
 		}
 		else
 		{
 			world.playSound(player, player.getPosition(), SoundEvents.ENTITY_ENDERMEN_STARE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+			player.sendMessage(new TextComponentString(TextFormatting.DARK_RED + "You're in Creative Mode! >:("));
 			return new ActionResult<ItemStack>(EnumActionResult.FAIL, item);
 		}
 	}
