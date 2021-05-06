@@ -26,19 +26,29 @@ import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.util.IHasModel;
+import rz.mesabrook.wbtc.util.Reference;
+import rz.mesabrook.wbtc.util.config.ModConfig;
 
 public class ItemFirstAidKit extends Item implements IHasModel
-{
-	private static int availableuses = 6;
-	
+{	
 	public ItemFirstAidKit(String name, CreativeTabs tab)
 	{
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setCreativeTab(tab);
 		setMaxStackSize(1);
-		setMaxDamage(12);
 		setCreativeTab(tab);
+		
+		if(ModConfig.firstAidUses <= 0)
+		{
+			setMaxDamage(6);
+			Main.logger.info("[" + Reference.MODNAME + " WARNING] Invalid Config Entry at firstAidUses. Number cannot be zero or less. Default uses have been set to six.");
+		}
+		else
+		{
+			setMaxDamage(ModConfig.firstAidUses);
+		}
+		
 		
 		ModItems.ITEMS.add(this);
 	}

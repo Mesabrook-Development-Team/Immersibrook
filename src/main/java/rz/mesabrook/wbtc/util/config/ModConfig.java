@@ -29,6 +29,9 @@ public final class ModConfig
 	@Comment("Set to false if you want to disable Immersibrook's /tpdim command.")
 	public static boolean tpdimCommand = true;
 	
+	@Comment("Set the amount of times the First Aid Kit can be used before it breaks.")
+	public static int firstAidUses = 12;
+	
 	@Mod.EventBusSubscriber(modid = Reference.MODID)
 	private static class EventHandler
 	{
