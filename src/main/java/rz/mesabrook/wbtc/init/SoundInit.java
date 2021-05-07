@@ -26,6 +26,8 @@ public class SoundInit
 	public static final SoundEvent CHEESE_PLACE;
 	public static final SoundEvent CHEESE_CLICK;
 	public static final SoundEvent PIE;
+	public static final SoundEvent FISH;
+	public static final SoundEvent FISH_FULL;
 	
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -56,6 +58,8 @@ public class SoundInit
 		CHEESE_PLACE = addSoundsToRegistry("cheese_place");
 		CHEESE_CLICK = addSoundsToRegistry("cheese_click");
 		PIE = addSoundsToRegistry("pie");
+		FISH = addSoundsToRegistry("fish");
+		FISH_FULL = addSoundsToRegistry("fish_full");
 		
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -110,6 +114,8 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.PIGSTEP);
 				event.getRegistry().registerAll(SoundInit.KRAB_BORG);
 				event.getRegistry().registerAll(SoundInit.KRAB_BORG_FULL);
+				event.getRegistry().registerAll(SoundInit.FISH);
+				event.getRegistry().registerAll(SoundInit.FISH_FULL);
 				
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

@@ -262,6 +262,7 @@ item.murica.name=Music Disc
 item.pigstep.name=Music Disc
 item.krab_borg.name=Music Disc
 item.krab_borg_full.name=Music Disc
+item.fish_full.name=Music Disc
 
 //Record Descriptions
 item.record.amalthea.desc=Amalthea
@@ -274,3 +275,4 @@ item.record.murica.desc=Murica, Fuck Yeah!
 item.record.pigstep.desc=Lena Raine - Pigstep
 item.record.krab_borg.desc=Anijesterx Music - Death by Krab Borg (Shortened)
 item.record.krab_borg_full.desc=Anijesterx Music - Death by Krab Borg (Full)
+item.record.fish_full.desc=Spinning Fish

@@ -23,5 +23,7 @@
 	"murica": {"category": "master","sounds": [{"name": "wbtc:murica","stream": true}]},
 	"pigstep": {"category": "master","sounds": [{"name": "wbtc:pigstep","stream": true}]},
 	"krab_borg": {"category": "master","sounds": [{"name": "wbtc:krab_borg","stream": true}]},
-	"krab_borg_full": {"category": "master","sounds": [{"name": "wbtc:krab_borg_full","stream": true}]}
+	"krab_borg_full": {"category": "master","sounds": [{"name": "wbtc:krab_borg_full","stream": true}]},
+	"fish": {"category": "master","sounds": [{"name": "wbtc:fish","stream": true}]},
+	"fish_full": {"category": "master","sounds": [{"name": "wbtc:fish_full","stream": true}]}
 }

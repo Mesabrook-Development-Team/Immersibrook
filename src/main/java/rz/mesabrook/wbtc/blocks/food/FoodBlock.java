@@ -320,10 +320,6 @@ public class FoodBlock extends Block implements IHasModel
 				{
 					world.playSound(player, pos, SoundEvents.ENTITY_RABBIT_HURT, SoundCategory.BLOCKS, 1.0F, tierPitch);
 				}
-				else if(this.getUnlocalizedName().contains("cube_apples"))
-				{
-					world.playSound(player, pos, SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-				}
 				else if(this.getUnlocalizedName().contains("cube_cheese"))
 				{
 					world.playSound(player, pos, SoundInit.CHEESE_CLICK, SoundCategory.BLOCKS, 1.0F, 1.0F);
@@ -371,6 +367,14 @@ public class FoodBlock extends Block implements IHasModel
 							}
 						}
 					}
+				}
+				else if(this.getUnlocalizedName().contains("fish") || this.getUnlocalizedName().contains("pufferfish") || this.getUnlocalizedName().contains("salmon") || this.getUnlocalizedName().contains("nemo"))
+				{
+					world.playSound(player, pos, SoundInit.FISH, SoundCategory.BLOCKS, 1.0F, 1.0F);
+				}
+				else if(this.getUnlocalizedName().contains("cube_beetroot") || this.getUnlocalizedName().contains("cube_apples") || this.getUnlocalizedName().contains("cube_carrot"))
+				{
+					world.playSound(player, pos, SoundEvents.ENTITY_SLIME_SQUISH, SoundCategory.BLOCKS, 1.0F, 1.0F);
 				}
 				else
 				{
