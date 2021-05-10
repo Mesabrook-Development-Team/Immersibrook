@@ -16,6 +16,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 import rz.mesabrook.wbtc.util.Reference;
+import rz.mesabrook.wbtc.util.handlers.ClientSideHandlers;
 
 public class PlaySoundPacket implements IMessage
 {
@@ -47,14 +48,7 @@ public class PlaySoundPacket implements IMessage
 		
 		private void handle(PlaySoundPacket message, MessageContext ctx)
 		{
-			EntityPlayer player = Minecraft.getMinecraft().player;
-			WorldClient world = Minecraft.getMinecraft().world;
-
-			ResourceLocation soundLocation = new ResourceLocation(Reference.MODID, message.soundName);
-			IForgeRegistry<SoundEvent> soundRegistry = GameRegistry.findRegistry(SoundEvent.class);
-			SoundEvent sound = soundRegistry.getValue(soundLocation);
-
-			world.playSound(player, message.pos, sound, SoundCategory.BLOCKS, 1F, 1F);
+			ClientSideHandlers.handle(message, ctx);
 		}
 		
 	}
