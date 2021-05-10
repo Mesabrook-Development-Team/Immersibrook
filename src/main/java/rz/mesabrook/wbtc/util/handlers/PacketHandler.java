@@ -5,7 +5,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import rz.mesabrook.wbtc.net.EngravePacket;
 import rz.mesabrook.wbtc.util.Reference;
 
-public class PacketHandler {
+public class PacketHandler 
+{
 	public static SimpleNetworkWrapper INSTANCE = null;
 	private static int id = 0;
 	
@@ -20,4 +21,5 @@ public class PacketHandler {
 	{
 		return ++id;
 	}
+	
 }
