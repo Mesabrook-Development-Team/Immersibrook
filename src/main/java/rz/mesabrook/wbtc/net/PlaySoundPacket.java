@@ -1,15 +1,21 @@
 package rz.mesabrook.wbtc.net;
 
 import io.netty.buffer.ByteBuf;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.WorldClient;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.registries.IForgeRegistry;
+import rz.mesabrook.wbtc.util.Reference;
 
 public class PlaySoundPacket implements IMessage
 {
@@ -41,7 +47,14 @@ public class PlaySoundPacket implements IMessage
 		
 		private void handle(PlaySoundPacket message, MessageContext ctx)
 		{
-			World world = ctx.getClientHandler().player.world;
+			EntityPlayer player = Minecraft.getMinecraft().player;
+			WorldClient world = Minecraft.getMinecraft().world;
+
+			ResourceLocation soundLocation = new ResourceLocation(Reference.MODID, message.soundName);
+			IForgeRegistry<SoundEvent> soundRegistry = GameRegistry.findRegistry(SoundEvent.class);
+			SoundEvent sound = soundRegistry.getValue(soundLocation);
+
+			world.playSound(player, message.pos, sound, SoundCategory.BLOCKS, 1F, 1F);
 		}
 		
 	}

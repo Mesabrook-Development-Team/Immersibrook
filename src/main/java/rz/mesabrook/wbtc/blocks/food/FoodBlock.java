@@ -46,6 +46,7 @@ import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.init.SoundInit;
+import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.TooltipRandomizer;
 import rz.mesabrook.wbtc.util.config.ModConfig;
@@ -296,10 +297,13 @@ public class FoodBlock extends Block implements IHasModel
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
 	{
-		if(ModConfig.foodCubeSounds)
+		if(ModConfig.foodCubeSounds && !world.isRemote)
 		{
 			try
 			{
+				PlaySoundPacket packet = new PlaySoundPacket();
+				packet.pos = pos;
+				
 				if(this.getUnlocalizedName().contains("cube_pork"))
 				{
 					world.playSound(player, pos, SoundEvents.ENTITY_PIG_HURT, SoundCategory.BLOCKS, 1.0F, tierPitch);
@@ -322,11 +326,11 @@ public class FoodBlock extends Block implements IHasModel
 				}
 				else if(this.getUnlocalizedName().contains("cube_cheese"))
 				{
-					world.playSound(player, pos, SoundInit.CHEESE_CLICK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+					packet.soundName = SoundInit.CHEESE_CLICK.toString();
 				}
 				else if(this.getUnlocalizedName().contains("cube_pumpkin_pie"))
 				{
-					world.playSound(player, pos, SoundInit.PIE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+					packet.soundName = SoundInit.PIE.toString();
 				}
 				else if(this.getUnlocalizedName().contains("cube_gapple"))
 				{
@@ -389,6 +393,8 @@ public class FoodBlock extends Block implements IHasModel
 				TooltipRandomizer.ChosenTooltip();
 				return true;
 			}
+			
+			
 		}
 		else
 		{
