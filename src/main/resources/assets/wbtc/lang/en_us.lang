@@ -276,3 +276,6 @@ item.record.pigstep.desc=Lena Raine - Pigstep
 item.record.krab_borg.desc=Anijesterx Music - Death by Krab Borg (Shortened)
 item.record.krab_borg_full.desc=Anijesterx Music - Death by Krab Borg (Full)
 item.record.fish_full.desc=Spinning Fish
+
+//Enchantments
+enchantment.thunder=The Power of Thor
