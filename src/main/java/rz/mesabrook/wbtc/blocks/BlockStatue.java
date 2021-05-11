@@ -37,13 +37,16 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.init.SoundInit;
+import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.util.IHasModel;
+import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 public class BlockStatue extends Block implements IHasModel
 {
@@ -222,96 +225,71 @@ public class BlockStatue extends Block implements IHasModel
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
 	{
-		try
+		if(!world.isRemote)
 		{
-			Random rand = new Random();
-			float pitch = 0.5F + rand.nextFloat();
-			
-			if (pitch > 1.25F) {pitch = 1.25F;}
-			else if(pitch < 0.75F) {pitch = 0.75F;}
-			
-			if(this.getUnlocalizedName().contains("statue_owo"))
+			try
 			{
-				world.playSound(player, pos, SoundInit.OWO_SFX, SoundCategory.BLOCKS, 0.2F, 1.0F);
+				PlaySoundPacket packet = new PlaySoundPacket();
+				packet.pos = pos;
+				
+				Random rand = new Random();
+				float pitch = 0.5F + rand.nextFloat();
+				
+				if (pitch > 1.25F) {pitch = 1.25F;}
+				else if(pitch < 0.75F) {pitch = 0.75F;}
+				
+				if(this.getUnlocalizedName().contains("statue_owo"))
+				{
+					packet.soundName = "owo";
+				}
+				else if(this.getUnlocalizedName().contains("statue_rz"))
+				{
+					packet.soundName = "rz_trophy";
+				}
+				else if(this.getUnlocalizedName().contains("statue_csx"))
+				{	
+					packet.soundName = "csx_trophy";
+				}
+				else if(this.getUnlocalizedName().contains("statue_td"))
+				{
+					packet.soundName = "td_trophy";
+				}
+				else if(this.getUnlocalizedName().contains("statue_tlz"))
+				{
+					packet.soundName = "tlz_trophy";
+				}
+				else if(this.getUnlocalizedName().contains("statue_md"))
+				{
+					packet.soundName = "md_trophy";
+				}
+				else if(this.getUnlocalizedName().contains("statue_lw"))
+				{
+					packet.soundName = "lw_trophy";
+				}
+				else if(this.getUnlocalizedName().contains("statue_svv"))
+				{
+					packet.soundName = "svv_trophy";
+				}
+				
+				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
 			}
-			else if(this.getUnlocalizedName().contains("statue_rz"))
+			catch(Exception e)
 			{
-				world.playSound(player, pos, SoundInit.RZ_TROPHY, SoundCategory.BLOCKS, 1.0F, 1.0F);
-			}
-			else if(this.getUnlocalizedName().contains("statue_csx"))
-			{	
-				world.playSound(player, pos, SoundInit.CSX_TROPHY, SoundCategory.BLOCKS, 1.0F, pitch);
-			}
-			else if(this.getUnlocalizedName().contains("statue_td"))
-			{
-				world.playSound(player, pos, SoundInit.TD_TROPHY, SoundCategory.BLOCKS, 1.0F, 1.0F);
-			}
-			else if(this.getUnlocalizedName().contains("statue_tlz"))
-			{
-				world.playSound(player, pos, SoundInit.TLZ_TROPHY, SoundCategory.BLOCKS, 1.0F, 1.0F);
-			}
-			else if(this.getUnlocalizedName().contains("statue_md"))
-			{
-				world.playSound(player, pos, SoundInit.MD_TROPHY, SoundCategory.BLOCKS, 1.0F, 1.0F);
-			}
-			else if(this.getUnlocalizedName().contains("statue_lw"))
-			{
-				world.playSound(player, pos, SoundInit.LW_TROPHY, SoundCategory.BLOCKS, 0.2F, 1.0F);
-			}
-			else if(this.getUnlocalizedName().contains("statue_svv"))
-			{
-				world.playSound(player, pos, SoundInit.SVV_TROPHY, SoundCategory.BLOCKS, 1.0F, 1.0F);
+				
 			}
 		}
-		catch(Exception e)
-		{
-			
-		}
-		
 		return true;
 	}
 	
 	@Override
 	public void onBlockHarvested(World world, BlockPos pos, IBlockState state, EntityPlayer player)
 	{
-		if(player != null)
+		if(player != null && !world.isRemote)
 		{
-			if(this.getUnlocalizedName().contains("statue_owo"))
-			{
-				world.playSound(player, pos, SoundInit.OOF, SoundCategory.BLOCKS, 1.0F, 1.0F);
-			}
-			else if(this.getUnlocalizedName().contains("statue_csx"))
-			{
-				world.playSound(player, pos, SoundInit.OOF, SoundCategory.BLOCKS, 1.0F, 1.0F);
-			}
-			else if(this.getUnlocalizedName().contains("statue_rz"))
-			{
-				world.playSound(player, pos, SoundInit.OOF, SoundCategory.BLOCKS, 1.0F, 1.0F);
-			}
-			else if(this.getUnlocalizedName().contains("statue_td"))
-			{
-				world.playSound(player, pos, SoundInit.OOF, SoundCategory.BLOCKS, 1.0F, 1.0F);
-			}
-			else if(this.getUnlocalizedName().contains("statue_tlz"))
-			{
-				world.playSound(player, pos, SoundInit.OOF, SoundCategory.BLOCKS, 1.0F, 1.0F);
-			}
-			else if(this.getUnlocalizedName().contains("statue_md"))
-			{
-				world.playSound(player, pos, SoundInit.OOF, SoundCategory.BLOCKS, 1.0F, 1.0F);
-			}
-			else if(this.getUnlocalizedName().contains("statue_lw"))
-			{
-				world.playSound(player, pos, SoundInit.OOF, SoundCategory.BLOCKS, 1.0F, 1.0F);
-			}
-			else if(this.getUnlocalizedName().contains("statue_svv"))
-			{
-				world.playSound(player, pos, SoundInit.OOF, SoundCategory.BLOCKS, 1.0F, 1.0F);
-			}
-			else
-			{
-				// do nothing lolxd
-			}
+			PlaySoundPacket packet = new PlaySoundPacket();
+			packet.pos = pos;
+			packet.soundName = "oof";
+			PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
 		}
 	}
 	
