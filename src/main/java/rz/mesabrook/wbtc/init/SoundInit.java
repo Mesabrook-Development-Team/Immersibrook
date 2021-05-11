@@ -4,6 +4,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import rz.mesabrook.wbtc.Main;
@@ -82,10 +83,11 @@ public class SoundInit
 		return soundEvent;
 	}
 	
-	public class SoundRegisterListener
+	@EventBusSubscriber
+	public static class SoundRegisterListener
 	{
-		@SubscribeEvent(priority = EventPriority.HIGH, receiveCanceled = true)
-		public void registerSoundEvents(RegistryEvent.Register<SoundEvent> event)
+		@SubscribeEvent
+		public static void registerSoundEvents(RegistryEvent.Register<SoundEvent> event)
 		{
 			try
 			{
