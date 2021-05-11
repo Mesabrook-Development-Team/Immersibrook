@@ -34,7 +34,7 @@ public class PlaySoundPacket implements IMessage
 	public void toBytes(ByteBuf buf) 
 	{
 		pos = BlockPos.fromLong(buf.readLong());
-		ByteBufUtils.readUTF8String(buf);
+		soundName = ByteBufUtils.readUTF8String(buf);
 	}
 	
 	public static class Handler implements IMessageHandler<PlaySoundPacket, IMessage>
