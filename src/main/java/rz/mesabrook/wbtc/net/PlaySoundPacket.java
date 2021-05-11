@@ -26,15 +26,15 @@ public class PlaySoundPacket implements IMessage
 	@Override
 	public void fromBytes(ByteBuf buf) 
 	{
-		buf.writeLong(pos.toLong());
-		ByteBufUtils.writeUTF8String(buf, soundName);
+		pos = BlockPos.fromLong(buf.readLong());
+		soundName = ByteBufUtils.readUTF8String(buf);
 	}
 
 	@Override
 	public void toBytes(ByteBuf buf) 
 	{
-		pos = BlockPos.fromLong(buf.readLong());
-		soundName = ByteBufUtils.readUTF8String(buf);
+		buf.writeLong(pos.toLong());
+		ByteBufUtils.writeUTF8String(buf, soundName);
 	}
 	
 	public static class Handler implements IMessageHandler<PlaySoundPacket, IMessage>
