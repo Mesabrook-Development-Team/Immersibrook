@@ -412,6 +412,29 @@ public class FoodBlock extends Block implements IHasModel
 	}
 	
 	@Override
+	public void onBlockHarvested(World world, BlockPos pos, IBlockState state, EntityPlayer player)
+	{
+		try
+		{
+			if(!world.isRemote)
+			{
+				if(this.getUnlocalizedName().contains("cube_cheese"))
+				{
+					PlaySoundPacket packet = new PlaySoundPacket();
+					packet.pos = pos;
+					
+					packet.soundName = "cheese_place";
+					PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
+				}
+			}
+		}
+		catch(Exception ex)
+		{
+			
+		}
+	}
+	
+	@Override
 	public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos)
 	{
 		return false;

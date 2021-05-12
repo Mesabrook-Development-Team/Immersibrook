@@ -50,7 +50,6 @@ public class ItemFirstAidKit extends Item implements IHasModel
 			Main.logger.info("[" + Reference.MODNAME + "] You can adjust this number in wbtc.cfg");
 		}
 		
-		
 		ModItems.ITEMS.add(this);
 	}
 	
