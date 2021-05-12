@@ -48,7 +48,7 @@ public class PlaySoundPacket implements IMessage
 		
 		private void handle(PlaySoundPacket message, MessageContext ctx)
 		{
-			ClientSideHandlers.handle(message, ctx);
+			ClientSideHandlers.playSoundHandler(message, ctx);
 		}
 		
 	}
