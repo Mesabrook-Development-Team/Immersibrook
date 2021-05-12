@@ -30,10 +30,5 @@ public class ClientSideHandlers
 		PositionedSoundRecord record = new PositionedSoundRecord(sound, SoundCategory.BLOCKS, 1F, 1F, message.pos);
 		
 		Minecraft.getMinecraft().getSoundHandler().playSound(record);
-				
-		/*if (!Minecraft.getMinecraft().getSoundHandler().isSoundPlaying(record))
-		{
-			world.playSound(player, message.pos, sound, SoundCategory.BLOCKS, 1F, 1F);
-		}*/
 	}
 }
