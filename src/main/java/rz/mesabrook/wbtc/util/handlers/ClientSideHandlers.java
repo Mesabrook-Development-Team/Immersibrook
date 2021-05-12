@@ -1,7 +1,12 @@
 package rz.mesabrook.wbtc.util.handlers;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map.Entry;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
+import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -18,8 +23,34 @@ import rz.mesabrook.wbtc.util.Reference;
 @SideOnly(Side.CLIENT)
 public class ClientSideHandlers 
 {
+	private static HashMap<Long, PositionedSoundRecord> soundsByBlockPos = new HashMap<>();	
 	public static void playSoundHandler(PlaySoundPacket message, MessageContext ctx)
 	{
+		SoundHandler soundHandler = Minecraft.getMinecraft().getSoundHandler();
+		
+		// Clear our cache of playing sounds
+		// Since we do this each time the packet is received, this
+		// shouldn't take a whole lot of extra processing time
+		HashSet<Long> keysToRemove = new HashSet<>();
+		for(Entry<Long, PositionedSoundRecord> kvp : soundsByBlockPos.entrySet())
+		{
+			if (!soundHandler.isSoundPlaying(kvp.getValue()))
+			{
+				keysToRemove.add(kvp.getKey());
+			}
+		}
+		
+		for(long key : keysToRemove)
+		{
+			soundsByBlockPos.remove(key);
+		}
+		
+		PositionedSoundRecord existingSoundAtPosition = soundsByBlockPos.get(message.pos.toLong());
+		if (existingSoundAtPosition != null)
+		{
+			return;
+		}
+		
 		EntityPlayer player = Minecraft.getMinecraft().player;
 		WorldClient world = Minecraft.getMinecraft().world;
 
@@ -28,6 +59,8 @@ public class ClientSideHandlers
 		SoundEvent sound = soundRegistry.getValue(soundLocation);
 		
 		PositionedSoundRecord record = new PositionedSoundRecord(sound, SoundCategory.BLOCKS, 1F, 1F, message.pos);
+		
+		soundsByBlockPos.put(message.pos.toLong(), record);
 		
 		Minecraft.getMinecraft().getSoundHandler().playSound(record);
 	}
