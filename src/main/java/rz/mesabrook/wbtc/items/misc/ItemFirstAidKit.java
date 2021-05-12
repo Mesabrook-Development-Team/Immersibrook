@@ -46,6 +46,8 @@ public class ItemFirstAidKit extends Item implements IHasModel
 		else
 		{
 			setMaxDamage(ModConfig.firstAidUses);
+			Main.logger.info("[" + Reference.MODNAME + "] First Aid Kit Uses: " + ModConfig.firstAidUses);
+			Main.logger.info("[" + Reference.MODNAME + "] You can adjust this number in wbtc.cfg");
 		}
 		
 		
