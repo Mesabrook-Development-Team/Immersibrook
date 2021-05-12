@@ -69,16 +69,13 @@ public class ItemFirstAidKit extends Item implements IHasModel
 			}
 			else
 			{
-				world.playSound(player, player.getPosition(), SoundEvents.ENTITY_ENDERMEN_AMBIENT, SoundCategory.BLOCKS, 1.0F, 1.0F);
-				player.sendMessage(new TextComponentString(TextFormatting.RED + "You're already fully healed, you silly goose :3"));
+				world.playSound(player, player.getPosition(), SoundEvents.ENTITY_VILLAGER_NO, SoundCategory.BLOCKS, 1.0F, 1.0F);
 				return new ActionResult<ItemStack>(EnumActionResult.FAIL, item);
 			}
 		}
 		else
 		{
 			world.playSound(player, player.getPosition(), SoundEvents.ENTITY_ENDERMEN_STARE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-			player.sendMessage(new TextComponentString(TextFormatting.DARK_RED + "You're in Creative Mode! >:("));
-			player.sendMessage(new TextComponentString(TextFormatting.RED + "He's coming to get you..."));
 			return new ActionResult<ItemStack>(EnumActionResult.FAIL, item);
 		}
 	}

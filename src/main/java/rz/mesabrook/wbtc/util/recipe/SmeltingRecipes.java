@@ -43,9 +43,11 @@ public class SmeltingRecipes
 			GameRegistry.addSmelting(ModBlocks.CUBE_MUTTON, new ItemStack(Items.COOKED_MUTTON, 9), 10);
 			GameRegistry.addSmelting(ModBlocks.CUBE_RABBIT, new ItemStack(Items.COOKED_RABBIT, 9), 10);
 			GameRegistry.addSmelting(ModBlocks.CUBE_FISH, new ItemStack(Items.COOKED_FISH, 9), 10);
+			GameRegistry.addSmelting(ModBlocks.CUBE_SALMON, new ItemStack(Items.COOKED_FISH, 9, 1), 10);
 			
 			// Discs
 			GameRegistry.addSmelting(ModItems.DISC_USSR2, new ItemStack(ModItems.DISC_USSR1, 1), 420F);
+			GameRegistry.addSmelting(ModItems.DISC_BOOEY, new ItemStack(ModItems.DISC_FISH, 1), 420F);
 			
 			if(ModConfig.smeltingLeatherForASaddle)
 			{
