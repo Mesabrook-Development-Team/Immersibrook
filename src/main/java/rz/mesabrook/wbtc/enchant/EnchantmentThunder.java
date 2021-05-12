@@ -17,6 +17,12 @@ public class EnchantmentThunder extends Enchantment
 	}
 	
 	@Override
+    public int getMaxLevel()
+    {
+        return 1;
+    }
+	
+	@Override
 	public void onEntityDamaged(EntityLivingBase user, Entity target, int level)
 	{
 		user.world.addWeatherEffect(new EntityLightningBolt(user.world, target.posX, target.posY, target.posZ, false));
