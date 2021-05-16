@@ -11,6 +11,9 @@ import java.util.List;
 /**
  * Original Author: MrCrayfish
  * Adapted by RavenholmZombie for use in Immersibrook.
+ * 
+ * https://github.com/MrCrayfish
+ * https://github.com/RavenholmZombie
  */
 public abstract class AbstractCategory
 {
