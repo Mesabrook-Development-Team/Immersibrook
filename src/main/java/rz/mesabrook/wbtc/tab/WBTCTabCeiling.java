@@ -14,6 +14,6 @@ public class WBTCTabCeiling extends CreativeTabs
 	@Override
 	public ItemStack getTabIconItem()
 	{
-		return new ItemStack(ModBlocks.PANEL_CHECKERBOARD);
+		return new ItemStack(ModBlocks.PANEL_CHECKERBOARD_OLD);
 	}
 }

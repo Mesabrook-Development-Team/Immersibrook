@@ -3,6 +3,7 @@ package rz.mesabrook.wbtc.tab;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import rz.mesabrook.wbtc.init.ModBlocks;
+import rz.mesabrook.wbtc.init.ModItems;
 
 public class WBTCTab extends CreativeTabs
 {
@@ -14,6 +15,6 @@ public class WBTCTab extends CreativeTabs
 	@Override
 	public ItemStack getTabIconItem()
 	{
-		return new ItemStack(ModBlocks.FLOOR_CHECKERBOARD);
+		return new ItemStack(ModItems.IMMERSIBROOK_ICON);
 	}
 }

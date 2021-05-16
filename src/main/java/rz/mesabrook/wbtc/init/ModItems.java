@@ -36,6 +36,9 @@ public class ModItems
 	// Special Cane
 	public static final Item ZOE_CANE = new ItemCane("zoe_cane", ToolMaterial.DIAMOND);
 	
+	// Immersibrook Creative Tab Item
+	public static final Item IMMERSIBROOK_ICON = new MiscItem("icon_immersibrook", CreativeTabs.SEARCH, 1);
+	
 	// Metals
 	public static final Item IRON_ROD = new MiscItem("iron_rod", CreativeTabs.MISC, 64);
 	public static final Item ALUMINUM_ROD = new MiscItem("aluminum_rod", CreativeTabs.MISC, 64);

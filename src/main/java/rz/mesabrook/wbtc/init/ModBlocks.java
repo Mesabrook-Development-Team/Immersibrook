@@ -30,7 +30,7 @@ public class ModBlocks
 	public static final List<Block> BLOCKS = new ArrayList<Block>();
 	
 	// Ceiling Block
-	public static final Block CEILING = new MiscBlock("panel_ceiling", Material.ROCK, SoundType.STONE, Main.WBTC_TAB_CEILING, 0F);
+	public static final Block CEILING = new MiscBlock("panel_ceiling", Material.ROCK, SoundType.STONE, null, 0F);
 	
 	// Ceiling Blocks
 	public static final Block PANEL_OAK_L = new MiscBlock("panel_oak_l", Material.ROCK, SoundType.STONE, Main.WBTC_TAB_CEILING, 0F);
