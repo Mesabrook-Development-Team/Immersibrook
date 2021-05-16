@@ -4,12 +4,6 @@ wbtc.config.title=Configuration File for Immersibrook
 //First Aid
 item.first_aid.name=MDPH Approved First Aid Kit
 
-//Creative Tabs
-itemGroup.wbtc_tab=[Immersibrook] - Floor Blocks
-itemGroup.wbtc_tab_ceiling=[Immersibrook] - Ceiling Panels
-itemGroup.wbtc_tab_trophy=[Immersibrook] - Trophies
-itemGroup.wbtc_tab_household=[Immersibrook] - Household Blocks
-
 //The NEW and IMPROVED Tab
 ctab.tab_immersibrook=Immersibrook
 im.button.website=Mesabrook Website
@@ -21,6 +15,14 @@ im.filter.awards=Awards and Trophies
 im.filter.tools=Weapons and Tools
 im.filter.records=Music Discs
 im.filter.resources=Materials
+
+//Stairs
+tile.oak_laminate_stairs.name=Oak Laminate Stairs
+tile.birch_laminate_stairs.name=Birch Laminate Stairs
+tile.spruce_laminate_stairs.name=Spruce Laminate Stairs
+tile.jungle_laminate_stairs.name=Jungle Laminate Stairs
+tile.acacia_laminate_stairs.name=Acacia Laminate Stairs
+tile.dark_oak_laminate_stairs.name=Dark Oak Laminate Stairs
 
 //Containers
 container.rubbish_bin:Wheelie Bin
