@@ -25,14 +25,13 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void preInit(FMLPreInitializationEvent e)
 	{
-		
+		super.preInit(e);
 	}
 	
 	@Override
 	public void init(FMLInitializationEvent e) {
 		super.init(e);
-		
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlaque.class, new TileEntityPlaqueRenderer());
 		ClientSideHandlers.loadCreativeGUI();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlaque.class, new TileEntityPlaqueRenderer());
 	}
 }

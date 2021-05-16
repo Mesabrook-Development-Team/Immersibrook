@@ -72,27 +72,6 @@ public class CategoryBlocks extends AbstractCategory {
 		add(ModBlocks.PILLAR_BASE);
 		add(ModBlocks.PILLAR_POST);
 		add(ModBlocks.PILLAR_TOP);
-		
-		// Plastic Blocks
-		add(ModBlocks.PLASTIC_CUBE_WHITE);
-		add(ModBlocks.PLASTIC_CUBE_ORANGE);
-		add(ModBlocks.PLASTIC_CUBE_MAGENTA);
-		add(ModBlocks.PLASTIC_CUBE_LBLUE);
-		add(ModBlocks.PLASTIC_CUBE_YELLOW);
-		add(ModBlocks.PLASTIC_CUBE_LIME);
-		add(ModBlocks.PLASTIC_CUBE_PINK);
-		add(ModBlocks.PLASTIC_CUBE_GRAY);
-		add(ModBlocks.PLASTIC_CUBE_SILVER);
-		add(ModBlocks.PLASTIC_CUBE_CYAN);
-		add(ModBlocks.PLASTIC_CUBE_PURPLE);
-		add(ModBlocks.PLASTIC_CUBE_BLUE);
-		add(ModBlocks.PLASTIC_CUBE_BROWN);
-		add(ModBlocks.PLASTIC_CUBE_GREEN);
-		add(ModBlocks.PLASTIC_CUBE_RED);
-		add(ModBlocks.PLASTIC_CUBE_BLACK);
-		
-		// Aluminum Block
-		add(ModBlocks.CUBE_ALUMINUM);
 	}
 
 }

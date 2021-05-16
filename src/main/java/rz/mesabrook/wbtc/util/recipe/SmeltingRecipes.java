@@ -17,6 +17,7 @@ public class SmeltingRecipes
 		{
 			// Aluminum Ore
 			GameRegistry.addSmelting(ModBlocks.ALUMINUM_ORE, new ItemStack(ModItems.ALUMINUM_INGOT), 69);
+			GameRegistry.addSmelting(ModItems.ALUMINUM_DUST, new ItemStack(ModItems.ALUMINUM_INGOT, 2), 69);
 			
 			// Plastic Ingots
 			GameRegistry.addSmelting(ModItems.RAW_PLASTIC_WHITE, new ItemStack(ModItems.PLASTIC_WHITE), 10);
