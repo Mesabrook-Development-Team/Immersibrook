@@ -12,6 +12,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -63,5 +64,10 @@ public class ClientSideHandlers
 		soundsByBlockPos.put(message.pos.toLong(), record);
 		
 		Minecraft.getMinecraft().getSoundHandler().playSound(record);
+	}
+	
+	public static void loadCreativeGUI()
+	{
+		MinecraftForge.EVENT_BUS.register(new CreativeGuiDrawHandler());
 	}
 }

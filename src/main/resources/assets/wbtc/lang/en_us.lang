@@ -10,6 +10,15 @@ itemGroup.wbtc_tab_ceiling=[Immersibrook] - Ceiling Panels
 itemGroup.wbtc_tab_trophy=[Immersibrook] - Trophies
 itemGroup.wbtc_tab_household=[Immersibrook] - Household Blocks
 
+//The NEW and IMPROVED Tab
+ctab.tab_immersibrook=Immersibrook
+im.button.website=Mesabrook Website
+im.button.patreon=Mesabrook Patreon
+im.filter.building=Building Blocks
+im.filter.ceiling=Ceiling Panel Blocks
+im.filter.household=Household Blocks
+im.filter.awards=Awards and Trophies
+
 //Containers
 container.rubbish_bin:Wheelie Bin
 

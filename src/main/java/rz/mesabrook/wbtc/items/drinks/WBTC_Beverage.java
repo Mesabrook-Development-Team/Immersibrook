@@ -23,7 +23,7 @@ public class WBTC_Beverage extends Item implements IHasModel
 	public WBTC_Beverage(String name)
 	{
         this.setMaxStackSize(1);
-        this.setCreativeTab(Main.WBTC_TAB);
+        this.setCreativeTab(null);
         this.setRegistryName(name);
         this.setUnlocalizedName(name);
         

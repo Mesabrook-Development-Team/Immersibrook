@@ -31,7 +31,7 @@ public class MiscStairs extends BlockStairs implements IHasModel
 		setResistance(1.8F);
 		setSoundType(SoundType.GLASS);
 		setHarvestLevel("pickaxe", 0);
-		setCreativeTab(Main.WBTC_TAB);
+		setCreativeTab(null);
 		
 		this.useNeighborBrightness = true;
 		

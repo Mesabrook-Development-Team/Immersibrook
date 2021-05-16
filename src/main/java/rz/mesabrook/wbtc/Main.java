@@ -42,11 +42,7 @@ public class Main
     // Config
  	public static File config;
     
-    // Creative Tabs
-    public static final CreativeTabs WBTC_TAB = new WBTCTab("wbtc_tab");
-    public static final CreativeTabs WBTC_TAB_CEILING = new WBTCTabCeiling("wbtc_tab_ceiling");
-    public static final CreativeTabs WBTC_TAB_TROPHY = new WBTCTrophyTab("wbtc_tab_trophy");
-    public static final CreativeTabs WBTC_TAB_HOUSEHOLD = new WBTCHouseholdTab("wbtc_tab_household");
+    // Creative Tab
     public static final CreativeTabs IMMERSIBROOK_MAIN = new TabImmersibrook("tab_immersibrook");
     
     @EventHandler
@@ -62,7 +58,6 @@ public class Main
     {
         RegistryHandler.initRegistries();
         proxy.init(event);
-        MinecraftForge.EVENT_BUS.register(new CreativeGuiDrawHandler());
     }
     
     @EventHandler

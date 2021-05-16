@@ -40,7 +40,7 @@ public class ChromaScreen extends Block implements IHasModel
 		setSoundType(sound);
 		setHardness(8.0F);
 		setResistance(8.0F);
-		setCreativeTab(Main.WBTC_TAB);
+		setCreativeTab(null);
 		setHarvestLevel(harvestTool, 0);
 		setLightOpacity(0);
 		setLightLevel(0.7F);

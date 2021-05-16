@@ -61,7 +61,6 @@ public class BlockStatue extends Block implements IHasModel
 		setSoundType(SoundType.METAL);
 		setHardness(1.0F);
 		setResistance(3.0F);
-		setCreativeTab(Main.WBTC_TAB_TROPHY);
 		setHarvestLevel("pickaxe", 1);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 		

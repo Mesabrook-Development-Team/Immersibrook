@@ -54,29 +54,32 @@ public class CreativeGuiDrawHandler
     public void onDrawGui(InitGuiEvent.Post event)
     {
     	viewingImmersibrookTab = false;
-    	this.guiCenterX = ((GuiContainerCreative) event.getGui()).getGuiLeft();
-        this.guiCenterY = ((GuiContainerCreative) event.getGui()).getGuiTop();
-        this.categories = new AbstractCategory[] {Categories.BUILDING_BLOCKS, Categories.CEILING_BLOCKS, Categories.HOUSEHOLD, Categories.TROPHY};
-        this.categoryButtons = Lists.newArrayList();
-        this.buttonList = event.getButtonList();
+    	if(event.getGui() instanceof GuiContainerCreative)
+    	{
+        	this.guiCenterX = ((GuiContainerCreative) event.getGui()).getGuiLeft();
+            this.guiCenterY = ((GuiContainerCreative) event.getGui()).getGuiTop();
+            this.categories = new AbstractCategory[] {Categories.BUILDING_BLOCKS, Categories.CEILING_BLOCKS, Categories.HOUSEHOLD, Categories.TROPHY};
+            this.categoryButtons = Lists.newArrayList();
+            this.buttonList = event.getButtonList();
+            
+            event.getButtonList().add(buttonWebsite = new GuiLinkImageButton(10, guiCenterX - 50, guiCenterY, ICONS, 48, 0, "https://mesabrook.com", TextFormatting.WHITE + ">" + TextFormatting.DARK_GRAY + I18n.format("im.button.website")));
+            event.getButtonList().add(buttonPatreon = new GuiLinkImageButton(10, guiCenterX - 50, guiCenterY + 22, ICONS, 0, 0, "https://patreon.com", TextFormatting.WHITE + ">" + TextFormatting.DARK_GRAY + I18n.format("im.button.patreon")));
         
-        event.getButtonList().add(buttonWebsite = new GuiLinkImageButton(10, guiCenterX - 50, guiCenterY, ICONS, 48, 0, "https://mesabrook.com", TextFormatting.WHITE + ">" + TextFormatting.DARK_GRAY + I18n.format("im.button.website")));
-        event.getButtonList().add(buttonPatreon = new GuiLinkImageButton(10, guiCenterX - 50, guiCenterY + 22, ICONS, 0, 0, "https://patreon.com", TextFormatting.WHITE + ">" + TextFormatting.GOLD + I18n.format("im.button.patreon")));
-    
-        event.getButtonList().add(categoryUp = new GuiArrowButton(11, guiCenterX - 22, guiCenterY - 12, 20, 20, true));
-        event.getButtonList().add(categoryDown = new GuiArrowButton(11, guiCenterX - 22, guiCenterY + 127, 20, 20, false));
-        event.getButtonList().add(categoryEnableAll = new GuiImageButton(guiCenterX - 50, guiCenterY + 88, 91, 223, 14, 14, BEACON));
-        event.getButtonList().add(categoryDisableAll = new GuiImageButton(guiCenterX - 50, guiCenterY + 110, 114, 223, 14, 14, BEACON));
-        updateCategories();
-        
+            event.getButtonList().add(categoryUp = new GuiArrowButton(11, guiCenterX - 22, guiCenterY - 12, 20, 20, true));
+            event.getButtonList().add(categoryDown = new GuiArrowButton(11, guiCenterX - 22, guiCenterY + 127, 20, 20, false));
+            event.getButtonList().add(categoryEnableAll = new GuiImageButton(guiCenterX - 50, guiCenterY + 88, 91, 223, 14, 14, BEACON));
+            event.getButtonList().add(categoryDisableAll = new GuiImageButton(guiCenterX - 50, guiCenterY + 110, 114, 223, 14, 14, BEACON));
+            updateCategories();
+            
 
-        GuiContainerCreative creative = (GuiContainerCreative) event.getGui();
-        if(creative.getSelectedTabIndex() == Main.IMMERSIBROOK_MAIN.getTabIndex())
-        {
-            viewingImmersibrookTab = true;
-            categoryButtons.forEach(guiCategoryButton -> guiCategoryButton.visible = true);
-            updateItems(creative);
-        }
+            GuiContainerCreative creative = (GuiContainerCreative) event.getGui();
+            if(creative.getSelectedTabIndex() == Main.IMMERSIBROOK_MAIN.getTabIndex())
+            {
+                viewingImmersibrookTab = true;
+                categoryButtons.forEach(guiCategoryButton -> guiCategoryButton.visible = true);
+                updateItems(creative);
+            }	
+    	}
     }
     
     private void updateCategories()

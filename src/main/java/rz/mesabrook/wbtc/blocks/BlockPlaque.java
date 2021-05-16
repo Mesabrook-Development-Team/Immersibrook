@@ -50,7 +50,6 @@ public class BlockPlaque extends Block implements IHasModel
 		super(Material.WOOD, color);
 		setUnlocalizedName(name);
 		setRegistryName(name);
-		setCreativeTab(Main.WBTC_TAB_TROPHY);
 		setHarvestLevel("pickaxe", 1);
 		setHardness(1.0F);
 		setResistance(3.0F);

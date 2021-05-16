@@ -29,6 +29,9 @@ public class CategoryHousehold extends AbstractCategory
 		
 		// Sign Stand
 		add(ModBlocks.SIGN_STAND);
+		
+		// Bin
+		add(ModBlocks.TRASH_BIN);
 	}
 
 }

@@ -37,7 +37,6 @@ public class BlockBin extends BlockContainer implements IHasModel
 		super(Material.IRON);
 		setUnlocalizedName(name);
 		setRegistryName(name);
-		setCreativeTab(Main.WBTC_TAB_HOUSEHOLD);
 		setHardness(1.0F);
 		setResistance(3.0F);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
