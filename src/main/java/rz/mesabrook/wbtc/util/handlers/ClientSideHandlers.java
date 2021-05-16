@@ -66,6 +66,7 @@ public class ClientSideHandlers
 		Minecraft.getMinecraft().getSoundHandler().playSound(record);
 	}
 	
+	// This little piece of shit is what actually loads the super duper poggy woggy creative menu for Immersibrook.
 	public static void loadCreativeGUI()
 	{
 		MinecraftForge.EVENT_BUS.register(new CreativeGuiDrawHandler());
