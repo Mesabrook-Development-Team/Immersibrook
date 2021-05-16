@@ -220,4 +220,12 @@ public class ModBlocks
 	
 	// Trash Can
 	public static final Block TRASH_BIN = new BlockBin("rubbish_bin").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	
+	// Laminate Stairs
+	public static final Block STAIRS_OAK_L = new MiscStairs("oak_laminate_stairs", ModBlocks.FLOOR_OAK.getDefaultState(), SoundType.STONE, "axe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block STAIRS_BIRCH_L = new MiscStairs("birch_laminate_stairs", ModBlocks.FLOOR_BIRCH.getDefaultState(), SoundType.STONE, "axe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block STAIRS_SPRUCE_L = new MiscStairs("spruce_laminate_stairs", ModBlocks.FLOOR_SPRUCE.getDefaultState(), SoundType.STONE, "axe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block STAIRS_JUNGLE_L = new MiscStairs("jungle_laminate_stairs", ModBlocks.FLOOR_JUNGLE.getDefaultState(), SoundType.STONE, "axe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block STAIRS_ACACIA_L = new MiscStairs("acacia_laminate_stairs", ModBlocks.FLOOR_ACACIA.getDefaultState(), SoundType.STONE, "axe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block STAIRS_DARK_OAK_L = new MiscStairs("dark_oak_laminate_stairs", ModBlocks.FLOOR_DARK_OAK.getDefaultState(), SoundType.STONE, "axe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 }

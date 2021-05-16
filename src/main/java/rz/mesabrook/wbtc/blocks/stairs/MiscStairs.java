@@ -22,16 +22,15 @@ import rz.mesabrook.wbtc.util.IHasModel;
 
 public class MiscStairs extends BlockStairs implements IHasModel
 {
-	public MiscStairs(String name, IBlockState modelState)
+	public MiscStairs(String name, IBlockState modelState, SoundType snd, String harvestTool, int harvestLevel)
 	{
 		super(modelState);
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setHardness(1.8F);
 		setResistance(1.8F);
-		setSoundType(SoundType.GLASS);
-		setHarvestLevel("pickaxe", 0);
-		setCreativeTab(null);
+		setSoundType(snd);
+		setHarvestLevel(harvestTool, harvestLevel);
 		
 		this.useNeighborBrightness = true;
 		

@@ -1,0 +1,8 @@
+{
+    "parent": "block/stairs",
+    "textures": {
+        "bottom": "wbtc:blocks/floor_jungle",
+        "top": "wbtc:blocks/floor_jungle",
+        "side": "wbtc:blocks/floor_jungle"
+    }
+}

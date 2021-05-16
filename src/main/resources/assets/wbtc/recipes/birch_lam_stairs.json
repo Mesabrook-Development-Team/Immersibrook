@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wbtc:wbtc_birch"
+    }
+  },
+  "result": {
+    "item": "wbtc:birch_laminate_stairs",
+    "count": 4
+  }
+}

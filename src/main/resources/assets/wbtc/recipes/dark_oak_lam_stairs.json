@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wbtc:wbtc_dark_oak"
+    }
+  },
+  "result": {
+    "item": "wbtc:dark_oak_laminate_stairs",
+    "count": 4
+  }
+}

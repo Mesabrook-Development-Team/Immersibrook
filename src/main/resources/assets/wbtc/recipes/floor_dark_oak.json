@@ -1,17 +1,21 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "##",
-    "##"
+    " # ",
+    "#$#",
+	" # "
   ],
   "key": {
     "#": {
       "item": "minecraft:planks",
       "data": 5
-    }
+    },
+	"$": {
+	  "item": "wbtc:white_plastic"
+	}
   },
   "result": {
     "item": "wbtc:wbtc_dark_oak",
-    "count": 4
+    "count": 5
   }
 }
