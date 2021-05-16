@@ -8,6 +8,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.common.util.EnumHelper;
+import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.items.drinks.WBTC_Beverage;
 import rz.mesabrook.wbtc.items.misc.ItemFirstAidKit;
 import rz.mesabrook.wbtc.items.misc.MiscItem;
@@ -40,53 +41,53 @@ public class ModItems
 	public static final Item IMMERSIBROOK_ICON = new MiscItem("icon_immersibrook", CreativeTabs.SEARCH, 1);
 	
 	// Metals
-	public static final Item IRON_ROD = new MiscItem("iron_rod", CreativeTabs.MISC, 64);
-	public static final Item ALUMINUM_ROD = new MiscItem("aluminum_rod", CreativeTabs.MISC, 64);
-	public static final Item ALUMINUM_INGOT = new MiscItem("ingot_aluminum", CreativeTabs.MATERIALS, 64);
-	public static final Item ALUMINUM_NUGGET = new MiscItem("nugget_aluminum", CreativeTabs.MATERIALS, 64);
-	public static final Item ALUMINUM_DUST = new MiscItem("aluminum_dust", CreativeTabs.MATERIALS, 64);
+	public static final Item IRON_ROD = new MiscItem("iron_rod", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item ALUMINUM_ROD = new MiscItem("aluminum_rod", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item ALUMINUM_INGOT = new MiscItem("ingot_aluminum", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item ALUMINUM_NUGGET = new MiscItem("nugget_aluminum", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item ALUMINUM_DUST = new MiscItem("aluminum_dust", Main.IMMERSIBROOK_MAIN, 64);
 	
 	// Raw Plastic
-	public static final Item RAW_PLASTIC = new MiscItem("raw_plastic", CreativeTabs.MATERIALS, 64);
+	public static final Item RAW_PLASTIC = new MiscItem("raw_plastic", Main.IMMERSIBROOK_MAIN, 64);
 	
 	// Colored Raw Plastic
-	public static final Item RAW_PLASTIC_WHITE = new MiscItem("raw_white_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item RAW_PLASTIC_ORANGE = new MiscItem("raw_orange_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item RAW_PLASTIC_MAGENTA = new MiscItem("raw_magenta_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item RAW_PLASTIC_LBLUE = new MiscItem("raw_lblue_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item RAW_PLASTIC_YELLOW = new MiscItem("raw_yellow_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item RAW_PLASTIC_LIME = new MiscItem("raw_lime_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item RAW_PLASTIC_PINK = new MiscItem("raw_pink_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item RAW_PLASTIC_GRAY = new MiscItem("raw_gray_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item RAW_PLASTIC_SILVER = new MiscItem("raw_silver_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item RAW_PLASTIC_CYAN = new MiscItem("raw_cyan_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item RAW_PLASTIC_PURPLE = new MiscItem("raw_purple_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item RAW_PLASTIC_BLUE = new MiscItem("raw_blue_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item RAW_PLASTIC_BROWN = new MiscItem("raw_brown_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item RAW_PLASTIC_GREEN = new MiscItem("raw_green_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item RAW_PLASTIC_RED = new MiscItem("raw_red_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item RAW_PLASTIC_BLACK = new MiscItem("raw_black_plastic", CreativeTabs.MATERIALS, 64);
+	public static final Item RAW_PLASTIC_WHITE = new MiscItem("raw_white_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item RAW_PLASTIC_ORANGE = new MiscItem("raw_orange_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item RAW_PLASTIC_MAGENTA = new MiscItem("raw_magenta_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item RAW_PLASTIC_LBLUE = new MiscItem("raw_lblue_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item RAW_PLASTIC_YELLOW = new MiscItem("raw_yellow_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item RAW_PLASTIC_LIME = new MiscItem("raw_lime_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item RAW_PLASTIC_PINK = new MiscItem("raw_pink_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item RAW_PLASTIC_GRAY = new MiscItem("raw_gray_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item RAW_PLASTIC_SILVER = new MiscItem("raw_silver_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item RAW_PLASTIC_CYAN = new MiscItem("raw_cyan_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item RAW_PLASTIC_PURPLE = new MiscItem("raw_purple_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item RAW_PLASTIC_BLUE = new MiscItem("raw_blue_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item RAW_PLASTIC_BROWN = new MiscItem("raw_brown_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item RAW_PLASTIC_GREEN = new MiscItem("raw_green_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item RAW_PLASTIC_RED = new MiscItem("raw_red_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item RAW_PLASTIC_BLACK = new MiscItem("raw_black_plastic", Main.IMMERSIBROOK_MAIN, 64);
 	
 	// Finalized Colored Plastic Ingots
-	public static final Item PLASTIC_WHITE = new MiscItem("white_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item PLASTIC_ORANGE = new MiscItem("orange_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item PLASTIC_MAGENTA = new MiscItem("magenta_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item PLASTIC_LBLUE = new MiscItem("lblue_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item PLASTIC_YELLOW = new MiscItem("yellow_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item PLASTIC_LIME = new MiscItem("lime_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item PLASTIC_PINK = new MiscItem("pink_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item PLASTIC_GRAY = new MiscItem("gray_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item PLASTIC_SILVER = new MiscItem("silver_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item PLASTIC_CYAN = new MiscItem("cyan_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item PLASTIC_PURPLE = new MiscItem("purple_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item PLASTIC_BLUE = new MiscItem("blue_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item PLASTIC_BROWN = new MiscItem("brown_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item PLASTIC_GREEN = new MiscItem("green_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item PLASTIC_RED = new MiscItem("red_plastic", CreativeTabs.MATERIALS, 64);
-	public static final Item PLASTIC_BLACK = new MiscItem("black_plastic", CreativeTabs.MATERIALS, 64);
+	public static final Item PLASTIC_WHITE = new MiscItem("white_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item PLASTIC_ORANGE = new MiscItem("orange_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item PLASTIC_MAGENTA = new MiscItem("magenta_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item PLASTIC_LBLUE = new MiscItem("lblue_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item PLASTIC_YELLOW = new MiscItem("yellow_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item PLASTIC_LIME = new MiscItem("lime_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item PLASTIC_PINK = new MiscItem("pink_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item PLASTIC_GRAY = new MiscItem("gray_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item PLASTIC_SILVER = new MiscItem("silver_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item PLASTIC_CYAN = new MiscItem("cyan_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item PLASTIC_PURPLE = new MiscItem("purple_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item PLASTIC_BLUE = new MiscItem("blue_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item PLASTIC_BROWN = new MiscItem("brown_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item PLASTIC_GREEN = new MiscItem("green_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item PLASTIC_RED = new MiscItem("red_plastic", Main.IMMERSIBROOK_MAIN, 64);
+	public static final Item PLASTIC_BLACK = new MiscItem("black_plastic", Main.IMMERSIBROOK_MAIN, 64);
 	
 	// Meme Records
-	public static final Item BLANK_DISC = new MiscItem("blank_vinyl", CreativeTabs.MISC, 16);
+	public static final Item BLANK_DISC = new MiscItem("blank_vinyl", Main.IMMERSIBROOK_MAIN, 16);
 	public static final Item DISC_AMALTHEA = new MemeRecord("amalthea", SoundInit.AMALTHEA);
 	public static final Item DISC_NYAN = new MemeRecord("nyan", SoundInit.NYAN);
 	public static final Item DISC_USSR1 = new MemeRecord("ussr1", SoundInit.USSR1);
@@ -100,6 +101,6 @@ public class ModItems
 	public static final Item DISC_FISH = new MemeRecord("fish_full", SoundInit.FISH_FULL);
 	
 	// First Aid Kit
-	public static final Item FIRST_AID_KIT = new ItemFirstAidKit("first_aid", CreativeTabs.TOOLS);
+	public static final Item FIRST_AID_KIT = new ItemFirstAidKit("first_aid", Main.IMMERSIBROOK_MAIN);
 	
 }

@@ -25,7 +25,7 @@ public class ItemCane extends ItemSword implements IHasModel
 		super(material);
 		setUnlocalizedName(name);
 		setRegistryName(name);
-		setCreativeTab(CreativeTabs.COMBAT);
+		setCreativeTab(Main.IMMERSIBROOK_MAIN);
 		
 		ModItems.ITEMS.add(this);
 	}

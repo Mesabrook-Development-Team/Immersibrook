@@ -14,7 +14,7 @@ public class MemeRecord extends ItemRecord implements IHasModel
 		super(name, soundIn);
 		this.setUnlocalizedName(name);
 		this.setRegistryName(name);
-		this.setCreativeTab(CreativeTabs.MISC);
+		this.setCreativeTab(Main.IMMERSIBROOK_MAIN);
 		
 		ModItems.ITEMS.add(this);
 	}
