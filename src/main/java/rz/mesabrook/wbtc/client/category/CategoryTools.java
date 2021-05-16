@@ -4,6 +4,13 @@ import net.minecraft.item.ItemStack;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
 
+/**
+ * Original Author: MrCrayfish
+ * Adapted by RavenholmZombie for use in Immersibrook.
+ * 
+ * https://github.com/MrCrayfish
+ * https://github.com/RavenholmZombie
+ */
 public class CategoryTools extends AbstractCategory {
 
 	public CategoryTools()

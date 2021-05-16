@@ -3,6 +3,13 @@ package rz.mesabrook.wbtc.client.category;
 import net.minecraft.item.ItemStack;
 import rz.mesabrook.wbtc.init.ModItems;
 
+/**
+ * Original Author: MrCrayfish
+ * Adapted by RavenholmZombie for use in Immersibrook.
+ * 
+ * https://github.com/MrCrayfish
+ * https://github.com/RavenholmZombie
+ */
 public class CategoryRecords extends AbstractCategory 
 {
 	public CategoryRecords()

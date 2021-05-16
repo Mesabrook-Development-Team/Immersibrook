@@ -1,5 +1,12 @@
 package rz.mesabrook.wbtc.client.category;
 
+/**
+ * Original Author: MrCrayfish
+ * Adapted by RavenholmZombie for use in Immersibrook.
+ * 
+ * https://github.com/MrCrayfish
+ * https://github.com/RavenholmZombie
+ */
 public class Categories 
 {
 	public static final AbstractCategory BUILDING_BLOCKS = new CategoryBlocks();

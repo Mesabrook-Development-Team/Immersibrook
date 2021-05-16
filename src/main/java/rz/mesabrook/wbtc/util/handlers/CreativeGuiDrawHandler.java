@@ -27,8 +27,14 @@ import java.net.URISyntaxException;
 import java.util.*;
 
 import com.google.common.collect.Lists;
-
-public class CreativeGuiDrawHandler 
+/**
+ * Original Author: MrCrayfish
+ * Adapted by RavenholmZombie for use in Immersibrook.
+ * 
+ * https://github.com/MrCrayfish
+ * https://github.com/RavenholmZombie
+ */
+public class CreativeGuiDrawHandler
 {
     private static final ResourceLocation ICONS = new ResourceLocation("wbtc:textures/gui/icons.png");
     private static final ResourceLocation BEACON = new ResourceLocation("textures/gui/container/beacon.png");
