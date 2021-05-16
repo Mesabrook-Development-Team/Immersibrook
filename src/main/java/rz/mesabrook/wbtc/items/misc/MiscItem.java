@@ -25,13 +25,11 @@ import rz.mesabrook.wbtc.util.IHasModel;
 public class MiscItem extends Item implements IHasModel
 {
 	
-	public MiscItem(String name, CreativeTabs tab, int stack)
+	public MiscItem(String name, int stack)
 	{
 		setUnlocalizedName(name);
 		setRegistryName(name);
-		setCreativeTab(tab);
 		setMaxStackSize(stack);
-		setCreativeTab(tab);
 		
 		ModItems.ITEMS.add(this);
 	}
