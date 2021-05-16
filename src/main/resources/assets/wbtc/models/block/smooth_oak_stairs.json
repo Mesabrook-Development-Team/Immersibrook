@@ -1,0 +1,8 @@
+{
+    "parent": "block/stairs",
+    "textures": {
+        "bottom": "wbtc:blocks/smooth_oak",
+        "top": "wbtc:blocks/smooth_oak",
+        "side": "wbtc:blocks/smooth_oak"
+    }
+}

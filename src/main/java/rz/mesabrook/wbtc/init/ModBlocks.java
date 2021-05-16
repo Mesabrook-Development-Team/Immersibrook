@@ -228,4 +228,12 @@ public class ModBlocks
 	public static final Block STAIRS_JUNGLE_L = new MiscStairs("jungle_laminate_stairs", ModBlocks.FLOOR_JUNGLE.getDefaultState(), SoundType.STONE, "axe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block STAIRS_ACACIA_L = new MiscStairs("acacia_laminate_stairs", ModBlocks.FLOOR_ACACIA.getDefaultState(), SoundType.STONE, "axe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block STAIRS_DARK_OAK_L = new MiscStairs("dark_oak_laminate_stairs", ModBlocks.FLOOR_DARK_OAK.getDefaultState(), SoundType.STONE, "axe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+
+	// Smooth Wood Stairs
+	public static final Block STAIRS_SMOOTH_OAK = new MiscStairs("smooth_oak_stairs", ModBlocks.SMOOTH_OAK.getDefaultState(), SoundType.WOOD, "axe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block STAIRS_SMOOTH_BIRCH = new MiscStairs("smooth_birch_stairs", ModBlocks.SMOOTH_BIRCH.getDefaultState(), SoundType.WOOD, "axe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block STAIRS_SMOOTH_SPRUCE = new MiscStairs("smooth_spruce_stairs", ModBlocks.SMOOTH_SPRUCE.getDefaultState(), SoundType.WOOD, "axe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block STAIRS_SMOOTH_JUNGLE = new MiscStairs("smooth_jungle_stairs", ModBlocks.SMOOTH_JUNGLE.getDefaultState(), SoundType.WOOD, "axe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block STAIRS_SMOOTH_ACACIA = new MiscStairs("smooth_acacia_stairs", ModBlocks.SMOOTH_ACACIA.getDefaultState(), SoundType.WOOD, "axe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block STAIRS_SMOOTH_DARK_OAK = new MiscStairs("smooth_dark_oak_stairs", ModBlocks.SMOOTH_OAK.getDefaultState(), SoundType.WOOD, "axe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 }

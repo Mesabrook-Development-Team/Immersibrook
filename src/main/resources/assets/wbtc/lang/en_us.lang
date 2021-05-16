@@ -17,12 +17,18 @@ im.filter.records=Music Discs
 im.filter.resources=Materials
 
 //Stairs
-tile.oak_laminate_stairs.name=Oak Laminate Stairs
-tile.birch_laminate_stairs.name=Birch Laminate Stairs
-tile.spruce_laminate_stairs.name=Spruce Laminate Stairs
-tile.jungle_laminate_stairs.name=Jungle Laminate Stairs
-tile.acacia_laminate_stairs.name=Acacia Laminate Stairs
-tile.dark_oak_laminate_stairs.name=Dark Oak Laminate Stairs
+tile.oak_laminate_stairs.name=Oak Wood Laminate Stairs
+tile.birch_laminate_stairs.name=Birch Wood Laminate Stairs
+tile.spruce_laminate_stairs.name=Spruce Wood Laminate Stairs
+tile.jungle_laminate_stairs.name=Jungle Wood Laminate Stairs
+tile.acacia_laminate_stairs.name=Acacia Wood Laminate Stairs
+tile.dark_oak_laminate_stairs.name=Dark Oak Wood Laminate Stairs
+tile.smooth_oak_stairs.name=Smooth Oak Wood Stairs
+tile.smooth_birch_stairs.name=Smooth Birch Wood Stairs
+tile.smooth_spruce_stairs.name=Smooth Spruce Wood Stairs
+tile.smooth_jungle_stairs.name=Smooth Jungle Wood Stairs
+tile.smooth_acacia_stairs.name=Smooth Acacia Wood Stairs
+tile.smooth_dark_oak_stairs.name=Smooth Dark Oak Wood Stairs
 
 //Containers
 container.rubbish_bin:Wheelie Bin

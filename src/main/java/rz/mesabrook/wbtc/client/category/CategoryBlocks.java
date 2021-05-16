@@ -45,6 +45,12 @@ public class CategoryBlocks extends AbstractCategory {
 		add(ModBlocks.STAIRS_DARK_OAK_L);
 		
 		// Smooth Wood Stairs
+		add(ModBlocks.STAIRS_SMOOTH_OAK);
+		add(ModBlocks.STAIRS_SMOOTH_BIRCH);
+		add(ModBlocks.STAIRS_SMOOTH_SPRUCE);
+		add(ModBlocks.STAIRS_SMOOTH_JUNGLE);
+		add(ModBlocks.STAIRS_SMOOTH_ACACIA);
+		add(ModBlocks.STAIRS_SMOOTH_DARK_OAK);
 		
 		// Floor Tiles
 		add(ModBlocks.FLOOR_CHECKERBOARD);
