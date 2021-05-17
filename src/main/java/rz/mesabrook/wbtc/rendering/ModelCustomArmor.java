@@ -3,7 +3,10 @@ package rz.mesabrook.wbtc.rendering;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
 
+@SideOnly(Side.CLIENT)
 public class ModelCustomArmor extends ModelBiped
 {
 	public ModelRenderer shape15;
