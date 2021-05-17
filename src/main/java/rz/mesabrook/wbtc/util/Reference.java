@@ -5,7 +5,7 @@ public class Reference
 	public static final String MODID = "wbtc";
 	public static final String MODNAME = "Immersibrook";
 	public static final String AUTHOR = "RavenholmZombie";
-	public static final String VERSION = "0.0.6";
+	public static final String VERSION = "0.0.6.1";
 	
 	public static final String CLIENT = "rz.mesabrook.wbtc.proxy.ClientProxy";
 	public static final String SERVER = "rz.mesabrook.wbtc.proxy.CommonProxy";
