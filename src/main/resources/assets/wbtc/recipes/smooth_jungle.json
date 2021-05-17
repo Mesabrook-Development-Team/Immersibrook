@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wbtc:wbtc_jungle"
+        }
+    ],
+    "result": {
+        "item": "wbtc:smooth_jungle",
+        "count": 9
+    }
+}

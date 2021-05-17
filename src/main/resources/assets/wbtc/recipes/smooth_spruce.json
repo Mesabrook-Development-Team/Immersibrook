@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wbtc:wbtc_spruce"
+        }
+    ],
+    "result": {
+        "item": "wbtc:smooth_spruce",
+        "count": 9
+    }
+}

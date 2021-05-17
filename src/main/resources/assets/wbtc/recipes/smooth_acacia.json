@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wbtc:wbtc_acacia"
+        }
+    ],
+    "result": {
+        "item": "wbtc:smooth_acacia",
+        "count": 9
+    }
+}

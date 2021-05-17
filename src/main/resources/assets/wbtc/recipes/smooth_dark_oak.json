@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wbtc:wbtc_dark_oak"
+        }
+    ],
+    "result": {
+        "item": "wbtc:smooth_dark_oak",
+        "count": 9
+    }
+}

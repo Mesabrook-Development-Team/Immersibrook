@@ -100,7 +100,6 @@ public class ModBlocks
 	public static final Block SMOOTH_ACACIA = new MiscBlock("smooth_acacia", Material.WOOD, SoundType.WOOD, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block SMOOTH_DARK_OAK = new MiscBlock("smooth_dark_oak", Material.WOOD, SoundType.WOOD, Main.IMMERSIBROOK_MAIN, 0F);
 
-	
 	// Floor Blocks
 	public static final Block FLOOR_CHECKERBOARD = new MiscBlock("wbtc_checkerboard", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block FLOOR_OLD_CHECKERBOARD = new MiscBlock("tileboard", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
