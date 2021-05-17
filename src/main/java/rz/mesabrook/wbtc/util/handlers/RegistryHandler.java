@@ -19,6 +19,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import rz.mesabrook.wbtc.Main;
+import rz.mesabrook.wbtc.cmds.CommandImmersibrook;
 import rz.mesabrook.wbtc.cmds.CommandTeleportDimension;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
@@ -136,12 +137,14 @@ public class RegistryHandler
 	{
 		if(ModConfig.tpdimCommand)
 		{
-			Main.logger.info("[" + Reference.MODNAME + "] Registering Teleport Command");
+			Main.logger.info("[" + Reference.MODNAME + "] Registering tpdim command");
 			event.registerServerCommand(new CommandTeleportDimension());
 		}
 		else
 		{
 			Main.logger.info("[" + Reference.MODNAME + "] /tpdim command has been disabled in the config.");
 		}
+		Main.logger.info("[" + Reference.MODNAME + "] Registering immersibrook command");
+		event.registerServerCommand(new CommandImmersibrook());
 	}
 }

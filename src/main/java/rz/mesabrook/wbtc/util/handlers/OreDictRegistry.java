@@ -36,6 +36,7 @@ public class OreDictRegistry
 		OreDictionary.registerOre("itemRawPlastic", ModItems.RAW_PLASTIC_GREEN);
 		OreDictionary.registerOre("itemRawPlastic", ModItems.RAW_PLASTIC_RED);
 		OreDictionary.registerOre("itemRawPlastic", ModItems.RAW_PLASTIC_BLACK);
+		OreDictionary.registerOre("itemRawPlastic", ModItems.RAW_PLASTIC_GLOWING);
 		OreDictionary.registerOre("itemPlastic", ModItems.PLASTIC_WHITE);
 		OreDictionary.registerOre("itemPlastic", ModItems.PLASTIC_ORANGE);
 		OreDictionary.registerOre("itemPlastic", ModItems.PLASTIC_MAGENTA);
@@ -52,6 +53,7 @@ public class OreDictRegistry
 		OreDictionary.registerOre("itemPlastic", ModItems.PLASTIC_GREEN);
 		OreDictionary.registerOre("itemPlastic", ModItems.PLASTIC_RED);
 		OreDictionary.registerOre("itemPlastic", ModItems.PLASTIC_BLACK);
+		OreDictionary.registerOre("itemPlastic", ModItems.PLASTIC_GLOWING);
 		
 		// Food Items/Blocks
 		OreDictionary.registerOre("blockCheese", ModBlocks.CUBE_CHEESE);
@@ -81,6 +83,7 @@ public class OreDictRegistry
 		Main.logger.info(ModItems.RAW_PLASTIC_GREEN.getUnlocalizedName() + " has been added to the Ore Dictionary under itemRawPlastic");
 		Main.logger.info(ModItems.RAW_PLASTIC_RED.getUnlocalizedName() + " has been added to the Ore Dictionary under itemRawPlastic");
 		Main.logger.info(ModItems.RAW_PLASTIC_BLACK.getUnlocalizedName() + " has been added to the Ore Dictionary under itemRawPlastic"); 
+		Main.logger.info(ModItems.RAW_PLASTIC_GLOWING.getUnlocalizedName() + " has been added to the Ore Dictionary under itemRawPlastic");
 		Main.logger.info(ModItems.PLASTIC_WHITE.getUnlocalizedName() + " has been added to the Ore Dictionary under itemPlastic");
 		Main.logger.info(ModItems.PLASTIC_ORANGE.getUnlocalizedName() + " has been added to the Ore Dictionary under itemPlastic");
 		Main.logger.info(ModItems.PLASTIC_MAGENTA.getUnlocalizedName() + " has been added to the Ore Dictionary under itemPlastic");
@@ -97,6 +100,7 @@ public class OreDictRegistry
 		Main.logger.info(ModItems.PLASTIC_GREEN.getUnlocalizedName() + " has been added to the Ore Dictionary under itemPlastic");
 		Main.logger.info(ModItems.PLASTIC_RED.getUnlocalizedName() + " has been added to the Ore Dictionary under itemPlastic");
 		Main.logger.info(ModItems.PLASTIC_BLACK.getUnlocalizedName() + " has been added to the Ore Dictionary under itemPlastic");
+		Main.logger.info(ModItems.PLASTIC_GLOWING.getUnlocalizedName() + " has been added to the Ore Dictionary under itemPlastic");
 		Main.logger.info(ModBlocks.CUBE_CHEESE.getUnlocalizedName() + " has been added to the Ore Dictionary under blockCheese");
 	}
 }
