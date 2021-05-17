@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wbtc:smooth_acacia"
+    }
+  },
+  "result": {
+    "item": "wbtc:smooth_acacia_stairs",
+    "count": 4
+  }
+}

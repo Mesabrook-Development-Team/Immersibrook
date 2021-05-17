@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wbtc:smooth_oak"
+    }
+  },
+  "result": {
+    "item": "wbtc:smooth_oak_stairs",
+    "count": 4
+  }
+}
