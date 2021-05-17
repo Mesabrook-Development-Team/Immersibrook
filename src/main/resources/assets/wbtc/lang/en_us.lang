@@ -16,6 +16,9 @@ im.filter.tools=Weapons and Tools
 im.filter.records=Music Discs
 im.filter.resources=Materials
 
+//Safety Vest
+item.safety_vest_orange.name=Orange Safety Vest
+
 //Stairs
 tile.oak_laminate_stairs.name=Oak Wood Laminate Stairs
 tile.birch_laminate_stairs.name=Birch Wood Laminate Stairs
