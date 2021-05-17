@@ -33,6 +33,6 @@ public class ItemCane extends ItemSword implements IHasModel
 	@Override
 	public void registerModels()
 	{
-		Main.proxy.registerItemRenderer(this, 0, "inventory");
+		Main.proxy.registerItemRenderer(this, 0);
 	}
 }

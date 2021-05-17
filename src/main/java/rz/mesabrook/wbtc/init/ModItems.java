@@ -5,16 +5,23 @@ import java.util.List;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.common.util.EnumHelper;
 import rz.mesabrook.wbtc.Main;
-import rz.mesabrook.wbtc.items.drinks.WBTC_Beverage;
+import rz.mesabrook.wbtc.items.armor.SafetyVestBase;
+import rz.mesabrook.wbtc.items.armor.SafetyVestModel;
 import rz.mesabrook.wbtc.items.misc.ItemFirstAidKit;
 import rz.mesabrook.wbtc.items.misc.MiscItem;
 import rz.mesabrook.wbtc.items.record.MemeRecord;
 import rz.mesabrook.wbtc.items.weapons.ItemCane;
 import rz.mesabrook.wbtc.items.weapons.ItemSod;
+import rz.mesabrook.wbtc.util.Reference;
 
 public class ModItems 
 {
@@ -103,4 +110,9 @@ public class ModItems
 	// First Aid Kit
 	public static final Item FIRST_AID_KIT = new ItemFirstAidKit("first_aid", Main.IMMERSIBROOK_MAIN);
 	
+	// Safety Vest Armor Material
+	public static final ArmorMaterial SAFETY_VEST_MATERIAL = EnumHelper.addArmorMaterial("safety_vest", Reference.MODID + ":safety_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
+	
+	// Safety Vest
+	public static final Item SAFETY_VEST_ORANGE = new SafetyVestModel("safety_vest_orange", Main.IMMERSIBROOK_MAIN, SAFETY_VEST_MATERIAL, EntityEquipmentSlot.CHEST);
 }

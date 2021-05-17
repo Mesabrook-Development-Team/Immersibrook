@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class CommonProxy 
 {
-	public void registerItemRenderer(Item item, int meta, String id) {}
+	public void registerItemRenderer(Item item, int meta) {}
 	public void preInit(FMLPreInitializationEvent e) {MinecraftForge.EVENT_BUS.register(this);}
 	public void init(FMLInitializationEvent e) {}
 }

@@ -17,9 +17,9 @@ import rz.mesabrook.wbtc.util.handlers.CreativeGuiDrawHandler;
 
 public class ClientProxy extends CommonProxy
 {
-	public void registerItemRenderer(Item item, int meta, String id)
+	public void registerItemRenderer(Item item, int meta)
 	{
-		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), id));
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), "inventory"));
 	}
 	
 	@Override
