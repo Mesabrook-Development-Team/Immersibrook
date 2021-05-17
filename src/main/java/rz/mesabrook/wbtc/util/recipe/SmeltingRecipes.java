@@ -36,6 +36,7 @@ public class SmeltingRecipes
 			GameRegistry.addSmelting(ModItems.RAW_PLASTIC_RED, new ItemStack(ModItems.PLASTIC_RED), 10);
 			GameRegistry.addSmelting(ModItems.RAW_PLASTIC_GREEN, new ItemStack(ModItems.PLASTIC_GREEN), 10);
 			GameRegistry.addSmelting(ModItems.RAW_PLASTIC_BLACK, new ItemStack(ModItems.PLASTIC_BLACK), 10);
+			GameRegistry.addSmelting(ModItems.RAW_PLASTIC_GLOWING, new ItemStack(ModItems.PLASTIC_GLOWING), 10);
 			
 			// Food Cubes
 			GameRegistry.addSmelting(ModBlocks.CUBE_BEEF, new ItemStack(Items.COOKED_BEEF, 9), 10);

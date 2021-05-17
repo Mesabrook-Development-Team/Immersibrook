@@ -81,6 +81,7 @@ item.raw_brown_plastic.name=Raw Brown Plastic
 item.raw_green_plastic.name=Raw Green Plastic
 item.raw_red_plastic.name=Raw Red Plastic
 item.raw_black_plastic.name=Raw Black Plastic
+item.raw_glowing_plastic.name=Raw Glowstone Infused Plastic
 
 item.white_plastic.name=White Plastic
 item.orange_plastic.name=Orange Plastic
@@ -98,6 +99,7 @@ item.brown_plastic.name=Brown Plastic
 item.green_plastic.name=Green Plastic
 item.red_plastic.name=Red Plastic
 item.black_plastic.name=Black Plastic
+item.glowing_plastic.name=Glowstone Infused Plastic
 
 //Plastic Blocks
 tile.plastic_cube_white.name=White Plastic Block

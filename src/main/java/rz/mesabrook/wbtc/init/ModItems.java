@@ -74,6 +74,7 @@ public class ModItems
 	public static final Item RAW_PLASTIC_GREEN = new MiscItem("raw_green_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item RAW_PLASTIC_RED = new MiscItem("raw_red_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item RAW_PLASTIC_BLACK = new MiscItem("raw_black_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_PLASTIC_GLOWING = new MiscItem("raw_glowing_plastic", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	
 	// Finalized Colored Plastic Ingots
 	public static final Item PLASTIC_WHITE = new MiscItem("white_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
@@ -92,6 +93,7 @@ public class ModItems
 	public static final Item PLASTIC_GREEN = new MiscItem("green_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PLASTIC_RED = new MiscItem("red_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PLASTIC_BLACK = new MiscItem("black_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PLASTIC_GLOWING = new MiscItem("glowing_plastic", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	
 	// Meme Records
 	public static final Item BLANK_DISC = new MiscItem("blank_vinyl",  16).setCreativeTab(Main.IMMERSIBROOK_MAIN);

@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wbtc:raw_white_plastic"
+        },
+        {
+            "item": "minecraft:glowstone_dust"
+        }
+    ],
+    "result": {
+        "item": "wbtc:raw_glowing_plastic",
+        "count": 2
+    }
+}

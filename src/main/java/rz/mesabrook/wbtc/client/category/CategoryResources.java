@@ -47,6 +47,7 @@ public class CategoryResources extends AbstractCategory
 		add(ModItems.RAW_PLASTIC_GREEN);
 		add(ModItems.RAW_PLASTIC_RED);
 		add(ModItems.RAW_PLASTIC_BLACK);
+		add(ModItems.RAW_PLASTIC_GLOWING);
 		
 		// Plastic Ingots
 		add(ModItems.PLASTIC_WHITE);
@@ -65,6 +66,7 @@ public class CategoryResources extends AbstractCategory
 		add(ModItems.PLASTIC_GREEN);
 		add(ModItems.PLASTIC_RED);
 		add(ModItems.PLASTIC_BLACK);
+		add(ModItems.PLASTIC_GLOWING);
 		
 		// Plastic Blocks
 		add(ModBlocks.PLASTIC_CUBE_WHITE);
