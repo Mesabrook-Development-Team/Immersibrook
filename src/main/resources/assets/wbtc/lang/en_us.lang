@@ -68,6 +68,7 @@ item.aluminum_rod.name=Aluminum Rod
 item.ingot_aluminum.name=Aluminum Ingot
 item.nugget_aluminum.name=Aluminum Nugget
 item.aluminum_dust.name=Aluminum Grit
+item.nv_googles.name=Night Vision Goggles - VERY WIP
 
 //Smooth Wood Blocks
 tile.smooth_oak.name=Smooth Oak Wood
