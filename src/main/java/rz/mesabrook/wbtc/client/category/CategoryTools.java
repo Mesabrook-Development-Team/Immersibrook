@@ -34,8 +34,11 @@ public class CategoryTools extends AbstractCategory {
 		// First Aid Kit
 		add(ModItems.FIRST_AID_KIT);
 		
-		// Safety Vest
+		// Safety Vests
 		add(ModItems.SAFETY_VEST_ORANGE);
+		add(ModItems.SAFETY_VEST_ORANGE_NO_X);
+		add(ModItems.SAFETY_VEST_YELLOW);
+		add(ModItems.SAFETY_VEST_BLUE);
 	}
 
 }
