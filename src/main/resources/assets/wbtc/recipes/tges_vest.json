@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wbtc:red_vest"
+        },
+        {
+            "item": "minecraft:writable_book"
+        }
+    ],
+    "result": {
+        "item": "wbtc:tges_vest",
+        "count": 1
+    }
+}

@@ -23,7 +23,9 @@ item.safety_vest_orange_no_x.name=Orange Safety Vest - Standard Pattern
 item.safety_vest_yellow.name=Yellow Safety Vest
 item.safety_vest_yellow_x.name=Yellow Safety Vest - Railroad Pattern
 item.safety_vest_blue.name=Blue Safety Vest
-item.irw_vest.name=Orange Safety Vest - Iron River & Western Branding
+item.irw_vest.name=Orange Safety Vest - Iron River-Western Branding
+item.red_vest.name=Red Safety Vest
+item.tges_vest.name=Red Safety Vest - T-GES Mineral Works Branding
 
 
 //Leviathan Safety Vests
