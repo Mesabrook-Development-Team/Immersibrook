@@ -19,14 +19,17 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.init.SoundInit;
+import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.config.ModConfig;
+import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 public class ItemFirstAidKit extends Item implements IHasModel
 {	
@@ -57,7 +60,6 @@ public class ItemFirstAidKit extends Item implements IHasModel
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand)
 	{
 		ItemStack item = player.getHeldItem(hand);
-		
 		if(!player.isCreative())
 		{
 			if(player.getHealth() < player.getMaxHealth())
@@ -76,7 +78,7 @@ public class ItemFirstAidKit extends Item implements IHasModel
 		}
 		else
 		{
-			world.playSound(player, player.getPosition(), SoundEvents.ENTITY_ENDERMEN_STARE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+			world.playSound(player, player.getPosition(), SoundInit.NO, SoundCategory.BLOCKS, 1.0F, 1.0F);
 			return new ActionResult<ItemStack>(EnumActionResult.FAIL, item);
 		}
 	}

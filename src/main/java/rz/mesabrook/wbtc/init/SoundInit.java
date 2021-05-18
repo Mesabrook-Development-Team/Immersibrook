@@ -29,6 +29,7 @@ public class SoundInit
 	public static final SoundEvent PIE;
 	public static final SoundEvent FISH;
 	public static final SoundEvent FISH_FULL;
+	public static final SoundEvent NO;
 	
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -61,6 +62,7 @@ public class SoundInit
 		PIE = addSoundsToRegistry("pie");
 		FISH = addSoundsToRegistry("fish");
 		FISH_FULL = addSoundsToRegistry("fish_full");
+		NO = addSoundsToRegistry("no");
 		
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -118,6 +120,7 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.KRAB_BORG_FULL);
 				event.getRegistry().registerAll(SoundInit.FISH);
 				event.getRegistry().registerAll(SoundInit.FISH_FULL);
+				event.getRegistry().registerAll(SoundInit.NO);
 				
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");
