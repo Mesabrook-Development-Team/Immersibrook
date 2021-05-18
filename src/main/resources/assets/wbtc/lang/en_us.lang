@@ -23,6 +23,13 @@ item.safety_vest_orange_no_x.name=Orange Safety Vest - Standard Pattern
 item.safety_vest_yellow.name=Yellow Safety Vest
 item.safety_vest_yellow_x.name=Yellow Safety Vest - Railroad Pattern
 item.safety_vest_blue.name=Blue Safety Vest
+item.irw_vest.name=Orange Safety Vest - Iron River & Western Branding
+
+
+//Leviathan Safety Vests
+item.lvn_vest.name=Leviathan Blue Safety Vest
+item.lvn_vest_x.name=Leviathan Blue Safety Vest - Railroad Pattern
+item.lvn_vest_txt.name=Leviathan Blue Safety Vest - LVN Branding
 
 //Stairs
 tile.oak_laminate_stairs.name=Oak Wood Laminate Stairs

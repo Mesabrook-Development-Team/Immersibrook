@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wbtc:safety_vest_orange"
+        },
+        {
+            "item": "minecraft:writable_book"
+        },
+		{
+			"item": "wbtc:gray_plastic"
+		}
+    ],
+    "result": {
+        "item": "wbtc:irw_vest",
+        "count": 1
+    }
+}

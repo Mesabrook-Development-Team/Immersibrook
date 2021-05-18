@@ -3,18 +3,14 @@ package rz.mesabrook.wbtc.init;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
-import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.common.util.EnumHelper;
 import rz.mesabrook.wbtc.Main;
-import rz.mesabrook.wbtc.items.armor.SafetyVestBase;
+import rz.mesabrook.wbtc.items.armor.NightVisionGoggles;
 import rz.mesabrook.wbtc.items.armor.SafetyVestModel;
 import rz.mesabrook.wbtc.items.misc.ItemFirstAidKit;
 import rz.mesabrook.wbtc.items.misc.MiscItem;
@@ -118,11 +114,27 @@ public class ModItems
 	public static final ArmorMaterial SAFETY_VEST_ORANGE_NON_X_MAT = EnumHelper.addArmorMaterial("orange_vest_no_x", Reference.MODID + ":orange_vest_no_x", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
 	public static final ArmorMaterial SAFETY_VEST_BLUE_MAT = EnumHelper.addArmorMaterial("blue_vest", Reference.MODID + ":blue_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
 	public static final ArmorMaterial SAFETY_VEST_YELLOW_WITH_X_MAT = EnumHelper.addArmorMaterial("yellow_vest_x", Reference.MODID + ":yellow_vest_x", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
+	public static final ArmorMaterial LVN_SAFETY_VEST_NO_X = EnumHelper.addArmorMaterial("lvn_vest", Reference.MODID + ":lvn_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
+	public static final ArmorMaterial LVN_SAFETY_VEST_X = EnumHelper.addArmorMaterial("lvn_vest_x", Reference.MODID + ":lvn_vest_x", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
+	public static final ArmorMaterial LVN_SAFETY_VEST_TXT = EnumHelper.addArmorMaterial("lvn_vest_txt", Reference.MODID + ":lvn_vest_txt", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
+	public static final ArmorMaterial IRW_SAFETY_VEST_MAT = EnumHelper.addArmorMaterial("irw_vest", Reference.MODID + ":irw_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
+	public static final ArmorMaterial NIGHT_VISION_HELMET = EnumHelper.addArmorMaterial("nv_goggles", Reference.MODID + ":nv_goggles", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
 	
-	// Safety Vests
+	// Generic Safety Vests
 	public static final Item SAFETY_VEST_ORANGE = new SafetyVestModel("safety_vest_orange", Main.IMMERSIBROOK_MAIN, SAFETY_VEST_MATERIAL, EntityEquipmentSlot.CHEST);
 	public static final Item SAFETY_VEST_YELLOW = new SafetyVestModel("safety_vest_yellow", Main.IMMERSIBROOK_MAIN, SAFETY_VEST_YELLOW_MAT, EntityEquipmentSlot.CHEST);
 	public static final Item SAFETY_VEST_ORANGE_NO_X = new SafetyVestModel("safety_vest_orange_no_x", Main.IMMERSIBROOK_MAIN, SAFETY_VEST_ORANGE_NON_X_MAT, EntityEquipmentSlot.CHEST);
 	public static final Item SAFETY_VEST_BLUE = new SafetyVestModel("safety_vest_blue", Main.IMMERSIBROOK_MAIN, SAFETY_VEST_BLUE_MAT, EntityEquipmentSlot.CHEST);
 	public static final Item SAFETY_VEST_YELLOW_X = new SafetyVestModel("safety_vest_yellow_x", Main.IMMERSIBROOK_MAIN, SAFETY_VEST_YELLOW_WITH_X_MAT, EntityEquipmentSlot.CHEST);
+	
+	// IRW Vest
+	public static final Item IRW_VEST = new SafetyVestModel("irw_vest", Main.IMMERSIBROOK_MAIN, IRW_SAFETY_VEST_MAT, EntityEquipmentSlot.CHEST);
+	
+	// LVN Safety Vests
+	public static final Item LVN_VEST = new SafetyVestModel("lvn_vest", Main.IMMERSIBROOK_MAIN, LVN_SAFETY_VEST_NO_X, EntityEquipmentSlot.CHEST);
+	public static final Item LVN_VEST_X = new SafetyVestModel("lvn_vest_x", Main.IMMERSIBROOK_MAIN, LVN_SAFETY_VEST_X, EntityEquipmentSlot.CHEST);
+	public static final Item LVN_VEST_TXT = new SafetyVestModel("lvn_vest_txt", Main.IMMERSIBROOK_MAIN, LVN_SAFETY_VEST_TXT, EntityEquipmentSlot.CHEST);
+	
+	// Night Vision Goggles
+	public static final Item NV_GOGGLES = new NightVisionGoggles("nv_goggles", Main.IMMERSIBROOK_MAIN, NIGHT_VISION_HELMET, EntityEquipmentSlot.HEAD);
 }

@@ -39,6 +39,10 @@ public class CategoryTools extends AbstractCategory {
 		add(ModItems.SAFETY_VEST_ORANGE_NO_X);
 		add(ModItems.SAFETY_VEST_YELLOW);
 		add(ModItems.SAFETY_VEST_BLUE);
+		add(ModItems.LVN_VEST);
+		add(ModItems.LVN_VEST_X);
+		add(ModItems.LVN_VEST_TXT);
+		add(ModItems.IRW_VEST);
 	}
 
 }
