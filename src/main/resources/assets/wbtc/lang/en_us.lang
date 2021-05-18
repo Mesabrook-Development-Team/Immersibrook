@@ -15,9 +15,14 @@ im.filter.awards=Awards and Trophies
 im.filter.tools=Weapons and Tools
 im.filter.records=Music Discs
 im.filter.resources=Materials
+im.filter.food=Foods
 
 //Safety Vest
-item.safety_vest_orange.name=Orange Safety Vest
+item.safety_vest_orange.name=Orange Safety Vest - Railroad Pattern
+item.safety_vest_orange_no_x.name=Orange Safety Vest - Standard Pattern
+item.safety_vest_yellow.name=Yellow Safety Vest
+item.safety_vest_yellow_x.name=Yellow Safety Vest - Railroad Pattern
+item.safety_vest_blue.name=Blue Safety Vest
 
 //Stairs
 tile.oak_laminate_stairs.name=Oak Wood Laminate Stairs
@@ -118,6 +123,7 @@ tile.plastic_cube_blue.name=Blue Plastic Block
 tile.plastic_cube_green.name=Green Plastic Block
 tile.plastic_cube_red.name=Red Plastic Block
 tile.plastic_cube_black.name=Black Plastic Block
+tile.plastic_cube_glowing.name=Glowstone Infused Plastic Block
 
 //Misc Blocks
 tile.aluminum_block.name=Block of Aluminum

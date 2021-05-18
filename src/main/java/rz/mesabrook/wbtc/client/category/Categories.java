@@ -16,4 +16,5 @@ public class Categories
 	public static final AbstractCategory TOOLS = new CategoryTools();
 	public static final AbstractCategory MUSIC = new CategoryRecords();
 	public static final AbstractCategory RAW = new CategoryResources();
+	public static final AbstractCategory FOOD = new CategoryFood();
 }

@@ -153,46 +153,47 @@ public class ModBlocks
 	public static final Block CHROMA_BLUE = new ChromaScreen("chroma_blue", Material.IRON, SoundType.METAL, "pickaxe");
 	
 	// Food Cubes
-	public static final Block CUBE_PORK = new FoodBlock("cube_pork", MapColor.PINK, SoundType.SLIME,CreativeTabs.FOOD);
-	public static final Block CUBE_BEEF = new FoodBlock("cube_beef", MapColor.RED, SoundType.SLIME, CreativeTabs.FOOD);
-	public static final Block CUBE_CHICKEN = new FoodBlock("cube_chicken", MapColor.SNOW,SoundType.SLIME, CreativeTabs.FOOD);
-	public static final Block CUBE_MUTTON = new FoodBlock("cube_mutton", MapColor.RED, SoundType.SLIME, CreativeTabs.FOOD);
-	public static final Block CUBE_RABBIT = new FoodBlock("cube_rabbit", MapColor.PINK, SoundType.SLIME, CreativeTabs.FOOD);
-	public static final Block CUBE_APPLES = new FoodBlock("cube_apples", MapColor.RED, SoundType.WOOD, CreativeTabs.FOOD);
-	public static final Block CUBE_CHEESE = new FoodBlock("cube_cheese", MapColor.YELLOW, SoundType.SLIME, CreativeTabs.FOOD);
-	public static final Block CUBE_CARROT = new FoodBlock("cube_carrot", MapColor.ORANGE_STAINED_HARDENED_CLAY, SoundType.WOOD, CreativeTabs.FOOD);
-	public static final Block CUBE_POTATO = new FoodBlock("cube_potato", MapColor.BROWN, SoundType.WOOD, CreativeTabs.FOOD);
-	public static final Block CUBE_PUMPKIN_PIE = new FoodBlock("cube_pumpkin_pie", MapColor.ORANGE_STAINED_HARDENED_CLAY, SoundType.SLIME, CreativeTabs.FOOD);
-	public static final Block CUBE_BEET = new FoodBlock("cube_beetroot", MapColor.RED, SoundType.SLIME, CreativeTabs.FOOD);
-	public static final Block CUBE_COOKIE = new FoodBlock("cube_cookie", MapColor.BROWN, SoundType.WOOD, CreativeTabs.FOOD);
-	public static final Block CUBE_GAPPLE = new FoodBlock("cube_gapple", MapColor.GOLD, SoundType.ANVIL, CreativeTabs.FOOD);
-	public static final Block CUBE_BREAD = new FoodBlock("cube_bread", MapColor.BROWN, SoundType.WOOD, CreativeTabs.FOOD);
-	public static final Block CUBE_FISH = new FoodBlock("cube_fish", MapColor.GRAY, SoundType.SLIME, CreativeTabs.FOOD);
-	public static final Block CUBE_SALMON = new FoodBlock("cube_salmon", MapColor.PINK, SoundType.SLIME, CreativeTabs.FOOD);
-	public static final Block CUBE_PUFF = new FoodBlock("cube_pufferfish", MapColor.YELLOW, SoundType.SLIME, CreativeTabs.FOOD);
-	public static final Block CUBE_CLOWN = new FoodBlock("cube_nemo", MapColor.ORANGE_STAINED_HARDENED_CLAY, SoundType.SLIME, CreativeTabs.FOOD);
+	public static final Block CUBE_PORK = new FoodBlock("cube_pork", MapColor.PINK, SoundType.SLIME,Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_BEEF = new FoodBlock("cube_beef", MapColor.RED, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_CHICKEN = new FoodBlock("cube_chicken", MapColor.SNOW,SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_MUTTON = new FoodBlock("cube_mutton", MapColor.RED, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_RABBIT = new FoodBlock("cube_rabbit", MapColor.PINK, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_APPLES = new FoodBlock("cube_apples", MapColor.RED, SoundType.WOOD, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_CHEESE = new FoodBlock("cube_cheese", MapColor.YELLOW, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_CARROT = new FoodBlock("cube_carrot", MapColor.ORANGE_STAINED_HARDENED_CLAY, SoundType.WOOD, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_POTATO = new FoodBlock("cube_potato", MapColor.BROWN, SoundType.WOOD, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_PUMPKIN_PIE = new FoodBlock("cube_pumpkin_pie", MapColor.ORANGE_STAINED_HARDENED_CLAY, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_BEET = new FoodBlock("cube_beetroot", MapColor.RED, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_COOKIE = new FoodBlock("cube_cookie", MapColor.BROWN, SoundType.WOOD, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_GAPPLE = new FoodBlock("cube_gapple", MapColor.GOLD, SoundType.ANVIL, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_BREAD = new FoodBlock("cube_bread", MapColor.BROWN, SoundType.WOOD, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_FISH = new FoodBlock("cube_fish", MapColor.GRAY, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_SALMON = new FoodBlock("cube_salmon", MapColor.PINK, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_PUFF = new FoodBlock("cube_pufferfish", MapColor.YELLOW, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_CLOWN = new FoodBlock("cube_nemo", MapColor.ORANGE_STAINED_HARDENED_CLAY, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
 	
 	// Plastic Blocks
-	public static final Block PLASTIC_CUBE_WHITE = new MiscBlock("plastic_cube_white", Material.ROCK, SoundType.STONE, CreativeTabs.DECORATIONS, 0F);
-	public static final Block PLASTIC_CUBE_ORANGE = new MiscBlock("plastic_cube_orange", Material.ROCK, SoundType.STONE, CreativeTabs.DECORATIONS, 0F);
-	public static final Block PLASTIC_CUBE_MAGENTA = new MiscBlock("plastic_cube_magenta", Material.ROCK, SoundType.STONE, CreativeTabs.DECORATIONS, 0F);
-	public static final Block PLASTIC_CUBE_LBLUE = new MiscBlock("plastic_cube_lblue", Material.ROCK, SoundType.STONE, CreativeTabs.DECORATIONS, 0F);
-	public static final Block PLASTIC_CUBE_YELLOW = new MiscBlock("plastic_cube_yellow", Material.ROCK, SoundType.STONE, CreativeTabs.DECORATIONS, 0F);
-	public static final Block PLASTIC_CUBE_LIME = new MiscBlock("plastic_cube_lime", Material.ROCK, SoundType.STONE, CreativeTabs.DECORATIONS, 0F);
-	public static final Block PLASTIC_CUBE_PINK = new MiscBlock("plastic_cube_pink", Material.ROCK, SoundType.STONE, CreativeTabs.DECORATIONS, 0F);
-	public static final Block PLASTIC_CUBE_GRAY = new MiscBlock("plastic_cube_gray", Material.ROCK, SoundType.STONE, CreativeTabs.DECORATIONS, 0F);
-	public static final Block PLASTIC_CUBE_SILVER = new MiscBlock("plastic_cube_silver", Material.ROCK, SoundType.STONE, CreativeTabs.DECORATIONS, 0F);
-	public static final Block PLASTIC_CUBE_CYAN = new MiscBlock("plastic_cube_cyan", Material.ROCK, SoundType.STONE, CreativeTabs.DECORATIONS, 0F);
-	public static final Block PLASTIC_CUBE_PURPLE = new MiscBlock("plastic_cube_purple", Material.ROCK, SoundType.STONE, CreativeTabs.DECORATIONS, 0F);
-	public static final Block PLASTIC_CUBE_BLUE = new MiscBlock("plastic_cube_blue", Material.ROCK, SoundType.STONE, CreativeTabs.DECORATIONS, 0F);
-	public static final Block PLASTIC_CUBE_BROWN = new MiscBlock("plastic_cube_brown", Material.ROCK, SoundType.STONE, CreativeTabs.DECORATIONS, 0F);
-	public static final Block PLASTIC_CUBE_GREEN = new MiscBlock("plastic_cube_green", Material.ROCK, SoundType.STONE, CreativeTabs.DECORATIONS, 0F);
-	public static final Block PLASTIC_CUBE_RED = new MiscBlock("plastic_cube_red", Material.ROCK, SoundType.STONE, CreativeTabs.DECORATIONS, 0F);
-	public static final Block PLASTIC_CUBE_BLACK = new MiscBlock("plastic_cube_black", Material.ROCK, SoundType.STONE, CreativeTabs.DECORATIONS, 0F);
+	public static final Block PLASTIC_CUBE_WHITE = new MiscBlock("plastic_cube_white", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_ORANGE = new MiscBlock("plastic_cube_orange", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_MAGENTA = new MiscBlock("plastic_cube_magenta", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_LBLUE = new MiscBlock("plastic_cube_lblue", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_YELLOW = new MiscBlock("plastic_cube_yellow", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_LIME = new MiscBlock("plastic_cube_lime", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_PINK = new MiscBlock("plastic_cube_pink", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_GRAY = new MiscBlock("plastic_cube_gray", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_SILVER = new MiscBlock("plastic_cube_silver", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_CYAN = new MiscBlock("plastic_cube_cyan", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_PURPLE = new MiscBlock("plastic_cube_purple", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_BLUE = new MiscBlock("plastic_cube_blue", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_BROWN = new MiscBlock("plastic_cube_brown", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_GREEN = new MiscBlock("plastic_cube_green", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_RED = new MiscBlock("plastic_cube_red", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_BLACK = new MiscBlock("plastic_cube_black", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_GLOWING = new MiscBlock("plastic_cube_glowing", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 1F);
 	
 	// Aluminum
-	public static final Block CUBE_ALUMINUM = new MiscBlock("aluminum_block", Material.ROCK, SoundType.METAL, CreativeTabs.BUILDING_BLOCKS, 0F);
-	public static final Block ALUMINUM_ORE = new MiscBlock("wbtc_aluminum_ore", Material.IRON, SoundType.STONE, CreativeTabs.BUILDING_BLOCKS, 0F);
+	public static final Block CUBE_ALUMINUM = new MiscBlock("aluminum_block", Material.ROCK, SoundType.METAL, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block ALUMINUM_ORE = new MiscBlock("wbtc_aluminum_ore", Material.IRON, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	
 	// Sign stand
 	public static final Block SIGN_STAND = new SignStand("sign_stand", Material.IRON, SoundType.METAL, 1.0F, 1.0F, "pickaxe", 0, Main.IMMERSIBROOK_MAIN);

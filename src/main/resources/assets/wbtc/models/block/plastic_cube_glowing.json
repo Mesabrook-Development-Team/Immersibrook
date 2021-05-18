@@ -1,0 +1,12 @@
+{
+   "parent": "block/cube",
+   "textures": {
+	   "particle": "wbtc:blocks/plastic_cube_glowing",
+       "up": "wbtc:blocks/plastic_cube_glowing",
+       "down": "wbtc:blocks/plastic_cube_glowing",
+       "south": "wbtc:blocks/plastic_cube_glowing",
+       "north": "wbtc:blocks/plastic_cube_glowing",
+       "west": "wbtc:blocks/plastic_cube_glowing",
+       "east": "wbtc:blocks/plastic_cube_glowing"
+   }
+}

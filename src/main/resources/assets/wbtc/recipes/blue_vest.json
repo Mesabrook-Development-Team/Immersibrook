@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "y y",
+        "yyy",
+        "xxx"
+    ],
+    "key":
+    {
+        "x":
+        {
+            "item": "wbtc:blue_plastic"
+        },
+		"y":
+		{
+			"item": "wbtc:glowing_plastic"
+		}
+    },
+    "result":
+    {
+        "item": "wbtc:safety_vest_blue",
+        "count": 1
+    }
+}
