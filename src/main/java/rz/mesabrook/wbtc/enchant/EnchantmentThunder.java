@@ -6,6 +6,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import rz.mesabrook.wbtc.init.ModEnchants;
+import rz.mesabrook.wbtc.util.config.ModConfig;
 
 public class EnchantmentThunder extends Enchantment
 {
@@ -25,6 +26,13 @@ public class EnchantmentThunder extends Enchantment
 	@Override
 	public void onEntityDamaged(EntityLivingBase user, Entity target, int level)
 	{
-		user.world.addWeatherEffect(new EntityLightningBolt(user.world, target.posX, target.posY, target.posZ, false));
+		if(ModConfig.thorCausesFires)
+		{
+			user.world.addWeatherEffect(new EntityLightningBolt(user.world, target.posX, target.posY, target.posZ, false));
+		}
+		else
+		{
+			user.world.addWeatherEffect(new EntityLightningBolt(user.world, target.posX, target.posY, target.posZ, true));
+		}
 	}
 }
