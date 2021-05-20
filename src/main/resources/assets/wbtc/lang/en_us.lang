@@ -2,7 +2,7 @@
 wbtc.config.title=Configuration File for Immersibrook
 
 //First Aid
-item.first_aid.name=MDPH Approved First Aid Kit
+item.first_aid.name=First Aid Kit
 
 //The NEW and IMPROVED Tab
 ctab.tab_immersibrook=Immersibrook
@@ -68,7 +68,7 @@ item.aluminum_rod.name=Aluminum Rod
 item.ingot_aluminum.name=Aluminum Ingot
 item.nugget_aluminum.name=Aluminum Nugget
 item.aluminum_dust.name=Aluminum Grit
-item.nv_goggles.name=Night Vision Goggles - VERY WIP
+item.nv_goggles.name=Night Vision Goggles
 
 //Smooth Wood Blocks
 tile.smooth_oak.name=Smooth Oak Wood

@@ -41,10 +41,7 @@ public class NightVisionGoggles extends ItemArmor implements IHasModel
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack)
 	{
-		if(!player.isPotionActive(MobEffects.NIGHT_VISION))
-		{
-			player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 500, 1, true, false));
-		}
+		player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 302, 1, true, false));
 	}
 	
 	@SideOnly(Side.CLIENT)
