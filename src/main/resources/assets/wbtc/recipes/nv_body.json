@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "xxx",
+        " x ",
+		"xxx"
+    ],
+    "key":
+    {
+        "x":
+        {
+            "item": "wbtc:gray_plastic"
+        }
+    },
+    "result":
+    {
+        "item": "wbtc:nv_goggle_body",
+        "count": 1
+    }
+}

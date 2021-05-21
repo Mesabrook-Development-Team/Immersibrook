@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "  x",
+        " y ",
+        "x  "
+    ],
+    "key":
+    {
+        "x":
+        {
+            "item": "wbtc:gray_plastic"
+        },
+		"y":
+		{
+			"item": "wbtc:black_plastic"
+		}
+    },
+    "result":
+    {
+        "item": "wbtc:nv_goggle_strap",
+        "count": 1
+    }
+}

@@ -142,6 +142,12 @@ public class ModItems
 	public static final Item LVN_VEST_X = new SafetyVestModel("lvn_vest_x", Main.IMMERSIBROOK_MAIN, LVN_SAFETY_VEST_X, EntityEquipmentSlot.CHEST);
 	public static final Item LVN_VEST_TXT = new SafetyVestModel("lvn_vest_txt", Main.IMMERSIBROOK_MAIN, LVN_SAFETY_VEST_TXT, EntityEquipmentSlot.CHEST);
 	
-	// Night Vision Goggles - VERY WIP
-	public static final Item NV_GOGGLES = new NightVisionGoggles("nv_goggles", CreativeTabs.SEARCH, NIGHT_VISION_HELMET, EntityEquipmentSlot.HEAD);
+	// Night Vision Goggles
+	public static final Item NV_GOGGLES = new NightVisionGoggles("nv_goggles", Main.IMMERSIBROOK_MAIN, NIGHT_VISION_HELMET, EntityEquipmentSlot.HEAD);
+
+	// Night vision goggles crafting ingredients.
+	public static final Item NV_LENS = new MiscItem("nv_lens", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item NV_BODY = new MiscItem("nv_goggle_body", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item NV_INTERNALS = new MiscItem("nv_goggle_circuits", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item NV_STRAPS = new MiscItem("nv_goggle_strap", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 }

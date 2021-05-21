@@ -12,7 +12,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
-import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.util.config.ModConfig;
 
 import java.util.Random;

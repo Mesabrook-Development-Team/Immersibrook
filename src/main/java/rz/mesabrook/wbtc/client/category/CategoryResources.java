@@ -86,6 +86,12 @@ public class CategoryResources extends AbstractCategory
 		add(ModBlocks.PLASTIC_CUBE_RED);
 		add(ModBlocks.PLASTIC_CUBE_BLACK);
 		add(ModBlocks.PLASTIC_CUBE_GLOWING);
+		
+		// Night Vision Goggle Components
+		add(ModItems.NV_BODY);
+		add(ModItems.NV_INTERNALS);
+		add(ModItems.NV_LENS);
+		add(ModItems.NV_STRAPS);
 	}
 
 }

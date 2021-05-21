@@ -43,6 +43,11 @@ public class MiscItem extends Item implements IHasModel
 		{
 			tooltip.add(TextFormatting.GOLD + "Raw Material");
 		}
+		
+		if(this.getUnlocalizedName().contains("nv_lens") || this.getUnlocalizedName().contains("nv_goggle_body") || this.getUnlocalizedName().contains("nv_goggle_circuits") || this.getUnlocalizedName().contains("nv_goggle_strap"))
+		{
+			tooltip.add(TextFormatting.GOLD + "Crafting Ingredient");
+		}
 	}
 	
 	@Override

@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+		" s ",
+		"sbs",
+		" c "
+    ],
+    "key":
+    {
+		"s":
+		{
+			"item": "wbtc:nv_goggle_strap"
+		},
+		"b":
+		{
+			"item": "wbtc:nv_goggle_body"
+		},
+		"c":
+		{
+			"item": "wbtc:nv_goggle_circuits"
+		}
+    },
+    "result":
+    {
+        "item": "wbtc:nv_goggles",
+        "count": 1
+    }
+}

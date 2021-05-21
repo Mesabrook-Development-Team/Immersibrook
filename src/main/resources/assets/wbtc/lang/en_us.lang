@@ -74,6 +74,10 @@ item.ingot_aluminum.name=Aluminum Ingot
 item.nugget_aluminum.name=Aluminum Nugget
 item.aluminum_dust.name=Aluminum Grit
 item.nv_goggles.name=Night Vision Goggles
+item.nv_lens.name=Night Vision Lens
+item.nv_goggle_body.name=Night Vision Goggle Body
+item.nv_goggle_circuits.name=Night Vision Goggle Logic Board
+item.nv_goggle_strap.name=Night Vision Goggle Head Straps
 
 //Smooth Wood Blocks
 tile.smooth_oak.name=Smooth Oak Wood

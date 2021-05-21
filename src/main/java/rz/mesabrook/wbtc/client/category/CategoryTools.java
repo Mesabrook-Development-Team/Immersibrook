@@ -33,6 +33,9 @@ public class CategoryTools extends AbstractCategory {
 		
 		// First Aid Kit
 		add(ModItems.FIRST_AID_KIT);
+		
+		// Night Vision Goggles
+		add(ModItems.NV_GOGGLES);
 	}
 
 }

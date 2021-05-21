@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "xyx",
+        "yzy",
+        "xyx"
+    ],
+    "key":
+    {
+        "x":
+        {
+            "item": "wbtc:gray_plastic"
+        },
+		"y":
+		{
+			"item": "minecraft:stained_glass_pane",
+			"data": 5
+		},
+		"z":
+		{
+			"item": "minecraft:emerald"
+		}
+    },
+    "result":
+    {
+        "item": "wbtc:nv_lens",
+        "count": 1
+    }
+}

@@ -1,0 +1,37 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "dgd",
+        "yxy",
+        "rxr"
+    ],
+    "key":
+    {
+        "x":
+        {
+            "item": "wbtc:green_plastic"
+        },
+		"y":
+		{
+			"item": "wbtc:nv_lens"
+		},
+		"d":
+		{
+			"item": "minecraft:diamond"
+		},
+		"g":
+		{
+			"item": "minecraft:gold_ingot"
+		},
+		"r":
+		{
+			"item": "minecraft:redstone_lamp"
+		}
+    },
+    "result":
+    {
+        "item": "wbtc:nv_goggle_circuits",
+        "count": 1
+    }
+}
