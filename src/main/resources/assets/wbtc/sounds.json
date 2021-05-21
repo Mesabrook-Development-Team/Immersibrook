@@ -26,5 +26,6 @@
 	"krab_borg_full": {"category": "master","sounds": [{"name": "wbtc:krab_borg_full","stream": true}]},
 	"fish": {"category": "master","sounds": [{"name": "wbtc:fish","stream": true}]},
 	"fish_full": {"category": "master","sounds": [{"name": "wbtc:fish_full","stream": true}]},
-	"no": {"category": "master","sounds": [{"name": "wbtc:no","stream": true}]}
+	"no": {"category": "master","sounds": [{"name": "wbtc:no","stream": true}]},
+	"nv": {"category": "master","sounds": [{"name": "wbtc:nv","stream": true}]}
 }
