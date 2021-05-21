@@ -31,6 +31,7 @@ public class SoundInit
 	public static final SoundEvent FISH_FULL;
 	public static final SoundEvent NO;
 	public static final SoundEvent NV;
+	public static final SoundEvent VEST;
 	
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -65,6 +66,7 @@ public class SoundInit
 		FISH_FULL = addSoundsToRegistry("fish_full");
 		NO = addSoundsToRegistry("no");
 		NV = addSoundsToRegistry("nv");
+		VEST = addSoundsToRegistry("vest");
 		
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -124,6 +126,7 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.FISH_FULL);
 				event.getRegistry().registerAll(SoundInit.NO);
 				event.getRegistry().registerAll(SoundInit.NV);
+				event.getRegistry().registerAll(SoundInit.VEST);
 				
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

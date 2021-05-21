@@ -110,18 +110,18 @@ public class ModItems
 	public static final Item FIRST_AID_KIT = new ItemFirstAidKit("first_aid", Main.IMMERSIBROOK_MAIN);
 	
 	// Safety Vest Armor Materials
-	public static final ArmorMaterial SAFETY_VEST_MATERIAL = EnumHelper.addArmorMaterial("safety_vest", Reference.MODID + ":safety_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
-	public static final ArmorMaterial SAFETY_VEST_YELLOW_MAT = EnumHelper.addArmorMaterial("yellow_vest", Reference.MODID + ":yellow_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
-	public static final ArmorMaterial SAFETY_VEST_ORANGE_NON_X_MAT = EnumHelper.addArmorMaterial("orange_vest_no_x", Reference.MODID + ":orange_vest_no_x", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
-	public static final ArmorMaterial SAFETY_VEST_BLUE_MAT = EnumHelper.addArmorMaterial("blue_vest", Reference.MODID + ":blue_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
-	public static final ArmorMaterial SAFETY_VEST_YELLOW_WITH_X_MAT = EnumHelper.addArmorMaterial("yellow_vest_x", Reference.MODID + ":yellow_vest_x", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
-	public static final ArmorMaterial LVN_SAFETY_VEST_NO_X = EnumHelper.addArmorMaterial("lvn_vest", Reference.MODID + ":lvn_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
-	public static final ArmorMaterial LVN_SAFETY_VEST_X = EnumHelper.addArmorMaterial("lvn_vest_x", Reference.MODID + ":lvn_vest_x", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
-	public static final ArmorMaterial LVN_SAFETY_VEST_TXT = EnumHelper.addArmorMaterial("lvn_vest_txt", Reference.MODID + ":lvn_vest_txt", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
-	public static final ArmorMaterial IRW_SAFETY_VEST_MAT = EnumHelper.addArmorMaterial("irw_vest", Reference.MODID + ":irw_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
-	public static final ArmorMaterial TGES_VEST = EnumHelper.addArmorMaterial("tges_vest", Reference.MODID + ":tges_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
-	public static final ArmorMaterial RED_VEST = EnumHelper.addArmorMaterial("red_vest", Reference.MODID + ":red_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
-	public static final ArmorMaterial EMS_VEST = EnumHelper.addArmorMaterial("ems_vest", Reference.MODID + ":ems_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
+	public static final ArmorMaterial SAFETY_VEST_MATERIAL = EnumHelper.addArmorMaterial("safety_vest", Reference.MODID + ":safety_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
+	public static final ArmorMaterial SAFETY_VEST_YELLOW_MAT = EnumHelper.addArmorMaterial("yellow_vest", Reference.MODID + ":yellow_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
+	public static final ArmorMaterial SAFETY_VEST_ORANGE_NON_X_MAT = EnumHelper.addArmorMaterial("orange_vest_no_x", Reference.MODID + ":orange_vest_no_x", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
+	public static final ArmorMaterial SAFETY_VEST_BLUE_MAT = EnumHelper.addArmorMaterial("blue_vest", Reference.MODID + ":blue_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
+	public static final ArmorMaterial SAFETY_VEST_YELLOW_WITH_X_MAT = EnumHelper.addArmorMaterial("yellow_vest_x", Reference.MODID + ":yellow_vest_x", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
+	public static final ArmorMaterial LVN_SAFETY_VEST_NO_X = EnumHelper.addArmorMaterial("lvn_vest", Reference.MODID + ":lvn_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
+	public static final ArmorMaterial LVN_SAFETY_VEST_X = EnumHelper.addArmorMaterial("lvn_vest_x", Reference.MODID + ":lvn_vest_x", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
+	public static final ArmorMaterial LVN_SAFETY_VEST_TXT = EnumHelper.addArmorMaterial("lvn_vest_txt", Reference.MODID + ":lvn_vest_txt", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
+	public static final ArmorMaterial IRW_SAFETY_VEST_MAT = EnumHelper.addArmorMaterial("irw_vest", Reference.MODID + ":irw_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
+	public static final ArmorMaterial TGES_VEST = EnumHelper.addArmorMaterial("tges_vest", Reference.MODID + ":tges_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
+	public static final ArmorMaterial RED_VEST = EnumHelper.addArmorMaterial("red_vest", Reference.MODID + ":red_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
+	public static final ArmorMaterial EMS_VEST = EnumHelper.addArmorMaterial("ems_vest", Reference.MODID + ":ems_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
 	public static final ArmorMaterial NIGHT_VISION_HELMET = EnumHelper.addArmorMaterial("nv_goggles", Reference.MODID + ":nv_goggles", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.NV, 2.0F);
 	
 	// Generic Safety Vests
