@@ -106,6 +106,7 @@ public class RegistryHandler
 	public static void initRegistries()
 	{
 		Main.logger.info("[" + Reference.MODNAME + "] Initialization");
+		MinecraftForge.EVENT_BUS.register(new PlayerEvents());
 		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new GuiHandler());
 	}
 	

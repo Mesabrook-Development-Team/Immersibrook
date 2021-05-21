@@ -121,6 +121,7 @@ public class ModItems
 	public static final ArmorMaterial IRW_SAFETY_VEST_MAT = EnumHelper.addArmorMaterial("irw_vest", Reference.MODID + ":irw_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
 	public static final ArmorMaterial TGES_VEST = EnumHelper.addArmorMaterial("tges_vest", Reference.MODID + ":tges_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
 	public static final ArmorMaterial RED_VEST = EnumHelper.addArmorMaterial("red_vest", Reference.MODID + ":red_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
+	public static final ArmorMaterial EMS_VEST = EnumHelper.addArmorMaterial("ems_vest", Reference.MODID + ":ems_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
 	public static final ArmorMaterial NIGHT_VISION_HELMET = EnumHelper.addArmorMaterial("nv_goggles", Reference.MODID + ":nv_goggles", 20, new int[] {7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0F);
 	
 	// Generic Safety Vests
@@ -131,7 +132,8 @@ public class ModItems
 	public static final Item SAFETY_VEST_YELLOW_X = new SafetyVestModel("safety_vest_yellow_x", Main.IMMERSIBROOK_MAIN, SAFETY_VEST_YELLOW_WITH_X_MAT, EntityEquipmentSlot.CHEST);
 	public static final Item SAFETY_VEST_TGES = new SafetyVestModel("tges_vest", Main.IMMERSIBROOK_MAIN, TGES_VEST, EntityEquipmentSlot.CHEST);
 	public static final Item SAFETY_VEST_RED = new SafetyVestModel("red_vest", Main.IMMERSIBROOK_MAIN, RED_VEST, EntityEquipmentSlot.CHEST);
-
+	public static final Item SAFETY_VEST_EMS = new SafetyVestModel("ems_vest", Main.IMMERSIBROOK_MAIN, EMS_VEST, EntityEquipmentSlot.CHEST);
+	
 	// IRW Vest
 	public static final Item IRW_VEST = new SafetyVestModel("irw_vest", Main.IMMERSIBROOK_MAIN, IRW_SAFETY_VEST_MAT, EntityEquipmentSlot.CHEST);
 	

@@ -14,6 +14,9 @@ import rz.mesabrook.wbtc.util.Reference;
 @LangKey(Reference.MODID + ".config.title")
 public final class ModConfig 
 {
+	@Comment("Set to false to disable the welcome message shown at login")
+	public static boolean showWelcome = true;
+	
 	@Comment("Set to false to disable sound effects for Food Cube blocks.")
 	public static boolean foodCubeSounds = true;
 	

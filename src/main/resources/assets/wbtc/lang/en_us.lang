@@ -1,6 +1,9 @@
 //Config
 wbtc.config.title=Configuration File for Immersibrook
 
+//Welcome message
+im.welcome=Thanks for playing with Immersibrook!
+
 //First Aid
 item.first_aid.name=First Aid Kit
 
@@ -16,6 +19,7 @@ im.filter.tools=Weapons and Tools
 im.filter.records=Music Discs
 im.filter.resources=Materials
 im.filter.food=Foods
+im.filter.vests=Safety Vests
 
 //Safety Vest
 item.safety_vest_orange.name=Orange Safety Vest - Railroad Pattern
@@ -26,6 +30,7 @@ item.safety_vest_blue.name=Blue Safety Vest
 item.irw_vest.name=Orange Safety Vest - Iron River-Western Branding
 item.red_vest.name=Red Safety Vest
 item.tges_vest.name=Red Safety Vest - T-GES Mineral Works Branding
+item.ems_vest.name=Cyan Safety Vest - Emergency Medical Technician
 
 
 //Leviathan Safety Vests

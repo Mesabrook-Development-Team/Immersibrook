@@ -64,7 +64,21 @@ public class CreativeGuiDrawHandler
     	{
         	this.guiCenterX = ((GuiContainerCreative) event.getGui()).getGuiLeft();
             this.guiCenterY = ((GuiContainerCreative) event.getGui()).getGuiTop();
-            this.categories = new AbstractCategory[] {Categories.BUILDING_BLOCKS, Categories.CEILING_BLOCKS, Categories.HOUSEHOLD, Categories.FOOD, Categories.TOOLS, Categories.RAW, Categories.MUSIC, Categories.TROPHY};
+            
+            // Add and reorganize category tabs here.
+            this.categories = new AbstractCategory[] 
+            {
+            		Categories.BUILDING_BLOCKS, 
+            		Categories.CEILING_BLOCKS, 
+            		Categories.HOUSEHOLD, 
+            		Categories.TROPHY,
+            		Categories.TOOLS, 
+            		Categories.VESTS, 
+            		Categories.FOOD, 
+            		Categories.RAW, 
+            		Categories.MUSIC,
+            };
+            
             this.categoryButtons = Lists.newArrayList();
             this.buttonList = event.getButtonList();
             
