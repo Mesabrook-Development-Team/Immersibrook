@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "c c",
+        "gbg",
+        "ggg"
+    ],
+    "key":
+    {
+		"c":
+		{
+			"item": "wbtc:cyan_plastic"
+		},
+		"g":
+		{
+			"item": "wbtc:glowing_plastic"
+		},
+		"b":
+		{
+			"item": "wbtc:blue_plastic"
+		}
+    },
+    "result":
+    {
+        "item": "wbtc:ems_vest",
+        "count": 1
+    }
+}

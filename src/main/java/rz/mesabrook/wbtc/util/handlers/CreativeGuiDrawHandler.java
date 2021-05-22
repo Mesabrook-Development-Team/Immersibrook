@@ -72,11 +72,11 @@ public class CreativeGuiDrawHandler
             		Categories.CEILING_BLOCKS, 
             		Categories.HOUSEHOLD, 
             		Categories.TROPHY,
+            		Categories.MUSIC,
             		Categories.TOOLS, 
             		Categories.VESTS, 
             		Categories.FOOD, 
             		Categories.RAW, 
-            		Categories.MUSIC,
             };
             
             this.categoryButtons = Lists.newArrayList();
