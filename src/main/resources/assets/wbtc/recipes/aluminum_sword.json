@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "a",
+		"a",
+        "s"
+    ],
+    "key":
+    {
+        "a":
+        {
+            "type": "forge:ore_dict",
+            "ore": "ingotAluminum"
+        },
+		"s":
+		{
+			"item": "minecraft:stick"
+		}
+    },
+    "result":
+    {
+        "item": "wbtc:aluminum_sword",
+        "count": 1
+    }
+}

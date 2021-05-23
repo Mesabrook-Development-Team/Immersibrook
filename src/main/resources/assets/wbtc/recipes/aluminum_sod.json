@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "a",
+        "s"
+    ],
+    "key":
+    {
+        "a":
+        {
+            "type": "forge:ore_dict",
+            "ore": "ingotAluminum"
+        },
+		"s":
+		{
+			"item": "minecraft:stick"
+		}
+    },
+    "result":
+    {
+        "item": "wbtc:aluminum_sod",
+        "count": 1
+    }
+}

@@ -8,13 +8,13 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import rz.mesabrook.wbtc.enchant.EnchantmentThunder;
 import rz.mesabrook.wbtc.items.weapons.ItemCane;
-import rz.mesabrook.wbtc.items.weapons.ItemSod;
+import rz.mesabrook.wbtc.items.weapons.ItemWeapon;
 import rz.mesabrook.wbtc.util.Reference;
 
 @Mod.EventBusSubscriber(modid=Reference.MODID)
 public class ModEnchants 
 {
-	public static final EnumEnchantmentType WEAPONS = EnumHelper.addEnchantmentType("weapons", (item)->(item instanceof ItemSod || item instanceof ItemCane));
+	public static final EnumEnchantmentType WEAPONS = EnumHelper.addEnchantmentType("weapons", (item)->(item instanceof ItemWeapon));
 
 	public static final Enchantment THUNDER = new EnchantmentThunder();
 	

@@ -17,29 +17,33 @@ import rz.mesabrook.wbtc.items.misc.ItemFirstAidKit;
 import rz.mesabrook.wbtc.items.misc.MiscItem;
 import rz.mesabrook.wbtc.items.record.MemeRecord;
 import rz.mesabrook.wbtc.items.weapons.ItemCane;
-import rz.mesabrook.wbtc.items.weapons.ItemSod;
+import rz.mesabrook.wbtc.items.weapons.ItemWeapon;
 import rz.mesabrook.wbtc.util.Reference;
 
 public class ModItems 
 {
 	public static final List<Item> ITEMS = new ArrayList<Item>();
 	
-	// Sod Materials
+	// Weapon Materials
 	public static final ToolMaterial SOD_WOOD = EnumHelper.addToolMaterial("wbtc_wood", 0, 30, 1.0F, -2.0F, 8);
 	public static final ToolMaterial SOD_STONE = EnumHelper.addToolMaterial("wbtc_stone", 1, 66, 2.0F, -0.5F, 5);
 	public static final ToolMaterial SOD_IRON = EnumHelper.addToolMaterial("wbtc_iron", 2, 125, 3.0F, -1.0F, 8);
 	public static final ToolMaterial SOD_GOLD = EnumHelper.addToolMaterial("wbtc_gold", 0, 16, 1.0F, -2.0F, 11);
 	public static final ToolMaterial SOD_DIAMOND = EnumHelper.addToolMaterial("wbtc_diamond", 3, 780, 4.0F, -0.5F, 5);
+	public static final ToolMaterial SOD_ALUMINUM = EnumHelper.addToolMaterial("wbtc_aluminum_sod", 2, 100, 3.0F, -1.2F, 3);
+	public static final ToolMaterial SWORD_ALUMINUM = EnumHelper.addToolMaterial("wbtc_aluminum", 2, 200, 5.0F, 1.2F, 8);
 	
-	// Sods
-	public static final Item WOOD_SOD = new ItemSod("wood_sod", SOD_WOOD);
-	public static final Item STONE_SOD = new ItemSod("stone_sod", SOD_STONE);
-	public static final Item IRON_SOD = new ItemSod("iron_sod", SOD_IRON);
-	public static final Item GOLD_SOD = new ItemSod("gold_sod", SOD_GOLD);
-	public static final Item DIAMOND_SOD = new ItemSod("diamond_sod", SOD_DIAMOND);
+	// Weapons uwu
+	public static final Item WOOD_SOD = new ItemWeapon("wood_sod", SOD_WOOD);
+	public static final Item STONE_SOD = new ItemWeapon("stone_sod", SOD_STONE);
+	public static final Item IRON_SOD = new ItemWeapon("iron_sod", SOD_IRON);
+	public static final Item GOLD_SOD = new ItemWeapon("gold_sod", SOD_GOLD);
+	public static final Item DIAMOND_SOD = new ItemWeapon("diamond_sod", SOD_DIAMOND);
+	public static final Item ALUMINUM_SOD = new ItemWeapon("aluminum_sod", SOD_ALUMINUM);
+	public static final Item ALUMINUM_SWORD = new ItemWeapon("aluminum_sword", SWORD_ALUMINUM);
 	
 	// Special Cane
-	public static final Item ZOE_CANE = new ItemCane("zoe_cane", ToolMaterial.DIAMOND);
+	public static final Item ZOE_CANE = new ItemWeapon("zoe_cane", ToolMaterial.DIAMOND);
 	
 	// Immersibrook Creative Tab Item
 	public static final Item IMMERSIBROOK_ICON = new MiscItem("icon_immersibrook", 1);

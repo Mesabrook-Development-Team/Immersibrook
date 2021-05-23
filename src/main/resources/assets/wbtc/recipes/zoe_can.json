@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "  n",
+        " o ",
+        "o  "
+    ],
+    "key":
+    {
+        "n":
+        {
+			"item": "minecraft:nether_star"
+        },
+		"o":
+		{
+			"item": "minecraft:obsidian"
+		}
+    },
+    "result":
+    {
+        "item": "wbtc:zoe_cane",
+        "count": 1
+    }
+}

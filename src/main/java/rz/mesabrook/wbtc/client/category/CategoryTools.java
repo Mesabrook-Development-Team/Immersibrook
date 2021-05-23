@@ -27,6 +27,8 @@ public class CategoryTools extends AbstractCategory {
 		add(ModItems.IRON_SOD);
 		add(ModItems.GOLD_SOD);
 		add(ModItems.DIAMOND_SOD);
+		add(ModItems.ALUMINUM_SOD);
+		add(ModItems.ALUMINUM_SWORD);
 		
 		// Cane
 		add(ModItems.ZOE_CANE);

@@ -4,6 +4,10 @@ wbtc.config.title=Configuration File for Immersibrook
 //Welcome message
 im.welcome=Thanks for playing with Immersibrook!
 
+//Commands
+im.cmd.error=/immersibrook about | version | changelog
+im.cmd.usage=Immersibrook Command
+
 //First Aid
 item.first_aid.name=First Aid Kit
 
@@ -68,6 +72,8 @@ item.stone_sod.name=Stone Sod
 item.iron_sod.name=Iron Sod
 item.gold_sod.name=Golden Sod
 item.diamond_sod.name=Diamond Sod
+item.aluminum_sod.name=Aluminum Sod
+item.aluminum_sword.name=Aluminum Sword
 item.iron_rod.name=Iron Rod
 item.aluminum_rod.name=Aluminum Rod
 item.ingot_aluminum.name=Aluminum Ingot

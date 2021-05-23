@@ -17,9 +17,9 @@ import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.config.ModConfig;
 
-public class ItemSod extends ItemSword implements IHasModel
+public class ItemWeapon extends ItemSword implements IHasModel
 {
-	public ItemSod(String name, ToolMaterial material)
+	public ItemWeapon(String name, ToolMaterial material)
 	{
 		super(material);
 		setUnlocalizedName(name);
@@ -35,9 +35,12 @@ public class ItemSod extends ItemSword implements IHasModel
 	{
 		if(ModConfig.funnyTooltips)
 		{
-			tooltip.add(TextFormatting.RED + "noo you can't just break a sword in half and call it a sod!");
-			tooltip.add(TextFormatting.AQUA + "hehe sod go swish slash");
-			super.addInformation(stack, world, tooltip, flag);
+			if(this.getUnlocalizedName().contains("sod"))
+			{
+				tooltip.add(TextFormatting.RED + "noo you can't just break a sword in half and call it a sod!");
+				tooltip.add(TextFormatting.AQUA + "hehe sod go swish slash");
+				super.addInformation(stack, world, tooltip, flag);
+			}
 		}
 	}
 	

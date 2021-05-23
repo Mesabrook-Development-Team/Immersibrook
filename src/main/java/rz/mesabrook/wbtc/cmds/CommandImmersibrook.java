@@ -11,30 +11,33 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.command.WrongUsageException;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
+import net.minecraftforge.fml.relauncher.Side;
 import rz.mesabrook.wbtc.cmds.util.CustomTeleporter;
+import rz.mesabrook.wbtc.init.SoundInit;
+import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.util.Reference;
+import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 public class CommandImmersibrook extends CommandBase
 {
 	private final List<String> aliases = Lists.newArrayList(Reference.MODID, "immersibrook", "ib", "mesabrook");
-
+	
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException
 	{
-		//sender.sendMessage(new TextComponentString(TextFormatting.AQUA + "Immersibrook " + TextFormatting.YELLOW + Reference.VERSION));
-		//sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Build Date: " + TextFormatting.BOLD + Reference.BUILD_DATE));
-	
-	
 		if(args.length < 1)
 		{
-			throw new WrongUsageException("/immersibrook info:version", new Object[0]);
+			throw new WrongUsageException("im.cmd.error", new Object[0]);
 		}
 		else
 		{
-			if("info".equals(args[0]))
+			if("about".equals(args[0]))
 			{
 				sender.sendMessage(new TextComponentString(TextFormatting.AQUA + "Immersibrook "));
 				sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "hehe immersion go brr"));
@@ -42,13 +45,22 @@ public class CommandImmersibrook extends CommandBase
 				sender.sendMessage(new TextComponentString(TextFormatting.YELLOW + "Developed by RavenholmZombie with assistance from CSX8600 for use on the Mesabrook Minecraft server."));
 				sender.sendMessage(new TextComponentString(TextFormatting.GOLD + "https://mesabrook.com"));
 			}
-			else
+			else if("version".equals(args[0]))
 			{
-				if("version".equals(args[0]))
-				{
-					sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Version " + Reference.VERSION));
-					sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Build Date: " + TextFormatting.BOLD + Reference.BUILD_DATE));
-				}
+				sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Version " + Reference.VERSION));
+				sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Build Date: " + TextFormatting.BOLD + Reference.BUILD_DATE));
+			}
+			else if("changelog".equals(args[0]))
+			{
+				sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Version " + Reference.VERSION));
+				sender.sendMessage(new TextComponentString(""));
+				sender.sendMessage(new TextComponentString(TextFormatting.GOLD + "Changes:"));
+				sender.sendMessage(new TextComponentString(TextFormatting.WHITE + "-[NEW] Aluminum Sod and Sword\n"
+						+ "-[NEW] Night Vision Goggles\n"
+						+ "-[NEW] Recipe for the Cane of Distinction\n"
+						+ "-[CHANGE] Recipe for Exit Sign.\n"
+						+ "-[FIX] The Glowing effect no longer flickers.\n"
+						));
 			}
 		}
 	}
@@ -62,7 +74,7 @@ public class CommandImmersibrook extends CommandBase
 	@Override
 	public String getUsage(ICommandSender sender)
 	{
-		return "Immersibrook Base Command";
+		return "im.cmd.usage";
 	}
 	
 	@Override
@@ -74,12 +86,12 @@ public class CommandImmersibrook extends CommandBase
 	@Override
     public int getRequiredPermissionLevel()
     {
-        return 0;
+        return 2;
     }
 	
 	@Override
 	public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, BlockPos targetPos) 
 	{
-		return Collections.emptyList();
+		return args.length == 1 ? getListOfStringsMatchingLastWord(args, new String[] {"about", "version", "changelog"}) : Collections.emptyList();
 	}
 }
