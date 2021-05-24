@@ -123,9 +123,11 @@ public class ModBlocks
 	public static final Block FLOOR_TILE_18 = new MiscBlock("wbtc_floor_18", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	
 	// Misc Blocks
-	public static final Block WHITE_STONE = new MiscBlock("white_stone", Material.ROCK, SoundType.STONE, CreativeTabs.BUILDING_BLOCKS, 0F);
-	public static final Block SMOOTHED_STONE = new MiscBlock("smoothed_stone", Material.ROCK, SoundType.STONE, CreativeTabs.BUILDING_BLOCKS, 0F);
+	public static final Block WHITE_STONE = new MiscBlock("white_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SMOOTHED_STONE = new MiscBlock("smoothed_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block ASTRO_TURF = new MiscBlock("synthetic_turf", Material.PLANTS, SoundType.PLANT, Main.IMMERSIBROOK_MAIN, 0.7F);
+	public static final Block WHITE_COBBLE = new MiscBlock("white_cobblestone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block WHITE_STONE_BRICKS = new MiscBlock("white_stone_bricks", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	
 	// Commercial Kitchen Floor Blocks
 	public static final Block FLOOR_KITCHEN_1 = new MiscBlock("floor_kitchen_1", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
@@ -236,4 +238,10 @@ public class ModBlocks
 	public static final Block STAIRS_SMOOTH_JUNGLE = new MiscStairs("smooth_jungle_stairs", ModBlocks.SMOOTH_JUNGLE.getDefaultState(), SoundType.WOOD, "axe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block STAIRS_SMOOTH_ACACIA = new MiscStairs("smooth_acacia_stairs", ModBlocks.SMOOTH_ACACIA.getDefaultState(), SoundType.WOOD, "axe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block STAIRS_SMOOTH_DARK_OAK = new MiscStairs("smooth_dark_oak_stairs", ModBlocks.SMOOTH_OAK.getDefaultState(), SoundType.WOOD, "axe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+
+	// Chalked Stone Stairs
+	public static final Block CHALKED_STONE_STAIRS = new MiscStairs("white_stone_stairs", ModBlocks.WHITE_STONE.getDefaultState(), SoundType.STONE, "pickaxe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block CHALKED_COBBLESTONE_STAIRS = new MiscStairs("white_cobblestone_stairs", ModBlocks.WHITE_COBBLE.getDefaultState(), SoundType.STONE, "pickaxe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block CHALKED_STONE_BRICK_STAIRS = new MiscStairs("white_stone_brick_stairs", ModBlocks.WHITE_STONE_BRICKS.getDefaultState(), SoundType.STONE, "pickaxe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+
 }

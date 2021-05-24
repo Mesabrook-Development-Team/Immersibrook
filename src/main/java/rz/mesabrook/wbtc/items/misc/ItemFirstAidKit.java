@@ -28,6 +28,7 @@ import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.Reference;
+import rz.mesabrook.wbtc.util.SoundRandomizer;
 import rz.mesabrook.wbtc.util.config.ModConfig;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
@@ -53,6 +54,7 @@ public class ItemFirstAidKit extends Item implements IHasModel
 			Main.logger.info("[" + Reference.MODNAME + "] You can adjust this number in wbtc.cfg");
 		}
 		
+		SoundRandomizer.RandomizeSound();
 		ModItems.ITEMS.add(this);
 	}
 	
@@ -72,13 +74,19 @@ public class ItemFirstAidKit extends Item implements IHasModel
 			}
 			else
 			{
+				SoundRandomizer.RandomizeSound();
 				world.playSound(player, player.getPosition(), SoundEvents.ENTITY_VILLAGER_NO, SoundCategory.BLOCKS, 1.0F, 1.0F);
 				return new ActionResult<ItemStack>(EnumActionResult.FAIL, item);
 			}
 		}
 		else
 		{
-			world.playSound(player, player.getPosition(), SoundInit.NO, SoundCategory.BLOCKS, 1.0F, 1.0F);
+			SoundRandomizer.RandomizeSound();
+			PlaySoundPacket packet = new PlaySoundPacket();
+			packet.pos = player.getPosition();
+			
+			packet.soundName = SoundRandomizer.result;
+			PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
 			return new ActionResult<ItemStack>(EnumActionResult.FAIL, item);
 		}
 	}

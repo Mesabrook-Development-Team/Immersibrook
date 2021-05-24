@@ -1,0 +1,12 @@
+{
+   "parent": "block/cube",
+   "textures": {
+	   "particle": "wbtc:blocks/white_stone_bricks",
+       "up": "wbtc:blocks/white_stone_bricks",
+       "down": "wbtc:blocks/white_stone_bricks",
+       "south": "wbtc:blocks/white_stone_bricks",
+       "north": "wbtc:blocks/white_stone_bricks",
+       "west": "wbtc:blocks/white_stone_bricks",
+       "east": "wbtc:blocks/white_stone_bricks"
+   }
+}

@@ -1,0 +1,8 @@
+{
+    "parent": "block/inner_stairs",
+    "textures": {
+        "bottom": "wbtc:blocks/white_stone",
+        "top": "wbtc:blocks/white_stone",
+        "side": "wbtc:blocks/white_stone"
+    }
+}

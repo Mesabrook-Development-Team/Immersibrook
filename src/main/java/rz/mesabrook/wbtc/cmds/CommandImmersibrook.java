@@ -26,7 +26,7 @@ import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 public class CommandImmersibrook extends CommandBase
 {
-	private final List<String> aliases = Lists.newArrayList(Reference.MODID, "immersibrook", "ib", "mesabrook");
+	private final List<String> aliases = Lists.newArrayList("immersibrook", "ib", "mesabrook", "brook");
 	
 	@Override
 	public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException
@@ -39,7 +39,7 @@ public class CommandImmersibrook extends CommandBase
 		{
 			if("about".equals(args[0]))
 			{
-				sender.sendMessage(new TextComponentString(TextFormatting.AQUA + "Immersibrook "));
+				sender.sendMessage(new TextComponentString(TextFormatting.AQUA + Reference.MODNAME));
 				sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "hehe immersion go brr"));
 				sender.sendMessage(new TextComponentString(""));
 				sender.sendMessage(new TextComponentString(TextFormatting.YELLOW + "Developed by RavenholmZombie with assistance from CSX8600 for use on the Mesabrook Minecraft server."));
@@ -56,10 +56,12 @@ public class CommandImmersibrook extends CommandBase
 				sender.sendMessage(new TextComponentString(""));
 				sender.sendMessage(new TextComponentString(TextFormatting.GOLD + "Changes:"));
 				sender.sendMessage(new TextComponentString(TextFormatting.WHITE + "-[NEW] Aluminum Sod and Sword\n"
+						+ "-[NEW] Chalked Cobblestone and Stone Bricks.\n"
+						+ "-[NEW] Chalked Stone, Cobblestone, and Stone Brick Stairs\n"
 						+ "-[NEW] Night Vision Goggles\n"
 						+ "-[NEW] Recipe for the Cane of Distinction\n"
 						+ "-[CHANGE] Recipe for Exit Sign.\n"
-						+ "-[FIX] The Glowing effect no longer flickers.\n"
+						+ "-[FIX] Flickering potion effects for vests no longer flicker!"
 						));
 			}
 		}

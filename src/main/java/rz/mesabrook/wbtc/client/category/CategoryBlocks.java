@@ -52,6 +52,11 @@ public class CategoryBlocks extends AbstractCategory {
 		add(ModBlocks.STAIRS_SMOOTH_ACACIA);
 		add(ModBlocks.STAIRS_SMOOTH_DARK_OAK);
 		
+		// Chalked Stone Stairs
+		add(ModBlocks.CHALKED_STONE_STAIRS);
+		add(ModBlocks.CHALKED_COBBLESTONE_STAIRS);
+		add(ModBlocks.CHALKED_STONE_BRICK_STAIRS);
+		
 		// Floor Tiles
 		add(ModBlocks.FLOOR_CHECKERBOARD);
 		add(ModBlocks.FLOOR_OLD_CHECKERBOARD);
@@ -76,6 +81,8 @@ public class CategoryBlocks extends AbstractCategory {
 		
 		// Misc Blocks
 		add(ModBlocks.WHITE_STONE);
+		add(ModBlocks.WHITE_COBBLE);
+		add(ModBlocks.WHITE_STONE_BRICKS);
 		add(ModBlocks.SMOOTHED_STONE);
 		add(ModBlocks.ASTRO_TURF);
 		

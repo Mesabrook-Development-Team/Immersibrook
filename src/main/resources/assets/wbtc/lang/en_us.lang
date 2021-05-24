@@ -55,6 +55,9 @@ tile.smooth_spruce_stairs.name=Smooth Spruce Wood Stairs
 tile.smooth_jungle_stairs.name=Smooth Jungle Wood Stairs
 tile.smooth_acacia_stairs.name=Smooth Acacia Wood Stairs
 tile.smooth_dark_oak_stairs.name=Smooth Dark Oak Wood Stairs
+tile.white_stone_stairs.name=Chalked Stone Stairs
+tile.white_cobblestone_stairs.name=Chalked Cobblestone Stairs
+tile.white_stone_brick_stairs.name=Chalked Stone Brick Stairs
 
 //Containers
 container.rubbish_bin:Wheelie Bin
@@ -155,6 +158,8 @@ tile.aluminum_block.name=Block of Aluminum
 tile.wbtc_aluminum_ore.name=Aluminum Ore
 tile.rubbish_bin.name=Wheelie Bin
 tile.synthetic_turf.name=Synthetic Turf
+tile.white_cobblestone.name=Chalked Cobblestone
+tile.white_stone_bricks.name=Chalked Stone Bricks
 
 //Sign stand
 tile.sign_stand.name=Portable Road Sign Stand

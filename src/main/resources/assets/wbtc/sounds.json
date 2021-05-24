@@ -28,5 +28,6 @@
 	"fish_full": {"category": "master","sounds": [{"name": "wbtc:fish_full","stream": true}]},
 	"no": {"category": "master","sounds": [{"name": "wbtc:no","stream": true}]},
 	"nv": {"category": "master","sounds": [{"name": "wbtc:nv","stream": true}]},
-	"vest": {"category": "master","sounds": [{"name": "wbtc:vest","stream": true}]}
+	"vest": {"category": "master","sounds": [{"name": "wbtc:vest","stream": true}]},
+	"safety": {"category": "master","sounds": [{"name": "wbtc:safety","stream": true}]}
 }

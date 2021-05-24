@@ -26,6 +26,7 @@ import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.Reference;
+import rz.mesabrook.wbtc.util.SoundRandomizer;
 import rz.mesabrook.wbtc.util.TooltipRandomizer;
 import rz.mesabrook.wbtc.util.config.ModConfig;
 import rz.mesabrook.wbtc.util.recipe.SmeltingRecipes;
@@ -107,6 +108,7 @@ public class RegistryHandler
 	{
 		Main.logger.info("[" + Reference.MODNAME + "] Initialization");
 		MinecraftForge.EVENT_BUS.register(new PlayerEvents());
+		
 		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new GuiHandler());
 	}
 	
