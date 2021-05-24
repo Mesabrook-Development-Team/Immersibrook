@@ -13,7 +13,7 @@ public class SoundRandomizer
 	{
 		Random chooser = new Random();
 		int snds;
-		snds = chooser.nextInt(4);
+		snds = chooser.nextInt(5);
 		
 		switch(snds)
 		{
@@ -25,6 +25,9 @@ public class SoundRandomizer
 			break;
 		case 3:
 			result = "cheese_click";
+			break;
+		case 4:
+			result = "fish";
 			break;
 		}
 	}
