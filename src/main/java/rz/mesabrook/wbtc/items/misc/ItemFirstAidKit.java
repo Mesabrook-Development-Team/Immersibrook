@@ -76,7 +76,7 @@ public class ItemFirstAidKit extends Item implements IHasModel
 			{
 				SoundRandomizer.RandomizeSound();
 				world.playSound(player, player.getPosition(), SoundEvents.ENTITY_VILLAGER_NO, SoundCategory.BLOCKS, 1.0F, 1.0F);
-				return new ActionResult<ItemStack>(EnumActionResult.FAIL, item);
+				return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 			}
 		}
 		else
@@ -85,23 +85,19 @@ public class ItemFirstAidKit extends Item implements IHasModel
 			{
 				if(!world.isRemote)
 				{
+					player.sendMessage(new TextComponentString(TextFormatting.RED + "Not while in Creative Mode >:("));
 					SoundRandomizer.RandomizeSound();
 					PlaySoundPacket packet = new PlaySoundPacket();
-					packet.pos = player.getPosition();
-					
+					packet.pos = player.getPosition();					
 					packet.soundName = SoundRandomizer.result;
-					
-					if(SoundRandomizer.result == "safety")
-					{
-						player.sendMessage(new TextComponentString(TextFormatting.RED + "Safety is an illusion."));
-					}
 					PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
 				}
-				return new ActionResult<ItemStack>(EnumActionResult.FAIL, item);
+				return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 			}
 			catch(Exception ex)
 			{
-				return new ActionResult<ItemStack>(EnumActionResult.FAIL, item);
+				player.sendMessage(new TextComponentString(ex.getMessage()));
+				return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 			}
 		}
 	}

@@ -10,6 +10,7 @@ im.cmd.usage=Immersibrook Command
 
 //First Aid
 item.first_aid.name=First Aid Kit
+im.fa.error=No, not while in Creative Mode >:(
 
 //The NEW and IMPROVED Tab
 ctab.tab_immersibrook=Immersibrook
