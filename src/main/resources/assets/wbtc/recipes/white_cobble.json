@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:cobblestone"
+        },
+        {
+            "item": "minecraft:dye",
+			"data": 15
+        }
+    ],
+    "result": {
+        "item": "wbtc:white_cobblestone",
+        "count": 4
+    }
+}
