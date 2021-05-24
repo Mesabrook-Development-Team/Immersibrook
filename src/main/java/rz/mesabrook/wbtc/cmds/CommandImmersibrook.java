@@ -60,6 +60,7 @@ public class CommandImmersibrook extends CommandBase
 						+ "-[NEW] Chalked Stone, Cobblestone, and Stone Brick Stairs\n"
 						+ "-[NEW] Night Vision Goggles\n"
 						+ "-[NEW] Recipe for the Cane of Distinction\n"
+						+ "-[NEW] Exit Sign with Green Text\n"
 						+ "-[CHANGE] Recipe for Exit Sign.\n"
 						+ "-[FIX] Flickering potion effects for vests no longer flicker!"
 						));

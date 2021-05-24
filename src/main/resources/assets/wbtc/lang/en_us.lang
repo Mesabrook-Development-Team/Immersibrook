@@ -69,6 +69,7 @@ item.zoe_cane.name=Cane of Distinction
 
 //Signs
 tile.exit_sign.name=Exit Sign
+tile.exit_sign_green.name=Exit Sign
 
 //Items
 item.wood_sod.name=Wooden Sod

@@ -203,9 +203,13 @@ public class SignBlock extends Block implements IHasModel
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag)
 	{
-		if(this.getUnlocalizedName().contains("exit_sign"))
+		if(!this.getUnlocalizedName().contains("green"))
 		{
-			tooltip.add(TextFormatting.AQUA + "U.S. Standard Exit Sign");
+			tooltip.add(TextFormatting.RED + "Red Lettering");
+		}
+		else
+		{
+			tooltip.add(TextFormatting.GREEN + "Green Lettering");
 		}
 	}
     
