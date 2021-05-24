@@ -90,6 +90,11 @@ public class ItemFirstAidKit extends Item implements IHasModel
 					packet.pos = player.getPosition();
 					
 					packet.soundName = SoundRandomizer.result;
+					
+					if(SoundRandomizer.result == "safety")
+					{
+						player.sendMessage(new TextComponentString(TextFormatting.RED + "Safety is an illusion."));
+					}
 					PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
 				}
 				return new ActionResult<ItemStack>(EnumActionResult.FAIL, item);
