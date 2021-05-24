@@ -81,13 +81,23 @@ public class ItemFirstAidKit extends Item implements IHasModel
 		}
 		else
 		{
-			SoundRandomizer.RandomizeSound();
-			PlaySoundPacket packet = new PlaySoundPacket();
-			packet.pos = player.getPosition();
-			
-			packet.soundName = SoundRandomizer.result;
-			PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
-			return new ActionResult<ItemStack>(EnumActionResult.FAIL, item);
+			try
+			{
+				if(!world.isRemote)
+				{
+					SoundRandomizer.RandomizeSound();
+					PlaySoundPacket packet = new PlaySoundPacket();
+					packet.pos = player.getPosition();
+					
+					packet.soundName = SoundRandomizer.result;
+					PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+				}
+				return new ActionResult<ItemStack>(EnumActionResult.FAIL, item);
+			}
+			catch(Exception ex)
+			{
+				return new ActionResult<ItemStack>(EnumActionResult.FAIL, item);
+			}
 		}
 	}
 	
