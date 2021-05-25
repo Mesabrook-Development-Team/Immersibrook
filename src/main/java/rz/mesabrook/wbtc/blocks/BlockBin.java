@@ -20,13 +20,16 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.blocks.te.TileEntityTrashBin;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.init.SoundInit;
+import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.Reference;
+import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 public class BlockBin extends BlockContainer implements IHasModel
 {
@@ -48,7 +51,15 @@ public class BlockBin extends BlockContainer implements IHasModel
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
 	{
-		worldIn.playSound(playerIn, pos, SoundInit.CAN_OPEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
+		if(!worldIn.isRemote)
+		{
+			PlaySoundPacket packet = new PlaySoundPacket();
+			packet.pos = pos;
+
+			packet.soundName = "can_open";
+			PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
+		}
+
 		playerIn.openGui(Main.instance, Reference.GUI_TRASHBIN, worldIn, pos.getX(), pos.getY(), pos.getZ());
 		return true;
 	}
