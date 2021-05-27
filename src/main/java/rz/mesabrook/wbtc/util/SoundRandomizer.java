@@ -5,6 +5,10 @@ import java.util.Random;
 import net.minecraft.util.SoundEvent;
 import rz.mesabrook.wbtc.init.SoundInit;
 
+/**
+ * Uses a randomizer to randomly select a sound from Immersibrook's custom sounds and then feeds
+ * its ID into the packet-based sound system.
+ */
 public class SoundRandomizer 
 {
 	public static String result;
