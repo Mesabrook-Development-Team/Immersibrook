@@ -20,6 +20,7 @@ public class BlockFakeLight extends Block implements IHasModel
         setUnlocalizedName(name);
         setRegistryName(name);
         setLightLevel(1);
+        setBlockUnbreakable();
 
         ModBlocks.BLOCKS.add(this);
     }
@@ -51,7 +52,7 @@ public class BlockFakeLight extends Block implements IHasModel
     @Override
     public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side)
     {
-        return true;
+        return false;
     }
 
     @Override
