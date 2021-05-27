@@ -39,6 +39,8 @@ public class BlockCeilingLight extends Block implements ITileEntityProvider, IHa
         setRegistryName(name);
         setUnlocalizedName(name);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
+
+        ModBlocks.BLOCKS.add(this);
     }
 
     @Override
