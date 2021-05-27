@@ -1,5 +1,6 @@
 package rz.mesabrook.wbtc.blocks;
 
+import net.minecraft.item.ItemBlock;
 import rz.mesabrook.wbtc.blocks.te.CeilingLightTileEntity;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.Main;
@@ -27,6 +28,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.util.IHasModel;
 
 @EventBusSubscriber
@@ -41,6 +43,7 @@ public class BlockCeilingLight extends Block implements ITileEntityProvider, IHa
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
 
         ModBlocks.BLOCKS.add(this);
+        ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
     }
 
     @Override

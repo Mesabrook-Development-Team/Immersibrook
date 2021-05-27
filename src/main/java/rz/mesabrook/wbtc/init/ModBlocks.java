@@ -20,10 +20,10 @@ public class ModBlocks
 	public static final List<Block> BLOCKS = new ArrayList<Block>();
 
 	// Fake Light Block
-	public static final Block FAKE_LIGHT_SOURCE = new BlockFakeLight("fake_light");
+	public static final Block FAKE_LIGHT_SOURCE = new BlockFakeLight("wbtc_fake_light");
 
 	// Ceiling Lights
-	public static final Block CEILING_LIGHT_TEST = new BlockCeilingLight("ceiling_light_test");
+	public static final Block CEILING_LIGHT_TEST = new BlockCeilingLight("test_cl");
 
 	// Ceiling Block
 	public static final Block CEILING = new MiscBlock("panel_ceiling", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);

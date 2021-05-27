@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:test_cl" },
+        "facing=south": { "model": "wbtc:test_cl", "y": 180 },
+        "facing=west":  { "model": "wbtc:test_cl", "y": 270 },
+        "facing=east":  { "model": "wbtc:test_cl", "y": 90 }
+    }
+}

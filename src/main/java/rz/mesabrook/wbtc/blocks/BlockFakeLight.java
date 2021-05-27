@@ -51,7 +51,7 @@ public class BlockFakeLight extends Block implements IHasModel
     @Override
     public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side)
     {
-        return false;
+        return true;
     }
 
     @Override
