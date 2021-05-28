@@ -16,10 +16,11 @@ public class BlockFakeLight extends Block implements IHasModel
 {
     public BlockFakeLight(String name)
     {
-        super(Material.AIR);
+        super(Material.GLASS);
         setUnlocalizedName(name);
         setRegistryName(name);
         setLightLevel(1);
+        setLightOpacity(15);
         setBlockUnbreakable();
 
         ModBlocks.BLOCKS.add(this);
@@ -65,6 +66,12 @@ public class BlockFakeLight extends Block implements IHasModel
     public boolean isCollidable()
     {
         return false;
+    }
+
+    @Override
+    public float getAmbientOcclusionLightValue(IBlockState state)
+    {
+        return 1;
     }
 
     @Override

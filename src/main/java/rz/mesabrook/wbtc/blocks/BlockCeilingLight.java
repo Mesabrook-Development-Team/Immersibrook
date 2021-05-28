@@ -1,6 +1,7 @@
 package rz.mesabrook.wbtc.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -15,6 +16,7 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -23,14 +25,19 @@ import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.util.EnumSimpleRotation;
 import rz.mesabrook.wbtc.util.IHasModel;
+import rz.mesabrook.wbtc.util.ModUtils;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class BlockCeilingLight extends Block implements IHasModel
 {
-    public static final PropertyEnum<EnumSimpleRotation> ROTATION = PropertyEnum.create("rotation", EnumSimpleRotation.class);
 
-    public BlockCeilingLight(String name)
+    public static final AxisAlignedBB CORE = new AxisAlignedBB(0.0D, 0.8125D, 0.0D, 1.0D, 1.0D, 1.0D);
+    public BlockCeilingLight(String name, AxisAlignedBB unrotatedAABB)
     {
         super(Material.GLASS);
+        setSoundType(SoundType.GLASS);
         setUnlocalizedName(name);
         setRegistryName(name);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
@@ -38,24 +45,6 @@ public class BlockCeilingLight extends Block implements IHasModel
 
         ModBlocks.BLOCKS.add(this);
         ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
-
-        this.setDefaultState(this.blockState.getBaseState().withProperty(ROTATION, EnumSimpleRotation.NORTH));
-    }
-
-    @Override
-    public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-        //First try and place it against whatever we're placing it against
-        if (facing == EnumFacing.NORTH) { return this.getDefaultState().withProperty(ROTATION, EnumSimpleRotation.NORTH); }
-        if (facing == EnumFacing.EAST)  { return this.getDefaultState().withProperty(ROTATION, EnumSimpleRotation.EAST);  }
-        if (facing == EnumFacing.SOUTH) { return this.getDefaultState().withProperty(ROTATION, EnumSimpleRotation.SOUTH); }
-        if (facing == EnumFacing.WEST)  { return this.getDefaultState().withProperty(ROTATION, EnumSimpleRotation.WEST);  }
-        //If that fails, just place it opposite us
-        if (placer.getHorizontalFacing() == EnumFacing.NORTH) { return this.getDefaultState().withProperty(ROTATION, EnumSimpleRotation.SOUTH); }
-        if (placer.getHorizontalFacing() == EnumFacing.EAST)  { return this.getDefaultState().withProperty(ROTATION, EnumSimpleRotation.WEST);  }
-        if (placer.getHorizontalFacing() == EnumFacing.SOUTH) { return this.getDefaultState().withProperty(ROTATION, EnumSimpleRotation.NORTH); }
-        if (placer.getHorizontalFacing() == EnumFacing.WEST)  { return this.getDefaultState().withProperty(ROTATION, EnumSimpleRotation.EAST);  }
-
-        return this.getDefaultState();
     }
 
     public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
@@ -122,31 +111,40 @@ public class BlockCeilingLight extends Block implements IHasModel
     }
 
     @Override
-    protected BlockStateContainer createBlockState()
-    {
-        return new BlockStateContainer(this, new IProperty[] {ROTATION});
-    }
-
-    @Override
-    public IBlockState getStateFromMeta(int meta)
-    {
-        if (meta == 0) { this.getDefaultState().withProperty(ROTATION, EnumSimpleRotation.NORTH); }
-        if (meta == 1) { this.getDefaultState().withProperty(ROTATION, EnumSimpleRotation.EAST ); }
-        if (meta == 2) { this.getDefaultState().withProperty(ROTATION, EnumSimpleRotation.SOUTH); }
-        if (meta == 3) { this.getDefaultState().withProperty(ROTATION, EnumSimpleRotation.WEST ); }
-        return this.getDefaultState().withProperty(ROTATION, EnumSimpleRotation.byMetadata(meta));
-    }
-
-    @Override
-    public int getMetaFromState(IBlockState state)
-    {
-        return ((EnumSimpleRotation)state.getValue(ROTATION)).getMetadata();
-    }
-
-    @Override
     public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos)
     {
         return state;
+    }
+
+    @Override
+    public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos)
+    {
+        return false;
+    }
+
+    @Override
+    public boolean isOpaqueCube(IBlockState state)
+    {
+        return false;
+    }
+
+    @Override
+    public boolean causesSuffocation(IBlockState state)
+    {
+        return false;
+    }
+
+    @Override
+    public float getAmbientOcclusionLightValue(IBlockState state)
+    {
+        return 1;
+    }
+
+    @Override
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos)
+    {
+        AxisAlignedBB AABB = this.CORE;
+        return AABB;
     }
 
     @Override

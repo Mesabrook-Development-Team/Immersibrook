@@ -40,6 +40,9 @@ public class CategoryHousehold extends AbstractCategory
 		
 		// Bin
 		add(ModBlocks.TRASH_BIN);
+
+		// Lights
+		add(ModBlocks.CEILING_LIGHT_SPOTLIGHT);
 	}
 
 }

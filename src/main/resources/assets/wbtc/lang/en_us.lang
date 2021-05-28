@@ -1,5 +1,6 @@
 //Config
 wbtc.config.title=Configuration File for Immersibrook
+entity.ItemFrame.name=Item Frame
 
 //Welcome message
 im.welcome=Thanks for playing with Immersibrook!
@@ -25,6 +26,9 @@ im.filter.records=Music Discs
 im.filter.resources=Materials
 im.filter.food=Foods
 im.filter.vests=Safety Vests
+
+//Lights
+tile.ceiling_light_spot.name=Ceiling Light
 
 //Safety Vest
 item.safety_vest_orange.name=Orange Safety Vest - Railroad Pattern

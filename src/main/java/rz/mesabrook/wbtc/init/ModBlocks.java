@@ -23,7 +23,7 @@ public class ModBlocks
 	public static final Block FAKE_LIGHT_SOURCE = new BlockFakeLight("wbtc_fake_light");
 
 	// Ceiling Lights
-	public static final Block CEILING_LIGHT_TEST = new BlockCeilingLight("test_cl");
+	public static final Block CEILING_LIGHT_SPOTLIGHT = new BlockCeilingLight("ceiling_light_spot", ModUtils.getPixelatedAABB(7,0,6, 9,1,10));
 
 	// Ceiling Block
 	public static final Block CEILING = new MiscBlock("panel_ceiling", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
