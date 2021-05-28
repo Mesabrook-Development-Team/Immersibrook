@@ -33,6 +33,12 @@ public class BlockFakeLight extends Block implements IHasModel
     }
 
     @Override
+    public boolean causesSuffocation(IBlockState state)
+    {
+        return false;
+    }
+
+    @Override
     public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos)
     {
         return false;

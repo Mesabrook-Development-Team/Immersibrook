@@ -21,6 +21,7 @@ public class CategoryCeiling extends AbstractCategory
 	public void init() 
 	{
 		// Laminate Wood Panels
+		add(ModBlocks.CEILING);
 		add(ModBlocks.PANEL_OAK_L);
 		add(ModBlocks.PANEL_SPRUCE_L);
 		add(ModBlocks.PANEL_BIRCH_L);

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+	"$$$"
+  ],
+  "key": {
+    "#": {
+      "item": "wbtc:gray_plastic"
+    },
+	"$": {
+	  "item": "wbtc:glowing_plastic"
+	}
+  },
+  "result": {
+    "item": "wbtc:panel_light",
+    "count": 3
+  }
+}

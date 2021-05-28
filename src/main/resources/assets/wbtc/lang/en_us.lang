@@ -29,6 +29,7 @@ im.filter.vests=Safety Vests
 
 //Lights
 tile.ceiling_light_spot.name=Ceiling Light
+tile.panel_light.name=Ceiling Light
 
 //Safety Vest
 item.safety_vest_orange.name=Orange Safety Vest - Railroad Pattern

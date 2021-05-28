@@ -34,7 +34,7 @@ public class BlockCeilingLight extends Block implements IHasModel
 {
 
     public static final AxisAlignedBB CORE = new AxisAlignedBB(0.0D, 0.8125D, 0.0D, 1.0D, 1.0D, 1.0D);
-    public BlockCeilingLight(String name, AxisAlignedBB unrotatedAABB)
+    public BlockCeilingLight(String name)
     {
         super(Material.GLASS);
         setSoundType(SoundType.GLASS);
