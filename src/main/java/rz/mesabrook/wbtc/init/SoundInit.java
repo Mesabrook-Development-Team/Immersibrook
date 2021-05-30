@@ -34,6 +34,7 @@ public class SoundInit
 	public static final SoundEvent VEST;
 	public static final SoundEvent SAFETY;
 	public static final SoundEvent YOINK;
+	public static final SoundEvent BEANED;
 	
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -71,6 +72,7 @@ public class SoundInit
 		VEST = addSoundsToRegistry("vest");
 		SAFETY = addSoundsToRegistry("safety");
 		YOINK = addSoundsToRegistry("yoink");
+		BEANED = addSoundsToRegistry("beaned");
 		
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -133,6 +135,7 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.VEST);
 				event.getRegistry().registerAll(SoundInit.SAFETY);
 				event.getRegistry().registerAll(SoundInit.YOINK);
+				event.getRegistry().registerAll(SoundInit.BEANED);
 				
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

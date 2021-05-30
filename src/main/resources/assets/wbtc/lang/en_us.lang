@@ -71,6 +71,7 @@ container.rubbish_bin:Wheelie Bin
 //Deco
 tile.pc_mouse.name=PC Mouse
 item.zoe_cane.name=Cane of Distinction
+item.levi_hammer.name=Levi's Ban Hammer
 
 //Signs
 tile.exit_sign.name=Exit Sign

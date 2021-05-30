@@ -30,5 +30,6 @@
 	"nv": {"category": "master","sounds": [{"name": "wbtc:nv","stream": true}]},
 	"vest": {"category": "master","sounds": [{"name": "wbtc:vest","stream": true}]},
 	"safety": {"category": "master","sounds": [{"name": "wbtc:safety","stream": true}]},
-	"yoink": {"category": "master","sounds": [{"name": "wbtc:yoink","stream": true}]}
+	"yoink": {"category": "master","sounds": [{"name": "wbtc:yoink","stream": true}]},
+	"beaned": {"category": "master","sounds": [{"name": "wbtc:beaned","stream": true}]}
 }
