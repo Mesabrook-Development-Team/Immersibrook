@@ -15,6 +15,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.relauncher.Side;
@@ -52,18 +53,14 @@ public class CommandImmersibrook extends CommandBase
 			}
 			else if("changelog".equals(args[0]))
 			{
-				sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Version " + Reference.VERSION));
-				sender.sendMessage(new TextComponentString(""));
-				sender.sendMessage(new TextComponentString(TextFormatting.GOLD + "Changes:"));
-				sender.sendMessage(new TextComponentString(TextFormatting.WHITE + "-[NEW] Aluminum Sod and Sword\n"
-						+ "-[NEW] Chalked Cobblestone and Stone Bricks.\n"
-						+ "-[NEW] Chalked Stone, Cobblestone, and Stone Brick Stairs\n"
-						+ "-[NEW] Night Vision Goggles\n"
-						+ "-[NEW] Recipe for the Cane of Distinction\n"
-						+ "-[NEW] Exit Sign with Green Text\n"
-						+ "-[CHANGE] Recipe for Exit Sign.\n"
-						+ "-[FIX] Flickering potion effects for vests no longer flicker!"
-						));
+				sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "You are using version " + Reference.VERSION));
+				sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Click the link below to view the changelog."));
+
+				TextComponentString url;
+				url = new TextComponentString("https://bit.ly/3wIt173");
+				url.getStyle().setColor(TextFormatting.AQUA);
+				url.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://bit.ly/3wIt173"));
+				sender.sendMessage(url);
 			}
 		}
 	}

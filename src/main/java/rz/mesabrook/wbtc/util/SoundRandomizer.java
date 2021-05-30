@@ -25,7 +25,7 @@ public class SoundRandomizer
 			result = "safety";
 			break;
 		case 3:
-			result = "cheese_click";
+			result = "yoink";
 			break;
 		case 4:
 			result = "fish";

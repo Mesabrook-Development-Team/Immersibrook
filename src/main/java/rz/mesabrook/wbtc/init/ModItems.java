@@ -32,7 +32,8 @@ public class ModItems
 	public static final ToolMaterial SOD_DIAMOND = EnumHelper.addToolMaterial("wbtc_diamond", 3, 780, 4.0F, -0.5F, 5);
 	public static final ToolMaterial SOD_ALUMINUM = EnumHelper.addToolMaterial("wbtc_aluminum_sod", 2, 100, 3.0F, -1.2F, 3);
 	public static final ToolMaterial SWORD_ALUMINUM = EnumHelper.addToolMaterial("wbtc_aluminum", 2, 200, 5.0F, 1.2F, 8);
-	
+	public static final ToolMaterial ZOE_CANE_MAT = EnumHelper.addToolMaterial("wbtc_zoe_cane_material", 3, 420, 100.0F, 10000.0F, 10);
+
 	// Weapons uwu
 	public static final Item WOOD_SOD = new ItemWeapon("wood_sod", SOD_WOOD);
 	public static final Item STONE_SOD = new ItemWeapon("stone_sod", SOD_STONE);
@@ -43,7 +44,7 @@ public class ModItems
 	public static final Item ALUMINUM_SWORD = new ItemWeapon("aluminum_sword", SWORD_ALUMINUM);
 	
 	// Special Cane
-	public static final Item ZOE_CANE = new ItemWeapon("zoe_cane", ToolMaterial.DIAMOND);
+	public static final Item ZOE_CANE = new ItemWeapon("zoe_cane", ZOE_CANE_MAT);
 	
 	// Immersibrook Creative Tab Item
 	public static final Item IMMERSIBROOK_ICON = new MiscItem("icon_immersibrook", 1);
