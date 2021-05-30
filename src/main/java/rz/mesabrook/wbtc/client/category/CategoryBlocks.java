@@ -78,6 +78,15 @@ public class CategoryBlocks extends AbstractCategory {
 		add(ModBlocks.FLOOR_TILE_16);
 		add(ModBlocks.FLOOR_TILE_17);
 		add(ModBlocks.FLOOR_TILE_18);
+		add(ModBlocks.FLOOR_TILE_19);
+		add(ModBlocks.FLOOR_TILE_20);
+		add(ModBlocks.FLOOR_TILE_21);
+		add(ModBlocks.FLOOR_TILE_22);
+		add(ModBlocks.FLOOR_TILE_23);
+		add(ModBlocks.FLOOR_TILE_24);
+		add(ModBlocks.FLOOR_TILE_25);
+		add(ModBlocks.FLOOR_TILE_26);
+		add(ModBlocks.FLOOR_TILE_27);
 		
 		// Misc Blocks
 		add(ModBlocks.WHITE_STONE);

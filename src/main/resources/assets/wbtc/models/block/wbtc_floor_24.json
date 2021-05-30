@@ -1,0 +1,12 @@
+{
+   "parent": "block/cube",
+   "textures": {
+	   "particle": "wbtc:blocks/floor_tile_24",
+       "up": "wbtc:blocks/floor_tile_24",
+       "down": "wbtc:blocks/floor_tile_24",
+       "south": "wbtc:blocks/floor_tile_24",
+       "north": "wbtc:blocks/floor_tile_24",
+       "west": "wbtc:blocks/floor_tile_24",
+       "east": "wbtc:blocks/floor_tile_24"
+   }
+}
