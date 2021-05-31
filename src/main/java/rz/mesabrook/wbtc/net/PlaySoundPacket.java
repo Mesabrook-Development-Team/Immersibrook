@@ -50,6 +50,5 @@ public class PlaySoundPacket implements IMessage
 		{
 			ClientSideHandlers.playSoundHandler(message, ctx);
 		}
-		
 	}
 }
