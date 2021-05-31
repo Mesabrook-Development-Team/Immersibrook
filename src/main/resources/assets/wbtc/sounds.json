@@ -31,5 +31,6 @@
 	"vest": {"category": "master","sounds": [{"name": "wbtc:vest","stream": true}]},
 	"safety": {"category": "master","sounds": [{"name": "wbtc:safety","stream": true}]},
 	"yoink": {"category": "master","sounds": [{"name": "wbtc:yoink","stream": true}]},
-	"beaned": {"category": "master","sounds": [{"name": "wbtc:beaned","stream": true}]}
+	"beaned": {"category": "master","sounds": [{"name": "wbtc:beaned","stream": true}]},
+	"bong": {"category": "master","sounds": [{"name": "wbtc:bong","stream": true}]}
 }

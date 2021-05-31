@@ -72,11 +72,12 @@ public class ItemWeapon extends ItemSword implements IHasModel
 				World worldIn = player.world;
 				if(!worldIn.isRemote)
 				{
+					SoundRandomizer.HammerRandomizer();
 					PlaySoundPacket packet = new PlaySoundPacket();
 					packet.pos = player.getPosition();
-					packet.soundName = "beaned";
+					packet.soundName = SoundRandomizer.hammerResult;
 					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(entity.dimension, entity.posX, entity.posY, entity.posZ, 25));
-					entity.setFire(10);
+					entity.setFire(100);
 				}
 			}
 			catch(Exception ex)

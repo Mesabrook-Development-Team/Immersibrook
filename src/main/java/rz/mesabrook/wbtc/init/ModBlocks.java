@@ -56,6 +56,17 @@ public class ModBlocks
 	public static final Block PANEL_TILE_16 = new MiscBlock("panel_floor_tile_16", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block PANEL_TILE_17 = new MiscBlock("panel_floor_tile_17", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block PANEL_TILE_18 = new MiscBlock("panel_floor_tile_18", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PANEL_TILE_19 = new MiscBlock("panel_floor_tile_19", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PANEL_TILE_20 = new MiscBlock("panel_floor_tile_20", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PANEL_TILE_21 = new MiscBlock("panel_floor_tile_21", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PANEL_TILE_22 = new MiscBlock("panel_floor_tile_22", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PANEL_TILE_23 = new MiscBlock("panel_floor_tile_23", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PANEL_TILE_24 = new MiscBlock("panel_floor_tile_24", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PANEL_TILE_25 = new MiscBlock("panel_floor_tile_25", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PANEL_TILE_26 = new MiscBlock("panel_floor_tile_26", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PANEL_TILE_27 = new MiscBlock("panel_floor_tile_27", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+
+
 	public static final Block PANEL_DANGER_1 = new MiscBlock("panel_floor_danger_1", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block PANEL_DANGER_2 = new MiscBlock("panel_floor_danger_2", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block PANEL_DANGER_3 = new MiscBlock("panel_floor_danger_3", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
