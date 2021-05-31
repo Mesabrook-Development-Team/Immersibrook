@@ -67,31 +67,17 @@ public class CategoryResources extends AbstractCategory
 		add(ModItems.PLASTIC_RED);
 		add(ModItems.PLASTIC_BLACK);
 		add(ModItems.PLASTIC_GLOWING);
-		
-		// Plastic Blocks
-		add(ModBlocks.PLASTIC_CUBE_WHITE);
-		add(ModBlocks.PLASTIC_CUBE_ORANGE);
-		add(ModBlocks.PLASTIC_CUBE_MAGENTA);
-		add(ModBlocks.PLASTIC_CUBE_LBLUE);
-		add(ModBlocks.PLASTIC_CUBE_YELLOW);
-		add(ModBlocks.PLASTIC_CUBE_LIME);
-		add(ModBlocks.PLASTIC_CUBE_PINK);
-		add(ModBlocks.PLASTIC_CUBE_GRAY);
-		add(ModBlocks.PLASTIC_CUBE_SILVER);
-		add(ModBlocks.PLASTIC_CUBE_CYAN);
-		add(ModBlocks.PLASTIC_CUBE_PURPLE);
-		add(ModBlocks.PLASTIC_CUBE_BLUE);
-		add(ModBlocks.PLASTIC_CUBE_BROWN);
-		add(ModBlocks.PLASTIC_CUBE_GREEN);
-		add(ModBlocks.PLASTIC_CUBE_RED);
-		add(ModBlocks.PLASTIC_CUBE_BLACK);
-		add(ModBlocks.PLASTIC_CUBE_GLOWING);
+
 		
 		// Night Vision Goggle Components
 		add(ModItems.NV_BODY);
 		add(ModItems.NV_INTERNALS);
 		add(ModItems.NV_LENS);
 		add(ModItems.NV_STRAPS);
+
+		// Levi Hammer Components
+		add(ModItems.LEVI_HAMMER_HEAD);
+		add(ModItems.LEVI_HAMMER_STICK);
 	}
 
 }

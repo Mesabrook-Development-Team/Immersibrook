@@ -47,7 +47,11 @@ public class ModItems
 	// Special Items
 	public static final Item ZOE_CANE = new ItemWeapon("zoe_cane", ZOE_CANE_MAT);
 	public static final Item LEVI_HAMMER = new ItemWeapon("levi_hammer", LEVI_HAMMER_MAT);
-	
+
+	// Hammer Items
+	public static final Item LEVI_HAMMER_HEAD = new ItemWeapon("hammer_head_levi", ToolMaterial.STONE);
+	public static final Item LEVI_HAMMER_STICK = new ItemWeapon("hammer_stick_levi", ToolMaterial.WOOD);
+
 	// Immersibrook Creative Tab Item
 	public static final Item IMMERSIBROOK_ICON = new MiscItem("icon_immersibrook", 1);
 	

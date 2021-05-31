@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+	"#",
+	"$"
+  ],
+  "key": {
+    "$": {
+      "item": "wbtc:plastic_cube_black"
+    },
+	"#": {
+	  "item": "wbtc:smooth_oak"
+	}
+  },
+  "result": {
+    "item": "wbtc:hammer_stick_levi",
+    "count": 1
+  }
+}

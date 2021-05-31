@@ -36,6 +36,7 @@ public class SoundInit
 	public static final SoundEvent YOINK;
 	public static final SoundEvent BEANED;
 	public static final SoundEvent BONG;
+	public static final SoundEvent BONK;
 	
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -75,6 +76,7 @@ public class SoundInit
 		YOINK = addSoundsToRegistry("yoink");
 		BEANED = addSoundsToRegistry("beaned");
 		BONG = addSoundsToRegistry("bong");
+		BONK = addSoundsToRegistry("bonk");
 		
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -139,13 +141,15 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.YOINK);
 				event.getRegistry().registerAll(SoundInit.BEANED);
 				event.getRegistry().registerAll(SoundInit.BONG);
+				event.getRegistry().registerAll(SoundInit.BONK);
 				
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");
 			}
 			catch(Exception ex)
 			{
-				Main.logger.error("[" + Reference.MODNAME + " SoundLoader] ERROR: " + ex);
+				Main.logger.error("[" + Reference.MODNAME + " ] Ah fuck, something broke...");
+				Main.logger.error("[" + Reference.MODNAME + " ] ERROR IN SOUNDLOADER" + ex);
 			}
 		}
 	}
