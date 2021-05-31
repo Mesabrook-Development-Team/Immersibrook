@@ -75,7 +75,7 @@ public class ItemWeapon extends ItemSword implements IHasModel
 					PlaySoundPacket packet = new PlaySoundPacket();
 					packet.pos = player.getPosition();
 					packet.soundName = "beaned";
-					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(entity.dimension, entity.posX, entity.posY, entity.posZ, 25));
 					entity.setFire(10);
 				}
 			}
