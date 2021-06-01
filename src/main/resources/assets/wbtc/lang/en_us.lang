@@ -246,6 +246,16 @@ tile.panel_floor_tile_15.name=Ceiling Panel - Cubic Tiles
 tile.panel_floor_tile_16.name=Ceiling Panel - Rotating Laminate
 tile.panel_floor_tile_17.name=Ceiling Panel - Patio Bricks
 tile.panel_floor_tile_18.name=Ceiling Panel - Atlantis
+tile.panel_floor_tile_19.name=Ceiling Panel - Blackened Quartz Tiles
+tile.panel_floor_tile_20.name=Ceiling Panel - Green Sections
+tile.panel_floor_tile_21.name=Ceiling Panel - Brick Patterned Tile
+tile.panel_floor_tile_22.name=Ceiling Panel - Aqua
+tile.panel_floor_tile_23.name=Ceiling Panel - Nature
+tile.panel_floor_tile_24.name=Ceiling Panel - Gray Tiles
+tile.panel_floor_tile_25.name=Ceiling Panel - Blackened Diamond Diagonals
+tile.panel_floor_tile_26.name=Ceiling Panel - Black Tiles
+tile.panel_floor_tile_27.name=Ceiling Panel - Bright Aqua
+
 tile.panel_floor_danger_1.name=Ceiling Panel - Yellow Warning Stripes
 tile.panel_floor_danger_2.name=Ceiling Panel - Orange Warning Stripes
 tile.panel_floor_danger_3.name=Ceiling Panel - Red Warning Stripes
@@ -255,8 +265,6 @@ tile.panel_floor_kitchen_2.name=Ceiling Panel - Commercial Kitchen Floor
 tile.panel_floor_drain_1.name=Ceiling Panel - Commercial Kitchen Floor w/Drain
 tile.panel_floor_drain_2.name=Ceiling Panel - Commercial Kitchen Floor w/Drain
 tile.panel_tileboard.name=Ceiling Panel - Classic Tiles
-
-
 tile.panel_wool_white.name=Ceiling Panel - White Carpet
 tile.panel_wool_orange.name=Ceiling Panel - Orange Carpet
 tile.panel_wool_magenta.name=Ceiling Panel - Magenta Carpet
@@ -303,6 +311,16 @@ tile.wbtc_floor_15.name=Floor Tile - Cubic Tiles
 tile.wbtc_floor_16.name=Floor Tile - Rotating Laminate
 tile.wbtc_floor_17.name=Floor Tile - Patio Bricks
 tile.wbtc_floor_18.name=Floor Tile - Atlantis
+tile.wbtc_floor_19.name=Floor Tile - Blackened Quartz Tiles
+tile.wbtc_floor_20.name=Floor Tile - Green Sections
+tile.wbtc_floor_21.name=Floor Tile - Brick Patterned Tile
+tile.wbtc_floor_22.name=Floor Tile - Aqua
+tile.wbtc_floor_23.name=Floor Tile - Nature
+tile.wbtc_floor_24.name=Floor Tile - Gray Tiles
+tile.wbtc_floor_25.name=Floor Tile - Blackened Diamond Diagonals
+tile.wbtc_floor_26.name=Floor Tile - Black Tiles
+tile.wbtc_floor_27.name=Floor Tile - Bright Aqua
+
 tile.floor_kitchen_1.name=Kitchen Floor Tile - Commercial Kitchen
 tile.floor_kitchen_2.name=Kitchen Floor Tile - Commercial Kitchen
 tile.floor_drain_1.name=Kitchen Floor Tile - Commercial Kitchen w/Drain
