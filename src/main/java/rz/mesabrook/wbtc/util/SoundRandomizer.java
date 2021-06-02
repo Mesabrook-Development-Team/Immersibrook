@@ -1,5 +1,8 @@
 package rz.mesabrook.wbtc.util;
 
+import net.minecraft.init.SoundEvents;
+import net.minecraft.util.SoundEvent;
+
 import java.util.Random;
 
 /**
@@ -10,6 +13,8 @@ public class SoundRandomizer
 {
 	public static String result;
 	public static String hammerResult;
+	public static String popResult;
+	public static SoundEvent catResult;
 
 	public static void RandomizeSound()
 	{
@@ -54,6 +59,42 @@ public class SoundRandomizer
 			case 4:
 				result = "beaned";
 				break;
+		}
+	}
+
+	public static void PopRandomizer()
+	{
+		Random chooser = new Random();
+		int snds;
+		snds = chooser.nextInt(3);
+
+		switch(snds)
+		{
+			case 1:
+				popResult = "pop";
+				break;
+			case 2:
+				popResult = "pop_single";
+				break;
+		}
+	}
+
+	public static void CatCubeRandomizer()
+	{
+		Random chooser = new Random();
+		int snds;
+		snds = chooser.nextInt(4);
+
+		switch(snds)
+		{
+			case 1:
+				catResult = SoundEvents.ENTITY_CAT_AMBIENT;
+				break;
+			case 2:
+				catResult = SoundEvents.ENTITY_CAT_PURR;
+				break;
+			case 3:
+				catResult = SoundEvents.ENTITY_CAT_PURREOW;
 		}
 	}
 }

@@ -145,7 +145,8 @@ public class ModBlocks
 	public static final Block ASTRO_TURF = new MiscBlock("synthetic_turf", Material.PLANTS, SoundType.PLANT, Main.IMMERSIBROOK_MAIN, 0.7F);
 	public static final Block WHITE_COBBLE = new MiscBlock("white_cobblestone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block WHITE_STONE_BRICKS = new MiscBlock("white_stone_bricks", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
-	
+	public static final Block CAT_BLOCK = new MiscBlock("cat_block", Material.ROCK, SoundType.METAL, Main.IMMERSIBROOK_MAIN, 0F);
+
 	// Commercial Kitchen Floor Blocks
 	public static final Block FLOOR_KITCHEN_1 = new MiscBlock("floor_kitchen_1", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block FLOOR_DRAIN_1 = new MiscBlock("floor_drain_1", Material.IRON, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);

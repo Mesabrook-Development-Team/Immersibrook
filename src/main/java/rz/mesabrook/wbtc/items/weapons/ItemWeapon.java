@@ -55,44 +55,7 @@ public class ItemWeapon extends ItemSword implements IHasModel
 				tooltip.add(TextFormatting.AQUA + "hehe sod go swish slash");
 				super.addInformation(stack, world, tooltip, flag);
 			}
-			else if(this.getUnlocalizedName().contains("levi_hammer"))
-			{
-				tooltip.add(TextFormatting.AQUA + "An LVN Product");
-				super.addInformation(stack, world, tooltip, flag);
-			}
 		}
-	}
-
-	@Override
-	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
-	{
-		SoundRandomizer.HammerRandomizer();
-		if(this.getUnlocalizedName().contains("levi_hammer"))
-		{
-			try
-			{
-				World worldIn = player.world;
-				if(!worldIn.isRemote)
-				{
-					SoundRandomizer.HammerRandomizer();
-					PlaySoundPacket packet = new PlaySoundPacket();
-					packet.pos = player.getPosition();
-					packet.soundName = SoundRandomizer.hammerResult;
-					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(entity.dimension, entity.posX, entity.posY, entity.posZ, 25));
-					entity.setFire(100);
-				}
-			}
-			catch(Exception ex)
-			{
-				System.out.println(ex);
-				return false;
-			}
-		}
-		else
-		{
-			return false;
-		}
-		return false;
 	}
 
 	@Override

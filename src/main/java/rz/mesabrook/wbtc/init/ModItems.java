@@ -3,8 +3,6 @@ package rz.mesabrook.wbtc.init;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
@@ -15,38 +13,34 @@ import rz.mesabrook.wbtc.items.armor.NightVisionGoggles;
 import rz.mesabrook.wbtc.items.armor.SafetyVestModel;
 import rz.mesabrook.wbtc.items.misc.ItemFirstAidKit;
 import rz.mesabrook.wbtc.items.misc.MiscItem;
+import rz.mesabrook.wbtc.items.misc.ToyPopper;
 import rz.mesabrook.wbtc.items.record.MemeRecord;
-import rz.mesabrook.wbtc.items.weapons.ItemCane;
+import rz.mesabrook.wbtc.items.tools.ToolPickaxeBase;
 import rz.mesabrook.wbtc.items.weapons.ItemWeapon;
 import rz.mesabrook.wbtc.util.Reference;
+import rz.mesabrook.wbtc.util.ToolMaterialRegistry;
 
 public class ModItems 
 {
 	public static final List<Item> ITEMS = new ArrayList<Item>();
-	
-	// Weapon Materials
-	public static final ToolMaterial SOD_WOOD = EnumHelper.addToolMaterial("wbtc_wood", 0, 30, 1.0F, -2.0F, 8);
-	public static final ToolMaterial SOD_STONE = EnumHelper.addToolMaterial("wbtc_stone", 1, 66, 2.0F, -0.5F, 5);
-	public static final ToolMaterial SOD_IRON = EnumHelper.addToolMaterial("wbtc_iron", 2, 125, 3.0F, -1.0F, 8);
-	public static final ToolMaterial SOD_GOLD = EnumHelper.addToolMaterial("wbtc_gold", 0, 16, 1.0F, -2.0F, 11);
-	public static final ToolMaterial SOD_DIAMOND = EnumHelper.addToolMaterial("wbtc_diamond", 3, 780, 4.0F, -0.5F, 5);
-	public static final ToolMaterial SOD_ALUMINUM = EnumHelper.addToolMaterial("wbtc_aluminum_sod", 2, 100, 3.0F, -1.2F, 3);
-	public static final ToolMaterial SWORD_ALUMINUM = EnumHelper.addToolMaterial("wbtc_aluminum", 2, 200, 5.0F, 1.2F, 8);
-	public static final ToolMaterial ZOE_CANE_MAT = EnumHelper.addToolMaterial("wbtc_zoe_cane_material", 3, 420, 100.0F, 10000.0F, 10);
-	public static final ToolMaterial LEVI_HAMMER_MAT = EnumHelper.addToolMaterial("wbtc_levi_ban_hammer_material", 3, 69420, 1.0F, 50.0F, 10);
 
 	// Weapons uwu
-	public static final Item WOOD_SOD = new ItemWeapon("wood_sod", SOD_WOOD);
-	public static final Item STONE_SOD = new ItemWeapon("stone_sod", SOD_STONE);
-	public static final Item IRON_SOD = new ItemWeapon("iron_sod", SOD_IRON);
-	public static final Item GOLD_SOD = new ItemWeapon("gold_sod", SOD_GOLD);
-	public static final Item DIAMOND_SOD = new ItemWeapon("diamond_sod", SOD_DIAMOND);
-	public static final Item ALUMINUM_SOD = new ItemWeapon("aluminum_sod", SOD_ALUMINUM);
-	public static final Item ALUMINUM_SWORD = new ItemWeapon("aluminum_sword", SWORD_ALUMINUM);
-	
+	public static final Item WOOD_SOD = new ItemWeapon("wood_sod", ToolMaterialRegistry.SOD_WOOD);
+	public static final Item STONE_SOD = new ItemWeapon("stone_sod", ToolMaterialRegistry.SOD_STONE);
+	public static final Item IRON_SOD = new ItemWeapon("iron_sod", ToolMaterialRegistry.SOD_IRON);
+	public static final Item GOLD_SOD = new ItemWeapon("gold_sod", ToolMaterialRegistry.SOD_GOLD);
+	public static final Item DIAMOND_SOD = new ItemWeapon("diamond_sod", ToolMaterialRegistry.SOD_DIAMOND);
+	public static final Item ALUMINUM_SOD = new ItemWeapon("aluminum_sod", ToolMaterialRegistry.SOD_ALUMINUM);
+	public static final Item ALUMINUM_SWORD = new ItemWeapon("aluminum_sword", ToolMaterialRegistry.SWORD_ALUMINUM);
+
+	// Toys
+	public static final Item POPPER_RED = new ToyPopper("popper_red", 100);
+	public static final Item POPPER_GREEN = new ToyPopper("popper_green", 100);
+	public static final Item POPPER_BLUE = new ToyPopper("popper_blue", 200);
+
 	// Special Items
-	public static final Item ZOE_CANE = new ItemWeapon("zoe_cane", ZOE_CANE_MAT);
-	public static final Item LEVI_HAMMER = new ItemWeapon("levi_hammer", LEVI_HAMMER_MAT);
+	public static final Item ZOE_CANE = new ItemWeapon("zoe_cane", ToolMaterialRegistry.ZOE_CANE_MAT);
+	public static final Item LEVI_HAMMER = new ToolPickaxeBase("levi_hammer", ToolMaterialRegistry.LEVI_HAMMER_MAT);
 
 	// Hammer Items
 	public static final Item LEVI_HAMMER_HEAD = new ItemWeapon("hammer_head_levi", ToolMaterial.STONE);

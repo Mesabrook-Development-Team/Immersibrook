@@ -7,11 +7,20 @@ import javax.annotation.Nullable;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.passive.EntityOcelot;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
@@ -22,6 +31,7 @@ import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.util.IHasModel;
+import rz.mesabrook.wbtc.util.SoundRandomizer;
 import rz.mesabrook.wbtc.util.TooltipRandomizer;
 
 public class MiscBlock extends Block implements IHasModel
@@ -71,8 +81,23 @@ public class MiscBlock extends Block implements IHasModel
 	@Override
 	public boolean isBeaconBase(IBlockAccess worldObj, BlockPos pos, BlockPos beacon)
 	{
-		if(this.getUnlocalizedName().contains("aluminum_block"))
+		if(this.getUnlocalizedName().contains("aluminum_block") || this.getUnlocalizedName().contains("cat_block"))
 		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	@Override
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+	{
+		if(this.getUnlocalizedName().contains("cat_block"))
+		{
+			SoundRandomizer.CatCubeRandomizer();
+			world.playSound(player, pos, SoundRandomizer.catResult, SoundCategory.BLOCKS, 1.0F, 1.0F);
 			return true;
 		}
 		else
