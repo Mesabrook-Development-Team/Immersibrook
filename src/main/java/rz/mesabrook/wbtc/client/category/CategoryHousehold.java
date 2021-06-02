@@ -2,6 +2,7 @@ package rz.mesabrook.wbtc.client.category;
 
 import net.minecraft.item.ItemStack;
 import rz.mesabrook.wbtc.init.ModBlocks;
+import rz.mesabrook.wbtc.init.ModItems;
 
 /**
  * Original Author: MrCrayfish
@@ -44,6 +45,11 @@ public class CategoryHousehold extends AbstractCategory
 		// Lights
 		add(ModBlocks.CEILING_LIGHT_SPOTLIGHT);
 		add(ModBlocks.CEILING_LIGHT_PANEL);
+
+		// Poppers
+		add(ModItems.POPPER_RED);
+		add(ModItems.POPPER_GREEN);
+		add(ModItems.POPPER_BLUE);
 	}
 
 }

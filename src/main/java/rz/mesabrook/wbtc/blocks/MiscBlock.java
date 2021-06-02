@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.audio.Sound;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -94,14 +95,30 @@ public class MiscBlock extends Block implements IHasModel
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
 	{
-		if(this.getUnlocalizedName().contains("cat_block"))
+		try
 		{
-			SoundRandomizer.CatCubeRandomizer();
-			world.playSound(player, pos, SoundRandomizer.catResult, SoundCategory.BLOCKS, 1.0F, 1.0F);
-			return true;
+			if(this.getUnlocalizedName().contains("cat_block"))
+			{
+				SoundRandomizer.CatCubeRandomizer();
+				if(SoundRandomizer.catResult == null)
+				{
+					world.playSound(player, pos, SoundEvents.ENTITY_CAT_AMBIENT, SoundCategory.BLOCKS, 1.0F, 1.0F);
+				}
+				else
+				{
+					world.playSound(player, pos, SoundRandomizer.catResult, SoundCategory.BLOCKS, 1.0F, 1.0F);
+				}
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
-		else
+		catch(Exception ex)
 		{
+			Main.logger.error(ex);
+			SoundRandomizer.CatCubeRandomizer();
 			return false;
 		}
 	}

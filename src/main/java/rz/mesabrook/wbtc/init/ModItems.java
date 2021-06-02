@@ -34,9 +34,9 @@ public class ModItems
 	public static final Item ALUMINUM_SWORD = new ItemWeapon("aluminum_sword", ToolMaterialRegistry.SWORD_ALUMINUM);
 
 	// Toys
-	public static final Item POPPER_RED = new ToyPopper("popper_red", 100);
-	public static final Item POPPER_GREEN = new ToyPopper("popper_green", 100);
-	public static final Item POPPER_BLUE = new ToyPopper("popper_blue", 200);
+	public static final Item POPPER_RED = new ToyPopper("popper_red", 300);
+	public static final Item POPPER_GREEN = new ToyPopper("popper_green", 300);
+	public static final Item POPPER_BLUE = new ToyPopper("popper_blue", 300);
 
 	// Special Items
 	public static final Item ZOE_CANE = new ItemWeapon("zoe_cane", ToolMaterialRegistry.ZOE_CANE_MAT);

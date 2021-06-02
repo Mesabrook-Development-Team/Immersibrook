@@ -39,11 +39,6 @@ public class CategoryTools extends AbstractCategory {
 		
 		// Night Vision Goggles
 		add(ModItems.NV_GOGGLES);
-
-		// Poppers
-		add(ModItems.POPPER_RED);
-		add(ModItems.POPPER_GREEN);
-		add(ModItems.POPPER_BLUE);
 	}
 
 }
