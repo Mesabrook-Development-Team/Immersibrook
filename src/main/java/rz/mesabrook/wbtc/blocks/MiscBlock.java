@@ -74,6 +74,10 @@ public class MiscBlock extends Block implements IHasModel
 		{
 			tooltip.add(TextFormatting.AQUA + "It's baaaaack");
 		}
+		else if(this.getUnlocalizedName().contains("cat_block"))
+		{
+			tooltip.add(TextFormatting.LIGHT_PURPLE + "The greatest block to ever exist ever");
+		}
 		
 		super.addInformation(stack, world, tooltip, flag);
 	}
