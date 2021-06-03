@@ -1,6 +1,7 @@
 package rz.mesabrook.wbtc.blocks;
 
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.Nullable;
 
@@ -14,12 +15,15 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -34,6 +38,7 @@ import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.SoundRandomizer;
 import rz.mesabrook.wbtc.util.TooltipRandomizer;
+import rz.mesabrook.wbtc.util.config.ModConfig;
 
 public class MiscBlock extends Block implements IHasModel
 {
@@ -52,7 +57,20 @@ public class MiscBlock extends Block implements IHasModel
 		ModBlocks.BLOCKS.add(this);
 		ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()).setMaxStackSize(64));
 	}
-	
+
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune)
+	{
+		if(this.getUnlocalizedName().contains("cat_block") && ModConfig.catBlockMakesCat)
+		{
+			return null;
+		}
+		else
+		{
+			return Item.getItemFromBlock(this);
+		}
+	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag)
@@ -124,6 +142,19 @@ public class MiscBlock extends Block implements IHasModel
 			Main.logger.error(ex);
 			SoundRandomizer.CatCubeRandomizer();
 			return false;
+		}
+	}
+
+	@Override
+	public void onBlockHarvested(World world, BlockPos pos, IBlockState state, EntityPlayer player)
+	{
+		if(this.getUnlocalizedName().contains("cat_block") && !world.isRemote && !player.isCreative() && ModConfig.catBlockMakesCat)
+		{
+			EntityOcelot cat = new EntityOcelot(world);
+			cat.setLocationAndAngles((double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, 0.0F, 0.0F);
+			world.spawnEntity(cat);
+			world.playSound(player, pos, SoundEvents.BLOCK_ANVIL_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+			cat.spawnExplosionParticle();
 		}
 	}
 	
