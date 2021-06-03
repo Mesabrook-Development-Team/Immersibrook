@@ -1,0 +1,12 @@
+{
+   "parent": "block/cube",
+   "textures": {
+	   "particle": "blocks/wool_colored_light_blue",
+       "up": "blocks/wool_colored_light_blue",
+       "down": "wbtc:blocks/smooth_acacia",
+       "south": "wbtc:blocks/smooth_acacia",
+       "north": "wbtc:blocks/smooth_acacia",
+       "west": "wbtc:blocks/smooth_acacia",
+       "east": "wbtc:blocks/smooth_acacia"
+   }
+}
