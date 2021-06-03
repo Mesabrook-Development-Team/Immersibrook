@@ -1,0 +1,18 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "item": "wbtc:panel_ceiling",
+         "data": 0
+      },
+      {
+         "item": "wbtc:wbtc_floor_25",
+         "data": 0
+      }
+   ],
+   "result": {
+      "item": "wbtc:panel_floor_tile_25",
+      "data": 0,
+      "count": 9
+   }
+}
