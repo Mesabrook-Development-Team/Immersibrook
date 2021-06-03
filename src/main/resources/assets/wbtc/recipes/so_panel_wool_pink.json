@@ -1,0 +1,18 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "item": "wbtc:smooth_oak",
+         "data": 0
+      },
+      {
+         "item": "minecraft:carpet",
+         "data": 6
+      }
+   ],
+   "result": {
+      "item": "wbtc:so_panel_wool_pink",
+      "data": 0,
+      "count": 9
+   }
+}
