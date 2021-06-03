@@ -4,6 +4,7 @@ entity.ItemFrame.name=Item Frame
 
 //Welcome message
 im.welcome=Thanks for playing with Immersibrook!
+im.website=https://mesabrook.com
 
 //Commands
 im.cmd.error=/immersibrook about | version | changelog

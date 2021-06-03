@@ -12,6 +12,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
+import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.config.ModConfig;
 
 import java.util.Random;
@@ -26,8 +27,11 @@ public class PlayerEvents
 		if(ModConfig.showWelcome)
 		{
 			TextComponentTranslation prefix = new TextComponentTranslation("im.welcome");
+			TextComponentTranslation url = new TextComponentTranslation("im.website");
 			prefix.getStyle().setColor(TextFormatting.LIGHT_PURPLE);
+			url.getStyle().setColor(TextFormatting.AQUA);
 			player.sendMessage(prefix);
+			player.sendMessage(url);
 		}
 	}
 }
