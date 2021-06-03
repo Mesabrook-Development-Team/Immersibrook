@@ -239,6 +239,80 @@ public class CategoryCeiling extends AbstractCategory
 		add(ModBlocks.SB_PANEL_WOOL_GREEN);
 		add(ModBlocks.SB_PANEL_WOOL_RED);
 		add(ModBlocks.SB_PANEL_WOOL_BLACK);
+
+		/**
+		 * Smooth Spruce Wood Ceiling Panel Blocks
+		 */
+		// Laminate Wood Panels
+		add(ModBlocks.SS_PANEL_OAK_L);
+		add(ModBlocks.SS_PANEL_SPRUCE_L);
+		add(ModBlocks.SS_PANEL_BIRCH_L);
+		add(ModBlocks.SS_PANEL_FLOOR_JUNGLE_L);
+		add(ModBlocks.SS_PANEL_ACACIA_L);
+		add(ModBlocks.SS_PANEL_DARK_OAK_L);
+
+		// Checkerboard Panels
+		add(ModBlocks.SS_PANEL_CHECKERBOARD);
+		add(ModBlocks.SS_PANEL_CHECKERBOARD_OLD);
+
+		// Floor Tile Panels
+		add(ModBlocks.SS_PANEL_TILE_1);
+		add(ModBlocks.SS_PANEL_TILE_2);
+		add(ModBlocks.SS_PANEL_TILE_3);
+		add(ModBlocks.SS_PANEL_TILE_4);
+		add(ModBlocks.SS_PANEL_TILE_5);
+		add(ModBlocks.SS_PANEL_TILE_6);
+		add(ModBlocks.SS_PANEL_TILE_7);
+		add(ModBlocks.SS_PANEL_TILE_8);
+		add(ModBlocks.SS_PANEL_TILE_9);
+		add(ModBlocks.SS_PANEL_TILE_10);
+		add(ModBlocks.SS_PANEL_TILE_11);
+		add(ModBlocks.SS_PANEL_TILE_12);
+		add(ModBlocks.SS_PANEL_TILE_13);
+		add(ModBlocks.SS_PANEL_TILE_14);
+		add(ModBlocks.SS_PANEL_TILE_15);
+		add(ModBlocks.SS_PANEL_TILE_16);
+		add(ModBlocks.SS_PANEL_TILE_17);
+		add(ModBlocks.SS_PANEL_TILE_18);
+		add(ModBlocks.SS_PANEL_TILE_19);
+		add(ModBlocks.SS_PANEL_TILE_20);
+		add(ModBlocks.SS_PANEL_TILE_21);
+		add(ModBlocks.SS_PANEL_TILE_22);
+		add(ModBlocks.SS_PANEL_TILE_23);
+		add(ModBlocks.SS_PANEL_TILE_24);
+		add(ModBlocks.SS_PANEL_TILE_25);
+		add(ModBlocks.SS_PANEL_TILE_26);
+		add(ModBlocks.SS_PANEL_TILE_27);
+
+		// Commercial Kitchen Tile Panels
+		add(ModBlocks.SS_PANEL_KITCHEN_1);
+		add(ModBlocks.SS_PANEL_KITCHEN_2);
+		add(ModBlocks.SS_PANEL_DRAIN_1);
+		add(ModBlocks.SS_PANEL_DRAIN_2);
+
+		// Industrial Tile Panels
+		add(ModBlocks.SS_PANEL_DANGER_1);
+		add(ModBlocks.SS_PANEL_DANGER_2);
+		add(ModBlocks.SS_PANEL_DANGER_3);
+		add(ModBlocks.SS_PANEL_DANGER_4);
+
+		// Wool Panels
+		add(ModBlocks.SS_PANEL_WOOL_WHITE);
+		add(ModBlocks.SS_PANEL_WOOL_ORANGE);
+		add(ModBlocks.SS_PANEL_WOOL_MAGENTA);
+		add(ModBlocks.SS_PANEL_WOOL_LBLUE);
+		add(ModBlocks.SS_PANEL_WOOL_YELLOW);
+		add(ModBlocks.SS_PANEL_WOOL_LIME);
+		add(ModBlocks.SS_PANEL_WOOL_PINK);
+		add(ModBlocks.SS_PANEL_WOOL_GRAY);
+		add(ModBlocks.SS_PANEL_WOOL_SILVER);
+		add(ModBlocks.SS_PANEL_WOOL_CYAN);
+		add(ModBlocks.SS_PANEL_WOOL_PURPLE);
+		add(ModBlocks.SS_PANEL_WOOL_BLUE);
+		add(ModBlocks.SS_PANEL_WOOL_BROWN);
+		add(ModBlocks.SS_PANEL_WOOL_GREEN);
+		add(ModBlocks.SS_PANEL_WOOL_RED);
+		add(ModBlocks.SS_PANEL_WOOL_BLACK);
 	}
 
 }

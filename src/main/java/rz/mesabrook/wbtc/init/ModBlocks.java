@@ -386,7 +386,65 @@ public class ModBlocks
 	public static final Block SB_PANEL_WOOL_BLACK = new MiscBlock("sb_panel_wool_black", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
 
 	// Smooth Spruce Wood Ceiling Blocks
-
+	public static final Block SS_PANEL_OAK_L = new MiscBlock("ss_panel_oak_l", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_SPRUCE_L = new MiscBlock("ss_panel_spruce_l", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_BIRCH_L = new MiscBlock("ss_panel_birch_l", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_FLOOR_JUNGLE_L = new MiscBlock("ss_panel_jungle_l", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_ACACIA_L = new MiscBlock("ss_panel_acacia_l", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_DARK_OAK_L = new MiscBlock("ss_panel_dark_oak_l", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_CHECKERBOARD = new MiscBlock("ss_panel_checkerboard", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_CHECKERBOARD_OLD = new MiscBlock("ss_panel_tileboard", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_1 = new MiscBlock("ss_panel_tile_1", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_2 = new MiscBlock("ss_panel_tile_2", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_3 = new MiscBlock("ss_panel_tile_3", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_4 = new MiscBlock("ss_panel_tile_4", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_5 = new MiscBlock("ss_panel_tile_5", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_6 = new MiscBlock("ss_panel_tile_6", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_7 = new MiscBlock("ss_panel_tile_7", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_8 = new MiscBlock("ss_panel_tile_8", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_9 = new MiscBlock("ss_panel_tile_9", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_10 = new MiscBlock("ss_panel_tile_10", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_11 = new MiscBlock("ss_panel_tile_11", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_12 = new MiscBlock("ss_panel_tile_12", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_13 = new MiscBlock("ss_panel_tile_13", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_14 = new MiscBlock("ss_panel_tile_14", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_15 = new MiscBlock("ss_panel_tile_15", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_16 = new MiscBlock("ss_panel_tile_16", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_17 = new MiscBlock("ss_panel_tile_17", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_18 = new MiscBlock("ss_panel_tile_18", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_19 = new MiscBlock("ss_panel_tile_19", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_20 = new MiscBlock("ss_panel_tile_20", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_21 = new MiscBlock("ss_panel_tile_21", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_22 = new MiscBlock("ss_panel_tile_22", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_23 = new MiscBlock("ss_panel_tile_23", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_24 = new MiscBlock("ss_panel_tile_24", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_25 = new MiscBlock("ss_panel_tile_25", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_26 = new MiscBlock("ss_panel_tile_26", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_TILE_27 = new MiscBlock("ss_panel_tile_27", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_DANGER_1 = new MiscBlock("ss_panel_danger_1", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_DANGER_2 = new MiscBlock("ss_panel_danger_2", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_DANGER_3 = new MiscBlock("ss_panel_danger_3", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_DANGER_4 = new MiscBlock("ss_panel_danger_4", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_KITCHEN_1 = new MiscBlock("ss_panel_kitchen_1", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_KITCHEN_2 = new MiscBlock("ss_panel_kitchen_2", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_DRAIN_1 = new MiscBlock("ss_panel_drain_1", Material.IRON, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_DRAIN_2 = new MiscBlock("ss_panel_drain_2", Material.IRON, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_WOOL_WHITE = new MiscBlock("ss_panel_wool_white", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_WOOL_ORANGE = new MiscBlock("ss_panel_wool_orange", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_WOOL_MAGENTA = new MiscBlock("ss_panel_wool_magenta", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_WOOL_LBLUE = new MiscBlock("ss_panel_wool_lblue", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_WOOL_YELLOW = new MiscBlock("ss_panel_wool_yellow", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_WOOL_LIME = new MiscBlock("ss_panel_wool_lime", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_WOOL_PINK = new MiscBlock("ss_panel_wool_pink", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_WOOL_GRAY = new MiscBlock("ss_panel_wool_gray", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_WOOL_SILVER = new MiscBlock("ss_panel_wool_silver", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_WOOL_CYAN = new MiscBlock("ss_panel_wool_cyan", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_WOOL_PURPLE = new MiscBlock("ss_panel_wool_purple", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_WOOL_BLUE = new MiscBlock("ss_panel_wool_blue", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_WOOL_BROWN = new MiscBlock("ss_panel_wool_brown", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_WOOL_GREEN = new MiscBlock("ss_panel_wool_green", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_WOOL_RED = new MiscBlock("ss_panel_wool_red", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SS_PANEL_WOOL_BLACK = new MiscBlock("ss_panel_wool_black", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
 
 	// Smooth Jungle Wood Ceiling Blocks
 

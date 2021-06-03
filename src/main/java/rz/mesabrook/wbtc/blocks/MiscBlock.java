@@ -50,7 +50,7 @@ public class MiscBlock extends Block implements IHasModel
 		setLightLevel(lightLevel);
 		
 		ModBlocks.BLOCKS.add(this);
-		ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
+		ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()).setMaxStackSize(64));
 	}
 	
 	@Override
