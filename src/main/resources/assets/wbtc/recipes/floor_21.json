@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+	"$#$",
+	"#$#",
+	"$#$"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:brick_block"
+    },
+	"$": {
+	  "item": "minecraft:brick"
+	}
+  },
+  "result": {
+    "item": "wbtc:wbtc_floor_21",
+    "count": 9
+  }
+}

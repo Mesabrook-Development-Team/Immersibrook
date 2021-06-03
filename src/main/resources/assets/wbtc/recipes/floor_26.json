@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+	"$#$",
+	"#@#",
+	"$#$"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:brick_block",
+	  "data": 0
+    },
+	"$": {
+	  "item": "wbtc:black_plastic"
+	},
+	"@": {
+	  "item": "minecraft:dye",
+	  "data": 0
+	}
+  },
+  "result": {
+    "item": "wbtc:wbtc_floor_26",
+    "count": 9
+  }
+}

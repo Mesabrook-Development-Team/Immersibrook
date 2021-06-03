@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+	"###",
+	"# #",
+	"###"
+  ],
+  "key": {
+	"#": {
+	  "item": "minecraft:fish",
+	  "data": 0
+	}
+  },
+  "result": {
+    "item": "wbtc:cat_block",
+    "count": 1
+  }
+}
