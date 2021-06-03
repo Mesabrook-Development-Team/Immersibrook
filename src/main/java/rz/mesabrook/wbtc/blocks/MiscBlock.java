@@ -151,12 +151,23 @@ public class MiscBlock extends Block implements IHasModel
 	{
 		if(this.getUnlocalizedName().contains("cat_block") && !world.isRemote && !player.isCreative() && ModConfig.catBlockMakesCat)
 		{
-			EntityOcelot cat = new EntityOcelot(world);
-			cat.setLocationAndAngles((double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, 0.0F, 0.0F);
-			world.spawnEntity(cat);
-			world.playSound(player, pos, SoundEvents.BLOCK_ANVIL_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
-			player.sendMessage(new TextComponentString(TextFormatting.BLUE + "Tame that kitty!"));
-			cat.spawnExplosionParticle();
+			Random chooser = new Random();
+			int snds;
+			snds = chooser.nextInt(3);
+			switch(snds)
+			{
+				case 1:
+					EntityOcelot cat = new EntityOcelot(world);
+					cat.setLocationAndAngles((double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, 0.0F, 0.0F);
+					world.spawnEntity(cat);
+					world.playSound(player, pos, SoundEvents.BLOCK_ANVIL_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+					player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Tame that kitty!"));
+					cat.spawnExplosionParticle();
+				break;
+				case 2:
+					world.playSound(player, pos, SoundEvents.BLOCK_END_GATEWAY_SPAWN, SoundCategory.BLOCKS, 1.0F, 1.0F);
+				break;
+			}
 		}
 	}
 	
