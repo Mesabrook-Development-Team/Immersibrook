@@ -1,0 +1,18 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "item": "wbtc:smooth_birch",
+         "data": 0
+      },
+      {
+         "item": "minecraft:carpet",
+         "data": 14
+      }
+   ],
+   "result": {
+      "item": "wbtc:sb_panel_wool_red",
+      "data": 0,
+      "count": 9
+   }
+}

@@ -1,0 +1,18 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "item": "wbtc:smooth_dark_oak",
+         "data": 0
+      },
+      {
+         "item": "wbtc:floor_danger_2",
+         "data": 0
+      }
+   ],
+   "result": {
+      "item": "wbtc:sdo_panel_danger_2",
+      "data": 0,
+      "count": 9
+   }
+}

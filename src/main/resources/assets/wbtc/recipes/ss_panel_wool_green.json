@@ -1,0 +1,18 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "item": "wbtc:smooth_spruce",
+         "data": 0
+      },
+      {
+         "item": "minecraft:carpet",
+         "data": 13
+      }
+   ],
+   "result": {
+      "item": "wbtc:ss_panel_wool_green",
+      "data": 0,
+      "count": 9
+   }
+}

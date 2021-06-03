@@ -1,0 +1,18 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "item": "wbtc:smooth_acacia",
+         "data": 0
+      },
+      {
+         "item": "wbtc:wbtc_floor_26",
+         "data": 0
+      }
+   ],
+   "result": {
+      "item": "wbtc:sa_panel_tile_26",
+      "data": 0,
+      "count": 9
+   }
+}
