@@ -1,0 +1,23 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "# #",
+      "###",
+      "PPP"
+   ],
+   "key": {
+      "#": {
+         "item": "wbtc:glowing_plastic",
+         "data": 0
+      },
+      "P": {
+         "item": "wbtc:white_plastic",
+         "data": 0
+      }
+   },
+   "result": {
+      "item": "wbtc:white_vest",
+      "data": 0,
+      "count": 1
+   }
+}

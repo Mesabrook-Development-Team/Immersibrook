@@ -42,12 +42,23 @@ item.irw_vest.name=Orange Safety Vest - Iron River-Western Branding
 item.red_vest.name=Red Safety Vest
 item.tges_vest.name=Red Safety Vest - T-GES Mineral Works Branding
 item.ems_vest.name=Cyan Safety Vest - Emergency Medical Technician
+item.white_vest.name=White Safety Vest
+item.magenta_vest.name=Magenta Safety Vest
+item.lime_vest.name=Lime Safety Vest
+item.pink_vest.name=Pink Safety Vest
+item.gray_vest.name=Gray Safety Vest
+item.silver_vest.name=Light Gray Safety Vest
+item.cyan_vest.name=Cyan Safety Vest
+item.purple_vest.name=Purple Safety Vest
+item.brown_vest.name=Brown Safety Vest
+item.green_vest.name=Green Safety Vest
+item.black_vest.name=Black Safety Vest
 
 
 //Leviathan Safety Vests
-item.lvn_vest.name=Leviathan Blue Safety Vest
-item.lvn_vest_x.name=Leviathan Blue Safety Vest - Railroad Pattern
-item.lvn_vest_txt.name=Leviathan Blue Safety Vest - LVN Branding
+item.lvn_vest.name=Light Blue Safety Vest
+item.lvn_vest_x.name=Light Blue Safety Vest - Railroad Pattern
+item.lvn_vest_txt.name=Safety Vest - LVN Branding
 
 //Stairs
 tile.oak_laminate_stairs.name=Oak Wood Laminate Stairs
@@ -65,6 +76,7 @@ tile.smooth_dark_oak_stairs.name=Smooth Dark Oak Wood Stairs
 tile.white_stone_stairs.name=Chalked Stone Stairs
 tile.white_cobblestone_stairs.name=Chalked Cobblestone Stairs
 tile.white_stone_brick_stairs.name=Chalked Stone Brick Stairs
+tile.smoothed_stone_stair.name=Smoothed Stone Stairs
 
 //Containers
 container.rubbish_bin:Wheelie Bin

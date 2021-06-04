@@ -262,6 +262,7 @@ public class ModBlocks
 	public static final Block CHALKED_STONE_STAIRS = new MiscStairs("white_stone_stairs", ModBlocks.WHITE_STONE.getDefaultState(), SoundType.STONE, "pickaxe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block CHALKED_COBBLESTONE_STAIRS = new MiscStairs("white_cobblestone_stairs", ModBlocks.WHITE_COBBLE.getDefaultState(), SoundType.STONE, "pickaxe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block CHALKED_STONE_BRICK_STAIRS = new MiscStairs("white_stone_brick_stairs", ModBlocks.WHITE_STONE_BRICKS.getDefaultState(), SoundType.STONE, "pickaxe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block SMOOTHED_STONE_STAIRS = new MiscStairs("smoothed_stone_stair", ModBlocks.SMOOTHED_STONE.getDefaultState(), SoundType.STONE, "pickaxe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 
 	// Smooth Oak Wood Ceiling Blocks
 	public static final Block SO_PANEL_OAK_L = new MiscBlock("so_panel_oak_l", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
