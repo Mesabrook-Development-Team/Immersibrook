@@ -9,3 +9,6 @@ NEW:
 
 FIXES:
 -Fixed the Wheelie Bin not playing sounds to nearby clients when opening and closing.
+
+KNOWN ISSUES:
+-There is a small chance that the wrong sound could play when using items tagged by the custom sound system.

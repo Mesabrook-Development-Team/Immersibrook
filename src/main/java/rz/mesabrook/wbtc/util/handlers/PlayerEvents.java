@@ -19,19 +19,48 @@ import java.util.Random;
 
 public class PlayerEvents 
 {
+	private final String PREFIX = "-> ";
+
 	@SubscribeEvent
 	public void onPlayerLogin(PlayerLoggedInEvent e)
 	{
 		EntityPlayer player = e.player;
-		
+
 		if(ModConfig.showWelcome)
 		{
+			TextComponentString user = new TextComponentString(TextFormatting.AQUA + player.getDisplayNameString());
+
 			TextComponentTranslation prefix = new TextComponentTranslation("im.welcome");
-			TextComponentTranslation url = new TextComponentTranslation("im.website");
-			prefix.getStyle().setColor(TextFormatting.LIGHT_PURPLE);
-			url.getStyle().setColor(TextFormatting.AQUA);
-			player.sendMessage(prefix);
-			player.sendMessage(url);
+			prefix.getStyle().setColor(TextFormatting.AQUA);
+			prefix.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentTranslation("im.welcome.disable")));
+			player.sendMessage(new TextComponentString(prefix.getFormattedText() + user.getFormattedText() + "!"));
+
+			TextComponentTranslation mesaTitle = new TextComponentTranslation("im.website.title");
+			TextComponentTranslation wikiTitle = new TextComponentTranslation("im.wiki.title");
+			TextComponentTranslation mapTitle = new TextComponentTranslation("im.map.title");
+
+			mesaTitle.getStyle().setColor(TextFormatting.GREEN);
+			wikiTitle.getStyle().setColor(TextFormatting.YELLOW);
+
+			TextComponentString mesaURL = new TextComponentString(PREFIX + TextFormatting.RESET + "https://mesabrook.com");
+			TextComponentString dynmap = new TextComponentString(PREFIX + TextFormatting.RESET + "http://map.mesabrook.com");
+			TextComponentString wikiURL = new TextComponentString(PREFIX + TextFormatting.RESET +"https://bit.ly/2S2G5Wt");
+
+			mesaURL.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentTranslation("im.website.hover")));
+			wikiURL.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentTranslation("im.website.hover")));
+			dynmap.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentTranslation("im.website.hover")));
+
+			mesaURL.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://mesabrook.com"));
+			wikiURL.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://bit.ly/2S2G5Wt"));
+			dynmap.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "http://www.map.mesabrook.com/"));
+
+			player.sendMessage(new TextComponentString(""));
+			player.sendMessage(new TextComponentString(mesaTitle.getFormattedText()));
+			player.sendMessage(mesaURL);
+			player.sendMessage(dynmap);
+			player.sendMessage(new TextComponentString(""));
+			player.sendMessage(new TextComponentString(wikiTitle.getFormattedText()));
+			player.sendMessage(wikiURL);
 		}
 	}
 }

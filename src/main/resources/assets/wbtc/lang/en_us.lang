@@ -3,8 +3,14 @@ wbtc.config.title=Configuration File for Immersibrook
 entity.ItemFrame.name=Item Frame
 
 //Welcome message
-im.welcome=Thanks for playing with Immersibrook!
+im.welcome=Thanks for playing with Immersibrook, 
+im.welcome.disable=You can turn this message off in wbtc.cfg
+im.website.title=Our Websites
+im.wiki.title=Check out the Wiki for crafting recipes!
+im.map.title=Our Dynmap
 im.website=https://mesabrook.com
+im.wiki=https://bit.ly/2S2G5Wt
+im.website.hover=Click to open this URL in your web browser
 
 //Commands
 im.cmd.error=/immersibrook about | version | changelog
