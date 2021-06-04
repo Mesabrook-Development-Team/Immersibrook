@@ -41,16 +41,16 @@ public class CommandImmersibrook extends CommandBase
 		{
 			if("about".equals(args[0]))
 			{
-				sender.sendMessage(new TextComponentString(TextFormatting.AQUA + Reference.MODNAME));
-				sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "hehe immersion go brr"));
+				TextComponentString modName;
+				modName = new TextComponentString(Reference.MODNAME);
+				modName.getStyle().setColor(TextFormatting.AQUA);
+				modName.getStyle().setBold(true);
+				sender.sendMessage(modName);
+				sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Version " + Reference.VERSION));
+				sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Build Date: " + TextFormatting.BOLD + Reference.BUILD_DATE));
 				sender.sendMessage(new TextComponentString(""));
 				sender.sendMessage(new TextComponentString(TextFormatting.YELLOW + "Developed by RavenholmZombie with assistance from CSX8600 for use on the Mesabrook Minecraft server."));
 				sender.sendMessage(new TextComponentString(TextFormatting.GOLD + "https://mesabrook.com"));
-			}
-			else if("version".equals(args[0]))
-			{
-				sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Version " + Reference.VERSION));
-				sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Build Date: " + TextFormatting.BOLD + Reference.BUILD_DATE));
 			}
 			else if("changelog".equals(args[0]))
 			{
@@ -93,6 +93,6 @@ public class CommandImmersibrook extends CommandBase
 	@Override
 	public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, BlockPos targetPos) 
 	{
-		return args.length == 1 ? getListOfStringsMatchingLastWord(args, new String[] {"about", "version", "changelog"}) : Collections.emptyList();
+		return args.length == 1 ? getListOfStringsMatchingLastWord(args, new String[] {"about", "changelog"}) : Collections.emptyList();
 	}
 }
