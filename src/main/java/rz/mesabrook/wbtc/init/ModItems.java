@@ -17,6 +17,7 @@ import rz.mesabrook.wbtc.items.misc.ToyPopper;
 import rz.mesabrook.wbtc.items.record.MemeRecord;
 import rz.mesabrook.wbtc.items.tools.ToolPickaxeBase;
 import rz.mesabrook.wbtc.items.weapons.ItemWeapon;
+import rz.mesabrook.wbtc.util.ArmorMaterialRegistry;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.ToolMaterialRegistry;
 
@@ -114,41 +115,38 @@ public class ModItems
 	// First Aid Kit
 	public static final Item FIRST_AID_KIT = new ItemFirstAidKit("first_aid", Main.IMMERSIBROOK_MAIN);
 	
-	// Safety Vest Armor Materials
-	public static final ArmorMaterial SAFETY_VEST_MATERIAL = EnumHelper.addArmorMaterial("safety_vest", Reference.MODID + ":safety_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
-	public static final ArmorMaterial SAFETY_VEST_YELLOW_MAT = EnumHelper.addArmorMaterial("yellow_vest", Reference.MODID + ":yellow_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
-	public static final ArmorMaterial SAFETY_VEST_ORANGE_NON_X_MAT = EnumHelper.addArmorMaterial("orange_vest_no_x", Reference.MODID + ":orange_vest_no_x", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
-	public static final ArmorMaterial SAFETY_VEST_BLUE_MAT = EnumHelper.addArmorMaterial("blue_vest", Reference.MODID + ":blue_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
-	public static final ArmorMaterial SAFETY_VEST_YELLOW_WITH_X_MAT = EnumHelper.addArmorMaterial("yellow_vest_x", Reference.MODID + ":yellow_vest_x", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
-	public static final ArmorMaterial LVN_SAFETY_VEST_NO_X = EnumHelper.addArmorMaterial("lvn_vest", Reference.MODID + ":lvn_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
-	public static final ArmorMaterial LVN_SAFETY_VEST_X = EnumHelper.addArmorMaterial("lvn_vest_x", Reference.MODID + ":lvn_vest_x", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
-	public static final ArmorMaterial LVN_SAFETY_VEST_TXT = EnumHelper.addArmorMaterial("lvn_vest_txt", Reference.MODID + ":lvn_vest_txt", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
-	public static final ArmorMaterial IRW_SAFETY_VEST_MAT = EnumHelper.addArmorMaterial("irw_vest", Reference.MODID + ":irw_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
-	public static final ArmorMaterial TGES_VEST = EnumHelper.addArmorMaterial("tges_vest", Reference.MODID + ":tges_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
-	public static final ArmorMaterial RED_VEST = EnumHelper.addArmorMaterial("red_vest", Reference.MODID + ":red_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
-	public static final ArmorMaterial EMS_VEST = EnumHelper.addArmorMaterial("ems_vest", Reference.MODID + ":ems_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
-	public static final ArmorMaterial NIGHT_VISION_HELMET = EnumHelper.addArmorMaterial("nv_goggles", Reference.MODID + ":nv_goggles", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.NV, 2.0F);
-	
 	// Generic Safety Vests
-	public static final Item SAFETY_VEST_ORANGE = new SafetyVestModel("safety_vest_orange", Main.IMMERSIBROOK_MAIN, SAFETY_VEST_MATERIAL, EntityEquipmentSlot.CHEST);
-	public static final Item SAFETY_VEST_YELLOW = new SafetyVestModel("safety_vest_yellow", Main.IMMERSIBROOK_MAIN, SAFETY_VEST_YELLOW_MAT, EntityEquipmentSlot.CHEST);
-	public static final Item SAFETY_VEST_ORANGE_NO_X = new SafetyVestModel("safety_vest_orange_no_x", Main.IMMERSIBROOK_MAIN, SAFETY_VEST_ORANGE_NON_X_MAT, EntityEquipmentSlot.CHEST);
-	public static final Item SAFETY_VEST_BLUE = new SafetyVestModel("safety_vest_blue", Main.IMMERSIBROOK_MAIN, SAFETY_VEST_BLUE_MAT, EntityEquipmentSlot.CHEST);
-	public static final Item SAFETY_VEST_YELLOW_X = new SafetyVestModel("safety_vest_yellow_x", Main.IMMERSIBROOK_MAIN, SAFETY_VEST_YELLOW_WITH_X_MAT, EntityEquipmentSlot.CHEST);
-	public static final Item SAFETY_VEST_TGES = new SafetyVestModel("tges_vest", Main.IMMERSIBROOK_MAIN, TGES_VEST, EntityEquipmentSlot.CHEST);
-	public static final Item SAFETY_VEST_RED = new SafetyVestModel("red_vest", Main.IMMERSIBROOK_MAIN, RED_VEST, EntityEquipmentSlot.CHEST);
-	public static final Item SAFETY_VEST_EMS = new SafetyVestModel("ems_vest", Main.IMMERSIBROOK_MAIN, EMS_VEST, EntityEquipmentSlot.CHEST);
-	
+	public static final Item SAFETY_VEST_ORANGE = new SafetyVestModel("safety_vest_orange", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.SAFETY_VEST_MATERIAL, EntityEquipmentSlot.CHEST);
+	public static final Item SAFETY_VEST_YELLOW = new SafetyVestModel("safety_vest_yellow", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.SAFETY_VEST_YELLOW_MAT, EntityEquipmentSlot.CHEST);
+	public static final Item SAFETY_VEST_ORANGE_NO_X = new SafetyVestModel("safety_vest_orange_no_x", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.SAFETY_VEST_ORANGE_NON_X_MAT, EntityEquipmentSlot.CHEST);
+	public static final Item SAFETY_VEST_BLUE = new SafetyVestModel("safety_vest_blue", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.SAFETY_VEST_BLUE_MAT, EntityEquipmentSlot.CHEST);
+	public static final Item SAFETY_VEST_YELLOW_X = new SafetyVestModel("safety_vest_yellow_x", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.SAFETY_VEST_YELLOW_WITH_X_MAT, EntityEquipmentSlot.CHEST);
+	public static final Item SAFETY_VEST_TGES = new SafetyVestModel("tges_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.TGES_VEST, EntityEquipmentSlot.CHEST);
+	public static final Item SAFETY_VEST_RED = new SafetyVestModel("red_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.RED_VEST, EntityEquipmentSlot.CHEST);
+	public static final Item SAFETY_VEST_EMS = new SafetyVestModel("ems_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.EMS_VEST, EntityEquipmentSlot.CHEST);
+	public static final Item SAFETY_VEST_WHITE = new SafetyVestModel("white_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.MAT_WHITE_VEST, EntityEquipmentSlot.CHEST);
+	public static final Item SAFETY_VEST_MAGENTA = new SafetyVestModel("magenta_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.MAT_MAGENTA_VEST, EntityEquipmentSlot.CHEST);
+	public static final Item SAFETY_VEST_LIME = new SafetyVestModel("lime_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.MAT_LIME_VEST, EntityEquipmentSlot.CHEST);
+	public static final Item SAFETY_VEST_PINK = new SafetyVestModel("pink_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.MAT_PINK_VEST, EntityEquipmentSlot.CHEST);
+	public static final Item SAFETY_VEST_GRAY = new SafetyVestModel("gray_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.MAT_GRAY_VEST, EntityEquipmentSlot.CHEST);
+	public static final Item SAFETY_VEST_SILVER = new SafetyVestModel("silver_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.MAT_SILVER_VEST, EntityEquipmentSlot.CHEST);
+	public static final Item SAFETY_VEST_CYAN = new SafetyVestModel("cyan_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.MAT_CYAN_VEST, EntityEquipmentSlot.CHEST);
+	public static final Item SAFETY_VEST_PURPLE = new SafetyVestModel("purple_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.MAT_PURPLE_VEST, EntityEquipmentSlot.CHEST);
+	public static final Item SAFETY_VEST_BROWN = new SafetyVestModel("brown_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.MAT_BROWN_VEST, EntityEquipmentSlot.CHEST);
+	public static final Item SAFETY_VEST_GREEN = new SafetyVestModel("green_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.MAT_GREEN_VEST, EntityEquipmentSlot.CHEST);
+	public static final Item SAFETY_VEST_BLACK = new SafetyVestModel("black_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.MAT_BLACK_VEST, EntityEquipmentSlot.CHEST);
+
+
 	// IRW Vest
-	public static final Item IRW_VEST = new SafetyVestModel("irw_vest", Main.IMMERSIBROOK_MAIN, IRW_SAFETY_VEST_MAT, EntityEquipmentSlot.CHEST);
+	public static final Item IRW_VEST = new SafetyVestModel("irw_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.IRW_SAFETY_VEST_MAT, EntityEquipmentSlot.CHEST);
 	
 	// LVN Safety Vests
-	public static final Item LVN_VEST = new SafetyVestModel("lvn_vest", Main.IMMERSIBROOK_MAIN, LVN_SAFETY_VEST_NO_X, EntityEquipmentSlot.CHEST);
-	public static final Item LVN_VEST_X = new SafetyVestModel("lvn_vest_x", Main.IMMERSIBROOK_MAIN, LVN_SAFETY_VEST_X, EntityEquipmentSlot.CHEST);
-	public static final Item LVN_VEST_TXT = new SafetyVestModel("lvn_vest_txt", Main.IMMERSIBROOK_MAIN, LVN_SAFETY_VEST_TXT, EntityEquipmentSlot.CHEST);
+	public static final Item LVN_VEST = new SafetyVestModel("lvn_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.LVN_SAFETY_VEST_NO_X, EntityEquipmentSlot.CHEST);
+	public static final Item LVN_VEST_X = new SafetyVestModel("lvn_vest_x", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.LVN_SAFETY_VEST_X, EntityEquipmentSlot.CHEST);
+	public static final Item LVN_VEST_TXT = new SafetyVestModel("lvn_vest_txt", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.LVN_SAFETY_VEST_TXT, EntityEquipmentSlot.CHEST);
 	
 	// Night Vision Goggles
-	public static final Item NV_GOGGLES = new NightVisionGoggles("nv_goggles", Main.IMMERSIBROOK_MAIN, NIGHT_VISION_HELMET, EntityEquipmentSlot.HEAD);
+	public static final Item NV_GOGGLES = new NightVisionGoggles("nv_goggles", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.NIGHT_VISION_HELMET, EntityEquipmentSlot.HEAD);
 
 	// Night vision goggles crafting ingredients.
 	public static final Item NV_LENS = new MiscItem("nv_lens", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);

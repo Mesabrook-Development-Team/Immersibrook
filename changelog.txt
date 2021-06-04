@@ -1,7 +1,10 @@
 Immersibrook 0.0.7
 
 NEW:
-
+-Vests for all sixteen Minecraft colors.
+-Nine new floor tile blocks.
+-New Smooth Wood ceiling panel blocks.
+-New Hammer.
 
 CHANGES:
 

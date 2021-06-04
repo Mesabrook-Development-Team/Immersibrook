@@ -34,6 +34,17 @@ public class CategoryVests extends AbstractCategory
 		add(ModItems.LVN_VEST_X);
 		add(ModItems.LVN_VEST_TXT);
 		add(ModItems.IRW_VEST);
+		add(ModItems.SAFETY_VEST_WHITE);
+		add(ModItems.SAFETY_VEST_MAGENTA);
+		add(ModItems.SAFETY_VEST_LIME);
+		add(ModItems.SAFETY_VEST_PINK);
+		add(ModItems.SAFETY_VEST_GRAY);
+		add(ModItems.SAFETY_VEST_SILVER);
+		add(ModItems.SAFETY_VEST_CYAN);
+		add(ModItems.SAFETY_VEST_PURPLE);
+		add(ModItems.SAFETY_VEST_BROWN);
+		add(ModItems.SAFETY_VEST_GREEN);
+		add(ModItems.SAFETY_VEST_BLACK);
 	}
 
 }
