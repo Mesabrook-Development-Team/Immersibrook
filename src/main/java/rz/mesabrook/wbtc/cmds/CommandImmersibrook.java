@@ -1,5 +1,6 @@
 package rz.mesabrook.wbtc.cmds;
 
+import java.sql.Ref;
 import java.util.Collections;
 import java.util.List;
 
@@ -57,9 +58,9 @@ public class CommandImmersibrook extends CommandBase
 				sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Click the link below to view the changelog."));
 
 				TextComponentString url;
-				url = new TextComponentString("https://bit.ly/3wIt173");
+				url = new TextComponentString(Reference.CHANGELOG);
 				url.getStyle().setColor(TextFormatting.AQUA);
-				url.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://bit.ly/3wIt173"));
+				url.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, Reference.CHANGELOG));
 				sender.sendMessage(url);
 			}
 		}
