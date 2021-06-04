@@ -13,5 +13,5 @@ public class ToolMaterialRegistry
     public static final Item.ToolMaterial SOD_ALUMINUM = EnumHelper.addToolMaterial("wbtc_aluminum_sod", 2, 100, 3.0F, -1.2F, 3);
     public static final Item.ToolMaterial SWORD_ALUMINUM = EnumHelper.addToolMaterial("wbtc_aluminum", 2, 200, 5.0F, 1.2F, 8);
     public static final Item.ToolMaterial ZOE_CANE_MAT = EnumHelper.addToolMaterial("wbtc_zoe_cane_material", 3, 420, 100.0F, 10000.0F, 10);
-    public static final Item.ToolMaterial LEVI_HAMMER_MAT = EnumHelper.addToolMaterial("wbtc_levi_ban_hammer_material", 3, 69420, 100.0F, 50.0F, 10);
+    public static final Item.ToolMaterial LEVI_HAMMER_MAT = EnumHelper.addToolMaterial("wbtc_levi_ban_hammer_material", 4, 69420, 100.0F, 50.0F, 10);
 }

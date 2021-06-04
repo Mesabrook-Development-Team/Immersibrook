@@ -35,5 +35,6 @@
 	"bong": {"category": "master","sounds": [{"name": "wbtc:bong","stream": true}]},
 	"bonk": {"category": "master","sounds": [{"name": "wbtc:bonk","stream": true}]},
 	"pop": {"category": "master","sounds": [{"name": "wbtc:pop","stream": true}]},
-	"pop_single": {"category": "master","sounds": [{"name": "wbtc:pop_single","stream": true}]}
+	"pop_single": {"category": "master","sounds": [{"name": "wbtc:pop_single","stream": true}]},
+	"spree": {"category": "master","sounds": [{"name": "wbtc:spree","stream": true}]}
 }

@@ -6,6 +6,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -78,6 +81,28 @@ public class ToolPickaxeBase extends ItemPickaxe implements IHasModel
             return false;
         }
         return false;
+    }
+
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand)
+    {
+        ItemStack item = player.getHeldItem(hand);
+        if(this.getUnlocalizedName().contains("levi_hammer"))
+        {
+            if(!world.isRemote)
+            {
+                PlaySoundPacket packet = new PlaySoundPacket();
+                packet.pos = player.getPosition();
+                packet.soundName = "spree";
+                PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+                return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
+            }
+        }
+        else
+        {
+            return new ActionResult<ItemStack>(EnumActionResult.FAIL, item);
+        }
+        return new ActionResult<ItemStack>(EnumActionResult.FAIL, item);
     }
 
     @Override

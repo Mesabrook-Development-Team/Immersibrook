@@ -5,9 +5,7 @@ NEW:
 -Nine new floor tile blocks.
 -Smooth Wood ceiling panel blocks.
 -Hammer.
-
-CHANGES:
-
+-Smooth Stone Stairs.
 
 FIXES:
 -Fixed the Wheelie Bin not playing sounds to nearby clients when opening and closing.
