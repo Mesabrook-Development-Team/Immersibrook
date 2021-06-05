@@ -26,9 +26,6 @@ public final class ModConfig
 	@Comment("Set to false if you want to disable the Leather = Saddle smelting recipe.")
 	public static boolean smeltingLeatherForASaddle = true;
 	
-	@Comment("Set to true if you want the Golden Apple Food Cube to give the player random potion effects when right-clicked. EXPERIMENTAL")
-	public static boolean goldenAppleCubeGivesPotionEffects = false;
-	
 	@Comment("Set to false if you want to disable Immersibrook's /tpdim command.")
 	public static boolean tpdimCommand = true;
 	
