@@ -15,6 +15,18 @@ public class DamageSourceHammer extends DamageSource
     @Override
     public ITextComponent getDeathMessage(EntityLivingBase entityLivingBaseIn)
     {
-        return new TextComponentTranslation("im.death.bonk", entityLivingBaseIn.getDisplayName());
+        if(SoundRandomizer.hammerResult == "beaned")
+        {
+            return new TextComponentTranslation("im.death.beaned", entityLivingBaseIn.getDisplayName());
+        }
+        else if(SoundRandomizer.hammerResult == "bong")
+        {
+            return new TextComponentTranslation("im.death.bong", entityLivingBaseIn.getDisplayName());
+        }
+        else if(SoundRandomizer.hammerResult == "bonk")
+        {
+            return new TextComponentTranslation("im.death.bonk", entityLivingBaseIn.getDisplayName());
+        }
+        return new TextComponentTranslation("im.death.default", entityLivingBaseIn.getDisplayName());
     }
 }
