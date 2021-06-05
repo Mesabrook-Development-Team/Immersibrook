@@ -43,27 +43,36 @@ public class ToyPopper extends Item implements IHasModel
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand)
     {
         ItemStack item = player.getHeldItem(hand);
-        SoundRandomizer.PopRandomizer();
-        if(!world.isRemote)
+        try
         {
-            if(!player.isCreative())
-            {
-                PlaySoundPacket packet = new PlaySoundPacket();
-                packet.pos = player.getPosition();
-                packet.soundName = SoundRandomizer.popResult;
-                PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
-                item.damageItem(1, player);
-                return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
-            }
-
             PlaySoundPacket packet = new PlaySoundPacket();
-            packet.pos = player.getPosition();
-            packet.soundName = SoundRandomizer.popResult;
-            PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
-            return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
+            SoundRandomizer.PopRandomizer();
+            if(!world.isRemote)
+            {
+                if(!player.isCreative())
+                {
+                    packet.pos = player.getPosition();
+                    packet.soundName = SoundRandomizer.popResult;
+                    PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+                    item.damageItem(1, player);
+                    return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
+                }
+                else
+                {
+                    packet.pos = player.getPosition();
+                    packet.soundName = SoundRandomizer.popResult;
+                    PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+                    return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
+                }
+            }
+            else
+            {
+                return new ActionResult<ItemStack>(EnumActionResult.FAIL, item);
+            }
         }
-        else
+        catch(Exception ex)
         {
+            Main.logger.error(ex);
             return new ActionResult<ItemStack>(EnumActionResult.FAIL, item);
         }
     }
