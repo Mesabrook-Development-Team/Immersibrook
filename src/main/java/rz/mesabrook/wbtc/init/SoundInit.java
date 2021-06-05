@@ -40,6 +40,8 @@ public class SoundInit
 	public static final SoundEvent POP;
 	public static final SoundEvent POP_SINGLE;
 	public static final SoundEvent SPREE;
+	public static final SoundEvent OWIE;
+	public static final SoundEvent DOVE;
 	
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -83,6 +85,8 @@ public class SoundInit
 		POP = addSoundsToRegistry("pop");
 		POP_SINGLE = addSoundsToRegistry("pop_single");
 		SPREE = addSoundsToRegistry("spree");
+		OWIE = addSoundsToRegistry("owie");
+		DOVE = addSoundsToRegistry("dove");
 		
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -151,6 +155,8 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.POP);
 				event.getRegistry().registerAll(SoundInit.POP_SINGLE);
 				event.getRegistry().registerAll(SoundInit.SPREE);
+				event.getRegistry().registerAll(SoundInit.OWIE);
+				event.getRegistry().registerAll(SoundInit.DOVE);
 				
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

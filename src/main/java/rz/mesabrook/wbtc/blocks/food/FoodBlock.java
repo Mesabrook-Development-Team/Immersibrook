@@ -374,10 +374,6 @@ public class FoodBlock extends Block implements IHasModel
 					return true;
 				}
 			}
-			else
-			{
-
-			}
 		}
 		else
 		{

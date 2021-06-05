@@ -2,6 +2,7 @@
 im.death.bonk=%s got bonked to death lmfao
 im.death.bong=%s had too much Taco Bell and shat themselve to death.
 im.death.beaned=%s got b e a n e d
+im.death.bones=%s just got their bones owied
 im.death.default=%s died due to this message being so generic (this is a bug btw)
 
 //Config
@@ -65,7 +66,6 @@ item.purple_vest.name=Purple Safety Vest
 item.brown_vest.name=Brown Safety Vest
 item.green_vest.name=Green Safety Vest
 item.black_vest.name=Black Safety Vest
-
 
 //Leviathan Safety Vests
 item.lvn_vest.name=Light Blue Safety Vest
@@ -154,7 +154,6 @@ item.raw_green_plastic.name=Raw Green Plastic
 item.raw_red_plastic.name=Raw Red Plastic
 item.raw_black_plastic.name=Raw Black Plastic
 item.raw_glowing_plastic.name=Raw Glowstone Infused Plastic
-
 item.white_plastic.name=White Plastic
 item.orange_plastic.name=Orange Plastic
 item.magenta_plastic.name=Magenta Plastic

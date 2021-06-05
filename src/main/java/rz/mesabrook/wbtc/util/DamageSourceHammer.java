@@ -19,7 +19,7 @@ public class DamageSourceHammer extends DamageSource
         {
             return new TextComponentTranslation("im.death.beaned", entityLivingBaseIn.getDisplayName());
         }
-        else if(SoundRandomizer.hammerResult == "bong")
+        else if(SoundRandomizer.hammerResult == "bong" || SoundRandomizer.hammerResult == "dove")
         {
             return new TextComponentTranslation("im.death.bong", entityLivingBaseIn.getDisplayName());
         }
@@ -27,6 +27,11 @@ public class DamageSourceHammer extends DamageSource
         {
             return new TextComponentTranslation("im.death.bonk", entityLivingBaseIn.getDisplayName());
         }
+        else if(SoundRandomizer.hammerResult == "owie")
+        {
+            return new TextComponentTranslation("im.death.bones", entityLivingBaseIn.getDisplayName());
+        }
+
         return new TextComponentTranslation("im.death.default", entityLivingBaseIn.getDisplayName());
     }
 }

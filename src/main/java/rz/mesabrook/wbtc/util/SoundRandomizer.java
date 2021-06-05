@@ -46,7 +46,7 @@ public class SoundRandomizer
 	{
 		Random chooser = new Random();
 		int snds;
-		snds = chooser.nextInt(5);
+		snds = chooser.nextInt(7);
 
 		switch(snds)
 		{
@@ -60,7 +60,13 @@ public class SoundRandomizer
 				hammerResult = "bonk";
 				break;
 			case 4:
-				result = "beaned";
+				hammerResult = "beaned";
+				break;
+			case 5:
+				hammerResult = "owie";
+				break;
+			case 6:
+				hammerResult = "dove";
 				break;
 		}
 	}

@@ -36,5 +36,7 @@
 	"bonk": {"category": "master","sounds": [{"name": "wbtc:bonk","stream": true}]},
 	"pop": {"category": "master","sounds": [{"name": "wbtc:pop","stream": true}]},
 	"pop_single": {"category": "master","sounds": [{"name": "wbtc:pop_single","stream": true}]},
-	"spree": {"category": "master","sounds": [{"name": "wbtc:spree","stream": true}]}
+	"spree": {"category": "master","sounds": [{"name": "wbtc:spree","stream": true}]},
+	"owie": {"category": "master","sounds": [{"name": "wbtc:owie","stream": true}]},
+	"dove": {"category": "master","sounds": [{"name": "wbtc:dove","stream": true}]}
 }
