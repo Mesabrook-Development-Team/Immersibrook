@@ -1,3 +1,6 @@
+//Death Message
+im.death.bonk=%s got bonked to death lmfao
+
 //Config
 wbtc.config.title=Configuration File for Immersibrook
 entity.ItemFrame.name=Item Frame
