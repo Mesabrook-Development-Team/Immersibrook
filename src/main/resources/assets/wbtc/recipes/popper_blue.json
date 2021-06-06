@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#B#",
+	"###"
+  ],
+  "key": {
+    "#": {
+      "item": "wbtc:blue_plastic"
+    },
+	"B": {
+	  "item": "minecraft:stone_button"
+	}
+  },
+  "result": {
+    "item": "wbtc:popper_blue",
+    "count": 1
+  }
+}

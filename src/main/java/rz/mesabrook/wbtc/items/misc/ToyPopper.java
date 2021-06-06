@@ -33,6 +33,7 @@ public class ToyPopper extends Item implements IHasModel
         setRegistryName(name);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
         setMaxDamage(maxUses);
+        setMaxStackSize(1);
 
         ModItems.ITEMS.add(this);
     }
