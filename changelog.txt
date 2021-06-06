@@ -14,3 +14,4 @@ FIXES:
 
 KNOWN ISSUES:
 -There is a small chance that the wrong sound could play when using items tagged by the custom sound system.
+-There is a small chance that attempting to etch an Award Plaque kicks you from the server.
