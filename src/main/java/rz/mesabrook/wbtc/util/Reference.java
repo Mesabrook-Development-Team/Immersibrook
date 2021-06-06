@@ -6,7 +6,7 @@ public class Reference
 	public static final String MODNAME = "Immersibrook";
 	public static final String AUTHOR = "RavenholmZombie, CSX8600";
 	public static final String VERSION = "0.0.7";
-	public static final String BUILD_DATE = "To be determined lmfao";
+	public static final String BUILD_DATE = "5 May 2021";
 	public static final String CHANGELOG = "https://bit.ly/2TBo6Xj";
 	
 	public static final String CLIENT = "rz.mesabrook.wbtc.proxy.ClientProxy";
