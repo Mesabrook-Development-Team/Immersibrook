@@ -64,11 +64,22 @@ public class ToyPopper extends Item implements IHasModel
                     PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
                     return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
                 }
+
             }
             else
             {
-                world.playSound(player, player.getPosition(), SoundInit.POP, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
+                SoundRandomizer.SPPopRandomizer();
+                if(SoundRandomizer.popResultSP == null)
+                {
+                    SoundRandomizer.SPPopRandomizer();
+                    world.playSound(player, player.getPosition(), SoundInit.POP, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                    return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
+                }
+                else
+                {
+                    world.playSound(player, player.getPosition(), SoundRandomizer.popResultSP, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                    return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
+                }
             }
         }
         catch(Exception ex)

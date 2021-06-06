@@ -2,6 +2,7 @@ package rz.mesabrook.wbtc.util;
 
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundEvent;
+import rz.mesabrook.wbtc.init.SoundInit;
 
 import java.util.Random;
 
@@ -15,6 +16,7 @@ public class SoundRandomizer
 	public static String hammerResult;
 	public static String popResult;
 	public static SoundEvent catResult;
+	public static SoundEvent popResultSP;
 
 	public static void RandomizeSound()
 	{
@@ -84,6 +86,23 @@ public class SoundRandomizer
 				break;
 			case 2:
 				popResult = "pop_single";
+				break;
+		}
+	}
+
+	public static void SPPopRandomizer()
+	{
+		Random chooser = new Random();
+		int snds;
+		snds = chooser.nextInt(3);
+
+		switch(snds)
+		{
+			case 1:
+				popResultSP = SoundInit.POP;
+				break;
+			case 2:
+				popResultSP = SoundInit.POP_SINGLE;
 				break;
 		}
 	}
