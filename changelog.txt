@@ -1,17 +1,8 @@
-Immersibrook 0.0.7
+Immersibrook 0.0.7.1
 
 NEW:
--Vests for all sixteen Minecraft colors.
--Nine new floor tile blocks.
--Smooth Wood ceiling panel blocks.
--Ceiling Lights.
--Hammer.
--Smooth Stone Stairs.
--Death Event for the Hammer.
 
 FIXES:
--Fixed the Wheelie Bin not playing sounds to nearby clients when opening and closing.
+
 
 KNOWN ISSUES:
--There is a small chance that the wrong sound could play when using items tagged by the custom sound system.
--There is a small chance that attempting to etch an Award Plaque kicks you from the server.
