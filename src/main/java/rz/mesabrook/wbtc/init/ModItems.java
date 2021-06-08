@@ -6,8 +6,6 @@ import java.util.List;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
-import net.minecraftforge.common.util.EnumHelper;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.items.armor.NightVisionGoggles;
 import rz.mesabrook.wbtc.items.armor.SafetyVestModel;
@@ -18,7 +16,6 @@ import rz.mesabrook.wbtc.items.record.MemeRecord;
 import rz.mesabrook.wbtc.items.tools.ToolPickaxeBase;
 import rz.mesabrook.wbtc.items.weapons.ItemWeapon;
 import rz.mesabrook.wbtc.util.ArmorMaterialRegistry;
-import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.ToolMaterialRegistry;
 
 public class ModItems 
