@@ -54,6 +54,7 @@ public class SoundInit
 	public static final SoundEvent PIGSTEP;
 	public static final SoundEvent KRAB_BORG;
 	public static final SoundEvent KRAB_BORG_FULL;
+	public static final SoundEvent MS_XP;
 	
 	static
 	{
@@ -99,6 +100,7 @@ public class SoundInit
 		PIGSTEP = addSoundsToRegistry("pigstep");
 		KRAB_BORG = addSoundsToRegistry("krab_borg");
 		KRAB_BORG_FULL = addSoundsToRegistry("krab_borg_full");
+		MS_XP = addSoundsToRegistry("ms_xp");
 	}
 	
 	private static SoundEvent addSoundsToRegistry(String soundId)
@@ -157,6 +159,7 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.SPREE);
 				event.getRegistry().registerAll(SoundInit.OWIE);
 				event.getRegistry().registerAll(SoundInit.DOVE);
+				event.getRegistry().registerAll(SoundInit.MS_XP);
 				
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

@@ -748,6 +748,7 @@ item.pigstep.name=Music Disc
 item.krab_borg.name=Music Disc
 item.krab_borg_full.name=Music Disc
 item.fish_full.name=Music Disc
+item.ms_xp.name=Musical Floppy
 
 //Record Descriptions
 item.record.amalthea.desc=Amalthea
@@ -761,6 +762,7 @@ item.record.pigstep.desc=Lena Raine - Pigstep
 item.record.krab_borg.desc=Anijesterx Music - Death by Krab Borg (Shortened)
 item.record.krab_borg_full.desc=Anijesterx Music - Death by Krab Borg (Full)
 item.record.fish_full.desc=Spinning Fish
+item.record.ms_xp.desc=Microsoft Corporation - Windows XP Installation Music
 
 //Enchantments
 enchantment.thunder=The Power of Thor

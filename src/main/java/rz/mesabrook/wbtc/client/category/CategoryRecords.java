@@ -33,6 +33,7 @@ public class CategoryRecords extends AbstractCategory
 		add(ModItems.DISC_KRAB_BORG);
 		add(ModItems.DISC_KRAB_BORG_FULL);
 		add(ModItems.DISC_FISH);
+		add(ModItems.DISC_XP);
 	}
 
 }
