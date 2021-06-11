@@ -1,8 +1,9 @@
 Immersibrook 0.0.7.1
 
 NEW:
+-Floor Tiles.
 
-FIXES:
-
+CHANGES:
+-Ceiling Lights can now place a light block from as high as 50 blocks.
 
 KNOWN ISSUES:
