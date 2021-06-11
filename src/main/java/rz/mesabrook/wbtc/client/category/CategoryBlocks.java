@@ -91,6 +91,7 @@ public class CategoryBlocks extends AbstractCategory {
 		add(ModBlocks.FLOOR_TILE_28);
 		add(ModBlocks.FLOOR_TILE_29);
 		add(ModBlocks.FLOOR_TILE_30);
+		add(ModBlocks.FLOOR_TILE_31);
 
 		// Plastic Blocks
 		add(ModBlocks.PLASTIC_CUBE_WHITE);
@@ -122,8 +123,10 @@ public class CategoryBlocks extends AbstractCategory {
 		// Commercial Kitchen Blocks
 		add(ModBlocks.FLOOR_KITCHEN_1);
 		add(ModBlocks.FLOOR_KITCHEN_2);
+		add(ModBlocks.FLOOR_KITCHEN_3);
 		add(ModBlocks.FLOOR_DRAIN_1);
 		add(ModBlocks.FLOOR_DRAIN_2);
+		add(ModBlocks.FLOOR_DRAIN_3);
 		
 		// Industrial Blocks
 		add(ModBlocks.INDUSTRIAL_TILE_1);

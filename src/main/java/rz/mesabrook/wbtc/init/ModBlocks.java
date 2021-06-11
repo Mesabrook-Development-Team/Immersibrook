@@ -141,6 +141,7 @@ public class ModBlocks
 	public static final Block FLOOR_TILE_28 = new MiscBlock("wbtc_floor_28", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block FLOOR_TILE_29 = new MiscBlock("wbtc_floor_29", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block FLOOR_TILE_30 = new MiscBlock("wbtc_floor_30", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block FLOOR_TILE_31 = new MiscBlock("wbtc_floor_31", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 
 	// Misc Blocks
 	public static final Block WHITE_STONE = new MiscBlock("white_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
@@ -155,7 +156,9 @@ public class ModBlocks
 	public static final Block FLOOR_DRAIN_1 = new MiscBlock("floor_drain_1", Material.IRON, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block FLOOR_KITCHEN_2 = new MiscBlock("floor_kitchen_2", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block FLOOR_DRAIN_2 = new MiscBlock("floor_drain_2", Material.IRON, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
-	
+	public static final Block FLOOR_KITCHEN_3 = new MiscBlock("floor_kitchen_3", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block FLOOR_DRAIN_3 = new MiscBlock("floor_drain_3", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+
 	// Industrial Floor Blocks
 	public static final Block INDUSTRIAL_TILE_1 = new MiscBlock("floor_danger_1", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block INDUSTRIAL_TILE_2 = new MiscBlock("floor_danger_2", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);

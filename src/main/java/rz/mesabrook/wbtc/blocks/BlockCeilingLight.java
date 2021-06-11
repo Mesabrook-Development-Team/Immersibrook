@@ -66,7 +66,7 @@ public class BlockCeilingLight extends Block implements IHasModel
 
         int count = 0;
 
-        while (block == Blocks.AIR && count < 15) {
+        while (block == Blocks.AIR && count < 50) {
             posOffset = posOffset.offset(EnumFacing.DOWN);
             block = world.getBlockState(posOffset).getBlock();
             count++;
@@ -98,7 +98,7 @@ public class BlockCeilingLight extends Block implements IHasModel
 
         int count = 0;
 
-        while (block != ModBlocks.FAKE_LIGHT_SOURCE && count < 15)
+        while (block != ModBlocks.FAKE_LIGHT_SOURCE && count < 50)
         {
             posOffset = posOffset.offset(EnumFacing.DOWN);
             block = world.getBlockState(posOffset).getBlock();
