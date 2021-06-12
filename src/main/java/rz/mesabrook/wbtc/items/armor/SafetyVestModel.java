@@ -40,7 +40,6 @@ public class SafetyVestModel extends ItemArmor implements IHasModel
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack)
 	{
 		player.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 10, 10, true, false));
-		//player.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 10, 10, true, false));
 	}
 	
 	@SideOnly(Side.CLIENT)
