@@ -110,7 +110,6 @@ public class ModItems
 	public static final Item DISC_FISH = new MemeRecord("fish_full", SoundInit.FISH_FULL);
 	public static final Item DISC_XP = new MemeRecord("ms_xp", SoundInit.MS_XP);
 
-
 	// First Aid Kit
 	public static final Item FIRST_AID_KIT = new ItemFirstAidKit("first_aid", Main.IMMERSIBROOK_MAIN);
 	
