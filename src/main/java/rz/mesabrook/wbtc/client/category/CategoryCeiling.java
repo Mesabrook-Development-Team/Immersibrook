@@ -223,12 +223,18 @@ public class CategoryCeiling extends AbstractCategory
 		add(ModBlocks.SB_PANEL_TILE_25);
 		add(ModBlocks.SB_PANEL_TILE_26);
 		add(ModBlocks.SB_PANEL_TILE_27);
+		add(ModBlocks.SB_PANEL_TILE_28);
+		add(ModBlocks.SB_PANEL_TILE_29);
+		add(ModBlocks.SB_PANEL_TILE_30);
+		add(ModBlocks.SB_PANEL_TILE_31);
 
 		// Commercial Kitchen Tile Panels
 		add(ModBlocks.SB_PANEL_KITCHEN_1);
 		add(ModBlocks.SB_PANEL_KITCHEN_2);
+		add(ModBlocks.SB_PANEL_KITCHEN_3);
 		add(ModBlocks.SB_PANEL_DRAIN_1);
 		add(ModBlocks.SB_PANEL_DRAIN_2);
+		add(ModBlocks.SB_PANEL_DRAIN_3);
 
 		// Industrial Tile Panels
 		add(ModBlocks.SB_PANEL_DANGER_1);
@@ -297,12 +303,19 @@ public class CategoryCeiling extends AbstractCategory
 		add(ModBlocks.SS_PANEL_TILE_25);
 		add(ModBlocks.SS_PANEL_TILE_26);
 		add(ModBlocks.SS_PANEL_TILE_27);
+		add(ModBlocks.SS_PANEL_TILE_28);
+		add(ModBlocks.SS_PANEL_TILE_29);
+		add(ModBlocks.SS_PANEL_TILE_30);
+		add(ModBlocks.SS_PANEL_TILE_31);
+		add(ModBlocks.SS_PANEL_TILE_32);
 
 		// Commercial Kitchen Tile Panels
 		add(ModBlocks.SS_PANEL_KITCHEN_1);
 		add(ModBlocks.SS_PANEL_KITCHEN_2);
+		add(ModBlocks.SS_PANEL_KITCHEN_3);
 		add(ModBlocks.SS_PANEL_DRAIN_1);
 		add(ModBlocks.SS_PANEL_DRAIN_2);
+		add(ModBlocks.SS_PANEL_DRAIN_3);
 
 		// Industrial Tile Panels
 		add(ModBlocks.SS_PANEL_DANGER_1);
@@ -371,12 +384,19 @@ public class CategoryCeiling extends AbstractCategory
 		add(ModBlocks.SJ_PANEL_TILE_25);
 		add(ModBlocks.SJ_PANEL_TILE_26);
 		add(ModBlocks.SJ_PANEL_TILE_27);
+		add(ModBlocks.SJ_PANEL_TILE_28);
+		add(ModBlocks.SJ_PANEL_TILE_29);
+		add(ModBlocks.SJ_PANEL_TILE_30);
+		add(ModBlocks.SJ_PANEL_TILE_31);
+		add(ModBlocks.SJ_PANEL_TILE_32);
 
 		// Commercial Kitchen Tile Panels
 		add(ModBlocks.SJ_PANEL_KITCHEN_1);
 		add(ModBlocks.SJ_PANEL_KITCHEN_2);
+		add(ModBlocks.SJ_PANEL_KITCHEN_3);
 		add(ModBlocks.SJ_PANEL_DRAIN_1);
 		add(ModBlocks.SJ_PANEL_DRAIN_2);
+		add(ModBlocks.SJ_PANEL_DRAIN_3);
 
 		// Industrial Tile Panels
 		add(ModBlocks.SJ_PANEL_DANGER_1);
@@ -445,12 +465,19 @@ public class CategoryCeiling extends AbstractCategory
 		add(ModBlocks.SA_PANEL_TILE_25);
 		add(ModBlocks.SA_PANEL_TILE_26);
 		add(ModBlocks.SA_PANEL_TILE_27);
+		add(ModBlocks.SA_PANEL_TILE_28);
+		add(ModBlocks.SA_PANEL_TILE_29);
+		add(ModBlocks.SA_PANEL_TILE_30);
+		add(ModBlocks.SA_PANEL_TILE_31);
+		add(ModBlocks.SA_PANEL_TILE_32);
 
 		// Commercial Kitchen Tile Panels
 		add(ModBlocks.SA_PANEL_KITCHEN_1);
 		add(ModBlocks.SA_PANEL_KITCHEN_2);
+		add(ModBlocks.SA_PANEL_KITCHEN_3);
 		add(ModBlocks.SA_PANEL_DRAIN_1);
 		add(ModBlocks.SA_PANEL_DRAIN_2);
+		add(ModBlocks.SA_PANEL_DRAIN_3);
 
 		// Industrial Tile Panels
 		add(ModBlocks.SA_PANEL_DANGER_1);
@@ -519,12 +546,19 @@ public class CategoryCeiling extends AbstractCategory
 		add(ModBlocks.SDO_PANEL_TILE_25);
 		add(ModBlocks.SDO_PANEL_TILE_26);
 		add(ModBlocks.SDO_PANEL_TILE_27);
+		add(ModBlocks.SDO_PANEL_TILE_28);
+		add(ModBlocks.SDO_PANEL_TILE_29);
+		add(ModBlocks.SDO_PANEL_TILE_30);
+		add(ModBlocks.SDO_PANEL_TILE_31);
+		add(ModBlocks.SDO_PANEL_TILE_32);
 
 		// Commercial Kitchen Tile Panels
 		add(ModBlocks.SDO_PANEL_KITCHEN_1);
 		add(ModBlocks.SDO_PANEL_KITCHEN_2);
+		add(ModBlocks.SDO_PANEL_KITCHEN_3);
 		add(ModBlocks.SDO_PANEL_DRAIN_1);
 		add(ModBlocks.SDO_PANEL_DRAIN_2);
+		add(ModBlocks.SDO_PANEL_DRAIN_3);
 
 		// Industrial Tile Panels
 		add(ModBlocks.SDO_PANEL_DANGER_1);

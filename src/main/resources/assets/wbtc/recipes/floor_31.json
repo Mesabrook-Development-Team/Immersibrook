@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+	"##",
+	"##"
+  ],
+  "key": {
+    "#": {
+      "item": "wbtc:tileboard",
+	  "data": 0
+    }
+  },
+  "result": {
+    "item": "wbtc:wbtc_floor_31",
+    "count": 9
+  }
+}
