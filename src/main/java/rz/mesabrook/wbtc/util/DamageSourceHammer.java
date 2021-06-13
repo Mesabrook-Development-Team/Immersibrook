@@ -31,6 +31,14 @@ public class DamageSourceHammer extends DamageSource
         {
             return new TextComponentTranslation("im.death.bones", entityLivingBaseIn.getDisplayName());
         }
+        else if(SoundRandomizer.hammerResult == "cpw")
+        {
+            return new TextComponentTranslation("im.death.cpw", entityLivingBaseIn.getDisplayName());
+        }
+        else if(SoundRandomizer.hammerResult == "sploot")
+        {
+            return new TextComponentTranslation("im.death.sploot", entityLivingBaseIn.getDisplayName());
+        }
 
         return new TextComponentTranslation("im.death.default", entityLivingBaseIn.getDisplayName());
     }

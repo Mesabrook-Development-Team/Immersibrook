@@ -42,6 +42,8 @@ public class SoundInit
 	public static final SoundEvent SPREE;
 	public static final SoundEvent OWIE;
 	public static final SoundEvent DOVE;
+	public static final SoundEvent CPW;
+	public static final SoundEvent SPLOOT;
 	
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -55,7 +57,14 @@ public class SoundInit
 	public static final SoundEvent KRAB_BORG;
 	public static final SoundEvent KRAB_BORG_FULL;
 	public static final SoundEvent MS_XP;
-	
+
+	// Plastic SoundType
+	public static final SoundEvent PLASTIC_PLACE;
+	public static final SoundEvent PLASTIC_BREAK;
+	public static final SoundEvent PLASTIC_HIT;
+	public static final SoundEvent PLASTIC_STEP;
+	public static final SoundEvent PLASTIC_LAND;
+
 	static
 	{
 		OWO_SFX = addSoundsToRegistry("owo");
@@ -88,6 +97,8 @@ public class SoundInit
 		SPREE = addSoundsToRegistry("spree");
 		OWIE = addSoundsToRegistry("owie");
 		DOVE = addSoundsToRegistry("dove");
+		CPW = addSoundsToRegistry("cpw");
+		SPLOOT = addSoundsToRegistry("sploot");
 		
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -101,6 +112,13 @@ public class SoundInit
 		KRAB_BORG = addSoundsToRegistry("krab_borg");
 		KRAB_BORG_FULL = addSoundsToRegistry("krab_borg_full");
 		MS_XP = addSoundsToRegistry("ms_xp");
+
+		// Plastic SoundType
+		PLASTIC_BREAK = addSoundsToRegistry("plastic_break");
+		PLASTIC_HIT = addSoundsToRegistry("plastic_hit");
+		PLASTIC_LAND = addSoundsToRegistry("plastic_land");
+		PLASTIC_PLACE = addSoundsToRegistry("plastic_place");
+		PLASTIC_STEP = addSoundsToRegistry("plastic_step");
 	}
 	
 	private static SoundEvent addSoundsToRegistry(String soundId)
@@ -160,6 +178,13 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.OWIE);
 				event.getRegistry().registerAll(SoundInit.DOVE);
 				event.getRegistry().registerAll(SoundInit.MS_XP);
+				event.getRegistry().registerAll(SoundInit.PLASTIC_PLACE);
+				event.getRegistry().registerAll(SoundInit.PLASTIC_BREAK);
+				event.getRegistry().registerAll(SoundInit.PLASTIC_HIT);
+				event.getRegistry().registerAll(SoundInit.PLASTIC_LAND);
+				event.getRegistry().registerAll(SoundInit.PLASTIC_STEP);
+				event.getRegistry().registerAll(SoundInit.CPW);
+				event.getRegistry().registerAll(SoundInit.SPLOOT);
 				
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

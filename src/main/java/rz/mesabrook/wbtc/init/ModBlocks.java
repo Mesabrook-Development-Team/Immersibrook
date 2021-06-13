@@ -224,7 +224,7 @@ public class ModBlocks
 	public static final Block PLASTIC_CUBE_GREEN = new MiscBlock("plastic_cube_green", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block PLASTIC_CUBE_RED = new MiscBlock("plastic_cube_red", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block PLASTIC_CUBE_BLACK = new MiscBlock("plastic_cube_black", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block PLASTIC_CUBE_GLOWING = new MiscBlock("plastic_cube_glowing", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 1F);
+	public static final Block PLASTIC_CUBE_GLOWING = new MiscBlock("plastic_cube_glowing", Material.ROCK, SoundTypeInit.PLASTIC, Main.IMMERSIBROOK_MAIN, 1F);
 	
 	// Aluminum
 	public static final Block CUBE_ALUMINUM = new MiscBlock("aluminum_block", Material.ROCK, SoundType.METAL, Main.IMMERSIBROOK_MAIN, 0F);

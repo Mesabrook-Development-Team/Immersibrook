@@ -48,7 +48,7 @@ public class SoundRandomizer
 	{
 		Random chooser = new Random();
 		int snds;
-		snds = chooser.nextInt(7);
+		snds = chooser.nextInt(9);
 
 		switch(snds)
 		{
@@ -69,6 +69,12 @@ public class SoundRandomizer
 				break;
 			case 6:
 				hammerResult = "dove";
+				break;
+			case 7:
+				hammerResult = "cpw";
+				break;
+			case 8:
+				hammerResult = "sploot";
 				break;
 		}
 	}

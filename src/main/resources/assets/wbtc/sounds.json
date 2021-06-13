@@ -39,5 +39,12 @@
 	"spree": {"category": "master","sounds": [{"name": "wbtc:spree","stream": true}]},
 	"owie": {"category": "master","sounds": [{"name": "wbtc:owie","stream": true}]},
 	"dove": {"category": "master","sounds": [{"name": "wbtc:dove","stream": true}]},
-	"ms_xp": {"category": "master","sounds": [{"name": "wbtc:ms_xp","stream": true}]}
+	"ms_xp": {"category": "master","sounds": [{"name": "wbtc:ms_xp","stream": true}]},
+	"plastic_break": {"category": "master","sounds": [{"name": "wbtc:plastic_break","stream": true}]},
+	"plastic_hit": {"category": "master","sounds": [{"name": "wbtc:plastic_hit","stream": true}]},
+	"plastic_land": {"category": "master","sounds": [{"name": "wbtc:plastic_land","stream": true}]},
+	"plastic_place": {"category": "master","sounds": [{"name": "wbtc:plastic_place","stream": true}]},
+	"plastic_step": {"category": "master","sounds": [{"name": "wbtc:plastic_step","stream": true}]},
+	"cpw": {"category": "master","sounds": [{"name": "wbtc:cpw","stream": true}]},
+	"sploot": {"category": "master","sounds": [{"name": "wbtc:sploot","stream": true}]}
 }
