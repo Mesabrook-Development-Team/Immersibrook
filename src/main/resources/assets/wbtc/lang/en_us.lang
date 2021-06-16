@@ -22,7 +22,7 @@ im.wiki=https://bit.ly/2S2G5Wt
 im.website.hover=Click to open this URL in your web browser
 
 //Commands
-im.cmd.error=/immersibrook about | version | changelog
+im.cmd.error=/immersibrook about | changelog
 im.cmd.usage=Immersibrook Command
 
 //First Aid
