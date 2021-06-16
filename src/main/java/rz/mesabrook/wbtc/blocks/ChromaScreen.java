@@ -23,16 +23,16 @@ import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.util.IHasModel;
+import rz.mesabrook.wbtc.util.ModUtils;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ChromaScreen extends Block implements IHasModel
 {
-    protected static final AxisAlignedBB EAST_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 0.06D);
-    protected static final AxisAlignedBB WEST_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.999D, 1.0D, 1.0D, 1.0D);
-    protected static final AxisAlignedBB SOUTH_AABB = new AxisAlignedBB(0.999D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
-    protected static final AxisAlignedBB NORTH_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.007D, 1.0D, 1.0D);
-	public static final PropertyDirection FACING = BlockHorizontal.FACING;
-	
-	public ChromaScreen(String name, Material mat, SoundType sound, String harvestTool)
+    public static final PropertyDirection FACING = BlockHorizontal.FACING;
+    protected final ArrayList<AxisAlignedBB> AABBs;
+	public ChromaScreen(String name, Material mat, SoundType sound, String harvestTool, AxisAlignedBB unrotatedAABB)
 	{
 		super(mat);
 		setUnlocalizedName(name);
@@ -40,65 +40,37 @@ public class ChromaScreen extends Block implements IHasModel
 		setSoundType(sound);
 		setHardness(8.0F);
 		setResistance(8.0F);
-		setCreativeTab(null);
+		setCreativeTab(Main.IMMERSIBROOK_MAIN);
 		setHarvestLevel(harvestTool, 0);
 		setLightOpacity(0);
 		setLightLevel(0.7F);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+
+        AABBs = new ArrayList<AxisAlignedBB>(Arrays.asList(
+                ModUtils.getRotatedAABB(unrotatedAABB, EnumFacing.DOWN, false),
+                ModUtils.getRotatedAABB(unrotatedAABB, EnumFacing.UP, false),
+                ModUtils.getRotatedAABB(unrotatedAABB, EnumFacing.NORTH, false),
+                ModUtils.getRotatedAABB(unrotatedAABB, EnumFacing.SOUTH, false),
+                ModUtils.getRotatedAABB(unrotatedAABB, EnumFacing.WEST, false),
+                ModUtils.getRotatedAABB(unrotatedAABB, EnumFacing.EAST, false),
+                unrotatedAABB, unrotatedAABB // Array fill to ensure that the array size covers 4 bit (meta & 0x07).
+        ));
 		
 		ModBlocks.BLOCKS.add(this);
 		ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
 	}
-	
-	@Override
+
+    @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
     {
-        switch ((EnumFacing)state.getValue(FACING))
-        {
-            case NORTH:
-                return NORTH_AABB;
-            case SOUTH:
-                return SOUTH_AABB;
-            case WEST:
-                return WEST_AABB;
-            case EAST:
-            	return EAST_AABB;
-            default:
-                return NORTH_AABB;
-        }
+        return AABBs.get(((EnumFacing)state.getValue(FACING)).getIndex() & 0x7);
     }
-	
-	@Override
-    public boolean isFullCube(IBlockState state)
-    {
-        return false;
-    }
-	
-	
-	@Override
-    public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face)
-    {
-        return BlockFaceShape.UNDEFINED;
-    }
-    
-	@Override
-    public boolean isOpaqueCube(IBlockState state)
-    {
-        return false;
-    }
-	
-	@Override
-	public BlockRenderLayer getBlockLayer() 
-	{
-		return BlockRenderLayer.CUTOUT;
-	}
-  
-	@Override
+
+    @Override
     public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
     {
         this.setDefaultFacing(worldIn, pos, state);
     }
-	
 
     private void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state)
     {
@@ -130,7 +102,7 @@ public class ChromaScreen extends Block implements IHasModel
             worldIn.setBlockState(pos, state.withProperty(FACING, enumfacing), 2);
         }
     }
-    
+
     @Override
     public IBlockState getStateFromMeta(int meta)
     {
@@ -148,13 +120,38 @@ public class ChromaScreen extends Block implements IHasModel
     {
         return new BlockStateContainer(this, FACING);
     }
-	
+
     @Override
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
     {
         return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
     }
+
+	@Override
+    public boolean isFullCube(IBlockState state)
+    {
+        return false;
+    }
+	
+	
+	@Override
+    public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face)
+    {
+        return BlockFaceShape.UNDEFINED;
+    }
     
+	@Override
+    public boolean isOpaqueCube(IBlockState state)
+    {
+        return false;
+    }
+	
+	@Override
+	public BlockRenderLayer getBlockLayer() 
+	{
+		return BlockRenderLayer.CUTOUT;
+	}
+
 	@Override
 	public boolean causesSuffocation(IBlockState state)
 	{

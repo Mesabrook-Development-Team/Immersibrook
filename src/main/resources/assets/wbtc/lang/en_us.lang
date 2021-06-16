@@ -209,8 +209,10 @@ tile.iron_handrail.name=Iron Handrail
 tile.wood_handrail.name=Wooden Handrail
 
 //Chroma Panels
-tile.chroma_green.name=Green Screen Panel
-tile.chroma_blue.name=Blue Screen Panel
+tile.chroma_green.name=Green Chroma Screen Panel
+tile.chroma_blue.name=Blue Chroma Screen Panel
+tile.chroma_green_block.name=Green Chroma Screen Block
+tile.chroma_blue_block.name=Blue Chroma Screen Block
 
 //Food blocks
 tile.cube_pork.name=Pork Cube

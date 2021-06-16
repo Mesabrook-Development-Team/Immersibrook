@@ -10,13 +10,11 @@
     {
         "x":
         {
-            "type": "forge:ore_dict",
-            "ore": "stickIron"
+			"item": "wbtc:gray_plastic"
         },
 		"y":
 		{
-			"item": "minecraft:concrete",
-			"data": 11
+			"item": "wbtc:chroma_blue_block"
 		}
     },
     "result":

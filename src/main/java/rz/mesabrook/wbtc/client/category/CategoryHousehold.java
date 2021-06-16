@@ -28,6 +28,8 @@ public class CategoryHousehold extends AbstractCategory
 		// Chroma Screens
 		add(ModBlocks.CHROMA_BLUE);
 		add(ModBlocks.CHROMA_GREEN);
+		add(ModBlocks.CHROMA_BLOCK_BLUE);
+		add(ModBlocks.CHROMA_BLOCK_GREEN);
 		
 		// Decorative
 		add(ModBlocks.PC_MOUSE);

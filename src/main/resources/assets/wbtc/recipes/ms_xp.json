@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#$#",
+	"###"
+  ],
+  "key": {
+    "#": {
+      "item": "wbtc:blue_plastic"
+    },
+	"$": {
+	  "item": "wbtc:blank_vinyl"
+	}
+  },
+  "result": {
+    "item": "wbtc:ms_xp",
+    "count": 1
+  }
+}

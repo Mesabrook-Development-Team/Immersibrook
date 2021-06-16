@@ -1,30 +1,8 @@
 {
-	"forge_marker": 1,
-	"defaults": {
-		"textures": {
-			"1": "blocks/iron_block",
-			"2": "blocks/iron_block"
-		},
-		"model": "wbtc:chroma_green"
-	},
-	"variants": {
-		"inventory": [{
-			"model": "wbtc:chroma_green"
-		}],
-		"facing=north": {
-			"model": "wbtc:chroma_green",
-			"y": 270
-		},
-		"facing=south": {
-			"model": "wbtc:chroma_green",
-			"y": 90
-		},
-		"facing=east": {
-			"model": "wbtc:chroma_green"
-		},
-		"facing=west": {
-			"model": "wbtc:chroma_green",
-			"y": 180
-		}
-	}
+    "variants": {
+        "facing=north": { "model": "wbtc:chroma_green" },
+        "facing=south": { "model": "wbtc:chroma_green", "y": 180 },
+        "facing=west":  { "model": "wbtc:chroma_green", "y": 270 },
+        "facing=east":  { "model": "wbtc:chroma_green", "y": 90 }
+    }
 }
