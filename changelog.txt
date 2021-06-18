@@ -1,13 +1,7 @@
-Immersibrook 0.0.7.1
+Immersibrook 0.0.7.2
 
 NEW:
--Floor Tiles.
--Chroma Green and Blue Blocks.
 
 CHANGES/FIXES:
--Ceiling Lights can now place a light block from as high as 50 blocks.
--Fixed Safety Vests conflicting with skin shirt layers.
--Remodeled the Chroma Screens.
 
 KNOWN ISSUES:
--Same as 0.0.7

@@ -5,8 +5,8 @@ public class Reference
 	public static final String MODID = "wbtc";
 	public static final String MODNAME = "Immersibrook";
 	public static final String AUTHOR = "RavenholmZombie, CSX8600";
-	public static final String VERSION = "0.0.7.1";
-	public static final String BUILD_DATE = "16 May 2021";
+	public static final String VERSION = "0.0.7.2";
+	public static final String BUILD_DATE = "TBD";
 	public static final String CHANGELOG = "https://bit.ly/3g3xgVm";
 	
 	public static final String CLIENT = "rz.mesabrook.wbtc.proxy.ClientProxy";
