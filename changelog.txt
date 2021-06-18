@@ -1,7 +1,10 @@
-Immersibrook 0.0.7.2
+Immersibrook 0.0.7.2 - Minor Cosmetic Update
 
 NEW:
+-Models for Mesabrook Founders Award trophies.
 
 CHANGES/FIXES:
+-Fixed certain custom sounds throwing up errors in logs.
 
 KNOWN ISSUES:
+-Same as 0.0.7
