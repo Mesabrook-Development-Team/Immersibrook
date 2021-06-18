@@ -1,5 +1,7 @@
 package rz.mesabrook.wbtc.blocks;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -46,14 +48,15 @@ import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.util.IHasModel;
+import rz.mesabrook.wbtc.util.ModUtils;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 public class BlockStatue extends Block implements IHasModel
 {
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
-	public static final AxisAlignedBB CORE = new AxisAlignedBB(0.0625D, 0.0D, 0.0625D, 0.9375D, 0.09375D, 0.9375D);
+	protected final ArrayList<AxisAlignedBB> AABBs;
 
-	public BlockStatue(String name, MapColor color)
+	public BlockStatue(String name, MapColor color, AxisAlignedBB unrotatedAABB)
 	{
 		super(Material.ROCK, color);
 		setUnlocalizedName(name);
@@ -63,7 +66,17 @@ public class BlockStatue extends Block implements IHasModel
 		setResistance(3.0F);
 		setHarvestLevel("pickaxe", 1);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
-		
+
+		AABBs = new ArrayList<AxisAlignedBB>(Arrays.asList(
+				ModUtils.getRotatedAABB(unrotatedAABB, EnumFacing.DOWN, false),
+				ModUtils.getRotatedAABB(unrotatedAABB, EnumFacing.UP, false),
+				ModUtils.getRotatedAABB(unrotatedAABB, EnumFacing.NORTH, false),
+				ModUtils.getRotatedAABB(unrotatedAABB, EnumFacing.SOUTH, false),
+				ModUtils.getRotatedAABB(unrotatedAABB, EnumFacing.WEST, false),
+				ModUtils.getRotatedAABB(unrotatedAABB, EnumFacing.EAST, false),
+				unrotatedAABB, unrotatedAABB // Array fill to ensure that the array size covers 4 bit (meta & 0x07).
+		));
+
 		ModBlocks.BLOCKS.add(this);
 		ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()).setMaxStackSize(1));
 	}
@@ -97,12 +110,11 @@ public class BlockStatue extends Block implements IHasModel
 	{
 		return BlockRenderLayer.CUTOUT;
 	}
-	
+
 	@Override
-	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos)
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
 	{
-		AxisAlignedBB AABB = this.CORE;
-		return AABB;
+		return AABBs.get(((EnumFacing)state.getValue(FACING)).getIndex() & 0x7);
 	}
 	
 	@Override
