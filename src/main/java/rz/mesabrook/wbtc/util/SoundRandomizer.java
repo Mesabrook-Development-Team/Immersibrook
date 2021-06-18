@@ -15,6 +15,7 @@ public class SoundRandomizer
 	public static String result;
 	public static String hammerResult;
 	public static String popResult;
+	public static String owoResult;
 	public static SoundEvent catResult;
 	public static SoundEvent popResultSP;
 
@@ -129,6 +130,29 @@ public class SoundRandomizer
 				break;
 			case 3:
 				catResult = SoundEvents.ENTITY_CAT_PURREOW;
+		}
+	}
+
+	public static void OWOTrophyRandomizer()
+	{
+		Random chooser = new Random();
+		int snds;
+		snds = chooser.nextInt(5);
+
+		switch(snds)
+		{
+			case 1:
+				owoResult = "owo";
+				break;
+			case 2:
+				owoResult = "new_owo";
+				break;
+			case 3:
+				owoResult = "new_owo_short";
+				break;
+			case 4:
+				owoResult = "new_owo_long";
+				break;
 		}
 	}
 }

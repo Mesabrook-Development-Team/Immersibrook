@@ -46,5 +46,8 @@
 	"plastic_place": {"category": "master","sounds": [{"name": "wbtc:plastic_place","stream": true}]},
 	"plastic_step": {"category": "master","sounds": [{"name": "wbtc:plastic_step","stream": true}]},
 	"cpw": {"category": "master","sounds": [{"name": "wbtc:cpw","stream": true}]},
-	"sploot": {"category": "master","sounds": [{"name": "wbtc:sploot","stream": true}]}
+	"sploot": {"category": "master","sounds": [{"name": "wbtc:sploot","stream": true}]},
+	"new_owo": {"category": "master","sounds": [{"name": "wbtc:new_owo","stream": true}]},
+	"new_owo_short": {"category": "master","sounds": [{"name": "wbtc:new_owo_short","stream": true}]},
+	"new_owo_long": {"category": "master","sounds": [{"name": "wbtc:new_owo_long","stream": true}]}
 }

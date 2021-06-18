@@ -243,7 +243,7 @@ public class ModBlocks
 	public static final Block PC_MOUSE = new DecorPCMouse("pc_mouse", Material.IRON, SoundType.METAL, 0.2F, 1.0F, ModUtils.getPixelatedAABB(7,0,6, 9,1,10), 0.4F, Main.IMMERSIBROOK_MAIN);
 	
 	// Trophies
-	public static final Block STATUE_OWO = new BlockStatue("statue_owo", MapColor.BLUE, ModUtils.getPixelatedAABB(7,0,6, 9,1,10)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block STATUE_OWO = new BlockStatue("statue_owo", MapColor.BLUE, ModUtils.getPixelatedAABB(3,0,5, 13,25,11)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block STATUE_RZ = new BlockStatue("statue_rz", MapColor.GRAY, ModUtils.getPixelatedAABB(3,0,5, 13,30,11)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block STATUE_CSX = new BlockStatue("statue_csx", MapColor.GRAY, ModUtils.getPixelatedAABB(3,0,5, 13,30,11)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block STATUE_TD = new BlockStatue("statue_td", MapColor.GRAY, ModUtils.getPixelatedAABB(3,0,5, 13,30,11)).setCreativeTab(Main.IMMERSIBROOK_MAIN);

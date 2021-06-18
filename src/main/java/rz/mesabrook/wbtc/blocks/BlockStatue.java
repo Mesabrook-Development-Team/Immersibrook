@@ -49,6 +49,7 @@ import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.ModUtils;
+import rz.mesabrook.wbtc.util.SoundRandomizer;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 public class BlockStatue extends Block implements IHasModel
@@ -121,6 +122,7 @@ public class BlockStatue extends Block implements IHasModel
     public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
     {
         this.setDefaultFacing(worldIn, pos, state);
+		SoundRandomizer.OWOTrophyRandomizer();
     }
 
     private void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state)
@@ -236,8 +238,10 @@ public class BlockStatue extends Block implements IHasModel
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
 	{
+		SoundRandomizer.OWOTrophyRandomizer();
 		if(!world.isRemote)
 		{
+			SoundRandomizer.OWOTrophyRandomizer();
 			try
 			{
 				PlaySoundPacket packet = new PlaySoundPacket();
@@ -251,7 +255,8 @@ public class BlockStatue extends Block implements IHasModel
 				
 				if(this.getUnlocalizedName().contains("statue_owo"))
 				{
-					packet.soundName = "owo";
+					SoundRandomizer.OWOTrophyRandomizer();
+					packet.soundName = SoundRandomizer.owoResult;
 				}
 				else if(this.getUnlocalizedName().contains("statue_rz"))
 				{

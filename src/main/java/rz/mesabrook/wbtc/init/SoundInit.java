@@ -44,6 +44,9 @@ public class SoundInit
 	public static final SoundEvent DOVE;
 	public static final SoundEvent CPW;
 	public static final SoundEvent SPLOOT;
+	public static final SoundEvent OWO2;
+	public static final SoundEvent OWO3;
+	public static final SoundEvent OWO4;
 	
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -99,6 +102,9 @@ public class SoundInit
 		DOVE = addSoundsToRegistry("dove");
 		CPW = addSoundsToRegistry("cpw");
 		SPLOOT = addSoundsToRegistry("sploot");
+		OWO2 = addSoundsToRegistry("new_owo");
+		OWO3 = addSoundsToRegistry("new_owo_short");
+		OWO4 = addSoundsToRegistry("new_owo_long");
 		
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -185,6 +191,9 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.PLASTIC_STEP);
 				event.getRegistry().registerAll(SoundInit.CPW);
 				event.getRegistry().registerAll(SoundInit.SPLOOT);
+				event.getRegistry().registerAll(SoundInit.OWO2);
+				event.getRegistry().registerAll(SoundInit.OWO3);
+				event.getRegistry().registerAll(SoundInit.OWO4);
 				
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");
