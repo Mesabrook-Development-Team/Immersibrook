@@ -109,6 +109,10 @@ tile.exit_sign_green.name=Exit Sign
 tile.diagonal_exit_red.name=Diagonal Exit Sign
 tile.diagonal_exit_green.name=Diagonal Exit Sign
 
+//Sign Tooltips
+im.tooltip.sign.green=Green Lettering
+im.tooltip.sign.red=Red Lettering
+
 //Items
 item.wood_sod.name=Wooden Sod
 item.stone_sod.name=Stone Sod

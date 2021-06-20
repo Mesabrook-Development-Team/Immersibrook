@@ -27,6 +27,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -203,13 +204,18 @@ public class SignBlock extends Block implements IHasModel
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag)
 	{
+		TextComponentTranslation green = new TextComponentTranslation("im.tooltip.sign.green");
+		TextComponentTranslation red = new TextComponentTranslation("im.tooltip.sign.red");
+		green.getStyle().setColor(TextFormatting.GREEN);
+		red.getStyle().setColor(TextFormatting.RED);
+
 		if(!this.getUnlocalizedName().contains("green"))
 		{
-			tooltip.add(TextFormatting.RED + "Red Lettering");
+			tooltip.add(red.getFormattedText());
 		}
 		else
 		{
-			tooltip.add(TextFormatting.GREEN + "Green Lettering");
+			tooltip.add(green.getFormattedText());
 		}
 	}
     
