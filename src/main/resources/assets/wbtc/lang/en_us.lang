@@ -106,6 +106,8 @@ tile.cat_block.name=Cat Block
 //Signs
 tile.exit_sign.name=Exit Sign
 tile.exit_sign_green.name=Exit Sign
+tile.diagonal_exit_red.name=Diagonal Exit Sign
+tile.diagonal_exit_green.name=Diagonal Exit Sign
 
 //Items
 item.wood_sod.name=Wooden Sod

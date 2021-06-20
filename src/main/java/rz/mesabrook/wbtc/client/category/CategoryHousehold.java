@@ -33,10 +33,13 @@ public class CategoryHousehold extends AbstractCategory
 		
 		// Decorative
 		add(ModBlocks.PC_MOUSE);
+		add(ModBlocks.PIXEL_BLOCK);
 		
 		// Signs
 		add(ModBlocks.EXIT_SIGN);
 		add(ModBlocks.EXIT_SIGN_GREEN);
+		add(ModBlocks.DIAG_SIGN_RED);
+		add(ModBlocks.DIAG_SIGN_GREEN);
 		
 		// Sign Stand
 		add(ModBlocks.SIGN_STAND);

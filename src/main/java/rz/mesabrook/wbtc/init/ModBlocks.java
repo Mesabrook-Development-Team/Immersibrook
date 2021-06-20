@@ -238,10 +238,14 @@ public class ModBlocks
 	// Signs
 	public static final Block EXIT_SIGN = new SignBlock("exit_sign", Material.IRON, SoundType.METAL, 1.0F, 1.0F, "pickaxe", 0, ModUtils.getPixelatedAABB(3,5,0, 13,12,1), 0.4F, Main.IMMERSIBROOK_MAIN);
 	public static final Block EXIT_SIGN_GREEN = new SignBlock("exit_sign_green", Material.IRON, SoundType.METAL, 1.0F, 1.0F, "pickaxe", 0, ModUtils.getPixelatedAABB(3,5,0, 13,12,1), 0.4F, Main.IMMERSIBROOK_MAIN);
-	
+	public static final Block DIAG_SIGN_RED = new SignBlock("diagonal_exit_red", Material.IRON, SoundType.METAL, 1.0F, 1.0F, "pickaxe", 0, ModUtils.getPixelatedAABB(1,7,0, 15,13.5,1.2), 0.4F, Main.IMMERSIBROOK_MAIN);
+	public static final Block DIAG_SIGN_GREEN = new SignBlock("diagonal_exit_green", Material.IRON, SoundType.METAL, 1.0F, 1.0F, "pickaxe", 0, ModUtils.getPixelatedAABB(1,7,0, 15,13.5,1.2), 0.4F, Main.IMMERSIBROOK_MAIN);
+
+
 	// Decor
 	public static final Block PC_MOUSE = new DecorPCMouse("pc_mouse", Material.IRON, SoundType.METAL, 0.2F, 1.0F, ModUtils.getPixelatedAABB(7,0,6, 9,1,10), 0.4F, Main.IMMERSIBROOK_MAIN);
-	
+	public static final Block PIXEL_BLOCK = new MiscBlock("pixelblock", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+
 	// Trophies
 	public static final Block STATUE_OWO = new BlockStatue("statue_owo", MapColor.BLUE, ModUtils.getPixelatedAABB(3,0,5, 13,25,11)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block STATUE_RZ = new BlockStatue("statue_rz", MapColor.GRAY, ModUtils.getPixelatedAABB(3,0,5, 13,30,11)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
