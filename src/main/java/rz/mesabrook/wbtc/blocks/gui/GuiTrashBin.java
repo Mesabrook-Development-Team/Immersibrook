@@ -29,8 +29,8 @@ public class GuiTrashBin extends GuiContainer
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
-		this.fontRenderer.drawString(this.te.getDisplayName().getUnformattedText(), 8, 6, 16777215);
-		this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 92, 16777215);
+		this.fontRenderer.drawString(this.te.getDisplayName().getUnformattedText(), 8, 6, 000000);
+		this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 92, 000000);
 	}
 	
 	@Override
