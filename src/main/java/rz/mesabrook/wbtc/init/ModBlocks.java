@@ -229,22 +229,23 @@ public class ModBlocks
 	public static final Block PLASTIC_CUBE_GLOWING = new MiscBlock("plastic_cube_glowing", Material.ROCK, SoundTypeInit.PLASTIC, Main.IMMERSIBROOK_MAIN, 1F);
 
 	// Raw Plastic Blocks
-	public static final Block RAW_PLASTIC_CUBE_WHITE = new BlockRawPlastic("raw_plastic_block_white");
-	public static final Block RAW_PLASTIC_CUBE_ORANGE = new BlockRawPlastic("raw_plastic_block_orange");
-	public static final Block RAW_PLASTIC_CUBE_MAGENTA = new BlockRawPlastic("raw_plastic_block_magenta");
-	public static final Block RAW_PLASTIC_CUBE_LBLUE = new BlockRawPlastic("raw_plastic_block_lblue");
-	public static final Block RAW_PLASTIC_CUBE_YELLOW = new BlockRawPlastic("raw_plastic_block_yellow");
-	public static final Block RAW_PLASTIC_CUBE_LIME = new BlockRawPlastic("raw_plastic_block_lime");
-	public static final Block RAW_PLASTIC_CUBE_PINK = new BlockRawPlastic("raw_plastic_block_pink");
-	public static final Block RAW_PLASTIC_CUBE_GRAY = new BlockRawPlastic("raw_plastic_block_gray");
-	public static final Block RAW_PLASTIC_CUBE_SILVER = new BlockRawPlastic("raw_plastic_block_silver");
-	public static final Block RAW_PLASTIC_CUBE_CYAN = new BlockRawPlastic("raw_plastic_block_cyan");
-	public static final Block RAW_PLASTIC_CUBE_PURPLE = new BlockRawPlastic("raw_plastic_block_purple");
-	public static final Block RAW_PLASTIC_CUBE_BLUE = new BlockRawPlastic("raw_plastic_block_blue");
-	public static final Block RAW_PLASTIC_CUBE_BROWN = new BlockRawPlastic("raw_plastic_block_brown");
-	public static final Block RAW_PLASTIC_CUBE_GREEN = new BlockRawPlastic("raw_plastic_block_green");
-	public static final Block RAW_PLASTIC_CUBE_RED = new BlockRawPlastic("raw_plastic_block_red");
-	public static final Block RAW_PLASTIC_CUBE_BLACK = new BlockRawPlastic("raw_plastic_block_black");
+	public static final Block RAW_PLASTIC_CUBE_WHITE = new BlockRawPlastic("raw_plastic_block_white", 0F);
+	public static final Block RAW_PLASTIC_CUBE_ORANGE = new BlockRawPlastic("raw_plastic_block_orange", 0F);
+	public static final Block RAW_PLASTIC_CUBE_MAGENTA = new BlockRawPlastic("raw_plastic_block_magenta", 0F);
+	public static final Block RAW_PLASTIC_CUBE_LBLUE = new BlockRawPlastic("raw_plastic_block_lblue", 0F);
+	public static final Block RAW_PLASTIC_CUBE_YELLOW = new BlockRawPlastic("raw_plastic_block_yellow", 0F);
+	public static final Block RAW_PLASTIC_CUBE_LIME = new BlockRawPlastic("raw_plastic_block_lime", 0F);
+	public static final Block RAW_PLASTIC_CUBE_PINK = new BlockRawPlastic("raw_plastic_block_pink", 0F);
+	public static final Block RAW_PLASTIC_CUBE_GRAY = new BlockRawPlastic("raw_plastic_block_gray", 0F);
+	public static final Block RAW_PLASTIC_CUBE_SILVER = new BlockRawPlastic("raw_plastic_block_silver", 0F);
+	public static final Block RAW_PLASTIC_CUBE_CYAN = new BlockRawPlastic("raw_plastic_block_cyan", 0F);
+	public static final Block RAW_PLASTIC_CUBE_PURPLE = new BlockRawPlastic("raw_plastic_block_purple", 0F);
+	public static final Block RAW_PLASTIC_CUBE_BLUE = new BlockRawPlastic("raw_plastic_block_blue", 0F);
+	public static final Block RAW_PLASTIC_CUBE_BROWN = new BlockRawPlastic("raw_plastic_block_brown", 0F);
+	public static final Block RAW_PLASTIC_CUBE_GREEN = new BlockRawPlastic("raw_plastic_block_green", 0F);
+	public static final Block RAW_PLASTIC_CUBE_RED = new BlockRawPlastic("raw_plastic_block_red", 0F);
+	public static final Block RAW_PLASTIC_CUBE_BLACK = new BlockRawPlastic("raw_plastic_block_black", 0F);
+	public static final Block RAW_PLASTIC_CUBE_GLOWING = new BlockRawPlastic("raw_plastic_block_glowing", 0.5F);
 
 	// Aluminum
 	public static final Block CUBE_ALUMINUM = new MiscBlock("aluminum_block", Material.ROCK, SoundType.METAL, Main.IMMERSIBROOK_MAIN, 0F);

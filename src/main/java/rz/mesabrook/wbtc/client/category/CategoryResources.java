@@ -95,6 +95,7 @@ public class CategoryResources extends AbstractCategory
 		add(ModBlocks.RAW_PLASTIC_CUBE_GREEN);
 		add(ModBlocks.RAW_PLASTIC_CUBE_RED);
 		add(ModBlocks.RAW_PLASTIC_CUBE_BLACK);
+		add(ModBlocks.RAW_PLASTIC_CUBE_GLOWING);
 	}
 
 }

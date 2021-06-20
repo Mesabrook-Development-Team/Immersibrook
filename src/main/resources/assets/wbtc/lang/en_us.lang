@@ -199,6 +199,25 @@ tile.plastic_cube_red.name=Red Plastic Block
 tile.plastic_cube_black.name=Black Plastic Block
 tile.plastic_cube_glowing.name=Glowstone Infused Plastic Block
 
+//Raw Plastic Blocks
+tile.raw_plastic_block_white.name=Block of Raw White Plastic
+tile.raw_plastic_block_orange.name=Block of Raw Orange Plastic
+tile.raw_plastic_block_magenta.name=Block of Raw Magenta Plastic
+tile.raw_plastic_block_lblue.name=Block of Raw Light Blue Plastic
+tile.raw_plastic_block_yellow.name=Block of Raw Yellow Plastic
+tile.raw_plastic_block_lime.name=Block of Raw Lime Plastic
+tile.raw_plastic_block_pink.name=Block of Raw Pink Plastic
+tile.raw_plastic_block_gray.name=Block of Raw Gray Plastic
+tile.raw_plastic_block_silver.name=Block of Raw Light Gray Plastic
+tile.raw_plastic_block_cyan.name=Block of Raw Cyan Plastic
+tile.raw_plastic_block_purple.name=Block of Raw Purple Plastic
+tile.raw_plastic_block_blue.name=Block of Raw Blue Plastic
+tile.raw_plastic_block_brown.name=Block of Raw Brown Plastic
+tile.raw_plastic_block_green.name=Block of Raw Green Plastic
+tile.raw_plastic_block_red.name=Block of Raw Red Plastic
+tile.raw_plastic_block_black.name=Block of Raw Black Plastic
+tile.raw_plastic_block_glowing.name=Block of Raw Glowstone Infused Plastic
+
 //Misc Blocks
 tile.aluminum_block.name=Block of Aluminum
 tile.wbtc_aluminum_ore.name=Aluminum Ore
