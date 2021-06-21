@@ -32,6 +32,8 @@ import rz.mesabrook.wbtc.util.config.ModConfig;
 import rz.mesabrook.wbtc.util.recipe.SmeltingRecipes;
 import rz.mesabrook.wbtc.world.generation.WorldGenWBTCOres;
 
+import java.net.URL;
+
 @EventBusSubscriber
 public class RegistryHandler 
 {	
@@ -75,7 +77,7 @@ public class RegistryHandler
         Main.IE_LOADED = Loader.isModLoaded("immersiveengineering");
         Main.JABCM_LOADED = Loader.isModLoaded("jabcm");
         Main.FURENIKUS_CITIES = Loader.isModLoaded("furenikuscities");
-        
+
         if(Main.FURENIKUS_CITIES)
         {
         	Main.logger.warn("[" + Reference.MODNAME + "] Fureniku's Cities detected. There may be some overlap when it comes to blocks since both mods are meant for a similar purpose. We recommend using either Immersibrook or FC separately to avoid any potential conflicts.");
