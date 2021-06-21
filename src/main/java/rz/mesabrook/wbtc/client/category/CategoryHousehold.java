@@ -40,6 +40,10 @@ public class CategoryHousehold extends AbstractCategory
 		add(ModBlocks.EXIT_SIGN_GREEN);
 		add(ModBlocks.DIAG_SIGN_RED);
 		add(ModBlocks.DIAG_SIGN_GREEN);
+		add(ModBlocks.EXIT_SIGN_LEFT);
+		add(ModBlocks.EXIT_SIGN_RIGHT);
+		add(ModBlocks.EXIT_SIGN_GREEN_LEFT);
+		add(ModBlocks.EXIT_SIGN_GREEN_RIGHT);
 		
 		// Sign Stand
 		add(ModBlocks.SIGN_STAND);

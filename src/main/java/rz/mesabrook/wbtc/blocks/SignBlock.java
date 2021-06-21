@@ -206,8 +206,14 @@ public class SignBlock extends Block implements IHasModel
 	{
 		TextComponentTranslation green = new TextComponentTranslation("im.tooltip.sign.green");
 		TextComponentTranslation red = new TextComponentTranslation("im.tooltip.sign.red");
+		TextComponentTranslation left = new TextComponentTranslation("im.tooltip.sign.left");
+		TextComponentTranslation right = new TextComponentTranslation("im.tooltip.sign.right");
+		TextComponentTranslation diag = new TextComponentTranslation("im.tooltip.sign.diag");
 		green.getStyle().setColor(TextFormatting.GREEN);
 		red.getStyle().setColor(TextFormatting.RED);
+		left.getStyle().setColor(TextFormatting.YELLOW);
+		right.getStyle().setColor(TextFormatting.YELLOW);
+		diag.getStyle().setColor(TextFormatting.YELLOW);
 
 		if(!this.getUnlocalizedName().contains("green"))
 		{
@@ -216,6 +222,19 @@ public class SignBlock extends Block implements IHasModel
 		else
 		{
 			tooltip.add(green.getFormattedText());
+		}
+
+		if(this.getUnlocalizedName().contains("left"))
+		{
+			tooltip.add(left.getFormattedText());
+		}
+		else if(this.getUnlocalizedName().contains("right"))
+		{
+			tooltip.add(right.getFormattedText());
+		}
+		else if(this.getUnlocalizedName().contains("diagonal"))
+		{
+			tooltip.add(diag.getFormattedText());
 		}
 	}
     

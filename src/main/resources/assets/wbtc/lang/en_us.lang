@@ -106,12 +106,19 @@ tile.cat_block.name=Cat Block
 //Signs
 tile.exit_sign.name=Exit Sign
 tile.exit_sign_green.name=Exit Sign
-tile.diagonal_exit_red.name=Diagonal Exit Sign
-tile.diagonal_exit_green.name=Diagonal Exit Sign
+tile.exit_sign_red_left.name=Exit Sign
+tile.exit_sign_red_right.name=Exit Sign
+tile.exit_sign_green_right.name=Exit Sign
+tile.exit_sign_green_left.name=Exit Sign
+tile.diagonal_exit_red.name=Exit Sign
+tile.diagonal_exit_green.name=Exit Sign
 
 //Sign Tooltips
 im.tooltip.sign.green=Green Lettering
 im.tooltip.sign.red=Red Lettering
+im.tooltip.sign.left=Left Arrow
+im.tooltip.sign.right=Right Arrow
+im.tooltip.sign.diag=Diagonal
 
 //Items
 item.wood_sod.name=Wooden Sod

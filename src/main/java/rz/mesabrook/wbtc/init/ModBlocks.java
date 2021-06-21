@@ -259,6 +259,10 @@ public class ModBlocks
 	public static final Block EXIT_SIGN_GREEN = new SignBlock("exit_sign_green", Material.IRON, SoundType.METAL, 1.0F, 1.0F, "pickaxe", 0, ModUtils.getPixelatedAABB(3,5,0, 13,12,1), 0.4F, Main.IMMERSIBROOK_MAIN);
 	public static final Block DIAG_SIGN_RED = new SignBlock("diagonal_exit_red", Material.IRON, SoundType.METAL, 1.0F, 1.0F, "pickaxe", 0, ModUtils.getPixelatedAABB(1,7,0, 15,13.5,1.2), 0.4F, Main.IMMERSIBROOK_MAIN);
 	public static final Block DIAG_SIGN_GREEN = new SignBlock("diagonal_exit_green", Material.IRON, SoundType.METAL, 1.0F, 1.0F, "pickaxe", 0, ModUtils.getPixelatedAABB(1,7,0, 15,13.5,1.2), 0.4F, Main.IMMERSIBROOK_MAIN);
+	public static final Block EXIT_SIGN_LEFT = new SignBlock("exit_sign_red_left", Material.IRON, SoundType.METAL, 1.0F, 1.0F, "pickaxe", 0, ModUtils.getPixelatedAABB(3,5,0, 13,12,1), 0.4F, Main.IMMERSIBROOK_MAIN);
+	public static final Block EXIT_SIGN_RIGHT = new SignBlock("exit_sign_red_right", Material.IRON, SoundType.METAL, 1.0F, 1.0F, "pickaxe", 0, ModUtils.getPixelatedAABB(3,5,0, 13,12,1), 0.4F, Main.IMMERSIBROOK_MAIN);
+	public static final Block EXIT_SIGN_GREEN_LEFT = new SignBlock("exit_sign_green_left", Material.IRON, SoundType.METAL, 1.0F, 1.0F, "pickaxe", 0, ModUtils.getPixelatedAABB(3,5,0, 13,12,1), 0.4F, Main.IMMERSIBROOK_MAIN);
+	public static final Block EXIT_SIGN_GREEN_RIGHT = new SignBlock("exit_sign_green_right", Material.IRON, SoundType.METAL, 1.0F, 1.0F, "pickaxe", 0, ModUtils.getPixelatedAABB(3,5,0, 13,12,1), 0.4F, Main.IMMERSIBROOK_MAIN);
 
 
 	// Decor
