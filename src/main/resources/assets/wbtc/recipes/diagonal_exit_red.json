@@ -1,0 +1,20 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "bbb",
+      "e e",
+	  " b "
+   ],
+   "key": {
+      "e": {
+         "item": "wbtc:exit_sign"
+      },
+	  "b": {
+		 "item": "wbtc:silver_plastic"
+	  }
+   },
+   "result": {
+      "item": "wbtc:diagonal_exit_red",
+      "count": 1
+   }
+}

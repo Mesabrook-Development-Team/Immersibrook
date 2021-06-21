@@ -1,0 +1,19 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "ppp",
+      "ppp",
+	  "ppp"
+   ],
+   "key": {
+      "p": {
+         "item": "wbtc:raw_purple_plastic",
+         "data": 0
+      }
+   },
+   "result": {
+      "item": "wbtc:raw_plastic_block_purple",
+      "data": 0,
+      "count": 1
+   }
+}

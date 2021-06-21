@@ -37,7 +37,26 @@ public class SmeltingRecipes
 			GameRegistry.addSmelting(ModItems.RAW_PLASTIC_GREEN, new ItemStack(ModItems.PLASTIC_GREEN), 10);
 			GameRegistry.addSmelting(ModItems.RAW_PLASTIC_BLACK, new ItemStack(ModItems.PLASTIC_BLACK), 10);
 			GameRegistry.addSmelting(ModItems.RAW_PLASTIC_GLOWING, new ItemStack(ModItems.PLASTIC_GLOWING), 10);
-			
+
+			// Raw Plastic Blocks
+			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_WHITE, new ItemStack(ModItems.PLASTIC_WHITE, 9), 10);
+			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_ORANGE, new ItemStack(ModItems.PLASTIC_ORANGE, 9), 10);
+			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_MAGENTA, new ItemStack(ModItems.PLASTIC_MAGENTA, 9), 10);
+			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_LBLUE, new ItemStack(ModItems.PLASTIC_LBLUE, 9), 10);
+			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_YELLOW, new ItemStack(ModItems.PLASTIC_YELLOW, 9), 10);
+			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_LIME, new ItemStack(ModItems.PLASTIC_LIME, 9), 10);
+			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_PINK, new ItemStack(ModItems.PLASTIC_PINK, 9), 10);
+			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_GRAY, new ItemStack(ModItems.PLASTIC_GRAY, 9), 10);
+			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_SILVER, new ItemStack(ModItems.PLASTIC_SILVER, 9), 10);
+			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_CYAN, new ItemStack(ModItems.PLASTIC_CYAN, 9), 10);
+			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_PURPLE, new ItemStack(ModItems.PLASTIC_PURPLE, 9), 10);
+			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_BLUE, new ItemStack(ModItems.PLASTIC_BLUE, 9), 10);
+			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_BROWN, new ItemStack(ModItems.PLASTIC_BROWN, 9), 10);
+			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_GREEN, new ItemStack(ModItems.PLASTIC_GREEN, 9), 10);
+			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_RED, new ItemStack(ModItems.PLASTIC_RED, 9), 10);
+			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_BLACK, new ItemStack(ModItems.PLASTIC_BLACK, 9), 10);
+			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_GLOWING, new ItemStack(ModItems.PLASTIC_GLOWING, 9), 10);
+
 			// Food Cubes
 			GameRegistry.addSmelting(ModBlocks.CUBE_BEEF, new ItemStack(Items.COOKED_BEEF, 9), 10);
 			GameRegistry.addSmelting(ModBlocks.CUBE_CHICKEN, new ItemStack(Items.COOKED_CHICKEN, 9), 10);
