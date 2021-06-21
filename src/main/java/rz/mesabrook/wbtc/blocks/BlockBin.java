@@ -26,6 +26,7 @@ import rz.mesabrook.wbtc.blocks.te.TileEntityTrashBin;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.init.SoundInit;
+import rz.mesabrook.wbtc.init.SoundTypeInit;
 import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.Reference;
@@ -42,6 +43,7 @@ public class BlockBin extends BlockContainer implements IHasModel
 		setRegistryName(name);
 		setHardness(1.0F);
 		setResistance(3.0F);
+		setSoundType(SoundTypeInit.PLASTIC);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 		
 		ModBlocks.BLOCKS.add(this);
