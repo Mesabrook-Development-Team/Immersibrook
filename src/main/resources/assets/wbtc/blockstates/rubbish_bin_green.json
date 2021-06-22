@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:rubbish_bin_green" },
+        "facing=south": { "model": "wbtc:rubbish_bin_green", "y": 180 },
+        "facing=west":  { "model": "wbtc:rubbish_bin_green", "y": 270 },
+        "facing=east":  { "model": "wbtc:rubbish_bin_green", "y": 90 }
+    }
+}

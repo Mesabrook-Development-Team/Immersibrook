@@ -8,23 +8,26 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.multiplayer.WorldClient;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
+import org.lwjgl.input.Keyboard;
 import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.util.Reference;
 
 @SideOnly(Side.CLIENT)
 public class ClientSideHandlers 
 {
-	private static HashMap<Long, PositionedSoundRecord> soundsByBlockPos = new HashMap<>();	
+	private static HashMap<Long, PositionedSoundRecord> soundsByBlockPos = new HashMap<>();
 	public static void playSoundHandler(PlaySoundPacket message, MessageContext ctx)
 	{
 		SoundHandler soundHandler = Minecraft.getMinecraft().getSoundHandler();

@@ -1,7 +1,7 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "wbtc:blocks/plastic_cube_silver",
+		"0": "wbtc:blocks/plastic_cube_blue",
 		"1": "wbtc:blocks/plastic_cube_black",
 		"2": "wbtc:blocks/plastic_cube_gray",
 		"particle": "wbtc:blocks/plastic_cube_silver"

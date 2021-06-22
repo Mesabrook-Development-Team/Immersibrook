@@ -322,9 +322,16 @@ public class FoodBlock extends Block implements IHasModel
 						TooltipRandomizer.ChosenTooltip();
 						//return true;
 					}
-					else if(this.getUnlocalizedName().contains("fish") || this.getUnlocalizedName().contains("pufferfish") || this.getUnlocalizedName().contains("salmon") || this.getUnlocalizedName().contains("nemo"))
+					else if(this.getUnlocalizedName().contains("cube_fish") || this.getUnlocalizedName().contains("cube_salmon") || this.getUnlocalizedName().contains("cube_nemo"))
 					{
 						packet.soundName = "fish";
+						PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
+						TooltipRandomizer.ChosenTooltip();
+						//return true;
+					}
+					else if(this.getUnlocalizedName().contains("cube_pufferfish"))
+					{
+						packet.soundName = "puff";
 						PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
 						TooltipRandomizer.ChosenTooltip();
 						//return true;

@@ -16,6 +16,7 @@ import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.rendering.ModelCustomArmor;
 import rz.mesabrook.wbtc.util.IHasModel;
+import rz.mesabrook.wbtc.util.handlers.ClientSideHandlers;
 
 public class SafetyVestModel extends ItemArmor implements IHasModel
 {
