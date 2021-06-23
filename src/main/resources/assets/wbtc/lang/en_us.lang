@@ -12,16 +12,22 @@ advancements.imb.title=Immersibrook
 advancements.imb.title.desc=hehe advancements go brr
 advancements.imb.welcome=Welcome to Mesabrook!
 advancements.imb.welcome.desc=Thanks for playing with our mod!
-advancements.imb.plastic=The Plastic Age
-advancements.imb.plastic.desc=It's NOT biodegradable!
+advancements.imb.pcube=Long Term Storage
+advancements.imb.pcube.desc=It's NOT biodegradable or edible!
 advancements.imb.vest=Safety First!
-advancements.imb.vest.desc=Ready for work!
-advancements.imb.nv=Tactical!
-advancements.imb.nv.desc=Bravo Six, Going Dark.
+advancements.imb.vest.desc=Craft a Safety Vest
+advancements.imb.nv=Bravo Six, Going Dark.
+advancements.imb.nv.desc=Craft a (expensive) set of Night Vision Goggles.
 advancements.imb.fc=Compression!
 advancements.imb.fc.desc=Food
 advancements.imb.pufferfish=Augh
 advancements.imb.pufferfish.desc=Pufferfish eats a carrot.
+advancements.imb.rawp=The Plastic Age
+advancements.imb.rawp.desc=Why is it so sticky?
+advancements.imb.binuse=Keeping Clean!
+advancements.imb.binuse.desc=Use a Wheelie Bin
+advancements.imb.binplace=Clean Up After Yourself!
+advancements.imb.binplace.desc=Build a Wheelie Bin
 
 //Config
 wbtc.config.title=Configuration File for Immersibrook

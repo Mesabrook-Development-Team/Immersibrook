@@ -9,7 +9,7 @@
         "description": {
             "translate": "advancements.imb.title.desc"
         },
-		"background": "wbtc:textures/blocks/plastic_cube_blue.png",
+		"background": "wbtc:textures/blocks/chroma_blue.png",
         "show_toast": false,
         "announce_to_chat": false
     },

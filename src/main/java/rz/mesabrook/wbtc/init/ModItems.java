@@ -9,9 +9,7 @@ import net.minecraft.item.Item.ToolMaterial;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.items.armor.NightVisionGoggles;
 import rz.mesabrook.wbtc.items.armor.SafetyVestModel;
-import rz.mesabrook.wbtc.items.misc.ItemFirstAidKit;
-import rz.mesabrook.wbtc.items.misc.MiscItem;
-import rz.mesabrook.wbtc.items.misc.ToyPopper;
+import rz.mesabrook.wbtc.items.misc.*;
 import rz.mesabrook.wbtc.items.record.MemeRecord;
 import rz.mesabrook.wbtc.items.tools.ToolPickaxeBase;
 import rz.mesabrook.wbtc.items.weapons.ItemWeapon;
@@ -56,44 +54,44 @@ public class ModItems
 	
 	// Raw Plastic
 	public static final Item RAW_PLASTIC = new MiscItem("raw_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	
+
 	// Colored Raw Plastic
-	public static final Item RAW_PLASTIC_WHITE = new MiscItem("raw_white_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item RAW_PLASTIC_ORANGE = new MiscItem("raw_orange_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item RAW_PLASTIC_MAGENTA = new MiscItem("raw_magenta_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item RAW_PLASTIC_LBLUE = new MiscItem("raw_lblue_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item RAW_PLASTIC_YELLOW = new MiscItem("raw_yellow_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item RAW_PLASTIC_LIME = new MiscItem("raw_lime_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item RAW_PLASTIC_PINK = new MiscItem("raw_pink_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item RAW_PLASTIC_GRAY = new MiscItem("raw_gray_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item RAW_PLASTIC_SILVER = new MiscItem("raw_silver_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item RAW_PLASTIC_CYAN = new MiscItem("raw_cyan_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item RAW_PLASTIC_PURPLE = new MiscItem("raw_purple_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item RAW_PLASTIC_BLUE = new MiscItem("raw_blue_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item RAW_PLASTIC_BROWN = new MiscItem("raw_brown_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item RAW_PLASTIC_GREEN = new MiscItem("raw_green_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item RAW_PLASTIC_RED = new MiscItem("raw_red_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item RAW_PLASTIC_BLACK = new MiscItem("raw_black_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item RAW_PLASTIC_GLOWING = new MiscItem("raw_glowing_plastic", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	
+	public static final Item RAW_PLASTIC_WHITE = new ItemRawPlastic("raw_white_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_PLASTIC_ORANGE = new ItemRawPlastic("raw_orange_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_PLASTIC_MAGENTA = new ItemRawPlastic("raw_magenta_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_PLASTIC_LBLUE = new ItemRawPlastic("raw_lblue_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_PLASTIC_YELLOW = new ItemRawPlastic("raw_yellow_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_PLASTIC_LIME = new ItemRawPlastic("raw_lime_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_PLASTIC_PINK = new ItemRawPlastic("raw_pink_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_PLASTIC_GRAY = new ItemRawPlastic("raw_gray_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_PLASTIC_SILVER = new ItemRawPlastic("raw_silver_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_PLASTIC_CYAN = new ItemRawPlastic("raw_cyan_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_PLASTIC_PURPLE = new ItemRawPlastic("raw_purple_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_PLASTIC_BLUE = new ItemRawPlastic("raw_blue_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_PLASTIC_BROWN = new ItemRawPlastic("raw_brown_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_PLASTIC_GREEN = new ItemRawPlastic("raw_green_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_PLASTIC_RED = new ItemRawPlastic("raw_red_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_PLASTIC_BLACK = new ItemRawPlastic("raw_black_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_PLASTIC_GLOWING = new ItemRawPlastic("raw_glowing_plastic", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+
 	// Finalized Colored Plastic Ingots
-	public static final Item PLASTIC_WHITE = new MiscItem("white_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PLASTIC_ORANGE = new MiscItem("orange_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PLASTIC_MAGENTA = new MiscItem("magenta_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PLASTIC_LBLUE = new MiscItem("lblue_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PLASTIC_YELLOW = new MiscItem("yellow_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PLASTIC_LIME = new MiscItem("lime_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PLASTIC_PINK = new MiscItem("pink_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PLASTIC_GRAY = new MiscItem("gray_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PLASTIC_SILVER = new MiscItem("silver_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PLASTIC_CYAN = new MiscItem("cyan_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PLASTIC_PURPLE = new MiscItem("purple_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PLASTIC_BLUE = new MiscItem("blue_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PLASTIC_BROWN = new MiscItem("brown_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PLASTIC_GREEN = new MiscItem("green_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PLASTIC_RED = new MiscItem("red_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PLASTIC_BLACK = new MiscItem("black_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PLASTIC_GLOWING = new MiscItem("glowing_plastic", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PLASTIC_WHITE = new ItemPlasticIngot("white_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PLASTIC_ORANGE = new ItemPlasticIngot("orange_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PLASTIC_MAGENTA = new ItemPlasticIngot("magenta_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PLASTIC_LBLUE = new ItemPlasticIngot("lblue_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PLASTIC_YELLOW = new ItemPlasticIngot("yellow_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PLASTIC_LIME = new ItemPlasticIngot("lime_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PLASTIC_PINK = new ItemPlasticIngot("pink_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PLASTIC_GRAY = new ItemPlasticIngot("gray_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PLASTIC_SILVER = new ItemPlasticIngot("silver_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PLASTIC_CYAN = new ItemPlasticIngot("cyan_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PLASTIC_PURPLE = new ItemPlasticIngot("purple_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PLASTIC_BLUE = new ItemPlasticIngot("blue_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PLASTIC_BROWN = new ItemPlasticIngot("brown_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PLASTIC_GREEN = new ItemPlasticIngot("green_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PLASTIC_RED = new ItemPlasticIngot("red_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PLASTIC_BLACK = new ItemPlasticIngot("black_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PLASTIC_GLOWING = new ItemPlasticIngot("glowing_plastic", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	
 	// Meme Records
 	public static final Item BLANK_DISC = new MiscItem("blank_vinyl",  16).setCreativeTab(Main.IMMERSIBROOK_MAIN);

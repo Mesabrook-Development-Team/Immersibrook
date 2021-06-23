@@ -1,21 +1,21 @@
 {
     "display": {
         "icon": {
-            "item": "wbtc:nv_goggles"
+            "item": "wbtc:rubbish_bin_green"
         },
         "title": {
-            "translate": "advancements.imb.nv"
+            "translate": "advancements.imb.binuse"
         },
         "description": {
-            "translate": "advancements.imb.nv.desc"
+            "translate": "advancements.imb.binuse.desc"
         },
 		"show_toast": true,
         "announce_to_chat": true
     },
-	"parent": "wbtc:imb_ingot",
+	"parent": "wbtc:imb_place_bin",
     "criteria": {
         "tick": {
-            "trigger": "wbtc:imb_wear_nv"
+            "trigger": "wbtc:imb_bin_use"
         }
     }
 }

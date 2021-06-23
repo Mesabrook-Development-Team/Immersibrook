@@ -1,13 +1,13 @@
 {
     "display": {
         "icon": {
-            "item": "wbtc:nv_goggles"
+            "item": "wbtc:plastic_cube_red"
         },
         "title": {
-            "translate": "advancements.imb.nv"
+            "translate": "advancements.imb.pcube"
         },
         "description": {
-            "translate": "advancements.imb.nv.desc"
+            "translate": "advancements.imb.pcube.desc"
         },
 		"show_toast": true,
         "announce_to_chat": true
@@ -15,7 +15,7 @@
 	"parent": "wbtc:imb_ingot",
     "criteria": {
         "tick": {
-            "trigger": "wbtc:imb_wear_nv"
+            "trigger": "wbtc:imb_pcube"
         }
     }
 }

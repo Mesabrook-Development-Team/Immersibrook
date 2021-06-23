@@ -20,6 +20,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import rz.mesabrook.wbtc.Main;
+import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.blocks.te.TileEntityTrashBin;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
@@ -60,6 +61,10 @@ public class BlockBin extends BlockContainer implements IHasModel
 		}
 
 		playerIn.openGui(Main.instance, Reference.GUI_TRASHBIN, worldIn, pos.getX(), pos.getY(), pos.getZ());
+		if(playerIn instanceof EntityPlayer)
+		{
+			Triggers.trigger(Triggers.BIN_USE, playerIn);
+		}
 		return true;
 	}
 	
@@ -81,6 +86,12 @@ public class BlockBin extends BlockContainer implements IHasModel
 			{
 				((TileEntityTrashBin)te).setCustomName(stack.getDisplayName());
 			}
+		}
+
+		if(placer instanceof EntityPlayer)
+		{
+			EntityPlayer player = (EntityPlayer) placer;
+			Triggers.trigger(Triggers.BIN_PLACE, player);
 		}
 	}
 	

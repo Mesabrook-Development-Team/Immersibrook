@@ -78,12 +78,12 @@ public class MiscBlock extends Block implements IHasModel
 	@Override
 	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
 	{
-		if(this.getUnlocalizedName().contains("plastic"))
+		if(placer instanceof EntityPlayer)
 		{
-			if(placer instanceof EntityPlayer)
+			if(this.getUnlocalizedName().contains("plastic_cube_"))
 			{
 				EntityPlayer player = (EntityPlayer) placer;
-				Triggers.trigger(Triggers.GET_PLASTIC, player);
+				Triggers.trigger(Triggers.MAKE_PLASTIC_CUBE, player);
 			}
 		}
 		super.onBlockPlacedBy(world, pos, state, placer, stack);

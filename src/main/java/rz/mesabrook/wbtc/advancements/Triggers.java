@@ -22,13 +22,18 @@ public class Triggers
     public static final BasicTrigger WELCOME = register("imb_welcome");
 
     // Plastic
-    public static final BasicTrigger GET_PLASTIC = register("imb_plastic_get");
+    public static final BasicTrigger MAKE_PLASTIC_INGOTS = register("imb_ingot");
+    public static final BasicTrigger MAKE_PLASTIC_CUBE = register("imb_pcube");
     public static final BasicTrigger WEAR_VEST = register("imb_wear_vest");
     public static final BasicTrigger WEAR_NV = register("imb_wear_nv");
 
     // Food
     public static final BasicTrigger MAKE_FOODCUBE = register("imb_make_foodcube");
     public static final BasicTrigger PUFFERFISH = register("imb_pufferfish");
+
+    // Bin
+    public static final BasicTrigger BIN_PLACE = register("imb_place_bin");
+    public static final BasicTrigger BIN_USE = register("imb_bin_use");
 
 
     private static BasicTrigger register(String name)
@@ -43,6 +48,7 @@ public class Triggers
         if(player instanceof EntityPlayerMP)
         {
             trigger.trigger((EntityPlayerMP) player);
+            System.out.println("TRIGGER");
         }
     }
 

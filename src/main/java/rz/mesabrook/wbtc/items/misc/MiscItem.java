@@ -54,13 +54,7 @@ public class MiscItem extends Item implements IHasModel
 	@Override
 	public void onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn)
 	{
-		if(playerIn instanceof EntityPlayer)
-		{
-			if(this.getUnlocalizedName().contains("_plastic"))
-			{
-				Triggers.trigger(Triggers.GET_PLASTIC, playerIn);
-			}
-		}
+
 	}
 	
 	@Override

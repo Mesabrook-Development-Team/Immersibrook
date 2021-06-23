@@ -1,13 +1,13 @@
 {
     "display": {
         "icon": {
-            "item": "wbtc:plastic_cube_magenta"
+            "item": "wbtc:red_plastic"
         },
         "title": {
-            "translate": "advancements.imb.plastic"
+            "translate": "advancements.imb.rawp"
         },
         "description": {
-            "translate": "advancements.imb.plastic.desc"
+            "translate": "advancements.imb.rawp.desc"
         },
 		"show_toast": true,
         "announce_to_chat": true
@@ -15,7 +15,7 @@
 	"parent": "wbtc:imb_welcome",
     "criteria": {
         "tick": {
-            "trigger": "wbtc:imb_plastic_get"
+            "trigger": "wbtc:imb_ingot"
         }
     }
 }

@@ -12,7 +12,7 @@
 		"show_toast": true,
         "announce_to_chat": true
     },
-	"parent": "wbtc:imb_plastic_get",
+	"parent": "wbtc:imb_ingot",
     "criteria": {
         "tick": {
             "trigger": "wbtc:imb_wear_vest"
