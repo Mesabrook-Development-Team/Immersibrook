@@ -1,0 +1,22 @@
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:fish",
+			"data": 3
+        },
+        "title": {
+            "translate": "advancements.imb.pufferfish"
+        },
+        "description": {
+            "translate": "advancements.imb.pufferfish.desc"
+        },
+		"show_toast": true,
+        "announce_to_chat": true
+    },
+	"parent": "wbtc:imb_welcome",
+    "criteria": {
+        "tick": {
+            "trigger": "wbtc:imb_pufferfish"
+        }
+    }
+}

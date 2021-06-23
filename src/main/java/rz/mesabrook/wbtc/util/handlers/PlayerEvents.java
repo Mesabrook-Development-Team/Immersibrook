@@ -1,6 +1,7 @@
 package rz.mesabrook.wbtc.util.handlers;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
@@ -12,6 +13,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
+import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.config.ModConfig;
 
@@ -25,6 +27,11 @@ public class PlayerEvents
 	public void onPlayerLogin(PlayerLoggedInEvent e)
 	{
 		EntityPlayer player = e.player;
+
+		if(player instanceof EntityPlayer)
+		{
+			Triggers.trigger(Triggers.WELCOME, player);
+		}
 
 		if(ModConfig.showWelcome)
 		{

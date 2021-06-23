@@ -44,6 +44,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.Main;
+import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.init.SoundInit;
@@ -334,6 +335,10 @@ public class FoodBlock extends Block implements IHasModel
 						packet.soundName = "puff";
 						PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
 						TooltipRandomizer.ChosenTooltip();
+						if(player instanceof EntityPlayer)
+						{
+							Triggers.trigger(Triggers.PUFFERFISH, player);
+						}
 						//return true;
 					}
 					else if(this.getUnlocalizedName().contains("cube_beetroot"))
@@ -401,7 +406,18 @@ public class FoodBlock extends Block implements IHasModel
 		}
 		return true;
 	}
-	
+
+	@Override
+	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
+	{
+		if(placer instanceof EntityPlayer)
+		{
+			EntityPlayer player = (EntityPlayer) placer;
+			Triggers.trigger(Triggers.MAKE_FOODCUBE, player);
+		}
+		super.onBlockPlacedBy(world, pos, state, placer, stack);
+	}
+
 	@Override
 	public void onBlockHarvested(World world, BlockPos pos, IBlockState state, EntityPlayer player)
 	{

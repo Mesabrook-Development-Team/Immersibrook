@@ -1,0 +1,20 @@
+{
+    "display": {
+        "icon": {
+            "item": "wbtc:icon_immersibrook"
+        },
+        "title": {
+            "translate": "advancements.imb.welcome"
+        },
+        "description": {
+            "translate": "advancements.imb.welcome.desc"
+        },
+        "announce_to_chat": false
+    },
+	"parent": "wbtc:root",
+    "criteria": {
+        "tick": {
+            "trigger": "minecraft:tick"
+        }
+    }
+}

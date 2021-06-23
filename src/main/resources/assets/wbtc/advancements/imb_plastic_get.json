@@ -1,0 +1,21 @@
+{
+    "display": {
+        "icon": {
+            "item": "wbtc:plastic_cube_magenta"
+        },
+        "title": {
+            "translate": "advancements.imb.plastic"
+        },
+        "description": {
+            "translate": "advancements.imb.plastic.desc"
+        },
+		"show_toast": true,
+        "announce_to_chat": true
+    },
+	"parent": "wbtc:imb_welcome",
+    "criteria": {
+        "tick": {
+            "trigger": "wbtc:imb_plastic_get"
+        }
+    }
+}

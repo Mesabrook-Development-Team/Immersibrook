@@ -1,0 +1,21 @@
+{
+    "display": {
+        "icon": {
+            "item": "wbtc:tileboard"
+        },
+        "title": {
+            "translate": "advancements.imb.title"
+        },
+        "description": {
+            "translate": "advancements.imb.title.desc"
+        },
+		"background": "wbtc:textures/blocks/plastic_cube_blue.png",
+        "show_toast": false,
+        "announce_to_chat": false
+    },
+    "criteria": {
+        "tick": {
+            "trigger": "minecraft:tick"
+        }
+    }
+}

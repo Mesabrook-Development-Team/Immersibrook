@@ -227,6 +227,7 @@ public class CategoryCeiling extends AbstractCategory
 		add(ModBlocks.SB_PANEL_TILE_29);
 		add(ModBlocks.SB_PANEL_TILE_30);
 		add(ModBlocks.SB_PANEL_TILE_31);
+		add(ModBlocks.SB_PANEL_TILE_32);
 
 		// Commercial Kitchen Tile Panels
 		add(ModBlocks.SB_PANEL_KITCHEN_1);

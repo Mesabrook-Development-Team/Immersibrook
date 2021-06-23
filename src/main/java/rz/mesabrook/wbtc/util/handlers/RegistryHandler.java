@@ -19,6 +19,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import rz.mesabrook.wbtc.Main;
+import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.cmds.CommandImmersibrook;
 import rz.mesabrook.wbtc.cmds.CommandTeleportDimension;
 import rz.mesabrook.wbtc.init.ModBlocks;
@@ -77,6 +78,8 @@ public class RegistryHandler
         Main.IE_LOADED = Loader.isModLoaded("immersiveengineering");
         Main.JABCM_LOADED = Loader.isModLoaded("jabcm");
         Main.FURENIKUS_CITIES = Loader.isModLoaded("furenikuscities");
+
+		Triggers.init();
 
         if(Main.FURENIKUS_CITIES)
         {

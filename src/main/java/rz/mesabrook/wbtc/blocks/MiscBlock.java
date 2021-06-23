@@ -13,8 +13,10 @@ import net.minecraft.client.audio.Sound;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
@@ -34,6 +36,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.Main;
+import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.util.IHasModel;
@@ -70,6 +73,20 @@ public class MiscBlock extends Block implements IHasModel
 		{
 			return Item.getItemFromBlock(this);
 		}
+	}
+
+	@Override
+	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
+	{
+		if(this.getUnlocalizedName().contains("plastic"))
+		{
+			if(placer instanceof EntityPlayer)
+			{
+				EntityPlayer player = (EntityPlayer) placer;
+				Triggers.trigger(Triggers.GET_PLASTIC, player);
+			}
+		}
+		super.onBlockPlacedBy(world, pos, state, placer, stack);
 	}
 
 	@Override

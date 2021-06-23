@@ -7,6 +7,22 @@ im.death.cpw=%s drank the carbonated poop water.
 im.death.sploot=%s went sploot.
 im.death.default=%s died due to this message being so generic (this is a bug btw)
 
+//Advancements
+advancements.imb.title=Immersibrook
+advancements.imb.title.desc=hehe advancements go brr
+advancements.imb.welcome=Welcome to Mesabrook!
+advancements.imb.welcome.desc=Thanks for playing with our mod!
+advancements.imb.plastic=The Plastic Age
+advancements.imb.plastic.desc=It's NOT biodegradable!
+advancements.imb.vest=Safety First!
+advancements.imb.vest.desc=Ready for work!
+advancements.imb.nv=Tactical!
+advancements.imb.nv.desc=Bravo Six, Going Dark.
+advancements.imb.fc=Compression!
+advancements.imb.fc.desc=Food
+advancements.imb.pufferfish=Augh
+advancements.imb.pufferfish.desc=Pufferfish eats a carrot.
+
 //Config
 wbtc.config.title=Configuration File for Immersibrook
 entity.ItemFrame.name=Item Frame

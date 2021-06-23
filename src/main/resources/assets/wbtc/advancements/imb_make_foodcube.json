@@ -1,0 +1,21 @@
+{
+    "display": {
+        "icon": {
+            "item": "wbtc:cube_beef"
+        },
+        "title": {
+            "translate": "advancements.imb.fc"
+        },
+        "description": {
+            "translate": "advancements.imb.fc.desc"
+        },
+		"show_toast": true,
+        "announce_to_chat": true
+    },
+	"parent": "wbtc:imb_welcome",
+    "criteria": {
+        "tick": {
+            "trigger": "wbtc:imb_make_foodcube"
+        }
+    }
+}

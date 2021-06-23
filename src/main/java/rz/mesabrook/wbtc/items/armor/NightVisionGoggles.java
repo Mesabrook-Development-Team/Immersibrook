@@ -14,6 +14,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.Main;
+import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.rendering.ModelCustomArmor;
 import rz.mesabrook.wbtc.rendering.ModelNVGoggles;
@@ -30,6 +31,15 @@ public class NightVisionGoggles extends ItemArmor implements IHasModel
 		setMaxStackSize(1);
 		
 		ModItems.ITEMS.add(this);
+	}
+
+	@Override
+	public void onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn)
+	{
+		if(playerIn instanceof EntityPlayer)
+		{
+			Triggers.trigger(Triggers.WEAR_NV, playerIn);
+		}
 	}
 	
 	@Override

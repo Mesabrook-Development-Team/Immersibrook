@@ -19,6 +19,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import rz.mesabrook.wbtc.Main;
+import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.util.IHasModel;
 
@@ -47,6 +48,18 @@ public class MiscItem extends Item implements IHasModel
 		if(this.getUnlocalizedName().contains("nv_lens") || this.getUnlocalizedName().contains("nv_goggle_body") || this.getUnlocalizedName().contains("nv_goggle_circuits") || this.getUnlocalizedName().contains("nv_goggle_strap"))
 		{
 			tooltip.add(TextFormatting.GOLD + "Crafting Ingredient");
+		}
+	}
+
+	@Override
+	public void onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn)
+	{
+		if(playerIn instanceof EntityPlayer)
+		{
+			if(this.getUnlocalizedName().contains("_plastic"))
+			{
+				Triggers.trigger(Triggers.GET_PLASTIC, playerIn);
+			}
 		}
 	}
 	

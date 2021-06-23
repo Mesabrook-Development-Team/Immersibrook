@@ -1,0 +1,21 @@
+{
+    "display": {
+        "icon": {
+            "item": "wbtc:safety_vest_blue"
+        },
+        "title": {
+            "translate": "advancements.imb.vest"
+        },
+        "description": {
+            "translate": "advancements.imb.vest.desc"
+        },
+		"show_toast": true,
+        "announce_to_chat": true
+    },
+	"parent": "wbtc:imb_plastic_get",
+    "criteria": {
+        "tick": {
+            "trigger": "wbtc:imb_wear_vest"
+        }
+    }
+}
