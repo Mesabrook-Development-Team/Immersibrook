@@ -1,0 +1,21 @@
+{
+    "display": {
+        "icon": {
+            "item": "wbtc:levi_hammer"
+        },
+        "title": {
+            "translate": "advancements.imb.bonk"
+        },
+        "description": {
+            "translate": "advancements.imb.bonk.desc"
+        },
+		"show_toast": true,
+        "announce_to_chat": true
+    },
+	"parent": "wbtc:imb_welcome",
+    "criteria": {
+        "tick": {
+            "trigger": "wbtc:imb_bonked"
+        }
+    }
+}
