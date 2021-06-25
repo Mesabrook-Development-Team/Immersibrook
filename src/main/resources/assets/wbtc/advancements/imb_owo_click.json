@@ -1,0 +1,21 @@
+{
+    "display": {
+        "icon": {
+            "item": "wbtc:statue_owo"
+        },
+        "title": {
+            "translate": "advancements.imb.owo"
+        },
+        "description": {
+            "translate": "advancements.imb.owo.desc"
+        },
+		"show_toast": true,
+        "announce_to_chat": true
+    },
+	"parent": "wbtc:imb_welcome",
+    "criteria": {
+        "tick": {
+            "trigger": "wbtc:imb_owo_click"
+        }
+    }
+}

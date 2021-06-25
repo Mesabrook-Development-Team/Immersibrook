@@ -20,6 +20,8 @@ public class Triggers
     private static final List<BasicTrigger> TRIGGERS = Lists.newArrayList();
 
     public static final BasicTrigger WELCOME = register("imb_welcome");
+    public static final BasicTrigger OWO = register("imb_owo_click");
+    public static final BasicTrigger FIRST_AID = register("imb_first_aid");
 
     // Plastic
     public static final BasicTrigger MAKE_PLASTIC_INGOTS = register("imb_ingot");
@@ -48,7 +50,7 @@ public class Triggers
         if(player instanceof EntityPlayerMP)
         {
             trigger.trigger((EntityPlayerMP) player);
-            System.out.println("TRIGGER");
+            Main.logger.info("Triggered an Immersibrook advancement trigger.");
         }
     }
 

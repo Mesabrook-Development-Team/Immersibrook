@@ -1,0 +1,21 @@
+{
+    "display": {
+        "icon": {
+            "item": "wbtc:first_aid"
+        },
+        "title": {
+            "translate": "advancements.imb.aid"
+        },
+        "description": {
+            "translate": "advancements.imb.aid.desc"
+        },
+		"show_toast": true,
+        "announce_to_chat": true
+    },
+	"parent": "wbtc:imb_ingot",
+    "criteria": {
+        "tick": {
+            "trigger": "wbtc:imb_first_aid"
+        }
+    }
+}

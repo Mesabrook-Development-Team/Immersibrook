@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# "
+  ],
+  "key": {
+    "#": {
+      "item": "wbtc:exit_sign_green"
+    }
+  },
+  "result": {
+    "item": "wbtc:exit_sign_green_left",
+    "count": 1
+  }
+}

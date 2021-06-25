@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
@@ -23,6 +24,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.Main;
+import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.net.PlaySoundPacket;
@@ -69,6 +71,11 @@ public class ItemFirstAidKit extends Item implements IHasModel
 				player.setHealth(100);
 				world.playSound(player, player.getPosition(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 1.0F, 1.0F);
 				item.damageItem(1, player);
+
+				if(player instanceof EntityPlayer)
+				{
+					Triggers.trigger(Triggers.FIRST_AID, player);
+				}
 				
 				return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 			}

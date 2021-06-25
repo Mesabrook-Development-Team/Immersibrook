@@ -43,6 +43,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.Main;
+import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.init.SoundInit;
@@ -257,6 +258,10 @@ public class BlockStatue extends Block implements IHasModel
 				{
 					SoundRandomizer.OWOTrophyRandomizer();
 					packet.soundName = SoundRandomizer.owoResult;
+					if(player instanceof EntityPlayer)
+					{
+						Triggers.trigger(Triggers.OWO, player);
+					}
 				}
 				else if(this.getUnlocalizedName().contains("statue_rz"))
 				{
