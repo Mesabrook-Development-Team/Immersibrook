@@ -1,9 +1,14 @@
 Immersibrook 0.0.8
 
 NEW:
-
+-Advancements!
+-Diagonal Exit Signs.
+-Exit Signs with Left or Right Arrows.
+-Wheelie Bins with red, blue, and green lids.
+-Raw Plastic blocks.
 
 CHANGES/FIXES:
-
+-New model for the Wheelie Bin.
+-New model for the First Aid Kit.
 
 KNOWN ISSUES:
