@@ -132,7 +132,6 @@ public class ModItems
 	public static final Item SAFETY_VEST_GREEN = new SafetyVestModel("green_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.MAT_GREEN_VEST, EntityEquipmentSlot.CHEST);
 	public static final Item SAFETY_VEST_BLACK = new SafetyVestModel("black_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.MAT_BLACK_VEST, EntityEquipmentSlot.CHEST);
 
-
 	// IRW Vest
 	public static final Item IRW_VEST = new SafetyVestModel("irw_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.IRW_SAFETY_VEST_MAT, EntityEquipmentSlot.CHEST);
 	

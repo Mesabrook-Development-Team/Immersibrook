@@ -305,41 +305,42 @@ public class FoodBlock extends Block implements IHasModel
 		{
 			if(!world.isRemote)
 			{
-				if(this.getUnlocalizedName().contains("cube_cheese"))
+				try
 				{
 					PlaySoundPacket packet = new PlaySoundPacket();
 					packet.pos = player.getPosition();
-					packet.soundName = "cheese_click";
-					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
-				}
-				else if(this.getUnlocalizedName().contains("cube_pumpkin_pie"))
-				{
-					PlaySoundPacket packet = new PlaySoundPacket();
-					packet.pos = player.getPosition();
-					packet.soundName = "pie";
-					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
-				}
-				else if(this.getUnlocalizedName().contains("cube_fish") || this.getUnlocalizedName().contains("cube_salmon") || this.getUnlocalizedName().contains("cube_salmon") || this.getUnlocalizedName().contains("cube_nemo"))
-				{
-					PlaySoundPacket packet = new PlaySoundPacket();
-					packet.pos = player.getPosition();
-					packet.soundName = "fish";
-					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
-				}
-				else if(this.getUnlocalizedName().contains("cube_pufferfish"))
-				{
-					PlaySoundPacket packet = new PlaySoundPacket();
-					packet.pos = player.getPosition();
-					packet.soundName = "puff";
-					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
-
-					if(player instanceof EntityPlayer)
+					if(this.getUnlocalizedName().contains("cube_cheese"))
 					{
-						Triggers.trigger(Triggers.PUFFERFISH, player);
+						packet.soundName = "cheese_click";
+						PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
 					}
-				}
+					else if(this.getUnlocalizedName().contains("cube_pumpkin_pie"))
+					{
+						packet.soundName = "pie";
+						PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
+					}
+					else if(this.getUnlocalizedName().contains("cube_fish") || this.getUnlocalizedName().contains("cube_salmon") || this.getUnlocalizedName().contains("cube_salmon") || this.getUnlocalizedName().contains("cube_nemo"))
+					{
+						packet.soundName = "fish";
+						PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
+					}
+					else if(this.getUnlocalizedName().contains("cube_pufferfish"))
+					{
+						packet.soundName = "puff";
+						PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
 
-				return true;
+						if(player instanceof EntityPlayer)
+						{
+							Triggers.trigger(Triggers.PUFFERFISH, player);
+						}
+					}
+					return true;
+				}
+				catch(Exception ex)
+				{
+					Main.logger.error(ex.getMessage());
+					return false;
+				}
 			}
 
 			if(this.getUnlocalizedName().contains("cube_pork"))
