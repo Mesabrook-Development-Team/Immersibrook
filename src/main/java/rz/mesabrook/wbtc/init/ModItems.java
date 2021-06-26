@@ -43,7 +43,7 @@ public class ModItems
 	public static final Item LEVI_HAMMER_STICK = new ItemWeapon("hammer_stick_levi", ToolMaterial.WOOD);
 
 	// Immersibrook Creative Tab Item
-	public static final Item IMMERSIBROOK_ICON = new MiscItem("icon_immersibrook", 1);
+	public static final Item IMMERSIBROOK_ICON = new ItemMesabrookIcon("icon_immersibrook");
 	
 	// Metals
 	public static final Item IRON_ROD = new MiscItem("iron_rod", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);

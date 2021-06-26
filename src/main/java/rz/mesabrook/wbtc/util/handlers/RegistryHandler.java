@@ -1,5 +1,8 @@
 package rz.mesabrook.wbtc.util.handlers;
 
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 import org.apache.logging.log4j.Logger;
 
 import net.minecraft.block.Block;
@@ -25,6 +28,8 @@ import rz.mesabrook.wbtc.cmds.CommandTeleportDimension;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.init.SoundInit;
+import rz.mesabrook.wbtc.items.misc.EntityMesabrookM;
+import rz.mesabrook.wbtc.rendering.RenderMesabrookIcon;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.SoundRandomizer;
@@ -70,6 +75,8 @@ public class RegistryHandler
 				((IHasModel)block).registerModels();
 			}
 		}
+
+		RenderingRegistry.registerEntityRenderingHandler(EntityMesabrookM.class, RenderMesabrookIcon::new);
 	}
 	
 	public static void preInitRegistries(FMLPreInitializationEvent event)
@@ -115,6 +122,9 @@ public class RegistryHandler
 		MinecraftForge.EVENT_BUS.register(new PlayerEvents());
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new GuiHandler());
+
+		ResourceLocation nameLoc = new ResourceLocation(Reference.MODID + ":mesarang");
+		EntityRegistry.registerModEntity(nameLoc, EntityMesabrookM.class, nameLoc.toString(), 1, Main.instance, 64, 1, true);
 	}
 	
 	public static void postInitRegistries(FMLPostInitializationEvent event)
