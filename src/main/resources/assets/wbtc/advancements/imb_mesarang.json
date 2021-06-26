@@ -1,0 +1,21 @@
+{
+    "display": {
+        "icon": {
+            "item": "wbtc:icon_immersibrook"
+        },
+        "title": {
+            "translate": "advancements.imb.mesarang"
+        },
+        "description": {
+            "translate": "advancements.imb.mesarang.desc"
+        },
+		"show_toast": true,
+        "announce_to_chat": true
+    },
+	"parent": "wbtc:imb_ingot",
+    "criteria": {
+        "tick": {
+            "trigger": "wbtc:imb_mesarang"
+        }
+    }
+}

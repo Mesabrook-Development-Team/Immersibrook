@@ -34,6 +34,8 @@ advancements.imb.aid=Universal Healthcare!
 advancements.imb.aid.desc=Heal yourself with a First Aid Kit.
 advancements.imb.bonk=B o n k
 advancements.imb.bonk.desc=Get beaned by Levi's Ban Hammer.
+advancements.imb.mesarang=Brand Loyalty!
+advancements.imb.mesarang.desc=Craft a Mesarang
 
 //Config
 wbtc.config.title=Configuration File for Immersibrook
@@ -96,6 +98,7 @@ item.purple_vest.name=Purple Safety Vest
 item.brown_vest.name=Brown Safety Vest
 item.green_vest.name=Green Safety Vest
 item.black_vest.name=Black Safety Vest
+item.icon_immersibrook.name=Mesarang
 
 //Leviathan Safety Vests
 item.lvn_vest.name=Light Blue Safety Vest

@@ -1,12 +1,9 @@
 package rz.mesabrook.wbtc.items.misc;
 
-import rz.mesabrook.wbtc.Main;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.EntityBlaze;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.item.ItemStack;
@@ -14,7 +11,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
 import rz.mesabrook.wbtc.init.ModItems;
 
 import java.util.UUID;
@@ -72,7 +68,7 @@ public class EntityMesabrookM extends EntityThrowable
                     {
                         hit = true;
                         damage = Integer.MAX_VALUE;
-                        EntityLightningBolt lightningBolt = new EntityLightningBolt(world, getThrower().posX, getThrower().posY, getThrower().posZ, false);
+                        EntityLightningBolt lightningBolt = new EntityLightningBolt(world, getThrower().posX, getThrower().posY, getThrower().posZ, true);
                         world.addWeatherEffect(lightningBolt);
                         world.spawnEntity(lightningBolt);
                     }

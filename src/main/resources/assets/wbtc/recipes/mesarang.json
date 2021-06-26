@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "p p",
+	"ppp",
+	"p p"
+  ],
+  "key": {
+    "p": {
+      "item": "wbtc:magenta_plastic"
+    }
+  },
+  "result": {
+    "item": "wbtc:icon_immersibrook",
+    "count": 2
+  }
+}

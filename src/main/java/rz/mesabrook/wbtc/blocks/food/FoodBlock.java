@@ -40,6 +40,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -304,107 +305,98 @@ public class FoodBlock extends Block implements IHasModel
 		{
 			if(!world.isRemote)
 			{
-				try
+				if(this.getUnlocalizedName().contains("cube_cheese"))
 				{
 					PlaySoundPacket packet = new PlaySoundPacket();
-					packet.pos = pos;
-
-					if(this.getUnlocalizedName().contains("cube_cheese"))
-					{
-						packet.soundName = "cheese_click";
-						PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
-						TooltipRandomizer.ChosenTooltip();
-						//return true;
-					}
-					else if(this.getUnlocalizedName().contains("cube_pumpkin_pie"))
-					{
-						packet.soundName = "pie";
-						PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
-						TooltipRandomizer.ChosenTooltip();
-						//return true;
-					}
-					else if(this.getUnlocalizedName().contains("cube_fish") || this.getUnlocalizedName().contains("cube_salmon") || this.getUnlocalizedName().contains("cube_nemo"))
-					{
-						packet.soundName = "fish";
-						PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
-						TooltipRandomizer.ChosenTooltip();
-						//return true;
-					}
-					else if(this.getUnlocalizedName().contains("cube_pufferfish"))
-					{
-						packet.soundName = "puff";
-						PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
-						TooltipRandomizer.ChosenTooltip();
-						if(player instanceof EntityPlayer)
-						{
-							Triggers.trigger(Triggers.PUFFERFISH, player);
-						}
-						//return true;
-					}
-					else if(this.getUnlocalizedName().contains("cube_beetroot"))
-					{
-						world.playSound(player, pos, SoundEvents.ENTITY_SLIME_SQUISH, SoundCategory.BLOCKS, 1.0F, 1.0F);
-						TooltipRandomizer.ChosenTooltip();
-						//return true;
-					}
-					else if(this.getUnlocalizedName().contains("cube_gapple"))
-					{
-						world.playSound(player, pos, SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.BLOCKS, 1.0F, 1.0F);
-						TooltipRandomizer.ChosenTooltip();
-						//return true;
-					}
-					else if(this.getUnlocalizedName().contains("cube_pork"))
-					{
-						world.playSound(player, pos, SoundEvents.ENTITY_PIG_HURT, SoundCategory.BLOCKS, 1.0F, 1.0F);
-						TooltipRandomizer.ChosenTooltip();
-						//return true;
-					}
-					else if(this.getUnlocalizedName().contains("cube_beef"))
-					{
-						world.playSound(player, pos, SoundEvents.ENTITY_COW_HURT, SoundCategory.BLOCKS, 1.0F, 1.0F);
-						TooltipRandomizer.ChosenTooltip();
-						//return true;
-					}
-					else if(this.getUnlocalizedName().contains("cube_chicken"))
-					{
-						world.playSound(player, pos, SoundEvents.ENTITY_CHICKEN_HURT, SoundCategory.BLOCKS, 1.0F, 1.0F);
-						TooltipRandomizer.ChosenTooltip();
-						//return true;
-					}
-					else if(this.getUnlocalizedName().contains("cube_mutton"))
-					{
-						world.playSound(player, pos, SoundEvents.ENTITY_SHEEP_HURT, SoundCategory.BLOCKS, 1.0F, 1.0F);
-						TooltipRandomizer.ChosenTooltip();
-						//return true;
-					}
-					else if(this.getUnlocalizedName().contains("cube_rabbit"))
-					{
-						world.playSound(player, pos, SoundEvents.ENTITY_RABBIT_HURT, SoundCategory.BLOCKS, 1.0F, 1.0F);
-						TooltipRandomizer.ChosenTooltip();
-						//return true;
-					}
-					else
-					{
-						world.playSound(player, pos, SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-						TooltipRandomizer.ChosenTooltip();
-						//return true;
-					}
-
-					return true;
+					packet.pos = player.getPosition();
+					packet.soundName = "cheese_click";
+					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
 				}
-				catch(Exception er)
+				else if(this.getUnlocalizedName().contains("cube_pumpkin_pie"))
 				{
-					Main.logger.error(er);
-					TooltipRandomizer.ChosenTooltip();
-					return true;
+					PlaySoundPacket packet = new PlaySoundPacket();
+					packet.pos = player.getPosition();
+					packet.soundName = "pie";
+					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
 				}
+				else if(this.getUnlocalizedName().contains("cube_fish") || this.getUnlocalizedName().contains("cube_salmon") || this.getUnlocalizedName().contains("cube_salmon") || this.getUnlocalizedName().contains("cube_nemo"))
+				{
+					PlaySoundPacket packet = new PlaySoundPacket();
+					packet.pos = player.getPosition();
+					packet.soundName = "fish";
+					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+				}
+				else if(this.getUnlocalizedName().contains("cube_pufferfish"))
+				{
+					PlaySoundPacket packet = new PlaySoundPacket();
+					packet.pos = player.getPosition();
+					packet.soundName = "puff";
+					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+
+					if(player instanceof EntityPlayer)
+					{
+						Triggers.trigger(Triggers.PUFFERFISH, player);
+					}
+				}
+
+				return true;
 			}
+
+			if(this.getUnlocalizedName().contains("cube_pork"))
+			{
+				world.playSound(player, pos, SoundEvents.ENTITY_PIG_AMBIENT, SoundCategory.BLOCKS, 1.0F, 1.0F);
+			}
+			else if(this.getUnlocalizedName().contains("cube_beef"))
+			{
+				world.playSound(player, pos, SoundEvents.ENTITY_COW_HURT, SoundCategory.BLOCKS, 1.0F, 1.0F);
+			}
+			else if(this.getUnlocalizedName().contains("cube_chicken"))
+			{
+				world.playSound(player, pos, SoundEvents.ENTITY_CHICKEN_HURT, SoundCategory.BLOCKS, 1.0F, 1.0F);
+			}
+			else if(this.getUnlocalizedName().contains("cube_mutton"))
+			{
+				world.playSound(player, pos, SoundEvents.ENTITY_SHEEP_HURT, SoundCategory.BLOCKS, 1.0F, 1.0F);
+			}
+			else if(this.getUnlocalizedName().contains("cube_rabbit"))
+			{
+				world.playSound(player, pos, SoundEvents.ENTITY_RABBIT_HURT, SoundCategory.BLOCKS, 1.0F, 1.0F);
+			}
+			else if(this.getUnlocalizedName().contains("cube_apples"))
+			{
+				world.playSound(player, pos, SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+			}
+			else if(this.getUnlocalizedName().contains("cube_carrot"))
+			{
+				world.playSound(player, pos, SoundEvents.ENTITY_SLIME_SQUISH, SoundCategory.BLOCKS, 1.0F, 1.0F);
+			}
+			else if(this.getUnlocalizedName().contains("cube_potato"))
+			{
+				world.playSound(player, pos, SoundEvents.ENTITY_SLIME_SQUISH, SoundCategory.BLOCKS, 1.0F, 1.0F);
+			}
+			else if(this.getUnlocalizedName().contains("cube_bread"))
+			{
+				world.playSound(player, pos, SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+			}
+			else if(this.getUnlocalizedName().contains("cube_cookie"))
+			{
+				world.playSound(player, pos, SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+			}
+			else if(this.getUnlocalizedName().contains("cube_beetroot"))
+			{
+				world.playSound(player, pos, SoundEvents.ENTITY_SLIME_SQUISH, SoundCategory.BLOCKS, 1.0F, 1.0F);
+			}
+			else if(this.getUnlocalizedName().contains("cube_gapple"))
+			{
+				world.playSound(player, pos, SoundEvents.UI_TOAST_CHALLENGE_COMPLETE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+			}
+
+			return true;
 		}
 		else
 		{
 			return false;
 		}
-		return true;
 	}
 
 	@Override

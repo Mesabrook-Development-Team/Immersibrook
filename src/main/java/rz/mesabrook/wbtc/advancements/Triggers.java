@@ -23,6 +23,7 @@ public class Triggers
     public static final BasicTrigger OWO = register("imb_owo_click");
     public static final BasicTrigger FIRST_AID = register("imb_first_aid");
     public static final BasicTrigger BONKED = register("imb_bonked");
+    public static final BasicTrigger MESARANG = register("imb_mesarang");
 
     // Plastic
     public static final BasicTrigger MAKE_PLASTIC_INGOTS = register("imb_ingot");
@@ -51,7 +52,6 @@ public class Triggers
         if(player instanceof EntityPlayerMP)
         {
             trigger.trigger((EntityPlayerMP) player);
-            Main.logger.info("Triggered an Immersibrook advancement trigger.");
         }
     }
 

@@ -48,6 +48,7 @@ public class SoundInit
 	public static final SoundEvent OWO3;
 	public static final SoundEvent OWO4;
 	public static final SoundEvent PUFF;
+	public static final SoundEvent WOOSH;
 	
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -107,6 +108,7 @@ public class SoundInit
 		OWO3 = addSoundsToRegistry("new_owo_short");
 		OWO4 = addSoundsToRegistry("new_owo_long");
 		PUFF = addSoundsToRegistry("puff");
+		WOOSH = addSoundsToRegistry("woosh");
 		
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -197,6 +199,7 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.OWO3);
 				event.getRegistry().registerAll(SoundInit.OWO4);
 				event.getRegistry().registerAll(SoundInit.PUFF);
+				event.getRegistry().registerAll(SoundInit.WOOSH);
 				
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");
