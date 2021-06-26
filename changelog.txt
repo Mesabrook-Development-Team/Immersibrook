@@ -6,9 +6,12 @@ NEW:
 -Exit Signs with Left or Right Arrows.
 -Wheelie Bins with red, blue, and green lids.
 -Raw Plastic blocks.
+-Mesarang(TM), a throwable item.
 
 CHANGES/FIXES:
 -New model for the Wheelie Bin.
 -New model for the First Aid Kit.
+-New model for both Iron and Wooden Handrails.
+-Redone the sound code for Food Cube blocks.
 
 KNOWN ISSUES:
