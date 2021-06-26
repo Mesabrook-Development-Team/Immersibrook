@@ -13,5 +13,6 @@ CHANGES/FIXES:
 -New model for the First Aid Kit.
 -New model for both Iron and Wooden Handrails.
 -Redone the sound code for Food Cube blocks.
+-Changed the Wheelie Bin GUI's texture.
 
 KNOWN ISSUES:
