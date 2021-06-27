@@ -175,8 +175,6 @@ public class ModBlocks
 	public static final Block INDUSTRIAL_TILE_4 = new MiscBlock("floor_danger_4", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	
 	// Quartz Pillar and Base. May not make it into next version.
-	public static final Block PILLAR_BASE = new PillarBase("pillar_base");
-	public static final Block PILLAR_TOP = new PillarBase("pillar_top");
 	public static final Block PILLAR_POST = new Pillar("wbtc_pillar", 0);
 	
 	// Handrails
