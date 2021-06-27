@@ -9,6 +9,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import rz.mesabrook.wbtc.Main;
+import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.util.IHasModel;
@@ -32,6 +33,11 @@ public class ItemDooter extends Item implements IHasModel
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand)
     {
         ItemStack item = player.getHeldItem(hand);
+        if(player instanceof EntityPlayer)
+        {
+            Triggers.trigger(Triggers.DOOT, player);
+        }
+
         if(!player.isCreative())
         {
             item.damageItem(1, player);

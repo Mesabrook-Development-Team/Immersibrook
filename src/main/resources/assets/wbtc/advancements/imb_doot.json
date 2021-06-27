@@ -1,0 +1,21 @@
+{
+    "display": {
+        "icon": {
+            "item": "wbtc:doot_icon"
+        },
+        "title": {
+            "translate": "advancements.imb.doot"
+        },
+        "description": {
+            "translate": "advancements.imb.doot.desc"
+        },
+		"show_toast": true,
+        "announce_to_chat": true
+    },
+	"parent": "wbtc:imb_ingot",
+    "criteria": {
+        "tick": {
+            "trigger": "wbtc:imb_doot"
+        }
+    }
+}

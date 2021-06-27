@@ -19,11 +19,13 @@ public class Triggers
 {
     private static final List<BasicTrigger> TRIGGERS = Lists.newArrayList();
 
+    // Misc
     public static final BasicTrigger WELCOME = register("imb_welcome");
     public static final BasicTrigger OWO = register("imb_owo_click");
     public static final BasicTrigger FIRST_AID = register("imb_first_aid");
     public static final BasicTrigger BONKED = register("imb_bonked");
     public static final BasicTrigger MESARANG = register("imb_mesarang");
+    public static final BasicTrigger DOOT = register("imb_doot");
 
     // Plastic
     public static final BasicTrigger MAKE_PLASTIC_INGOTS = register("imb_ingot");

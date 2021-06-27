@@ -44,6 +44,7 @@ public class ModItems
 
 	// Immersibrook Creative Tab Item
 	public static final Item IMMERSIBROOK_ICON = new ItemMesabrookIcon("icon_immersibrook");
+	public static final Item DOOT_ICON = new MiscItem("doot_icon", 1);
 	
 	// Metals
 	public static final Item IRON_ROD = new MiscItem("iron_rod", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
