@@ -172,6 +172,7 @@ item.nv_goggle_strap.name=Night Vision Goggle Head Straps
 item.popper_red.name=Red Fidget Popper
 item.popper_green.name=Green Fidget Popper
 item.popper_blue.name=Blue Fidget Popper
+item.dooter.name=Doot Bugle
 
 //Smooth Wood Blocks
 tile.smooth_oak.name=Smooth Oak Wood

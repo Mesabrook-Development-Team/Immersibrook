@@ -63,6 +63,7 @@ public class CategoryHousehold extends AbstractCategory
 		add(ModItems.POPPER_GREEN);
 		add(ModItems.POPPER_BLUE);
 		add(ModItems.IMMERSIBROOK_ICON);
+		add(ModItems.DOOTER);
 	}
 
 }
