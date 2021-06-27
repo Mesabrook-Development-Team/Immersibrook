@@ -22,7 +22,7 @@ public class KeyEventHandler {
 			EntityPlayer player = Minecraft.getMinecraft().player;
 
 			player.sendMessage(new TextComponentTranslation("im.vest.toggle"));
-			player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
+			player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 0.3F, 1.0F);
 			VestTogglePacket packet = new VestTogglePacket();
 			PacketHandler.INSTANCE.sendToServer(packet);
 		}
