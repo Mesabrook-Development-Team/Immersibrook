@@ -32,7 +32,7 @@ public class NVTogglePacket implements IMessage {
         {
             EntityPlayerMP player = ctx.getServerHandler().player;
 
-            ItemStack stack = player.inventory.armorInventory.get(3); // 1 = head
+            ItemStack stack = player.inventory.armorInventory.get(3); // 3 = head
             if (!(stack.getItem() instanceof NightVisionGoggles))
             {
                 return;

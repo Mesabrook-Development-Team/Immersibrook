@@ -58,5 +58,9 @@ public class SafetyVestModel extends ItemArmor implements IHasModel
 		{
 			player.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 10, 10, true, false));
 		}
+		else if(player instanceof EntityPlayer && !glowing)
+		{
+			player.removeActivePotionEffect(MobEffects.GLOWING);
+		}
 	}
 }
