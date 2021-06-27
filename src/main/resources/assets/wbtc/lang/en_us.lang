@@ -889,3 +889,7 @@ item.record.ms_xp.desc=Microsoft Corporation - Windows XP Installation Music
 
 //Enchantments
 enchantment.thunder=The Power of Thor
+
+//Keys
+key.immersibrook.category=Immersibrook
+key.vestToggle.toggle=Toggle Vest Glow

@@ -1,26 +1,18 @@
 package rz.mesabrook.wbtc.items.armor;
 
-import net.minecraft.client.model.ModelBiped;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.init.ModItems;
-import rz.mesabrook.wbtc.rendering.ModelCustomArmor;
 import rz.mesabrook.wbtc.util.IHasModel;
-import rz.mesabrook.wbtc.util.handlers.ClientSideHandlers;
 
 public class SafetyVestModel extends ItemArmor implements IHasModel
 {
@@ -53,7 +45,15 @@ public class SafetyVestModel extends ItemArmor implements IHasModel
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack)
 	{
-		if(player instanceof EntityPlayer)
+		NBTTagCompound tag = itemStack.getTagCompound();
+		boolean glowing = true;
+		
+		if (tag != null)
+		{
+			glowing = tag.getBoolean("glowing");
+		}
+		
+		if(player instanceof EntityPlayer && glowing)
 		{
 			player.addPotionEffect(new PotionEffect(MobEffects.GLOWING, 10, 10, true, false));
 		}
