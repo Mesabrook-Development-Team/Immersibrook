@@ -19,7 +19,6 @@ import rz.mesabrook.wbtc.util.IHasModel;
 
 public class Pillar extends Block implements IHasModel
 {
-	
 	public static final AxisAlignedBB CORE = new AxisAlignedBB(0.25D, 0.0D, 0.25D, 0.75D, 1.0D, 0.75D);
 	public static final PropertyBool IS_TOP = PropertyBool.create("is_top");
 	public static final PropertyBool IS_BOTTOM = PropertyBool.create("is_bottom");
@@ -79,22 +78,26 @@ public class Pillar extends Block implements IHasModel
 	}
 
 	@Override
-	protected BlockStateContainer createBlockState() {
+	protected BlockStateContainer createBlockState()
+	{
 		return new BlockStateContainer(this, IS_TOP, IS_BOTTOM);
 	}
 	
 	@Override
-	public int getMetaFromState(IBlockState state) {
+	public int getMetaFromState(IBlockState state)
+	{
 		return 0;
 	}
 	
 	@Override
-	public IBlockState getStateFromMeta(int meta) {
+	public IBlockState getStateFromMeta(int meta)
+	{
 		return getDefaultState();
 	}
 	
 	@Override
-	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos)
+	{
 		IBlockState above = worldIn.getBlockState(pos.up());
 		IBlockState below = worldIn.getBlockState(pos.down());
 		
