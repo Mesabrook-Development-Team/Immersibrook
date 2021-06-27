@@ -9,6 +9,8 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -51,6 +53,21 @@ public class NightVisionGoggles extends ItemArmor implements IHasModel
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack)
 	{
-		player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 210, 1, true, false));
+		NBTTagCompound tag = itemStack.getTagCompound();
+		boolean nightvision = true;
+
+		if (tag != null)
+		{
+			nightvision = tag.getBoolean("nightvision");
+		}
+
+		if(player instanceof EntityPlayer && nightvision)
+		{
+			player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 210, 1, true, false));
+		}
+		else if(player instanceof EntityPlayer && !nightvision)
+		{
+			player.removeActivePotionEffect(MobEffects.NIGHT_VISION);
+		}
 	}
 }

@@ -893,4 +893,6 @@ enchantment.thunder=The Power of Thor
 //Keys
 key.immersibrook.category=Immersibrook
 key.vestToggle.toggle=Toggle Vest Glow
-im.vest.toggle=Glow Toggled
+key.nvtoggle.toggle=Toggle Night Vision Goggles
+im.vest.toggle=Vest Glow Toggled
+im.nv.toggle=Night Vision Toggled
