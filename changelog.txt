@@ -14,5 +14,6 @@ CHANGES/FIXES:
 -New model for both Iron and Wooden Handrails.
 -Redone the sound code for Food Cube blocks.
 -Changed the Wheelie Bin GUI's texture.
+-[CSX8600] Safety Vests can now have their Glow effect toggled.
 
 KNOWN ISSUES:
