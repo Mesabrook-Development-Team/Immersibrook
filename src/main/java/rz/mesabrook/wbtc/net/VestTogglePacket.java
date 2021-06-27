@@ -31,7 +31,7 @@ public class VestTogglePacket implements IMessage {
 		{
 			EntityPlayerMP player = ctx.getServerHandler().player;
 			
-			ItemStack stack = player.inventory.armorItemInSlot(2); // 2 = chest
+			ItemStack stack = player.inventory.armorInventory.get(2); // 2 = chest
 			if (!(stack.getItem() instanceof SafetyVestModel))
 			{
 				return;
