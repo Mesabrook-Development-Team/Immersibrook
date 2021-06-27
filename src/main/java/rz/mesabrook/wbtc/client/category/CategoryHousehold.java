@@ -58,10 +58,11 @@ public class CategoryHousehold extends AbstractCategory
 		add(ModBlocks.CEILING_LIGHT_SPOTLIGHT);
 		add(ModBlocks.CEILING_LIGHT_PANEL);
 
-		// Poppers
+		// Toys
 		add(ModItems.POPPER_RED);
 		add(ModItems.POPPER_GREEN);
 		add(ModItems.POPPER_BLUE);
+		add(ModItems.IMMERSIBROOK_ICON);
 	}
 
 }

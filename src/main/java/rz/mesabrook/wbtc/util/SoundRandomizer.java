@@ -6,10 +6,6 @@ import rz.mesabrook.wbtc.init.SoundInit;
 
 import java.util.Random;
 
-/**
- * Uses a randomizer to randomly select a sound from Immersibrook's custom sounds and then feeds
- * its ID into the packet-based sound system.
- */
 public class SoundRandomizer 
 {
 	public static String result;
@@ -23,23 +19,23 @@ public class SoundRandomizer
 	{
 		Random chooser = new Random();
 		int snds;
-		snds = chooser.nextInt(6);
+		snds = chooser.nextInt(5);
 		
 		switch(snds)
 		{
-		case 1:
+		case 0:
 			result = "no";
 			break;
-		case 2:
+		case 1:
 			result = "safety";
 			break;
-		case 3:
+		case 2:
 			result = "yoink";
 			break;
-		case 4:
+		case 3:
 			result = "fish";
 			break;
-		case 5:
+		case 4:
 			result = "spree";
 			break;
 		}
@@ -49,32 +45,29 @@ public class SoundRandomizer
 	{
 		Random chooser = new Random();
 		int snds;
-		snds = chooser.nextInt(9);
+		snds = chooser.nextInt(7);
 
 		switch(snds)
 		{
-			case 1:
+			case 0:
 				hammerResult = "beaned";
 				break;
-			case 2:
+			case 1:
 				hammerResult = "bong";
 				break;
-			case 3:
+			case 2:
 				hammerResult = "bonk";
 				break;
-			case 4:
-				hammerResult = "beaned";
-				break;
-			case 5:
+			case 3:
 				hammerResult = "owie";
 				break;
-			case 6:
+			case 4:
 				hammerResult = "dove";
 				break;
-			case 7:
+			case 5:
 				hammerResult = "cpw";
 				break;
-			case 8:
+			case 6:
 				hammerResult = "sploot";
 				break;
 		}
@@ -84,14 +77,14 @@ public class SoundRandomizer
 	{
 		Random chooser = new Random();
 		int snds;
-		snds = chooser.nextInt(3);
+		snds = chooser.nextInt(2);
 
 		switch(snds)
 		{
-			case 1:
+			case 0:
 				popResult = "pop";
 				break;
-			case 2:
+			case 1:
 				popResult = "pop_single";
 				break;
 		}
@@ -101,14 +94,14 @@ public class SoundRandomizer
 	{
 		Random chooser = new Random();
 		int snds;
-		snds = chooser.nextInt(3);
+		snds = chooser.nextInt(2);
 
 		switch(snds)
 		{
-			case 1:
+			case 0:
 				popResultSP = SoundInit.POP;
 				break;
-			case 2:
+			case 1:
 				popResultSP = SoundInit.POP_SINGLE;
 				break;
 		}
@@ -118,17 +111,17 @@ public class SoundRandomizer
 	{
 		Random chooser = new Random();
 		int snds;
-		snds = chooser.nextInt(4);
+		snds = chooser.nextInt(3);
 
 		switch(snds)
 		{
-			case 1:
+			case 0:
 				catResult = SoundEvents.ENTITY_CAT_AMBIENT;
 				break;
-			case 2:
+			case 1:
 				catResult = SoundEvents.ENTITY_CAT_PURR;
 				break;
-			case 3:
+			case 2:
 				catResult = SoundEvents.ENTITY_CAT_PURREOW;
 		}
 	}
@@ -137,21 +130,18 @@ public class SoundRandomizer
 	{
 		Random chooser = new Random();
 		int snds;
-		snds = chooser.nextInt(5);
+		snds = chooser.nextInt(3);
 
 		switch(snds)
 		{
-			case 1:
+			case 0:
 				owoResult = "owo";
 				break;
-			case 2:
+			case 1:
 				owoResult = "new_owo";
 				break;
-			case 3:
+			case 2:
 				owoResult = "new_owo_short";
-				break;
-			case 4:
-				owoResult = "new_owo_long";
 				break;
 		}
 	}

@@ -85,6 +85,7 @@ public class EntityMesabrookM extends EntityThrowable
         {
             if(damage < ModItems.IMMERSIBROOK_ICON.getMaxDamage())
             {
+                damage++;
                 this.world.spawnEntity(new EntityItem(this.world, this.posX, this.posY, this.posZ, new ItemStack(ModItems.IMMERSIBROOK_ICON, 1, damage)));
             }
             this.world.setEntityState(this, (byte)3);

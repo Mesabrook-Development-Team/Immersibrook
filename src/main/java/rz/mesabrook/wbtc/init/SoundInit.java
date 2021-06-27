@@ -46,7 +46,6 @@ public class SoundInit
 	public static final SoundEvent SPLOOT;
 	public static final SoundEvent OWO2;
 	public static final SoundEvent OWO3;
-	public static final SoundEvent OWO4;
 	public static final SoundEvent PUFF;
 	public static final SoundEvent WOOSH;
 	
@@ -106,7 +105,6 @@ public class SoundInit
 		SPLOOT = addSoundsToRegistry("sploot");
 		OWO2 = addSoundsToRegistry("new_owo");
 		OWO3 = addSoundsToRegistry("new_owo_short");
-		OWO4 = addSoundsToRegistry("new_owo_long");
 		PUFF = addSoundsToRegistry("puff");
 		WOOSH = addSoundsToRegistry("woosh");
 		
@@ -197,7 +195,6 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.SPLOOT);
 				event.getRegistry().registerAll(SoundInit.OWO2);
 				event.getRegistry().registerAll(SoundInit.OWO3);
-				event.getRegistry().registerAll(SoundInit.OWO4);
 				event.getRegistry().registerAll(SoundInit.PUFF);
 				event.getRegistry().registerAll(SoundInit.WOOSH);
 				
