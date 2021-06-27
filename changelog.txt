@@ -1,19 +1,20 @@
 Immersibrook 0.0.8
 
 NEW:
--Advancements!
--Diagonal Exit Signs.
--Exit Signs with Left or Right Arrows.
--Wheelie Bins with red, blue, and green lids.
--Raw Plastic blocks.
--Mesarang(TM), a throwable item.
+-[RZ] Advancements!
+-[RZ] Diagonal Exit Signs.
+-[RZ] Exit Signs with Left or Right Arrows.
+-[RZ] Wheelie Bins with red, blue, and green lids.
+-[RZ] Raw Plastic blocks.
+-[RZ] Mesarang(TM), a throwable item.
+-[CSX8600] Safety Vests can now have their Glow effect toggled.
+-[RZ] Night Vision Goggles can now have their Night Vision effect toggled.
 
 CHANGES/FIXES:
--New model for the Wheelie Bin.
--New model for the First Aid Kit.
--New model for both Iron and Wooden Handrails.
--Redone the sound code for Food Cube blocks.
--Changed the Wheelie Bin GUI's texture.
--[CSX8600] Safety Vests can now have their Glow effect toggled.
+-[RZ] New model for the Wheelie Bin.
+-[RZ] New model for the First Aid Kit.
+-[RZ] New model for both Iron and Wooden Handrails.
+-[RZ] Redone the sound code for Food Cube blocks.
+-[RZ] Changed the Wheelie Bin GUI's texture.
 
 KNOWN ISSUES:
