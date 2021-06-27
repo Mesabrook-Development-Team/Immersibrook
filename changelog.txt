@@ -10,6 +10,7 @@ NEW:
 -[CSX8600] Safety Vests can now have their Glow effect toggled.
 -[RZ] Night Vision Goggles can now have their Night Vision effect toggled.
 -[CSX8600] New dynamic Pillar block.
+-[RZ] Plastic Doot Bugle Toy.
 
 CHANGES/FIXES:
 -[RZ] New model for the Wheelie Bin.
