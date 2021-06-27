@@ -65,18 +65,6 @@
         },
         {
             "name": "Cube",
-            "from": [ 4, 3, 4 ], 
-            "to": [ 12, 16, 12 ], 
-            "faces": {
-                "north": { "texture": "#pillar", "uv": [ 0, 0, 8, 13 ] },
-                "east": { "texture": "#pillar", "uv": [ 0, 0, 8, 13 ] },
-                "south": { "texture": "#pillar", "uv": [ 0, 3, 8, 16 ] },
-                "west": { "texture": "#pillar", "uv": [ 0, 0, 8, 13 ] },
-                "up": { "texture": "#pillar_top", "uv": [ 0, 16, 16, 0 ] }
-            }
-        },
-        {
-            "name": "Cube",
             "from": [ 0, 0, 0 ], 
             "to": [ 16, 1, 16 ], 
             "faces": {
