@@ -21,3 +21,7 @@ CHANGES/FIXES:
 -[RZ] Changed the Wheelie Bin GUI's texture.
 
 KNOWN ISSUES:
+
+REMOVALS:
+-[RZ] Long OwO Trophy sound effect.
+-[CSX8600] Old Pillar Top and Bottom blocks, made redundant by the new dynamic pillars.
