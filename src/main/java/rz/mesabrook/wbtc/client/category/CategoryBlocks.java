@@ -137,6 +137,8 @@ public class CategoryBlocks extends AbstractCategory {
 		
 		// Pillars
 		add(ModBlocks.PILLAR_POST);
+		add(ModBlocks.PILLAR_STONE);
+		add(ModBlocks.PILLAR_OAK);
 	}
 
 }

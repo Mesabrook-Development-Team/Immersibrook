@@ -23,18 +23,17 @@ public class Pillar extends Block implements IHasModel
 	public static final PropertyBool IS_TOP = PropertyBool.create("is_top");
 	public static final PropertyBool IS_BOTTOM = PropertyBool.create("is_bottom");
 	
-	public Pillar(String name, int light)
+	public Pillar(String name, Material mat, SoundType sndType, String harvestTool, int harvestLevel)
 	{
-		super(Material.ROCK);
+		super(mat);
 		setUnlocalizedName(name);
 		setRegistryName(name);
-		setSoundType(SoundType.STONE);
-		setHardness(8.0F);
+		setSoundType(sndType);
+		setHardness(3.0F);
 		setResistance(8.0F);
-		setCreativeTab(CreativeTabs.DECORATIONS);
-		setHarvestLevel("pickaxe", 0);
+		setCreativeTab(Main.IMMERSIBROOK_MAIN);
+		setHarvestLevel(harvestTool, harvestLevel);
 		setLightOpacity(15);
-		setLightLevel(light);
 		
 		ModBlocks.BLOCKS.add(this);
 		ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));

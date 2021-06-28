@@ -174,9 +174,11 @@ public class ModBlocks
 	public static final Block INDUSTRIAL_TILE_3 = new MiscBlock("floor_danger_3", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block INDUSTRIAL_TILE_4 = new MiscBlock("floor_danger_4", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	
-	// Quartz Pillar and Base. May not make it into next version.
-	public static final Block PILLAR_POST = new Pillar("wbtc_pillar", 0);
-	
+	// Dynamic Pillars - Credit to CSX8600
+	public static final Block PILLAR_POST = new Pillar("wbtc_pillar", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block PILLAR_STONE = new Pillar("wbtc_pillar_stone", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block PILLAR_OAK = new Pillar("wbtc_pillar_oak_log", Material.WOOD, SoundType.WOOD, "axe", 0);
+
 	// Handrails
 	public static final Block IRON_HANDRAIL = new BlockHandrail("iron_handrail", Material.IRON, SoundType.METAL, "pickaxe");
 	public static final Block WOOD_HANDRAIL = new BlockHandrail("wood_handrail", Material.WOOD, SoundType.WOOD, "axe");
