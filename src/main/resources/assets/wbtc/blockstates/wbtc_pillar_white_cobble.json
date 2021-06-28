@@ -1,0 +1,21 @@
+{
+   "forge_marker": 1,
+   "defaults": {
+   		"model": "wbtc:wbtc_pillar_white_cobble"
+   },
+   "variants": {
+  		"normal": [{}],
+  		"is_bottom": {
+  			"true": {
+  				"submodel": { "pillar_bottom": { "model": "wbtc:pillar_base_white_cobble" } }
+  			},
+  			"false": { }
+  		},
+  		"is_top": {
+  			"true": {
+  				"submodel": { "pillar_top": { "model": "wbtc:pillar_top_white_cobble" } }
+  			},
+  			"false": { }
+  		}
+   }
+}

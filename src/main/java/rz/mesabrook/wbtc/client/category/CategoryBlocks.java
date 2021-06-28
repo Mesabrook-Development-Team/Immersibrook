@@ -144,6 +144,12 @@ public class CategoryBlocks extends AbstractCategory {
 		add(ModBlocks.PILLAR_JUNGLE);
 		add(ModBlocks.PILLAR_ACACIA);
 		add(ModBlocks.PILLAR_DARK_OAK);
+		add(ModBlocks.PILLAR_COBBLESTONE);
+		add(ModBlocks.PILLAR_STONEBRICKS);
+		add(ModBlocks.PILLAR_WHITE_STONEBRICKS);
+		add(ModBlocks.PILLAR_WHITE_STONE);
+		add(ModBlocks.PILLAR_WHITE_COBBLESTONE);
+		add(ModBlocks.PILLAR_SMOOTHED_STONE);
 	}
 
 }

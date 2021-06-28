@@ -160,6 +160,22 @@ public class ModBlocks
 	public static final Block WHITE_STONE_BRICKS = new MiscBlock("white_stone_bricks", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block CAT_BLOCK = new MiscBlock("cat_block", Material.ROCK, SoundType.METAL, Main.IMMERSIBROOK_MAIN, 0F);
 
+	// Dynamic Pillars - Credit to CSX8600
+	public static final Block PILLAR_POST = new Pillar("wbtc_pillar", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block PILLAR_STONE = new Pillar("wbtc_pillar_stone", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block PILLAR_OAK = new Pillar("wbtc_pillar_oak_log", Material.WOOD, SoundType.WOOD, "axe", 0);
+	public static final Block PILLAR_BIRCH = new Pillar("wbtc_pillar_birch", Material.WOOD, SoundType.WOOD, "axe", 0);
+	public static final Block PILLAR_SPRUCE = new Pillar("wbtc_pillar_spruce", Material.WOOD, SoundType.WOOD, "axe", 0);
+	public static final Block PILLAR_JUNGLE = new Pillar("wbtc_pillar_jungle", Material.WOOD, SoundType.WOOD, "axe", 0);
+	public static final Block PILLAR_ACACIA = new Pillar("wbtc_pillar_acacia", Material.WOOD, SoundType.WOOD, "axe", 0);
+	public static final Block PILLAR_DARK_OAK = new Pillar("wbtc_pillar_dark_oak", Material.WOOD, SoundType.WOOD, "axe", 0);
+	public static final Block PILLAR_COBBLESTONE = new Pillar("wbtc_pillar_cobble", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block PILLAR_STONEBRICKS = new Pillar("wbtc_pillar_stonebricks", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block PILLAR_WHITE_STONEBRICKS = new Pillar("wbtc_pillar_white_stonebricks", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block PILLAR_WHITE_STONE = new Pillar("wbtc_pillar_white_stone", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block PILLAR_WHITE_COBBLESTONE = new Pillar("wbtc_pillar_white_cobble", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block PILLAR_SMOOTHED_STONE = new Pillar("wbtc_pillar_smoothed_stone", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+
 	// Commercial Kitchen Floor Blocks
 	public static final Block FLOOR_KITCHEN_1 = new MiscBlock("floor_kitchen_1", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block FLOOR_DRAIN_1 = new MiscBlock("floor_drain_1", Material.IRON, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
@@ -173,17 +189,6 @@ public class ModBlocks
 	public static final Block INDUSTRIAL_TILE_2 = new MiscBlock("floor_danger_2", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block INDUSTRIAL_TILE_3 = new MiscBlock("floor_danger_3", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block INDUSTRIAL_TILE_4 = new MiscBlock("floor_danger_4", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
-	
-	// Dynamic Pillars - Credit to CSX8600
-	public static final Block PILLAR_POST = new Pillar("wbtc_pillar", Material.ROCK, SoundType.STONE, "pickaxe", 1);
-	public static final Block PILLAR_STONE = new Pillar("wbtc_pillar_stone", Material.ROCK, SoundType.STONE, "pickaxe", 1);
-	public static final Block PILLAR_OAK = new Pillar("wbtc_pillar_oak_log", Material.WOOD, SoundType.WOOD, "axe", 0);
-	public static final Block PILLAR_BIRCH = new Pillar("wbtc_pillar_birch", Material.WOOD, SoundType.WOOD, "axe", 0);
-	public static final Block PILLAR_SPRUCE = new Pillar("wbtc_pillar_spruce", Material.WOOD, SoundType.WOOD, "axe", 0);
-	public static final Block PILLAR_JUNGLE = new Pillar("wbtc_pillar_jungle", Material.WOOD, SoundType.WOOD, "axe", 0);
-	public static final Block PILLAR_ACACIA = new Pillar("wbtc_pillar_acacia", Material.WOOD, SoundType.WOOD, "axe", 0);
-	public static final Block PILLAR_DARK_OAK = new Pillar("wbtc_pillar_dark_oak", Material.WOOD, SoundType.WOOD, "axe", 0);
-
 
 	// Handrails
 	public static final Block IRON_HANDRAIL = new BlockHandrail("iron_handrail", Material.IRON, SoundType.METAL, "pickaxe");
