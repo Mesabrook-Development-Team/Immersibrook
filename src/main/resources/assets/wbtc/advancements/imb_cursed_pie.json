@@ -1,0 +1,21 @@
+{
+    "display": {
+        "icon": {
+            "item": "minecraft:pumpkin_pie"
+        },
+        "title": {
+            "translate": "advancements.imb.pie"
+        },
+        "description": {
+            "translate": "advancements.imb.pie.desc"
+        },
+		"show_toast": true,
+        "announce_to_chat": true
+    },
+	"parent": "wbtc:imb_welcome",
+    "criteria": {
+        "tick": {
+            "trigger": "wbtc:imb_cursed_pie"
+        }
+    }
+}

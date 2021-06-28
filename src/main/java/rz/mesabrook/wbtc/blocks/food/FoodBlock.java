@@ -318,6 +318,11 @@ public class FoodBlock extends Block implements IHasModel
 					{
 						packet.soundName = "pie";
 						PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
+
+						if(player instanceof EntityPlayer)
+						{
+							Triggers.trigger(Triggers.CURSED_PIE, player);
+						}
 					}
 					else if(this.getUnlocalizedName().contains("cube_fish") || this.getUnlocalizedName().contains("cube_salmon") || this.getUnlocalizedName().contains("cube_salmon") || this.getUnlocalizedName().contains("cube_nemo"))
 					{

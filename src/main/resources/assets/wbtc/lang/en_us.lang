@@ -38,6 +38,8 @@ advancements.imb.mesarang=Brand Loyalty!
 advancements.imb.mesarang.desc=Craft a Mesarang
 advancements.imb.doot=Tooting Your Own Horn
 advancements.imb.doot.desc=d o o t
+advancements.imb.pie=Oh hey babe
+advancements.imb.pie.desc=Experience something cursed.
 
 //Config
 wbtc.config.title=Configuration File for Immersibrook
@@ -852,10 +854,15 @@ tile.floor_danger_2.name=Industrial Floor Tile - Orange Warning Stripes
 tile.floor_danger_3.name=Industrial Floor Tile - Red Warning Stripes
 tile.floor_danger_4.name=Industrial Floor Tile - White Warning Stripes
 
-//Pillar
-tile.pillar_base.name=Pillar Base
-tile.wbtc_pillar.name=Pillar
-tile.pillar_top.name=Pillar Top
+//Pillars
+tile.wbtc_pillar.name=Quartz Pillar
+tile.wbtc_pillar_stone.name=Stone Pillar
+tile.wbtc_pillar_oak_log.name=Oak Wooden Pillar
+tile.wbtc_pillar_birch.name=Birch Wooden Pillar
+tile.wbtc_pillar_spruce.name=Spruce Wooden Pillar
+tile.wbtc_pillar_jungle.name=Jungle Wooden Pillar
+tile.wbtc_pillar_acacia.name=Acacia Wooden Pillar
+tile.wbtc_pillar_dark_oak.name=Dark Oak Wooden Pillar
 
 //Misc Blocks
 tile.white_stone.name=Chalked Stone
