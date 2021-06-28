@@ -178,6 +178,12 @@ public class ModBlocks
 	public static final Block PILLAR_POST = new Pillar("wbtc_pillar", Material.ROCK, SoundType.STONE, "pickaxe", 1);
 	public static final Block PILLAR_STONE = new Pillar("wbtc_pillar_stone", Material.ROCK, SoundType.STONE, "pickaxe", 1);
 	public static final Block PILLAR_OAK = new Pillar("wbtc_pillar_oak_log", Material.WOOD, SoundType.WOOD, "axe", 0);
+	public static final Block PILLAR_BIRCH = new Pillar("wbtc_pillar_birch", Material.WOOD, SoundType.WOOD, "axe", 0);
+	public static final Block PILLAR_SPRUCE = new Pillar("wbtc_pillar_spruce", Material.WOOD, SoundType.WOOD, "axe", 0);
+	public static final Block PILLAR_JUNGLE = new Pillar("wbtc_pillar_jungle", Material.WOOD, SoundType.WOOD, "axe", 0);
+	public static final Block PILLAR_ACACIA = new Pillar("wbtc_pillar_acacia", Material.WOOD, SoundType.WOOD, "axe", 0);
+	public static final Block PILLAR_DARK_OAK = new Pillar("wbtc_pillar_dark_oak", Material.WOOD, SoundType.WOOD, "axe", 0);
+
 
 	// Handrails
 	public static final Block IRON_HANDRAIL = new BlockHandrail("iron_handrail", Material.IRON, SoundType.METAL, "pickaxe");

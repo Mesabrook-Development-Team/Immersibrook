@@ -1,0 +1,21 @@
+{
+   "forge_marker": 1,
+   "defaults": {
+   		"model": "wbtc:wbtc_pillar_dark_oak"
+   },
+   "variants": {
+  		"normal": [{}],
+  		"is_bottom": {
+  			"true": {
+  				"submodel": { "pillar_bottom": { "model": "wbtc:pillar_base_dark_oak" } }
+  			},
+  			"false": { }
+  		},
+  		"is_top": {
+  			"true": {
+  				"submodel": { "pillar_top": { "model": "wbtc:pillar_top_dark_oak" } }
+  			},
+  			"false": { }
+  		}
+   }
+}
