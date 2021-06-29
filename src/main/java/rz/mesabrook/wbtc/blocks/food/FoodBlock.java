@@ -96,7 +96,7 @@ public class FoodBlock extends Block implements IHasModel
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
 	{
-		if(this.getUnlocalizedName().contains("cube_pumpkin_pie"))
+		if(this.getUnlocalizedName().contains("_pie"))
 		{
 			return PIE_AABB;
 		}
@@ -294,6 +294,30 @@ public class FoodBlock extends Block implements IHasModel
 		{
 			tooltip.add(TextFormatting.AQUA + "Contains 9" + TextFormatting.GREEN + " Raw Salmon");
 		}
+		else if(this.getUnlocalizedName().contains("cube_apple_pie") && mainTier == 1)
+		{
+			tooltip.add(TextFormatting.AQUA + "Contains 9" + TextFormatting.GREEN + " Apple Pies");
+		}
+		else if(this.getUnlocalizedName().contains("cube_strawberry_pie") && mainTier == 1)
+		{
+			tooltip.add(TextFormatting.AQUA + "Contains 9" + TextFormatting.GREEN + " Strawberry Pies");
+		}
+		else if(this.getUnlocalizedName().contains("cube_blueberry_pie") && mainTier == 1)
+		{
+			tooltip.add(TextFormatting.AQUA + "Contains 9" + TextFormatting.GREEN + " Blueberry Pies");
+		}
+		else if(this.getUnlocalizedName().contains("cube_cherry_pie") && mainTier == 1)
+		{
+			tooltip.add(TextFormatting.AQUA + "Contains 9" + TextFormatting.GREEN + " Cherry Pies");
+		}
+		else if(this.getUnlocalizedName().contains("cube_sweetpotato_pie") && mainTier == 1)
+		{
+			tooltip.add(TextFormatting.AQUA + "Contains 9" + TextFormatting.GREEN + " Sweet Potato Pies");
+		}
+		else if(this.getUnlocalizedName().contains("cube_keylime_pie") && mainTier == 1)
+		{
+			tooltip.add(TextFormatting.AQUA + "Contains 9" + TextFormatting.GREEN + " Key Lime Pies");
+		}
 		
 		super.addInformation(stack, world, tooltip, flag);
 	}
@@ -314,7 +338,7 @@ public class FoodBlock extends Block implements IHasModel
 						packet.soundName = "cheese_click";
 						PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
 					}
-					else if(this.getUnlocalizedName().contains("cube_pumpkin_pie"))
+					else if(this.getUnlocalizedName().contains("pumpkin"))
 					{
 						packet.soundName = "pie";
 						PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));

@@ -33,6 +33,12 @@ public class CategoryFood extends AbstractCategory
 		add(ModBlocks.CUBE_SALMON);
 		add(ModBlocks.CUBE_PUFF);
 		add(ModBlocks.CUBE_CLOWN);
+		add(ModBlocks.CUBE_APPLE_PIE);
+		add(ModBlocks.CUBE_STRAWBERRY_PIE);
+		add(ModBlocks.CUBE_BLUEBERRY_PIE);
+		add(ModBlocks.CUBE_CHERRY_PIE);
+		add(ModBlocks.CUBE_SWEETPOTATO_PIE);
+		add(ModBlocks.CUBE_KEYLIME_PIE);
 	}
 
 }

@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:cube_blueberry_pie" },
+        "facing=south": { "model": "wbtc:cube_blueberry_pie", "y": 180 },
+        "facing=west":  { "model": "wbtc:cube_blueberry_pie", "y": 270 },
+        "facing=east":  { "model": "wbtc:cube_blueberry_pie", "y": 90 }
+    }
+}

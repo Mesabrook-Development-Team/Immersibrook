@@ -219,7 +219,13 @@ public class ModBlocks
 	public static final Block CUBE_SALMON = new FoodBlock("cube_salmon", MapColor.PINK, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
 	public static final Block CUBE_PUFF = new FoodBlock("cube_pufferfish", MapColor.YELLOW, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
 	public static final Block CUBE_CLOWN = new FoodBlock("cube_nemo", MapColor.ORANGE_STAINED_HARDENED_CLAY, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
-	
+	public static final Block CUBE_APPLE_PIE = new FoodBlock("cube_apple_pie", MapColor.ORANGE_STAINED_HARDENED_CLAY, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_STRAWBERRY_PIE = new FoodBlock("cube_strawberry_pie", MapColor.RED_STAINED_HARDENED_CLAY, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_BLUEBERRY_PIE = new FoodBlock("cube_blueberry_pie", MapColor.BLUE_STAINED_HARDENED_CLAY, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_CHERRY_PIE = new FoodBlock("cube_cherry_pie", MapColor.RED, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_SWEETPOTATO_PIE = new FoodBlock("cube_sweetpotato_pie", MapColor.ORANGE_STAINED_HARDENED_CLAY, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_KEYLIME_PIE = new FoodBlock("cube_keylime_pie", MapColor.LIME, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+
 	// Plastic Blocks
 	public static final Block PLASTIC_CUBE_WHITE = new MiscBlock("plastic_cube_white", Material.ROCK, SoundTypeInit.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block PLASTIC_CUBE_ORANGE = new MiscBlock("plastic_cube_orange", Material.ROCK, SoundTypeInit.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
