@@ -1,0 +1,19 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "###",
+      " # ",
+      "###"
+   ],
+   "key": {
+      "#": {
+         "item": "minecraft:stone",
+         "data": 0
+      }
+   },
+   "result": {
+      "item": "wbtc:wbtc_pillar_stone",
+      "data": 0,
+      "count": 7
+   }
+}

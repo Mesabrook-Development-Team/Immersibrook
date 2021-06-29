@@ -1,0 +1,19 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "###",
+      " # ",
+      "###"
+   ],
+   "key": {
+      "#": {
+         "item": "minecraft:log2",
+         "data": 1
+      }
+   },
+   "result": {
+      "item": "wbtc:wbtc_pillar_dark_oak",
+      "data": 0,
+      "count": 7
+   }
+}
