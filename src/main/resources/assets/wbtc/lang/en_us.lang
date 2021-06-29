@@ -863,6 +863,12 @@ tile.wbtc_pillar_spruce.name=Spruce Wooden Pillar
 tile.wbtc_pillar_jungle.name=Jungle Wooden Pillar
 tile.wbtc_pillar_acacia.name=Acacia Wooden Pillar
 tile.wbtc_pillar_dark_oak.name=Dark Oak Wooden Pillar
+tile.wbtc_pillar_cobble.name=Cobblestone Pillar
+tile.wbtc_pillar_stonebricks.name=Stone Brick Pillar
+tile.wbtc_pillar_white_stonebricks.name=Chalked Stone Brick Pillar
+tile.wbtc_pillar_white_stone.name=Chalked Stone Pillar
+tile.wbtc_pillar_white_cobble.name=Chalked Cobblestone Pillar
+tile.wbtc_pillar_smoothed_stone.name=Smoothed Stone Pillar
 
 //Misc Blocks
 tile.white_stone.name=Chalked Stone
