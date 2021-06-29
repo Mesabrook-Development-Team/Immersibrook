@@ -12,10 +12,12 @@ NEW:
 -[CSX8600] New dynamic Pillar block.
 -[RZ] More Pillar Varieties. 
 -[RZ] Plastic Doot Bugle Toy.
+-[RZ] Comically Large Pies based on Pam's Harvestcraft.
 
 CHANGES/FIXES:
 -[RZ] New model for the Wheelie Bin.
 -[RZ] New model for the First Aid Kit.
+-[RZ] New model for the Comically Large Pumpkin Pie.
 -[RZ] New model for both Iron and Wooden Handrails.
 -[RZ] Redone the sound code for Food Cube blocks.
 -[RZ] Changed the Wheelie Bin GUI's texture.

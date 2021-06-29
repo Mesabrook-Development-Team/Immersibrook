@@ -318,6 +318,46 @@ public class FoodBlock extends Block implements IHasModel
 		{
 			tooltip.add(TextFormatting.AQUA + "Contains 9" + TextFormatting.GREEN + " Key Lime Pies");
 		}
+		else if(this.getUnlocalizedName().contains("cube_raspberry_pie") && mainTier == 1)
+		{
+			tooltip.add(TextFormatting.AQUA + "Contains 9" + TextFormatting.GREEN + " Raspberry Pies");
+		}
+		else if(this.getUnlocalizedName().contains("cube_pecan_pie") && mainTier == 1)
+		{
+			tooltip.add(TextFormatting.AQUA + "Contains 9" + TextFormatting.GREEN + " Pecan Pies");
+		}
+		else if(this.getUnlocalizedName().contains("cube_gooseberry_pie") && mainTier == 1)
+		{
+			tooltip.add(TextFormatting.AQUA + "Contains 9" + TextFormatting.GREEN + " Gooseberry Pies");
+		}
+		else if(this.getUnlocalizedName().contains("cube_spider_pie") && mainTier == 1)
+		{
+			tooltip.add(TextFormatting.AQUA + "Contains 9" + TextFormatting.GREEN + " Spider Eye Pies");
+		}
+		else if(this.getUnlocalizedName().contains("cube_rhubarb_pie") && mainTier == 1)
+		{
+			tooltip.add(TextFormatting.AQUA + "Contains 9" + TextFormatting.GREEN + " Strawberry Rhubarb Pies");
+		}
+		else if(this.getUnlocalizedName().contains("cube_patreon_pie") && mainTier == 1)
+		{
+			tooltip.add(TextFormatting.AQUA + "Contains 9" + TextFormatting.GREEN + " Patreon Pies");
+		}
+		else if(this.getUnlocalizedName().contains("cube_slime_pie") && mainTier == 1)
+		{
+			tooltip.add(TextFormatting.AQUA + "Contains 9" + TextFormatting.GREEN + " Slime Pies");
+		}
+		else if(this.getUnlocalizedName().contains("cube_meat_pie") && mainTier == 1)
+		{
+			tooltip.add(TextFormatting.AQUA + "Contains 9" + TextFormatting.GREEN + " Meat Pies");
+		}
+		else if(this.getUnlocalizedName().contains("cube_spinach_pie") && mainTier == 1)
+		{
+			tooltip.add(TextFormatting.AQUA + "Contains 9" + TextFormatting.GREEN + " Spinach Pies");
+		}
+		else if(this.getUnlocalizedName().contains("cube_mince_pie") && mainTier == 1)
+		{
+			tooltip.add(TextFormatting.AQUA + "Contains 9" + TextFormatting.GREEN + " Mince Pies");
+		}
 		
 		super.addInformation(stack, world, tooltip, flag);
 	}

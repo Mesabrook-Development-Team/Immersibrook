@@ -225,6 +225,16 @@ public class ModBlocks
 	public static final Block CUBE_CHERRY_PIE = new FoodBlock("cube_cherry_pie", MapColor.RED, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
 	public static final Block CUBE_SWEETPOTATO_PIE = new FoodBlock("cube_sweetpotato_pie", MapColor.ORANGE_STAINED_HARDENED_CLAY, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
 	public static final Block CUBE_KEYLIME_PIE = new FoodBlock("cube_keylime_pie", MapColor.LIME, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_RASPBERRY_PIE = new FoodBlock("cube_raspberry_pie", MapColor.PINK, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_PECAN_PIE = new FoodBlock("cube_pecan_pie", MapColor.BROWN, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_GOOSEBERRY_PIE = new FoodBlock("cube_gooseberry_pie", MapColor.BROWN, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_SPIDER_PIE = new FoodBlock("cube_spider_pie", MapColor.RED, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_RHUBARB_PIE = new FoodBlock("cube_rhubarb_pie", MapColor.RED_STAINED_HARDENED_CLAY, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_PATREON_PIE = new FoodBlock("cube_patreon_pie", MapColor.GOLD, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_SLIME_PIE = new FoodBlock("cube_slime_pie", MapColor.GREEN, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_MEAT_PIE = new FoodBlock("cube_meat_pie", MapColor.RED, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_SPINACH_PIE = new FoodBlock("cube_spinach_pie", MapColor.GREEN, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_MINCE_PIE = new FoodBlock("cube_mince_pie", MapColor.BROWN, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
 
 	// Plastic Blocks
 	public static final Block PLASTIC_CUBE_WHITE = new MiscBlock("plastic_cube_white", Material.ROCK, SoundTypeInit.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
