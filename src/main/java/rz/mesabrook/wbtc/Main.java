@@ -18,7 +18,7 @@ import rz.mesabrook.wbtc.tab.TabImmersibrook;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.handlers.RegistryHandler;
 
-@Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION, dependencies = "required-after:harvestcraft")
+@Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION, dependencies = "required-after:harvestcraft", updateJSON = Reference.UPDATE_URL)
 public class Main 
 {
 	
