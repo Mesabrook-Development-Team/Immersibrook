@@ -1,1 +1,1 @@
-![Logo](https://i.imgur.com/IjUpj42.png) 
+<img src="https://i.imgur.com/9BnoN5B.png" width="500">
