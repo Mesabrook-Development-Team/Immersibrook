@@ -1,0 +1,14 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "item": "wbtc:cube_meat_pie",
+         "data": 0
+      }
+   ],
+   "result": {
+      "item": "harvestcraft:meatpieitem",
+      "data": 0,
+      "count": 9
+   }
+}

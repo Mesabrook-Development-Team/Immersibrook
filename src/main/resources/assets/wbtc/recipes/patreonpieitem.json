@@ -1,0 +1,14 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "item": "wbtc:cube_patreon_pie",
+         "data": 0
+      }
+   ],
+   "result": {
+      "item": "harvestcraft:patreonpieitem",
+      "data": 0,
+      "count": 9
+   }
+}
