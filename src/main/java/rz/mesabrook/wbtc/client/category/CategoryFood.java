@@ -51,5 +51,6 @@ public class CategoryFood extends AbstractCategory
 		add(ModBlocks.CUBE_MINCE_PIE);
 		add(ModBlocks.CUBE_COTTAGE_PIE);
 		add(ModBlocks.CUBE_SHEPHERD_PIE);
+		add(ModBlocks.CUBE_POT_PIE);
 	}
 }
