@@ -1,0 +1,19 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "###",
+      "###",
+	  "###"
+   ],
+   "key": {
+      "#": {
+         "item": "harvestcraft:patreonpieitem",
+         "data": 0
+      }
+   },
+   "result": {
+      "item": "wbtc:cube_patreon_pie",
+      "data": 0,
+      "count": 1
+   }
+}

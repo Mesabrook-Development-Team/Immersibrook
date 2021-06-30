@@ -1,0 +1,19 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "###",
+      "###",
+	  "###"
+   ],
+   "key": {
+      "#": {
+         "item": "harvestcraft:keylimepieitem",
+         "data": 0
+      }
+   },
+   "result": {
+      "item": "wbtc:cube_keylime_pie",
+      "data": 0,
+      "count": 1
+   }
+}

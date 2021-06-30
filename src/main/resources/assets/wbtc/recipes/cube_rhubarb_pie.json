@@ -1,0 +1,19 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "###",
+      "###",
+	  "###"
+   ],
+   "key": {
+      "#": {
+         "item": "harvestcraft:strawberryrhubarbpieitem",
+         "data": 0
+      }
+   },
+   "result": {
+      "item": "wbtc:cube_rhubarb_pie",
+      "data": 0,
+      "count": 1
+   }
+}
