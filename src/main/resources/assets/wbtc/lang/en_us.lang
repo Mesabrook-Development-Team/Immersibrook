@@ -304,6 +304,24 @@ tile.cube_fish.name=Fish Cube
 tile.cube_salmon.name=Salmon Cube
 tile.cube_nemo.name=Clownfish Cube
 tile.cube_pufferfish.name=Pufferfish Cube
+tile.cube_apple_pie.name=Comically Large Apple Pie
+tile.cube_strawberry_pie.name=Comically Large Strawberry Pie
+tile.cube_blueberry_pie.name=Comically Large Blueberry Pie
+tile.cube_cherry_pie.name=Comically Large Cherry Pie
+tile.cube_sweet_potato_pie.name=Comically Large Sweet Potato Pie
+tile.cube_keylime_pie.name=Comically Large Key Lime Pie
+tile.cube_raspberry_pie.name=Comically Large Raspberry Pie
+tile.cube_pecan_pie.name=Comically Large Pecan Pie
+tile.cube_gooseberry_pie.name=Comically Large Gooseberry Pie
+tile.cube_spider_pie.name=Comically Large Spider Eye Pie
+tile.cube_rhubarb_pie.name=Comically Large Strawberry Rhubarb Pie
+tile.cube_patreon_pie.name=Comically Large Patreon Pie
+tile.cube_slime_pie.name=Comically Large Slime Pie
+tile.cube_meat_pie.name=Comically Large Meat Pie
+tile.cube_spinach_pie.name=Comically Large Spinach Pie
+tile.cube_mince_pie.name=Comically Large Mince Pie
+tile.cube_shepherd_pie.name=Comically Large Shepherd's Pie
+tile.cube_cottage_pie.name=Comically Large Cottage Pie
 
 //Statues
 tile.statue_owo.name=Trophy - Outstanding OwO Behavior
