@@ -358,6 +358,14 @@ public class FoodBlock extends Block implements IHasModel
 		{
 			tooltip.add(TextFormatting.AQUA + "Contains 9" + TextFormatting.GREEN + " Mince Pies");
 		}
+		else if(this.getUnlocalizedName().contains("cube_cottage_pie") && mainTier == 1)
+		{
+			tooltip.add(TextFormatting.AQUA + "Contains 9" + TextFormatting.GREEN + " Cottage Pies");
+		}
+		else if(this.getUnlocalizedName().contains("cube_shepherd_pie") && mainTier == 1)
+		{
+			tooltip.add(TextFormatting.AQUA + "Contains 9" + TextFormatting.GREEN + " Shepherd's Pies");
+		}
 		
 		super.addInformation(stack, world, tooltip, flag);
 	}
