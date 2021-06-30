@@ -1,0 +1,21 @@
+{
+    "display": {
+        "icon": {
+            "item": "wbtc:cube_shepherd_pie"
+        },
+        "title": {
+            "translate": "advancements.imb.commander"
+        },
+        "description": {
+            "translate": "advancements.imb.commander.desc"
+        },
+		"show_toast": true,
+        "announce_to_chat": true
+    },
+	"parent": "wbtc:imb_welcome",
+    "criteria": {
+        "tick": {
+            "trigger": "wbtc:imb_commander"
+        }
+    }
+}

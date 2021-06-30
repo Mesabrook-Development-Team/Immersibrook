@@ -411,6 +411,16 @@ public class FoodBlock extends Block implements IHasModel
 							Triggers.trigger(Triggers.PUFFERFISH, player);
 						}
 					}
+					else if(this.getUnlocalizedName().contains("cube_shepherd_pie"))
+					{
+						packet.soundName = "shep";
+						PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
+
+						if(player instanceof EntityPlayer)
+						{
+							Triggers.trigger(Triggers.SHEPARD, player);
+						}
+					}
 					return true;
 				}
 				catch(Exception ex)

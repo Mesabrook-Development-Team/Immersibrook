@@ -51,5 +51,6 @@
 	"new_owo_short": {"category": "master","sounds": [{"name": "wbtc:new_owo_short","stream": true}]},
 	"puff": {"category": "master","sounds": [{"name": "wbtc:puff","stream": true}]},
 	"woosh": {"category": "master","sounds": [{"name": "wbtc:woosh","stream": true}]},
-	"doot": {"category": "master","sounds": [{"name": "wbtc:doot","stream": true}]}
+	"doot": {"category": "master","sounds": [{"name": "wbtc:doot","stream": true}]},
+	"shep": {"category": "master","sounds": [{"name": "wbtc:shep","stream": true}]}
 }

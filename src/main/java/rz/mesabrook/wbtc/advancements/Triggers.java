@@ -37,6 +37,7 @@ public class Triggers
     public static final BasicTrigger MAKE_FOODCUBE = register("imb_make_foodcube");
     public static final BasicTrigger PUFFERFISH = register("imb_pufferfish");
     public static final BasicTrigger CURSED_PIE = register("imb_cursed_pie");
+    public static final BasicTrigger SHEPARD = register("imb_commander");
 
     // Bin
     public static final BasicTrigger BIN_PLACE = register("imb_place_bin");

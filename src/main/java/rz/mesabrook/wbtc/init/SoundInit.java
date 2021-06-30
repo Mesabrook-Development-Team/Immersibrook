@@ -49,6 +49,7 @@ public class SoundInit
 	public static final SoundEvent PUFF;
 	public static final SoundEvent WOOSH;
 	public static final SoundEvent DOOT;
+	public static final SoundEvent SHEP;
 	
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -109,6 +110,7 @@ public class SoundInit
 		PUFF = addSoundsToRegistry("puff");
 		WOOSH = addSoundsToRegistry("woosh");
 		DOOT = addSoundsToRegistry("doot");
+		SHEP = addSoundsToRegistry("shep");
 		
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -200,6 +202,7 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.PUFF);
 				event.getRegistry().registerAll(SoundInit.WOOSH);
 				event.getRegistry().registerAll(SoundInit.DOOT);
+				event.getRegistry().registerAll(SoundInit.SHEP);
 				
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");
