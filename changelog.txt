@@ -13,6 +13,7 @@ NEW:
 -[RZ] More Pillar Varieties. 
 -[RZ] Plastic Doot Bugle Toy.
 -[RZ] Comically Large Pies based on Pam's Harvestcraft.
+-[RZ] Cylindrical Quartz Pillar (EXPERIMENTAL)
 
 CHANGES/FIXES:
 -[RZ] New model for the Wheelie Bin.
