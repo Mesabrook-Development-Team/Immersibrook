@@ -1,55 +1,105 @@
 {
-    "__comment": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
-    "textures": {
-        "pillar": "wbtc:blocks/pillar",
-        "pillar_top": "wbtc:blocks/pillar_top",
-		"particle": "wbtc:blocks/pillar"
-    },
-    "display": {
-        "gui": {
-            "rotation": [ 30, 45, 0 ],
-            "translation": [ 0, 0, 0 ],
-            "scale": [ 0.625, 0.625, 0.625 ]
-        },
-        "ground": {
-            "rotation": [ 0, 0, 0 ],
-            "translation": [ 0, 3, 0 ],
-            "scale": [ 0.25, 0.25, 0.25 ]
-        },
-        "fixed": {
-            "rotation": [ 0, 180, 0 ],
-            "translation": [ 0, 0, 0 ],
-            "scale": [ 1, 1, 1 ]
-        },
-        "head": {
-            "rotation": [ 0, 180, 0 ],
-            "translation": [ 0, 0, 0 ],
-            "scale": [ 1, 1, 1 ]
-        },
-        "firstperson_righthand": {
-            "rotation": [ 0, 315, 0 ],
-            "translation": [ 0, 2.5, 0 ],
-            "scale": [ 0.4, 0.4, 0.4 ]
-        },
-        "thirdperson_righthand": {
-            "rotation": [ 75, 315, 0 ],
-            "translation": [ 0, 2.5, 0 ],
-            "scale": [ 0.375, 0.375, 0.375 ]
-        }
-    },
-    "elements": [
-        {
-            "name": "Cube",
-            "from": [ 4, 0, 4 ], 
-            "to": [ 12, 16, 12 ], 
-            "faces": {
-                "north": { "texture": "#pillar", "uv": [ 0, 0, 8, 16 ] },
-                "east": { "texture": "#pillar", "uv": [ 0, 0, 8, 16 ] },
-                "south": { "texture": "#pillar", "uv": [ 8, 0, 16, 16 ] },
-                "west": { "texture": "#pillar", "uv": [ 0, 0, 8, 16 ] },
-                "up": { "texture": "#pillar_top", "uv": [ 0, 16, 16, 0 ] },
-                "down": { "texture": "#pillar_top", "uv": [ 0, 0, 8, 8 ] }
-            }
-        }
-    ]
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "blocks/quartz_block_lines_top",
+		"2": "blocks/quartz_block_lines",
+		"particle": "blocks/quartz_block_lines_top"
+	},
+	"elements": [
+		{
+			"name": "octagon",
+			"from": [5.92893, 0, 3],
+			"to": [10.07107, 16, 13],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 11, 16], "texture": "#2"},
+				"east": {"uv": [0, 0, 11, 16], "texture": "#2"},
+				"south": {"uv": [0, 0, 11, 16], "texture": "#2"},
+				"west": {"uv": [0, 0, 11, 16], "texture": "#2"},
+				"up": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"down": {"uv": [0, 0, 1, 1], "texture": "#0"}
+			}
+		},
+		{
+			"name": "octagon",
+			"from": [5.92893, 0, 3],
+			"to": [10.07107, 16, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 11, 16], "texture": "#2"},
+				"east": {"uv": [0, 0, 11, 16], "texture": "#2"},
+				"south": {"uv": [0, 0, 11, 16], "texture": "#2"},
+				"west": {"uv": [0, 0, 11, 16], "texture": "#2"},
+				"up": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"down": {"uv": [0, 0, 1, 1], "texture": "#0"}
+			}
+		},
+		{
+			"name": "octagon",
+			"from": [3, 0, 5.92893],
+			"to": [13, 16, 10.07107],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 11, 16], "texture": "#2"},
+				"east": {"uv": [0, 0, 11, 16], "texture": "#2"},
+				"south": {"uv": [0, 0, 11, 16], "texture": "#2"},
+				"west": {"uv": [0, 0, 11, 16], "texture": "#2"},
+				"up": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"down": {"uv": [0, 0, 1, 1], "texture": "#0"}
+			}
+		},
+		{
+			"name": "octagon",
+			"from": [3, 0, 5.92893],
+			"to": [13, 16, 10.07107],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 11, 16], "texture": "#2"},
+				"east": {"uv": [0, 0, 11, 16], "texture": "#2"},
+				"south": {"uv": [0, 0, 11, 16], "texture": "#2"},
+				"west": {"uv": [0, 0, 11, 16], "texture": "#2"},
+				"up": {"uv": [0, 0, 1, 1], "texture": "#0"},
+				"down": {"uv": [0, 0, 1, 1], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 45, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 225, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"ground": {
+			"translation": [0, 3, 0],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"gui": {
+			"rotation": [30, 225, 0],
+			"scale": [0.625, 0.625, 0.625]
+		},
+		"fixed": {
+			"scale": [0.5, 0.5, 0.5]
+		}
+	},
+	"groups": [
+		{
+			"name": "octagon",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0, 1, 2, 3]
+		}
+	]
 }

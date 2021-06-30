@@ -207,7 +207,6 @@ public class ModBlocks
 	public static final Block CUBE_MUTTON = new FoodBlock("cube_mutton", MapColor.RED, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
 	public static final Block CUBE_RABBIT = new FoodBlock("cube_rabbit", MapColor.PINK, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
 	public static final Block CUBE_APPLES = new FoodBlock("cube_apples", MapColor.RED, SoundType.WOOD, Main.IMMERSIBROOK_MAIN);
-	public static final Block CUBE_CHEESE = new FoodBlock("cube_cheese", MapColor.YELLOW, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
 	public static final Block CUBE_CARROT = new FoodBlock("cube_carrot", MapColor.ORANGE_STAINED_HARDENED_CLAY, SoundType.WOOD, Main.IMMERSIBROOK_MAIN);
 	public static final Block CUBE_POTATO = new FoodBlock("cube_potato", MapColor.BROWN, SoundType.WOOD, Main.IMMERSIBROOK_MAIN);
 	public static final Block CUBE_PUMPKIN_PIE = new FoodBlock("cube_pumpkin_pie", MapColor.ORANGE_STAINED_HARDENED_CLAY, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
@@ -219,6 +218,7 @@ public class ModBlocks
 	public static final Block CUBE_SALMON = new FoodBlock("cube_salmon", MapColor.PINK, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
 	public static final Block CUBE_PUFF = new FoodBlock("cube_pufferfish", MapColor.YELLOW, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
 	public static final Block CUBE_CLOWN = new FoodBlock("cube_nemo", MapColor.ORANGE_STAINED_HARDENED_CLAY, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_CHEESE = new FoodBlock("cube_cheese", MapColor.YELLOW, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
 	public static final Block CUBE_APPLE_PIE = new FoodBlock("cube_apple_pie", MapColor.ORANGE_STAINED_HARDENED_CLAY, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
 	public static final Block CUBE_STRAWBERRY_PIE = new FoodBlock("cube_strawberry_pie", MapColor.RED_STAINED_HARDENED_CLAY, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
 	public static final Block CUBE_BLUEBERRY_PIE = new FoodBlock("cube_blueberry_pie", MapColor.BLUE_STAINED_HARDENED_CLAY, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);

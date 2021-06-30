@@ -2,6 +2,7 @@ package rz.mesabrook.wbtc.client.category;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModBlocks;
 
 public class CategoryFood extends AbstractCategory 
@@ -21,7 +22,6 @@ public class CategoryFood extends AbstractCategory
 		add(ModBlocks.CUBE_MUTTON);
 		add(ModBlocks.CUBE_RABBIT);
 		add(ModBlocks.CUBE_APPLES);
-		add(ModBlocks.CUBE_CHEESE);
 		add(ModBlocks.CUBE_CARROT);
 		add(ModBlocks.CUBE_POTATO);
 		add(ModBlocks.CUBE_PUMPKIN_PIE);
@@ -33,6 +33,7 @@ public class CategoryFood extends AbstractCategory
 		add(ModBlocks.CUBE_SALMON);
 		add(ModBlocks.CUBE_PUFF);
 		add(ModBlocks.CUBE_CLOWN);
+		add(ModBlocks.CUBE_CHEESE);
 		add(ModBlocks.CUBE_APPLE_PIE);
 		add(ModBlocks.CUBE_STRAWBERRY_PIE);
 		add(ModBlocks.CUBE_BLUEBERRY_PIE);
