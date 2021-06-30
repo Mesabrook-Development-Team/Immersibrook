@@ -59,6 +59,7 @@ public class Triggers
         }
     }
 
+    @SuppressWarnings("deprecation")
     public static void init()
     {
         Method method;
