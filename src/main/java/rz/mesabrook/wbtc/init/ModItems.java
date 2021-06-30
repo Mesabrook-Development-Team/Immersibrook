@@ -42,7 +42,7 @@ public class ModItems
 	public static final Item LEVI_HAMMER_HEAD = new ItemWeapon("hammer_head_levi", ToolMaterial.STONE);
 	public static final Item LEVI_HAMMER_STICK = new ItemWeapon("hammer_stick_levi", ToolMaterial.WOOD);
 
-	// Immersibrook Creative Tab Item
+	// Immersibrook Icons
 	public static final Item IMMERSIBROOK_ICON = new ItemMesabrookIcon("icon_immersibrook");
 	public static final Item DOOT_ICON = new MiscItem("doot_icon", 1);
 	
