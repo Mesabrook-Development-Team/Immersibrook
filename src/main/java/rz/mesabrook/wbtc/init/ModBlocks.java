@@ -235,6 +235,8 @@ public class ModBlocks
 	public static final Block CUBE_MEAT_PIE = new FoodBlock("cube_meat_pie", MapColor.RED, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
 	public static final Block CUBE_SPINACH_PIE = new FoodBlock("cube_spinach_pie", MapColor.GREEN, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
 	public static final Block CUBE_MINCE_PIE = new FoodBlock("cube_mince_pie", MapColor.BROWN, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_COTTAGE_PIE = new FoodBlock("cube_cottage_pie", MapColor.WHITE_STAINED_HARDENED_CLAY, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
+	public static final Block CUBE_SHEPHERD_PIE = new FoodBlock("cube_shepherd_pie", MapColor.WHITE_STAINED_HARDENED_CLAY, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
 
 	// Plastic Blocks
 	public static final Block PLASTIC_CUBE_WHITE = new MiscBlock("plastic_cube_white", Material.ROCK, SoundTypeInit.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
