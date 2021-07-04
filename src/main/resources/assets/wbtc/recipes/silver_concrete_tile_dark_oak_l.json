@@ -1,0 +1,18 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "item": "minecraft:concrete",
+         "data": 8
+      },
+      {
+         "item": "wbtc:wbtc_dark_oak",
+         "data": 0
+      }
+   ],
+   "result": {
+      "item": "wbtc:silver_concrete_tile_dark_oak_l",
+      "data": 0,
+      "count": 9
+   }
+}

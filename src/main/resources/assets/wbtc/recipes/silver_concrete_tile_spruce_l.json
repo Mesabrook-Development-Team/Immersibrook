@@ -1,0 +1,18 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "item": "minecraft:concrete",
+         "data": 8
+      },
+      {
+         "item": "wbtc:wbtc_spruce",
+         "data": 0
+      }
+   ],
+   "result": {
+      "item": "wbtc:silver_concrete_tile_spruce_l",
+      "data": 0,
+      "count": 9
+   }
+}
