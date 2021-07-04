@@ -1,0 +1,12 @@
+{
+   "parent": "block/cube",
+   "textures": {
+	   "particle": "blocks/wool_colored_purple",
+       "up": "blocks/wool_colored_purple",
+       "down": "blocks/concrete_silver",
+       "south": "blocks/concrete_silver",
+       "north": "blocks/concrete_silver",
+       "west": "blocks/concrete_silver",
+       "east": "blocks/concrete_silver"
+   }
+}

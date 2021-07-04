@@ -584,6 +584,249 @@ public class CategoryCeiling extends AbstractCategory
 		add(ModBlocks.SDO_PANEL_WOOL_GREEN);
 		add(ModBlocks.SDO_PANEL_WOOL_RED);
 		add(ModBlocks.SDO_PANEL_WOOL_BLACK);
+
+		/**
+		 * White Concrete Ceiling Panel Blocks
+		 */
+		// Laminate Wood Panels
+		add(ModBlocks.CW_OAK_L);
+		add(ModBlocks.CW_SPRUCE_L);
+		add(ModBlocks.CW_BIRCH_L);
+		add(ModBlocks.CW_FLOOR_JUNGLE_L);
+		add(ModBlocks.CW_ACACIA_L);
+		add(ModBlocks.CW_DARK_OAK_L);
+
+		// Checkerboard Panels
+		add(ModBlocks.CW_CHECKERBOARD);
+		add(ModBlocks.CW_CHECKERBOARD_OLD);
+
+		// Floor Tile Panels
+		add(ModBlocks.CW_TILE_1);
+		add(ModBlocks.CW_TILE_2);
+		add(ModBlocks.CW_TILE_3);
+		add(ModBlocks.CW_TILE_4);
+		add(ModBlocks.CW_TILE_5);
+		add(ModBlocks.CW_TILE_6);
+		add(ModBlocks.CW_TILE_7);
+		add(ModBlocks.CW_TILE_8);
+		add(ModBlocks.CW_TILE_9);
+		add(ModBlocks.CW_TILE_10);
+		add(ModBlocks.CW_TILE_11);
+		add(ModBlocks.CW_TILE_12);
+		add(ModBlocks.CW_TILE_13);
+		add(ModBlocks.CW_TILE_14);
+		add(ModBlocks.CW_TILE_15);
+		add(ModBlocks.CW_TILE_16);
+		add(ModBlocks.CW_TILE_17);
+		add(ModBlocks.CW_TILE_18);
+		add(ModBlocks.CW_TILE_19);
+		add(ModBlocks.CW_TILE_20);
+		add(ModBlocks.CW_TILE_21);
+		add(ModBlocks.CW_TILE_22);
+		add(ModBlocks.CW_TILE_23);
+		add(ModBlocks.CW_TILE_24);
+		add(ModBlocks.CW_TILE_25);
+		add(ModBlocks.CW_TILE_26);
+		add(ModBlocks.CW_TILE_27);
+		add(ModBlocks.CW_TILE_28);
+		add(ModBlocks.CW_TILE_29);
+		add(ModBlocks.CW_TILE_30);
+		add(ModBlocks.CW_TILE_31);
+		add(ModBlocks.CW_TILE_32);
+
+		// Commercial Kitchen Tile Panels
+		add(ModBlocks.CW_KITCHEN_1);
+		add(ModBlocks.CW_KITCHEN_2);
+		add(ModBlocks.CW_KITCHEN_3);
+		add(ModBlocks.CW_DRAIN_1);
+		add(ModBlocks.CW_DRAIN_2);
+		add(ModBlocks.CW_DRAIN_3);
+
+		// Industrial Tile Panels
+		add(ModBlocks.CW_DANGER_1);
+		add(ModBlocks.CW_DANGER_2);
+		add(ModBlocks.CW_DANGER_3);
+		add(ModBlocks.CW_DANGER_4);
+
+		// Wool Panels
+		add(ModBlocks.CW_WOOL_WHITE);
+		add(ModBlocks.CW_WOOL_ORANGE);
+		add(ModBlocks.CW_WOOL_MAGENTA);
+		add(ModBlocks.CW_WOOL_LBLUE);
+		add(ModBlocks.CW_WOOL_YELLOW);
+		add(ModBlocks.CW_WOOL_LIME);
+		add(ModBlocks.CW_WOOL_PINK);
+		add(ModBlocks.CW_WOOL_GRAY);
+		add(ModBlocks.CW_WOOL_SILVER);
+		add(ModBlocks.CW_WOOL_CYAN);
+		add(ModBlocks.CW_WOOL_PURPLE);
+		add(ModBlocks.CW_WOOL_BLUE);
+		add(ModBlocks.CW_WOOL_BROWN);
+		add(ModBlocks.CW_WOOL_GREEN);
+		add(ModBlocks.CW_WOOL_RED);
+		add(ModBlocks.CW_WOOL_BLACK);
+
+		/**
+		 * Gray Concrete Ceiling Panel Blocks
+		 */
+		// Laminate Wood Panels
+		add(ModBlocks.CG_OAK_L);
+		add(ModBlocks.CG_SPRUCE_L);
+		add(ModBlocks.CG_BIRCH_L);
+		add(ModBlocks.CG_FLOOR_JUNGLE_L);
+		add(ModBlocks.CG_ACACIA_L);
+		add(ModBlocks.CG_DARK_OAK_L);
+
+		// Checkerboard Panels
+		add(ModBlocks.CG_CHECKERBOARD);
+		add(ModBlocks.CG_CHECKERBOARD_OLD);
+
+		// Floor Tile Panels
+		add(ModBlocks.CG_TILE_1);
+		add(ModBlocks.CG_TILE_2);
+		add(ModBlocks.CG_TILE_3);
+		add(ModBlocks.CG_TILE_4);
+		add(ModBlocks.CG_TILE_5);
+		add(ModBlocks.CG_TILE_6);
+		add(ModBlocks.CG_TILE_7);
+		add(ModBlocks.CG_TILE_8);
+		add(ModBlocks.CG_TILE_9);
+		add(ModBlocks.CG_TILE_10);
+		add(ModBlocks.CG_TILE_11);
+		add(ModBlocks.CG_TILE_12);
+		add(ModBlocks.CG_TILE_13);
+		add(ModBlocks.CG_TILE_14);
+		add(ModBlocks.CG_TILE_15);
+		add(ModBlocks.CG_TILE_16);
+		add(ModBlocks.CG_TILE_17);
+		add(ModBlocks.CG_TILE_18);
+		add(ModBlocks.CG_TILE_19);
+		add(ModBlocks.CG_TILE_20);
+		add(ModBlocks.CG_TILE_21);
+		add(ModBlocks.CG_TILE_22);
+		add(ModBlocks.CG_TILE_23);
+		add(ModBlocks.CG_TILE_24);
+		add(ModBlocks.CG_TILE_25);
+		add(ModBlocks.CG_TILE_26);
+		add(ModBlocks.CG_TILE_27);
+		add(ModBlocks.CG_TILE_28);
+		add(ModBlocks.CG_TILE_29);
+		add(ModBlocks.CG_TILE_30);
+		add(ModBlocks.CG_TILE_31);
+		add(ModBlocks.CG_TILE_32);
+
+		// Commercial Kitchen Tile Panels
+		add(ModBlocks.CG_KITCHEN_1);
+		add(ModBlocks.CG_KITCHEN_2);
+		add(ModBlocks.CG_KITCHEN_3);
+		add(ModBlocks.CG_DRAIN_1);
+		add(ModBlocks.CG_DRAIN_2);
+		add(ModBlocks.CG_DRAIN_3);
+
+		// Industrial Tile Panels
+		add(ModBlocks.CG_DANGER_1);
+		add(ModBlocks.CG_DANGER_2);
+		add(ModBlocks.CG_DANGER_3);
+		add(ModBlocks.CG_DANGER_4);
+
+		// Wool Panels
+		add(ModBlocks.CG_WOOL_WHITE);
+		add(ModBlocks.CG_WOOL_ORANGE);
+		add(ModBlocks.CG_WOOL_MAGENTA);
+		add(ModBlocks.CG_WOOL_LBLUE);
+		add(ModBlocks.CG_WOOL_YELLOW);
+		add(ModBlocks.CG_WOOL_LIME);
+		add(ModBlocks.CG_WOOL_PINK);
+		add(ModBlocks.CG_WOOL_GRAY);
+		add(ModBlocks.CG_WOOL_SILVER);
+		add(ModBlocks.CG_WOOL_CYAN);
+		add(ModBlocks.CG_WOOL_PURPLE);
+		add(ModBlocks.CG_WOOL_BLUE);
+		add(ModBlocks.CG_WOOL_BROWN);
+		add(ModBlocks.CG_WOOL_GREEN);
+		add(ModBlocks.CG_WOOL_RED);
+		add(ModBlocks.CG_WOOL_BLACK);
+
+		/**
+		 * Silver Concrete Ceiling Panel Blocks
+		 */
+		// Laminate Wood Panels
+		add(ModBlocks.CS_OAK_L);
+		add(ModBlocks.CS_SPRUCE_L);
+		add(ModBlocks.CS_BIRCH_L);
+		add(ModBlocks.CS_FLOOR_JUNGLE_L);
+		add(ModBlocks.CS_ACACIA_L);
+		add(ModBlocks.CS_DARK_OAK_L);
+
+		// Checkerboard Panels
+		add(ModBlocks.CS_CHECKERBOARD);
+		add(ModBlocks.CS_CHECKERBOARD_OLD);
+
+		// Floor Tile Panels
+		add(ModBlocks.CS_TILE_1);
+		add(ModBlocks.CS_TILE_2);
+		add(ModBlocks.CS_TILE_3);
+		add(ModBlocks.CS_TILE_4);
+		add(ModBlocks.CS_TILE_5);
+		add(ModBlocks.CS_TILE_6);
+		add(ModBlocks.CS_TILE_7);
+		add(ModBlocks.CS_TILE_8);
+		add(ModBlocks.CS_TILE_9);
+		add(ModBlocks.CS_TILE_10);
+		add(ModBlocks.CS_TILE_11);
+		add(ModBlocks.CS_TILE_12);
+		add(ModBlocks.CS_TILE_13);
+		add(ModBlocks.CS_TILE_14);
+		add(ModBlocks.CS_TILE_15);
+		add(ModBlocks.CS_TILE_16);
+		add(ModBlocks.CS_TILE_17);
+		add(ModBlocks.CS_TILE_18);
+		add(ModBlocks.CS_TILE_19);
+		add(ModBlocks.CS_TILE_20);
+		add(ModBlocks.CS_TILE_21);
+		add(ModBlocks.CS_TILE_22);
+		add(ModBlocks.CS_TILE_23);
+		add(ModBlocks.CS_TILE_24);
+		add(ModBlocks.CS_TILE_25);
+		add(ModBlocks.CS_TILE_26);
+		add(ModBlocks.CS_TILE_27);
+		add(ModBlocks.CS_TILE_28);
+		add(ModBlocks.CS_TILE_29);
+		add(ModBlocks.CS_TILE_30);
+		add(ModBlocks.CS_TILE_31);
+		add(ModBlocks.CS_TILE_32);
+
+		// Commercial Kitchen Tile Panels
+		add(ModBlocks.CS_KITCHEN_1);
+		add(ModBlocks.CS_KITCHEN_2);
+		add(ModBlocks.CS_KITCHEN_3);
+		add(ModBlocks.CS_DRAIN_1);
+		add(ModBlocks.CS_DRAIN_2);
+		add(ModBlocks.CS_DRAIN_3);
+
+		// Industrial Tile Panels
+		add(ModBlocks.CS_DANGER_1);
+		add(ModBlocks.CS_DANGER_2);
+		add(ModBlocks.CS_DANGER_3);
+		add(ModBlocks.CS_DANGER_4);
+
+		// Wool Panels
+		add(ModBlocks.CS_WOOL_WHITE);
+		add(ModBlocks.CS_WOOL_ORANGE);
+		add(ModBlocks.CS_WOOL_MAGENTA);
+		add(ModBlocks.CS_WOOL_LBLUE);
+		add(ModBlocks.CS_WOOL_YELLOW);
+		add(ModBlocks.CS_WOOL_LIME);
+		add(ModBlocks.CS_WOOL_PINK);
+		add(ModBlocks.CS_WOOL_GRAY);
+		add(ModBlocks.CS_WOOL_SILVER);
+		add(ModBlocks.CS_WOOL_CYAN);
+		add(ModBlocks.CS_WOOL_PURPLE);
+		add(ModBlocks.CS_WOOL_BLUE);
+		add(ModBlocks.CS_WOOL_BROWN);
+		add(ModBlocks.CS_WOOL_GREEN);
+		add(ModBlocks.CS_WOOL_RED);
+		add(ModBlocks.CS_WOOL_BLACK);
 	}
 
 }
