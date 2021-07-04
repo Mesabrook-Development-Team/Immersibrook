@@ -81,7 +81,7 @@ public class RegistryHandler
 	
 	public static void preInitRegistries(FMLPreInitializationEvent event)
 	{
-		Main.logger.info("[Immersibrook] Version " + Reference.VERSION + " loading...");
+		Main.logger.info("[Immersibrook] Version " + Reference.VERSION + " by " + Reference.AUTHOR + ". Loading...");
         Main.IE_LOADED = Loader.isModLoaded("immersiveengineering");
         Main.JABCM_LOADED = Loader.isModLoaded("jabcm");
         Main.FURENIKUS_CITIES = Loader.isModLoaded("furenikuscities");
