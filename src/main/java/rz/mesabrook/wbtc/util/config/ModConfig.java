@@ -37,6 +37,9 @@ public final class ModConfig
 	
 	@Comment("Set the amount of times the First Aid Kit can be used before it breaks.")
 	public static int firstAidUses = 12;
+
+	@Comment("Set the distance allowed for ceiling lights to place fake light blocks.")
+	public static int ceilingLightDistance = 100;
 	
 	@Mod.EventBusSubscriber(modid = Reference.MODID)
 	private static class EventHandler

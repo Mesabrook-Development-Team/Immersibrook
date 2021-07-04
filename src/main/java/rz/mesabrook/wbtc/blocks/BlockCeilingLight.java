@@ -26,6 +26,7 @@ import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.util.EnumSimpleRotation;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.ModUtils;
+import rz.mesabrook.wbtc.util.config.ModConfig;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -66,7 +67,7 @@ public class BlockCeilingLight extends Block implements IHasModel
 
         int count = 0;
 
-        while (block == Blocks.AIR && count < 50)
+        while (block == Blocks.AIR && count < ModConfig.ceilingLightDistance)
         {
             posOffset = posOffset.offset(EnumFacing.DOWN);
             block = world.getBlockState(posOffset).getBlock();
