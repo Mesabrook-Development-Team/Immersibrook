@@ -1,31 +1,10 @@
-Immersibrook 0.0.8 - The Big Chungus Update
+Immersibrook 1.0.0 - The Big Giant Update UwU
 
 NEW:
--[RZ] Advancements!
--[RZ] Diagonal Exit Signs.
--[RZ] Exit Signs with Left or Right Arrows.
--[RZ] Wheelie Bins with red, blue, and green lids.
--[RZ] Raw Plastic blocks.
--[RZ] Mesarang(TM), a throwable item.
--[CSX8600] Safety Vests can now have their Glow effect toggled.
--[RZ] Night Vision Goggles can now have their Night Vision effect toggled.
--[CSX8600] New dynamic Pillar block.
--[RZ] More Pillar Varieties. 
--[RZ] Plastic Doot Bugle Toy.
--[RZ] Comically Large Pies based on Pam's Harvestcraft.
--[RZ] Cylindrical Quartz Pillar (EXPERIMENTAL)
--[RZ] Concrete Ceiling Blocks (White, Gray, and Light Gray)
 
 CHANGES/FIXES:
--[RZ] New model for the Wheelie Bin.
--[RZ] New model for the First Aid Kit.
--[RZ] New model for the Comically Large Pumpkin Pie.
--[RZ] New model for both Iron and Wooden Handrails.
--[RZ] Redone the sound code for Food Cube blocks.
--[RZ] Changed the Wheelie Bin GUI's texture.
+
 
 KNOWN ISSUES:
 
 REMOVALS:
--[RZ] Long OwO Trophy sound effect.  
--[CSX8600] Old Pillar Top and Bottom blocks, made redundant by the new dynamic pillars.
