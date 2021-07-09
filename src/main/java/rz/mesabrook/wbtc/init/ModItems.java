@@ -7,6 +7,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import rz.mesabrook.wbtc.Main;
+import rz.mesabrook.wbtc.items.armor.Hardhat;
 import rz.mesabrook.wbtc.items.armor.NightVisionGoggles;
 import rz.mesabrook.wbtc.items.armor.SafetyVestModel;
 import rz.mesabrook.wbtc.items.misc.*;
@@ -150,4 +151,7 @@ public class ModItems
 	public static final Item NV_BODY = new MiscItem("nv_goggle_body", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item NV_INTERNALS = new MiscItem("nv_goggle_circuits", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item NV_STRAPS = new MiscItem("nv_goggle_strap", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+
+	// Hard Hats
+	public static final Item HARDHAT_YELLOW = new Hardhat("hh_yellow", ArmorMaterialRegistry.HH_YELLOW, EntityEquipmentSlot.HEAD);
 }

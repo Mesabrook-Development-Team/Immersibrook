@@ -34,4 +34,6 @@ public class ArmorMaterialRegistry
     public static final ItemArmor.ArmorMaterial MAT_GREEN_VEST = EnumHelper.addArmorMaterial("green_vest", Reference.MODID + ":green_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
     public static final ItemArmor.ArmorMaterial MAT_BLACK_VEST = EnumHelper.addArmorMaterial("black_vest", Reference.MODID + ":black_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
 
+    // Hard Hat Materials
+    public static final ItemArmor.ArmorMaterial HH_YELLOW = EnumHelper.addArmorMaterial("hh_yellow", Reference.MODID + ":hh_yellow", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
 }
