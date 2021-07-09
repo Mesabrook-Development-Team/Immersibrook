@@ -77,7 +77,7 @@ im.filter.tools=Weapons and Tools
 im.filter.records=Music Discs
 im.filter.resources=Materials
 im.filter.food=Foods
-im.filter.vests=Safety Vests
+im.filter.vests=Safety
 
 //Lights
 tile.ceiling_light_spot.name=Ceiling Light
