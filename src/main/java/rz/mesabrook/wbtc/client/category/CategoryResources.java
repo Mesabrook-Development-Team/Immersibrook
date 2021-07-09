@@ -99,6 +99,20 @@ public class CategoryResources extends AbstractCategory
 
 		// Hard Hats
 		add(ModItems.HARDHAT_YELLOW);
+		add(ModItems.HARDHAT_WHITE);
+		add(ModItems.HARDHAT_ORANGE);
+		add(ModItems.HARDHAT_MAGENTA);
+		add(ModItems.HARDHAT_LBLUE);
+		add(ModItems.HARDHAT_LIME);
+		add(ModItems.HARDHAT_PINK);
+		add(ModItems.HARDHAT_GRAY);
+		add(ModItems.HARDHAT_SILVER);
+		add(ModItems.HARDHAT_CYAN);
+		add(ModItems.HARDHAT_PURPLE);
+		add(ModItems.HARDHAT_BLUE);
+		add(ModItems.HARDHAT_BROWN);
+		add(ModItems.HARDHAT_GREEN);
+		add(ModItems.HARDHAT_RED);
+		add(ModItems.HARDHAT_BLACK);
 	}
-
 }

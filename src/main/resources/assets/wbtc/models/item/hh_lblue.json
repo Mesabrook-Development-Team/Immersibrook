@@ -1,6 +1,6 @@
 {
    "parent": "item/generated",
    "textures": {
-       "layer0": "wbtc:items/hh_yellow"
+      "layer0": "wbtc:items/hh_lblue"
    }
 }
