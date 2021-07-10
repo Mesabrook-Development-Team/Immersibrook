@@ -53,5 +53,6 @@
 	"woosh": {"category": "master","sounds": [{"name": "wbtc:woosh","stream": true}]},
 	"doot": {"category": "master","sounds": [{"name": "wbtc:doot","stream": true}]},
 	"shep": {"category": "master","sounds": [{"name": "wbtc:shep","stream": true}]},
-	"trumpet": {"category": "master","sounds": [{"name": "wbtc:trumpet","stream": true}]}
+	"trumpet": {"category": "master","sounds": [{"name": "wbtc:trumpet","stream": true}]},
+	"tm_beep": {"category": "master","sounds": [{"name": "wbtc:tm_beep","stream": true}]}
 }

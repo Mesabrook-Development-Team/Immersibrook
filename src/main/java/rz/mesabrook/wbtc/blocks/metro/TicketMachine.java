@@ -20,6 +20,7 @@ import net.minecraft.world.World;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
+import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.util.IHasModel;
 
 public class TicketMachine extends Block implements IHasModel
@@ -105,7 +106,7 @@ public class TicketMachine extends Block implements IHasModel
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
-        world.playSound(player, pos, SoundEvents.UI_BUTTON_CLICK, SoundCategory.BLOCKS, 0.6F, 2.5F);
+        world.playSound(player, pos, SoundInit.TM_BEEP, SoundCategory.BLOCKS, 0.6F, 1F);
         return true;
     }
 

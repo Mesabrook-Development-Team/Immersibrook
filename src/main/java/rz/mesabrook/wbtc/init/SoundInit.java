@@ -72,6 +72,9 @@ public class SoundInit
 	public static final SoundEvent PLASTIC_STEP;
 	public static final SoundEvent PLASTIC_LAND;
 
+	// Warp Metro
+	public static final SoundEvent TM_BEEP;
+
 	static
 	{
 		OWO_SFX = addSoundsToRegistry("owo");
@@ -133,6 +136,9 @@ public class SoundInit
 		PLASTIC_LAND = addSoundsToRegistry("plastic_land");
 		PLASTIC_PLACE = addSoundsToRegistry("plastic_place");
 		PLASTIC_STEP = addSoundsToRegistry("plastic_step");
+
+		// Warp Metro
+		TM_BEEP = addSoundsToRegistry("tm_beep");
 	}
 	
 	private static SoundEvent addSoundsToRegistry(String soundId)
@@ -206,6 +212,7 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.DOOT);
 				event.getRegistry().registerAll(SoundInit.SHEP);
 				event.getRegistry().registerAll(SoundInit.TRUMPET);
+				event.getRegistry().registerAll(SoundInit.TM_BEEP);
 				
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");
