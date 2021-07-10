@@ -19,6 +19,7 @@ public class EntityMesabrookM extends EntityThrowable
 {
     public static final UUID RZ_UUID = UUID.fromString("c2907bdd-9aba-4c20-b83b-ddb41c004e78");
     public static final UUID CSX_UUID = UUID.fromString("717bb4e7-c701-42a6-b06f-bbe17e0518ae");
+    public static final UUID TD_UUID = UUID.fromString("743cb50c-59b8-40c1-9145-140c510f6c5c");
     private int damage;
 
     public EntityMesabrookM(World worldIn)
@@ -64,7 +65,7 @@ public class EntityMesabrookM extends EntityThrowable
                 if(result.entityHit instanceof EntityPlayerMP)
                 {
                     GameProfile profile = ((EntityPlayerMP) result.entityHit).getGameProfile();
-                    if(profile != null && RZ_UUID.equals(profile.getId()) || CSX_UUID.equals(profile.getId()))
+                    if(profile != null && RZ_UUID.equals(profile.getId()) || CSX_UUID.equals(profile.getId()) || TD_UUID.equals(profile.getId()))
                     {
                         hit = true;
                         damage = Integer.MAX_VALUE;
