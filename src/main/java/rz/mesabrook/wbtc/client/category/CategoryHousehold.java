@@ -63,6 +63,9 @@ public class CategoryHousehold extends AbstractCategory
 		add(ModItems.POPPER_BLUE);
 		add(ModItems.IMMERSIBROOK_ICON);
 		add(ModItems.DOOTER);
+
+		// Warp Metro
+		add(ModBlocks.TICKET_MACHINE);
 	}
 
 }

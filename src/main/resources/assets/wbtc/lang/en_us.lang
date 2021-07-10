@@ -1137,3 +1137,21 @@ key.vestToggle.toggle=Toggle Vest Glow
 key.nvtoggle.toggle=Toggle Night Vision Goggles
 im.vest.toggle=Vest Glow Toggled
 im.nv.toggle=Night Vision Toggled
+
+//Hard Hats
+item.hh_white.name=White Hard Hat
+item.hh_yellow.name=Yellow Hard Hat
+item.hh_orange.name=Orange Hard Hat
+item.hh_magenta.name=Magenta Hard Hat
+item.hh_lblue.name=Light Blue Hard Hat
+item.hh_lime.name=Lime Hard Hat
+item.hh_pink.name=Pink Hard Hat
+item.hh_gray.name=Gray Hard Hat
+item.hh_silver.name=Light Gray Hard Hat
+item.hh_cyan.name=Cyan Hard Hat
+item.hh_purple.name=Purple Hard Hat
+item.hh_blue.name=Blue Hard Hat
+item.hh_brown.name=Brown Hard Hat
+item.hh_green.name=Green Hard Hat
+item.hh_red.name=Red Hard Hat
+item.hh_black.name=Black Hard Hat

@@ -10,6 +10,7 @@ import net.minecraft.block.material.Material;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.blocks.*;
 import rz.mesabrook.wbtc.blocks.food.FoodBlock;
+import rz.mesabrook.wbtc.blocks.metro.TicketMachine;
 import rz.mesabrook.wbtc.blocks.stairs.MiscStairs;
 import rz.mesabrook.wbtc.util.ModUtils;
 
@@ -948,4 +949,7 @@ public class ModBlocks
 	public static final Block CS_WOOL_GREEN = new MiscBlock("silver_concrete_tile_wool_green", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block CS_WOOL_RED = new MiscBlock("silver_concrete_tile_wool_red", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block CS_WOOL_BLACK = new MiscBlock("silver_concrete_tile_wool_black", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
+
+	// 1.0.0 Starts Here
+	public static final Block TICKET_MACHINE = new TicketMachine("ticket_machine");
 }
