@@ -52,6 +52,7 @@ public class EntityMesabrookM extends EntityThrowable
         damage = compound.getInteger("mesarangDamage");
     }
 
+    @SuppressWarnings("deprecated")
     @Override
     protected void onImpact(RayTraceResult result)
     {
