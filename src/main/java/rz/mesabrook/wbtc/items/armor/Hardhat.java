@@ -36,12 +36,22 @@ public class Hardhat extends ItemArmor implements IHasModel
     @Override
     public void onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn)
     {
-
+        if(playerIn instanceof EntityPlayer)
+        {
+            Triggers.trigger(Triggers.WEAR_VEST, playerIn);
+        }
     }
 
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack)
     {
-
+        if(player instanceof EntityPlayer)
+        {
+            player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 10, 10, true, false));
+        }
+        else if(player instanceof EntityPlayer)
+        {
+            player.removeActivePotionEffect(MobEffects.RESISTANCE);
+        }
     }
 }

@@ -16,7 +16,7 @@ public class CategoryVests extends AbstractCategory
 	
 	public CategoryVests()
 	{
-		super("im.filter.vests", new ItemStack(ModItems.SAFETY_VEST_ORANGE));
+		super("im.filter.vests", new ItemStack(ModItems.HARDHAT_BLUE));
 	}
 	
 	@Override

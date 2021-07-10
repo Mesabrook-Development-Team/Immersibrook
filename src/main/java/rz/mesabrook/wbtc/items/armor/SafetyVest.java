@@ -14,9 +14,9 @@ import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.util.IHasModel;
 
-public class SafetyVestModel extends ItemArmor implements IHasModel
+public class SafetyVest extends ItemArmor implements IHasModel
 {
-	public SafetyVestModel(String name, CreativeTabs tab, ArmorMaterial mat, EntityEquipmentSlot equipSlot)
+	public SafetyVest(String name, CreativeTabs tab, ArmorMaterial mat, EntityEquipmentSlot equipSlot)
 	{
 		super(mat, 1, equipSlot);
 		setUnlocalizedName(name);

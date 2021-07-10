@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import rz.mesabrook.wbtc.items.armor.SafetyVestModel;
+import rz.mesabrook.wbtc.items.armor.SafetyVest;
 
 public class VestTogglePacket implements IMessage {
 
@@ -32,7 +32,7 @@ public class VestTogglePacket implements IMessage {
 			EntityPlayerMP player = ctx.getServerHandler().player;
 			
 			ItemStack stack = player.inventory.armorInventory.get(2); // 2 = chest
-			if (!(stack.getItem() instanceof SafetyVestModel))
+			if (!(stack.getItem() instanceof SafetyVest))
 			{
 				return;
 			}

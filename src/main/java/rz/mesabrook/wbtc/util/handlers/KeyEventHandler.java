@@ -1,7 +1,6 @@
 package rz.mesabrook.wbtc.util.handlers;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -12,7 +11,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import rz.mesabrook.wbtc.items.armor.NightVisionGoggles;
-import rz.mesabrook.wbtc.items.armor.SafetyVestModel;
+import rz.mesabrook.wbtc.items.armor.SafetyVest;
 import rz.mesabrook.wbtc.net.NVTogglePacket;
 import rz.mesabrook.wbtc.net.VestTogglePacket;
 import rz.mesabrook.wbtc.proxy.ClientProxy;
@@ -34,7 +33,7 @@ public class KeyEventHandler
 			vestToggle = new TextComponentTranslation("im.vest.toggle");
 			vestToggle.getStyle().setColor(TextFormatting.GREEN);
 
-			if (!(stack.getItem() instanceof SafetyVestModel))
+			if (!(stack.getItem() instanceof SafetyVest))
 			{
 				return;
 			}
