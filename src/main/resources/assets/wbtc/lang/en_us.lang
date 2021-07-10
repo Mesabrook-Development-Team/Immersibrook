@@ -1155,3 +1155,6 @@ item.hh_brown.name=Brown Hard Hat
 item.hh_green.name=Green Hard Hat
 item.hh_red.name=Red Hard Hat
 item.hh_black.name=Black Hard Hat
+
+//Warp Metro
+tile.ticket_machine.name=Ticket Machine
