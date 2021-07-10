@@ -15,6 +15,7 @@ import rz.mesabrook.wbtc.init.ModItems;
 
 import java.util.UUID;
 
+@SuppressWarnings("deprecated")
 public class EntityMesabrookM extends EntityThrowable
 {
     public static final UUID RZ_UUID = UUID.fromString("c2907bdd-9aba-4c20-b83b-ddb41c004e78");
@@ -52,8 +53,8 @@ public class EntityMesabrookM extends EntityThrowable
         damage = compound.getInteger("mesarangDamage");
     }
 
-    @SuppressWarnings("deprecated")
     @Override
+    @SuppressWarnings("deprecated")
     protected void onImpact(RayTraceResult result)
     {
         if(result.entityHit != null)
@@ -85,6 +86,7 @@ public class EntityMesabrookM extends EntityThrowable
         }
         if(!this.world.isRemote)
         {
+
             if(damage < ModItems.IMMERSIBROOK_ICON.getMaxDamage())
             {
                 damage++;
