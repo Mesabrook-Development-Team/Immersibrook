@@ -170,4 +170,6 @@ public class ModItems
 	public static final Item HARDHAT_RED = new Hardhat("hh_red", ArmorMaterialRegistry.HH_RED, EntityEquipmentSlot.HEAD);
 	public static final Item HARDHAT_BLACK = new Hardhat("hh_black", ArmorMaterialRegistry.HH_BLACK, EntityEquipmentSlot.HEAD);
 
+	// Foods
+	public static final Item CANDY_RUBY = new ImmersiFood("ruby_red_candy", 64, 5, 10, false);
 }

@@ -4,6 +4,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModBlocks;
+import rz.mesabrook.wbtc.init.ModItems;
 
 public class CategoryFood extends AbstractCategory 
 {
@@ -53,5 +54,6 @@ public class CategoryFood extends AbstractCategory
 		add(ModBlocks.CUBE_COTTAGE_PIE);
 		add(ModBlocks.CUBE_SHEPHERD_PIE);
 		add(ModBlocks.CUBE_POT_PIE);
+		add(ModItems.CANDY_RUBY);
 	}
 }

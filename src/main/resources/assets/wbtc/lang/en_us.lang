@@ -1158,3 +1158,6 @@ item.hh_black.name=Black Hard Hat
 
 //Warp Metro
 tile.ticket_machine.name=Ticket Machine
+
+//Foods
+item.ruby_red_candy.name=Ruby Red Sweet
