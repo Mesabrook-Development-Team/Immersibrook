@@ -11,6 +11,6 @@
   "credits": "TrainDevil for the mod's name.",
   "logoFile": "assets/logo.png",
   "screenshots": [],
-  "dependencies": ["harvestcraft"]
+  "dependencies": ["harvestcraft", "immersiveengineering"]
 }
 ]
