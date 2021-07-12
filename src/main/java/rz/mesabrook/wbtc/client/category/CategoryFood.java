@@ -55,5 +55,14 @@ public class CategoryFood extends AbstractCategory
 		add(ModBlocks.CUBE_SHEPHERD_PIE);
 		add(ModBlocks.CUBE_POT_PIE);
 		add(ModItems.CANDY_RUBY);
+		add(ModItems.LOLIPOP_RED);
+		add(ModItems.LOLIPOP_GREEN);
+		add(ModItems.LOLIPOP_BLUE);
+		add(ModItems.LOLIPOP_ORANGE);
+		add(ModItems.LOLIPOP_RB);
+		add(ModItems.LOLIPOP_CHOC);
+		add(ModItems.LOLIPOP_GUM);
+		add(ModItems.LOLIPOP_GRAPE);
+		add(ModItems.CANDY_CORN);
 	}
 }

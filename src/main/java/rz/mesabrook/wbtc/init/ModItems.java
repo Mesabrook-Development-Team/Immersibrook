@@ -170,6 +170,18 @@ public class ModItems
 	public static final Item HARDHAT_RED = new Hardhat("hh_red", ArmorMaterialRegistry.HH_RED, EntityEquipmentSlot.HEAD);
 	public static final Item HARDHAT_BLACK = new Hardhat("hh_black", ArmorMaterialRegistry.HH_BLACK, EntityEquipmentSlot.HEAD);
 
+	// Misc Items
+	public static final Item PAPER_STICK = new MiscItem("paper_stick", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+
 	// Foods
-	public static final Item CANDY_RUBY = new ImmersiFood("ruby_red_candy", 64, 5, 10, false);
+	public static final Item CANDY_RUBY = new ImmersiFood("ruby_red_candy", 16, 8, 10, false);
+	public static final Item LOLIPOP_GREEN = new ImmersiFood("green_lolipop", 32, 5, 10, false);
+	public static final Item LOLIPOP_ORANGE = new ImmersiFood("orange_lolipop", 32, 5, 10, false);
+	public static final Item LOLIPOP_RED = new ImmersiFood("red_lolipop", 32, 5, 10, false);
+	public static final Item LOLIPOP_RB = new ImmersiFood("root_beer_lolipop", 32, 5, 10, false);
+	public static final Item LOLIPOP_BLUE = new ImmersiFood("blue_lolipop", 32, 5, 10, false);
+	public static final Item LOLIPOP_GUM = new ImmersiFood("bubblegum_lolipop", 32, 5, 10, false);
+	public static final Item LOLIPOP_CHOC = new ImmersiFood("chocolate_lolipop", 32, 5, 10, false);
+	public static final Item LOLIPOP_GRAPE = new ImmersiFood("grape_lolipop", 32, 5, 10, false);
+	public static final Item CANDY_CORN = new ImmersiFood("candy_corn", 64, 3, 10, false);
 }
