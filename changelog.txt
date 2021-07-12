@@ -1,10 +1,17 @@
-Immersibrook 1.0.0 - The Big Giant Update UwU
+Immersibrook 1.0.0 - The Fall 2021 Update
+
+NOTE:
+This update introduces a new required dependency: Immersive Engineeering!
 
 NEW:
+-Candy!
+-Hard Hats in all sixteen Minecraft colors.
 
 CHANGES/FIXES:
-
+-Pillars are now affected by gravity.
 
 KNOWN ISSUES:
+-None so far.
 
 REMOVALS:
+-Aluminum. Use IE's aluminum instead.
