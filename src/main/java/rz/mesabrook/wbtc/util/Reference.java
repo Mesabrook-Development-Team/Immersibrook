@@ -4,7 +4,7 @@ public class Reference
 {
 	public static final String MODID = "wbtc";
 	public static final String MODNAME = "Immersibrook";
-	public static final String UPDATE_NAME = "The Big Giant Update";
+	public static final String UPDATE_NAME = "The Fall 2021 Update";
 	public static final String VERSION = "1.0.0";
 	public static final String BUILD_DATE = "2021";
 	public static final String CHANGELOG = "https://bit.ly/3wpUwSn";

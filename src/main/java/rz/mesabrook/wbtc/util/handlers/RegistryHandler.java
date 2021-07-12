@@ -85,6 +85,8 @@ public class RegistryHandler
 		Main.logger.info("");
 		Main.logger.info(Reference.MODNAME);
 		Main.logger.info("Version " + Reference.VERSION);
+		Main.logger.info(Reference.UPDATE_NAME);
+		Main.logger.info("");
 		Main.logger.info("Developed By: RavenholmZombie and CSX8600");
 		Main.logger.info("");
 		Main.logger.info("Pre-Initialization");

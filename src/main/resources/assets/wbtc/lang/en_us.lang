@@ -179,6 +179,7 @@ item.popper_red.name=Red Fidget Popper
 item.popper_green.name=Green Fidget Popper
 item.popper_blue.name=Blue Fidget Popper
 item.dooter.name=Doot Bugle
+item.paper_stick.name=Paper Stick
 
 //Smooth Wood Blocks
 tile.smooth_oak.name=Smooth Oak Wood
@@ -1161,3 +1162,12 @@ tile.ticket_machine.name=Ticket Machine
 
 //Foods
 item.ruby_red_candy.name=Ruby Red Sweet
+item.green_lolipop.name=Lime Lolipop
+item.orange_lolipop.name=Orange Lolipop
+item.red_lolipop.name=Apple Lolipop
+item.root_beer_lolipop.name=Root Beer Lolipop
+item.blue_lolipop.name=Blueberry Lolipop
+item.bubblegum_lolipop.name=Bubblegum Lolipop
+item.chocolate_lolipop.name=Chocolate Lolipop
+item.grape_lolipop.name=Grape Lolipop
+item.candy_corn.name=Candy Corn
