@@ -15,20 +15,12 @@ public class CategoryResources extends AbstractCategory
 {
 	public CategoryResources()
 	{
-		super("im.filter.resources", new ItemStack(ModItems.ALUMINUM_INGOT));
+		super("im.filter.resources", new ItemStack(ModItems.PLASTIC_ORANGE));
 	}
 	
 	@Override
 	public void init() 
 	{
-		// Aluminum
-		add(ModBlocks.ALUMINUM_ORE);
-		add(ModBlocks.CUBE_ALUMINUM);
-		add(ModItems.ALUMINUM_DUST);
-		add(ModItems.ALUMINUM_INGOT);
-		add(ModItems.ALUMINUM_NUGGET);
-		add(ModItems.ALUMINUM_ROD);
-		
 		// Raw Plastics
 		add(ModItems.RAW_PLASTIC);
 		add(ModItems.RAW_PLASTIC_WHITE);

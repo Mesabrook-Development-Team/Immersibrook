@@ -3,7 +3,6 @@ package rz.mesabrook.wbtc.util.handlers;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
-import org.apache.logging.log4j.Logger;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -19,7 +18,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.advancements.Triggers;
@@ -27,18 +25,13 @@ import rz.mesabrook.wbtc.cmds.CommandImmersibrook;
 import rz.mesabrook.wbtc.cmds.CommandTeleportDimension;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
-import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.items.misc.EntityMesabrookM;
 import rz.mesabrook.wbtc.rendering.RenderMesabrookIcon;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.Reference;
-import rz.mesabrook.wbtc.util.SoundRandomizer;
 import rz.mesabrook.wbtc.util.TooltipRandomizer;
 import rz.mesabrook.wbtc.util.config.ModConfig;
 import rz.mesabrook.wbtc.util.recipe.SmeltingRecipes;
-import rz.mesabrook.wbtc.world.generation.WorldGenWBTCOres;
-
-import java.net.URL;
 
 @EventBusSubscriber
 public class RegistryHandler 
@@ -81,6 +74,7 @@ public class RegistryHandler
 	
 	public static void preInitRegistries(FMLPreInitializationEvent event)
 	{
+		Main.logger.info("");
 		Main.logger.info("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 		Main.logger.info("");
 		Main.logger.info(Reference.MODNAME);
@@ -93,7 +87,6 @@ public class RegistryHandler
 		Main.logger.info("");
 		Main.logger.info("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 
-		Main.IE_LOADED = Loader.isModLoaded("immersiveengineering");
         Main.JABCM_LOADED = Loader.isModLoaded("jabcm");
         Main.FURENIKUS_CITIES = Loader.isModLoaded("furenikuscities");
 
@@ -103,16 +96,6 @@ public class RegistryHandler
         {
         	Main.logger.warn("[" + Reference.MODNAME + "] Fureniku's Cities detected. There may be some overlap when it comes to blocks since both mods are meant for a similar purpose. We recommend using either Immersibrook or FC separately to avoid any potential conflicts.");
         }
-		
-		if(!Main.IE_LOADED)
-		{
-			Main.logger.info("Immersive Engineering NOT detected. Immersibrook Aluminum Ore gen enabled.");
-			GameRegistry.registerWorldGenerator(new WorldGenWBTCOres(), 0);
-		}
-		else 
-		{
-			Main.logger.warn("Immersive Engineering detected. Immersibrook Aluminum Ore gen disabled. Use IE's ore instead.");
-		}
 		
 		if(!Main.JABCM_LOADED)
 		{
@@ -143,17 +126,11 @@ public class RegistryHandler
 		Main.logger.info("[" + Reference.MODNAME + "] Post Initialization");
 		
     	NonNullList<ItemStack> ironStick = OreDictionary.getOres("stickIron");
-    	NonNullList<ItemStack> aluminumStick = OreDictionary.getOres("stickAluminum");
-    	NonNullList<ItemStack> aluminumIngot = OreDictionary.getOres("ingotAluminum");
-    	NonNullList<ItemStack> aluminumNug = OreDictionary.getOres("nuggetAluminum");
-    	NonNullList<ItemStack> aluminumBlock = OreDictionary.getOres("blockAluminum");
-    	NonNullList<ItemStack> aluminumOre = OreDictionary.getOres("oreAluminum");
-    	NonNullList<ItemStack> aluminumDust = OreDictionary.getOres("dustAluminum");
     	NonNullList<ItemStack> rawPlastics = OreDictionary.getOres("itemRawPlastic");
     	NonNullList<ItemStack> plastics = OreDictionary.getOres("itemPlastic");
     	NonNullList<ItemStack> dairy = OreDictionary.getOres("blockCheese");
     	
-    	Main.logger.info("[" + Reference.MODNAME + "] Checking to ensure our items are in the OD " + ironStick + aluminumStick + aluminumIngot + aluminumNug + aluminumBlock + aluminumOre + aluminumDust + dairy);
+    	Main.logger.info("[" + Reference.MODNAME + "] Checking to ensure our items are in the OD " + ironStick + dairy);
 		Main.logger.info("[" + Reference.MODNAME + "] Scanning for plastics..." + rawPlastics + plastics);
     	
 		TooltipRandomizer.ChosenTooltip();

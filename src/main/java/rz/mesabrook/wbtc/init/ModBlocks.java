@@ -275,10 +275,6 @@ public class ModBlocks
 	public static final Block RAW_PLASTIC_CUBE_RED = new BlockRawPlastic("raw_plastic_block_red", 0F);
 	public static final Block RAW_PLASTIC_CUBE_BLACK = new BlockRawPlastic("raw_plastic_block_black", 0F);
 	public static final Block RAW_PLASTIC_CUBE_GLOWING = new BlockRawPlastic("raw_plastic_block_glowing", 0.5F);
-
-	// Aluminum
-	public static final Block CUBE_ALUMINUM = new MiscBlock("aluminum_block", Material.ROCK, SoundType.METAL, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block ALUMINUM_ORE = new MiscBlock("wbtc_aluminum_ore", Material.IRON, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	
 	// Sign stand
 	public static final Block SIGN_STAND = new SignStand("sign_stand", Material.IRON, SoundType.METAL, 1.0F, 1.0F, "pickaxe", 0, Main.IMMERSIBROOK_MAIN);

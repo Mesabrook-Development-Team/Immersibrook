@@ -11,12 +11,6 @@ public class OreDictRegistry
 	{
 		// Metals
 		OreDictionary.registerOre("stickIron", ModItems.IRON_ROD);
-		OreDictionary.registerOre("stickAluminum", ModItems.ALUMINUM_ROD);
-		OreDictionary.registerOre("ingotAluminum", ModItems.ALUMINUM_INGOT);
-		OreDictionary.registerOre("nuggetAluminum", ModItems.ALUMINUM_NUGGET);
-		OreDictionary.registerOre("blockAluminum", ModBlocks.CUBE_ALUMINUM);
-		OreDictionary.registerOre("oreAluminum", ModBlocks.ALUMINUM_ORE);
-		OreDictionary.registerOre("dustAluminum", ModItems.ALUMINUM_DUST);
 		
 		// Plastics
 		OreDictionary.registerOre("itemRawPlastic", ModItems.RAW_PLASTIC);
@@ -60,12 +54,6 @@ public class OreDictRegistry
 		
 		// It's logging time.
 		Main.logger.info(ModItems.IRON_ROD.getUnlocalizedName() + " has been added to the Ore Dictionary under stickIron");
-		Main.logger.info(ModItems.ALUMINUM_ROD.getUnlocalizedName() + " has been added to the Ore Dictionary under stickAluminum");
-		Main.logger.info(ModItems.ALUMINUM_INGOT.getUnlocalizedName() + " has been added to the Ore Dictionary under ingotAluminum");
-		Main.logger.info(ModItems.ALUMINUM_NUGGET.getUnlocalizedName() + " has been added to the Ore Dictionary under nuggetAluminum");
-		Main.logger.info(ModBlocks.CUBE_ALUMINUM.getUnlocalizedName() + " has been added to the Ore Dictionary under blockAluminum");
-		Main.logger.info(ModBlocks.ALUMINUM_ORE.getUnlocalizedName() + " has been added to the Ore Dictionary under oreAluminum");
-		Main.logger.info(ModItems.ALUMINUM_DUST.getUnlocalizedName() + " has been added to the Ore Dictionary under dustAluminum");
 		Main.logger.info(ModItems.RAW_PLASTIC.getUnlocalizedName() + " has been added to the Ore Dictionary under itemRawPlastic");
 		Main.logger.info(ModItems.RAW_PLASTIC_WHITE.getUnlocalizedName() + " has been added to the Ore Dictionary under itemRawPlastic");
 		Main.logger.info(ModItems.RAW_PLASTIC_ORANGE.getUnlocalizedName() + " has been added to the Ore Dictionary under itemRawPlastic");

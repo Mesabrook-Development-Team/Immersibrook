@@ -49,10 +49,6 @@ public class ModItems
 	
 	// Metals
 	public static final Item IRON_ROD = new MiscItem("iron_rod", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item ALUMINUM_ROD = new MiscItem("aluminum_rod", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item ALUMINUM_INGOT = new MiscItem("ingot_aluminum", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item ALUMINUM_NUGGET = new MiscItem("nugget_aluminum", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item ALUMINUM_DUST = new MiscItem("aluminum_dust", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	
 	// Raw Plastic
 	public static final Item RAW_PLASTIC = new MiscItem("raw_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
