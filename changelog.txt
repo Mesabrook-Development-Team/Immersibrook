@@ -9,6 +9,7 @@ NEW:
 
 CHANGES/FIXES:
 -Pillars are now affected by gravity.
+-The Safety Vests creative menu category has been renamed to Safety and houses both the vests and hard hats.
 
 KNOWN ISSUES:
 -None so far.
