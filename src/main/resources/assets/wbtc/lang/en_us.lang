@@ -1171,7 +1171,13 @@ item.bubblegum_lolipop.name=Bubblegum Lolipop
 item.chocolate_lolipop.name=Chocolate Lolipop
 item.grape_lolipop.name=Grape Lolipop
 item.candy_corn.name=Candy Corn
+item.chocolate_bar_raven.name=Raven Milk Chocolate
+item.chocolate_bar_klussbar.name=Klussbar Peanut Butter Chocolate
+item.chocolate_bar_serpent.name=Sea Serpent Energy Chocolate
+item.chocolate_bar_strawberry.name=Strawberry Joy
 
 //Dialog
 im.sugarrush=Your body begins to tingle, your muscles twitch, eyes dilate, you feel your mind beginning to race.
 im.sugarcrash=You tremble, muscles weak, eyelids heavy. You overdid it, have a sugar crash.
+im.warning=This product contains caffeine which may cause adverse reactions in minors and certain adults.
+im.sg=Surgeon General's Warning

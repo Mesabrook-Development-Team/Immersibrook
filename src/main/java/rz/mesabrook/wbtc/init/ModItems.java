@@ -180,9 +180,9 @@ public class ModItems
 	public static final Item LOLIPOP_CHOC = new ImmersiFood("chocolate_lolipop", 32,0, 5, 10, false);
 	public static final Item LOLIPOP_GRAPE = new ImmersiFood("grape_lolipop", 32,0, 5, 10, false);
 	public static final Item CANDY_CORN = new ImmersiFood("candy_corn", 64,0, 3, 10, false);
-	public static final Item RAVEN_BAR = new DamageableFood("chocolate_bar_raven", 8, 5F);
-	public static final Item KLUSS_BAR = new DamageableFood("chocolate_bar_klussbar", 8, 5F);
-	public static final Item SERPENT_BAR = new DamageableFood("chocolate_bar_serpent", 8, 5F);
-	public static final Item STRAWBERRY_BAR = new DamageableFood("chocolate_bar_strawberry", 8, 5F);
+	public static final Item RAVEN_BAR = new DamageableFood("chocolate_bar_raven",64,0, 3,  false);
+	public static final Item KLUSS_BAR = new DamageableFood("chocolate_bar_klussbar",64,0, 3,  false);
+	public static final Item SERPENT_BAR = new DamageableFood("chocolate_bar_serpent",64,0, 3,  false);
+	public static final Item STRAWBERRY_BAR = new DamageableFood("chocolate_bar_strawberry",64,0, 3,  false);
 
 }
