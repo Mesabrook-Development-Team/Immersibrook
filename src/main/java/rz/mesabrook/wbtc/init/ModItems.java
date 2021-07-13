@@ -170,14 +170,19 @@ public class ModItems
 	public static final Item PAPER_STICK = new MiscItem("paper_stick", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 
 	// Foods
-	public static final Item CANDY_RUBY = new ImmersiFood("ruby_red_candy", 16, 8, 10, false);
-	public static final Item LOLIPOP_GREEN = new ImmersiFood("green_lolipop", 32, 5, 10, false);
-	public static final Item LOLIPOP_ORANGE = new ImmersiFood("orange_lolipop", 32, 5, 10, false);
-	public static final Item LOLIPOP_RED = new ImmersiFood("red_lolipop", 32, 5, 10, false);
-	public static final Item LOLIPOP_RB = new ImmersiFood("root_beer_lolipop", 32, 5, 10, false);
-	public static final Item LOLIPOP_BLUE = new ImmersiFood("blue_lolipop", 32, 5, 10, false);
-	public static final Item LOLIPOP_GUM = new ImmersiFood("bubblegum_lolipop", 32, 5, 10, false);
-	public static final Item LOLIPOP_CHOC = new ImmersiFood("chocolate_lolipop", 32, 5, 10, false);
-	public static final Item LOLIPOP_GRAPE = new ImmersiFood("grape_lolipop", 32, 5, 10, false);
-	public static final Item CANDY_CORN = new ImmersiFood("candy_corn", 64, 3, 10, false);
+	public static final Item CANDY_RUBY = new ImmersiFood("ruby_red_candy", 16, 0,8, 10, false);
+	public static final Item LOLIPOP_GREEN = new ImmersiFood("green_lolipop", 32,0, 5, 10, false);
+	public static final Item LOLIPOP_ORANGE = new ImmersiFood("orange_lolipop", 32,0, 5, 10, false);
+	public static final Item LOLIPOP_RED = new ImmersiFood("red_lolipop", 32,0, 5, 10, false);
+	public static final Item LOLIPOP_RB = new ImmersiFood("root_beer_lolipop", 32,0, 5, 10, false);
+	public static final Item LOLIPOP_BLUE = new ImmersiFood("blue_lolipop", 32,0, 5, 10, false);
+	public static final Item LOLIPOP_GUM = new ImmersiFood("bubblegum_lolipop", 32,0, 5, 10, false);
+	public static final Item LOLIPOP_CHOC = new ImmersiFood("chocolate_lolipop", 32,0, 5, 10, false);
+	public static final Item LOLIPOP_GRAPE = new ImmersiFood("grape_lolipop", 32,0, 5, 10, false);
+	public static final Item CANDY_CORN = new ImmersiFood("candy_corn", 64,0, 3, 10, false);
+	public static final Item RAVEN_BAR = new DamageableFood("chocolate_bar_raven", 8, 5F);
+	public static final Item KLUSS_BAR = new DamageableFood("chocolate_bar_klussbar", 8, 5F);
+	public static final Item SERPENT_BAR = new DamageableFood("chocolate_bar_serpent", 8, 5F);
+	public static final Item STRAWBERRY_BAR = new DamageableFood("chocolate_bar_strawberry", 8, 5F);
+
 }

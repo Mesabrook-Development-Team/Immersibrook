@@ -35,10 +35,10 @@ public class PlayerEvents
 
 		if(ModConfig.showWelcome)
 		{
-			TextComponentString user = new TextComponentString(TextFormatting.AQUA + player.getDisplayNameString());
+			TextComponentString user = new TextComponentString(TextFormatting.GOLD + player.getDisplayNameString());
 
 			TextComponentTranslation prefix = new TextComponentTranslation("im.welcome");
-			prefix.getStyle().setColor(TextFormatting.AQUA);
+			prefix.getStyle().setColor(TextFormatting.GOLD);
 			prefix.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentTranslation("im.welcome.disable")));
 			player.sendMessage(new TextComponentString(prefix.getFormattedText() + user.getFormattedText() + "!"));
 

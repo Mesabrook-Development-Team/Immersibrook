@@ -1171,3 +1171,7 @@ item.bubblegum_lolipop.name=Bubblegum Lolipop
 item.chocolate_lolipop.name=Chocolate Lolipop
 item.grape_lolipop.name=Grape Lolipop
 item.candy_corn.name=Candy Corn
+
+//Dialog
+im.sugarrush=Your body begins to tingle, your muscles twitch, eyes dilate, you feel your mind beginning to race.
+im.sugarcrash=You tremble, muscles weak, eyelids heavy. You overdid it, have a sugar crash.

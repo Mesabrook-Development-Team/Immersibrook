@@ -64,5 +64,9 @@ public class CategoryFood extends AbstractCategory
 		add(ModItems.LOLIPOP_GUM);
 		add(ModItems.LOLIPOP_GRAPE);
 		add(ModItems.CANDY_CORN);
+		add(ModItems.RAVEN_BAR);
+		add(ModItems.KLUSS_BAR);
+		add(ModItems.SERPENT_BAR);
+		add(ModItems.STRAWBERRY_BAR);
 	}
 }
