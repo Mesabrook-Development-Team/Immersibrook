@@ -1,36 +1,39 @@
 package rz.mesabrook.wbtc.items.misc;
 
+import java.lang.reflect.Field;
+import java.util.List;
+import java.util.Random;
+
+import javax.annotation.Nullable;
+
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.FoodStats;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.util.IHasModel;
 
-import javax.annotation.Nullable;
-import javax.xml.soap.Text;
-import java.util.List;
-import java.util.Random;
-
 public class DamageableFood extends Item implements IHasModel
 {
     private final float saturation;
     private final TextComponentTranslation sugarCrash = new TextComponentTranslation("im.sugarcrash");
     private final TextComponentTranslation sugarRush = new TextComponentTranslation("im.sugarrush");
+    private static Field setSaturationField = null;
 
     public DamageableFood(String name, int stackSize, int amount, float saturation, boolean canFeedDoggos)
     {
@@ -47,6 +50,11 @@ public class DamageableFood extends Item implements IHasModel
         sugarCrash.getStyle().setColor(TextFormatting.RED);
         sugarRush.getStyle().setBold(true);
         sugarRush.getStyle().setColor(TextFormatting.GREEN);
+        
+        if (setSaturationField == null)
+        {
+        	setSaturationField = ReflectionHelper.findField(FoodStats.class, "foodSaturationLevel", "field_75125_b");
+        }
     }
 
     @Override
@@ -65,14 +73,22 @@ public class DamageableFood extends Item implements IHasModel
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving)
     {
         EntityPlayer player = (EntityPlayer) entityLiving;
-        if(!player.isCreative() && worldIn.isRemote)
-        {
-            player.getFoodStats().setFoodLevel(20);
-            player.getFoodStats().setFoodSaturationLevel(this.saturation);
-            stack.damageItem(1, player);
-        }
         if(!worldIn.isRemote)
         {
+        	if (!player.isCreative())
+        	{
+                player.getFoodStats().setFoodLevel(20);
+                stack.damageItem(1, player);
+                
+                try {
+					setSaturationField.setFloat(player.getFoodStats(), 20F);
+				} catch (IllegalArgumentException e) {
+					Main.logger.error("An error occurred setting food saturation", e);
+				} catch (IllegalAccessException e) {
+					Main.logger.error("An error occurred setting food saturation", e);
+				}
+        	}
+        	
             if(this.getUnlocalizedName().contains("serpent"))
             {
                 if(!worldIn.isRemote)
