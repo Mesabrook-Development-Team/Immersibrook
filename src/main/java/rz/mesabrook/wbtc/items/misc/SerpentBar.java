@@ -13,11 +13,13 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.FoodStats;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -28,16 +30,16 @@ import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.util.IHasModel;
 
-public class DamageableFood extends Item implements IHasModel
+public class SerpentBar extends Item implements IHasModel
 {
     private final float saturation;
     private final int amount;
     private final TextComponentTranslation sugarCrash = new TextComponentTranslation("im.sugarcrash");
     private final TextComponentTranslation sugarRush = new TextComponentTranslation("im.sugarrush");
-    private final TextComponentTranslation peanutAllergy = new TextComponentTranslation("im.peanut");
+    private final TextComponentTranslation sugarWarn = new TextComponentTranslation("im.sugwarn");
     private static Field setSaturationField = null;
 
-    public DamageableFood(String name, int stackSize, int amount, float saturation, boolean canFeedDoggos)
+    public SerpentBar(String name, int stackSize, int amount, float saturation, boolean canFeedDoggos)
     {
         setRegistryName(name);
         setUnlocalizedName(name);
@@ -53,8 +55,8 @@ public class DamageableFood extends Item implements IHasModel
         sugarCrash.getStyle().setColor(TextFormatting.RED);
         sugarRush.getStyle().setBold(true);
         sugarRush.getStyle().setColor(TextFormatting.GREEN);
-        peanutAllergy.getStyle().setBold(true);
-        peanutAllergy.getStyle().setColor(TextFormatting.RED);
+        sugarWarn.getStyle().setBold(true);
+        sugarWarn.getStyle().setColor(TextFormatting.GRAY);
         
         if (setSaturationField == null)
         {
@@ -78,6 +80,26 @@ public class DamageableFood extends Item implements IHasModel
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving)
     {
         EntityPlayer player = (EntityPlayer) entityLiving;
+        NBTTagCompound nbt = stack.getTagCompound();
+        
+        if (stack.hasTagCompound())
+        {
+            nbt = stack.getTagCompound();
+        }
+        else
+        {
+            nbt = new NBTTagCompound();
+        }
+        
+        if(nbt.hasKey("Chomps"))
+        {
+        	nbt.setInteger("Chomps", nbt.getInteger("Chomps") + 1);
+        }
+        else
+        {
+        	nbt.setInteger("Chomps", 1);
+        }
+        
         if(!worldIn.isRemote)
         {
         	if (!player.isCreative())
@@ -85,53 +107,49 @@ public class DamageableFood extends Item implements IHasModel
                 player.getFoodStats().setFoodLevel(player.getFoodStats().getFoodLevel() + this.amount);
                 stack.damageItem(1, player);
                 
-                try {
-					setSaturationField.setFloat(player.getFoodStats(), 20F);
-				} catch (IllegalArgumentException e) {
+                if(stack.hasTagCompound() && stack.getTagCompound().hasKey("Chomps"))
+                {
+                	int countToSugarCrash = stack.getTagCompound().getInteger("Chomps");
+                	
+                	if(countToSugarCrash == 4)
+                	{
+                        player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 500, 1, true, false));
+                        player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 500, 25, true, false));
+                        player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 500, 55, true, false));
+                        stack.getTagCompound().setInteger("Chomps", 0);
+                        player.sendMessage(sugarCrash);
+                        player.sendMessage(new TextComponentString(Integer.toString(stack.getTagCompound().getInteger("Chomps"))));
+                	}
+                	else if(countToSugarCrash == 3)
+                	{
+                		player.sendMessage(sugarWarn);
+                		player.sendMessage(new TextComponentString(Integer.toString(stack.getTagCompound().getInteger("Chomps"))));
+                	}
+                	else if(countToSugarCrash <= 4)
+                	{
+                        player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 500, 20, true, false));
+                        player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 500, 2, true, false));
+                        player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 500, 4, true, false));
+                        player.sendMessage(sugarRush);
+                        player.sendMessage(new TextComponentString(Integer.toString(stack.getTagCompound().getInteger("Chomps"))));
+                	}
+                }
+                
+                try 
+                {
+					setSaturationField.setFloat(player.getFoodStats(), this.saturation);
+				} 
+                catch (IllegalArgumentException e) 
+                {
 					Main.logger.error("An error occurred setting food saturation", e);
-				} catch (IllegalAccessException e) {
+				} 
+                catch (IllegalAccessException e) 
+                {
 					Main.logger.error("An error occurred setting food saturation", e);
 				}
         	}
-        	
-            if(this.getUnlocalizedName().contains("serpent"))
-            {
-                if(!worldIn.isRemote)
-                {
-                    Random chooser = new Random();
-                    int effect;
-                    effect = chooser.nextInt(4);
-
-                    switch(effect)
-                    {
-                        case 0:
-                            player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 500, 20, true, false));
-                            player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 500, 2, true, false));
-                            player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 500, 4, true, false));
-                            player.sendMessage(sugarRush);
-                            break;
-                        case 1:
-                            player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 500, 20, true, false));
-                            player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 500, 2, true, false));
-                            player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 500, 4, true, false));
-                            player.sendMessage(sugarRush);
-                            break;
-                        case 2:
-                            player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 500, 20, true, false));
-                            player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 500, 2, true, false));
-                            player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 500, 4, true, false));
-                            player.sendMessage(sugarRush);
-                            break;
-                        case 3:
-                            player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 500, 1, true, false));
-                            player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 500, 25, true, false));
-                            player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 500, 55, true, false));
-                            player.sendMessage(sugarCrash);
-                            break;
-                    }
-                }
-            }
         }
+        stack.setTagCompound(nbt);
         return stack;
     }
 
@@ -153,16 +171,8 @@ public class DamageableFood extends Item implements IHasModel
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag)
     {
-        if(this.getUnlocalizedName().contains("serpent"))
-        {
-            tooltip.add(TextFormatting.RED + new TextComponentTranslation("im.sg").getFormattedText());
-            tooltip.add(TextFormatting.YELLOW + new TextComponentTranslation("im.warning").getFormattedText());
-        }
-        
-        if(this.getUnlocalizedName().contains("klussbar") || this.getUnlocalizedName().contains("nut") || this.getUnlocalizedName().contains("krisp"))
-        {
-        	tooltip.add(peanutAllergy.getFormattedText());
-        }
+        tooltip.add(TextFormatting.RED + new TextComponentTranslation("im.sg").getFormattedText());
+        tooltip.add(TextFormatting.YELLOW + new TextComponentTranslation("im.warning").getFormattedText());
     }
 
     @Override
