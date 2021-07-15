@@ -94,43 +94,6 @@ public class DamageableFood extends Item implements IHasModel
 				}
         	}
         	
-            if(this.getUnlocalizedName().contains("serpent"))
-            {
-                if(!worldIn.isRemote)
-                {
-                    Random chooser = new Random();
-                    int effect;
-                    effect = chooser.nextInt(4);
-
-                    switch(effect)
-                    {
-                        case 0:
-                            player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 500, 20, true, false));
-                            player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 500, 2, true, false));
-                            player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 500, 4, true, false));
-                            player.sendMessage(sugarRush);
-                            break;
-                        case 1:
-                            player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 500, 20, true, false));
-                            player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 500, 2, true, false));
-                            player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 500, 4, true, false));
-                            player.sendMessage(sugarRush);
-                            break;
-                        case 2:
-                            player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 500, 20, true, false));
-                            player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 500, 2, true, false));
-                            player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 500, 4, true, false));
-                            player.sendMessage(sugarRush);
-                            break;
-                        case 3:
-                            player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 500, 1, true, false));
-                            player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 500, 25, true, false));
-                            player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 500, 55, true, false));
-                            player.sendMessage(sugarCrash);
-                            break;
-                    }
-                }
-            }
         }
         return stack;
     }

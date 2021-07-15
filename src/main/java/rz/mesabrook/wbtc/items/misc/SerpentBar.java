@@ -23,12 +23,17 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModItems;
+import rz.mesabrook.wbtc.init.SoundInit;
+import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.util.IHasModel;
+import rz.mesabrook.wbtc.util.SoundRandomizer;
+import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 public class SerpentBar extends Item implements IHasModel
 {
@@ -100,6 +105,15 @@ public class SerpentBar extends Item implements IHasModel
         	nbt.setInteger("Chomps", 1);
         }
         
+        if(nbt.hasKey("sugarCrash"))
+        {
+        	nbt.setBoolean("sugarCrash", false);
+        }
+        else
+        {
+        	nbt.setBoolean("sugarCrash", false);
+        }
+        
         if(!worldIn.isRemote)
         {
         	if (!player.isCreative())
@@ -113,19 +127,28 @@ public class SerpentBar extends Item implements IHasModel
                 	
                 	if(countToSugarCrash == 9)
                 	{
+                		stack.getTagCompound().setBoolean("sugarCrash", true);
                         player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 500, 1, true, false));
                         player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 500, 25, true, false));
                         player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 500, 55, true, false));
                         player.setHealth(player.getHealth() / 2);
                         stack.getTagCompound().setInteger("Chomps", 0);
                         player.sendMessage(sugarCrash);
-                        stack.damageItem(100, player);
+                        
+                        if(stack.hasTagCompound() && stack.getTagCompound().getBoolean("sugarCrash") == true)
+                        {
+                        	stack.damageItem(100, player);
+                        }
                 	}
                 	else if(countToSugarCrash == 8)
                 	{
                 		player.sendMessage(sugarWarn);
+    					PlaySoundPacket packet = new PlaySoundPacket();
+    					packet.pos = player.getPosition();					
+    					packet.soundName = "hb";
+    					PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 5));
                 	}
-                	else if(countToSugarCrash <= 7)
+                	else if(countToSugarCrash < 8)
                 	{
                         player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 500, 20, true, false));
                         player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 500, 2, true, false));
