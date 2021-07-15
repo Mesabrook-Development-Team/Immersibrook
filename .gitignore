@@ -20,9 +20,3 @@ build
 # other
 eclipse
 run
-config/forge.cfg
-config/splash.properties
-logs/2021-07-14-1.log.gz
-logs/debug-1.log.gz
-logs/debug.log
-logs/latest.log
