@@ -184,5 +184,6 @@ public class ModItems
 	public static final Item KLUSS_BAR = new DamageableFood("chocolate_bar_klussbar",64,0, 3,  false);
 	public static final Item SERPENT_BAR = new DamageableFood("chocolate_bar_serpent",64,0, 3,  false);
 	public static final Item STRAWBERRY_BAR = new DamageableFood("chocolate_bar_strawberry",64,0, 3,  false);
+	public static final Item NUT_BAR = new DamageableFood("chocolate_bar_nut", 64, 0, 3, false);
 
 }

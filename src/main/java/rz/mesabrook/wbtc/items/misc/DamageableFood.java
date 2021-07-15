@@ -33,6 +33,7 @@ public class DamageableFood extends Item implements IHasModel
     private final float saturation;
     private final TextComponentTranslation sugarCrash = new TextComponentTranslation("im.sugarcrash");
     private final TextComponentTranslation sugarRush = new TextComponentTranslation("im.sugarrush");
+    private final TextComponentTranslation peanutAllergy = new TextComponentTranslation("im.peanut");
     private static Field setSaturationField = null;
 
     public DamageableFood(String name, int stackSize, int amount, float saturation, boolean canFeedDoggos)
@@ -50,6 +51,8 @@ public class DamageableFood extends Item implements IHasModel
         sugarCrash.getStyle().setColor(TextFormatting.RED);
         sugarRush.getStyle().setBold(true);
         sugarRush.getStyle().setColor(TextFormatting.GREEN);
+        peanutAllergy.getStyle().setBold(true);
+        peanutAllergy.getStyle().setColor(TextFormatting.RED);
         
         if (setSaturationField == null)
         {
@@ -152,6 +155,11 @@ public class DamageableFood extends Item implements IHasModel
         {
             tooltip.add(TextFormatting.RED + new TextComponentTranslation("im.sg").getFormattedText());
             tooltip.add(TextFormatting.YELLOW + new TextComponentTranslation("im.warning").getFormattedText());
+        }
+        
+        if(this.getUnlocalizedName().contains("klussbar") || this.getUnlocalizedName().contains("nut"))
+        {
+        	tooltip.add(peanutAllergy.getFormattedText());
         }
     }
 

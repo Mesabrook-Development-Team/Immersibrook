@@ -68,5 +68,6 @@ public class CategoryFood extends AbstractCategory
 		add(ModItems.KLUSS_BAR);
 		add(ModItems.SERPENT_BAR);
 		add(ModItems.STRAWBERRY_BAR);
+		add(ModItems.NUT_BAR);
 	}
 }
