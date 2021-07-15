@@ -43,7 +43,7 @@ public class SerpentBar extends Item implements IHasModel
     {
         setRegistryName(name);
         setUnlocalizedName(name);
-        setMaxDamage(8);
+        setMaxDamage(9);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
         setMaxStackSize(stackSize);
         this.saturation = saturation;
@@ -111,27 +111,26 @@ public class SerpentBar extends Item implements IHasModel
                 {
                 	int countToSugarCrash = stack.getTagCompound().getInteger("Chomps");
                 	
-                	if(countToSugarCrash == 4)
+                	if(countToSugarCrash == 9)
                 	{
                         player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 500, 1, true, false));
                         player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 500, 25, true, false));
                         player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 500, 55, true, false));
+                        player.setHealth(player.getHealth() / 2);
                         stack.getTagCompound().setInteger("Chomps", 0);
                         player.sendMessage(sugarCrash);
-                        player.sendMessage(new TextComponentString(Integer.toString(stack.getTagCompound().getInteger("Chomps"))));
+                        stack.damageItem(100, player);
                 	}
-                	else if(countToSugarCrash == 3)
+                	else if(countToSugarCrash == 8)
                 	{
                 		player.sendMessage(sugarWarn);
-                		player.sendMessage(new TextComponentString(Integer.toString(stack.getTagCompound().getInteger("Chomps"))));
                 	}
-                	else if(countToSugarCrash <= 4)
+                	else if(countToSugarCrash <= 7)
                 	{
                         player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 500, 20, true, false));
                         player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 500, 2, true, false));
                         player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 500, 4, true, false));
                         player.sendMessage(sugarRush);
-                        player.sendMessage(new TextComponentString(Integer.toString(stack.getTagCompound().getInteger("Chomps"))));
                 	}
                 }
                 

@@ -182,9 +182,9 @@ public class ModItems
 	public static final Item CANDY_CORN = new ImmersiFood("candy_corn", 64,0, 3, 10, false);
 	public static final Item RAVEN_BAR = new DamageableFood("chocolate_bar_raven",64, 20, 3F,  false);
 	public static final Item KLUSS_BAR = new DamageableFood("chocolate_bar_klussbar",64, 5, 3F,  false);
-	public static final Item SERPENT_BAR = new SerpentBar("chocolate_bar_serpent",64, 1, 3F,  false);
-	public static final Item STRAWBERRY_BAR = new DamageableFood("chocolate_bar_strawberry",64, 6, 3F,  false);
-	public static final Item NUT_BAR = new DamageableFood("chocolate_bar_nut", 64, 6, 3F, false);
-	public static final Item KRISP_BAR = new DamageableFood("chocolate_bar_krisp", 64, 4, 3F, false);
+	public static final Item SERPENT_BAR = new SerpentBar("chocolate_bar_serpent",64, 1, 10F,  false);
+	public static final Item STRAWBERRY_BAR = new DamageableFood("chocolate_bar_strawberry",64, 6, 10F,  false);
+	public static final Item NUT_BAR = new DamageableFood("chocolate_bar_nut", 64, 6, 10F, false);
+	public static final Item KRISP_BAR = new DamageableFood("chocolate_bar_krisp", 64, 4, 10F, false);
 
 }
