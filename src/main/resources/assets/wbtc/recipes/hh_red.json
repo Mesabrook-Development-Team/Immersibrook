@@ -1,0 +1,22 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "###",
+      "#I#"
+   ],
+   "key": {
+      "#": {
+         "item": "wbtc:red_plastic",
+         "data": 0
+      },
+      "I": {
+         "item": "minecraft:iron_ingot",
+         "data": 0
+      }
+   },
+   "result": {
+      "item": "wbtc:hh_red",
+      "data": 0,
+      "count": 1
+   }
+}
