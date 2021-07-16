@@ -1,5 +1,6 @@
 package rz.mesabrook.wbtc.util;
 
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemArmor;
 import net.minecraftforge.common.util.EnumHelper;
 import rz.mesabrook.wbtc.init.SoundInit;
@@ -51,5 +52,10 @@ public class ArmorMaterialRegistry
     public static final ItemArmor.ArmorMaterial HH_GREEN = EnumHelper.addArmorMaterial("hh_green", Reference.MODID + ":hh_green", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.TRUMPET, 2.0F);
     public static final ItemArmor.ArmorMaterial HH_RED = EnumHelper.addArmorMaterial("hh_red", Reference.MODID + ":hh_red", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.TRUMPET, 2.0F);
     public static final ItemArmor.ArmorMaterial HH_BLACK = EnumHelper.addArmorMaterial("hh_black", Reference.MODID + ":hh_black", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.TRUMPET, 2.0F);
+
+    // Decorative Wearables Materials
+    public static final ItemArmor.ArmorMaterial MASK_JASON = EnumHelper.addArmorMaterial("mask_jason", Reference.MODID + ":mask_jason", 5, new int[] {1, 1, 1, 1}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.1F);
+    public static final ItemArmor.ArmorMaterial MASK_SKELETON = EnumHelper.addArmorMaterial("mask_skeleton", Reference.MODID + ":mask_skeleton", 5, new int[] {1, 1, 1, 1}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.1F);
+    public static final ItemArmor.ArmorMaterial MASK_MEDICAL = EnumHelper.addArmorMaterial("mask_medical", Reference.MODID + ":mask_medical", 5, new int[] {1, 1, 1, 1}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.1F);
 
 }

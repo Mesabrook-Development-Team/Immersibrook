@@ -1136,8 +1136,10 @@ enchantment.thunder=The Power of Thor
 key.immersibrook.category=Immersibrook
 key.vestToggle.toggle=Toggle Vest Glow
 key.nvtoggle.toggle=Toggle Night Vision Goggles
+key.cough.toggle=Cough
 im.vest.toggle=Vest Glow Toggled
 im.nv.toggle=Night Vision Toggled
+im.cough=Good thing you have a mask on...
 
 //Hard Hats
 item.hh_white.name=White Hard Hat
@@ -1185,3 +1187,4 @@ im.sugarcrash=You tremble, muscles weak, eyelids heavy. You overdid it, have a s
 im.warning=This product contains caffeine which may cause adverse reactions in minors and certain adults.
 im.sg=Surgeon General's Warning
 im.peanut=May Contain Nuts
+im.noprotect=Decorative Only. Does not provide protection.

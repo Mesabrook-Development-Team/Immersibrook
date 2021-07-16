@@ -8,6 +8,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.items.armor.Hardhat;
+import rz.mesabrook.wbtc.items.armor.FaceMasks;
 import rz.mesabrook.wbtc.items.armor.NightVisionGoggles;
 import rz.mesabrook.wbtc.items.armor.SafetyVest;
 import rz.mesabrook.wbtc.items.misc.*;
@@ -186,5 +187,10 @@ public class ModItems
 	public static final Item STRAWBERRY_BAR = new DamageableFood("chocolate_bar_strawberry",64, 6, 10F,  false);
 	public static final Item NUT_BAR = new DamageableFood("chocolate_bar_nut", 64, 6, 10F, false);
 	public static final Item KRISP_BAR = new DamageableFood("chocolate_bar_krisp", 64, 4, 10F, false);
+
+	// Decorative Wearables
+	public static final Item MASK_JASON = new FaceMasks("mask_jason", ArmorMaterialRegistry.MASK_JASON, EntityEquipmentSlot.HEAD);
+	public static final Item MASK_SKELETON = new FaceMasks("mask_skeleton", ArmorMaterialRegistry.MASK_SKELETON, EntityEquipmentSlot.HEAD);
+	public static final Item MASK_MEDICAL = new FaceMasks("mask_medical", ArmorMaterialRegistry.MASK_MEDICAL, EntityEquipmentSlot.HEAD);
 
 }

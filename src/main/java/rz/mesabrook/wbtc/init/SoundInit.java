@@ -1,5 +1,6 @@
 package rz.mesabrook.wbtc.init;
 
+import net.minecraft.client.audio.Sound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.common.MinecraftForge;

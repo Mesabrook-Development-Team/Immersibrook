@@ -4,15 +4,21 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import rz.mesabrook.wbtc.items.armor.FaceMasks;
 import rz.mesabrook.wbtc.items.armor.NightVisionGoggles;
 import rz.mesabrook.wbtc.items.armor.SafetyVest;
 import rz.mesabrook.wbtc.net.NVTogglePacket;
+import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.net.VestTogglePacket;
 import rz.mesabrook.wbtc.proxy.ClientProxy;
 
@@ -21,6 +27,7 @@ public class KeyEventHandler
 {
 	private static TextComponentTranslation vestToggle;
 	private static TextComponentTranslation nvToggle;
+	private static TextComponentTranslation cough;
 	
 	@SubscribeEvent
 	public static void onKeyPress(InputEvent.KeyInputEvent e)

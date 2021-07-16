@@ -40,6 +40,9 @@ public final class ModConfig
 
 	@Comment("Set the distance allowed for ceiling lights to place fake light blocks.")
 	public static int ceilingLightDistance = 100;
+
+	@Comment("Coughing Sound - 1 for Male, 2 for Female")
+	public static int coughingSound = 1;
 	
 	@Mod.EventBusSubscriber(modid = Reference.MODID)
 	private static class EventHandler
