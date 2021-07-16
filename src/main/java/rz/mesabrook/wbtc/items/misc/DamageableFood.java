@@ -116,12 +116,6 @@ public class DamageableFood extends Item implements IHasModel
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag)
     {
-        if(this.getUnlocalizedName().contains("serpent"))
-        {
-            tooltip.add(TextFormatting.RED + new TextComponentTranslation("im.sg").getFormattedText());
-            tooltip.add(TextFormatting.YELLOW + new TextComponentTranslation("im.warning").getFormattedText());
-        }
-        
         if(this.getUnlocalizedName().contains("klussbar") || this.getUnlocalizedName().contains("nut") || this.getUnlocalizedName().contains("krisp"))
         {
         	tooltip.add(peanutAllergy.getFormattedText());
