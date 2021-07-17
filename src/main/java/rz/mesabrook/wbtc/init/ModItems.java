@@ -3,6 +3,7 @@ package rz.mesabrook.wbtc.init;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
@@ -193,4 +194,18 @@ public class ModItems
 	public static final Item MASK_SKELETON = new FaceMasks("mask_skeleton", ArmorMaterialRegistry.MASK_SKELETON, EntityEquipmentSlot.HEAD);
 	public static final Item MASK_MEDICAL = new FaceMasks("mask_medical", ArmorMaterialRegistry.MASK_MEDICAL, EntityEquipmentSlot.HEAD);
 
+	// Food Crafting Items
+	public static final Item DYE_RED = new MiscItem("dye_red", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item DYE_GREEN = new MiscItem("dye_green", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item DYE_BLUE = new MiscItem("dye_blue", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item DYE_WHITE = new MiscItem("dye_white", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item DYE_YELLOW = new MiscItem("dye_yellow", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item SUGAR_ORANGE = new MiscItem("sugar_orange", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item SUGAR_RED = new MiscItem("sugar_red", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item SUGAR_GREEN = new MiscItem("sugar_green", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item SUGAR_BLUE = new MiscItem("sugar_blue", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item SUGAR_PURPLE = new MiscItem("sugar_purple", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item SUGAR_BROWN = new MiscItem("sugar_brown", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item SUGAR_LIME = new MiscItem("sugar_lime", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item SUGAR_PINK = new MiscItem("sugar_pink", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 }

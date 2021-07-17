@@ -124,14 +124,6 @@ public class RegistryHandler
 	public static void postInitRegistries(FMLPostInitializationEvent event)
 	{
 		Main.logger.info("[" + Reference.MODNAME + "] Post Initialization");
-		
-    	NonNullList<ItemStack> ironStick = OreDictionary.getOres("stickIron");
-    	NonNullList<ItemStack> rawPlastics = OreDictionary.getOres("itemRawPlastic");
-    	NonNullList<ItemStack> plastics = OreDictionary.getOres("itemPlastic");
-    	NonNullList<ItemStack> dairy = OreDictionary.getOres("blockCheese");
-    	
-    	Main.logger.info("[" + Reference.MODNAME + "] Checking to ensure our items are in the OD " + ironStick + dairy);
-		Main.logger.info("[" + Reference.MODNAME + "] Scanning for plastics..." + rawPlastics + plastics);
     	
 		TooltipRandomizer.ChosenTooltip();
     	SmeltingRecipes.registerSmeltingRecipes();

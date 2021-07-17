@@ -1,0 +1,17 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "item": "minecraft:water_bucket"
+      },
+      {
+         "item": "minecraft:dye",
+         "data": 15
+      }
+   ],
+   "result": {
+      "item": "wbtc:dye_white",
+      "data": 0,
+      "count": 3
+   }
+}

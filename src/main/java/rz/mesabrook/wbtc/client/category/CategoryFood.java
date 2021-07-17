@@ -70,5 +70,21 @@ public class CategoryFood extends AbstractCategory
 		add(ModItems.STRAWBERRY_BAR);
 		add(ModItems.NUT_BAR);
 		add(ModItems.KRISP_BAR);
+
+		// Food Crafting Items
+		add(ModItems.DYE_RED);
+		add(ModItems.DYE_BLUE);
+		add(ModItems.DYE_GREEN);
+		add(ModItems.DYE_WHITE);
+		add(ModItems.DYE_YELLOW);
+		add(ModItems.SUGAR_ORANGE);
+		add(ModItems.SUGAR_RED);
+		add(ModItems.SUGAR_GREEN);
+		add(ModItems.SUGAR_BLUE);
+		add(ModItems.SUGAR_PURPLE);
+		add(ModItems.SUGAR_BROWN);
+		add(ModItems.SUGAR_LIME);
+		add(ModItems.SUGAR_PINK);
+		add(Items.SUGAR);
 	}
 }
