@@ -1,6 +1,0 @@
-{
-   "parent": "item/handheld",
-   "textures": {
-       "layer0": "wbtc:items/nugget_aluminum"
-   }
-}
