@@ -86,5 +86,6 @@ public class CategoryFood extends AbstractCategory
 		add(ModItems.SUGAR_LIME);
 		add(ModItems.SUGAR_PINK);
 		add(Items.SUGAR);
+		add(ModBlocks.SUGAR_BOX);
 	}
 }

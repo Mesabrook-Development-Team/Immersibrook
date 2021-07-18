@@ -1,5 +1,8 @@
 {
-   "variants": {
-          "normal": { "model": "wbtc:sugar_box" }
-   }
+    "variants": {
+        "facing=north": { "model": "wbtc:sugar_box" },
+        "facing=south": { "model": "wbtc:sugar_box", "y": 180 },
+        "facing=west":  { "model": "wbtc:sugar_box", "y": 270 },
+        "facing=east":  { "model": "wbtc:sugar_box", "y": 90 }
+    }
 }

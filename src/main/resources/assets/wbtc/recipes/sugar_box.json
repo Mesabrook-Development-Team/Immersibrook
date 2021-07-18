@@ -1,0 +1,18 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "###",
+      "###",
+	  "###"
+   ],
+   "key": {
+      "#": {
+         "item": "minecraft:sugar"
+      }
+   },
+   "result": {
+      "item": "wbtc:sugar_box",
+      "data": 0,
+      "count": 1
+   }
+}

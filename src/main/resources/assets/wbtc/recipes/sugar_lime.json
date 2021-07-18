@@ -1,0 +1,19 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "item": "wbtc:dye_green"
+      },
+	  {
+         "item": "wbtc:dye_white"
+      },
+      {
+         "item": "minecraft:sugar"
+      }
+   ],
+   "result": {
+      "item": "wbtc:sugar_lime",
+      "data": 0,
+      "count": 1
+   }
+}

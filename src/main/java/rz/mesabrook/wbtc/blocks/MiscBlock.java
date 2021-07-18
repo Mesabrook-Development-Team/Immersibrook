@@ -98,10 +98,6 @@ public class MiscBlock extends Block implements IHasModel
 		{
 			tooltip.add(TextFormatting.AQUA + "It's not a bug, it's a " + TextFormatting.OBFUSCATED + "Featuretm");
 		}
-		else if(this.getUnlocalizedName().contains("aluminum_block"))
-		{
-			tooltip.add(TextFormatting.AQUA + "Can be used as a Beacon base");
-		}
 		else if(this.getUnlocalizedName().contains("synthetic_turf"))
 		{
 			tooltip.add(TextFormatting.GOLD + "It glows in the dark and is not approved by the NFL.");
@@ -113,6 +109,7 @@ public class MiscBlock extends Block implements IHasModel
 		else if(this.getUnlocalizedName().contains("cat_block"))
 		{
 			tooltip.add(TextFormatting.LIGHT_PURPLE + "The greatest block to ever exist ever");
+			tooltip.add(TextFormatting.GREEN + "Can be used as a Beacon Base");
 		}
 		
 		super.addInformation(stack, world, tooltip, flag);
@@ -122,7 +119,7 @@ public class MiscBlock extends Block implements IHasModel
 	@Override
 	public boolean isBeaconBase(IBlockAccess worldObj, BlockPos pos, BlockPos beacon)
 	{
-		if(this.getUnlocalizedName().contains("aluminum_block") || this.getUnlocalizedName().contains("cat_block"))
+		if(this.getUnlocalizedName().contains("cat_block"))
 		{
 			return true;
 		}

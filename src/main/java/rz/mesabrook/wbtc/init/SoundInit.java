@@ -67,6 +67,10 @@ public class SoundInit
 	public static final SoundEvent KRAB_BORG_FULL;
 	public static final SoundEvent MS_XP;
 
+	// Holiday Records
+	public static final SoundEvent SPOOKY;
+	public static final SoundEvent RITZ;
+
 	// Plastic SoundType
 	public static final SoundEvent PLASTIC_PLACE;
 	public static final SoundEvent PLASTIC_BREAK;
@@ -132,6 +136,8 @@ public class SoundInit
 		KRAB_BORG = addSoundsToRegistry("krab_borg");
 		KRAB_BORG_FULL = addSoundsToRegistry("krab_borg_full");
 		MS_XP = addSoundsToRegistry("ms_xp");
+		SPOOKY = addSoundsToRegistry("spooky");
+		RITZ = addSoundsToRegistry("ritz");
 
 		// Plastic SoundType
 		PLASTIC_BREAK = addSoundsToRegistry("plastic_break");
@@ -217,6 +223,8 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.TRUMPET);
 				event.getRegistry().registerAll(SoundInit.TM_BEEP);
 				event.getRegistry().registerAll(SoundInit.HEARTBEAT);
+				event.getRegistry().registerAll(SoundInit.SPOOKY);
+				event.getRegistry().registerAll(SoundInit.RITZ);
 				
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");
