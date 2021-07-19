@@ -1,0 +1,13 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "item": "wbtc:flour_box"
+      }
+   ],
+   "result": {
+      "item": "harvestcraft:flouritem",
+      "data": 0,
+      "count": 13
+   }
+}

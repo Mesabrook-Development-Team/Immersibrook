@@ -1,0 +1,13 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "item": "wbtc:cornmeal_box"
+      }
+   ],
+   "result": {
+      "item": "harvestcraft:cornmealitem",
+      "data": 0,
+      "count": 13
+   }
+}
