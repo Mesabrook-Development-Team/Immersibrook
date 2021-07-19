@@ -18,6 +18,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -44,6 +46,9 @@ public class SugarBox extends Block implements IHasModel
     private int uses = 9;
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
     protected final ArrayList<AxisAlignedBB> AABBs;
+    private final TextComponentTranslation product = new TextComponentTranslation("im.product");
+    private final TextComponentTranslation companyLbl = new TextComponentTranslation("im.company");
+
     public SugarBox(String name, Material mat, SoundType sndType, int stackSize, String harvestTool, int harvestLevel, float hardness, float resist, AxisAlignedBB unrotatedAABB)
     {
         super(mat);
@@ -65,6 +70,9 @@ public class SugarBox extends Block implements IHasModel
                 ModUtils.getRotatedAABB(unrotatedAABB, EnumFacing.EAST, false),
                 unrotatedAABB, unrotatedAABB // Array fill to ensure that the array size covers 4 bit (meta & 0x07).
         ));
+
+        product.getStyle().setColor(TextFormatting.LIGHT_PURPLE);
+        companyLbl.getStyle().setColor(TextFormatting.LIGHT_PURPLE);
 
         ModBlocks.BLOCKS.add(this);
         ModItems.ITEMS.add(new FoodBoxItemBlock(this).setRegistryName(this.getRegistryName()).setMaxStackSize(1));    }
@@ -207,12 +215,12 @@ public class SugarBox extends Block implements IHasModel
 
         if(boxID != null)
         {
-            tooltip.add(TextFormatting.LIGHT_PURPLE + "Product: " + boxID);
+            tooltip.add(product.getFormattedText() + " " + new TextComponentString(TextFormatting.YELLOW + boxID).getFormattedText());
         }
 
         if(company != null)
         {
-            tooltip.add(TextFormatting.LIGHT_PURPLE + "Manufactured by " + company);
+            tooltip.add(companyLbl.getFormattedText() + " " + new TextComponentString(TextFormatting.YELLOW + company).getFormattedText());
         }
     }
 
