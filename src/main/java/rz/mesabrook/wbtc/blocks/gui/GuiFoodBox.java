@@ -46,7 +46,7 @@ public class GuiFoodBox extends GuiScreen
         stringWidth = fontRenderer.getStringWidth("Company Name:");
         fontRenderer.drawString("Company Name: ", companyBox.x - stringWidth - 4, companyBox.y + ((companyBox.height - fontRenderer.FONT_HEIGHT) / 2), 0xFFFFFF);
 
-        super.drawScreen(mouseX, mouseY, partialTicks);
+        super.drawScreen(mouseX, mouseY, partialTicks); 
     }
 
     @Override
