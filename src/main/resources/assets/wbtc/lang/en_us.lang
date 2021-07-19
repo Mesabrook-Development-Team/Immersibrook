@@ -1194,3 +1194,8 @@ im.peanut=May Contain Nuts
 im.noprotect=Decorative Only. Does not provide protection.
 im.product=Product:
 im.company=Manufactured by
+
+//Food Blocks
+tile.sugar_box.name=Granulated White Sugar
+tile.flour_box.name=All Purpose Flour
+tile.cornmeal_box.name=Cornmeal
