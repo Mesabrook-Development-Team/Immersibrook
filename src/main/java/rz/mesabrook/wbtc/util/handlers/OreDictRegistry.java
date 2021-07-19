@@ -68,6 +68,14 @@ public class OreDictRegistry
 		OreDictionary.registerOre("sugar", ModItems.SUGAR_PINK);
 		OreDictionary.registerOre("sugar", ModItems.SUGAR_PURPLE);
 		OreDictionary.registerOre("sugar", ModItems.SUGAR_ORANGE);
+		OreDictionary.registerOre("listAllsugar", ModItems.SUGAR_RED);
+		OreDictionary.registerOre("listAllsugar", ModItems.SUGAR_GREEN);
+		OreDictionary.registerOre("listAllsugar", ModItems.SUGAR_BLUE);
+		OreDictionary.registerOre("listAllsugar", ModItems.SUGAR_BROWN);
+		OreDictionary.registerOre("listAllsugar", ModItems.SUGAR_LIME);
+		OreDictionary.registerOre("listAllsugar", ModItems.SUGAR_PINK);
+		OreDictionary.registerOre("listAllsugar", ModItems.SUGAR_PURPLE);
+		OreDictionary.registerOre("listAllsugar", ModItems.SUGAR_ORANGE);
 
 		// It's logging time.
 		Main.logger.info(ModItems.IRON_ROD.getUnlocalizedName() + " has been added to the Ore Dictionary under stickIron");
@@ -112,13 +120,13 @@ public class OreDictRegistry
 		Main.logger.info(ModItems.DYE_BLUE.getUnlocalizedName() + "has been added to the Ore Dictionary under dyeBlue");
 		Main.logger.info(ModItems.DYE_YELLOW.getUnlocalizedName() + "has been added to the Ore Dictionary under dyeYellow");
 		Main.logger.info(ModItems.DYE_WHITE.getUnlocalizedName() + "has been added to the Ore Dictionary under dyeWhite");
-		Main.logger.info(ModItems.SUGAR_RED.getUnlocalizedName() + "has been added to the Ore Dictionary under sugar");
-		Main.logger.info(ModItems.SUGAR_GREEN.getUnlocalizedName() + "has been added to the Ore Dictionary under sugar");
-		Main.logger.info(ModItems.SUGAR_BLUE.getUnlocalizedName() + "has been added to the Ore Dictionary under sugar");
-		Main.logger.info(ModItems.SUGAR_PURPLE.getUnlocalizedName() + "has been added to the Ore Dictionary under sugar");
-		Main.logger.info(ModItems.SUGAR_PINK.getUnlocalizedName() + "has been added to the Ore Dictionary under sugar");
-		Main.logger.info(ModItems.SUGAR_BROWN.getUnlocalizedName() + "has been added to the Ore Dictionary under sugar");
-		Main.logger.info(ModItems.SUGAR_LIME.getUnlocalizedName() + "has been added to the Ore Dictionary under sugar");
-		Main.logger.info(ModItems.SUGAR_ORANGE.getUnlocalizedName() + "has been added to the Ore Dictionary under sugar");
+		Main.logger.info(ModItems.SUGAR_RED.getUnlocalizedName() + "has been added to the Ore Dictionary under sugar, listAllsugar");
+		Main.logger.info(ModItems.SUGAR_GREEN.getUnlocalizedName() + "has been added to the Ore Dictionary under sugar, listAllsugar");
+		Main.logger.info(ModItems.SUGAR_BLUE.getUnlocalizedName() + "has been added to the Ore Dictionary under sugar, listAllsugar");
+		Main.logger.info(ModItems.SUGAR_PURPLE.getUnlocalizedName() + "has been added to the Ore Dictionary under sugar, listAllsugar");
+		Main.logger.info(ModItems.SUGAR_PINK.getUnlocalizedName() + "has been added to the Ore Dictionary under sugar, listAllsugar");
+		Main.logger.info(ModItems.SUGAR_BROWN.getUnlocalizedName() + "has been added to the Ore Dictionary under sugar, listAllsugar");
+		Main.logger.info(ModItems.SUGAR_LIME.getUnlocalizedName() + "has been added to the Ore Dictionary under sugar, listAllsugar");
+		Main.logger.info(ModItems.SUGAR_ORANGE.getUnlocalizedName() + "has been added to the Ore Dictionary under sugar, listAllsugar");
 	}
 }

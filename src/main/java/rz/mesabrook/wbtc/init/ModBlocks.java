@@ -949,4 +949,6 @@ public class ModBlocks
 	// 1.0.0 Starts Here
 	public static final Block TICKET_MACHINE = new TicketMachine("ticket_machine");
 	public static final Block SUGAR_BOX = new SugarBox("sugar_box", Material.WOOD, SoundType.SAND, 64, "pickaxe", 1, 1.0F, 1.0F, ModUtils.getPixelatedAABB(12,0,6, 4,9,10));
+	public static final Block FLOUR_BOX = new SugarBox("flour_box", Material.WOOD, SoundType.SAND, 64, "pickaxe", 1, 1.0F, 1.0F, ModUtils.getPixelatedAABB(12,0,6, 4,9,10));
+	public static final Block CORNMEAL_BOX = new SugarBox("cornmeal_box", Material.WOOD, SoundType.SAND, 64, "pickaxe", 1, 1.0F, 1.0F, ModUtils.getPixelatedAABB(12,0,6, 4,9,10));
 }

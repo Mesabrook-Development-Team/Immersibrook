@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:flour_box" },
+        "facing=south": { "model": "wbtc:flour_box", "y": 180 },
+        "facing=west":  { "model": "wbtc:flour_box", "y": 270 },
+        "facing=east":  { "model": "wbtc:flour_box", "y": 90 }
+    }
+}

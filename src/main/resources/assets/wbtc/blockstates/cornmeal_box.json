@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:cornmeal_box" },
+        "facing=south": { "model": "wbtc:cornmeal_box", "y": 180 },
+        "facing=west":  { "model": "wbtc:cornmeal_box", "y": 270 },
+        "facing=east":  { "model": "wbtc:cornmeal_box", "y": 90 }
+    }
+}

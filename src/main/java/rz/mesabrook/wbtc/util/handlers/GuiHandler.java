@@ -6,6 +6,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import rz.mesabrook.wbtc.blocks.container.ContainerTrashBin;
+import rz.mesabrook.wbtc.blocks.gui.GuiFoodBox;
 import rz.mesabrook.wbtc.blocks.gui.GuiPlaque;
 import rz.mesabrook.wbtc.blocks.gui.GuiTrashBin;
 import rz.mesabrook.wbtc.blocks.te.TileEntityTrashBin;
@@ -25,6 +26,7 @@ public class GuiHandler implements IGuiHandler
 	{
 		if(ID == Reference.GUI_TRASHBIN) return new GuiTrashBin(player.inventory, (TileEntityTrashBin)world.getTileEntity(new BlockPos(x,y,z)), player);
 		else if (ID == Reference.GUI_PLAQUE) return new GuiPlaque(EnumHand.values()[x]);
+		else if (ID == Reference.GUI_FOODBOX) return new GuiFoodBox(EnumHand.values()[x]);
 		return null;
 	}
 	

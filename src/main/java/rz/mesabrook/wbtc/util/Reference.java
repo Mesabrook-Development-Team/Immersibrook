@@ -15,6 +15,7 @@ public class Reference
 	
 	public static final int GUI_TRASHBIN = 1;
 	public static final int GUI_PLAQUE = 2;
+	public static final int GUI_FOODBOX = 3;
 	
 	public static final String NETWORK_CHANNEL_NAME = "wbtc";
 }

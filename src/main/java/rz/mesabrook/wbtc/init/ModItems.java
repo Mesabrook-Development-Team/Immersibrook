@@ -212,5 +212,4 @@ public class ModItems
 	// Holiday Records
 	public static final Item DISC_SPOOKY = new MemeRecord("disc_spooky", SoundInit.SPOOKY);
 	public static final Item DISC_RITZ = new MemeRecord("disc_ritz", SoundInit.RITZ);
-
 }

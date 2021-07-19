@@ -7,22 +7,36 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.Constants;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.Main;
+import rz.mesabrook.wbtc.blocks.te.TileEntityFoodBox;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
+import rz.mesabrook.wbtc.items.misc.FoodBoxItemBlock;
+import rz.mesabrook.wbtc.items.misc.PlaqueItemBlock;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.ModUtils;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class SugarBox extends Block implements IHasModel
@@ -53,8 +67,7 @@ public class SugarBox extends Block implements IHasModel
         ));
 
         ModBlocks.BLOCKS.add(this);
-        ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()).setMaxStackSize(stackSize));
-    }
+        ModItems.ITEMS.add(new FoodBoxItemBlock(this).setRegistryName(this.getRegistryName()).setMaxStackSize(1));    }
 
     @Override
     public void registerModels()
@@ -77,40 +90,19 @@ public class SugarBox extends Block implements IHasModel
     @Override
     public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos)
     {
-        if(this.getUnlocalizedName().contains("sugar_box"))
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+        return false;
     }
 
     @Override
     public boolean isOpaqueCube(IBlockState state)
     {
-        if(this.getUnlocalizedName().contains("sugar_box"))
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+        return false;
     }
 
     @Override
     public boolean isFullCube(IBlockState state)
     {
-        if(this.getUnlocalizedName().contains("sugar_box"))
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+        return false;
     }
 
     @Override
@@ -190,5 +182,82 @@ public class SugarBox extends Block implements IHasModel
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
     {
         return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag)
+    {
+        String boxID = null;
+        String company = null;
+        NBTTagCompound tag = stack.getTagCompound();
+
+        if(tag != null)
+        {
+            if(tag.hasKey("boxID"))
+            {
+                boxID = tag.getString("boxID");
+            }
+
+            if(tag.hasKey("company"))
+            {
+                company = tag.getString("company");
+            }
+        }
+
+        if(boxID != null)
+        {
+            tooltip.add(TextFormatting.LIGHT_PURPLE + "Product: " + boxID);
+        }
+
+        if(company != null)
+        {
+            tooltip.add(TextFormatting.LIGHT_PURPLE + "Manufactured by " + company);
+        }
+    }
+
+    @Override
+    public TileEntity createTileEntity(World world, IBlockState state)
+    {
+        return new TileEntityFoodBox(getUnlocalizedName());
+    }
+
+    @Override
+    public boolean hasTileEntity(IBlockState state)
+    {
+        return true;
+    }
+
+    @Override
+    public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
+    {
+        ItemStack foodboxStack = new ItemStack(this);
+        foodboxStack.setCount(1);
+
+        TileEntity te = world.getTileEntity(pos);
+        if(te instanceof TileEntityFoodBox)
+        {
+            TileEntityFoodBox foodBoxTE = (TileEntityFoodBox)te;
+            NBTTagCompound compound = new NBTTagCompound();
+            compound.setString("boxID", foodBoxTE.getBoxID());
+            compound.setString("company", foodBoxTE.getCompany());
+            foodboxStack.setTagCompound(compound);
+        }
+
+        drops.add(foodboxStack);
+    }
+
+    @Override
+    public boolean removedByPlayer(IBlockState state, World world, BlockPos pos, EntityPlayer player, boolean willHarvest)
+    {
+        if(willHarvest) return true;
+        else return super.removedByPlayer(state, world, pos, player, willHarvest);
+    }
+
+    @Override
+    public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te, ItemStack stack)
+    {
+        super.harvestBlock(worldIn, player, pos, state, te, stack);
+        worldIn.setBlockToAir(pos);
     }
 }
