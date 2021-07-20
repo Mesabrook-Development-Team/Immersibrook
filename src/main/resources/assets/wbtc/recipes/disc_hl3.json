@@ -1,0 +1,21 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      " O ",
+      "ODO",
+	  " O "
+   ],
+   "key": {
+      "O": {
+         "item": "wbtc:orange_plastic"
+      },
+	  "D": {
+		 "item": "wbtc:blank_vinyl"
+	  }
+   },
+   "result": {
+      "item": "wbtc:disc_pumpkin",
+      "data": 0,
+      "count": 1
+   }
+}

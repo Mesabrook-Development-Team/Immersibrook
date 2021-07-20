@@ -70,6 +70,7 @@ public class SoundInit
 	// Holiday Records
 	public static final SoundEvent SPOOKY;
 	public static final SoundEvent RITZ;
+	public static final SoundEvent HL3;
 
 	// Plastic SoundType
 	public static final SoundEvent PLASTIC_PLACE;
@@ -138,6 +139,7 @@ public class SoundInit
 		MS_XP = addSoundsToRegistry("ms_xp");
 		SPOOKY = addSoundsToRegistry("spooky");
 		RITZ = addSoundsToRegistry("ritz");
+		HL3 = addSoundsToRegistry("hl3");
 
 		// Plastic SoundType
 		PLASTIC_BREAK = addSoundsToRegistry("plastic_break");
@@ -225,6 +227,7 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.HEARTBEAT);
 				event.getRegistry().registerAll(SoundInit.SPOOKY);
 				event.getRegistry().registerAll(SoundInit.RITZ);
+				event.getRegistry().registerAll(SoundInit.HL3);
 				
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

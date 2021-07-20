@@ -1116,6 +1116,7 @@ item.fish_full.name=Music Disc
 item.ms_xp.name=Musical Floppy
 item.disc_spooky.name=Music Disc
 item.disc_ritz.name=Music Disc
+item.disc_pumpkin.name=Music Disc
 
 //Record Descriptions
 item.record.amalthea.desc=Amalthea
@@ -1132,6 +1133,7 @@ item.record.fish_full.desc=Spinning Fish
 item.record.ms_xp.desc=Microsoft Corporation - Windows XP Installation Music
 item.record.disc_spooky.desc=ESN Productions - Horror Ambience
 item.record.disc_ritz.desc=Taco - Puttin' on the Ritz (Re-Recorded)
+item.record.disc_pumpkin.desc=FreeUseMusic - Halloween
 
 //Enchantments
 enchantment.thunder=The Power of Thor
