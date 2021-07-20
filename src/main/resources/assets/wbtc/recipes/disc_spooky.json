@@ -1,0 +1,24 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      " O ",
+      "ODP",
+	  " P "
+   ],
+   "key": {
+      "O": {
+         "item": "wbtc:orange_plastic"
+      },
+	  "D": {
+		 "item": "wbtc:blank_vinyl"
+	  },
+	  "P": {
+		 "item": "wbtc:red_plastic"
+	  }
+   },
+   "result": {
+      "item": "wbtc:disc_spooky",
+      "data": 0,
+      "count": 1
+   }
+}
