@@ -13,13 +13,13 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import rz.mesabrook.wbtc.Main;
-import rz.mesabrook.wbtc.blocks.SugarBox;
+import rz.mesabrook.wbtc.blocks.FoodBox;
 import rz.mesabrook.wbtc.blocks.te.TileEntityFoodBox;
 import rz.mesabrook.wbtc.util.Reference;
 
 public class FoodBoxItemBlock extends ItemBlock
 {
-    public FoodBoxItemBlock(SugarBox block)
+    public FoodBoxItemBlock(FoodBox block)
     {
         super(block);
     }

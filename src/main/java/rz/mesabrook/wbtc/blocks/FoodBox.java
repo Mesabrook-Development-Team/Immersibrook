@@ -41,7 +41,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class SugarBox extends Block implements IHasModel
+public class FoodBox extends Block implements IHasModel
 {
     private int uses = 9;
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
@@ -49,7 +49,7 @@ public class SugarBox extends Block implements IHasModel
     private final TextComponentTranslation product = new TextComponentTranslation("im.product");
     private final TextComponentTranslation companyLbl = new TextComponentTranslation("im.company");
 
-    public SugarBox(String name, Material mat, SoundType sndType, int stackSize, String harvestTool, int harvestLevel, float hardness, float resist, AxisAlignedBB unrotatedAABB)
+    public FoodBox(String name, Material mat, SoundType sndType, int stackSize, String harvestTool, int harvestLevel, float hardness, float resist, AxisAlignedBB unrotatedAABB)
     {
         super(mat);
         setRegistryName(name);
