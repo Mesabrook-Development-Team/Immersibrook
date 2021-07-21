@@ -9,6 +9,7 @@ NEW:
 -Food Dyes (Red, Green, Blue, Yellow, and White)
 -Colored Sugar (Red, Green, Blue, Orange, Purple, Brown, Lime, and Pink)
 -Decorative Face Masks
+-Food Boxes for Sugar, Flour, and Cornmeal.
 
 CHANGES/FIXES:
 -Pillars are now affected by gravity.
