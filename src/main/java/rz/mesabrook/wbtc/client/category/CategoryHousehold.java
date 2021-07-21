@@ -66,6 +66,7 @@ public class CategoryHousehold extends AbstractCategory
 		add(ModItems.MASK_JASON);
 		add(ModItems.MASK_SKELETON);
 		add(ModItems.MASK_MEDICAL);
+		add(ModItems.MASK_SLIME);
 
 		// Warp Metro
 		add(ModBlocks.TICKET_MACHINE);

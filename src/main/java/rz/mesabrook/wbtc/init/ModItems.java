@@ -193,6 +193,7 @@ public class ModItems
 	public static final Item MASK_JASON = new FaceMasks("mask_jason", ArmorMaterialRegistry.MASK_JASON, EntityEquipmentSlot.HEAD);
 	public static final Item MASK_SKELETON = new FaceMasks("mask_skeleton", ArmorMaterialRegistry.MASK_SKELETON, EntityEquipmentSlot.HEAD);
 	public static final Item MASK_MEDICAL = new FaceMasks("mask_medical", ArmorMaterialRegistry.MASK_MEDICAL, EntityEquipmentSlot.HEAD);
+	public static final Item MASK_SLIME = new FaceMasks("mask_slime", ArmorMaterialRegistry.MASK_SLIME, EntityEquipmentSlot.HEAD);
 
 	// Food Crafting Items
 	public static final Item DYE_RED = new MiscItem("dye_red", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);

@@ -57,5 +57,6 @@ public class ArmorMaterialRegistry
     public static final ItemArmor.ArmorMaterial MASK_JASON = EnumHelper.addArmorMaterial("mask_jason", Reference.MODID + ":mask_jason", 5, new int[] {1, 1, 1, 1}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.1F);
     public static final ItemArmor.ArmorMaterial MASK_SKELETON = EnumHelper.addArmorMaterial("mask_skeleton", Reference.MODID + ":mask_skeleton", 5, new int[] {1, 1, 1, 1}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.1F);
     public static final ItemArmor.ArmorMaterial MASK_MEDICAL = EnumHelper.addArmorMaterial("mask_medical", Reference.MODID + ":mask_medical", 5, new int[] {1, 1, 1, 1}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.1F);
+    public static final ItemArmor.ArmorMaterial MASK_SLIME = EnumHelper.addArmorMaterial("mask_slime", Reference.MODID + ":mask_slime", 5, new int[] {1, 1, 1, 1}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.1F);
 
 }
