@@ -12,15 +12,16 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import rz.mesabrook.wbtc.init.ModItems;
+import rz.mesabrook.wbtc.util.Reference;
 
 import java.util.UUID;
 
 @SuppressWarnings("deprecated")
 public class EntityMesabrookM extends EntityThrowable
 {
-    public static final UUID RZ_UUID = UUID.fromString("c2907bdd-9aba-4c20-b83b-ddb41c004e78");
-    public static final UUID CSX_UUID = UUID.fromString("717bb4e7-c701-42a6-b06f-bbe17e0518ae");
-    public static final UUID TD_UUID = UUID.fromString("743cb50c-59b8-40c1-9145-140c510f6c5c");
+    public static final UUID RZ_UUID = Reference.RZ_UUID;
+    public static final UUID CSX_UUID = Reference.CSX_UUID;
+    public static final UUID TD_UUID = Reference.TD_UUID;
     private int damage;
 
     public EntityMesabrookM(World worldIn)
