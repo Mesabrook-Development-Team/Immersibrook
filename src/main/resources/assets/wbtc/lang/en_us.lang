@@ -1185,17 +1185,31 @@ item.chocolate_bar_serpent.name=Sea Serpent Energy Chocolate
 item.chocolate_bar_strawberry.name=Strawberry Joy
 item.chocolate_bar_nut.name=Nut Bar
 item.chocolate_bar_krisp.name=Krisp!
+item.dye_red.name=Food Dye
+item.dye_green.name=Food Dye
+item.dye_blue.name=Food Dye
+item.dye_yellow.name=Food Dye
+item.dye_white.name=Food Dye
+item.sugar_orange.name=Colored Sugar
+item.sugar_red.name=Colored Sugar
+item.sugar_green.name=Colored Sugar
+item.sugar_blue.name=Colored Sugar
+item.sugar_purple.name=Colored Sugar
+item.sugar_brown.name=Colored Sugar
+item.sugar_lime.name=Colored Sugar
+item.sugar_pink.name=Colored Sugar
 
 //Dialog
 im.sugwarn=You feel your heart starting to twitch... One more bite and you risk a sugar crash!
-im.sugarrush=Your body begins to tingle, your muscles twitch, eyes dilate, you feel your mind beginning to race.
+im.sugarrush=Your body begins to tingle, your muscles twitch, pupils dilate, you feel your mind beginning to race.
 im.sugarcrash=You tremble, muscles weak, eyelids heavy. You overdid it, have a sugar crash.
 im.warning=This product contains caffeine which may cause adverse reactions in minors and certain adults.
 im.sg=Surgeon General's Warning
 im.peanut=May Contain Nuts
-im.noprotect=Decorative Only. Does not provide protection.
+im.noprotect=Decorative Only. Does not provide protection against attack.
 im.product=Product:
 im.company=Manufactured by
+im.color=Color:
 
 //Food Blocks
 tile.sugar_box.name=Granulated White Sugar
