@@ -5,11 +5,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
@@ -17,18 +14,13 @@ import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.advancements.Triggers;
-import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.config.ModConfig;
-
-import java.util.Random;
 
 public class PlayerEvents 
 {
@@ -94,13 +86,13 @@ public class PlayerEvents
 				GameProfile profile = ((EntityPlayerMP) e).getGameProfile();
 				if(profile != null && Reference.RZ_UUID.equals(profile.getId()))
 				{
-					Main.logger.info("TrainDevil just got assassinated or died :(");
+					Main.logger.info("RavenholmZombie just got assassinated or died :(");
 					w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(ModItems.RAVEN_BAR, 3)));
 				}
 
 				if(profile != null && Reference.CSX_UUID.equals(profile.getId()))
 				{
-					Main.logger.info("TrainDevil just got assassinated or died :(");
+					Main.logger.info("CSX8600 just got assassinated or died :(");
 					w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(ModItems.IRW_VEST, 1)));
 				}
 
