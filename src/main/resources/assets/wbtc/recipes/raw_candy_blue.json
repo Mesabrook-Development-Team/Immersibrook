@@ -1,0 +1,20 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "type": "forge:ore_dict",
+		 "ore": "toolMixingbowl"
+      },
+	  {
+         "type": "forge:ore_dict",
+		 "ore": "foodBlueberryjuice"
+      }, 
+	  {
+		 "item": "wbtc:sugar_blue"
+	  }
+   ],
+   "result": {
+      "item": "wbtc:raw_candy_blue",
+      "count": 1
+   }
+}
