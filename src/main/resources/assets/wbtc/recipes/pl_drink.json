@@ -1,0 +1,38 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "type": "forge:ore_dict",
+		 "ore": "toolJuicer"
+      },
+      {
+		 "type": "forge:ore_dict",
+		 "ore": "cropLemon"
+      },
+	  {
+		 "type": "forge:ore_dict",
+         "ore": "cropLemon"
+	  },
+	  {
+		 "item": "minecraft:sugar"
+	  },
+	  {
+		 "item": "wbtc:dye_red"
+	  },
+	  {
+		 "item": "wbtc:dye_white"
+	  },
+	  {
+		 "type": "forge:ore_dict",
+         "ore": "listAllwater"
+	  },
+	  {
+		 "item": "minecraft:glass_bottle"
+	  }
+   ],
+   "result": {
+      "item": "wbtc:pink_lemonade_drink",
+      "data": 0,
+      "count": 1
+   }
+}

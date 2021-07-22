@@ -65,7 +65,17 @@ public class SmeltingRecipes
 			// Discs
 			GameRegistry.addSmelting(ModItems.DISC_USSR2, new ItemStack(ModItems.DISC_USSR1, 1), 420F);
 			GameRegistry.addSmelting(ModItems.DISC_BOOEY, new ItemStack(ModItems.DISC_FISH, 1), 420F);
-			
+
+			// Candies
+			GameRegistry.addSmelting(ModItems.RAW_CANDY_RED, new ItemStack(ModItems.CANDY_RUBY, 1), 69F);
+			GameRegistry.addSmelting(ModItems.RAW_CANDY_LIME, new ItemStack(ModItems.CANDY_LIME, 1), 69F);
+			GameRegistry.addSmelting(ModItems.RAW_CANDY_BLUE, new ItemStack(ModItems.CANDY_BLUE, 1), 69F);
+			GameRegistry.addSmelting(ModItems.RAW_CANDY_ORANGE, new ItemStack(ModItems.CANDY_ORANGE, 1), 69F);
+			GameRegistry.addSmelting(ModItems.RAW_CANDY_LIME, new ItemStack(ModItems.CANDY_LIME, 1), 69F);
+			GameRegistry.addSmelting(ModItems.RAW_CANDY_PL, new ItemStack(ModItems.CANDY_PINK_LEMONADE, 1), 69F);
+			GameRegistry.addSmelting(ModItems.RAW_CANDY_CHOC, new ItemStack(ModItems.CANDY_CHOCOLATE, 1), 69F);
+			GameRegistry.addSmelting(ModItems.RAW_CANDY_RB, new ItemStack(ModItems.CANDY_ROOT_BEER, 1), 69F);
+
 			if(ModConfig.smeltingLeatherForASaddle)
 			{
 				GameRegistry.addSmelting(Items.LEATHER, new ItemStack(Items.SADDLE, 1), 69F);
@@ -80,7 +90,7 @@ public class SmeltingRecipes
 		}
 		catch(Exception e)
 		{
-			Main.logger.error("[ERROR] Something went wrong while registering recipes! " + e.getMessage());
+			Main.logger.error("[" + Reference.MODNAME + "] [ERROR] Something went wrong!" + e.getMessage());
 			Main.logger.error(e.getMessage());
 			Main.logger.error("Ah fuck, I can't believe you've done this.");
 			Main.logger.error("Report this bug, please.");

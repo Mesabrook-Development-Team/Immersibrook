@@ -2,6 +2,7 @@ package rz.mesabrook.wbtc.items.misc;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
@@ -31,12 +32,37 @@ public class ImmersiFood extends ItemFood implements IHasModel
     }
 
     @Override
+    public int getMaxItemUseDuration(ItemStack stack)
+    {
+        return 32;
+    }
+
+    @Override
+    public EnumAction getItemUseAction(ItemStack itemStack)
+    {
+        if(this.getUnlocalizedName().contains("_drink"))
+        {
+            return EnumAction.DRINK;
+        }
+        else
+        {
+            return EnumAction.EAT;
+        }
+    }
+
+    @Override
     protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player)
     {
         if(this.getUnlocalizedName().contains("lolipop") && !player.isCreative())
         {
             stack.damageItem(1, player);
             player.addItemStackToInventory(new ItemStack(ModItems.PAPER_STICK));
+        }
+
+        if(this.getUnlocalizedName().contains("pink_lemonade_drink") && !player.isCreative())
+        {
+            stack.damageItem(1, player);
+            player.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE));
         }
     }
 }

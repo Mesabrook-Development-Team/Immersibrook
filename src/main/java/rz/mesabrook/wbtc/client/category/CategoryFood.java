@@ -55,13 +55,21 @@ public class CategoryFood extends AbstractCategory
 		add(ModBlocks.CUBE_SHEPHERD_PIE);
 		add(ModBlocks.CUBE_POT_PIE);
 		add(ModItems.CANDY_RUBY);
+		add(ModItems.CANDY_LIME);
+		add(ModItems.CANDY_BLUE);
+		add(ModItems.CANDY_ORANGE);
+		add(ModItems.CANDY_GRAPE);
+		add(ModItems.CANDY_ROOT_BEER);
+		add(ModItems.CANDY_CHOCOLATE);
+		add(ModItems.CANDY_PINK_LEMONADE);
+		add(ModItems.PINK_LEMONADE_DRINK);
 		add(ModItems.LOLIPOP_RED);
 		add(ModItems.LOLIPOP_GREEN);
 		add(ModItems.LOLIPOP_BLUE);
 		add(ModItems.LOLIPOP_ORANGE);
 		add(ModItems.LOLIPOP_RB);
 		add(ModItems.LOLIPOP_CHOC);
-		add(ModItems.LOLIPOP_GUM);
+		add(ModItems.LOLIPOP_PL);
 		add(ModItems.LOLIPOP_GRAPE);
 		add(ModItems.CANDY_CORN);
 		add(ModItems.RAVEN_BAR);
@@ -89,5 +97,13 @@ public class CategoryFood extends AbstractCategory
 		add(ModBlocks.SUGAR_BOX);
 		add(ModBlocks.FLOUR_BOX);
 		add(ModBlocks.CORNMEAL_BOX);
+		add(ModItems.RAW_CANDY_RED);
+		add(ModItems.RAW_CANDY_LIME);
+		add(ModItems.RAW_CANDY_BLUE);
+		add(ModItems.RAW_CANDY_ORANGE);
+		add(ModItems.RAW_CANDY_GRAPE);
+		add(ModItems.RAW_CANDY_RB);
+		add(ModItems.RAW_CANDY_CHOC);
+		add(ModItems.RAW_CANDY_PL);
 	}
 }
