@@ -191,14 +191,14 @@ public class ModItems
 	public static final Item RAW_CANDY_CHOC = new ImmersiFood("raw_candy_choc", 64, 0, 2, 10, false);
 	public static final Item RAW_CANDY_PL = new ImmersiFood("raw_candy_pl", 64, 0, 2, 10, false);
 
-	public static final Item LOLIPOP_GREEN = new ImmersiFood("green_lolipop", 32,0, 5, 10, false);
-	public static final Item LOLIPOP_ORANGE = new ImmersiFood("orange_lolipop", 32,0, 5, 10, false);
-	public static final Item LOLIPOP_RED = new ImmersiFood("red_lolipop", 32,0, 5, 10, false);
-	public static final Item LOLIPOP_RB = new ImmersiFood("root_beer_lolipop", 32,0, 5, 10, false);
-	public static final Item LOLIPOP_BLUE = new ImmersiFood("blue_lolipop", 32,0, 5, 10, false);
-	public static final Item LOLIPOP_PL = new ImmersiFood("pink_lemonade_lolipop", 32,0, 5, 10, false);
-	public static final Item LOLIPOP_CHOC = new ImmersiFood("chocolate_lolipop", 32,0, 5, 10, false);
-	public static final Item LOLIPOP_GRAPE = new ImmersiFood("grape_lolipop", 32,0, 5, 10, false);
+	public static final Item LOLIPOP_GREEN = new ImmersiFood("green_lollipop", 32,0, 5, 10, false);
+	public static final Item LOLIPOP_ORANGE = new ImmersiFood("orange_lollipop", 32,0, 5, 10, false);
+	public static final Item LOLIPOP_RED = new ImmersiFood("red_lollipop", 32,0, 5, 10, false);
+	public static final Item LOLIPOP_RB = new ImmersiFood("root_beer_lollipop", 32,0, 5, 10, false);
+	public static final Item LOLIPOP_BLUE = new ImmersiFood("blue_lollipop", 32,0, 5, 10, false);
+	public static final Item LOLIPOP_PL = new ImmersiFood("pink_lemonade_lollipop", 32,0, 5, 10, false);
+	public static final Item LOLIPOP_CHOC = new ImmersiFood("chocolate_lollipop", 32,0, 5, 10, false);
+	public static final Item LOLIPOP_GRAPE = new ImmersiFood("grape_lollipop", 32,0, 5, 10, false);
 	public static final Item CANDY_CORN = new ImmersiFood("candy_corn", 64,0, 3, 10, false);
 	public static final Item RAVEN_BAR = new DamageableFood("chocolate_bar_raven",64, 20, 3F,  false);
 	public static final Item KLUSS_BAR = new DamageableFood("chocolate_bar_klussbar",64, 5, 3F,  false);

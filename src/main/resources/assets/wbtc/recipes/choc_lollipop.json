@@ -1,0 +1,20 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      " C",
+      "S "
+   ],
+   "key": {
+      "C": {
+         "item": "wbtc:choc_candy"
+      },
+	  "S": {
+		 "item": "wbtc:paper_stick"
+	  }
+   },
+   "result": {
+      "item": "wbtc:chocolate_lollipop",
+      "data": 0,
+      "count": 1
+   }
+}
