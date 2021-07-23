@@ -1,0 +1,21 @@
+{
+    "display": {
+        "icon": {
+            "item": "wbtc:ruby_red_candy"
+        },
+        "title": {
+            "translate": "advancements.imb.candy"
+        },
+        "description": {
+            "translate": "advancements.imb.candy.desc"
+        },
+		"show_toast": true,
+        "announce_to_chat": true
+    },
+	"parent": "wbtc:imb_welcome",
+    "criteria": {
+        "tick": {
+            "trigger": "wbtc:imb_candyman"
+        }
+    }
+}

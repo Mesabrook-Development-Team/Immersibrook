@@ -38,6 +38,8 @@ public class Triggers
     public static final BasicTrigger PUFFERFISH = register("imb_pufferfish");
     public static final BasicTrigger CURSED_PIE = register("imb_cursed_pie");
     public static final BasicTrigger SHEPARD = register("imb_commander");
+    public static final BasicTrigger CANDY = register("imb_candyman");
+    public static final BasicTrigger CHOCOLATE = register("imb_chocolate");
 
     // Bin
     public static final BasicTrigger BIN_PLACE = register("imb_place_bin");

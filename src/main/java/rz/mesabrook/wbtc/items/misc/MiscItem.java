@@ -140,7 +140,21 @@ public class MiscItem extends Item implements IHasModel
 	@Override
 	public void onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn)
 	{
+		if(this.getUnlocalizedName().contains("raw_candy"))
+		{
+			if(playerIn instanceof EntityPlayer)
+			{
+				Triggers.trigger(Triggers.CANDY, playerIn);
+			}
+		}
 
+		if(this.getUnlocalizedName().contains("chocolate_bar"))
+		{
+			if(playerIn instanceof EntityPlayer)
+			{
+				Triggers.trigger(Triggers.CHOCOLATE, playerIn);
+			}
+		}
 	}
 	
 	@Override

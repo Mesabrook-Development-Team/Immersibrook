@@ -71,7 +71,7 @@ public class SmeltingRecipes
 			GameRegistry.addSmelting(ModItems.RAW_CANDY_LIME, new ItemStack(ModItems.CANDY_LIME, 1), 69F);
 			GameRegistry.addSmelting(ModItems.RAW_CANDY_BLUE, new ItemStack(ModItems.CANDY_BLUE, 1), 69F);
 			GameRegistry.addSmelting(ModItems.RAW_CANDY_ORANGE, new ItemStack(ModItems.CANDY_ORANGE, 1), 69F);
-			GameRegistry.addSmelting(ModItems.RAW_CANDY_LIME, new ItemStack(ModItems.CANDY_LIME, 1), 69F);
+			GameRegistry.addSmelting(ModItems.RAW_CANDY_GRAPE, new ItemStack(ModItems.CANDY_GRAPE, 1), 69F);
 			GameRegistry.addSmelting(ModItems.RAW_CANDY_PL, new ItemStack(ModItems.CANDY_PINK_LEMONADE, 1), 69F);
 			GameRegistry.addSmelting(ModItems.RAW_CANDY_CHOC, new ItemStack(ModItems.CANDY_CHOCOLATE, 1), 69F);
 			GameRegistry.addSmelting(ModItems.RAW_CANDY_RB, new ItemStack(ModItems.CANDY_ROOT_BEER, 1), 69F);

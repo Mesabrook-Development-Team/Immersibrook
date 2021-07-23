@@ -43,6 +43,10 @@ advancements.imb.pie=Oh hey babe
 advancements.imb.pie.desc=Experience something cursed.
 advancements.imb.commander=Okay, Commander.
 advancements.imb.commander.desc=You'll bang, okay.
+advancements.imb.candy=Candy Maker!
+advancements.imb.candy.desc=Make some candy
+advancements.imb.choc=Master Chocolatier!
+advancements.imb.choc.desc=Make some chocolate
 
 //Config
 wbtc.config.title=Configuration File for Immersibrook

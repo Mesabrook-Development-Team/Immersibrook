@@ -1,0 +1,21 @@
+{
+    "display": {
+        "icon": {
+            "item": "wbtc:chocolate_bar_krisp"
+        },
+        "title": {
+            "translate": "advancements.imb.choc"
+        },
+        "description": {
+            "translate": "advancements.imb.choc.desc"
+        },
+		"show_toast": true,
+        "announce_to_chat": true
+    },
+	"parent": "wbtc:imb_welcome",
+    "criteria": {
+        "tick": {
+            "trigger": "wbtc:imb_chocolate"
+        }
+    }
+}
