@@ -182,14 +182,14 @@ public class ModItems
 	public static final Item CANDY_CHOCOLATE = new ImmersiFood("choc_candy", 16, 0,8, 10, false);
 	public static final Item CANDY_PINK_LEMONADE = new ImmersiFood("pl_candy", 16, 0,8, 10, false);
 	public static final Item PINK_LEMONADE_DRINK = new ImmersiFood("pink_lemonade_drink", 1, 0, 5, 10, false);
-	public static final Item RAW_CANDY_RED = new ImmersiFood("raw_candy_red", 64, 0, 2, 10, false);
-	public static final Item RAW_CANDY_LIME = new ImmersiFood("raw_candy_lime", 64, 0, 2, 10, false);
-	public static final Item RAW_CANDY_BLUE = new ImmersiFood("raw_candy_blue", 64, 0, 2, 10, false);
-	public static final Item RAW_CANDY_ORANGE = new ImmersiFood("raw_candy_orange", 64, 0, 2, 10, false);
-	public static final Item RAW_CANDY_GRAPE = new ImmersiFood("raw_candy_grape", 64, 0, 2, 10, false);
-	public static final Item RAW_CANDY_RB = new ImmersiFood("raw_candy_rb", 64, 0, 2, 10, false);
-	public static final Item RAW_CANDY_CHOC = new ImmersiFood("raw_candy_choc", 64, 0, 2, 10, false);
-	public static final Item RAW_CANDY_PL = new ImmersiFood("raw_candy_pl", 64, 0, 2, 10, false);
+	public static final Item RAW_CANDY_RED = new MiscItem("raw_candy_red", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_CANDY_LIME = new MiscItem("raw_candy_lime", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_CANDY_BLUE = new MiscItem("raw_candy_blue", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_CANDY_ORANGE = new MiscItem("raw_candy_orange",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_CANDY_GRAPE = new MiscItem("raw_candy_grape",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_CANDY_RB = new MiscItem("raw_candy_rb",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_CANDY_CHOC = new MiscItem("raw_candy_choc",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_CANDY_PL = new MiscItem("raw_candy_pl",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 
 	public static final Item LOLIPOP_GREEN = new ImmersiFood("green_lollipop", 32,0, 5, 10, false);
 	public static final Item LOLIPOP_ORANGE = new ImmersiFood("orange_lollipop", 32,0, 5, 10, false);

@@ -1199,6 +1199,22 @@ item.sugar_purple.name=Colored Sugar
 item.sugar_brown.name=Colored Sugar
 item.sugar_lime.name=Colored Sugar
 item.sugar_pink.name=Colored Sugar
+item.lime_candy.name=Lime Flavored Candy
+item.blue_candy.name=Blueberry Flavored Candy
+item.orange_candy.name=Orange Flavored Candy
+item.grape_candy.name=Grape Flavored Candy
+item.rb_candy.name=Root Beer Flavored Candy
+item.choc_candy.name=Chocolate Flavored Candy
+item.pl_candy.name=Pink Lemonade Flavored Candy
+item.pink_lemonade_drink.name=Pink Lemonade
+item.raw_candy_red.name=Raw Candy
+item.raw_candy_lime.name=Raw Candy
+item.raw_candy_blue.name=Raw Candy
+item.raw_candy_orange.name=Raw Candy
+item.raw_candy_grape.name=Raw Candy
+item.raw_candy_rb.name=Raw Candy
+item.raw_candy_choc.name=Raw Candy
+item.raw_candy_pl.name=Raw Candy
 
 //Dialog
 im.sugwarn=You feel your heart starting to twitch... One more bite and you risk a sugar crash!
