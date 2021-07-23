@@ -1,0 +1,23 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "CCC",
+      "CBC",
+	  "CCC"
+   ],
+   "key": {
+      "C": {
+         "type": "forge:ore_dict",
+		 "ore": "foodChocolatebar"
+      },
+	  "B": {
+		 "type": "forge:ore_dict",
+		 "ore": "cropCoffee"
+	  }
+   },
+   "result": {
+      "item": "wbtc:chocolate_bar_serpent",
+      "data": 0,
+      "count": 1
+   }
+}

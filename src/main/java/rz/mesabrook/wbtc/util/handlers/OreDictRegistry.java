@@ -130,6 +130,6 @@ public class OreDictRegistry
 		Main.logger.info(ModItems.SUGAR_BROWN.getUnlocalizedName() + "has been added to the Ore Dictionary under sugar, listAllsugar");
 		Main.logger.info(ModItems.SUGAR_LIME.getUnlocalizedName() + "has been added to the Ore Dictionary under sugar, listAllsugar");
 		Main.logger.info(ModItems.SUGAR_ORANGE.getUnlocalizedName() + "has been added to the Ore Dictionary under sugar, listAllsugar");
-		Main.logger.info(ModItems.PINK_LEMONADE_DRINK.getUnlocalizedName() + "has been added to the Ore Dictionary under foodPinkLemonade, foodLemonaide");
+		Main.logger.info(ModItems.PINK_LEMONADE_DRINK.getUnlocalizedName() + " has been added to the Ore Dictionary under foodPinkLemonade, foodLemonaide");
 	}
 }

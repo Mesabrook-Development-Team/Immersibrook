@@ -1,0 +1,23 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "CCC",
+      "JJJ",
+	  "CCC"
+   ],
+   "key": {
+      "C": {
+         "type": "forge:ore_dict",
+		 "ore": "foodChocolatebar"
+      },
+	  "J": {
+		 "type": "forge:ore_dict",
+		 "ore": "foodStrawberryjelly"
+	  }
+   },
+   "result": {
+      "item": "wbtc:chocolate_bar_strawberry",
+      "data": 0,
+      "count": 1
+   }
+}

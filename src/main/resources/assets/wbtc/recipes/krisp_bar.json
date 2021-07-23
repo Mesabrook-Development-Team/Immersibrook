@@ -1,0 +1,27 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "CCC",
+      "PBP",
+	  "CCC"
+   ],
+   "key": {
+      "C": {
+         "type": "forge:ore_dict",
+		 "ore": "foodChocolatebar"
+      },
+	  "P": {
+		 "type": "forge:ore_dict",
+		 "ore": "listAllnut"
+	  },
+	  "B": {
+		 "type": "forge:ore_dict",
+		 "ore": "foodPeanutbutter"
+	  }
+   },
+   "result": {
+      "item": "wbtc:chocolate_bar_krisp",
+      "data": 0,
+      "count": 1
+   }
+}
