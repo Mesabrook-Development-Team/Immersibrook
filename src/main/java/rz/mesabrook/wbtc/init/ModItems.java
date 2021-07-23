@@ -227,6 +227,7 @@ public class ModItems
 	public static final Item SUGAR_BROWN = new MiscItem("sugar_brown", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item SUGAR_LIME = new MiscItem("sugar_lime", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item SUGAR_PINK = new MiscItem("sugar_pink", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item SUGAR_YELLOW = new MiscItem("sugar_yellow", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 
 	// Holiday Records
 	public static final Item DISC_SPOOKY = new MemeRecord("disc_spooky", SoundInit.SPOOKY);

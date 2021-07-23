@@ -1,0 +1,24 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "W",
+      "O",
+	  "Y"
+   ],
+   "key": {
+      "W": {
+		 "item": "minecraft:sugar"
+      },
+	  "O": {
+		 "item": "wbtc:sugar_orange"
+	  },
+	  "Y": {
+		 "item": "wbtc:sugar_yellow"
+	  }
+   },
+   "result": {
+      "item": "wbtc:candy_corn",
+      "data": 0,
+      "count": 3
+   }
+}

@@ -91,6 +91,10 @@ public class MiscItem extends Item implements IHasModel
 		{
 			tooltip.add(TextFormatting.GOLD + "Color: " + TextFormatting.LIGHT_PURPLE + "PINK");
 		}
+		if(this.getUnlocalizedName().contains("sugar_yellow"))
+		{
+			tooltip.add(TextFormatting.GOLD + "Color: " + TextFormatting.YELLOW + "YELLOW");
+		}
 
 		if(this.getUnlocalizedName().contains("raw_candy_red"))
 		{
