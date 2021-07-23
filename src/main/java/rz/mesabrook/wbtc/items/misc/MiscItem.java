@@ -46,11 +46,6 @@ public class MiscItem extends Item implements IHasModel
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag)
 	{
-		if(this.getUnlocalizedName().contains("raw"))
-		{
-			tooltip.add(TextFormatting.GOLD + "Raw Material");
-		}
-		
 		if(this.getUnlocalizedName().contains("nv_lens") || this.getUnlocalizedName().contains("nv_goggle_body") || this.getUnlocalizedName().contains("nv_goggle_circuits") || this.getUnlocalizedName().contains("nv_goggle_strap"))
 		{
 			tooltip.add(TextFormatting.GOLD + "Crafting Ingredient");
@@ -95,6 +90,46 @@ public class MiscItem extends Item implements IHasModel
 		if(this.getUnlocalizedName().contains("sugar_pink"))
 		{
 			tooltip.add(TextFormatting.GOLD + "Color: " + TextFormatting.LIGHT_PURPLE + "PINK");
+		}
+
+		if(this.getUnlocalizedName().contains("raw_candy_red"))
+		{
+			tooltip.add(TextFormatting.GOLD + "Flavor: " + TextFormatting.LIGHT_PURPLE + "Strawberry");
+		}
+
+		if(this.getUnlocalizedName().contains("raw_candy_lime"))
+		{
+			tooltip.add(TextFormatting.GOLD + "Flavor: " + TextFormatting.GREEN + "Lime");
+		}
+
+		if(this.getUnlocalizedName().contains("raw_candy_blue"))
+		{
+			tooltip.add(TextFormatting.GOLD + "Flavor: " + TextFormatting.BLUE + "Blueberry");
+		}
+
+		if(this.getUnlocalizedName().contains("raw_candy_orange"))
+		{
+			tooltip.add(TextFormatting.GOLD + "Flavor: " + TextFormatting.GOLD + "Orange");
+		}
+
+		if(this.getUnlocalizedName().contains("raw_candy_grape"))
+		{
+			tooltip.add(TextFormatting.GOLD + "Flavor: " + TextFormatting.DARK_PURPLE + "Grape");
+		}
+
+		if(this.getUnlocalizedName().contains("raw_candy_rb"))
+		{
+			tooltip.add(TextFormatting.GOLD + "Flavor: " + TextFormatting.DARK_RED + "Root Beer");
+		}
+
+		if(this.getUnlocalizedName().contains("raw_candy_choc"))
+		{
+			tooltip.add(TextFormatting.GOLD + "Flavor: " + TextFormatting.DARK_RED + "Chocolate");
+		}
+
+		if(this.getUnlocalizedName().contains("raw_candy_pl"))
+		{
+			tooltip.add(TextFormatting.GOLD + "Flavor: " + TextFormatting.LIGHT_PURPLE + "Pink Lemonade");
 		}
 	}
 
