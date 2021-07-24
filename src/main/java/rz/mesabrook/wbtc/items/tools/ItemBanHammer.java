@@ -65,6 +65,8 @@ public class ItemBanHammer extends ItemPickaxe implements IHasModel
     @Override
     public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
     {
+        NBTTagCompound tag = stack.getTagCompound();
+        String sndEvnt;
         if(this.getUnlocalizedName().contains("levi_hammer"))
         {
             try
@@ -72,11 +74,17 @@ public class ItemBanHammer extends ItemPickaxe implements IHasModel
                 World worldIn = player.world;
                 if(!worldIn.isRemote)
                 {
-                    PlaySoundPacket packet = new PlaySoundPacket();
-                    packet.pos = player.getPosition();
-                    packet.soundName = SoundRandomizer.hammerResult;
-                    PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(entity.dimension, entity.posX, entity.posY, entity.posZ, 25));
-                    entity.setFire(100);
+                    if(tag != null)
+                    {
+                        if(tag.hasKey("sndID"))
+                        {
+                            PlaySoundPacket packet = new PlaySoundPacket();
+                            packet.pos = player.getPosition();
+                            packet.soundName = tag.getString("sndID");
+                            PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(entity.dimension, entity.posX, entity.posY, entity.posZ, 25));
+                            entity.setFire(100);
+                        }
+                    }
 
                     if(entity instanceof EntityPlayer)
                     {
@@ -112,9 +120,6 @@ public class ItemBanHammer extends ItemPickaxe implements IHasModel
                 PlaySoundPacket packet = new PlaySoundPacket();
                 packet.pos = player.getPosition();
                 packet.soundName = "spree";
-                SoundRandomizer.HammerRandomizer();
-                player.sendMessage(hammerShift);
-                player.sendMessage(new TextComponentString(TextFormatting.GOLD + SoundRandomizer.hammerResult));
                 PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
                 return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
             }

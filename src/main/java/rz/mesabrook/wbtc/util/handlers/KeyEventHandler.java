@@ -1,6 +1,7 @@
 package rz.mesabrook.wbtc.util.handlers;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.Sound;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -17,17 +18,20 @@ import net.minecraftforge.fml.relauncher.Side;
 import rz.mesabrook.wbtc.items.armor.FaceMasks;
 import rz.mesabrook.wbtc.items.armor.NightVisionGoggles;
 import rz.mesabrook.wbtc.items.armor.SafetyVest;
+import rz.mesabrook.wbtc.items.tools.ItemBanHammer;
 import rz.mesabrook.wbtc.net.NVTogglePacket;
 import rz.mesabrook.wbtc.net.PlaySoundPacket;
+import rz.mesabrook.wbtc.net.SoundRandomizerPacket;
 import rz.mesabrook.wbtc.net.VestTogglePacket;
 import rz.mesabrook.wbtc.proxy.ClientProxy;
+import rz.mesabrook.wbtc.util.SoundRandomizer;
 
 @EventBusSubscriber(Side.CLIENT)
 public class KeyEventHandler
 {
 	private static TextComponentTranslation vestToggle;
 	private static TextComponentTranslation nvToggle;
-	private static TextComponentTranslation cough;
+	private static TextComponentTranslation hammerShift;
 	
 	@SubscribeEvent
 	public static void onKeyPress(InputEvent.KeyInputEvent e)
@@ -71,6 +75,45 @@ public class KeyEventHandler
 				player.playSound(SoundEvents.UI_BUTTON_CLICK, 0.3F, 1.0F);
 				NVTogglePacket packet = new NVTogglePacket();
 				PacketHandler.INSTANCE.sendToServer(packet);
+			}
+		}
+
+		if(ClientProxy.hammerSoundKey.isPressed())
+		{
+			EntityPlayer player = Minecraft.getMinecraft().player;
+			ItemStack stack = player.inventory.getCurrentItem();
+			hammerShift = new TextComponentTranslation("im.hammer.shift");
+			hammerShift.getStyle().setColor(TextFormatting.AQUA);
+
+			if(!(stack.getItem() instanceof ItemBanHammer))
+			{
+				return;
+			}
+			else
+			{
+				if(stack.hasTagCompound())
+				{
+					if(stack.getTagCompound().hasKey("sndID") && SoundRandomizer.hammerResult != null)
+					{
+						SoundRandomizer.HammerRandomizer();
+						SoundRandomizerPacket packet = new SoundRandomizerPacket();
+						packet.soundID = SoundRandomizer.hammerResult;
+						PacketHandler.INSTANCE.sendToServer(packet);
+						player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
+						player.sendMessage(hammerShift);
+						player.sendMessage(new TextComponentString(TextFormatting.GREEN + stack.getTagCompound().getString("sndID")));
+					}
+					else
+					{
+						SoundRandomizer.HammerRandomizer();
+						SoundRandomizerPacket packet = new SoundRandomizerPacket();
+						packet.soundID = SoundRandomizer.hammerResult;
+						PacketHandler.INSTANCE.sendToServer(packet);
+						player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
+						player.sendMessage(hammerShift);
+						player.sendMessage(new TextComponentString(TextFormatting.GREEN + stack.getTagCompound().getString("sndID")));
+					}
+				}
 			}
 		}
 	}

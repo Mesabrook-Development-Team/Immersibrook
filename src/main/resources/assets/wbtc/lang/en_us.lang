@@ -1152,7 +1152,7 @@ key.nvtoggle.toggle=Toggle Night Vision Goggles
 key.cough.toggle=Cough
 im.vest.toggle=Vest Glow Toggled
 im.nv.toggle=Night Vision Toggled
-im.cough=Good thing you have a mask on...
+key.hammer.toggle=Toggle Between Ban Hammer Sounds
 
 //Hard Hats
 item.hh_white.name=White Hard Hat
