@@ -53,6 +53,7 @@ public class SoundInit
 	public static final SoundEvent SHEP;
 	public static final SoundEvent TRUMPET;
 	public static final SoundEvent HEARTBEAT;
+	public static final SoundEvent SQUID;
 	
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -124,6 +125,7 @@ public class SoundInit
 		SHEP = addSoundsToRegistry("shep");
 		TRUMPET = addSoundsToRegistry("trumpet");
 		HEARTBEAT = addSoundsToRegistry("hb");
+		SQUID = addSoundsToRegistry("squidward");
 		
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -228,6 +230,7 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.SPOOKY);
 				event.getRegistry().registerAll(SoundInit.RITZ);
 				event.getRegistry().registerAll(SoundInit.HL3);
+				event.getRegistry().registerAll(SoundInit.SQUID);
 				
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

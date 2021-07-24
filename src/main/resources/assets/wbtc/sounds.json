@@ -58,5 +58,6 @@
 	"hb": {"category": "master","sounds": [{"name": "wbtc:hb","stream": true}]},
 	"spooky": {"category": "master","sounds": [{"name": "wbtc:spooky","stream": true}]},
 	"ritz": {"category": "master","sounds": [{"name": "wbtc:ritz","stream": true}]},
-	"hl3": {"category": "master","sounds": [{"name": "wbtc:hl3","stream": true}]}
+	"hl3": {"category": "master","sounds": [{"name": "wbtc:hl3","stream": true}]},
+	"squidward": {"category": "master","sounds": [{"name": "wbtc:squidward","stream": true}]}
 }
