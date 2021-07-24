@@ -43,11 +43,9 @@ public class ItemBanHammer extends ItemPickaxe implements IHasModel
         setUnlocalizedName(name);
         setRegistryName(name);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
+        hammerShift.getStyle().setColor(TextFormatting.BLUE);
 
         ModItems.ITEMS.add(this);
-
-        hammerShift.getStyle().setBold(true);
-        hammerShift.getStyle().setColor(TextFormatting.GREEN);
     }
 
     @Override
