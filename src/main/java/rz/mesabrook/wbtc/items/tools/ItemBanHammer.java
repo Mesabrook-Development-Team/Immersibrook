@@ -1,15 +1,19 @@
 package rz.mesabrook.wbtc.items.tools;
 
+import net.minecraft.client.audio.Sound;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -26,13 +30,14 @@ import rz.mesabrook.wbtc.util.config.ModConfig;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 import javax.annotation.Nullable;
+import javax.xml.soap.Text;
 import java.util.List;
 
-public class ToolPickaxeBase extends ItemPickaxe implements IHasModel
+public class ItemBanHammer extends ItemPickaxe implements IHasModel
 {
     public static final DamageSource HAMMER_GO_BONK = new DamageSourceHammer("hammer");
-
-    public ToolPickaxeBase(String name, ToolMaterial material)
+    private final TextComponentTranslation hammerShift = new TextComponentTranslation("im.hammer.shift");
+    public ItemBanHammer(String name, ToolMaterial material)
     {
         super(material);
         setUnlocalizedName(name);
@@ -40,6 +45,9 @@ public class ToolPickaxeBase extends ItemPickaxe implements IHasModel
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
 
         ModItems.ITEMS.add(this);
+
+        hammerShift.getStyle().setBold(true);
+        hammerShift.getStyle().setColor(TextFormatting.GREEN);
     }
 
     @Override
@@ -59,7 +67,6 @@ public class ToolPickaxeBase extends ItemPickaxe implements IHasModel
     @Override
     public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
     {
-        SoundRandomizer.HammerRandomizer();
         if(this.getUnlocalizedName().contains("levi_hammer"))
         {
             try
@@ -67,7 +74,6 @@ public class ToolPickaxeBase extends ItemPickaxe implements IHasModel
                 World worldIn = player.world;
                 if(!worldIn.isRemote)
                 {
-                    SoundRandomizer.HammerRandomizer();
                     PlaySoundPacket packet = new PlaySoundPacket();
                     packet.pos = player.getPosition();
                     packet.soundName = SoundRandomizer.hammerResult;
@@ -108,6 +114,9 @@ public class ToolPickaxeBase extends ItemPickaxe implements IHasModel
                 PlaySoundPacket packet = new PlaySoundPacket();
                 packet.pos = player.getPosition();
                 packet.soundName = "spree";
+                SoundRandomizer.HammerRandomizer();
+                player.sendMessage(hammerShift);
+                player.sendMessage(new TextComponentString(TextFormatting.GOLD + SoundRandomizer.hammerResult));
                 PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
                 return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
             }

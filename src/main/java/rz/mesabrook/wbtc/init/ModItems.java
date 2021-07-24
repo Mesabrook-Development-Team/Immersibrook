@@ -3,8 +3,6 @@ package rz.mesabrook.wbtc.init;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
@@ -15,7 +13,7 @@ import rz.mesabrook.wbtc.items.armor.NightVisionGoggles;
 import rz.mesabrook.wbtc.items.armor.SafetyVest;
 import rz.mesabrook.wbtc.items.misc.*;
 import rz.mesabrook.wbtc.items.record.MemeRecord;
-import rz.mesabrook.wbtc.items.tools.ToolPickaxeBase;
+import rz.mesabrook.wbtc.items.tools.ItemBanHammer;
 import rz.mesabrook.wbtc.items.weapons.ItemWeapon;
 import rz.mesabrook.wbtc.util.ArmorMaterialRegistry;
 import rz.mesabrook.wbtc.util.ToolMaterialRegistry;
@@ -40,7 +38,7 @@ public class ModItems
 
 	// Special Items
 	public static final Item ZOE_CANE = new ItemWeapon("zoe_cane", ToolMaterialRegistry.ZOE_CANE_MAT);
-	public static final Item LEVI_HAMMER = new ToolPickaxeBase("levi_hammer", ToolMaterialRegistry.LEVI_HAMMER_MAT);
+	public static final Item LEVI_HAMMER = new ItemBanHammer("levi_hammer", ToolMaterialRegistry.LEVI_HAMMER_MAT);
 
 	// Hammer Items
 	public static final Item LEVI_HAMMER_HEAD = new ItemWeapon("hammer_head_levi", ToolMaterial.STONE);

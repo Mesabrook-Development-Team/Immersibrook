@@ -7,15 +7,14 @@ import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import rz.mesabrook.wbtc.enchant.EnchantmentThunder;
-import rz.mesabrook.wbtc.items.tools.ToolPickaxeBase;
-import rz.mesabrook.wbtc.items.weapons.ItemCane;
+import rz.mesabrook.wbtc.items.tools.ItemBanHammer;
 import rz.mesabrook.wbtc.items.weapons.ItemWeapon;
 import rz.mesabrook.wbtc.util.Reference;
 
 @Mod.EventBusSubscriber(modid=Reference.MODID)
 public class ModEnchants 
 {
-	public static final EnumEnchantmentType WEAPONS = EnumHelper.addEnchantmentType("weapons", (item)->(item instanceof ItemWeapon || item instanceof ToolPickaxeBase));
+	public static final EnumEnchantmentType WEAPONS = EnumHelper.addEnchantmentType("weapons", (item)->(item instanceof ItemWeapon || item instanceof ItemBanHammer));
 
 	public static final Enchantment THUNDER = new EnchantmentThunder();
 	

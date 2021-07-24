@@ -7,6 +7,8 @@ im.death.cpw=%s drank the carbonated poop water.
 im.death.sploot=%s went sploot.
 im.death.default=%s died due to this message being so generic (this is a bug btw)
 im.death.assassinated=%s got assassinated!
+im.death.krabs=%s got their ass kicked by Mr. Krabs
+im.hammer.shift=Sound Event Randomized. New Result:
 
 //Advancements
 advancements.imb.title=Immersibrook
