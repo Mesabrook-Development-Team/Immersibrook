@@ -65,7 +65,7 @@ public class ItemBanHammer extends ItemPickaxe implements IHasModel
     @Override
     public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
     {
-        NBTTagCompound tag = stack.getTagCompound();
+        NBTTagCompound tag = stack.getTagCompound(); 
         String sndEvnt;
         if(this.getUnlocalizedName().contains("levi_hammer"))
         {
