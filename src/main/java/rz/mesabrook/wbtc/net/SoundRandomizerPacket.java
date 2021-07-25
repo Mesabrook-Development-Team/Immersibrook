@@ -67,7 +67,6 @@ public class SoundRandomizerPacket implements IMessage
 
             TextComponentTranslation hammerShift = new TextComponentTranslation("im.hammer.shift");
 			hammerShift.getStyle().setColor(TextFormatting.AQUA);
-			player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
 			player.sendMessage(hammerShift);
 			player.sendMessage(new TextComponentString(TextFormatting.GREEN + stack.getTagCompound().getString("sndID")));
         }

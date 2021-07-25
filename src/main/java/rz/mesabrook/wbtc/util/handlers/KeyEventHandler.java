@@ -88,6 +88,7 @@ public class KeyEventHandler
 				return;
 			}
 
+			player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
 			SoundRandomizerPacket packet = new SoundRandomizerPacket();
 			PacketHandler.INSTANCE.sendToServer(packet);
 		}
