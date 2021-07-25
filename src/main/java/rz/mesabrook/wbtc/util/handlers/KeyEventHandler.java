@@ -82,39 +82,15 @@ public class KeyEventHandler
 		{
 			EntityPlayer player = Minecraft.getMinecraft().player;
 			ItemStack stack = player.inventory.getCurrentItem();
-			hammerShift = new TextComponentTranslation("im.hammer.shift");
-			hammerShift.getStyle().setColor(TextFormatting.AQUA);
 
 			if(!(stack.getItem() instanceof ItemBanHammer))
 			{
 				return;
 			}
-			else
-			{
-				if(stack.hasTagCompound())
-				{
-					if(stack.getTagCompound().hasKey("sndID") && SoundRandomizer.hammerResult != null)
-					{
-						SoundRandomizer.HammerRandomizer();
-						SoundRandomizerPacket packet = new SoundRandomizerPacket();
-						packet.soundID = SoundRandomizer.hammerResult;
-						PacketHandler.INSTANCE.sendToServer(packet);
-						player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
-						player.sendMessage(hammerShift);
-						player.sendMessage(new TextComponentString(TextFormatting.GREEN + stack.getTagCompound().getString("sndID")));
-					}
-					else
-					{
-						SoundRandomizer.HammerRandomizer();
-						SoundRandomizerPacket packet = new SoundRandomizerPacket();
-						packet.soundID = SoundRandomizer.hammerResult;
-						PacketHandler.INSTANCE.sendToServer(packet);
-						player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
-						player.sendMessage(hammerShift);
-						player.sendMessage(new TextComponentString(TextFormatting.GREEN + stack.getTagCompound().getString("sndID")));
-					}
-				}
-			}
+
+			player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
+			SoundRandomizerPacket packet = new SoundRandomizerPacket();
+			PacketHandler.INSTANCE.sendToServer(packet);
 		}
 	}
 }

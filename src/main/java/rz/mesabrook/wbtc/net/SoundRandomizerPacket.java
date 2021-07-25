@@ -3,10 +3,14 @@ package rz.mesabrook.wbtc.net;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.audio.Sound;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -51,22 +55,20 @@ public class SoundRandomizerPacket implements IMessage
             }
 
             NBTTagCompound tag = stack.getTagCompound();
+            SoundRandomizer.HammerRandomizer();
+            message.soundID = SoundRandomizer.hammerResult;
             if (tag == null)
             {
                 tag = new NBTTagCompound();
                 stack.setTagCompound(tag);
             }
+            
+            tag.setString("sndID", message.soundID);
 
-            if (!tag.hasKey("sndID"))
-            {
-                tag.setString("sndID", SoundRandomizer.hammerResult);
-                stack.setTagCompound(tag);
-            }
-            else
-            {
-                tag.setString("sndID", message.soundID);
-                stack.setTagCompound(tag);
-            }
+            TextComponentTranslation hammerShift = new TextComponentTranslation("im.hammer.shift");
+			hammerShift.getStyle().setColor(TextFormatting.AQUA);
+			player.sendMessage(hammerShift);
+			player.sendMessage(new TextComponentString(TextFormatting.GREEN + stack.getTagCompound().getString("sndID")));
         }
     }
 }
