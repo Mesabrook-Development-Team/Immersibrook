@@ -51,6 +51,8 @@ public class SoundRandomizerPacket implements IMessage
             }
 
             NBTTagCompound tag = stack.getTagCompound();
+            SoundRandomizer.HammerRandomizer();
+            message.soundID = SoundRandomizer.hammerResult;
             if (tag == null)
             {
                 tag = new NBTTagCompound();
@@ -59,7 +61,7 @@ public class SoundRandomizerPacket implements IMessage
 
             if (!tag.hasKey("sndID"))
             {
-                tag.setString("sndID", SoundRandomizer.hammerResult);
+                tag.setString("sndID", message.soundID);
                 stack.setTagCompound(tag);
             }
             else
