@@ -1,0 +1,21 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      " S ",
+      "S S",
+	  "WWW"
+   ],
+   "key": {
+      "S": {
+         "item": "wbtc:nv_goggle_strap"
+      },
+	  "W": {
+         "item": "wbtc:white_plastic"
+      }
+   },
+   "result": {
+      "item": "wbtc:mask_skeleton",
+      "data": 0,
+      "count": 1
+   }
+}

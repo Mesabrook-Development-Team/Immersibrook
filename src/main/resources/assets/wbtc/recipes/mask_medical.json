@@ -1,0 +1,21 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      " S ",
+      "S S",
+	  "PPP"
+   ],
+   "key": {
+      "S": {
+         "item": "minecraft:string"
+      },
+	  "P": {
+         "item": "minecraft:paper"
+      }
+   },
+   "result": {
+      "item": "wbtc:mask_medical",
+      "data": 0,
+      "count": 4
+   }
+}
