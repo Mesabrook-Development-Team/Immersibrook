@@ -1239,3 +1239,9 @@ im.color=Color:
 tile.sugar_box.name=Granulated White Sugar
 tile.flour_box.name=All Purpose Flour
 tile.cornmeal_box.name=Cornmeal
+
+//Masks
+item.mask_jason.name=Decorative Face Mask
+item.mask_skeleton.name=Decorative Face Mask
+item.mask_medical.name=Decorative Face Mask
+item.mask_slime.name=Decorative Face Mask
