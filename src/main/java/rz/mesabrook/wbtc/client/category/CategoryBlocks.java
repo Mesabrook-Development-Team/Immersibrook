@@ -94,6 +94,10 @@ public class CategoryBlocks extends AbstractCategory {
 		add(ModBlocks.FLOOR_TILE_31);
 		add(ModBlocks.FLOOR_TILE_32);
 		add(ModBlocks.FLOOR_TILE_33);
+		add(ModBlocks.FLOOR_TILE_34);
+		add(ModBlocks.FLOOR_TILE_35);
+		add(ModBlocks.FLOOR_TILE_36);
+		add(ModBlocks.FLOOR_TILE_37);
 
 		// Plastic Blocks
 		add(ModBlocks.PLASTIC_CUBE_WHITE);

@@ -151,6 +151,10 @@ public class ModBlocks
 	public static final Block FLOOR_TILE_31 = new MiscBlock("wbtc_floor_31", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block FLOOR_TILE_32 = new MiscBlock("wbtc_floor_32", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block FLOOR_TILE_33 = new MiscBlock("wbtc_floor_33", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block FLOOR_TILE_34 = new MiscBlock("wbtc_floor_34", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block FLOOR_TILE_35 = new MiscBlock("wbtc_floor_35", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block FLOOR_TILE_36 = new MiscBlock("wbtc_floor_36", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block FLOOR_TILE_37 = new MiscBlock("wbtc_floor_37", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 
 	// Misc Blocks
 	public static final Block WHITE_STONE = new MiscBlock("white_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
