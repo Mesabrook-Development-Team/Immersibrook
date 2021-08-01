@@ -1,0 +1,21 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "type": "forge:ore_dict",
+		 "ore": "foodGrapejuice"
+      },
+	  {
+		 "type": "forge:ore_dict",
+         "ore": "listAllwater"
+	  },
+	  {
+		 "item": "minecraft:glass_bottle"
+	  }
+   ],
+   "result": {
+      "item": "wbtc:wine_bottle",
+      "data": 0,
+      "count": 1
+   }
+}
