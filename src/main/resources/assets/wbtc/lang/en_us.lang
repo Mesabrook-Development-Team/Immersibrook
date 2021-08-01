@@ -1222,6 +1222,7 @@ item.raw_candy_grape.name=Raw Candy
 item.raw_candy_rb.name=Raw Candy
 item.raw_candy_choc.name=Raw Candy
 item.raw_candy_pl.name=Raw Candy
+item.wine_bottle.name=Ceremonial Wine Bottle
 
 //Dialog
 im.sugwarn=You feel your heart starting to twitch... One more bite and you risk a sugar crash!

@@ -169,6 +169,7 @@ public class ModItems
 
 	// Misc Items
 	public static final Item PAPER_STICK = new MiscItem("paper_stick", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item WINE_BOTTLE = new ItemWineBottle("wine_bottle");
 
 	// Foods
 	public static final Item CANDY_RUBY = new ImmersiFood("ruby_red_candy", 16, 0,8, 10, false);

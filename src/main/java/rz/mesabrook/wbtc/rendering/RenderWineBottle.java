@@ -9,22 +9,21 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import rz.mesabrook.wbtc.entity.EntityWineBottle;
 import rz.mesabrook.wbtc.init.ModItems;
-import rz.mesabrook.wbtc.entity.EntityMesabrookM;
 
-public class RenderMesabrookIcon extends Render<EntityMesabrookM>
+public class RenderWineBottle extends Render<EntityWineBottle>
 {
-    private static final float ROTATION_SPEED = 50f;
     private final RenderItem itemRender;
 
-    public RenderMesabrookIcon(RenderManager renderManager)
+    public RenderWineBottle(RenderManager renderManager)
     {
         super(renderManager);
         itemRender = Minecraft.getMinecraft().getRenderItem();
     }
 
     @Override
-    public void doRender(EntityMesabrookM entity, double x, double y, double z, float entityYaw, float partialTicks)
+    public void doRender(EntityWineBottle entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         GlStateManager.pushMatrix();
         GlStateManager.translate((float)x, (float)y, (float)z);
@@ -32,9 +31,7 @@ public class RenderMesabrookIcon extends Render<EntityMesabrookM>
         GlStateManager.rotate(-this.renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
         GlStateManager.rotate((float)(this.renderManager.options.thirdPersonView == 2 ? -1 : 1) * this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
         GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
-        GlStateManager.rotate(90.0F, 1, 0, 0);
-        GlStateManager.rotate((entity.ticksExisted + partialTicks) * ROTATION_SPEED, 0, 0, 1);
-        this.bindTexture(getEntityTexture(entity));
+        this.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
 
         if (this.renderOutlines)
         {
@@ -42,7 +39,7 @@ public class RenderMesabrookIcon extends Render<EntityMesabrookM>
             GlStateManager.enableOutlineMode(this.getTeamColor(entity));
         }
 
-        itemRender.renderItem(new ItemStack(ModItems.IMMERSIBROOK_ICON), ItemCameraTransforms.TransformType.GROUND);
+        itemRender.renderItem(new ItemStack(ModItems.WINE_BOTTLE), ItemCameraTransforms.TransformType.FIXED);
 
         if (this.renderOutlines)
         {
@@ -56,7 +53,7 @@ public class RenderMesabrookIcon extends Render<EntityMesabrookM>
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(EntityMesabrookM entityMesabrookM)
+    protected ResourceLocation getEntityTexture(EntityWineBottle entityMesabrookM)
     {
         return TextureMap.LOCATION_BLOCKS_TEXTURE;
     }

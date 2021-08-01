@@ -6,8 +6,6 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -18,15 +16,16 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.oredict.OreDictionary;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.cmds.CommandImmersibrook;
 import rz.mesabrook.wbtc.cmds.CommandTeleportDimension;
+import rz.mesabrook.wbtc.entity.EntityWineBottle;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
-import rz.mesabrook.wbtc.items.misc.EntityMesabrookM;
+import rz.mesabrook.wbtc.entity.EntityMesabrookM;
 import rz.mesabrook.wbtc.rendering.RenderMesabrookIcon;
+import rz.mesabrook.wbtc.rendering.RenderWineBottle;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.TooltipRandomizer;
@@ -70,6 +69,7 @@ public class RegistryHandler
 		}
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityMesabrookM.class, RenderMesabrookIcon::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityWineBottle.class, RenderWineBottle::new);
 	}
 	
 	public static void preInitRegistries(FMLPreInitializationEvent event)
@@ -118,7 +118,9 @@ public class RegistryHandler
 		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new GuiHandler());
 
 		ResourceLocation nameLoc = new ResourceLocation(Reference.MODID + ":mesarang");
+		ResourceLocation nameLoc2 = new ResourceLocation(Reference.MODID + ":wine_bottle");
 		EntityRegistry.registerModEntity(nameLoc, EntityMesabrookM.class, nameLoc.toString(), 1, Main.instance, 64, 1, true);
+		EntityRegistry.registerModEntity(nameLoc2, EntityWineBottle.class, nameLoc2.toString(), 2, Main.instance, 64, 1, true);
 	}
 	
 	public static void postInitRegistries(FMLPostInitializationEvent event)

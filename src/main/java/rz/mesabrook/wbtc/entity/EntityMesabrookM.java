@@ -1,4 +1,4 @@
-package rz.mesabrook.wbtc.items.misc;
+package rz.mesabrook.wbtc.entity;
 
 import com.mojang.authlib.GameProfile;
 import net.minecraft.entity.EntityLivingBase;
