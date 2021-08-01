@@ -1,5 +1,6 @@
 package rz.mesabrook.wbtc.items.misc;
 
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.item.EntityExpBottle;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -9,20 +10,30 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.entity.EntityWineBottle;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.util.IHasModel;
 
+import javax.annotation.Nullable;
+import java.util.List;
+
 public class ItemWineBottle extends Item implements IHasModel
 {
+    private final TextComponentTranslation throwable = new TextComponentTranslation("im.throwable");
     public ItemWineBottle(String name)
     {
         setUnlocalizedName(name);
         setRegistryName(name);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
         setMaxStackSize(1);
+
+        throwable.getStyle().setColor(TextFormatting.GREEN);
 
         ModItems.ITEMS.add(this);
     }
@@ -47,6 +58,13 @@ public class ItemWineBottle extends Item implements IHasModel
         }
 
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemstack);
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag)
+    {
+        tooltip.add(throwable.getFormattedText());
     }
 
     @Override
