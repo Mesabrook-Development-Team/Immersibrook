@@ -155,6 +155,11 @@ public class CategoryBlocks extends AbstractCategory {
 		add(ModBlocks.PILLAR_WHITE_STONE);
 		add(ModBlocks.PILLAR_WHITE_COBBLESTONE);
 		add(ModBlocks.PILLAR_SMOOTHED_STONE);
+
+		// Trusses
+		add(ModBlocks.STEEL_TRUSS);
+		add(ModBlocks.STEEL_TRUSS_HOWE);
+		add(ModBlocks.STEEL_TRUSS_PRATT);
 	}
 
 }

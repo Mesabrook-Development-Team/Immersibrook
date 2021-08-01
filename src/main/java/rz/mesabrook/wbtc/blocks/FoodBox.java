@@ -75,7 +75,8 @@ public class FoodBox extends Block implements IHasModel
         companyLbl.getStyle().setColor(TextFormatting.LIGHT_PURPLE);
 
         ModBlocks.BLOCKS.add(this);
-        ModItems.ITEMS.add(new FoodBoxItemBlock(this).setRegistryName(this.getRegistryName()).setMaxStackSize(1));    }
+        ModItems.ITEMS.add(new FoodBoxItemBlock(this).setRegistryName(this.getRegistryName()).setMaxStackSize(1));
+    }
 
     @Override
     public void registerModels()

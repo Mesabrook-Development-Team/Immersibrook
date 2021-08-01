@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:steel_truss_pratt" },
+        "facing=south": { "model": "wbtc:steel_truss_pratt", "y": 180 },
+        "facing=west":  { "model": "wbtc:steel_truss_pratt", "y": 270 },
+        "facing=east":  { "model": "wbtc:steel_truss_pratt", "y": 90 }
+    }
+}
