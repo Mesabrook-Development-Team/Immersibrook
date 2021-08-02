@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:ceiling_light_slim" },
+        "facing=south": { "model": "wbtc:ceiling_light_slim", "y": 180 },
+        "facing=west":  { "model": "wbtc:ceiling_light_slim", "y": 270 },
+        "facing=east":  { "model": "wbtc:ceiling_light_slim", "y": 90 }
+    }
+}

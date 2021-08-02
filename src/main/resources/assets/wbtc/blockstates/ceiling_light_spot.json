@@ -1,5 +1,8 @@
 {
-   "variants": {
-          "normal": { "model": "wbtc:ceiling_light_spot" }
-   }
+    "variants": {
+        "facing=north": { "model": "wbtc:ceiling_light_spot" },
+        "facing=south": { "model": "wbtc:ceiling_light_spot", "y": 180 },
+        "facing=west":  { "model": "wbtc:ceiling_light_spot", "y": 270 },
+        "facing=east":  { "model": "wbtc:ceiling_light_spot", "y": 90 }
+    }
 }

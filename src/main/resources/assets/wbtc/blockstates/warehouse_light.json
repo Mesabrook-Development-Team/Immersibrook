@@ -1,5 +1,8 @@
 {
-   "variants": {
-      "normal": {"model":"wbtc:warehouse_light"}
-   }
+    "variants": {
+        "facing=north": { "model": "wbtc:warehouse_light" },
+        "facing=south": { "model": "wbtc:warehouse_light", "y": 180 },
+        "facing=west":  { "model": "wbtc:warehouse_light", "y": 270 },
+        "facing=east":  { "model": "wbtc:warehouse_light", "y": 90 }
+    }
 }

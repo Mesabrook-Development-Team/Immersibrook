@@ -25,6 +25,7 @@ public class ModBlocks
 	public static final Block CEILING_LIGHT_SPOTLIGHT = new BlockCeilingLight("ceiling_light_spot");
 	public static final Block CEILING_LIGHT_PANEL = new BlockCeilingLight("panel_light");
 	public static final Block CEILING_LIGHT_LARGE = new BlockCeilingLight("warehouse_light");
+	public static final Block CEILING_LIGHT_SLIM = new BlockCeilingLight("ceiling_light_slim");
 
 	// Ceiling Block
 	public static final Block CEILING = new MiscBlock("panel_ceiling", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);

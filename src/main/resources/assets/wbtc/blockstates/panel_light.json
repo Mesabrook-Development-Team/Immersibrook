@@ -1,5 +1,8 @@
 {
-   "variants": {
-          "normal": { "model": "wbtc:panel_light" }
-   }
+    "variants": {
+        "facing=north": { "model": "wbtc:panel_light" },
+        "facing=south": { "model": "wbtc:panel_light", "y": 180 },
+        "facing=west":  { "model": "wbtc:panel_light", "y": 270 },
+        "facing=east":  { "model": "wbtc:panel_light", "y": 90 }
+    }
 }
