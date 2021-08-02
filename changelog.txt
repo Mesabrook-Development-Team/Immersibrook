@@ -6,15 +6,19 @@ This update introduces a new required dependency: Immersive Engineering.
 NEW:
 -Candy!
 -Hard Hats in all sixteen Minecraft colors.
--Food Dyes (Red, Green, Blue, Yellow, and White)
--Colored Sugar (Red, Green, Blue, Orange, Purple, Brown, Lime, and Pink)
--Decorative Face Masks
+-Food Dyes (Red, Green, Blue, Yellow, and White).
+-Colored Sugar (Red, Green, Blue, Orange, Purple, Brown, Lime, and Pink).
+-Pink Lemonade Drink.
+-Decorative Face Masks.
 -Food Boxes for Sugar, Flour, and Cornmeal.
+-Trusses (Steel and Iron).
+-Industrial-themed Ceiling Lights.
 
 CHANGES/FIXES:
 -Pillars are now affected by gravity.
 -The Safety Vests creative menu category has been renamed to Safety and houses both the vests and hard hats.
 -The Ban Hammer's sounds can now be manually set through a key press.
+-Ceiling Lights are now rotational.
 
 KNOWN ISSUES:
 -None so far.
