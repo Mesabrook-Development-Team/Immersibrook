@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:iron_truss_howe" },
+        "facing=south": { "model": "wbtc:iron_truss_howe", "y": 180 },
+        "facing=west":  { "model": "wbtc:iron_truss_howe", "y": 270 },
+        "facing=east":  { "model": "wbtc:iron_truss_howe", "y": 90 }
+    }
+}

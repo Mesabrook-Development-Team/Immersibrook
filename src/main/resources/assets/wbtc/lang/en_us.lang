@@ -1236,6 +1236,13 @@ im.noprotect=Decorative Only. Does not provide protection against attack.
 im.product=Product:
 im.company=Manufactured by
 im.color=Color:
+im.material=Material:
+im.mat.steel=Steel
+im.mat.iron=Iron
+im.mat.nickel=Nickel
+im.mat.constantan=Constantan
+im.mat.cheese=Cheese
+im.why=But Why Tho?
 
 //Food Blocks
 tile.sugar_box.name=Granulated White Sugar
@@ -1247,3 +1254,11 @@ item.mask_jason.name=Decorative Face Mask
 item.mask_skeleton.name=Decorative Face Mask
 item.mask_medical.name=Decorative Face Mask
 item.mask_slime.name=Decorative Face Mask
+
+//Truss
+tile.steel_truss.name=Triangular Truss
+tile.iron_truss.name=Triangular Truss
+tile.steel_truss_howe.name=Howe Truss
+tile.iron_truss_howe.name=Howe Truss
+tile.steel_truss_pratt.name=Pratt Truss
+tile.iron_truss_pratt.name=Pratt Truss

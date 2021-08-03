@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:constantan_truss" },
+        "facing=south": { "model": "wbtc:constantan_truss", "y": 180 },
+        "facing=west":  { "model": "wbtc:constantan_truss", "y": 270 },
+        "facing=east":  { "model": "wbtc:constantan_truss", "y": 90 }
+    }
+}

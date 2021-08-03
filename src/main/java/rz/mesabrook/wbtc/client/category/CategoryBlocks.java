@@ -160,6 +160,14 @@ public class CategoryBlocks extends AbstractCategory {
 		add(ModBlocks.STEEL_TRUSS);
 		add(ModBlocks.STEEL_TRUSS_HOWE);
 		add(ModBlocks.STEEL_TRUSS_PRATT);
+		add(ModBlocks.IRON_TRUSS);
+		add(ModBlocks.IRON_TRUSS_PRATT);
+		add(ModBlocks.IRON_TRUSS_HOWE);
+		add(ModBlocks.NICKEL_TRUSS);
+		add(ModBlocks.NICKEL_TRUSS_PRATT);
+		add(ModBlocks.NICKEL_TRUSS_HOWE);
+		add(ModBlocks.CONSTANTAN_TRUSS);
+		add(ModBlocks.CONSTANTAN_TRUSS_PRATT);
+		add(ModBlocks.CONSTANTAN_TRUSS_HOWE);
 	}
-
 }

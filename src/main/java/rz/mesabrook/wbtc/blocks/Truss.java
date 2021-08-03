@@ -2,6 +2,7 @@ package rz.mesabrook.wbtc.blocks;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
@@ -10,33 +11,48 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.ModUtils;
 
+import javax.annotation.Nullable;
+
 public class Truss extends Block implements IHasModel
 {
     protected final ArrayList<AxisAlignedBB> AABBs;
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
+    private final TextComponentTranslation mat = new TextComponentTranslation("im.material");
+    private final TextComponentTranslation iron = new TextComponentTranslation("im.mat.iron");
+    private final TextComponentTranslation steel = new TextComponentTranslation("im.mat.steel");
+    private final TextComponentTranslation nickel = new TextComponentTranslation("im.mat.nickel");
+    private final TextComponentTranslation constantan = new TextComponentTranslation("im.mat.constantan");
+    private final TextComponentTranslation cheese = new TextComponentTranslation("im.mat.cheese");
+    private final TextComponentTranslation why = new TextComponentTranslation("im.why");
 
-    public Truss(String name, AxisAlignedBB unrotatedAABB)
+    public Truss(String name, AxisAlignedBB unrotatedAABB, SoundType snd)
     {
         super(Material.IRON);
         setRegistryName(name);
         setUnlocalizedName(name);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
-        setSoundType(SoundType.METAL);
+        setSoundType(snd);
         setHarvestLevel("pickaxe", 2);
         setHardness(5F);
         setResistance(10F);
@@ -51,6 +67,15 @@ public class Truss extends Block implements IHasModel
                 ModUtils.getRotatedAABB(unrotatedAABB, EnumFacing.EAST, false),
                 unrotatedAABB, unrotatedAABB // Array fill to ensure that the array size covers 4 bit (meta & 0x07).
         ));
+
+        mat.getStyle().setColor(TextFormatting.GREEN);
+        steel.getStyle().setColor(TextFormatting.DARK_GRAY);
+        iron.getStyle().setColor(TextFormatting.WHITE);
+        nickel.getStyle().setColor(TextFormatting.GRAY);
+        constantan.getStyle().setColor(TextFormatting.RED);
+        cheese.getStyle().setColor(TextFormatting.YELLOW);
+        why.getStyle().setItalic(true);
+        why.getStyle().setColor(TextFormatting.LIGHT_PURPLE);
 
         ModBlocks.BLOCKS.add(this);
         ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
@@ -163,5 +188,32 @@ public class Truss extends Block implements IHasModel
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
     {
         return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag)
+    {
+        if(this.getUnlocalizedName().contains("steel"))
+        {
+            tooltip.add(mat.getFormattedText() + " " + steel.getFormattedText());
+        }
+        if(this.getUnlocalizedName().contains("iron"))
+        {
+            tooltip.add(mat.getFormattedText() + " " + iron.getFormattedText());
+        }
+        if(this.getUnlocalizedName().contains("nickel"))
+        {
+            tooltip.add(mat.getFormattedText() + " " + nickel.getFormattedText());
+        }
+        if(this.getUnlocalizedName().contains("constantan"))
+        {
+            tooltip.add(mat.getFormattedText() + " " + constantan.getFormattedText());
+        }
+        if(this.getUnlocalizedName().contains("cheese"))
+        {
+            tooltip.add(mat.getFormattedText() + " " + cheese.getFormattedText());
+            tooltip.add(why.getFormattedText());
+        }
     }
 }

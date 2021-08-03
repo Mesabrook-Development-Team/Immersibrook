@@ -958,7 +958,21 @@ public class ModBlocks
 	public static final Block SUGAR_BOX = new FoodBox("sugar_box", Material.WOOD, SoundType.SAND, 64, "pickaxe", 1, 1.0F, 1.0F, ModUtils.getPixelatedAABB(12,0,6, 4,9,10));
 	public static final Block FLOUR_BOX = new FoodBox("flour_box", Material.WOOD, SoundType.SAND, 64, "pickaxe", 1, 1.0F, 1.0F, ModUtils.getPixelatedAABB(12,0,6, 4,9,10));
 	public static final Block CORNMEAL_BOX = new FoodBox("cornmeal_box", Material.WOOD, SoundType.SAND, 64, "pickaxe", 1, 1.0F, 1.0F, ModUtils.getPixelatedAABB(12,0,6, 4,9,10));
-	public static final Block STEEL_TRUSS = new Truss("steel_truss", ModUtils.getPixelatedAABB(16,0,6, 0,16,10));
-	public static final Block STEEL_TRUSS_HOWE = new Truss("steel_truss_howe", ModUtils.getPixelatedAABB(16,0,6, 0,16,10));
-	public static final Block STEEL_TRUSS_PRATT = new Truss("steel_truss_pratt", ModUtils.getPixelatedAABB(16,0,6, 0,16,10));
+
+	// Trusses
+	public static final Block STEEL_TRUSS = new Truss("steel_truss", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.METAL);
+	public static final Block STEEL_TRUSS_HOWE = new Truss("steel_truss_howe", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.METAL);
+	public static final Block STEEL_TRUSS_PRATT = new Truss("steel_truss_pratt", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.METAL);
+	public static final Block IRON_TRUSS = new Truss("iron_truss", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.METAL);
+	public static final Block IRON_TRUSS_HOWE = new Truss("iron_truss_howe", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.METAL);
+	public static final Block IRON_TRUSS_PRATT = new Truss("iron_truss_pratt", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.METAL);
+	public static final Block NICKEL_TRUSS = new Truss("nickel_truss", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.METAL);
+	public static final Block NICKEL_TRUSS_HOWE = new Truss("nickel_truss_howe", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.METAL);
+	public static final Block NICKEL_TRUSS_PRATT = new Truss("nickel_truss_pratt", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.METAL);
+	public static final Block CONSTANTAN_TRUSS = new Truss("constantan_truss", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.METAL);
+	public static final Block CONSTANTAN_TRUSS_HOWE = new Truss("constantan_truss_howe", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.METAL);
+	public static final Block CONSTANTAN_TRUSS_PRATT = new Truss("constantan_truss_pratt", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.METAL);
+	public static final Block CHEESE_TRUSS = new Truss("cheese_truss", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.METAL);
+	public static final Block CHEESE_TRUSS_HOWE = new Truss("cheese_truss_howe", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.METAL);
+	public static final Block CHEESE_TRUSS_PRATT = new Truss("cheese_truss_pratt", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.METAL);
 }
