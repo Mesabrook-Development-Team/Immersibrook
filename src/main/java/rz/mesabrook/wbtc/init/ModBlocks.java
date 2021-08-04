@@ -972,7 +972,7 @@ public class ModBlocks
 	public static final Block CONSTANTAN_TRUSS = new Truss("constantan_truss", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.METAL);
 	public static final Block CONSTANTAN_TRUSS_HOWE = new Truss("constantan_truss_howe", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.METAL);
 	public static final Block CONSTANTAN_TRUSS_PRATT = new Truss("constantan_truss_pratt", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.METAL);
-	public static final Block CHEESE_TRUSS = new Truss("cheese_truss", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.METAL);
-	public static final Block CHEESE_TRUSS_HOWE = new Truss("cheese_truss_howe", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.METAL);
-	public static final Block CHEESE_TRUSS_PRATT = new Truss("cheese_truss_pratt", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.METAL);
+	public static final Block CHEESE_TRUSS = new Truss("cheese_truss", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.SLIME);
+	public static final Block CHEESE_TRUSS_HOWE = new Truss("cheese_truss_howe", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.SLIME);
+	public static final Block CHEESE_TRUSS_PRATT = new Truss("cheese_truss_pratt", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.SLIME);
 }

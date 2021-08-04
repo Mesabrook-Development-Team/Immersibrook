@@ -1244,7 +1244,7 @@ im.mat.constantan=Constantan
 im.mat.cheese=Cheese
 im.why=But Why Tho?
 
-//Food Blocks
+//Food Boxes
 tile.sugar_box.name=Granulated White Sugar
 tile.flour_box.name=All Purpose Flour
 tile.cornmeal_box.name=Cornmeal
@@ -1262,3 +1262,16 @@ tile.steel_truss_howe.name=Howe Truss
 tile.iron_truss_howe.name=Howe Truss
 tile.steel_truss_pratt.name=Pratt Truss
 tile.iron_truss_pratt.name=Pratt Truss
+tile.nickel_truss.name=Triangular Truss
+tile.nickel_truss_howe.name=Howe Truss
+tile.nickel_truss_pratt.name=Pratt Truss
+tile.constantan_truss.name=Triangular Truss
+tile.constantan_truss_howe.name=Howe Truss
+tile.constantan_truss_pratt.name=Pratt Truss
+tile.cheese_truss.name=Triangular Truss
+tile.cheese_truss_pratt.name=Pratt Truss
+tile.cheese_truss_howe.name=Howe Truss
+
+//Lights
+tile.warehouse_light.name=Warehouse Light
+tile.ceiling_light_slim.name=Slim Ceiling Light
