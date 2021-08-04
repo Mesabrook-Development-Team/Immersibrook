@@ -59,5 +59,6 @@
 	"spooky": {"category": "master","sounds": [{"name": "wbtc:spooky","stream": true}]},
 	"ritz": {"category": "master","sounds": [{"name": "wbtc:ritz","stream": true}]},
 	"hl3": {"category": "master","sounds": [{"name": "wbtc:hl3","stream": true}]},
-	"squidward": {"category": "master","sounds": [{"name": "wbtc:squidward","stream": true}]}
+	"squidward": {"category": "master","sounds": [{"name": "wbtc:squidward","stream": true}]},
+	"reverb": {"category": "master","sounds": [{"name": "wbtc:reverb","stream": true}]}
 }
