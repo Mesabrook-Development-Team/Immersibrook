@@ -66,7 +66,12 @@ public class CategoryCeiling extends AbstractCategory
 		add(ModBlocks.PANEL_TILE_30);
 		add(ModBlocks.PANEL_TILE_31);
 		add(ModBlocks.PANEL_TILE_32);
-		
+		add(ModBlocks.PANEL_TILE_33);
+		add(ModBlocks.PANEL_TILE_34);
+		add(ModBlocks.PANEL_TILE_35);
+		add(ModBlocks.PANEL_TILE_36);
+		add(ModBlocks.PANEL_TILE_37);
+
 		// Commercial Kitchen Tile Panels
 		add(ModBlocks.PANEL_KITCHEN_1);
 		add(ModBlocks.PANEL_KITCHEN_2);
@@ -147,6 +152,11 @@ public class CategoryCeiling extends AbstractCategory
 		add(ModBlocks.SO_PANEL_TILE_30);
 		add(ModBlocks.SO_PANEL_TILE_31);
 		add(ModBlocks.SO_PANEL_TILE_32);
+		add(ModBlocks.SO_PANEL_TILE_33);
+		add(ModBlocks.SO_PANEL_TILE_34);
+		add(ModBlocks.SO_PANEL_TILE_35);
+		add(ModBlocks.SO_PANEL_TILE_36);
+		add(ModBlocks.SO_PANEL_TILE_37);
 
 		// Commercial Kitchen Tile Panels
 		add(ModBlocks.SO_PANEL_KITCHEN_1);
@@ -228,6 +238,11 @@ public class CategoryCeiling extends AbstractCategory
 		add(ModBlocks.SB_PANEL_TILE_30);
 		add(ModBlocks.SB_PANEL_TILE_31);
 		add(ModBlocks.SB_PANEL_TILE_32);
+		add(ModBlocks.SB_PANEL_TILE_33);
+		add(ModBlocks.SB_PANEL_TILE_34);
+		add(ModBlocks.SB_PANEL_TILE_35);
+		add(ModBlocks.SB_PANEL_TILE_36);
+		add(ModBlocks.SB_PANEL_TILE_37);
 
 		// Commercial Kitchen Tile Panels
 		add(ModBlocks.SB_PANEL_KITCHEN_1);
@@ -309,6 +324,11 @@ public class CategoryCeiling extends AbstractCategory
 		add(ModBlocks.SS_PANEL_TILE_30);
 		add(ModBlocks.SS_PANEL_TILE_31);
 		add(ModBlocks.SS_PANEL_TILE_32);
+		add(ModBlocks.SS_PANEL_TILE_33);
+		add(ModBlocks.SS_PANEL_TILE_34);
+		add(ModBlocks.SS_PANEL_TILE_35);
+		add(ModBlocks.SS_PANEL_TILE_36);
+		add(ModBlocks.SS_PANEL_TILE_37);
 
 		// Commercial Kitchen Tile Panels
 		add(ModBlocks.SS_PANEL_KITCHEN_1);
@@ -390,6 +410,11 @@ public class CategoryCeiling extends AbstractCategory
 		add(ModBlocks.SJ_PANEL_TILE_30);
 		add(ModBlocks.SJ_PANEL_TILE_31);
 		add(ModBlocks.SJ_PANEL_TILE_32);
+		add(ModBlocks.SJ_PANEL_TILE_33);
+		add(ModBlocks.SJ_PANEL_TILE_34);
+		add(ModBlocks.SJ_PANEL_TILE_35);
+		add(ModBlocks.SJ_PANEL_TILE_36);
+		add(ModBlocks.SJ_PANEL_TILE_37);
 
 		// Commercial Kitchen Tile Panels
 		add(ModBlocks.SJ_PANEL_KITCHEN_1);
@@ -471,6 +496,11 @@ public class CategoryCeiling extends AbstractCategory
 		add(ModBlocks.SA_PANEL_TILE_30);
 		add(ModBlocks.SA_PANEL_TILE_31);
 		add(ModBlocks.SA_PANEL_TILE_32);
+		add(ModBlocks.SA_PANEL_TILE_33);
+		add(ModBlocks.SA_PANEL_TILE_34);
+		add(ModBlocks.SA_PANEL_TILE_35);
+		add(ModBlocks.SA_PANEL_TILE_36);
+		add(ModBlocks.SA_PANEL_TILE_37);
 
 		// Commercial Kitchen Tile Panels
 		add(ModBlocks.SA_PANEL_KITCHEN_1);
@@ -552,6 +582,11 @@ public class CategoryCeiling extends AbstractCategory
 		add(ModBlocks.SDO_PANEL_TILE_30);
 		add(ModBlocks.SDO_PANEL_TILE_31);
 		add(ModBlocks.SDO_PANEL_TILE_32);
+		add(ModBlocks.SDO_PANEL_TILE_33);
+		add(ModBlocks.SDO_PANEL_TILE_34);
+		add(ModBlocks.SDO_PANEL_TILE_35);
+		add(ModBlocks.SDO_PANEL_TILE_36);
+		add(ModBlocks.SDO_PANEL_TILE_37);
 
 		// Commercial Kitchen Tile Panels
 		add(ModBlocks.SDO_PANEL_KITCHEN_1);
@@ -633,6 +668,11 @@ public class CategoryCeiling extends AbstractCategory
 		add(ModBlocks.CW_TILE_30);
 		add(ModBlocks.CW_TILE_31);
 		add(ModBlocks.CW_TILE_32);
+		add(ModBlocks.CW_TILE_33);
+		add(ModBlocks.CW_TILE_34);
+		add(ModBlocks.CW_TILE_35);
+		add(ModBlocks.CW_TILE_36);
+		add(ModBlocks.CW_TILE_37);
 
 		// Commercial Kitchen Tile Panels
 		add(ModBlocks.CW_KITCHEN_1);
@@ -714,6 +754,11 @@ public class CategoryCeiling extends AbstractCategory
 		add(ModBlocks.CG_TILE_30);
 		add(ModBlocks.CG_TILE_31);
 		add(ModBlocks.CG_TILE_32);
+		add(ModBlocks.CG_TILE_33);
+		add(ModBlocks.CG_TILE_34);
+		add(ModBlocks.CG_TILE_35);
+		add(ModBlocks.CG_TILE_36);
+		add(ModBlocks.CG_TILE_37);
 
 		// Commercial Kitchen Tile Panels
 		add(ModBlocks.CG_KITCHEN_1);
@@ -795,6 +840,11 @@ public class CategoryCeiling extends AbstractCategory
 		add(ModBlocks.CS_TILE_30);
 		add(ModBlocks.CS_TILE_31);
 		add(ModBlocks.CS_TILE_32);
+		add(ModBlocks.CS_TILE_33);
+		add(ModBlocks.CS_TILE_34);
+		add(ModBlocks.CS_TILE_35);
+		add(ModBlocks.CS_TILE_36);
+		add(ModBlocks.CS_TILE_37);
 
 		// Commercial Kitchen Tile Panels
 		add(ModBlocks.CS_KITCHEN_1);
@@ -828,5 +878,4 @@ public class CategoryCeiling extends AbstractCategory
 		add(ModBlocks.CS_WOOL_RED);
 		add(ModBlocks.CS_WOOL_BLACK);
 	}
-
 }
