@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " B ",
+    "GGG",
+    "SLS"
+  ],
+  "key": {
+    "B": {
+      "item": "wbtc:black_plastic"
+    },
+	"G": {
+      "item": "wbtc:gray_plastic"
+    },
+	"S": {
+      "item": "wbtc:silver_plastic"
+    },
+	"L": {
+      "item": "wbtc:glowing_plastic"
+    }
+  },
+  "result": {
+    "item": "wbtc:warehouse_light",
+    "count": 2
+  }
+}

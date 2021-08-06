@@ -55,6 +55,7 @@ public class SoundInit
 	public static final SoundEvent HEARTBEAT;
 	public static final SoundEvent SQUID;
 	public static final SoundEvent REVERB;
+	public static final SoundEvent BURP;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -128,6 +129,7 @@ public class SoundInit
 		HEARTBEAT = addSoundsToRegistry("hb");
 		SQUID = addSoundsToRegistry("squidward");
 		REVERB = addSoundsToRegistry("reverb");
+		BURP = addSoundsToRegistry("burp");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -234,6 +236,7 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.HL3);
 				event.getRegistry().registerAll(SoundInit.SQUID);
 				event.getRegistry().registerAll(SoundInit.REVERB);
+				event.getRegistry().registerAll(SoundInit.BURP);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

@@ -63,6 +63,7 @@ public class CategoryFood extends AbstractCategory
 		add(ModItems.CANDY_CHOCOLATE);
 		add(ModItems.CANDY_PINK_LEMONADE);
 		add(ModItems.PINK_LEMONADE_DRINK);
+		add(ModItems.SPARKLING_PINK_LEMONADE);
 		add(ModItems.LOLIPOP_RED);
 		add(ModItems.LOLIPOP_GREEN);
 		add(ModItems.LOLIPOP_BLUE);

@@ -52,6 +52,7 @@ public class OreDictRegistry
 		// Food Items/Blocks
 		OreDictionary.registerOre("blockCheese", ModBlocks.CUBE_CHEESE);
 		OreDictionary.registerOre("foodPinkLemonade", ModItems.PINK_LEMONADE_DRINK);
+		OreDictionary.registerOre("foodSparklingPinkLemonade", ModItems.SPARKLING_PINK_LEMONADE);
 		OreDictionary.registerOre("foodLemonaide", ModItems.PINK_LEMONADE_DRINK);
 
 		// Food Dyes
@@ -131,5 +132,6 @@ public class OreDictRegistry
 		Main.logger.info(ModItems.SUGAR_LIME.getUnlocalizedName() + "has been added to the Ore Dictionary under sugar, listAllsugar");
 		Main.logger.info(ModItems.SUGAR_ORANGE.getUnlocalizedName() + "has been added to the Ore Dictionary under sugar, listAllsugar");
 		Main.logger.info(ModItems.PINK_LEMONADE_DRINK.getUnlocalizedName() + " has been added to the Ore Dictionary under foodPinkLemonade, foodLemonaide");
+		Main.logger.info(ModItems.SPARKLING_PINK_LEMONADE.getUnlocalizedName() + " has been added to the Ore Dictionary under foodSparklingPinkLemonade");
 	}
 }

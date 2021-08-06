@@ -1271,6 +1271,7 @@ item.rb_candy.name=Root Beer Flavored Candy
 item.choc_candy.name=Chocolate Flavored Candy
 item.pl_candy.name=Pink Lemonade Flavored Candy
 item.pink_lemonade_drink.name=Pink Lemonade
+item.sparkling_pink_lemonade.name=Sparkling Pink Lemonade
 item.raw_candy_red.name=Raw Candy
 item.raw_candy_lime.name=Raw Candy
 item.raw_candy_blue.name=Raw Candy
@@ -1299,6 +1300,7 @@ im.mat.nickel=Nickel
 im.mat.constantan=Constantan
 im.mat.cheese=Cheese
 im.why=But Why Tho?
+im.sparkling=Did you really just chug that entire bottle of sparkling pink lemonade?
 
 //Food Boxes
 tile.sugar_box.name=Granulated White Sugar

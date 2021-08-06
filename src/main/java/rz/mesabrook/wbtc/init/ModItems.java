@@ -181,6 +181,7 @@ public class ModItems
 	public static final Item CANDY_CHOCOLATE = new ImmersiFood("choc_candy", 16, 0,8, 10, false);
 	public static final Item CANDY_PINK_LEMONADE = new ImmersiFood("pl_candy", 16, 0,8, 10, false);
 	public static final Item PINK_LEMONADE_DRINK = new ImmersiFood("pink_lemonade_drink", 1, 0, 5, 10, false);
+	public static final Item SPARKLING_PINK_LEMONADE = new ImmersiFood("sparkling_pink_lemonade", 1, 0, 10, 12, false);
 	public static final Item RAW_CANDY_RED = new MiscItem("raw_candy_red", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item RAW_CANDY_LIME = new MiscItem("raw_candy_lime", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item RAW_CANDY_BLUE = new MiscItem("raw_candy_blue", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
