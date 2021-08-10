@@ -233,4 +233,14 @@ public class ModItems
 	public static final Item DISC_SPOOKY = new MemeRecord("disc_spooky", SoundInit.SPOOKY);
 	public static final Item DISC_RITZ = new MemeRecord("disc_ritz", SoundInit.RITZ);
 	public static final Item DISC_HL3 = new MemeRecord("disc_pumpkin", SoundInit.HL3);
+
+	// Communications
+	public static final Item RADIO = new MiscItem("radio", 1).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_BLUE = new MiscItem("smartphone_blue", 1).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_LIME = new MiscItem("smartphone_lime", 1).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_MAGENTA = new MiscItem("smartphone_magenta", 1).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_ORANGE = new MiscItem("smartphone_orange", 1).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SILVER = new MiscItem("smartphone_silver", 1).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SPECIAL = new MiscItem("smartphone_special", 1).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_WHITE = new MiscItem("smartphone_white", 1).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 }

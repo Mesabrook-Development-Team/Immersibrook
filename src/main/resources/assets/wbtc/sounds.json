@@ -61,5 +61,14 @@
 	"hl3": {"category": "master","sounds": [{"name": "wbtc:hl3","stream": true}]},
 	"squidward": {"category": "master","sounds": [{"name": "wbtc:squidward","stream": true}]},
 	"reverb": {"category": "master","sounds": [{"name": "wbtc:reverb","stream": true}]},
-	"burp": {"category": "master","sounds": [{"name": "wbtc:burp","stream": true}]}
+	"burp": {"category": "master","sounds": [{"name": "wbtc:burp","stream": true}]},
+	"radio_close": {"category": "master","sounds": [{"name": "wbtc:radio_close","stream": true}]},
+	"ding_1": {"category": "master","sounds": [{"name": "wbtc:ding_1","stream": true}]},
+	"ding_2": {"category": "master","sounds": [{"name": "wbtc:ding_2","stream": true}]},
+	"ding_3": {"category": "master","sounds": [{"name": "wbtc:ding_3","stream": true}]},
+	"ding_4": {"category": "master","sounds": [{"name": "wbtc:ding_4","stream": true}]},
+	"ding_5": {"category": "master","sounds": [{"name": "wbtc:ding_5","stream": true}]},
+	"ding_6": {"category": "master","sounds": [{"name": "wbtc:ding_6","stream": true}]},
+	"ding_7": {"category": "master","sounds": [{"name": "wbtc:ding_7","stream": true}]},
+	"ding_8": {"category": "master","sounds": [{"name": "wbtc:ding_8","stream": true}]}
 }
