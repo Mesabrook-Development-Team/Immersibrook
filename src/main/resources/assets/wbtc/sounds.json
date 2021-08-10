@@ -69,6 +69,5 @@
 	"ding_4": {"category": "master","sounds": [{"name": "wbtc:ding_4","stream": true}]},
 	"ding_5": {"category": "master","sounds": [{"name": "wbtc:ding_5","stream": true}]},
 	"ding_6": {"category": "master","sounds": [{"name": "wbtc:ding_6","stream": true}]},
-	"ding_7": {"category": "master","sounds": [{"name": "wbtc:ding_7","stream": true}]},
-	"ding_8": {"category": "master","sounds": [{"name": "wbtc:ding_8","stream": true}]}
+	"ding_7": {"category": "master","sounds": [{"name": "wbtc:ding_7","stream": true}]}
 }
