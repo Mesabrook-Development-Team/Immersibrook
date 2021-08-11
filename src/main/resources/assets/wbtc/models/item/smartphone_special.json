@@ -1,0 +1,142 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"3": "wbtc:blocks/jabcm",
+		"5": "wbtc:misc/bg_cell_3",
+		"particle": "wbtc:blocks/jabcm"
+	},
+	"elements": [
+		{
+			"from": [6, 0, 7.835],
+			"to": [10, 6, 8.185],
+			"rotation": {"angle": 0, "axis": "y", "origin": [1, 2, 8.185]},
+			"faces": {
+				"north": {"uv": [3.25, 0.75, 12.75, 13.75], "texture": "#5"},
+				"east": {"uv": [0, 0, 4, 1], "rotation": 90, "texture": "#missing"},
+				"south": {"uv": [1.25, 1.25, 5.25, 2.25], "texture": "#3"},
+				"west": {"uv": [0, 0, 4, 1], "rotation": 270, "texture": "#missing"},
+				"up": {"uv": [0, 0, 4, 1], "texture": "#missing"},
+				"down": {"uv": [0, 0, 4, 1], "rotation": 180, "texture": "#missing"}
+			}
+		},
+		{
+			"name": "bezelTop",
+			"from": [6, 6, 7.81],
+			"to": [10, 6.275, 8.185],
+			"rotation": {"angle": 0, "axis": "y", "origin": [1, 2, 8.185]},
+			"faces": {
+				"north": {"uv": [0, 0, 5.5, 0.75], "rotation": 180, "texture": "#3"},
+				"east": {"uv": [0, 0, 5.5, 0.75], "rotation": 180, "texture": "#3"},
+				"south": {"uv": [0, 0, 5.5, 0.75], "rotation": 180, "texture": "#3"},
+				"west": {"uv": [0, 0, 5.5, 0.75], "rotation": 180, "texture": "#3"},
+				"up": {"uv": [0, 0, 5.5, 0.75], "rotation": 180, "texture": "#3"},
+				"down": {"uv": [0, 0, 5.5, 0.75], "rotation": 180, "texture": "#3"}
+			}
+		},
+		{
+			"name": "bezelLeft",
+			"from": [10, -0.275, 7.81],
+			"to": [10.25, 6.275, 8.185],
+			"rotation": {"angle": 0, "axis": "y", "origin": [1, 2, 8.185]},
+			"faces": {
+				"north": {"uv": [0, 0, 5.5, 0.75], "rotation": 180, "texture": "#3"},
+				"east": {"uv": [0, 0, 5.5, 0.75], "rotation": 180, "texture": "#3"},
+				"south": {"uv": [0, 0, 5.5, 0.75], "rotation": 180, "texture": "#3"},
+				"west": {"uv": [0, 0, 5.5, 0.75], "rotation": 180, "texture": "#3"},
+				"up": {"uv": [0, 0, 5.5, 0.75], "rotation": 180, "texture": "#3"},
+				"down": {"uv": [0, 0, 5.5, 0.75], "rotation": 180, "texture": "#3"}
+			}
+		},
+		{
+			"name": "bezelRight",
+			"from": [5.75, -0.275, 7.81],
+			"to": [6, 6.275, 8.185],
+			"rotation": {"angle": 0, "axis": "y", "origin": [1, 2, 8.185]},
+			"faces": {
+				"north": {"uv": [0, 0, 5.5, 0.75], "rotation": 180, "texture": "#3"},
+				"east": {"uv": [0, 0, 5.5, 0.75], "rotation": 180, "texture": "#3"},
+				"south": {"uv": [0, 0, 5.5, 0.75], "rotation": 180, "texture": "#3"},
+				"west": {"uv": [0, 0, 5.5, 0.75], "rotation": 180, "texture": "#3"},
+				"up": {"uv": [0, 0, 5.5, 0.75], "rotation": 180, "texture": "#3"},
+				"down": {"uv": [0, 0, 5.5, 0.75], "rotation": 180, "texture": "#3"}
+			}
+		},
+		{
+			"name": "bezelBottom",
+			"from": [6, -0.275, 7.81],
+			"to": [10, 0, 8.185],
+			"rotation": {"angle": 0, "axis": "y", "origin": [1, 2, 8.185]},
+			"faces": {
+				"north": {"uv": [0, 0, 5.5, 0.75], "rotation": 180, "texture": "#3"},
+				"east": {"uv": [0, 0, 5.5, 0.75], "rotation": 180, "texture": "#3"},
+				"south": {"uv": [0, 0, 5.5, 0.75], "rotation": 180, "texture": "#3"},
+				"west": {"uv": [0, 0, 5.5, 0.75], "rotation": 180, "texture": "#3"},
+				"up": {"uv": [0, 0, 5.5, 0.75], "rotation": 180, "texture": "#3"},
+				"down": {"uv": [0, 0, 5.5, 0.75], "rotation": 180, "texture": "#3"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0, -180, 0],
+			"translation": [0, 4.25, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0, -180, 0],
+			"translation": [0, 4.25, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_righthand": {
+			"rotation": [-5, -180, 0],
+			"translation": [0, 7.75, 0]
+		},
+		"firstperson_lefthand": {
+			"rotation": [-5, -180, 0],
+			"translation": [0, 7.75, 0]
+		},
+		"ground": {
+			"translation": [0, 4.5, 0]
+		},
+		"gui": {
+			"rotation": [30, 225, 0],
+			"translation": [0, 6.5, 0],
+			"scale": [1.5, 1.5, 1.5]
+		},
+		"head": {
+			"rotation": [0, 90, 45],
+			"translation": [6.75, 2.75, 1.75]
+		},
+		"fixed": {
+			"translation": [0, 5.5, 0]
+		}
+	},
+	"groups": [
+		{
+			"name": "Smartphone",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [
+				{
+					"name": "BodyFrame",
+					"origin": [8, 8, 8],
+					"color": 0,
+					"children": [
+						{
+							"name": "Screen",
+							"origin": [8, 8, 8],
+							"color": 0,
+							"children": [0]
+						},
+						{
+							"name": "Frame",
+							"origin": [8, 8, 8],
+							"color": 0,
+							"children": [1, 2, 3, 4]
+						}
+					]
+				}
+			]
+		}
+	]
+}

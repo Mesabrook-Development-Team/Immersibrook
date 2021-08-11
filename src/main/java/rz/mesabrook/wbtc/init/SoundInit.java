@@ -85,6 +85,16 @@ public class SoundInit
 	// Warp Metro
 	public static final SoundEvent TM_BEEP;
 
+	// Comms
+	public static final SoundEvent RADIO_CLOSE;
+	public static final SoundEvent DING_1;
+	public static final SoundEvent DING_2;
+	public static final SoundEvent DING_3;
+	public static final SoundEvent DING_4;
+	public static final SoundEvent DING_5;
+	public static final SoundEvent DING_6;
+	public static final SoundEvent DING_7;
+
 	static
 	{
 		OWO_SFX = addSoundsToRegistry("owo");
@@ -156,6 +166,16 @@ public class SoundInit
 
 		// Warp Metro
 		TM_BEEP = addSoundsToRegistry("tm_beep");
+
+		// Comms
+		RADIO_CLOSE = addSoundsToRegistry("radio_close");
+		DING_1 = addSoundsToRegistry("ding_1");
+		DING_2 = addSoundsToRegistry("ding_2");
+		DING_3 = addSoundsToRegistry("ding_3");
+		DING_4 = addSoundsToRegistry("ding_4");
+		DING_5 = addSoundsToRegistry("ding_5");
+		DING_6 = addSoundsToRegistry("ding_6");
+		DING_7 = addSoundsToRegistry("ding_7");
 	}
 	
 	private static SoundEvent addSoundsToRegistry(String soundId)
@@ -237,6 +257,14 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.SQUID);
 				event.getRegistry().registerAll(SoundInit.REVERB);
 				event.getRegistry().registerAll(SoundInit.BURP);
+				event.getRegistry().registerAll(SoundInit.RADIO_CLOSE);
+				event.getRegistry().registerAll(SoundInit.DING_1);
+				event.getRegistry().registerAll(SoundInit.DING_2);
+				event.getRegistry().registerAll(SoundInit.DING_3);
+				event.getRegistry().registerAll(SoundInit.DING_4);
+				event.getRegistry().registerAll(SoundInit.DING_5);
+				event.getRegistry().registerAll(SoundInit.DING_6);
+				event.getRegistry().registerAll(SoundInit.DING_7);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

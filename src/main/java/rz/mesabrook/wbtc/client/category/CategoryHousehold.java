@@ -72,6 +72,16 @@ public class CategoryHousehold extends AbstractCategory
 
 		// Warp Metro
 		add(ModBlocks.TICKET_MACHINE);
+
+		// Comms
+		add(ModItems.RADIO);
+		add(ModItems.PHONE_BLUE);
+		add(ModItems.PHONE_LIME);
+		add(ModItems.PHONE_MAGENTA);
+		add(ModItems.PHONE_ORANGE);
+		add(ModItems.PHONE_SILVER);
+		add(ModItems.PHONE_SPECIAL);
+		add(ModItems.PHONE_WHITE);
 	}
 
 }
