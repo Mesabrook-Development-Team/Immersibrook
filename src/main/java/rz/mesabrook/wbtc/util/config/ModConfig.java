@@ -44,6 +44,9 @@ public final class ModConfig
 	@Comment("Coughing Sound - 1 for Male, 2 for Female")
 	public static int coughingSound = 1;
 	
+	@Comment("How many ticks should a phone ring for?")
+	public static int phoneRingTicks = 1200; // 1 minute
+	
 	@Comment("How close do players need to be in order to talk to each other?")
 	public static int proximityChatDistance = 50;
 	
