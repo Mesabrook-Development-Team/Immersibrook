@@ -1333,3 +1333,5 @@ tile.cheese_truss_howe.name=Howe Truss
 //Lights
 tile.warehouse_light.name=Warehouse Light
 tile.ceiling_light_slim.name=Slim Ceiling Light
+
+item.cardboard_piece.name=Cardboard

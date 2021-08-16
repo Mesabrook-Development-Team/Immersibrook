@@ -243,4 +243,7 @@ public class ModItems
 	public static final Item PHONE_SILVER = new MiscItem("smartphone_silver", 1).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PHONE_SPECIAL = new MiscItem("smartphone_special", 1).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PHONE_WHITE = new MiscItem("smartphone_white", 1).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+
+	// Cardboard and Boxes
+	public static final Item CARDBOARD_PIECE = new MiscItem("cardboard_piece", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 }

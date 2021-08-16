@@ -92,5 +92,6 @@ public class CategoryResources extends AbstractCategory
 		// Misc resource Items
 		add(ModItems.PAPER_STICK);
 		add(ModItems.WINE_BOTTLE);
+		add(ModItems.CARDBOARD_PIECE);
 	}
 }
