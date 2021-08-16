@@ -5,9 +5,7 @@
 * Candy Items
 * Halloween Masks
 * Hard Hats
-
-**This update may also include the following**
-* Ranged Text Chat
-* Teleportation-based Mass Transit System
+* Ranged Chat
+* Radio and Cell Phones
 
 **Release Date: To be determined, would like to be out before Halloween.**
