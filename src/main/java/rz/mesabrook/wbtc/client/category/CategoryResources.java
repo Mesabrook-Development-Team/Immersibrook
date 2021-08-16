@@ -54,7 +54,7 @@ public class CategoryResources extends AbstractCategory
 		add(ModItems.PLASTIC_CYAN);
 		add(ModItems.PLASTIC_PURPLE);
 		add(ModItems.PLASTIC_BLUE);
-		add(ModItems.PLASTIC_BROWN);
+		add(ModItems.BRICK_O_SHIT);
 		add(ModItems.PLASTIC_GREEN);
 		add(ModItems.PLASTIC_RED);
 		add(ModItems.PLASTIC_BLACK);

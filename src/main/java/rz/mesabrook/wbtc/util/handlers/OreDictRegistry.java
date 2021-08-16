@@ -43,7 +43,7 @@ public class OreDictRegistry
 		OreDictionary.registerOre("itemPlastic", ModItems.PLASTIC_CYAN);
 		OreDictionary.registerOre("itemPlastic", ModItems.PLASTIC_PURPLE);
 		OreDictionary.registerOre("itemPlastic", ModItems.PLASTIC_BLUE);
-		OreDictionary.registerOre("itemPlastic", ModItems.PLASTIC_BROWN);
+		OreDictionary.registerOre("itemPlastic", ModItems.BRICK_O_SHIT);
 		OreDictionary.registerOre("itemPlastic", ModItems.PLASTIC_GREEN);
 		OreDictionary.registerOre("itemPlastic", ModItems.PLASTIC_RED);
 		OreDictionary.registerOre("itemPlastic", ModItems.PLASTIC_BLACK);
@@ -112,7 +112,7 @@ public class OreDictRegistry
 		Main.logger.info(ModItems.PLASTIC_CYAN.getUnlocalizedName() + " has been added to the Ore Dictionary under itemPlastic");
 		Main.logger.info(ModItems.PLASTIC_PURPLE.getUnlocalizedName() + " has been added to the Ore Dictionary under itemPlastic");
 		Main.logger.info(ModItems.PLASTIC_BLUE.getUnlocalizedName() + " has been added to the Ore Dictionary under itemPlastic");
-		Main.logger.info(ModItems.PLASTIC_BROWN.getUnlocalizedName() + " has been added to the Ore Dictionary under itemPlastic");
+		Main.logger.info(ModItems.BRICK_O_SHIT.getUnlocalizedName() + " has been added to the Ore Dictionary under itemPlastic");
 		Main.logger.info(ModItems.PLASTIC_GREEN.getUnlocalizedName() + " has been added to the Ore Dictionary under itemPlastic");
 		Main.logger.info(ModItems.PLASTIC_RED.getUnlocalizedName() + " has been added to the Ore Dictionary under itemPlastic");
 		Main.logger.info(ModItems.PLASTIC_BLACK.getUnlocalizedName() + " has been added to the Ore Dictionary under itemPlastic");

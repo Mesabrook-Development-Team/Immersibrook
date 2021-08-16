@@ -86,7 +86,7 @@ public class ModItems
 	public static final Item PLASTIC_CYAN = new ItemPlasticIngot("cyan_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PLASTIC_PURPLE = new ItemPlasticIngot("purple_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PLASTIC_BLUE = new ItemPlasticIngot("blue_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PLASTIC_BROWN = new ItemPlasticIngot("brown_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item BRICK_O_SHIT = new ItemPlasticIngot("brown_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PLASTIC_GREEN = new ItemPlasticIngot("green_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PLASTIC_RED = new ItemPlasticIngot("red_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PLASTIC_BLACK = new ItemPlasticIngot("black_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
