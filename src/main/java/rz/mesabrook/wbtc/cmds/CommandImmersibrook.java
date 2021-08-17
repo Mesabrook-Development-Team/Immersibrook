@@ -49,7 +49,7 @@ public class CommandImmersibrook extends CommandBase
 				sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Version " + Reference.VERSION));
 				sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Build Date: " + TextFormatting.BOLD + Reference.BUILD_DATE));
 				sender.sendMessage(new TextComponentString(""));
-				sender.sendMessage(new TextComponentString(TextFormatting.YELLOW + "Developed by RavenholmZombie with assistance from CSX8600 for use on the Mesabrook Minecraft server."));
+				sender.sendMessage(new TextComponentString(TextFormatting.YELLOW + "Developed by RavenholmZombie and CSX8600 for use on the Mesabrook Minecraft server."));
 				sender.sendMessage(new TextComponentString(TextFormatting.GOLD + "https://mesabrook.com"));
 			}
 			else if("changelog".equals(args[0]))
