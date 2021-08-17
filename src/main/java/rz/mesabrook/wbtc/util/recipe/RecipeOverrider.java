@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistryModifiable;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.util.Reference;
+import rz.mesabrook.wbtc.util.config.ModConfig;
 
 @EventBusSubscriber
 public class RecipeOverrider
@@ -22,13 +23,20 @@ public class RecipeOverrider
         try
         {
             IForgeRegistryModifiable modRegistry = (IForgeRegistryModifiable) event.getRegistry();
-            Main.logger.info("[" + Reference.MODNAME + "] Disabling Recipes.");
+            Main.logger.info("[" + Reference.MODNAME + "] JSON Recipe Remover, ACTIVATE!");
 
             // Resource Locations for JSON-based recipes goes here.
             ResourceLocation vanillaPaper = new ResourceLocation("minecraft:paper");
 
-            // Add remove calls here
-            modRegistry.remove(vanillaPaper);
+            if(ModConfig.makePaperProductionMoreRealistic)
+            {
+                modRegistry.remove(vanillaPaper);
+                Main.logger.info("[" + Reference.MODNAME + "] Paper Recipe has been disabled.");
+            }
+            else
+            {
+                Main.logger.info("[" + Reference.MODNAME + "] Config option to disable Paper recipe is set to false. Recipe still active.");
+            }
         }
         catch(Exception ex)
         {

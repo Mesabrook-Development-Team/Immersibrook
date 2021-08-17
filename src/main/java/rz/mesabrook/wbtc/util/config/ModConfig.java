@@ -41,8 +41,8 @@ public final class ModConfig
 	@Comment("Set the distance allowed for ceiling lights to place fake light blocks.")
 	public static int ceilingLightDistance = 100;
 
-	@Comment("Coughing Sound - 1 for Male, 2 for Female")
-	public static int coughingSound = 1;
+	@Comment("Set to false to re-enable the vanilla Minecraft recipe for paper.")
+	public static boolean makePaperProductionMoreRealistic = true;
 	
 	@Comment("How close do players need to be in order to talk to each other?")
 	public static int proximityChatDistance = 50;
