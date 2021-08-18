@@ -95,6 +95,18 @@ public class SoundInit
 	public static final SoundEvent DING_6;
 	public static final SoundEvent DING_7;
 
+	// DTMF Phone Tones
+	public static final SoundEvent DTMF_0;
+	public static final SoundEvent DTMF_1;
+	public static final SoundEvent DTMF_2;
+	public static final SoundEvent DTMF_3;
+	public static final SoundEvent DTMF_4;
+	public static final SoundEvent DTMF_5;
+	public static final SoundEvent DTMF_6;
+	public static final SoundEvent DTMF_7;
+	public static final SoundEvent DTMF_8;
+	public static final SoundEvent DTMF_9;
+
 	static
 	{
 		OWO_SFX = addSoundsToRegistry("owo");
@@ -176,6 +188,18 @@ public class SoundInit
 		DING_5 = addSoundsToRegistry("ding_5");
 		DING_6 = addSoundsToRegistry("ding_6");
 		DING_7 = addSoundsToRegistry("ding_7");
+
+		// DTMF Phone Tones
+		DTMF_0 = addSoundsToRegistry("dtmf_0");
+		DTMF_1 = addSoundsToRegistry("dtmf_1");
+		DTMF_2 = addSoundsToRegistry("dtmf_2");
+		DTMF_3 = addSoundsToRegistry("dtmf_3");
+		DTMF_4 = addSoundsToRegistry("dtmf_4");
+		DTMF_5 = addSoundsToRegistry("dtmf_5");
+		DTMF_6 = addSoundsToRegistry("dtmf_6");
+		DTMF_7 = addSoundsToRegistry("dtmf_7");
+		DTMF_8 = addSoundsToRegistry("dtmf_8");
+		DTMF_9 = addSoundsToRegistry("dtmf_9");
 	}
 	
 	private static SoundEvent addSoundsToRegistry(String soundId)
@@ -265,6 +289,16 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.DING_5);
 				event.getRegistry().registerAll(SoundInit.DING_6);
 				event.getRegistry().registerAll(SoundInit.DING_7);
+				event.getRegistry().registerAll(SoundInit.DTMF_0);
+				event.getRegistry().registerAll(SoundInit.DTMF_1);
+				event.getRegistry().registerAll(SoundInit.DTMF_2);
+				event.getRegistry().registerAll(SoundInit.DTMF_3);
+				event.getRegistry().registerAll(SoundInit.DTMF_4);
+				event.getRegistry().registerAll(SoundInit.DTMF_5);
+				event.getRegistry().registerAll(SoundInit.DTMF_6);
+				event.getRegistry().registerAll(SoundInit.DTMF_7);
+				event.getRegistry().registerAll(SoundInit.DTMF_8);
+				event.getRegistry().registerAll(SoundInit.DTMF_9);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");
