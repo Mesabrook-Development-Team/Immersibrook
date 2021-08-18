@@ -16,9 +16,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.init.ModItems;
+import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.config.ModConfig;
 
@@ -84,6 +86,12 @@ public class PlayerEvents
 			if(!w.isRemote)
 			{
 				GameProfile profile = ((EntityPlayerMP) e).getGameProfile();
+
+				PlaySoundPacket packet = new PlaySoundPacket();
+				packet.pos = e.getPosition();
+				packet.soundName = "oof";
+				PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(e.dimension, e.posX, e.posY, e.posZ, 25));
+
 				if(profile != null && Reference.RZ_UUID.equals(profile.getId()))
 				{
 					Main.logger.info("RavenholmZombie just got assassinated or died :(");

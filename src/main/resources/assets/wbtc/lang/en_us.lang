@@ -57,7 +57,7 @@ wbtc.config.title=Configuration File for Immersibrook
 entity.ItemFrame.name=Item Frame
 
 //Welcome message
-im.welcome=Thanks for playing with Immersibrook, 
+im.welcome=Thanks for playing with Immersibrook,
 im.welcome.disable=You can turn this message off in wbtc.cfg
 im.website.title=Our Websites
 im.wiki.title=Check out the Wiki!
@@ -1188,7 +1188,7 @@ item.record.nyan.desc=Nyan Cat
 item.record.ussr1.desc=US$R
 item.record.ussr2.desc=Anthem of the Soviet Union
 item.record.baba_booey.desc=Baba Booey Cat
-item.record.dolan.desc=Vinesauce - Dolan Karaoke 
+item.record.dolan.desc=Vinesauce - Dolan Karaoke
 item.record.murica.desc=Murica, Fuck Yeah!
 item.record.pigstep.desc=Lena Raine - Pigstep
 item.record.krab_borg.desc=Anijesterx Music - Death by Krab Borg (Shortened)
@@ -1334,5 +1334,6 @@ tile.cheese_truss_howe.name=Howe Truss
 tile.warehouse_light.name=Warehouse Light
 tile.ceiling_light_slim.name=Slim Ceiling Light
 
+item.cardboard_piece.name=Cardboard
 //Telecom
 tile.cell_antenna.name=Cellular Antenna

@@ -28,7 +28,7 @@ public class SmeltingRecipes
 			GameRegistry.addSmelting(ModItems.RAW_PLASTIC_CYAN, new ItemStack(ModItems.PLASTIC_CYAN), 10);
 			GameRegistry.addSmelting(ModItems.RAW_PLASTIC_PURPLE, new ItemStack(ModItems.PLASTIC_PURPLE), 10);
 			GameRegistry.addSmelting(ModItems.RAW_PLASTIC_BLUE, new ItemStack(ModItems.PLASTIC_BLUE), 10);
-			GameRegistry.addSmelting(ModItems.RAW_PLASTIC_BROWN, new ItemStack(ModItems.PLASTIC_BROWN), 10);
+			GameRegistry.addSmelting(ModItems.RAW_PLASTIC_BROWN, new ItemStack(ModItems.BRICK_O_SHIT), 10);
 			GameRegistry.addSmelting(ModItems.RAW_PLASTIC_RED, new ItemStack(ModItems.PLASTIC_RED), 10);
 			GameRegistry.addSmelting(ModItems.RAW_PLASTIC_GREEN, new ItemStack(ModItems.PLASTIC_GREEN), 10);
 			GameRegistry.addSmelting(ModItems.RAW_PLASTIC_BLACK, new ItemStack(ModItems.PLASTIC_BLACK), 10);
@@ -47,7 +47,7 @@ public class SmeltingRecipes
 			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_CYAN, new ItemStack(ModItems.PLASTIC_CYAN, 9), 10);
 			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_PURPLE, new ItemStack(ModItems.PLASTIC_PURPLE, 9), 10);
 			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_BLUE, new ItemStack(ModItems.PLASTIC_BLUE, 9), 10);
-			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_BROWN, new ItemStack(ModItems.PLASTIC_BROWN, 9), 10);
+			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_BROWN, new ItemStack(ModItems.BRICK_O_SHIT, 9), 10);
 			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_GREEN, new ItemStack(ModItems.PLASTIC_GREEN, 9), 10);
 			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_RED, new ItemStack(ModItems.PLASTIC_RED, 9), 10);
 			GameRegistry.addSmelting(ModBlocks.RAW_PLASTIC_CUBE_BLACK, new ItemStack(ModItems.PLASTIC_BLACK, 9), 10);
