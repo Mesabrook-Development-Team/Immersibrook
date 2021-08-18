@@ -8,19 +8,20 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.multiplayer.WorldClient;
-import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
-import org.lwjgl.input.Keyboard;
+import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneActivate;
+import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneActivate.ActivationScreens;
+import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneBase;
+import rz.mesabrook.wbtc.blocks.gui.telecom.SignalStrengths;
 import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.util.Reference;
 
@@ -73,5 +74,48 @@ public class ClientSideHandlers
 	public static void loadCreativeGUI()
 	{
 		MinecraftForge.EVENT_BUS.register(new CreativeGuiDrawHandler());
+	}
+
+	public static class TelecomClientHandlers
+	{
+		public static void onNoReception()
+		{
+			if (Minecraft.getMinecraft().currentScreen instanceof GuiPhoneActivate)
+			{
+				GuiPhoneActivate activate = (GuiPhoneActivate)Minecraft.getMinecraft().currentScreen;
+				activate.setMessage("Failed to activate: out of range");
+				activate.setActivationScreen(ActivationScreens.Message);
+			}
+		}
+		
+		public static void onChooseNumber(int[] options, boolean isResend)
+		{
+			if (Minecraft.getMinecraft().currentScreen instanceof GuiPhoneActivate)
+			{
+				GuiPhoneActivate activate = (GuiPhoneActivate)Minecraft.getMinecraft().currentScreen;
+				activate.setSelectablePhoneNumbers(options, isResend);
+				activate.setMessage("");
+				activate.setActivationScreen(ActivationScreens.ChooseNumber);
+			}
+		}
+		
+		public static void onActivationComplete()
+		{
+			if (Minecraft.getMinecraft().currentScreen instanceof GuiPhoneActivate)
+			{
+				GuiPhoneActivate activate = (GuiPhoneActivate)Minecraft.getMinecraft().currentScreen;
+				activate.goToMainScreen();
+				
+			}
+		}
+	
+		public static void onReceptionReceived(double reception)
+		{
+			if (Minecraft.getMinecraft().currentScreen instanceof GuiPhoneBase)
+			{
+				GuiPhoneBase phone = (GuiPhoneBase)Minecraft.getMinecraft().currentScreen;
+				phone.setSignalStrength(SignalStrengths.getForReceptionAmount(reception));
+			}
+		}
 	}
 }

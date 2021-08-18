@@ -50,6 +50,24 @@ public final class ModConfig
 	@Comment("How close do players need to be in order to talk to each other?")
 	public static int proximityChatDistance = 50;
 	
+	@Comment("How many blocks around a cell antenna should a cell antenna check for height?  (Example, a value of 3 will result in a scan area of 3x3)")
+	public static int cellAntennaHeightScanWidth = 10;
+	
+	@Comment("What is the optimal cell antenna height?")
+	public static int cellAntennaOptimalHeight = 50;
+	
+	@Comment("How far out in blocks is the best cell reception?")
+	public static int cellAntennaMaxReception = 2000;
+	
+	@Comment("How far from the max reception range will reception completely fail?")
+	public static int cellAntennaSpottyReception = 3000;
+	
+	@Comment("What is the (inclusive) minimum randomly generated phone number?")
+	public static int minimumPhoneNumber = 1000000;
+	
+	@Comment("What is the (exclusive) maximum randomly generated phone number?")
+	public static int maximumPhoneNumber = 7999999;
+	
 	@Mod.EventBusSubscriber(modid = Reference.MODID)
 	private static class EventHandler
 	{

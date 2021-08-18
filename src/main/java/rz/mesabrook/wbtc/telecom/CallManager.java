@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraftforge.fml.server.FMLServerHandler;
 import rz.mesabrook.wbtc.util.config.ModConfig;
 
 public class CallManager {
@@ -91,9 +94,15 @@ public class CallManager {
 				
 				if (connectingTicks > ModConfig.phoneRingTicks)
 				{
+					sendMessageToPhone(FMLServerHandler.instance().getServer(), originPhone, new TextComponentTranslation("phone.didNotAnswer", destPhone));
 					dequeueCall(getID());
 				}
 			}
+		}
+		
+		private void sendMessageToPhone(MinecraftServer server, String phone, TextComponentTranslation message)
+		{
+			
 		}
 	}
 }
