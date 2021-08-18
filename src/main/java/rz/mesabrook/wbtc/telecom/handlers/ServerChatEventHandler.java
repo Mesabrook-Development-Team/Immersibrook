@@ -1,7 +1,9 @@
-package rz.mesabrook.wbtc.util.handlers;
+package rz.mesabrook.wbtc.telecom.handlers;
 
 import java.lang.reflect.Field;
+import java.util.Arrays;
 
+import net.minecraft.block.BlockDirt;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraft.server.MinecraftServer;
@@ -23,7 +25,8 @@ public class ServerChatEventHandler {
 		{
 			try
 			{
-				serverControllerField = NetHandlerPlayServer.class.getDeclaredField("serverController");
+				boolean isObfuscated = !Arrays.stream(BlockDirt.class.getMethods()).anyMatch(m -> m.getName() == "getStateFromMeta");
+				serverControllerField = NetHandlerPlayServer.class.getDeclaredField(isObfuscated ? "field_147367_d" : "serverController");
 				serverControllerField.setAccessible(true);
 			}
 			catch(Exception ex)

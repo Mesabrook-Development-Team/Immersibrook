@@ -18,7 +18,7 @@ import rz.mesabrook.wbtc.items.weapons.ItemWeapon;
 import rz.mesabrook.wbtc.util.ArmorMaterialRegistry;
 import rz.mesabrook.wbtc.util.ToolMaterialRegistry;
 
-public class ModItems 
+public class ModItems
 {
 	public static final List<Item> ITEMS = new ArrayList<Item>();
 
@@ -47,10 +47,10 @@ public class ModItems
 	// Immersibrook Icons
 	public static final Item IMMERSIBROOK_ICON = new ItemMesabrookIcon("icon_immersibrook");
 	public static final Item DOOT_ICON = new MiscItem("doot_icon", 1);
-	
+
 	// Metals
 	public static final Item IRON_ROD = new MiscItem("iron_rod", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	
+
 	// Raw Plastic
 	public static final Item RAW_PLASTIC = new MiscItem("raw_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 
@@ -91,7 +91,7 @@ public class ModItems
 	public static final Item PLASTIC_RED = new ItemPlasticIngot("red_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PLASTIC_BLACK = new ItemPlasticIngot("black_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PLASTIC_GLOWING = new ItemPlasticIngot("glowing_plastic", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	
+
 	// Meme Records
 	public static final Item BLANK_DISC = new MiscItem("blank_vinyl",  16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item DISC_AMALTHEA = new MemeRecord("amalthea", SoundInit.AMALTHEA);
@@ -110,7 +110,7 @@ public class ModItems
 
 	// First Aid Kit
 	public static final Item FIRST_AID_KIT = new ItemFirstAidKit("first_aid", Main.IMMERSIBROOK_MAIN);
-	
+
 	// Generic Safety Vests
 	public static final Item SAFETY_VEST_ORANGE = new SafetyVest("safety_vest_orange", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.SAFETY_VEST_MATERIAL, EntityEquipmentSlot.CHEST);
 	public static final Item SAFETY_VEST_YELLOW = new SafetyVest("safety_vest_yellow", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.SAFETY_VEST_YELLOW_MAT, EntityEquipmentSlot.CHEST);
@@ -134,12 +134,12 @@ public class ModItems
 
 	// IRW Vest
 	public static final Item IRW_VEST = new SafetyVest("irw_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.IRW_SAFETY_VEST_MAT, EntityEquipmentSlot.CHEST);
-	
+
 	// LVN Safety Vests
 	public static final Item LVN_VEST = new SafetyVest("lvn_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.LVN_SAFETY_VEST_NO_X, EntityEquipmentSlot.CHEST);
 	public static final Item LVN_VEST_X = new SafetyVest("lvn_vest_x", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.LVN_SAFETY_VEST_X, EntityEquipmentSlot.CHEST);
 	public static final Item LVN_VEST_TXT = new SafetyVest("lvn_vest_txt", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.LVN_SAFETY_VEST_TXT, EntityEquipmentSlot.CHEST);
-	
+
 	// Night Vision Goggles
 	public static final Item NV_GOGGLES = new NightVisionGoggles("nv_goggles", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.NIGHT_VISION_HELMET, EntityEquipmentSlot.HEAD);
 
@@ -236,13 +236,13 @@ public class ModItems
 
 	// Communications
 	public static final Item RADIO = new MiscItem("radio", 1).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_BLUE = new MiscItem("smartphone_blue", 1).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_LIME = new MiscItem("smartphone_lime", 1).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_MAGENTA = new MiscItem("smartphone_magenta", 1).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_ORANGE = new MiscItem("smartphone_orange", 1).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_SILVER = new MiscItem("smartphone_silver", 1).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_SPECIAL = new MiscItem("smartphone_special", 1).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_WHITE = new MiscItem("smartphone_white", 1).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_BLUE = new ItemPhone("smartphone_blue").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_LIME = new ItemPhone("smartphone_lime").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_MAGENTA = new ItemPhone("smartphone_magenta").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_ORANGE = new ItemPhone("smartphone_orange").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SILVER = new ItemPhone("smartphone_silver").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SPECIAL = new ItemPhone("smartphone_special").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_WHITE = new ItemPhone("smartphone_white").setCreativeTab(Main.IMMERSIBROOK_MAIN);
 
 	// Cardboard and Boxes
 	public static final Item CARDBOARD_PIECE = new MiscItem("cardboard_piece", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
