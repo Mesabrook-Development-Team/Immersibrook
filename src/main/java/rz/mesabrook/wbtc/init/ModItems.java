@@ -236,13 +236,43 @@ public class ModItems
 
 	// Communications
 	public static final Item RADIO = new MiscItem("radio", 1).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_BLUE = new ItemPhone("smartphone_blue").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_LIME = new ItemPhone("smartphone_lime").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_MAGENTA = new ItemPhone("smartphone_magenta").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_ORANGE = new ItemPhone("smartphone_orange").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_SILVER = new ItemPhone("smartphone_silver").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_SPECIAL = new ItemPhone("smartphone_special").setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PHONE_WHITE = new ItemPhone("smartphone_white").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_ORANGE = new ItemPhone("smartphone_orange").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_MAGENTA = new ItemPhone("smartphone_magenta").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_LBLUE = new ItemPhone("smartphone_lblue").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_YELLOW = new ItemPhone("smartphone_yellow").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_LIME = new ItemPhone("smartphone_lime").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_PINK = new ItemPhone("smartphone_pink").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_GRAY = new ItemPhone("smartphone_gray").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SILVER = new ItemPhone("smartphone_silver").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_CYAN = new ItemPhone("smartphone_cyan").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_PURPLE = new ItemPhone("smartphone_purple").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_BLUE = new ItemPhone("smartphone_blue").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_BROWN = new ItemPhone("smartphone_brown").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_GREEN = new ItemPhone("smartphone_green").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_RED = new ItemPhone("smartphone_red").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_BLACK = new ItemPhone("smartphone_black").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SPECIAL = new ItemPhone("smartphone_special").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+
+	// Phone Crafting Ingredients
+	public static final Item PHONE_SCREEN = new MiscItem("phone_screen", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_WHITE = new MiscItem("phone_shell_white", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_ORANGE = new MiscItem("phone_shell_orange", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_MAGENTA = new MiscItem("phone_shell_magenta", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_LBLUE = new MiscItem("phone_shell_lblue", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_YELLOW = new MiscItem("phone_shell_yellow", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_LIME = new MiscItem("phone_shell_lime", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_PINK = new MiscItem("phone_shell_pink", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_GRAY = new MiscItem("phone_shell_gray", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_SILVER = new MiscItem("phone_shell_silver", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_CYAN = new MiscItem("phone_shell_cyan", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_PURPLE = new MiscItem("phone_shell_purple", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_BLUE = new MiscItem("phone_shell_blue", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_BROWN = new MiscItem("phone_shell_brown", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_GREEN = new MiscItem("phone_shell_green", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_RED = new MiscItem("phone_shell_red", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_BLACK = new MiscItem("phone_shell_black", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_SPECIAL = new MiscItem("phone_shell_special", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 
 	// Cardboard and Boxes
 	public static final Item CARDBOARD_PIECE = new MiscItem("cardboard_piece", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
