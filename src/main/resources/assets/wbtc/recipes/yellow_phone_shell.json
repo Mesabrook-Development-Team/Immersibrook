@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP",
+    "P P",
+    "PPP"
+  ],
+  "key": {
+    "P": {
+      "item": "wbtc:yellow_plastic"
+    }
+  },
+  "result": {
+    "item": "wbtc:phone_shell_yellow",
+    "count": 2
+  }
+}

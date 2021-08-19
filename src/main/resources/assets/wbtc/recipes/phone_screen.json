@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "RCR",
+    "III"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:glass_pane"
+    },
+	"R": {
+      "item": "minecraft:redstone"
+    },
+	"C": {
+      "item": "immersiveengineering:material",
+	  "data": 27
+    },
+	"I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "wbtc:phone_screen",
+    "count": 1
+  }
+}
