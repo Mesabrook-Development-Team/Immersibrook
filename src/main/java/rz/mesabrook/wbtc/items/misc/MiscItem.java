@@ -46,7 +46,7 @@ public class MiscItem extends Item implements IHasModel
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag)
 	{
-		if(this.getUnlocalizedName().contains("nv_lens") || this.getUnlocalizedName().contains("nv_goggle_body") || this.getUnlocalizedName().contains("nv_goggle_circuits") || this.getUnlocalizedName().contains("nv_goggle_strap"))
+		if(this.getUnlocalizedName().contains("nv_lens") || this.getUnlocalizedName().contains("nv_goggle_body") || this.getUnlocalizedName().contains("nv_goggle_circuits") || this.getUnlocalizedName().contains("nv_goggle_strap") || this.getUnlocalizedName().contains("shell") || this.getUnlocalizedName().contains("_screen"))
 		{
 			tooltip.add(TextFormatting.GOLD + "Crafting Ingredient");
 		}
