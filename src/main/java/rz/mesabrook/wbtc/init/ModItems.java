@@ -274,6 +274,15 @@ public class ModItems
 	public static final Item PHONE_SHELL_BLACK = new MiscItem("phone_shell_black", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PHONE_SHELL_SPECIAL = new MiscItem("phone_shell_special", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 
-	// Cardboard and Boxes
+	// Cardboard
 	public static final Item CARDBOARD_PIECE = new MiscItem("cardboard_piece", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+
+	// Rubber Ducks
+	public static final Item RUBBER_DUCK = new ItemRubberDuck("rubber_duck");
+	public static final Item RUBBER_DUCK_CYAN = new ItemRubberDuck("rubber_duck_cyan");
+	public static final Item RUBBER_DUCK_LIME = new ItemRubberDuck("rubber_duck_lime");
+	public static final Item RUBBER_DUCK_BLACK = new ItemRubberDuck("rubber_duck_black");
+	public static final Item RUBBER_DUCK_BLUE = new ItemRubberDuck("rubber_duck_blue");
+	public static final Item RUBBER_DUCK_GREEN = new ItemRubberDuck("rubber_duck_green");
+	public static final Item RUBBER_DUCK_EVIL = new ItemRubberDuck("rubber_duck_evil");
 }

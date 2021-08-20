@@ -9,6 +9,8 @@ im.death.default=%s died due to this message being so generic (this is a bug btw
 im.death.assassinated=%s got assassinated!
 im.death.krabs=%s got their ass kicked by Mr. Krabs
 im.death.reverb=%s needs more reverb.
+im.death.rubberduck=%s got their fingers blown off by a rubber duck
+
 im.hammer.shift=Sound Event Randomized. New Result:
 im.throwable=Throwable Item
 
@@ -1293,6 +1295,7 @@ im.noprotect=Decorative Only. Does not provide protection against attack.
 im.product=Product:
 im.company=Manufactured by
 im.color=Color:
+im.angry=Watch out, this ducky has an explosive temper.
 im.material=Material:
 im.mat.steel=Steel
 im.mat.iron=Iron
@@ -1374,3 +1377,12 @@ item.phone_shell_red.name=Red Phone Shell
 item.phone_shell_black.name=Black Phone Shell
 item.phone_shell_special.name=Rainbow Phone Shell
 item.radio.name=Radio
+
+//Ducks
+item.rubber_duck.name=Rubber Ducky
+item.rubber_duck_cyan.name=Rubber Ducky
+item.rubber_duck_lime.name=Rubber Ducky
+item.rubber_duck_black.name=Rubber Ducky
+item.rubber_duck_blue.name=Rubber Ducky
+item.rubber_duck_green.name=Rubber Ducky
+item.rubber_duck_evil.name=Rubber Ducky

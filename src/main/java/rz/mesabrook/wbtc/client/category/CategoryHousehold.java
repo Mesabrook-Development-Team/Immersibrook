@@ -92,6 +92,13 @@ public class CategoryHousehold extends AbstractCategory
 		add(ModItems.PHONE_RED);
 		add(ModItems.PHONE_BLACK);
 		add(ModItems.PHONE_SPECIAL);
+		add(ModItems.RUBBER_DUCK);
+		add(ModItems.RUBBER_DUCK_CYAN);
+		add(ModItems.RUBBER_DUCK_LIME);
+		add(ModItems.RUBBER_DUCK_BLACK);
+		add(ModItems.RUBBER_DUCK_BLUE);
+		add(ModItems.RUBBER_DUCK_GREEN);
+		add(ModItems.RUBBER_DUCK_EVIL);
 	}
 
 }

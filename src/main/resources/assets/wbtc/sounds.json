@@ -79,5 +79,7 @@
 	"dtmf_6": {"category": "master","sounds": [{"name": "wbtc:dtmf_6","stream": true}]},
 	"dtmf_7": {"category": "master","sounds": [{"name": "wbtc:dtmf_7","stream": true}]},
 	"dtmf_8": {"category": "master","sounds": [{"name": "wbtc:dtmf_8","stream": true}]},
-	"dtmf_9": {"category": "master","sounds": [{"name": "wbtc:dtmf_9","stream": true}]}
+	"dtmf_9": {"category": "master","sounds": [{"name": "wbtc:dtmf_9","stream": true}]},
+	"duck": {"category": "master","sounds": [{"name": "wbtc:duck","stream": true}]},
+	"duckboom": {"category": "master","sounds": [{"name": "wbtc:duckboom","stream": true}]}
 }

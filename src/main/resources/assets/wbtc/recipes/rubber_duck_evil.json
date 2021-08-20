@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  R",
+    "PPP",
+    "PTP"
+  ],
+  "key": {
+    "P": {
+      "item": "wbtc:black_plastic"
+    },
+	"R": {
+	  "item": "wbtc:red_plastic"
+	},
+	"T": {
+	  "item": "minecraft:tnt"
+	}
+  },
+  "result": {
+    "item": "wbtc:rubber_duck_evil",
+    "count": 1
+  }
+}
