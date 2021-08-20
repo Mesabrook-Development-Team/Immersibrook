@@ -1,0 +1,17 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "item": "wbtc:wbtc_floor_33"
+      },
+	  {
+		 "item": "minecraft:concrete",
+		 "data": 7
+	  }
+   ],
+   "result": {
+      "item": "wbtc:gray_concrete_tile_33",
+      "data": 0,
+      "count": 9
+   }
+}
