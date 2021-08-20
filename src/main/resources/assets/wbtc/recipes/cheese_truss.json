@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "III",
+    "SSS",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+	  "ore": "foodCheese"
+    },
+	"S": {
+      "type": "forge:ore_dict",
+	  "ore": "foodMozzerellasticks"
+    }
+  },
+  "result": {
+    "item": "wbtc:cheese_truss",
+    "count": 4
+  }
+}

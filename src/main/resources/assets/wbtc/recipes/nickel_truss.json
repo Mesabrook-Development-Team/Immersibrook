@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "III",
+    "SSS",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+	  "ore": "ingotNickel"
+    },
+	"S": {
+      "type": "forge:ore_dict",
+	  "ore": "stickNickel"
+    }
+  },
+  "result": {
+    "item": "wbtc:nickel_truss",
+    "count": 4
+  }
+}

@@ -113,5 +113,7 @@ public class CategoryResources extends AbstractCategory
 		add(ModItems.PAPER_STICK);
 		add(ModItems.WINE_BOTTLE);
 		add(ModItems.CARDBOARD_PIECE);
+		add(ModItems.ROD_CONSTANTAN);
+		add(ModItems.ROD_NICKEL);
 	}
 }

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "TI"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+	  "ore": "ingotIron"
+    },
+	"T": {
+	  "item": "wbtc:iron_truss"
+    }
+  },
+  "result": {
+    "item": "wbtc:iron_truss_pratt",
+    "count": 4
+  }
+}

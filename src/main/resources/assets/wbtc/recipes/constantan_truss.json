@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "III",
+    "SSS",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+	  "ore": "ingotConstantan"
+    },
+	"S": {
+      "type": "forge:ore_dict",
+	  "ore": "stickConstantan"
+    }
+  },
+  "result": {
+    "item": "wbtc:constantan_truss",
+    "count": 4
+  }
+}

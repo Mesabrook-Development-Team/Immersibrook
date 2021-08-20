@@ -1386,3 +1386,7 @@ item.rubber_duck_black.name=Rubber Ducky
 item.rubber_duck_blue.name=Rubber Ducky
 item.rubber_duck_green.name=Rubber Ducky
 item.rubber_duck_evil.name=Rubber Ducky
+
+//Rods
+item.rod_constantan.name=Constantan Rod
+item.rod_nickel.name=Nickel Rod

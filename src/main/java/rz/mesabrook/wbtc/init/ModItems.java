@@ -285,4 +285,8 @@ public class ModItems
 	public static final Item RUBBER_DUCK_BLUE = new ItemRubberDuck("rubber_duck_blue");
 	public static final Item RUBBER_DUCK_GREEN = new ItemRubberDuck("rubber_duck_green");
 	public static final Item RUBBER_DUCK_EVIL = new ItemRubberDuck("rubber_duck_evil");
+
+	// Rods
+	public static final Item ROD_CONSTANTAN = new MiscItem("rod_constantan", 64);
+	public static final Item ROD_NICKEL = new MiscItem("rod_nickel", 64);
 }
