@@ -89,9 +89,31 @@ public class CategoryResources extends AbstractCategory
 		add(ModBlocks.RAW_PLASTIC_CUBE_BLACK);
 		add(ModBlocks.RAW_PLASTIC_CUBE_GLOWING);
 
+		// Phone Crafting Components
+		add(ModItems.PHONE_SCREEN);
+		add(ModItems.PHONE_SHELL_WHITE);
+		add(ModItems.PHONE_SHELL_ORANGE);
+		add(ModItems.PHONE_SHELL_MAGENTA);
+		add(ModItems.PHONE_SHELL_LBLUE);
+		add(ModItems.PHONE_SHELL_YELLOW);
+		add(ModItems.PHONE_SHELL_LIME);
+		add(ModItems.PHONE_SHELL_PINK);
+		add(ModItems.PHONE_SHELL_GRAY);
+		add(ModItems.PHONE_SHELL_SILVER);
+		add(ModItems.PHONE_SHELL_CYAN);
+		add(ModItems.PHONE_SHELL_PURPLE);
+		add(ModItems.PHONE_SHELL_BLUE);
+		add(ModItems.PHONE_SHELL_BROWN);
+		add(ModItems.PHONE_SHELL_GREEN);
+		add(ModItems.PHONE_SHELL_RED);
+		add(ModItems.PHONE_SHELL_BLACK);
+		add(ModItems.PHONE_SHELL_SPECIAL);
+
 		// Misc resource Items
 		add(ModItems.PAPER_STICK);
 		add(ModItems.WINE_BOTTLE);
 		add(ModItems.CARDBOARD_PIECE);
+		add(ModItems.ROD_CONSTANTAN);
+		add(ModItems.ROD_NICKEL);
 	}
 }

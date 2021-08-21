@@ -9,6 +9,8 @@ im.death.default=%s died due to this message being so generic (this is a bug btw
 im.death.assassinated=%s got assassinated!
 im.death.krabs=%s got their ass kicked by Mr. Krabs
 im.death.reverb=%s needs more reverb.
+im.death.rubberduck=%s got their fingers blown off by a rubber duck
+
 im.hammer.shift=Sound Event Randomized. New Result:
 im.throwable=Throwable Item
 
@@ -1293,6 +1295,7 @@ im.noprotect=Decorative Only. Does not provide protection against attack.
 im.product=Product:
 im.company=Manufactured by
 im.color=Color:
+im.angry=Watch out, this ducky has an explosive temper.
 im.material=Material:
 im.mat.steel=Steel
 im.mat.iron=Iron
@@ -1300,6 +1303,7 @@ im.mat.nickel=Nickel
 im.mat.constantan=Constantan
 im.mat.cheese=Cheese
 im.why=But Why Tho?
+im.wi=Product of Wisconsin
 im.sparkling=Did you really just chug that entire bottle of sparkling pink lemonade?
 
 //Food Boxes
@@ -1335,5 +1339,55 @@ tile.warehouse_light.name=Warehouse Light
 tile.ceiling_light_slim.name=Slim Ceiling Light
 
 item.cardboard_piece.name=Cardboard
+
 //Telecom
 tile.cell_antenna.name=Cellular Antenna
+item.smartphone_white.name=Smartphone
+item.smartphone_orange.name=Smartphone
+item.smartphone_magenta.name=Smartphone
+item.smartphone_lblue.name=Smartphone
+item.smartphone_yellow.name=Smartphone
+item.smartphone_lime.name=Smartphone
+item.smartphone_pink.name=Smartphone
+item.smartphone_gray.name=Smartphone
+item.smartphone_silver.name=Smartphone
+item.smartphone_cyan.name=Smartphone
+item.smartphone_purple.name=Smartphone
+item.smartphone_blue.name=Smartphone
+item.smartphone_brown.name=Smartphone
+item.smartphone_green.name=Smartphone
+item.smartphone_red.name=Smartphone
+item.smartphone_black.name=Smartphone
+item.smartphone_special.name=Smartphone
+item.phone_screen.name=Touchscreen Display
+item.phone_shell_white.name=White Phone Shell
+item.phone_shell_orange.name=Orange Phone Shell
+item.phone_shell_magenta.name=Magenta Phone Shell
+item.phone_shell_lblue.name=Light Blue Phone Shell
+item.phone_shell_yellow.name=Yellow Phone Shell
+item.phone_shell_lime.name=Lime Phone Shell
+item.phone_shell_pink.name=Pink Phone Shell
+item.phone_shell_gray.name=Gray Phone Shell
+item.phone_shell_silver.name=Light Gray Phone Shell
+item.phone_shell_cyan.name=Cyan Phone Shell
+item.phone_shell_purple.name=Purple Phone Shell
+item.phone_shell_blue.name=Blue Phone Shell
+item.phone_shell_brown.name=Brown Phone Shell
+item.phone_shell_green.name=Green Phone Shell
+item.phone_shell_red.name=Red Phone Shell
+item.phone_shell_black.name=Black Phone Shell
+item.phone_shell_special.name=Rainbow Phone Shell
+item.radio.name=Radio
+
+//Ducks
+item.rubber_duck.name=Rubber Ducky
+item.rubber_duck_cyan.name=Rubber Ducky
+item.rubber_duck_lime.name=Rubber Ducky
+item.rubber_duck_black.name=Rubber Ducky
+item.rubber_duck_blue.name=Rubber Ducky
+item.rubber_duck_green.name=Rubber Ducky
+item.rubber_duck_evil.name=Rubber Ducky
+
+//Rods
+item.rod_constantan.name=Constantan Rod
+item.rod_nickel.name=Nickel Rod

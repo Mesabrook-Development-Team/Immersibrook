@@ -1,0 +1,16 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "item": "wbtc:wbtc_floor_35"
+      },
+	  {
+		 "item": "wbtc:smooth_jungle"
+	  }
+   ],
+   "result": {
+      "item": "wbtc:sj_panel_tile_35",
+      "data": 0,
+      "count": 9
+   }
+}

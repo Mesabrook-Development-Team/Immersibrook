@@ -45,6 +45,7 @@ public class Truss extends Block implements IHasModel
     private final TextComponentTranslation constantan = new TextComponentTranslation("im.mat.constantan");
     private final TextComponentTranslation cheese = new TextComponentTranslation("im.mat.cheese");
     private final TextComponentTranslation why = new TextComponentTranslation("im.why");
+    private final TextComponentTranslation wisconsin = new TextComponentTranslation("im.wi");
 
     public Truss(String name, AxisAlignedBB unrotatedAABB, SoundType snd)
     {
@@ -76,6 +77,7 @@ public class Truss extends Block implements IHasModel
         cheese.getStyle().setColor(TextFormatting.YELLOW);
         why.getStyle().setItalic(true);
         why.getStyle().setColor(TextFormatting.LIGHT_PURPLE);
+        wisconsin.getStyle().setColor(TextFormatting.GOLD);
 
         ModBlocks.BLOCKS.add(this);
         ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
@@ -214,6 +216,7 @@ public class Truss extends Block implements IHasModel
         {
             tooltip.add(mat.getFormattedText() + " " + cheese.getFormattedText());
             tooltip.add(why.getFormattedText());
+            tooltip.add(wisconsin.getFormattedText());
         }
     }
 }

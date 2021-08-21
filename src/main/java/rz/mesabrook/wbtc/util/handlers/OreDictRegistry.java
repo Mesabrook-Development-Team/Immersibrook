@@ -11,7 +11,9 @@ public class OreDictRegistry
 	{
 		// Metals
 		OreDictionary.registerOre("stickIron", ModItems.IRON_ROD);
-		
+		OreDictionary.registerOre("stickConstantan", ModItems.ROD_CONSTANTAN);
+		OreDictionary.registerOre("stickNickel", ModItems.ROD_NICKEL);
+
 		// Plastics
 		OreDictionary.registerOre("listAllRawPlastic", ModItems.RAW_PLASTIC_WHITE);
 		OreDictionary.registerOre("listAllRawPlastic", ModItems.RAW_PLASTIC_ORANGE);
@@ -122,6 +124,8 @@ public class OreDictRegistry
 
 		// It's logging time.
 		Main.logger.info(ModItems.IRON_ROD.getUnlocalizedName() + " has been added to the Ore Dictionary under stickIron");
+		Main.logger.info(ModItems.ROD_CONSTANTAN.getUnlocalizedName() + " has been added to the Ore Dictionary under stickConstantan");
+		Main.logger.info(ModItems.ROD_NICKEL.getUnlocalizedName() + " has been added to the Ore Dictionary under stickNickel");
 		Main.logger.info(ModItems.RAW_PLASTIC.getUnlocalizedName() + " has been added to the Ore Dictionary under itemRawPlastic, listAllRawPlastic");
 		Main.logger.info(ModItems.RAW_PLASTIC_WHITE.getUnlocalizedName() + " has been added to the Ore Dictionary under itemRawPlastic, itemRawWhitePlastic, listAllRawPlastic");
 		Main.logger.info(ModItems.RAW_PLASTIC_ORANGE.getUnlocalizedName() + " has been added to the Ore Dictionary under itemRawPlastic, itemRawOrangePlastic, listAllRawPlastic");

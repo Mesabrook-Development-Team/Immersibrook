@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  R",
+    "PPP",
+    "PPP"
+  ],
+  "key": {
+    "P": {
+      "item": "wbtc:green_plastic"
+    },
+	"R": {
+	  "item": "wbtc:red_plastic"
+	}
+  },
+  "result": {
+    "item": "wbtc:rubber_duck_green",
+    "count": 1
+  }
+}

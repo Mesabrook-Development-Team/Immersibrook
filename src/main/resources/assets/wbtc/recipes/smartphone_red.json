@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S",
+    "B",
+    "C"
+  ],
+  "key": {
+    "S": {
+      "item": "wbtc:phone_screen"
+    },
+	"B": {
+      "item": "wbtc:phone_shell_red"
+    },
+	"C": {
+      "item": "immersiveengineering:material",
+	  "data": 27
+    }
+  },
+  "result": {
+    "item": "wbtc:smartphone_red",
+    "count": 1
+  }
+}
