@@ -4,10 +4,26 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraftforge.fml.server.FMLServerHandler;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.Tuple;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.world.World;
+import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import rz.mesabrook.wbtc.items.misc.ItemPhone;
+import rz.mesabrook.wbtc.net.telecom.CallAcceptedPacket;
+import rz.mesabrook.wbtc.net.telecom.DisconnectedCallNotificationPacket;
+import rz.mesabrook.wbtc.net.telecom.IncomingCallPacket;
+import rz.mesabrook.wbtc.net.telecom.OutgoingCallResponsePacket;
+import rz.mesabrook.wbtc.net.telecom.OutgoingCallResponsePacket.States;
+import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.config.ModConfig;
+import rz.mesabrook.wbtc.util.handlers.PacketHandler;
+import rz.mesabrook.wbtc.util.saveData.AntennaData;
+import rz.mesabrook.wbtc.util.saveData.PhoneNumberData;
 
 public class CallManager {
 	
@@ -23,7 +39,7 @@ public class CallManager {
 	}
 	
 	private HashMap<UUID, Call> callsByID = new HashMap<>();
-	private HashMap<String, Call> callsByOriginPhone = new HashMap<>();
+	private HashMap<String, Call> callsByPhone = new HashMap<>();
 	private ArrayList<UUID> callDequeue = new ArrayList<>();
 	private Object callMapLock = new Object();
 	
@@ -46,8 +62,29 @@ public class CallManager {
 				
 				if (call != null)
 				{
+					if (!call.getSkipDisconnectNotification())
+					{
+						Tuple<EntityPlayerMP, ItemStack> originOwner = call.getOwner(true);
+						if (originOwner != null)
+						{
+							DisconnectedCallNotificationPacket notify = new DisconnectedCallNotificationPacket();
+							notify.forNumber = call.getOriginPhone();
+							notify.toNumber = call.getDestPhone();
+							PacketHandler.INSTANCE.sendTo(notify, originOwner.getFirst());
+						}
+						
+						Tuple<EntityPlayerMP, ItemStack> destOwner = call.getOwner(false);
+						if (destOwner != null)
+						{
+							DisconnectedCallNotificationPacket notify = new DisconnectedCallNotificationPacket();
+							notify.forNumber = call.getDestPhone();
+							notify.toNumber = call.getOriginPhone();
+							PacketHandler.INSTANCE.sendTo(notify, destOwner.getFirst());
+						}
+					}
+					
 					callsByID.remove(dequeueCall);
-					callsByOriginPhone.values().remove(call);
+					while (callsByPhone.values().remove(call)) { }
 				}
 			}
 		}
@@ -60,6 +97,18 @@ public class CallManager {
 		callDequeue.add(id);
 	}
 	
+	public void enqueueCall(Call call)
+	{
+		callsByID.put(call.getID(), call);
+		callsByPhone.put(call.getOriginPhone(), call);
+		callsByPhone.put(call.getDestPhone(), call);
+	}
+	
+	public Call getCall(String phoneNumber)
+	{
+		return callsByPhone.get(phoneNumber);
+	}
+	
 	public class Call
 	{
 		private UUID id;
@@ -67,6 +116,7 @@ public class CallManager {
 		private String originPhone;
 		private String destPhone;
 		private int connectingTicks;
+		private boolean skipDisconnectNotification;
 		
 		public Call(String originPhone, String destPhone)
 		{
@@ -86,23 +136,155 @@ public class CallManager {
 			return callPhase;
 		}
 		
+		public String getOriginPhone() {
+			return originPhone;
+		}
+
+		public String getDestPhone() {
+			return destPhone;
+		}
+
+		public int getConnectingTicks() {
+			return connectingTicks;
+		}
+
+		public boolean getSkipDisconnectNotification() {
+			return skipDisconnectNotification;
+		}
+
 		public void tick()
 		{
 			if (getCallPhase() == CallPhases.Connecting)
 			{
+				if (connectingTicks == 0) // Brand new call
+				{
+					Tuple<EntityPlayerMP, ItemStack> originPhone = getOwner(true);
+					
+					// Check to see if the destination number is valid
+					World world = DimensionManager.getWorld(0);
+					PhoneNumberData phoneNumbers = PhoneNumberData.getOrCreate(world);
+					int destNumber = Integer.parseInt(getDestPhone());
+					
+					OutgoingCallResponsePacket outgoingPacket = new OutgoingCallResponsePacket();
+					outgoingPacket.fromNumber = getOriginPhone();
+					outgoingPacket.toNumber = getDestPhone();
+					if (!phoneNumbers.doesNumberExist(destNumber) && originPhone != null) // Notify user phone does not exist, only if user is holding phone
+					{
+						outgoingPacket.state = States.noSuchNumber;
+						PacketHandler.INSTANCE.sendTo(outgoingPacket, originPhone.getFirst());
+						
+						skipDisconnectNotification = true;
+						dequeueCall(getID());
+						return;
+					}
+					else if (originPhone != null) // Notify call is going through, only if user is holding phone
+					{	
+						outgoingPacket.state = States.success;
+						PacketHandler.INSTANCE.sendTo(outgoingPacket, originPhone.getFirst());
+					}
+					
+					// Find destination phone in player's inventory and tell player to ring
+					Tuple<EntityPlayerMP, ItemStack> destPhone = getOwner(false);
+					if (destPhone != null)
+					{
+						IncomingCallPacket incoming = new IncomingCallPacket();
+						incoming.fromNumber = getOriginPhone();
+						incoming.toNumber = getDestPhone();
+						PacketHandler.INSTANCE.sendTo(incoming, destPhone.getFirst());
+					}
+				}
+				
 				connectingTicks++;
 				
 				if (connectingTicks > ModConfig.phoneRingTicks)
 				{
-					sendMessageToPhone(FMLServerHandler.instance().getServer(), originPhone, new TextComponentTranslation("phone.didNotAnswer", destPhone));
 					dequeueCall(getID());
+					return;
 				}
 			}
 		}
 		
-		private void sendMessageToPhone(MinecraftServer server, String phone, TextComponentTranslation message)
+		public Tuple<EntityPlayerMP, ItemStack> getOwner(boolean forOrigin)
 		{
+			for (EntityPlayerMP player : FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayers())
+			{
+				AntennaData antennaData = AntennaData.getOrCreate(player.world);
+				if (antennaData.getBestReception(player.getPosition()) <= 0.0)
+				{
+					return null;
+				}
+				
+				for(int i = 0; i < player.inventory.getSizeInventory(); i++)
+				{
+					ItemStack stack = player.inventory.getStackInSlot(i);
+					if (!(stack.getItem() instanceof ItemPhone))
+					{
+						continue;
+					}
+					
+					NBTTagCompound tag = stack.getTagCompound();
+					if (tag == null || !tag.hasKey(Reference.PHONE_NUMBER_NBTKEY))
+					{
+						continue;
+					}
+					
+					int phoneNumber = tag.getInteger(Reference.PHONE_NUMBER_NBTKEY);
+					
+					if ((forOrigin && phoneNumber == Integer.parseInt(getOriginPhone())) || (!forOrigin && phoneNumber == Integer.parseInt(getDestPhone())))
+					{
+						return new Tuple<>(player, stack);
+					}
+				}
+			}
 			
+			return null;
+		}
+	
+		public void accept()
+		{
+			if (getCallPhase() != CallPhases.Connecting)
+			{
+				return;
+			}
+			
+			callPhase = CallPhases.Connected;
+			
+			Tuple<EntityPlayerMP, ItemStack> origin = getOwner(true);
+			if (origin != null)
+			{
+				CallAcceptedPacket accepted = new CallAcceptedPacket();
+				accepted.fromNumber = getOriginPhone();
+				accepted.toNumber = getDestPhone();
+				PacketHandler.INSTANCE.sendTo(accepted, origin.getFirst());
+			}
+			
+			Tuple<EntityPlayerMP, ItemStack> dest = getOwner(false);
+			if (dest != null)
+			{
+				CallAcceptedPacket accepted = new CallAcceptedPacket();
+				accepted.fromNumber = getDestPhone();
+				accepted.toNumber = getOriginPhone();
+				PacketHandler.INSTANCE.sendTo(accepted, dest.getFirst());
+			}
+		}
+	
+		public void onPlayerChat(EntityPlayerMP player, ITextComponent text)
+		{
+			Tuple<EntityPlayerMP, ItemStack> origin = getOwner(true);
+			Tuple<EntityPlayerMP, ItemStack> dest = getOwner(false);
+			
+			if (origin.getFirst() == player)
+			{
+				
+			}
+		}
+	}
+	
+	public void onPlayerChat(EntityPlayerMP player, ITextComponent text)
+	{
+		for(Call call : callsByID.values())
+		{
+			call.onPlayerChat(player, text);
 		}
 	}
 }

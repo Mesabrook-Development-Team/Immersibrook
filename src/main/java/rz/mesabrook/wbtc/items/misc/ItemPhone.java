@@ -37,14 +37,7 @@ public class ItemPhone extends Item implements IHasModel {
 				return super.onItemRightClick(worldIn, playerIn, handIn);
 			}
 			
-			if (currentPhone.getTagCompound() == null || !currentPhone.getTagCompound().hasKey(Reference.PHONE_NUMBER_NBTKEY))
-			{
-				playerIn.openGui(Main.instance, Reference.GUI_PHONE_ACTIVATE, worldIn, handIn.ordinal(), 0, 0);
-			}
-			else
-			{
-				playerIn.openGui(Main.instance, Reference.GUI_PHONE, worldIn, handIn.ordinal(), 0, 0);
-			}
+			playerIn.openGui(Main.instance, Reference.GUI_PHONE, worldIn, handIn.ordinal(), 0, 0);
 		}
 		return super.onItemRightClick(worldIn, playerIn, handIn);
 	}

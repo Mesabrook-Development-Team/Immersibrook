@@ -77,4 +77,9 @@ public class PhoneNumberData extends WorldSavedData {
 		
 		return false;
 	}
+
+	public boolean doesNumberExist(int number)
+	{
+		return usedPhoneNumbers.contains(number);
+	}
 }

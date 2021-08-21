@@ -8,13 +8,22 @@ import rz.mesabrook.wbtc.net.NVTogglePacket;
 import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.net.SoundRandomizerPacket;
 import rz.mesabrook.wbtc.net.VestTogglePacket;
+import rz.mesabrook.wbtc.net.telecom.AcceptCallPacket;
 import rz.mesabrook.wbtc.net.telecom.ActivateChooseNumberPacket;
 import rz.mesabrook.wbtc.net.telecom.ActivateNoReceptionPacket;
 import rz.mesabrook.wbtc.net.telecom.ActivateNumberChosenPacket;
 import rz.mesabrook.wbtc.net.telecom.ActivatePhonePacket;
 import rz.mesabrook.wbtc.net.telecom.ActivationCompletePacket;
+import rz.mesabrook.wbtc.net.telecom.CallAcceptedPacket;
+import rz.mesabrook.wbtc.net.telecom.DisconnectCallPacket;
+import rz.mesabrook.wbtc.net.telecom.DisconnectedCallNotificationPacket;
 import rz.mesabrook.wbtc.net.telecom.GetReceptionStrengthPacket;
 import rz.mesabrook.wbtc.net.telecom.GetStrengthResponsePacket;
+import rz.mesabrook.wbtc.net.telecom.IncomingCallPacket;
+import rz.mesabrook.wbtc.net.telecom.InitiateCallPacket;
+import rz.mesabrook.wbtc.net.telecom.OutgoingCallResponsePacket;
+import rz.mesabrook.wbtc.net.telecom.PhoneQueryPacket;
+import rz.mesabrook.wbtc.net.telecom.PhoneQueryResponsePacket;
 import rz.mesabrook.wbtc.util.Reference;
 
 public class PacketHandler 
@@ -41,6 +50,15 @@ public class PacketHandler
 		INSTANCE.registerMessage(ActivationCompletePacket.Handler.class, ActivationCompletePacket.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(GetReceptionStrengthPacket.Handler.class, GetReceptionStrengthPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(GetStrengthResponsePacket.Handler.class, GetStrengthResponsePacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(IncomingCallPacket.Handler.class, IncomingCallPacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(OutgoingCallResponsePacket.Handler.class, OutgoingCallResponsePacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(InitiateCallPacket.Handler.class, InitiateCallPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(PhoneQueryPacket.Handler.class, PhoneQueryPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(PhoneQueryResponsePacket.Handler.class, PhoneQueryResponsePacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(DisconnectCallPacket.Handler.class, DisconnectCallPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(DisconnectedCallNotificationPacket.Handler.class, DisconnectedCallNotificationPacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(AcceptCallPacket.Handler.class, AcceptCallPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(CallAcceptedPacket.Handler.class, CallAcceptedPacket.class, nextID(), Side.CLIENT);
 	}
 	
 	private static int nextID()

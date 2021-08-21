@@ -4,10 +4,21 @@ import java.io.IOException;
 
 import org.lwjgl.input.Keyboard;
 
+import it.unimi.dsi.fastutil.Stack;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.ISound;
+import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.registries.IForgeRegistry;
+import rz.mesabrook.wbtc.net.telecom.InitiateCallPacket;
+import rz.mesabrook.wbtc.util.Reference;
+import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 public class GuiPhoneCall extends GuiPhoneBase {
 
@@ -38,35 +49,20 @@ public class GuiPhoneCall extends GuiPhoneBase {
 		ImageButton digit0 = new ImageButton(0, INNER_X + INNER_TEX_WIDTH / 2 - 8, INNER_Y + INNER_TEX_HEIGHT / 2 + 55, 16, 16, "num0.png", 16, 16);
 		buttonList.add(digit0);
 		
-		ImageButton call = new ImageButton(11, INNER_X + INNER_TEX_WIDTH / 2 + 17, INNER_Y + INNER_TEX_HEIGHT / 2 + 55, 16, 16, "numcall.png", 16, 16);
+		ImageButton call = new ImageButton(10, INNER_X + INNER_TEX_WIDTH / 2 + 17, INNER_Y + INNER_TEX_HEIGHT / 2 + 55, 16, 16, "numcall.png", 16, 16);
 		buttonList.add(call);
 	}
 
 	@Override
 	protected void doDraw(int mouseX, int mouseY, float partialticks) {
-		final double dLittleFont = 0.75;
-		final double uLittleFont = 1 / 0.75;
-		
-		final double uBigFont = 2.1;
-		final double dBigFont = 1 / 2.1;
 		
 		GlStateManager.scale(dLittleFont, dLittleFont, dLittleFont);
 		fontRenderer.drawString("Phone", scale(INNER_X + 4, uLittleFont), scale(INNER_Y + 21, uLittleFont), 0xFFFFFF);
 		GlStateManager.scale(uLittleFont, uLittleFont, uLittleFont);
 		
 		GlStateManager.scale(uBigFont, uBigFont, uBigFont);
-		String formattedNumber = currentlyTypedNumber;
-		if (formattedNumber.length() >= 3)
-		{
-			formattedNumber = formattedNumber.substring(0, 3) + "-" + formattedNumber.substring(3, formattedNumber.length());
-		}
-		drawCenteredString(fontRenderer, formattedNumber + "|", scale(INNER_X + (INNER_TEX_WIDTH / 2), dBigFont), scale(INNER_Y + 60, dBigFont), 0xFFFFFF);
+		drawCenteredString(fontRenderer, getFormattedPhoneNumber(currentlyTypedNumber) + "|", scale(INNER_X + (INNER_TEX_WIDTH / 2), dBigFont), scale(INNER_Y + 60, dBigFont), 0xFFFFFF);
 		GlStateManager.scale(dBigFont, dBigFont, dBigFont);
-	}
-	
-	private int scale(int number, double scale)
-	{
-		return (int)(number * scale);
 	}
 	
 	@Override
@@ -76,6 +72,22 @@ public class GuiPhoneCall extends GuiPhoneBase {
 		if (button.id >= 0 && button.id <= 9 && currentlyTypedNumber.length() < 7)
 		{
 			currentlyTypedNumber += Integer.toString(button.id);
+			
+			IForgeRegistry<SoundEvent> soundRegistry = GameRegistry.findRegistry(SoundEvent.class);
+			SoundEvent dtmfEvent = soundRegistry.getValue(new ResourceLocation(Reference.MODID, "dtmf_" + button.id));
+			
+			ISound dtmfSound = PositionedSoundRecord.getMasterRecord(dtmfEvent, 1F);
+			Minecraft.getMinecraft().getSoundHandler().playSound(dtmfSound);
+		}
+		
+		if (button.id == 10)
+		{
+			Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneCalling(phoneStack, hand, currentlyTypedNumber));
+			
+			InitiateCallPacket packet = new InitiateCallPacket();
+			packet.fromNumber = getCurrentPhoneNumber();
+			packet.toNumber = currentlyTypedNumber;
+			PacketHandler.INSTANCE.sendToServer(packet);			
 		}
 	}
 	

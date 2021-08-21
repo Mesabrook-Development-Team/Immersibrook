@@ -1,10 +1,13 @@
 package rz.mesabrook.wbtc.util.handlers;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map.Entry;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.ISound;
+import net.minecraft.client.audio.ISound.AttenuationType;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.multiplayer.WorldClient;
@@ -12,17 +15,26 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
+import rz.mesabrook.wbtc.blocks.gui.telecom.GuiCallEnd;
+import rz.mesabrook.wbtc.blocks.gui.telecom.GuiEmptyPhone;
+import rz.mesabrook.wbtc.blocks.gui.telecom.GuiHome;
+import rz.mesabrook.wbtc.blocks.gui.telecom.GuiIncomingCall;
 import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneActivate;
 import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneActivate.ActivationScreens;
 import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneBase;
+import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneCalling;
+import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneConnected;
 import rz.mesabrook.wbtc.blocks.gui.telecom.SignalStrengths;
+import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.net.PlaySoundPacket;
+import rz.mesabrook.wbtc.net.telecom.PhoneQueryResponsePacket.ResponseTypes;
 import rz.mesabrook.wbtc.util.Reference;
 
 @SideOnly(Side.CLIENT)
@@ -116,6 +128,194 @@ public class ClientSideHandlers
 				GuiPhoneBase phone = (GuiPhoneBase)Minecraft.getMinecraft().currentScreen;
 				phone.setSignalStrength(SignalStrengths.getForReceptionAmount(reception));
 			}
+		}
+	
+		private static HashMap<String, ISound> incomingCallSoundsByPhone = new HashMap<>();
+		public static void onIncomingCall(String fromNumber, String toNumber)
+		{
+			SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
+			ISound incomingCallSound = incomingCallSoundsByPhone.get(toNumber);
+			if (incomingCallSound != null && handler.isSoundPlaying(incomingCallSound))
+			{
+				return;
+			}
+			
+			incomingCallSound = new PositionedSoundRecord(SoundInit.DING_6.getSoundName(), SoundCategory.MASTER, 0.25F, 1F, true, 0, AttenuationType.NONE, 0, 0, 0);
+			incomingCallSoundsByPhone.put(toNumber, incomingCallSound);
+			handler.playSound(incomingCallSound);
+			
+			Minecraft mc = Minecraft.getMinecraft();
+			if (mc.currentScreen instanceof GuiPhoneBase)
+			{
+				GuiPhoneBase screen = (GuiPhoneBase)mc.currentScreen;
+				if (!screen.getCurrentPhoneNumber().equals(toNumber))
+				{
+					return;
+				}
+				
+				GuiIncomingCall incoming = new GuiIncomingCall(screen.getPhoneStack(), screen.getHand(), fromNumber);
+				mc.displayGuiScreen(incoming);
+			}
+		}
+		
+		private static HashMap<String, ISound> outgoingCallsByPhone = new HashMap<>();
+		public static void onOutgoingCallConnected(String fromNumber)
+		{
+			SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
+			ISound outgoingCall = outgoingCallsByPhone.get(fromNumber);
+			if (outgoingCall != null && handler.isSoundPlaying(outgoingCall))
+			{
+				return;
+			}
+			
+			outgoingCall = new PositionedSoundRecord(SoundInit.OUTGOING_CALL.getSoundName(), SoundCategory.MASTER, 0.25F, 1F, true, 0, AttenuationType.NONE, 0, 0, 0);
+			outgoingCallsByPhone.put(fromNumber, outgoingCall);
+			handler.playSound(outgoingCall);
+		}
+		
+		public static void onOutgoingCallNoSuchNumber(String fromNumber, String toNumber)
+		{
+			SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
+			ISound sit = PositionedSoundRecord.getMasterRecord(SoundInit.SIT, 1F);
+			handler.playSound(sit);
+			
+			if (Minecraft.getMinecraft().currentScreen instanceof GuiPhoneCalling)
+			{
+				GuiPhoneCalling calling = (GuiPhoneCalling)Minecraft.getMinecraft().currentScreen;
+				if (!calling.getCurrentPhoneNumber().equals(fromNumber))
+				{
+					return;
+				}
+				
+				GuiCallEnd end = new GuiCallEnd(calling.getPhoneStack(), calling.getHand(), toNumber);
+				end.setMessage("No such number!");
+				Minecraft.getMinecraft().displayGuiScreen(end);
+			}
+		}
+	
+		public static void onCallNoReception(String fromNumber, String toNumber)
+		{
+			if (Minecraft.getMinecraft().currentScreen instanceof GuiPhoneCalling)
+			{
+				GuiPhoneCalling calling = (GuiPhoneCalling)Minecraft.getMinecraft().currentScreen;
+				if (!calling.getCurrentPhoneNumber().equals(fromNumber))
+				{
+					return;
+				}
+				
+				GuiCallEnd end = new GuiCallEnd(calling.getPhoneStack(), calling.getHand(), toNumber);
+				end.setMessage("No reception!");
+				Minecraft.getMinecraft().displayGuiScreen(end);
+			}
+		}
+		
+		public static void onPhoneQueryResponsePacket(String forNumber, ResponseTypes responseType, String otherNumber)
+		{
+			Minecraft mc = Minecraft.getMinecraft();
+			if (!(mc.currentScreen instanceof GuiEmptyPhone))
+			{
+				return;
+			}
+			
+			GuiEmptyPhone currentGui = (GuiEmptyPhone)mc.currentScreen;
+			String currentPhone = currentGui.getPhoneNumber();
+			if (!currentPhone.equals(forNumber))
+			{
+				return;
+			}
+			
+			if (responseType == ResponseTypes.idle)
+			{
+				mc.displayGuiScreen(new GuiHome(currentGui.getPhoneStack(), currentGui.getHand()));
+			}
+			else if (responseType == ResponseTypes.callConnecting)
+			{
+				mc.displayGuiScreen(new GuiPhoneCalling(currentGui.getPhoneStack(), currentGui.getHand(), otherNumber));
+			}
+			else if (responseType == ResponseTypes.callIncoming)
+			{
+				mc.displayGuiScreen(new GuiIncomingCall(currentGui.getPhoneStack(), currentGui.getHand(), otherNumber));
+			}
+			else if (responseType == ResponseTypes.callConnected) 
+			{
+				mc.displayGuiScreen(new GuiPhoneConnected(currentGui.getPhoneStack(), currentGui.getHand(), otherNumber));
+			}
+		}
+	
+		public static void onCallDisconnected(String forNumber, String toNumber)
+		{
+			Minecraft mc = Minecraft.getMinecraft();
+			
+			ISound incomingCallSound = incomingCallSoundsByPhone.get(forNumber);
+			if (incomingCallSound != null && mc.getSoundHandler().isSoundPlaying(incomingCallSound))
+			{
+				mc.getSoundHandler().stopSound(incomingCallSound);
+				incomingCallSoundsByPhone.remove(forNumber);
+			}
+
+			ISound outgoingCall = outgoingCallsByPhone.get(forNumber);
+			if (outgoingCall != null && mc.getSoundHandler().isSoundPlaying(outgoingCall))
+			{
+				mc.getSoundHandler().stopSound(outgoingCall);
+				outgoingCallsByPhone.remove(forNumber);
+			}
+			
+			if (mc.currentScreen instanceof GuiIncomingCall)
+			{
+				GuiIncomingCall incomingScreen = (GuiIncomingCall)mc.currentScreen;
+				if (!incomingScreen.getCurrentPhoneNumber().equals(forNumber))
+				{
+					return;
+				}
+				
+				mc.displayGuiScreen(new GuiHome(incomingScreen.getPhoneStack(), incomingScreen.getHand()));
+			}
+			else if (mc.currentScreen instanceof GuiPhoneCalling || mc.currentScreen instanceof GuiPhoneConnected)
+			{
+				GuiPhoneBase callingScreen = (GuiPhoneBase)mc.currentScreen;
+				if (!callingScreen.getCurrentPhoneNumber().equals(forNumber))
+				{
+					return;
+				}
+				
+				mc.displayGuiScreen(new GuiCallEnd(callingScreen.getPhoneStack(), callingScreen.getHand(), toNumber));
+			}
+		}
+	
+		public static HashMap<String, LocalDateTime> callStartsByPhone = new HashMap<>();
+		public static void onCallConnected(String forNumber, String toNumber)
+		{
+			Minecraft mc = Minecraft.getMinecraft();
+			
+			if (mc.currentScreen instanceof GuiPhoneCalling || mc.currentScreen instanceof GuiIncomingCall)
+			{
+				GuiPhoneBase phoneBase = (GuiPhoneBase)mc.currentScreen;
+				if (!phoneBase.getCurrentPhoneNumber().equals(forNumber))
+				{
+					return;
+				}
+				
+				callStartsByPhone.put(forNumber, LocalDateTime.now());
+				
+				GuiPhoneConnected connected = new GuiPhoneConnected(phoneBase.getPhoneStack(), phoneBase.getHand(), toNumber);
+				mc.displayGuiScreen(connected);
+			}
+			
+			ISound incomingCallSound = incomingCallSoundsByPhone.get(forNumber);
+			if (incomingCallSound != null && mc.getSoundHandler().isSoundPlaying(incomingCallSound))
+			{
+				mc.getSoundHandler().stopSound(incomingCallSound);
+				incomingCallSoundsByPhone.remove(forNumber);
+			}
+
+			ISound outgoingCall = outgoingCallsByPhone.get(forNumber);
+			if (outgoingCall != null && mc.getSoundHandler().isSoundPlaying(outgoingCall))
+			{
+				mc.getSoundHandler().stopSound(outgoingCall);
+				outgoingCallsByPhone.remove(forNumber);
+			}
+			
+			mc.player.sendMessage(new TextComponentString("You are now connected to " + toNumber));
 		}
 	}
 }
