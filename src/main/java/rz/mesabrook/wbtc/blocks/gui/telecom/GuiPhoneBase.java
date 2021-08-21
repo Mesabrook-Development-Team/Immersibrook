@@ -8,6 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.net.telecom.GetReceptionStrengthPacket;
+import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 @SideOnly(Side.CLIENT)
@@ -23,6 +24,10 @@ public abstract class GuiPhoneBase extends GuiScreen {
 	protected final int INNER_TEX_Y_OFFSET = 7;
 	protected final int GUI_WIDTH = 352;
 	protected final int GUI_HEIGHT = 444;
+	protected final double dLittleFont = 0.75;
+	protected final double uLittleFont = 1 / 0.75;
+	protected final double uBigFont = 2.1;
+	protected final double dBigFont = 1 / 2.1;
 	protected int OUTER_X;
 	protected int OUTER_Y;
 	protected int INNER_X;
@@ -35,6 +40,11 @@ public abstract class GuiPhoneBase extends GuiScreen {
 	
 	private final int STATUS_BAR_HEIGHT = 14;
 	private SignalStrengths signalStrength = SignalStrengths.unknown;
+	
+	@Override
+	public boolean doesGuiPauseGame() {
+		return false;
+	}
 	
 	public GuiPhoneBase(ItemStack phoneStack, EnumHand hand)
 	{
@@ -129,4 +139,33 @@ public abstract class GuiPhoneBase extends GuiScreen {
 	}
 	
 	protected abstract String getInnerTextureFileName();
+
+	protected int scale(int number, double scale)
+	{
+		return (int)(number * scale);
+	}
+
+	protected String getFormattedPhoneNumber(String number)
+	{
+
+		String formattedNumber = number;
+		if (formattedNumber.length() >= 3)
+		{
+			formattedNumber = formattedNumber.substring(0, 3) + "-" + formattedNumber.substring(3, formattedNumber.length());
+		}
+		return formattedNumber;
+	}
+
+	public ItemStack getPhoneStack() {
+		return phoneStack;
+	}
+
+	public EnumHand getHand() {
+		return hand;
+	}
+
+	public String getCurrentPhoneNumber()
+	{
+		return Integer.toString(phoneStack.getTagCompound().getInteger(Reference.PHONE_NUMBER_NBTKEY));
+	}
 }

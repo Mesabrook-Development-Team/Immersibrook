@@ -94,6 +94,8 @@ public class SoundInit
 	public static final SoundEvent DING_5;
 	public static final SoundEvent DING_6;
 	public static final SoundEvent DING_7;
+	public static final SoundEvent OUTGOING_CALL;
+	public static final SoundEvent SIT;
 
 	// DTMF Phone Tones
 	public static final SoundEvent DTMF_0;
@@ -188,6 +190,8 @@ public class SoundInit
 		DING_5 = addSoundsToRegistry("ding_5");
 		DING_6 = addSoundsToRegistry("ding_6");
 		DING_7 = addSoundsToRegistry("ding_7");
+		OUTGOING_CALL = addSoundsToRegistry("outgoingcall");
+		SIT = addSoundsToRegistry("sit");
 
 		// DTMF Phone Tones
 		DTMF_0 = addSoundsToRegistry("dtmf_0");
@@ -289,6 +293,8 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.DING_5);
 				event.getRegistry().registerAll(SoundInit.DING_6);
 				event.getRegistry().registerAll(SoundInit.DING_7);
+				event.getRegistry().registerAll(SoundInit.OUTGOING_CALL);
+				event.getRegistry().registerAll(SoundInit.SIT);
 				event.getRegistry().registerAll(SoundInit.DTMF_0);
 				event.getRegistry().registerAll(SoundInit.DTMF_1);
 				event.getRegistry().registerAll(SoundInit.DTMF_2);
