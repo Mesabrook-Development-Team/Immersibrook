@@ -68,6 +68,9 @@ public final class ModConfig
 	@Comment("What is the (exclusive) maximum randomly generated phone number?")
 	public static int maximumPhoneNumber = 7999999;
 	
+	@Comment("What character should be used for scrambling text when outside of maximum reception range?")
+	public static String scrambleCharacter = "-";
+	
 	@Mod.EventBusSubscriber(modid = Reference.MODID)
 	private static class EventHandler
 	{

@@ -145,7 +145,7 @@ public abstract class GuiPhoneBase extends GuiScreen {
 		return (int)(number * scale);
 	}
 
-	protected String getFormattedPhoneNumber(String number)
+	public static String getFormattedPhoneNumber(String number)
 	{
 
 		String formattedNumber = number;

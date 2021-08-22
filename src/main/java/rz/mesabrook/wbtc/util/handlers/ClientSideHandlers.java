@@ -315,7 +315,7 @@ public class ClientSideHandlers
 				outgoingCallsByPhone.remove(forNumber);
 			}
 			
-			mc.player.sendMessage(new TextComponentString("You are now connected to " + toNumber));
+			mc.player.sendMessage(new TextComponentString("You are now connected to " + GuiPhoneBase.getFormattedPhoneNumber(toNumber)));
 		}
 	}
 }

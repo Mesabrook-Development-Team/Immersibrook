@@ -2,14 +2,20 @@ package rz.mesabrook.wbtc.telecom;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.PrimitiveIterator.OfInt;
+import java.util.Random;
 import java.util.UUID;
+import java.util.stream.IntStream;
 
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.Tuple;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -270,13 +276,108 @@ public class CallManager {
 	
 		public void onPlayerChat(EntityPlayerMP player, ITextComponent text)
 		{
+			AntennaData data = AntennaData.getOrCreate(player.world);
+			double senderReception = data.getBestReception(player.getPosition());
+			
 			Tuple<EntityPlayerMP, ItemStack> origin = getOwner(true);
 			Tuple<EntityPlayerMP, ItemStack> dest = getOwner(false);
 			
-			if (origin.getFirst() == player)
+			if (origin.getFirst() != player)
 			{
+				EntityPlayerMP receiver = origin.getFirst();
+				double receiverReception = data.getBestReception(receiver.getPosition());
 				
+				double effectiveReception = receiverReception < senderReception ? receiverReception : senderReception;
+				if (effectiveReception <= 0.0)
+				{
+					return;
+				}
+				
+				ITextComponent textToSend = getScrambledText(text, effectiveReception);
+				receiver.sendMessage(textToSend);
 			}
+			
+			if (dest.getFirst() != player)
+			{
+				EntityPlayerMP receiver = dest.getFirst();
+				double receiverReception = data.getBestReception(receiver.getPosition());
+				
+				double effectiveReception = receiverReception < senderReception ? receiverReception : senderReception;
+				if (effectiveReception <= 0.0)
+				{
+					return;
+				}
+				
+				ITextComponent textToSend = getScrambledText(text, effectiveReception);
+				receiver.sendMessage(textToSend);
+			}
+		}
+		
+		private ITextComponent getScrambledText(ITextComponent text, double reception)
+		{
+			String formattedText = text.getFormattedText();
+			char[] textChars = formattedText.replace(" ", "").toCharArray();
+			char[] originalText = formattedText.toCharArray();
+			int amountOfCharsToScramble = (int)(textChars.length * (1.0 - reception));
+			
+			if (amountOfCharsToScramble == textChars.length)
+			{
+				String returnedText = "";
+				for(int i = 0; i < originalText.length; i++)
+				{
+					char originalChar = originalText[i];
+					if (originalChar == ' ')
+					{
+						returnedText += " ";
+					}
+					else
+					{
+						returnedText += ModConfig.scrambleCharacter;
+					}
+				}
+				
+				return new TextComponentString(returnedText);
+			}
+			
+			Random rand = new Random();
+			HashSet<Integer> indexesToScramble = new HashSet<>(amountOfCharsToScramble);
+			IntStream ints = rand.ints(0, originalText.length);
+			
+			OfInt iterator = ints.iterator();
+			while(indexesToScramble.size() < amountOfCharsToScramble)
+			{
+				int index = iterator.next();
+				
+				if (originalText[index] == ' ' || originalText[index] == '\u00A7' || (index > 0 && originalText[index - 1] == '\u00A7'))
+				{
+					continue;
+				}
+				
+				indexesToScramble.add(index);
+			}
+			
+			ints.close();
+			
+			String newText = "";
+			for(int i = 0; i < originalText.length; i++)
+			{
+				if (indexesToScramble.contains(i))
+				{
+					newText += ModConfig.scrambleCharacter;
+				}
+				else
+				{
+					newText += originalText[i];
+				}
+			}
+			
+			TextComponentString retVal = new TextComponentString("[Phone]");
+			Style style = new Style();
+			style.setColor(TextFormatting.DARK_PURPLE);
+			retVal.setStyle(style);
+			retVal.appendSibling(new TextComponentString(newText));
+			
+			return retVal;
 		}
 	}
 	
