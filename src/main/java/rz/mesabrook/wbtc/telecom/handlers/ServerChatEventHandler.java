@@ -12,9 +12,10 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import rz.mesabrook.wbtc.Main;
+import rz.mesabrook.wbtc.telecom.CallManager;
 import rz.mesabrook.wbtc.util.config.ModConfig;
 
-@EventBusSubscriber(Side.SERVER)
+@EventBusSubscriber
 public class ServerChatEventHandler {
 	static Field serverControllerField;
 	
@@ -50,6 +51,8 @@ public class ServerChatEventHandler {
 		}
 		
 		e.setCanceled(true);
+		CallManager.instance().onPlayerChat(e.getPlayer(), e.getComponent());
+		
 		for(EntityPlayerMP player : server.getPlayerList().getPlayers())
 		{
 			if (player.getDistance(e.getPlayer()) <= ModConfig.proximityChatDistance)

@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import rz.mesabrook.wbtc.net.telecom.AcceptCallPacket;
-import rz.mesabrook.wbtc.net.telecom.DisconnectCallPacket;
+import rz.mesabrook.wbtc.net.telecom.RejectCallPacket;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 public class GuiIncomingCall extends GuiPhoneBase {
@@ -49,9 +49,9 @@ public class GuiIncomingCall extends GuiPhoneBase {
 	protected void actionPerformed(GuiButton button) throws IOException {
 		if (button.id == 1)
 		{
-			DisconnectCallPacket disconnect = new DisconnectCallPacket();
-			disconnect.fromNumber = incomingNumber;
-			PacketHandler.INSTANCE.sendToServer(disconnect);
+			RejectCallPacket reject = new RejectCallPacket();
+			reject.fromNumber = incomingNumber;
+			PacketHandler.INSTANCE.sendToServer(reject);
 		}
 		
 		if (button.id == 0)

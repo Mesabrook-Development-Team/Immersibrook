@@ -20,4 +20,4 @@ build
 # other
 eclipse
 run
-lib/ImmersiveEngineering-0.12-98.jar
+lib/*

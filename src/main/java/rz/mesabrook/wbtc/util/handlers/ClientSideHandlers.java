@@ -260,15 +260,16 @@ public class ClientSideHandlers
 				outgoingCallsByPhone.remove(forNumber);
 			}
 			
+			PositionedSoundRecord startSound = PositionedSoundRecord.getMasterRecord(SoundInit.ENDCALL, 1F);
+			mc.getSoundHandler().playSound(startSound);
+
 			if (mc.currentScreen instanceof GuiIncomingCall)
 			{
 				GuiIncomingCall incomingScreen = (GuiIncomingCall)mc.currentScreen;
-				if (!incomingScreen.getCurrentPhoneNumber().equals(forNumber))
+				if (incomingScreen.getCurrentPhoneNumber().equals(forNumber))
 				{
-					return;
+					mc.displayGuiScreen(new GuiHome(incomingScreen.getPhoneStack(), incomingScreen.getHand()));
 				}
-				
-				mc.displayGuiScreen(new GuiHome(incomingScreen.getPhoneStack(), incomingScreen.getHand()));
 			}
 			else if (mc.currentScreen instanceof GuiPhoneCalling || mc.currentScreen instanceof GuiPhoneConnected)
 			{
@@ -280,6 +281,8 @@ public class ClientSideHandlers
 				
 				mc.displayGuiScreen(new GuiCallEnd(callingScreen.getPhoneStack(), callingScreen.getHand(), toNumber));
 			}
+			
+			mc.player.sendMessage(new TextComponentString("Phone call with " + GuiPhoneBase.getFormattedPhoneNumber(toNumber) + " has been disconnected"));
 		}
 	
 		public static HashMap<String, LocalDateTime> callStartsByPhone = new HashMap<>();
@@ -315,7 +318,54 @@ public class ClientSideHandlers
 				outgoingCallsByPhone.remove(forNumber);
 			}
 			
-			mc.player.sendMessage(new TextComponentString("You are now connected to " + toNumber));
+			mc.player.sendMessage(new TextComponentString("You are now connected to " + GuiPhoneBase.getFormattedPhoneNumber(toNumber)));
+		}
+		
+		public static void onCallRejected(String forNumber, String toNumber)
+		{
+			Minecraft mc = Minecraft.getMinecraft();
+			
+			ISound incomingCallSound = incomingCallSoundsByPhone.get(forNumber);
+			if (incomingCallSound != null && mc.getSoundHandler().isSoundPlaying(incomingCallSound))
+			{
+				mc.getSoundHandler().stopSound(incomingCallSound);
+				incomingCallSoundsByPhone.remove(forNumber);
+			}
+
+			ISound outgoingCall = outgoingCallsByPhone.get(forNumber);
+			if (outgoingCall != null && mc.getSoundHandler().isSoundPlaying(outgoingCall))
+			{
+				mc.getSoundHandler().stopSound(outgoingCall);
+				outgoingCallsByPhone.remove(forNumber);
+			}
+			
+			boolean displayRejectedMessage = true;
+			if (mc.currentScreen instanceof GuiIncomingCall)
+			{
+				GuiIncomingCall incomingScreen = (GuiIncomingCall)mc.currentScreen;
+				if (incomingScreen.getCurrentPhoneNumber().equals(forNumber))
+				{
+					mc.displayGuiScreen(new GuiHome(incomingScreen.getPhoneStack(), incomingScreen.getHand()));
+					displayRejectedMessage = false;
+				}
+			}
+			else if (mc.currentScreen instanceof GuiPhoneCalling || mc.currentScreen instanceof GuiPhoneConnected)
+			{
+				PositionedSoundRecord startSound = PositionedSoundRecord.getMasterRecord(SoundInit.ENDCALL, 1F);
+				mc.getSoundHandler().playSound(startSound);
+				
+				GuiPhoneBase callingScreen = (GuiPhoneBase)mc.currentScreen;
+				if (callingScreen.getCurrentPhoneNumber().equals(forNumber))
+				{
+					mc.displayGuiScreen(new GuiCallEnd(callingScreen.getPhoneStack(), callingScreen.getHand(), toNumber));
+					displayRejectedMessage = false;
+				}
+			}
+			
+			if (displayRejectedMessage)
+			{
+				mc.player.sendMessage(new TextComponentString("Phone call attempt with " + GuiPhoneBase.getFormattedPhoneNumber(toNumber) + " was rejected"));
+			}
 		}
 	}
 }
