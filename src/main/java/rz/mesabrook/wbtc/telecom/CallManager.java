@@ -21,6 +21,7 @@ import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import rz.mesabrook.wbtc.items.misc.ItemPhone;
 import rz.mesabrook.wbtc.net.telecom.CallAcceptedPacket;
+import rz.mesabrook.wbtc.net.telecom.CallRejectedPacket;
 import rz.mesabrook.wbtc.net.telecom.DisconnectedCallNotificationPacket;
 import rz.mesabrook.wbtc.net.telecom.IncomingCallPacket;
 import rz.mesabrook.wbtc.net.telecom.OutgoingCallResponsePacket;
@@ -272,6 +273,30 @@ public class CallManager {
 				accepted.toNumber = getOriginPhone();
 				PacketHandler.INSTANCE.sendTo(accepted, dest.getFirst());
 			}
+		}
+		
+		public void reject()
+		{
+			Tuple<EntityPlayerMP, ItemStack> origin = getOwner(true);
+			if (origin != null)
+			{
+				CallRejectedPacket rejected = new CallRejectedPacket();
+				rejected.fromNumber = getOriginPhone();
+				rejected.toNumber = getDestPhone();
+				PacketHandler.INSTANCE.sendTo(rejected, origin.getFirst());
+			}
+			
+			Tuple<EntityPlayerMP, ItemStack> dest = getOwner(false);
+			if (dest != null)
+			{
+				CallRejectedPacket rejected = new CallRejectedPacket();
+				rejected.fromNumber = getDestPhone();
+				rejected.toNumber = getOriginPhone();
+				PacketHandler.INSTANCE.sendTo(rejected, dest.getFirst());
+			}
+			
+			skipDisconnectNotification = true;
+			dequeueCall(getID());
 		}
 	
 		public void onPlayerChat(EntityPlayerMP player, ITextComponent text)

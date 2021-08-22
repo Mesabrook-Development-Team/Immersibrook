@@ -72,6 +72,8 @@
 	"ding_7": {"category": "master","sounds": [{"name": "wbtc:ding_7","stream": true}]},
 	"outgoingcall": {"category": "master","sounds": [{"name": "wbtc:outgoingcall"}]},
 	"sit": {"category": "master","sounds": [{"name": "wbtc:sit","stream": true}]},
+	"startcall": {"category": "master","sounds": [{"name": "wbtc:startcall","stream": true}]},
+	"endcall": {"category": "master","sounds": [{"name": "wbtc:endcall","stream": true}]},
 	"dtmf_0": {"category": "master","sounds": [{"name": "wbtc:dtmf_0","stream": true}]},
 	"dtmf_1": {"category": "master","sounds": [{"name": "wbtc:dtmf_1","stream": true}]},
 	"dtmf_2": {"category": "master","sounds": [{"name": "wbtc:dtmf_2","stream": true}]},

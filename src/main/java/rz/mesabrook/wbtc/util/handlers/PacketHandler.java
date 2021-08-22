@@ -15,6 +15,7 @@ import rz.mesabrook.wbtc.net.telecom.ActivateNumberChosenPacket;
 import rz.mesabrook.wbtc.net.telecom.ActivatePhonePacket;
 import rz.mesabrook.wbtc.net.telecom.ActivationCompletePacket;
 import rz.mesabrook.wbtc.net.telecom.CallAcceptedPacket;
+import rz.mesabrook.wbtc.net.telecom.CallRejectedPacket;
 import rz.mesabrook.wbtc.net.telecom.DisconnectCallPacket;
 import rz.mesabrook.wbtc.net.telecom.DisconnectedCallNotificationPacket;
 import rz.mesabrook.wbtc.net.telecom.GetReceptionStrengthPacket;
@@ -24,6 +25,7 @@ import rz.mesabrook.wbtc.net.telecom.InitiateCallPacket;
 import rz.mesabrook.wbtc.net.telecom.OutgoingCallResponsePacket;
 import rz.mesabrook.wbtc.net.telecom.PhoneQueryPacket;
 import rz.mesabrook.wbtc.net.telecom.PhoneQueryResponsePacket;
+import rz.mesabrook.wbtc.net.telecom.RejectCallPacket;
 import rz.mesabrook.wbtc.util.Reference;
 
 public class PacketHandler 
@@ -59,6 +61,8 @@ public class PacketHandler
 		INSTANCE.registerMessage(DisconnectedCallNotificationPacket.Handler.class, DisconnectedCallNotificationPacket.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(AcceptCallPacket.Handler.class, AcceptCallPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(CallAcceptedPacket.Handler.class, CallAcceptedPacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(RejectCallPacket.Handler.class, RejectCallPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(CallRejectedPacket.Handler.class, CallRejectedPacket.class, nextID(), Side.CLIENT);
 	}
 	
 	private static int nextID()
