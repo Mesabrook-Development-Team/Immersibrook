@@ -113,13 +113,14 @@ public class ItemBanHammer extends ItemPickaxe implements IHasModel
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand)
     {
         ItemStack item = player.getHeldItem(hand);
+        SoundRandomizer.HammerRightClickRandomizer();
         if(this.getUnlocalizedName().contains("levi_hammer"))
         {
             if(!world.isRemote)
             {
                 PlaySoundPacket packet = new PlaySoundPacket();
                 packet.pos = player.getPosition();
-                packet.soundName = "spree";
+                packet.soundName = SoundRandomizer.hammerRightClick;
                 PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
                 return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
             }

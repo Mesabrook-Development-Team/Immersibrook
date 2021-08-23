@@ -14,6 +14,7 @@ public class SoundRandomizer
 	public static String owoResult;
 	public static SoundEvent catResult;
 	public static SoundEvent popResultSP;
+	public static String hammerRightClick;
 
 	public static void RandomizeSound()
 	{
@@ -148,6 +149,32 @@ public class SoundRandomizer
 				break;
 			case 2:
 				owoResult = "new_owo_short";
+				break;
+		}
+	}
+
+	public static void HammerRightClickRandomizer()
+	{
+		Random chooser = new Random();
+		int snds;
+		snds = chooser.nextInt(5);
+
+		switch(snds)
+		{
+			case 0:
+				hammerRightClick = "spree";
+				break;
+			case 1:
+				hammerRightClick = "spree";
+				break;
+			case 2:
+				hammerRightClick = "spree";
+				break;
+			case 3:
+				hammerRightClick = "spree";
+				break;
+			case 4:
+				hammerRightClick = "baka";
 				break;
 		}
 	}

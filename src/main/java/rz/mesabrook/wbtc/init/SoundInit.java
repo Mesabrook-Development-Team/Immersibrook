@@ -58,6 +58,7 @@ public class SoundInit
 	public static final SoundEvent BURP;
 	public static final SoundEvent QUACK;
 	public static final SoundEvent QUACKBOOM;
+	public static final SoundEvent BAKA;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -160,6 +161,7 @@ public class SoundInit
 		BURP = addSoundsToRegistry("burp");
 		QUACK = addSoundsToRegistry("duck");
 		QUACKBOOM = addSoundsToRegistry("duckboom");
+		BAKA = addSoundsToRegistry("baka");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -317,6 +319,7 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.DTMF_9);
 				event.getRegistry().registerAll(SoundInit.QUACK);
 				event.getRegistry().registerAll(SoundInit.QUACKBOOM);
+				event.getRegistry().registerAll(SoundInit.BAKA);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");
