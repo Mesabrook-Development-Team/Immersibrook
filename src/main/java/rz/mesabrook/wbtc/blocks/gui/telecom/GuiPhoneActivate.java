@@ -29,6 +29,11 @@ public class GuiPhoneActivate extends GuiScreen {
 	public ActivationScreens activationScreen = ActivationScreens.Message;
 	private boolean isResend = false; 
 	
+	@Override
+	public boolean doesGuiPauseGame() {
+		return false;
+	}
+	
 	public GuiPhoneActivate(EnumHand hand, ItemStack phoneStack)
 	{
 		if (!(phoneStack.getItem() instanceof ItemPhone))
@@ -54,13 +59,13 @@ public class GuiPhoneActivate extends GuiScreen {
 			return;
 		}
 		
+		setMessage("Activating...");
+		
 		if (!needsToContactServer)
 		{
 			goToMainScreen();
 			return;
 		}
-		
-		setMessage("Activating...");
 		
 		// Setup options
 		int workingY = (height / 2);
@@ -90,13 +95,24 @@ public class GuiPhoneActivate extends GuiScreen {
 		
 		super.drawScreen(mouseX, mouseY, partialTicks);
 		
-		if (activationScreen == ActivationScreens.Message)
+		if (activationScreen == ActivationScreens.Message || activationScreen == ActivationScreens.Activated)
 		{
 			drawCenteredString(fontRenderer, message, width / 2, height / 2, 0xFFFFFF);
 		}
 		else if (activationScreen == ActivationScreens.ChooseNumber)
 		{
 			drawOptions(mouseX, mouseY);
+		}
+		
+		if (activationScreen == ActivationScreens.Activated)
+		{
+			mainScreenDelay++;
+			
+			if (mainScreenDelay >= 45)
+			{
+				GuiHome home = new GuiHome(Minecraft.getMinecraft().player.getHeldItem(hand), hand);
+				Minecraft.getMinecraft().displayGuiScreen(home);
+			}
 		}
 	}
 	
@@ -149,10 +165,11 @@ public class GuiPhoneActivate extends GuiScreen {
 		}
 	}
 	
+	private int mainScreenDelay = 0;
 	public void goToMainScreen()
 	{
-		// TODO: Wait about 3 seconds and then go to home screen
 		setMessage("Activated!");
+		setActivationScreen(ActivationScreens.Activated);
 	}
 
 	@Override
@@ -230,6 +247,7 @@ public class GuiPhoneActivate extends GuiScreen {
 	public enum ActivationScreens
 	{
 		Message,
-		ChooseNumber
+		ChooseNumber,
+		Activated
 	}
 }
