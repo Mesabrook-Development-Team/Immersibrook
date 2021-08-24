@@ -236,23 +236,23 @@ public class ModItems
 
 	// Communications
 	public static final Item RADIO = new MiscItem("radio", 1).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_WHITE = new ItemPhone("smartphone_white").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_ORANGE = new ItemPhone("smartphone_orange").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_MAGENTA = new ItemPhone("smartphone_magenta").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_LBLUE = new ItemPhone("smartphone_lblue").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_YELLOW = new ItemPhone("smartphone_yellow").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_LIME = new ItemPhone("smartphone_lime").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_PINK = new ItemPhone("smartphone_pink").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_GRAY = new ItemPhone("smartphone_gray").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_SILVER = new ItemPhone("smartphone_silver").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_CYAN = new ItemPhone("smartphone_cyan").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_PURPLE = new ItemPhone("smartphone_purple").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_BLUE = new ItemPhone("smartphone_blue").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_BROWN = new ItemPhone("smartphone_brown").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_GREEN = new ItemPhone("smartphone_green").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_RED = new ItemPhone("smartphone_red").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_BLACK = new ItemPhone("smartphone_black").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_SPECIAL = new ItemPhone("smartphone_special").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_WHITE = new ItemPhone("smartphone_white", "phone_bezel_white").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_ORANGE = new ItemPhone("smartphone_orange", "phone_bezel_orange").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_MAGENTA = new ItemPhone("smartphone_magenta", "phone_bezel_magenta").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_LBLUE = new ItemPhone("smartphone_lblue", "phone_bezel_lblue").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_YELLOW = new ItemPhone("smartphone_yellow", "phone_bezel_yellow").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_LIME = new ItemPhone("smartphone_lime", "phone_bezel_lime").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_PINK = new ItemPhone("smartphone_pink", "phone_bezel_pink").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_GRAY = new ItemPhone("smartphone_gray", "phone_bezel_gray").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SILVER = new ItemPhone("smartphone_silver", "phone_bezel_silver").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_CYAN = new ItemPhone("smartphone_cyan", "phone_bezel_cyan").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_PURPLE = new ItemPhone("smartphone_purple", "phone_bezel_purple").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_BLUE = new ItemPhone("smartphone_blue", "phone_bezel_blue").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_BROWN = new ItemPhone("smartphone_brown", "phone_bezel_brown").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_GREEN = new ItemPhone("smartphone_green", "phone_bezel_green").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_RED = new ItemPhone("smartphone_red", "phone_bezel_red").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_BLACK = new ItemPhone("smartphone_black", "phone_bezel_black").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SPECIAL = new ItemPhone("smartphone_special", "phone_bezel").setCreativeTab(Main.IMMERSIBROOK_MAIN);
 
 	// Phone Crafting Ingredients
 	public static final Item PHONE_SCREEN = new MiscItem("phone_screen", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);

@@ -23,6 +23,7 @@ public class GuiPhoneActivate extends GuiScreen {
 	
 	boolean shouldCloseWindow = true;
 	boolean needsToContactServer = true;
+	ItemStack phoneStack;
 	EnumHand hand;
 	private String message = "";
 	public ActivationScreens activationScreen = ActivationScreens.Message;
@@ -34,6 +35,7 @@ public class GuiPhoneActivate extends GuiScreen {
 		{
 			return;
 		}
+		this.phoneStack = phoneStack;
 		this.hand = hand;		
 		shouldCloseWindow = false;
 		
@@ -149,6 +151,7 @@ public class GuiPhoneActivate extends GuiScreen {
 	
 	public void goToMainScreen()
 	{
+		// TODO: Wait about 3 seconds and then go to home screen
 		setMessage("Activated!");
 	}
 
