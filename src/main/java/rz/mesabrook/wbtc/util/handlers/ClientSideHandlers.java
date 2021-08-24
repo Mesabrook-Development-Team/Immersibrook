@@ -131,18 +131,27 @@ public class ClientSideHandlers
 		}
 	
 		private static HashMap<String, ISound> incomingCallSoundsByPhone = new HashMap<>();
-		public static void onIncomingCall(String fromNumber, String toNumber)
+		private static Object incomingSoundLock = new Object();
+		private static void playIncomingCallSound(String phoneNumber)
 		{
 			SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
-			ISound incomingCallSound = incomingCallSoundsByPhone.get(toNumber);
-			if (incomingCallSound != null && handler.isSoundPlaying(incomingCallSound))
+			synchronized(incomingSoundLock)
 			{
-				return;
+				ISound incomingCallSound = incomingCallSoundsByPhone.get(phoneNumber);
+				if (incomingCallSound != null && handler.isSoundPlaying(incomingCallSound))
+				{
+					return;
+				}
+				
+				incomingCallSound = new PositionedSoundRecord(SoundInit.DING_6.getSoundName(), SoundCategory.MASTER, 0.25F, 1F, true, 0, AttenuationType.NONE, 0, 0, 0);
+				incomingCallSoundsByPhone.put(phoneNumber, incomingCallSound);
+				handler.playSound(incomingCallSound);
 			}
-			
-			incomingCallSound = new PositionedSoundRecord(SoundInit.DING_6.getSoundName(), SoundCategory.MASTER, 0.25F, 1F, true, 0, AttenuationType.NONE, 0, 0, 0);
-			incomingCallSoundsByPhone.put(toNumber, incomingCallSound);
-			handler.playSound(incomingCallSound);
+		}
+		
+		public static void onIncomingCall(String fromNumber, String toNumber)
+		{
+			playIncomingCallSound(toNumber);
 			
 			Minecraft mc = Minecraft.getMinecraft();
 			if (mc.currentScreen instanceof GuiPhoneBase)
@@ -159,18 +168,27 @@ public class ClientSideHandlers
 		}
 		
 		private static HashMap<String, ISound> outgoingCallsByPhone = new HashMap<>();
-		public static void onOutgoingCallConnected(String fromNumber)
+		private static Object outgoingSoundLock = new Object();
+		private static void playOutgoingCallSound(String phoneNumber)
 		{
 			SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
-			ISound outgoingCall = outgoingCallsByPhone.get(fromNumber);
-			if (outgoingCall != null && handler.isSoundPlaying(outgoingCall))
+			synchronized(outgoingSoundLock)
 			{
-				return;
+				ISound outgoingCall = outgoingCallsByPhone.get(phoneNumber);
+				if (outgoingCall != null && handler.isSoundPlaying(outgoingCall))
+				{
+					return;
+				}
+				
+				outgoingCall = new PositionedSoundRecord(SoundInit.OUTGOING_CALL.getSoundName(), SoundCategory.MASTER, 0.25F, 1F, true, 0, AttenuationType.NONE, 0, 0, 0);
+				outgoingCallsByPhone.put(phoneNumber, outgoingCall);
+				handler.playSound(outgoingCall);
 			}
-			
-			outgoingCall = new PositionedSoundRecord(SoundInit.OUTGOING_CALL.getSoundName(), SoundCategory.MASTER, 0.25F, 1F, true, 0, AttenuationType.NONE, 0, 0, 0);
-			outgoingCallsByPhone.put(fromNumber, outgoingCall);
-			handler.playSound(outgoingCall);
+		}
+		
+		public static void onOutgoingCallConnected(String fromNumber)
+		{
+			playOutgoingCallSound(fromNumber);
 		}
 		
 		public static void onOutgoingCallNoSuchNumber(String fromNumber, String toNumber)
@@ -211,6 +229,15 @@ public class ClientSideHandlers
 		
 		public static void onPhoneQueryResponsePacket(String forNumber, ResponseTypes responseType, String otherNumber)
 		{
+			if (responseType == ResponseTypes.callConnecting)
+			{
+				playOutgoingCallSound(forNumber);
+			}
+			else if (responseType == ResponseTypes.callIncoming)
+			{
+				playIncomingCallSound(forNumber);
+			}
+			
 			Minecraft mc = Minecraft.getMinecraft();
 			if (!(mc.currentScreen instanceof GuiEmptyPhone))
 			{
@@ -290,19 +317,7 @@ public class ClientSideHandlers
 		{
 			Minecraft mc = Minecraft.getMinecraft();
 			
-			if (mc.currentScreen instanceof GuiPhoneCalling || mc.currentScreen instanceof GuiIncomingCall)
-			{
-				GuiPhoneBase phoneBase = (GuiPhoneBase)mc.currentScreen;
-				if (!phoneBase.getCurrentPhoneNumber().equals(forNumber))
-				{
-					return;
-				}
-				
-				callStartsByPhone.put(forNumber, LocalDateTime.now());
-				
-				GuiPhoneConnected connected = new GuiPhoneConnected(phoneBase.getPhoneStack(), phoneBase.getHand(), toNumber);
-				mc.displayGuiScreen(connected);
-			}
+			callStartsByPhone.put(forNumber, LocalDateTime.now());
 			
 			ISound incomingCallSound = incomingCallSoundsByPhone.get(forNumber);
 			if (incomingCallSound != null && mc.getSoundHandler().isSoundPlaying(incomingCallSound))
@@ -319,17 +334,29 @@ public class ClientSideHandlers
 			}
 			
 			mc.player.sendMessage(new TextComponentString("You are now connected to " + GuiPhoneBase.getFormattedPhoneNumber(toNumber)));
+			
+			if (mc.currentScreen instanceof GuiPhoneCalling || mc.currentScreen instanceof GuiIncomingCall)
+			{
+				GuiPhoneBase phoneBase = (GuiPhoneBase)mc.currentScreen;
+				if (!phoneBase.getCurrentPhoneNumber().equals(forNumber))
+				{
+					return;
+				}
+				
+				GuiPhoneConnected connected = new GuiPhoneConnected(phoneBase.getPhoneStack(), phoneBase.getHand(), toNumber);
+				mc.displayGuiScreen(connected);
+			}
 		}
 		
 		public static void onCallRejected(String forNumber, String toNumber)
 		{
 			Minecraft mc = Minecraft.getMinecraft();
 			
-			ISound incomingCallSound = incomingCallSoundsByPhone.get(forNumber);
+			ISound incomingCallSound = incomingCallSoundsByPhone.get(toNumber);
 			if (incomingCallSound != null && mc.getSoundHandler().isSoundPlaying(incomingCallSound))
 			{
 				mc.getSoundHandler().stopSound(incomingCallSound);
-				incomingCallSoundsByPhone.remove(forNumber);
+				incomingCallSoundsByPhone.remove(toNumber);
 			}
 
 			ISound outgoingCall = outgoingCallsByPhone.get(forNumber);
@@ -343,7 +370,7 @@ public class ClientSideHandlers
 			if (mc.currentScreen instanceof GuiIncomingCall)
 			{
 				GuiIncomingCall incomingScreen = (GuiIncomingCall)mc.currentScreen;
-				if (incomingScreen.getCurrentPhoneNumber().equals(forNumber))
+				if (incomingScreen.getCurrentPhoneNumber().equals(toNumber))
 				{
 					mc.displayGuiScreen(new GuiHome(incomingScreen.getPhoneStack(), incomingScreen.getHand()));
 					displayRejectedMessage = false;
@@ -366,6 +393,25 @@ public class ClientSideHandlers
 			{
 				mc.player.sendMessage(new TextComponentString("Phone call attempt with " + GuiPhoneBase.getFormattedPhoneNumber(toNumber) + " was rejected"));
 			}
+		}
+	
+		public static void onPhoneToss(String number)
+		{
+			Minecraft mc = Minecraft.getMinecraft();
+			
+			ISound sound = incomingCallSoundsByPhone.get(number);
+			if (sound != null)
+			{
+				mc.getSoundHandler().stopSound(sound);
+			}
+			
+			sound = outgoingCallsByPhone.get(number);
+			if (sound != null)
+			{
+				mc.getSoundHandler().stopSound(sound);
+			}
+			
+			callStartsByPhone.remove(number);
 		}
 	}
 }

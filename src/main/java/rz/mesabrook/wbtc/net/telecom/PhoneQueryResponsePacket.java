@@ -11,8 +11,8 @@ import rz.mesabrook.wbtc.util.handlers.ClientSideHandlers.TelecomClientHandlers;
 public class PhoneQueryResponsePacket implements IMessage {
 
 	public ResponseTypes responseType;
-	String forNumber;
-	String otherNumber = "";
+	public String forNumber;
+	public String otherNumber = "";
 	@Override
 	public void fromBytes(ByteBuf buf) {
 		responseType = ResponseTypes.values()[buf.readInt()];

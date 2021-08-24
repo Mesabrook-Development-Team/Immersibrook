@@ -36,6 +36,11 @@ public class GuiPhoneConnected extends GuiPhoneBase {
 	@Override
 	protected void doDraw(int mouseX, int mouseY, float partialticks) {
 		LocalDateTime dateTime = TelecomClientHandlers.callStartsByPhone.get(getCurrentPhoneNumber());
+		if (dateTime == null)
+		{
+			dateTime = LocalDateTime.now();
+			TelecomClientHandlers.callStartsByPhone.put(getCurrentPhoneNumber(), dateTime);
+		}
 		long currentTime = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
 		long callStartTime = dateTime.toEpochSecond(ZoneOffset.UTC);
 		long elapsedSeconds = currentTime - callStartTime;

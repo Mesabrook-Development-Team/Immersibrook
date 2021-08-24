@@ -14,6 +14,8 @@ import rz.mesabrook.wbtc.blocks.gui.GuiTrashBin;
 import rz.mesabrook.wbtc.blocks.gui.telecom.GuiEmptyPhone;
 import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneActivate;
 import rz.mesabrook.wbtc.blocks.te.TileEntityTrashBin;
+import rz.mesabrook.wbtc.items.misc.ItemPhone;
+import rz.mesabrook.wbtc.items.misc.ItemPhone.NBTData;
 import rz.mesabrook.wbtc.net.telecom.PhoneQueryPacket;
 import rz.mesabrook.wbtc.util.Reference;
 
@@ -37,13 +39,16 @@ public class GuiHandler implements IGuiHandler
 			EnumHand hand = EnumHand.values()[x]; 
 			ItemStack stack = player.getHeldItem(hand); 
 			NBTTagCompound stackData = stack.getTagCompound();
-			if (stackData == null || !stackData.hasKey(Reference.PHONE_NUMBER_NBTKEY))
+			ItemPhone.NBTData stackNBTData = new ItemPhone.NBTData();
+			stackNBTData.deserializeNBT(stackData);
+			String phoneNumber = stackNBTData.getPhoneNumberString();
+			
+			if (phoneNumber == null)
 			{
 				return new GuiPhoneActivate(hand, stack);
 			}
 			else
 			{
-				String phoneNumber = Integer.toString(stackData.getInteger(Reference.PHONE_NUMBER_NBTKEY));
 				PhoneQueryPacket query = new PhoneQueryPacket();
 				query.forNumber = phoneNumber;
 				PacketHandler.INSTANCE.sendToServer(query);
