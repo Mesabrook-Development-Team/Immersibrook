@@ -12,6 +12,8 @@ import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
@@ -33,6 +35,7 @@ import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneCalling;
 import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneConnected;
 import rz.mesabrook.wbtc.blocks.gui.telecom.SignalStrengths;
 import rz.mesabrook.wbtc.init.SoundInit;
+import rz.mesabrook.wbtc.items.misc.ItemPhone;
 import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.net.telecom.PhoneQueryResponsePacket.ResponseTypes;
 import rz.mesabrook.wbtc.util.Reference;
@@ -111,13 +114,12 @@ public class ClientSideHandlers
 			}
 		}
 		
-		public static void onActivationComplete()
+		public static void onActivationComplete(EnumHand hand)
 		{
 			if (Minecraft.getMinecraft().currentScreen instanceof GuiPhoneActivate)
 			{
-				GuiPhoneActivate activate = (GuiPhoneActivate)Minecraft.getMinecraft().currentScreen;
-				activate.goToMainScreen();
-				
+				GuiPhoneActivate activateScreen = (GuiPhoneActivate)Minecraft.getMinecraft().currentScreen;
+				activateScreen.goToMainScreen();
 			}
 		}
 	

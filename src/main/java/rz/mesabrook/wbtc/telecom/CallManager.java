@@ -306,13 +306,18 @@ public class CallManager {
 	
 		public void onPlayerChat(EntityPlayerMP player, ITextComponent text)
 		{
+			if (getCallPhase() != CallPhases.Connected)
+			{
+				return;
+			}
+			
 			AntennaData data = AntennaData.getOrCreate(player.world);
 			double senderReception = data.getBestReception(player.getPosition());
 			
 			Tuple<EntityPlayerMP, ItemStack> origin = getOwner(true);
 			Tuple<EntityPlayerMP, ItemStack> dest = getOwner(false);
 			
-			if (origin.getFirst() != player)
+			if (origin != null && origin.getFirst() != player)
 			{
 				EntityPlayerMP receiver = origin.getFirst();
 				double receiverReception = data.getBestReception(receiver.getPosition());
@@ -327,7 +332,7 @@ public class CallManager {
 				receiver.sendMessage(textToSend);
 			}
 			
-			if (dest.getFirst() != player)
+			if (dest != null && dest.getFirst() != player)
 			{
 				EntityPlayerMP receiver = dest.getFirst();
 				double receiverReception = data.getBestReception(receiver.getPosition());
@@ -405,7 +410,7 @@ public class CallManager {
 			Style style = new Style();
 			style.setColor(TextFormatting.DARK_PURPLE);
 			retVal.setStyle(style);
-			retVal.appendSibling(new TextComponentString(newText));
+			retVal.appendSibling(new TextComponentString(newText).setStyle(new Style().setColor(TextFormatting.RESET)));
 			
 			return retVal;
 		}

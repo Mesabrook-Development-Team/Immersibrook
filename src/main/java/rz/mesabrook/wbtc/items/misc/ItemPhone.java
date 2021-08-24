@@ -15,11 +15,13 @@ import rz.mesabrook.wbtc.util.Reference;
 
 public class ItemPhone extends Item implements IHasModel {
 
-	public ItemPhone(String name)
+	private String bezelTextureName;
+	public ItemPhone(String name, String bezelTextureName)
 	{
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setMaxStackSize(1);
+		this.bezelTextureName = bezelTextureName;
 		
 		ModItems.ITEMS.add(this);
 	}
@@ -42,6 +44,11 @@ public class ItemPhone extends Item implements IHasModel {
 			playerIn.openGui(Main.instance, Reference.GUI_PHONE, worldIn, handIn.ordinal(), 0, 0);
 		}
 		return super.onItemRightClick(worldIn, playerIn, handIn);
+	}
+
+	public String getBezelTextureName()
+	{
+		return bezelTextureName;
 	}
 	
 	public static class NBTData implements INBTSerializable<NBTTagCompound>

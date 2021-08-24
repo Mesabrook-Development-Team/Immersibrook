@@ -8,9 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.items.misc.ItemPhone;
-import rz.mesabrook.wbtc.items.misc.ItemPhone.NBTData;
 import rz.mesabrook.wbtc.net.telecom.GetReceptionStrengthPacket;
-import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 @SideOnly(Side.CLIENT)
@@ -91,7 +89,7 @@ public abstract class GuiPhoneBase extends GuiScreen {
 		drawDefaultBackground();
 		
 		// Phone border
-		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/phone_bezel.png"));
+		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", String.format("textures/gui/telecom/%s.png", ((ItemPhone)phoneStack.getItem()).getBezelTextureName())));
 		drawScaledCustomSizeModalRect(OUTER_X, OUTER_Y, 0, 0, OUTER_TEX_WIDTH * WIDTH_SCALE, OUTER_TEX_HEIGHT * HEIGHT_SCALE, OUTER_TEX_WIDTH, OUTER_TEX_HEIGHT, 512, 512);
 		
 		// Background
