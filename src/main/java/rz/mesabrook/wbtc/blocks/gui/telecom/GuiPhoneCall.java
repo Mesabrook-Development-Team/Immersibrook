@@ -86,6 +86,17 @@ public class GuiPhoneCall extends GuiPhoneBase {
 			PositionedSoundRecord startSound = PositionedSoundRecord.getMasterRecord(SoundInit.STARTCALL, 1F);
 			Minecraft.getMinecraft().getSoundHandler().playSound(startSound);
 			
+			if (currentlyTypedNumber == null || currentlyTypedNumber.equals(""))
+			{
+				PositionedSoundRecord sit = PositionedSoundRecord.getMasterRecord(SoundInit.SIT, 1F);
+				Minecraft.getMinecraft().getSoundHandler().playSound(sit);
+				
+				GuiCallEnd badCall = new GuiCallEnd(getPhoneStack(), getHand(), "");
+				badCall.setMessage("Phone number required!");
+				mc.displayGuiScreen(badCall);
+				return;
+			}
+			
 			if (currentlyTypedNumber.equals(getCurrentPhoneNumber()))
 			{
 				PositionedSoundRecord sit = PositionedSoundRecord.getMasterRecord(SoundInit.SIT, 1F);
@@ -102,7 +113,7 @@ public class GuiPhoneCall extends GuiPhoneBase {
 			InitiateCallPacket packet = new InitiateCallPacket();
 			packet.fromNumber = getCurrentPhoneNumber();
 			packet.toNumber = currentlyTypedNumber;
-			PacketHandler.INSTANCE.sendToServer(packet);			
+			PacketHandler.INSTANCE.sendToServer(packet);
 		}
 	}
 	

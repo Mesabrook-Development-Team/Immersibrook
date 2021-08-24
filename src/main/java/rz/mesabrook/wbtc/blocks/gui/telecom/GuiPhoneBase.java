@@ -7,6 +7,8 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import rz.mesabrook.wbtc.items.misc.ItemPhone;
+import rz.mesabrook.wbtc.items.misc.ItemPhone.NBTData;
 import rz.mesabrook.wbtc.net.telecom.GetReceptionStrengthPacket;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
@@ -15,6 +17,7 @@ import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 public abstract class GuiPhoneBase extends GuiScreen {
 	protected final ItemStack phoneStack;
 	protected final EnumHand hand;
+	protected final ItemPhone.NBTData phoneStackData;
 	
 	protected final int OUTER_TEX_WIDTH = 176;
 	protected final int OUTER_TEX_HEIGHT = 222;
@@ -50,6 +53,8 @@ public abstract class GuiPhoneBase extends GuiScreen {
 	{
 		this.phoneStack = phoneStack;
 		this.hand = hand;
+		this.phoneStackData = new ItemPhone.NBTData();
+		this.phoneStackData.deserializeNBT(this.phoneStack.getTagCompound());
 	}
 	
 	public void setSignalStrength(SignalStrengths signalStrength)
@@ -166,6 +171,6 @@ public abstract class GuiPhoneBase extends GuiScreen {
 
 	public String getCurrentPhoneNumber()
 	{
-		return Integer.toString(phoneStack.getTagCompound().getInteger(Reference.PHONE_NUMBER_NBTKEY));
+		return phoneStackData.getPhoneNumberString();
 	}
 }

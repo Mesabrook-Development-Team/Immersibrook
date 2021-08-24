@@ -20,12 +20,15 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import rz.mesabrook.wbtc.items.misc.ItemPhone;
+import rz.mesabrook.wbtc.items.misc.ItemPhone.NBTData;
 import rz.mesabrook.wbtc.net.telecom.CallAcceptedPacket;
 import rz.mesabrook.wbtc.net.telecom.CallRejectedPacket;
 import rz.mesabrook.wbtc.net.telecom.DisconnectedCallNotificationPacket;
 import rz.mesabrook.wbtc.net.telecom.IncomingCallPacket;
 import rz.mesabrook.wbtc.net.telecom.OutgoingCallResponsePacket;
+import rz.mesabrook.wbtc.net.telecom.PhoneQueryResponsePacket;
 import rz.mesabrook.wbtc.net.telecom.OutgoingCallResponsePacket.States;
+import rz.mesabrook.wbtc.net.telecom.PhoneQueryResponsePacket.ResponseTypes;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.config.ModConfig;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
@@ -230,12 +233,15 @@ public class CallManager {
 					}
 					
 					NBTTagCompound tag = stack.getTagCompound();
-					if (tag == null || !tag.hasKey(Reference.PHONE_NUMBER_NBTKEY))
+					ItemPhone.NBTData stackData = new ItemPhone.NBTData();
+					stackData.deserializeNBT(tag);
+					
+					int phoneNumber = stackData.getPhoneNumber();
+					
+					if (phoneNumber == 0)
 					{
 						continue;
 					}
-					
-					int phoneNumber = tag.getInteger(Reference.PHONE_NUMBER_NBTKEY);
 					
 					if ((forOrigin && phoneNumber == Integer.parseInt(getOriginPhone())) || (!forOrigin && phoneNumber == Integer.parseInt(getDestPhone())))
 					{
@@ -278,20 +284,19 @@ public class CallManager {
 		public void reject()
 		{
 			Tuple<EntityPlayerMP, ItemStack> origin = getOwner(true);
+			Tuple<EntityPlayerMP, ItemStack> dest = getOwner(false);
+			
+			CallRejectedPacket rejected = new CallRejectedPacket();
+			rejected.fromNumber = getOriginPhone();
+			rejected.toNumber = getDestPhone();
+			
 			if (origin != null)
 			{
-				CallRejectedPacket rejected = new CallRejectedPacket();
-				rejected.fromNumber = getOriginPhone();
-				rejected.toNumber = getDestPhone();
 				PacketHandler.INSTANCE.sendTo(rejected, origin.getFirst());
 			}
 			
-			Tuple<EntityPlayerMP, ItemStack> dest = getOwner(false);
 			if (dest != null)
 			{
-				CallRejectedPacket rejected = new CallRejectedPacket();
-				rejected.fromNumber = getDestPhone();
-				rejected.toNumber = getOriginPhone();
 				PacketHandler.INSTANCE.sendTo(rejected, dest.getFirst());
 			}
 			
@@ -411,6 +416,86 @@ public class CallManager {
 		for(Call call : callsByID.values())
 		{
 			call.onPlayerChat(player, text);
+		}
+	}
+
+	public void phoneQuery(EntityPlayerMP player, String forNumber)
+	{
+		World world = player.world;
+		
+		PhoneQueryResponsePacket response = new PhoneQueryResponsePacket();
+		response.forNumber = forNumber;
+		
+		AntennaData antennaData = AntennaData.getOrCreate(world);
+		if (antennaData.getBestReception(player.getPosition()) <= 0.0)
+		{
+			// Too far away
+			response.responseType = ResponseTypes.idle;
+			PacketHandler.INSTANCE.sendTo(response, player);
+			return;
+		}
+		
+		CallManager.Call call = getCall(forNumber);
+		
+		if (call == null) // No calls for number
+		{
+			response.responseType = ResponseTypes.idle;
+		}
+		else // A call exists for number...
+		{
+			if (call.getDestPhone().equals(forNumber)) // ...and it is being called
+			{
+				if (call.getCallPhase() == CallPhases.Connecting)
+				{
+					response.responseType = ResponseTypes.callIncoming;
+				}
+				else
+				{
+					response.responseType = ResponseTypes.callConnected;
+				}
+				
+				response.otherNumber = call.getOriginPhone();
+			}
+			else
+			{
+				if (call.getCallPhase() == CallPhases.Connecting) // ...and it is trying to call another number
+				{
+					response.responseType = ResponseTypes.callConnecting;
+					response.otherNumber = call.getDestPhone();
+				}
+				else if (call.getCallPhase() == CallPhases.Connected) // ...and it is already connected
+				{
+					response.responseType = ResponseTypes.callConnected;
+					response.otherNumber = call.getDestPhone();
+				}
+			}
+		}
+		
+		PacketHandler.INSTANCE.sendTo(response, player);
+	}
+
+	public void sendQueryResponseForAllCalls(EntityPlayerMP player)
+	{
+		for(CallManager.Call call : callsByID.values())
+		{
+			Tuple<EntityPlayerMP, ItemStack> origin = call.getOwner(true);
+			Tuple<EntityPlayerMP, ItemStack> dest = call.getOwner(false);
+			
+			if (origin != null && origin.getFirst() == player)
+			{
+				ItemPhone.NBTData originData = new ItemPhone.NBTData();
+				originData.deserializeNBT(origin.getSecond().getTagCompound());
+				
+				phoneQuery(player, originData.getPhoneNumberString());
+			}
+			
+			if (dest != null && dest.getFirst() == player)
+			{
+				ItemPhone.NBTData destData = new ItemPhone.NBTData();
+				destData.deserializeNBT(dest.getSecond().getTagCompound());
+				
+				phoneQuery(player, destData.getPhoneNumberString());
+			}
 		}
 	}
 }

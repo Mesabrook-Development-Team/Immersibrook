@@ -39,58 +39,7 @@ public class PhoneQueryPacket implements IMessage {
 		private void handle(PhoneQueryPacket message, MessageContext ctx)
 		{
 			EntityPlayerMP player = ctx.getServerHandler().player;
-			World world = player.world;
-			
-			PhoneQueryResponsePacket response = new PhoneQueryResponsePacket();
-			response.forNumber = message.forNumber;
-			
-			AntennaData antennaData = AntennaData.getOrCreate(world);
-			if (antennaData.getBestReception(player.getPosition()) <= 0.0)
-			{
-				// Too far away
-				response.responseType = ResponseTypes.idle;
-				PacketHandler.INSTANCE.sendTo(response, player);
-				return;
-			}
-			
-			CallManager manager = CallManager.instance();
-			CallManager.Call call = manager.getCall(message.forNumber);
-			
-			if (call == null) // No calls for number
-			{
-				response.responseType = ResponseTypes.idle;
-			}
-			else // A call exists for number...
-			{
-				if (call.getDestPhone().equals(message.forNumber)) // ...and it is being called
-				{
-					if (call.getCallPhase() == CallPhases.Connecting)
-					{
-						response.responseType = ResponseTypes.callIncoming;
-					}
-					else
-					{
-						response.responseType = ResponseTypes.callConnected;
-					}
-					
-					response.otherNumber = call.getOriginPhone();
-				}
-				else
-				{
-					if (call.getCallPhase() == CallPhases.Connecting) // ...and it is trying to call another number
-					{
-						response.responseType = ResponseTypes.callConnecting;
-						response.otherNumber = call.getDestPhone();
-					}
-					else if (call.getCallPhase() == CallPhases.Connected) // ...and it is already connected
-					{
-						response.responseType = ResponseTypes.callConnected;
-						response.otherNumber = call.getDestPhone();
-					}
-				}
-			}
-			
-			PacketHandler.INSTANCE.sendTo(response, player);
+			CallManager.instance().phoneQuery(player, message.forNumber);
 		}
 	}
 }
