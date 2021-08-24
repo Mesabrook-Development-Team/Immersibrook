@@ -90,7 +90,8 @@ public class GuiPhoneActivate extends GuiScreen {
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		drawDefaultBackground();
-		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/phone_bezel.png"));
+		//Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/phone_bezel.png"));
+		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", String.format("textures/gui/telecom/%s.png", ((ItemPhone)phoneStack.getItem()).getBezelTextureName())));
 		drawScaledCustomSizeModalRect((width - texWidth) / 2, (height - texHeight) / 2, 0, 0, 352, 444, texWidth, texHeight, 512, 512);
 		
 		super.drawScreen(mouseX, mouseY, partialTicks);
