@@ -32,6 +32,7 @@ public class ItemRubberDuck extends Item implements IHasModel
         setUnlocalizedName(name);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
         setMaxStackSize(1);
+        setMaxDamage(300);
 
         ModItems.ITEMS.add(this);
         angry.getStyle().setColor(TextFormatting.RED);
@@ -63,6 +64,7 @@ public class ItemRubberDuck extends Item implements IHasModel
             if(!worldIn.isRemote)
             {
                 PlaySoundPacket packet = new PlaySoundPacket();
+                itemstack.damageItem(2, playerIn);
                 if(itemstack.getItem() == ModItems.RUBBER_DUCK_EVIL)
                 {
                     Random chooser = new Random();
@@ -95,7 +97,7 @@ public class ItemRubberDuck extends Item implements IHasModel
                             packet.pos = playerIn.getPosition();
                             packet.soundName = "duckboom";
                             PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));
-
+                            itemstack.damageItem(1000, playerIn);
                             worldIn.createExplosion(playerIn, playerIn.posX, playerIn.posY, playerIn.posZ, 1F, true);
                             playerIn.attackEntityFrom(DUCK_GO_BOOM, 100F);
                     }
