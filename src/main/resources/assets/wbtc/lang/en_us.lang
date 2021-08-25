@@ -89,6 +89,7 @@ im.filter.records=Music Discs
 im.filter.resources=Materials
 im.filter.food=Foods
 im.filter.vests=Safety
+im.filter.tech=Technology
 
 //Lights
 tile.ceiling_light_spot.name=Ceiling Light

@@ -73,25 +73,7 @@ public class CategoryHousehold extends AbstractCategory
 		// Warp Metro
 		add(ModBlocks.TICKET_MACHINE);
 
-		// Comms
-		add(ModItems.RADIO);
-		add(ModItems.PHONE_WHITE);
-		add(ModItems.PHONE_ORANGE);
-		add(ModItems.PHONE_MAGENTA);
-		add(ModItems.PHONE_LBLUE);
-		add(ModItems.PHONE_YELLOW);
-		add(ModItems.PHONE_LIME);
-		add(ModItems.PHONE_PINK);
-		add(ModItems.PHONE_GRAY);
-		add(ModItems.PHONE_SILVER);
-		add(ModItems.PHONE_CYAN);
-		add(ModItems.PHONE_BLUE);
-		add(ModItems.PHONE_BROWN);
-		add(ModItems.PHONE_GREEN);
-		add(ModItems.PHONE_PURPLE);
-		add(ModItems.PHONE_RED);
-		add(ModItems.PHONE_BLACK);
-		add(ModItems.PHONE_SPECIAL);
+		// Ducks
 		add(ModItems.RUBBER_DUCK);
 		add(ModItems.RUBBER_DUCK_CYAN);
 		add(ModItems.RUBBER_DUCK_LIME);

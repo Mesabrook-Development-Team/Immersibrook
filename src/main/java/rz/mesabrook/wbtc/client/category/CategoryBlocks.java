@@ -10,7 +10,8 @@ import rz.mesabrook.wbtc.init.ModBlocks;
  * https://github.com/MrCrayfish
  * https://github.com/RavenholmZombie
  */
-public class CategoryBlocks extends AbstractCategory {
+public class CategoryBlocks extends AbstractCategory
+{
 
 	public CategoryBlocks()
 	{
