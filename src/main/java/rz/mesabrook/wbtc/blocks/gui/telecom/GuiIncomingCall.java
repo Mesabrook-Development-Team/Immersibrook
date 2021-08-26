@@ -47,6 +47,8 @@ public class GuiIncomingCall extends GuiPhoneBase {
 	
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
+		super.actionPerformed(button);
+		
 		if (button.id == 1)
 		{
 			RejectCallPacket reject = new RejectCallPacket();

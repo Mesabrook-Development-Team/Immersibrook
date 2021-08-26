@@ -10,14 +10,17 @@ import rz.mesabrook.wbtc.util.handlers.ClientSideHandlers.TelecomClientHandlers;
 
 public class PhoneQueryResponsePacket implements IMessage {
 
+	public static final int PHONE_START_CLIENT_HANDLER = -1;
 	public ResponseTypes responseType;
 	public String forNumber;
 	public String otherNumber = "";
+	public int clientHandlerCode;
 	@Override
 	public void fromBytes(ByteBuf buf) {
 		responseType = ResponseTypes.values()[buf.readInt()];
 		forNumber = ByteBufUtils.readUTF8String(buf);
 		otherNumber = ByteBufUtils.readUTF8String(buf);
+		clientHandlerCode = buf.readInt();
 	}
 
 	@Override
@@ -25,6 +28,7 @@ public class PhoneQueryResponsePacket implements IMessage {
 		buf.writeInt(responseType.ordinal());
 		ByteBufUtils.writeUTF8String(buf, forNumber);
 		ByteBufUtils.writeUTF8String(buf, otherNumber);
+		buf.writeInt(clientHandlerCode);
 	}
 
 	public enum ResponseTypes
@@ -43,10 +47,18 @@ public class PhoneQueryResponsePacket implements IMessage {
 			FMLCommonHandler.instance().getWorldThread(ctx.netHandler).addScheduledTask(() -> handle(message, ctx));
 			return null;
 		}
-		
+		 
 		private void handle(PhoneQueryResponsePacket message, MessageContext ctx)
 		{
-			TelecomClientHandlers.onPhoneQueryResponsePacket(message.forNumber, message.responseType, message.otherNumber);
+			if (message.clientHandlerCode == PHONE_START_CLIENT_HANDLER)
+			{
+				TelecomClientHandlers.onPhoneQueryResponsePacket(message);
+			}
+			else if (TelecomClientHandlers.phoneQueryResponseHandlers.containsKey(message.clientHandlerCode))
+			{
+				TelecomClientHandlers.phoneQueryResponseHandlers.get(message.clientHandlerCode).accept(message);
+				TelecomClientHandlers.phoneQueryResponseHandlers.remove(message.clientHandlerCode);
+			}
 		}
 	}
 }

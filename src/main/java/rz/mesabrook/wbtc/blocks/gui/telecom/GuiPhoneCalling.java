@@ -53,8 +53,13 @@ public class GuiPhoneCalling extends GuiPhoneBase {
 	
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
-		DisconnectCallPacket disconnect = new DisconnectCallPacket();
-		disconnect.fromNumber = getCurrentPhoneNumber();
-		PacketHandler.INSTANCE.sendToServer(disconnect);
+		super.actionPerformed(button);
+		
+		if (button.id == 0)
+		{
+			DisconnectCallPacket disconnect = new DisconnectCallPacket();
+			disconnect.fromNumber = getCurrentPhoneNumber();
+			PacketHandler.INSTANCE.sendToServer(disconnect);
+		}
 	}
 }
