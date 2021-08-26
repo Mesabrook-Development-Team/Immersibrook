@@ -1311,6 +1311,7 @@ im.sparkling=Did you really just chug that entire bottle of sparkling pink lemon
 tile.sugar_box.name=Granulated White Sugar
 tile.flour_box.name=All Purpose Flour
 tile.cornmeal_box.name=Cornmeal
+tile.coffee_box.name=Premium Roasted Mesabrookian Coffee Beans
 
 //Masks
 item.mask_jason.name=Decorative Face Mask

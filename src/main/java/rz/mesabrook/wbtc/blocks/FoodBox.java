@@ -18,6 +18,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
@@ -30,6 +31,7 @@ import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.blocks.te.TileEntityFoodBox;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
+import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.items.misc.FoodBoxItemBlock;
 import rz.mesabrook.wbtc.items.misc.PlaqueItemBlock;
 import rz.mesabrook.wbtc.util.IHasModel;
@@ -199,6 +201,7 @@ public class FoodBox extends Block implements IHasModel
     {
         String boxID = null;
         String company = null;
+        int productAmount = 0;
         NBTTagCompound tag = stack.getTagCompound();
 
         if(tag != null)
@@ -211,6 +214,11 @@ public class FoodBox extends Block implements IHasModel
             if(tag.hasKey("company"))
             {
                 company = tag.getString("company");
+            }
+
+            if(tag.hasKey("uses"))
+            {
+                productAmount = tag.getInteger("uses");
             }
         }
 
@@ -254,6 +262,12 @@ public class FoodBox extends Block implements IHasModel
         }
 
         drops.add(foodboxStack);
+    }
+
+    @Override
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+    {
+        return false;
     }
 
     @Override

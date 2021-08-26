@@ -99,6 +99,7 @@ public class CategoryFood extends AbstractCategory
 		add(ModBlocks.SUGAR_BOX);
 		add(ModBlocks.FLOUR_BOX);
 		add(ModBlocks.CORNMEAL_BOX);
+		add(ModBlocks.COFFEE_BOX);
 		add(ModItems.RAW_CANDY_RED);
 		add(ModItems.RAW_CANDY_LIME);
 		add(ModItems.RAW_CANDY_BLUE);
