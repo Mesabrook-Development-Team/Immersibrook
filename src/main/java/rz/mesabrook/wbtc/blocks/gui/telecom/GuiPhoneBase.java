@@ -81,11 +81,12 @@ public abstract class GuiPhoneBase extends GuiScreen {
 		BACK_X = INNER_X + (INNER_TEX_WIDTH / 4) - 8;
 		HOME_X = (INNER_X + INNER_TEX_WIDTH) - (INNER_TEX_WIDTH / 4) - 8;
 		
-		ImageButton homeButton = new ImageButton(999, INNER_X + INNER_TEX_WIDTH - (INNER_TEX_WIDTH / 4) - 4, INNER_Y + INNER_TEX_HEIGHT - 23, 8, 8, "gui_btn_home.png", 32, 32);
+		ImageButton homeButton = new ImageButton(999, INNER_X + INNER_TEX_WIDTH / 2 - 4, INNER_Y + INNER_TEX_HEIGHT - 23, 8, 8, "gui_btn_home.png", 32, 32);
 		buttonList.add(homeButton);
 		
-		ImageButton backButton = new ImageButton(998, INNER_X + (INNER_TEX_WIDTH / 4) - 4, INNER_Y + INNER_TEX_HEIGHT - 23, 8, 8, "gui_btn_back.png", 32, 32);
-		buttonList.add(backButton);
+		// Back button to be implemented when determined necessary
+//		ImageButton backButton = new ImageButton(998, INNER_X + (INNER_TEX_WIDTH / 4) - 4, INNER_Y + INNER_TEX_HEIGHT - 23, 8, 8, "gui_btn_back.png", 32, 32);
+//		buttonList.add(backButton);
 	}
 	
 	@Override
@@ -183,10 +184,6 @@ public abstract class GuiPhoneBase extends GuiScreen {
 		{
 			GuiHome home = new GuiHome(phoneStack, hand);
 			Minecraft.getMinecraft().displayGuiScreen(home);
-		}
-		else if (button.id == 998)
-		{
-			// Check stack
 		}
 	}
 }
