@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:coffee_box" },
+        "facing=south": { "model": "wbtc:coffee_box", "y": 180 },
+        "facing=west":  { "model": "wbtc:coffee_box", "y": 270 },
+        "facing=east":  { "model": "wbtc:coffee_box", "y": 90 }
+    }
+}

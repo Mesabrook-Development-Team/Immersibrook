@@ -89,6 +89,7 @@ public class RegistryHandler
 
         Main.JABCM_LOADED = Loader.isModLoaded("jabcm");
         Main.FURENIKUS_CITIES = Loader.isModLoaded("furenikuscities");
+        Main.THERCMOD = Loader.isModLoaded("thercmod");
 
 		Triggers.init();
 
@@ -105,6 +106,11 @@ public class RegistryHandler
 		else
 		{
 			Main.logger.info("Thank you for using JABCM!");
+		}
+
+		if(Main.THERCMOD)
+		{
+			Main.logger.info("[" + Reference.MODNAME + "] The RC Mod Detected.");
 		}
 		
 		PacketHandler.registerMessages();

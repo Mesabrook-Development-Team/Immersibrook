@@ -28,6 +28,14 @@ public class RecipeOverrider
             // Resource Locations for JSON-based recipes goes here.
             ResourceLocation vanillaPaper = new ResourceLocation("minecraft:paper");
 
+            // Resource Locations for other mods.
+            if(Main.THERCMOD)
+            {
+                ResourceLocation plastic = new ResourceLocation("thercmod:plastic");
+                modRegistry.remove(plastic);
+                Main.logger.info("[" + Reference.MODNAME + "] The RC Mod's plastic recipe has been disabled. Use IB's instead.");
+            }
+
             if(ModConfig.makePaperProductionMoreRealistic)
             {
                 modRegistry.remove(vanillaPaper);

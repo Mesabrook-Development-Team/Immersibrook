@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP",
+    "PPP"
+  ],
+  "key": {
+    "P": {
+      "type": "forge:ore_dict",
+	  "ore": "listAllPlastic"
+    }
+  },
+  "result": {
+    "item": "thercmod:material_plastic",
+    "count": 6
+  }
+}
