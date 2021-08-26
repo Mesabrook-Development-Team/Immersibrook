@@ -4,7 +4,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 
 public class GuiEmptyPhone extends GuiPhoneBase {
-	
+
 	public GuiEmptyPhone(ItemStack phoneStack, EnumHand hand)
 	{
 		super(phoneStack, hand);

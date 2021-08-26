@@ -30,7 +30,7 @@ public class BlockCellAntenna extends Block implements IHasModel {
 		setSoundType(SoundType.METAL);
 		setHardness(8.0F);
 		setResistance(8.0F);
-		setCreativeTab(null);
+		setCreativeTab(Main.IMMERSIBROOK_MAIN);
 		setHarvestLevel("pickaxe", 0);
 		setTickRandomly(true);
 		
