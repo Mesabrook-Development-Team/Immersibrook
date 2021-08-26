@@ -424,27 +424,22 @@ public class CallManager {
 		}
 	}
 
-	public void phoneQuery(EntityPlayerMP player, String forNumber)
+	public Tuple<ResponseTypes, String> phoneQuery(EntityPlayerMP player, String forNumber)
 	{
 		World world = player.world;
-		
-		PhoneQueryResponsePacket response = new PhoneQueryResponsePacket();
-		response.forNumber = forNumber;
 		
 		AntennaData antennaData = AntennaData.getOrCreate(world);
 		if (antennaData.getBestReception(player.getPosition()) <= 0.0)
 		{
 			// Too far away
-			response.responseType = ResponseTypes.idle;
-			PacketHandler.INSTANCE.sendTo(response, player);
-			return;
+			return new Tuple<>(ResponseTypes.idle, "");
 		}
 		
 		CallManager.Call call = getCall(forNumber);
 		
 		if (call == null) // No calls for number
 		{
-			response.responseType = ResponseTypes.idle;
+			return new Tuple<>(ResponseTypes.idle, "");
 		}
 		else // A call exists for number...
 		{
@@ -452,31 +447,27 @@ public class CallManager {
 			{
 				if (call.getCallPhase() == CallPhases.Connecting)
 				{
-					response.responseType = ResponseTypes.callIncoming;
+					return new Tuple<>(ResponseTypes.callIncoming, call.getOriginPhone());
 				}
 				else
 				{
-					response.responseType = ResponseTypes.callConnected;
+					return new Tuple<>(ResponseTypes.callConnected, call.getOriginPhone());
 				}
-				
-				response.otherNumber = call.getOriginPhone();
 			}
 			else
 			{
 				if (call.getCallPhase() == CallPhases.Connecting) // ...and it is trying to call another number
 				{
-					response.responseType = ResponseTypes.callConnecting;
-					response.otherNumber = call.getDestPhone();
+					return new Tuple<>(ResponseTypes.callConnecting, call.getDestPhone());
 				}
 				else if (call.getCallPhase() == CallPhases.Connected) // ...and it is already connected
 				{
-					response.responseType = ResponseTypes.callConnected;
-					response.otherNumber = call.getDestPhone();
+					return new Tuple<>(ResponseTypes.callConnected, call.getDestPhone());
 				}
 			}
 		}
 		
-		PacketHandler.INSTANCE.sendTo(response, player);
+		return new Tuple<>(ResponseTypes.idle, "");
 	}
 
 	public void sendQueryResponseForAllCalls(EntityPlayerMP player)
@@ -491,7 +482,14 @@ public class CallManager {
 				ItemPhone.NBTData originData = new ItemPhone.NBTData();
 				originData.deserializeNBT(origin.getSecond().getTagCompound());
 				
-				phoneQuery(player, originData.getPhoneNumberString());
+				Tuple<ResponseTypes, String> response = phoneQuery(player, originData.getPhoneNumberString());
+				
+				PhoneQueryResponsePacket responsePacket = new PhoneQueryResponsePacket();
+				responsePacket.forNumber = originData.getPhoneNumberString();
+				responsePacket.responseType = response.getFirst();
+				responsePacket.otherNumber = response.getSecond();
+				responsePacket.clientHandlerCode = PhoneQueryResponsePacket.PHONE_START_CLIENT_HANDLER;
+				PacketHandler.INSTANCE.sendTo(responsePacket, player);
 			}
 			
 			if (dest != null && dest.getFirst() == player)
@@ -499,7 +497,14 @@ public class CallManager {
 				ItemPhone.NBTData destData = new ItemPhone.NBTData();
 				destData.deserializeNBT(dest.getSecond().getTagCompound());
 				
-				phoneQuery(player, destData.getPhoneNumberString());
+				Tuple<ResponseTypes, String> response = phoneQuery(player, destData.getPhoneNumberString());
+				
+				PhoneQueryResponsePacket responsePacket = new PhoneQueryResponsePacket();
+				responsePacket.forNumber = destData.getPhoneNumberString();
+				responsePacket.responseType = response.getFirst();
+				responsePacket.otherNumber = response.getSecond();
+				responsePacket.clientHandlerCode = PhoneQueryResponsePacket.PHONE_START_CLIENT_HANDLER;
+				PacketHandler.INSTANCE.sendTo(responsePacket, player);
 			}
 		}
 	}

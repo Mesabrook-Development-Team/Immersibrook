@@ -1,6 +1,9 @@
 package rz.mesabrook.wbtc.blocks.gui.telecom;
 
+import java.io.IOException;
+
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
@@ -77,6 +80,12 @@ public abstract class GuiPhoneBase extends GuiScreen {
 		HEIGHT_SCALE = (int)(1 / ((double)OUTER_TEX_HEIGHT / GUI_HEIGHT));
 		BACK_X = INNER_X + (INNER_TEX_WIDTH / 4) - 8;
 		HOME_X = (INNER_X + INNER_TEX_WIDTH) - (INNER_TEX_WIDTH / 4) - 8;
+		
+		ImageButton homeButton = new ImageButton(999, INNER_X + INNER_TEX_WIDTH - (INNER_TEX_WIDTH / 4) - 4, INNER_Y + INNER_TEX_HEIGHT - 23, 8, 8, "gui_btn_home.png", 32, 32);
+		buttonList.add(homeButton);
+		
+		ImageButton backButton = new ImageButton(998, INNER_X + (INNER_TEX_WIDTH / 4) - 4, INNER_Y + INNER_TEX_HEIGHT - 23, 8, 8, "gui_btn_back.png", 32, 32);
+		buttonList.add(backButton);
 	}
 	
 	@Override
@@ -115,12 +124,6 @@ public abstract class GuiPhoneBase extends GuiScreen {
 		// Lower bar
 		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/gui_navbar.png"));
 		drawScaledCustomSizeModalRect(INNER_X, INNER_Y, 0, 0, INNER_TEX_WIDTH * WIDTH_SCALE, INNER_TEX_HEIGHT * HEIGHT_SCALE, INNER_TEX_WIDTH, INNER_TEX_HEIGHT, 512, 512);
-		
-		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/gui_btn_back.png"));
-		drawScaledCustomSizeModalRect(BACK_X, INNER_Y + INNER_TEX_HEIGHT - 23, 0, 0, 32, 32, 8, 8, 32, 32);
-		
-		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/gui_btn_home.png"));
-		drawScaledCustomSizeModalRect(HOME_X, INNER_Y + INNER_TEX_HEIGHT - 23, 0, 0, 32, 32, 8, 8, 32, 32);
 		
 		super.drawScreen(mouseX, mouseY, partialTicks);
 	}
@@ -170,5 +173,20 @@ public abstract class GuiPhoneBase extends GuiScreen {
 	public String getCurrentPhoneNumber()
 	{
 		return phoneStackData.getPhoneNumberString();
+	}
+
+	@Override
+	protected void actionPerformed(GuiButton button) throws IOException {
+		super.actionPerformed(button);
+		
+		if (button.id == 999)
+		{
+			GuiHome home = new GuiHome(phoneStack, hand);
+			Minecraft.getMinecraft().displayGuiScreen(home);
+		}
+		else if (button.id == 998)
+		{
+			// Check stack
+		}
 	}
 }

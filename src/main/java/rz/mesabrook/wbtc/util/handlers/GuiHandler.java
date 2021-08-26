@@ -1,5 +1,10 @@
 package rz.mesabrook.wbtc.util.handlers;
 
+import java.util.Optional;
+
+import com.google.common.collect.Comparators;
+
+import it.unimi.dsi.fastutil.ints.IntComparators;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -15,9 +20,9 @@ import rz.mesabrook.wbtc.blocks.gui.telecom.GuiEmptyPhone;
 import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneActivate;
 import rz.mesabrook.wbtc.blocks.te.TileEntityTrashBin;
 import rz.mesabrook.wbtc.items.misc.ItemPhone;
-import rz.mesabrook.wbtc.items.misc.ItemPhone.NBTData;
 import rz.mesabrook.wbtc.net.telecom.PhoneQueryPacket;
 import rz.mesabrook.wbtc.util.Reference;
+import rz.mesabrook.wbtc.util.handlers.ClientSideHandlers.TelecomClientHandlers;
 
 public class GuiHandler implements IGuiHandler
 {
@@ -49,8 +54,17 @@ public class GuiHandler implements IGuiHandler
 			}
 			else
 			{
+				Optional<Integer> maxID = TelecomClientHandlers.phoneQueryResponseHandlers.keySet().stream().max(Integer::compare);
+				int nextID = 1;
+				if (maxID.isPresent())
+				{
+					nextID = maxID.get() + 1;
+				}
+				
+				TelecomClientHandlers.phoneQueryResponseHandlers.put(nextID, TelecomClientHandlers::onPhoneQueryResponsePacket);
 				PhoneQueryPacket query = new PhoneQueryPacket();
 				query.forNumber = phoneNumber;
+				query.clientHandlerCode = nextID;
 				PacketHandler.INSTANCE.sendToServer(query);
 				
 				return new GuiEmptyPhone(stack, hand);

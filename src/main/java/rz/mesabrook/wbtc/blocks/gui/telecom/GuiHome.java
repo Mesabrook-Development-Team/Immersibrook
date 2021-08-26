@@ -1,6 +1,7 @@
 package rz.mesabrook.wbtc.blocks.gui.telecom;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -8,6 +9,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import rz.mesabrook.wbtc.net.telecom.PhoneQueryPacket;
+import rz.mesabrook.wbtc.util.handlers.ClientSideHandlers.TelecomClientHandlers;
+import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 @SideOnly(Side.CLIENT)
 public class GuiHome extends GuiPhoneBase {
@@ -34,7 +38,21 @@ public class GuiHome extends GuiPhoneBase {
 		
 		switch(button.id) {
 			case 0:
-				Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneCall(phoneStack, hand));
+				Minecraft.getMinecraft().displayGuiScreen(new GuiEmptyPhone(phoneStack, hand));
+				
+				PhoneQueryPacket queryPacket = new PhoneQueryPacket();
+				queryPacket.forNumber = getCurrentPhoneNumber();
+				
+				Optional<Integer> maxID = TelecomClientHandlers.phoneQueryResponseHandlers.keySet().stream().max(Integer::compare);
+				int nextID = 1;
+				if (maxID.isPresent())
+				{
+					nextID = maxID.get() + 1;
+				}
+				
+				TelecomClientHandlers.phoneQueryResponseHandlers.put(nextID, TelecomClientHandlers::onPhoneQueryResponseForPhoneApp);
+				queryPacket.clientHandlerCode = nextID;
+				PacketHandler.INSTANCE.sendToServer(queryPacket);
 				break;
 		}
 	}
