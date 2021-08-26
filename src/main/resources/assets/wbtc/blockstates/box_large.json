@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:box_large" },
+        "facing=south": { "model": "wbtc:box_large", "y": 180 },
+        "facing=west":  { "model": "wbtc:box_large", "y": 270 },
+        "facing=east":  { "model": "wbtc:box_large", "y": 90 }
+    }
+}

@@ -81,6 +81,12 @@ public class CategoryHousehold extends AbstractCategory
 		add(ModItems.RUBBER_DUCK_BLUE);
 		add(ModItems.RUBBER_DUCK_GREEN);
 		add(ModItems.RUBBER_DUCK_EVIL);
+
+		// Boxes
+		add(ModBlocks.SHIPPING_BOX_SMALL);
+		add(ModBlocks.SHIPPING_BOX_MEDIUM);
+		add(ModBlocks.SHIPPING_BOX_LARGE);
+		add(ModBlocks.SHIPPING_BOX_CHUNGUS);
 	}
 
 }

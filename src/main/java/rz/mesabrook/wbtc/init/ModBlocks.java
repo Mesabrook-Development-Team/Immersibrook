@@ -1029,4 +1029,10 @@ public class ModBlocks
 	
 	// Telecom
 	public static final Block CELL_ANTENNA = new BlockCellAntenna("cell_antenna");
+
+	// Shipping Boxes
+	public static final Block SHIPPING_BOX_SMALL = new BlockShippingBox("box_small", ModUtils.getPixelatedAABB(5.5,0,5.5, 10.5,5,10.5));
+	public static final Block SHIPPING_BOX_MEDIUM = new BlockShippingBox("box_medium", ModUtils.getPixelatedAABB(2,0,2, 14,9,14));
+	public static final Block SHIPPING_BOX_LARGE = new BlockShippingBox("box_large", ModUtils.getPixelatedAABB(0,0,0, 16,12,16));
+	public static final Block SHIPPING_BOX_CHUNGUS = new BlockShippingBox("box_xl", ModUtils.getPixelatedAABB(0,0,0, 16,16,16));
 }
