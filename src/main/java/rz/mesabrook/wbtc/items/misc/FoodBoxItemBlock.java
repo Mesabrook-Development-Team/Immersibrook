@@ -57,6 +57,7 @@ public class FoodBoxItemBlock extends ItemBlock
                     TileEntityFoodBox foodTE = (TileEntityFoodBox)tileEntity;
                     foodTE.setBoxID(stackTag.getString("boxID"));
                     foodTE.setCompany(stackTag.getString("company"));
+                    foodTE.setUses(9);
                     world.notifyBlockUpdate(pos, newState, newState, 4);
                 }
             }

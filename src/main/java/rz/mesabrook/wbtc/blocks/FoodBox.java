@@ -267,34 +267,38 @@ public class FoodBox extends Block implements IHasModel
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
         ItemStack foodboxStack = new ItemStack(this);
-        if(!player.isCreative())
+        if(!world.isRemote)
         {
-            TileEntity te = world.getTileEntity(pos);
-            if(te instanceof TileEntityFoodBox)
+            if(!player.isCreative())
             {
-                int available;
-                TileEntityFoodBox foodBoxTE = (TileEntityFoodBox)te;
-                NBTTagCompound compound = new NBTTagCompound();
-                available = compound.getInteger("uses");
+                TileEntity te = world.getTileEntity(pos);
+                if(te instanceof TileEntityFoodBox)
+                {
+                    int available;
+                    TileEntityFoodBox foodBoxTE = (TileEntityFoodBox)te;
+                    NBTTagCompound compound = new NBTTagCompound();
+                    available = ((TileEntityFoodBox) te).getUses();
 
-                if(available > 0)
-                {
-                    available--;
-                    compound.setInteger("uses", available);
-                    foodboxStack.setTagCompound(compound);
-                    player.addItemStackToInventory(new ItemStack(ModItems.SUGAR_BLUE, 1));
+                    if(available > 0)
+                    {
+                        available--;
+                        foodBoxTE.setUses(available);
+                        player.addItemStackToInventory(new ItemStack(ModItems.SUGAR_BLUE, 1));
+                    }
+                    else
+                    {
+                        world.setBlockToAir(pos);
+                    }
+                    return true;
                 }
-                else
-                {
-                    world.setBlockToAir(pos);
-                }
+                return true;
             }
-            return true;
+            else
+            {
+                return false;
+            }
         }
-        else
-        {
-            return false;
-        }
+        return false;
     }
 
     @Override

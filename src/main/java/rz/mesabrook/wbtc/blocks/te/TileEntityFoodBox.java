@@ -12,7 +12,7 @@ public class TileEntityFoodBox extends TileEntity
 {
     private String company = "";
     private String boxID = "";
-    private int uses;
+    private int uses = 9;
 
     public TileEntityFoodBox()
     {
@@ -23,6 +23,7 @@ public class TileEntityFoodBox extends TileEntity
     {
         super();
         this.boxID = boxID;
+        this.uses = 9;
     }
 
     @Override
