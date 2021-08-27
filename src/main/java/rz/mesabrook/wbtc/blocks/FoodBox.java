@@ -281,8 +281,7 @@ public class FoodBox extends Block implements IHasModel
 
                     if(available > 0)
                     {
-                        available--;
-                        foodBoxTE.setUses(available);
+                        foodBoxTE.setUses(available - 1);
                         player.addItemStackToInventory(new ItemStack(ModItems.SUGAR_BLUE, 1));
                     }
                     else
