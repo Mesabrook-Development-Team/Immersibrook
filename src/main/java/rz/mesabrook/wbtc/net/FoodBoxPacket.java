@@ -16,7 +16,6 @@ public class FoodBoxPacket implements IMessage
 {
     public String boxID = "";
     public String company = "";
-    public int uses = 9;
     public EnumHand hand;
 
     @Override
@@ -25,7 +24,6 @@ public class FoodBoxPacket implements IMessage
         boxID = ByteBufUtils.readUTF8String(buf);
         company = ByteBufUtils.readUTF8String(buf);
         hand = EnumHand.values()[buf.readInt()];
-        uses = buf.readInt();
     }
 
     @Override
@@ -34,7 +32,6 @@ public class FoodBoxPacket implements IMessage
         ByteBufUtils.writeUTF8String(buf, boxID);
         ByteBufUtils.writeUTF8String(buf, company);
         buf.writeInt(hand.ordinal());
-        buf.writeInt(uses);
     }
 
     public static class Handler implements IMessageHandler<FoodBoxPacket, IMessage>
@@ -64,7 +61,6 @@ public class FoodBoxPacket implements IMessage
 
             compound.setString("boxID", message.boxID);
             compound.setString("company", message.company);
-            compound.setInteger("uses", message.uses);
         }
     }
 }

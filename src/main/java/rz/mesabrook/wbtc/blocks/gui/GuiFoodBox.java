@@ -74,7 +74,6 @@ public class GuiFoodBox extends GuiScreen
             packet.boxID = boxIDBox.getText();
             packet.company = companyBox.getText();
             packet.hand = hand;
-            packet.uses = 9;
             PacketHandler.INSTANCE.sendToServer(packet);
 
             Minecraft.getMinecraft().displayGuiScreen(null);
