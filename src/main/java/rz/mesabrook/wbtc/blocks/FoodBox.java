@@ -27,6 +27,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.OreDictionary;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.blocks.te.TileEntityFoodBox;
 import rz.mesabrook.wbtc.init.ModBlocks;
@@ -49,6 +50,8 @@ public class FoodBox extends Block implements IHasModel
     protected final ArrayList<AxisAlignedBB> AABBs;
     private final TextComponentTranslation product = new TextComponentTranslation("im.product");
     private final TextComponentTranslation companyLbl = new TextComponentTranslation("im.company");
+    private final TextComponentTranslation empty = new TextComponentTranslation("im.box.empty");
+    private final TextComponentTranslation amount = new TextComponentTranslation("im.box.amount");
 
     public FoodBox(String name, Material mat, SoundType sndType, int stackSize, String harvestTool, int harvestLevel, float hardness, float resist, AxisAlignedBB unrotatedAABB)
     {
@@ -74,6 +77,8 @@ public class FoodBox extends Block implements IHasModel
 
         product.getStyle().setColor(TextFormatting.LIGHT_PURPLE);
         companyLbl.getStyle().setColor(TextFormatting.LIGHT_PURPLE);
+        empty.getStyle().setColor(TextFormatting.RED);
+        amount.getStyle().setColor(TextFormatting.LIGHT_PURPLE);
 
         ModBlocks.BLOCKS.add(this);
         ModItems.ITEMS.add(new FoodBoxItemBlock(this).setRegistryName(this.getRegistryName()).setMaxStackSize(1));
@@ -248,27 +253,31 @@ public class FoodBox extends Block implements IHasModel
     public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
     {
         ItemStack foodboxStack = new ItemStack(this);
-        foodboxStack.setCount(1);
-
-        TileEntity te = world.getTileEntity(pos);
-        if(te instanceof TileEntityFoodBox)
+        World worldIn = (World)world;
+        if(!worldIn.isRemote)
         {
-            TileEntityFoodBox foodBoxTE = (TileEntityFoodBox)te;
-            NBTTagCompound compound = new NBTTagCompound();
-            compound.setString("boxID", foodBoxTE.getBoxID());
-            compound.setString("company", foodBoxTE.getCompany());
-            foodboxStack.setTagCompound(compound);
-        }
+            foodboxStack.setCount(1);
 
-        drops.add(foodboxStack);
+            TileEntity te = world.getTileEntity(pos);
+            if(te instanceof TileEntityFoodBox)
+            {
+                TileEntityFoodBox foodBoxTE = (TileEntityFoodBox)te;
+                NBTTagCompound compound = new NBTTagCompound();
+                compound.setString("boxID", foodBoxTE.getBoxID());
+                compound.setString("company", foodBoxTE.getCompany());
+                foodboxStack.setTagCompound(compound);
+            }
+
+            drops.add(foodboxStack);
+        }
     }
 
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
-        ItemStack foodboxStack = new ItemStack(this);
         if(!world.isRemote)
         {
+            ItemStack foodboxStack = new ItemStack(this);
             if(!player.isCreative())
             {
                 TileEntity te = world.getTileEntity(pos);
@@ -276,28 +285,21 @@ public class FoodBox extends Block implements IHasModel
                 {
                     int available;
                     TileEntityFoodBox foodBoxTE = (TileEntityFoodBox)te;
-                    NBTTagCompound compound = new NBTTagCompound();
                     available = ((TileEntityFoodBox) te).getUses();
 
                     if(available > 0)
                     {
                         foodBoxTE.setUses(available - 1);
-                        player.addItemStackToInventory(new ItemStack(ModItems.SUGAR_BLUE, 1));
                     }
                     else
                     {
-                        world.setBlockToAir(pos);
+                        player.sendMessage(new TextComponentString(empty.getFormattedText()));
                     }
-                    return true;
                 }
                 return true;
             }
-            else
-            {
-                return false;
-            }
         }
-        return false;
+        return true;
     }
 
     @Override

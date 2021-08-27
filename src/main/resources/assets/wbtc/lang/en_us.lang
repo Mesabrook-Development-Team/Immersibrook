@@ -1306,6 +1306,8 @@ im.mat.cheese=Cheese
 im.why=But Why Tho?
 im.wi=Product of Wisconsin
 im.sparkling=Did you really just chug that entire bottle of sparkling pink lemonade?
+im.box.empty=This box is empty.
+im.box.amount=Available Uses:
 
 //Food Boxes
 tile.sugar_box.name=Granulated White Sugar
