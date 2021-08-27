@@ -12,6 +12,7 @@ public class TileEntityFoodBox extends TileEntity
 {
     private String company = "";
     private String boxID = "";
+    private int uses;
 
     public TileEntityFoodBox()
     {
@@ -30,6 +31,7 @@ public class TileEntityFoodBox extends TileEntity
         super.readFromNBT(compound);
         boxID = compound.getString("boxID");
         company = compound.getString("company");
+        uses = compound.getInteger("uses");
     }
 
     @Override
@@ -37,7 +39,14 @@ public class TileEntityFoodBox extends TileEntity
     {
         compound.setString("boxID", boxID);
         compound.setString("company", company);
+        compound.setInteger("uses", uses);
         return super.writeToNBT(compound);
+    }
+
+    public int getUses() {return uses;}
+    public void setUses(int uses)
+    {
+        this.uses = uses;
     }
 
     public String getBoxID()
@@ -68,6 +77,7 @@ public class TileEntityFoodBox extends TileEntity
         NBTTagCompound tag = super.getUpdateTag();
         tag.setString("boxID", getBoxID());
         tag.setString("company", getCompany());
+        tag.setInteger("uses", getUses());
         return tag;
     }
 
@@ -77,6 +87,7 @@ public class TileEntityFoodBox extends TileEntity
         super.handleUpdateTag(tag);
         this.boxID = tag.getString("boxID");
         this.company = tag.getString("company");
+        this.uses = tag.getInteger("uses");
     }
 
     @Override
@@ -85,6 +96,7 @@ public class TileEntityFoodBox extends TileEntity
         NBTTagCompound tag = new NBTTagCompound();
         tag.setString("boxID", getBoxID());
         tag.setString("company", getCompany());
+        tag.setInteger("uses", getUses());
         return new SPacketUpdateTileEntity(getPos(), 0, tag);
     }
 
@@ -93,6 +105,7 @@ public class TileEntityFoodBox extends TileEntity
     {
         this.boxID = pkt.getNbtCompound().getString("boxID");
         this.company = pkt.getNbtCompound().getString("company");
+        this.uses = pkt.getNbtCompound().getInteger("uses");
         super.onDataPacket(net, pkt);
     }
 }

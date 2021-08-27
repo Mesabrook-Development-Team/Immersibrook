@@ -45,7 +45,6 @@ import java.util.Random;
 
 public class FoodBox extends Block implements IHasModel
 {
-    private int uses = 9;
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
     protected final ArrayList<AxisAlignedBB> AABBs;
     private final TextComponentTranslation product = new TextComponentTranslation("im.product");
@@ -201,7 +200,7 @@ public class FoodBox extends Block implements IHasModel
     {
         String boxID = null;
         String company = null;
-        int productAmount = 0;
+        int productAmount;
         NBTTagCompound tag = stack.getTagCompound();
 
         if(tag != null)
@@ -267,7 +266,35 @@ public class FoodBox extends Block implements IHasModel
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
-        return false;
+        ItemStack foodboxStack = new ItemStack(this);
+        if(!player.isCreative())
+        {
+            TileEntity te = world.getTileEntity(pos);
+            if(te instanceof TileEntityFoodBox)
+            {
+                int available;
+                TileEntityFoodBox foodBoxTE = (TileEntityFoodBox)te;
+                NBTTagCompound compound = new NBTTagCompound();
+                available = compound.getInteger("uses");
+
+                if(available > 0)
+                {
+                    available--;
+                    compound.setInteger("uses", available);
+                    foodboxStack.setTagCompound(compound);
+                    player.addItemStackToInventory(new ItemStack(ModItems.SUGAR_BLUE, 1));
+                }
+                else
+                {
+                    world.setBlockToAir(pos);
+                }
+            }
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     @Override

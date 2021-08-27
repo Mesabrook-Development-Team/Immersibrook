@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "CCC",
+	"CCC"
+  ],
+  "key": {
+    "P": {
+      "type": "forge:ore_dict",
+	  "ore": "cropCoffee"
+    }
+  },
+  "result": {
+    "item": "wbtc:coffee_box",
+    "count": 1
+  }
+}
