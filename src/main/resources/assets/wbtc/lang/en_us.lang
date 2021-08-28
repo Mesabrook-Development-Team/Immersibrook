@@ -1306,6 +1306,7 @@ im.mat.cheese=Cheese
 im.why=But Why Tho?
 im.wi=Product of Wisconsin
 im.sparkling=Did you really just chug that entire bottle of sparkling pink lemonade?
+im.truss.eat=Edible
 
 //Food Boxes
 tile.sugar_box.name=Granulated White Sugar
@@ -1335,6 +1336,7 @@ tile.constantan_truss_pratt.name=Pratt Truss
 tile.cheese_truss.name=Triangular Truss
 tile.cheese_truss_pratt.name=Pratt Truss
 tile.cheese_truss_howe.name=Howe Truss
+item.cheese_truss_food.name=Baked Cheese Truss
 
 //Lights
 tile.warehouse_light.name=Warehouse Light
