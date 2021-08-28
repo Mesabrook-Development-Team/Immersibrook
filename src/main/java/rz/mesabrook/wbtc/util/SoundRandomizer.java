@@ -171,10 +171,10 @@ public class SoundRandomizer
 				hammerRightClick = "spree";
 				break;
 			case 3:
-				hammerRightClick = "spree";
+				hammerRightClick = "baka";
 				break;
 			case 4:
-				hammerRightClick = "baka";
+				hammerRightClick = "mallet";
 				break;
 		}
 	}
