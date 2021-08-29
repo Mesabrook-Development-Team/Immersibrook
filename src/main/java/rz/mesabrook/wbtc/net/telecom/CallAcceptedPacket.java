@@ -11,16 +11,19 @@ import rz.mesabrook.wbtc.util.handlers.ClientSideHandlers.TelecomClientHandlers;
 public class CallAcceptedPacket implements IMessage {
 	public String fromNumber;
 	public String toNumber;
+	public boolean isConferenceSubCall;
 	@Override
 	public void fromBytes(ByteBuf buf) {
 		fromNumber = ByteBufUtils.readUTF8String(buf);
 		toNumber = ByteBufUtils.readUTF8String(buf);
+		isConferenceSubCall = buf.readBoolean();
 	}
 
 	@Override
 	public void toBytes(ByteBuf buf) {
 		ByteBufUtils.writeUTF8String(buf, fromNumber);
 		ByteBufUtils.writeUTF8String(buf, toNumber);
+		buf.writeBoolean(isConferenceSubCall);
 	}
 
 	public static class Handler implements IMessageHandler<CallAcceptedPacket, IMessage>
@@ -33,7 +36,7 @@ public class CallAcceptedPacket implements IMessage {
 		
 		private void handle(CallAcceptedPacket message, MessageContext ctx)
 		{
-			TelecomClientHandlers.onCallConnected(message.fromNumber, message.toNumber);
+			TelecomClientHandlers.onCallConnected(message.fromNumber, message.toNumber, message.isConferenceSubCall);
 		}
 	}
 }

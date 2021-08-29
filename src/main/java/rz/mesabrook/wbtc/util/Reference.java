@@ -35,4 +35,5 @@ public class Reference
 	public static final UUID LW_UUID = UUID.fromString("2f2bc3a6-89e1-481c-a789-b9454d81cb9b");
 	
 	public static final String PHONE_NUMBER_NBTKEY = "phonenumber";
+	public static final String PHONE_CONFERENCE_NAME = "Conference";
 }

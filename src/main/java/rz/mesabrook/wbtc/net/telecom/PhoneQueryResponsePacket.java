@@ -11,16 +11,19 @@ import rz.mesabrook.wbtc.util.handlers.ClientSideHandlers.TelecomClientHandlers;
 public class PhoneQueryResponsePacket implements IMessage {
 
 	public static final int PHONE_START_CLIENT_HANDLER = -1;
+	public static final int PHONE_APP_CLIENT_HANDLER = -2;
 	public ResponseTypes responseType;
 	public String forNumber;
 	public String otherNumber = "";
 	public int clientHandlerCode;
+	public boolean isConferenceSubCall = false;
 	@Override
 	public void fromBytes(ByteBuf buf) {
 		responseType = ResponseTypes.values()[buf.readInt()];
 		forNumber = ByteBufUtils.readUTF8String(buf);
 		otherNumber = ByteBufUtils.readUTF8String(buf);
 		clientHandlerCode = buf.readInt();
+		isConferenceSubCall = buf.readBoolean();
 	}
 
 	@Override
@@ -29,6 +32,7 @@ public class PhoneQueryResponsePacket implements IMessage {
 		ByteBufUtils.writeUTF8String(buf, forNumber);
 		ByteBufUtils.writeUTF8String(buf, otherNumber);
 		buf.writeInt(clientHandlerCode);
+		buf.writeBoolean(isConferenceSubCall);
 	}
 
 	public enum ResponseTypes
@@ -53,6 +57,10 @@ public class PhoneQueryResponsePacket implements IMessage {
 			if (message.clientHandlerCode == PHONE_START_CLIENT_HANDLER)
 			{
 				TelecomClientHandlers.onPhoneQueryResponsePacket(message);
+			}
+			else if (message.clientHandlerCode == PHONE_APP_CLIENT_HANDLER)
+			{
+				TelecomClientHandlers.onPhoneQueryResponseForPhoneApp(message);
 			}
 			else if (TelecomClientHandlers.phoneQueryResponseHandlers.containsKey(message.clientHandlerCode))
 			{
