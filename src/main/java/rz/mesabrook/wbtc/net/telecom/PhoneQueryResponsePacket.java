@@ -17,6 +17,7 @@ public class PhoneQueryResponsePacket implements IMessage {
 	public String otherNumber = "";
 	public int clientHandlerCode;
 	public boolean isConferenceSubCall = false;
+	public boolean isMergeable = false;
 	@Override
 	public void fromBytes(ByteBuf buf) {
 		responseType = ResponseTypes.values()[buf.readInt()];
@@ -24,6 +25,7 @@ public class PhoneQueryResponsePacket implements IMessage {
 		otherNumber = ByteBufUtils.readUTF8String(buf);
 		clientHandlerCode = buf.readInt();
 		isConferenceSubCall = buf.readBoolean();
+		isMergeable = buf.readBoolean();
 	}
 
 	@Override
@@ -33,6 +35,7 @@ public class PhoneQueryResponsePacket implements IMessage {
 		ByteBufUtils.writeUTF8String(buf, otherNumber);
 		buf.writeInt(clientHandlerCode);
 		buf.writeBoolean(isConferenceSubCall);
+		buf.writeBoolean(isMergeable);
 	}
 
 	public enum ResponseTypes

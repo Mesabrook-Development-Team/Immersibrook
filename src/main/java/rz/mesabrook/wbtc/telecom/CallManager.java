@@ -13,6 +13,7 @@ import java.util.stream.IntStream;
 import com.google.common.collect.ImmutableList;
 
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.Tuple;
@@ -24,6 +25,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import rz.mesabrook.wbtc.items.misc.ItemPhone;
+import rz.mesabrook.wbtc.items.misc.ItemPhone.NBTData;
 import rz.mesabrook.wbtc.net.telecom.CallAcceptedPacket;
 import rz.mesabrook.wbtc.net.telecom.CallRejectedPacket;
 import rz.mesabrook.wbtc.net.telecom.DisconnectedCallNotificationPacket;
@@ -63,6 +65,7 @@ public class CallManager {
 	
 	public void tick()
 	{
+		ArrayList<UUID> postDequeueList = new ArrayList<>();
 		synchronized (callMapLock) {
 			for(Call call : callsByID.values())
 			{
@@ -97,6 +100,11 @@ public class CallManager {
 							notify.toNumber = call.getDestPhones().size() > 1 ? rz.mesabrook.wbtc.util.Reference.PHONE_CONFERENCE_NAME : call.getOriginPhone();
 							PacketHandler.INSTANCE.sendTo(notify, destOwner.getFirst());
 						}
+						
+						for(Call subCall : call.conferenceSubCalls)
+						{
+							postDequeueList.add(subCall.getID());
+						}
 					}
 					
 					callsByID.remove(dequeueCall);
@@ -106,6 +114,7 @@ public class CallManager {
 		}
 		
 		callDequeue.clear();
+		callDequeue.addAll(postDequeueList);
 	}
 	
 	public void dequeueCall(UUID id)
@@ -185,6 +194,11 @@ public class CallManager {
 		public boolean doesConferenceSubCallsContainOrigin(String originNumber)
 		{
 			return conferenceSubCalls.stream().anyMatch(c -> c.getOriginPhone().equals(originNumber));
+		}
+		
+		public boolean containsNumber(String number)
+		{
+			return (getOriginPhone().equals(number) || getDestPhones().stream().anyMatch(n -> n.equals(number))) && !conferenceSubCalls.stream().anyMatch(c -> c.containsNumber(number));
 		}
 		
 		public void tick()
@@ -343,6 +357,7 @@ public class CallManager {
 				accepted.fromNumber = getOriginPhone();
 				accepted.toNumber = getDestPhones().get(0);
 				accepted.isConferenceSubCall = parentCall != null;
+				accepted.isMergeable = parentCall != null;
 				PacketHandler.INSTANCE.sendTo(accepted, origin.getFirst());
 			}
 			
@@ -353,13 +368,22 @@ public class CallManager {
 				accepted.fromNumber = getDestPhones().get(0);
 				accepted.toNumber = getOriginPhone();
 				accepted.isConferenceSubCall = false;
+				accepted.isMergeable = false;
 				PacketHandler.INSTANCE.sendTo(accepted, dest.getFirst());
 			}
 		}
 		
-		public void reject()
+		public void reject(String caller)
 		{
 			Tuple<EntityPlayerMP, ItemStack> origin = getOriginOwner();
+			
+			if (doesConferenceSubCallsContainOrigin(caller))
+			{
+				Call subCall = conferenceSubCalls.stream().filter(c -> c.getOriginPhone().equals(caller)).findFirst().get();
+				subCall.reject(caller);
+				return;
+			}
+			
 			Tuple<EntityPlayerMP, ItemStack> dest = getDestOwners().get(0);
 			
 			CallRejectedPacket rejected = new CallRejectedPacket();
@@ -393,55 +417,39 @@ public class CallManager {
 				return;
 			}
 			
-			for(Call call : conferenceSubCalls)
-			{
-				Tuple<EntityPlayerMP, ItemStack> subCallOrigin = call.getOriginOwner();
-				if (subCallOrigin != null && subCallOrigin.getFirst() == player)
-				{
-					call.onPlayerChat(player, text);
-					return;
-				}
-			}
-			
-			AntennaData data = AntennaData.getOrCreate(player.world);
-			double senderReception = data.getBestReception(player.getPosition());
-			
-			Tuple<EntityPlayerMP, ItemStack> origin = getOriginOwner();
-			Tuple<EntityPlayerMP, ItemStack> dest = getDestOwners().get(0);
-			
-			if (origin == null || dest == null)
+			AntennaData antenna = AntennaData.getOrCreate(player.world);
+			double playerReception = antenna.getBestReception(player.getPosition());
+			if (playerReception <= 0.0)
 			{
 				return;
 			}
 			
-			if (origin != null && origin.getFirst() != player && dest.getFirst() == player)
+			ArrayList<Tuple<EntityPlayerMP, ItemStack>> phones = getDestOwners();
+			phones.add(getOriginOwner());
+			for(Tuple<EntityPlayerMP, ItemStack> phone : phones)
 			{
-				EntityPlayerMP receiver = origin.getFirst();
-				double receiverReception = data.getBestReception(receiver.getPosition());
-				
-				double effectiveReception = receiverReception < senderReception ? receiverReception : senderReception;
-				if (effectiveReception <= 0.0)
+				if (phone.getFirst() == player)
 				{
-					return;
+					continue;
+				}
+				
+				ItemPhone.NBTData nbtData = new ItemPhone.NBTData();
+				nbtData.deserializeNBT(phone.getSecond().getTagCompound());
+				
+				if (doesConferenceSubCallsContainOrigin(nbtData.getPhoneNumberString()))
+				{
+					continue;
+				}
+				
+				double effectiveReception = playerReception;
+				double receiverReception = antenna.getBestReception(phone.getFirst().getPosition());
+				if (receiverReception < effectiveReception)
+				{
+					effectiveReception = receiverReception;
 				}
 				
 				ITextComponent textToSend = getScrambledText(text, effectiveReception);
-				receiver.sendMessage(textToSend);
-			}
-			
-			if (dest != null && dest.getFirst() != player && origin.getFirst() == player)
-			{
-				EntityPlayerMP receiver = dest.getFirst();
-				double receiverReception = data.getBestReception(receiver.getPosition());
-				
-				double effectiveReception = receiverReception < senderReception ? receiverReception : senderReception;
-				if (effectiveReception <= 0.0)
-				{
-					return;
-				}
-				
-				ITextComponent textToSend = getScrambledText(text, effectiveReception);
-				receiver.sendMessage(textToSend);
+				phone.getFirst().sendMessage(textToSend);
 			}
 		}
 		
@@ -512,7 +520,7 @@ public class CallManager {
 			return retVal;
 		}
 
-		public void merge(String mergingNumber, int clientHandlerCode)
+		public void merge(String mergingNumber)
 		{
 			Optional<Call> optSubCall = conferenceSubCalls.stream().filter(c -> c.getOriginPhone().equals(mergingNumber)).findFirst();
 			if (!optSubCall.isPresent())
@@ -524,6 +532,9 @@ public class CallManager {
 			destPhones.addAll(subCall.getDestPhones());
 			conferenceSubCalls.addAll(subCall.conferenceSubCalls);
 			conferenceSubCalls.remove(subCall);
+			callsByID.values().remove(subCall);
+			
+			while(callsByPhone.values().remove(subCall)) {}
 			
 			for(String destPhone : subCall.getDestPhones())
 			{
@@ -540,8 +551,8 @@ public class CallManager {
 				Tuple<ResponseTypes, String> response = phoneQuery(origin.getFirst(), getOriginPhone());
 				responsePacket.forNumber = getOriginPhone();
 				responsePacket.responseType = response.getFirst();
-				responsePacket.otherNumber = response.getSecond();
-				responsePacket.clientHandlerCode = clientHandlerCode;
+				responsePacket.otherNumber = Reference.PHONE_CONFERENCE_NAME;
+				responsePacket.clientHandlerCode = PhoneQueryResponsePacket.PHONE_APP_CLIENT_HANDLER;
 				
 				PacketHandler.INSTANCE.sendTo(responsePacket, origin.getFirst());
 			}
@@ -556,7 +567,7 @@ public class CallManager {
 				Tuple<ResponseTypes, String> response = phoneQuery(dest.getFirst(), nbtData.getPhoneNumberString());
 				responsePacket.forNumber = nbtData.getPhoneNumberString();
 				responsePacket.responseType = response.getFirst();
-				responsePacket.otherNumber = getOriginPhone();
+				responsePacket.otherNumber = Reference.PHONE_CONFERENCE_NAME;
 				responsePacket.clientHandlerCode = PhoneQueryResponsePacket.PHONE_APP_CLIENT_HANDLER;
 				
 				PacketHandler.INSTANCE.sendTo(responsePacket, dest.getFirst());
@@ -565,28 +576,89 @@ public class CallManager {
 		
 		public void disconnectDest(String dest)
 		{
+			if (getOriginPhone().equals(dest))
+			{
+				dequeueCall(getID());
+				return;
+			}
+			
 			if (!getDestPhones().contains(dest))
 			{
 				return;
 			}
 			
-			destPhones.remove(dest);
-			
-			if (destPhones.size() > 0)
+			if (destPhones.size() <= 1)
 			{
-				DisconnectedCallNotificationPacket disconnectPacket = new DisconnectedCallNotificationPacket();
-				disconnectPacket.forNumber = dest;
-				disconnectPacket.toNumber = Reference.PHONE_CONFERENCE_NAME;
+				dequeueCall(getID());
+			}
+			else
+			{
+				ArrayList<Tuple<EntityPlayerMP, ItemStack>> phones = getDestOwners();
+				phones.add(getOriginOwner());
 				
+				for(Tuple<EntityPlayerMP, ItemStack> phone : phones)
+				{
+					ItemPhone.NBTData data = new ItemPhone.NBTData();
+					data.deserializeNBT(phone.getSecond().getTagCompound());
+					
+					if (data.getPhoneNumberString().equals(dest))
+					{
+						DisconnectedCallNotificationPacket notification = new DisconnectedCallNotificationPacket();
+						notification.forNumber = dest;
+						notification.toNumber = destPhones.size() > 1 ? Reference.PHONE_CONFERENCE_NAME : dest;
+						PacketHandler.INSTANCE.sendTo(notification, phone.getFirst());
+					}
+					else
+					{
+						phone.getFirst().sendMessage(new TextComponentString(getFormattedPhoneNumber(dest) + " has left the conference."));
+					}
+				}
+				
+				destPhones.remove(dest);
+				callsByPhone.remove(dest);
 			}
 		}
 	}
 	
 	public void onPlayerChat(EntityPlayerMP player, ITextComponent text)
 	{
+		ArrayList<String> playerNumbers = new ArrayList<>();
+		for(int i = 0; i < player.inventory.getSizeInventory(); i++)
+		{
+			ItemStack stack = player.inventory.getStackInSlot(i);
+			if (!(stack.getItem() instanceof ItemPhone))
+			{
+				continue;
+			}
+			
+			ItemPhone.NBTData data = new ItemPhone.NBTData();
+			data.deserializeNBT(stack.getTagCompound());
+			
+			String phoneNumber = data.getPhoneNumberString();
+			if (phoneNumber == null)
+			{
+				continue;
+			}
+			
+			playerNumbers.add(phoneNumber);
+		}
+		
 		for(Call call : callsByID.values())
 		{
-			call.onPlayerChat(player, text);
+			boolean containsNumber = false;
+			for(String playerNumber : playerNumbers)
+			{
+				if (call.containsNumber(playerNumber))
+				{
+					containsNumber = true;
+					break;
+				}
+			}
+			
+			if (containsNumber)
+			{
+				call.onPlayerChat(player, text);
+			}
 		}
 	}
 
@@ -665,11 +737,18 @@ public class CallManager {
 				responsePacket.responseType = response.getFirst();
 				responsePacket.otherNumber = response.getSecond();
 				responsePacket.clientHandlerCode = PhoneQueryResponsePacket.PHONE_START_CLIENT_HANDLER;
+				responsePacket.isConferenceSubCall = call.parentCall != null && call.doesConferenceSubCallsContainOrigin(originData.getPhoneNumberString());
+				responsePacket.isMergeable = responsePacket.isConferenceSubCall;
 				PacketHandler.INSTANCE.sendTo(responsePacket, player);
 			}
 			
 			for (Tuple<EntityPlayerMP, ItemStack> dest : dests)
 			{
+				if (dest.getFirst() != player)
+				{
+					continue;
+				}
+				
 				ItemPhone.NBTData destData = new ItemPhone.NBTData();
 				destData.deserializeNBT(dest.getSecond().getTagCompound());
 				
@@ -694,5 +773,12 @@ public class CallManager {
 			formattedNumber = formattedNumber.substring(0, 3) + "-" + formattedNumber.substring(3, formattedNumber.length());
 		}
 		return formattedNumber;
+	}
+
+	public void onServerStop()
+	{
+		callsByID.clear();
+		callsByPhone.clear();
+		callDequeue.clear();
 	}
 }

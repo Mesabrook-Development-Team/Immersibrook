@@ -17,11 +17,13 @@ import rz.mesabrook.wbtc.util.handlers.ClientSideHandlers.TelecomClientHandlers;
 public class GuiPhoneConnected extends GuiPhoneBase {
 
 	private String toNumber;
-	public boolean isConferenceSubCall = false; 
-	public GuiPhoneConnected(ItemStack phoneStack, EnumHand hand, String toNumber, boolean isConferenceSubCall) {
+	private boolean isConferenceSubCall = false; 
+	private boolean mergeable = false;
+	public GuiPhoneConnected(ItemStack phoneStack, EnumHand hand, String toNumber, boolean isConferenceSubCall, boolean mergeable) {
 		super(phoneStack, hand);
 		this.toNumber = toNumber;
 		this.isConferenceSubCall = isConferenceSubCall;
+		this.mergeable = mergeable;
 	}
 
 	@Override
@@ -31,6 +33,10 @@ public class GuiPhoneConnected extends GuiPhoneBase {
 	
 	public boolean isConferenceSubCall() {
 		return isConferenceSubCall;
+	}
+
+	public boolean isMergeable() {
+		return mergeable;
 	}
 
 	@Override
@@ -45,6 +51,7 @@ public class GuiPhoneConnected extends GuiPhoneBase {
 		buttonList.add(addCall);
 		
 		ImageButton mergeCall = new ImageButton(2, INNER_X+ INNER_TEX_WIDTH / 2 + 16 + 4, INNER_Y + 150, 32, 32, "btn_mergecall.png", 32, 32);
+		mergeCall.visible = isMergeable();
 		buttonList.add(mergeCall);
 	}
 
@@ -100,9 +107,6 @@ public class GuiPhoneConnected extends GuiPhoneBase {
 		{
 			MergeCallPacket merge = new MergeCallPacket();
 			merge.forNumber = getCurrentPhoneNumber();
-			int nextID = TelecomClientHandlers.getNextHandlerID();
-			TelecomClientHandlers.phoneQueryResponseHandlers.put(nextID, TelecomClientHandlers::onPhoneQueryResponseForPhoneApp);
-			merge.clientHandlerCode = nextID;
 			PacketHandler.INSTANCE.sendToServer(merge);
 		}
 	}

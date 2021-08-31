@@ -44,13 +44,11 @@ public class PhoneQueryPacket implements IMessage {
 			Tuple<ResponseTypes, String> queryResponse = manager.phoneQuery(player, message.forNumber);
 			
 			boolean isConferenceSubCall = false;
+			String callOrigin = "";
 			if (queryResponse.getFirst() != ResponseTypes.idle)
 			{
 				CallManager.Call call = manager.getCall(message.forNumber);
-				if (call.getOriginPhone().equals(message.forNumber))
-				{
-					isConferenceSubCall = call.doesConferenceSubCallsContainOrigin(message.forNumber);
-				}
+				isConferenceSubCall = call.doesConferenceSubCallsContainOrigin(message.forNumber);
 			}
 			
 			PhoneQueryResponsePacket responsePacket = new PhoneQueryResponsePacket();
@@ -59,6 +57,7 @@ public class PhoneQueryPacket implements IMessage {
 			responsePacket.otherNumber = queryResponse.getSecond();
 			responsePacket.clientHandlerCode = message.clientHandlerCode;
 			responsePacket.isConferenceSubCall = isConferenceSubCall;
+			responsePacket.isMergeable = isConferenceSubCall;
 			PacketHandler.INSTANCE.sendTo(responsePacket, player);
 		}
 	}

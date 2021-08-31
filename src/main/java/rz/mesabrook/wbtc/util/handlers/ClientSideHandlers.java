@@ -271,7 +271,7 @@ public class ClientSideHandlers
 			}
 			else if (packet.responseType == ResponseTypes.callConnected) 
 			{
-				mc.displayGuiScreen(new GuiPhoneConnected(currentGui.getPhoneStack(), currentGui.getHand(), packet.otherNumber, packet.isConferenceSubCall));
+				mc.displayGuiScreen(new GuiPhoneConnected(currentGui.getPhoneStack(), currentGui.getHand(), packet.otherNumber, packet.isConferenceSubCall, packet.isMergeable));
 			}
 		}
 	
@@ -331,7 +331,7 @@ public class ClientSideHandlers
 		}
 	
 		public static HashMap<String, LocalDateTime> callStartsByPhone = new HashMap<>();
-		public static void onCallConnected(String forNumber, String toNumber, boolean isConferenceSubCall)
+		public static void onCallConnected(String forNumber, String toNumber, boolean isConferenceSubCall, boolean isMergeable)
 		{
 			Minecraft mc = Minecraft.getMinecraft();
 			
@@ -361,7 +361,7 @@ public class ClientSideHandlers
 					return;
 				}
 				
-				GuiPhoneConnected connected = new GuiPhoneConnected(phoneBase.getPhoneStack(), phoneBase.getHand(), toNumber, isConferenceSubCall);
+				GuiPhoneConnected connected = new GuiPhoneConnected(phoneBase.getPhoneStack(), phoneBase.getHand(), toNumber, isConferenceSubCall, isMergeable);
 				mc.displayGuiScreen(connected);
 			}
 		}
@@ -436,12 +436,12 @@ public class ClientSideHandlers
 		{
 			Minecraft mc = Minecraft.getMinecraft();
 			
-			if (!(mc.currentScreen instanceof GuiEmptyPhone))
+			if (!(mc.currentScreen instanceof GuiPhoneBase))
 			{
 				return;
 			}
 			
-			GuiEmptyPhone currentScreen = (GuiEmptyPhone)mc.currentScreen;
+			GuiPhoneBase currentScreen = (GuiPhoneBase)mc.currentScreen;
 			if (!currentScreen.getCurrentPhoneNumber().equals(packet.forNumber))
 			{
 				return;
@@ -458,7 +458,7 @@ public class ClientSideHandlers
 			}
 			else if (packet.responseType == ResponseTypes.callConnected)
 			{
-				newScreen = new GuiPhoneConnected(currentScreen.getPhoneStack(), currentScreen.getHand(), packet.otherNumber, packet.isConferenceSubCall);
+				newScreen = new GuiPhoneConnected(currentScreen.getPhoneStack(), currentScreen.getHand(), packet.otherNumber, packet.isConferenceSubCall, packet.isMergeable);
 			}
 			else if (packet.responseType == ResponseTypes.callIncoming)
 			{
