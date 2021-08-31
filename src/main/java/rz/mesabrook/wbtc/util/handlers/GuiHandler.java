@@ -54,12 +54,7 @@ public class GuiHandler implements IGuiHandler
 			}
 			else
 			{
-				Optional<Integer> maxID = TelecomClientHandlers.phoneQueryResponseHandlers.keySet().stream().max(Integer::compare);
-				int nextID = 1;
-				if (maxID.isPresent())
-				{
-					nextID = maxID.get() + 1;
-				}
+				int nextID = TelecomClientHandlers.getNextHandlerID();
 				
 				TelecomClientHandlers.phoneQueryResponseHandlers.put(nextID, TelecomClientHandlers::onPhoneQueryResponsePacket);
 				PhoneQueryPacket query = new PhoneQueryPacket();

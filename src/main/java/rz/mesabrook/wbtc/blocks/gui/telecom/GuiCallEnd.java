@@ -4,6 +4,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import rz.mesabrook.wbtc.net.telecom.PhoneQueryPacket;
+import rz.mesabrook.wbtc.util.handlers.PacketHandler;
+import rz.mesabrook.wbtc.util.handlers.ClientSideHandlers.TelecomClientHandlers;
 
 public class GuiCallEnd extends GuiPhoneBase {
 
@@ -37,7 +40,15 @@ public class GuiCallEnd extends GuiPhoneBase {
 		
 		if (displayedTicks++ > 180)
 		{
-			Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneCall(getPhoneStack(), getHand()));
+			Minecraft.getMinecraft().displayGuiScreen(new GuiEmptyPhone(getPhoneStack(), getHand()));
+			
+			PhoneQueryPacket query = new PhoneQueryPacket();
+			query.forNumber = getCurrentPhoneNumber();
+			
+			int nextID = TelecomClientHandlers.getNextHandlerID();
+			TelecomClientHandlers.phoneQueryResponseHandlers.put(nextID, TelecomClientHandlers::onPhoneQueryResponseForPhoneApp);
+			query.clientHandlerCode = nextID;
+			PacketHandler.INSTANCE.sendToServer(query);
 		}
 	}
 

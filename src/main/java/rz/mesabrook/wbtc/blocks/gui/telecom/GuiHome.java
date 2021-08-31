@@ -43,12 +43,7 @@ public class GuiHome extends GuiPhoneBase {
 				PhoneQueryPacket queryPacket = new PhoneQueryPacket();
 				queryPacket.forNumber = getCurrentPhoneNumber();
 				
-				Optional<Integer> maxID = TelecomClientHandlers.phoneQueryResponseHandlers.keySet().stream().max(Integer::compare);
-				int nextID = 1;
-				if (maxID.isPresent())
-				{
-					nextID = maxID.get() + 1;
-				}
+				int nextID = TelecomClientHandlers.getNextHandlerID();
 				
 				TelecomClientHandlers.phoneQueryResponseHandlers.put(nextID, TelecomClientHandlers::onPhoneQueryResponseForPhoneApp);
 				queryPacket.clientHandlerCode = nextID;

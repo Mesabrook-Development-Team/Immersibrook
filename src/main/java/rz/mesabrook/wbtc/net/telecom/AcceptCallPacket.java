@@ -33,7 +33,7 @@ public class AcceptCallPacket implements IMessage {
 		private void handle(AcceptCallPacket message, MessageContext ctx)
 		{
 			CallManager manager = CallManager.instance();
-			CallManager.Call call = manager.getCall(message.fromNumber);
+			CallManager.Call call = manager.getCall(message.fromNumber);			
 			call.accept();
 		}
 	}

@@ -52,8 +52,17 @@ public class InitiateCallPacket implements IMessage {
 			}
 			
 			CallManager manager = CallManager.instance();
+			CallManager.Call currentCall = manager.getCall(message.fromNumber);
 			CallManager.Call newCall = manager.new Call(message.fromNumber, message.toNumber);
-			manager.enqueueCall(newCall);
+			
+			if (currentCall == null)
+			{
+				manager.enqueueCall(newCall);
+			}
+			else
+			{
+				currentCall.addConferenceSubCall(newCall);
+			}
 		}
 	}
 }

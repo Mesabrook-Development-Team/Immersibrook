@@ -8,42 +8,39 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import rz.mesabrook.wbtc.telecom.CallManager;
-import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
-public class DisconnectCallPacket implements IMessage {
+public class MergeCallPacket implements IMessage {
 
-	public String fromNumber;
+	public String forNumber;
 	@Override
 	public void fromBytes(ByteBuf buf) {
-		fromNumber = ByteBufUtils.readUTF8String(buf);
+		forNumber = ByteBufUtils.readUTF8String(buf);
 	}
 
 	@Override
 	public void toBytes(ByteBuf buf) {
-		ByteBufUtils.writeUTF8String(buf, fromNumber);
+		ByteBufUtils.writeUTF8String(buf, forNumber);
 	}
-	
-	public static class Handler implements IMessageHandler<DisconnectCallPacket, IMessage>
-	{
 
+	public static class Handler implements IMessageHandler<MergeCallPacket, IMessage>
+	{
 		@Override
-		public IMessage onMessage(DisconnectCallPacket message, MessageContext ctx) {
+		public IMessage onMessage(MergeCallPacket message, MessageContext ctx) {
 			FMLCommonHandler.instance().getWorldThread(ctx.netHandler).addScheduledTask(() -> handle(message, ctx));
 			return null;
 		}
-
-		private void handle(DisconnectCallPacket message, MessageContext ctx)
+	
+		private void handle(MergeCallPacket message, MessageContext ctx)
 		{
+			EntityPlayerMP player = ctx.getServerHandler().player;
+			
 			CallManager manager = CallManager.instance();
-			CallManager.Call callToDisconnect = manager.getCall(message.fromNumber);
+			CallManager.Call call = manager.getCall(message.forNumber);
 			
-			if (callToDisconnect == null)
+			if (call != null)
 			{
-				return;
+				call.merge(message.forNumber);
 			}
-			
-			callToDisconnect.disconnectDest(message.fromNumber);
 		}
 	}
-
 }
