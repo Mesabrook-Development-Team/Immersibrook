@@ -45,7 +45,7 @@ public class PlayerEvents
 			TextComponentTranslation prefix = new TextComponentTranslation("im.welcome");
 			prefix.getStyle().setColor(TextFormatting.GOLD);
 			prefix.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentTranslation("im.welcome.disable")));
-			player.sendMessage(new TextComponentString(prefix.getFormattedText() + user.getFormattedText() + "!"));
+			player.sendMessage(new TextComponentString(prefix.getFormattedText() + " " + user.getFormattedText() + "!"));
 
 			TextComponentTranslation mesaTitle = new TextComponentTranslation("im.website.title");
 			TextComponentTranslation wikiTitle = new TextComponentTranslation("im.wiki.title");

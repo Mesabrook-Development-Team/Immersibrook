@@ -11,6 +11,7 @@ import net.minecraft.world.IBlockAccess;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.util.IHasModel;
+import rz.mesabrook.wbtc.util.config.ModConfig;
 
 public class BlockFakeLight extends Block implements IHasModel
 {
@@ -19,7 +20,7 @@ public class BlockFakeLight extends Block implements IHasModel
         super(Material.GLASS);
         setUnlocalizedName(name);
         setRegistryName(name);
-        setLightLevel(1);
+        setLightLevel(1.0F);
         setLightOpacity(15);
         setBlockUnbreakable();
 
@@ -59,7 +60,14 @@ public class BlockFakeLight extends Block implements IHasModel
     @Override
     public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side)
     {
-        return false;
+        if(ModConfig.renderFakeLightBlocks)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     @Override

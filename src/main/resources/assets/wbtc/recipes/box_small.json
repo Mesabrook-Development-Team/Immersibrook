@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " x ",
+    "x x",
+	" x "
+  ],
+  "key": {
+    "x": {
+      "item": "wbtc:cardboard_piece"
+    }
+  },
+  "result": {
+    "item": "wbtc:box_small",
+    "count": 1
+  }
+}

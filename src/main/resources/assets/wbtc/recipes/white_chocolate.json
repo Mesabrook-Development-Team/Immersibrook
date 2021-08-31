@@ -1,0 +1,26 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "MC ",
+      "B  "
+   ],
+   "key": {
+      "M": {
+         "type": "forge:ore_dict",
+		 "ore": "toolMixingbowl"
+      },
+	  "B": {
+		 "type": "forge:ore_dict",
+		 "ore": "foodButter"
+	  },
+	  "C": {
+		 "type": "forge:ore_dict",
+		 "ore": "foodCocoapowder"
+	  }
+   },
+   "result": {
+      "item": "wbtc:white_chocolate",
+      "data": 0,
+      "count": 4
+   }
+}

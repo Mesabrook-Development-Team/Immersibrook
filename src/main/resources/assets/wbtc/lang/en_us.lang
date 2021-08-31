@@ -1252,6 +1252,7 @@ item.chocolate_bar_serpent.name=Sea Serpent Energy Chocolate
 item.chocolate_bar_strawberry.name=Strawberry Joy
 item.chocolate_bar_nut.name=Nut Bar
 item.chocolate_bar_krisp.name=Krisp!
+item.chocolate_bar_caramel.name=Caramella
 item.dye_red.name=Food Dye
 item.dye_green.name=Food Dye
 item.dye_blue.name=Food Dye
@@ -1283,6 +1284,7 @@ item.raw_candy_grape.name=Raw Candy
 item.raw_candy_rb.name=Raw Candy
 item.raw_candy_choc.name=Raw Candy
 item.raw_candy_pl.name=Raw Candy
+item.white_chocolate.name=White Chocolate
 item.wine_bottle.name=Ceremonial Wine Bottle
 
 //Dialog
@@ -1306,6 +1308,7 @@ im.mat.cheese=Cheese
 im.why=But Why Tho?
 im.wi=Product of Wisconsin
 im.sparkling=Did you really just chug that entire bottle of sparkling pink lemonade?
+im.truss.eat=Edible
 
 //Food Boxes
 tile.sugar_box.name=Granulated White Sugar
@@ -1335,6 +1338,7 @@ tile.constantan_truss_pratt.name=Pratt Truss
 tile.cheese_truss.name=Triangular Truss
 tile.cheese_truss_pratt.name=Pratt Truss
 tile.cheese_truss_howe.name=Howe Truss
+item.cheese_truss_food.name=Baked Cheese Truss
 
 //Lights
 tile.warehouse_light.name=Warehouse Light

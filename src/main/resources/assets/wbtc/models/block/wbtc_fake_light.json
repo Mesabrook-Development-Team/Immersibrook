@@ -2,11 +2,11 @@
    "parent": "block/cube",
    "textures": {
 	   "particle": "blocks/iron_block",
-       "up": "blocks/iron_block",
-       "down": "blocks/iron_block",
-       "south": "blocks/iron_block",
-       "north": "blocks/iron_block",
-       "west": "blocks/iron_block",
-       "east": "blocks/iron_block"
+       "up": "wbtc:blocks/debug_fls",
+       "down": "wbtc:blocks/debug_fls",
+       "south": "wbtc:blocks/debug_fls",
+       "north": "wbtc:blocks/debug_fls",
+       "west": "wbtc:blocks/debug_fls",
+       "east": "wbtc:blocks/debug_fls"
    }
 }
