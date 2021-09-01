@@ -1253,6 +1253,8 @@ item.chocolate_bar_strawberry.name=Strawberry Joy
 item.chocolate_bar_nut.name=Nut Bar
 item.chocolate_bar_krisp.name=Krisp!
 item.chocolate_bar_caramel.name=Caramella
+item.truffle_white.name=Chocolate Truffle
+item.truffle_milk.name=Chocolate Truffle
 item.dye_red.name=Food Dye
 item.dye_green.name=Food Dye
 item.dye_blue.name=Food Dye
@@ -1309,12 +1311,16 @@ im.why=But Why Tho?
 im.wi=Product of Wisconsin
 im.sparkling=Did you really just chug that entire bottle of sparkling pink lemonade?
 im.truss.eat=Edible
+im.truffle.milk=Milk Chocolate
+im.truffle.white=White Chocolate
 
 //Food Boxes
 tile.sugar_box.name=Granulated White Sugar
 tile.flour_box.name=All Purpose Flour
 tile.cornmeal_box.name=Cornmeal
 tile.coffee_box.name=Premium Roasted Mesabrookian Coffee Beans
+tile.milk_chocolate_truffles_box.name=Chocolate Truffles
+tile.white_chocolate_truffles_box.name=Chocolate Truffles
 
 //Masks
 item.mask_jason.name=Decorative Face Mask

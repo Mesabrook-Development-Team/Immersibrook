@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:milk_chocolate_truffles_box" },
+        "facing=south": { "model": "wbtc:milk_chocolate_truffles_box", "y": 180 },
+        "facing=west":  { "model": "wbtc:milk_chocolate_truffles_box", "y": 270 },
+        "facing=east":  { "model": "wbtc:milk_chocolate_truffles_box", "y": 90 }
+    }
+}

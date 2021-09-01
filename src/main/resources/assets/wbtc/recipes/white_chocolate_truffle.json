@@ -1,0 +1,13 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "item": "wbtc:white_chocolate"
+      }
+   ],
+   "result": {
+      "item": "wbtc:truffle_white",
+      "data": 0,
+      "count": 9
+   }
+}
