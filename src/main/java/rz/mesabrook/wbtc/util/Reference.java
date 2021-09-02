@@ -36,4 +36,23 @@ public class Reference
 	
 	public static final String PHONE_NUMBER_NBTKEY = "phonenumber";
 	public static final String PHONE_CONFERENCE_NAME = "Conference";
+
+	// Birthdays (Day and Month only - NO YEARS)
+	public static final int RZ_MONTH = 9;
+	public static final int CSX_MONTH = 6;
+	public static final int TD_MONTH = 2;
+	public static final int TLZ_MONTH = 5;
+	public static final int MD_MONTH = 5;
+	public static final int SVV_MONTH = 12;
+	public static final int BAG_MONTH = 7;
+	public static final int BB_MONTH = 10;
+
+	public static final int RZ_DAY = 2;
+	public static final int CSX_DAY = 22;
+	public static final int TD_DAY = 12;
+	public static final int TLZ_DAY = 22;
+	public static final int MD_DAY = 18;
+	public static final int SVV_DAY = 7;
+	public static final int BAG_DAY = 4;
+	public static final int BB_DAY = 31;
 }
