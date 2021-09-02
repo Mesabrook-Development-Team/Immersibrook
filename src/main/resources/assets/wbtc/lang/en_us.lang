@@ -177,6 +177,7 @@ item.gold_sod.name=Golden Sod
 item.diamond_sod.name=Diamond Sod
 item.aluminum_sod.name=Aluminum Sod
 item.aluminum_sword.name=Aluminum Sword
+item.emerald_sword.name=eMeRaLd sWoRd
 item.iron_rod.name=Iron Rod
 item.aluminum_rod.name=Aluminum Rod
 item.ingot_aluminum.name=Aluminum Ingot
@@ -1313,6 +1314,7 @@ im.sparkling=Did you really just chug that entire bottle of sparkling pink lemon
 im.truss.eat=Edible
 im.truffle.milk=Milk Chocolate
 im.truffle.white=White Chocolate
+im.cliche=Wow, so original...
 
 //Food Boxes
 tile.sugar_box.name=Granulated White Sugar

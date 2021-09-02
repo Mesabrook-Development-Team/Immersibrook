@@ -21,7 +21,7 @@ public class CategoryTools extends AbstractCategory {
 	@Override
 	public void init() 
 	{
-		// Sods
+		// Sods and Swords
 		add(ModItems.WOOD_SOD);
 		add(ModItems.STONE_SOD);
 		add(ModItems.IRON_SOD);
@@ -29,6 +29,7 @@ public class CategoryTools extends AbstractCategory {
 		add(ModItems.DIAMOND_SOD);
 		add(ModItems.ALUMINUM_SOD);
 		add(ModItems.ALUMINUM_SWORD);
+		add(ModItems.EMERALD_SWORD);
 		
 		// Specials
 		add(ModItems.ZOE_CANE);

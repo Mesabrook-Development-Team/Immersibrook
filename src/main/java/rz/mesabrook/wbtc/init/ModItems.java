@@ -31,6 +31,9 @@ public class ModItems
 	public static final Item ALUMINUM_SOD = new ItemWeapon("aluminum_sod", ToolMaterialRegistry.SOD_ALUMINUM);
 	public static final Item ALUMINUM_SWORD = new ItemWeapon("aluminum_sword", ToolMaterialRegistry.SWORD_ALUMINUM);
 
+	// Joke Items/Tools
+	public static final Item EMERALD_SWORD = new ItemWeapon("emerald_sword", ToolMaterial.GOLD);
+
 	// Toys
 	public static final Item POPPER_RED = new ToyPopper("popper_red", 300);
 	public static final Item POPPER_GREEN = new ToyPopper("popper_green", 300);
@@ -47,6 +50,7 @@ public class ModItems
 	// Immersibrook Icons
 	public static final Item IMMERSIBROOK_ICON = new ItemMesabrookIcon("icon_immersibrook");
 	public static final Item DOOT_ICON = new MiscItem("doot_icon", 1);
+	public static final Item KEKW = new MiscItem("wheezing", 1);
 
 	// Metals
 	public static final Item IRON_ROD = new MiscItem("iron_rod", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
