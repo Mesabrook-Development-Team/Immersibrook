@@ -1,24 +1,40 @@
 Immersibrook 1.0.0 - The Fall 2021 Update
 
 NOTE:
-This update introduces a new required dependency: Immersive Engineering.
+The Fall 2021 Update is dependent on the following mods:
+-Pam's Harvestcraft
+-Immersive Engineering
+-Just A Basic Concrete Mod (JABCM)
 
 NEW:
--Candy!
+-Ranged Chat.
+-Smartphones and Radios.
+-Candy.
 -Hard Hats in all sixteen Minecraft colors.
 -Food Dyes (Red, Green, Blue, Yellow, and White).
 -Colored Sugar (Red, Green, Blue, Orange, Purple, Brown, Lime, and Pink).
 -Pink Lemonade Drink.
+-Sparkling Pink Lemonade.
+-White Chocolate.
+-Chocolate Truffles (Milk, White, Peanut Butter Filled, and Caramel Filled).
+-Trusses (Steel, Iron, Nickel, and Constantan).
+-Nickel Rod.
+-Constantan Rod.
 -Decorative Face Masks.
--Food Boxes for Sugar, Flour, and Cornmeal.
--Trusses (Steel and Iron).
+-Food Boxes for Sugar, Flour, Cornmeal, Coffee, and Chocolate Truffles.
 -Industrial-themed Ceiling Lights.
+-Narrow Ceiling Lights.
 
 CHANGES/FIXES:
 -Pillars are now affected by gravity.
 -The Safety Vests creative menu category has been renamed to Safety and houses both the vests and hard hats.
 -The Ban Hammer's sounds can now be manually set through a key press.
 -Ceiling Lights are now rotational.
+-Ore Dictionary entries for Plastics have been redone.
+
+MOD INTERACTIONS:
+(Note: Mod interactions only occur if Immersibrook detects them. This feature can be disabled in wbtc.cfg)
+[The RC Mod] Immersibrook now overrides the default RC Mod plastic recipe.
 
 KNOWN ISSUES:
 -None so far.

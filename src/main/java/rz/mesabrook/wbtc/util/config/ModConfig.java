@@ -43,6 +43,9 @@ public final class ModConfig
 
 	@Comment("Set to false to re-enable the vanilla Minecraft recipe for paper.")
 	public static boolean makePaperProductionMoreRealistic = false;
+
+	@Comment("Set to false to disable Immersibrook's recipe override for The RC Mod's plastic item.")
+	public static boolean overrideRCModPlastic = true;
 	
 	@Comment("How many ticks should a phone ring for?")
 	public static int phoneRingTicks = 1200; // 1 minute
