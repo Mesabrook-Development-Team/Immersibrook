@@ -106,6 +106,7 @@ public class PlayerEvents
 			if(LocalDate.now().getMonthValue() == Reference.BB_MONTH && LocalDate.now().getDayOfMonth() == Reference.BB_DAY)
 			{
 				player.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Happy Birthday, Boo & Bubbles!"));
+				player.sendMessage(new TextComponentString(TextFormatting.RED + "Happy Halloween!"));
 			}
 
 			TextComponentTranslation mesaTitle = new TextComponentTranslation("im.website.title");
