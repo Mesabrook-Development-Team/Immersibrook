@@ -48,7 +48,7 @@ public class PlayerEvents
 			TextComponentString user = new TextComponentString(TextFormatting.GOLD + player.getDisplayNameString());
 
 			TextComponentTranslation prefix = new TextComponentTranslation("im.welcome");
-			prefix.getStyle().setColor(TextFormatting.GOLD);
+			prefix.getStyle().setColor(TextFormatting.GREEN);
 			prefix.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentTranslation("im.welcome.disable")));
 			player.sendMessage(new TextComponentString(prefix.getFormattedText() + " " + user.getFormattedText() + "!"));
 			if(LocalDate.now().getMonthValue() == Reference.RZ_MONTH && LocalDate.now().getDayOfMonth() == Reference.RZ_DAY)
@@ -101,12 +101,12 @@ public class PlayerEvents
 			}
 			if(LocalDate.now().getMonthValue() == Reference.BAG_MONTH && LocalDate.now().getDayOfMonth() == Reference.BAG_DAY)
 			{
-				player.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Happy Birthday, Bagheera!"));
+				player.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Happy Birthday to Bagheera, RavenholmZombie's cat!"));
 			}
 			if(LocalDate.now().getMonthValue() == Reference.BB_MONTH && LocalDate.now().getDayOfMonth() == Reference.BB_DAY)
 			{
-				player.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Happy Birthday, Boo & Bubbles!"));
-				player.sendMessage(new TextComponentString(TextFormatting.RED + "Happy Halloween!"));
+				player.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Happy Birthday to Boo & Bubbles, RavenholmZombie's cats!"));
+				player.sendMessage(new TextComponentString(TextFormatting.GOLD + "Happy Halloween!"));
 			}
 
 			TextComponentTranslation mesaTitle = new TextComponentTranslation("im.website.title");
