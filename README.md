@@ -8,4 +8,4 @@
 * Ranged Chat
 * Radio and Cell Phones
 
-**Release Date: To be determined, would like to be out before Halloween.**
+**Release Date: When it's good and ready**
