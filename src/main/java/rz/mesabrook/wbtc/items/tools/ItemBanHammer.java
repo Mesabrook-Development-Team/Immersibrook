@@ -58,14 +58,6 @@ public class ItemBanHammer extends ItemPickaxe implements IHasModel
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag)
     {
-        if(ModConfig.funnyTooltips)
-        {
-            if(this.getUnlocalizedName().contains("levi_hammer"))
-            {
-                tooltip.add(TextFormatting.AQUA + "An LVN Product");
-                super.addInformation(stack, world, tooltip, flag);
-            }
-        }
         NBTTagCompound tag = stack.getTagCompound();
         if(tag == null)
         {
@@ -75,7 +67,6 @@ public class ItemBanHammer extends ItemPickaxe implements IHasModel
         {
             if(tag.hasKey("sndID"))
             {
-                tooltip.add("");
                 tooltip.add(currentSnd.getFormattedText());
                 tooltip.add(TextFormatting.AQUA + tag.getString("sndID"));
             }
@@ -101,7 +92,7 @@ public class ItemBanHammer extends ItemPickaxe implements IHasModel
     {
         NBTTagCompound tag = stack.getTagCompound(); 
         String sndEvnt;
-        if(this.getUnlocalizedName().contains("levi_hammer"))
+        if(stack.getItem() == ModItems.LEVI_HAMMER || stack.getItem() == ModItems.GMOD_HAMMER)
         {
             try
             {
@@ -148,7 +139,7 @@ public class ItemBanHammer extends ItemPickaxe implements IHasModel
     {
         ItemStack item = player.getHeldItem(hand);
         SoundRandomizer.HammerRightClickRandomizer();
-        if(this.getUnlocalizedName().contains("levi_hammer"))
+        if(item.getItem() == ModItems.LEVI_HAMMER || item.getItem() == ModItems.GMOD_HAMMER)
         {
             if(!world.isRemote)
             {
