@@ -19,9 +19,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.input.Keyboard;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.net.PlaySoundPacket;
+import rz.mesabrook.wbtc.proxy.ClientProxy;
 import rz.mesabrook.wbtc.util.DamageSourceHammer;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.SoundRandomizer;
@@ -37,6 +39,8 @@ public class ItemBanHammer extends ItemPickaxe implements IHasModel
 {
     public static final DamageSource HAMMER_GO_BONK = new DamageSourceHammer("hammer");
     private final TextComponentTranslation hammerShift = new TextComponentTranslation("im.hammer.shift");
+    private final TextComponentTranslation noSound = new TextComponentTranslation("im.hammer.nosound");
+    private final TextComponentTranslation currentSnd = new TextComponentTranslation("im.hammer.currentsnd");
     public ItemBanHammer(String name, ToolMaterial material)
     {
         super(material);
@@ -44,6 +48,8 @@ public class ItemBanHammer extends ItemPickaxe implements IHasModel
         setRegistryName(name);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
         hammerShift.getStyle().setColor(TextFormatting.BLUE);
+        noSound.getStyle().setColor(TextFormatting.RED);
+        currentSnd.getStyle().setColor(TextFormatting.GREEN);
 
         ModItems.ITEMS.add(this);
     }
@@ -59,6 +65,34 @@ public class ItemBanHammer extends ItemPickaxe implements IHasModel
                 tooltip.add(TextFormatting.AQUA + "An LVN Product");
                 super.addInformation(stack, world, tooltip, flag);
             }
+        }
+        NBTTagCompound tag = stack.getTagCompound();
+        if(tag == null)
+        {
+            tooltip.add(noSound.getFormattedText());
+        }
+        else
+        {
+            if(tag.hasKey("sndID"))
+            {
+                tooltip.add("");
+                tooltip.add(currentSnd.getFormattedText());
+                tooltip.add(TextFormatting.AQUA + tag.getString("sndID"));
+            }
+        }
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean hasEffect(ItemStack stack)
+    {
+        if(stack.hasTagCompound())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
