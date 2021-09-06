@@ -170,5 +170,23 @@ public class CategoryBlocks extends AbstractCategory
 		add(ModBlocks.CONSTANTAN_TRUSS);
 		add(ModBlocks.CONSTANTAN_TRUSS_PRATT);
 		add(ModBlocks.CONSTANTAN_TRUSS_HOWE);
+
+		// Columns. Again, not to be confused with Pillars.
+		add(ModBlocks.COLUMN_WHITE_CONCRETE);
+		add(ModBlocks.COLUMN_ORANGE_CONCRETE);
+		add(ModBlocks.COLUMN_MAGENTA_CONCRETE);
+		add(ModBlocks.COLUMN_LBLUE_CONCRETE);
+		add(ModBlocks.COLUMN_LIME_CONCRETE);
+		add(ModBlocks.COLUMN_PINK_CONCRETE);
+		add(ModBlocks.COLUMN_YELLOW_CONCRETE);
+		add(ModBlocks.COLUMN_GRAY_CONCRETE);
+		add(ModBlocks.COLUMN_SILVER_CONCRETE);
+		add(ModBlocks.COLUMN_CYAN_CONCRETE);
+		add(ModBlocks.COLUMN_PURPLE_CONCRETE);
+		add(ModBlocks.COLUMN_BLUE_CONCRETE);
+		add(ModBlocks.COLUMN_BROWN_CONCRETE);
+		add(ModBlocks.COLUMN_GREEN_CONCRETE);
+		add(ModBlocks.COLUMN_RED_CONCRETE);
+		add(ModBlocks.COLUMN_BLACK_CONCRETE);
 	}
 }

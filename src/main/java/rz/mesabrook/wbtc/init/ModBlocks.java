@@ -1038,4 +1038,22 @@ public class ModBlocks
 	public static final Block SHIPPING_BOX_MEDIUM = new BlockShippingBox("box_medium", ModUtils.getPixelatedAABB(2,0,2, 14,9,14));
 	public static final Block SHIPPING_BOX_LARGE = new BlockShippingBox("box_large", ModUtils.getPixelatedAABB(0,0,0, 16,12,16));
 	public static final Block SHIPPING_BOX_CHUNGUS = new BlockShippingBox("box_xl", ModUtils.getPixelatedAABB(0,0,0, 16,16,16));
+
+	// Columns, not to be confused with Pillars.
+	public static final Block COLUMN_WHITE_CONCRETE = new BlockColumn("column_concrete_white", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block COLUMN_ORANGE_CONCRETE = new BlockColumn("column_concrete_orange", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block COLUMN_MAGENTA_CONCRETE = new BlockColumn("column_concrete_magenta", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block COLUMN_LBLUE_CONCRETE = new BlockColumn("column_concrete_lblue", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block COLUMN_YELLOW_CONCRETE = new BlockColumn("column_concrete_yellow", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block COLUMN_LIME_CONCRETE = new BlockColumn("column_concrete_lime", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block COLUMN_PINK_CONCRETE = new BlockColumn("column_concrete_pink", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block COLUMN_GRAY_CONCRETE = new BlockColumn("column_concrete_gray", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block COLUMN_SILVER_CONCRETE = new BlockColumn("column_concrete_silver", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block COLUMN_CYAN_CONCRETE = new BlockColumn("column_concrete_cyan", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block COLUMN_PURPLE_CONCRETE = new BlockColumn("column_concrete_purple", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block COLUMN_BLUE_CONCRETE = new BlockColumn("column_concrete_blue", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block COLUMN_BROWN_CONCRETE = new BlockColumn("column_concrete_brown", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block COLUMN_GREEN_CONCRETE = new BlockColumn("column_concrete_green", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block COLUMN_RED_CONCRETE = new BlockColumn("column_concrete_red", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block COLUMN_BLACK_CONCRETE = new BlockColumn("column_concrete_black", Material.ROCK, SoundType.STONE, "pickaxe", 1);
 }

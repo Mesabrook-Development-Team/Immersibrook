@@ -1412,3 +1412,21 @@ item.rubber_duck_evil.name=Rubber Ducky
 //Rods
 item.rod_constantan.name=Constantan Rod
 item.rod_nickel.name=Nickel Rod
+
+//Columns
+tile.column_concrete_white.name=White Concrete Column
+tile.column_concrete_orange.name=Orange Concrete Column
+tile.column_concrete_magenta.name=Magenta Concrete Column
+tile.column_concrete_lblue.name=Light Blue Concrete Column
+tile.column_concrete_yellow.name=Yellow Concrete Column
+tile.column_concrete_lime.name=Lime Concrete Column
+tile.column_concrete_pink.name=Pink Concrete Column
+tile.column_concrete_gray.name=Gray Concrete Column
+tile.column_concrete_silver.name=Light Gray Concrete Column
+tile.column_concrete_cyan.name=Cyan Concrete Column
+tile.column_concrete_purple.name=Purple Concrete Column
+tile.column_concrete_blue.name=Blue Concrete Column
+tile.column_concrete_brown.name=Brown Concrete Column
+tile.column_concrete_green.name=Green Concrete Column
+tile.column_concrete_red.name=Red Concrete Column
+tile.column_concrete_black.name=Black Concrete Column
