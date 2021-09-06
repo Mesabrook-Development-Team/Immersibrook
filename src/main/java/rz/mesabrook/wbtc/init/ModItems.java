@@ -111,6 +111,7 @@ public class ModItems
 	public static final Item DISC_KRAB_BORG_FULL = new MemeRecord("krab_borg_full", SoundInit.KRAB_BORG_FULL);
 	public static final Item DISC_FISH = new MemeRecord("fish_full", SoundInit.FISH_FULL);
 	public static final Item DISC_XP = new MemeRecord("ms_xp", SoundInit.MS_XP);
+	public static final Item DISC_COOKINg = new MemeRecord("cooking_music", SoundInit.COOKING);
 	public static final Item DOOTER = new ItemDooter("dooter");
 
 	// First Aid Kit

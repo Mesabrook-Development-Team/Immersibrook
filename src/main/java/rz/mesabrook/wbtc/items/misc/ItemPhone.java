@@ -9,8 +9,10 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.INBTSerializable;
 import rz.mesabrook.wbtc.Main;
+import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.util.IHasModel;
+import rz.mesabrook.wbtc.util.PhoneWallpaperRandomizer;
 import rz.mesabrook.wbtc.util.Reference;
 
 public class ItemPhone extends Item implements IHasModel {
@@ -33,6 +35,7 @@ public class ItemPhone extends Item implements IHasModel {
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
+		PhoneWallpaperRandomizer.ShuffleWallpaper();
 		if (worldIn.isRemote)
 		{
 			ItemStack currentPhone = playerIn.getHeldItem(handIn);
@@ -43,6 +46,12 @@ public class ItemPhone extends Item implements IHasModel {
 			
 			playerIn.openGui(Main.instance, Reference.GUI_PHONE, worldIn, handIn.ordinal(), 0, 0);
 		}
+
+		if(playerIn instanceof EntityPlayer)
+		{
+			Triggers.trigger(Triggers.PHONE_USE, playerIn);
+		}
+
 		return super.onItemRightClick(worldIn, playerIn, handIn);
 	}
 
