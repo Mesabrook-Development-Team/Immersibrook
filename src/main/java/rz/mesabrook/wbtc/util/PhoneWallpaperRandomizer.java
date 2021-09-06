@@ -9,7 +9,7 @@ public class PhoneWallpaperRandomizer
     {
         Random chooser = new Random();
         int snds;
-        snds = chooser.nextInt(13);
+        snds = chooser.nextInt(14);
 
         switch(snds)
         {
@@ -51,6 +51,9 @@ public class PhoneWallpaperRandomizer
                 break;
             case 12:
                 wallpaper = "gui_phone_bg_13.png";
+                break;
+            case 13:
+                wallpaper = "gui_phone_bg_14.png";
                 break;
         }
     }
