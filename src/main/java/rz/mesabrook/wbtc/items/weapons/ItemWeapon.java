@@ -18,6 +18,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -33,13 +34,17 @@ import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 public class ItemWeapon extends ItemSword implements IHasModel
 {
+	private final TextComponentTranslation emerald = new TextComponentTranslation("im.cliche");
 	public ItemWeapon(String name, ToolMaterial material)
 	{
 		super(material);
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setCreativeTab(Main.IMMERSIBROOK_MAIN);
-		
+
+		emerald.getStyle().setItalic(true);
+		emerald.getStyle().setColor(TextFormatting.GREEN);
+
 		ModItems.ITEMS.add(this);
 	}
 	
@@ -53,9 +58,14 @@ public class ItemWeapon extends ItemSword implements IHasModel
 			{
 				tooltip.add(TextFormatting.RED + "noo you can't just break a sword in half and call it a sod!");
 				tooltip.add(TextFormatting.AQUA + "hehe sod go swish slash");
-				super.addInformation(stack, world, tooltip, flag);
 			}
 		}
+
+		if(stack.getItem() == ModItems.EMERALD_SWORD)
+		{
+			tooltip.add(emerald.getFormattedText());
+		}
+		super.addInformation(stack, world, tooltip, flag);
 	}
 
 	@Override

@@ -39,7 +39,7 @@ public class RejectCallPacket implements IMessage {
 				return;
 			}
 			
-			callToDisconnect.reject();
+			callToDisconnect.reject(message.fromNumber);
 		}
 	}
 }

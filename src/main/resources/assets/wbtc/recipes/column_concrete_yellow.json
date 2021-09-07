@@ -1,0 +1,18 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "TT",
+      "TT",
+	  "TT"
+   ],
+   "key": {
+      "T": {
+		  "item": "minecraft:concrete",
+		  "data": 4
+      }
+   },
+   "result": {
+      "item": "wbtc:column_concrete_yellow",
+      "count": 6
+   }
+}

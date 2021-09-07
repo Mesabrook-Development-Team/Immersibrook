@@ -31,6 +31,9 @@ public class ModItems
 	public static final Item ALUMINUM_SOD = new ItemWeapon("aluminum_sod", ToolMaterialRegistry.SOD_ALUMINUM);
 	public static final Item ALUMINUM_SWORD = new ItemWeapon("aluminum_sword", ToolMaterialRegistry.SWORD_ALUMINUM);
 
+	// Joke Items/Tools
+	public static final Item EMERALD_SWORD = new ItemWeapon("emerald_sword", ToolMaterial.GOLD);
+
 	// Toys
 	public static final Item POPPER_RED = new ToyPopper("popper_red", 300);
 	public static final Item POPPER_GREEN = new ToyPopper("popper_green", 300);
@@ -39,6 +42,7 @@ public class ModItems
 	// Special Items
 	public static final Item ZOE_CANE = new ItemWeapon("zoe_cane", ToolMaterialRegistry.ZOE_CANE_MAT);
 	public static final Item LEVI_HAMMER = new ItemBanHammer("levi_hammer", ToolMaterialRegistry.LEVI_HAMMER_MAT);
+	public static final Item GMOD_HAMMER = new ItemBanHammer("gmod_hammer", ToolMaterialRegistry.LEVI_HAMMER_MAT);
 
 	// Hammer Items
 	public static final Item LEVI_HAMMER_HEAD = new ItemWeapon("hammer_head_levi", ToolMaterial.STONE);
@@ -47,6 +51,7 @@ public class ModItems
 	// Immersibrook Icons
 	public static final Item IMMERSIBROOK_ICON = new ItemMesabrookIcon("icon_immersibrook");
 	public static final Item DOOT_ICON = new MiscItem("doot_icon", 1);
+	public static final Item KEKW = new MiscItem("wheezing", 1);
 
 	// Metals
 	public static final Item IRON_ROD = new MiscItem("iron_rod", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
@@ -106,6 +111,7 @@ public class ModItems
 	public static final Item DISC_KRAB_BORG_FULL = new MemeRecord("krab_borg_full", SoundInit.KRAB_BORG_FULL);
 	public static final Item DISC_FISH = new MemeRecord("fish_full", SoundInit.FISH_FULL);
 	public static final Item DISC_XP = new MemeRecord("ms_xp", SoundInit.MS_XP);
+	public static final Item DISC_COOKINg = new MemeRecord("cooking_music", SoundInit.COOKING);
 	public static final Item DOOTER = new ItemDooter("dooter");
 
 	// First Aid Kit
@@ -204,9 +210,10 @@ public class ModItems
 	public static final Item KLUSS_BAR = new DamageableFood("chocolate_bar_klussbar",64, 5, 3F,  false);
 	public static final Item SERPENT_BAR = new SerpentBar("chocolate_bar_serpent",64, 1, 10F,  false);
 	public static final Item STRAWBERRY_BAR = new DamageableFood("chocolate_bar_strawberry",64, 6, 10F,  false);
+	public static final Item CARAMEL_BAR = new DamageableFood("chocolate_bar_caramel", 64, 6, 10F, false);
 	public static final Item NUT_BAR = new DamageableFood("chocolate_bar_nut", 64, 6, 10F, false);
 	public static final Item KRISP_BAR = new DamageableFood("chocolate_bar_krisp", 64, 4, 10F, false);
-	
+
 	// Decorative Wearables
 	public static final Item MASK_JASON = new FaceMasks("mask_jason", ArmorMaterialRegistry.MASK_JASON, EntityEquipmentSlot.HEAD);
 	public static final Item MASK_SKELETON = new FaceMasks("mask_skeleton", ArmorMaterialRegistry.MASK_SKELETON, EntityEquipmentSlot.HEAD);

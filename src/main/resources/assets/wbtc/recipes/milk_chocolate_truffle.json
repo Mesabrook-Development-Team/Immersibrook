@@ -1,0 +1,14 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+		 "type": "forge:ore_dict",
+		 "ore": "foodChocolatebar"
+      }
+   ],
+   "result": {
+      "item": "wbtc:truffle_milk",
+      "data": 0,
+      "count": 9
+   }
+}

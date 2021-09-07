@@ -59,6 +59,7 @@ public class SoundInit
 	public static final SoundEvent QUACK;
 	public static final SoundEvent QUACKBOOM;
 	public static final SoundEvent BAKA;
+	public static final SoundEvent MALLET;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -72,6 +73,7 @@ public class SoundInit
 	public static final SoundEvent KRAB_BORG;
 	public static final SoundEvent KRAB_BORG_FULL;
 	public static final SoundEvent MS_XP;
+	public static final SoundEvent COOKING;
 
 	// Holiday Records
 	public static final SoundEvent SPOOKY;
@@ -162,6 +164,7 @@ public class SoundInit
 		QUACK = addSoundsToRegistry("duck");
 		QUACKBOOM = addSoundsToRegistry("duckboom");
 		BAKA = addSoundsToRegistry("baka");
+		MALLET = addSoundsToRegistry("mallet");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -178,6 +181,7 @@ public class SoundInit
 		SPOOKY = addSoundsToRegistry("spooky");
 		RITZ = addSoundsToRegistry("ritz");
 		HL3 = addSoundsToRegistry("hl3");
+		COOKING = addSoundsToRegistry("cooking");
 
 		// Plastic SoundType
 		PLASTIC_BREAK = addSoundsToRegistry("plastic_break");
@@ -320,6 +324,8 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.QUACK);
 				event.getRegistry().registerAll(SoundInit.QUACKBOOM);
 				event.getRegistry().registerAll(SoundInit.BAKA);
+				event.getRegistry().registerAll(SoundInit.MALLET);
+				event.getRegistry().registerAll(SoundInit.COOKING);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

@@ -22,6 +22,7 @@ import rz.mesabrook.wbtc.net.telecom.GetReceptionStrengthPacket;
 import rz.mesabrook.wbtc.net.telecom.GetStrengthResponsePacket;
 import rz.mesabrook.wbtc.net.telecom.IncomingCallPacket;
 import rz.mesabrook.wbtc.net.telecom.InitiateCallPacket;
+import rz.mesabrook.wbtc.net.telecom.MergeCallPacket;
 import rz.mesabrook.wbtc.net.telecom.OutgoingCallResponsePacket;
 import rz.mesabrook.wbtc.net.telecom.PhoneQueryPacket;
 import rz.mesabrook.wbtc.net.telecom.PhoneQueryResponsePacket;
@@ -65,6 +66,7 @@ public class PacketHandler
 		INSTANCE.registerMessage(RejectCallPacket.Handler.class, RejectCallPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(CallRejectedPacket.Handler.class, CallRejectedPacket.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(PhoneTossedPacket.Handler.class, PhoneTossedPacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(MergeCallPacket.Handler.class, MergeCallPacket.class, nextID(), Side.SERVER);
 	}
 	
 	private static int nextID()

@@ -37,6 +37,7 @@ public class CategoryRecords extends AbstractCategory
 		add(ModItems.DISC_SPOOKY);
 		add(ModItems.DISC_RITZ);
 		add(ModItems.DISC_HL3);
+		add(ModItems.DISC_COOKINg);
 	}
 
 }

@@ -12,6 +12,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.items.misc.ItemPhone;
 import rz.mesabrook.wbtc.net.telecom.GetReceptionStrengthPacket;
+import rz.mesabrook.wbtc.util.PhoneWallpaperRandomizer;
+import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 @SideOnly(Side.CLIENT)
@@ -154,7 +156,10 @@ public abstract class GuiPhoneBase extends GuiScreen {
 
 	public static String getFormattedPhoneNumber(String number)
 	{
-
+		if (number.equals(Reference.PHONE_CONFERENCE_NAME))
+		{
+			return number;
+		}
 		String formattedNumber = number;
 		if (formattedNumber.length() >= 3)
 		{
@@ -182,6 +187,7 @@ public abstract class GuiPhoneBase extends GuiScreen {
 		
 		if (button.id == 999)
 		{
+			PhoneWallpaperRandomizer.ShuffleWallpaper();
 			GuiHome home = new GuiHome(phoneStack, hand);
 			Minecraft.getMinecraft().displayGuiScreen(home);
 		}

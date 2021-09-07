@@ -40,13 +40,24 @@ public class PhoneQueryPacket implements IMessage {
 		private void handle(PhoneQueryPacket message, MessageContext ctx)
 		{
 			EntityPlayerMP player = ctx.getServerHandler().player;
-			Tuple<ResponseTypes, String> queryResponse = CallManager.instance().phoneQuery(player, message.forNumber);
+			CallManager manager = CallManager.instance();
+			Tuple<ResponseTypes, String> queryResponse = manager.phoneQuery(player, message.forNumber);
+			
+			boolean isConferenceSubCall = false;
+			String callOrigin = "";
+			if (queryResponse.getFirst() != ResponseTypes.idle)
+			{
+				CallManager.Call call = manager.getCall(message.forNumber);
+				isConferenceSubCall = call.doesConferenceSubCallsContainOrigin(message.forNumber);
+			}
 			
 			PhoneQueryResponsePacket responsePacket = new PhoneQueryResponsePacket();
 			responsePacket.forNumber = message.forNumber;
 			responsePacket.responseType = queryResponse.getFirst();
 			responsePacket.otherNumber = queryResponse.getSecond();
 			responsePacket.clientHandlerCode = message.clientHandlerCode;
+			responsePacket.isConferenceSubCall = isConferenceSubCall;
+			responsePacket.isMergeable = isConferenceSubCall;
 			PacketHandler.INSTANCE.sendTo(responsePacket, player);
 		}
 	}

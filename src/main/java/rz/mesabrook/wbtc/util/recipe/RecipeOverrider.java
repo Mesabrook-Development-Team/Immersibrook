@@ -14,6 +14,8 @@ import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.config.ModConfig;
 
+import java.sql.Ref;
+
 @EventBusSubscriber
 public class RecipeOverrider
 {
@@ -31,18 +33,29 @@ public class RecipeOverrider
             // Resource Locations for other mods.
             if(Main.THERCMOD)
             {
-                ResourceLocation plastic = new ResourceLocation("thercmod:plastic");
-                modRegistry.remove(plastic);
-                Main.logger.info("[" + Reference.MODNAME + "] The RC Mod's plastic recipe has been disabled. Use IB's instead.");
+                if(ModConfig.overrideRCModPlastic)
+                {
+                    ResourceLocation plastic = new ResourceLocation("thercmod:plastic");
+                    modRegistry.remove(plastic);
+                    Main.logger.info("[" + Reference.MODNAME + "] wbtc.cfg/overrideRCModPlastic = true");
+                    Main.logger.info("[" + Reference.MODNAME + "] The RC Mod's plastic recipe has been disabled. Use IB's instead.");
+                }
+                else
+                {
+                    Main.logger.info("[" + Reference.MODNAME + "] wbtc.cfg/overrideRCModPlastic = false");
+                    Main.logger.info("[" + Reference.MODNAME + "] The RC Mod's plastic recipe has NOT been disabled.");
+                }
             }
 
             if(ModConfig.makePaperProductionMoreRealistic)
             {
                 modRegistry.remove(vanillaPaper);
+                Main.logger.info("[" + Reference.MODNAME + "] wbtc.cfg/makePaperProductionMoreRealistic = true");
                 Main.logger.info("[" + Reference.MODNAME + "] Paper Recipe has been disabled.");
             }
             else
             {
+                Main.logger.info("[" + Reference.MODNAME + "] wbtc.cfg/makePaperProductionMoreRealistic = false");
                 Main.logger.info("[" + Reference.MODNAME + "] Config option to disable Paper recipe is set to false. Recipe still active.");
             }
         }

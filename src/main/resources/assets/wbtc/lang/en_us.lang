@@ -12,6 +12,8 @@ im.death.reverb=%s needs more reverb.
 im.death.rubberduck=%s got their fingers blown off by a rubber duck
 
 im.hammer.shift=Sound Event Randomized. New Result:
+im.hammer.nosound=Hammer has no sound bound to it.
+im.hammer.currentsnd=Current Sound:
 im.throwable=Throwable Item
 
 //Advancements
@@ -53,6 +55,8 @@ advancements.imb.candy=Candy Maker!
 advancements.imb.candy.desc=Make some candy
 advancements.imb.choc=Master Chocolatier!
 advancements.imb.choc.desc=Make some chocolate
+advancements.imb.phone_use=Digital Revolution
+advancements.imb.phone_use.desc=Use a Smartphone
 
 //Config
 wbtc.config.title=Configuration File for Immersibrook
@@ -148,6 +152,7 @@ container.rubbish_bin:Wheelie Bin
 tile.pc_mouse.name=PC Mouse
 item.zoe_cane.name=Cane of Distinction
 item.levi_hammer.name=Levi's Ban Hammer
+item.gmod_hammer.name=Modern Ban Hammer
 item.hammer_head_levi.name=Hammer Head
 item.hammer_stick_levi.name=Hammer Staff
 tile.cat_block.name=Cat Block
@@ -177,6 +182,7 @@ item.gold_sod.name=Golden Sod
 item.diamond_sod.name=Diamond Sod
 item.aluminum_sod.name=Aluminum Sod
 item.aluminum_sword.name=Aluminum Sword
+item.emerald_sword.name=eMeRaLd sWoRd
 item.iron_rod.name=Iron Rod
 item.aluminum_rod.name=Aluminum Rod
 item.ingot_aluminum.name=Aluminum Ingot
@@ -1184,6 +1190,7 @@ item.ms_xp.name=Musical Floppy
 item.disc_spooky.name=Music Disc
 item.disc_ritz.name=Music Disc
 item.disc_pumpkin.name=Music Disc
+item.cooking_music.name=Music Disc
 
 //Record Descriptions
 item.record.amalthea.desc=Amalthea
@@ -1201,6 +1208,7 @@ item.record.ms_xp.desc=Microsoft Corporation - Windows XP Installation Music
 item.record.disc_spooky.desc=ESN Productions - Horror Ambience
 item.record.disc_ritz.desc=Taco - Puttin' on the Ritz (Re-Recorded)
 item.record.disc_pumpkin.desc=FreeUseMusic - Halloween
+item.record.cooking_music.desc=RavenholmZombie - Calm Cooking Music
 
 //Enchantments
 enchantment.thunder=The Power of Thor
@@ -1252,6 +1260,9 @@ item.chocolate_bar_serpent.name=Sea Serpent Energy Chocolate
 item.chocolate_bar_strawberry.name=Strawberry Joy
 item.chocolate_bar_nut.name=Nut Bar
 item.chocolate_bar_krisp.name=Krisp!
+item.chocolate_bar_caramel.name=Caramella
+item.truffle_white.name=Chocolate Truffle
+item.truffle_milk.name=Chocolate Truffle
 item.dye_red.name=Food Dye
 item.dye_green.name=Food Dye
 item.dye_blue.name=Food Dye
@@ -1283,6 +1294,7 @@ item.raw_candy_grape.name=Raw Candy
 item.raw_candy_rb.name=Raw Candy
 item.raw_candy_choc.name=Raw Candy
 item.raw_candy_pl.name=Raw Candy
+item.white_chocolate.name=White Chocolate
 item.wine_bottle.name=Ceremonial Wine Bottle
 
 //Dialog
@@ -1306,14 +1318,14 @@ im.mat.cheese=Cheese
 im.why=But Why Tho?
 im.wi=Product of Wisconsin
 im.sparkling=Did you really just chug that entire bottle of sparkling pink lemonade?
-im.box.empty=This box is empty.
-im.box.amount=Available Uses:
 
 //Food Boxes
 tile.sugar_box.name=Granulated White Sugar
 tile.flour_box.name=All Purpose Flour
 tile.cornmeal_box.name=Cornmeal
 tile.coffee_box.name=Premium Roasted Mesabrookian Coffee Beans
+tile.milk_chocolate_truffles_box.name=Chocolate Truffles
+tile.white_chocolate_truffles_box.name=Chocolate Truffles
 
 //Masks
 item.mask_jason.name=Decorative Face Mask
@@ -1337,6 +1349,7 @@ tile.constantan_truss_pratt.name=Pratt Truss
 tile.cheese_truss.name=Triangular Truss
 tile.cheese_truss_pratt.name=Pratt Truss
 tile.cheese_truss_howe.name=Howe Truss
+item.cheese_truss_food.name=Baked Cheese Truss
 
 //Lights
 tile.warehouse_light.name=Warehouse Light
@@ -1395,3 +1408,21 @@ item.rubber_duck_evil.name=Rubber Ducky
 //Rods
 item.rod_constantan.name=Constantan Rod
 item.rod_nickel.name=Nickel Rod
+
+//Columns
+tile.column_concrete_white.name=White Concrete Column
+tile.column_concrete_orange.name=Orange Concrete Column
+tile.column_concrete_magenta.name=Magenta Concrete Column
+tile.column_concrete_lblue.name=Light Blue Concrete Column
+tile.column_concrete_yellow.name=Yellow Concrete Column
+tile.column_concrete_lime.name=Lime Concrete Column
+tile.column_concrete_pink.name=Pink Concrete Column
+tile.column_concrete_gray.name=Gray Concrete Column
+tile.column_concrete_silver.name=Light Gray Concrete Column
+tile.column_concrete_cyan.name=Cyan Concrete Column
+tile.column_concrete_purple.name=Purple Concrete Column
+tile.column_concrete_blue.name=Blue Concrete Column
+tile.column_concrete_brown.name=Brown Concrete Column
+tile.column_concrete_green.name=Green Concrete Column
+tile.column_concrete_red.name=Red Concrete Column
+tile.column_concrete_black.name=Black Concrete Column

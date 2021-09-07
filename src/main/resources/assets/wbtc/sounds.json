@@ -86,5 +86,7 @@
 	"dtmf_9": {"category": "master","sounds": [{"name": "wbtc:dtmf_9","stream": true}]},
 	"duck": {"category": "master","sounds": [{"name": "wbtc:duck","stream": true}]},
 	"duckboom": {"category": "master","sounds": [{"name": "wbtc:duckboom","stream": true}]},
-	"baka": {"category": "master","sounds": [{"name": "wbtc:baka","stream": true}]}
+	"baka": {"category": "master","sounds": [{"name": "wbtc:baka","stream": true}]},
+	"mallet": {"category": "master","sounds": [{"name": "wbtc:mallet","stream": true}]},
+	"cooking": {"category": "master","sounds": [{"name": "wbtc:cooking","stream": true}]}
 }

@@ -42,7 +42,10 @@ public final class ModConfig
 	public static int ceilingLightDistance = 100;
 
 	@Comment("Set to false to re-enable the vanilla Minecraft recipe for paper.")
-	public static boolean makePaperProductionMoreRealistic = true;
+	public static boolean makePaperProductionMoreRealistic = false;
+
+	@Comment("Set to false to disable Immersibrook's recipe override for The RC Mod's plastic item.")
+	public static boolean overrideRCModPlastic = true;
 	
 	@Comment("How many ticks should a phone ring for?")
 	public static int phoneRingTicks = 1200; // 1 minute
@@ -70,6 +73,9 @@ public final class ModConfig
 	
 	@Comment("What character should be used for scrambling text when outside of maximum reception range?")
 	public static String scrambleCharacter = "-";
+
+	@Comment("[Debugging Option] Set to true if you want the fake light block created by Ceiling Lights to be rendered.")
+	public static boolean renderFakeLightBlocks = false;
 	
 	@Mod.EventBusSubscriber(modid = Reference.MODID)
 	private static class EventHandler

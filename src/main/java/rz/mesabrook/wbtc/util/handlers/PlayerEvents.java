@@ -6,6 +6,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -23,6 +24,10 @@ import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.config.ModConfig;
+
+import java.sql.Ref;
+import java.time.LocalDate;
+import java.util.UUID;
 
 public class PlayerEvents 
 {
@@ -43,9 +48,66 @@ public class PlayerEvents
 			TextComponentString user = new TextComponentString(TextFormatting.GOLD + player.getDisplayNameString());
 
 			TextComponentTranslation prefix = new TextComponentTranslation("im.welcome");
-			prefix.getStyle().setColor(TextFormatting.GOLD);
+			prefix.getStyle().setColor(TextFormatting.GREEN);
 			prefix.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentTranslation("im.welcome.disable")));
 			player.sendMessage(new TextComponentString(prefix.getFormattedText() + " " + user.getFormattedText() + "!"));
+			if(LocalDate.now().getMonthValue() == Reference.RZ_MONTH && LocalDate.now().getDayOfMonth() == Reference.RZ_DAY)
+			{
+				player.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Happy Birthday, RavenholmZombie!"));
+				if(player.getGameProfile().getId().equals(Reference.RZ_UUID))
+				{
+					player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
+				}
+			}
+			if(LocalDate.now().getMonthValue() == Reference.TD_MONTH && LocalDate.now().getDayOfMonth() == Reference.TD_DAY)
+			{
+				player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Happy Birthday, TrainDevil!"));
+				if(player.getGameProfile().getId().equals(Reference.TD_UUID))
+				{
+					player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
+				}
+			}
+			if(LocalDate.now().getMonthValue() == Reference.TLZ_MONTH && LocalDate.now().getDayOfMonth() == Reference.TLZ_DAY)
+			{
+				player.sendMessage(new TextComponentString(TextFormatting.BLUE + "Happy Birthday, timelady_zoe!"));
+				if(player.getGameProfile().getId().equals(Reference.ZOE_UUID))
+				{
+					player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
+				}
+			}
+			if(LocalDate.now().getMonthValue() == Reference.CSX_MONTH && LocalDate.now().getDayOfMonth() == Reference.CSX_DAY)
+			{
+				player.sendMessage(new TextComponentString(TextFormatting.AQUA + "Happy Birthday, CSX8600!"));
+				if(player.getGameProfile().getId().equals(Reference.CSX_UUID))
+				{
+					player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
+				}
+			}
+			if(LocalDate.now().getMonthValue() == Reference.MD_MONTH && LocalDate.now().getDayOfMonth() == Reference.MD_DAY)
+			{
+				player.sendMessage(new TextComponentString(TextFormatting.RED + "Happy Birthday, MineDouble!"));
+				if(player.getGameProfile().getId().equals(Reference.MD_UUID))
+				{
+					player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
+				}
+			}
+			if(LocalDate.now().getMonthValue() == Reference.SVV_MONTH && LocalDate.now().getDayOfMonth() == Reference.SVV_DAY)
+			{
+				player.sendMessage(new TextComponentString(TextFormatting.GOLD + "Happy Birthday, StarVicVader!"));
+				if(player.getGameProfile().getId().equals(Reference.SVV_UUID))
+				{
+					player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
+				}
+			}
+			if(LocalDate.now().getMonthValue() == Reference.BAG_MONTH && LocalDate.now().getDayOfMonth() == Reference.BAG_DAY)
+			{
+				player.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Happy Birthday to Bagheera, RavenholmZombie's cat!"));
+			}
+			if(LocalDate.now().getMonthValue() == Reference.BB_MONTH && LocalDate.now().getDayOfMonth() == Reference.BB_DAY)
+			{
+				player.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Happy Birthday to Boo & Bubbles, RavenholmZombie's cats!"));
+				player.sendMessage(new TextComponentString(TextFormatting.GOLD + "Happy Halloween!"));
+			}
 
 			TextComponentTranslation mesaTitle = new TextComponentTranslation("im.website.title");
 			TextComponentTranslation wikiTitle = new TextComponentTranslation("im.wiki.title");

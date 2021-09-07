@@ -42,7 +42,7 @@ public class DisconnectCallPacket implements IMessage {
 				return;
 			}
 			
-			manager.dequeueCall(callToDisconnect.getID());
+			callToDisconnect.disconnectDest(message.fromNumber);
 		}
 	}
 

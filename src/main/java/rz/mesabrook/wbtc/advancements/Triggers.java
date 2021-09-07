@@ -45,6 +45,8 @@ public class Triggers
     public static final BasicTrigger BIN_PLACE = register("imb_place_bin");
     public static final BasicTrigger BIN_USE = register("imb_bin_use");
 
+    // Tech
+    public static final BasicTrigger PHONE_USE = register("imb_phone_use");
 
     private static BasicTrigger register(String name)
     {

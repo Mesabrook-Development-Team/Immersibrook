@@ -35,6 +35,7 @@ public class DamageableFood extends Item implements IHasModel
     private final TextComponentTranslation sugarCrash = new TextComponentTranslation("im.sugarcrash");
     private final TextComponentTranslation sugarRush = new TextComponentTranslation("im.sugarrush");
     private final TextComponentTranslation peanutAllergy = new TextComponentTranslation("im.peanut");
+    private final TextComponentTranslation cheeseEat = new TextComponentTranslation("im.truss.eat");
     private static Field setSaturationField = null;
 
     public DamageableFood(String name, int stackSize, int amount, float saturation, boolean canFeedDoggos)
@@ -55,6 +56,7 @@ public class DamageableFood extends Item implements IHasModel
         sugarRush.getStyle().setColor(TextFormatting.GREEN);
         peanutAllergy.getStyle().setBold(true);
         peanutAllergy.getStyle().setColor(TextFormatting.RED);
+        cheeseEat.getStyle().setColor(TextFormatting.YELLOW);
         
         if (setSaturationField == null)
         {
@@ -119,6 +121,11 @@ public class DamageableFood extends Item implements IHasModel
         if(this.getUnlocalizedName().contains("klussbar") || this.getUnlocalizedName().contains("nut") || this.getUnlocalizedName().contains("krisp"))
         {
         	tooltip.add(peanutAllergy.getFormattedText());
+        }
+
+        if(stack.getItem() == ModItems.FOOD_TRUSS)
+        {
+            tooltip.add(cheeseEat.getFormattedText());
         }
     }
 

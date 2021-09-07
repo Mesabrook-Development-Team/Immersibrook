@@ -1,5 +1,6 @@
 package rz.mesabrook.wbtc.items.misc;
 
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
@@ -11,15 +12,24 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
+import javax.annotation.Nullable;
+import javax.xml.soap.Text;
+import java.util.List;
+
 public class ImmersiFood extends ItemFood implements IHasModel
 {
     private final TextComponentTranslation burp = new TextComponentTranslation("im.sparkling");
+    private final TextComponentTranslation milk = new TextComponentTranslation("im.truffle.milk");
+    private final TextComponentTranslation white = new TextComponentTranslation("im.truffle.white");
+
     public ImmersiFood(String name, int stackSize, int damage, int amount, float saturation, boolean canFeedDoggos)
     {
         super(amount, saturation, canFeedDoggos);
@@ -32,6 +42,8 @@ public class ImmersiFood extends ItemFood implements IHasModel
         ModItems.ITEMS.add(this);
         burp.getStyle().setItalic(true);
         burp.getStyle().setColor(TextFormatting.RED);
+        milk.getStyle().setColor(TextFormatting.DARK_RED);
+        white.getStyle().setColor(TextFormatting.WHITE);
     }
 
     @Override
@@ -49,7 +61,7 @@ public class ImmersiFood extends ItemFood implements IHasModel
     @Override
     public EnumAction getItemUseAction(ItemStack itemStack)
     {
-        if(this.getUnlocalizedName().contains("_drink") || this.getUnlocalizedName().contains("sparkling"))
+        if(itemStack.getItem() == ModItems.SPARKLING_PINK_LEMONADE)
         {
             return EnumAction.DRINK;
         }
@@ -68,13 +80,13 @@ public class ImmersiFood extends ItemFood implements IHasModel
             player.addItemStackToInventory(new ItemStack(ModItems.PAPER_STICK));
         }
 
-        if(this.getUnlocalizedName().contains("pink_lemonade_drink") && !player.isCreative())
+        if(stack.getItem() == ModItems.SPARKLING_PINK_LEMONADE && !player.isCreative())
         {
             stack.damageItem(1, player);
             player.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE));
         }
 
-        if(this.getUnlocalizedName().contains("sparkling_pink_lemonade"))
+        if(stack.getItem() == ModItems.SPARKLING_PINK_LEMONADE)
         {
             if(!player.isCreative())
             {
@@ -89,6 +101,20 @@ public class ImmersiFood extends ItemFood implements IHasModel
                     player.sendMessage(new TextComponentString(burp.getFormattedText()));
                 }
             }
+        }
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag)
+    {
+        if(stack.getItem() == ModItems.MILK_TRUFFLE)
+        {
+            tooltip.add(milk.getFormattedText());
+        }
+        if(stack.getItem() == ModItems.WHITE_TRUFFLE)
+        {
+            tooltip.add(white.getFormattedText());
         }
     }
 }

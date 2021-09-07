@@ -79,7 +79,6 @@ public class CategoryFood extends AbstractCategory
 		add(ModItems.STRAWBERRY_BAR);
 		add(ModItems.NUT_BAR);
 		add(ModItems.KRISP_BAR);
-		add(ModItems.FOOD_TRUSS);
 
 		// Food Crafting Items
 		add(ModItems.DYE_RED);
@@ -97,10 +96,6 @@ public class CategoryFood extends AbstractCategory
 		add(ModItems.SUGAR_PINK);
 		add(ModItems.SUGAR_YELLOW);
 		add(Items.SUGAR);
-		add(ModBlocks.SUGAR_BOX);
-		add(ModBlocks.FLOUR_BOX);
-		add(ModBlocks.CORNMEAL_BOX);
-		add(ModBlocks.COFFEE_BOX);
 		add(ModItems.RAW_CANDY_RED);
 		add(ModItems.RAW_CANDY_LIME);
 		add(ModItems.RAW_CANDY_BLUE);

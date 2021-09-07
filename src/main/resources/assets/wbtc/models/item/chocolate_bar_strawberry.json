@@ -1,6 +1,58 @@
 {
-   "parent": "item/generated",
-   "textures": {
-      "layer0": "wbtc:items/chocolate_bar_strawberry"
-   }
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "wbtc:items/chocolate_bar_strawberry",
+		"particle": "wbtc:items/chocolate_bar_strawberry"
+	},
+	"elements": [
+		{
+			"from": [2, 0, 4.5],
+			"to": [14, 1, 11.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0.5, 8]},
+			"faces": {
+				"north": {"uv": [2.75, 0.25, 13.25, 1.09375], "texture": "#0"},
+				"east": {"uv": [2.78125, 0.28125, 3.46875, 3.9375], "texture": "#0"},
+				"south": {"uv": [2.75, 0.25, 13.25, 1.09375], "texture": "#0"},
+				"west": {"uv": [2.78125, 0.28125, 3.46875, 3.9375], "texture": "#0"},
+				"up": {"uv": [2.75, 0.3125, 13.25, 6.25], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [2.71875, 9.21875, 13.21875, 15.15625], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0, 0, 94],
+			"translation": [-2.5, 1.5, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0, 0, 94],
+			"translation": [-2.5, 1.5, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 90, 78],
+			"translation": [-2.5, 3.75, 5],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 90, 78],
+			"translation": [-2.5, 3.75, 5],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"ground": {
+			"translation": [0, 4.75, 0]
+		},
+		"gui": {
+			"rotation": [30, 225, 0],
+			"translation": [0, 6.5, 0]
+		},
+		"head": {
+			"translation": [0, 14.5, 0]
+		},
+		"fixed": {
+			"rotation": [-90, 0, 0],
+			"translation": [0, 0, -8]
+		}
+	}
 }

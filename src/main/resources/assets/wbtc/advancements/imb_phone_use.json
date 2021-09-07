@@ -1,0 +1,21 @@
+{
+    "display": {
+        "icon": {
+            "item": "wbtc:smartphone_special"
+        },
+        "title": {
+            "translate": "advancements.imb.phone_use"
+        },
+        "description": {
+            "translate": "advancements.imb.phone_use.desc"
+        },
+		"show_toast": true,
+        "announce_to_chat": true
+    },
+	"parent": "wbtc:imb_welcome",
+    "criteria": {
+        "tick": {
+            "trigger": "wbtc:imb_phone_use"
+        }
+    }
+}

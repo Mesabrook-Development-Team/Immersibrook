@@ -10,6 +10,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.net.telecom.PhoneQueryPacket;
+import rz.mesabrook.wbtc.util.PhoneWallpaperRandomizer;
 import rz.mesabrook.wbtc.util.handlers.ClientSideHandlers.TelecomClientHandlers;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
@@ -21,8 +22,16 @@ public class GuiHome extends GuiPhoneBase {
 	}
 
 	@Override
-	protected String getInnerTextureFileName() {
-		return "gui_phone_bg_1.png";
+	protected String getInnerTextureFileName()
+	{
+		if(PhoneWallpaperRandomizer.wallpaper != null)
+		{
+			return PhoneWallpaperRandomizer.wallpaper;
+		}
+		else
+		{
+			return "gui_phone_bg_1.png";
+		}
 	}
 
 	@Override
@@ -43,12 +52,7 @@ public class GuiHome extends GuiPhoneBase {
 				PhoneQueryPacket queryPacket = new PhoneQueryPacket();
 				queryPacket.forNumber = getCurrentPhoneNumber();
 				
-				Optional<Integer> maxID = TelecomClientHandlers.phoneQueryResponseHandlers.keySet().stream().max(Integer::compare);
-				int nextID = 1;
-				if (maxID.isPresent())
-				{
-					nextID = maxID.get() + 1;
-				}
+				int nextID = TelecomClientHandlers.getNextHandlerID();
 				
 				TelecomClientHandlers.phoneQueryResponseHandlers.put(nextID, TelecomClientHandlers::onPhoneQueryResponseForPhoneApp);
 				queryPacket.clientHandlerCode = nextID;

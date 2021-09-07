@@ -3,6 +3,7 @@ package rz.mesabrook.wbtc.util.handlers;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Map.Entry;
 import java.util.function.Consumer;
 
@@ -40,6 +41,7 @@ import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.net.telecom.PhoneQueryResponsePacket;
 import rz.mesabrook.wbtc.net.telecom.PhoneQueryResponsePacket.ResponseTypes;
 import rz.mesabrook.wbtc.util.Reference;
+import rz.mesabrook.wbtc.util.handlers.ClientSideHandlers.TelecomClientHandlers;
 
 @SideOnly(Side.CLIENT)
 public class ClientSideHandlers 
@@ -269,10 +271,22 @@ public class ClientSideHandlers
 			}
 			else if (packet.responseType == ResponseTypes.callConnected) 
 			{
-				mc.displayGuiScreen(new GuiPhoneConnected(currentGui.getPhoneStack(), currentGui.getHand(), packet.otherNumber));
+				mc.displayGuiScreen(new GuiPhoneConnected(currentGui.getPhoneStack(), currentGui.getHand(), packet.otherNumber, packet.isConferenceSubCall, packet.isMergeable));
 			}
 		}
 	
+		public static int getNextHandlerID()
+		{
+			Optional<Integer> maxID = TelecomClientHandlers.phoneQueryResponseHandlers.keySet().stream().max(Integer::compare);
+			int nextID = 1;
+			if (maxID.isPresent())
+			{
+				nextID = maxID.get() + 1;
+			}
+			
+			return nextID;
+		}
+		
 		public static void onCallDisconnected(String forNumber, String toNumber)
 		{
 			Minecraft mc = Minecraft.getMinecraft();
@@ -317,7 +331,7 @@ public class ClientSideHandlers
 		}
 	
 		public static HashMap<String, LocalDateTime> callStartsByPhone = new HashMap<>();
-		public static void onCallConnected(String forNumber, String toNumber)
+		public static void onCallConnected(String forNumber, String toNumber, boolean isConferenceSubCall, boolean isMergeable)
 		{
 			Minecraft mc = Minecraft.getMinecraft();
 			
@@ -347,7 +361,7 @@ public class ClientSideHandlers
 					return;
 				}
 				
-				GuiPhoneConnected connected = new GuiPhoneConnected(phoneBase.getPhoneStack(), phoneBase.getHand(), toNumber);
+				GuiPhoneConnected connected = new GuiPhoneConnected(phoneBase.getPhoneStack(), phoneBase.getHand(), toNumber, isConferenceSubCall, isMergeable);
 				mc.displayGuiScreen(connected);
 			}
 		}
@@ -422,12 +436,12 @@ public class ClientSideHandlers
 		{
 			Minecraft mc = Minecraft.getMinecraft();
 			
-			if (!(mc.currentScreen instanceof GuiEmptyPhone))
+			if (!(mc.currentScreen instanceof GuiPhoneBase))
 			{
 				return;
 			}
 			
-			GuiEmptyPhone currentScreen = (GuiEmptyPhone)mc.currentScreen;
+			GuiPhoneBase currentScreen = (GuiPhoneBase)mc.currentScreen;
 			if (!currentScreen.getCurrentPhoneNumber().equals(packet.forNumber))
 			{
 				return;
@@ -444,7 +458,7 @@ public class ClientSideHandlers
 			}
 			else if (packet.responseType == ResponseTypes.callConnected)
 			{
-				newScreen = new GuiPhoneConnected(currentScreen.getPhoneStack(), currentScreen.getHand(), packet.otherNumber);
+				newScreen = new GuiPhoneConnected(currentScreen.getPhoneStack(), currentScreen.getHand(), packet.otherNumber, packet.isConferenceSubCall, packet.isMergeable);
 			}
 			else if (packet.responseType == ResponseTypes.callIncoming)
 			{

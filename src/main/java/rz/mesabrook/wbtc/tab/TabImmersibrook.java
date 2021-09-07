@@ -4,10 +4,14 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import rz.mesabrook.wbtc.init.ModItems;
 
+import java.time.LocalDate;
+
 public class TabImmersibrook extends CreativeTabs
 {
 	private String title = "";
 	private boolean hoveringButton = false;
+    int day = 1;
+	int month = 4;
 	
 	public TabImmersibrook(String label)
 	{
@@ -17,7 +21,14 @@ public class TabImmersibrook extends CreativeTabs
     @Override
     public ItemStack getTabIconItem()
     {
-        return new ItemStack(ModItems.IMMERSIBROOK_ICON);
+        if(LocalDate.now().getMonthValue() == month && LocalDate.now().getDayOfMonth() == day)
+        {
+            return new ItemStack(ModItems.KEKW);
+        }
+        else
+        {
+            return new ItemStack(ModItems.IMMERSIBROOK_ICON);
+        }
     }
     
     @Override
