@@ -53,7 +53,6 @@ public class FoodBox extends Block implements IHasModel
     private final TextComponentTranslation product = new TextComponentTranslation("im.product");
     private final TextComponentTranslation companyLbl = new TextComponentTranslation("im.company");
     private final TextComponentTranslation empty = new TextComponentTranslation("im.box.empty");
-    private final TextComponentTranslation amount = new TextComponentTranslation("im.box.amount");
 
     public FoodBox(String name, Material mat, SoundType sndType, int stackSize, String harvestTool, int harvestLevel, float hardness, float resist, AxisAlignedBB unrotatedAABB)
     {
@@ -80,7 +79,6 @@ public class FoodBox extends Block implements IHasModel
         product.getStyle().setColor(TextFormatting.LIGHT_PURPLE);
         companyLbl.getStyle().setColor(TextFormatting.LIGHT_PURPLE);
         empty.getStyle().setColor(TextFormatting.RED);
-        amount.getStyle().setColor(TextFormatting.LIGHT_PURPLE);
 
         ModBlocks.BLOCKS.add(this);
         ModItems.ITEMS.add(new FoodBoxItemBlock(this).setRegistryName(this.getRegistryName()).setMaxStackSize(1));

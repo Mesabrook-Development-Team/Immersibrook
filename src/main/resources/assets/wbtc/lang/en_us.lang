@@ -1322,6 +1322,7 @@ im.truss.eat=Edible
 im.truffle.milk=Milk Chocolate
 im.truffle.white=White Chocolate
 im.cliche=Wow, so original...
+im.box.empty=Box is empty.
 
 //Food Boxes
 tile.sugar_box.name=Granulated White Sugar
