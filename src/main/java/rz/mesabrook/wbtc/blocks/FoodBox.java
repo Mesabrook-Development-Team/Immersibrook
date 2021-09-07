@@ -10,6 +10,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -25,6 +26,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
@@ -290,6 +292,22 @@ public class FoodBox extends Block implements IHasModel
                     if(available > 0)
                     {
                         foodBoxTE.setUses(available - 1);
+                        if(this.getUnlocalizedName().contains("sugar"))
+                        {
+                            player.addItemStackToInventory(new ItemStack(Items.SUGAR, 1));
+                        }
+                        if(this.getUnlocalizedName().contains("flour_box"))
+                        {
+                            player.addItemStackToInventory(new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("harvestcraft", "flouritem"))));
+                        }
+                        if(this.getUnlocalizedName().contains("cornmeal_box"))
+                        {
+                            player.addItemStackToInventory(new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("harvestcraft", "cornmealitem"))));
+                        }
+                        if(this.getUnlocalizedName().contains("coffee_box"))
+                        {
+                            player.addItemStackToInventory(new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("harvestcraft", "coffeeitem"))));
+                        }
                     }
                     else
                     {
