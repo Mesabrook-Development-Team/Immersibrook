@@ -253,23 +253,41 @@ public class FoodBox extends Block implements IHasModel
     @Override
     public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
     {
-        ItemStack foodboxStack = new ItemStack(this);
         World worldIn = (World)world;
         if(!worldIn.isRemote)
         {
-            foodboxStack.setCount(1);
-
             TileEntity te = world.getTileEntity(pos);
             if(te instanceof TileEntityFoodBox)
             {
                 TileEntityFoodBox foodBoxTE = (TileEntityFoodBox)te;
-                NBTTagCompound compound = new NBTTagCompound();
-                compound.setString("boxID", foodBoxTE.getBoxID());
-                compound.setString("company", foodBoxTE.getCompany());
-                foodboxStack.setTagCompound(compound);
+                if(foodBoxTE.getUses() > 0)
+                {
+                    if(this.getUnlocalizedName().contains("sugar"))
+                    {
+                        drops.add(new ItemStack(Items.SUGAR, foodBoxTE.getUses()));
+                    }
+                    if(this.getUnlocalizedName().contains("flour_box"))
+                    {
+                        drops.add(new ItemStack(ItemRegistry.flourItem, foodBoxTE.getUses()));
+                    }
+                    if(this.getUnlocalizedName().contains("cornmeal_box"))
+                    {
+                        drops.add(new ItemStack(ItemRegistry.cornmealItem, foodBoxTE.getUses()));
+                    }
+                    if(this.getUnlocalizedName().contains("coffee_box"))
+                    {
+                        drops.add(new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("harvestcraft", "coffeebeanitem"))));
+                    }
+                    if(this.getUnlocalizedName().contains("flour_box"))
+                    {
+                        drops.add(new ItemStack(ItemRegistry.flourItem, foodBoxTE.getUses()));
+                    }
+                    if(this.getUnlocalizedName().contains("flour_box"))
+                    {
+                        drops.add(new ItemStack(ItemRegistry.flourItem, foodBoxTE.getUses()));
+                    }
+                }
             }
-
-            drops.add(foodboxStack);
         }
     }
 
