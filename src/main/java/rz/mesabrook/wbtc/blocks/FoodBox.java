@@ -1,5 +1,6 @@
 package rz.mesabrook.wbtc.blocks;
 
+import com.pam.harvestcraft.item.ItemRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
@@ -283,28 +284,39 @@ public class FoodBox extends Block implements IHasModel
                 TileEntity te = world.getTileEntity(pos);
                 if(te instanceof TileEntityFoodBox)
                 {
-                    int available;
                     TileEntityFoodBox foodBoxTE = (TileEntityFoodBox)te;
-                    available = ((TileEntityFoodBox) te).getUses();
-
-                    if(available > 0)
+                    if(foodBoxTE.getUses() > 0)
                     {
-                        foodBoxTE.setUses(available - 1);
+                        foodBoxTE.setUses(foodBoxTE.getUses() - 1);
                         if(this.getUnlocalizedName().contains("sugar"))
                         {
                             player.addItemStackToInventory(new ItemStack(Items.SUGAR, 1));
+                            foodBoxTE.markDirty();
                         }
                         if(this.getUnlocalizedName().contains("flour_box"))
                         {
-                            player.addItemStackToInventory(new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("harvestcraft", "flouritem"))));
+                            player.addItemStackToInventory(new ItemStack(ItemRegistry.flourItem, 1));
+                            foodBoxTE.markDirty();
                         }
                         if(this.getUnlocalizedName().contains("cornmeal_box"))
                         {
-                            player.addItemStackToInventory(new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("harvestcraft", "cornmealitem"))));
+                            player.addItemStackToInventory(new ItemStack(ItemRegistry.cornmealItem, 1));
+                            foodBoxTE.markDirty();
                         }
                         if(this.getUnlocalizedName().contains("coffee_box"))
                         {
-                            player.addItemStackToInventory(new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("harvestcraft", "coffeeitem"))));
+                            player.addItemStackToInventory(new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("harvestcraft", "coffeebeanitem"))));
+                            foodBoxTE.markDirty();
+                        }
+                        if(this.getUnlocalizedName().contains("milk_chocolate_truffles_box"))
+                        {
+                            player.addItemStackToInventory(new ItemStack(ModItems.MILK_TRUFFLE, 1));
+                            foodBoxTE.markDirty();
+                        }
+                        if(this.getUnlocalizedName().contains("white_chocolate_truffles_box"))
+                        {
+                            player.addItemStackToInventory(new ItemStack(ModItems.WHITE_TRUFFLE, 1));
+                            foodBoxTE.markDirty();
                         }
                     }
                     else
@@ -313,6 +325,33 @@ public class FoodBox extends Block implements IHasModel
                     }
                 }
                 return true;
+            }
+            else
+            {
+                if(this.getUnlocalizedName().contains("sugar"))
+                {
+                    player.addItemStackToInventory(new ItemStack(Items.SUGAR, 1));
+                }
+                if(this.getUnlocalizedName().contains("flour_box"))
+                {
+                    player.addItemStackToInventory(new ItemStack(ItemRegistry.flourItem, 1));
+                }
+                if(this.getUnlocalizedName().contains("cornmeal_box"))
+                {
+                    player.addItemStackToInventory(new ItemStack(ItemRegistry.cornmealItem, 1));
+                }
+                if(this.getUnlocalizedName().contains("coffee_box"))
+                {
+                    player.addItemStackToInventory(new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("harvestcraft", "coffeebeanitem"))));
+                }
+                if(this.getUnlocalizedName().contains("milk_chocolate_truffles_box"))
+                {
+                    player.addItemStackToInventory(new ItemStack(ModItems.MILK_TRUFFLE, 1));
+                }
+                if(this.getUnlocalizedName().contains("white_chocolate_truffles_box"))
+                {
+                    player.addItemStackToInventory(new ItemStack(ModItems.WHITE_TRUFFLE, 1));
+                }
             }
         }
         return true;

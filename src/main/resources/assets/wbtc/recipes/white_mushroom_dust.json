@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "MD"
+    ],
+    "key": {
+        "M": {
+			"type": "forge:ore_dict",
+			"ore": "toolMortarandpestle"
+        },
+        "D": {
+			"type": "forge:ore_dict",
+			"ore": "cropWhitemushroom"
+        }
+    },
+    "result": 
+    {
+        "item": "wbtc:white_mushroom_dust",
+        "count": 3
+    }
+}

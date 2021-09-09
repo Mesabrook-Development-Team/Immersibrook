@@ -24,6 +24,7 @@ NEW:
 -Food Boxes for Sugar, Flour, Cornmeal, Coffee, and Chocolate Truffles.
 -Industrial-themed Ceiling Lights.
 -Narrow Ceiling Lights.
+-Concrete Columns (not to be confused with Pillars).
 
 CHANGES/FIXES:
 -Pillars are now affected by gravity.

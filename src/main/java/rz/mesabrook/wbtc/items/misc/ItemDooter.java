@@ -1,5 +1,6 @@
 package rz.mesabrook.wbtc.items.misc;
 
+import com.pam.harvestcraft.item.ItemRegistry;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -32,6 +33,7 @@ public class ItemDooter extends Item implements IHasModel
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand)
     {
         ItemStack item = player.getHeldItem(hand);
+        player.addItemStackToInventory(new ItemStack(ItemRegistry.mushroomketchupItem, 1));
         if(player instanceof EntityPlayer)
         {
             Triggers.trigger(Triggers.DOOT, player);

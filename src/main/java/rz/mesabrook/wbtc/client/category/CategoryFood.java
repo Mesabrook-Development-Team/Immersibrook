@@ -96,6 +96,7 @@ public class CategoryFood extends AbstractCategory
 		add(ModItems.DYE_GREEN);
 		add(ModItems.DYE_WHITE);
 		add(ModItems.DYE_YELLOW);
+		add(ModItems.DUST_WHITE);
 		add(ModItems.SUGAR_ORANGE);
 		add(ModItems.SUGAR_RED);
 		add(ModItems.SUGAR_GREEN);

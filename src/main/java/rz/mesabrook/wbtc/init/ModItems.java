@@ -231,6 +231,7 @@ public class ModItems
 	public static final Item DYE_BLUE = new MiscItem("dye_blue", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item DYE_WHITE = new MiscItem("dye_white", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item DYE_YELLOW = new MiscItem("dye_yellow", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item DUST_WHITE = new MiscItem("white_mushroom_dust", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item SUGAR_ORANGE = new MiscItem("sugar_orange", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item SUGAR_RED = new MiscItem("sugar_red", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item SUGAR_GREEN = new MiscItem("sugar_green", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);

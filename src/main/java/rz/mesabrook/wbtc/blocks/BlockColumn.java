@@ -15,7 +15,7 @@ import rz.mesabrook.wbtc.util.IHasModel;
 
 public class BlockColumn extends Block implements IHasModel
 {
-    public BlockColumn(String name, Material material, SoundType soundType, String harvestTool, int harvestLevel)
+    public BlockColumn(String name, Material material, SoundType soundType, String harvestTool, int harvestLevel, float lightLevel)
     {
         super(material);
         setUnlocalizedName(name);
@@ -25,6 +25,7 @@ public class BlockColumn extends Block implements IHasModel
         setHarvestLevel(harvestTool, harvestLevel);
         setHardness(8.0F);
         setResistance(8.0F);
+        setLightLevel(lightLevel);
 
         ModBlocks.BLOCKS.add(this);
         ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()).setMaxStackSize(64));

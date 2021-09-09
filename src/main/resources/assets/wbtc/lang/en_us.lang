@@ -1296,6 +1296,7 @@ item.raw_candy_choc.name=Raw Candy
 item.raw_candy_pl.name=Raw Candy
 item.white_chocolate.name=White Chocolate
 item.wine_bottle.name=Ceremonial Wine Bottle
+item.white_mushroom_dust.name=White Mushroom Powder
 
 //Dialog
 im.sugwarn=You feel your heart starting to twitch... One more bite and you risk a sugar crash!
@@ -1431,3 +1432,4 @@ tile.column_concrete_brown.name=Brown Concrete Column
 tile.column_concrete_green.name=Green Concrete Column
 tile.column_concrete_red.name=Red Concrete Column
 tile.column_concrete_black.name=Black Concrete Column
+tile.column_glowing_plastic.name=Glowing Column

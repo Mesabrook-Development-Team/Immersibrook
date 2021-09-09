@@ -188,5 +188,6 @@ public class CategoryBlocks extends AbstractCategory
 		add(ModBlocks.COLUMN_GREEN_CONCRETE);
 		add(ModBlocks.COLUMN_RED_CONCRETE);
 		add(ModBlocks.COLUMN_BLACK_CONCRETE);
+		add(ModBlocks.COLUMN_GLOWING);
 	}
 }

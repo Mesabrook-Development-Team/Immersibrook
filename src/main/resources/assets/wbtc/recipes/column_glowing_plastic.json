@@ -1,0 +1,17 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "TT",
+      "TT",
+	  "TT"
+   ],
+   "key": {
+      "T": {
+		  "item": "wbtc:plastic_cube_glowing"
+      }
+   },
+   "result": {
+      "item": "wbtc:column_glowing_plastic",
+      "count": 6
+   }
+}
