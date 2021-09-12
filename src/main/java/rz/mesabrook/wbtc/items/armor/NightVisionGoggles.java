@@ -47,16 +47,25 @@ public class NightVisionGoggles extends Item implements IHasModel
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand)
 	{
 		ItemStack item = player.getHeldItem(hand);
-		player.setItemStackToSlot(EntityEquipmentSlot.HEAD, item.copy());
-		item.setCount(0);
-		if(!world.isRemote)
+		ItemStack armorSlot = player.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+
+		if(armorSlot.isEmpty())
 		{
-			PlaySoundPacket packet = new PlaySoundPacket();
-			packet.pos = player.getPosition();
-			packet.soundName = "nv";
-			PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+			player.setItemStackToSlot(EntityEquipmentSlot.HEAD, item.copy());
+			item.setCount(0);
+			if(!world.isRemote)
+			{
+				PlaySoundPacket packet = new PlaySoundPacket();
+				packet.pos = player.getPosition();
+				packet.soundName = "nv";
+				PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+			}
+			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 		}
-		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
+		else
+		{
+			return new ActionResult<ItemStack>(EnumActionResult.FAIL, item);
+		}
 	}
 
 	@Override
