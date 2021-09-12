@@ -1,38 +1,62 @@
 package rz.mesabrook.wbtc.items.armor;
 
-import net.minecraft.client.model.ModelBiped;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.ItemArmor;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.init.ModItems;
-import rz.mesabrook.wbtc.rendering.ModelCustomArmor;
-import rz.mesabrook.wbtc.rendering.ModelNVGoggles;
+import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.util.IHasModel;
+import rz.mesabrook.wbtc.util.config.ModConfig;
+import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
-public class NightVisionGoggles extends ItemArmor implements IHasModel
+public class NightVisionGoggles extends Item implements IHasModel
 {
-	public NightVisionGoggles(String name, CreativeTabs tab, ArmorMaterial mat, EntityEquipmentSlot equipSlot)
+	public NightVisionGoggles(String name)
 	{
-		super(mat, 1, equipSlot);
 		setUnlocalizedName(name);
 		setRegistryName(name);
-		setCreativeTab(tab);
+		setCreativeTab(Main.IMMERSIBROOK_MAIN);
 		setMaxStackSize(1);
-		
+		if(ModConfig.nightVisionDamage)
+		{
+			setMaxDamage(1000000000);
+		}
+
 		ModItems.ITEMS.add(this);
+	}
+
+	@Override
+	public EntityEquipmentSlot getEquipmentSlot(ItemStack stack)
+	{
+		return EntityEquipmentSlot.HEAD;
+	}
+
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand)
+	{
+		ItemStack item = player.getHeldItem(hand);
+		player.setItemStackToSlot(EntityEquipmentSlot.HEAD, item.copy());
+		item.setCount(0);
+		if(!world.isRemote)
+		{
+			PlaySoundPacket packet = new PlaySoundPacket();
+			packet.pos = player.getPosition();
+			packet.soundName = "nv";
+			PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+		}
+		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
 	}
 
 	@Override
@@ -64,6 +88,10 @@ public class NightVisionGoggles extends ItemArmor implements IHasModel
 		if(player instanceof EntityPlayer && nightvision)
 		{
 			player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 210, 1, true, false));
+			if(ModConfig.nightVisionDamage)
+			{
+				itemStack.damageItem(1, player);
+			}
 		}
 		else if(player instanceof EntityPlayer && !nightvision)
 		{

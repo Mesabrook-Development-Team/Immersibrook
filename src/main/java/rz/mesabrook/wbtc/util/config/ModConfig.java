@@ -74,6 +74,9 @@ public final class ModConfig
 	@Comment("What character should be used for scrambling text when outside of maximum reception range?")
 	public static String scrambleCharacter = "-";
 
+	@Comment("Should the Night Vision Goggles take damage when active in Survival Mode?")
+	public static boolean nightVisionDamage = true;
+
 	@Comment("[Debugging Option] Set to true if you want the fake light block created by Ceiling Lights to be rendered.")
 	public static boolean renderFakeLightBlocks = false;
 	
