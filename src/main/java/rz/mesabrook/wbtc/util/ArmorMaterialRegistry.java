@@ -7,9 +7,6 @@ import rz.mesabrook.wbtc.init.SoundInit;
 
 public class ArmorMaterialRegistry
 {
-    // Night Vision Goggles Material
-    public static final ItemArmor.ArmorMaterial NIGHT_VISION_HELMET = EnumHelper.addArmorMaterial("nv_goggles", Reference.MODID + ":nv_goggles", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.NV, 2.0F);
-
     // Safety Vest Materials
     public static final ItemArmor.ArmorMaterial SAFETY_VEST_MATERIAL = EnumHelper.addArmorMaterial("safety_vest", Reference.MODID + ":safety_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
     public static final ItemArmor.ArmorMaterial SAFETY_VEST_YELLOW_MAT = EnumHelper.addArmorMaterial("yellow_vest", Reference.MODID + ":yellow_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
@@ -34,24 +31,6 @@ public class ArmorMaterialRegistry
     public static final ItemArmor.ArmorMaterial MAT_BROWN_VEST = EnumHelper.addArmorMaterial("brown_vest", Reference.MODID + ":brown_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
     public static final ItemArmor.ArmorMaterial MAT_GREEN_VEST = EnumHelper.addArmorMaterial("green_vest", Reference.MODID + ":green_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
     public static final ItemArmor.ArmorMaterial MAT_BLACK_VEST = EnumHelper.addArmorMaterial("black_vest", Reference.MODID + ":black_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
-
-    // Hard Hat Materials
-    public static final ItemArmor.ArmorMaterial HH_YELLOW = EnumHelper.addArmorMaterial("hh_yellow", Reference.MODID + ":hh_yellow", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.TRUMPET, 2.0F);
-    public static final ItemArmor.ArmorMaterial HH_WHITE = EnumHelper.addArmorMaterial("hh_white", Reference.MODID + ":hh_white", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.TRUMPET, 2.0F);
-    public static final ItemArmor.ArmorMaterial HH_ORANGE = EnumHelper.addArmorMaterial("hh_orange", Reference.MODID + ":hh_orange", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.TRUMPET, 2.0F);
-    public static final ItemArmor.ArmorMaterial HH_MAGENTA = EnumHelper.addArmorMaterial("hh_magenta", Reference.MODID + ":hh_magenta", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.TRUMPET, 2.0F);
-    public static final ItemArmor.ArmorMaterial HH_LBLUE = EnumHelper.addArmorMaterial("hh_lblue", Reference.MODID + ":hh_lblue", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.TRUMPET, 2.0F);
-    public static final ItemArmor.ArmorMaterial HH_LIME = EnumHelper.addArmorMaterial("hh_lime", Reference.MODID + ":hh_lime", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.TRUMPET, 2.0F);
-    public static final ItemArmor.ArmorMaterial HH_PINK = EnumHelper.addArmorMaterial("hh_pink", Reference.MODID + ":hh_pink", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.TRUMPET, 2.0F);
-    public static final ItemArmor.ArmorMaterial HH_GRAY = EnumHelper.addArmorMaterial("hh_gray", Reference.MODID + ":hh_gray", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.TRUMPET, 2.0F);
-    public static final ItemArmor.ArmorMaterial HH_SILVER = EnumHelper.addArmorMaterial("hh_silver", Reference.MODID + ":hh_silver", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.TRUMPET, 2.0F);
-    public static final ItemArmor.ArmorMaterial HH_CYAN = EnumHelper.addArmorMaterial("hh_cyan", Reference.MODID + ":hh_cyan", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.TRUMPET, 2.0F);
-    public static final ItemArmor.ArmorMaterial HH_PURPLE = EnumHelper.addArmorMaterial("hh_purple", Reference.MODID + ":hh_purple", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.TRUMPET, 2.0F);
-    public static final ItemArmor.ArmorMaterial HH_BLUE = EnumHelper.addArmorMaterial("hh_blue", Reference.MODID + ":hh_blue", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.TRUMPET, 2.0F);
-    public static final ItemArmor.ArmorMaterial HH_BROWN = EnumHelper.addArmorMaterial("hh_brown", Reference.MODID + ":hh_brown", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.TRUMPET, 2.0F);
-    public static final ItemArmor.ArmorMaterial HH_GREEN = EnumHelper.addArmorMaterial("hh_green", Reference.MODID + ":hh_green", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.TRUMPET, 2.0F);
-    public static final ItemArmor.ArmorMaterial HH_RED = EnumHelper.addArmorMaterial("hh_red", Reference.MODID + ":hh_red", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.TRUMPET, 2.0F);
-    public static final ItemArmor.ArmorMaterial HH_BLACK = EnumHelper.addArmorMaterial("hh_black", Reference.MODID + ":hh_black", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.TRUMPET, 2.0F);
 
     // Decorative Wearables Materials
     public static final ItemArmor.ArmorMaterial MASK_JASON = EnumHelper.addArmorMaterial("mask_jason", Reference.MODID + ":mask_jason", 5, new int[] {1, 1, 1, 1}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.1F);

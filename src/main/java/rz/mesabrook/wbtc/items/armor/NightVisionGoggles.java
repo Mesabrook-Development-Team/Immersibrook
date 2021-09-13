@@ -49,7 +49,7 @@ public class NightVisionGoggles extends Item implements IHasModel
 		ItemStack item = player.getHeldItem(hand);
 		ItemStack armorSlot = player.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
 
-		if(armorSlot.isEmpty())
+		if(armorSlot.isEmpty() && item.getItem() == ModItems.NV_GOGGLES)
 		{
 			player.setItemStackToSlot(EntityEquipmentSlot.HEAD, item.copy());
 			item.setCount(0);

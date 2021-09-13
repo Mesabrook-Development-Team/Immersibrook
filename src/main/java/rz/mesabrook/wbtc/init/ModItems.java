@@ -156,22 +156,22 @@ public class ModItems
 	public static final Item NV_STRAPS = new MiscItem("nv_goggle_strap", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 
 	// Hard Hats
-	public static final Item HARDHAT_YELLOW = new Hardhat("hh_yellow", ArmorMaterialRegistry.HH_YELLOW, EntityEquipmentSlot.HEAD);
-	public static final Item HARDHAT_WHITE = new Hardhat("hh_white", ArmorMaterialRegistry.HH_WHITE, EntityEquipmentSlot.HEAD);
-	public static final Item HARDHAT_ORANGE = new Hardhat("hh_orange", ArmorMaterialRegistry.HH_ORANGE, EntityEquipmentSlot.HEAD);
-	public static final Item HARDHAT_MAGENTA = new Hardhat("hh_magenta", ArmorMaterialRegistry.HH_MAGENTA, EntityEquipmentSlot.HEAD);
-	public static final Item HARDHAT_LBLUE = new Hardhat("hh_lblue", ArmorMaterialRegistry.HH_LBLUE, EntityEquipmentSlot.HEAD);
-	public static final Item HARDHAT_LIME = new Hardhat("hh_lime", ArmorMaterialRegistry.HH_LIME, EntityEquipmentSlot.HEAD);
-	public static final Item HARDHAT_PINK = new Hardhat("hh_pink", ArmorMaterialRegistry.HH_PINK, EntityEquipmentSlot.HEAD);
-	public static final Item HARDHAT_GRAY = new Hardhat("hh_gray", ArmorMaterialRegistry.HH_GRAY, EntityEquipmentSlot.HEAD);
-	public static final Item HARDHAT_SILVER = new Hardhat("hh_silver", ArmorMaterialRegistry.HH_SILVER, EntityEquipmentSlot.HEAD);
-	public static final Item HARDHAT_CYAN = new Hardhat("hh_cyan", ArmorMaterialRegistry.HH_CYAN, EntityEquipmentSlot.HEAD);
-	public static final Item HARDHAT_PURPLE = new Hardhat("hh_purple", ArmorMaterialRegistry.HH_PURPLE, EntityEquipmentSlot.HEAD);
-	public static final Item HARDHAT_BLUE = new Hardhat("hh_blue", ArmorMaterialRegistry.HH_BLUE, EntityEquipmentSlot.HEAD);
-	public static final Item HARDHAT_BROWN = new Hardhat("hh_brown", ArmorMaterialRegistry.HH_BROWN, EntityEquipmentSlot.HEAD);
-	public static final Item HARDHAT_GREEN = new Hardhat("hh_green", ArmorMaterialRegistry.HH_GREEN, EntityEquipmentSlot.HEAD);
-	public static final Item HARDHAT_RED = new Hardhat("hh_red", ArmorMaterialRegistry.HH_RED, EntityEquipmentSlot.HEAD);
-	public static final Item HARDHAT_BLACK = new Hardhat("hh_black", ArmorMaterialRegistry.HH_BLACK, EntityEquipmentSlot.HEAD);
+	public static final Item HARDHAT_YELLOW = new Hardhat("hh_yellow");
+	public static final Item HARDHAT_WHITE = new Hardhat("hh_white");
+	public static final Item HARDHAT_ORANGE = new Hardhat("hh_orange");
+	public static final Item HARDHAT_MAGENTA = new Hardhat("hh_magenta");
+	public static final Item HARDHAT_LBLUE = new Hardhat("hh_lblue");
+	public static final Item HARDHAT_LIME = new Hardhat("hh_lime");
+	public static final Item HARDHAT_PINK = new Hardhat("hh_pink");
+	public static final Item HARDHAT_GRAY = new Hardhat("hh_gray");
+	public static final Item HARDHAT_SILVER = new Hardhat("hh_silver");
+	public static final Item HARDHAT_CYAN = new Hardhat("hh_cyan");
+	public static final Item HARDHAT_PURPLE = new Hardhat("hh_purple");
+	public static final Item HARDHAT_BLUE = new Hardhat("hh_blue");
+	public static final Item HARDHAT_BROWN = new Hardhat("hh_brown");
+	public static final Item HARDHAT_GREEN = new Hardhat("hh_green");
+	public static final Item HARDHAT_RED = new Hardhat("hh_red");
+	public static final Item HARDHAT_BLACK = new Hardhat("hh_black");
 
 	// Misc Items
 	public static final Item PAPER_STICK = new MiscItem("paper_stick", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
