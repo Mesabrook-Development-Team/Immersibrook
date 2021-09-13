@@ -25,6 +25,7 @@ NEW:
 -Industrial-themed Ceiling Lights.
 -Narrow Ceiling Lights.
 -Concrete Columns (not to be confused with Pillars).
+-Models for the Night Vision Goggles and Hard Hats.
 
 CHANGES/FIXES:
 -Pillars are now affected by gravity.

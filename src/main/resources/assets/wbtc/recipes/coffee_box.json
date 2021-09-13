@@ -6,7 +6,7 @@
 	"CCC"
   ],
   "key": {
-    "P": {
+    "C": {
       "type": "forge:ore_dict",
 	  "ore": "cropCoffee"
     }
