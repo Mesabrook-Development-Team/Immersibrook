@@ -217,7 +217,11 @@ public class ModItems
 	public static final Item WHITE_CHOCOLATE = new ImmersiFood("white_chocolate", 64, 0, 5, 5F, false);
 	public static final Item WHITE_TRUFFLE = new ImmersiFood("truffle_white", 64, 0, 5, 5F, false);
 	public static final Item MILK_TRUFFLE = new ImmersiFood("truffle_milk", 64, 0, 5, 5F, false);
-
+	public static final Item TRUFFLE_CARAMEL = new ImmersiFood("truffle_caramel", 64, 0, 5, 5F, false);
+	public static final Item TRUFFLE_PB = new ImmersiFood("truffle_pb", 64, 0, 5, 5F, false);
+	public static final Item TRUFFLE_STRAWBERRY = new ImmersiFood("truffle_strawberry", 64, 0, 5, 5F, false);
+	public static final Item TRUFFLE_WHITE_BB = new ImmersiFood("truffle_white_bb", 64, 0, 5, 5F, false);
+	public static final Item TRUFFLE_WHITE_GRAPE = new ImmersiFood("truffle_white_grape", 64, 0, 5, 5F, false);
 
 	// Decorative Wearables
 	public static final Item MASK_JASON = new FaceMasks("mask_jason", ArmorMaterialRegistry.MASK_JASON, EntityEquipmentSlot.HEAD);
