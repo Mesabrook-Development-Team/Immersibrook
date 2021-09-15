@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C C",
+    "C C"
+  ],
+  "key": {
+    "C": {
+		"item": "wbtc:black_plastic"
+    }
+  },
+  "result": {
+    "item": "wbtc:fire_boots",
+    "count": 1
+  }
+}

@@ -1263,6 +1263,11 @@ item.chocolate_bar_krisp.name=Krisp!
 item.chocolate_bar_caramel.name=Caramella
 item.truffle_white.name=Chocolate Truffle
 item.truffle_milk.name=Chocolate Truffle
+item.truffle_caramel.name=Chocolate Truffle
+item.truffle_pb.name=Chocolate Truffle
+item.truffle_strawberry.name=Chocolate Truffle
+item.truffle_white_bb.name=Chocolate Truffle
+item.truffle_white_grape.name=Chocolate Truffle
 item.dye_red.name=Food Dye
 item.dye_green.name=Food Dye
 item.dye_blue.name=Food Dye
@@ -1322,8 +1327,15 @@ im.sparkling=Did you really just chug that entire bottle of sparkling pink lemon
 im.truss.eat=Edible
 im.truffle.milk=Milk Chocolate
 im.truffle.white=White Chocolate
+im.truffle.caramel=Caramel
+im.truffle.pb=Peanut Butter
+im.truffle.sb=Strawberry Jam
+im.truffle.bb=Blueberry Jam
+im.truffle.grape=Grape Jam
 im.cliche=Wow, so original...
 im.box.empty=Box is empty.
+im.ff.brand=Livery:
+im.ff.mat=Material:
 
 //Food Boxes
 tile.sugar_box.name=Granulated White Sugar

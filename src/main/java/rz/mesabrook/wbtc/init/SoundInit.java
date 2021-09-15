@@ -60,6 +60,7 @@ public class SoundInit
 	public static final SoundEvent QUACKBOOM;
 	public static final SoundEvent BAKA;
 	public static final SoundEvent MALLET;
+	public static final SoundEvent POLICE_HELMET;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -165,6 +166,7 @@ public class SoundInit
 		QUACKBOOM = addSoundsToRegistry("duckboom");
 		BAKA = addSoundsToRegistry("baka");
 		MALLET = addSoundsToRegistry("mallet");
+		POLICE_HELMET = addSoundsToRegistry("police_helmet");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -326,6 +328,7 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.BAKA);
 				event.getRegistry().registerAll(SoundInit.MALLET);
 				event.getRegistry().registerAll(SoundInit.COOKING);
+				event.getRegistry().registerAll(SoundInit.POLICE_HELMET);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

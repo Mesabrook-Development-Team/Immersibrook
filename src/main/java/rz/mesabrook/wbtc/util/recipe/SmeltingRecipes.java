@@ -77,6 +77,12 @@ public class SmeltingRecipes
 			GameRegistry.addSmelting(ModItems.RAW_CANDY_CHOC, new ItemStack(ModItems.CANDY_CHOCOLATE, 1), 69F);
 			GameRegistry.addSmelting(ModItems.RAW_CANDY_RB, new ItemStack(ModItems.CANDY_ROOT_BEER, 1), 69F);
 
+			// Firecloth
+			GameRegistry.addSmelting(ModItems.FIRECLOTH_1, new ItemStack(ModItems.FIRECLOTH_2, 1), 10F);
+			GameRegistry.addSmelting(ModItems.FIRECLOTH_2, new ItemStack(ModItems.FIRECLOTH_3, 1), 10F);
+			GameRegistry.addSmelting(ModItems.FIRECLOTH_3, new ItemStack(ModItems.FIRECLOTH_4, 1), 10F);
+			GameRegistry.addSmelting(ModItems.FIRECLOTH_4, new ItemStack(Items.COAL, 2, 1), 10F);
+
 			if(ModConfig.smeltingLeatherForASaddle)
 			{
 				GameRegistry.addSmelting(Items.LEATHER, new ItemStack(Items.SADDLE, 1), 69F);

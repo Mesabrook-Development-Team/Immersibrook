@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " S ",
+    "SWS",
+	" S "
+  ],
+  "key": {
+    "S": {
+		"item": "minecraft:stone",
+		"data": 0
+    },
+	"W": {
+		"item": "minecraft:wool",
+		"data": 0
+    }
+  },
+  "result": {
+    "item": "wbtc:firecloth_1",
+    "count": 9
+  }
+}

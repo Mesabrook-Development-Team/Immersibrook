@@ -115,5 +115,9 @@ public class CategoryResources extends AbstractCategory
 		add(ModItems.CARDBOARD_PIECE);
 		add(ModItems.ROD_CONSTANTAN);
 		add(ModItems.ROD_NICKEL);
+		add(ModItems.FIRECLOTH_1);
+		add(ModItems.FIRECLOTH_2);
+		add(ModItems.FIRECLOTH_3);
+		add(ModItems.FIRECLOTH_4);
 	}
 }

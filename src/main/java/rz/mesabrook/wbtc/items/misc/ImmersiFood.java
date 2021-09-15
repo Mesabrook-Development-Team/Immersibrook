@@ -29,6 +29,11 @@ public class ImmersiFood extends ItemFood implements IHasModel
     private final TextComponentTranslation burp = new TextComponentTranslation("im.sparkling");
     private final TextComponentTranslation milk = new TextComponentTranslation("im.truffle.milk");
     private final TextComponentTranslation white = new TextComponentTranslation("im.truffle.white");
+    private final TextComponentTranslation caramel = new TextComponentTranslation("im.truffle.caramel");
+    private final TextComponentTranslation pb = new TextComponentTranslation("im.truffle.pb");
+    private final TextComponentTranslation strawberry = new TextComponentTranslation("im.truffle.sb");
+    private final TextComponentTranslation bb = new TextComponentTranslation("im.truffle.bb");
+    private final TextComponentTranslation grape = new TextComponentTranslation("im.truffle.grape");
 
     public ImmersiFood(String name, int stackSize, int damage, int amount, float saturation, boolean canFeedDoggos)
     {
@@ -44,6 +49,11 @@ public class ImmersiFood extends ItemFood implements IHasModel
         burp.getStyle().setColor(TextFormatting.RED);
         milk.getStyle().setColor(TextFormatting.DARK_RED);
         white.getStyle().setColor(TextFormatting.WHITE);
+        caramel.getStyle().setColor(TextFormatting.GOLD);
+        pb.getStyle().setColor(TextFormatting.GOLD);
+        strawberry.getStyle().setColor(TextFormatting.RED);
+        bb.getStyle().setColor(TextFormatting.BLUE);
+        grape.getStyle().setColor(TextFormatting.DARK_PURPLE);
     }
 
     @Override
@@ -115,6 +125,31 @@ public class ImmersiFood extends ItemFood implements IHasModel
         if(stack.getItem() == ModItems.WHITE_TRUFFLE)
         {
             tooltip.add(white.getFormattedText());
+        }
+        if(stack.getItem() == ModItems.TRUFFLE_CARAMEL)
+        {
+            tooltip.add(milk.getFormattedText());
+            tooltip.add(caramel.getFormattedText());
+        }
+        if(stack.getItem() == ModItems.TRUFFLE_PB)
+        {
+            tooltip.add(milk.getFormattedText());
+            tooltip.add(pb.getFormattedText());
+        }
+        if(stack.getItem() == ModItems.TRUFFLE_STRAWBERRY)
+        {
+            tooltip.add(milk.getFormattedText());
+            tooltip.add(strawberry.getFormattedText());
+        }
+        if(stack.getItem() == ModItems.TRUFFLE_WHITE_BB)
+        {
+            tooltip.add(white.getFormattedText());
+            tooltip.add(bb.getFormattedText());
+        }
+        if(stack.getItem() == ModItems.TRUFFLE_WHITE_GRAPE)
+        {
+            tooltip.add(white.getFormattedText());
+            tooltip.add(grape.getFormattedText());
         }
     }
 }

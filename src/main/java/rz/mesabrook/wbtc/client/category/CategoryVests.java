@@ -45,6 +45,7 @@ public class CategoryVests extends AbstractCategory
 		add(ModItems.SAFETY_VEST_BROWN);
 		add(ModItems.SAFETY_VEST_GREEN);
 		add(ModItems.SAFETY_VEST_BLACK);
+		add(ModItems.POLICE_VEST);
 
 		// Hard Hats
 		add(ModItems.HARDHAT_YELLOW);
@@ -63,6 +64,21 @@ public class CategoryVests extends AbstractCategory
 		add(ModItems.HARDHAT_GREEN);
 		add(ModItems.HARDHAT_RED);
 		add(ModItems.HARDHAT_BLACK);
+		add(ModItems.POLICE_HELMET);
+		add(ModItems.FIRE_HELMET_BLACK);
+		add(ModItems.FIRE_HELMET_WHITE);
+		add(ModItems.FIRE_HELMET_YELLOW);
+		add(ModItems.FIRE_HELMET_RED);
+		add(ModItems.FDRC_CHEST);
+		add(ModItems.IRFD_CHEST);
+		add(ModItems.CBFD_CHEST);
+		add(ModItems.AVFD_CHEST);
+		add(ModItems.FIRE_BOOTS);
+		add(ModItems.FF_PANTS_BLACK);
+		add(ModItems.FF_PANTS_DT);
+		add(ModItems.FF_PANTS_LT);
+		add(ModItems.BLACK_GENERIC);
+		add(ModItems.LT_GENERIC);
+		add(ModItems.DT_GENERIC);
 	}
-
 }

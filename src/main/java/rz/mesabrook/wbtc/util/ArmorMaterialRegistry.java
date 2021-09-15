@@ -7,7 +7,7 @@ import rz.mesabrook.wbtc.init.SoundInit;
 
 public class ArmorMaterialRegistry
 {
-    // Safety Vest Materials
+    // Safety Gear Materials
     public static final ItemArmor.ArmorMaterial SAFETY_VEST_MATERIAL = EnumHelper.addArmorMaterial("safety_vest", Reference.MODID + ":safety_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
     public static final ItemArmor.ArmorMaterial SAFETY_VEST_YELLOW_MAT = EnumHelper.addArmorMaterial("yellow_vest", Reference.MODID + ":yellow_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
     public static final ItemArmor.ArmorMaterial SAFETY_VEST_ORANGE_NON_X_MAT = EnumHelper.addArmorMaterial("orange_vest_no_x", Reference.MODID + ":orange_vest_no_x", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
@@ -31,11 +31,31 @@ public class ArmorMaterialRegistry
     public static final ItemArmor.ArmorMaterial MAT_BROWN_VEST = EnumHelper.addArmorMaterial("brown_vest", Reference.MODID + ":brown_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
     public static final ItemArmor.ArmorMaterial MAT_GREEN_VEST = EnumHelper.addArmorMaterial("green_vest", Reference.MODID + ":green_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
     public static final ItemArmor.ArmorMaterial MAT_BLACK_VEST = EnumHelper.addArmorMaterial("black_vest", Reference.MODID + ":black_vest", 20, new int[] {7, 8, 8, 9}, 0, SoundInit.VEST, 2.0F);
+    public static final ItemArmor.ArmorMaterial POLICE_VEST = EnumHelper.addArmorMaterial("police_vest", Reference.MODID + ":police_vest", 50, new int[] {7, 8, 8, 9},0, SoundInit.VEST, 4.0F);
 
     // Decorative Wearables Materials
     public static final ItemArmor.ArmorMaterial MASK_JASON = EnumHelper.addArmorMaterial("mask_jason", Reference.MODID + ":mask_jason", 5, new int[] {1, 1, 1, 1}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.1F);
     public static final ItemArmor.ArmorMaterial MASK_SKELETON = EnumHelper.addArmorMaterial("mask_skeleton", Reference.MODID + ":mask_skeleton", 5, new int[] {1, 1, 1, 1}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.1F);
     public static final ItemArmor.ArmorMaterial MASK_MEDICAL = EnumHelper.addArmorMaterial("mask_medical", Reference.MODID + ":mask_medical", 5, new int[] {1, 1, 1, 1}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.1F);
     public static final ItemArmor.ArmorMaterial MASK_SLIME = EnumHelper.addArmorMaterial("mask_slime", Reference.MODID + ":mask_slime", 5, new int[] {1, 1, 1, 1}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0.1F);
+
+    // Boots
+    public static final ItemArmor.ArmorMaterial FIRE_BOOTS = EnumHelper.addArmorMaterial("fire_boots", Reference.MODID + ":fire_boots", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 4.0F);
+
+    // Fire Pants
+    public static final ItemArmor.ArmorMaterial FF_PANTS_BLACK = EnumHelper.addArmorMaterial("ff_pants_black", Reference.MODID + ":ff_pants_black", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 4.0F);
+    public static final ItemArmor.ArmorMaterial FF_PANTS_DT = EnumHelper.addArmorMaterial("ff_pants_dt", Reference.MODID + ":ff_pants_dt", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 4.0F);
+    public static final ItemArmor.ArmorMaterial FF_PANTS_LT = EnumHelper.addArmorMaterial("ff_pants_lt", Reference.MODID + ":ff_pants_lt", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 4.0F);
+
+    // Labeled Fire Jackets
+    public static final ItemArmor.ArmorMaterial FF_BLACK_FDRC = EnumHelper.addArmorMaterial("ff_black_fdrc", Reference.MODID + ":ff_black_fdrc", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 4.0F);
+    public static final ItemArmor.ArmorMaterial FF_DT_IRFD = EnumHelper.addArmorMaterial("ff_dt_irfd", Reference.MODID + ":ff_dt_irfd", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 4.0F);
+    public static final ItemArmor.ArmorMaterial FF_LT_CBFD = EnumHelper.addArmorMaterial("ff_lt_cbfd", Reference.MODID + ":ff_lt_cbfd", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 4.0F);
+    public static final ItemArmor.ArmorMaterial FF_LT_AVFD = EnumHelper.addArmorMaterial("ff_lt_avfd", Reference.MODID + ":ff_lt_avfd", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 4.0F);
+
+    // Generic Fire Jackets
+    public static final ItemArmor.ArmorMaterial FF_BLACK_GENERIC = EnumHelper.addArmorMaterial("ff_black_generic", Reference.MODID + ":ff_black_generic", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 4.0F);
+    public static final ItemArmor.ArmorMaterial FF_LT_GENERIC = EnumHelper.addArmorMaterial("ff_lt_generic", Reference.MODID + ":ff_lt_generic", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 4.0F);
+    public static final ItemArmor.ArmorMaterial FF_DT_GENERIC = EnumHelper.addArmorMaterial("ff_dt_generic", Reference.MODID + ":ff_dt_generic", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 4.0F);
 
 }

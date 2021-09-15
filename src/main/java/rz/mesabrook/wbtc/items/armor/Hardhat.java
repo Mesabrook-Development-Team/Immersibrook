@@ -9,11 +9,15 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.init.ModItems;
+import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.util.IHasModel;
+import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 public class Hardhat extends Item implements IHasModel
 {
@@ -23,6 +27,7 @@ public class Hardhat extends Item implements IHasModel
         setRegistryName(name);
         setMaxStackSize(1);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
+        setMaxDamage(200);
 
         ModItems.ITEMS.add(this);
     }

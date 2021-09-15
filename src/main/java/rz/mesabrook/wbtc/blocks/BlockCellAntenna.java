@@ -9,8 +9,10 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import rz.mesabrook.wbtc.Main;
@@ -99,5 +101,41 @@ public class BlockCellAntenna extends Block implements IHasModel {
 		
 		int effectiveHeight = heightTotal / (int)Math.pow(ModConfig.cellAntennaHeightScanWidth, 2);
 		AntennaData.getOrCreate(world).setHeight(currentPosition, effectiveHeight);
+	}
+
+	@Override
+	public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos)
+	{
+		return false;
+	}
+
+	@Override
+	public boolean isOpaqueCube(IBlockState state)
+	{
+		return false;
+	}
+
+	@Override
+	public boolean isFullCube(IBlockState state)
+	{
+		return false;
+	}
+
+	@Override
+	public boolean causesSuffocation(IBlockState state)
+	{
+		return false;
+	}
+
+	@Override
+	public float getAmbientOcclusionLightValue(IBlockState state)
+	{
+		return 1;
+	}
+
+	@Override
+	public BlockRenderLayer getBlockLayer()
+	{
+		return BlockRenderLayer.CUTOUT;
 	}
 }

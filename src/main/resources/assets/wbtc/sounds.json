@@ -88,5 +88,6 @@
 	"duckboom": {"category": "master","sounds": [{"name": "wbtc:duckboom","stream": true}]},
 	"baka": {"category": "master","sounds": [{"name": "wbtc:baka","stream": true}]},
 	"mallet": {"category": "master","sounds": [{"name": "wbtc:mallet","stream": true}]},
-	"cooking": {"category": "master","sounds": [{"name": "wbtc:cooking","stream": true}]}
+	"cooking": {"category": "master","sounds": [{"name": "wbtc:cooking","stream": true}]},
+	"police_helmet": {"category": "master","sounds": [{"name": "wbtc:police_helmet","stream": true}]}
 }

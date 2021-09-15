@@ -25,6 +25,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.Main;
@@ -34,6 +35,7 @@ import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.items.misc.FoodBoxItemBlock;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.ModUtils;
+import rz.mesabrook.wbtc.util.Reference;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -256,29 +258,41 @@ public class FoodBox extends Block implements IHasModel
                 TileEntityFoodBox foodBoxTE = (TileEntityFoodBox)te;
                 if(foodBoxTE.getUses() > 0)
                 {
-                    if(this.getUnlocalizedName().contains("sugar"))
+                    if(state.getBlock() == ModBlocks.SUGAR_BOX)
                     {
                         drops.add(new ItemStack(Items.SUGAR, foodBoxTE.getUses()));
                     }
-                    if(this.getUnlocalizedName().contains("flour_box"))
+                    if(state.getBlock() == ModBlocks.FLOUR_BOX)
                     {
                         drops.add(new ItemStack(ItemRegistry.flourItem, foodBoxTE.getUses()));
                     }
-                    if(this.getUnlocalizedName().contains("cornmeal_box"))
+                    if(state.getBlock() == ModBlocks.CORNMEAL_BOX)
                     {
                         drops.add(new ItemStack(ItemRegistry.cornmealItem, foodBoxTE.getUses()));
                     }
-                    if(this.getUnlocalizedName().contains("coffee_box"))
+                    if(state.getBlock() == ModBlocks.COFFEE_BOX)
                     {
                         drops.add(new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("harvestcraft", "coffeebeanitem"))));
                     }
-                    if(this.getUnlocalizedName().contains("flour_box"))
+                    if(state.getBlock() == ModBlocks.MILK_CHOC_TRUFFLE_BOX)
                     {
-                        drops.add(new ItemStack(ItemRegistry.flourItem, foodBoxTE.getUses()));
+                        drops.add(new ItemStack(ModItems.MILK_TRUFFLE, foodBoxTE.getUses()));
                     }
-                    if(this.getUnlocalizedName().contains("flour_box"))
+                    if(state.getBlock() == ModBlocks.WHITE_CHOC_TRUFFLE_BOX)
                     {
-                        drops.add(new ItemStack(ItemRegistry.flourItem, foodBoxTE.getUses()));
+                        drops.add(new ItemStack(ModItems.WHITE_TRUFFLE, foodBoxTE.getUses()));
+                    }
+                    if(state.getBlock() == ModBlocks.CHOC_CARAMEL_TRUFFLE_BOX)
+                    {
+                        drops.add(new ItemStack(ModItems.TRUFFLE_CARAMEL, foodBoxTE.getUses()));
+                    }
+                    if(state.getBlock() == ModBlocks.CHOC_PB_TRUFFLE_BOX)
+                    {
+                        drops.add(new ItemStack(ModItems.TRUFFLE_PB, foodBoxTE.getUses()));
+                    }
+                    if(state.getBlock() == ModBlocks.CHOC_STRAWBERRY_TRUFFLE_BOX)
+                    {
+                        drops.add(new ItemStack(ModItems.TRUFFLE_STRAWBERRY, foodBoxTE.getUses()));
                     }
                 }
             }
@@ -300,34 +314,49 @@ public class FoodBox extends Block implements IHasModel
                     if(foodBoxTE.getUses() > 0)
                     {
                         foodBoxTE.setUses(foodBoxTE.getUses() - 1);
-                        if(this.getUnlocalizedName().contains("sugar"))
+                        if(state.getBlock() == ModBlocks.SUGAR_BOX)
                         {
                             player.addItemStackToInventory(new ItemStack(Items.SUGAR, 1));
                             foodBoxTE.markDirty();
                         }
-                        if(this.getUnlocalizedName().contains("flour_box"))
+                        if(state.getBlock() == ModBlocks.FLOUR_BOX)
                         {
                             player.addItemStackToInventory(new ItemStack(ItemRegistry.flourItem, 1));
                             foodBoxTE.markDirty();
                         }
-                        if(this.getUnlocalizedName().contains("cornmeal_box"))
+                        if(state.getBlock() == ModBlocks.CORNMEAL_BOX)
                         {
                             player.addItemStackToInventory(new ItemStack(ItemRegistry.cornmealItem, 1));
                             foodBoxTE.markDirty();
                         }
-                        if(this.getUnlocalizedName().contains("coffee_box"))
+                        if(state.getBlock() == ModBlocks.COFFEE_BOX)
                         {
                             player.addItemStackToInventory(new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("harvestcraft", "coffeebeanitem"))));
                             foodBoxTE.markDirty();
                         }
-                        if(this.getUnlocalizedName().contains("milk_chocolate_truffles_box"))
+                        if(state.getBlock() == ModBlocks.MILK_CHOC_TRUFFLE_BOX)
                         {
                             player.addItemStackToInventory(new ItemStack(ModItems.MILK_TRUFFLE, 1));
                             foodBoxTE.markDirty();
                         }
-                        if(this.getUnlocalizedName().contains("white_chocolate_truffles_box"))
+                        if(state.getBlock() == ModBlocks.WHITE_CHOC_TRUFFLE_BOX)
                         {
                             player.addItemStackToInventory(new ItemStack(ModItems.WHITE_TRUFFLE, 1));
+                            foodBoxTE.markDirty();
+                        }
+                        if(state.getBlock() == ModBlocks.CHOC_CARAMEL_TRUFFLE_BOX)
+                        {
+                            player.addItemStackToInventory(new ItemStack(ModItems.TRUFFLE_CARAMEL, 1));
+                            foodBoxTE.markDirty();
+                        }
+                        if(state.getBlock() == ModBlocks.CHOC_PB_TRUFFLE_BOX)
+                        {
+                            player.addItemStackToInventory(new ItemStack(ModItems.TRUFFLE_PB, 1));
+                            foodBoxTE.markDirty();
+                        }
+                        if(state.getBlock() == ModBlocks.CHOC_STRAWBERRY_TRUFFLE_BOX)
+                        {
+                            player.addItemStackToInventory(new ItemStack(ModItems.TRUFFLE_STRAWBERRY, 1));
                             foodBoxTE.markDirty();
                         }
                     }
@@ -340,29 +369,41 @@ public class FoodBox extends Block implements IHasModel
             }
             else
             {
-                if(this.getUnlocalizedName().contains("sugar"))
+                if(state.getBlock() == ModBlocks.SUGAR_BOX)
                 {
                     player.addItemStackToInventory(new ItemStack(Items.SUGAR, 1));
                 }
-                if(this.getUnlocalizedName().contains("flour_box"))
+                if(state.getBlock() == ModBlocks.FLOUR_BOX)
                 {
                     player.addItemStackToInventory(new ItemStack(ItemRegistry.flourItem, 1));
                 }
-                if(this.getUnlocalizedName().contains("cornmeal_box"))
+                if(state.getBlock() == ModBlocks.CORNMEAL_BOX)
                 {
                     player.addItemStackToInventory(new ItemStack(ItemRegistry.cornmealItem, 1));
                 }
-                if(this.getUnlocalizedName().contains("coffee_box"))
+                if(state.getBlock() == ModBlocks.COFFEE_BOX)
                 {
                     player.addItemStackToInventory(new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("harvestcraft", "coffeebeanitem"))));
                 }
-                if(this.getUnlocalizedName().contains("milk_chocolate_truffles_box"))
+                if(state.getBlock() == ModBlocks.MILK_CHOC_TRUFFLE_BOX)
                 {
                     player.addItemStackToInventory(new ItemStack(ModItems.MILK_TRUFFLE, 1));
                 }
-                if(this.getUnlocalizedName().contains("white_chocolate_truffles_box"))
+                if(state.getBlock() == ModBlocks.WHITE_CHOC_TRUFFLE_BOX)
                 {
                     player.addItemStackToInventory(new ItemStack(ModItems.WHITE_TRUFFLE, 1));
+                }
+                if(state.getBlock() == ModBlocks.CHOC_CARAMEL_TRUFFLE_BOX)
+                {
+                    player.addItemStackToInventory(new ItemStack(ModItems.TRUFFLE_CARAMEL, 1));
+                }
+                if(state.getBlock() == ModBlocks.CHOC_PB_TRUFFLE_BOX)
+                {
+                    player.addItemStackToInventory(new ItemStack(ModItems.TRUFFLE_PB, 1));
+                }
+                if(state.getBlock() == ModBlocks.CHOC_STRAWBERRY_TRUFFLE_BOX)
+                {
+                    player.addItemStackToInventory(new ItemStack(ModItems.TRUFFLE_STRAWBERRY, 1));
                 }
             }
         }

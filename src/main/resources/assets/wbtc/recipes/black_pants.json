@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "FFF",
+    "F F",
+	"Y Y"
+  ],
+  "key": {
+    "F": {
+		"item": "wbtc:firecloth_4"
+    },
+    "Y": {
+		"item": "wbtc:glowing_plastic"
+    }
+  },
+  "result": {
+    "item": "wbtc:ff_pants_black",
+    "count": 1
+  }
+}

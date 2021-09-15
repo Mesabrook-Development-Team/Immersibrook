@@ -7,10 +7,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import rz.mesabrook.wbtc.Main;
-import rz.mesabrook.wbtc.items.armor.Hardhat;
-import rz.mesabrook.wbtc.items.armor.FaceMasks;
-import rz.mesabrook.wbtc.items.armor.NightVisionGoggles;
-import rz.mesabrook.wbtc.items.armor.SafetyVest;
+import rz.mesabrook.wbtc.items.armor.*;
 import rz.mesabrook.wbtc.items.misc.*;
 import rz.mesabrook.wbtc.items.record.MemeRecord;
 import rz.mesabrook.wbtc.items.tools.ItemBanHammer;
@@ -137,6 +134,7 @@ public class ModItems
 	public static final Item SAFETY_VEST_BROWN = new SafetyVest("brown_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.MAT_BROWN_VEST, EntityEquipmentSlot.CHEST);
 	public static final Item SAFETY_VEST_GREEN = new SafetyVest("green_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.MAT_GREEN_VEST, EntityEquipmentSlot.CHEST);
 	public static final Item SAFETY_VEST_BLACK = new SafetyVest("black_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.MAT_BLACK_VEST, EntityEquipmentSlot.CHEST);
+	public static final Item POLICE_VEST = new Vest("police_vest", ArmorMaterialRegistry.POLICE_VEST, EntityEquipmentSlot.CHEST);
 
 	// IRW Vest
 	public static final Item IRW_VEST = new SafetyVest("irw_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.IRW_SAFETY_VEST_MAT, EntityEquipmentSlot.CHEST);
@@ -155,7 +153,7 @@ public class ModItems
 	public static final Item NV_INTERNALS = new MiscItem("nv_goggle_circuits", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item NV_STRAPS = new MiscItem("nv_goggle_strap", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 
-	// Hard Hats
+	// Hard Hats & Helmets
 	public static final Item HARDHAT_YELLOW = new Hardhat("hh_yellow");
 	public static final Item HARDHAT_WHITE = new Hardhat("hh_white");
 	public static final Item HARDHAT_ORANGE = new Hardhat("hh_orange");
@@ -172,6 +170,30 @@ public class ModItems
 	public static final Item HARDHAT_GREEN = new Hardhat("hh_green");
 	public static final Item HARDHAT_RED = new Hardhat("hh_red");
 	public static final Item HARDHAT_BLACK = new Hardhat("hh_black");
+	public static final Item POLICE_HELMET = new PoliceHelmet("police_helmet");
+	public static final Item FIRE_HELMET_BLACK = new SafetyHelmet("firehelmet_black");
+	public static final Item FIRE_HELMET_WHITE = new SafetyHelmet("firehelmet_white");
+	public static final Item FIRE_HELMET_YELLOW = new SafetyHelmet("firehelmet_yellow");
+	public static final Item FIRE_HELMET_RED = new SafetyHelmet("firehelmet_red");
+
+	// Firefighting Gear
+	public static final Item FIRE_BOOTS = new FirefighterSuit("fire_boots", ArmorMaterialRegistry.FIRE_BOOTS, EntityEquipmentSlot.FEET);
+	public static final Item FF_PANTS_BLACK = new FirefighterSuit("ff_pants_black", ArmorMaterialRegistry.FF_PANTS_BLACK, EntityEquipmentSlot.LEGS);
+	public static final Item FF_PANTS_DT = new FirefighterSuit("ff_pants_dt", ArmorMaterialRegistry.FF_PANTS_DT, EntityEquipmentSlot.LEGS);
+	public static final Item FF_PANTS_LT = new FirefighterSuit("ff_pants_lt", ArmorMaterialRegistry.FF_PANTS_LT, EntityEquipmentSlot.LEGS);
+	public static final Item FDRC_CHEST = new FirefighterSuit("fdrc_chest", ArmorMaterialRegistry.FF_BLACK_FDRC, EntityEquipmentSlot.CHEST);
+	public static final Item IRFD_CHEST = new FirefighterSuit("irfd_chest", ArmorMaterialRegistry.FF_DT_IRFD, EntityEquipmentSlot.CHEST);
+	public static final Item CBFD_CHEST = new FirefighterSuit("cbfd_chest", ArmorMaterialRegistry.FF_LT_CBFD, EntityEquipmentSlot.CHEST);
+	public static final Item AVFD_CHEST = new FirefighterSuit("avfd_chest", ArmorMaterialRegistry.FF_LT_AVFD, EntityEquipmentSlot.CHEST);
+	public static final Item BLACK_GENERIC = new FirefighterSuit("ff_black_generic", ArmorMaterialRegistry.FF_BLACK_GENERIC, EntityEquipmentSlot.CHEST);
+	public static final Item LT_GENERIC = new FirefighterSuit("ff_lt_generic", ArmorMaterialRegistry.FF_LT_GENERIC, EntityEquipmentSlot.CHEST);
+	public static final Item DT_GENERIC = new FirefighterSuit("ff_dt_generic", ArmorMaterialRegistry.FF_DT_GENERIC, EntityEquipmentSlot.CHEST);
+
+	// Firecloth
+	public static final Item FIRECLOTH_1 = new MiscItem("firecloth_1", 64);
+	public static final Item FIRECLOTH_2 = new MiscItem("firecloth_2", 64);
+	public static final Item FIRECLOTH_3 = new MiscItem("firecloth_3", 64);
+	public static final Item FIRECLOTH_4 = new MiscItem("firecloth_4", 64);
 
 	// Misc Items
 	public static final Item PAPER_STICK = new MiscItem("paper_stick", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
