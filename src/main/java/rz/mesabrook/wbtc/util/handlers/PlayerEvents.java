@@ -23,6 +23,7 @@ import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.util.Reference;
+import rz.mesabrook.wbtc.util.SoundRandomizer;
 import rz.mesabrook.wbtc.util.config.ModConfig;
 
 import java.sql.Ref;
@@ -41,6 +42,14 @@ public class PlayerEvents
 		if(player instanceof EntityPlayer)
 		{
 			Triggers.trigger(Triggers.WELCOME, player);
+			if(LocalDate.now().getMonthValue() == 4 && LocalDate.now().getDayOfMonth() == 1)
+			{
+				SoundRandomizer.RandomizeSound();
+				PlaySoundPacket packet = new PlaySoundPacket();
+				packet.pos = player.getPosition();
+				packet.soundName = "kekw";
+				PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+			}
 		}
 
 		if(ModConfig.showWelcome)

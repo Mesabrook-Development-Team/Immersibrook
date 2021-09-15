@@ -1336,6 +1336,7 @@ im.cliche=Wow, so original...
 im.box.empty=Box is empty.
 im.ff.brand=Livery:
 im.ff.mat=Material:
+im.firecloth=A flame-resistant material.
 
 //Food Boxes
 tile.sugar_box.name=Granulated White Sugar
@@ -1445,3 +1446,28 @@ tile.column_concrete_green.name=Green Concrete Column
 tile.column_concrete_red.name=Red Concrete Column
 tile.column_concrete_black.name=Black Concrete Column
 tile.column_glowing_plastic.name=Glowing Column
+
+//Firecloth
+item.firecloth_1.name=Unprocessed Firecloth
+item.firecloth_2.name=Light Tan Firecloth
+item.firecloth_3.name=Dark Tan Firecloth
+item.firecloth_4.name=Blackened Firecloth
+
+//PPE
+item.fire_boots.name=Bunker Boots
+item.ff_pants_black.name=Black Turnout Pants
+item.ff_pants_lt.name=Light Tan Turnout Pants
+item.ff_pants_dt.name=Dark Tan Turnout Pants
+item.ff_black_generic.name=Black Turnout Jacket
+item.ff_lt_generic.name=Light Tan Turnout Jacket
+item.ff_dt_generic.name=Dark Tan Turnout Jacket
+item.fdrc_chest.name=Black Turnout Jacket
+item.irfd_chest.name=Dark Tan Turnout Jacket
+item.cbfd_chest.name=Light Tan Turnout Jacket
+item.avfd_chest.name=Light Tan Turnout Jacket
+item.police_helmet.name=Mesabrook Marshals Standard Issue Safety Helmet
+item.police_vest.name=Mesabrook Marshals Standard Issue Bulletproof Vest
+item.firehelmet_black.name=Black Structural Helmet
+item.firehelmet_white.name=White Structural Helmet
+item.firehelmet_yellow.name=Yellow Structural Helmet
+item.firehelmet_red.name=Red Structural Helmet

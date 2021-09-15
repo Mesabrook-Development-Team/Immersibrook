@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.annotation.Nullable;
+import javax.xml.soap.Text;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -29,6 +30,7 @@ import rz.mesabrook.wbtc.util.IHasModel;
 public class MiscItem extends Item implements IHasModel
 {
 	private final TextComponentTranslation color = new TextComponentTranslation("im.color");
+	private final TextComponentTranslation firecloth = new TextComponentTranslation("im.firecloth");
 	public MiscItem(String name, int stack)
 	{
 		setUnlocalizedName(name);
@@ -39,6 +41,7 @@ public class MiscItem extends Item implements IHasModel
 
 		color.getStyle().setBold(true);
 		color.getStyle().setColor(TextFormatting.YELLOW);
+		firecloth.getStyle().setColor(TextFormatting.GRAY);
 	}
 	
 	
@@ -46,94 +49,99 @@ public class MiscItem extends Item implements IHasModel
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag)
 	{
-		if(this.getUnlocalizedName().contains("nv_lens") || this.getUnlocalizedName().contains("nv_goggle_body") || this.getUnlocalizedName().contains("nv_goggle_circuits") || this.getUnlocalizedName().contains("nv_goggle_strap") || this.getUnlocalizedName().contains("shell") || this.getUnlocalizedName().contains("_screen"))
+		if(stack.getItem() == ModItems.NV_LENS || stack.getItem() == ModItems.NV_BODY || stack.getItem() == ModItems.NV_INTERNALS || stack.getItem() == ModItems.NV_STRAPS || this.getUnlocalizedName().contains("shell") || stack.getItem() == ModItems.PHONE_SCREEN)
 		{
 			tooltip.add(TextFormatting.GOLD + "Crafting Ingredient");
 		}
 
-		if(this.getUnlocalizedName().contains("dye_red") || this.getUnlocalizedName().contains("sugar_red"))
+		if(stack.getItem() == ModItems.DYE_RED || stack.getItem() == ModItems.SUGAR_RED)
 		{
 			tooltip.add(TextFormatting.GOLD + "Color: " + TextFormatting.RED + "RED");
 		}
-		if(this.getUnlocalizedName().contains("dye_green") || this.getUnlocalizedName().contains("sugar_green"))
+		if(stack.getItem() == ModItems.DYE_GREEN || stack.getItem() == ModItems.SUGAR_GREEN)
 		{
 			tooltip.add(TextFormatting.GOLD + "Color: " + TextFormatting.DARK_GREEN + "GREEN");
 		}
-		if(this.getUnlocalizedName().contains("dye_blue") || this.getUnlocalizedName().contains("sugar_blue"))
+		if(stack.getItem() == ModItems.DYE_BLUE || stack.getItem() == ModItems.SUGAR_BLUE)
 		{
 			tooltip.add(TextFormatting.GOLD + "Color: " + TextFormatting.BLUE + "BLUE");
 		}
-		if(this.getUnlocalizedName().contains("dye_white"))
+		if(stack.getItem() == ModItems.DYE_WHITE)
 		{
 			tooltip.add(TextFormatting.GOLD + "Color: " + TextFormatting.WHITE + "WHITE");
 		}
-		if(this.getUnlocalizedName().contains("dye_yellow"))
+		if(stack.getItem() == ModItems.DYE_YELLOW)
 		{
 			tooltip.add(TextFormatting.GOLD + "Color: " + TextFormatting.YELLOW + "YELLOW");
 		}
-		if(this.getUnlocalizedName().contains("sugar_orange"))
+		if(stack.getItem() == ModItems.SUGAR_ORANGE)
 		{
 			tooltip.add(TextFormatting.GOLD + "Color: " + TextFormatting.GOLD + "ORANGE");
 		}
-		if(this.getUnlocalizedName().contains("sugar_purple"))
+		if(stack.getItem() == ModItems.SUGAR_PURPLE)
 		{
 			tooltip.add(TextFormatting.GOLD + "Color: " + TextFormatting.DARK_PURPLE + "PURPLE");
 		}
-		if(this.getUnlocalizedName().contains("sugar_brown"))
+		if(stack.getItem() == ModItems.SUGAR_BROWN)
 		{
 			tooltip.add(TextFormatting.GOLD + "Color: " + TextFormatting.DARK_RED + "BROWN");
 		}
-		if(this.getUnlocalizedName().contains("sugar_lime"))
+		if(stack.getItem() == ModItems.SUGAR_LIME)
 		{
 			tooltip.add(TextFormatting.GOLD + "Color: " + TextFormatting.GREEN + "LIME");
 		}
-		if(this.getUnlocalizedName().contains("sugar_pink"))
+		if(stack.getItem() == ModItems.SUGAR_PINK)
 		{
 			tooltip.add(TextFormatting.GOLD + "Color: " + TextFormatting.LIGHT_PURPLE + "PINK");
 		}
-		if(this.getUnlocalizedName().contains("sugar_yellow"))
+		if(stack.getItem() == ModItems.SUGAR_YELLOW)
 		{
 			tooltip.add(TextFormatting.GOLD + "Color: " + TextFormatting.YELLOW + "YELLOW");
 		}
 
-		if(this.getUnlocalizedName().contains("raw_candy_red"))
+		if(stack.getItem() == ModItems.RAW_CANDY_RED)
 		{
 			tooltip.add(TextFormatting.GOLD + "Flavor: " + TextFormatting.LIGHT_PURPLE + "Strawberry");
 		}
 
-		if(this.getUnlocalizedName().contains("raw_candy_lime"))
+		if(stack.getItem() == ModItems.RAW_CANDY_LIME)
 		{
 			tooltip.add(TextFormatting.GOLD + "Flavor: " + TextFormatting.GREEN + "Lime");
 		}
 
-		if(this.getUnlocalizedName().contains("raw_candy_blue"))
+		if(stack.getItem() == ModItems.RAW_CANDY_BLUE)
 		{
 			tooltip.add(TextFormatting.GOLD + "Flavor: " + TextFormatting.BLUE + "Blueberry");
 		}
 
-		if(this.getUnlocalizedName().contains("raw_candy_orange"))
+		if(stack.getItem() == ModItems.RAW_CANDY_ORANGE)
 		{
 			tooltip.add(TextFormatting.GOLD + "Flavor: " + TextFormatting.GOLD + "Orange");
 		}
 
-		if(this.getUnlocalizedName().contains("raw_candy_grape"))
+		if(stack.getItem() == ModItems.RAW_CANDY_GRAPE)
 		{
 			tooltip.add(TextFormatting.GOLD + "Flavor: " + TextFormatting.DARK_PURPLE + "Grape");
 		}
 
-		if(this.getUnlocalizedName().contains("raw_candy_rb"))
+		if(stack.getItem() == ModItems.RAW_CANDY_RB)
 		{
 			tooltip.add(TextFormatting.GOLD + "Flavor: " + TextFormatting.DARK_RED + "Root Beer");
 		}
 
-		if(this.getUnlocalizedName().contains("raw_candy_choc"))
+		if(stack.getItem() == ModItems.RAW_CANDY_CHOC)
 		{
 			tooltip.add(TextFormatting.GOLD + "Flavor: " + TextFormatting.DARK_RED + "Chocolate");
 		}
 
-		if(this.getUnlocalizedName().contains("raw_candy_pl"))
+		if(stack.getItem() == ModItems.RAW_CANDY_PL)
 		{
 			tooltip.add(TextFormatting.GOLD + "Flavor: " + TextFormatting.LIGHT_PURPLE + "Pink Lemonade");
+		}
+
+		if(stack.getItem() == ModItems.FIRECLOTH_1 || stack.getItem() == ModItems.FIRECLOTH_2 || stack.getItem() == ModItems.FIRECLOTH_3 || stack.getItem() == ModItems.FIRECLOTH_4)
+		{
+			tooltip.add(firecloth.getFormattedText());
 		}
 	}
 
