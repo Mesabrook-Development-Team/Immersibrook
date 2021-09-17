@@ -23,9 +23,9 @@ public class FirefighterSuit extends ItemArmor implements IHasModel
 {
     private TextComponentTranslation brand = new TextComponentTranslation("im.ff.brand");
     private TextComponentTranslation material = new TextComponentTranslation("im.ff.mat");
-    public FirefighterSuit(String name, ArmorMaterial mat, EntityEquipmentSlot equipSlot)
+    public FirefighterSuit(String name, ArmorMaterial mat, EntityEquipmentSlot equipSlot, int renderIndexIn)
     {
-        super(mat, 1, equipSlot);
+        super(mat, renderIndexIn, equipSlot);
         setUnlocalizedName(name);
         setRegistryName(name);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);

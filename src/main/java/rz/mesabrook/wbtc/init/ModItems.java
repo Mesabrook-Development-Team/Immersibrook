@@ -177,17 +177,17 @@ public class ModItems
 	public static final Item FIRE_HELMET_RED = new SafetyHelmet("firehelmet_red");
 
 	// Firefighting Gear
-	public static final Item FIRE_BOOTS = new FirefighterSuit("fire_boots", ArmorMaterialRegistry.FIRE_BOOTS, EntityEquipmentSlot.FEET);
-	public static final Item FF_PANTS_BLACK = new FirefighterSuit("ff_pants_black", ArmorMaterialRegistry.FF_PANTS_BLACK, EntityEquipmentSlot.LEGS);
-	public static final Item FF_PANTS_DT = new FirefighterSuit("ff_pants_dt", ArmorMaterialRegistry.FF_PANTS_DT, EntityEquipmentSlot.LEGS);
-	public static final Item FF_PANTS_LT = new FirefighterSuit("ff_pants_lt", ArmorMaterialRegistry.FF_PANTS_LT, EntityEquipmentSlot.LEGS);
-	public static final Item FDRC_CHEST = new FirefighterSuit("fdrc_chest", ArmorMaterialRegistry.FF_BLACK_FDRC, EntityEquipmentSlot.CHEST);
-	public static final Item IRFD_CHEST = new FirefighterSuit("irfd_chest", ArmorMaterialRegistry.FF_DT_IRFD, EntityEquipmentSlot.CHEST);
-	public static final Item CBFD_CHEST = new FirefighterSuit("cbfd_chest", ArmorMaterialRegistry.FF_LT_CBFD, EntityEquipmentSlot.CHEST);
-	public static final Item AVFD_CHEST = new FirefighterSuit("avfd_chest", ArmorMaterialRegistry.FF_LT_AVFD, EntityEquipmentSlot.CHEST);
-	public static final Item BLACK_GENERIC = new FirefighterSuit("ff_black_generic", ArmorMaterialRegistry.FF_BLACK_GENERIC, EntityEquipmentSlot.CHEST);
-	public static final Item LT_GENERIC = new FirefighterSuit("ff_lt_generic", ArmorMaterialRegistry.FF_LT_GENERIC, EntityEquipmentSlot.CHEST);
-	public static final Item DT_GENERIC = new FirefighterSuit("ff_dt_generic", ArmorMaterialRegistry.FF_DT_GENERIC, EntityEquipmentSlot.CHEST);
+	public static final Item FIRE_BOOTS = new FirefighterSuit("fire_boots", ArmorMaterialRegistry.FIRE_BOOTS, EntityEquipmentSlot.FEET, 1);
+	public static final Item FF_PANTS_BLACK = new FirefighterSuit("ff_pants_black", ArmorMaterialRegistry.FF_PANTS_BLACK, EntityEquipmentSlot.LEGS, 1);
+	public static final Item FF_PANTS_DT = new FirefighterSuit("ff_pants_dt", ArmorMaterialRegistry.FF_PANTS_DT, EntityEquipmentSlot.LEGS, 1);
+	public static final Item FF_PANTS_LT = new FirefighterSuit("ff_pants_lt", ArmorMaterialRegistry.FF_PANTS_LT, EntityEquipmentSlot.LEGS, 1);
+	public static final Item FDRC_CHEST = new FirefighterSuit("fdrc_chest", ArmorMaterialRegistry.FF_BLACK_FDRC, EntityEquipmentSlot.CHEST, 1);
+	public static final Item IRFD_CHEST = new FirefighterSuit("irfd_chest", ArmorMaterialRegistry.FF_DT_IRFD, EntityEquipmentSlot.CHEST, 1);
+	public static final Item CBFD_CHEST = new FirefighterSuit("cbfd_chest", ArmorMaterialRegistry.FF_LT_CBFD, EntityEquipmentSlot.CHEST, 1);
+	public static final Item AVFD_CHEST = new FirefighterSuit("avfd_chest", ArmorMaterialRegistry.FF_LT_AVFD, EntityEquipmentSlot.CHEST, 1);
+	public static final Item BLACK_GENERIC = new FirefighterSuit("ff_black_generic", ArmorMaterialRegistry.FF_BLACK_GENERIC, EntityEquipmentSlot.CHEST, 1);
+	public static final Item LT_GENERIC = new FirefighterSuit("ff_lt_generic", ArmorMaterialRegistry.FF_LT_GENERIC, EntityEquipmentSlot.CHEST, 1);
+	public static final Item DT_GENERIC = new FirefighterSuit("ff_dt_generic", ArmorMaterialRegistry.FF_DT_GENERIC, EntityEquipmentSlot.CHEST, 1);
 
 	// Firecloth
 	public static final Item FIRECLOTH_1 = new MiscItem("firecloth_1", 64);

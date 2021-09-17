@@ -12,23 +12,28 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.init.ModItems;
+import rz.mesabrook.wbtc.net.PlaySoundPacket;
+import rz.mesabrook.wbtc.util.DamageSourceAprilFools;
+import rz.mesabrook.wbtc.util.DamageSourceDuckBoom;
 import rz.mesabrook.wbtc.util.IHasModel;
+import rz.mesabrook.wbtc.util.SoundRandomizer;
+import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 public class MiscItem extends Item implements IHasModel
 {
+	public static final DamageSource KEKW = new DamageSourceAprilFools("kekw");
 	private final TextComponentTranslation color = new TextComponentTranslation("im.color");
 	private final TextComponentTranslation firecloth = new TextComponentTranslation("im.firecloth");
 	public MiscItem(String name, int stack)
@@ -163,6 +168,27 @@ public class MiscItem extends Item implements IHasModel
 				Triggers.trigger(Triggers.CHOCOLATE, playerIn);
 			}
 		}
+	}
+
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
+	{
+		ItemStack itemstack = playerIn.getHeldItem(handIn);
+
+		if(itemstack.getItem() == ModItems.KEKW)
+		{
+			if(!worldIn.isRemote)
+			{
+				itemstack.setCount(0);
+				SoundRandomizer.RandomizeSound();
+				PlaySoundPacket packet = new PlaySoundPacket();
+				packet.pos = playerIn.getPosition();
+				packet.soundName = "kekw";
+				PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));
+				playerIn.attackEntityFrom(KEKW, 1000F);
+			}
+		}
+		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemstack);
 	}
 	
 	@Override
