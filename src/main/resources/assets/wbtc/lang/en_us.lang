@@ -1463,6 +1463,7 @@ item.ff_black_generic.name=Black Turnout Jacket
 item.ff_lt_generic.name=Light Tan Turnout Jacket
 item.ff_dt_generic.name=Dark Tan Turnout Jacket
 item.fdrc_chest.name=Black Turnout Jacket
+item.scfd_chest.name=Black Turnout Jacket
 item.irfd_chest.name=Dark Tan Turnout Jacket
 item.cbfd_chest.name=Light Tan Turnout Jacket
 item.avfd_chest.name=Light Tan Turnout Jacket

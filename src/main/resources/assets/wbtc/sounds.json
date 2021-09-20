@@ -90,5 +90,6 @@
 	"mallet": {"category": "master","sounds": [{"name": "wbtc:mallet","stream": true}]},
 	"cooking": {"category": "master","sounds": [{"name": "wbtc:cooking","stream": true}]},
 	"police_helmet": {"category": "master","sounds": [{"name": "wbtc:police_helmet","stream": true}]},
-	"kekw": {"category": "master","sounds": [{"name": "wbtc:kekw","stream": true}]}
+	"kekw": {"category": "master","sounds": [{"name": "wbtc:kekw","stream": true}]},
+	"welcome": {"category": "master","sounds": [{"name": "wbtc:welcome","stream": true}]}
 }

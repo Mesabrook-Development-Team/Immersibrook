@@ -18,6 +18,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -226,77 +227,85 @@ public class BlockStatue extends Block implements IHasModel
 			tooltip.add(TextFormatting.LIGHT_PURPLE + "Awarded By: " + TextFormatting.BLUE + "Government of Mesabrook");
 			tooltip.add(TextFormatting.LIGHT_PURPLE + "For: " + TextFormatting.GOLD +  "Being one of Mesabrook's founding members.");
 		}
+		else if(this.getUnlocalizedName().contains("trophy_two_years"))
+		{
+			tooltip.add(TextFormatting.LIGHT_PURPLE + "Celebrating Two Years of Mesabrook!");
+		}
 	}
-	
-	@Override
-    @SideOnly(Side.CLIENT)
-    public boolean hasCustomBreakingProgress(IBlockState state)
-    {
-        return true;
-    }
-	
-	// Play a sound when the player right-clicks on a statue.
+
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
 	{
 		SoundRandomizer.OWOTrophyRandomizer();
 		if(!world.isRemote)
 		{
-			SoundRandomizer.OWOTrophyRandomizer();
-			try
+			if(state.getBlock() == ModBlocks.STATUE_OWO)
 			{
 				PlaySoundPacket packet = new PlaySoundPacket();
 				packet.pos = pos;
-				
-				Random rand = new Random();
-				float pitch = 0.5F + rand.nextFloat();
-				
-				if (pitch > 1.25F) {pitch = 1.25F;}
-				else if(pitch < 0.75F) {pitch = 0.75F;}
-				
-				if(this.getUnlocalizedName().contains("statue_owo"))
+				packet.soundName = SoundRandomizer.owoResult;
+				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
+
+				if(player instanceof EntityPlayer)
 				{
-					SoundRandomizer.OWOTrophyRandomizer();
-					packet.soundName = SoundRandomizer.owoResult;
-					if(player instanceof EntityPlayer)
-					{
-						Triggers.trigger(Triggers.OWO, player);
-					}
+					Triggers.trigger(Triggers.OWO, player);
 				}
-				else if(this.getUnlocalizedName().contains("statue_rz"))
-				{
-					packet.soundName = "rz_trophy";
-				}
-				else if(this.getUnlocalizedName().contains("statue_csx"))
-				{	
-					packet.soundName = "csx_trophy";
-				}
-				else if(this.getUnlocalizedName().contains("statue_td"))
-				{
-					packet.soundName = "td_trophy";
-				}
-				else if(this.getUnlocalizedName().contains("statue_tlz"))
-				{
-					packet.soundName = "tlz_trophy";
-				}
-				else if(this.getUnlocalizedName().contains("statue_md"))
-				{
-					packet.soundName = "md_trophy";
-				}
-				else if(this.getUnlocalizedName().contains("statue_lw"))
-				{
-					packet.soundName = "lw_trophy";
-				}
-				else if(this.getUnlocalizedName().contains("statue_svv"))
-				{
-					packet.soundName = "svv_trophy";
-				}
-				
+			}
+			if(state.getBlock() == ModBlocks.STATUE_RZ)
+			{
+				PlaySoundPacket packet = new PlaySoundPacket();
+				packet.pos = pos;
+				packet.soundName = "rz_trophy";
 				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
 			}
-			catch(Exception e)
+			if(state.getBlock() == ModBlocks.STATUE_CSX)
 			{
-				
+				PlaySoundPacket packet = new PlaySoundPacket();
+				packet.pos = pos;
+				packet.soundName = "csx_trophy";
+				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
+			}
+			if(state.getBlock() == ModBlocks.STATUE_TD)
+			{
+				PlaySoundPacket packet = new PlaySoundPacket();
+				packet.pos = pos;
+				packet.soundName = "td_trophy";
+				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
+			}
+			if(state.getBlock() == ModBlocks.STATUE_TLZ)
+			{
+				PlaySoundPacket packet = new PlaySoundPacket();
+				packet.pos = pos;
+				packet.soundName = "tlz_trophy";
+				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
+			}
+			if(state.getBlock() == ModBlocks.STATUE_LW)
+			{
+				PlaySoundPacket packet = new PlaySoundPacket();
+				packet.pos = pos;
+				packet.soundName = "lw_trophy";
+				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
+			}
+			if(state.getBlock() == ModBlocks.STATUE_MD)
+			{
+				PlaySoundPacket packet = new PlaySoundPacket();
+				packet.pos = pos;
+				packet.soundName = "md_trophy";
+				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
+			}
+			if(state.getBlock() == ModBlocks.STATUE_SVV)
+			{
+				PlaySoundPacket packet = new PlaySoundPacket();
+				packet.pos = pos;
+				packet.soundName = "svv_trophy";
+				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
+			}
+			if(state.getBlock() == ModBlocks.STATUE_TWO)
+			{
+				PlaySoundPacket packet = new PlaySoundPacket();
+				packet.pos = pos;
+				packet.soundName = "rz_trophy";
+				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
 			}
 		}
 		return true;

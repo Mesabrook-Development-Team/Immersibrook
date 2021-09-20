@@ -294,6 +294,14 @@ public class FoodBox extends Block implements IHasModel
                     {
                         drops.add(new ItemStack(ModItems.TRUFFLE_STRAWBERRY, foodBoxTE.getUses()));
                     }
+                    if(state.getBlock() == ModBlocks.CHOC_BLUEBERRY_TRUFFLE_BOX)
+                    {
+                        drops.add(new ItemStack(ModItems.TRUFFLE_WHITE_BB, foodBoxTE.getUses()));
+                    }
+                    if(state.getBlock() == ModBlocks.CHOC_GRAPE_TRUFFLE_BOX)
+                    {
+                        drops.add(new ItemStack(ModItems.TRUFFLE_WHITE_GRAPE, foodBoxTE.getUses()));
+                    }
                 }
             }
         }
@@ -304,7 +312,6 @@ public class FoodBox extends Block implements IHasModel
     {
         if(!world.isRemote)
         {
-            ItemStack foodboxStack = new ItemStack(this);
             if(!player.isCreative())
             {
                 TileEntity te = world.getTileEntity(pos);
@@ -359,6 +366,16 @@ public class FoodBox extends Block implements IHasModel
                             player.addItemStackToInventory(new ItemStack(ModItems.TRUFFLE_STRAWBERRY, 1));
                             foodBoxTE.markDirty();
                         }
+                        if(state.getBlock() == ModBlocks.CHOC_BLUEBERRY_TRUFFLE_BOX)
+                        {
+                            player.addItemStackToInventory(new ItemStack(ModItems.TRUFFLE_WHITE_BB, 1));
+                            foodBoxTE.markDirty();
+                        }
+                        if(state.getBlock() == ModBlocks.CHOC_GRAPE_TRUFFLE_BOX)
+                        {
+                            player.addItemStackToInventory(new ItemStack(ModItems.TRUFFLE_WHITE_GRAPE, 1));
+                            foodBoxTE.markDirty();
+                        }
                     }
                     else
                     {
@@ -404,6 +421,14 @@ public class FoodBox extends Block implements IHasModel
                 if(state.getBlock() == ModBlocks.CHOC_STRAWBERRY_TRUFFLE_BOX)
                 {
                     player.addItemStackToInventory(new ItemStack(ModItems.TRUFFLE_STRAWBERRY, 1));
+                }
+                if(state.getBlock() == ModBlocks.CHOC_BLUEBERRY_TRUFFLE_BOX)
+                {
+                    player.addItemStackToInventory(new ItemStack(ModItems.TRUFFLE_WHITE_BB, 1));
+                }
+                if(state.getBlock() == ModBlocks.CHOC_GRAPE_TRUFFLE_BOX)
+                {
+                    player.addItemStackToInventory(new ItemStack(ModItems.TRUFFLE_WHITE_GRAPE, 1));
                 }
             }
         }

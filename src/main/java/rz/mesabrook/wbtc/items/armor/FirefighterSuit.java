@@ -68,6 +68,11 @@ public class FirefighterSuit extends ItemArmor implements IHasModel
             tooltip.add(brand.getFormattedText() + new TextComponentString(TextFormatting.YELLOW + " Iron River Fire Department (IRFD)").getFormattedText());
             tooltip.add(material.getFormattedText() + new TextComponentString(TextFormatting.DARK_GRAY + " Dark Tan Firecloth").getFormattedText());
         }
+        if(stack.getItem() == ModItems.SCFD_CHEST)
+        {
+            tooltip.add(brand.getFormattedText() + new TextComponentString(TextFormatting.YELLOW + " Sodor City Fire Department (SCFD)").getFormattedText());
+            tooltip.add(material.getFormattedText() + new TextComponentString(TextFormatting.DARK_GRAY + " Dark Tan Firecloth").getFormattedText());
+        }
 
         // Generic Jackets
         if(stack.getItem() == ModItems.BLACK_GENERIC)

@@ -94,6 +94,7 @@ public class SoundInit
 
 	// Comms
 	public static final SoundEvent RADIO_CLOSE;
+	public static final SoundEvent PHONE_ACTIVATE;
 	public static final SoundEvent DING_1;
 	public static final SoundEvent DING_2;
 	public static final SoundEvent DING_3;
@@ -210,6 +211,7 @@ public class SoundInit
 		SIT = addSoundsToRegistry("sit");
 		STARTCALL = addSoundsToRegistry("startcall");
 		ENDCALL = addSoundsToRegistry("endcall");
+		PHONE_ACTIVATE = addSoundsToRegistry("welcome");
 
 		// DTMF Phone Tones
 		DTMF_0 = addSoundsToRegistry("dtmf_0");
@@ -332,6 +334,7 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.COOKING);
 				event.getRegistry().registerAll(SoundInit.POLICE_HELMET);
 				event.getRegistry().registerAll(SoundInit.KEKW);
+				event.getRegistry().registerAll(SoundInit.PHONE_ACTIVATE);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:trophy_two_years" },
+        "facing=south": { "model": "wbtc:trophy_two_years", "y": 180 },
+        "facing=west":  { "model": "wbtc:trophy_two_years", "y": 270 },
+        "facing=east":  { "model": "wbtc:trophy_two_years", "y": 90 }
+    }
+}

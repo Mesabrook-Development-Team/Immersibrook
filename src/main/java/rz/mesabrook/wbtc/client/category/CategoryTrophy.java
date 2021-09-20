@@ -29,6 +29,7 @@ public class CategoryTrophy extends AbstractCategory
 		add(ModBlocks.STATUE_MD);
 		add(ModBlocks.STATUE_LW);
 		add(ModBlocks.STATUE_SVV);
+		add(ModBlocks.STATUE_TWO);
 		
 		// Plaques
 		add(ModBlocks.PLAQUE_DEV);

@@ -1,11 +1,5 @@
 Immersibrook 1.0.0 - The Fall 2021 Update
 
-NOTE:
-The Fall 2021 Update is dependent on the following mods:
--Pam's Harvestcraft
--Immersive Engineering
--Just A Basic Concrete Mod (JABCM)
-
 NEW:
 -Ranged Chat.
 -Smartphones and Radios.
@@ -16,16 +10,17 @@ NEW:
 -Pink Lemonade Drink.
 -Sparkling Pink Lemonade.
 -White Chocolate.
--Chocolate Truffles (Milk, White, Peanut Butter Filled, and Caramel Filled).
+-Chocolate Truffles in a variety of flavors.
 -Trusses (Steel, Iron, Nickel, and Constantan).
 -Nickel Rod.
 -Constantan Rod.
 -Decorative Face Masks.
--Food Boxes for Sugar, Flour, Cornmeal, Coffee, and Chocolate Truffles.
+-Food Boxes for Sugar, Flour, Cornmeal, Coffee, and the new Chocolate Truffles.
 -Industrial-themed Ceiling Lights.
 -Narrow Ceiling Lights.
 -Concrete Columns (not to be confused with Pillars).
--Models for the Night Vision Goggles and Hard Hats.
+-Police and Fire Gear.
+-Modern alternative to the Ban Hammer.
 
 CHANGES/FIXES:
 -Pillars are now affected by gravity.
@@ -33,6 +28,7 @@ CHANGES/FIXES:
 -The Ban Hammer's sounds can now be manually set through a key press.
 -Ceiling Lights are now rotational.
 -Ore Dictionary entries for Plastics have been redone.
+-New 3D Model for the Night Vision Goggles.
 
 MOD INTERACTIONS:
 (Note: Mod interactions only occur if Immersibrook detects them. This feature can be disabled in wbtc.cfg)

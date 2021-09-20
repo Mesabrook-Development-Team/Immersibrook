@@ -313,7 +313,8 @@ public class ModBlocks
 	public static final Block STATUE_MD = new BlockStatue("statue_md", MapColor.GRAY, ModUtils.getPixelatedAABB(3,0,5, 13,30,11)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block STATUE_LW = new BlockStatue("statue_lw", MapColor.GRAY, ModUtils.getPixelatedAABB(3,0,5, 13,30,11)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block STATUE_SVV = new BlockStatue("statue_svv", MapColor.GRAY, ModUtils.getPixelatedAABB(3,0,5, 13,30,11)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	
+	public static final Block STATUE_TWO = new BlockStatue("trophy_two_years", MapColor.GRAY, ModUtils.getPixelatedAABB(3,0,5, 13,30,11)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+
 	// Plaques
 	public static final Block PLAQUE_DEV = new BlockPlaque("plaque_dev", MapColor.GOLD, ModUtils.getPixelatedAABB(3,0,0, 13,12,1.5)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block PLAQUE_SUPPORTER = new BlockPlaque("plaque_supporter", MapColor.GOLD, ModUtils.getPixelatedAABB(3,0,0, 13,12,1.5)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
@@ -1014,6 +1015,8 @@ public class ModBlocks
 	public static final Block CHOC_CARAMEL_TRUFFLE_BOX = new FoodBox("choc_caramel_truffle_box", Material.WOOD, SoundType.SAND, 64, "pickaxe", 1, 1.0F, 1.0F, ModUtils.getPixelatedAABB(12,0,6, 4,9,10));
 	public static final Block CHOC_PB_TRUFFLE_BOX = new FoodBox("choc_pb_truffle_box", Material.WOOD, SoundType.SAND, 64, "pickaxe", 1, 1.0F, 1.0F, ModUtils.getPixelatedAABB(12,0,6, 4,9,10));
 	public static final Block CHOC_STRAWBERRY_TRUFFLE_BOX = new FoodBox("choc_strawberry_truffle_box", Material.WOOD, SoundType.SAND, 64, "pickaxe", 1, 1.0F, 1.0F, ModUtils.getPixelatedAABB(12,0,6, 4,9,10));
+	public static final Block CHOC_GRAPE_TRUFFLE_BOX = new FoodBox("choc_grape_truffle_box", Material.WOOD, SoundType.SAND, 64, "pickaxe", 1, 1.0F, 1.0F, ModUtils.getPixelatedAABB(12,0,6, 4,9,10));
+	public static final Block CHOC_BLUEBERRY_TRUFFLE_BOX = new FoodBox("choc_blueberry_truffle_box", Material.WOOD, SoundType.SAND, 64, "pickaxe", 1, 1.0F, 1.0F, ModUtils.getPixelatedAABB(12,0,6, 4,9,10));
 
 	// Trusses
 	public static final Block STEEL_TRUSS = new Truss("steel_truss", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.METAL);

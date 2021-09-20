@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 import rz.mesabrook.wbtc.util.saveData.PhoneNumberData;
@@ -61,7 +62,6 @@ public class ActivateNumberChosenPacket implements IMessage {
 				}
 				
 				nbt.setInteger(Reference.PHONE_NUMBER_NBTKEY, message.number);
-				
 				ActivationCompletePacket complete = new ActivationCompletePacket();
 				complete.hand = EnumHand.values()[message.hand];
 				PacketHandler.INSTANCE.sendTo(complete, player);

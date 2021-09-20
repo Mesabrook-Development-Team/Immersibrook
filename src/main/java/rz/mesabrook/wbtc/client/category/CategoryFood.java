@@ -90,6 +90,8 @@ public class CategoryFood extends AbstractCategory
 		add(ModBlocks.CHOC_CARAMEL_TRUFFLE_BOX);
 		add(ModBlocks.CHOC_PB_TRUFFLE_BOX);
 		add(ModBlocks.CHOC_STRAWBERRY_TRUFFLE_BOX);
+		add(ModBlocks.CHOC_BLUEBERRY_TRUFFLE_BOX);
+		add(ModBlocks.CHOC_GRAPE_TRUFFLE_BOX);
 		add(ModItems.MILK_TRUFFLE);
 		add(ModItems.WHITE_TRUFFLE);
 		add(ModItems.TRUFFLE_CARAMEL);
