@@ -3,6 +3,7 @@ package rz.mesabrook.wbtc.util.handlers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.Sound;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -30,7 +31,9 @@ import rz.mesabrook.wbtc.util.SoundRandomizer;
 public class KeyEventHandler
 {
 	private static TextComponentTranslation vestToggle;
-	private static TextComponentTranslation nvToggle;
+	private static TextComponentTranslation vestToggleOff;
+	private static TextComponentTranslation nvToggleOn;
+	private static TextComponentTranslation nvToggleOff;
 	private static TextComponentTranslation hammerShift;
 	
 	@SubscribeEvent
@@ -42,7 +45,9 @@ public class KeyEventHandler
 			ItemStack stack = player.inventory.armorInventory.get(2); // 2 = chest
 			
 			vestToggle = new TextComponentTranslation("im.vest.toggle");
-			vestToggle.getStyle().setColor(TextFormatting.GREEN);
+			vestToggle.getStyle().setColor(TextFormatting.GOLD);
+			vestToggleOff = new TextComponentTranslation("im.vest.toggle.off");
+			vestToggleOff.getStyle().setColor(TextFormatting.GOLD);
 
 			if (!(stack.getItem() instanceof SafetyVest))
 			{
@@ -50,7 +55,15 @@ public class KeyEventHandler
 			}
 			else
 			{
-				player.sendMessage(vestToggle);
+				if(player.isPotionActive(MobEffects.GLOWING))
+				{
+					player.sendStatusMessage(new TextComponentString(vestToggleOff.getFormattedText()), true);
+				}
+				else
+				{
+					player.sendStatusMessage(new TextComponentString(vestToggle.getFormattedText()), true);
+				}
+				
 				player.playSound(SoundEvents.UI_BUTTON_CLICK, 0.3F, 1.0F);
 				VestTogglePacket packet = new VestTogglePacket();
 				PacketHandler.INSTANCE.sendToServer(packet);
@@ -62,8 +75,10 @@ public class KeyEventHandler
 			EntityPlayer player = Minecraft.getMinecraft().player;
 			ItemStack stack = player.inventory.armorInventory.get(3); // 3 = head
 
-			nvToggle = new TextComponentTranslation("im.nv.toggle");
-			nvToggle.getStyle().setColor(TextFormatting.GREEN);
+			nvToggleOn = new TextComponentTranslation("im.nv.toggle.on");
+			nvToggleOn.getStyle().setColor(TextFormatting.GOLD);
+			nvToggleOff = new TextComponentTranslation("im.nv.toggle.off");
+			nvToggleOff.getStyle().setColor(TextFormatting.GOLD);
 
 			if (!(stack.getItem() instanceof NightVisionGoggles))
 			{
@@ -71,7 +86,15 @@ public class KeyEventHandler
 			}
 			else
 			{
-				player.sendMessage(nvToggle);
+				if(player.isPotionActive(MobEffects.NIGHT_VISION))
+				{
+					player.sendStatusMessage(new TextComponentString(nvToggleOff.getFormattedText()), true);
+				}
+				else
+				{
+					player.sendStatusMessage(new TextComponentString(nvToggleOn.getFormattedText()), true);
+				}
+
 				player.playSound(SoundEvents.UI_BUTTON_CLICK, 0.3F, 1.0F);
 				NVTogglePacket packet = new NVTogglePacket();
 				PacketHandler.INSTANCE.sendToServer(packet);

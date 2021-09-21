@@ -12,7 +12,7 @@ im.death.reverb=%s needs more reverb.
 im.death.rubberduck=%s got their fingers blown off by a rubber duck
 im.death.kekw=%s found an item they weren't supposed to have and used it. Smooooooth...
 
-im.hammer.shift=Sound Event Randomized. New Result:
+im.hammer.shift=New Sound Event:
 im.hammer.nosound=Hammer has no sound bound to it.
 im.hammer.currentsnd=Current Sound:
 im.throwable=Throwable Item
@@ -1219,8 +1219,10 @@ key.immersibrook.category=Immersibrook
 key.vestToggle.toggle=Toggle Vest Glow
 key.nvtoggle.toggle=Toggle Night Vision Goggles
 key.cough.toggle=Cough
-im.vest.toggle=Vest Glow Toggled
-im.nv.toggle=Night Vision Toggled
+im.vest.toggle=Vest Glow Enabled
+im.vest.toggle.off=Vest Glow Disabled
+im.nv.toggle.on=Night Vision Enabled
+im.nv.toggle.off=Night Vision Disabled
 key.hammer.toggle=Toggle Between Ban Hammer Sounds
 
 //Hard Hats

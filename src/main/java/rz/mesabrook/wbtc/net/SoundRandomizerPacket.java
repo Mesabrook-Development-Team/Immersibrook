@@ -66,9 +66,12 @@ public class SoundRandomizerPacket implements IMessage
             tag.setString("sndID", message.soundID);
 
             TextComponentTranslation hammerShift = new TextComponentTranslation("im.hammer.shift");
-			hammerShift.getStyle().setColor(TextFormatting.AQUA);
-			player.sendMessage(hammerShift);
-			player.sendMessage(new TextComponentString(TextFormatting.GREEN + stack.getTagCompound().getString("sndID")));
+            hammerShift.getStyle().setBold(true);
+			hammerShift.getStyle().setColor(TextFormatting.GOLD);
+//			player0.sendMessage(hammerShift);
+//			player.sendMessage(new TextComponentString(TextFormatting.GREEN + stack.getTagCompound().getString("sndID")));
+
+            player.sendStatusMessage(new TextComponentString(hammerShift.getFormattedText() + " " + TextFormatting.ITALIC + TextFormatting.YELLOW + stack.getTagCompound().getString("sndID")), true);
         }
     }
 }

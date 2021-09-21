@@ -91,5 +91,6 @@
 	"cooking": {"category": "master","sounds": [{"name": "wbtc:cooking","stream": true}]},
 	"police_helmet": {"category": "master","sounds": [{"name": "wbtc:police_helmet","stream": true}]},
 	"kekw": {"category": "master","sounds": [{"name": "wbtc:kekw","stream": true}]},
-	"welcome": {"category": "master","sounds": [{"name": "wbtc:welcome","stream": true}]}
+	"welcome": {"category": "master","sounds": [{"name": "wbtc:welcome","stream": true}]},
+	"two_years": {"category": "master","sounds": [{"name": "wbtc:two_years","stream": true}]}
 }

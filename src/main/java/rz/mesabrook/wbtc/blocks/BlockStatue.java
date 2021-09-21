@@ -304,7 +304,7 @@ public class BlockStatue extends Block implements IHasModel
 			{
 				PlaySoundPacket packet = new PlaySoundPacket();
 				packet.pos = pos;
-				packet.soundName = "rz_trophy";
+				packet.soundName = "two_years";
 				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
 			}
 		}
@@ -314,12 +314,15 @@ public class BlockStatue extends Block implements IHasModel
 	@Override
 	public void onBlockHarvested(World world, BlockPos pos, IBlockState state, EntityPlayer player)
 	{
-		if(player != null && !world.isRemote)
+		if(!world.isRemote)
 		{
-			PlaySoundPacket packet = new PlaySoundPacket();
-			packet.pos = pos;
-			packet.soundName = "oof";
-			PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
+			if(player instanceof EntityPlayer)
+			{
+				PlaySoundPacket packet = new PlaySoundPacket();
+				packet.pos = pos;
+				packet.soundName = "oof";
+				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
+			}
 		}
 	}
 	
