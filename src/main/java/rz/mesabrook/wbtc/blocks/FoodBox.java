@@ -379,7 +379,7 @@ public class FoodBox extends Block implements IHasModel
                     }
                     else
                     {
-                        player.sendMessage(new TextComponentString(empty.getFormattedText()));
+                        player.sendStatusMessage(new TextComponentString(empty.getFormattedText()), true);
                     }
                 }
                 return true;

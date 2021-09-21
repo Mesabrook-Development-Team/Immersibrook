@@ -63,7 +63,7 @@ public class KeyEventHandler
 				{
 					player.sendStatusMessage(new TextComponentString(vestToggle.getFormattedText()), true);
 				}
-				
+
 				player.playSound(SoundEvents.UI_BUTTON_CLICK, 0.3F, 1.0F);
 				VestTogglePacket packet = new VestTogglePacket();
 				PacketHandler.INSTANCE.sendToServer(packet);
