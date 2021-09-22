@@ -5,6 +5,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -80,25 +81,25 @@ public class PoliceHelmet extends Item implements IHasModel
     @Override
     public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack)
     {
-        if(player instanceof EntityPlayer)
+        NBTTagCompound tag = itemStack.getTagCompound();
+        boolean effectsActive = true;
+
+        if(tag != null)
         {
-            if(!world.isRemote)
-            {
-                player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 10, 1, true, false));
-                player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 10, 3, true, false));
-                player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 10, 1, true, false));
-                player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 10, 2, true, false));
-            }
+            effectsActive = tag.getBoolean("policeeffects");
         }
-        else if(player instanceof EntityPlayer)
+
+        if(player instanceof EntityPlayer && effectsActive)
         {
-            if(!world.isRemote)
-            {
-                player.removeActivePotionEffect(MobEffects.RESISTANCE);
-                player.removeActivePotionEffect(MobEffects.FIRE_RESISTANCE);
-                player.removeActivePotionEffect(MobEffects.JUMP_BOOST);
-                player.removeActivePotionEffect(MobEffects.SPEED);
-            }
+            player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 10, 1, true, false));
+            player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 10, 1, true, false));
+            player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 10, 2, true, false));
+        }
+        else if(player instanceof EntityPlayer && !effectsActive)
+        {
+            player.removePotionEffect(MobEffects.RESISTANCE);
+            player.removePotionEffect(MobEffects.JUMP_BOOST);
+            player.removePotionEffect(MobEffects.SPEED);
         }
     }
 }

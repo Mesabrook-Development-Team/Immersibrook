@@ -90,25 +90,19 @@ public class ImmersiFood extends ItemFood implements IHasModel
             player.addItemStackToInventory(new ItemStack(ModItems.PAPER_STICK));
         }
 
-        if(stack.getItem() == ModItems.SPARKLING_PINK_LEMONADE && !player.isCreative())
-        {
-            stack.damageItem(1, player);
-            player.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE));
-        }
-
         if(stack.getItem() == ModItems.SPARKLING_PINK_LEMONADE)
         {
             if(!player.isCreative())
             {
                 stack.damageItem(1, player);
-                player.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE));
+                player.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE, 1));
                 if(!worldIn.isRemote)
                 {
                     PlaySoundPacket packet = new PlaySoundPacket();
                     packet.pos = player.getPosition();
                     packet.soundName = "burp";
                     PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
-                    player.sendMessage(new TextComponentString(burp.getFormattedText()));
+                    player.sendStatusMessage(new TextComponentString(burp.getFormattedText()), true);
                 }
             }
         }

@@ -1218,11 +1218,13 @@ enchantment.thunder=The Power of Thor
 key.immersibrook.category=Immersibrook
 key.vestToggle.toggle=Toggle Vest Glow
 key.nvtoggle.toggle=Toggle Night Vision Goggles
-key.cough.toggle=Cough
+key.police.toggle=Toggle Police Helmet Effects
 im.vest.toggle=Vest Glow Enabled
 im.vest.toggle.off=Vest Glow Disabled
 im.nv.toggle.on=Night Vision Enabled
 im.nv.toggle.off=Night Vision Disabled
+im.police.toggle.on=Police Helmet Effects Activated
+im.police.toggle.off=Police Helmet Effects Deactivated
 key.hammer.toggle=Toggle Between Ban Hammer Sounds
 
 //Hard Hats
@@ -1307,8 +1309,8 @@ item.wine_bottle.name=Ceremonial Wine Bottle
 item.white_mushroom_dust.name=White Mushroom Powder
 
 //Dialog
-im.sugwarn=You feel your heart starting to twitch... One more bite and you risk a sugar crash!
-im.sugarrush=Your body begins to tingle, your muscles twitch, pupils dilate, you feel your mind beginning to race.
+im.sugwarn=You wonder if you should risk taking another bite...
+im.sugarrush=You feel your body begin to tingle...
 im.sugarcrash=You tremble, muscles weak, eyelids heavy. You overdid it, have a sugar crash.
 im.warning=This product contains caffeine which may cause adverse reactions in minors and certain adults.
 im.sg=Surgeon General's Warning

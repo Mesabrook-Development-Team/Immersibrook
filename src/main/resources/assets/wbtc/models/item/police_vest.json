@@ -1,6 +1,6 @@
 {
    "parent": "item/generated",
    "textures": {
-      "layer0": "wbtc:items/white_vest"
+      "layer0": "wbtc:items/police_vest"
    }
 }

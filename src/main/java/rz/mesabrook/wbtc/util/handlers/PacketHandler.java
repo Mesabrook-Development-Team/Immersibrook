@@ -2,12 +2,7 @@ package rz.mesabrook.wbtc.util.handlers;
 
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
-import rz.mesabrook.wbtc.net.EngravePacket;
-import rz.mesabrook.wbtc.net.FoodBoxPacket;
-import rz.mesabrook.wbtc.net.NVTogglePacket;
-import rz.mesabrook.wbtc.net.PlaySoundPacket;
-import rz.mesabrook.wbtc.net.SoundRandomizerPacket;
-import rz.mesabrook.wbtc.net.VestTogglePacket;
+import rz.mesabrook.wbtc.net.*;
 import rz.mesabrook.wbtc.net.telecom.AcceptCallPacket;
 import rz.mesabrook.wbtc.net.telecom.ActivateChooseNumberPacket;
 import rz.mesabrook.wbtc.net.telecom.ActivateNoReceptionPacket;
@@ -45,7 +40,8 @@ public class PacketHandler
 		INSTANCE.registerMessage(VestTogglePacket.Handler.class, VestTogglePacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(NVTogglePacket.Handler.class, NVTogglePacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(SoundRandomizerPacket.Handler.class, SoundRandomizerPacket.class, nextID(), Side.SERVER);
-		
+		INSTANCE.registerMessage(PoliceEffectsTogglePacket.Handler.class, PoliceEffectsTogglePacket.class, nextID(), Side.SERVER);
+
 		// TELECOM
 		INSTANCE.registerMessage(ActivatePhonePacket.Handler.class, ActivatePhonePacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(ActivateNoReceptionPacket.Handler.class, ActivateNoReceptionPacket.class, nextID(), Side.CLIENT);

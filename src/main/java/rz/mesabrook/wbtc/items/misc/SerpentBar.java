@@ -61,7 +61,7 @@ public class SerpentBar extends Item implements IHasModel
         sugarRush.getStyle().setBold(true);
         sugarRush.getStyle().setColor(TextFormatting.GREEN);
         sugarWarn.getStyle().setBold(true);
-        sugarWarn.getStyle().setColor(TextFormatting.GRAY);
+        sugarWarn.getStyle().setColor(TextFormatting.DARK_RED);
         
         if (setSaturationField == null)
         {
@@ -133,7 +133,7 @@ public class SerpentBar extends Item implements IHasModel
                         player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 500, 55, true, false));
                         player.setHealth(player.getHealth() / 2);
                         stack.getTagCompound().setInteger("Chomps", 0);
-                        player.sendMessage(sugarCrash);
+                        player.sendStatusMessage(new TextComponentString(sugarCrash.getFormattedText()), true);
                         
                         if(stack.hasTagCompound() && stack.getTagCompound().getBoolean("sugarCrash") == true)
                         {
@@ -142,18 +142,18 @@ public class SerpentBar extends Item implements IHasModel
                 	}
                 	else if(countToSugarCrash == 8)
                 	{
-                		player.sendMessage(sugarWarn);
+                        player.sendStatusMessage(new TextComponentString(sugarWarn.getFormattedText()), true);
     					PlaySoundPacket packet = new PlaySoundPacket();
     					packet.pos = player.getPosition();					
     					packet.soundName = "hb";
     					PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 5));
                 	}
-                	else if(countToSugarCrash < 8)
+                	else if(countToSugarCrash == 2)
                 	{
                         player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 500, 20, true, false));
                         player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 500, 2, true, false));
                         player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 500, 4, true, false));
-                        player.sendMessage(sugarRush);
+                        player.sendStatusMessage(new TextComponentString(sugarRush.getFormattedText()), true);
                 	}
                 }
                 

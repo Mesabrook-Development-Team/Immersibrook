@@ -16,14 +16,13 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.items.armor.FaceMasks;
 import rz.mesabrook.wbtc.items.armor.NightVisionGoggles;
+import rz.mesabrook.wbtc.items.armor.PoliceHelmet;
 import rz.mesabrook.wbtc.items.armor.SafetyVest;
 import rz.mesabrook.wbtc.items.tools.ItemBanHammer;
-import rz.mesabrook.wbtc.net.NVTogglePacket;
-import rz.mesabrook.wbtc.net.PlaySoundPacket;
-import rz.mesabrook.wbtc.net.SoundRandomizerPacket;
-import rz.mesabrook.wbtc.net.VestTogglePacket;
+import rz.mesabrook.wbtc.net.*;
 import rz.mesabrook.wbtc.proxy.ClientProxy;
 import rz.mesabrook.wbtc.util.SoundRandomizer;
 
@@ -35,7 +34,9 @@ public class KeyEventHandler
 	private static TextComponentTranslation nvToggleOn;
 	private static TextComponentTranslation nvToggleOff;
 	private static TextComponentTranslation hammerShift;
-	
+	private static TextComponentTranslation policeOn;
+	private static TextComponentTranslation policeOff;
+
 	@SubscribeEvent
 	public static void onKeyPress(InputEvent.KeyInputEvent e)
 	{
@@ -114,6 +115,38 @@ public class KeyEventHandler
 			player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
 			SoundRandomizerPacket packet = new SoundRandomizerPacket();
 			PacketHandler.INSTANCE.sendToServer(packet);
+		}
+
+		if(ClientProxy.policeHelmetKey.isPressed())
+		{
+			EntityPlayer player = Minecraft.getMinecraft().player;
+			ItemStack stack = player.inventory.armorInventory.get(3); // 3 = head
+
+			policeOn = new TextComponentTranslation("im.police.toggle.on");
+			policeOn.getStyle().setColor(TextFormatting.AQUA);
+			policeOff = new TextComponentTranslation("im.police.toggle.off");
+			policeOff.getStyle().setColor(TextFormatting.AQUA);
+
+			if (!(stack.getItem() instanceof PoliceHelmet))
+			{
+				return;
+			}
+			else
+			{
+				if(player.isPotionActive(MobEffects.SPEED))
+				{
+					player.sendStatusMessage(new TextComponentString(policeOff.getFormattedText()), true);
+					player.playSound(SoundInit.RADIO_CLOSE, 1.0F, 1.0F);
+				}
+				else
+				{
+					player.sendStatusMessage(new TextComponentString(policeOn.getFormattedText()), true);
+				}
+
+				player.playSound(SoundEvents.UI_BUTTON_CLICK, 0.3F, 1.0F);
+				PoliceEffectsTogglePacket packet = new PoliceEffectsTogglePacket();
+				PacketHandler.INSTANCE.sendToServer(packet);
+			}
 		}
 	}
 }
