@@ -148,6 +148,23 @@ public class MiscItem extends Item implements IHasModel
 		{
 			tooltip.add(firecloth.getFormattedText());
 		}
+
+		if(stack.getItem() == ModItems.REFLECTIVE_WHITE)
+		{
+			tooltip.add(TextFormatting.GOLD + "Color: " + TextFormatting.WHITE + "WHITE");
+		}
+		if(stack.getItem() == ModItems.REFLECTIVE_YELLOW)
+		{
+			tooltip.add(TextFormatting.GOLD + "Color: " + TextFormatting.YELLOW + "YELLOW");
+		}
+		if(stack.getItem() == ModItems.REFLECTIVE_PINK)
+		{
+			tooltip.add(TextFormatting.GOLD + "Color: " + TextFormatting.RED + "PINK");
+		}
+		if(stack.getItem() == ModItems.REFLECTIVE_GREEN)
+		{
+			tooltip.add(TextFormatting.GOLD + "Color: " + TextFormatting.GREEN + "GREEN");
+		}
 	}
 
 	@Override

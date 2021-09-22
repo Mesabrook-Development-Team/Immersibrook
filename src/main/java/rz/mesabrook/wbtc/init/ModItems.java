@@ -179,6 +179,7 @@ public class ModItems
 	// Firefighting Gear
 	public static final Item FIRE_BOOTS = new FirefighterSuit("fire_boots", ArmorMaterialRegistry.FIRE_BOOTS, EntityEquipmentSlot.FEET, 1);
 	public static final Item FF_PANTS_BLACK = new FirefighterSuit("ff_pants_black", ArmorMaterialRegistry.FF_PANTS_BLACK, EntityEquipmentSlot.LEGS, 1);
+	public static final Item FF_PANTS_BLACK_WS = new FirefighterSuit("ff_pants_black_ws", ArmorMaterialRegistry.FF_PANTS_BLACK_WS, EntityEquipmentSlot.LEGS, 1);
 	public static final Item FF_PANTS_DT = new FirefighterSuit("ff_pants_dt", ArmorMaterialRegistry.FF_PANTS_DT, EntityEquipmentSlot.LEGS, 1);
 	public static final Item FF_PANTS_LT = new FirefighterSuit("ff_pants_lt", ArmorMaterialRegistry.FF_PANTS_LT, EntityEquipmentSlot.LEGS, 1);
 	public static final Item FDRC_CHEST = new FirefighterSuit("fdrc_chest", ArmorMaterialRegistry.FF_BLACK_FDRC, EntityEquipmentSlot.CHEST, 1);
@@ -195,6 +196,12 @@ public class ModItems
 	public static final Item FIRECLOTH_2 = new MiscItem("firecloth_2", 64);
 	public static final Item FIRECLOTH_3 = new MiscItem("firecloth_3", 64);
 	public static final Item FIRECLOTH_4 = new MiscItem("firecloth_4", 64);
+
+	// Reflective Tape
+	public static final Item REFLECTIVE_WHITE = new MiscItem("reflective_white", 64);
+	public static final Item REFLECTIVE_PINK = new MiscItem("reflective_pink", 64);
+	public static final Item REFLECTIVE_GREEN = new MiscItem("reflective_green", 64);
+	public static final Item REFLECTIVE_YELLOW = new MiscItem("reflective_yellow", 64);
 
 	// Misc Items
 	public static final Item PAPER_STICK = new MiscItem("paper_stick", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);

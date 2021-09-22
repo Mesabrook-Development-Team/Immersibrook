@@ -141,6 +141,7 @@ public class KeyEventHandler
 				else
 				{
 					player.sendStatusMessage(new TextComponentString(policeOn.getFormattedText()), true);
+					player.playSound(SoundInit.STARTCALL, 1.0F, 1.0F);
 				}
 
 				player.playSound(SoundEvents.UI_BUTTON_CLICK, 0.3F, 1.0F);

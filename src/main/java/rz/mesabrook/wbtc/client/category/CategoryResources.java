@@ -119,5 +119,9 @@ public class CategoryResources extends AbstractCategory
 		add(ModItems.FIRECLOTH_2);
 		add(ModItems.FIRECLOTH_3);
 		add(ModItems.FIRECLOTH_4);
+		add(ModItems.REFLECTIVE_WHITE);
+		add(ModItems.REFLECTIVE_PINK);
+		add(ModItems.REFLECTIVE_GREEN);
+		add(ModItems.REFLECTIVE_YELLOW);
 	}
 }

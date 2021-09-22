@@ -46,6 +46,7 @@ public class ArmorMaterialRegistry
     public static final ItemArmor.ArmorMaterial FF_PANTS_BLACK = EnumHelper.addArmorMaterial("ff_pants_black", Reference.MODID + ":ff_pants_black", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 4.0F);
     public static final ItemArmor.ArmorMaterial FF_PANTS_DT = EnumHelper.addArmorMaterial("ff_pants_dt", Reference.MODID + ":ff_pants_dt", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 4.0F);
     public static final ItemArmor.ArmorMaterial FF_PANTS_LT = EnumHelper.addArmorMaterial("ff_pants_lt", Reference.MODID + ":ff_pants_lt", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 4.0F);
+    public static final ItemArmor.ArmorMaterial FF_PANTS_BLACK_WS = EnumHelper.addArmorMaterial("ff_pants_black_ws", Reference.MODID + ":ff_pants_black_ws", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 4.0F);
 
     // Labeled Fire Jackets
     public static final ItemArmor.ArmorMaterial FF_BLACK_FDRC = EnumHelper.addArmorMaterial("ff_black_fdrc", Reference.MODID + ":ff_black_fdrc", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 4.0F);

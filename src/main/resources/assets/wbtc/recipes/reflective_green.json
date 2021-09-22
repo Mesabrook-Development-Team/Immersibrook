@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XYX",
+    "XYX",
+	"XYX"
+  ],
+  "key": {
+    "X": {
+		"item": "wbtc:glowing_plastic"
+    },
+    "Y": {
+		"item": "wbtc:green_plastic"
+    }
+  },
+  "result": {
+    "item": "wbtc:reflective_green",
+    "count": 6
+  }
+}

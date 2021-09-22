@@ -10,11 +10,11 @@
 		"item": "wbtc:firecloth_4"
     },
     "Y": {
-		"item": "wbtc:reflective_yellow"
+		"item": "wbtc:reflective_white"
     }
   },
   "result": {
-    "item": "wbtc:ff_pants_black",
+    "item": "wbtc:ff_pants_black_ws",
     "count": 1
   }
 }

@@ -76,6 +76,7 @@ public class CategoryVests extends AbstractCategory
 		add(ModItems.SCFD_CHEST);
 		add(ModItems.FIRE_BOOTS);
 		add(ModItems.FF_PANTS_BLACK);
+		add(ModItems.FF_PANTS_BLACK_WS);
 		add(ModItems.FF_PANTS_DT);
 		add(ModItems.FF_PANTS_LT);
 		add(ModItems.BLACK_GENERIC);

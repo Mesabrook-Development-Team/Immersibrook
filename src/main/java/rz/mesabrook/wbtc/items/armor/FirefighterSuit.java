@@ -101,6 +101,10 @@ public class FirefighterSuit extends ItemArmor implements IHasModel
         {
             tooltip.add(material.getFormattedText() + new TextComponentString(TextFormatting.DARK_GRAY + " Dark Tan Firecloth").getFormattedText());
         }
+        if(stack.getItem() == ModItems.FF_PANTS_BLACK_WS)
+        {
+            tooltip.add(material.getFormattedText() + new TextComponentString(TextFormatting.DARK_GRAY + " Black Firecloth - White Stripes").getFormattedText());
+        }
     }
 
     @Override
