@@ -1,6 +1,7 @@
 package rz.mesabrook.wbtc;
 
 import java.io.File;
+import java.util.Random;
 
 import org.apache.logging.log4j.Logger;
 
@@ -32,6 +33,7 @@ public class Main
     public static boolean JABCM_LOADED = false;
     public static boolean FURENIKUS_CITIES = false;
     public static boolean THERCMOD = false;
+    public static final Random rand = new Random();
     
     // Config
  	public static File config;
