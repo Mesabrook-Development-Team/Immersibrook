@@ -1,0 +1,26 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "PT",
+	  "C "
+   ],
+   "key": {
+      "P": {
+         "type": "forge:ore_dict",
+		 "ore": "toolMixingbowl"
+      },
+	  "T": {
+         "type": "forge:ore_dict",
+		 "ore": "foodChocolatetruffle"
+      },
+	  "C": {
+         "type": "forge:ore_dict",
+		 "ore": "foodPeanutbutter"
+      }
+   },
+   "result": {
+      "item": "wbtc:truffle_pb",
+      "data": 0,
+      "count": 1
+   }
+}

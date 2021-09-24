@@ -100,6 +100,11 @@ public class OreDictRegistry
 		OreDictionary.registerOre("foodWhitechocolatetruffle", ModItems.WHITE_TRUFFLE);
 		OreDictionary.registerOre("foodWhitechocolatebar", ModItems.WHITE_CHOCOLATE);
 		OreDictionary.registerOre("foodWhitechocolate", ModItems.WHITE_CHOCOLATE);
+		OreDictionary.registerOre("foodCaramelchocolatetruffle", ModItems.TRUFFLE_CARAMEL);
+		OreDictionary.registerOre("foodPeanutbutterchocolatetruffle", ModItems.TRUFFLE_PB);
+		OreDictionary.registerOre("foodStrawberrychocolatetruffle", ModItems.TRUFFLE_STRAWBERRY);
+		OreDictionary.registerOre("foodBlueberrychocolatetruffle", ModItems.TRUFFLE_WHITE_BB);
+		OreDictionary.registerOre("foodGrapechocolatetruffle", ModItems.TRUFFLE_WHITE_GRAPE);
 
 		// Food Dyes
 		OreDictionary.registerOre("dyeWhite", ModItems.DYE_WHITE);
@@ -179,10 +184,15 @@ public class OreDictRegistry
 		Main.logger.info(ModItems.SUGAR_BROWN.getUnlocalizedName()+ " " + "has been added to the Ore Dictionary under sugar, listAllsugar");
 		Main.logger.info(ModItems.SUGAR_LIME.getUnlocalizedName() + " " + "has been added to the Ore Dictionary under sugar, listAllsugar");
 		Main.logger.info(ModItems.SUGAR_ORANGE.getUnlocalizedName() + " " + "has been added to the Ore Dictionary under sugar, listAllsugar");
-		Main.logger.info(ModItems.PINK_LEMONADE_DRINK.getUnlocalizedName() + "has been added to the Ore Dictionary under foodPinkLemonade, foodLemonaide");
-		Main.logger.info(ModItems.SPARKLING_PINK_LEMONADE.getUnlocalizedName() + "has been added to the Ore Dictionary under foodSparklingPinkLemonade");
-		Main.logger.info(ModItems.WHITE_TRUFFLE.getUnlocalizedName() + "has been added to the Ore Dictionary under foodWhitechocolatetruffle");
-		Main.logger.info(ModItems.MILK_TRUFFLE.getUnlocalizedName() + "has been added to the Ore Dictionary under foodChocolatetruffle");
-		Main.logger.info(ModItems.WHITE_CHOCOLATE.getUnlocalizedName() + "has been added to the Ore Dictionary under foodWhitechocolatebar, foodWhitechocolate");
+		Main.logger.info(ModItems.PINK_LEMONADE_DRINK.getUnlocalizedName() + " " + "has been added to the Ore Dictionary under foodPinkLemonade, foodLemonaide");
+		Main.logger.info(ModItems.SPARKLING_PINK_LEMONADE.getUnlocalizedName() + " " + "has been added to the Ore Dictionary under foodSparklingPinkLemonade");
+		Main.logger.info(ModItems.WHITE_TRUFFLE.getUnlocalizedName() + " " + "has been added to the Ore Dictionary under foodWhitechocolatetruffle");
+		Main.logger.info(ModItems.MILK_TRUFFLE.getUnlocalizedName() + " " + "has been added to the Ore Dictionary under foodChocolatetruffle");
+		Main.logger.info(ModItems.WHITE_CHOCOLATE.getUnlocalizedName() + " " + "has been added to the Ore Dictionary under foodWhitechocolatebar, foodWhitechocolate");
+		Main.logger.info(ModItems.TRUFFLE_CARAMEL.getUnlocalizedName() + " " + "has been added to the Ore Dictionary under foodCaramelchocolatetruffle");
+		Main.logger.info(ModItems.TRUFFLE_PB.getUnlocalizedName() + " " + "has been added to the Ore Dictionary under foodPeanutbutterchocolatetruffle");
+		Main.logger.info(ModItems.TRUFFLE_STRAWBERRY.getUnlocalizedName() + " " + "has been added to the Ore Dictionary under foodStrawberrychocolatetruffle");
+		Main.logger.info(ModItems.TRUFFLE_WHITE_BB.getUnlocalizedName() + " " + "has been added to the Ore Dictionary under foodBlueberrychocolatetruffle");
+		Main.logger.info(ModItems.TRUFFLE_WHITE_GRAPE.getUnlocalizedName() + " " + "has been added to the Ore Dictionary under foodGrapechocolatetruffle");
 	}
 }

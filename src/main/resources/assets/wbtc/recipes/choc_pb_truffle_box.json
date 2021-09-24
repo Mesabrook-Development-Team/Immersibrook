@@ -1,0 +1,19 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "TTT",
+      "TTT",
+	  "TTT"
+   ],
+   "key": {
+      "T": {
+         "type": "forge:ore_dict",
+		 "ore": "foodPeanutbutterchocolatetruffle"
+      }
+   },
+   "result": {
+      "item": "wbtc:choc_pb_truffle_box",
+      "data": 0,
+      "count": 1
+   }
+}

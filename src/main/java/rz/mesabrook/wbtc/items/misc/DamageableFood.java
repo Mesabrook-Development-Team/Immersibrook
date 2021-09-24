@@ -44,7 +44,7 @@ public class DamageableFood extends Item implements IHasModel
         setUnlocalizedName(name);
         setMaxDamage(8);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
-        setMaxStackSize(stackSize);
+        setMaxStackSize(1);
         this.saturation = saturation;
         this.amount = amount;
 

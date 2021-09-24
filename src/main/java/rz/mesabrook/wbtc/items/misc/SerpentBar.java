@@ -50,7 +50,7 @@ public class SerpentBar extends Item implements IHasModel
         setUnlocalizedName(name);
         setMaxDamage(9);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
-        setMaxStackSize(stackSize);
+        setMaxStackSize(1);
         this.saturation = saturation;
         this.amount = amount;
 

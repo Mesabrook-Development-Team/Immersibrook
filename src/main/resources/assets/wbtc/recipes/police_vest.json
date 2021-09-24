@@ -1,0 +1,21 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "F F",
+      "SSS",
+      "SSS"
+   ],
+   "key": {
+      "F": {
+         "item": "wbtc:firecloth_4"
+      },
+      "S": {
+         "type": "forge:ore_dict",
+		 "ore": "plateSteel"
+      }
+   },
+   "result": {
+      "item": "wbtc:police_vest",
+      "count": 1
+   }
+}

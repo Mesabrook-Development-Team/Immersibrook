@@ -1,0 +1,29 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "SSS",
+      "SHS",
+      " CW"
+   ],
+   "key": {
+      "S": {
+         "type": "forge:ore_dict",
+		 "ore": "ingotSteel"
+      },
+	  "H": {
+		 "item": "immersiveengineering:steel_armor_head"
+	  },
+	  "C": {
+		 "item": "immersiveengineering:material",
+		 "data": 27
+	  },
+	  "W": {
+         "type": "forge:ore_dict",
+		 "ore": "wireCopper"
+      }
+   },
+   "result": {
+      "item": "wbtc:police_helmet",
+      "count": 1
+   }
+}

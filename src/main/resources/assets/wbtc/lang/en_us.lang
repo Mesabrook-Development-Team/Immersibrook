@@ -1218,13 +1218,13 @@ enchantment.thunder=The Power of Thor
 key.immersibrook.category=Immersibrook
 key.vestToggle.toggle=Toggle Vest Glow
 key.nvtoggle.toggle=Toggle Night Vision Goggles
-key.police.toggle=Toggle Police Helmet Effects
+key.police.toggle=Toggle L.E.O.T.E.U.
 im.vest.toggle=Vest Glow Enabled
 im.vest.toggle.off=Vest Glow Disabled
 im.nv.toggle.on=Night Vision Enabled
 im.nv.toggle.off=Night Vision Disabled
-im.police.toggle.on=Law Enforcement Mode Activated
-im.police.toggle.off=Law Enforcement Mode Deactivated
+im.police.toggle.on=L.E.O.T.E.U. Online
+im.police.toggle.off=L.E.O.T.E.U. Offline
 key.hammer.toggle=Toggle Between Ban Hammer Sounds
 
 //Hard Hats
@@ -1347,9 +1347,14 @@ im.firecloth=A flame-resistant material.
 tile.sugar_box.name=Granulated White Sugar
 tile.flour_box.name=All Purpose Flour
 tile.cornmeal_box.name=Cornmeal
-tile.coffee_box.name=Premium Roasted Mesabrookian Coffee Beans
+tile.coffee_box.name=Premium Mesabrookian Coffee Beans
 tile.milk_chocolate_truffles_box.name=Chocolate Truffles
 tile.white_chocolate_truffles_box.name=Chocolate Truffles
+tile.choc_caramel_truffle_box.name=Chocolate Truffles
+tile.choc_pb_truffle_box.name=Chocolate Truffles
+tile.choc_strawberry_truffle_box.name=Chocolate Truffles
+tile.choc_grape_truffle_box.name=Chocolate Truffles
+tile.choc_blueberry_truffle_box.name=Chocolate Truffles
 
 //Masks
 item.mask_jason.name=Decorative Face Mask

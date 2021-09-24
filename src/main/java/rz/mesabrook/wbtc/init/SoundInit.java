@@ -63,6 +63,8 @@ public class SoundInit
 	public static final SoundEvent POLICE_HELMET;
 	public static final SoundEvent KEKW;
 	public static final SoundEvent TWO_YEARS;
+	public static final SoundEvent LEOTEU_ON;
+	public static final SoundEvent LEOTEU_OFF;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -172,6 +174,8 @@ public class SoundInit
 		POLICE_HELMET = addSoundsToRegistry("police_helmet");
 		KEKW = addSoundsToRegistry("kekw");
 		TWO_YEARS = addSoundsToRegistry("two_years");
+		LEOTEU_ON = addSoundsToRegistry("leoteu_on");
+		LEOTEU_OFF = addSoundsToRegistry("leoteu_off");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -338,6 +342,8 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.KEKW);
 				event.getRegistry().registerAll(SoundInit.PHONE_ACTIVATE);
 				event.getRegistry().registerAll(SoundInit.TWO_YEARS);
+				event.getRegistry().registerAll(SoundInit.LEOTEU_OFF);
+				event.getRegistry().registerAll(SoundInit.LEOTEU_ON);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

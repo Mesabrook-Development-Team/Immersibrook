@@ -123,8 +123,10 @@ public class KeyEventHandler
 			ItemStack stack = player.inventory.armorInventory.get(3); // 3 = head
 
 			policeOn = new TextComponentTranslation("im.police.toggle.on");
+			policeOn.getStyle().setBold(true);
 			policeOn.getStyle().setColor(TextFormatting.AQUA);
 			policeOff = new TextComponentTranslation("im.police.toggle.off");
+			policeOff.getStyle().setBold(true);
 			policeOff.getStyle().setColor(TextFormatting.AQUA);
 
 			if (!(stack.getItem() instanceof PoliceHelmet))
@@ -137,11 +139,12 @@ public class KeyEventHandler
 				{
 					player.sendStatusMessage(new TextComponentString(policeOff.getFormattedText()), true);
 					player.playSound(SoundInit.RADIO_CLOSE, 1.0F, 1.0F);
+					player.playSound(SoundInit.LEOTEU_OFF, 1.0F, 1.0F);
 				}
 				else
 				{
 					player.sendStatusMessage(new TextComponentString(policeOn.getFormattedText()), true);
-					player.playSound(SoundInit.STARTCALL, 1.0F, 1.0F);
+					player.playSound(SoundInit.LEOTEU_ON, 1.0F, 1.0F);
 				}
 
 				player.playSound(SoundEvents.UI_BUTTON_CLICK, 0.3F, 1.0F);
