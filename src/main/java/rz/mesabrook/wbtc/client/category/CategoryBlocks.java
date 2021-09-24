@@ -140,6 +140,7 @@ public class CategoryBlocks extends AbstractCategory
 		add(ModBlocks.INDUSTRIAL_TILE_2);
 		add(ModBlocks.INDUSTRIAL_TILE_3);
 		add(ModBlocks.INDUSTRIAL_TILE_4);
+		add(ModBlocks.RELAY_MANHOLE);
 		
 		// Pillars
 		add(ModBlocks.PILLAR_POST);

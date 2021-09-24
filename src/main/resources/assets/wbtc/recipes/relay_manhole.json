@@ -1,0 +1,23 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "PPP",
+	  "PIP",
+	  "PPP"
+   ],
+   "key": {
+      "P": {
+         "type": "forge:ore_dict",
+		 "ore": "ingotSteel"
+      },
+	  "I": {
+         "type": "forge:ore_dict",
+		 "ore": "plateSteel"
+      }
+   },
+   "result": {
+      "item": "wbtc:relay_manhole",
+      "data": 0,
+      "count": 1
+   }
+}

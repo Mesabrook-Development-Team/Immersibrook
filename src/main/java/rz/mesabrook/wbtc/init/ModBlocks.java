@@ -1017,6 +1017,7 @@ public class ModBlocks
 	public static final Block CHOC_STRAWBERRY_TRUFFLE_BOX = new FoodBox("choc_strawberry_truffle_box", Material.WOOD, SoundType.SAND, 64, "pickaxe", 1, 1.0F, 1.0F, ModUtils.getPixelatedAABB(6,0,7, 10,5,9));
 	public static final Block CHOC_GRAPE_TRUFFLE_BOX = new FoodBox("choc_grape_truffle_box", Material.WOOD, SoundType.SAND, 64, "pickaxe", 1, 1.0F, 1.0F, ModUtils.getPixelatedAABB(6,0,7, 10,5,9));
 	public static final Block CHOC_BLUEBERRY_TRUFFLE_BOX = new FoodBox("choc_blueberry_truffle_box", Material.WOOD, SoundType.SAND, 64, "pickaxe", 1, 1.0F, 1.0F, ModUtils.getPixelatedAABB(6,0,7, 10,5,9));
+	public static final Block RELAY_MANHOLE = new MiscRotationalBlock("relay_manhole", Material.IRON, SoundType.ANVIL, "pickaxe", 1, 1.0F, 2.0F, ModUtils.getPixelatedAABB(0,0,0, 16,1,16));
 
 	// Trusses
 	public static final Block STEEL_TRUSS = new Truss("steel_truss", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.METAL);
