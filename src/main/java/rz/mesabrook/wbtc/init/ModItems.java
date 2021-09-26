@@ -336,4 +336,6 @@ public class ModItems
 	// Rods
 	public static final Item ROD_CONSTANTAN = new MiscItem("rod_constantan", 64);
 	public static final Item ROD_NICKEL = new MiscItem("rod_nickel", 64);
+	public static final Item PLASTIC_PLATE = new MiscItem("plastic_plate", 64);
+	public static final Item PLASTIGLASS_SHEET = new MiscItem("plastiglass", 64);
 }

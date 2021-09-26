@@ -1,0 +1,17 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "item": "immersiveengineering:tool",
+		 "data": 0
+      },
+      {
+         "type": "forge:ore_dict",
+		 "ore": "listAllPlastic"
+      }
+   ],
+   "result": {
+      "item": "wbtc:plastic_plate",
+      "count": 1
+   }
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "block/pane_noside",
+    "textures": {
+        "pane": "wbtc:blocks/plexiglass_1"
+    }
+}

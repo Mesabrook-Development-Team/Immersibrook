@@ -21,6 +21,7 @@ NEW:
 -Concrete Columns (not to be confused with Pillars).
 -Police and Fire Gear.
 -Modern alternative to the Ban Hammer.
+-Plastiglass Blocks and Panes.
 
 CHANGES/FIXES:
 -Pillars are now affected by gravity.

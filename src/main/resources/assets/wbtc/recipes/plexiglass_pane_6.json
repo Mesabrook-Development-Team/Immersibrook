@@ -1,0 +1,23 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "PPP",
+	  "DDD",
+	  "PPP"
+   ],
+   "key": {
+      "P": {
+         "type": "forge:ore_dict",
+		 "ore": "platePlastiglass"
+      },
+	  "D": {
+         "type": "forge:ore_dict",
+		 "ore": "dyeWhite"
+      }
+   },
+   "result": {
+      "item": "wbtc:plexiglass_pane_6",
+      "data": 0,
+      "count": 9
+   }
+}

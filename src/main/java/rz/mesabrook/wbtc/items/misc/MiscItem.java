@@ -41,6 +41,7 @@ public class MiscItem extends Item implements IHasModel
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setMaxStackSize(stack);
+		setCreativeTab(Main.IMMERSIBROOK_MAIN);
 		
 		ModItems.ITEMS.add(this);
 

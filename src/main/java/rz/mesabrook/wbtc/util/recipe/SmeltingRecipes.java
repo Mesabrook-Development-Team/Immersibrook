@@ -83,6 +83,9 @@ public class SmeltingRecipes
 			GameRegistry.addSmelting(ModItems.FIRECLOTH_3, new ItemStack(ModItems.FIRECLOTH_4, 1), 10F);
 			GameRegistry.addSmelting(ModItems.FIRECLOTH_4, new ItemStack(Items.COAL, 2, 1), 10F);
 
+			// Plastiglass Sheet
+			GameRegistry.addSmelting(ModItems.PLASTIC_PLATE, new ItemStack(ModItems.PLASTIGLASS_SHEET, 1), 69F);
+
 			if(ModConfig.smeltingLeatherForASaddle)
 			{
 				GameRegistry.addSmelting(Items.LEATHER, new ItemStack(Items.SADDLE, 1), 69F);
@@ -93,7 +96,7 @@ public class SmeltingRecipes
 				Main.logger.info("[" + Reference.MODNAME + "] Leather to Saddle Smelting Recipe Disasbled.");
 			}
 			
-			Main.logger.info("Smelting Recipes Registered.");
+			Main.logger.info("[" + Reference.MODNAME + "] Smelting Recipes Registered.");
 		}
 		catch(Exception e)
 		{

@@ -2,6 +2,7 @@ package rz.mesabrook.wbtc.items.misc;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -121,5 +122,11 @@ public class ItemRubberDuck extends Item implements IHasModel
         {
             tooltip.add(angry.getFormattedText());
         }
+    }
+
+    @Override
+    public EntityEquipmentSlot getEquipmentSlot(ItemStack stack)
+    {
+        return EntityEquipmentSlot.HEAD;
     }
 }

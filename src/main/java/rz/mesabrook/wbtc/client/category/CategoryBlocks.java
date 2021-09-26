@@ -190,5 +190,29 @@ public class CategoryBlocks extends AbstractCategory
 		add(ModBlocks.COLUMN_RED_CONCRETE);
 		add(ModBlocks.COLUMN_BLACK_CONCRETE);
 		add(ModBlocks.COLUMN_GLOWING);
+
+		// Plexiglass
+		add(ModBlocks.PLEXIGLASS_0);
+		add(ModBlocks.PLEXIGLASS_1);
+		add(ModBlocks.PLEXIGLASS_2);
+		add(ModBlocks.PLEXIGLASS_3);
+		add(ModBlocks.PLEXIGLASS_4);
+		add(ModBlocks.PLEXIGLASS_5);
+		add(ModBlocks.PLEXIGLASS_6);
+		add(ModBlocks.PLEXIGLASS_7);
+		add(ModBlocks.PLEXIGLASS_8);
+		add(ModBlocks.PLEXIGLASS_9);
+		add(ModBlocks.PLEXIGLASS_10);
+		add(ModBlocks.PLEXIGLASS_PANE_0);
+		add(ModBlocks.PLEXIGLASS_PANE_1);
+		add(ModBlocks.PLEXIGLASS_PANE_2);
+		add(ModBlocks.PLEXIGLASS_PANE_3);
+		add(ModBlocks.PLEXIGLASS_PANE_4);
+		add(ModBlocks.PLEXIGLASS_PANE_5);
+		add(ModBlocks.PLEXIGLASS_PANE_6);
+		add(ModBlocks.PLEXIGLASS_PANE_7);
+		add(ModBlocks.PLEXIGLASS_PANE_8);
+		add(ModBlocks.PLEXIGLASS_PANE_9);
+		add(ModBlocks.PLEXIGLASS_PANE_10);
 	}
 }

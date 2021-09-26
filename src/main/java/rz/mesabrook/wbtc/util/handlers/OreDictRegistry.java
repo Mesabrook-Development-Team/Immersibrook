@@ -49,6 +49,10 @@ public class OreDictRegistry
 		OreDictionary.registerOre("listAllPlastic", ModItems.PLASTIC_RED);
 		OreDictionary.registerOre("listAllPlastic", ModItems.PLASTIC_BLACK);
 		OreDictionary.registerOre("listAllPlastic", ModItems.PLASTIC_GLOWING);
+		OreDictionary.registerOre("platePlastic", ModItems.PLASTIC_PLATE);
+		OreDictionary.registerOre("platePlastiglass", ModItems.PLASTIGLASS_SHEET);
+		OreDictionary.registerOre("platePlexiglass", ModItems.PLASTIGLASS_SHEET);
+		OreDictionary.registerOre("platePlexiglas", ModItems.PLASTIGLASS_SHEET);
 
 		// Color-coded Plastic Ingot Entries
 		OreDictionary.registerOre("itemWhitePlastic", ModItems.PLASTIC_WHITE);
@@ -194,5 +198,7 @@ public class OreDictRegistry
 		Main.logger.info(ModItems.TRUFFLE_STRAWBERRY.getUnlocalizedName() + " " + "has been added to the Ore Dictionary under foodStrawberrychocolatetruffle");
 		Main.logger.info(ModItems.TRUFFLE_WHITE_BB.getUnlocalizedName() + " " + "has been added to the Ore Dictionary under foodBlueberrychocolatetruffle");
 		Main.logger.info(ModItems.TRUFFLE_WHITE_GRAPE.getUnlocalizedName() + " " + "has been added to the Ore Dictionary under foodGrapechocolatetruffle");
+		Main.logger.info(ModItems.PLASTIC_PLATE.getUnlocalizedName() + " " + "has been added to the Ore Dictionary under platePlastic");
+		Main.logger.info(ModItems.PLASTIGLASS_SHEET.getUnlocalizedName() + " " + "has been added to the Ore Dictionary under platePlastiglass, platePlexiglass, platePlexiglas");
 	}
 }

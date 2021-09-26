@@ -1,0 +1,19 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "PPP",
+	  "PPP",
+	  "PPP"
+   ],
+   "key": {
+      "P": {
+         "type": "forge:ore_dict",
+		 "ore": "platePlastiglass"
+      }
+   },
+   "result": {
+      "item": "wbtc:plexiglass_pane_10",
+      "data": 0,
+      "count": 9
+   }
+}

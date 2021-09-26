@@ -1063,4 +1063,28 @@ public class ModBlocks
 	public static final Block COLUMN_RED_CONCRETE = new BlockColumn("column_concrete_red", Material.ROCK, SoundType.STONE, "pickaxe", 1, 0.0F);
 	public static final Block COLUMN_BLACK_CONCRETE = new BlockColumn("column_concrete_black", Material.ROCK, SoundType.STONE, "pickaxe", 1, 0.0F);
 	public static final Block COLUMN_GLOWING = new BlockColumn("column_glowing_plastic", Material.ROCK, SoundType.STONE, "pickaxe", 1, 1.0F);
+
+	// Plexiglass
+	public static final Block PLEXIGLASS_0 = new BlockPlexiglass("plexiglass_0");
+	public static final Block PLEXIGLASS_1 = new BlockPlexiglass("plexiglass_1");
+	public static final Block PLEXIGLASS_2 = new BlockPlexiglass("plexiglass_2");
+	public static final Block PLEXIGLASS_3 = new BlockPlexiglass("plexiglass_3");
+	public static final Block PLEXIGLASS_4 = new BlockPlexiglass("plexiglass_4");
+	public static final Block PLEXIGLASS_5 = new BlockPlexiglass("plexiglass_5");
+	public static final Block PLEXIGLASS_6 = new BlockPlexiglass("plexiglass_6");
+	public static final Block PLEXIGLASS_7 = new BlockPlexiglass("plexiglass_7");
+	public static final Block PLEXIGLASS_8 = new BlockPlexiglass("plexiglass_8");
+	public static final Block PLEXIGLASS_9 = new BlockPlexiglass("plexiglass_9");
+	public static final Block PLEXIGLASS_10 = new BlockPlexiglass("plexiglass_10");
+	public static final Block PLEXIGLASS_PANE_0 = new BlockPlexiglassPane("plexiglass_pane_0");
+	public static final Block PLEXIGLASS_PANE_1 = new BlockPlexiglassPane("plexiglass_pane_1");
+	public static final Block PLEXIGLASS_PANE_2 = new BlockPlexiglassPane("plexiglass_pane_2");
+	public static final Block PLEXIGLASS_PANE_3 = new BlockPlexiglassPane("plexiglass_pane_3");
+	public static final Block PLEXIGLASS_PANE_4 = new BlockPlexiglassPane("plexiglass_pane_4");
+	public static final Block PLEXIGLASS_PANE_5 = new BlockPlexiglassPane("plexiglass_pane_5");
+	public static final Block PLEXIGLASS_PANE_6 = new BlockPlexiglassPane("plexiglass_pane_6");
+	public static final Block PLEXIGLASS_PANE_7 = new BlockPlexiglassPane("plexiglass_pane_7");
+	public static final Block PLEXIGLASS_PANE_8 = new BlockPlexiglassPane("plexiglass_pane_8");
+	public static final Block PLEXIGLASS_PANE_9 = new BlockPlexiglassPane("plexiglass_pane_9");
+	public static final Block PLEXIGLASS_PANE_10 = new BlockPlexiglassPane("plexiglass_pane_10");
 }

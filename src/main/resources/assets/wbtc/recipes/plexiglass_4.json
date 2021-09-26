@@ -1,0 +1,16 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "PP",
+	  "PP"
+   ],
+   "key": {
+      "P": {
+		 "item": "wbtc:plexiglass_pane_4"
+      }
+   },
+   "result": {
+      "item": "wbtc:plexiglass_4",
+      "count": 4
+   }
+}

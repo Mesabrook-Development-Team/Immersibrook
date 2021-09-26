@@ -244,6 +244,8 @@ item.green_plastic.name=Green Plastic
 item.red_plastic.name=Red Plastic
 item.black_plastic.name=Black Plastic
 item.glowing_plastic.name=Glowstone Infused Plastic
+item.plastic_plate.name=Plastic Plate
+item.plastiglass.name=Plastiglass Sheet
 
 //Plastic Blocks
 tile.plastic_cube_white.name=White Plastic Block
@@ -1173,7 +1175,31 @@ tile.wbtc_pillar_smoothed_stone.name=Smoothed Stone Pillar
 //Misc Blocks
 tile.white_stone.name=Chalked Stone
 tile.smoothed_stone.name=Smoothed Stone
-tile.relay_manhole.name=Crossing Relay Manhole Cover 
+tile.relay_manhole.name=Crossing Relay Manhole Cover
+
+//Plastiglass
+tile.plexiglass_0.name=Plastiglass
+tile.plexiglass_1.name=Plastiglass
+tile.plexiglass_2.name=Plastiglass
+tile.plexiglass_3.name=Plastiglass
+tile.plexiglass_4.name=Plastiglass
+tile.plexiglass_5.name=Plastiglass
+tile.plexiglass_6.name=Plastiglass
+tile.plexiglass_7.name=Plastiglass
+tile.plexiglass_8.name=Plastiglass
+tile.plexiglass_9.name=Plastiglass
+tile.plexiglass_10.name=Plastiglass
+tile.plexiglass_pane_0.name=Plastiglass Pane
+tile.plexiglass_pane_1.name=Plastiglass Pane
+tile.plexiglass_pane_2.name=Plastiglass Pane
+tile.plexiglass_pane_3.name=Plastiglass Pane
+tile.plexiglass_pane_4.name=Plastiglass Pane
+tile.plexiglass_pane_5.name=Plastiglass Pane
+tile.plexiglass_pane_6.name=Plastiglass Pane
+tile.plexiglass_pane_7.name=Plastiglass Pane
+tile.plexiglass_pane_8.name=Plastiglass Pane
+tile.plexiglass_pane_9.name=Plastiglass Pane
+tile.plexiglass_pane_10.name=Plastiglass Pane
 
 //Record Names
 item.blank_vinyl.name=Blank Record
