@@ -239,6 +239,12 @@ public class BlockStatue extends Block implements IHasModel
 		SoundRandomizer.OWOTrophyRandomizer();
 		if(!world.isRemote)
 		{
+			Random rand = new Random();
+			float csxPitch = 0.5F + rand.nextFloat();
+
+			if(csxPitch > 1.25F) {csxPitch = 1.25F;}
+			else if(csxPitch < 0.75F) {csxPitch = 0.75F;}
+
 			if(state.getBlock() == ModBlocks.STATUE_OWO)
 			{
 				PlaySoundPacket packet = new PlaySoundPacket();
@@ -263,6 +269,7 @@ public class BlockStatue extends Block implements IHasModel
 				PlaySoundPacket packet = new PlaySoundPacket();
 				packet.pos = pos;
 				packet.soundName = "csx_trophy";
+				packet.pitch = csxPitch;
 				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
 			}
 			if(state.getBlock() == ModBlocks.STATUE_TD)
@@ -321,6 +328,8 @@ public class BlockStatue extends Block implements IHasModel
 				PlaySoundPacket packet = new PlaySoundPacket();
 				packet.pos = pos;
 				packet.soundName = "oof";
+				packet.volume = 1.0F;
+				packet.pitch = 1.0F;
 				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
 			}
 		}

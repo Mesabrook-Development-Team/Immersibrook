@@ -50,7 +50,7 @@ public class ClientSideHandlers
 	public static void playSoundHandler(PlaySoundPacket message, MessageContext ctx)
 	{
 		SoundHandler soundHandler = Minecraft.getMinecraft().getSoundHandler();
-		
+
 		// Clear our cache of playing sounds
 		// Since we do this each time the packet is received, this
 		// shouldn't take a whole lot of extra processing time
@@ -81,7 +81,7 @@ public class ClientSideHandlers
 		IForgeRegistry<SoundEvent> soundRegistry = GameRegistry.findRegistry(SoundEvent.class);
 		SoundEvent sound = soundRegistry.getValue(soundLocation);
 		
-		PositionedSoundRecord record = new PositionedSoundRecord(sound, SoundCategory.BLOCKS, 1F, 1F, message.pos);
+		PositionedSoundRecord record = new PositionedSoundRecord(sound, SoundCategory.BLOCKS, message.volume, message.pitch, message.pos);
 		
 		soundsByBlockPos.put(message.pos.toLong(), record);
 		

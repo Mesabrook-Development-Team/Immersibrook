@@ -22,12 +22,16 @@ public class PlaySoundPacket implements IMessage
 {
 	public BlockPos pos;
 	public String soundName;
+	public float volume = 1F;
+	public float pitch = 1F;
 
 	@Override
 	public void fromBytes(ByteBuf buf) 
 	{
 		pos = BlockPos.fromLong(buf.readLong());
 		soundName = ByteBufUtils.readUTF8String(buf);
+		volume = buf.readFloat();
+		pitch = buf.readFloat();
 	}
 
 	@Override
@@ -35,6 +39,8 @@ public class PlaySoundPacket implements IMessage
 	{
 		buf.writeLong(pos.toLong());
 		ByteBufUtils.writeUTF8String(buf, soundName);
+		buf.writeFloat(volume);
+		buf.writeFloat(pitch);
 	}
 	
 	public static class Handler implements IMessageHandler<PlaySoundPacket, IMessage>
