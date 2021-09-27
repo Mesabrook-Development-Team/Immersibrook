@@ -357,6 +357,7 @@ tile.statue_tlz.name=Trophy for timelady_zoe - Mesabrook Founders Award
 tile.statue_md.name=Trophy for MineDouble - Mesabrook Founders Award
 tile.statue_lw.name=Trophy for lilWeece - Mesabrook Founders Award
 tile.statue_svv.name=Trophy for StarVicVader - Mesabrook Founders Award
+tile.trophy_two_years.name=Mesabrook Second Anniversary Award
 
 //Plaques
 tile.plaque_test.name=Award - Test Plaque
@@ -1514,3 +1515,9 @@ item.reflective_white.name=Reflective Tape
 item.reflective_yellow.name=Reflective Tape
 item.reflective_pink.name=Reflective Tape
 item.reflective_green.name=Reflective Tape
+
+//Boxes
+tile.box_small.name=Small Shipping Box
+tile.box_medium.name=Medium Shipping Box
+tile.box_large.name=Large Shipping Box
+tile.box_xl.name=Extra Large Shipping Box
