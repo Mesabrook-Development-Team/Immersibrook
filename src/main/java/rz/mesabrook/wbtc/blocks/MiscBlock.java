@@ -57,14 +57,7 @@ public class MiscBlock extends Block implements IHasModel
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune)
 	{
-		if(this.getUnlocalizedName().contains("cat_block") && ModConfig.catBlockMakesCat)
-		{
-			return null;
-		}
-		else
-		{
-			return Item.getItemFromBlock(this);
-		}
+		return Item.getItemFromBlock(this);
 	}
 
 	@Override
@@ -90,91 +83,11 @@ public class MiscBlock extends Block implements IHasModel
 		{
 			tooltip.add(TextFormatting.AQUA + "It's not a bug, it's a " + TextFormatting.OBFUSCATED + "Featuretm");
 		}
-		else if(this.getUnlocalizedName().contains("synthetic_turf"))
-		{
-			tooltip.add(TextFormatting.GOLD + "It glows in the dark and is not approved by the NFL.");
-		}
-		else if(this.getUnlocalizedName().contains("tileboard"))
+		if(this.getUnlocalizedName().contains("tileboard"))
 		{
 			tooltip.add(TextFormatting.AQUA + "It's baaaaack");
 		}
-		else if(this.getUnlocalizedName().contains("cat_block"))
-		{
-			tooltip.add(TextFormatting.LIGHT_PURPLE + "The greatest block to ever exist ever");
-			tooltip.add(TextFormatting.GREEN + "Can be used as a Beacon Base");
-		}
-		
 		super.addInformation(stack, world, tooltip, flag);
-	}
-	
-	// For the Aluminum Block
-	@Override
-	public boolean isBeaconBase(IBlockAccess worldObj, BlockPos pos, BlockPos beacon)
-	{
-		if(this.getUnlocalizedName().contains("cat_block"))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-
-	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-	{
-		try
-		{
-			if(this.getUnlocalizedName().contains("cat_block"))
-			{
-				SoundRandomizer.CatCubeRandomizer();
-				if(SoundRandomizer.catResult == null)
-				{
-					world.playSound(player, pos, SoundEvents.ENTITY_CAT_AMBIENT, SoundCategory.BLOCKS, 1.0F, 1.0F);
-				}
-				else
-				{
-					world.playSound(player, pos, SoundRandomizer.catResult, SoundCategory.BLOCKS, 1.0F, 1.0F);
-				}
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
-		catch(Exception ex)
-		{
-			Main.logger.error(ex);
-			SoundRandomizer.CatCubeRandomizer();
-			return false;
-		}
-	}
-
-	@Override
-	public void onBlockHarvested(World world, BlockPos pos, IBlockState state, EntityPlayer player)
-	{
-		if(this.getUnlocalizedName().contains("cat_block") && !world.isRemote && !player.isCreative() && ModConfig.catBlockMakesCat)
-		{
-			Random chooser = new Random();
-			int snds;
-			snds = chooser.nextInt(3);
-			switch(snds)
-			{
-				case 1:
-					EntityOcelot cat = new EntityOcelot(world);
-					cat.setLocationAndAngles((double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, 0.0F, 0.0F);
-					world.spawnEntity(cat);
-					world.playSound(player, pos, SoundEvents.BLOCK_ANVIL_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
-					player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Tame that kitty!"));
-					cat.spawnExplosionParticle();
-				break;
-				case 2:
-					world.playSound(player, pos, SoundEvents.BLOCK_END_GATEWAY_SPAWN, SoundCategory.BLOCKS, 1.0F, 1.0F);
-				break;
-			}
-		}
 	}
 	
 	@Override

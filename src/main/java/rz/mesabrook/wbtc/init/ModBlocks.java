@@ -76,7 +76,6 @@ public class ModBlocks
 	public static final Block PANEL_TILE_35 = new MiscBlock("panel_floor_tile_35", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block PANEL_TILE_36 = new MiscBlock("panel_floor_tile_36", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block PANEL_TILE_37 = new MiscBlock("panel_floor_tile_37", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
-
 	public static final Block PANEL_DANGER_1 = new MiscBlock("panel_floor_danger_1", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block PANEL_DANGER_2 = new MiscBlock("panel_floor_danger_2", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block PANEL_DANGER_3 = new MiscBlock("panel_floor_danger_3", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
@@ -84,11 +83,9 @@ public class ModBlocks
 	public static final Block PANEL_KITCHEN_1 = new MiscBlock("panel_floor_kitchen_1", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block PANEL_KITCHEN_2 = new MiscBlock("panel_floor_kitchen_2", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block PANEL_KITCHEN_3 = new MiscBlock("panel_floor_kitchen_3", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
-
 	public static final Block PANEL_DRAIN_1 = new MiscBlock("panel_floor_drain_1", Material.IRON, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block PANEL_DRAIN_2 = new MiscBlock("panel_floor_drain_2", Material.IRON, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block PANEL_DRAIN_3 = new MiscBlock("panel_floor_drain_3", Material.IRON, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
-
 	public static final Block PANEL_WOOL_WHITE = new MiscBlock("panel_wool_white", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block PANEL_WOOL_ORANGE = new MiscBlock("panel_wool_orange", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block PANEL_WOOL_MAGENTA = new MiscBlock("panel_wool_magenta", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
@@ -169,7 +166,6 @@ public class ModBlocks
 	public static final Block ASTRO_TURF = new MiscBlock("synthetic_turf", Material.PLANTS, SoundType.PLANT, Main.IMMERSIBROOK_MAIN, 0.7F);
 	public static final Block WHITE_COBBLE = new MiscBlock("white_cobblestone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block WHITE_STONE_BRICKS = new MiscBlock("white_stone_bricks", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block CAT_BLOCK = new MiscBlock("cat_block", Material.ROCK, SoundType.METAL, Main.IMMERSIBROOK_MAIN, 0F);
 
 	// Dynamic Pillars - Credit to CSX8600
 	public static final Block PILLAR_POST = new Pillar("wbtc_pillar", Material.ROCK, SoundType.STONE, "pickaxe", 1);
@@ -1004,8 +1000,7 @@ public class ModBlocks
 	public static final Block CS_WOOL_RED = new MiscBlock("silver_concrete_tile_wool_red", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block CS_WOOL_BLACK = new MiscBlock("silver_concrete_tile_wool_black", Material.CLOTH, SoundType.CLOTH, Main.IMMERSIBROOK_MAIN, 0F);
 
-	// 1.0.0 Starts Here
-	public static final Block TICKET_MACHINE = new TicketMachine("ticket_machine");
+	// Food Boxes
 	public static final Block SUGAR_BOX = new FoodBox("sugar_box", Material.WOOD, SoundType.SAND, 64, "pickaxe", 1, 1.0F, 1.0F, ModUtils.getPixelatedAABB(12,0,6, 4,9,10));
 	public static final Block FLOUR_BOX = new FoodBox("flour_box", Material.WOOD, SoundType.SAND, 64, "pickaxe", 1, 1.0F, 1.0F, ModUtils.getPixelatedAABB(12,0,6, 4,9,10));
 	public static final Block CORNMEAL_BOX = new FoodBox("cornmeal_box", Material.WOOD, SoundType.SAND, 64, "pickaxe", 1, 1.0F, 1.0F, ModUtils.getPixelatedAABB(12,0,6, 4,9,10));
@@ -1087,4 +1082,7 @@ public class ModBlocks
 	public static final Block PLEXIGLASS_PANE_8 = new BlockPlexiglassPane("plexiglass_pane_8");
 	public static final Block PLEXIGLASS_PANE_9 = new BlockPlexiglassPane("plexiglass_pane_9");
 	public static final Block PLEXIGLASS_PANE_10 = new BlockPlexiglassPane("plexiglass_pane_10");
+
+	// Transit
+	public static final Block TICKET_MACHINE = new TicketMachine("ticket_machine");
 }

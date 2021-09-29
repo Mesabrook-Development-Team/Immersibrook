@@ -31,9 +31,6 @@ public final class ModConfig
 	
 	@Comment("Set to false if you want the Power of Thor enchantment's lightning strikes to not start fires.")
 	public static boolean thorCausesFires = true;
-
-	@Comment("Set to false if you don't want the Cat Block to spawn an Ocelot when broken in Survival Mode.")
-	public static boolean catBlockMakesCat = true;
 	
 	@Comment("Set the amount of times the First Aid Kit can be used before it breaks.")
 	public static int firstAidUses = 12;
