@@ -94,5 +94,7 @@
 	"welcome": {"category": "master","sounds": [{"name": "wbtc:welcome","stream": true}]},
 	"two_years": {"category": "master","sounds": [{"name": "wbtc:two_years","stream": true}]},
 	"leoteu_on": {"category": "master","sounds": [{"name": "wbtc:leoteu_on","stream": true}]},
-	"leoteu_off": {"category": "master","sounds": [{"name": "wbtc:leoteu_off","stream": true}]}
+	"leoteu_off": {"category": "master","sounds": [{"name": "wbtc:leoteu_off","stream": true}]},
+	"exp": {"category": "master","sounds": [{"name": "wbtc:exp","stream": true}]},
+	"loudbong": {"category": "master","sounds": [{"name": "wbtc:loudbong","stream": true}]}
 }

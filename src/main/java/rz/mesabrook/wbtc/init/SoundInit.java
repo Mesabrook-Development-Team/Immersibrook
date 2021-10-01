@@ -65,6 +65,8 @@ public class SoundInit
 	public static final SoundEvent TWO_YEARS;
 	public static final SoundEvent LEOTEU_ON;
 	public static final SoundEvent LEOTEU_OFF;
+	public static final SoundEvent EXP;
+	public static final SoundEvent LOUDBONG;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -176,6 +178,8 @@ public class SoundInit
 		TWO_YEARS = addSoundsToRegistry("two_years");
 		LEOTEU_ON = addSoundsToRegistry("leoteu_on");
 		LEOTEU_OFF = addSoundsToRegistry("leoteu_off");
+		EXP = addSoundsToRegistry("exp");
+		LOUDBONG = addSoundsToRegistry("loudbong");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -344,6 +348,8 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.TWO_YEARS);
 				event.getRegistry().registerAll(SoundInit.LEOTEU_OFF);
 				event.getRegistry().registerAll(SoundInit.LEOTEU_ON);
+				event.getRegistry().registerAll(SoundInit.EXP);
+				event.getRegistry().registerAll(SoundInit.LOUDBONG);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

@@ -44,7 +44,7 @@ public class MiscBlock extends Block implements IHasModel
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setSoundType(sound);
-		setHardness(8.0F);
+		setHardness(5.0F);
 		setResistance(8.0F);
 		setCreativeTab(tab);
 		setHarvestLevel("pickaxe", 0);

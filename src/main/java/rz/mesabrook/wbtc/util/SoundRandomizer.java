@@ -46,7 +46,7 @@ public class SoundRandomizer
 	{
 		Random chooser = new Random();
 		int snds;
-		snds = chooser.nextInt(9);
+		snds = chooser.nextInt(10);
 
 		switch(snds)
 		{
@@ -76,6 +76,9 @@ public class SoundRandomizer
 				break;
 			case 8:
 				hammerResult = "reverb";
+				break;
+			case 9:
+				hammerResult = "loudbong";
 				break;
 		}
 	}
@@ -114,25 +117,6 @@ public class SoundRandomizer
 		}
 	}
 
-	public static void CatCubeRandomizer()
-	{
-		Random chooser = new Random();
-		int snds;
-		snds = chooser.nextInt(3);
-
-		switch(snds)
-		{
-			case 0:
-				catResult = SoundEvents.ENTITY_CAT_AMBIENT;
-				break;
-			case 1:
-				catResult = SoundEvents.ENTITY_CAT_PURR;
-				break;
-			case 2:
-				catResult = SoundEvents.ENTITY_CAT_PURREOW;
-		}
-	}
-
 	public static void OWOTrophyRandomizer()
 	{
 		Random chooser = new Random();
@@ -157,7 +141,7 @@ public class SoundRandomizer
 	{
 		Random chooser = new Random();
 		int snds;
-		snds = chooser.nextInt(5);
+		snds = chooser.nextInt(4);
 
 		switch(snds)
 		{
@@ -165,16 +149,13 @@ public class SoundRandomizer
 				hammerRightClick = "spree";
 				break;
 			case 1:
-				hammerRightClick = "spree";
-				break;
-			case 2:
-				hammerRightClick = "spree";
-				break;
-			case 3:
 				hammerRightClick = "baka";
 				break;
-			case 4:
+			case 2:
 				hammerRightClick = "mallet";
+				break;
+			case 3:
+				hammerRightClick = "exp";
 				break;
 		}
 	}
