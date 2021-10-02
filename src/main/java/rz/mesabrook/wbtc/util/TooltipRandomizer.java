@@ -1,5 +1,7 @@
 package rz.mesabrook.wbtc.util;
 
+import net.minecraft.util.text.TextComponentTranslation;
+
 import java.util.Random;
 
 public class TooltipRandomizer 
@@ -16,64 +18,64 @@ public class TooltipRandomizer
 		switch(lines)
 		{
 		case 1:
-			result = "A Complicatedly Complex Culinary Creation";
+			result = new TextComponentTranslation("im.tooltip.foodcube.1").getFormattedText();
 			break;
 		case 2:
-			result = "If you eat this cube whole and record it, we'll send you $100";
+			result = new TextComponentTranslation("im.tooltip.foodcube.2").getFormattedText();
 			break;
 		case 3:
-			result = "Don't ask how this is held together...";
+			result = new TextComponentTranslation("im.tooltip.foodcube.3").getFormattedText();
 			break;
 		case 4:
-			result = "If you stare into this block long enough, it'll stare back.";
+			result = new TextComponentTranslation("im.tooltip.foodcube.4").getFormattedText();
 			break;
 		case 5:
-			result = "Don't eat this block, it'll destroy your teeth.";
+			result = new TextComponentTranslation("im.tooltip.foodcube.5").getFormattedText();
 			break;
 		case 6:
-			result = "Made with 95% real meat!";
+			result = new TextComponentTranslation("im.tooltip.foodcube.6").getFormattedText();
 			break;
 		case 7:
-			result = "Why does it have a face?";
+			result = new TextComponentTranslation("im.tooltip.foodcube.7").getFormattedText();
 			break;
 		case 8:
-			result = "Yeet That Meat! MEATMEATMEATMEATMEATMEATMEATMEAT";
+			result = new TextComponentTranslation("im.tooltip.foodcube.8").getFormattedText();
 			break;
 		case 9:
-			result = "Refrigerate After Opening";
+			result = new TextComponentTranslation("im.tooltip.foodcube.9").getFormattedText();
 			break;
 		case 10:
-			result = "Exposure to the Food Cube may cause headaches, fever, upset stomach, and uncontrollable gas.";
+			result = new TextComponentTranslation("im.tooltip.foodcube.10").getFormattedText();
 			break;
 		case 11:
-			result = "Consult with your physician before starting Food Cube.";
+			result = new TextComponentTranslation("im.tooltip.foodcube.11").getFormattedText();
 			break;
 		case 12:
-			result = "They said it couldn't be done, that it was impossible. Yet here we are now.";
+			result = new TextComponentTranslation("im.tooltip.foodcube.12").getFormattedText();
 			break;
 		case 13:
-			result = "Try our other cube product: The Companion Cube!";
+			result = new TextComponentTranslation("im.tooltip.foodcube.13").getFormattedText();
 			break;
 		case 14:
-			result = "Food Cubes make excellent pets!";
+			result = new TextComponentTranslation("im.tooltip.foodcube.14").getFormattedText();
 			break;
 		case 15:
-			result = "Food Cubes are a registered trademark of the RZ Foodstuffs Company. All Rights Reserved.";
+			result = new TextComponentTranslation("im.tooltip.foodcube.15").getFormattedText();
 			break;
 		case 16:
-			result = "Safe for Levo and Dextro consumers!";
+			result = new TextComponentTranslation("im.tooltip.foodcube.16").getFormattedText();
 			break;
 		case 17:
-			result = "c u b e";
+			result = new TextComponentTranslation("im.tooltip.foodcube.17").getFormattedText();
 			break;
 		case 18:
-			result = "This cube took generations of scientists to develop.";
+			result = new TextComponentTranslation("im.tooltip.foodcube.18").getFormattedText();
 			break;
 		case 19:
-			result = "Do not drop the Food Cube. Doing so may hurt its feelings :(";
+			result = new TextComponentTranslation("im.tooltip.foodcube.19").getFormattedText();
 			break;
 		case 20:
-			result = "Proudly Made in Mesabrook!";
+			result = new TextComponentTranslation("im.tooltip.foodcube.20").getFormattedText();
 			break;
 		}
 	}

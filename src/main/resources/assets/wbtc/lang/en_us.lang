@@ -175,6 +175,28 @@ im.tooltip.sign.left=Left Arrow
 im.tooltip.sign.right=Right Arrow
 im.tooltip.sign.diag=Diagonal
 
+//Food Cube Tooltips
+im.tooltip.foodcube.1=A Complicatedly Complex Culinary Creation
+im.tooltip.foodcube.2=If you eat this cube whole and record it, we'll send you $100
+im.tooltip.foodcube.3=Don't ask how this is held together...
+im.tooltip.foodcube.4=If you stare into this block long enough, it'll stare back.
+im.tooltip.foodcube.5=Don't eat this block, it'll destroy your teeth.
+im.tooltip.foodcube.6=Made with 95% real meat!
+im.tooltip.foodcube.7=Why does it have a face?
+im.tooltip.foodcube.8=Yeet That Meat! MEATMEATMEATMEATMEATMEATMEATMEAT
+im.tooltip.foodcube.9=Refrigerate After Opening
+im.tooltip.foodcube.10=Exposure to the Food Cube may cause headaches, fever, upset stomach, and uncontrollable gas.
+im.tooltip.foodcube.11=Consult with your physician before starting Food Cube.
+im.tooltip.foodcube.12=They said it couldn't be done, that it was impossible. Yet here we are now.
+im.tooltip.foodcube.13=Try our other cube product: The Companion Cube!
+im.tooltip.foodcube.14=Food Cubes make excellent pets!
+im.tooltip.foodcube.15=Food Cubes are a registered trademark of the RZ Foodstuffs Company. All Rights Reserved.
+im.tooltip.foodcube.16=Safe for Levo and Dextro consumers!
+im.tooltip.foodcube.17=c u b e
+im.tooltip.foodcube.18=This cube took generations of scientists to develop.
+im.tooltip.foodcube.19=Do not drop the Food Cube. Doing so may hurt its feelings :(
+im.tooltip.foodcube.20=Proudly Made in Mesabrook!
+
 //Items
 item.wood_sod.name=Wooden Sod
 item.stone_sod.name=Stone Sod

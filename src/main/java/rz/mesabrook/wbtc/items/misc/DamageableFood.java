@@ -38,7 +38,7 @@ public class DamageableFood extends Item implements IHasModel
     private final TextComponentTranslation cheeseEat = new TextComponentTranslation("im.truss.eat");
     private static Field setSaturationField = null;
 
-    public itDamageableFood(String name, int amount, float saturation, boolean canFeedDoggos)
+    public DamageableFood(String name, int amount, float saturation, boolean canFeedDoggos)
     {
         setRegistryName(name);
         setUnlocalizedName(name);

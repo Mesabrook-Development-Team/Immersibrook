@@ -35,6 +35,7 @@ import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.SoundRandomizer;
+import rz.mesabrook.wbtc.util.TooltipRandomizer;
 import rz.mesabrook.wbtc.util.config.ModConfig;
 
 import java.sql.Ref;
@@ -46,11 +47,14 @@ public class PlayerEvents
 {
 	private final String PREFIX = "-> ";
 
+	/*
+		MOTD
+	 */
 	@SubscribeEvent
 	public void onPlayerLogin(PlayerLoggedInEvent e)
 	{
 		EntityPlayer player = e.player;
-
+		TooltipRandomizer.ChosenTooltip();
 		if(player instanceof EntityPlayer)
 		{
 			Triggers.trigger(Triggers.WELCOME, player);
@@ -159,6 +163,9 @@ public class PlayerEvents
 		}
 	}
 
+	/*
+		Player Death Events for Server Staff Members.
+	 */
 	@SubscribeEvent
 	public void onPlayerDeath(LivingDeathEvent event)
 	{
@@ -170,56 +177,49 @@ public class PlayerEvents
 			{
 				GameProfile profile = ((EntityPlayerMP) e).getGameProfile();
 
-				PlaySoundPacket packet = new PlaySoundPacket();
-				packet.pos = e.getPosition();
-				packet.soundName = "oof";
-				PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(e.dimension, e.posX, e.posY, e.posZ, 25));
+				if(ModConfig.oofDeathSound)
+				{
+					PlaySoundPacket packet = new PlaySoundPacket();
+					packet.pos = e.getPosition();
+					packet.soundName = "oof";
+					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(e.dimension, e.posX, e.posY, e.posZ, 25));
+				}
 
 				if(profile != null && Reference.RZ_UUID.equals(profile.getId()))
 				{
-					Main.logger.info("RavenholmZombie just got assassinated or died :(");
-					w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(ModItems.RAVEN_BAR, 3)));
+					w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(ModItems.RAVEN_BAR, 1)));
 				}
-
 				if(profile != null && Reference.CSX_UUID.equals(profile.getId()))
 				{
-					Main.logger.info("CSX8600 just got assassinated or died :(");
 					w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(ModItems.IRW_VEST, 1)));
 				}
-
 				if(profile != null && Reference.TD_UUID.equals(profile.getId()))
 				{
-					Main.logger.info("TrainDevil just got assassinated or died :(");
 					w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(ModItems.SERPENT_BAR, 1)));
 				}
-
 				if(profile != null && Reference.ZOE_UUID.equals(profile.getId()))
 				{
-					Main.logger.info("timelady_zoe just got assassinated or died :(");
 					w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(Items.EMERALD, 1)));
 				}
-
 				if(profile != null && Reference.MD_UUID.equals(profile.getId()))
 				{
-					Main.logger.info("MineDouble just got assassinated or died :(");
-					w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(Items.WATER_BUCKET, 1)));
+					w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(ModItems.FIRE_HELMET_WHITE, 1)));
 				}
-
 				if(profile != null && Reference.SVV_UUID.equals(profile.getId()))
 				{
-					Main.logger.info("StarVicVader just got assassinated or died :(");
 					w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(Items.FIRE_CHARGE, 1)));
 				}
-
 				if(profile != null && Reference.LW_UUID.equals(profile.getId()))
 				{
-					Main.logger.info("lilWeece just got assassinated or died :(");
 					w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(Items.STICK, 1)));
 				}
 			}
 		}
 	}
 
+	/*
+		This block of code is responsible for making cakes produce particles and eating sounds when right-clicked.
+	 */
 	@SubscribeEvent
 	public void onBlockRightClick(PlayerInteractEvent.RightClickBlock evt)
 	{
