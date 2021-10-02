@@ -44,7 +44,7 @@ public class SerpentBar extends Item implements IHasModel
     private final TextComponentTranslation sugarWarn = new TextComponentTranslation("im.sugwarn");
     private static Field setSaturationField = null;
 
-    public SerpentBar(String name, int stackSize, int amount, float saturation, boolean canFeedDoggos)
+    public SerpentBar(String name, int amount, float saturation, boolean canFeedDoggos)
     {
         setRegistryName(name);
         setUnlocalizedName(name);

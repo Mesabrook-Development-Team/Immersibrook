@@ -94,7 +94,7 @@ public class ModItems
 	public static final Item PLASTIC_BLACK = new ItemPlasticIngot("black_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PLASTIC_GLOWING = new ItemPlasticIngot("glowing_plastic", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 
-	// Meme Records
+	// Music Discs
 	public static final Item BLANK_DISC = new MiscItem("blank_vinyl",  16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item DISC_AMALTHEA = new MemeRecord("amalthea", SoundInit.AMALTHEA);
 	public static final Item DISC_NYAN = new MemeRecord("nyan", SoundInit.NYAN);
@@ -110,6 +110,9 @@ public class ModItems
 	public static final Item DISC_XP = new MemeRecord("ms_xp", SoundInit.MS_XP);
 	public static final Item DISC_COOKINg = new MemeRecord("cooking_music", SoundInit.COOKING);
 	public static final Item DOOTER = new ItemDooter("dooter");
+	public static final Item DISC_SPOOKY = new MemeRecord("disc_spooky", SoundInit.SPOOKY);
+	public static final Item DISC_RITZ = new MemeRecord("disc_ritz", SoundInit.RITZ);
+	public static final Item DISC_HL3 = new MemeRecord("disc_pumpkin", SoundInit.HL3);
 
 	// First Aid Kit
 	public static final Item FIRST_AID_KIT = new ItemFirstAidKit("first_aid", Main.IMMERSIBROOK_MAIN);
@@ -236,14 +239,14 @@ public class ModItems
 	public static final Item LOLIPOP_CHOC = new ImmersiFood("chocolate_lollipop", 32,0, 5, 10, false);
 	public static final Item LOLIPOP_GRAPE = new ImmersiFood("grape_lollipop", 32,0, 5, 10, false);
 	public static final Item CANDY_CORN = new ImmersiFood("candy_corn", 64,0, 3, 10, false);
-	public static final Item RAVEN_BAR = new DamageableFood("chocolate_bar_raven",64, 20, 3F,  false);
-	public static final Item KLUSS_BAR = new DamageableFood("chocolate_bar_klussbar",64, 5, 3F,  false);
-	public static final Item SERPENT_BAR = new SerpentBar("chocolate_bar_serpent",64, 1, 10F,  false);
-	public static final Item STRAWBERRY_BAR = new DamageableFood("chocolate_bar_strawberry",64, 6, 10F,  false);
-	public static final Item CARAMEL_BAR = new DamageableFood("chocolate_bar_caramel", 64, 6, 10F, false);
-	public static final Item NUT_BAR = new DamageableFood("chocolate_bar_nut", 64, 6, 10F, false);
-	public static final Item KRISP_BAR = new DamageableFood("chocolate_bar_krisp", 64, 4, 10F, false);
-	public static final Item FOOD_TRUSS = new DamageableFood("cheese_truss_food", 64, 4, 10F, true);
+	public static final Item RAVEN_BAR = new DamageableFood("chocolate_bar_raven", 20, 3F,  false);
+	public static final Item KLUSS_BAR = new DamageableFood("chocolate_bar_klussbar", 5, 3F,  false);
+	public static final Item SERPENT_BAR = new SerpentBar("chocolate_bar_serpent",10,10F, false);
+	public static final Item STRAWBERRY_BAR = new DamageableFood("chocolate_bar_strawberry", 6, 10F,  false);
+	public static final Item CARAMEL_BAR = new DamageableFood("chocolate_bar_caramel", 6, 10F, false);
+	public static final Item NUT_BAR = new DamageableFood("chocolate_bar_nut", 6, 10F, false);
+	public static final Item KRISP_BAR = new DamageableFood("chocolate_bar_krisp", 4, 10F, false);
+	public static final Item FOOD_TRUSS = new DamageableFood("cheese_truss_food", 4, 10F, true);
 	public static final Item WHITE_CHOCOLATE = new ImmersiFood("white_chocolate", 64, 0, 5, 5F, false);
 	public static final Item WHITE_TRUFFLE = new ImmersiFood("truffle_white", 64, 0, 5, 5F, false);
 	public static final Item MILK_TRUFFLE = new ImmersiFood("truffle_milk", 64, 0, 5, 5F, false);
@@ -275,11 +278,6 @@ public class ModItems
 	public static final Item SUGAR_LIME = new MiscItem("sugar_lime", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item SUGAR_PINK = new MiscItem("sugar_pink", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item SUGAR_YELLOW = new MiscItem("sugar_yellow", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-
-	// Holiday Records
-	public static final Item DISC_SPOOKY = new MemeRecord("disc_spooky", SoundInit.SPOOKY);
-	public static final Item DISC_RITZ = new MemeRecord("disc_ritz", SoundInit.RITZ);
-	public static final Item DISC_HL3 = new MemeRecord("disc_pumpkin", SoundInit.HL3);
 
 	// Communications
 	public static final Item RADIO = new MiscItem("radio", 1).setCreativeTab(Main.IMMERSIBROOK_MAIN);

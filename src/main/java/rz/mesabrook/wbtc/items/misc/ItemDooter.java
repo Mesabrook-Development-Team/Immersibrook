@@ -33,7 +33,6 @@ public class ItemDooter extends Item implements IHasModel
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand)
     {
         ItemStack item = player.getHeldItem(hand);
-        player.addItemStackToInventory(new ItemStack(ItemRegistry.mushroomketchupItem, 1));
         if(player instanceof EntityPlayer)
         {
             Triggers.trigger(Triggers.DOOT, player);
