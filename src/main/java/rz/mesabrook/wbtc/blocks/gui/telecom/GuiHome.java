@@ -1,8 +1,5 @@
 package rz.mesabrook.wbtc.blocks.gui.telecom;
 
-import java.io.IOException;
-import java.util.Optional;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.item.ItemStack;
@@ -13,6 +10,8 @@ import rz.mesabrook.wbtc.net.telecom.PhoneQueryPacket;
 import rz.mesabrook.wbtc.util.PhoneWallpaperRandomizer;
 import rz.mesabrook.wbtc.util.handlers.ClientSideHandlers.TelecomClientHandlers;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
+
+import java.io.IOException;
 
 @SideOnly(Side.CLIENT)
 public class GuiHome extends GuiPhoneBase {

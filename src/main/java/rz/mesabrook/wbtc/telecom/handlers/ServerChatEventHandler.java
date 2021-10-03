@@ -1,8 +1,5 @@
 package rz.mesabrook.wbtc.telecom.handlers;
 
-import java.lang.reflect.Field;
-import java.util.Arrays;
-
 import net.minecraft.block.BlockDirt;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.NetHandlerPlayServer;
@@ -10,10 +7,12 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.event.ServerChatEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.telecom.CallManager;
 import rz.mesabrook.wbtc.util.config.ModConfig;
+
+import java.lang.reflect.Field;
+import java.util.Arrays;
 
 @EventBusSubscriber
 public class ServerChatEventHandler {

@@ -1,14 +1,14 @@
 package rz.mesabrook.wbtc.advancements;
 
 import com.google.common.collect.Lists;
-import rz.mesabrook.wbtc.Main;
-import rz.mesabrook.wbtc.util.Reference;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.ICriterionTrigger;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
+import rz.mesabrook.wbtc.Main;
+import rz.mesabrook.wbtc.util.Reference;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

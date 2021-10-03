@@ -1,8 +1,5 @@
 package rz.mesabrook.wbtc.init;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
@@ -14,6 +11,9 @@ import rz.mesabrook.wbtc.items.tools.ItemBanHammer;
 import rz.mesabrook.wbtc.items.weapons.ItemWeapon;
 import rz.mesabrook.wbtc.util.ArmorMaterialRegistry;
 import rz.mesabrook.wbtc.util.ToolMaterialRegistry;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModItems
 {

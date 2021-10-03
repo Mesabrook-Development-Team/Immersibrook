@@ -3,26 +3,7 @@ package rz.mesabrook.wbtc.util.handlers;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 import rz.mesabrook.wbtc.net.*;
-import rz.mesabrook.wbtc.net.telecom.AcceptCallPacket;
-import rz.mesabrook.wbtc.net.telecom.ActivateChooseNumberPacket;
-import rz.mesabrook.wbtc.net.telecom.ActivateNoReceptionPacket;
-import rz.mesabrook.wbtc.net.telecom.ActivateNumberChosenPacket;
-import rz.mesabrook.wbtc.net.telecom.ActivatePhonePacket;
-import rz.mesabrook.wbtc.net.telecom.ActivationCompletePacket;
-import rz.mesabrook.wbtc.net.telecom.CallAcceptedPacket;
-import rz.mesabrook.wbtc.net.telecom.CallRejectedPacket;
-import rz.mesabrook.wbtc.net.telecom.DisconnectCallPacket;
-import rz.mesabrook.wbtc.net.telecom.DisconnectedCallNotificationPacket;
-import rz.mesabrook.wbtc.net.telecom.GetReceptionStrengthPacket;
-import rz.mesabrook.wbtc.net.telecom.GetStrengthResponsePacket;
-import rz.mesabrook.wbtc.net.telecom.IncomingCallPacket;
-import rz.mesabrook.wbtc.net.telecom.InitiateCallPacket;
-import rz.mesabrook.wbtc.net.telecom.MergeCallPacket;
-import rz.mesabrook.wbtc.net.telecom.OutgoingCallResponsePacket;
-import rz.mesabrook.wbtc.net.telecom.PhoneQueryPacket;
-import rz.mesabrook.wbtc.net.telecom.PhoneQueryResponsePacket;
-import rz.mesabrook.wbtc.net.telecom.PhoneTossedPacket;
-import rz.mesabrook.wbtc.net.telecom.RejectCallPacket;
+import rz.mesabrook.wbtc.net.telecom.*;
 import rz.mesabrook.wbtc.util.Reference;
 
 public class PacketHandler 

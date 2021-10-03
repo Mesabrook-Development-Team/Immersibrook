@@ -1,6 +1,5 @@
 package rz.mesabrook.wbtc.util;
 
-import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundEvent;
 import rz.mesabrook.wbtc.init.SoundInit;
 

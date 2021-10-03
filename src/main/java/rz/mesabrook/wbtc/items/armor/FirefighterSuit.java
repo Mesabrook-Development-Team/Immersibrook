@@ -16,7 +16,6 @@ import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.util.IHasModel;
 
 import javax.annotation.Nullable;
-import javax.xml.soap.Text;
 import java.util.List;
 
 public class FirefighterSuit extends ItemArmor implements IHasModel

@@ -25,7 +25,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.Main;
@@ -35,7 +34,6 @@ import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.items.misc.FoodBoxItemBlock;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.ModUtils;
-import rz.mesabrook.wbtc.util.Reference;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;

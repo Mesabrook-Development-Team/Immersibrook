@@ -1,13 +1,13 @@
 package rz.mesabrook.wbtc.util.saveData;
 
-import java.util.HashSet;
-import java.util.Random;
-
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.WorldSavedData;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.config.ModConfig;
+
+import java.util.HashSet;
+import java.util.Random;
 
 public class PhoneNumberData extends WorldSavedData {
 	

@@ -1,7 +1,5 @@
 package rz.mesabrook.wbtc.proxy;
 
-import org.lwjgl.input.Keyboard;
-
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.item.Item;
@@ -9,6 +7,7 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import org.lwjgl.input.Keyboard;
 import rz.mesabrook.wbtc.blocks.te.TileEntityPlaque;
 import rz.mesabrook.wbtc.blocks.te.TileEntityPlaqueRenderer;
 import rz.mesabrook.wbtc.util.handlers.ClientSideHandlers;

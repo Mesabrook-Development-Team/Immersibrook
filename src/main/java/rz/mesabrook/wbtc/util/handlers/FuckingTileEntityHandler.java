@@ -7,8 +7,6 @@ import rz.mesabrook.wbtc.blocks.te.TileEntityPlaque;
 import rz.mesabrook.wbtc.blocks.te.TileEntityTrashBin;
 import rz.mesabrook.wbtc.util.Reference;
 
-import java.sql.Ref;
-
 public class FuckingTileEntityHandler 
 {
 	public static void registerTileEntites()

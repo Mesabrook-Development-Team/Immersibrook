@@ -5,8 +5,8 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import rz.mesabrook.wbtc.net.telecom.PhoneQueryPacket;
-import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 import rz.mesabrook.wbtc.util.handlers.ClientSideHandlers.TelecomClientHandlers;
+import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 public class GuiCallEnd extends GuiPhoneBase {
 

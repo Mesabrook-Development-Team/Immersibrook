@@ -1,7 +1,5 @@
 package rz.mesabrook.wbtc.blocks.gui;
 
-import java.io.IOException;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -10,6 +8,8 @@ import net.minecraft.util.EnumHand;
 import net.minecraftforge.fml.client.config.GuiButtonExt;
 import rz.mesabrook.wbtc.net.FoodBoxPacket;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
+
+import java.io.IOException;
 
 public class GuiFoodBox extends GuiScreen
 {

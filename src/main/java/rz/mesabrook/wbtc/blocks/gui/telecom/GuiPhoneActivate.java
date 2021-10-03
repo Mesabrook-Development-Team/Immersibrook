@@ -1,25 +1,21 @@
 package rz.mesabrook.wbtc.blocks.gui.telecom;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
-import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.items.misc.ItemPhone;
 import rz.mesabrook.wbtc.net.telecom.ActivateNumberChosenPacket;
 import rz.mesabrook.wbtc.net.telecom.ActivatePhonePacket;
 import rz.mesabrook.wbtc.util.GuiUtil;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
+
+import java.io.IOException;
 
 public class GuiPhoneActivate extends GuiScreen {
 	

@@ -1,30 +1,27 @@
 package rz.mesabrook.wbtc.util.handlers;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.Sound;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import rz.mesabrook.wbtc.init.SoundInit;
-import rz.mesabrook.wbtc.items.armor.FaceMasks;
 import rz.mesabrook.wbtc.items.armor.NightVisionGoggles;
 import rz.mesabrook.wbtc.items.armor.PoliceHelmet;
 import rz.mesabrook.wbtc.items.armor.SafetyVest;
 import rz.mesabrook.wbtc.items.tools.ItemBanHammer;
-import rz.mesabrook.wbtc.net.*;
+import rz.mesabrook.wbtc.net.NVTogglePacket;
+import rz.mesabrook.wbtc.net.PoliceEffectsTogglePacket;
+import rz.mesabrook.wbtc.net.SoundRandomizerPacket;
+import rz.mesabrook.wbtc.net.VestTogglePacket;
 import rz.mesabrook.wbtc.proxy.ClientProxy;
-import rz.mesabrook.wbtc.util.SoundRandomizer;
 
 @EventBusSubscriber(Side.CLIENT)
 public class KeyEventHandler

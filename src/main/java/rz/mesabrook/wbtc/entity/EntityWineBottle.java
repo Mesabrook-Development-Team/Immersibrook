@@ -1,6 +1,5 @@
 package rz.mesabrook.wbtc.entity;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.PotionTypes;

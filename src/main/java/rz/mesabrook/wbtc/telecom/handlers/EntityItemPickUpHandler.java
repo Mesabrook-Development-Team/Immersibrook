@@ -3,9 +3,6 @@ package rz.mesabrook.wbtc.telecom.handlers;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import rz.mesabrook.wbtc.items.misc.ItemPhone;
-import rz.mesabrook.wbtc.net.telecom.PhoneQueryPacket;
-import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 @EventBusSubscriber
 public class EntityItemPickUpHandler {

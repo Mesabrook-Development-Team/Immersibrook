@@ -1,7 +1,5 @@
 package rz.mesabrook.wbtc.blocks.gui.telecom;
 
-import java.io.IOException;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -15,6 +13,8 @@ import rz.mesabrook.wbtc.net.telecom.GetReceptionStrengthPacket;
 import rz.mesabrook.wbtc.util.PhoneWallpaperRandomizer;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
+
+import java.io.IOException;
 
 @SideOnly(Side.CLIENT)
 public abstract class GuiPhoneBase extends GuiScreen {

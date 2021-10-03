@@ -1,11 +1,5 @@
 package rz.mesabrook.wbtc.items.misc;
 
-import java.lang.reflect.Field;
-import java.util.List;
-import java.util.Random;
-
-import javax.annotation.Nullable;
-
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -29,11 +23,13 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModItems;
-import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.util.IHasModel;
-import rz.mesabrook.wbtc.util.SoundRandomizer;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
+
+import javax.annotation.Nullable;
+import java.lang.reflect.Field;
+import java.util.List;
 
 public class SerpentBar extends Item implements IHasModel
 {

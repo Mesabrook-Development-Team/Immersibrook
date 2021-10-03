@@ -1,19 +1,7 @@
 package rz.mesabrook.wbtc.telecom;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Optional;
-import java.util.PrimitiveIterator.OfInt;
-import java.util.Random;
-import java.util.UUID;
-import java.util.stream.IntStream;
-
 import com.google.common.collect.ImmutableList;
-
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.Tuple;
@@ -25,20 +13,18 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import rz.mesabrook.wbtc.items.misc.ItemPhone;
-import rz.mesabrook.wbtc.items.misc.ItemPhone.NBTData;
-import rz.mesabrook.wbtc.net.telecom.CallAcceptedPacket;
-import rz.mesabrook.wbtc.net.telecom.CallRejectedPacket;
-import rz.mesabrook.wbtc.net.telecom.DisconnectedCallNotificationPacket;
-import rz.mesabrook.wbtc.net.telecom.IncomingCallPacket;
-import rz.mesabrook.wbtc.net.telecom.OutgoingCallResponsePacket;
+import rz.mesabrook.wbtc.net.telecom.*;
 import rz.mesabrook.wbtc.net.telecom.OutgoingCallResponsePacket.States;
-import rz.mesabrook.wbtc.net.telecom.PhoneQueryResponsePacket;
 import rz.mesabrook.wbtc.net.telecom.PhoneQueryResponsePacket.ResponseTypes;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.config.ModConfig;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 import rz.mesabrook.wbtc.util.saveData.AntennaData;
 import rz.mesabrook.wbtc.util.saveData.PhoneNumberData;
+
+import java.util.*;
+import java.util.PrimitiveIterator.OfInt;
+import java.util.stream.IntStream;
 
 public class CallManager {
 	

@@ -1,10 +1,5 @@
 package rz.mesabrook.wbtc.util.handlers;
 
-import java.util.Optional;
-
-import com.google.common.collect.Comparators;
-
-import it.unimi.dsi.fastutil.ints.IntComparators;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

@@ -1,7 +1,6 @@
 package rz.mesabrook.wbtc.items.misc;
 
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.item.EntityExpBottle;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;

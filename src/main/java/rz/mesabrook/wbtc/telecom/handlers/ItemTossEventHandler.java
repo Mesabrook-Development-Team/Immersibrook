@@ -4,7 +4,6 @@ import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import rz.mesabrook.wbtc.items.misc.ItemPhone;
-import rz.mesabrook.wbtc.items.misc.ItemPhone.NBTData;
 import rz.mesabrook.wbtc.util.handlers.ClientSideHandlers.TelecomClientHandlers;
 
 @EventBusSubscriber

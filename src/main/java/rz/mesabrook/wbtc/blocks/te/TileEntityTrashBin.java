@@ -2,7 +2,6 @@ package rz.mesabrook.wbtc.blocks.te;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
@@ -13,7 +12,6 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import rz.mesabrook.wbtc.blocks.container.ContainerTrashBin;
-import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.util.Reference;
 

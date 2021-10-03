@@ -1,8 +1,5 @@
 package rz.mesabrook.wbtc.blocks;
 
-import java.util.List;
-import javax.annotation.Nullable;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
@@ -29,6 +26,9 @@ import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.util.IHasModel;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 public class SignStand extends Block implements IHasModel
 {

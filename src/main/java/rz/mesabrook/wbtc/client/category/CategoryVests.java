@@ -1,7 +1,6 @@
 package rz.mesabrook.wbtc.client.category;
 
 import net.minecraft.item.ItemStack;
-import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
 
 /**

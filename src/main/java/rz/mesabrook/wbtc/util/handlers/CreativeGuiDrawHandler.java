@@ -1,5 +1,6 @@
 package rz.mesabrook.wbtc.util.handlers;
 
+import com.google.common.collect.Lists;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
@@ -25,8 +26,6 @@ import rz.mesabrook.wbtc.tab.TabImmersibrook;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
-
-import com.google.common.collect.Lists;
 /**
  * Original Author: MrCrayfish
  * Adapted by RavenholmZombie for use in Immersibrook.

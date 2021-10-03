@@ -1,6 +1,5 @@
 package rz.mesabrook.wbtc.items.misc;
 
-import com.pam.harvestcraft.item.ItemRegistry;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

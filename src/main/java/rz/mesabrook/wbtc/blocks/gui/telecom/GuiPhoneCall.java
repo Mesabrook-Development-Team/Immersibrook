@@ -1,9 +1,5 @@
 package rz.mesabrook.wbtc.blocks.gui.telecom;
 
-import java.io.IOException;
-
-import org.lwjgl.input.Keyboard;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -15,10 +11,13 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
+import org.lwjgl.input.Keyboard;
 import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.net.telecom.InitiateCallPacket;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
+
+import java.io.IOException;
 
 public class GuiPhoneCall extends GuiPhoneBase {
 

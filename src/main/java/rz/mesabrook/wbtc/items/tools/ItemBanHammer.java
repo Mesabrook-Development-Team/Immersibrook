@@ -1,8 +1,6 @@
 package rz.mesabrook.wbtc.items.tools;
 
-import net.minecraft.client.audio.Sound;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemPickaxe;
@@ -12,27 +10,22 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.input.Keyboard;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.net.PlaySoundPacket;
-import rz.mesabrook.wbtc.proxy.ClientProxy;
 import rz.mesabrook.wbtc.util.DamageSourceHammer;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.SoundRandomizer;
 import rz.mesabrook.wbtc.util.ToolMaterialRegistry;
-import rz.mesabrook.wbtc.util.config.ModConfig;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 import javax.annotation.Nullable;
-import javax.xml.soap.Text;
 import java.util.List;
 
 public class ItemBanHammer extends ItemPickaxe implements IHasModel

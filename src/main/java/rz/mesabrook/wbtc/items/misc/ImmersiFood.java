@@ -4,7 +4,6 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentString;
@@ -21,7 +20,6 @@ import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 import javax.annotation.Nullable;
-import javax.xml.soap.Text;
 import java.util.List;
 
 public class ImmersiFood extends ItemFood implements IHasModel

@@ -1,14 +1,12 @@
 package rz.mesabrook.wbtc.net.telecom;
 
 import io.netty.buffer.ByteBuf;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import rz.mesabrook.wbtc.telecom.CallManager;
-import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 public class DisconnectCallPacket implements IMessage {
 

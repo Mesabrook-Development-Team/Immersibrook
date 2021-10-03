@@ -1,11 +1,5 @@
 package rz.mesabrook.wbtc.blocks;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import javax.annotation.Nullable;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.MapColor;
@@ -39,6 +33,11 @@ import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.items.misc.PlaqueItemBlock;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.ModUtils;
+
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class BlockPlaque extends Block implements IHasModel
 {

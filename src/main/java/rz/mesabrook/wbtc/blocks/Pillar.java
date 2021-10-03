@@ -1,6 +1,5 @@
 package rz.mesabrook.wbtc.blocks;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;

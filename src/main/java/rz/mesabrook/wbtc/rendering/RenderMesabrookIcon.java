@@ -9,8 +9,8 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.entity.EntityMesabrookM;
+import rz.mesabrook.wbtc.init.ModItems;
 
 public class RenderMesabrookIcon extends Render<EntityMesabrookM>
 {

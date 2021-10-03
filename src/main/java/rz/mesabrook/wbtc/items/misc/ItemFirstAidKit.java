@@ -1,9 +1,5 @@
 package rz.mesabrook.wbtc.items.misc;
 
-import java.util.List;
-
-import javax.annotation.Nullable;
-
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -29,6 +25,9 @@ import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.SoundRandomizer;
 import rz.mesabrook.wbtc.util.config.ModConfig;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 public class ItemFirstAidKit extends Item implements IHasModel
 {	

@@ -1,6 +1,5 @@
 package rz.mesabrook.wbtc.items.record;
 
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemRecord;
 import net.minecraft.util.SoundEvent;
 import rz.mesabrook.wbtc.Main;

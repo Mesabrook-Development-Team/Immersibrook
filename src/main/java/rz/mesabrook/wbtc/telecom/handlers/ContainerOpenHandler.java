@@ -1,7 +1,5 @@
 package rz.mesabrook.wbtc.telecom.handlers;
 
-import java.util.HashMap;
-
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -17,6 +15,8 @@ import rz.mesabrook.wbtc.items.misc.ItemPhone;
 import rz.mesabrook.wbtc.net.telecom.PhoneTossedPacket;
 import rz.mesabrook.wbtc.telecom.CallManager;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
+
+import java.util.HashMap;
 
 @EventBusSubscriber
 public class ContainerOpenHandler {

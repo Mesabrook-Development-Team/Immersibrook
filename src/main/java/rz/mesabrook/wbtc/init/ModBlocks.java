@@ -1,8 +1,5 @@
 package rz.mesabrook.wbtc.init;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
@@ -13,6 +10,9 @@ import rz.mesabrook.wbtc.blocks.food.FoodBlock;
 import rz.mesabrook.wbtc.blocks.metro.TicketMachine;
 import rz.mesabrook.wbtc.blocks.stairs.MiscStairs;
 import rz.mesabrook.wbtc.util.ModUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModBlocks 
 {

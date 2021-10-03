@@ -1,10 +1,6 @@
 package rz.mesabrook.wbtc.cmds;
 
-import java.util.Collections;
-import java.util.List;
-
 import com.google.common.collect.Lists;
-
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -15,6 +11,9 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import rz.mesabrook.wbtc.cmds.util.CustomTeleporter;
 import rz.mesabrook.wbtc.util.Reference;
+
+import java.util.Collections;
+import java.util.List;
 
 public class CommandTeleportDimension extends CommandBase
 {

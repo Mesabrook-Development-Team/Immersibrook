@@ -1,12 +1,5 @@
 package rz.mesabrook.wbtc.util.handlers;
 
-import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.ISound.AttenuationType;
@@ -25,23 +18,20 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
-import rz.mesabrook.wbtc.blocks.gui.telecom.GuiCallEnd;
-import rz.mesabrook.wbtc.blocks.gui.telecom.GuiEmptyPhone;
-import rz.mesabrook.wbtc.blocks.gui.telecom.GuiHome;
-import rz.mesabrook.wbtc.blocks.gui.telecom.GuiIncomingCall;
-import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneActivate;
+import rz.mesabrook.wbtc.blocks.gui.telecom.*;
 import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneActivate.ActivationScreens;
-import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneBase;
-import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneCall;
-import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneCalling;
-import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneConnected;
-import rz.mesabrook.wbtc.blocks.gui.telecom.SignalStrengths;
 import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.net.telecom.PhoneQueryResponsePacket;
 import rz.mesabrook.wbtc.net.telecom.PhoneQueryResponsePacket.ResponseTypes;
 import rz.mesabrook.wbtc.util.Reference;
-import rz.mesabrook.wbtc.util.handlers.ClientSideHandlers.TelecomClientHandlers;
+
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map.Entry;
+import java.util.Optional;
+import java.util.function.Consumer;
 
 @SideOnly(Side.CLIENT)
 public class ClientSideHandlers 
