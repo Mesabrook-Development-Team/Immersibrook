@@ -12,6 +12,7 @@ import rz.mesabrook.wbtc.util.handlers.ClientSideHandlers;
 public class PlaySoundPacket implements IMessage
 {
 	public BlockPos pos;
+	public String modID = "wbtc";
 	public String soundName;
 	public float volume = 1F;
 	public float pitch = 1F;
@@ -20,6 +21,7 @@ public class PlaySoundPacket implements IMessage
 	public void fromBytes(ByteBuf buf) 
 	{
 		pos = BlockPos.fromLong(buf.readLong());
+		modID = ByteBufUtils.readUTF8String(buf);
 		soundName = ByteBufUtils.readUTF8String(buf);
 		volume = buf.readFloat();
 		pitch = buf.readFloat();
@@ -29,6 +31,7 @@ public class PlaySoundPacket implements IMessage
 	public void toBytes(ByteBuf buf) 
 	{
 		buf.writeLong(pos.toLong());
+		ByteBufUtils.writeUTF8String(buf, modID);
 		ByteBufUtils.writeUTF8String(buf, soundName);
 		buf.writeFloat(volume);
 		buf.writeFloat(pitch);

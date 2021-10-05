@@ -95,6 +95,7 @@ public class PoliceHelmet extends Item implements IHasModel
             player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 10, 1, true, false));
             player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 10, 2, true, false));
             player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 10, 1, true, false));
+            player.heal(0.1F);
         }
         else if(player instanceof EntityPlayer && !effectsActive)
         {

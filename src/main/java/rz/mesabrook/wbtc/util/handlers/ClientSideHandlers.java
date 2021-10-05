@@ -67,7 +67,7 @@ public class ClientSideHandlers
 		EntityPlayer player = Minecraft.getMinecraft().player;
 		WorldClient world = Minecraft.getMinecraft().world;
 
-		ResourceLocation soundLocation = new ResourceLocation(Reference.MODID, message.soundName);
+		ResourceLocation soundLocation = new ResourceLocation(message.modID, message.soundName);
 		IForgeRegistry<SoundEvent> soundRegistry = GameRegistry.findRegistry(SoundEvent.class);
 		SoundEvent sound = soundRegistry.getValue(soundLocation);
 		

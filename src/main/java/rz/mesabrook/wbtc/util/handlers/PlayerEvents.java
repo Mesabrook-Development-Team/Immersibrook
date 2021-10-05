@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockCake;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -51,6 +52,7 @@ public class PlayerEvents
 	public void onPlayerLogin(PlayerLoggedInEvent e)
 	{
 		EntityPlayer player = e.player;
+		World w = e.player.world;
 		TooltipRandomizer.ChosenTooltip();
 		if(player instanceof EntityPlayer)
 		{
@@ -62,6 +64,12 @@ public class PlayerEvents
 				packet.pos = player.getPosition();
 				packet.soundName = "kekw";
 				PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+			}
+
+			if(LocalDate.now().getMonthValue() == 10)
+			{
+				w.playSound(player, player.getPosition(), SoundEvents.ENTITY_WITCH_AMBIENT, SoundCategory.BLOCKS, 1.0F, 1.0F);
+				w.addWeatherEffect(new EntityLightningBolt(player.world, player.posX, player.posY, player.posZ, true));
 			}
 		}
 
