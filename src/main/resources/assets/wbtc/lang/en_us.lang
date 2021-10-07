@@ -1242,6 +1242,7 @@ item.disc_spooky.name=Music Disc
 item.disc_ritz.name=Music Disc
 item.disc_pumpkin.name=Music Disc
 item.cooking_music.name=Music Disc
+item.memory.name=Music Disc
 
 //Record Descriptions
 item.record.amalthea.desc=Amalthea
@@ -1260,6 +1261,7 @@ item.record.disc_spooky.desc=ESN Productions - Horror Ambience
 item.record.disc_ritz.desc=Taco - Puttin' on the Ritz (Re-Recorded)
 item.record.disc_pumpkin.desc=FreeUseMusic - Halloween
 item.record.cooking_music.desc=RavenholmZombie - Calm Cooking Music
+item.record.memory.desc=Bonnie - It's just a Burning Memory (8-bit)
 
 //Enchantments
 enchantment.thunder=The Power of Thor
@@ -1543,3 +1545,35 @@ tile.box_small.name=Small Shipping Box
 tile.box_medium.name=Medium Shipping Box
 tile.box_large.name=Large Shipping Box
 tile.box_xl.name=Extra Large Shipping Box
+
+//Stamp Names
+item.stamp_ir_1.name=Collectable Stamp
+item.stamp_ir_2.name=Collectable Stamp
+item.stamp_ir_3.name=Collectable Stamp
+item.stamp_rc_1.name=Collectable Stamp
+item.stamp_rc_2.name=Collectable Stamp
+item.stamp_rc_3.name=Collectable Stamp
+item.stamp_rc_4.name=Collectable Stamp
+item.stamp_rc_5.name=Collectable Stamp
+item.stamp_rc_6.name=Collectable Stamp
+item.stamp_sc_1.name=Collectable Stamp
+item.stamp_cb_1.name=Collectable Stamp
+item.stamp_cb_2.name=Collectable Stamp
+item.stamp_cb_3.name=Collectable Stamp
+item.stamp_cb_4.name=Collectable Stamp
+item.stamp_av_1.name=Collectable Stamp
+item.stamp_av_2.name=Collectable Stamp
+item.stamp_av_3.name=Collectable Stamp
+item.stamp_av_4.name=Collectable Stamp
+item.stamp_av_5.name=Collectable Stamp
+item.stamp_cl_1.name=Collectable Stamp
+item.stamp_cl_2.name=Collectable Stamp
+
+//Stamp Tooltips
+im.tooltip.stamp.series=Cities Series
+im.tooltip.stamp.ir=Iron River
+im.tooltip.stamp.rc=Ravenholm City
+im.tooltip.stamp.sc=Sodor City
+im.tooltip.stamp.cb=Crystal Beach
+im.tooltip.stamp.av=Autumn Valley
+im.tooltip.stamp.cl=Clayton

@@ -87,6 +87,29 @@ public class CategoryHousehold extends AbstractCategory
 		add(ModBlocks.SHIPPING_BOX_MEDIUM);
 		add(ModBlocks.SHIPPING_BOX_LARGE);
 		add(ModBlocks.SHIPPING_BOX_CHUNGUS);
+
+		// Collectable Stamps
+		add(ModItems.IR_STAMP_1);
+		add(ModItems.IR_STAMP_2);
+		add(ModItems.IR_STAMP_3);
+		add(ModItems.RC_STAMP_1);
+		add(ModItems.RC_STAMP_2);
+		add(ModItems.RC_STAMP_3);
+		add(ModItems.RC_STAMP_4);
+		add(ModItems.RC_STAMP_5);
+		add(ModItems.RC_STAMP_6);
+		add(ModItems.SC_STAMP_1);
+		add(ModItems.CB_STAMP_1);
+		add(ModItems.CB_STAMP_2);
+		add(ModItems.CB_STAMP_3);
+		add(ModItems.CB_STAMP_4);
+		add(ModItems.AV_STAMP_1);
+		add(ModItems.AV_STAMP_2);
+		add(ModItems.AV_STAMP_3);
+		add(ModItems.AV_STAMP_4);
+		add(ModItems.AV_STAMP_5);
+		add(ModItems.CL_STAMP_1);
+		add(ModItems.CL_STAMP_2);
 	}
 
 }

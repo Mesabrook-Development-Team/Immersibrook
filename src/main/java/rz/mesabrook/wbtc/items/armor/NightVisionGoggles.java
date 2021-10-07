@@ -1,6 +1,8 @@
 package rz.mesabrook.wbtc.items.armor;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -81,7 +83,7 @@ public class NightVisionGoggles extends Item implements IHasModel
 	{
 		Main.proxy.registerItemRenderer(this, 0);
 	}
-	
+
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack)
 	{

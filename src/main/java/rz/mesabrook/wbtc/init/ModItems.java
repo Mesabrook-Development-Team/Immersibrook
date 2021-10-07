@@ -113,6 +113,7 @@ public class ModItems
 	public static final Item DISC_SPOOKY = new MemeRecord("disc_spooky", SoundInit.SPOOKY);
 	public static final Item DISC_RITZ = new MemeRecord("disc_ritz", SoundInit.RITZ);
 	public static final Item DISC_HL3 = new MemeRecord("disc_pumpkin", SoundInit.HL3);
+	public static final Item DISC_MEMORY = new MemeRecord("memory", SoundInit.MEMORY);
 
 	// First Aid Kit
 	public static final Item FIRST_AID_KIT = new ItemFirstAidKit("first_aid", Main.IMMERSIBROOK_MAIN);
@@ -336,4 +337,27 @@ public class ModItems
 	public static final Item ROD_NICKEL = new MiscItem("rod_nickel", 64);
 	public static final Item PLASTIC_PLATE = new MiscItem("plastic_plate", 64);
 	public static final Item PLASTIGLASS_SHEET = new MiscItem("plastiglass", 64);
+
+	// Collectable Stamps - Series 1 - Cities
+	public static final Item IR_STAMP_1 = new ItemStamp("stamp_ir_1");
+	public static final Item IR_STAMP_2 = new ItemStamp("stamp_ir_2");
+	public static final Item IR_STAMP_3 = new ItemStamp("stamp_ir_3");
+	public static final Item RC_STAMP_1 = new ItemStamp("stamp_rc_1");
+	public static final Item RC_STAMP_2 = new ItemStamp("stamp_rc_2");
+	public static final Item RC_STAMP_3 = new ItemStamp("stamp_rc_3");
+	public static final Item RC_STAMP_4 = new ItemStamp("stamp_rc_4");
+	public static final Item RC_STAMP_5 = new ItemStamp("stamp_rc_5");
+	public static final Item RC_STAMP_6 = new ItemStamp("stamp_rc_6");
+	public static final Item SC_STAMP_1 = new ItemStamp("stamp_sc_1");
+	public static final Item CB_STAMP_1 = new ItemStamp("stamp_cb_1");
+	public static final Item CB_STAMP_2 = new ItemStamp("stamp_cb_2");
+	public static final Item CB_STAMP_3 = new ItemStamp("stamp_cb_3");
+	public static final Item CB_STAMP_4 = new ItemStamp("stamp_cb_4");
+	public static final Item AV_STAMP_1 = new ItemStamp("stamp_av_1");
+	public static final Item AV_STAMP_2 = new ItemStamp("stamp_av_2");
+	public static final Item AV_STAMP_3 = new ItemStamp("stamp_av_3");
+	public static final Item AV_STAMP_4 = new ItemStamp("stamp_av_4");
+	public static final Item AV_STAMP_5 = new ItemStamp("stamp_av_5");
+	public static final Item CL_STAMP_1 = new ItemStamp("stamp_cl_1");
+	public static final Item CL_STAMP_2 = new ItemStamp("stamp_cl_2");
 }

@@ -79,6 +79,7 @@ public class SoundInit
 	public static final SoundEvent KRAB_BORG_FULL;
 	public static final SoundEvent MS_XP;
 	public static final SoundEvent COOKING;
+	public static final SoundEvent MEMORY;
 
 	// Holiday Records
 	public static final SoundEvent SPOOKY;
@@ -195,6 +196,7 @@ public class SoundInit
 		RITZ = addSoundsToRegistry("ritz");
 		HL3 = addSoundsToRegistry("hl3");
 		COOKING = addSoundsToRegistry("cooking");
+		MEMORY = addSoundsToRegistry("memory");
 
 		// Plastic SoundType
 		PLASTIC_BREAK = addSoundsToRegistry("plastic_break");
@@ -348,6 +350,7 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.LEOTEU_ON);
 				event.getRegistry().registerAll(SoundInit.EXP);
 				event.getRegistry().registerAll(SoundInit.LOUDBONG);
+				event.getRegistry().registerAll(SoundInit.MEMORY);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");
