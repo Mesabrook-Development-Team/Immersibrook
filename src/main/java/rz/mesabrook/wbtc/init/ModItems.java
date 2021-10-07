@@ -360,4 +360,7 @@ public class ModItems
 	public static final Item AV_STAMP_5 = new ItemStamp("stamp_av_5");
 	public static final Item CL_STAMP_1 = new ItemStamp("stamp_cl_1");
 	public static final Item CL_STAMP_2 = new ItemStamp("stamp_cl_2");
+
+	// Stamp Book
+	public static final Item STAMP_BOOK = new ItemStampBook("stamp_book");
 }

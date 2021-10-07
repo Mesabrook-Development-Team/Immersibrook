@@ -1568,6 +1568,7 @@ item.stamp_av_4.name=Collectable Stamp
 item.stamp_av_5.name=Collectable Stamp
 item.stamp_cl_1.name=Collectable Stamp
 item.stamp_cl_2.name=Collectable Stamp
+item.stamp_book.name=Stamp Book
 
 //Stamp Tooltips
 im.tooltip.stamp.series=Cities Series
@@ -1577,3 +1578,4 @@ im.tooltip.stamp.sc=Sodor City
 im.tooltip.stamp.cb=Crystal Beach
 im.tooltip.stamp.av=Autumn Valley
 im.tooltip.stamp.cl=Clayton
+im.tooltip.stampbook=Holds your stamp collection
