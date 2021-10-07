@@ -3,7 +3,6 @@ package rz.mesabrook.wbtc.items.misc;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -19,12 +18,6 @@ import java.util.List;
 public class ItemStamp extends Item implements IHasModel
 {
     private final TextComponentTranslation series = new TextComponentTranslation("im.tooltip.stamp.series");
-//    private final TextComponentTranslation ir = new TextComponentTranslation("im.tooltip.stamp.ir");
-//    private final TextComponentTranslation rc = new TextComponentTranslation("im.tooltip.stamp.rc");
-//    private final TextComponentTranslation sc = new TextComponentTranslation("im.tooltip.stamp.sc");
-//    private final TextComponentTranslation cb = new TextComponentTranslation("im.tooltip.stamp.cb");
-//    private final TextComponentTranslation av = new TextComponentTranslation("im.tooltip.stamp.av");
-//    private final TextComponentTranslation cl = new TextComponentTranslation("im.tooltip.stamp.cl");
     public ItemStamp(String name)
     {
         setRegistryName(name);
