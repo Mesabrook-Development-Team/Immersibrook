@@ -14,6 +14,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModItems;
+import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.util.IHasModel;
 
 import javax.annotation.Nullable;
@@ -48,6 +49,7 @@ public class ItemStampBook extends Item implements IHasModel
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
     {
         ItemStack itemstack = playerIn.getHeldItem(handIn);
+        playerIn.playSound(SoundInit.BOOK_OPEN, 1.0F, 1.0F);
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemstack);
     }
 }

@@ -65,6 +65,8 @@ public class SoundInit
 	public static final SoundEvent LEOTEU_OFF;
 	public static final SoundEvent EXP;
 	public static final SoundEvent LOUDBONG;
+	public static final SoundEvent BOOK_OPEN;
+	public static final SoundEvent BOOK_CLOSE;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -179,6 +181,8 @@ public class SoundInit
 		LEOTEU_OFF = addSoundsToRegistry("leoteu_off");
 		EXP = addSoundsToRegistry("exp");
 		LOUDBONG = addSoundsToRegistry("loudbong");
+		BOOK_OPEN = addSoundsToRegistry("book_open");
+		BOOK_CLOSE = addSoundsToRegistry("book_close");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -351,6 +355,8 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.EXP);
 				event.getRegistry().registerAll(SoundInit.LOUDBONG);
 				event.getRegistry().registerAll(SoundInit.MEMORY);
+				event.getRegistry().registerAll(SoundInit.BOOK_OPEN);
+				event.getRegistry().registerAll(SoundInit.BOOK_CLOSE);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");
