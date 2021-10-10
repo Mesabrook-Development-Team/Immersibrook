@@ -37,7 +37,7 @@ public class BlockHandrail extends Block implements IHasModel
 		setSoundType(sound);
 		setHardness(8.0F);
 		setResistance(8.0F);
-		setCreativeTab(null);
+		setCreativeTab(Main.IMMERSIBROOK_MAIN);
 		setHarvestLevel(harvestTool, 0);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 		
