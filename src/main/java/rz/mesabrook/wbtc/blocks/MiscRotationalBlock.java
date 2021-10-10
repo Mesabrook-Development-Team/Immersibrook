@@ -7,23 +7,34 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.ModUtils;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class MiscRotationalBlock extends Block implements IHasModel
 {
@@ -132,5 +143,27 @@ public class MiscRotationalBlock extends Block implements IHasModel
     public void registerModels()
     {
         Main.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0);
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag)
+    {
+        if(GuiScreen.isShiftKeyDown())
+        {
+            if(this.getUnlocalizedName().contains("marker_pole"))
+            {
+                tooltip.add(TextFormatting.YELLOW + new TextComponentTranslation("im.tooltip.markerpole").getFormattedText());
+            }
+
+            if(this.getUnlocalizedName().contains("relay_manhole"))
+            {
+                tooltip.add(TextFormatting.YELLOW + new TextComponentTranslation("im.tooltip.relaycover").getFormattedText());
+            }
+        }
+        else
+        {
+            tooltip.add(TextFormatting.WHITE + new TextComponentTranslation("im.tooltip.hidden").getFormattedText());
+        }
     }
 }

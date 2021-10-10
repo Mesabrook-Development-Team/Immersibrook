@@ -1087,5 +1087,7 @@ public class ModBlocks
 	public static final Block TICKET_MACHINE = new TicketMachine("ticket_machine");
 
 	// Underground Utilities Marker Poles
-	public static final Block MARKER_POLE_ORANGE = new MiscRotationalBlock("marker_pole", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 2.5F, 3.0F, ModUtils.getPixelatedAABB(16,0,6, 0,16,10));
+	public static final Block MARKER_POLE_ORANGE = new MiscRotationalBlock("marker_pole", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 2.5F, 3.0F, ModUtils.getPixelatedAABB(7,0,7, 9,26,9));
+	public static final Block MARKER_POLE_RED = new MiscRotationalBlock("marker_pole_red", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 2.5F, 3.0F, ModUtils.getPixelatedAABB(7,0,7, 9,26,9));
+	public static final Block MARKER_POLE_BLUE = new MiscRotationalBlock("marker_pole_blue", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 2.5F, 3.0F, ModUtils.getPixelatedAABB(7,0,7, 9,26,9));
 }

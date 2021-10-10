@@ -44,6 +44,8 @@ public class CategoryTools extends AbstractCategory {
 
 		// Marker Poles
 		add(ModBlocks.MARKER_POLE_ORANGE);
+		add(ModBlocks.MARKER_POLE_RED);
+		add(ModBlocks.MARKER_POLE_BLUE);
 	}
 
 }
