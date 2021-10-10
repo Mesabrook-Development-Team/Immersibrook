@@ -1,6 +1,7 @@
 package rz.mesabrook.wbtc.client.category;
 
 import net.minecraft.item.ItemStack;
+import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
 
 /**
@@ -40,6 +41,9 @@ public class CategoryTools extends AbstractCategory {
 		
 		// Night Vision Goggles
 		add(ModItems.NV_GOGGLES);
+
+		// Marker Poles
+		add(ModBlocks.MARKER_POLE_ORANGE);
 	}
 
 }
