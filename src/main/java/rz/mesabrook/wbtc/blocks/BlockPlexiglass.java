@@ -14,6 +14,8 @@ import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.init.SoundTypeInit;
 import rz.mesabrook.wbtc.util.IHasModel;
 
+import java.util.Random;
+
 public class BlockPlexiglass extends BlockGlass implements IHasModel
 {
     public BlockPlexiglass(String name)
@@ -47,6 +49,12 @@ public class BlockPlexiglass extends BlockGlass implements IHasModel
     protected boolean canSilkHarvest()
     {
         return true;
+    }
+
+    @Override
+    public int quantityDropped(Random random)
+    {
+        return 1;
     }
 
     @Override
