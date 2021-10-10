@@ -1580,6 +1580,11 @@ im.tooltip.stamp.av=Autumn Valley
 im.tooltip.stamp.cl=Clayton
 im.tooltip.stampbook=Holds your stamp collection
 
+//Marker Poles
+tile.marker_pole.name=Utilities Marker Pole
+tile.marker_pole_red.name=Utilities Marker Pole
+tile.marker_pole_blue.name=Utilities Marker Pole
+
 //Generic Collapse Tooltips
 im.tooltip.hidden=[Press SHIFT for more info]
 im.tooltip.markerpole=Used to denote the location of underground wires, pipes, and conduits.
