@@ -8,6 +8,7 @@ import rz.mesabrook.wbtc.items.armor.*;
 import rz.mesabrook.wbtc.items.misc.*;
 import rz.mesabrook.wbtc.items.record.MemeRecord;
 import rz.mesabrook.wbtc.items.tools.ItemBanHammer;
+import rz.mesabrook.wbtc.items.tools.ItemManholeHook;
 import rz.mesabrook.wbtc.items.weapons.ItemWeapon;
 import rz.mesabrook.wbtc.util.ArmorMaterialRegistry;
 import rz.mesabrook.wbtc.util.ToolMaterialRegistry;
@@ -19,7 +20,7 @@ public class ModItems
 {
 	public static final List<Item> ITEMS = new ArrayList<Item>();
 
-	// Weapons uwu
+	// Weapons and Tools
 	public static final Item WOOD_SOD = new ItemWeapon("wood_sod", ToolMaterialRegistry.SOD_WOOD);
 	public static final Item STONE_SOD = new ItemWeapon("stone_sod", ToolMaterialRegistry.SOD_STONE);
 	public static final Item IRON_SOD = new ItemWeapon("iron_sod", ToolMaterialRegistry.SOD_IRON);
@@ -27,6 +28,7 @@ public class ModItems
 	public static final Item DIAMOND_SOD = new ItemWeapon("diamond_sod", ToolMaterialRegistry.SOD_DIAMOND);
 	public static final Item ALUMINUM_SOD = new ItemWeapon("aluminum_sod", ToolMaterialRegistry.SOD_ALUMINUM);
 	public static final Item ALUMINUM_SWORD = new ItemWeapon("aluminum_sword", ToolMaterialRegistry.SWORD_ALUMINUM);
+	public static final Item MANHOLE_HOOK = new ItemManholeHook("manhole_hook");
 
 	// Joke Items/Tools
 	public static final Item EMERALD_SWORD = new ItemWeapon("emerald_sword", ToolMaterial.GOLD);
@@ -363,4 +365,8 @@ public class ModItems
 
 	// Stamp Book
 	public static final Item STAMP_BOOK = new ItemStampBook("stamp_book");
+
+	// Holiday 2021
+	public static final Item CANDY_CANE = new DamageableFood("candy_cane", 5, 1.25F, false);
+	public static final Item SANTA_HAT = new WearableHat("santa_hat");
 }

@@ -213,5 +213,7 @@ public class CategoryBlocks extends AbstractCategory
 		add(ModBlocks.PLEXIGLASS_PANE_8);
 		add(ModBlocks.PLEXIGLASS_PANE_9);
 		add(ModBlocks.PLEXIGLASS_PANE_10);
+
+		add(ModBlocks.MANHOLE_CLOSED);
 	}
 }

@@ -1090,4 +1090,11 @@ public class ModBlocks
 	public static final Block MARKER_POLE_ORANGE = new MiscRotationalBlock("marker_pole", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 2.5F, 3.0F, ModUtils.getPixelatedAABB(7,0,7, 9,26,9));
 	public static final Block MARKER_POLE_RED = new MiscRotationalBlock("marker_pole_red", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 2.5F, 3.0F, ModUtils.getPixelatedAABB(7,0,7, 9,26,9));
 	public static final Block MARKER_POLE_BLUE = new MiscRotationalBlock("marker_pole_blue", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 2.5F, 3.0F, ModUtils.getPixelatedAABB(7,0,7, 9,26,9));
+	public static final Block MARKER_POLE_WOOD_ORANGE = new MiscRotationalBlock("marker_pole_wood", Material.ROCK, SoundType.WOOD, "axe", 1, 2.5F, 3.0F, ModUtils.getPixelatedAABB(7,0,7, 9,26,9));
+	public static final Block MARKER_POLE_WOOD_RED = new MiscRotationalBlock("marker_pole_wood_red", Material.ROCK, SoundType.WOOD, "axe", 1, 2.5F, 3.0F, ModUtils.getPixelatedAABB(7,0,7, 9,26,9));
+	public static final Block MARKER_POLE_WOOD_BLUE = new MiscRotationalBlock("marker_pole_wood_blue", Material.ROCK, SoundType.WOOD, "axe", 1, 2.5F, 3.0F, ModUtils.getPixelatedAABB(7,0,7, 9,26,9));
+
+	// Manholes
+	public static final Block MANHOLE_CLOSED = new BlockManhole("relay_manhole_closed").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block MANHOLE_OPEN = new BlockManhole("relay_manhole_open");
 }

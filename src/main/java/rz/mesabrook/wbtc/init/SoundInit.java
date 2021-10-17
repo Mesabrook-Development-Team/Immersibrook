@@ -67,6 +67,8 @@ public class SoundInit
 	public static final SoundEvent LOUDBONG;
 	public static final SoundEvent BOOK_OPEN;
 	public static final SoundEvent BOOK_CLOSE;
+	public static final SoundEvent MH_OPEN;
+	public static final SoundEvent MH_CLOSE;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -183,6 +185,8 @@ public class SoundInit
 		LOUDBONG = addSoundsToRegistry("loudbong");
 		BOOK_OPEN = addSoundsToRegistry("book_open");
 		BOOK_CLOSE = addSoundsToRegistry("book_close");
+		MH_OPEN = addSoundsToRegistry("mh_open");
+		MH_CLOSE = addSoundsToRegistry("mh_close");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
