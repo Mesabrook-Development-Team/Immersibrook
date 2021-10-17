@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:manhole_closed" },
+        "facing=south": { "model": "wbtc:manhole_closed", "y": 180 },
+        "facing=west":  { "model": "wbtc:manhole_closed", "y": 270 },
+        "facing=east":  { "model": "wbtc:manhole_closed", "y": 90 }
+    }
+}

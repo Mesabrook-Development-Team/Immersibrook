@@ -9,6 +9,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -21,15 +22,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
-import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.Reference;
-import rz.mesabrook.wbtc.util.SoundRandomizer;
-import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 public class BlockManhole extends Block implements IHasModel
 {
@@ -51,13 +48,25 @@ public class BlockManhole extends Block implements IHasModel
     @Override
     public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
     {
-        return new ItemStack(ModBlocks.MANHOLE_CLOSED);
+        if(this == ModBlocks.MANHOLE_CLOSED || this == ModBlocks.MANHOLE_OPEN)
+        {
+            return new ItemStack(ModBlocks.MANHOLE_CLOSED);
+        }
+        if(this == ModBlocks.UTIL_MANHOLE_OPEN || this == ModBlocks.UTIL_MANHOLE_CLOSED)
+        {
+            return new ItemStack(ModBlocks.UTIL_MANHOLE_CLOSED);
+        }
+        if(this == ModBlocks.BLANK_MANHOLE_CLOSED || this == ModBlocks.BLANK_MANHOLE_OPEN)
+        {
+            return new ItemStack(ModBlocks.BLANK_MANHOLE_CLOSED);
+        }
+        return new ItemStack(Items.FISH, 1, 1);
     }
 
     @Override
     public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos)
     {
-        if(this == ModBlocks.MANHOLE_CLOSED)
+        if(this == ModBlocks.MANHOLE_CLOSED || this == ModBlocks.UTIL_MANHOLE_CLOSED || this == ModBlocks.BLANK_MANHOLE_CLOSED)
         {
             return FULL_BLOCK_AABB;
         }
@@ -146,6 +155,32 @@ public class BlockManhole extends Block implements IHasModel
         else if(this == ModBlocks.MANHOLE_OPEN)
         {
             world.setBlockState(pos, ModBlocks.MANHOLE_CLOSED.getDefaultState().withProperty(FACING, direction));
+            world.playSound(player, pos, SoundEvents.BLOCK_IRON_TRAPDOOR_CLOSE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been closed by " + player.getName());
+        }
+
+        if(this == ModBlocks.UTIL_MANHOLE_CLOSED)
+        {
+            world.setBlockState(pos, ModBlocks.UTIL_MANHOLE_OPEN.getDefaultState().withProperty(FACING, direction));
+            world.playSound(player, pos, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been opened by " + player.getName());
+        }
+        else if(this == ModBlocks.UTIL_MANHOLE_OPEN)
+        {
+            world.setBlockState(pos, ModBlocks.UTIL_MANHOLE_CLOSED.getDefaultState().withProperty(FACING, direction));
+            world.playSound(player, pos, SoundEvents.BLOCK_IRON_TRAPDOOR_CLOSE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been closed by " + player.getName());
+        }
+
+        if(this == ModBlocks.BLANK_MANHOLE_CLOSED)
+        {
+            world.setBlockState(pos, ModBlocks.BLANK_MANHOLE_OPEN.getDefaultState().withProperty(FACING, direction));
+            world.playSound(player, pos, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been opened by " + player.getName());
+        }
+        else if(this == ModBlocks.BLANK_MANHOLE_OPEN)
+        {
+            world.setBlockState(pos, ModBlocks.BLANK_MANHOLE_CLOSED.getDefaultState().withProperty(FACING, direction));
             world.playSound(player, pos, SoundEvents.BLOCK_IRON_TRAPDOOR_CLOSE, SoundCategory.BLOCKS, 1.0F, 1.0F);
             Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been closed by " + player.getName());
         }

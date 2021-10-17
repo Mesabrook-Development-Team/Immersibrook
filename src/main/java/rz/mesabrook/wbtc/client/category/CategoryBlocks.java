@@ -140,6 +140,9 @@ public class CategoryBlocks extends AbstractCategory
 		add(ModBlocks.INDUSTRIAL_TILE_3);
 		add(ModBlocks.INDUSTRIAL_TILE_4);
 		add(ModBlocks.RELAY_MANHOLE);
+		add(ModBlocks.MANHOLE_CLOSED);
+		add(ModBlocks.UTIL_MANHOLE_CLOSED);
+		add(ModBlocks.BLANK_MANHOLE_CLOSED);
 		
 		// Pillars
 		add(ModBlocks.PILLAR_POST);
@@ -213,7 +216,5 @@ public class CategoryBlocks extends AbstractCategory
 		add(ModBlocks.PLEXIGLASS_PANE_8);
 		add(ModBlocks.PLEXIGLASS_PANE_9);
 		add(ModBlocks.PLEXIGLASS_PANE_10);
-
-		add(ModBlocks.MANHOLE_CLOSED);
 	}
 }
