@@ -1101,4 +1101,6 @@ public class ModBlocks
 	public static final Block UTIL_MANHOLE_CLOSED = new BlockManhole("util_manhole_closed").setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block BLANK_MANHOLE_OPEN = new BlockManhole("manhole_open");
 	public static final Block BLANK_MANHOLE_CLOSED = new BlockManhole("manhole_closed").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block LVN_MANHOLE_OPEN = new BlockManhole("lvn_manhole_open");
+	public static final Block LVN_MANHOLE_CLOSED = new BlockManhole("lvn_manhole_closed").setCreativeTab(Main.IMMERSIBROOK_MAIN);
 }

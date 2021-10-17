@@ -1600,3 +1600,4 @@ item.manhole_hook.name=Manhole Lid Lifter
 tile.relay_manhole_closed.name=Manhole
 tile.util_manhole_closed.name=Manhole
 tile.manhole_closed.name=Manhole
+tile.lvn_manhole_closed.name=Manhole

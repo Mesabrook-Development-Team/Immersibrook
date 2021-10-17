@@ -143,6 +143,7 @@ public class CategoryBlocks extends AbstractCategory
 		add(ModBlocks.MANHOLE_CLOSED);
 		add(ModBlocks.UTIL_MANHOLE_CLOSED);
 		add(ModBlocks.BLANK_MANHOLE_CLOSED);
+		add(ModBlocks.LVN_MANHOLE_CLOSED);
 		
 		// Pillars
 		add(ModBlocks.PILLAR_POST);

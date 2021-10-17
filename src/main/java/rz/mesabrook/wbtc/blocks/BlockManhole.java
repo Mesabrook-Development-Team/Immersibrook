@@ -60,13 +60,17 @@ public class BlockManhole extends Block implements IHasModel
         {
             return new ItemStack(ModBlocks.BLANK_MANHOLE_CLOSED);
         }
+        if(this == ModBlocks.LVN_MANHOLE_CLOSED || this == ModBlocks.LVN_MANHOLE_OPEN)
+        {
+            return new ItemStack(ModBlocks.LVN_MANHOLE_CLOSED);
+        }
         return new ItemStack(Items.FISH, 1, 1);
     }
 
     @Override
     public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos)
     {
-        if(this == ModBlocks.MANHOLE_CLOSED || this == ModBlocks.UTIL_MANHOLE_CLOSED || this == ModBlocks.BLANK_MANHOLE_CLOSED)
+        if(this == ModBlocks.MANHOLE_CLOSED || this == ModBlocks.UTIL_MANHOLE_CLOSED || this == ModBlocks.BLANK_MANHOLE_CLOSED || this == ModBlocks.LVN_MANHOLE_CLOSED)
         {
             return FULL_BLOCK_AABB;
         }
@@ -181,6 +185,19 @@ public class BlockManhole extends Block implements IHasModel
         else if(this == ModBlocks.BLANK_MANHOLE_OPEN)
         {
             world.setBlockState(pos, ModBlocks.BLANK_MANHOLE_CLOSED.getDefaultState().withProperty(FACING, direction));
+            world.playSound(player, pos, SoundEvents.BLOCK_IRON_TRAPDOOR_CLOSE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been closed by " + player.getName());
+        }
+
+        if(this == ModBlocks.LVN_MANHOLE_CLOSED)
+        {
+            world.setBlockState(pos, ModBlocks.LVN_MANHOLE_OPEN.getDefaultState().withProperty(FACING, direction));
+            world.playSound(player, pos, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been opened by " + player.getName());
+        }
+        else if(this == ModBlocks.LVN_MANHOLE_OPEN)
+        {
+            world.setBlockState(pos, ModBlocks.LVN_MANHOLE_CLOSED.getDefaultState().withProperty(FACING, direction));
             world.playSound(player, pos, SoundEvents.BLOCK_IRON_TRAPDOOR_CLOSE, SoundCategory.BLOCKS, 1.0F, 1.0F);
             Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been closed by " + player.getName());
         }
