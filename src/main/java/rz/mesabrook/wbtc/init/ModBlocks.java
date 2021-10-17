@@ -1095,12 +1095,12 @@ public class ModBlocks
 	public static final Block MARKER_POLE_WOOD_BLUE = new MiscRotationalBlock("marker_pole_wood_blue", Material.ROCK, SoundType.WOOD, "axe", 1, 2.5F, 3.0F, ModUtils.getPixelatedAABB(7,0,7, 9,26,9));
 
 	// Manholes
-	public static final Block MANHOLE_CLOSED = new BlockManhole("relay_manhole_closed").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Block MANHOLE_OPEN = new BlockManhole("relay_manhole_open");
-	public static final Block UTIL_MANHOLE_OPEN = new BlockManhole("util_manhole_open");
-	public static final Block UTIL_MANHOLE_CLOSED = new BlockManhole("util_manhole_closed").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Block BLANK_MANHOLE_OPEN = new BlockManhole("manhole_open");
-	public static final Block BLANK_MANHOLE_CLOSED = new BlockManhole("manhole_closed").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Block LVN_MANHOLE_OPEN = new BlockManhole("lvn_manhole_open");
-	public static final Block LVN_MANHOLE_CLOSED = new BlockManhole("lvn_manhole_closed").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block MANHOLE_CLOSED = new BlockManhole("relay_manhole_closed", ModUtils.getPixelatedAABB(0,0,0, 16,16,16)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block MANHOLE_OPEN = new BlockManhole("relay_manhole_open", ModUtils.getPixelatedAABB(0,0,0, 16,16,16));
+	public static final Block UTIL_MANHOLE_OPEN = new BlockManhole("util_manhole_open", ModUtils.getPixelatedAABB(0,0,0, 16,16,16));
+	public static final Block UTIL_MANHOLE_CLOSED = new BlockManhole("util_manhole_closed", ModUtils.getPixelatedAABB(0,0,0, 16,16,16)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block BLANK_MANHOLE_OPEN = new BlockManhole("manhole_open", ModUtils.getPixelatedAABB(0,0,0, 16,16,16));
+	public static final Block BLANK_MANHOLE_CLOSED = new BlockManhole("manhole_closed", ModUtils.getPixelatedAABB(0,0,0, 16,16,16)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block LVN_MANHOLE_OPEN = new BlockManhole("lvn_manhole_open", ModUtils.getPixelatedAABB(0,0,0, 16,32,3));
+	public static final Block LVN_MANHOLE_CLOSED = new BlockManhole("lvn_manhole_closed", ModUtils.getPixelatedAABB(0,0,0, 16,16,16)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 }

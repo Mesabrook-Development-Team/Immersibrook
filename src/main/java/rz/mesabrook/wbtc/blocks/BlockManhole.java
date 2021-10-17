@@ -26,12 +26,17 @@ import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.util.IHasModel;
+import rz.mesabrook.wbtc.util.ModUtils;
 import rz.mesabrook.wbtc.util.Reference;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class BlockManhole extends Block implements IHasModel
 {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
-    public BlockManhole(String name)
+    protected final ArrayList<AxisAlignedBB> AABBs;
+    public BlockManhole(String name, AxisAlignedBB unrotatedAABB)
     {
         super(Material.IRON);
         setUnlocalizedName(name);
@@ -41,8 +46,24 @@ public class BlockManhole extends Block implements IHasModel
         setResistance(3.0F);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 
+        AABBs = new ArrayList<AxisAlignedBB>(Arrays.asList(
+                ModUtils.getRotatedAABB(unrotatedAABB, EnumFacing.DOWN, false),
+                ModUtils.getRotatedAABB(unrotatedAABB, EnumFacing.UP, false),
+                ModUtils.getRotatedAABB(unrotatedAABB, EnumFacing.NORTH, false),
+                ModUtils.getRotatedAABB(unrotatedAABB, EnumFacing.SOUTH, false),
+                ModUtils.getRotatedAABB(unrotatedAABB, EnumFacing.WEST, false),
+                ModUtils.getRotatedAABB(unrotatedAABB, EnumFacing.EAST, false),
+                unrotatedAABB, unrotatedAABB // Array fill to ensure that the array size covers 4 bit (meta & 0x07).
+        ));
+
         ModBlocks.BLOCKS.add(this);
         ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
+    }
+
+    @Override
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
+    {
+        return AABBs.get(((EnumFacing)state.getValue(FACING)).getIndex() & 0x7);
     }
 
     @Override
