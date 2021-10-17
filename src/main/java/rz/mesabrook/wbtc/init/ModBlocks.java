@@ -1096,10 +1096,10 @@ public class ModBlocks
 
 	// Manholes
 	public static final Block MANHOLE_CLOSED = new BlockManhole("relay_manhole_closed", ModUtils.getPixelatedAABB(0,0,0, 16,16,16)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Block MANHOLE_OPEN = new BlockManhole("relay_manhole_open", ModUtils.getPixelatedAABB(0,0,0, 16,16,16));
-	public static final Block UTIL_MANHOLE_OPEN = new BlockManhole("util_manhole_open", ModUtils.getPixelatedAABB(0,0,0, 16,16,16));
+	public static final Block MANHOLE_OPEN = new BlockManhole("relay_manhole_open", ModUtils.getPixelatedAABB(0,0,0, 16,32,3));
+	public static final Block UTIL_MANHOLE_OPEN = new BlockManhole("util_manhole_open", ModUtils.getPixelatedAABB(0,0,0, 16,32,3));
 	public static final Block UTIL_MANHOLE_CLOSED = new BlockManhole("util_manhole_closed", ModUtils.getPixelatedAABB(0,0,0, 16,16,16)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Block BLANK_MANHOLE_OPEN = new BlockManhole("manhole_open", ModUtils.getPixelatedAABB(0,0,0, 16,16,16));
+	public static final Block BLANK_MANHOLE_OPEN = new BlockManhole("manhole_open", ModUtils.getPixelatedAABB(0,0,0, 16,32,3));
 	public static final Block BLANK_MANHOLE_CLOSED = new BlockManhole("manhole_closed", ModUtils.getPixelatedAABB(0,0,0, 16,16,16)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block LVN_MANHOLE_OPEN = new BlockManhole("lvn_manhole_open", ModUtils.getPixelatedAABB(0,0,0, 16,32,3));
 	public static final Block LVN_MANHOLE_CLOSED = new BlockManhole("lvn_manhole_closed", ModUtils.getPixelatedAABB(0,0,0, 16,16,16)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
