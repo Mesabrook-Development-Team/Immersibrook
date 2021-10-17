@@ -1,0 +1,18 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "CCC",
+	  "C  ",
+	  "C  "
+   ],
+   "key": {
+      "C": {
+         "type":"forge:ore_dict",
+		 "ore": "foodPeppermint"
+      }
+   },
+   "result": {
+      "item": "wbtc:candy_cane",
+      "count": 1
+   }
+}

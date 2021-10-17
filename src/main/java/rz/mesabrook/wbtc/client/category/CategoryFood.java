@@ -124,5 +124,6 @@ public class CategoryFood extends AbstractCategory
 		add(ModItems.RAW_CANDY_RB);
 		add(ModItems.RAW_CANDY_CHOC);
 		add(ModItems.RAW_CANDY_PL);
+		add(ModItems.CANDY_CANE);
 	}
 }

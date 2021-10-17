@@ -1359,6 +1359,7 @@ item.raw_candy_pl.name=Raw Candy
 item.white_chocolate.name=White Chocolate
 item.wine_bottle.name=Ceremonial Wine Bottle
 item.white_mushroom_dust.name=White Mushroom Powder
+item.candy_cane.name=Candy Cane
 
 //Dialog
 im.sugwarn=You wonder if you should risk taking another bite...
@@ -1539,6 +1540,7 @@ item.reflective_white.name=Reflective Tape
 item.reflective_yellow.name=Reflective Tape
 item.reflective_pink.name=Reflective Tape
 item.reflective_green.name=Reflective Tape
+item.santa_hat.name=Santa Hat
 
 //Boxes
 tile.box_small.name=Small Shipping Box
@@ -1584,6 +1586,9 @@ im.tooltip.stampbook=Holds your stamp collection
 tile.marker_pole.name=Utilities Marker Pole
 tile.marker_pole_red.name=Utilities Marker Pole
 tile.marker_pole_blue.name=Utilities Marker Pole
+tile.marker_pole_wood.name=Utilities Marker Pole
+tile.marker_pole_wood_red.name=Utilities Marker Pole
+tile.marker_pole_wood_blue.name=Utilities Marker Pole
 
 //Generic Collapse Tooltips
 im.tooltip.hidden=[Press SHIFT for more info]

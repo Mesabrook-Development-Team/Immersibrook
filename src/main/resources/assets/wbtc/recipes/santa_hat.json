@@ -1,0 +1,22 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      " W ",
+	  "RRR",
+	  "WWW"
+   ],
+   "key": {
+      "R": {
+		 "item": "minecraft:wool",
+		 "data": 14
+      },
+      "W": {
+		 "item": "minecraft:wool",
+		 "data": 0
+      }
+   },
+   "result": {
+      "item": "wbtc:santa_hat",
+      "count": 1
+   }
+}

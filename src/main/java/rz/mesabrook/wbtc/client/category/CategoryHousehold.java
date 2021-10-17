@@ -111,6 +111,9 @@ public class CategoryHousehold extends AbstractCategory
 		add(ModItems.CL_STAMP_1);
 		add(ModItems.CL_STAMP_2);
 		add(ModItems.STAMP_BOOK);
+
+		// Holidays 2021
+		add(ModItems.SANTA_HAT);
 	}
 
 }
