@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:marker_pole_wood_blue" },
+        "facing=south": { "model": "wbtc:marker_pole_wood_blue", "y": 180 },
+        "facing=west":  { "model": "wbtc:marker_pole_wood_blue", "y": 270 },
+        "facing=east":  { "model": "wbtc:marker_pole_wood_blue", "y": 90 }
+    }
+}

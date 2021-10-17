@@ -1,0 +1,20 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "O",
+	  "P",
+	  "P"
+   ],
+   "key": {
+      "P": {
+		 "item": "minecraft:stick"
+      },
+      "O": {
+		 "item": "wbtc:blue_plastic"
+      }	  
+   },
+   "result": {
+      "item": "wbtc:marker_pole_wood_blue",
+      "count": 1
+   }
+}
