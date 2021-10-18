@@ -140,6 +140,9 @@ public class CategoryBlocks extends AbstractCategory
 		add(ModBlocks.INDUSTRIAL_TILE_3);
 		add(ModBlocks.INDUSTRIAL_TILE_4);
 		add(ModBlocks.RELAY_MANHOLE);
+		add(ModBlocks.LVN_MANHOLE);
+		add(ModBlocks.UTIL_MANHOLE);
+		add(ModBlocks.BLANK_MANHOLE);
 		add(ModBlocks.MANHOLE_CLOSED);
 		add(ModBlocks.UTIL_MANHOLE_CLOSED);
 		add(ModBlocks.BLANK_MANHOLE_CLOSED);
@@ -217,5 +220,13 @@ public class CategoryBlocks extends AbstractCategory
 		add(ModBlocks.PLEXIGLASS_PANE_8);
 		add(ModBlocks.PLEXIGLASS_PANE_9);
 		add(ModBlocks.PLEXIGLASS_PANE_10);
+
+		// Marker Poles
+		add(ModBlocks.MARKER_POLE_ORANGE);
+		add(ModBlocks.MARKER_POLE_RED);
+		add(ModBlocks.MARKER_POLE_BLUE);
+		add(ModBlocks.MARKER_POLE_WOOD_ORANGE);
+		add(ModBlocks.MARKER_POLE_WOOD_RED);
+		add(ModBlocks.MARKER_POLE_WOOD_BLUE);
 	}
 }

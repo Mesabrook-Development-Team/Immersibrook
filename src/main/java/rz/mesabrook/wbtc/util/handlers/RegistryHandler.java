@@ -3,10 +3,12 @@ package rz.mesabrook.wbtc.util.handlers;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.GameRules;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -151,5 +153,11 @@ public class RegistryHandler
 		}
 		Main.logger.info("[" + Reference.MODNAME + "] Registering immersibrook command");
 		event.registerServerCommand(new CommandImmersibrook());
+
+		GameRules rules = FMLCommonHandler.instance().getMinecraftServerInstance().getWorld(0).getGameRules();
+		if(!rules.hasRule("manholeAlert"))
+		{
+			rules.addGameRule("manholeAlert","true", GameRules.ValueType.BOOLEAN_VALUE);
+		}
 	}
 }

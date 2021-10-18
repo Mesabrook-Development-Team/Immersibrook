@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:lvn_manhole" },
+        "facing=south": { "model": "wbtc:lvn_manhole", "y": 180 },
+        "facing=west":  { "model": "wbtc:lvn_manhole", "y": 270 },
+        "facing=east":  { "model": "wbtc:lvn_manhole", "y": 90 }
+    }
+}

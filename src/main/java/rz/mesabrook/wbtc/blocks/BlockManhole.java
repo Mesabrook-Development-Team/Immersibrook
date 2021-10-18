@@ -171,56 +171,82 @@ public class BlockManhole extends Block implements IHasModel
 
     private void activate(World world, BlockPos pos, EntityPlayer player, EnumFacing direction)
     {
+        boolean sendAlertsToConsole = world.getGameRules().getBoolean("manholeAlert");
         if(this == ModBlocks.MANHOLE_CLOSED)
         {
             world.setBlockState(pos, ModBlocks.MANHOLE_OPEN.getDefaultState().withProperty(FACING, direction));
             world.playSound(player, pos, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been opened by " + player.getName());
+
+            if(sendAlertsToConsole)
+            {
+                Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole in dimension " + player.dimension + " at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been opened by " + player.getName());
+            }
         }
         else if(this == ModBlocks.MANHOLE_OPEN)
         {
             world.setBlockState(pos, ModBlocks.MANHOLE_CLOSED.getDefaultState().withProperty(FACING, direction));
-            world.playSound(player, pos, SoundEvents.BLOCK_IRON_TRAPDOOR_CLOSE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been closed by " + player.getName());
+            world.playSound(player, pos, SoundEvents.BLOCK_ANVIL_LAND, SoundCategory.BLOCKS, 1.0F, 0.1F);
+            if(sendAlertsToConsole)
+            {
+                Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole in dimension " + player.dimension + " at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been opened by " + player.getName());
+            }
         }
 
         if(this == ModBlocks.UTIL_MANHOLE_CLOSED)
         {
             world.setBlockState(pos, ModBlocks.UTIL_MANHOLE_OPEN.getDefaultState().withProperty(FACING, direction));
             world.playSound(player, pos, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been opened by " + player.getName());
+            if(sendAlertsToConsole)
+            {
+                Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole in dimension " + player.dimension + " at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been opened by " + player.getName());
+            }
         }
         else if(this == ModBlocks.UTIL_MANHOLE_OPEN)
         {
             world.setBlockState(pos, ModBlocks.UTIL_MANHOLE_CLOSED.getDefaultState().withProperty(FACING, direction));
-            world.playSound(player, pos, SoundEvents.BLOCK_IRON_TRAPDOOR_CLOSE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been closed by " + player.getName());
+            world.playSound(player, pos, SoundEvents.BLOCK_ANVIL_LAND, SoundCategory.BLOCKS, 1.0F, 0.1F);
+            if(sendAlertsToConsole)
+            {
+                Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole in dimension " + player.dimension + " at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been opened by " + player.getName());
+            }
         }
 
         if(this == ModBlocks.BLANK_MANHOLE_CLOSED)
         {
             world.setBlockState(pos, ModBlocks.BLANK_MANHOLE_OPEN.getDefaultState().withProperty(FACING, direction));
             world.playSound(player, pos, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been opened by " + player.getName());
+            if(sendAlertsToConsole)
+            {
+                Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole in dimension " + player.dimension + " at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been opened by " + player.getName());
+            }
         }
         else if(this == ModBlocks.BLANK_MANHOLE_OPEN)
         {
             world.setBlockState(pos, ModBlocks.BLANK_MANHOLE_CLOSED.getDefaultState().withProperty(FACING, direction));
-            world.playSound(player, pos, SoundEvents.BLOCK_IRON_TRAPDOOR_CLOSE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been closed by " + player.getName());
+            world.playSound(player, pos, SoundEvents.BLOCK_ANVIL_LAND, SoundCategory.BLOCKS, 1.0F, 0.1F);
+            if(sendAlertsToConsole)
+            {
+                Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole in dimension " + player.dimension + " at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been opened by " + player.getName());
+            }
         }
 
         if(this == ModBlocks.LVN_MANHOLE_CLOSED)
         {
             world.setBlockState(pos, ModBlocks.LVN_MANHOLE_OPEN.getDefaultState().withProperty(FACING, direction));
             world.playSound(player, pos, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been opened by " + player.getName());
+            if(sendAlertsToConsole)
+            {
+                Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole in dimension " + player.dimension + " at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been opened by " + player.getName());
+            }
         }
         else if(this == ModBlocks.LVN_MANHOLE_OPEN)
         {
             world.setBlockState(pos, ModBlocks.LVN_MANHOLE_CLOSED.getDefaultState().withProperty(FACING, direction));
-            world.playSound(player, pos, SoundEvents.BLOCK_IRON_TRAPDOOR_CLOSE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been closed by " + player.getName());
+            world.playSound(player, pos, SoundEvents.BLOCK_ANVIL_LAND, SoundCategory.BLOCKS, 1.0F, 0.1F);
+            if(sendAlertsToConsole)
+            {
+                Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole in dimension " + player.dimension + " at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been opened by " + player.getName());
+            }
         }
     }
 }

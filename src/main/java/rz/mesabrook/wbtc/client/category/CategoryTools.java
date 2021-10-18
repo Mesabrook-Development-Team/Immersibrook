@@ -42,13 +42,8 @@ public class CategoryTools extends AbstractCategory {
 		// Night Vision Goggles
 		add(ModItems.NV_GOGGLES);
 
-		// Marker Poles
-		add(ModBlocks.MARKER_POLE_ORANGE);
-		add(ModBlocks.MARKER_POLE_RED);
-		add(ModBlocks.MARKER_POLE_BLUE);
-		add(ModBlocks.MARKER_POLE_WOOD_ORANGE);
-		add(ModBlocks.MARKER_POLE_WOOD_RED);
-		add(ModBlocks.MARKER_POLE_WOOD_BLUE);
+		// Manhole Hook
+		add(ModItems.MANHOLE_HOOK);
 	}
 
 }

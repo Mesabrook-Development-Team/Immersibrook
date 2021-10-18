@@ -151,14 +151,29 @@ public class MiscRotationalBlock extends Block implements IHasModel
     {
         if(GuiScreen.isShiftKeyDown())
         {
-            if(this.getUnlocalizedName().contains("marker_pole"))
+            if(this == ModBlocks.MARKER_POLE_BLUE || this == ModBlocks.MARKER_POLE_ORANGE || this == ModBlocks.MARKER_POLE_RED || this == ModBlocks.MARKER_POLE_WOOD_BLUE || this == ModBlocks.MARKER_POLE_WOOD_RED || this == ModBlocks.MARKER_POLE_WOOD_ORANGE)
             {
                 tooltip.add(TextFormatting.YELLOW + new TextComponentTranslation("im.tooltip.markerpole").getFormattedText());
             }
 
-            if(this.getUnlocalizedName().contains("relay_manhole"))
+            if(this == ModBlocks.RELAY_MANHOLE)
             {
                 tooltip.add(TextFormatting.YELLOW + new TextComponentTranslation("im.tooltip.relaycover").getFormattedText());
+            }
+
+            if(this == ModBlocks.LVN_MANHOLE)
+            {
+                tooltip.add(TextFormatting.YELLOW + new TextComponentTranslation("im.tooltip.manhole.lvn").getFormattedText());
+            }
+
+            if(this == ModBlocks.UTIL_MANHOLE)
+            {
+                tooltip.add(TextFormatting.YELLOW + new TextComponentTranslation("im.tooltip.manhole.util").getFormattedText());
+            }
+
+            if(this == ModBlocks.BLANK_MANHOLE)
+            {
+                tooltip.add(TextFormatting.YELLOW + new TextComponentTranslation("im.tooltip.manhole.generic").getFormattedText());
             }
         }
         else

@@ -1012,7 +1012,6 @@ public class ModBlocks
 	public static final Block CHOC_STRAWBERRY_TRUFFLE_BOX = new FoodBox("choc_strawberry_truffle_box", Material.WOOD, SoundType.SAND, 64, "pickaxe", 1, 1.0F, 1.0F, ModUtils.getPixelatedAABB(6,0,7, 10,5,9));
 	public static final Block CHOC_GRAPE_TRUFFLE_BOX = new FoodBox("choc_grape_truffle_box", Material.WOOD, SoundType.SAND, 64, "pickaxe", 1, 1.0F, 1.0F, ModUtils.getPixelatedAABB(6,0,7, 10,5,9));
 	public static final Block CHOC_BLUEBERRY_TRUFFLE_BOX = new FoodBox("choc_blueberry_truffle_box", Material.WOOD, SoundType.SAND, 64, "pickaxe", 1, 1.0F, 1.0F, ModUtils.getPixelatedAABB(6,0,7, 10,5,9));
-	public static final Block RELAY_MANHOLE = new MiscRotationalBlock("relay_manhole", Material.IRON, SoundType.ANVIL, "pickaxe", 1, 1.0F, 2.0F, ModUtils.getPixelatedAABB(0,0,0, 16,1,16));
 
 	// Trusses
 	public static final Block STEEL_TRUSS = new Truss("steel_truss", ModUtils.getPixelatedAABB(16,0,6, 0,16,10), SoundType.METAL);
@@ -1095,6 +1094,11 @@ public class ModBlocks
 	public static final Block MARKER_POLE_WOOD_BLUE = new MiscRotationalBlock("marker_pole_wood_blue", Material.ROCK, SoundType.WOOD, "axe", 1, 2.5F, 3.0F, ModUtils.getPixelatedAABB(7,0,7, 9,26,9));
 
 	// Manholes
+	public static final Block RELAY_MANHOLE = new MiscRotationalBlock("relay_manhole", Material.IRON, SoundType.ANVIL, "pickaxe", 1, 1.0F, 2.0F, ModUtils.getPixelatedAABB(0,0,0, 16,1,16));
+	public static final Block LVN_MANHOLE = new MiscRotationalBlock("lvn_manhole", Material.IRON, SoundType.ANVIL, "pickaxe", 1, 1.0F, 2.0F, ModUtils.getPixelatedAABB(0,0,0, 16,1,16));
+	public static final Block UTIL_MANHOLE = new MiscRotationalBlock("util_manhole", Material.IRON, SoundType.ANVIL, "pickaxe", 1, 1.0F, 2.0F, ModUtils.getPixelatedAABB(0,0,0, 16,1,16));
+	public static final Block BLANK_MANHOLE = new MiscRotationalBlock("manhole", Material.IRON, SoundType.ANVIL, "pickaxe", 1, 1.0F, 2.0F, ModUtils.getPixelatedAABB(0,0,0, 16,1,16));
+
 	public static final Block MANHOLE_CLOSED = new BlockManhole("relay_manhole_closed", ModUtils.getPixelatedAABB(0,0,0, 16,16,16)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block MANHOLE_OPEN = new BlockManhole("relay_manhole_open", ModUtils.getPixelatedAABB(0,0,0, 16,32,3));
 	public static final Block UTIL_MANHOLE_OPEN = new BlockManhole("util_manhole_open", ModUtils.getPixelatedAABB(0,0,0, 16,32,3));

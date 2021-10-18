@@ -1594,6 +1594,9 @@ tile.marker_pole_wood_blue.name=Utilities Marker Pole
 im.tooltip.hidden=[Press SHIFT for more info]
 im.tooltip.markerpole=Used to denote the location of underground wires, pipes, and conduits.
 im.tooltip.relaycover=Used to denote the location of buried Crossing Relays.
+im.tooltip.manhole.lvn=Manufactured by Leviathan LLC in Autumn Valley.
+im.tooltip.manhole.util=Used to denote the location of underground utility tunnels.
+im.tooltip.manhole.generic=A heavy metal plate meant to cover openings into underground areas.
 
 //Manholes
 item.manhole_hook.name=Manhole Lid Lifter
@@ -1601,3 +1604,6 @@ tile.relay_manhole_closed.name=Manhole
 tile.util_manhole_closed.name=Manhole
 tile.manhole_closed.name=Manhole
 tile.lvn_manhole_closed.name=Manhole
+tile.lvn_manhole.name=LVN-branded Manhole Cover
+tile.util_manhole.name=Utilities Manhole Cover
+tile.manhole.name=General Purpose Manhole Cover
