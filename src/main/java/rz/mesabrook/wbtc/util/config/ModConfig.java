@@ -26,9 +26,6 @@ public final class ModConfig
 	@Comment("Set to false if you want to disable the Leather = Saddle smelting recipe.")
 	public static boolean smeltingLeatherForASaddle = true;
 	
-	@Comment("Set to false if you want to disable Immersibrook's /tpdim command.")
-	public static boolean tpdimCommand = true;
-	
 	@Comment("Set to false if you want the Power of Thor enchantment's lightning strikes to not start fires.")
 	public static boolean thorCausesFires = true;
 	

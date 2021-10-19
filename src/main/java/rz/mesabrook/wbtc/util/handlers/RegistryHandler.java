@@ -20,7 +20,6 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.cmds.CommandImmersibrook;
-import rz.mesabrook.wbtc.cmds.CommandTeleportDimension;
 import rz.mesabrook.wbtc.entity.EntityMesabrookM;
 import rz.mesabrook.wbtc.entity.EntityWineBottle;
 import rz.mesabrook.wbtc.init.ModBlocks;
@@ -30,7 +29,6 @@ import rz.mesabrook.wbtc.rendering.RenderWineBottle;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.TooltipRandomizer;
-import rz.mesabrook.wbtc.util.config.ModConfig;
 import rz.mesabrook.wbtc.util.recipe.SmeltingRecipes;
 
 @EventBusSubscriber
@@ -142,15 +140,6 @@ public class RegistryHandler
 	
 	public static void serverRegistries(FMLServerStartingEvent event)
 	{
-		if(ModConfig.tpdimCommand)
-		{
-			Main.logger.info("[" + Reference.MODNAME + "] Registering tpdim command");
-			event.registerServerCommand(new CommandTeleportDimension());
-		}
-		else
-		{
-			Main.logger.info("[" + Reference.MODNAME + "] /tpdim command has been disabled in the config.");
-		}
 		Main.logger.info("[" + Reference.MODNAME + "] Registering immersibrook command");
 		event.registerServerCommand(new CommandImmersibrook());
 
