@@ -16,6 +16,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -25,6 +26,7 @@ import net.minecraft.world.World;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
+import rz.mesabrook.wbtc.items.tools.ItemBanHammer;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.ModUtils;
 import rz.mesabrook.wbtc.util.Reference;
@@ -160,7 +162,7 @@ public class BlockManhole extends Block implements IHasModel
     {
         ItemStack stack = playerIn.getHeldItem(hand);
         facing = state.getValue(FACING);
-        if(stack.getItem() == ModItems.MANHOLE_HOOK)
+        if(stack.getItem() == ModItems.MANHOLE_HOOK || stack.getItem() instanceof ItemBanHammer)
         {
             this.activate(worldIn, pos, playerIn, facing);
             if(!playerIn.isCreative()) {stack.damageItem(1, playerIn);}
@@ -247,6 +249,33 @@ public class BlockManhole extends Block implements IHasModel
             {
                 Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole in dimension " + player.dimension + " at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been opened by " + player.getName());
             }
+        }
+    }
+
+    @Override
+    public boolean canSilkHarvest(World world, BlockPos pos, IBlockState state, EntityPlayer player)
+    {
+        return false;
+    }
+
+    @Override
+    public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
+    {
+        if(this == ModBlocks.MANHOLE_OPEN)
+        {
+            drops.add(new ItemStack(ModBlocks.MANHOLE_CLOSED, 1));
+        }
+        if(this == ModBlocks.UTIL_MANHOLE_OPEN)
+        {
+            drops.add(new ItemStack(ModBlocks.UTIL_MANHOLE_CLOSED, 1));
+        }
+        if(this == ModBlocks.BLANK_MANHOLE_OPEN)
+        {
+            drops.add(new ItemStack(ModBlocks.BLANK_MANHOLE_CLOSED, 1));
+        }
+        if(this == ModBlocks.LVN_MANHOLE_OPEN)
+        {
+            drops.add(new ItemStack(ModBlocks.LVN_MANHOLE_CLOSED, 1));
         }
     }
 }
