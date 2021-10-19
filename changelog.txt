@@ -41,3 +41,4 @@ KNOWN ISSUES:
 
 REMOVALS:
 -Aluminum. Use IE's aluminum instead.
+-/tpdim command.
