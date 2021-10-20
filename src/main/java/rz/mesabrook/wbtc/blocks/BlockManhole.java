@@ -27,6 +27,7 @@ import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.items.tools.ItemBanHammer;
+import rz.mesabrook.wbtc.items.tools.ItemManholeHook;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.ModUtils;
 import rz.mesabrook.wbtc.util.Reference;
@@ -162,7 +163,7 @@ public class BlockManhole extends Block implements IHasModel
     {
         ItemStack stack = playerIn.getHeldItem(hand);
         facing = state.getValue(FACING);
-        if(stack.getItem() == ModItems.MANHOLE_HOOK || stack.getItem() instanceof ItemBanHammer)
+        if(stack.getItem() instanceof ItemManholeHook || stack.getItem() instanceof ItemBanHammer)
         {
             this.activate(worldIn, pos, playerIn, facing);
             if(!playerIn.isCreative()) {stack.damageItem(1, playerIn);}
@@ -276,6 +277,19 @@ public class BlockManhole extends Block implements IHasModel
         if(this == ModBlocks.LVN_MANHOLE_OPEN)
         {
             drops.add(new ItemStack(ModBlocks.LVN_MANHOLE_CLOSED, 1));
+        }
+    }
+
+    @Override
+    public boolean isLadder(IBlockState state, IBlockAccess world, BlockPos pos, EntityLivingBase entity)
+    {
+        if(this == ModBlocks.MANHOLE_OPEN || this == ModBlocks.LVN_MANHOLE_OPEN || this == ModBlocks.BLANK_MANHOLE_OPEN || this == ModBlocks.UTIL_MANHOLE_OPEN)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }
