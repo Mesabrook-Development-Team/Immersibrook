@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C",
+    "L"
+  ],
+  "key": {
+    "C": {
+      "item": "wbtc:lvn_manhole"
+    },
+    "L": {
+      "item": "wbtc:manhole_ladder"
+    }
+  },
+  "result": {
+    "item": "wbtc:lvn_manhole_closed",
+    "count": 1
+  }
+}

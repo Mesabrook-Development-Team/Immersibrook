@@ -88,20 +88,11 @@ public class BlockManhole extends Block implements IHasModel
         {
             return new ItemStack(ModBlocks.LVN_MANHOLE_CLOSED);
         }
+        if(this == ModBlocks.MANHOLE_LADDER)
+        {
+            return new ItemStack(ModBlocks.MANHOLE_LADDER);
+        }
         return new ItemStack(Items.FISH, 1, 1);
-    }
-
-    @Override
-    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos)
-    {
-        if(this == ModBlocks.MANHOLE_CLOSED || this == ModBlocks.UTIL_MANHOLE_CLOSED || this == ModBlocks.BLANK_MANHOLE_CLOSED || this == ModBlocks.LVN_MANHOLE_CLOSED)
-        {
-            return FULL_BLOCK_AABB;
-        }
-        else
-        {
-            return NULL_AABB;
-        }
     }
 
     @Override
@@ -163,7 +154,7 @@ public class BlockManhole extends Block implements IHasModel
     {
         ItemStack stack = playerIn.getHeldItem(hand);
         facing = state.getValue(FACING);
-        if(stack.getItem() instanceof ItemManholeHook || stack.getItem() instanceof ItemBanHammer)
+        if(stack.getItem() instanceof ItemManholeHook && state.getBlock() != ModBlocks.MANHOLE_LADDER || stack.getItem() instanceof ItemBanHammer && state.getBlock() != ModBlocks.MANHOLE_LADDER)
         {
             this.activate(worldIn, pos, playerIn, facing);
             if(!playerIn.isCreative()) {stack.damageItem(1, playerIn);}
@@ -278,12 +269,16 @@ public class BlockManhole extends Block implements IHasModel
         {
             drops.add(new ItemStack(ModBlocks.LVN_MANHOLE_CLOSED, 1));
         }
+        if(this == ModBlocks.MANHOLE_LADDER)
+        {
+            drops.add(new ItemStack(ModBlocks.MANHOLE_LADDER, 1));
+        }
     }
 
     @Override
     public boolean isLadder(IBlockState state, IBlockAccess world, BlockPos pos, EntityLivingBase entity)
     {
-        if(this == ModBlocks.MANHOLE_OPEN || this == ModBlocks.LVN_MANHOLE_OPEN || this == ModBlocks.BLANK_MANHOLE_OPEN || this == ModBlocks.UTIL_MANHOLE_OPEN)
+        if(this == ModBlocks.MANHOLE_OPEN || this == ModBlocks.LVN_MANHOLE_OPEN || this == ModBlocks.BLANK_MANHOLE_OPEN || this == ModBlocks.UTIL_MANHOLE_OPEN || this == ModBlocks.MANHOLE_LADDER)
         {
             return true;
         }

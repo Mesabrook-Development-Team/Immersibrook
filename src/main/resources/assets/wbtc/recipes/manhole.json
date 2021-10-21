@@ -1,0 +1,18 @@
+{
+   "type": "minecraft:crafting_shaped",
+   "pattern": [
+      "PP",
+	  "PP"
+   ],
+   "key": {
+      "P": {
+         "type": "forge:ore_dict",
+		 "ore": "plateSteel"
+      }
+   },
+   "result": {
+      "item": "wbtc:manhole",
+      "data": 0,
+      "count": 1
+   }
+}

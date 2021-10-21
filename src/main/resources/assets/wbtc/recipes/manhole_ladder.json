@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CLC",
+    "CLC",
+    "CLC"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:concrete",
+	  "data": 8
+    },
+    "L": {
+      "item": "wbtc:metal_ladder"
+    }
+  },
+  "result": {
+    "item": "wbtc:manhole_ladder",
+    "count": 3
+  }
+}

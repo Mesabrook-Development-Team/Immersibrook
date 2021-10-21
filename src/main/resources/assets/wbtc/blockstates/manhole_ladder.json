@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:manhole_ladder" },
+        "facing=south": { "model": "wbtc:manhole_ladder", "y": 180 },
+        "facing=west":  { "model": "wbtc:manhole_ladder", "y": 270 },
+        "facing=east":  { "model": "wbtc:manhole_ladder", "y": 90 }
+    }
+}

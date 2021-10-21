@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C",
+    "L"
+  ],
+  "key": {
+    "C": {
+      "item": "wbtc:relay_manhole"
+    },
+    "L": {
+      "item": "wbtc:manhole_ladder"
+    }
+  },
+  "result": {
+    "item": "wbtc:relay_manhole_closed",
+    "count": 1
+  }
+}

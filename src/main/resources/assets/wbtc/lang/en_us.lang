@@ -1607,3 +1607,5 @@ tile.lvn_manhole_closed.name=Manhole
 tile.lvn_manhole.name=LVN-branded Manhole Cover
 tile.util_manhole.name=Utilities Manhole Cover
 tile.manhole.name=General Purpose Manhole Cover
+tile.manhole_ladder.name=Manhole Ladder
+tile.metal_ladder.name=Steel Ladder

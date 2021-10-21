@@ -7,10 +7,18 @@
       {
          "type":"forge:ore_dict",
 		 "ore": "plateSteel"
+      },
+      {
+         "type":"forge:ore_dict",
+		 "ore": "plateSteel"
+      },
+      {
+         "type":"forge:ore_dict",
+		 "ore": "plateSteel"
       }
    ],
    "result": {
-      "item": "wbtc:relay_manhole",
+      "item": "wbtc:lvn_manhole",
       "count": 1
    }
 }
