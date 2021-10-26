@@ -1,6 +1,7 @@
 package rz.mesabrook.wbtc.items.misc;
 
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -31,12 +32,12 @@ public class MiscItem extends Item implements IHasModel
 	public static final DamageSource KEKW = new DamageSourceAprilFools("kekw");
 	private final TextComponentTranslation color = new TextComponentTranslation("im.color");
 	private final TextComponentTranslation firecloth = new TextComponentTranslation("im.firecloth");
-	public MiscItem(String name, int stack)
+	public MiscItem(String name, int stack, CreativeTabs creativeTab)
 	{
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setMaxStackSize(stack);
-		setCreativeTab(Main.IMMERSIBROOK_MAIN);
+		setCreativeTab(creativeTab);
 		
 		ModItems.ITEMS.add(this);
 
@@ -44,7 +45,6 @@ public class MiscItem extends Item implements IHasModel
 		color.getStyle().setColor(TextFormatting.YELLOW);
 		firecloth.getStyle().setColor(TextFormatting.GRAY);
 	}
-	
 	
 	@Override
 	@SideOnly(Side.CLIENT)
