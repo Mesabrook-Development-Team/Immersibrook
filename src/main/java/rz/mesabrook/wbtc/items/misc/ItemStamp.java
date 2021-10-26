@@ -17,7 +17,6 @@ import java.util.List;
 
 public class ItemStamp extends Item implements IHasModel
 {
-    private final TextComponentTranslation series = new TextComponentTranslation("im.tooltip.stamp.series");
     public ItemStamp(String name)
     {
         setRegistryName(name);
@@ -26,7 +25,6 @@ public class ItemStamp extends Item implements IHasModel
         setMaxStackSize(64);
 
         ModItems.ITEMS.add(this);
-        series.getStyle().setColor(TextFormatting.LIGHT_PURPLE);
     }
 
     @Override
@@ -39,7 +37,7 @@ public class ItemStamp extends Item implements IHasModel
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag)
     {
-        tooltip.add(series.getFormattedText());
+        tooltip.add(TextFormatting.LIGHT_PURPLE + new TextComponentTranslation("im.tooltip.stamp.series").getFormattedText());
         if(stack.getItem() == ModItems.IR_STAMP_1 || stack.getItem() == ModItems.IR_STAMP_2 || stack.getItem() == ModItems.IR_STAMP_3)
         {
             tooltip.add(TextFormatting.GOLD + new TextComponentTranslation("im.tooltip.stamp.ir").getFormattedText());
