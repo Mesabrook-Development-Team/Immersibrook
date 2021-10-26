@@ -49,14 +49,14 @@ public class ModItems
 
 	// Immersibrook Icons
 	public static final Item IMMERSIBROOK_ICON = new ItemMesabrookIcon("icon_immersibrook");
-	public static final Item DOOT_ICON = new MiscItem("doot_icon", 1);
-	public static final Item KEKW = new MiscItem("wheezing", 1);
+	public static final Item DOOT_ICON = new MiscItem("doot_icon", 1, null);
+	public static final Item KEKW = new MiscItem("wheezing", 1, null);
 
 	// Metals
-	public static final Item IRON_ROD = new MiscItem("iron_rod", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item IRON_ROD = new MiscItem("iron_rod", 64, Main.IMMERSIBROOK_MAIN);
 
 	// Raw Plastic
-	public static final Item RAW_PLASTIC = new MiscItem("raw_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_PLASTIC = new MiscItem("raw_plastic",  64, Main.IMMERSIBROOK_MAIN);
 
 	// Colored Raw Plastic
 	public static final Item RAW_PLASTIC_WHITE = new ItemRawPlastic("raw_white_plastic",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
@@ -97,7 +97,7 @@ public class ModItems
 	public static final Item PLASTIC_GLOWING = new ItemPlasticIngot("glowing_plastic", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 
 	// Music Discs
-	public static final Item BLANK_DISC = new MiscItem("blank_vinyl",  16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item BLANK_DISC = new MiscItem("blank_vinyl",  16, Main.IMMERSIBROOK_MAIN);
 	public static final Item DISC_AMALTHEA = new MemeRecord("amalthea", SoundInit.AMALTHEA);
 	public static final Item DISC_NYAN = new MemeRecord("nyan", SoundInit.NYAN);
 	public static final Item DISC_USSR1 = new MemeRecord("ussr1", SoundInit.USSR1);
@@ -154,10 +154,10 @@ public class ModItems
 	public static final Item NV_GOGGLES = new NightVisionGoggles("nv_goggles");
 
 	// Night vision goggles crafting ingredients.
-	public static final Item NV_LENS = new MiscItem("nv_lens", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item NV_BODY = new MiscItem("nv_goggle_body", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item NV_INTERNALS = new MiscItem("nv_goggle_circuits", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item NV_STRAPS = new MiscItem("nv_goggle_strap", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item NV_LENS = new MiscItem("nv_lens", 16, Main.IMMERSIBROOK_MAIN);
+	public static final Item NV_BODY = new MiscItem("nv_goggle_body", 16, Main.IMMERSIBROOK_MAIN);
+	public static final Item NV_INTERNALS = new MiscItem("nv_goggle_circuits", 16, Main.IMMERSIBROOK_MAIN);
+	public static final Item NV_STRAPS = new MiscItem("nv_goggle_strap", 16, Main.IMMERSIBROOK_MAIN);
 
 	// Hard Hats & Helmets
 	public static final Item HARDHAT_YELLOW = new Hardhat("hh_yellow");
@@ -198,19 +198,19 @@ public class ModItems
 	public static final Item DT_GENERIC = new FirefighterSuit("ff_dt_generic", ArmorMaterialRegistry.FF_DT_GENERIC, EntityEquipmentSlot.CHEST, 1);
 
 	// Firecloth
-	public static final Item FIRECLOTH_1 = new MiscItem("firecloth_1", 64);
-	public static final Item FIRECLOTH_2 = new MiscItem("firecloth_2", 64);
-	public static final Item FIRECLOTH_3 = new MiscItem("firecloth_3", 64);
-	public static final Item FIRECLOTH_4 = new MiscItem("firecloth_4", 64);
+	public static final Item FIRECLOTH_1 = new MiscItem("firecloth_1", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item FIRECLOTH_2 = new MiscItem("firecloth_2", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item FIRECLOTH_3 = new MiscItem("firecloth_3", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item FIRECLOTH_4 = new MiscItem("firecloth_4", 64, Main.IMMERSIBROOK_MAIN);
 
 	// Reflective Tape
-	public static final Item REFLECTIVE_WHITE = new MiscItem("reflective_white", 64);
-	public static final Item REFLECTIVE_PINK = new MiscItem("reflective_pink", 64);
-	public static final Item REFLECTIVE_GREEN = new MiscItem("reflective_green", 64);
-	public static final Item REFLECTIVE_YELLOW = new MiscItem("reflective_yellow", 64);
+	public static final Item REFLECTIVE_WHITE = new MiscItem("reflective_white", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item REFLECTIVE_PINK = new MiscItem("reflective_pink", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item REFLECTIVE_GREEN = new MiscItem("reflective_green", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item REFLECTIVE_YELLOW = new MiscItem("reflective_yellow", 64, Main.IMMERSIBROOK_MAIN);
 
 	// Misc Items
-	public static final Item PAPER_STICK = new MiscItem("paper_stick", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PAPER_STICK = new MiscItem("paper_stick", 64, Main.IMMERSIBROOK_MAIN);
 	public static final Item WINE_BOTTLE = new ItemWineBottle("wine_bottle");
 
 	// Foods
@@ -224,14 +224,14 @@ public class ModItems
 	public static final Item CANDY_PINK_LEMONADE = new ImmersiFood("pl_candy", 16, 0,8, 10, false);
 	public static final Item PINK_LEMONADE_DRINK = new ImmersiFood("pink_lemonade_drink", 1, 0, 5, 10, false);
 	public static final Item SPARKLING_PINK_LEMONADE = new ImmersiFood("sparkling_pink_lemonade", 1, 0, 10, 12, false);
-	public static final Item RAW_CANDY_RED = new MiscItem("raw_candy_red", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item RAW_CANDY_LIME = new MiscItem("raw_candy_lime", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item RAW_CANDY_BLUE = new MiscItem("raw_candy_blue", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item RAW_CANDY_ORANGE = new MiscItem("raw_candy_orange",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item RAW_CANDY_GRAPE = new MiscItem("raw_candy_grape",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item RAW_CANDY_RB = new MiscItem("raw_candy_rb",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item RAW_CANDY_CHOC = new MiscItem("raw_candy_choc",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item RAW_CANDY_PL = new MiscItem("raw_candy_pl",  64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_CANDY_RED = new MiscItem("raw_candy_red", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_CANDY_LIME = new MiscItem("raw_candy_lime", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_CANDY_BLUE = new MiscItem("raw_candy_blue", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_CANDY_ORANGE = new MiscItem("raw_candy_orange",  64, Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_CANDY_GRAPE = new MiscItem("raw_candy_grape",  64, Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_CANDY_RB = new MiscItem("raw_candy_rb",  64, Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_CANDY_CHOC = new MiscItem("raw_candy_choc",  64, Main.IMMERSIBROOK_MAIN);
+	public static final Item RAW_CANDY_PL = new MiscItem("raw_candy_pl",  64, Main.IMMERSIBROOK_MAIN);
 
 	public static final Item LOLIPOP_GREEN = new ImmersiFood("green_lollipop", 32,0, 5, 10, false);
 	public static final Item LOLIPOP_ORANGE = new ImmersiFood("orange_lollipop", 32,0, 5, 10, false);
@@ -266,24 +266,24 @@ public class ModItems
 	public static final Item MASK_SLIME = new FaceMasks("mask_slime", ArmorMaterialRegistry.MASK_SLIME, EntityEquipmentSlot.HEAD);
 
 	// Food Crafting Items
-	public static final Item DYE_RED = new MiscItem("dye_red", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item DYE_GREEN = new MiscItem("dye_green", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item DYE_BLUE = new MiscItem("dye_blue", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item DYE_WHITE = new MiscItem("dye_white", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item DYE_YELLOW = new MiscItem("dye_yellow", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item DUST_WHITE = new MiscItem("white_mushroom_dust", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item SUGAR_ORANGE = new MiscItem("sugar_orange", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item SUGAR_RED = new MiscItem("sugar_red", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item SUGAR_GREEN = new MiscItem("sugar_green", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item SUGAR_BLUE = new MiscItem("sugar_blue", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item SUGAR_PURPLE = new MiscItem("sugar_purple", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item SUGAR_BROWN = new MiscItem("sugar_brown", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item SUGAR_LIME = new MiscItem("sugar_lime", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item SUGAR_PINK = new MiscItem("sugar_pink", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item SUGAR_YELLOW = new MiscItem("sugar_yellow", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item DYE_RED = new MiscItem("dye_red", 16, Main.IMMERSIBROOK_MAIN);
+	public static final Item DYE_GREEN = new MiscItem("dye_green", 16, Main.IMMERSIBROOK_MAIN);
+	public static final Item DYE_BLUE = new MiscItem("dye_blue", 16, Main.IMMERSIBROOK_MAIN);
+	public static final Item DYE_WHITE = new MiscItem("dye_white", 16, Main.IMMERSIBROOK_MAIN);
+	public static final Item DYE_YELLOW = new MiscItem("dye_yellow", 16, Main.IMMERSIBROOK_MAIN);
+	public static final Item DUST_WHITE = new MiscItem("white_mushroom_dust", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item SUGAR_ORANGE = new MiscItem("sugar_orange", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item SUGAR_RED = new MiscItem("sugar_red", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item SUGAR_GREEN = new MiscItem("sugar_green", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item SUGAR_BLUE = new MiscItem("sugar_blue", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item SUGAR_PURPLE = new MiscItem("sugar_purple", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item SUGAR_BROWN = new MiscItem("sugar_brown", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item SUGAR_LIME = new MiscItem("sugar_lime", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item SUGAR_PINK = new MiscItem("sugar_pink", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item SUGAR_YELLOW = new MiscItem("sugar_yellow", 64, Main.IMMERSIBROOK_MAIN);
 
 	// Communications
-	public static final Item RADIO = new MiscItem("radio", 1).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item RADIO = new MiscItem("radio", 1, Main.IMMERSIBROOK_MAIN);
 	public static final Item PHONE_WHITE = new ItemPhone("smartphone_white", "phone_bezel_white").setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PHONE_ORANGE = new ItemPhone("smartphone_orange", "phone_bezel_orange").setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PHONE_MAGENTA = new ItemPhone("smartphone_magenta", "phone_bezel_magenta").setCreativeTab(Main.IMMERSIBROOK_MAIN);
@@ -303,27 +303,27 @@ public class ModItems
 	public static final Item PHONE_SPECIAL = new ItemPhone("smartphone_special", "phone_bezel").setCreativeTab(Main.IMMERSIBROOK_MAIN);
 
 	// Phone Crafting Ingredients
-	public static final Item PHONE_SCREEN = new MiscItem("phone_screen", 16).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_SHELL_WHITE = new MiscItem("phone_shell_white", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_SHELL_ORANGE = new MiscItem("phone_shell_orange", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_SHELL_MAGENTA = new MiscItem("phone_shell_magenta", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_SHELL_LBLUE = new MiscItem("phone_shell_lblue", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_SHELL_YELLOW = new MiscItem("phone_shell_yellow", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_SHELL_LIME = new MiscItem("phone_shell_lime", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_SHELL_PINK = new MiscItem("phone_shell_pink", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_SHELL_GRAY = new MiscItem("phone_shell_gray", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_SHELL_SILVER = new MiscItem("phone_shell_silver", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_SHELL_CYAN = new MiscItem("phone_shell_cyan", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_SHELL_PURPLE = new MiscItem("phone_shell_purple", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_SHELL_BLUE = new MiscItem("phone_shell_blue", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_SHELL_BROWN = new MiscItem("phone_shell_brown", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_SHELL_GREEN = new MiscItem("phone_shell_green", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_SHELL_RED = new MiscItem("phone_shell_red", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_SHELL_BLACK = new MiscItem("phone_shell_black", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_SHELL_SPECIAL = new MiscItem("phone_shell_special", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SCREEN = new MiscItem("phone_screen", 16, Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_WHITE = new MiscItem("phone_shell_white", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_ORANGE = new MiscItem("phone_shell_orange", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_MAGENTA = new MiscItem("phone_shell_magenta", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_LBLUE = new MiscItem("phone_shell_lblue", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_YELLOW = new MiscItem("phone_shell_yellow", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_LIME = new MiscItem("phone_shell_lime", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_PINK = new MiscItem("phone_shell_pink", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_GRAY = new MiscItem("phone_shell_gray", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_SILVER = new MiscItem("phone_shell_silver", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_CYAN = new MiscItem("phone_shell_cyan", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_PURPLE = new MiscItem("phone_shell_purple", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_BLUE = new MiscItem("phone_shell_blue", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_BROWN = new MiscItem("phone_shell_brown", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_GREEN = new MiscItem("phone_shell_green", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_RED = new MiscItem("phone_shell_red", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_BLACK = new MiscItem("phone_shell_black", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_SHELL_SPECIAL = new MiscItem("phone_shell_special", 64, Main.IMMERSIBROOK_MAIN);
 
 	// Cardboard
-	public static final Item CARDBOARD_PIECE = new MiscItem("cardboard_piece", 64).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item CARDBOARD_PIECE = new MiscItem("cardboard_piece", 64, Main.IMMERSIBROOK_MAIN);
 
 	// Rubber Ducks
 	public static final Item RUBBER_DUCK = new ItemRubberDuck("rubber_duck");
@@ -335,10 +335,10 @@ public class ModItems
 	public static final Item RUBBER_DUCK_EVIL = new ItemRubberDuck("rubber_duck_evil");
 
 	// Rods
-	public static final Item ROD_CONSTANTAN = new MiscItem("rod_constantan", 64);
-	public static final Item ROD_NICKEL = new MiscItem("rod_nickel", 64);
-	public static final Item PLASTIC_PLATE = new MiscItem("plastic_plate", 64);
-	public static final Item PLASTIGLASS_SHEET = new MiscItem("plastiglass", 64);
+	public static final Item ROD_CONSTANTAN = new MiscItem("rod_constantan", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item ROD_NICKEL = new MiscItem("rod_nickel", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item PLASTIC_PLATE = new MiscItem("plastic_plate", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item PLASTIGLASS_SHEET = new MiscItem("plastiglass", 64, Main.IMMERSIBROOK_MAIN);
 
 	// Collectable Stamps - Series 1 - Cities
 	public static final Item IR_STAMP_1 = new ItemStamp("stamp_ir_1");
