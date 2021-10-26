@@ -8,6 +8,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
@@ -32,6 +33,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.init.ModItems;
+import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.SoundRandomizer;
@@ -137,6 +139,16 @@ public class PlayerEvents
 			{
 				player.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Happy Birthday to Boo & Bubbles, RavenholmZombie's cats!"));
 				player.sendMessage(new TextComponentString(TextFormatting.GOLD + "Happy Halloween!"));
+				player.addItemStackToInventory(new ItemStack(ModItems.LOLIPOP_RED, 1));
+
+				if(!w.isRemote)
+				{
+					PlaySoundPacket packet = new PlaySoundPacket();
+					packet.pos = player.getPosition();
+					packet.modID = "minecraft";
+					packet.soundName = "record.11";
+					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+				}
 			}
 
 			TextComponentTranslation mesaTitle = new TextComponentTranslation("im.website.title");
