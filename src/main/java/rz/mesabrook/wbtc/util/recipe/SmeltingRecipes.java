@@ -81,14 +81,14 @@ public class SmeltingRecipes
 			GameRegistry.addSmelting(ModItems.FIRECLOTH_1, new ItemStack(ModItems.FIRECLOTH_2, 1), 10F);
 			GameRegistry.addSmelting(ModItems.FIRECLOTH_2, new ItemStack(ModItems.FIRECLOTH_3, 1), 10F);
 			GameRegistry.addSmelting(ModItems.FIRECLOTH_3, new ItemStack(ModItems.FIRECLOTH_4, 1), 10F);
-			GameRegistry.addSmelting(ModItems.FIRECLOTH_4, new ItemStack(Items.COAL, 2, 1), 10F);
+			GameRegistry.addSmelting(ModItems.FIRECLOTH_4, new ItemStack(Items.COAL, 2, 1), 0F);
 
 			// Plastiglass Sheet
 			GameRegistry.addSmelting(ModItems.PLASTIC_PLATE, new ItemStack(ModItems.PLASTIGLASS_SHEET, 1), 69F);
 
 			if(ModConfig.smeltingLeatherForASaddle)
 			{
-				GameRegistry.addSmelting(Items.LEATHER, new ItemStack(Items.SADDLE, 1), 69F);
+				GameRegistry.addSmelting(Items.LEATHER, new ItemStack(Items.SADDLE, 1), 24F);
 				Main.logger.info("[" + Reference.MODNAME + "] Leather to Saddle Smelting Recipe Registered.");
 			}
 			else
