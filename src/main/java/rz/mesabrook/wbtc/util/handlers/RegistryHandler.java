@@ -38,14 +38,14 @@ public class RegistryHandler
 	public static void onItemRegister(RegistryEvent.Register<Item> event)
 	{
 		event.getRegistry().registerAll(ModItems.ITEMS.toArray(new Item[0]));
-		OreDictRegistry.addToOD();
+		OreDictRegistry.init();
 	}
 	
 	@SubscribeEvent
 	public static void onBlockRegister(RegistryEvent.Register<Block> event)
 	{
 		event.getRegistry().registerAll(ModBlocks.BLOCKS.toArray(new Block[0]));
-		FuckingTileEntityHandler.registerTileEntites();
+		TileEntityHandler.registerTileEntities();
 	}
 	
 	@SubscribeEvent
@@ -74,7 +74,7 @@ public class RegistryHandler
 	public static void preInitRegistries(FMLPreInitializationEvent event)
 	{
 		Main.logger.info("");
-		Main.logger.info("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+		Main.logger.info("o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o");
 		Main.logger.info("");
 		Main.logger.info(Reference.MODNAME);
 		Main.logger.info("Version " + Reference.VERSION);
@@ -84,35 +84,17 @@ public class RegistryHandler
 		Main.logger.info("");
 		Main.logger.info("Pre-Initialization");
 		Main.logger.info("");
-		Main.logger.info("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+		Main.logger.info("o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o=o");
+		Main.logger.info("");
 
-        Main.JABCM_LOADED = Loader.isModLoaded("jabcm");
-        Main.FURENIKUS_CITIES = Loader.isModLoaded("furenikuscities");
         Main.THERCMOD = Loader.isModLoaded("thercmod");
-
-		Triggers.init();
-
-        if(Main.FURENIKUS_CITIES)
-        {
-        	Main.logger.warn("[" + Reference.MODNAME + "] Fureniku's Cities detected. There may be some overlap when it comes to blocks since both mods are meant for a similar purpose. We recommend using either Immersibrook or FC separately to avoid any potential conflicts.");
-        }
-		
-		if(!Main.JABCM_LOADED)
-		{
-			Main.logger.info("Immersibrook goes great with the Just A Basic Concrete Mod!");
-			Main.logger.info("Download it today! https://bit.ly/2NNXJL4");
-		}
-		else
-		{
-			Main.logger.info("Thank you for using JABCM!");
-		}
-
 		if(Main.THERCMOD)
 		{
 			Main.logger.info("[" + Reference.MODNAME + "] The RC Mod Detected.");
 		}
 		
 		PacketHandler.registerMessages();
+		Triggers.init();
 	}
 	
 	public static void initRegistries()
