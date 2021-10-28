@@ -32,7 +32,7 @@ public class RecipeOverrider
                     ResourceLocation plastic = new ResourceLocation("thercmod:plastic");
                     modRegistry.remove(plastic);
                     Main.logger.info("[" + Reference.MODNAME + "] wbtc.cfg/overrideRCModPlastic = true");
-                    Main.logger.info("[" + Reference.MODNAME + "] The RC Mod's plastic recipe has been disabled. Use IB's instead.");
+                    Main.logger.info("[" + Reference.MODNAME + "] The RC Mod's plastic recipe has been disabled. Use ours instead.");
                 }
                 else
                 {
