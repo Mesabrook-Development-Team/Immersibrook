@@ -7,7 +7,7 @@ import rz.mesabrook.wbtc.init.ModItems;
 
 public class OreDictRegistry 
 {
-	public static void addToOD()
+	public static void init()
 	{
 		// Metals
 		OreDictionary.registerOre("stickIron", ModItems.IRON_ROD);
