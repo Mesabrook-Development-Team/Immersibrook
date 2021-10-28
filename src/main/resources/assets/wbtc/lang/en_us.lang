@@ -72,6 +72,7 @@ im.map.title=Our Dynmap
 im.website=https://mesabrook.com
 im.wiki=https://bit.ly/2S2G5Wt
 im.website.hover=Click to open this URL in your web browser
+im.prerelease=PRE-RELEASE CANDIDATE BUILD
 
 //Commands
 im.cmd.error=/immersibrook about | changelog
