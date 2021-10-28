@@ -29,8 +29,6 @@ public class Main
     public static CommonProxy proxy;
     
     public static Logger logger;
-    public static boolean JABCM_LOADED = false;
-    public static boolean FURENIKUS_CITIES = false;
     public static boolean THERCMOD = false;
     public static final Random rand = new Random();
     
