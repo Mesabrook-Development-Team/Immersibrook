@@ -7,9 +7,9 @@ import rz.mesabrook.wbtc.blocks.te.TileEntityPlaque;
 import rz.mesabrook.wbtc.blocks.te.TileEntityTrashBin;
 import rz.mesabrook.wbtc.util.Reference;
 
-public class FuckingTileEntityHandler 
+public class TileEntityHandler
 {
-	public static void registerTileEntites()
+	public static void registerTileEntities()
 	{
 		GameRegistry.registerTileEntity(TileEntityTrashBin.class, new ResourceLocation(Reference.MODID + ":trash_bin"));
 		GameRegistry.registerTileEntity(TileEntityPlaque.class, new ResourceLocation(Reference.MODID + ":plaque"));
