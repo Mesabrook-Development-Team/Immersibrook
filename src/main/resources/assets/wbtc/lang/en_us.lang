@@ -1459,6 +1459,9 @@ item.smartphone_green.name=Smartphone
 item.smartphone_red.name=Smartphone
 item.smartphone_black.name=Smartphone
 item.smartphone_special.name=Smartphone
+item.smartphone_nether.name=Leviaphone
+item.smartphone_mesabrook.name=Smartphone
+item.smartphone_rc.name=Smartphone
 item.phone_screen.name=Touchscreen Display
 item.phone_shell_white.name=White Phone Shell
 item.phone_shell_orange.name=Orange Phone Shell
@@ -1591,13 +1594,14 @@ tile.marker_pole_wood.name=Utilities Marker Pole
 tile.marker_pole_wood_red.name=Utilities Marker Pole
 tile.marker_pole_wood_blue.name=Utilities Marker Pole
 
-//Generic Collapse Tooltips
+//Generic Tooltips
 im.tooltip.hidden=[Press SHIFT for more info]
 im.tooltip.markerpole=Used to denote the location of underground wires, pipes, and conduits.
 im.tooltip.relaycover=Used to denote the location of buried Crossing Relays.
 im.tooltip.manhole.lvn=Manufactured by Leviathan LLC in Autumn Valley.
 im.tooltip.manhole.util=Used to denote the location of underground utility tunnels.
 im.tooltip.manhole.generic=A heavy metal plate meant to cover openings into underground areas.
+im.tooltip.phone.gov=Property of the National Government of the Republic of Mesabrook.
 
 //Manholes
 item.manhole_hook.name=Manhole Lid Lifter
