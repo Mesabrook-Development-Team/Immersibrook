@@ -1,19 +1,27 @@
 package rz.mesabrook.wbtc.items.misc;
 
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.INBTSerializable;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.PhoneWallpaperRandomizer;
 import rz.mesabrook.wbtc.util.Reference;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 public class ItemPhone extends Item implements IHasModel {
 
@@ -29,8 +37,19 @@ public class ItemPhone extends Item implements IHasModel {
 	}
 	
 	@Override
-	public void registerModels() {
+	public void registerModels()
+	{
 		Main.proxy.registerItemRenderer(this, 0);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag)
+	{
+		if(stack.getItem() == ModItems.PHONE_MESABROOK)
+		{
+			tooltip.add(TextFormatting.AQUA + new TextComponentTranslation("im.tooltip.phone.gov").getFormattedText());
+		}
 	}
 	
 	@Override

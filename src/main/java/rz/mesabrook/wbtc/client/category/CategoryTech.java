@@ -40,6 +40,9 @@ public class CategoryTech extends AbstractCategory
         add(ModItems.PHONE_RED);
         add(ModItems.PHONE_BLACK);
         add(ModItems.PHONE_SPECIAL);
+        add(ModItems.PHONE_LVN);
+        add(ModItems.PHONE_MESABROOK);
+        add(ModItems.PHONE_RC);
         add(ModBlocks.CELL_ANTENNA);
     }
 }
