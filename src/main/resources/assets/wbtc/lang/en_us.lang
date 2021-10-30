@@ -58,6 +58,8 @@ advancements.imb.choc=Master Chocolatier!
 advancements.imb.choc.desc=Make some chocolate
 advancements.imb.phone_use=Digital Revolution
 advancements.imb.phone_use.desc=Use a Smartphone
+advancements.imb.stampbook=Stamp Collector
+advancements.imb.stampbook.desc=Open a Stamp Book
 
 //Config
 wbtc.config.title=Configuration File for Immersibrook

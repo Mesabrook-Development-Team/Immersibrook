@@ -1,0 +1,21 @@
+{
+    "display": {
+        "icon": {
+            "item": "wbtc:stamp_book"
+        },
+        "title": {
+            "translate": "advancements.imb.stampbook"
+        },
+        "description": {
+            "translate": "advancements.imb.stampbook.desc"
+        },
+		"show_toast": true,
+        "announce_to_chat": true
+    },
+	"parent": "wbtc:imb_welcome",
+    "criteria": {
+        "tick": {
+            "trigger": "wbtc:imb_stampbook"
+        }
+    }
+}

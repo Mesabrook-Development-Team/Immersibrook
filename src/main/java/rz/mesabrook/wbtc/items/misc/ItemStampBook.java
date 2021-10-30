@@ -13,9 +13,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.Main;
+import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.util.IHasModel;
+import scala.swing.Action;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -50,6 +52,11 @@ public class ItemStampBook extends Item implements IHasModel
     {
         ItemStack itemstack = playerIn.getHeldItem(handIn);
         playerIn.playSound(SoundInit.BOOK_OPEN, 1.0F, 1.0F);
+        if(playerIn instanceof EntityPlayer)
+        {
+            Triggers.trigger(Triggers.STAMPBOOK, playerIn);
+        }
+
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemstack);
     }
 }
