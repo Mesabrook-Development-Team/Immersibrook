@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " BB",
+    "BRB",
+    "S  "
+  ],
+  "key": {
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "ingotSteel"
+    },
+	"B": {
+      "type": "forge:ore_dict",
+	  "ore": "itemBlackPlastic"
+    },
+	"R": {
+      "item": "wbtc:reflective_green"
+    }
+  },
+  "result": {
+    "item": "wbtc:firehelmet_black",
+    "count": 1
+  }
+}
