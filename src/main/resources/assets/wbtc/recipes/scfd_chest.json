@@ -1,0 +1,16 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "item": "wbtc:ff_black_generic"
+      },
+      {
+         "type": "forge:ore_dict",
+		 "ore": "ingotCopper"
+      }
+   ],
+   "result": {
+      "item": "wbtc:scfd_chest",
+      "count": 1
+   }
+}

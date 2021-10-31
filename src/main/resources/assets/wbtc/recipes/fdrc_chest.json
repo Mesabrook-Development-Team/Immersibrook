@@ -1,0 +1,16 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "item": "wbtc:ff_black_generic"
+      },
+      {
+         "item": "minecraft:concrete",
+		 "data": 0
+      }
+   ],
+   "result": {
+      "item": "wbtc:fdrc_chest",
+      "count": 1
+   }
+}

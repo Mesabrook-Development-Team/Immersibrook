@@ -1,0 +1,15 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "item": "wbtc:ff_lt_generic"
+      },
+      {
+         "item": "minecraft:brick"
+      }
+   ],
+   "result": {
+      "item": "wbtc:avfd_chest",
+      "count": 1
+   }
+}
