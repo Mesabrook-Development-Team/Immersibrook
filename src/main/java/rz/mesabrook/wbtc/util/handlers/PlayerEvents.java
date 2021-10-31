@@ -80,12 +80,9 @@ public class PlayerEvents
 			TextComponentString user = new TextComponentString(TextFormatting.GOLD + player.getDisplayNameString());
 
 			TextComponentTranslation prefix = new TextComponentTranslation("im.welcome");
-			TextComponentTranslation pr = new TextComponentTranslation("im.prerelease");
-			pr.getStyle().setColor(TextFormatting.RED);
 			prefix.getStyle().setColor(TextFormatting.GREEN);
 			prefix.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentTranslation("im.welcome.disable")));
 			player.sendMessage(new TextComponentString(prefix.getFormattedText() + " " + user.getFormattedText() + "!"));
-			player.sendMessage(new TextComponentString(pr.getFormattedText()));
 			if(LocalDate.now().getMonthValue() == Reference.RZ_MONTH && LocalDate.now().getDayOfMonth() == Reference.RZ_DAY)
 			{
 				player.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Happy Birthday, RavenholmZombie!"));
