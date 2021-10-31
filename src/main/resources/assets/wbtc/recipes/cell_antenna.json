@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " T ",
+    "TST",
+    " T "
+  ],
+  "key": {
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "fenceSteel"
+    },
+	"T": {
+      "item": "wbtc:cell_transmitter"
+    }
+  },
+  "result": {
+    "item": "wbtc:cell_antenna",
+    "count": 1
+  }
+}

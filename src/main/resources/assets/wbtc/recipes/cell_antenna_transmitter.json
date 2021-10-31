@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "QRQ",
+    "QCQ",
+    "QRQ"
+  ],
+  "key": {
+    "Q": {
+      "type": "forge:ore_dict",
+      "ore": "blockQuartz"
+    },
+	"R": {
+      "item": "minecraft:redstone"
+    },
+	"C": {
+      "item": "immersiveengineering:material",
+	  "data": 27
+    }
+  },
+  "result": {
+    "item": "wbtc:cell_transmitter",
+    "count": 1
+  }
+}

@@ -324,6 +324,7 @@ public class ModItems
 	public static final Item PHONE_SHELL_RED = new MiscItem("phone_shell_red", 64, Main.IMMERSIBROOK_MAIN);
 	public static final Item PHONE_SHELL_BLACK = new MiscItem("phone_shell_black", 64, Main.IMMERSIBROOK_MAIN);
 	public static final Item PHONE_SHELL_SPECIAL = new MiscItem("phone_shell_special", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item CELL_TRANSMITTER = new MiscItem("cell_transmitter", 1, Main.IMMERSIBROOK_MAIN);
 
 	// Cardboard
 	public static final Item CARDBOARD_PIECE = new MiscItem("cardboard_piece", 64, Main.IMMERSIBROOK_MAIN);
