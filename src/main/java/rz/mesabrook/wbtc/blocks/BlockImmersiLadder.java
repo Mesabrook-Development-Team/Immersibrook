@@ -33,6 +33,9 @@ public class BlockImmersiLadder extends Block implements IHasModel
         setRegistryName(name);
         setUnlocalizedName(name);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
+        setHardness(2F);
+        setResistance(3.5F);
+        setHarvestLevel("pickaxe", 1);
         setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 
         ModBlocks.BLOCKS.add(this);

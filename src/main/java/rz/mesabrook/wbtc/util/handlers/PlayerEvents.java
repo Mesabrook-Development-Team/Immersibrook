@@ -13,6 +13,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
@@ -34,7 +35,9 @@ import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.init.SoundInit;
+import rz.mesabrook.wbtc.items.misc.ItemPresent;
 import rz.mesabrook.wbtc.net.PlaySoundPacket;
+import rz.mesabrook.wbtc.util.ItemRandomizer;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.SoundRandomizer;
 import rz.mesabrook.wbtc.util.TooltipRandomizer;
@@ -56,6 +59,7 @@ public class PlayerEvents
 		EntityPlayer player = e.player;
 		World w = e.player.world;
 		TooltipRandomizer.ChosenTooltip();
+
 		if(player instanceof EntityPlayer)
 		{
 			Triggers.trigger(Triggers.WELCOME, player);
@@ -72,6 +76,20 @@ public class PlayerEvents
 			{
 				w.playSound(player, player.getPosition(), SoundEvents.ENTITY_WITCH_AMBIENT, SoundCategory.BLOCKS, 1.0F, 1.0F);
 				w.addWeatherEffect(new EntityLightningBolt(player.world, player.posX, player.posY, player.posZ, true));
+			}
+		}
+
+		if(LocalDate.now().getMonthValue() == 12)
+		{
+			if(LocalDate.now().getDayOfMonth() <= 25 && LocalDate.now().getDayOfMonth() >= 13)
+			{
+				SoundRandomizer.RandomizeSound();
+				ItemRandomizer.RandomizePresent();
+				PlaySoundPacket packet = new PlaySoundPacket();
+				packet.pos = player.getPosition();
+				packet.soundName = "jingle";
+				PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+				player.addItemStackToInventory(ItemRandomizer.presentItem);
 			}
 		}
 
@@ -147,6 +165,17 @@ public class PlayerEvents
 					packet.pos = player.getPosition();
 					packet.modID = "minecraft";
 					packet.soundName = "record.11";
+					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+				}
+			}
+			if(LocalDate.now().getMonthValue() == 12 && LocalDate.now().getDayOfMonth() == 24 || LocalDate.now().getMonthValue() == 12 && LocalDate.now().getDayOfMonth() == 25)
+			{
+				player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Happy Holidays!"));
+				if(!w.isRemote)
+				{
+					PlaySoundPacket packet = new PlaySoundPacket();
+					packet.pos = player.getPosition();
+					packet.soundName = "jingles";
 					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
 				}
 			}

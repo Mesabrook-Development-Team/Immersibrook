@@ -7,12 +7,13 @@ import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.handlers.ClientSideHandlers;
 
 public class PlaySoundPacket implements IMessage
 {
 	public BlockPos pos;
-	public String modID = "wbtc";
+	public String modID = Reference.MODID;
 	public String soundName;
 	public float volume = 1F;
 	public float pitch = 1F;

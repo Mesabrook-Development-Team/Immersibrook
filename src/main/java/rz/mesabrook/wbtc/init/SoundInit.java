@@ -69,6 +69,8 @@ public class SoundInit
 	public static final SoundEvent BOOK_CLOSE;
 	public static final SoundEvent MH_OPEN;
 	public static final SoundEvent MH_CLOSE;
+	public static final SoundEvent JINGLES;
+	public static final SoundEvent RIP;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -187,6 +189,8 @@ public class SoundInit
 		BOOK_CLOSE = addSoundsToRegistry("book_close");
 		MH_OPEN = addSoundsToRegistry("mh_open");
 		MH_CLOSE = addSoundsToRegistry("mh_close");
+		JINGLES = addSoundsToRegistry("jingles");
+		RIP = addSoundsToRegistry("rip");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -361,6 +365,8 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.MEMORY);
 				event.getRegistry().registerAll(SoundInit.BOOK_OPEN);
 				event.getRegistry().registerAll(SoundInit.BOOK_CLOSE);
+				event.getRegistry().registerAll(SoundInit.JINGLES);
+				event.getRegistry().registerAll(SoundInit.RIP);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

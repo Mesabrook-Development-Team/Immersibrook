@@ -101,5 +101,7 @@
 	"book_open": {"category": "master","sounds": [{"name": "wbtc:book_open","stream": true}]},
 	"book_close": {"category": "master","sounds": [{"name": "wbtc:book_close","stream": true}]},
 	"mh_close": {"category": "master","sounds": [{"name": "wbtc:mh_close","stream": true}]},
-	"mh_open": {"category": "master","sounds": [{"name": "wbtc:mh_open","stream": true}]}
+	"mh_open": {"category": "master","sounds": [{"name": "wbtc:mh_open","stream": true}]},
+	"jingles": {"category": "master","sounds": [{"name": "wbtc:jingles","stream": true}]},
+	"rip": {"category": "master","sounds": [{"name": "wbtc:rip","stream": true}]}
 }

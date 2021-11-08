@@ -114,6 +114,9 @@ public class CategoryHousehold extends AbstractCategory
 
 		// Holidays 2021
 		add(ModItems.SANTA_HAT);
+		add(ModItems.PRESENT_TEST);
+		add(ModItems.PRESENT_GREEN);
+		add(ModItems.PRESENT_BLUE);
 	}
 
 }

@@ -124,6 +124,7 @@ item.purple_vest.name=Purple Safety Vest
 item.brown_vest.name=Brown Safety Vest
 item.green_vest.name=Green Safety Vest
 item.black_vest.name=Black Safety Vest
+item.cooling_vest.name=Supplemental Abdominal Cooling Apparatus
 item.icon_immersibrook.name=Mesarang
 
 //Leviathan Safety Vests
@@ -225,6 +226,9 @@ item.popper_blue.name=Blue Fidget Popper
 item.dooter.name=Doot Bugle
 item.paper_stick.name=Paper Stick
 item.cell_transmitter.name=Cellular Transmitter
+item.present_red.name=Present
+item.present_green.name=Present
+item.present_blue.name=Present
 
 //Smooth Wood Blocks
 tile.smooth_oak.name=Smooth Oak Wood
@@ -1465,6 +1469,8 @@ item.smartphone_special.name=Smartphone
 item.smartphone_nether.name=Leviaphone
 item.smartphone_mesabrook.name=Smartphone
 item.smartphone_rc.name=Smartphone
+item.smartphone_dw.name=Smartphone
+item.smartphone_fr.name=Smartphone
 item.phone_screen.name=Touchscreen Display
 item.phone_shell_white.name=White Phone Shell
 item.phone_shell_orange.name=Orange Phone Shell
@@ -1605,6 +1611,8 @@ im.tooltip.manhole.lvn=Manufactured by Leviathan LLC in Autumn Valley.
 im.tooltip.manhole.util=Used to denote the location of underground utility tunnels.
 im.tooltip.manhole.generic=A heavy metal plate meant to cover openings into underground areas.
 im.tooltip.phone.gov=Property of the National Government of the Republic of Mesabrook.
+im.tooltip.saca=Personal Protective Equipment designed to lower the body's temperature when worn. Usage recommended in hot, arid biomes.
+im.present=Happy Holidays!
 
 //Manholes
 item.manhole_hook.name=Manhole Lid Lifter

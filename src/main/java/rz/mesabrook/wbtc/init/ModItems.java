@@ -150,6 +150,9 @@ public class ModItems
 	public static final Item LVN_VEST_X = new SafetyVest("lvn_vest_x", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.LVN_SAFETY_VEST_X, EntityEquipmentSlot.CHEST);
 	public static final Item LVN_VEST_TXT = new SafetyVest("lvn_vest_txt", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.LVN_SAFETY_VEST_TXT, EntityEquipmentSlot.CHEST);
 
+	// Cooling Vest
+	public static final Item COOLING_VEST = new SACA("cooling_vest", ArmorMaterialRegistry.COOLING_VEST, EntityEquipmentSlot.CHEST);
+
 	// Night Vision Goggles
 	public static final Item NV_GOGGLES = new NightVisionGoggles("nv_goggles");
 
@@ -304,6 +307,8 @@ public class ModItems
 	public static final Item PHONE_LVN = new ItemPhone("smartphone_nether", "phone_bezel_red").setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PHONE_MESABROOK = new ItemPhone("smartphone_mesabrook", "phone_bezel_lblue").setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PHONE_RC = new ItemPhone("smartphone_rc", "phone_bezel_blue").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_ZOE = new ItemPhone("smartphone_dw", "phone_bezel_purple").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Item PHONE_FR = new ItemPhone("smartphone_fr", "phone_bezel_white").setCreativeTab(Main.IMMERSIBROOK_MAIN);
 
 	// Phone Crafting Ingredients
 	public static final Item PHONE_SCREEN = new MiscItem("phone_screen", 16, Main.IMMERSIBROOK_MAIN);
@@ -373,4 +378,7 @@ public class ModItems
 	// Holiday 2021
 	public static final Item CANDY_CANE = new DamageableFood("candy_cane", 5, 1.25F, false);
 	public static final Item SANTA_HAT = new WearableHat("santa_hat");
+	public static final Item PRESENT_TEST = new ItemPresent("present_red");
+	public static final Item PRESENT_GREEN = new ItemPresent("present_green");
+	public static final Item PRESENT_BLUE = new ItemPresent("present_blue");
 }

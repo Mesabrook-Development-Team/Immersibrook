@@ -27,6 +27,7 @@ import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.rendering.RenderMesabrookIcon;
 import rz.mesabrook.wbtc.rendering.RenderWineBottle;
 import rz.mesabrook.wbtc.util.IHasModel;
+import rz.mesabrook.wbtc.util.ItemRandomizer;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.TooltipRandomizer;
 import rz.mesabrook.wbtc.util.recipe.SmeltingRecipes;
@@ -116,6 +117,8 @@ public class RegistryHandler
 		Main.logger.info("[" + Reference.MODNAME + "] Post Initialization");
     	
 		TooltipRandomizer.ChosenTooltip();
+		ItemRandomizer.RandomizeItem();
+		ItemRandomizer.RandomizePresent();
     	SmeltingRecipes.registerSmeltingRecipes();
     	
     	Main.logger.info("[Immersibrook] Version " + Reference.VERSION + " loaded.");

@@ -8,9 +8,13 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModItems;
+import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.util.IHasModel;
+import rz.mesabrook.wbtc.util.SoundRandomizer;
+import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 public class WearableHat extends Item implements IHasModel
 {
@@ -47,6 +51,18 @@ public class WearableHat extends Item implements IHasModel
         {
             player.setItemStackToSlot(EntityEquipmentSlot.HEAD, item.copy());
             item.setCount(0);
+
+            if(!world.isRemote)
+            {
+                if(this == ModItems.SANTA_HAT)
+                {
+                    PlaySoundPacket packet = new PlaySoundPacket();
+                    packet.pos = player.getPosition();
+                    packet.soundName = "jingles";
+                    PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+                }
+            }
+
             return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
         }
         else

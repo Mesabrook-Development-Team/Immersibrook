@@ -60,4 +60,6 @@ public class ArmorMaterialRegistry
     public static final ItemArmor.ArmorMaterial FF_LT_GENERIC = EnumHelper.addArmorMaterial("ff_lt_generic", Reference.MODID + ":ff_lt_generic", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 4.0F);
     public static final ItemArmor.ArmorMaterial FF_DT_GENERIC = EnumHelper.addArmorMaterial("ff_dt_generic", Reference.MODID + ":ff_dt_generic", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 4.0F);
 
+    // Cooling PPE
+    public static final ItemArmor.ArmorMaterial COOLING_VEST = EnumHelper.addArmorMaterial("cool_vest", Reference.MODID + ":cool_vest", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 1.2F);
 }

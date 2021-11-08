@@ -45,6 +45,7 @@ public class CategoryVests extends AbstractCategory
 		add(ModItems.SAFETY_VEST_GREEN);
 		add(ModItems.SAFETY_VEST_BLACK);
 		add(ModItems.POLICE_VEST);
+		add(ModItems.COOLING_VEST);
 
 		// Hard Hats
 		add(ModItems.HARDHAT_YELLOW);
