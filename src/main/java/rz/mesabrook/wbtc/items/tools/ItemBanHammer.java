@@ -2,6 +2,7 @@ package rz.mesabrook.wbtc.items.tools;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
@@ -85,7 +86,7 @@ public class ItemBanHammer extends ItemPickaxe implements IHasModel
     {
         NBTTagCompound tag = stack.getTagCompound(); 
         String sndEvnt;
-        if(stack.getItem() == ModItems.LEVI_HAMMER || stack.getItem() == ModItems.GMOD_HAMMER)
+        if(stack.getItem() instanceof ItemBanHammer)
         {
             try
             {
