@@ -286,7 +286,7 @@ public class ModItems
 	public static final Item SUGAR_YELLOW = new MiscItem("sugar_yellow", 64, Main.IMMERSIBROOK_MAIN);
 
 	// Communications
-	public static final Item RADIO = new MiscItem("radio", 1, Main.IMMERSIBROOK_MAIN);
+	public static final Item RADIO = new ItemRadio("radio");
 	public static final Item PHONE_WHITE = new ItemPhone("smartphone_white", "phone_bezel_white").setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PHONE_ORANGE = new ItemPhone("smartphone_orange", "phone_bezel_orange").setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PHONE_MAGENTA = new ItemPhone("smartphone_magenta", "phone_bezel_magenta").setCreativeTab(Main.IMMERSIBROOK_MAIN);
