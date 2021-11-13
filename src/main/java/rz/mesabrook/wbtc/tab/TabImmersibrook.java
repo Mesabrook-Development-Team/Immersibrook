@@ -16,6 +16,7 @@ public class TabImmersibrook extends CreativeTabs
 	public TabImmersibrook(String label)
 	{
 		super(label);
+        setBackgroundImageName("item_search.png");
 	}
 	
     @Override
@@ -46,4 +47,7 @@ public class TabImmersibrook extends CreativeTabs
     {
         this.hoveringButton = hoveringButton;
     }
+
+    @Override
+    public boolean hasSearchBar() {return true;}
 }
