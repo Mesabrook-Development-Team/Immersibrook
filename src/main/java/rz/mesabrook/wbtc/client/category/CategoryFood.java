@@ -98,6 +98,7 @@ public class CategoryFood extends AbstractCategory
 		add(ModItems.TRUFFLE_STRAWBERRY);
 		add(ModItems.TRUFFLE_WHITE_BB);
 		add(ModItems.TRUFFLE_WHITE_GRAPE);
+		add(ModItems.PEPPERMINT_BARK);
 
 		// Food Crafting Items
 		add(ModItems.DYE_RED);

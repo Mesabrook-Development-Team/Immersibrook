@@ -23,6 +23,8 @@ NEW:
 -Modern alternative to the Ban Hammer.
 -Plastiglass Blocks and Panes.
 -Manhole Blocks and a Manhole Cover Lifter tool.
+-Ceiling Mounted Exit Signs.
+-Peppermint Bark.
 
 CHANGES/FIXES:
 -Pillars are now affected by gravity.

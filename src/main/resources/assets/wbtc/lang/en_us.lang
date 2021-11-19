@@ -171,6 +171,8 @@ tile.exit_sign_green_right.name=Exit Sign
 tile.exit_sign_green_left.name=Exit Sign
 tile.diagonal_exit_red.name=Exit Sign
 tile.diagonal_exit_green.name=Exit Sign
+tile.ceiling_exit_green.name=Ceiling Mounted Exit Sign
+tile.ceiling_exit_red.name=Ceiling Mounted Exit Sign
 
 //Sign Tooltips
 im.tooltip.sign.green=Green Lettering
@@ -1368,6 +1370,7 @@ item.white_chocolate.name=White Chocolate
 item.wine_bottle.name=Ceremonial Wine Bottle
 item.white_mushroom_dust.name=White Mushroom Powder
 item.candy_cane.name=Candy Cane
+item.peppermint_bark.name=Peppermint Bark
 
 //Dialog
 im.sugwarn=You wonder if you should risk taking another bite...
@@ -1403,6 +1406,7 @@ im.box.empty=Food Box is empty.
 im.ff.brand=Livery:
 im.ff.mat=Material:
 im.firecloth=A flame-resistant material.
+im.tooltip.peppermintbark=A deliciously festive and minty combination of white chocolate and peppermint.
 
 //Food Boxes
 tile.sugar_box.name=Granulated White Sugar

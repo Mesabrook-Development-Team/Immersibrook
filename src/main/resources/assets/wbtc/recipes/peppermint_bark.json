@@ -1,0 +1,17 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "type": "forge:ore_dict",
+		 "ore": "foodPeppermint"
+      },
+      {
+         "type":"forge:ore_dict",
+		 "ore": "foodWhitechocolate"
+      }
+   ],
+   "result": {
+      "item": "wbtc:peppermint_bark",
+      "count": 3
+   }
+}

@@ -1,5 +1,6 @@
 package rz.mesabrook.wbtc.items.misc;
 
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -110,38 +111,49 @@ public class ImmersiFood extends ItemFood implements IHasModel
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag)
     {
-        if(stack.getItem() == ModItems.MILK_TRUFFLE)
+        if(GuiScreen.isShiftKeyDown())
         {
-            tooltip.add(milk.getFormattedText());
+            if(this == ModItems.MILK_TRUFFLE)
+            {
+                tooltip.add(milk.getFormattedText());
+            }
+            if(this == ModItems.WHITE_TRUFFLE)
+            {
+                tooltip.add(white.getFormattedText());
+            }
+            if(this == ModItems.TRUFFLE_CARAMEL)
+            {
+                tooltip.add(milk.getFormattedText());
+                tooltip.add(caramel.getFormattedText());
+            }
+            if(this == ModItems.TRUFFLE_PB)
+            {
+                tooltip.add(milk.getFormattedText());
+                tooltip.add(pb.getFormattedText());
+            }
+            if(this == ModItems.TRUFFLE_STRAWBERRY)
+            {
+                tooltip.add(milk.getFormattedText());
+                tooltip.add(strawberry.getFormattedText());
+            }
+            if(this == ModItems.TRUFFLE_WHITE_BB)
+            {
+                tooltip.add(white.getFormattedText());
+                tooltip.add(bb.getFormattedText());
+            }
+            if(this == ModItems.TRUFFLE_WHITE_GRAPE)
+            {
+                tooltip.add(white.getFormattedText());
+                tooltip.add(grape.getFormattedText());
+            }
+            if(this == ModItems.PEPPERMINT_BARK)
+            {
+                tooltip.add(TextFormatting.GREEN + new TextComponentTranslation("im.tooltip.peppermintbark").getFormattedText());
+            }
         }
-        if(stack.getItem() == ModItems.WHITE_TRUFFLE)
+        else
         {
-            tooltip.add(white.getFormattedText());
-        }
-        if(stack.getItem() == ModItems.TRUFFLE_CARAMEL)
-        {
-            tooltip.add(milk.getFormattedText());
-            tooltip.add(caramel.getFormattedText());
-        }
-        if(stack.getItem() == ModItems.TRUFFLE_PB)
-        {
-            tooltip.add(milk.getFormattedText());
-            tooltip.add(pb.getFormattedText());
-        }
-        if(stack.getItem() == ModItems.TRUFFLE_STRAWBERRY)
-        {
-            tooltip.add(milk.getFormattedText());
-            tooltip.add(strawberry.getFormattedText());
-        }
-        if(stack.getItem() == ModItems.TRUFFLE_WHITE_BB)
-        {
-            tooltip.add(white.getFormattedText());
-            tooltip.add(bb.getFormattedText());
-        }
-        if(stack.getItem() == ModItems.TRUFFLE_WHITE_GRAPE)
-        {
-            tooltip.add(white.getFormattedText());
-            tooltip.add(grape.getFormattedText());
+            tooltip.add(TextFormatting.WHITE + new TextComponentTranslation("im.tooltip.hidden").getFormattedText());
         }
     }
 }

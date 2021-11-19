@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:ceiling_exit_green" },
+        "facing=south": { "model": "wbtc:ceiling_exit_green", "y": 180 },
+        "facing=west":  { "model": "wbtc:ceiling_exit_green", "y": 270 },
+        "facing=east":  { "model": "wbtc:ceiling_exit_green", "y": 90 }
+    }
+}

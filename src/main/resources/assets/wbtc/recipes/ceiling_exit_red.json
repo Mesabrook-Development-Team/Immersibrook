@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "P",
+    "S"
+  ],
+  "key": {
+    "P": {
+      "type": "forge:ore_dict",
+      "ore": "itemGrayPlastic"
+    },
+	"S": [
+		{
+			"item": "wbtc:exit_sign_red_left"
+		},
+		{
+			"item": "wbtc:exit_sign_red_right"
+		}
+	]
+  },
+  "result": {
+    "item": "wbtc:ceiling_exit_red",
+    "count": 1
+  }
+}
