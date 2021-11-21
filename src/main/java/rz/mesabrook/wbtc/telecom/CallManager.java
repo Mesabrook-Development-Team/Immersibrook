@@ -224,7 +224,8 @@ public class CallManager {
 					}
 					
 					// Find destination phone in player's inventory and tell player to ring
-					Tuple<EntityPlayerMP, ItemStack> destPhone = getDestOwners().get(0);
+					ArrayList<Tuple<EntityPlayerMP, ItemStack>> destOwners = getDestOwners();
+					Tuple<EntityPlayerMP, ItemStack> destPhone = destOwners.size() > 0 ? destOwners.get(0) : null;
 					if (destPhone != null)
 					{
 						IncomingCallPacket incoming = new IncomingCallPacket();
@@ -295,7 +296,7 @@ public class CallManager {
 				AntennaData antennaData = AntennaData.getOrCreate(player.world);
 				if (antennaData.getBestReception(player.getPosition()) <= 0.0)
 				{
-					return null;
+					continue;
 				}
 				
 				for(int i = 0; i < player.inventory.getSizeInventory(); i++)
@@ -347,7 +348,8 @@ public class CallManager {
 				PacketHandler.INSTANCE.sendTo(accepted, origin.getFirst());
 			}
 			
-			Tuple<EntityPlayerMP, ItemStack> dest = getDestOwners().get(0);
+			ArrayList<Tuple<EntityPlayerMP, ItemStack>> destOwners = getDestOwners();
+			Tuple<EntityPlayerMP, ItemStack> dest = destOwners.size() > 0 ? destOwners.get(0) : null;
 			if (dest != null)
 			{
 				CallAcceptedPacket accepted = new CallAcceptedPacket();
@@ -370,7 +372,8 @@ public class CallManager {
 				return;
 			}
 			
-			Tuple<EntityPlayerMP, ItemStack> dest = getDestOwners().get(0);
+			ArrayList<Tuple<EntityPlayerMP, ItemStack>> destOwners = getDestOwners();
+			Tuple<EntityPlayerMP, ItemStack> dest = destOwners.size() > 0 ? destOwners.get(0) : null;
 			
 			CallRejectedPacket rejected = new CallRejectedPacket();
 			rejected.fromNumber = getOriginPhone();
