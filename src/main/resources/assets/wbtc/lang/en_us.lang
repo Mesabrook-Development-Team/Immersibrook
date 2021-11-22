@@ -1617,6 +1617,8 @@ im.tooltip.manhole.generic=A heavy metal plate meant to cover openings into unde
 im.tooltip.phone.gov=Property of the National Government of the Republic of Mesabrook.
 im.tooltip.saca=Personal Protective Equipment designed to lower the body's temperature when worn. Usage recommended in hot, arid biomes.
 im.present=Happy Holidays!
+im.tooltip.activate=No Number Assigned. Activation Required.
+im.tooltip.phone=Your Phone Number:
 
 //Manholes
 item.manhole_hook.name=Manhole Lid Lifter
