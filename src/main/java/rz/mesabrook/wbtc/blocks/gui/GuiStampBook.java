@@ -14,8 +14,8 @@ public class GuiStampBook extends GuiContainer {
 		super(container);
 		stampBookContainer = container;
 		
-		xSize = 517;
-		ySize = 512;
+		xSize = 464;
+		ySize = 406;
 	}	
 	
 	@Override
@@ -24,4 +24,10 @@ public class GuiStampBook extends GuiContainer {
 		drawModalRectWithCustomSizedTexture(guiLeft, guiTop, 0, 0, xSize, ySize, xSize, ySize);
 	}
 
+	@Override
+	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+		super.drawScreen(mouseX, mouseY, partialTicks);
+		
+		renderHoveredToolTip(mouseX, mouseY);
+	}
 }
