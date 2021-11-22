@@ -79,7 +79,7 @@ public class ContainerStampBook extends Container {
 				int row = (i - 6) / 3;
 				int column = (i - 6) % 3;
 				
-				addSlotToContainer(new SlotItemHandler(stampBookHandler, i, 399 + column * 18, 20 + row * 17));
+				addSlotToContainer(new SlotItemHandler(stampBookHandler, i, 399 + column * 18, 21 + row * 17));
 			}
 		}
 	}
@@ -100,14 +100,14 @@ public class ContainerStampBook extends Container {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
 
-            if (index < this.numRows * 9)
+            if (index < 36)
             {
-                if (!this.mergeItemStack(itemstack1, this.numRows * 9, this.inventorySlots.size(), true))
+                if (!this.mergeItemStack(itemstack1, 36, this.inventorySlots.size(), false))
                 {
                     return ItemStack.EMPTY;
                 }
             }
-            else if (!this.mergeItemStack(itemstack1, 0, this.numRows * 9, false))
+            else if (!this.mergeItemStack(itemstack1, 0, 36, false))
             {
                 return ItemStack.EMPTY;
             }
