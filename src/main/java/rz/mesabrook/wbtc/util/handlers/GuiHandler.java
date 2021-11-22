@@ -7,9 +7,11 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
+import rz.mesabrook.wbtc.blocks.container.ContainerStampBook;
 import rz.mesabrook.wbtc.blocks.container.ContainerTrashBin;
 import rz.mesabrook.wbtc.blocks.gui.GuiFoodBox;
 import rz.mesabrook.wbtc.blocks.gui.GuiPlaque;
+import rz.mesabrook.wbtc.blocks.gui.GuiStampBook;
 import rz.mesabrook.wbtc.blocks.gui.GuiTrashBin;
 import rz.mesabrook.wbtc.blocks.gui.telecom.GuiEmptyPhone;
 import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneActivate;
@@ -24,7 +26,8 @@ public class GuiHandler implements IGuiHandler
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		if(ID == Reference.GUI_TRASHBIN) return new ContainerTrashBin(player.inventory, (TileEntityTrashBin)world.getTileEntity(new BlockPos(x,y,z)), player);	
+		if(ID == Reference.GUI_TRASHBIN) return new ContainerTrashBin(player.inventory, (TileEntityTrashBin)world.getTileEntity(new BlockPos(x,y,z)), player);
+		else if (ID == Reference.GUI_STAMP_BOOK) return new ContainerStampBook(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]);
 		return null;
 	}
 	
@@ -60,6 +63,7 @@ public class GuiHandler implements IGuiHandler
 				return new GuiEmptyPhone(stack, hand);
 			}
 		}
+		else if (ID == Reference.GUI_STAMP_BOOK) return new GuiStampBook(new ContainerStampBook(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]));
 		else return null;
 	}
 	

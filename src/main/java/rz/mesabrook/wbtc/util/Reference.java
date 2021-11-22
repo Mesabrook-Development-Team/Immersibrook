@@ -20,6 +20,7 @@ public class Reference
 	public static final int GUI_FOODBOX = 3;
 	public static final int GUI_PHONE_ACTIVATE = 4;
 	public static final int GUI_PHONE = 5;
+	public static final int GUI_STAMP_BOOK = 6;
 	
 	public static final String NETWORK_CHANNEL_NAME = "wbtc";
 	
