@@ -18,12 +18,14 @@ import java.util.List;
 
 public class ItemStamp extends Item implements IHasModel
 {
-    public ItemStamp(String name)
+	private StampTypes stampType;
+    public ItemStamp(String name, StampTypes stampType)
     {
         setRegistryName(name);
         setUnlocalizedName(name);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
         setMaxStackSize(64);
+        setStampType(stampType);
 
         ModItems.ITEMS.add(this);
     }
@@ -41,32 +43,38 @@ public class ItemStamp extends Item implements IHasModel
         if(GuiScreen.isShiftKeyDown())
         {
             tooltip.add(TextFormatting.LIGHT_PURPLE + new TextComponentTranslation("im.tooltip.stamp.series").getFormattedText());
-            if(stack.getItem() == ModItems.IR_STAMP_1 || stack.getItem() == ModItems.IR_STAMP_2 || stack.getItem() == ModItems.IR_STAMP_3)
+            if (!(stack.getItem() instanceof ItemStamp))
+            {
+            	return;
+            }
+            
+            ItemStamp stampItem = (ItemStamp)stack.getItem();
+            if(stampItem.getStampType() == StampTypes.IronRiver)
             {
                 tooltip.add(TextFormatting.GOLD + new TextComponentTranslation("im.tooltip.stamp.ir").getFormattedText());
             }
 
-            if(stack.getItem() == ModItems.RC_STAMP_1 || stack.getItem() == ModItems.RC_STAMP_2 || stack.getItem() == ModItems.RC_STAMP_3 || stack.getItem() == ModItems.RC_STAMP_4 || stack.getItem() == ModItems.RC_STAMP_5 || stack.getItem() == ModItems.RC_STAMP_6)
+            if(stampItem.getStampType() == StampTypes.RavenholmCity)
             {
                 tooltip.add(TextFormatting.BLUE + new TextComponentTranslation("im.tooltip.stamp.rc").getFormattedText());
             }
 
-            if(stack.getItem() == ModItems.SC_STAMP_1)
+            if(stampItem.getStampType() == StampTypes.SodorCity)
             {
                 tooltip.add(TextFormatting.GREEN + new TextComponentTranslation("im.tooltip.stamp.sc").getFormattedText());
             }
 
-            if(stack.getItem() == ModItems.CB_STAMP_1 || stack.getItem() == ModItems.CB_STAMP_2 || stack.getItem() == ModItems.CB_STAMP_3 || stack.getItem() == ModItems.CB_STAMP_4)
+            if(stampItem.getStampType() == StampTypes.CrystalBeach)
             {
                 tooltip.add(TextFormatting.AQUA + new TextComponentTranslation("im.tooltip.stamp.cb").getFormattedText());
             }
 
-            if(stack.getItem() == ModItems.AV_STAMP_1 || stack.getItem() == ModItems.AV_STAMP_2 || stack.getItem() == ModItems.AV_STAMP_3 || stack.getItem() == ModItems.AV_STAMP_4 || stack.getItem() == ModItems.AV_STAMP_5)
+            if(stampItem.getStampType() == StampTypes.AutumnValley)
             {
                 tooltip.add(TextFormatting.YELLOW + new TextComponentTranslation("im.tooltip.stamp.av").getFormattedText());
             }
 
-            if(stack.getItem() == ModItems.CL_STAMP_1 || stack.getItem() == ModItems.CL_STAMP_2)
+            if(stampItem.getStampType() == StampTypes.Clayton)
             {
                 tooltip.add(TextFormatting.DARK_PURPLE + new TextComponentTranslation("im.tooltip.stamp.cl").getFormattedText());
             }
@@ -75,5 +83,24 @@ public class ItemStamp extends Item implements IHasModel
         {
             tooltip.add(TextFormatting.WHITE + new TextComponentTranslation("im.tooltip.hidden").getFormattedText());
         }
+    }
+
+    public StampTypes getStampType() {
+		return stampType;
+	}
+
+	public ItemStamp setStampType(StampTypes stampType) {
+		this.stampType = stampType;
+		return this;
+	}
+
+	public enum StampTypes
+    {
+    	IronRiver,
+    	RavenholmCity,
+    	SodorCity,
+    	CrystalBeach,
+    	AutumnValley,
+    	Clayton
     }
 }

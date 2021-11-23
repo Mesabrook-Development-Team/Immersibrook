@@ -27,6 +27,7 @@ import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.init.SoundInit;
+import rz.mesabrook.wbtc.items.misc.ItemStamp.StampTypes;
 import rz.mesabrook.wbtc.util.IHasModel;
 import rz.mesabrook.wbtc.util.Reference;
 
@@ -72,19 +73,55 @@ public class ItemStampBook extends Item implements IHasModel
     
     @Override
     public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt) {
-    	return new StampBookCapabilityProvider(stack);
+    	return new StampBookCapabilityProvider();
     }
     
     public static class StampBookCapabilityProvider implements ICapabilityProvider, ICapabilitySerializable<NBTTagCompound>
     {
     	private final ItemStackHandler handler;
-    	private ItemStack stack;
     	
-    	public StampBookCapabilityProvider(ItemStack stack)
-    	{
-    		this.stack = stack;
-    		
-    		handler = new ItemStackHandler(24);
+    	public StampBookCapabilityProvider()
+    	{    		
+    		handler = new ItemStackHandler(24)
+			{
+    			@Override
+    			public boolean isItemValid(int slot, ItemStack stack) {
+    				if (!(stack.getItem() instanceof ItemStamp))
+    				{
+    					return false;
+    				}
+    				
+    				ItemStamp stamp = (ItemStamp)stack.getItem();
+    				
+    				switch(slot)
+    				{
+	    				case 0:
+	    					return stamp.getStampType() == StampTypes.AutumnValley;
+	    				case 1:
+	    					return stamp.getStampType() == StampTypes.IronRiver;
+	    				case 2:
+	    					return stamp.getStampType() == StampTypes.RavenholmCity;
+	    				case 3:
+	    					return stamp.getStampType() == StampTypes.SodorCity;
+	    				case 4:
+	    					return stamp.getStampType() == StampTypes.CrystalBeach;
+	    				case 5:
+	    					return stamp.getStampType() == StampTypes.Clayton;
+    					default:
+    						return true;
+    				}
+    			}
+    			
+    			@Override
+    			public int getSlotLimit(int slot) {
+    				if (slot >= 0 && slot <= 5)
+    				{
+    					return 1;
+    				}
+    				
+    				return super.getSlotLimit(slot);
+    			}
+			};
     	}
 
     	@Override
