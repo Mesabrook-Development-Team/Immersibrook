@@ -24,7 +24,7 @@ public class ItemStamp extends Item implements IHasModel
         setRegistryName(name);
         setUnlocalizedName(name);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
-        setMaxStackSize(64);
+        setMaxStackSize(6);
         setStampType(stampType);
 
         ModItems.ITEMS.add(this);

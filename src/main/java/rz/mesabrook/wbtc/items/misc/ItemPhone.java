@@ -62,6 +62,11 @@ public class ItemPhone extends Item implements IHasModel {
 		{
 			tooltip.add(TextFormatting.RED + new TextComponentTranslation("im.tooltip.activate").getFormattedText());
 		}
+
+		if(this == ModItems.PHONE_MESABROOK)
+		{
+			tooltip.add(TextFormatting.AQUA + new TextComponentTranslation("im.tooltip.phone.gov").getFormattedText());
+		}
 	}
 	
 	@Override

@@ -2,7 +2,9 @@ package rz.mesabrook.wbtc.blocks.gui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponentTranslation;
 import rz.mesabrook.wbtc.blocks.container.ContainerStampBook;
 import rz.mesabrook.wbtc.util.Reference;
 
@@ -14,12 +16,19 @@ public class GuiStampBook extends GuiContainer {
 		super(container);
 		stampBookContainer = container;
 		
-		xSize = 464;
-		ySize = 406;
-	}	
-	
+		xSize = 386;
+		ySize = 355;
+	}
+
+	@Override
+	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
+	{
+		this.fontRenderer.drawString(I18n.format("key.categories.inventory"), 200, 180, 10813440, false);
+	}
+
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+		drawDefaultBackground();
 		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(Reference.MODID + ":textures/gui/stamp_book.png"));
 		drawModalRectWithCustomSizedTexture(guiLeft, guiTop, 0, 0, xSize, ySize, xSize, ySize);
 	}

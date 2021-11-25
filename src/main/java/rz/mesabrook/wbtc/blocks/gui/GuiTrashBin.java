@@ -41,4 +41,11 @@ public class GuiTrashBin extends GuiContainer
 		this.mc.getTextureManager().bindTexture(GUI_TRASHBIN);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 	}
+
+	@Override
+	public void drawScreen(int mouseX, int mouseY, float partialTicks)
+	{
+		super.drawScreen(mouseX, mouseY, partialTicks);
+		renderHoveredToolTip(mouseX, mouseY);
+	}
 }
