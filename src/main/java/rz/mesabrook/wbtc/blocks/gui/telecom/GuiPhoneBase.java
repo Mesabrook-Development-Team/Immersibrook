@@ -85,7 +85,11 @@ public abstract class GuiPhoneBase extends GuiScreen {
 		
 		ImageButton homeButton = new ImageButton(999, INNER_X + INNER_TEX_WIDTH / 2 - 4, INNER_Y + INNER_TEX_HEIGHT - 23, 8, 8, "gui_btn_home.png", 32, 32);
 		buttonList.add(homeButton);
-		
+
+		// Shuffle Wallpaper Button - WILL BE DELETED IN FULL VERSION, JUST FOR PRE-RELEASE!
+		ImageButton backButton = new ImageButton(998, INNER_X + (INNER_TEX_WIDTH / 4) - 4, INNER_Y + INNER_TEX_HEIGHT - 23, 8, 8, "gui_btn_wallpaper.png", 32, 32);
+		buttonList.add(backButton);
+
 		// Back button to be implemented when determined necessary
 //		ImageButton backButton = new ImageButton(998, INNER_X + (INNER_TEX_WIDTH / 4) - 4, INNER_Y + INNER_TEX_HEIGHT - 23, 8, 8, "gui_btn_back.png", 32, 32);
 //		buttonList.add(backButton);
@@ -184,12 +188,18 @@ public abstract class GuiPhoneBase extends GuiScreen {
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
 		super.actionPerformed(button);
-		
+
+		// Home Button
 		if (button.id == 999)
 		{
-			PhoneWallpaperRandomizer.ShuffleWallpaper();
 			GuiHome home = new GuiHome(phoneStack, hand);
 			Minecraft.getMinecraft().displayGuiScreen(home);
+		}
+
+		// Shuffle Wallpaper Button - AGAIN, ONLY TEMPORARY. JUST FOR THE PLAYTEST PRE-RELEASE!!!1111ONEONEONE
+		if(button.id == 998)
+		{
+			PhoneWallpaperRandomizer.ShuffleWallpaper();
 		}
 	}
 }
