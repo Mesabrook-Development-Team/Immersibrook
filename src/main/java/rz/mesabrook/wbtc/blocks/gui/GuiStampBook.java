@@ -16,14 +16,15 @@ public class GuiStampBook extends GuiContainer {
 		super(container);
 		stampBookContainer = container;
 		
-		xSize = 386;
-		ySize = 355;
+		xSize = 220;
+		ySize = 235;
 	}
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
-		this.fontRenderer.drawString(I18n.format("key.categories.inventory"), 200, 180, 10813440, false);
+		// Inventory Text
+		this.fontRenderer.drawString("Extra Stamps", 131, 8, 10813440, false);
 	}
 
 	@Override

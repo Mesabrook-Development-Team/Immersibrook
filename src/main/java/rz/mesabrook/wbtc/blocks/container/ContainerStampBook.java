@@ -25,7 +25,7 @@ public class ContainerStampBook extends Container {
 		// Hot bar
 		for(int i = 0; i < 9; i++)
 		{
-			addSlotToContainer(new Slot(inventory, i, 200 + i * 18, 250));
+			addSlotToContainer(new Slot(inventory, i, 30 + i * 18, 212));
 		}
 		
 		// Player inventory
@@ -41,7 +41,7 @@ public class ContainerStampBook extends Container {
 			
 			int column = i % 9;
 			
-			addSlotToContainer(new Slot(inventory, i, 200 + column * 18, 193 + 18 * row));
+			addSlotToContainer(new Slot(inventory, i, 30 + column * 18, 154 + 18 * row));
 		}
 		
 		// Stamp book inventory
@@ -54,22 +54,22 @@ public class ContainerStampBook extends Container {
 				switch(i)
 				{
 					case 0: // Autumn Valley
-						addSlotToContainer(new SlotItemHandler(stampBookHandler, i, 20, 75));
+						addSlotToContainer(new SlotItemHandler(stampBookHandler, i, 22, 22));
 						break;
 					case 1: // Iron River
-						addSlotToContainer(new SlotItemHandler(stampBookHandler, i, 20, 95));
+						addSlotToContainer(new SlotItemHandler(stampBookHandler, i, 89, 53));
 						break;
 					case 2: // Ravenholm City
-						addSlotToContainer(new SlotItemHandler(stampBookHandler, i, 20, 115));
+						addSlotToContainer(new SlotItemHandler(stampBookHandler, i, 83, 83));
 						break;
 					case 3: // Sodor City
-						addSlotToContainer(new SlotItemHandler(stampBookHandler, i, 20, 135));
+						addSlotToContainer(new SlotItemHandler(stampBookHandler, i, 69, 109));
 						break;
 					case 4: // Crystal Beach
-						addSlotToContainer(new SlotItemHandler(stampBookHandler, i, 20, 155));
+						addSlotToContainer(new SlotItemHandler(stampBookHandler, i, 37, 100));
 						break;
 					case 5: // Clayton
-						addSlotToContainer(new SlotItemHandler(stampBookHandler, i, 20, 175));
+						addSlotToContainer(new SlotItemHandler(stampBookHandler, i, 19, 117));
 						break;
 				}
 			}
@@ -79,7 +79,7 @@ public class ContainerStampBook extends Container {
 				int row = (i - 6) / 3;
 				int column = (i - 6) % 3;
 				
-				addSlotToContainer(new SlotItemHandler(stampBookHandler, i, 255 + column * 18, 83 + row * 17));
+				addSlotToContainer(new SlotItemHandler(stampBookHandler, i, 138 + column * 18, 20 + row * 17));
 			}
 		}
 	}
