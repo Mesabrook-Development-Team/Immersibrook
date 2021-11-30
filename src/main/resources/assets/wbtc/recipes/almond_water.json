@@ -1,0 +1,32 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "type": "forge:ore_dict",
+		 "ore": "toolPot"
+      },
+      {
+         "type":"forge:ore_dict",
+		 "ore": "cropAlmond"
+      },
+      {
+         "type":"forge:ore_dict",
+		 "ore": "listAllwater"
+      },
+      {
+         "type":"forge:ore_dict",
+		 "ore": "sugar"
+      },
+      {
+         "type":"forge:ore_dict",
+		 "ore": "foodVanilla"
+      },
+      {
+		 "item": "minecraft:glass_bottle"
+      }
+   ],
+   "result": {
+      "item": "wbtc:almond_water",
+      "count": 1
+   }
+}

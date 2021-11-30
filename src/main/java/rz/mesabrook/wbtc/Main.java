@@ -43,7 +43,6 @@ public class Main
     {
         logger = event.getModLog();
         RegistryHandler.preInitRegistries(event);
-        
     }
 
     @EventHandler
