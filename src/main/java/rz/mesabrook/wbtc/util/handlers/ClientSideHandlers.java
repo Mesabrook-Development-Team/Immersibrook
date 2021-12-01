@@ -25,6 +25,7 @@ import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.net.telecom.PhoneQueryResponsePacket;
 import rz.mesabrook.wbtc.net.telecom.PhoneQueryResponsePacket.ResponseTypes;
 import rz.mesabrook.wbtc.util.Reference;
+import rz.mesabrook.wbtc.util.config.ModConfig;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -138,7 +139,7 @@ public class ClientSideHandlers
 					return;
 				}
 				
-				incomingCallSound = new PositionedSoundRecord(SoundInit.DING_6.getSoundName(), SoundCategory.MASTER, 0.25F, 1F, true, 0, AttenuationType.NONE, 0, 0, 0);
+				incomingCallSound = new PositionedSoundRecord(SoundInit.DING_6.getSoundName(), SoundCategory.MASTER, ModConfig.ringtoneVolume, 1F, true, 0, AttenuationType.NONE, 0, 0, 0);
 				incomingCallSoundsByPhone.put(phoneNumber, incomingCallSound);
 				handler.playSound(incomingCallSound);
 			}

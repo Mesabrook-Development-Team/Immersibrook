@@ -76,6 +76,9 @@ public final class ModConfig
 
 	@Comment("Set to false to disable the OOF sound effect that plays when a player dies.")
 	public static boolean oofDeathSound = true;
+
+	@Comment("[Float] Phone Ringtone Loudness (default - 0.25F | max - 1.0F)")
+	public static float ringtoneVolume = 0.25F;
 	
 	@Mod.EventBusSubscriber(modid = Reference.MODID)
 	private static class EventHandler
