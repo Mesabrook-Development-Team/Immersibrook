@@ -36,8 +36,21 @@ public class GuiHome extends GuiPhoneBase {
 	@Override
 	public void initGui() {
 		super.initGui();
-		ImageButton button = new ImageButton(0, INNER_X + 4, INNER_Y + 19, 32, 32, "icn_phone.png", 32, 32);
+		// Phone
+		ImageButton button = new ImageButton(0, INNER_X + 5, INNER_Y + 24, 32, 32, "icn_phone.png", 32, 32);
 		buttonList.add(button);
+
+		// Messages
+		ImageButton button2 = new ImageButton(1, INNER_X + 46, INNER_Y + 24, 32, 32, "icn_mail.png", 32, 32);
+		buttonList.add(button2);
+
+		// Address Book
+		ImageButton button3 = new ImageButton(2, INNER_X + 86, INNER_Y + 24, 32, 32, "icn_contacts.png", 32, 32);
+		buttonList.add(button3);
+
+		// Settings
+		ImageButton button4 = new ImageButton(3, INNER_X + 126, INNER_Y + 24, 32, 32, "icn_settings.png", 32, 32);
+		buttonList.add(button4);
 	}
 	
 	@Override
