@@ -80,6 +80,9 @@ public final class ModConfig
 	@Comment("[Float] Phone Ringtone Loudness (default - 0.25F | max - 1.0F)")
 	public static float ringtoneVolume = 0.25F;
 	
+	@Comment("Is proximity chat enabled?")
+	public static boolean proximityChatEnabled = true;
+	
 	@Mod.EventBusSubscriber(modid = Reference.MODID)
 	private static class EventHandler
 	{

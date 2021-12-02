@@ -20,7 +20,7 @@ public class ServerChatEventHandler {
 	
 	@SubscribeEvent
 	public static void onServerChatEvent(ServerChatEvent e)
-	{
+	{		
 		if (serverControllerField == null)
 		{
 			try
@@ -49,14 +49,17 @@ public class ServerChatEventHandler {
 			return;
 		}
 		
-		e.setCanceled(true);
 		CallManager.instance().onPlayerChat(e.getPlayer(), e.getComponent());
 		
-		for(EntityPlayerMP player : server.getPlayerList().getPlayers())
+		if (ModConfig.proximityChatEnabled)
 		{
-			if (player.getDistance(e.getPlayer()) <= ModConfig.proximityChatDistance)
+			e.setCanceled(true);
+			for(EntityPlayerMP player : server.getPlayerList().getPlayers())
 			{
-				player.sendMessage(e.getComponent());
+				if (player.getDistance(e.getPlayer()) <= ModConfig.proximityChatDistance)
+				{
+					player.sendMessage(e.getComponent());
+				}
 			}
 		}
 	}
