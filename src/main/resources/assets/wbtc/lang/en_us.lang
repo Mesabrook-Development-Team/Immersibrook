@@ -79,6 +79,8 @@ im.prerelease=PRE-RELEASE CANDIDATE BUILD
 //Commands
 im.cmd.error=/immersibrook about | changelog
 im.cmd.usage=Immersibrook Command
+im.cmd.proxchat.usage=/immersibrook proxchat on|off
+im.cmd.proxchat.set=Proximity Chat has been turned %s
 
 //First Aid
 item.first_aid.name=First Aid Kit

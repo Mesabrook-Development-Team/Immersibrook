@@ -8,9 +8,13 @@ import net.minecraft.command.WrongUsageException;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.event.ClickEvent;
+import net.minecraftforge.common.config.Config;
+import net.minecraftforge.common.config.ConfigManager;
 import rz.mesabrook.wbtc.util.Reference;
+import rz.mesabrook.wbtc.util.config.ModConfig;
 
 import java.util.Collections;
 import java.util.List;
@@ -51,6 +55,22 @@ public class CommandImmersibrook extends CommandBase
 				url.getStyle().setColor(TextFormatting.AQUA);
 				url.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, Reference.CHANGELOG));
 				sender.sendMessage(url);
+			}
+			else if("proxchat".equals(args[0]))
+			{
+				if (!sender.canUseCommand(4, getName()))
+				{
+					throw new CommandException("command.generic.permission", new Object[0]);
+				}
+				
+				if (args.length < 2 || (!"on".equals(args[1].toLowerCase()) && !"off".equals(args[1].toLowerCase())))
+				{
+					throw new WrongUsageException("im.cmd.proxchat.usage", new Object[0]);
+				}
+				
+				ModConfig.proximityChatEnabled = "on".equals(args[1].toLowerCase());
+				ConfigManager.sync(Reference.MODID, Config.Type.INSTANCE);
+				sender.sendMessage(new TextComponentTranslation("im.cmd.proxchat.set", ModConfig.proximityChatEnabled ? "on" : "off"));
 			}
 		}
 	}
