@@ -316,7 +316,8 @@ public class ModBlocks
 	// Plaques
 	public static final Block PLAQUE_DEV = new BlockPlaque("plaque_dev", MapColor.GOLD, ModUtils.getPixelatedAABB(3,0,0, 13,12,1.5)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block PLAQUE_SUPPORTER = new BlockPlaque("plaque_supporter", MapColor.GOLD, ModUtils.getPixelatedAABB(3,0,0, 13,12,1.5)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	
+	public static final Block PLAQUE_PLAYTEST = new BlockPlaque("plaque_playtest", MapColor.GOLD, ModUtils.getPixelatedAABB(3,0,0, 13,12,1.5)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+
 	// Trash Can
 	public static final Block TRASH_BIN = new BlockBin("rubbish_bin").setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block TRASH_BIN_GREEN = new BlockBin("rubbish_bin_green").setCreativeTab(Main.IMMERSIBROOK_MAIN);

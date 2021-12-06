@@ -34,6 +34,7 @@ public class CategoryTrophy extends AbstractCategory
 		// Plaques
 		add(ModBlocks.PLAQUE_DEV);
 		add(ModBlocks.PLAQUE_SUPPORTER);
+		add(ModBlocks.PLAQUE_PLAYTEST);
 	}
 
 }
