@@ -79,7 +79,7 @@ public class RegistryHandler
 		Main.logger.info("");
 		Main.logger.info(Reference.MODNAME);
 		Main.logger.info("Version " + Reference.VERSION);
-		Main.logger.info("PRE-RELEASE BUILD FOR ANNIVERSARY PLAYTEST");
+		Main.logger.info("");
 		Main.logger.info(Reference.UPDATE_NAME);
 		Main.logger.info("");
 		Main.logger.info("Developed By: RavenholmZombie and CSX8600");
