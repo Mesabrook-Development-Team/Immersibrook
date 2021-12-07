@@ -1,4 +1,4 @@
-Immersibrook 1.0.0 - The Fall 2021 Update
+Immersibrook 1.0.0 - The Technology Update
 
 NEW:
 -Ranged Chat.
@@ -25,6 +25,7 @@ NEW:
 -Manhole Blocks and a Manhole Cover Lifter tool.
 -Ceiling Mounted Exit Signs.
 -Peppermint Bark.
+-Playtester Award.
 
 CHANGES/FIXES:
 -Pillars are now affected by gravity.
@@ -33,6 +34,7 @@ CHANGES/FIXES:
 -Ceiling Lights are now rotational.
 -Ore Dictionary entries for Plastics have been redone.
 -New 3D Model for the Night Vision Goggles.
+-Award Plaque Text has been adjusted.
 
 MOD INTERACTIONS:
 (Note: Mod interactions only occur if Immersibrook detects them. This feature can be disabled in wbtc.cfg)
