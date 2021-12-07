@@ -27,7 +27,7 @@ public class TileEntityPlaqueRenderer extends TileEntitySpecialRenderer<TileEnti
 			GlStateManager.translate(x, y, z);
 			GlStateManager.translate(0.5, 0.5, 0.5);
 			GlStateManager.rotate(-(facing.getHorizontalIndex() + 2) * 90, 0, 1, 0);
-			GlStateManager.translate(0.3125, -0.125, 0.40625);
+			GlStateManager.translate(0.22, -0.125, 0.40625);
 			GlStateManager.scale(-1, -1, 1);
 			FontRenderer fontRenderer = getFontRenderer();
 			
@@ -35,15 +35,15 @@ public class TileEntityPlaqueRenderer extends TileEntitySpecialRenderer<TileEnti
 			{
 				int stringWidth = fontRenderer.getStringWidth(te.getAwardedTo());
 				double horizontalScaleAmount = 1;
-				if (stringWidth > 78)
+				if (stringWidth > 57)
 				{
-					horizontalScaleAmount = 1 / (stringWidth * (1 / 78.0));
-					stringWidth = 78;
+					horizontalScaleAmount = 1 / (stringWidth * (1 / 57.0));
+					stringWidth = 57;
 				}
 				
 				GlStateManager.scale(horizontalScaleAmount, 1, 1);
 				
-				int translateAmount = -(stringWidth - 78) / 2;
+				int translateAmount = -(stringWidth - 57) / 2;
 				GlStateManager.scale(1/128.0, 1/128.0, 1/128.0);
 				GlStateManager.translate(translateAmount, 0, 0);
 				fontRenderer.drawString(te.getAwardedTo(), 0, 0, 0xFFFFFF);
@@ -59,15 +59,15 @@ public class TileEntityPlaqueRenderer extends TileEntitySpecialRenderer<TileEnti
 				
 				int stringWidth = fontRenderer.getStringWidth(te.getAwardedFor());
 				double horizontalScaleAmount = 1;
-				if (stringWidth > 78)
+				if (stringWidth > 57)
 				{
-					horizontalScaleAmount = 1 / (stringWidth * (1 / 78.0));
-					stringWidth = 78;
+					horizontalScaleAmount = 1 / (stringWidth * (1 / 57.0));
+					stringWidth = 57;
 				}
 				
 				GlStateManager.scale(horizontalScaleAmount, 1, 1);
 				
-				int translateAmount = -(stringWidth - 78) / 2;
+				int translateAmount = -(stringWidth - 57) / 2;
 				GlStateManager.scale(1/128.0, 1/128.0, 1/128.0);
 				GlStateManager.translate(translateAmount, 0, 0);
 				fontRenderer.drawString(te.getAwardedFor(), 0, 0, 0xFFFFFF);
