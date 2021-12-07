@@ -398,6 +398,7 @@ tile.plaque_test.name=Award - Test Plaque
 tile.plaque_dev.name=Developer's Award
 tile.plaque_supporter.name=Supporter Award
 tile.plaque_playtest.name=Playtester Award
+tile.big_plaque_playtest.name=Large Award Plaque
 
 //Ceiling Tile Block
 tile.panel_ceiling.name=Ceiling Panel
