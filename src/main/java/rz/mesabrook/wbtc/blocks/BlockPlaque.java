@@ -179,20 +179,7 @@ public class BlockPlaque extends Block implements IHasModel
 			}
 		}
 		
-		if(this.getUnlocalizedName().contains("plaque_test"))
-		{
-			tooltip.add(TextFormatting.LIGHT_PURPLE + "Awarded By: " + TextFormatting.BLUE + "WBTC");
-			if (awardedTo != null)
-			{
-				tooltip.add(TextFormatting.LIGHT_PURPLE + "Awarded To: " + TextFormatting.YELLOW + awardedTo);
-			}
-			if (awardedFor != null)
-			{
-				tooltip.add(TextFormatting.LIGHT_PURPLE + "Awarded For: " + TextFormatting.YELLOW + awardedFor);
-			}
-			tooltip.add(TextFormatting.LIGHT_PURPLE + "For: " + TextFormatting.GOLD +  "Testing this plaque.");
-		}
-		else if(this.getUnlocalizedName().contains("plaque_dev"))
+		if(this == ModBlocks.PLAQUE_DEV)
 		{
 			tooltip.add(TextFormatting.LIGHT_PURPLE + "Awarded By: " + TextFormatting.BLUE + "Government of Mesabrook");
 			if (awardedTo != null)
@@ -201,9 +188,37 @@ public class BlockPlaque extends Block implements IHasModel
 			}
 			if (awardedFor != null)
 			{
-				tooltip.add(TextFormatting.LIGHT_PURPLE + "Awarded For: " + TextFormatting.YELLOW + awardedFor);
+				tooltip.add(TextFormatting.LIGHT_PURPLE + "Project Contributed: " + TextFormatting.YELLOW + awardedFor);
 			}
-			tooltip.add(TextFormatting.LIGHT_PURPLE + "For: " + TextFormatting.GOLD +  "Contributing to the server by developing mods or resource packs.");
+			tooltip.add(TextFormatting.RED +  "For Contributing to the server by developing mods or resource packs.");
+		}
+
+		if(this == ModBlocks.PLAQUE_SUPPORTER)
+		{
+			tooltip.add(TextFormatting.LIGHT_PURPLE + "Awarded By: " + TextFormatting.BLUE + "Government of Mesabrook");
+			if (awardedTo != null)
+			{
+				tooltip.add(TextFormatting.LIGHT_PURPLE + "Awarded To: " + TextFormatting.YELLOW + awardedTo);
+			}
+			if (awardedFor != null)
+			{
+				tooltip.add(TextFormatting.LIGHT_PURPLE + "Tier Chosen: " + TextFormatting.YELLOW + awardedFor);
+			}
+			tooltip.add(TextFormatting.GOLD + "For Contributing to the server by supporting us on Patreon.");
+		}
+
+		if(this == ModBlocks.PLAQUE_PLAYTEST)
+		{
+			tooltip.add(TextFormatting.LIGHT_PURPLE + "Awarded By: " + TextFormatting.BLUE + "Government of Mesabrook");
+			if (awardedTo != null)
+			{
+				tooltip.add(TextFormatting.LIGHT_PURPLE + "Awarded To: " + TextFormatting.YELLOW + awardedTo);
+			}
+			if (awardedFor != null)
+			{
+				tooltip.add(TextFormatting.LIGHT_PURPLE + "Playtest: " + TextFormatting.YELLOW + awardedFor);
+			}
+			tooltip.add(TextFormatting.GREEN + "For participating in a Mesabrook Server Playtest.");
 		}
 	}
     
