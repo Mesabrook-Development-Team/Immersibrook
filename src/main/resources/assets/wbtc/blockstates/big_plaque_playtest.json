@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:big_plaque_playtest" },
+        "facing=south": { "model": "wbtc:big_plaque_playtest", "y": 180 },
+        "facing=west":  { "model": "wbtc:big_plaque_playtest", "y": 270 },
+        "facing=east":  { "model": "wbtc:big_plaque_playtest", "y": 90 }
+    }
+}
