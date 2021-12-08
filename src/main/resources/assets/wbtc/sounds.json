@@ -103,5 +103,7 @@
 	"mh_close": {"category": "master","sounds": [{"name": "wbtc:mh_close","stream": true}]},
 	"mh_open": {"category": "master","sounds": [{"name": "wbtc:mh_open","stream": true}]},
 	"jingles": {"category": "master","sounds": [{"name": "wbtc:jingles","stream": true}]},
-	"rip": {"category": "master","sounds": [{"name": "wbtc:rip","stream": true}]}
+	"rip": {"category": "master","sounds": [{"name": "wbtc:rip","stream": true}]},
+	"sus1": {"category": "master","sounds": [{"name": "wbtc:sus1","stream": true}]},
+	"sus2": {"category": "master","sounds": [{"name": "wbtc:sus2","stream": true}]}
 }

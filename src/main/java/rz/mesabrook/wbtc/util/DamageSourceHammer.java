@@ -89,6 +89,15 @@ public class DamageSourceHammer extends DamageSource
             }
             return new TextComponentTranslation("im.death.reverb", entityLivingBaseIn.getDisplayName());
         }
+        else if(SoundRandomizer.hammerResult == "sus2")
+        {
+            if(entityLivingBaseIn instanceof EntityPlayer)
+            {
+                EntityPlayer player = (EntityPlayer) entityLivingBaseIn;
+                Triggers.trigger(Triggers.BONKED, player);
+            }
+            return new TextComponentTranslation("im.death.sus", entityLivingBaseIn.getDisplayName());
+        }
         if(entityLivingBaseIn instanceof EntityPlayer)
         {
             EntityPlayer player = (EntityPlayer) entityLivingBaseIn;
