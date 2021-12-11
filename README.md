@@ -1,5 +1,5 @@
 ![Immersibrook Logo](https://i.imgur.com/9BnoN5B.png)
-## The Fall 2021 Update
+## The Technology Update
 
 **This update will include the following**
 * Candy Items
