@@ -78,7 +78,7 @@ im.website.hover=Click to open this URL in your web browser
 im.prerelease=PRE-RELEASE CANDIDATE BUILD
 
 //Commands
-im.cmd.error=/immersibrook about | changelog
+im.cmd.error=/immersibrook help
 im.cmd.usage=Immersibrook Command
 im.cmd.proxchat.usage=/immersibrook proxchat on|off
 im.cmd.proxchat.set=Proximity Chat has been turned %s

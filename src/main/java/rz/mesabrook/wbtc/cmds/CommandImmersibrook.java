@@ -72,6 +72,16 @@ public class CommandImmersibrook extends CommandBase
 				ConfigManager.sync(Reference.MODID, Config.Type.INSTANCE);
 				sender.sendMessage(new TextComponentTranslation("im.cmd.proxchat.set", ModConfig.proximityChatEnabled ? "on" : "off"));
 			}
+			else if("help".equals(args[0]))
+			{
+				sender.sendMessage(new TextComponentString(TextFormatting.RED + "Valid Sub-Commands:"));
+				sender.sendMessage(new TextComponentString(""));
+				sender.sendMessage(new TextComponentString(TextFormatting.RED + "about - Shows Immersibrook's version info."));
+				sender.sendMessage(new TextComponentString(TextFormatting.RED + "changelog - Shows a link to Immersibrook's changelog."));
+				sender.sendMessage(new TextComponentString(TextFormatting.RED + "proxchat on/off - Toggles Proximity Chat."));
+				sender.sendMessage(new TextComponentString(""));
+				sender.sendMessage(new TextComponentString(TextFormatting.RED + "e.g.: /ib proxchat off"));
+			}
 		}
 	}
 	
@@ -102,6 +112,6 @@ public class CommandImmersibrook extends CommandBase
 	@Override
 	public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, BlockPos targetPos) 
 	{
-		return args.length == 1 ? getListOfStringsMatchingLastWord(args, new String[] {"about", "changelog"}) : Collections.emptyList();
+		return args.length == 1 ? getListOfStringsMatchingLastWord(args, new String[] {"about", "changelog", "help", "proxchat"}) : Collections.emptyList();
 	}
 }
