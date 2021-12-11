@@ -78,9 +78,9 @@ public class CommandImmersibrook extends CommandBase
 				sender.sendMessage(new TextComponentString(""));
 				sender.sendMessage(new TextComponentString(TextFormatting.RED + "about - Shows Immersibrook's version info."));
 				sender.sendMessage(new TextComponentString(TextFormatting.RED + "changelog - Shows a link to Immersibrook's changelog."));
-				sender.sendMessage(new TextComponentString(TextFormatting.RED + "proxchat on/off - Toggles Proximity Chat."));
+				sender.sendMessage(new TextComponentString(TextFormatting.RED + "proxchat on/off - Turn Proximity Chat on or off."));
 				sender.sendMessage(new TextComponentString(""));
-				sender.sendMessage(new TextComponentString(TextFormatting.RED + "e.g.: /ib proxchat off"));
+				sender.sendMessage(new TextComponentString(TextFormatting.RED + "Example Usage: /ib proxchat off"));
 			}
 		}
 	}
