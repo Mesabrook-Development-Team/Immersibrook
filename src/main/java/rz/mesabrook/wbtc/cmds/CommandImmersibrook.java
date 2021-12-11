@@ -16,8 +16,12 @@ import net.minecraftforge.common.config.ConfigManager;
 import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.config.ModConfig;
 
+import javax.tools.Tool;
 import java.util.Collections;
 import java.util.List;
+import java.awt.datatransfer.StringSelection;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
 
 public class CommandImmersibrook extends CommandBase
 {
@@ -47,14 +51,10 @@ public class CommandImmersibrook extends CommandBase
 			}
 			else if("changelog".equals(args[0]))
 			{
-				sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "You are using version " + Reference.VERSION));
-				sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Click the link below to view the changelog."));
-
-				TextComponentString url;
-				url = new TextComponentString(Reference.CHANGELOG);
-				url.getStyle().setColor(TextFormatting.AQUA);
-				url.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, Reference.CHANGELOG));
-				sender.sendMessage(url);
+				sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "A link to the changelog has been copied to your Clipboard."));
+				StringSelection stringSelection = new StringSelection(Reference.CHANGELOG);
+				Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+				clipboard.setContents(stringSelection, null);
 			}
 			else if("proxchat".equals(args[0]))
 			{
