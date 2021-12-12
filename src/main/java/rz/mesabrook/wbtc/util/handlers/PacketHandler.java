@@ -22,6 +22,7 @@ public class PacketHandler
 		INSTANCE.registerMessage(NVTogglePacket.Handler.class, NVTogglePacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(SoundRandomizerPacket.Handler.class, SoundRandomizerPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(PoliceEffectsTogglePacket.Handler.class, PoliceEffectsTogglePacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(AboutGUIPacket.class, AboutGUIPacket.class, nextID(), Side.CLIENT);
 
 		// TELECOM
 		INSTANCE.registerMessage(ActivatePhonePacket.Handler.class, ActivatePhonePacket.class, nextID(), Side.SERVER);
