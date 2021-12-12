@@ -1,5 +1,6 @@
 package rz.mesabrook.wbtc.items.tools;
 
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.EntityLightningBolt;
@@ -20,10 +21,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.net.PlaySoundPacket;
-import rz.mesabrook.wbtc.util.DamageSourceHammer;
-import rz.mesabrook.wbtc.util.IHasModel;
-import rz.mesabrook.wbtc.util.SoundRandomizer;
-import rz.mesabrook.wbtc.util.ToolMaterialRegistry;
+import rz.mesabrook.wbtc.util.*;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 import javax.annotation.Nullable;
@@ -142,6 +140,11 @@ public class ItemBanHammer extends ItemPickaxe implements IHasModel
                 packet.soundName = SoundRandomizer.hammerRightClick;
                 PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
                 return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
+            }
+
+            if(GuiScreen.isShiftKeyDown())
+            {
+                player.openGui(Main.instance, Reference.GUI_ABOUT, world, 0, 0, 0);
             }
         }
         else

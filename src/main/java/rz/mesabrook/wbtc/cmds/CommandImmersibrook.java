@@ -56,7 +56,7 @@ public class CommandImmersibrook extends CommandBase
 				EntityPlayerMP player = (EntityPlayerMP) sender;
 				AboutGUIPacket packet = new AboutGUIPacket();
 				PacketHandler.INSTANCE.sendToServer(packet);
-				
+
 //				if((sender instanceof EntityPlayerMP))
 //				{
 //					AboutGUIPacket packet = new AboutGUIPacket();
