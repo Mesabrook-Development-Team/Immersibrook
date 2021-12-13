@@ -72,7 +72,7 @@ public class Hardhat extends Item implements IHasModel
     {
         if(player instanceof EntityPlayer)
         {
-            player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 10, 10, true, false));
+            player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 10, 3, true, false));
         }
         else if(player instanceof EntityPlayer)
         {
