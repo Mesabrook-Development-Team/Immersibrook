@@ -4,6 +4,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
+import rz.mesabrook.wbtc.blocks.gui.telecom.ImageButton;
 import rz.mesabrook.wbtc.util.Reference;
 
 import java.net.URI;
@@ -12,7 +13,7 @@ import java.net.URISyntaxException;
 public class GuiAboutImmersibrook extends GuiScreen
 {
     private GuiButton closeButton;
-    private GuiButton githubButton;
+    private ImageButton githubButton;
     private int backgroundWidth  = 250;
     private int backgroundHeight  = 260;
 
@@ -23,7 +24,9 @@ public class GuiAboutImmersibrook extends GuiScreen
         this.buttonList.add(this.closeButton = new GuiButton(0, (this.width - this.backgroundWidth + 365) / 2, (this.height + this.backgroundHeight - 155) / 2, this.backgroundWidth - 190, 20, "Close"));
 
         // GitHub Button
-        this.buttonList.add(this.githubButton = new GuiButton(1, (this.width - this.backgroundWidth + 27) / 2, (this.height + this.backgroundHeight - 155) / 2, this.backgroundWidth - 185, 20, "GitHub"));
+        //this.buttonList.add(this.githubButton = new GuiButton(1, (this.width - this.backgroundWidth + 27) / 2, (this.height + this.backgroundHeight - 155) / 2, this.backgroundWidth - 185, 20, "GitHub"));
+        githubButton = new ImageButton(1, (this.width - this.backgroundWidth + 30) / 2, (this.height + this.backgroundHeight - 153) / 2, 16, 16, "icn_github.png", 16, 16);
+        this.buttonList.add(githubButton);
     }
 
     @Override
