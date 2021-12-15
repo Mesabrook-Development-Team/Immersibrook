@@ -59,6 +59,7 @@ public class PlayerEvents
 		EntityPlayer player = e.player;
 		World w = e.player.world;
 		TooltipRandomizer.ChosenTooltip();
+		boolean holidayItemsInInventoryOnJoin = w.getGameRules().getBoolean("holidayItemsInInventoryOnJoin");
 
 		if(player instanceof EntityPlayer)
 		{
@@ -89,7 +90,11 @@ public class PlayerEvents
 				packet.pos = player.getPosition();
 				packet.soundName = "jingle";
 				PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
-				player.addItemStackToInventory(ItemRandomizer.presentItem);
+
+				if(holidayItemsInInventoryOnJoin)
+				{
+					player.addItemStackToInventory(ItemRandomizer.presentItem);
+				}
 			}
 		}
 
@@ -157,8 +162,10 @@ public class PlayerEvents
 			{
 				player.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Happy Birthday to Boo & Bubbles, RavenholmZombie's cats!"));
 				player.sendMessage(new TextComponentString(TextFormatting.GOLD + "Happy Halloween!"));
-				player.addItemStackToInventory(new ItemStack(ModItems.LOLIPOP_RED, 1));
-
+				if(holidayItemsInInventoryOnJoin)
+				{
+					player.addItemStackToInventory(new ItemStack(ModItems.LOLIPOP_RED, 1));
+				}
 				if(!w.isRemote)
 				{
 					PlaySoundPacket packet = new PlaySoundPacket();
@@ -217,6 +224,7 @@ public class PlayerEvents
 	{
 		Entity e = event.getEntity();
 		World w = event.getEntity().world;
+		boolean specialDrops = w.getGameRules().getBoolean("specialDrops");
 		if(event.getEntityLiving() instanceof EntityPlayer)
 		{
 			if(!w.isRemote)
@@ -231,33 +239,36 @@ public class PlayerEvents
 					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(e.dimension, e.posX, e.posY, e.posZ, 25));
 				}
 
-				if(profile != null && Reference.RZ_UUID.equals(profile.getId()))
+				if(specialDrops)
 				{
-					w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(ModItems.RAVEN_BAR, 1)));
-				}
-				if(profile != null && Reference.CSX_UUID.equals(profile.getId()))
-				{
-					w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(ModItems.IRW_VEST, 1)));
-				}
-				if(profile != null && Reference.TD_UUID.equals(profile.getId()))
-				{
-					w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(ModItems.SERPENT_BAR, 1)));
-				}
-				if(profile != null && Reference.ZOE_UUID.equals(profile.getId()))
-				{
-					w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(Items.EMERALD, 1)));
-				}
-				if(profile != null && Reference.MD_UUID.equals(profile.getId()))
-				{
-					w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(ModItems.FIRE_HELMET_WHITE, 1)));
-				}
-				if(profile != null && Reference.SVV_UUID.equals(profile.getId()))
-				{
-					w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(Items.FIRE_CHARGE, 1)));
-				}
-				if(profile != null && Reference.LW_UUID.equals(profile.getId()))
-				{
-					w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(Items.STICK, 1)));
+					if(profile != null && Reference.RZ_UUID.equals(profile.getId()))
+					{
+						w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(ModItems.RAVEN_BAR, 1)));
+					}
+					if(profile != null && Reference.CSX_UUID.equals(profile.getId()))
+					{
+						w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(ModItems.IRW_VEST, 1)));
+					}
+					if(profile != null && Reference.TD_UUID.equals(profile.getId()))
+					{
+						w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(ModItems.SERPENT_BAR, 1)));
+					}
+					if(profile != null && Reference.ZOE_UUID.equals(profile.getId()))
+					{
+						w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(Items.EMERALD, 1)));
+					}
+					if(profile != null && Reference.MD_UUID.equals(profile.getId()))
+					{
+						w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(ModItems.FIRE_HELMET_WHITE, 1)));
+					}
+					if(profile != null && Reference.SVV_UUID.equals(profile.getId()))
+					{
+						w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(Items.FIRE_CHARGE, 1)));
+					}
+					if(profile != null && Reference.LW_UUID.equals(profile.getId()))
+					{
+						w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(Items.STICK, 1)));
+					}
 				}
 			}
 		}

@@ -129,10 +129,20 @@ public class RegistryHandler
 		Main.logger.info("[" + Reference.MODNAME + "] Registering immersibrook command");
 		event.registerServerCommand(new CommandImmersibrook());
 
+		// Gamerules
 		GameRules rules = FMLCommonHandler.instance().getMinecraftServerInstance().getWorld(0).getGameRules();
+
 		if(!rules.hasRule("manholeAlert"))
 		{
 			rules.addGameRule("manholeAlert","true", GameRules.ValueType.BOOLEAN_VALUE);
+		}
+		if(!rules.hasRule("specialDrops"))
+		{
+			rules.addGameRule("specialDrops", "true", GameRules.ValueType.BOOLEAN_VALUE);
+		}
+		if(!rules.hasRule("holidayItemsInInventoryOnJoin"))
+		{
+			rules.addGameRule("holidayItemsInInventoryOnJoin", "true", GameRules.ValueType.BOOLEAN_VALUE);
 		}
 	}
 }
