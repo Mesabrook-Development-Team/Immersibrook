@@ -35,7 +35,8 @@ public class Reference
 	public static final UUID MD_UUID = UUID.fromString("ac72ea4d-2843-4e98-a741-7864b350456e");
 	public static final UUID SVV_UUID = UUID.fromString("d3df3541-eb57-4ec8-a775-e1493b35a682");
 	public static final UUID LW_UUID = UUID.fromString("2f2bc3a6-89e1-481c-a789-b9454d81cb9b");
-	
+	public static final UUID SLOOSE_UUID = UUID.fromString("e768c520-83a5-49fc-aa4e-f553cccfc593");
+
 	public static final String PHONE_NUMBER_NBTKEY = "phonenumber";
 	public static final String PHONE_CONFERENCE_NAME = "Conference";
 
