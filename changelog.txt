@@ -26,6 +26,7 @@ NEW:
 -Ceiling Mounted Exit Signs.
 -Peppermint Bark.
 -Playtester Award.
+-/talk command for controlling the radius of proximity chat (quietly, normally, loudly, and globally)
 
 CHANGES/FIXES:
 -Pillars are now affected by gravity.
