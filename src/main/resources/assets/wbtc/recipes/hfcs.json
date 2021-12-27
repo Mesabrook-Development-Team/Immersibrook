@@ -1,0 +1,24 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "type": "forge:ore_dict",
+		 "ore": "toolPot"
+      },
+      {
+         "type":"forge:ore_dict",
+		 "ore": "cropCorn"
+      },
+      {
+         "type":"forge:ore_dict",
+		 "ore": "listAllwater"
+      },
+      {
+		 "item": "minecraft:glass_bottle"
+      }
+   ],
+   "result": {
+      "item": "wbtc:hfcs",
+      "count": 1
+   }
+}
