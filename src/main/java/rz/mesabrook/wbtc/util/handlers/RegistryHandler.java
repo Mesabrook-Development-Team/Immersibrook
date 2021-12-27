@@ -20,6 +20,7 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import rz.mesabrook.wbtc.Main;
 import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.cmds.CommandImmersibrook;
+import rz.mesabrook.wbtc.cmds.CommandTalk;
 import rz.mesabrook.wbtc.entity.EntityMesabrookM;
 import rz.mesabrook.wbtc.entity.EntityWineBottle;
 import rz.mesabrook.wbtc.init.ModBlocks;
@@ -126,8 +127,9 @@ public class RegistryHandler
 	
 	public static void serverRegistries(FMLServerStartingEvent event)
 	{
-		Main.logger.info("[" + Reference.MODNAME + "] Registering immersibrook command");
+		Main.logger.info("[" + Reference.MODNAME + "] Registering immersibrook commands");
 		event.registerServerCommand(new CommandImmersibrook());
+		event.registerServerCommand(new CommandTalk());
 
 		// Gamerules
 		GameRules rules = FMLCommonHandler.instance().getMinecraftServerInstance().getWorld(0).getGameRules();
