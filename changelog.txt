@@ -26,6 +26,8 @@ NEW:
 -Ceiling Mounted Exit Signs.
 -Peppermint Bark.
 -Playtester Award.
+-High-Fructose Corn Syrup (an alternative to sugar and another use for corn).
+-Shittles (requested by TrainDevil)
 -/talk command for controlling the radius of proximity chat (quietly, normally, loudly, and globally)
 
 CHANGES/FIXES:
