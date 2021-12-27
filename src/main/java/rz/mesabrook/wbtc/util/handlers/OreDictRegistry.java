@@ -117,7 +117,7 @@ public class OreDictRegistry
 		OreDictionary.registerOre("dyeBlue", ModItems.DYE_BLUE);
 		OreDictionary.registerOre("dyeYellow", ModItems.DYE_YELLOW);
 
-		// Colored Sugars
+		// Sugars
 		OreDictionary.registerOre("sugar", ModItems.SUGAR_RED);
 		OreDictionary.registerOre("sugar", ModItems.SUGAR_GREEN);
 		OreDictionary.registerOre("sugar", ModItems.SUGAR_BLUE);
@@ -126,6 +126,10 @@ public class OreDictRegistry
 		OreDictionary.registerOre("sugar", ModItems.SUGAR_PINK);
 		OreDictionary.registerOre("sugar", ModItems.SUGAR_PURPLE);
 		OreDictionary.registerOre("sugar", ModItems.SUGAR_ORANGE);
+		OreDictionary.registerOre("highfructosecornsyrup", ModItems.HFCS);
+		OreDictionary.registerOre("cornsyrup", ModItems.HFCS);
+		OreDictionary.registerOre("foodCornsyrup", ModItems.HFCS);
+		OreDictionary.registerOre("hfcs", ModItems.HFCS);
 		OreDictionary.registerOre("listAllsugar", ModItems.SUGAR_RED);
 		OreDictionary.registerOre("listAllsugar", ModItems.SUGAR_GREEN);
 		OreDictionary.registerOre("listAllsugar", ModItems.SUGAR_BLUE);
@@ -134,6 +138,7 @@ public class OreDictRegistry
 		OreDictionary.registerOre("listAllsugar", ModItems.SUGAR_PINK);
 		OreDictionary.registerOre("listAllsugar", ModItems.SUGAR_PURPLE);
 		OreDictionary.registerOre("listAllsugar", ModItems.SUGAR_ORANGE);
+		OreDictionary.registerOre("listAllsugar", ModItems.HFCS);
 
 		// It's logging time.
 		Main.logger.info(ModItems.IRON_ROD.getUnlocalizedName() + " " + "has been added to the Ore Dictionary under stickIron");
@@ -200,5 +205,6 @@ public class OreDictRegistry
 		Main.logger.info(ModItems.TRUFFLE_WHITE_GRAPE.getUnlocalizedName() + " " + "has been added to the Ore Dictionary under foodGrapechocolatetruffle");
 		Main.logger.info(ModItems.PLASTIC_PLATE.getUnlocalizedName() + " " + "has been added to the Ore Dictionary under platePlastic");
 		Main.logger.info(ModItems.PLASTIGLASS_SHEET.getUnlocalizedName() + " " + "has been added to the Ore Dictionary under platePlastiglass, platePlexiglass, platePlexiglas");
+		Main.logger.info(ModItems.HFCS.getUnlocalizedName() + " " + "has been added to the Ore Dictionary under sugar, hfcs, highfructosecornsyrp, foodCornsyrup, hfcs, listAllsugar");
 	}
 }

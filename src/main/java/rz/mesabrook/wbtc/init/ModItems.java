@@ -228,6 +228,9 @@ public class ModItems
 	public static final Item CANDY_PINK_LEMONADE = new ImmersiFood("pl_candy", 16, 0,8, 10, false);
 	public static final Item PINK_LEMONADE_DRINK = new ImmersiFood("pink_lemonade_drink", 1, 0, 5, 10, false);
 	public static final Item SPARKLING_PINK_LEMONADE = new ImmersiFood("sparkling_pink_lemonade", 1, 0, 10, 12, false);
+	public static final Item SHITTLES = new ImmersiFood("shittles", 16, 0, 5, 12, false);
+
+	// Non-Edible Candy Items
 	public static final Item RAW_CANDY_RED = new MiscItem("raw_candy_red", 64, Main.IMMERSIBROOK_MAIN);
 	public static final Item RAW_CANDY_LIME = new MiscItem("raw_candy_lime", 64, Main.IMMERSIBROOK_MAIN);
 	public static final Item RAW_CANDY_BLUE = new MiscItem("raw_candy_blue", 64, Main.IMMERSIBROOK_MAIN);
@@ -287,6 +290,7 @@ public class ModItems
 	public static final Item SUGAR_LIME = new MiscItem("sugar_lime", 64, Main.IMMERSIBROOK_MAIN);
 	public static final Item SUGAR_PINK = new MiscItem("sugar_pink", 64, Main.IMMERSIBROOK_MAIN);
 	public static final Item SUGAR_YELLOW = new MiscItem("sugar_yellow", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item HFCS = new MiscItem("hfcs", 64, Main.IMMERSIBROOK_MAIN);
 
 	// Communications
 	public static final Item RADIO = new ItemRadio("radio");

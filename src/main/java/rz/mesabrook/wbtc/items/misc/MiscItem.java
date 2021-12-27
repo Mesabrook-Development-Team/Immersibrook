@@ -161,6 +161,10 @@ public class MiscItem extends Item implements IHasModel
 		{
 			tooltip.add(TextFormatting.GOLD + "Color: " + TextFormatting.GREEN + "GREEN");
 		}
+		if(stack.getItem() == ModItems.HFCS)
+		{
+			tooltip.add(TextFormatting.YELLOW + new TextComponentTranslation("im.tooltip.hfcs").getFormattedText());
+		}
 	}
 
 	@Override

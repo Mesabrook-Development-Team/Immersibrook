@@ -132,6 +132,13 @@ public class ImmersiFood extends ItemFood implements IHasModel
                 }
             }
         }
+        else
+        {
+            if(!player.isCreative())
+            {
+                stack.damageItem(1, player);
+            }
+        }
     }
 
     @Override

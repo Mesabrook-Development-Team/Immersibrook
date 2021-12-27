@@ -1377,6 +1377,8 @@ item.white_mushroom_dust.name=White Mushroom Powder
 item.candy_cane.name=Candy Cane
 item.peppermint_bark.name=Peppermint Bark
 item.almond_water.name=Almond Water
+item.shittles.name=Shittles
+item.hfcs.name=High-Fructose Corn Syrup
 
 //Dialog
 im.sugwarn=You wonder if you should risk taking another bite...
@@ -1414,6 +1416,7 @@ im.ff.mat=Material:
 im.firecloth=A flame-resistant material.
 im.tooltip.peppermintbark=A deliciously festive and minty combination of white chocolate and peppermint.
 im.almondwater=A highly coveted source of hydration.
+im.tooltip.hfcs=A corn-based alternative to Sugar.
 
 //Food Boxes
 tile.sugar_box.name=Granulated White Sugar

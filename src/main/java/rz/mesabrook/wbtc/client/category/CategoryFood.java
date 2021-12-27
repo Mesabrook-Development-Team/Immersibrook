@@ -116,6 +116,7 @@ public class CategoryFood extends AbstractCategory
 		add(ModItems.SUGAR_LIME);
 		add(ModItems.SUGAR_PINK);
 		add(ModItems.SUGAR_YELLOW);
+		add(ModItems.HFCS);
 		add(Items.SUGAR);
 		add(ModItems.RAW_CANDY_RED);
 		add(ModItems.RAW_CANDY_LIME);
@@ -126,5 +127,6 @@ public class CategoryFood extends AbstractCategory
 		add(ModItems.RAW_CANDY_CHOC);
 		add(ModItems.RAW_CANDY_PL);
 		add(ModItems.CANDY_CANE);
+		add(ModItems.SHITTLES);
 	}
 }
