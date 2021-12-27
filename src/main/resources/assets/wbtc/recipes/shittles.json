@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XXX",
+	"XXP"
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:paper"
+    },
+    "X": [
+      {
+        "item": "wbtc:ruby_red_candy"
+      },
+      {
+        "item": "wbtc:lime_candy"
+      },
+      {
+        "item": "wbtc:blue_candy"
+      },
+      {
+        "item": "wbtc:orange_candy"
+      },
+      {
+        "item": "wbtc:grape_candy"
+      }
+    ]
+  },
+  "result": {
+    "item": "wbtc:shittles",
+	"count": 3
+  }
+}
