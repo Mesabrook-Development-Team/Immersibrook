@@ -82,6 +82,9 @@ im.cmd.error=/immersibrook help
 im.cmd.usage=Immersibrook Command
 im.cmd.proxchat.usage=/immersibrook proxchat on|off
 im.cmd.proxchat.set=Proximity Chat has been turned %s
+im.talk.usage=Talk Command
+im.talk.success=You are now talking %s
+im.talk.noglobalperm=You are not allowed to send global messages
 
 //First Aid
 item.first_aid.name=First Aid Kit

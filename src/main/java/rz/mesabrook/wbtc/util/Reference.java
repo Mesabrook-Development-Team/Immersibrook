@@ -27,6 +27,7 @@ public class Reference
 	
 	public static final String ANTENNA_DATA_NAME = "antennaData";
 	public static final String PHONE_NUMBER_DATA_NAME = "phoneNumberData";
+	public static final String LOUDNESS_DATA_NAME = "loudnessData";
 
 	public static final UUID RZ_UUID = UUID.fromString("c2907bdd-9aba-4c20-b83b-ddb41c004e78");
 	public static final UUID CSX_UUID = UUID.fromString("717bb4e7-c701-42a6-b06f-bbe17e0518ae");

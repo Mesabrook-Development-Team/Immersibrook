@@ -83,6 +83,15 @@ public final class ModConfig
 	@Comment("Is proximity chat enabled?")
 	public static boolean proximityChatEnabled = true;
 	
+	@Comment("How far does a player's voice travel if talking quietly?")
+	public static int quietDistance = 2;
+	
+	@Comment("How far does a player's voice travel if talking normally?")
+	public static int normalDistance = 7;
+	
+	@Comment("How far does a player's voice travel if talking loudly?")
+	public static int loudDistance = 29;
+	
 	@Mod.EventBusSubscriber(modid = Reference.MODID)
 	private static class EventHandler
 	{
