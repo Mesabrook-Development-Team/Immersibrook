@@ -267,6 +267,7 @@ public class ModItems
 	public static final Item TRUFFLE_WHITE_GRAPE = new ImmersiFood("truffle_white_grape", 64, 0, 5, 5F, false);
 	public static final Item PEPPERMINT_BARK = new ImmersiFood("peppermint_bark", 64, 0, 3, 2F, false);
 	public static final Item ALMOND_WATER = new ImmersiFood("almond_water", 1, 0, 4, 3F, false);
+	public static final Item PILK = new ImmersiFood("pilk", 1, 0, 3, 1F, false);
 
 	// Decorative Wearables
 	public static final Item MASK_JASON = new FaceMasks("mask_jason", ArmorMaterialRegistry.MASK_JASON, EntityEquipmentSlot.HEAD);

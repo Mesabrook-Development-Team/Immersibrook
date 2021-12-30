@@ -1,0 +1,24 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "type": "forge:ore_dict",
+		 "ore": "toolPot"
+      },
+      {
+         "type":"forge:ore_dict",
+		 "ore": "foodPickles"
+      },
+      {
+         "type":"forge:ore_dict",
+		 "ore": "listAllmilk"
+      },
+      {
+		 "item": "minecraft:glass_bottle"
+      }
+   ],
+   "result": {
+      "item": "wbtc:pilk",
+      "count": 1
+   }
+}

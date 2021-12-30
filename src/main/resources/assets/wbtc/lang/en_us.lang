@@ -1382,6 +1382,7 @@ item.peppermint_bark.name=Peppermint Bark
 item.almond_water.name=Almond Water
 item.shittles.name=Shittles
 item.hfcs.name=High-Fructose Corn Syrup
+item.pilk.name=Pilk
 
 //Dialog
 im.sugwarn=You wonder if you should risk taking another bite...

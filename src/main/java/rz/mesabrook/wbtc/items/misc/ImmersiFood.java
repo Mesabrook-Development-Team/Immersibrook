@@ -74,7 +74,7 @@ public class ImmersiFood extends ItemFood implements IHasModel
     @Override
     public EnumAction getItemUseAction(ItemStack itemStack)
     {
-        if(this == ModItems.SPARKLING_PINK_LEMONADE || this == ModItems.ALMOND_WATER || this == ModItems.PINK_LEMONADE_DRINK)
+        if(this == ModItems.SPARKLING_PINK_LEMONADE || this == ModItems.ALMOND_WATER || this == ModItems.PINK_LEMONADE_DRINK || this == ModItems.PILK)
         {
             return EnumAction.DRINK;
         }
@@ -114,6 +114,25 @@ public class ImmersiFood extends ItemFood implements IHasModel
                     PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
                     player.sendStatusMessage(new TextComponentString(burp.getFormattedText()), true);
                 }
+            }
+        }
+
+        if(stack.getItem() == ModItems.PILK)
+        {
+            if(!player.isCreative())
+            {
+                stack.damageItem(1, player);
+                player.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE, 1));
+            }
+
+            if(!worldIn.isRemote)
+            {
+                PlaySoundPacket packet = new PlaySoundPacket();
+                packet.pos = player.getPosition();
+                packet.soundName = "spicy";
+                PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+
+                player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 2000, 3, false, true));
             }
         }
 
