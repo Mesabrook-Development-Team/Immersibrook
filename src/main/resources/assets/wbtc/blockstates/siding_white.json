@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:siding_white" },
+        "facing=south": { "model": "wbtc:siding_white", "y": 180 },
+        "facing=west":  { "model": "wbtc:siding_white", "y": 270 },
+        "facing=east":  { "model": "wbtc:siding_white", "y": 90 }
+    }
+}

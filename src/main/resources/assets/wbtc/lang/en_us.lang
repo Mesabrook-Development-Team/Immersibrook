@@ -1633,6 +1633,7 @@ im.tooltip.saca=Personal Protective Equipment designed to lower the body's tempe
 im.present=Happy Holidays!
 im.tooltip.activate=No Number Assigned. Activation Required.
 im.tooltip.phone=Your Phone Number:
+im.tooltip.siding=Colorful Vinyl Plastic Panels that add Color to your builds.
 
 
 //Manholes
@@ -1646,3 +1647,21 @@ tile.util_manhole.name=Utilities Manhole Cover
 tile.manhole.name=General Purpose Manhole Cover
 tile.manhole_ladder.name=Manhole Ladder
 tile.metal_ladder.name=Steel Ladder
+
+//Vinyl Siding
+tile.siding_white.name=White Vinyl Siding
+tile.siding_orange.name=Orange Vinyl Siding
+tile.siding_magenta.name=Magenta Vinyl Siding
+tile.siding_lblue.name=Light Blue Vinyl Siding
+tile.siding_yellow.name=Yellow Vinyl Siding
+tile.siding_lime.name=Lime Vinyl Siding
+tile.siding_pink.name=Pink Vinyl Siding
+tile.siding_gray.name=Gray Vinyl Siding
+tile.siding_silver.name=Light Gray Vinyl Siding
+tile.siding_cyan.name=Cyan Vinyl Siding
+tile.siding_purple.name=Purple Vinyl Siding
+tile.siding_blue.name=Blue Vinyl Siding
+tile.siding_brown.name=Brown Vinyl Siding
+tile.siding_green.name=Green Vinyl Siding
+tile.siding_red.name=Red Vinyl Siding
+tile.siding_black.name=Black Vinyl Siding

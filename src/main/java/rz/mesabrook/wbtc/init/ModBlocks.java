@@ -1120,4 +1120,22 @@ public class ModBlocks
 
 	// Steel Ladder
 	public static final Block METAL_LADDER = new BlockImmersiLadder("metal_ladder");
+
+	// Vinyl Siding Panels
+	public static final Block SIDING_WHITE = new MiscRotationalBlock("siding_white", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,16));
+	public static final Block SIDING_ORANGE = new MiscRotationalBlock("siding_orange", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,16));
+	public static final Block SIDING_MAGENTA = new MiscRotationalBlock("siding_magenta", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,16));
+	public static final Block SIDING_LBLUE = new MiscRotationalBlock("siding_lblue", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,16));
+	public static final Block SIDING_YELLOW = new MiscRotationalBlock("siding_yellow", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,16));
+	public static final Block SIDING_LIME = new MiscRotationalBlock("siding_lime", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,16));
+	public static final Block SIDING_PINK = new MiscRotationalBlock("siding_pink", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,16));
+	public static final Block SIDING_GRAY = new MiscRotationalBlock("siding_gray", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,16));
+	public static final Block SIDING_SILVER = new MiscRotationalBlock("siding_silver", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,16));
+	public static final Block SIDING_CYAN = new MiscRotationalBlock("siding_cyan", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,16));
+	public static final Block SIDING_PURPLE = new MiscRotationalBlock("siding_purple", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,16));
+	public static final Block SIDING_BROWN = new MiscRotationalBlock("siding_brown", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,16));
+	public static final Block SIDING_BLUE = new MiscRotationalBlock("siding_blue", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,16));
+	public static final Block SIDING_RED = new MiscRotationalBlock("siding_red", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,16));
+	public static final Block SIDING_GREEN = new MiscRotationalBlock("siding_green", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,16));
+	public static final Block SIDING_BLACK = new MiscRotationalBlock("siding_black", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,16));
 }

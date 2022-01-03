@@ -175,6 +175,11 @@ public class MiscRotationalBlock extends Block implements IHasModel
             {
                 tooltip.add(TextFormatting.YELLOW + new TextComponentTranslation("im.tooltip.manhole.generic").getFormattedText());
             }
+
+            if(this.getUnlocalizedName().contains("siding"))
+            {
+                tooltip.add(TextFormatting.YELLOW + new TextComponentTranslation("im.tooltip.siding").getFormattedText());
+            }
         }
         else
         {

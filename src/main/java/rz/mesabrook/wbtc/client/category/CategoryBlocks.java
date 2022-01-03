@@ -230,5 +230,23 @@ public class CategoryBlocks extends AbstractCategory
 		add(ModBlocks.MARKER_POLE_WOOD_ORANGE);
 		add(ModBlocks.MARKER_POLE_WOOD_RED);
 		add(ModBlocks.MARKER_POLE_WOOD_BLUE);
+
+		// Vinyl Siding
+		add(ModBlocks.SIDING_WHITE);
+		add(ModBlocks.SIDING_ORANGE);
+		add(ModBlocks.SIDING_MAGENTA);
+		add(ModBlocks.SIDING_LBLUE);
+		add(ModBlocks.SIDING_YELLOW);
+		add(ModBlocks.SIDING_PINK);
+		add(ModBlocks.SIDING_LIME);
+		add(ModBlocks.SIDING_GRAY);
+		add(ModBlocks.SIDING_SILVER);
+		add(ModBlocks.SIDING_CYAN);
+		add(ModBlocks.SIDING_PURPLE);
+		add(ModBlocks.SIDING_BLUE);
+		add(ModBlocks.SIDING_BROWN);
+		add(ModBlocks.SIDING_GREEN);
+		add(ModBlocks.SIDING_RED);
+		add(ModBlocks.SIDING_BLACK);
 	}
 }
