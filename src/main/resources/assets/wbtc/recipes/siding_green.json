@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "FP",
+    "FP",
+	"FP"
+  ],
+  "key": {
+    "P": {
+      "type": "forge:ore_dict",
+      "ore": "itemGreenPlastic"
+    },
+    "F": {
+	  "item": "wbtc:plastic_plate"
+    }
+  },
+  "result": {
+    "item": "wbtc:siding_green",
+    "count": 3
+  }
+}
