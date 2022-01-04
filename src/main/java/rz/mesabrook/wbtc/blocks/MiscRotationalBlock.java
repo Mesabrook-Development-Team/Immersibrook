@@ -68,6 +68,32 @@ public class MiscRotationalBlock extends Block implements IHasModel
     }
 
     @Override
+    public boolean isFlammable(IBlockAccess world, BlockPos pos, EnumFacing face)
+    {
+        if(this.getUnlocalizedName().contains("siding"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    @Override
+    public int getFlammability(IBlockAccess world, BlockPos pos, EnumFacing face)
+    {
+        if(this.getUnlocalizedName().contains("siding"))
+        {
+            return 180;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
     {
         return AABBs.get(((EnumFacing)state.getValue(FACING)).getIndex() & 0x7);
