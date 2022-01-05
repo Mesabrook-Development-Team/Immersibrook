@@ -250,7 +250,7 @@ public class ClientSideHandlers
 			
 			if (packet.responseType == ResponseTypes.idle)
 			{
-				mc.displayGuiScreen(new GuiHome(currentGui.getPhoneStack(), currentGui.getHand()));
+				mc.displayGuiScreen(new GuiLockScreen(currentGui.getPhoneStack(), currentGui.getHand()));
 			}
 			else if (packet.responseType == ResponseTypes.callConnecting)
 			{
@@ -304,7 +304,14 @@ public class ClientSideHandlers
 				GuiIncomingCall incomingScreen = (GuiIncomingCall)mc.currentScreen;
 				if (incomingScreen.getCurrentPhoneNumber().equals(forNumber))
 				{
-					mc.displayGuiScreen(new GuiHome(incomingScreen.getPhoneStack(), incomingScreen.getHand()));
+					if (GuiPhoneBase.isPhoneUnlocked)
+					{
+						mc.displayGuiScreen(new GuiHome(incomingScreen.getPhoneStack(), incomingScreen.getHand()));
+					}
+					else
+					{
+						mc.displayGuiScreen(new GuiLockScreen(incomingScreen.getPhoneStack(), incomingScreen.getHand()));
+					}
 				}
 			}
 			else if (mc.currentScreen instanceof GuiPhoneCalling || mc.currentScreen instanceof GuiPhoneConnected)
@@ -381,7 +388,14 @@ public class ClientSideHandlers
 				GuiIncomingCall incomingScreen = (GuiIncomingCall)mc.currentScreen;
 				if (incomingScreen.getCurrentPhoneNumber().equals(toNumber))
 				{
-					mc.displayGuiScreen(new GuiHome(incomingScreen.getPhoneStack(), incomingScreen.getHand()));
+					if (GuiPhoneBase.isPhoneUnlocked)
+					{
+						mc.displayGuiScreen(new GuiHome(incomingScreen.getPhoneStack(), incomingScreen.getHand()));
+					}
+					else
+					{
+						mc.displayGuiScreen(new GuiLockScreen(incomingScreen.getPhoneStack(), incomingScreen.getHand()));
+					}
 					displayRejectedMessage = false;
 				}
 			}
@@ -441,7 +455,14 @@ public class ClientSideHandlers
 			GuiPhoneBase newScreen = null;
 			if (packet.responseType == ResponseTypes.idle)
 			{
-				newScreen = new GuiPhoneCall(currentScreen.getPhoneStack(), currentScreen.getHand());
+				if (GuiPhoneBase.isPhoneUnlocked)
+				{
+					newScreen = new GuiPhoneCall(currentScreen.getPhoneStack(), currentScreen.getHand());
+				}
+				else
+				{
+					newScreen = new GuiLockScreen(currentScreen.getPhoneStack(), currentScreen.getHand());
+				}
 			}
 			else if (packet.responseType == ResponseTypes.callConnecting)
 			{

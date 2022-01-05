@@ -62,6 +62,7 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 		pinValue.setVisible(false);
 		uuidValue = new GuiTextField(8, fontRenderer, playerID.x + playerID.width + 4, playerID.y-4, INNER_X + INNER_TEX_WIDTH - (playerID.x + playerID.width) - 7, 20);
 		uuidValue.setVisible(false);
+		uuidValue.setMaxStringLength(36);
 		if (phoneStackData.getUuid() != null)
 		{
 			uuidValue.setText(phoneStackData.getUuid().toString());
@@ -107,6 +108,11 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 			pinValue.setVisible(false);
 			pinValue.setText("");
 			uuidValue.setVisible(checkBox.isChecked());
+			
+			if (uuidValue.getText().isEmpty())
+			{
+				uuidValue.setText(Minecraft.getMinecraft().player.getUniqueID().toString());
+			}
 		}
 		
 		if (button == changePIN)
@@ -121,7 +127,7 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 			changeUUID.visible = false;
 			uuidValue.setVisible(true);
 			
-			if (uuidValue.getText() == "")
+			if (uuidValue.getText().isEmpty())
 			{
 				uuidValue.setText(Minecraft.getMinecraft().player.getUniqueID().toString());
 			}
