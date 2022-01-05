@@ -1,0 +1,83 @@
+package rz.mesabrook.wbtc.net.telecom;
+
+import java.util.UUID;
+
+import io.netty.buffer.ByteBuf;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import rz.mesabrook.wbtc.items.misc.ItemPhone.NBTData;
+import rz.mesabrook.wbtc.items.misc.ItemPhone.NBTData.SecurityStrategies;
+
+public class SecurityStrategySelectedPacket implements IMessage {
+
+	public int hand;
+	public int pin;
+	public UUID playerID;
+	
+	@Override
+	public void fromBytes(ByteBuf buf) {
+		hand = buf.readInt();
+		pin = buf.readInt();
+		if (buf.readBoolean())
+		{
+			playerID = new UUID(buf.readLong(), buf.readLong());
+		}
+	}
+
+	@Override
+	public void toBytes(ByteBuf buf) {
+		buf.writeInt(hand);
+		buf.writeInt(pin);
+		buf.writeBoolean(playerID != null);
+		if (playerID != null)
+		{
+			buf.writeLong(playerID.getMostSignificantBits());
+			buf.writeLong(playerID.getLeastSignificantBits());
+		}
+	}
+
+	public static class Handler implements IMessageHandler<SecurityStrategySelectedPacket, IMessage>
+	{
+
+		@Override
+		public IMessage onMessage(SecurityStrategySelectedPacket message, MessageContext ctx) {
+			FMLCommonHandler.instance().getWorldThread(ctx.netHandler).addScheduledTask(() -> handle(message, ctx));
+			return null;
+		}
+		
+		private void handle(SecurityStrategySelectedPacket message, MessageContext ctx)
+		{
+			EntityPlayerMP player = ctx.getServerHandler().player;
+			
+			ItemStack phoneStack = player.getHeldItem(EnumHand.values()[message.hand]);
+			NBTData data = NBTData.getFromItemStack(phoneStack);
+			if (data == null)
+			{
+				return;
+			}
+			
+			data.setPin(message.pin);
+			data.setUuid(message.playerID);
+			
+			if (message.pin != 0)
+			{
+				data.setSecurityStrategy(SecurityStrategies.PIN);
+			}
+			else if (message.playerID != null)
+			{
+				data.setSecurityStrategy(SecurityStrategies.UUID);
+			}
+			else
+			{
+				data.setSecurityStrategy(SecurityStrategies.None);
+			}
+			
+			phoneStack.setTagCompound(data.serializeNBT());
+		}
+	}
+}

@@ -40,6 +40,9 @@ public class Reference
 
 	public static final String PHONE_NUMBER_NBTKEY = "phonenumber";
 	public static final String PHONE_CONFERENCE_NAME = "Conference";
+	public static final String SECURITY_STRATEGY_NBTKEY = "securitystrategy";
+	public static final String SECURITY_PIN_NBTKEY = "pin";
+	public static final String SECURITY_UUID_NBTKEY = "securityUUID";
 
 	// Birthdays (Day and Month only - NO YEARS)
 	public static final int RZ_MONTH = 9;

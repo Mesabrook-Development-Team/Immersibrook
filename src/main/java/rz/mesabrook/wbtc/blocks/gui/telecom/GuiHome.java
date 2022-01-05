@@ -70,6 +70,9 @@ public class GuiHome extends GuiPhoneBase {
 				queryPacket.clientHandlerCode = nextID;
 				PacketHandler.INSTANCE.sendToServer(queryPacket);
 				break;
+			case 3:
+				Minecraft.getMinecraft().displayGuiScreen(new GuiSettings(phoneStack, hand));
+				break;
 		}
 	}
 }

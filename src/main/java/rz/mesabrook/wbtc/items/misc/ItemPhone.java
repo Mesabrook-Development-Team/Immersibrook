@@ -1,13 +1,18 @@
 package rz.mesabrook.wbtc.items.misc;
 
+import java.util.List;
+import java.util.UUID;
+
+import javax.annotation.Nullable;
+
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTUtil;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -19,11 +24,7 @@ import rz.mesabrook.wbtc.advancements.Triggers;
 import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneBase;
 import rz.mesabrook.wbtc.init.ModItems;
 import rz.mesabrook.wbtc.util.IHasModel;
-import rz.mesabrook.wbtc.util.PhoneWallpaperRandomizer;
 import rz.mesabrook.wbtc.util.Reference;
-
-import javax.annotation.Nullable;
-import java.util.List;
 
 public class ItemPhone extends Item implements IHasModel {
 
@@ -98,6 +99,28 @@ public class ItemPhone extends Item implements IHasModel {
 	public static class NBTData implements INBTSerializable<NBTTagCompound>
 	{
 		private int phoneNumber;
+		private SecurityStrategies securityStrategy;
+		private int pin;
+		private UUID uuid;
+		
+		public static NBTData getFromItemStack(ItemStack phoneStack)
+		{
+			if (!(phoneStack.getItem() instanceof ItemPhone))
+			{
+				return null;
+			}
+			
+			NBTTagCompound stackTag = phoneStack.getTagCompound();
+			if (stackTag == null)
+			{
+				stackTag = new NBTTagCompound();
+				phoneStack.setTagCompound(stackTag);
+			}
+			
+			NBTData data = new NBTData();
+			data.deserializeNBT(stackTag);
+			return data;
+		}
 
 		public int getPhoneNumber() {
 			return phoneNumber;
@@ -129,6 +152,32 @@ public class ItemPhone extends Item implements IHasModel {
 			}
 		}
 
+		public SecurityStrategies getSecurityStrategy()
+		{
+			return securityStrategy == null ? SecurityStrategies.None : securityStrategy;
+		}
+		
+		public void setSecurityStrategy(SecurityStrategies strategy)
+		{
+			securityStrategy = strategy;
+		}
+		
+		public int getPin() {
+			return pin;
+		}
+
+		public void setPin(int pin) {
+			this.pin = pin;
+		}
+
+		public UUID getUuid() {
+			return uuid;
+		}
+
+		public void setUuid(UUID uuid) {
+			this.uuid = uuid;
+		}
+
 		@Override
 		public NBTTagCompound serializeNBT() {
 			NBTTagCompound tag = new NBTTagCompound();
@@ -136,6 +185,14 @@ public class ItemPhone extends Item implements IHasModel {
 			if (phoneNumber != 0)
 			{
 				tag.setInteger(Reference.PHONE_NUMBER_NBTKEY, phoneNumber);
+			}
+			
+			tag.setInteger(Reference.SECURITY_STRATEGY_NBTKEY, getSecurityStrategy().ordinal());
+			tag.setInteger(Reference.SECURITY_PIN_NBTKEY, getPin());
+			
+			if (getUuid() != null)
+			{
+				tag.setTag(Reference.SECURITY_UUID_NBTKEY, NBTUtil.createUUIDTag(getUuid()));
 			}
 			
 			return tag;
@@ -152,7 +209,41 @@ public class ItemPhone extends Item implements IHasModel {
 			{
 				setPhoneNumber(nbt.getInteger(Reference.PHONE_NUMBER_NBTKEY));
 			}
+			
+			if (nbt.hasKey(Reference.SECURITY_STRATEGY_NBTKEY))
+			{
+				setSecurityStrategy(SecurityStrategies.fromIndex(nbt.getInteger(Reference.SECURITY_STRATEGY_NBTKEY)));
+			}
+			
+			if (nbt.hasKey(Reference.SECURITY_PIN_NBTKEY))
+			{
+				setPin(nbt.getInteger(Reference.SECURITY_PIN_NBTKEY));
+			}
+			
+			if (nbt.hasKey(Reference.SECURITY_UUID_NBTKEY))
+			{
+				setUuid(NBTUtil.getUUIDFromTag(nbt.getCompoundTag(Reference.SECURITY_UUID_NBTKEY)));
+			}
 		}
 		
+		public enum SecurityStrategies
+		{
+			None,
+			PIN,
+			UUID;
+			
+			public static SecurityStrategies fromIndex(int index)
+			{
+				for(SecurityStrategies strategy : SecurityStrategies.values())
+				{
+					if (strategy.ordinal() == index)
+					{
+						return strategy;
+					}
+				}
+				
+				return None;
+			}
+		}
 	}
 }
