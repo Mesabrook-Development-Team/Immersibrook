@@ -3,9 +3,11 @@ package rz.mesabrook.wbtc.blocks.gui.telecom;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import rz.mesabrook.wbtc.items.misc.ItemPhone;
 import rz.mesabrook.wbtc.net.telecom.PhoneQueryPacket;
 import rz.mesabrook.wbtc.util.PhoneWallpaperRandomizer;
 import rz.mesabrook.wbtc.util.handlers.ClientSideHandlers.TelecomClientHandlers;
@@ -56,7 +58,6 @@ public class GuiHome extends GuiPhoneBase {
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
 		super.actionPerformed(button);
-		
 		switch(button.id) {
 			case 0:
 				Minecraft.getMinecraft().displayGuiScreen(new GuiEmptyPhone(phoneStack, hand));
@@ -69,6 +70,12 @@ public class GuiHome extends GuiPhoneBase {
 				TelecomClientHandlers.phoneQueryResponseHandlers.put(nextID, TelecomClientHandlers::onPhoneQueryResponseForPhoneApp);
 				queryPacket.clientHandlerCode = nextID;
 				PacketHandler.INSTANCE.sendToServer(queryPacket);
+				break;
+			case 1:
+				Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "App Coming Soon", 0xFFFFFF));
+				break;
+			case 2:
+				Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "App Coming Soon", 0xFFFFFF));
 				break;
 			case 3:
 				Minecraft.getMinecraft().displayGuiScreen(new GuiSettings(phoneStack, hand));
