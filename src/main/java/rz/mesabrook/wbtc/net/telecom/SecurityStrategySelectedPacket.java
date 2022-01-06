@@ -7,22 +7,26 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import rz.mesabrook.wbtc.items.misc.ItemPhone.NBTData;
 import rz.mesabrook.wbtc.items.misc.ItemPhone.NBTData.SecurityStrategies;
+import rz.mesabrook.wbtc.util.handlers.PacketHandler;
 
 public class SecurityStrategySelectedPacket implements IMessage {
 
 	public int hand;
 	public int pin;
 	public UUID playerID;
+	public String guiScreenClassForRefresh;
 	
 	@Override
 	public void fromBytes(ByteBuf buf) {
 		hand = buf.readInt();
 		pin = buf.readInt();
+		guiScreenClassForRefresh = ByteBufUtils.readUTF8String(buf);
 		if (buf.readBoolean())
 		{
 			playerID = new UUID(buf.readLong(), buf.readLong());
@@ -33,6 +37,7 @@ public class SecurityStrategySelectedPacket implements IMessage {
 	public void toBytes(ByteBuf buf) {
 		buf.writeInt(hand);
 		buf.writeInt(pin);
+		ByteBufUtils.writeUTF8String(buf, guiScreenClassForRefresh);
 		buf.writeBoolean(playerID != null);
 		if (playerID != null)
 		{
@@ -53,8 +58,9 @@ public class SecurityStrategySelectedPacket implements IMessage {
 		private void handle(SecurityStrategySelectedPacket message, MessageContext ctx)
 		{
 			EntityPlayerMP player = ctx.getServerHandler().player;
+			EnumHand hand = EnumHand.values()[message.hand];
 			
-			ItemStack phoneStack = player.getHeldItem(EnumHand.values()[message.hand]);
+			ItemStack phoneStack = player.getHeldItem(hand);
 			NBTData data = NBTData.getFromItemStack(phoneStack);
 			if (data == null)
 			{
@@ -78,6 +84,12 @@ public class SecurityStrategySelectedPacket implements IMessage {
 			}
 			
 			phoneStack.setTagCompound(data.serializeNBT());
+			
+			RefreshStackPacket refreshPacket = new RefreshStackPacket();
+			refreshPacket.hand = hand;
+			refreshPacket.newStack = phoneStack;
+			refreshPacket.guiClassName = message.guiScreenClassForRefresh;
+			PacketHandler.INSTANCE.sendTo(refreshPacket, player);
 		}
 	}
 }

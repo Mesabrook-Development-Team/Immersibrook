@@ -137,6 +137,7 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 		{
 			SecurityStrategySelectedPacket packet = new SecurityStrategySelectedPacket();
 			packet.hand = hand.ordinal();
+			packet.guiScreenClassForRefresh = GuiSettingsLockScreen.class.getName();
 			
 			if (pin.isChecked())
 			{
