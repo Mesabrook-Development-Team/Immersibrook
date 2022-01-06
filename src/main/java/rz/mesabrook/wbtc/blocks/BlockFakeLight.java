@@ -2,6 +2,7 @@ package rz.mesabrook.wbtc.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.util.EnumFacing;
@@ -86,6 +87,12 @@ public class BlockFakeLight extends Block implements IHasModel
     public float getAmbientOcclusionLightValue(IBlockState state)
     {
         return 1;
+    }
+
+    @Override
+    public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face)
+    {
+        return BlockFaceShape.UNDEFINED;
     }
 
     @Override
