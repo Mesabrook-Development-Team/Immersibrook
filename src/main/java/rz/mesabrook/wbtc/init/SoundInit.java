@@ -119,6 +119,7 @@ public class SoundInit
 	public static final SoundEvent SIT;
 	public static final SoundEvent STARTCALL;
 	public static final SoundEvent ENDCALL;
+	public static final SoundEvent PHONE_UNLOCK;
 
 	// DTMF Phone Tones
 	public static final SoundEvent DTMF_0;
@@ -240,6 +241,7 @@ public class SoundInit
 		STARTCALL = addSoundsToRegistry("startcall");
 		ENDCALL = addSoundsToRegistry("endcall");
 		PHONE_ACTIVATE = addSoundsToRegistry("welcome");
+		PHONE_UNLOCK = addSoundsToRegistry("phone_unlock");
 
 		// DTMF Phone Tones
 		DTMF_0 = addSoundsToRegistry("dtmf_0");
@@ -376,6 +378,7 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.SUS1);
 				event.getRegistry().registerAll(SoundInit.SUS2);
 				event.getRegistry().registerAll(SoundInit.SPICY);
+				event.getRegistry().registerAll(SoundInit.PHONE_UNLOCK);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

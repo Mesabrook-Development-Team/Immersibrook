@@ -11,6 +11,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.util.PhoneWallpaperRandomizer;
 import rz.mesabrook.wbtc.util.Reference;
 
@@ -69,7 +70,6 @@ public class GuiLockScreen extends GuiPhoneBase {
 	
 	private void onScreenUnlocked()
 	{
-		Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1F));
 		switch(phoneStackData.getSecurityStrategy())
 		{
 			case None:
@@ -86,6 +86,7 @@ public class GuiLockScreen extends GuiPhoneBase {
 	
 	private void goHome()
 	{
+		Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundInit.PHONE_UNLOCK, 1F));
 		GuiPhoneBase.isPhoneUnlocked = true;
 		Minecraft.getMinecraft().displayGuiScreen(new GuiHome(phoneStack, hand));
 	}

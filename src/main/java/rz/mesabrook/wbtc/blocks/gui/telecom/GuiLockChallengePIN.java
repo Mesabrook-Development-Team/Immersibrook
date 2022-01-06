@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.util.PhoneWallpaperRandomizer;
 
 public class GuiLockChallengePIN extends GuiPhoneBase {
@@ -78,6 +79,7 @@ public class GuiLockChallengePIN extends GuiPhoneBase {
 			if (Integer.parseInt(enteredPIN) == phoneStackData.getPin())
 			{
 				isPhoneUnlocked = true;
+				Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundInit.PHONE_UNLOCK, 1F));
 				Minecraft.getMinecraft().displayGuiScreen(new GuiHome(phoneStack, hand));
 			}
 		}

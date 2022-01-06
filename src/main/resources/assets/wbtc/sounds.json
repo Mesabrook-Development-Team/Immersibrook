@@ -106,5 +106,6 @@
 	"rip": {"category": "master","sounds": [{"name": "wbtc:rip","stream": true}]},
 	"sus1": {"category": "master","sounds": [{"name": "wbtc:sus1","stream": true}]},
 	"sus2": {"category": "master","sounds": [{"name": "wbtc:sus2","stream": true}]},
-	"spicy": {"category": "master","sounds": [{"name": "wbtc:spicy","stream": true}]}
+	"spicy": {"category": "master","sounds": [{"name": "wbtc:spicy","stream": true}]},
+	"phone_unlock": {"category": "master","sounds": [{"name": "wbtc:phone_unlock","stream": true}]}
 }
