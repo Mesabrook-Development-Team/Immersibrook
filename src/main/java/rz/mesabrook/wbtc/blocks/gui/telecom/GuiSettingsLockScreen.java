@@ -174,6 +174,18 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 			PacketHandler.INSTANCE.sendToServer(packet);
 			
 			Toaster.getInstance().queueToast(new Toast("Settings applied!"));
+
+			Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsLockScreen(phoneStack, hand));
+		}
+		
+		if (button == reset)
+		{
+			Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsLockScreen(phoneStack, hand));
+		}
+		
+		if (button == back)
+		{
+			Minecraft.getMinecraft().displayGuiScreen(new GuiSettings(phoneStack, hand));
 		}
 	}
 	

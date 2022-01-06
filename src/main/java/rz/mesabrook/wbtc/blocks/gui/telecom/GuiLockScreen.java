@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.util.UUID;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
@@ -67,6 +69,7 @@ public class GuiLockScreen extends GuiPhoneBase {
 	
 	private void onScreenUnlocked()
 	{
+		Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1F));
 		switch(phoneStackData.getSecurityStrategy())
 		{
 			case None:
@@ -107,7 +110,7 @@ public class GuiLockScreen extends GuiPhoneBase {
 	
 	private void handlePINStrategy()
 	{
-		Minecraft.getMinecraft().displayGuiScreen(new GuiLockChallenge(phoneStack, hand));
+		Minecraft.getMinecraft().displayGuiScreen(new GuiLockChallengePIN(phoneStack, hand));
 	}
 	
 	@Override
