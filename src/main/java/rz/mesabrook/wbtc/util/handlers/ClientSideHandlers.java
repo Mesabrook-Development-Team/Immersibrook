@@ -1,5 +1,12 @@
 package rz.mesabrook.wbtc.util.handlers;
 
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map.Entry;
+import java.util.Optional;
+import java.util.function.Consumer;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.ISound.AttenuationType;
@@ -7,6 +14,7 @@ import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
@@ -18,21 +26,23 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
-import rz.mesabrook.wbtc.blocks.gui.telecom.*;
+import rz.mesabrook.wbtc.blocks.gui.telecom.GuiCallEnd;
+import rz.mesabrook.wbtc.blocks.gui.telecom.GuiHome;
+import rz.mesabrook.wbtc.blocks.gui.telecom.GuiIncomingCall;
+import rz.mesabrook.wbtc.blocks.gui.telecom.GuiLockScreen;
+import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneActivate;
 import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneActivate.ActivationScreens;
+import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneBase;
+import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneCall;
+import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneCalling;
+import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneConnected;
+import rz.mesabrook.wbtc.blocks.gui.telecom.SignalStrengths;
 import rz.mesabrook.wbtc.init.SoundInit;
+import rz.mesabrook.wbtc.items.misc.ItemPhone;
 import rz.mesabrook.wbtc.net.PlaySoundPacket;
 import rz.mesabrook.wbtc.net.telecom.PhoneQueryResponsePacket;
 import rz.mesabrook.wbtc.net.telecom.PhoneQueryResponsePacket.ResponseTypes;
-import rz.mesabrook.wbtc.util.Reference;
 import rz.mesabrook.wbtc.util.config.ModConfig;
-
-import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map.Entry;
-import java.util.Optional;
-import java.util.function.Consumer;
 
 @SideOnly(Side.CLIENT)
 public class ClientSideHandlers 
@@ -250,7 +260,7 @@ public class ClientSideHandlers
 			
 			if (packet.responseType == ResponseTypes.idle)
 			{
-				mc.displayGuiScreen(new GuiHome(currentGui.getPhoneStack(), currentGui.getHand()));
+				mc.displayGuiScreen(new GuiLockScreen(currentGui.getPhoneStack(), currentGui.getHand()));
 			}
 			else if (packet.responseType == ResponseTypes.callConnecting)
 			{
@@ -304,7 +314,14 @@ public class ClientSideHandlers
 				GuiIncomingCall incomingScreen = (GuiIncomingCall)mc.currentScreen;
 				if (incomingScreen.getCurrentPhoneNumber().equals(forNumber))
 				{
-					mc.displayGuiScreen(new GuiHome(incomingScreen.getPhoneStack(), incomingScreen.getHand()));
+					if (GuiPhoneBase.isPhoneUnlocked)
+					{
+						mc.displayGuiScreen(new GuiHome(incomingScreen.getPhoneStack(), incomingScreen.getHand()));
+					}
+					else
+					{
+						mc.displayGuiScreen(new GuiLockScreen(incomingScreen.getPhoneStack(), incomingScreen.getHand()));
+					}
 				}
 			}
 			else if (mc.currentScreen instanceof GuiPhoneCalling || mc.currentScreen instanceof GuiPhoneConnected)
@@ -381,7 +398,14 @@ public class ClientSideHandlers
 				GuiIncomingCall incomingScreen = (GuiIncomingCall)mc.currentScreen;
 				if (incomingScreen.getCurrentPhoneNumber().equals(toNumber))
 				{
-					mc.displayGuiScreen(new GuiHome(incomingScreen.getPhoneStack(), incomingScreen.getHand()));
+					if (GuiPhoneBase.isPhoneUnlocked)
+					{
+						mc.displayGuiScreen(new GuiHome(incomingScreen.getPhoneStack(), incomingScreen.getHand()));
+					}
+					else
+					{
+						mc.displayGuiScreen(new GuiLockScreen(incomingScreen.getPhoneStack(), incomingScreen.getHand()));
+					}
 					displayRejectedMessage = false;
 				}
 			}
@@ -441,7 +465,14 @@ public class ClientSideHandlers
 			GuiPhoneBase newScreen = null;
 			if (packet.responseType == ResponseTypes.idle)
 			{
-				newScreen = new GuiPhoneCall(currentScreen.getPhoneStack(), currentScreen.getHand());
+				if (GuiPhoneBase.isPhoneUnlocked)
+				{
+					newScreen = new GuiPhoneCall(currentScreen.getPhoneStack(), currentScreen.getHand());
+				}
+				else
+				{
+					newScreen = new GuiLockScreen(currentScreen.getPhoneStack(), currentScreen.getHand());
+				}
 			}
 			else if (packet.responseType == ResponseTypes.callConnecting)
 			{
@@ -460,6 +491,24 @@ public class ClientSideHandlers
 			{
 				mc.displayGuiScreen(newScreen);
 			}
+		}
+		
+		public static void refreshStack(String guiClassName, ItemStack newStack, EnumHand hand)
+		{
+			if (Minecraft.getMinecraft().currentScreen == null || !Minecraft.getMinecraft().currentScreen.getClass().getName().equals(guiClassName))
+			{
+				return;
+			}
+			
+			GuiPhoneBase gui;			
+			try
+			{
+				Class<?> guiClass = Class.forName(guiClassName);
+				gui = (GuiPhoneBase)guiClass.getConstructor(ItemStack.class, EnumHand.class).newInstance(newStack, hand);
+			}
+			catch(Exception ex) { return; }
+			
+			Minecraft.getMinecraft().displayGuiScreen(gui);
 		}
 	}
 }

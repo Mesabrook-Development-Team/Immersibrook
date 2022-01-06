@@ -45,6 +45,8 @@ public class PacketHandler
 		INSTANCE.registerMessage(CallRejectedPacket.Handler.class, CallRejectedPacket.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(PhoneTossedPacket.Handler.class, PhoneTossedPacket.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(MergeCallPacket.Handler.class, MergeCallPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(SecurityStrategySelectedPacket.Handler.class, SecurityStrategySelectedPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(RefreshStackPacket.Handler.class, RefreshStackPacket.class, nextID(), Side.CLIENT);
 	}
 	
 	private static int nextID()

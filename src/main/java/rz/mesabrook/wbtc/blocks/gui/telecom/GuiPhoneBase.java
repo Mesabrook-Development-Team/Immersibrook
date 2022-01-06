@@ -89,6 +89,9 @@ public abstract class GuiPhoneBase extends GuiScreen {
 		// Shuffle Wallpaper Button - WILL BE DELETED IN FULL VERSION, JUST FOR PRE-RELEASE!
 		ImageButton backButton = new ImageButton(998, INNER_X + (INNER_TEX_WIDTH / 4) - 4, INNER_Y + INNER_TEX_HEIGHT - 23, 8, 8, "gui_btn_wallpaper.png", 32, 32);
 		buttonList.add(backButton);
+		
+		homeButton.visible = renderControlBar();
+		backButton.visible = renderControlBar();
 
 		// Back button to be implemented when determined necessary
 //		ImageButton backButton = new ImageButton(998, INNER_X + (INNER_TEX_WIDTH / 4) - 4, INNER_Y + INNER_TEX_HEIGHT - 23, 8, 8, "gui_btn_back.png", 32, 32);
@@ -119,7 +122,7 @@ public abstract class GuiPhoneBase extends GuiScreen {
 		// Inner content
 		doDraw(mouseX, mouseY, partialTicks);
 		
-		// Upper bar		
+		// Upper bar
 		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/gui_top_statusbar.png"));
 		drawScaledCustomSizeModalRect(INNER_X, INNER_Y, 0, 0, INNER_TEX_WIDTH * WIDTH_SCALE, STATUS_BAR_HEIGHT * HEIGHT_SCALE, INNER_TEX_WIDTH, STATUS_BAR_HEIGHT, 512, 512);
 		
@@ -129,10 +132,15 @@ public abstract class GuiPhoneBase extends GuiScreen {
 		fontRenderer.drawString(getTime(), INNER_X + 2, INNER_Y + 3, 0xFFFFFF);
 		
 		// Lower bar
-		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/gui_navbar.png"));
-		drawScaledCustomSizeModalRect(INNER_X, INNER_Y, 0, 0, INNER_TEX_WIDTH * WIDTH_SCALE, INNER_TEX_HEIGHT * HEIGHT_SCALE, INNER_TEX_WIDTH, INNER_TEX_HEIGHT, 512, 512);
+		if (renderControlBar())
+		{
+			Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/gui_navbar.png"));
+			drawScaledCustomSizeModalRect(INNER_X, INNER_Y, 0, 0, INNER_TEX_WIDTH * WIDTH_SCALE, INNER_TEX_HEIGHT * HEIGHT_SCALE, INNER_TEX_WIDTH, INNER_TEX_HEIGHT, 512, 512);
+		}
 		
 		super.drawScreen(mouseX, mouseY, partialTicks);
+		
+		Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).tick(INNER_X, INNER_Y, INNER_TEX_WIDTH, INNER_TEX_HEIGHT);
 	}
 	
 	protected void doDraw(int mouseX, int mouseY, float partialticks){}
@@ -143,7 +151,7 @@ public abstract class GuiPhoneBase extends GuiScreen {
 		PacketHandler.INSTANCE.sendToServer(packet);
 	}
 	
-	private String getTime()
+	protected String getTime()
 	{
 		long time = Minecraft.getMinecraft().world.getWorldTime();
 		int hours = (int) ((Math.floor(time / 1000.0) + 8) % 24); // '8' is the offset
@@ -192,8 +200,14 @@ public abstract class GuiPhoneBase extends GuiScreen {
 		// Home Button
 		if (button.id == 999)
 		{
-			GuiHome home = new GuiHome(phoneStack, hand);
-			Minecraft.getMinecraft().displayGuiScreen(home);
+			if (isPhoneUnlocked)
+			{
+				Minecraft.getMinecraft().displayGuiScreen(new GuiHome(phoneStack, hand));
+			}
+			else
+			{
+				Minecraft.getMinecraft().displayGuiScreen(new GuiLockScreen(phoneStack, hand));
+			}
 		}
 
 		// Shuffle Wallpaper Button - AGAIN, ONLY TEMPORARY. JUST FOR THE PLAYTEST PRE-RELEASE!!!1111ONEONEONE
@@ -201,5 +215,20 @@ public abstract class GuiPhoneBase extends GuiScreen {
 		{
 			PhoneWallpaperRandomizer.ShuffleWallpaper();
 		}
+	}
+
+	protected boolean renderControlBar() { return true; }
+	
+	public static boolean lastGuiWasPhone;
+	public static boolean isPhoneUnlocked;
+	@Override
+	public void onGuiClosed() {
+		super.onGuiClosed();
+		
+		if (!lastGuiWasPhone)
+		{
+			isPhoneUnlocked = false;
+		}
+		lastGuiWasPhone = false;
 	}
 }
