@@ -7,7 +7,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneBase;
 
-@EventBusSubscriber
+@EventBusSubscriber(Side.CLIENT)
 @SideOnly(Side.CLIENT)
 public class OpenGuiEventHandler {
 	@SubscribeEvent

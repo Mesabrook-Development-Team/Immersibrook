@@ -6,7 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
-import net.minecraftforge.fml.common.gameevent.TickEvent.WorldTickEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneBase;
@@ -14,9 +14,9 @@ import rz.mesabrook.wbtc.blocks.gui.telecom.Toaster;
 
 @EventBusSubscriber(Side.CLIENT)
 @SideOnly(Side.CLIENT)
-public class WorldTickEventHandler {
+public class PlayerTickEventHandler {
 	@SubscribeEvent
-	public static void advanceInactiveToasts(WorldTickEvent e)
+	public static void advanceInactiveToasts(PlayerTickEvent e)
 	{
 		if (e.phase == Phase.END)
 		{
