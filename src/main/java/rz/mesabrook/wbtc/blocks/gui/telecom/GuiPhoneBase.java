@@ -140,7 +140,7 @@ public abstract class GuiPhoneBase extends GuiScreen {
 		
 		super.drawScreen(mouseX, mouseY, partialTicks);
 		
-		Toaster.getInstance().tick(INNER_X, INNER_Y, INNER_TEX_WIDTH, INNER_TEX_HEIGHT);
+		Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).tick(INNER_X, INNER_Y, INNER_TEX_WIDTH, INNER_TEX_HEIGHT);
 	}
 	
 	protected void doDraw(int mouseX, int mouseY, float partialticks){}

@@ -143,7 +143,7 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 			{
 				if (pinValue.getMaskedText().isEmpty())
 				{
-					Toaster.getInstance().queueToast(new Toast("PIN Required!", 0xFF0000));
+					Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("PIN Required!", 0xFF0000));
 					return;
 				}
 				
@@ -154,7 +154,7 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 			{
 				if (uuidValue.getText().isEmpty())
 				{
-					Toaster.getInstance().queueToast(new Toast("Player UUID Required!", 0xFF0000));
+					Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Player UUID Required!", 0xFF0000));
 					return;
 				}
 				
@@ -165,7 +165,7 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 				}
 				catch(IllegalArgumentException ex)
 				{
-					Toaster.getInstance().queueToast(new Toast("Player UUID Invalid.", 0xFF0000));
+					Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Player UUID Invalid.", 0xFF0000));
 					return;
 				}
 				
@@ -174,7 +174,7 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 			
 			PacketHandler.INSTANCE.sendToServer(packet);
 			
-			Toaster.getInstance().queueToast(new Toast("Settings applied!"));
+			Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Settings applied!"));
 
 			Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsLockScreen(phoneStack, hand));
 		}

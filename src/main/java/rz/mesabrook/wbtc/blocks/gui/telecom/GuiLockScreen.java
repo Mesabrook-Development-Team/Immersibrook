@@ -100,7 +100,7 @@ public class GuiLockScreen extends GuiPhoneBase {
 		
 		if (!stratID.equals(Minecraft.getMinecraft().player.getUniqueID()))
 		{
-			Toaster.getInstance().queueToast(new Toast("Wrong player", 0xFF0000));
+			Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Wrong player", 0xFF0000));
 			unlockSlider.mouseReleased();
 			return;
 		}

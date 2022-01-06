@@ -1,7 +1,11 @@
 package rz.mesabrook.wbtc.blocks.gui.telecom;
 
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map.Entry;
 import java.util.Queue;
+
+import com.google.common.collect.ImmutableSet;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -10,17 +14,24 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 import rz.mesabrook.wbtc.util.Reference;
 
-public class Toaster {
-	private static Toaster INSTANCE;
+public class Toaster {	
+	private static HashMap<String, Toaster> toastersByPhoneNumber = new HashMap<>();
 	
-	public static Toaster getInstance()
+	public static Toaster forPhoneNumber(String phoneNumber)
 	{
-		if (INSTANCE == null)
+		Toaster toaster = toastersByPhoneNumber.get(phoneNumber);
+		if (toaster == null)
 		{
-			INSTANCE = new Toaster();
+			toaster = new Toaster();
+			toastersByPhoneNumber.put(phoneNumber, toaster);
 		}
 		
-		return INSTANCE;
+		return toaster;
+	}
+	
+	public static ImmutableSet<Entry<String, Toaster>> all()
+	{
+		return ImmutableSet.copyOf(toastersByPhoneNumber.entrySet());
 	}
 	
 	private Toaster() {}
@@ -36,6 +47,16 @@ public class Toaster {
 	}
 	
 	public void tick(int innerX, int innerY, int innerWidth, int innerHeight)
+	{
+		tick(innerX, innerY, innerWidth, innerHeight, true);
+	}
+	
+	public void tickNoDraw()
+	{
+		tick(0,0,0,0,false);
+	}
+	
+	public void tick(int innerX, int innerY, int innerWidth, int innerHeight, boolean doDraw)
 	{
 		if (currentToast == null)
 		{
@@ -56,7 +77,11 @@ public class Toaster {
 					currentStageTimer = 100;
 				}
 				
-				draw(innerX, innerY, innerWidth, innerHeight, (float)currentStageTimer / 100F);
+				if (doDraw)
+				{
+					draw(innerX, innerY, innerWidth, innerHeight, (float)currentStageTimer / 100F);
+				}
+				
 				if (currentStageTimer == 100)
 				{
 					currentStage = Stages.Display;
@@ -65,7 +90,10 @@ public class Toaster {
 				break;
 			case Display:
 				currentStageTimer++;
-				draw(innerX, innerY, innerWidth, innerHeight, 1F);
+				if (doDraw)
+				{
+					draw(innerX, innerY, innerWidth, innerHeight, 1F);
+				}
 				if (currentStageTimer >= currentToast.getDisplayTicks())
 				{
 					currentStageTimer = 100;
@@ -81,8 +109,10 @@ public class Toaster {
 					currentToast = null;
 					return;
 				}
-				
-				draw(innerX, innerY, innerWidth, innerHeight, (float)currentStageTimer / 100F);
+				if (doDraw)
+				{
+					draw(innerX, innerY, innerWidth, innerHeight, (float)currentStageTimer / 100F);
+				}
 				break;
 		}
 	}
