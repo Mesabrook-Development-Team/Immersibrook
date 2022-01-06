@@ -1,0 +1,16 @@
+Technology Update Pre-Release 2 Changelog:
+
+Additions and Changes for Smartphones:
+[NEW] Settings App.
+[NEW] Lock Screen and Phone Security System (UUID and PIN options are available).
+[CHANGE] New Default Wallpaper.
+
+Other Changes and Additions:
+[NEW] Vinyl Siding (available in all sixteen Minecraft colors).
+[NEW] December 2021 Playtest Award Plaques.
+[NEW] Shittles food item (requested by TrainDevil).
+[NEW] Pilk food item.
+[FIX] Blocks will no longer attach to fake light source blocks.
+[FIX] Hard Hats have been nerfed and will no longer make players invincible.
+[FIX] Award Plaque Text is now properly scaled.
+[FIX] Plastiglass Panes should now render properly.

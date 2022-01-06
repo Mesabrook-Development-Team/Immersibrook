@@ -29,6 +29,7 @@ NEW:
 -High-Fructose Corn Syrup (an alternative to sugar and another use for corn).
 -Shittles (requested by TrainDevil)
 -/talk command for controlling the radius of proximity chat (quietly, normally, loudly, and globally)
+-Vinyl Siding (available in all sixteen Minecraft colors)
 
 CHANGES/FIXES:
 -Pillars are now affected by gravity.
