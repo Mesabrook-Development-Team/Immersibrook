@@ -1,19 +1,18 @@
 package rz.mesabrook.wbtc.blocks.gui.telecom;
 
-import java.io.IOException;
-import java.util.UUID;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import rz.mesabrook.wbtc.init.SoundInit;
 import rz.mesabrook.wbtc.util.PhoneWallpaperRandomizer;
 import rz.mesabrook.wbtc.util.Reference;
+
+import java.io.IOException;
+import java.util.UUID;
 
 public class GuiLockScreen extends GuiPhoneBase {
 

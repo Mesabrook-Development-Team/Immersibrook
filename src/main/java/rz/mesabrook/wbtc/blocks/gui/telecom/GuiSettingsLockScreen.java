@@ -1,10 +1,6 @@
 package rz.mesabrook.wbtc.blocks.gui.telecom;
 
-import java.io.IOException;
-import java.util.UUID;
-
 import com.google.common.collect.ImmutableList;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiTextField;
@@ -15,6 +11,9 @@ import net.minecraftforge.fml.client.config.GuiCheckBox;
 import rz.mesabrook.wbtc.items.misc.ItemPhone.NBTData.SecurityStrategies;
 import rz.mesabrook.wbtc.net.telecom.SecurityStrategySelectedPacket;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
+
+import java.io.IOException;
+import java.util.UUID;
 
 public class GuiSettingsLockScreen extends GuiPhoneBase {
 

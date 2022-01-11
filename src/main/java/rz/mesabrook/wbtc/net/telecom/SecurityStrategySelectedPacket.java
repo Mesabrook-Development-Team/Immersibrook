@@ -1,7 +1,5 @@
 package rz.mesabrook.wbtc.net.telecom;
 
-import java.util.UUID;
-
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -14,6 +12,8 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import rz.mesabrook.wbtc.items.misc.ItemPhone.NBTData;
 import rz.mesabrook.wbtc.items.misc.ItemPhone.NBTData.SecurityStrategies;
 import rz.mesabrook.wbtc.util.handlers.PacketHandler;
+
+import java.util.UUID;
 
 public class SecurityStrategySelectedPacket implements IMessage {
 

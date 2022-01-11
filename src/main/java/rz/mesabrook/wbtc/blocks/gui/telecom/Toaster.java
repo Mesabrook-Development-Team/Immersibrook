@@ -1,18 +1,17 @@
 package rz.mesabrook.wbtc.blocks.gui.telecom;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map.Entry;
-import java.util.Queue;
-
 import com.google.common.collect.ImmutableSet;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 import rz.mesabrook.wbtc.util.Reference;
+
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map.Entry;
+import java.util.Queue;
 
 public class Toaster {	
 	private static HashMap<String, Toaster> toastersByPhoneNumber = new HashMap<>();

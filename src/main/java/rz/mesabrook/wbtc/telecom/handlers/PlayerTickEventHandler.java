@@ -1,7 +1,5 @@
 package rz.mesabrook.wbtc.telecom.handlers;
 
-import java.util.Map.Entry;
-
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -11,6 +9,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import rz.mesabrook.wbtc.blocks.gui.telecom.GuiPhoneBase;
 import rz.mesabrook.wbtc.blocks.gui.telecom.Toaster;
+
+import java.util.Map.Entry;
 
 @EventBusSubscriber(Side.CLIENT)
 @SideOnly(Side.CLIENT)

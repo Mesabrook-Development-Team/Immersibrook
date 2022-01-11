@@ -2,9 +2,7 @@ package rz.mesabrook.wbtc.blocks.gui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TextComponentTranslation;
 import rz.mesabrook.wbtc.blocks.container.ContainerStampBook;
 import rz.mesabrook.wbtc.util.Reference;
 

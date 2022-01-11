@@ -1,12 +1,12 @@
 package rz.mesabrook.wbtc.util;
 
-import java.util.Random;
-
 import com.pam.harvestcraft.item.ItemRegistry;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import rz.mesabrook.wbtc.init.ModBlocks;
 import rz.mesabrook.wbtc.init.ModItems;
+
+import java.util.Random;
 
 public class ItemRandomizer
 {
