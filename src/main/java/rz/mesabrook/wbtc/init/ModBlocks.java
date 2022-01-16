@@ -1138,4 +1138,7 @@ public class ModBlocks
 	public static final Block SIDING_RED = new MiscRotationalBlock("siding_red", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
 	public static final Block SIDING_GREEN = new MiscRotationalBlock("siding_green", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
 	public static final Block SIDING_BLACK = new MiscRotationalBlock("siding_black", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+
+	// OBJ Test Block
+	public static final Block OBJ_EYE = new BlockTestEye("eye");
 }

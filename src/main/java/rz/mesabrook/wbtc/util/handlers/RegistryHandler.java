@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.GameRules;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -53,6 +54,7 @@ public class RegistryHandler
 	@SubscribeEvent
 	public static void onModelRegister(ModelRegistryEvent event)
 	{
+		OBJLoader.INSTANCE.addDomain(Reference.MODID);
 		for(Item item : ModItems.ITEMS)
 		{
 			if(item instanceof IHasModel)
