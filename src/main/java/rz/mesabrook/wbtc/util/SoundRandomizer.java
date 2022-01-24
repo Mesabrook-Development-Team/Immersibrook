@@ -19,25 +19,28 @@ public class SoundRandomizer
 	{
 		Random chooser = new Random();
 		int snds;
-		snds = chooser.nextInt(5);
+		snds = chooser.nextInt(6);
 		
 		switch(snds)
 		{
-		case 0:
-			result = "no";
-			break;
-		case 1:
-			result = "safety";
-			break;
-		case 2:
-			result = "yoink";
-			break;
-		case 3:
-			result = "fish";
-			break;
-		case 4:
-			result = "spree";
-			break;
+			case 0:
+				result = "no";
+				break;
+			case 1:
+				result = "safety";
+				break;
+			case 2:
+				result = "yoink";
+				break;
+			case 3:
+				result = "fish";
+				break;
+			case 4:
+				result = "spree";
+				break;
+			case 5:
+				result = "ok1";
+				break;
 		}
 	}
 
@@ -45,7 +48,7 @@ public class SoundRandomizer
 	{
 		Random chooser = new Random();
 		int snds;
-		snds = chooser.nextInt(11);
+		snds = chooser.nextInt(12);
 
 		switch(snds)
 		{
@@ -81,6 +84,9 @@ public class SoundRandomizer
 				break;
 			case 10:
 				hammerResult = "sus2";
+				break;
+			case 11:
+				hammerResult = "ok1";
 				break;
 		}
 	}
@@ -143,7 +149,7 @@ public class SoundRandomizer
 	{
 		Random chooser = new Random();
 		int snds;
-		snds = chooser.nextInt(5);
+		snds = chooser.nextInt(6);
 
 		switch(snds)
 		{
@@ -161,6 +167,9 @@ public class SoundRandomizer
 				break;
 			case 4:
 				hammerRightClick = "sus1";
+				break;
+			case 5:
+				hammerRightClick = "ok2";
 				break;
 		}
 	}

@@ -74,6 +74,8 @@ public class SoundInit
 	public static final SoundEvent SUS1;
 	public static final SoundEvent SUS2;
 	public static final SoundEvent SPICY;
+	public static final SoundEvent OK1;
+	public static final SoundEvent OK2;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -198,6 +200,8 @@ public class SoundInit
 		SUS1 = addSoundsToRegistry("sus1");
 		SUS2 = addSoundsToRegistry("sus2");
 		SPICY = addSoundsToRegistry("spicy");
+		OK1 = addSoundsToRegistry("ok1");
+		OK2 = addSoundsToRegistry("ok2");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -379,6 +383,8 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.SUS2);
 				event.getRegistry().registerAll(SoundInit.SPICY);
 				event.getRegistry().registerAll(SoundInit.PHONE_UNLOCK);
+				event.getRegistry().registerAll(SoundInit.OK1);
+				event.getRegistry().registerAll(SoundInit.OK2);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

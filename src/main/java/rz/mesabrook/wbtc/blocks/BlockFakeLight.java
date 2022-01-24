@@ -18,7 +18,7 @@ public class BlockFakeLight extends Block implements IHasModel
 {
     public BlockFakeLight(String name)
     {
-        super(Material.GLASS);
+        super(Material.AIR);
         setUnlocalizedName(name);
         setRegistryName(name);
         setLightLevel(1.0F);
