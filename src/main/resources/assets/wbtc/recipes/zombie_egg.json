@@ -1,0 +1,21 @@
+{
+   "type":"minecraft:crafting_shaped",
+   "pattern":[
+      "###",
+      "#X#",
+	  "###"
+   ],
+   "key":{
+      "#":{
+         "item": "minecraft:rotten_flesh"
+      },
+      "X":{
+         "item": "minecraft:egg"
+      }
+   },
+   "result":{
+      "item": "minecraft:spawn_egg",
+      "data": "{EntityTag:{id:minecraft:zombie}}",
+	  "count": 1
+   }
+}
