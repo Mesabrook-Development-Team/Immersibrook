@@ -109,5 +109,6 @@
 	"spicy": {"category": "master","sounds": [{"name": "wbtc:spicy","stream": true}]},
 	"phone_unlock": {"category": "master","sounds": [{"name": "wbtc:phone_unlock","stream": true}]},
 	"ok1": {"category": "master","sounds": [{"name": "wbtc:ok1","stream": true}]},
-	"ok2": {"category": "master","sounds": [{"name": "wbtc:ok2","stream": true}]}
+	"ok2": {"category": "master","sounds": [{"name": "wbtc:ok2","stream": true}]},
+	"ring_1": {"category": "master","sounds": [{"name": "wbtc:ring_1","stream": true}]}
 }

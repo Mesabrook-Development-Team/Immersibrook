@@ -1,11 +1,13 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import java.io.IOException;
+
+import com.google.common.collect.ImmutableList;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
-
-import java.io.IOException;
 
 public class GuiSettings extends GuiPhoneBase {
 
@@ -22,8 +24,10 @@ public class GuiSettings extends GuiPhoneBase {
 	public void initGui() {
 		super.initGui();
 		
-		ImageButton button = new ImageButton(0, INNER_X, INNER_Y + 33, INNER_TEX_WIDTH, 26, "btn_lock_screen.png", 324, 52);
-		buttonList.add(button);
+		ImageButton lockScreenButton = new ImageButton(0, INNER_X, INNER_Y + 33, INNER_TEX_WIDTH, 26, "btn_lock_screen.png", 324, 52);
+		ImageButton personalizeButton = new ImageButton(1, INNER_X, INNER_Y + 59, INNER_TEX_WIDTH, 26, "btn_personalize.png", 324, 52);
+		ImageButton aboutButton = new ImageButton(2, INNER_X, INNER_Y + 85, INNER_TEX_WIDTH, 26, "btn_about.png", 324, 52);
+		buttonList.addAll(ImmutableList.of(lockScreenButton, personalizeButton, aboutButton));
 	}
 
 	@Override
@@ -40,6 +44,11 @@ public class GuiSettings extends GuiPhoneBase {
 		if (button.id == 0)
 		{
 			Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsLockScreen(phoneStack, hand));
+		}
+		
+		if (button.id == 1)
+		{
+			Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsPersonalize(phoneStack, hand));
 		}
 	}
 }
