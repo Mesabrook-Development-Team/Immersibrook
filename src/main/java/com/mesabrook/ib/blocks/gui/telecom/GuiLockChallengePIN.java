@@ -1,5 +1,11 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import java.io.IOException;
+
+import org.lwjgl.input.Keyboard;
+
+import com.mesabrook.ib.init.SoundInit;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.GuiButton;
@@ -7,11 +13,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
-import org.lwjgl.input.Keyboard;
-import com.mesabrook.ib.init.SoundInit;
-import com.mesabrook.ib.util.PhoneWallpaperRandomizer;
-
-import java.io.IOException;
 
 public class GuiLockChallengePIN extends GuiPhoneBase {
 

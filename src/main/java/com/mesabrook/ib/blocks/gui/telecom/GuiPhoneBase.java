@@ -1,5 +1,12 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import java.io.IOException;
+
+import com.mesabrook.ib.items.misc.ItemPhone;
+import com.mesabrook.ib.net.telecom.GetReceptionStrengthPacket;
+import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.handlers.PacketHandler;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -8,13 +15,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import com.mesabrook.ib.items.misc.ItemPhone;
-import com.mesabrook.ib.net.telecom.GetReceptionStrengthPacket;
-import com.mesabrook.ib.util.PhoneWallpaperRandomizer;
-import com.mesabrook.ib.util.Reference;
-import com.mesabrook.ib.util.handlers.PacketHandler;
-
-import java.io.IOException;
 
 @SideOnly(Side.CLIENT)
 public abstract class GuiPhoneBase extends GuiScreen {
@@ -85,13 +85,8 @@ public abstract class GuiPhoneBase extends GuiScreen {
 		
 		ImageButton homeButton = new ImageButton(999, INNER_X + INNER_TEX_WIDTH / 2 - 4, INNER_Y + INNER_TEX_HEIGHT - 23, 8, 8, "gui_btn_home.png", 32, 32);
 		buttonList.add(homeButton);
-
-		// Shuffle Wallpaper Button - WILL BE DELETED IN FULL VERSION, JUST FOR PRE-RELEASE!
-		ImageButton backButton = new ImageButton(998, INNER_X + (INNER_TEX_WIDTH / 4) - 4, INNER_Y + INNER_TEX_HEIGHT - 23, 8, 8, "gui_btn_wallpaper.png", 32, 32);
-		buttonList.add(backButton);
 		
 		homeButton.visible = renderControlBar();
-		backButton.visible = renderControlBar();
 
 		// Back button to be implemented when determined necessary
 //		ImageButton backButton = new ImageButton(998, INNER_X + (INNER_TEX_WIDTH / 4) - 4, INNER_Y + INNER_TEX_HEIGHT - 23, 8, 8, "gui_btn_back.png", 32, 32);
@@ -208,12 +203,6 @@ public abstract class GuiPhoneBase extends GuiScreen {
 			{
 				Minecraft.getMinecraft().displayGuiScreen(new GuiLockScreen(phoneStack, hand));
 			}
-		}
-
-		// Shuffle Wallpaper Button - AGAIN, ONLY TEMPORARY. JUST FOR THE PLAYTEST PRE-RELEASE!!!1111ONEONEONE
-		if(button.id == 998)
-		{
-			PhoneWallpaperRandomizer.ShuffleWallpaper();
 		}
 	}
 
