@@ -3,7 +3,9 @@ package com.mesabrook.ib.blocks.gui.telecom;
 import java.io.IOException;
 
 import com.google.common.collect.ImmutableList;
+import com.mesabrook.ib.net.telecom.PersonalizationPacket;
 import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -31,10 +33,10 @@ public class GuiSettingsPersonalize extends GuiPhoneBase {
 	LabelButton ringPrev;
 	LabelButton ringNext;
 	
-	private int currentLock = 1;
-	private int currentHome = 1;
-	private int currentChatTone = 1;
-	private int currentRingTone = 1;
+	private int currentHome;
+	private int currentLock;
+	private int currentChatTone;
+	private int currentRingTone;
 	
 	private PositionedSoundRecord ringtonePreview = null;
 	private PositionedSoundRecord chatPreview = null;
@@ -42,7 +44,10 @@ public class GuiSettingsPersonalize extends GuiPhoneBase {
 	public GuiSettingsPersonalize(ItemStack phoneStack, EnumHand hand) {
 		super(phoneStack, hand);
 		
-		
+		currentHome = phoneStackData.getHomeBackground();
+		currentLock = phoneStackData.getLockBackground();
+		currentChatTone = phoneStackData.getChatTone();
+		currentRingTone = phoneStackData.getRingTone();
 	}
 
 	@Override
@@ -205,14 +210,12 @@ public class GuiSettingsPersonalize extends GuiPhoneBase {
 			}
 		}
 		
+		SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
+		handler.stopSound(ringtonePreview);
+		handler.stopSound(chatPreview);
+		
 		if (button == ringNext || button == ringPrev)
 		{
-			SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
-			if (ringtonePreview != null && handler.isSoundPlaying(ringtonePreview))
-			{
-				handler.stopSound(ringtonePreview);
-			}
-			
 			ResourceLocation soundLocation = new ResourceLocation(Reference.MODID, "ring_" + Integer.toString(currentRingTone));
 			IForgeRegistry<SoundEvent> soundRegistry = GameRegistry.findRegistry(SoundEvent.class);
 			SoundEvent soundEvent = soundRegistry.getValue(soundLocation);
@@ -223,12 +226,6 @@ public class GuiSettingsPersonalize extends GuiPhoneBase {
 		
 		if (button == chatNext || button == chatPrev)
 		{
-			SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
-			if (chatPreview != null && handler.isSoundPlaying(chatPreview))
-			{
-				handler.stopSound(chatPreview);
-			}
-			
 			ResourceLocation soundLocation = new ResourceLocation(Reference.MODID, "ding_" + Integer.toString(currentChatTone));
 			IForgeRegistry<SoundEvent> soundRegistry = GameRegistry.findRegistry(SoundEvent.class);
 			SoundEvent soundEvent = soundRegistry.getValue(soundLocation);
@@ -236,5 +233,28 @@ public class GuiSettingsPersonalize extends GuiPhoneBase {
 			chatPreview = PositionedSoundRecord.getMasterRecord(soundEvent, 1F);
 			handler.playSound(chatPreview);
 		}
+		
+		if (button == apply)
+		{
+			PersonalizationPacket packet = new PersonalizationPacket();
+			packet.hand = hand.ordinal();
+			packet.homeBackground = currentHome;
+			packet.lockBackground = currentLock;
+			packet.chatTone = currentChatTone;
+			packet.ringTone = currentRingTone;
+			packet.guiClassName = GuiSettingsPersonalize.class.getName();
+			PacketHandler.INSTANCE.sendToServer(packet);
+			
+			Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Settings Applied", 0xFFFFFF));
+		}
+	}
+	
+	@Override
+	public void onGuiClosed() {
+		super.onGuiClosed();
+		
+		SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
+		handler.stopSound(chatPreview);
+		handler.stopSound(ringtonePreview);
 	}
 }
