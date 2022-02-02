@@ -110,5 +110,15 @@
 	"phone_unlock": {"category": "master","sounds": [{"name": "wbtc:phone_unlock","stream": true}]},
 	"ok1": {"category": "master","sounds": [{"name": "wbtc:ok1","stream": true}]},
 	"ok2": {"category": "master","sounds": [{"name": "wbtc:ok2","stream": true}]},
-	"ring_1": {"category": "master","sounds": [{"name": "wbtc:ring_1","stream": true}]}
+	"ring_1": {"category": "master","sounds": [{"name": "wbtc:ring_1","stream": true}]},
+	"ring_2": {"category": "master","sounds": [{"name": "wbtc:ring_2","stream": true}]},
+	"ring_3": {"category": "master","sounds": [{"name": "wbtc:ring_3","stream": true}]},
+	"ring_4": {"category": "master","sounds": [{"name": "wbtc:ring_4","stream": true}]},
+	"ring_5": {"category": "master","sounds": [{"name": "wbtc:ring_5","stream": true}]},
+	"ring_6": {"category": "master","sounds": [{"name": "wbtc:ring_6","stream": true}]},
+	"ring_7": {"category": "master","sounds": [{"name": "wbtc:ring_7","stream": true}]},
+	"ring_8": {"category": "master","sounds": [{"name": "wbtc:ring_8","stream": true}]},
+	"ring_9": {"category": "master","sounds": [{"name": "wbtc:ring_9","stream": true}]},
+	"ring_10": {"category": "master","sounds": [{"name": "wbtc:ring_10","stream": true}]},
+	"ring_11": {"category": "master","sounds": [{"name": "wbtc:ring_11","stream": true}]}
 }

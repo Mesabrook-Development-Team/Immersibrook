@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.util.Reference;
 
-public class SoundInit 
+public class SoundInit
 {
 	public static final SoundEvent OWO_SFX;
 	public static final SoundEvent RZ_TROPHY;
@@ -123,6 +123,18 @@ public class SoundInit
 	public static final SoundEvent ENDCALL;
 	public static final SoundEvent PHONE_UNLOCK;
 	public static final SoundEvent RING_1;
+
+	// Ringtones
+	public static final SoundEvent RING_2;
+	public static final SoundEvent RING_3;
+	public static final SoundEvent RING_4;
+	public static final SoundEvent RING_5;
+	public static final SoundEvent RING_6;
+	public static final SoundEvent RING_7;
+	public static final SoundEvent RING_8;
+	public static final SoundEvent RING_9;
+	public static final SoundEvent RING_10;
+	public static final SoundEvent RING_11;
 
 	// DTMF Phone Tones
 	public static final SoundEvent DTMF_0;
@@ -249,6 +261,18 @@ public class SoundInit
 		PHONE_UNLOCK = addSoundsToRegistry("phone_unlock");
 		RING_1 = addSoundsToRegistry("ring_1");
 
+		// Ringtones
+		RING_2 = addSoundsToRegistry("ring_2");
+		RING_3 = addSoundsToRegistry("ring_3");
+		RING_4 = addSoundsToRegistry("ring_4");
+		RING_5 = addSoundsToRegistry("ring_5");
+		RING_6 = addSoundsToRegistry("ring_6");
+		RING_7 = addSoundsToRegistry("ring_7");
+		RING_8 = addSoundsToRegistry("ring_8");
+		RING_9 = addSoundsToRegistry("ring_9");
+		RING_10 = addSoundsToRegistry("ring_10");
+		RING_11 = addSoundsToRegistry("ring_11");
+
 		// DTMF Phone Tones
 		DTMF_0 = addSoundsToRegistry("dtmf_0");
 		DTMF_1 = addSoundsToRegistry("dtmf_1");
@@ -261,7 +285,7 @@ public class SoundInit
 		DTMF_8 = addSoundsToRegistry("dtmf_8");
 		DTMF_9 = addSoundsToRegistry("dtmf_9");
 	}
-	
+
 	private static SoundEvent addSoundsToRegistry(String soundId)
 	{
 		ResourceLocation shotSoundLocation = new ResourceLocation(Reference.MODID, soundId);
@@ -269,7 +293,7 @@ public class SoundInit
 		soundEvent.setRegistryName(shotSoundLocation);
 		return soundEvent;
 	}
-	
+
 	@EventBusSubscriber
 	public static class SoundRegisterListener
 	{
@@ -388,6 +412,16 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.OK1);
 				event.getRegistry().registerAll(SoundInit.OK2);
 				event.getRegistry().registerAll(SoundInit.RING_1);
+				event.getRegistry().register(SoundInit.RING_2);
+				event.getRegistry().register(SoundInit.RING_3);
+				event.getRegistry().register(SoundInit.RING_4);
+				event.getRegistry().register(SoundInit.RING_5);
+				event.getRegistry().register(SoundInit.RING_6);
+				event.getRegistry().register(SoundInit.RING_7);
+				event.getRegistry().register(SoundInit.RING_8);
+				event.getRegistry().register(SoundInit.RING_9);
+				event.getRegistry().register(SoundInit.RING_10);
+				event.getRegistry().register(SoundInit.RING_11);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");
