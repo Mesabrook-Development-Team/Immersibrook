@@ -32,6 +32,7 @@ import net.minecraft.client.audio.ISound.AttenuationType;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -537,11 +538,11 @@ public class ClientSideHandlers
 				return;
 			}
 			
-			GuiPhoneBase gui;			
+			GuiScreen gui;			
 			try
 			{
 				Class<?> guiClass = Class.forName(guiClassName);
-				gui = (GuiPhoneBase)guiClass.getConstructor(ItemStack.class, EnumHand.class).newInstance(newStack, hand);
+				gui = (GuiScreen)guiClass.getConstructor(ItemStack.class, EnumHand.class).newInstance(newStack, hand);
 			}
 			catch(Exception ex) { return; }
 			

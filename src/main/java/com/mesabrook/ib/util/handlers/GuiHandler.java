@@ -46,7 +46,7 @@ public class GuiHandler implements IGuiHandler
 			
 			if (phoneNumber == null)
 			{
-				return new GuiPhoneActivate(hand, stack);
+				return new GuiPhoneActivate(stack, hand);
 			}
 			else
 			{

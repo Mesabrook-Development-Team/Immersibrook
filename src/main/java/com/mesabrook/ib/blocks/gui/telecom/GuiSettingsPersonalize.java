@@ -247,6 +247,14 @@ public class GuiSettingsPersonalize extends GuiPhoneBase {
 			
 			Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Settings Applied", 0xFFFFFF));
 		}
+		
+		if (button == reset)
+		{
+			currentHome = phoneStackData.getHomeBackground();
+			currentLock = phoneStackData.getLockBackground();
+			currentChatTone = phoneStackData.getChatTone();
+			currentRingTone = phoneStackData.getRingTone();
+		}
 	}
 	
 	@Override

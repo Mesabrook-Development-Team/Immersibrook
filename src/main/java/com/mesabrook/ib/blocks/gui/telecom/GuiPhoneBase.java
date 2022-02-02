@@ -97,6 +97,12 @@ public abstract class GuiPhoneBase extends GuiScreen {
 	public final void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		if (firstTick)
 		{
+			if (!isPhoneSetup())
+			{
+				Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneActivate(phoneStack, hand));
+				return;
+			}
+			
 			firstDrawingTick(mouseX, mouseY, partialTicks);
 			firstTick = false;
 		}
@@ -136,6 +142,11 @@ public abstract class GuiPhoneBase extends GuiScreen {
 		super.drawScreen(mouseX, mouseY, partialTicks);
 		
 		Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).tick(INNER_X, INNER_Y, INNER_TEX_WIDTH, INNER_TEX_HEIGHT);
+	}
+
+	private boolean isPhoneSetup()
+	{
+		return phoneStackData.getPhoneNumber() != 0;
 	}
 	
 	protected void doDraw(int mouseX, int mouseY, float partialticks){}

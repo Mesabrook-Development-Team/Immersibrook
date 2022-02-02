@@ -50,5 +50,10 @@ public class GuiSettings extends GuiPhoneBase {
 		{
 			Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsPersonalize(phoneStack, hand));
 		}
+		
+		if (button.id == 2)
+		{
+			Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsAboutPhone(phoneStack, hand));
+		}
 	}
 }
