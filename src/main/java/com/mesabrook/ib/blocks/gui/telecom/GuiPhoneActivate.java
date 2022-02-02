@@ -32,7 +32,7 @@ public class GuiPhoneActivate extends GuiScreen {
 		return false;
 	}
 	
-	public GuiPhoneActivate(EnumHand hand, ItemStack phoneStack)
+	public GuiPhoneActivate(ItemStack phoneStack, EnumHand hand)
 	{
 		if (!(phoneStack.getItem() instanceof ItemPhone))
 		{

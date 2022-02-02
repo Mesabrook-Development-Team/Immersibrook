@@ -1,13 +1,42 @@
 package com.mesabrook.ib.util.handlers;
 
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map.Entry;
+import java.util.Optional;
+import java.util.function.Consumer;
+
+import com.mesabrook.ib.blocks.gui.telecom.GuiCallEnd;
+import com.mesabrook.ib.blocks.gui.telecom.GuiHome;
+import com.mesabrook.ib.blocks.gui.telecom.GuiIncomingCall;
+import com.mesabrook.ib.blocks.gui.telecom.GuiLockScreen;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneActivate;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneActivate.ActivationScreens;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneBase;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneCall;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneCalling;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneConnected;
+import com.mesabrook.ib.blocks.gui.telecom.SignalStrengths;
+import com.mesabrook.ib.init.SoundInit;
+import com.mesabrook.ib.items.misc.ItemPhone;
+import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket;
+import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket.ResponseTypes;
+import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.config.ModConfig;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.ISound.AttenuationType;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
+import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
@@ -19,20 +48,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
-import com.mesabrook.ib.blocks.gui.telecom.*;
-import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneActivate.ActivationScreens;
-import com.mesabrook.ib.init.SoundInit;
-import com.mesabrook.ib.net.PlaySoundPacket;
-import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket;
-import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket.ResponseTypes;
-import com.mesabrook.ib.util.config.ModConfig;
-
-import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map.Entry;
-import java.util.Optional;
-import java.util.function.Consumer;
 
 @SideOnly(Side.CLIENT)
 public class ClientSideHandlers 
@@ -130,6 +145,35 @@ public class ClientSideHandlers
 		private static Object incomingSoundLock = new Object();
 		private static void playIncomingCallSound(String phoneNumber)
 		{
+			EntityPlayerSP player = Minecraft.getMinecraft().player;
+			int ringTone = -1;
+			for(int i = 0; i < player.inventory.getSizeInventory(); i++)
+			{
+				ItemStack stack = player.inventory.getStackInSlot(i);
+				if (!(stack.getItem() instanceof ItemPhone))
+				{
+					continue;
+				}
+				
+				NBTTagCompound tag = stack.getTagCompound();
+				ItemPhone.NBTData stackData = new ItemPhone.NBTData();
+				stackData.deserializeNBT(tag);
+				
+				String stackPhoneNumber = stackData.getPhoneNumberString();
+				if (!phoneNumber.equalsIgnoreCase(stackPhoneNumber))
+				{
+					continue;
+				}
+				
+				ringTone = stackData.getRingTone();
+				break;
+			}
+			
+			if (ringTone == -1)
+			{
+				return;
+			}
+			
 			SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
 			synchronized(incomingSoundLock)
 			{
@@ -139,7 +183,11 @@ public class ClientSideHandlers
 					return;
 				}
 				
-				incomingCallSound = new PositionedSoundRecord(SoundInit.DING_6.getSoundName(), SoundCategory.MASTER, ModConfig.ringtoneVolume, 1F, true, 0, AttenuationType.NONE, 0, 0, 0);
+				ResourceLocation soundLocation = new ResourceLocation(Reference.MODID, "ring_" + ringTone);
+				IForgeRegistry<SoundEvent> soundRegistry = GameRegistry.findRegistry(SoundEvent.class);
+				SoundEvent sound = soundRegistry.getValue(soundLocation);
+				
+				incomingCallSound = new PositionedSoundRecord(sound, SoundCategory.MASTER, ModConfig.ringtoneVolume, 1F, player.getPosition());
 				incomingCallSoundsByPhone.put(phoneNumber, incomingCallSound);
 				handler.playSound(incomingCallSound);
 			}
@@ -490,11 +538,11 @@ public class ClientSideHandlers
 				return;
 			}
 			
-			GuiPhoneBase gui;			
+			GuiScreen gui;			
 			try
 			{
 				Class<?> guiClass = Class.forName(guiClassName);
-				gui = (GuiPhoneBase)guiClass.getConstructor(ItemStack.class, EnumHand.class).newInstance(newStack, hand);
+				gui = (GuiScreen)guiClass.getConstructor(ItemStack.class, EnumHand.class).newInstance(newStack, hand);
 			}
 			catch(Exception ex) { return; }
 			

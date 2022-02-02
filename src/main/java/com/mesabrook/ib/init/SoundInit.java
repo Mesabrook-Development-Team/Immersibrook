@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.util.Reference;
 
-public class SoundInit 
+public class SoundInit
 {
 	public static final SoundEvent OWO_SFX;
 	public static final SoundEvent RZ_TROPHY;
@@ -122,6 +122,7 @@ public class SoundInit
 	public static final SoundEvent STARTCALL;
 	public static final SoundEvent ENDCALL;
 	public static final SoundEvent PHONE_UNLOCK;
+	public static final SoundEvent RING_1;
 
 	// Ringtones
 	public static final SoundEvent RING_2;
@@ -258,6 +259,7 @@ public class SoundInit
 		ENDCALL = addSoundsToRegistry("endcall");
 		PHONE_ACTIVATE = addSoundsToRegistry("welcome");
 		PHONE_UNLOCK = addSoundsToRegistry("phone_unlock");
+		RING_1 = addSoundsToRegistry("ring_1");
 
 		// Ringtones
 		RING_2 = addSoundsToRegistry("ring_2");
@@ -283,7 +285,7 @@ public class SoundInit
 		DTMF_8 = addSoundsToRegistry("dtmf_8");
 		DTMF_9 = addSoundsToRegistry("dtmf_9");
 	}
-	
+
 	private static SoundEvent addSoundsToRegistry(String soundId)
 	{
 		ResourceLocation shotSoundLocation = new ResourceLocation(Reference.MODID, soundId);
@@ -291,7 +293,7 @@ public class SoundInit
 		soundEvent.setRegistryName(shotSoundLocation);
 		return soundEvent;
 	}
-	
+
 	@EventBusSubscriber
 	public static class SoundRegisterListener
 	{
@@ -409,6 +411,7 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.PHONE_UNLOCK);
 				event.getRegistry().registerAll(SoundInit.OK1);
 				event.getRegistry().registerAll(SoundInit.OK2);
+				event.getRegistry().registerAll(SoundInit.RING_1);
 				event.getRegistry().register(SoundInit.RING_2);
 				event.getRegistry().register(SoundInit.RING_3);
 				event.getRegistry().register(SoundInit.RING_4);

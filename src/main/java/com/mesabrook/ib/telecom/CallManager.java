@@ -1,6 +1,32 @@
 package com.mesabrook.ib.telecom;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Optional;
+import java.util.PrimitiveIterator.OfInt;
+import java.util.Random;
+import java.util.UUID;
+import java.util.stream.IntStream;
+
 import com.google.common.collect.ImmutableList;
+import com.mesabrook.ib.items.misc.ItemPhone;
+import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.net.telecom.CallAcceptedPacket;
+import com.mesabrook.ib.net.telecom.CallRejectedPacket;
+import com.mesabrook.ib.net.telecom.DisconnectedCallNotificationPacket;
+import com.mesabrook.ib.net.telecom.IncomingCallPacket;
+import com.mesabrook.ib.net.telecom.OutgoingCallResponsePacket;
+import com.mesabrook.ib.net.telecom.OutgoingCallResponsePacket.States;
+import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket;
+import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket.ResponseTypes;
+import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.config.ModConfig;
+import com.mesabrook.ib.util.handlers.PacketHandler;
+import com.mesabrook.ib.util.saveData.AntennaData;
+import com.mesabrook.ib.util.saveData.PhoneNumberData;
+
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -12,19 +38,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fml.common.FMLCommonHandler;
-import com.mesabrook.ib.items.misc.ItemPhone;
-import com.mesabrook.ib.net.telecom.*;
-import com.mesabrook.ib.net.telecom.OutgoingCallResponsePacket.States;
-import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket.ResponseTypes;
-import com.mesabrook.ib.util.Reference;
-import com.mesabrook.ib.util.config.ModConfig;
-import com.mesabrook.ib.util.handlers.PacketHandler;
-import com.mesabrook.ib.util.saveData.AntennaData;
-import com.mesabrook.ib.util.saveData.PhoneNumberData;
-
-import java.util.*;
-import java.util.PrimitiveIterator.OfInt;
-import java.util.stream.IntStream;
+import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
 public class CallManager {
 	
@@ -437,8 +451,17 @@ public class CallManager {
 					effectiveReception = receiverReception;
 				}
 				
+				EntityPlayerMP playerToSendTo = phone.getFirst();
 				ITextComponent textToSend = getScrambledText(text, effectiveReception);
-				phone.getFirst().sendMessage(textToSend);
+				playerToSendTo.sendMessage(textToSend);
+				
+				// Play chat notification sound
+				PlaySoundPacket playSound = new PlaySoundPacket();
+				playSound.pos = playerToSendTo.getPosition();
+				playSound.volume = 1;
+				playSound.pitch = 1;
+				playSound.soundName = "ding_" + nbtData.getChatTone();
+				PacketHandler.INSTANCE.sendToAllAround(playSound, new TargetPoint(playerToSendTo.dimension, playerToSendTo.posX, playerToSendTo.posY, playerToSendTo.posZ, 25));
 			}
 		}
 		

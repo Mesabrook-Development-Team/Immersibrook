@@ -101,6 +101,10 @@ public class ItemPhone extends Item implements IHasModel {
 		private SecurityStrategies securityStrategy;
 		private int pin;
 		private UUID uuid;
+		private int homeBackground = 1;
+		private int lockBackground = 1;
+		private int chatTone = 1;
+		private int ringTone = 1;
 		
 		public static NBTData getFromItemStack(ItemStack phoneStack)
 		{
@@ -177,6 +181,38 @@ public class ItemPhone extends Item implements IHasModel {
 			this.uuid = uuid;
 		}
 
+		public int getHomeBackground() {
+			return homeBackground;
+		}
+
+		public void setHomeBackground(int homeBackground) {
+			this.homeBackground = homeBackground;
+		}
+
+		public int getLockBackground() {
+			return lockBackground;
+		}
+
+		public void setLockBackground(int lockBackground) {
+			this.lockBackground = lockBackground;
+		}
+
+		public int getChatTone() {
+			return chatTone;
+		}
+
+		public void setChatTone(int chatTone) {
+			this.chatTone = chatTone;
+		}
+
+		public int getRingTone() {
+			return ringTone;
+		}
+
+		public void setRingTone(int ringTone) {
+			this.ringTone = ringTone;
+		}
+
 		@Override
 		public NBTTagCompound serializeNBT() {
 			NBTTagCompound tag = new NBTTagCompound();
@@ -193,6 +229,11 @@ public class ItemPhone extends Item implements IHasModel {
 			{
 				tag.setTag(Reference.SECURITY_UUID_NBTKEY, NBTUtil.createUUIDTag(getUuid()));
 			}
+			
+			tag.setInteger(Reference.HOME_BACKGROUND, getHomeBackground());
+			tag.setInteger(Reference.LOCK_BACKGROUND, getLockBackground());
+			tag.setInteger(Reference.CHAT_TONE, getChatTone());
+			tag.setInteger(Reference.RING_TONE, getRingTone());
 			
 			return tag;
 		}
@@ -222,6 +263,26 @@ public class ItemPhone extends Item implements IHasModel {
 			if (nbt.hasKey(Reference.SECURITY_UUID_NBTKEY))
 			{
 				setUuid(NBTUtil.getUUIDFromTag(nbt.getCompoundTag(Reference.SECURITY_UUID_NBTKEY)));
+			}
+			
+			if (nbt.hasKey(Reference.HOME_BACKGROUND))
+			{
+				setHomeBackground(nbt.getInteger(Reference.HOME_BACKGROUND));
+			}
+			
+			if (nbt.hasKey(Reference.LOCK_BACKGROUND))
+			{
+				setLockBackground(nbt.getInteger(Reference.LOCK_BACKGROUND));
+			}
+			
+			if (nbt.hasKey(Reference.CHAT_TONE))
+			{
+				setChatTone(nbt.getInteger(Reference.CHAT_TONE));
+			}
+			
+			if (nbt.hasKey(Reference.RING_TONE))
+			{
+				setRingTone(nbt.getInteger(Reference.RING_TONE));
 			}
 		}
 		
