@@ -44,10 +44,8 @@ public class GuiSettingsAboutPhone extends GuiPhoneBase {
 		
 		fontRenderer.drawString("About Phone", INNER_X + 15, INNER_Y + 20, 0xFFFFFF);
 
-		//fontRenderer.drawString("Minedroid " + Reference.MINEDROID_VERSION, INNER_X + 3, INNER_Y + 56, 0x33CEFF);
 		drawCenteredString(fontRenderer, "Minedroid " + Reference.MINEDROID_VERSION, INNER_X + 80, INNER_Y + 80, 3395327);
-
-
+		
 		fontRenderer.drawString("Phone Information", INNER_X + 3, INNER_Y + 106, 0xFFFFFF);
 
 		fontRenderer.drawString("Phone Number:", INNER_X + 3, INNER_Y + 116, 0x4444FF);
