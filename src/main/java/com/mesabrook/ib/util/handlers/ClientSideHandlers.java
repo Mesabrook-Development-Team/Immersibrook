@@ -7,6 +7,7 @@ import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.function.Consumer;
 
+import com.mesabrook.ib.blocks.gui.GuiAboutImmersibrook;
 import com.mesabrook.ib.blocks.gui.telecom.GuiCallEnd;
 import com.mesabrook.ib.blocks.gui.telecom.GuiHome;
 import com.mesabrook.ib.blocks.gui.telecom.GuiIncomingCall;
@@ -53,6 +54,13 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class ClientSideHandlers 
 {
 	private static HashMap<Long, PositionedSoundRecord> soundsByBlockPos = new HashMap<>();
+
+	public static void openAboutGUI()
+	{
+		GuiAboutImmersibrook gui = new GuiAboutImmersibrook();
+		Minecraft.getMinecraft().displayGuiScreen(gui);
+	}
+
 	public static void playSoundHandler(PlaySoundPacket message, MessageContext ctx)
 	{
 		SoundHandler soundHandler = Minecraft.getMinecraft().getSoundHandler();

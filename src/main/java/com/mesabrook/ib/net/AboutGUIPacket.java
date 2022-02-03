@@ -1,5 +1,6 @@
 package com.mesabrook.ib.net;
 
+import com.mesabrook.ib.util.handlers.ClientSideHandlers;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -20,7 +21,7 @@ public class AboutGUIPacket implements IMessage, IMessageHandler<AboutGUIPacket,
     @SideOnly(Side.CLIENT)
     public IMessage onMessage(AboutGUIPacket message, MessageContext ctx)
     {
-        Minecraft.getMinecraft().displayGuiScreen(new GuiAboutImmersibrook());
+        ClientSideHandlers.openAboutGUI();
         return null;
     }
 
