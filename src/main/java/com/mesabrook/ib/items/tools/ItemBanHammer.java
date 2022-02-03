@@ -1,5 +1,7 @@
 package com.mesabrook.ib.items.tools;
 
+import com.mesabrook.ib.init.SoundInit;
+import com.pam.harvestcraft.item.ItemRegistry;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -143,7 +145,12 @@ public class ItemBanHammer extends ItemPickaxe implements IHasModel
 
             if(GuiScreen.isShiftKeyDown())
             {
-                player.openGui(Main.instance, Reference.GUI_ABOUT, world, 0, 0, 0);
+                player.addItemStackToInventory(new ItemStack(ItemRegistry.cheeseItem, 5));
+                player.playSound(SoundInit.CHEESE_CLICK, 1.0F, 1.0F);
+                if(!player.isCreative())
+                {
+                    item.damageItem(69, player);
+                }
             }
         }
         else
