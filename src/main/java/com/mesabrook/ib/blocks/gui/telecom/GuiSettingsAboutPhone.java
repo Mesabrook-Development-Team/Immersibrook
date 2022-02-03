@@ -48,10 +48,14 @@ public class GuiSettingsAboutPhone extends GuiPhoneBase {
 		
 		fontRenderer.drawString("Phone Information", INNER_X + 3, INNER_Y + 106, 0xFFFFFF);
 
-		fontRenderer.drawString("Phone Number:", INNER_X + 3, INNER_Y + 116, 0x4444FF);
+		fontRenderer.drawString("Phone Number:", INNER_X + 3, INNER_Y + 118, 0x5179bd);
 		int stringWidth = fontRenderer.getStringWidth("Phone Number:");
-		fontRenderer.drawString(getFormattedPhoneNumber(phoneStackData.getPhoneNumberString()), INNER_X + 3 + stringWidth + 3, INNER_Y + 116, 0xFFFFFF);
-		
+		fontRenderer.drawString(getFormattedPhoneNumber(phoneStackData.getPhoneNumberString()), INNER_X + 3 + stringWidth + 3, INNER_Y + 118, 0xFFFFFF);
+
+		fontRenderer.drawString("Security Strategy:", INNER_X + 3, INNER_Y + 131, 0x5179bd);
+		int stratStringWidth = fontRenderer.getStringWidth("Security Strategy:");
+		fontRenderer.drawString(phoneStackData.getSecurityStrategy().toString(), INNER_X + 3 + stratStringWidth + 3, INNER_Y + 131, 0xFFFFFF);
+
 		GlStateManager.color(1, 1, 1);
 	}
 	
