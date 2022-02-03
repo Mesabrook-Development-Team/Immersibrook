@@ -67,6 +67,14 @@ public class GuiLockChallengePIN extends GuiPhoneBase {
 		super.actionPerformed(button);
 		if (button.id >= 0 && button.id <= 9)
 		{
+			try
+			{
+				Integer.parseInt(enteredPIN + button.id);
+			}
+			catch(NumberFormatException ex)
+			{
+				return;
+			}
 			enteredPIN += String.valueOf(button.id);
 			
 			if (Integer.parseInt(enteredPIN) == phoneStackData.getPin())
