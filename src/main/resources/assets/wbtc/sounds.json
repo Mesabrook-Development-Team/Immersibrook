@@ -70,6 +70,7 @@
 	"ding_5": {"category": "master","sounds": [{"name": "wbtc:ding_5","stream": true}]},
 	"ding_6": {"category": "master","sounds": [{"name": "wbtc:ding_6"}]},
 	"ding_7": {"category": "master","sounds": [{"name": "wbtc:ding_7","stream": true}]},
+	"ding_8": {"category": "master","sounds": [{"name": "wbtc:ding_8","stream": true}]},
 	"outgoingcall": {"category": "master","sounds": [{"name": "wbtc:outgoingcall"}]},
 	"sit": {"category": "master","sounds": [{"name": "wbtc:sit","stream": true}]},
 	"startcall": {"category": "master","sounds": [{"name": "wbtc:startcall","stream": true}]},
