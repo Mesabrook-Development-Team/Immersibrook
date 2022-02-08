@@ -1665,3 +1665,6 @@ tile.siding_brown.name=Brown Vinyl Siding
 tile.siding_green.name=Green Vinyl Siding
 tile.siding_red.name=Red Vinyl Siding
 tile.siding_black.name=Black Vinyl Siding
+
+//Minedroid Translation Project
+ib.musicapp.statusdefault=Nothing

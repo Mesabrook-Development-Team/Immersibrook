@@ -2,12 +2,13 @@ package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.net.PlaySoundPacket;
-import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.ModUtils;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
@@ -19,9 +20,7 @@ import java.io.IOException;
 
 public class GuiSoundPlayer extends GuiPhoneBase
 {
-    private String modID;
-    private String soundID;
-    private String currentlyPlaying;
+    private String currentlyPlaying = I18n.format("ib.musicapp.statusdefault");
     LabelButton playSound;
     LabelButton reset;
     LabelButton example;
@@ -110,7 +109,7 @@ public class GuiSoundPlayer extends GuiPhoneBase
                 packet.modID = modIDText.getText();
                 packet.soundName = soundIDText.getText();
                 PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
-                currentlyPlaying = packet.modID + ":" + packet.soundName;
+                currentlyPlaying = ModUtils.truncator(packet.modID + ":" + packet.soundName, "...", INNER_TEX_WIDTH / 6);
             }
         }
 
