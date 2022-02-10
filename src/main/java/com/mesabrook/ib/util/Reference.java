@@ -48,6 +48,7 @@ public class Reference
 	public static final String LOCK_BACKGROUND = "lockBackground";
 	public static final String CHAT_TONE = "chatTone";
 	public static final String RING_TONE = "ringTone";
+	public static final String CONTACTS_NBTKEY = "contacts";
 	
 	public static final int MAX_PHONE_BACKGROUNDS = 14; // This is an INCLUSIVE number
 	public static final int MAX_CHAT_NOTIFICATIONS = 7; // This is an INCLUSIVE number

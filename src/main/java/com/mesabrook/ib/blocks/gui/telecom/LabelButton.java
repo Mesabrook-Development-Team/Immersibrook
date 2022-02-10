@@ -34,7 +34,7 @@ public class LabelButton extends GuiButton {
 		
 		FontRenderer font = mc.fontRenderer;
 		int renderColor = disabled ? disabledColor : color;
-		drawString(font, displayString, x, y, renderColor);
+		font.drawString(displayString, x, y, renderColor);
 	}
 	
 	public boolean isDisabled()
