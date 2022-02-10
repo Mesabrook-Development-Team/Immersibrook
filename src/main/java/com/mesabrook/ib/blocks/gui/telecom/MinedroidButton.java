@@ -13,7 +13,6 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 public class MinedroidButton extends GuiButton {
 	private int color;
 	private int disabledColor;
-	private boolean disabled;
 	public MinedroidButton(int buttonID, int x, int y, int width, String text, int color)
 	{
 		this(buttonID, x, y, width, text, color, 0x777777);
@@ -38,8 +37,10 @@ public class MinedroidButton extends GuiButton {
 		}
 		
 		FontRenderer font = mc.fontRenderer;
-		int renderColor = disabled ? disabledColor : color;
-		drawCenteredString(font, displayString, x + (width / 2), y + 3, renderColor);
+		int renderColor = enabled ? color : disabledColor;
+		int fontWidth = font.getStringWidth(displayString);
+		
+		font.drawString(displayString, x + (width / 2) - (fontWidth / 2), y + (height / 2) - (font.FONT_HEIGHT / 2) + 1, renderColor);
 		
 		drawBox(renderColor);
 	}
@@ -67,15 +68,5 @@ public class MinedroidButton extends GuiButton {
 		tess.draw();
 		
 		GlStateManager.enableTexture2D();
-	}
-	
-	public boolean isDisabled()
-	{
-		return disabled;
-	}
-	
-	public void setDisabled(boolean disabled)
-	{
-		this.disabled = disabled;
 	}
 }

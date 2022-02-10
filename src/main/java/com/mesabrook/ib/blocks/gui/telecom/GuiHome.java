@@ -69,7 +69,7 @@ public class GuiHome extends GuiPhoneBase {
 				Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "App Coming Soon", 0xFFFFFF));
 				break;
 			case 2:
-				Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "App Coming Soon", 0xFFFFFF));
+				Minecraft.getMinecraft().displayGuiScreen(new GuiAddressBook(phoneStack, hand));
 				break;
 			case 3:
 				Minecraft.getMinecraft().displayGuiScreen(new GuiSettings(phoneStack, hand));

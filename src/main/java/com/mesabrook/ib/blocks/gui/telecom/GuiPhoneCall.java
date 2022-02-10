@@ -27,6 +27,12 @@ public class GuiPhoneCall extends GuiPhoneBase {
 	public GuiPhoneCall(ItemStack phoneStack, EnumHand hand) {
 		super(phoneStack, hand);
 	}
+	
+	public GuiPhoneCall(ItemStack phoneStack, EnumHand hand, String preloadedNumber)
+	{
+		this(phoneStack, hand);
+		currentlyTypedNumber = preloadedNumber;
+	}
 
 	@Override
 	protected String getInnerTextureFileName() {

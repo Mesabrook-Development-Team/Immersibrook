@@ -1,10 +1,26 @@
 package com.mesabrook.ib.items.misc;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
+
+import javax.annotation.Nullable;
+
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.advancements.Triggers;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneBase;
+import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.util.IHasModel;
+import com.mesabrook.ib.util.Reference;
+
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTUtil;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
@@ -14,16 +30,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.advancements.Triggers;
-import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneBase;
-import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.util.IHasModel;
-import com.mesabrook.ib.util.Reference;
-
-import javax.annotation.Nullable;
-import java.util.List;
-import java.util.UUID;
 
 public class ItemPhone extends Item implements IHasModel {
 
@@ -105,6 +111,7 @@ public class ItemPhone extends Item implements IHasModel {
 		private int lockBackground = 1;
 		private int chatTone = 1;
 		private int ringTone = 1;
+		private HashMap<UUID, Contact> contacts = new HashMap<>();
 		
 		public static NBTData getFromItemStack(ItemStack phoneStack)
 		{
@@ -213,6 +220,14 @@ public class ItemPhone extends Item implements IHasModel {
 			this.ringTone = ringTone;
 		}
 
+		public HashMap<UUID, Contact> getContacts() {
+			return contacts;
+		}
+
+		public void setContacts(HashMap<UUID, Contact> contacts) {
+			this.contacts = contacts;
+		}
+
 		@Override
 		public NBTTagCompound serializeNBT() {
 			NBTTagCompound tag = new NBTTagCompound();
@@ -234,6 +249,13 @@ public class ItemPhone extends Item implements IHasModel {
 			tag.setInteger(Reference.LOCK_BACKGROUND, getLockBackground());
 			tag.setInteger(Reference.CHAT_TONE, getChatTone());
 			tag.setInteger(Reference.RING_TONE, getRingTone());
+			
+			NBTTagList contactNBT = new NBTTagList();
+			for(Contact contact : contacts.values())
+			{
+				contactNBT.appendTag(contact.serializeNBT());
+			}
+			tag.setTag(Reference.CONTACTS_NBTKEY, contactNBT);
 			
 			return tag;
 		}
@@ -284,6 +306,18 @@ public class ItemPhone extends Item implements IHasModel {
 			{
 				setRingTone(nbt.getInteger(Reference.RING_TONE));
 			}
+			
+			if (nbt.hasKey(Reference.CONTACTS_NBTKEY))
+			{
+				NBTTagList tagList = (NBTTagList)nbt.getTagList(Reference.CONTACTS_NBTKEY, 10);
+				for(NBTBase item : tagList)
+				{
+					NBTTagCompound contactTag = (NBTTagCompound)item;
+					Contact contact = new Contact();
+					contact.deserializeNBT(contactTag);
+					contacts.put(contact.getIdentifier(), contact);
+				}
+			}
 		}
 		
 		public enum SecurityStrategies
@@ -303,6 +337,95 @@ public class ItemPhone extends Item implements IHasModel {
 				}
 				
 				return None;
+			}
+		}
+		
+		public static class Contact implements INBTSerializable<NBTTagCompound>
+		{
+			private UUID identifier;
+			private String username;
+			private String phoneNumber;
+			private String address;
+			
+			public UUID getIdentifier() {
+				return identifier;
+			}
+
+			public void setIdentifier(UUID identifier) {
+				this.identifier = identifier;
+			}
+
+			public String getUsername() {
+				return username;
+			}
+
+			public void setUsername(String username) {
+				this.username = username;
+			}
+
+			public String getPhoneNumber() {
+				return phoneNumber;
+			}
+
+			public void setPhoneNumber(String phoneNumber) {
+				this.phoneNumber = phoneNumber;
+			}
+
+			public String getAddress() {
+				return address;
+			}
+
+			public void setAddress(String address) {
+				this.address = address;
+			}
+
+			@Override
+			public NBTTagCompound serializeNBT() {
+				NBTTagCompound nbt = new NBTTagCompound();
+				nbt.setString("username", getUsername());
+				nbt.setString("phoneNumber", getPhoneNumber());
+				
+				if (identifier != null)
+				{
+					nbt.setUniqueId("identifier", identifier);
+				}
+				
+				if (address != null)
+				{
+					nbt.setString("address", getAddress());
+				}
+				
+				return nbt;
+			}
+
+			@Override
+			public void deserializeNBT(NBTTagCompound nbt) {
+				if (nbt.hasKey("identifierLeast"))
+				{
+					setIdentifier(nbt.getUniqueId("identifier"));
+				}
+				
+				if (nbt.hasKey("username"))
+				{
+					setUsername(nbt.getString("username"));
+				}
+				
+				if (nbt.hasKey("phoneNumber"))
+				{
+					setPhoneNumber(nbt.getString("phoneNumber"));
+				}
+				
+				if (nbt.hasKey("address"))
+				{
+					setAddress(nbt.getString("address"));
+				}
+			}
+			
+			public void copyFrom(Contact otherContact)
+			{
+				setUsername(otherContact.getUsername());
+				setPhoneNumber(otherContact.getPhoneNumber());
+				setAddress(otherContact.getAddress());
 			}
 		}
 	}

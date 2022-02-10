@@ -7,6 +7,7 @@ import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.function.Consumer;
 
+import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.gui.GuiAboutImmersibrook;
 import com.mesabrook.ib.blocks.gui.telecom.GuiCallEnd;
 import com.mesabrook.ib.blocks.gui.telecom.GuiHome;
@@ -94,6 +95,12 @@ public class ClientSideHandlers
 		ResourceLocation soundLocation = new ResourceLocation(message.modID, message.soundName);
 		IForgeRegistry<SoundEvent> soundRegistry = GameRegistry.findRegistry(SoundEvent.class);
 		SoundEvent sound = soundRegistry.getValue(soundLocation);
+		
+		if (sound == null)
+		{
+			Main.logger.warn(String.format("Tried to play sound %s but it does not exist!", message.modID + ":" + message.soundName));
+			return;
+		}
 		
 		PositionedSoundRecord record = new PositionedSoundRecord(sound, SoundCategory.BLOCKS, message.volume, message.pitch, message.pos);
 		

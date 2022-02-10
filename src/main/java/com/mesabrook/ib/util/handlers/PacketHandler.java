@@ -49,6 +49,8 @@ public class PacketHandler
 		INSTANCE.registerMessage(RefreshStackPacket.Handler.class, RefreshStackPacket.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(PersonalizationPacket.Handler.class, PersonalizationPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(FactoryResetPacket.Handler.class, FactoryResetPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(SaveContactPacket.Handler.class, SaveContactPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(DeleteContactPacket.Handler.class, DeleteContactPacket.class, nextID(), Side.SERVER);		
 	}
 	
 	private static int nextID()
