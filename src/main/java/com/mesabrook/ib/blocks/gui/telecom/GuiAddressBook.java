@@ -9,7 +9,9 @@ import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData;
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData.Contact;
+import com.mesabrook.ib.net.telecom.DeleteContactPacket;
 import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -213,9 +215,11 @@ public class GuiAddressBook extends GuiPhoneBase {
 		private int x;
 		private int y;
 		private int width;
+		boolean deleteClicked = false;
 		
 		private ImageButton callButton;
 		private ImageButton detailsButton;
+		private ImageButton deleteButton;
 		
 		private boolean isClicked;
 		
@@ -313,17 +317,22 @@ public class GuiAddressBook extends GuiPhoneBase {
 			
 			if (clicked && !isClicked)
 			{
-				callButton = new ImageButton(50, x + (this.width / 2) - 16 - 2, this.y + (this.HEIGHT / 2) - 8, 16, 16, "numcall.png", 32, 32, 32, 32);
-				detailsButton = new ImageButton(51, x + (this.width / 2) + 2, this.y + (this.HEIGHT / 2) - 8, 16, 16, "btn_details.png", 32, 32, 32, 32);
+				callButton = new ImageButton(50, x + (this.width / 2) - 8 - 2 - 16 - 2, this.y + (this.HEIGHT / 2) - 8, 16, 16, "numcall.png", 32, 32, 32, 32);
+				detailsButton = new ImageButton(51, x + (this.width / 2) - 8, this.y + (this.HEIGHT / 2) - 8, 16, 16, "btn_details.png", 32, 32, 32, 32);
+				deleteButton = new ImageButton(52, x + (this.width / 2) + 8 + 2, this.y + (this.HEIGHT / 2) - 8, 16, 16, "btn_delete.png", 32, 32, 32, 32);
 				
 				buttonList.add(callButton);
 				buttonList.add(detailsButton);
+				buttonList.add(deleteButton);
 			}
 			
 			if (!clicked && isClicked)
 			{
 				buttonList.remove(callButton);
 				buttonList.remove(detailsButton);
+				buttonList.remove(deleteButton);
+				
+				deleteClicked = false;
 			}
 			
 			isClicked = clicked;
@@ -340,6 +349,24 @@ public class GuiAddressBook extends GuiPhoneBase {
 			{
 				Minecraft.getMinecraft().displayGuiScreen(new GuiAddressBookDetails(phoneStack, hand, getContact()));
 			}			
+			
+			if (button == deleteButton)
+			{
+				if (!deleteClicked)
+				{
+					Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Press again to delete", 0xFF0000));
+					deleteClicked = true;
+					return;
+				}
+				
+				DeleteContactPacket deletePacket = new DeleteContactPacket();
+				deletePacket.hand = hand;
+				deletePacket.guiClassName = GuiAddressBook.class.getName();
+				deletePacket.contactToDelete = getContact().getIdentifier();
+				PacketHandler.INSTANCE.sendToServer(deletePacket);
+			}
+			
+			deleteClicked = false;
 		}
 		
 		private boolean clickedInside(int mouseX, int mouseY)

@@ -2,7 +2,10 @@ package com.mesabrook.ib.blocks.gui.telecom;
 
 import java.io.IOException;
 
+import org.lwjgl.input.Keyboard;
+
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData;
+import com.mesabrook.ib.net.telecom.DeleteContactPacket;
 import com.mesabrook.ib.net.telecom.SaveContactPacket;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 
@@ -20,6 +23,9 @@ public class GuiAddressBookDetails extends GuiPhoneBase {
 	LabelButton back;
 	LabelButton save;
 	LabelButton reset;
+	ImageButton delete;
+	
+	boolean deleteClicked = false;
 	
 	NBTData.Contact contact = null;
 	
@@ -57,9 +63,13 @@ public class GuiAddressBookDetails extends GuiPhoneBase {
 		save = new LabelButton(2, 0, lowerY, "Save", 0x0000FF);
 		save.x = INNER_X + (INNER_TEX_WIDTH / 2) + 10;
 		
+		delete = new ImageButton(3, INNER_X + INNER_TEX_WIDTH - 16 - 3, INNER_Y + 16, 16, 16, "btn_delete.png", 32, 32, 32, 32);
+		delete.visible = contact != null;
+		
 		buttonList.add(back);
 		buttonList.add(save);
 		buttonList.add(reset);
+		buttonList.add(delete);
 		
 		if (contact != null)
 		{
@@ -101,6 +111,25 @@ public class GuiAddressBookDetails extends GuiPhoneBase {
 		username.textboxKeyTyped(typedChar, keyCode);
 		phoneNumber.textboxKeyTyped(typedChar, keyCode);
 		address.textboxKeyTyped(typedChar, keyCode);
+		
+		if (keyCode == Keyboard.KEY_TAB)
+		{
+			if (username.isFocused())
+			{
+				username.setFocused(false);
+				phoneNumber.setFocused(true);
+			}
+			else if (phoneNumber.isFocused())
+			{
+				phoneNumber.setFocused(false);
+				address.setFocused(true);
+			}
+			else if (address.isFocused())
+			{
+				address.setFocused(false);
+				username.setFocused(true);
+			}
+		}
 	}
 	
 	@Override
@@ -114,9 +143,18 @@ public class GuiAddressBookDetails extends GuiPhoneBase {
 		
 		if (button == reset)
 		{
-			username.setText(contact.getUsername());
-			phoneNumber.setText(getFormattedPhoneNumber(contact.getPhoneNumber()));
-			address.setText(contact.getAddress());
+			if (contact != null)
+			{
+				username.setText(contact.getUsername());
+				phoneNumber.setText(getFormattedPhoneNumber(contact.getPhoneNumber()));
+				address.setText(contact.getAddress());
+			}
+			else	
+			{
+				username.setText("");
+				phoneNumber.setText("");
+				address.setText("");
+			}
 		}
 		
 		if (button == save)
@@ -154,6 +192,24 @@ public class GuiAddressBookDetails extends GuiPhoneBase {
 			saveContact.contact = newContact;
 			saveContact.guiClassName = GuiAddressBook.class.getName();
 			PacketHandler.INSTANCE.sendToServer(saveContact);
+		}
+		
+		if (button == delete)
+		{
+			if (!deleteClicked)
+			{
+				Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Press again to delete", 0xFF0000));
+				deleteClicked = true;
+				return;
+			}
+			
+			Minecraft.getMinecraft().displayGuiScreen(new GuiAddressBook(phoneStack, hand));
+			
+			DeleteContactPacket deletePacket = new DeleteContactPacket();
+			deletePacket.hand = hand;
+			deletePacket.guiClassName = GuiAddressBook.class.getName();
+			deletePacket.contactToDelete = contact.getIdentifier();
+			PacketHandler.INSTANCE.sendToServer(deletePacket);
 		}
 	}
 }
