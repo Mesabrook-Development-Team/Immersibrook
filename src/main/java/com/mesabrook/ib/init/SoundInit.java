@@ -117,6 +117,7 @@ public class SoundInit
 	public static final SoundEvent DING_5;
 	public static final SoundEvent DING_6;
 	public static final SoundEvent DING_7;
+	public static final SoundEvent DING_8;
 	public static final SoundEvent OUTGOING_CALL;
 	public static final SoundEvent SIT;
 	public static final SoundEvent STARTCALL;
@@ -135,6 +136,7 @@ public class SoundInit
 	public static final SoundEvent RING_9;
 	public static final SoundEvent RING_10;
 	public static final SoundEvent RING_11;
+	public static final SoundEvent RING_12;
 
 	// DTMF Phone Tones
 	public static final SoundEvent DTMF_0;
@@ -253,6 +255,7 @@ public class SoundInit
 		DING_5 = addSoundsToRegistry("ding_5");
 		DING_6 = addSoundsToRegistry("ding_6");
 		DING_7 = addSoundsToRegistry("ding_7");
+		DING_8 = addSoundsToRegistry("ding_8");
 		OUTGOING_CALL = addSoundsToRegistry("outgoingcall");
 		SIT = addSoundsToRegistry("sit");
 		STARTCALL = addSoundsToRegistry("startcall");
@@ -272,6 +275,7 @@ public class SoundInit
 		RING_9 = addSoundsToRegistry("ring_9");
 		RING_10 = addSoundsToRegistry("ring_10");
 		RING_11 = addSoundsToRegistry("ring_11");
+		RING_12 = addSoundsToRegistry("ring_12");
 
 		// DTMF Phone Tones
 		DTMF_0 = addSoundsToRegistry("dtmf_0");
@@ -422,6 +426,8 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.RING_9);
 				event.getRegistry().register(SoundInit.RING_10);
 				event.getRegistry().register(SoundInit.RING_11);
+				event.getRegistry().register(SoundInit.DING_8);
+				event.getRegistry().register(SoundInit.RING_12);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

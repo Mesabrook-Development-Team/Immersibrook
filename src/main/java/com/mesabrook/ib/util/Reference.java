@@ -51,8 +51,8 @@ public class Reference
 	public static final String CONTACTS_NBTKEY = "contacts";
 	
 	public static final int MAX_PHONE_BACKGROUNDS = 14; // This is an INCLUSIVE number
-	public static final int MAX_CHAT_NOTIFICATIONS = 7; // This is an INCLUSIVE number
-	public static final int MAX_RINGTONES = 11; // This is an INCLUSIVE number
+	public static final int MAX_CHAT_NOTIFICATIONS = 8; // This is an INCLUSIVE number
+	public static final int MAX_RINGTONES = 12; // This is an INCLUSIVE number
 
 	// Birthdays (Day and Month only - NO YEARS)
 	public static final int RZ_MONTH = 9;

@@ -9,6 +9,19 @@ import net.minecraft.util.math.AxisAlignedBB;
 
 public class ModUtils 
 {
+	public static String truncator(String input, String overflow, int maxChars)
+	{
+		if(input.length() > maxChars)
+		{
+			if(overflow == null)
+			{
+				overflow = "...";
+			}
+			return input.substring(0, maxChars - overflow.length()) + overflow;
+		}
+		return input;
+	}
+
 	public static final AxisAlignedBB getPixelatedAABB(double x0, double y0, double z0, double x1, double y1, double z1)
 	{
 		return new AxisAlignedBB(x0/16.0, y0/16.0, z0/16.0, x1/16.0, y1/16.0, z1/16.0);

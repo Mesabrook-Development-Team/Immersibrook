@@ -43,6 +43,10 @@ public class GuiHome extends GuiPhoneBase {
 		// Settings
 		ImageButton button4 = new ImageButton(3, INNER_X + 126, INNER_Y + 24, 32, 32, "icn_settings.png", 32, 32);
 		buttonList.add(button4);
+
+		// Music App
+		ImageButton button5 = new ImageButton(4, INNER_X + 5, INNER_Y + 65, 32, 32, "icn_musicplayer.png", 32, 32);
+		buttonList.add(button5);
 	}
 	
 	@Override
@@ -69,6 +73,9 @@ public class GuiHome extends GuiPhoneBase {
 				break;
 			case 3:
 				Minecraft.getMinecraft().displayGuiScreen(new GuiSettings(phoneStack, hand));
+				break;
+			case 4:
+				Minecraft.getMinecraft().displayGuiScreen(new GuiSoundPlayer(phoneStack, hand));
 				break;
 		}
 	}
