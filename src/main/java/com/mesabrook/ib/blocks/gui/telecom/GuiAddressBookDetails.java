@@ -86,7 +86,7 @@ public class GuiAddressBookDetails extends GuiPhoneBase {
 		String titleText = contact == null ? "New Contact" : "Edit Contact";
 		fontRenderer.drawString(titleText, INNER_X + 15, INNER_Y + 20, 0xFFFFFF);
 		
-		fontRenderer.drawString("Username:", INNER_X + 3, INNER_Y + 35, 0x000000);
+		fontRenderer.drawString("Display Name:", INNER_X + 3, INNER_Y + 35, 0x000000);
 		fontRenderer.drawString("Phone Number:", INNER_X + 3, INNER_Y + 69, 0x000000);
 		fontRenderer.drawString("Address:", INNER_X + 3, INNER_Y + 103, 0x000000);
 		
