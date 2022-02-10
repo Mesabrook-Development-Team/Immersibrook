@@ -80,7 +80,6 @@ public class GetHeadUtil {
 			}
 			
 			MojangAPIResponse response = new Gson().fromJson(builder.toString(), MojangAPIResponse.class);
-			// https://crafatar.com/avatars/717bb4e7c70142a6b06fbbe17e0518ae?default=MHF_Steve&overlay
 			url = new URL("https://crafatar.com/avatars/" + response.id +"?default=MHF_Steve&overlay");
 			conn = (HttpURLConnection)url.openConnection();
 			conn.setRequestMethod("GET");
@@ -93,15 +92,6 @@ public class GetHeadUtil {
 			BufferedImage image = ImageIO.read(byteStream);
 			
 			imagesByUsername.put(username, image);
-//			
-//			if (image == null)
-//			{
-//				return;
-//			}
-//			
-//			DynamicTexture textureForUsername = new DynamicTexture(image);
-//			ResourceLocation location = new ResourceLocation(Reference.MODID, "telecom_addressbook_" + username.toLowerCase());
-//			Minecraft.getMinecraft().getTextureManager().loadTexture(location, textureForUsername);
 		} catch (Exception e) {
 			try {
 				IResource resource = Minecraft.getMinecraft().getResourceManager().getResource(loadingIcon);
