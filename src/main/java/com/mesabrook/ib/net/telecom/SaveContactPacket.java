@@ -59,14 +59,14 @@ public class SaveContactPacket implements IMessage {
 			}
 			
 			ItemPhone.NBTData phoneStackData = ItemPhone.NBTData.getFromItemStack(stack);
-			if (message.contact.getIdentifier() == null || !phoneStackData.getContacts().containsKey(message.contact.getIdentifier()))
+			if (message.contact.getIdentifier() == null || phoneStackData.getContactByIdentifier(message.contact.getIdentifier()) == null)
 			{
 				message.contact.setIdentifier(UUID.randomUUID());
-				phoneStackData.getContacts().put(message.contact.getIdentifier(), message.contact);
+				phoneStackData.addContact(message.contact);
 			}
 			else
 			{
-				ItemPhone.NBTData.Contact existingContact = phoneStackData.getContacts().get(message.contact.getIdentifier());
+				ItemPhone.NBTData.Contact existingContact = phoneStackData.getContactByIdentifier(message.contact.getIdentifier());
 				existingContact.copyFrom(message.contact);
 			}
 			

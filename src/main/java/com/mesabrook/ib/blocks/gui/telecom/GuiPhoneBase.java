@@ -8,6 +8,7 @@ import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
@@ -188,6 +189,18 @@ public abstract class GuiPhoneBase extends GuiScreen {
 		return formattedNumber;
 	}
 
+	protected String truncateIfExceeds(FontRenderer font, String text, int availableSpace, double scale)
+	{
+		double fontWidth = font.getStringWidth(text);
+		if (fontWidth > availableSpace / scale)
+		{
+			text = font.trimStringToWidth(text, (int)(availableSpace / scale));
+			text = text.substring(0, text.length() - 3) + "...";
+		}
+		
+		return text;
+	}
+	
 	public ItemStack getPhoneStack() {
 		return phoneStack;
 	}
