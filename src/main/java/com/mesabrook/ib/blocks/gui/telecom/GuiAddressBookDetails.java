@@ -172,9 +172,19 @@ public class GuiAddressBookDetails extends GuiPhoneBase {
 				return;
 			}
 			
-			if (enteredPhoneNumber.length() != 7)
+			boolean isAllNumbers = true;
+			try
 			{
-				Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Phone Number must be valid", 0xFF0000));
+				Integer.parseInt(enteredPhoneNumber);
+			}
+			catch (Exception ex)
+			{
+				isAllNumbers = false;
+			}
+			
+			if (enteredPhoneNumber.length() != 7 || !isAllNumbers)
+			{
+				Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Phone Number invalid", 0xFF0000));
 				return;
 			}
 			
