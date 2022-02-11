@@ -331,6 +331,11 @@ public class ClientSideHandlers
 	
 		public static int getNextHandlerID()
 		{
+			if (TelecomClientHandlers.phoneQueryResponseHandlers.isEmpty())
+			{
+				return 1;
+			}
+			
 			Optional<Integer> maxID = TelecomClientHandlers.phoneQueryResponseHandlers.keySet().stream().max(Integer::compare);
 			int nextID = 1;
 			if (maxID.isPresent())

@@ -10,7 +10,10 @@ import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData;
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData.Contact;
 import com.mesabrook.ib.net.telecom.DeleteContactPacket;
+import com.mesabrook.ib.net.telecom.PhoneQueryPacket;
+import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket;
 import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.handlers.ClientSideHandlers.TelecomClientHandlers;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import net.minecraft.client.Minecraft;
@@ -77,7 +80,6 @@ public class GuiAddressBook extends GuiPhoneBase {
 		int counter = 0;
 		List<Contact> filteredContactList = phoneStackData
 				.getContacts()
-				.values()
 				.stream()
 				.filter(c -> filter.getText().isEmpty() || filter.getText().equalsIgnoreCase(filterPlaceholder) ? true : c.getUsername().toLowerCase().contains(filter.getText().toLowerCase()))
 				.collect(Collectors.toList());
@@ -298,18 +300,6 @@ public class GuiAddressBook extends GuiPhoneBase {
 				GlStateManager.disableAlpha();
 			}
 		}
-		
-		private String truncateIfExceeds(FontRenderer font, String text, int availableSpace, double scale)
-		{
-			double fontWidth = font.getStringWidth(text) / scale;
-			if (fontWidth > availableSpace / scale)
-			{
-				text = font.trimStringToWidth(text, (int)(availableSpace / scale));
-				text = text.substring(0, text.length() - 3) + "...";
-			}
-			
-			return text;
-		}
 	
 		public void mouseClicked(int mouseX, int mouseY, int mouseButton)
 		{
@@ -342,7 +332,23 @@ public class GuiAddressBook extends GuiPhoneBase {
 		{
 			if (button == callButton)
 			{
-				Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneCall(phoneStack, hand, getContact().getPhoneNumber()));
+				int nextID = TelecomClientHandlers.getNextHandlerID();
+				TelecomClientHandlers.phoneQueryResponseHandlers.put(nextID, response -> 
+				{
+					if (response.responseType != PhoneQueryResponsePacket.ResponseTypes.idle)
+					{
+						Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Call in progress!", 0xFF0000));
+					}
+					else
+					{
+						Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneCall(phoneStack, hand, getContact().getPhoneNumber()));
+					}
+				});
+				
+				PhoneQueryPacket queryPacket = new PhoneQueryPacket();
+				queryPacket.forNumber = phoneStackData.getPhoneNumberString();
+				queryPacket.clientHandlerCode = nextID;
+				PacketHandler.INSTANCE.sendToServer(queryPacket);
 			}
 			
 			if (button == detailsButton)

@@ -56,7 +56,7 @@ public class DeleteContactPacket implements IMessage {
 				return;
 			}
 			
-			stackData.getContacts().remove(message.contactToDelete);
+			stackData.removeContactByIdentifier(message.contactToDelete);
 			stack.setTagCompound(stackData.serializeNBT());
 			
 			RefreshStackPacket refresh = new RefreshStackPacket();

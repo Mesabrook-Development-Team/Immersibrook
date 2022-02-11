@@ -1,12 +1,12 @@
 package com.mesabrook.ib.items.misc;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Nullable;
 
+import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneBase;
@@ -111,7 +111,8 @@ public class ItemPhone extends Item implements IHasModel {
 		private int lockBackground = 1;
 		private int chatTone = 1;
 		private int ringTone = 1;
-		private HashMap<UUID, Contact> contacts = new HashMap<>();
+		private HashMap<UUID, Contact> contactsByIdentifier = new HashMap<>();
+		private HashMap<String, Contact> contactsByPhoneNumber = new HashMap<>();
 		
 		public static NBTData getFromItemStack(ItemStack phoneStack)
 		{
@@ -219,13 +220,38 @@ public class ItemPhone extends Item implements IHasModel {
 		public void setRingTone(int ringTone) {
 			this.ringTone = ringTone;
 		}
-
-		public HashMap<UUID, Contact> getContacts() {
-			return contacts;
+		
+		public Contact getContactByIdentifier(UUID identifier)
+		{
+			return contactsByIdentifier.get(identifier);
 		}
-
-		public void setContacts(HashMap<UUID, Contact> contacts) {
-			this.contacts = contacts;
+		
+		public Contact getContactByPhoneNumber(String phoneNumber)
+		{
+			return contactsByPhoneNumber.get(phoneNumber);
+		}
+		
+		public void removeContactByIdentifier(UUID identifier)
+		{
+			Contact contactToRemove = contactsByIdentifier.get(identifier);
+			if (contactToRemove == null)
+			{
+				return;
+			}
+			
+			contactsByIdentifier.remove(identifier);
+			contactsByPhoneNumber.values().remove(contactToRemove);
+		}
+		
+		public ImmutableList<Contact> getContacts()
+		{
+			return ImmutableList.copyOf(contactsByIdentifier.values());
+		}
+		
+		public void addContact(Contact contact)
+		{
+			contactsByIdentifier.put(contact.getIdentifier(), contact);
+			contactsByPhoneNumber.put(contact.getPhoneNumber(), contact);
 		}
 
 		@Override
@@ -251,7 +277,7 @@ public class ItemPhone extends Item implements IHasModel {
 			tag.setInteger(Reference.RING_TONE, getRingTone());
 			
 			NBTTagList contactNBT = new NBTTagList();
-			for(Contact contact : contacts.values())
+			for(Contact contact : contactsByIdentifier.values())
 			{
 				contactNBT.appendTag(contact.serializeNBT());
 			}
@@ -315,7 +341,8 @@ public class ItemPhone extends Item implements IHasModel {
 					NBTTagCompound contactTag = (NBTTagCompound)item;
 					Contact contact = new Contact();
 					contact.deserializeNBT(contactTag);
-					contacts.put(contact.getIdentifier(), contact);
+					contactsByIdentifier.put(contact.getIdentifier(), contact);
+					contactsByPhoneNumber.put(contact.getPhoneNumber(), contact);
 				}
 			}
 		}
