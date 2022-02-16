@@ -39,27 +39,9 @@ public class CommandImmersibrook extends CommandBase
 		{
 			if("about".equals(args[0]))
 			{
-//				TextComponentString modName;
-//				modName = new TextComponentString(Reference.MODNAME);
-//				modName.getStyle().setColor(TextFormatting.AQUA);
-//				modName.getStyle().setBold(true);
-//				sender.sendMessage(modName);
-//				sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Version " + Reference.VERSION));
-//				sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Build Date: " + TextFormatting.BOLD + Reference.BUILD_DATE));
-//				sender.sendMessage(new TextComponentString(""));
-//				sender.sendMessage(new TextComponentString(TextFormatting.YELLOW + "Developed by RavenholmZombie and CSX8600 for use on the Mesabrook Minecraft server."));
-//				sender.sendMessage(new TextComponentString(TextFormatting.GOLD + "https://mesabrook.com"));
-
 				EntityPlayerMP player = (EntityPlayerMP) sender;
 				AboutGUIPacket packet = new AboutGUIPacket();
 				PacketHandler.INSTANCE.sendTo(packet, player);
-
-//				if((sender instanceof EntityPlayerMP))
-//				{
-//					AboutGUIPacket packet = new AboutGUIPacket();
-//					PacketHandler.INSTANCE.sendToServer(packet);
-//				}
-
 			}
 			else if("changelog".equals(args[0]))
 			{
