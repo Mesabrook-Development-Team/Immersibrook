@@ -1,5 +1,6 @@
 package com.mesabrook.ib.blocks;
 
+import com.mesabrook.ib.items.tools.ItemManholeHook;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
@@ -10,11 +11,14 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -209,5 +213,59 @@ public class MiscRotationalBlock extends Block implements IHasModel
         {
             tooltip.add(TextFormatting.WHITE + new TextComponentTranslation("im.tooltip.hidden").getFormattedText());
         }
+    }
+
+    @Override
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+    {
+        ItemStack stack = playerIn.getHeldItem(hand);
+        if(stack.getItem() instanceof ItemManholeHook)
+        {
+            if(state.getBlock() == ModBlocks.BLANK_MANHOLE)
+            {
+                playerIn.addItemStackToInventory(new ItemStack(ModBlocks.BLANK_MANHOLE, 1));
+                worldIn.setBlockToAir(pos);
+
+                if(!playerIn.isCreative())
+                {
+                    stack.damageItem(1, playerIn);
+                }
+                return true;
+            }
+            else if(state.getBlock() == ModBlocks.LVN_MANHOLE)
+            {
+                playerIn.addItemStackToInventory(new ItemStack(ModBlocks.LVN_MANHOLE, 1));
+                worldIn.setBlockToAir(pos);
+
+                if(!playerIn.isCreative())
+                {
+                    stack.damageItem(1, playerIn);
+                }
+                return true;
+            }
+            else if(state.getBlock() == ModBlocks.RELAY_MANHOLE)
+            {
+                playerIn.addItemStackToInventory(new ItemStack(ModBlocks.RELAY_MANHOLE, 1));
+                worldIn.setBlockToAir(pos);
+
+                if(!playerIn.isCreative())
+                {
+                    stack.damageItem(1, playerIn);
+                }
+                return true;
+            }
+            else if(state.getBlock() == ModBlocks.UTIL_MANHOLE)
+            {
+                playerIn.addItemStackToInventory(new ItemStack(ModBlocks.UTIL_MANHOLE, 1));
+                worldIn.setBlockToAir(pos);
+
+                if(!playerIn.isCreative())
+                {
+                    stack.damageItem(1, playerIn);
+                }
+                return true;
+            }
+        }
+        return false;
     }
 }
