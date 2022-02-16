@@ -5,6 +5,7 @@ import com.pam.harvestcraft.blocks.blocks.BlockPamCake;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCake;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityItem;
@@ -42,6 +43,7 @@ import com.mesabrook.ib.util.SoundRandomizer;
 import com.mesabrook.ib.util.TooltipRandomizer;
 import com.mesabrook.ib.util.config.ModConfig;
 
+import javax.xml.soap.Text;
 import java.time.LocalDate;
 import java.util.Random;
 
@@ -57,161 +59,170 @@ public class PlayerEvents
 	{
 		EntityPlayer player = e.player;
 		World w = e.player.world;
+
 		TooltipRandomizer.ChosenTooltip();
 		boolean holidayItemsInInventoryOnJoin = w.getGameRules().getBoolean("holidayItemsInInventoryOnJoin");
-
-		if(player instanceof EntityPlayer)
-		{
-			Triggers.trigger(Triggers.WELCOME, player);
-			if(LocalDate.now().getMonthValue() == 4 && LocalDate.now().getDayOfMonth() == 1)
-			{
-				SoundRandomizer.RandomizeSound();
-				PlaySoundPacket packet = new PlaySoundPacket();
-				packet.pos = player.getPosition();
-				packet.soundName = "kekw";
-				PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
-			}
-
-			if(LocalDate.now().getMonthValue() == 10)
-			{
-				w.playSound(player, player.getPosition(), SoundEvents.ENTITY_WITCH_AMBIENT, SoundCategory.BLOCKS, 1.0F, 1.0F);
-				w.addWeatherEffect(new EntityLightningBolt(player.world, player.posX, player.posY, player.posZ, true));
-			}
-		}
-
-		if(LocalDate.now().getMonthValue() == 12)
-		{
-			if(LocalDate.now().getDayOfMonth() <= 25 && LocalDate.now().getDayOfMonth() >= 13)
-			{
-				SoundRandomizer.RandomizeSound();
-				ItemRandomizer.RandomizePresent();
-				PlaySoundPacket packet = new PlaySoundPacket();
-				packet.pos = player.getPosition();
-				packet.soundName = "jingle";
-				PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
-
-				if(holidayItemsInInventoryOnJoin)
-				{
-					player.addItemStackToInventory(ItemRandomizer.presentItem);
-				}
-			}
-		}
 
 		if(ModConfig.showWelcome)
 		{
 			TextComponentString user = new TextComponentString(TextFormatting.GOLD + player.getDisplayNameString());
 
-			TextComponentTranslation prefix = new TextComponentTranslation("im.welcome");
-			prefix.getStyle().setColor(TextFormatting.GREEN);
-			prefix.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentTranslation("im.welcome.disable")));
-			player.sendMessage(new TextComponentString(prefix.getFormattedText() + " " + user.getFormattedText() + "!"));
-			if(LocalDate.now().getMonthValue() == Reference.RZ_MONTH && LocalDate.now().getDayOfMonth() == Reference.RZ_DAY)
+			if(player instanceof EntityPlayer)
 			{
-				player.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Happy Birthday, RavenholmZombie!"));
-				if(player.getGameProfile().getId().equals(Reference.RZ_UUID))
+				Triggers.trigger(Triggers.WELCOME, player);
+				if(LocalDate.now().getMonthValue() == 4 && LocalDate.now().getDayOfMonth() == 1)
 				{
-					player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
-				}
-			}
-			if(LocalDate.now().getMonthValue() == Reference.TD_MONTH && LocalDate.now().getDayOfMonth() == Reference.TD_DAY)
-			{
-				player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Happy Birthday, TrainDevil!"));
-				if(player.getGameProfile().getId().equals(Reference.TD_UUID))
-				{
-					player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
-				}
-			}
-			if(LocalDate.now().getMonthValue() == Reference.TLZ_MONTH && LocalDate.now().getDayOfMonth() == Reference.TLZ_DAY)
-			{
-				player.sendMessage(new TextComponentString(TextFormatting.BLUE + "Happy Birthday, timelady_zoe!"));
-				if(player.getGameProfile().getId().equals(Reference.ZOE_UUID))
-				{
-					player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
-				}
-			}
-			if(LocalDate.now().getMonthValue() == Reference.CSX_MONTH && LocalDate.now().getDayOfMonth() == Reference.CSX_DAY)
-			{
-				player.sendMessage(new TextComponentString(TextFormatting.AQUA + "Happy Birthday, CSX8600!"));
-				if(player.getGameProfile().getId().equals(Reference.CSX_UUID))
-				{
-					player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
-				}
-			}
-			if(LocalDate.now().getMonthValue() == Reference.MD_MONTH && LocalDate.now().getDayOfMonth() == Reference.MD_DAY)
-			{
-				player.sendMessage(new TextComponentString(TextFormatting.RED + "Happy Birthday, MineDouble!"));
-				if(player.getGameProfile().getId().equals(Reference.MD_UUID))
-				{
-					player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
-				}
-			}
-			if(LocalDate.now().getMonthValue() == Reference.SVV_MONTH && LocalDate.now().getDayOfMonth() == Reference.SVV_DAY)
-			{
-				player.sendMessage(new TextComponentString(TextFormatting.GOLD + "Happy Birthday, StarVicVader!"));
-				if(player.getGameProfile().getId().equals(Reference.SVV_UUID))
-				{
-					player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
-				}
-			}
-			if(LocalDate.now().getMonthValue() == Reference.BAG_MONTH && LocalDate.now().getDayOfMonth() == Reference.BAG_DAY)
-			{
-				player.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Happy Birthday to Bagheera, RavenholmZombie's cat!"));
-			}
-			if(LocalDate.now().getMonthValue() == Reference.BB_MONTH && LocalDate.now().getDayOfMonth() == Reference.BB_DAY)
-			{
-				player.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Happy Birthday to Boo & Bubbles, RavenholmZombie's cats!"));
-				player.sendMessage(new TextComponentString(TextFormatting.GOLD + "Happy Halloween!"));
-				if(holidayItemsInInventoryOnJoin)
-				{
-					player.addItemStackToInventory(new ItemStack(ModItems.LOLIPOP_RED, 1));
-				}
-				if(!w.isRemote)
-				{
+					SoundRandomizer.RandomizeSound();
 					PlaySoundPacket packet = new PlaySoundPacket();
 					packet.pos = player.getPosition();
-					packet.modID = "minecraft";
-					packet.soundName = "record.11";
+					packet.soundName = "kekw";
 					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
 				}
-			}
-			if(LocalDate.now().getMonthValue() == 12 && LocalDate.now().getDayOfMonth() == 24 || LocalDate.now().getMonthValue() == 12 && LocalDate.now().getDayOfMonth() == 25)
-			{
-				player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Happy Holidays!"));
-				if(!w.isRemote)
+
+				if(LocalDate.now().getMonthValue() == 10)
 				{
+					w.playSound(player, player.getPosition(), SoundEvents.ENTITY_WITCH_AMBIENT, SoundCategory.BLOCKS, 1.0F, 1.0F);
+					w.addWeatherEffect(new EntityLightningBolt(player.world, player.posX, player.posY, player.posZ, true));
+				}
+			}
+
+			if(LocalDate.now().getMonthValue() == 12)
+			{
+				if(LocalDate.now().getDayOfMonth() <= 25 && LocalDate.now().getDayOfMonth() >= 13)
+				{
+					SoundRandomizer.RandomizeSound();
+					ItemRandomizer.RandomizePresent();
 					PlaySoundPacket packet = new PlaySoundPacket();
 					packet.pos = player.getPosition();
-					packet.soundName = "jingles";
+					packet.soundName = "jingle";
 					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+
+					if(holidayItemsInInventoryOnJoin)
+					{
+						player.addItemStackToInventory(ItemRandomizer.presentItem);
+					}
 				}
 			}
 
-			TextComponentTranslation mesaTitle = new TextComponentTranslation("im.website.title");
-			TextComponentTranslation wikiTitle = new TextComponentTranslation("im.wiki.title");
-			TextComponentTranslation mapTitle = new TextComponentTranslation("im.map.title");
+			if(player.getServer().isSinglePlayer())
+			{
+				player.sendMessage(new TextComponentString(TextFormatting.GOLD + "[" + Reference.MODNAME + " " + Reference.VERSION + "]"  + TextFormatting.LIGHT_PURPLE + " " + "Loaded Successfully. Welcome " + user.getFormattedText()));
+			}
+			else
+			{
+				TextComponentTranslation prefix = new TextComponentTranslation("im.welcome");
+				prefix.getStyle().setColor(TextFormatting.GREEN);
+				prefix.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentTranslation("im.welcome.disable")));
+				player.sendMessage(new TextComponentString(prefix.getFormattedText() + " " + user.getFormattedText() + "!"));
 
-			mesaTitle.getStyle().setColor(TextFormatting.GREEN);
-			wikiTitle.getStyle().setColor(TextFormatting.YELLOW);
+				if(LocalDate.now().getMonthValue() == Reference.RZ_MONTH && LocalDate.now().getDayOfMonth() == Reference.RZ_DAY)
+				{
+					player.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Happy Birthday, RavenholmZombie!"));
+					if(player.getGameProfile().getId().equals(Reference.RZ_UUID))
+					{
+						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
+					}
+				}
+				if(LocalDate.now().getMonthValue() == Reference.TD_MONTH && LocalDate.now().getDayOfMonth() == Reference.TD_DAY)
+				{
+					player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Happy Birthday, TrainDevil!"));
+					if(player.getGameProfile().getId().equals(Reference.TD_UUID))
+					{
+						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
+					}
+				}
+				if(LocalDate.now().getMonthValue() == Reference.TLZ_MONTH && LocalDate.now().getDayOfMonth() == Reference.TLZ_DAY)
+				{
+					player.sendMessage(new TextComponentString(TextFormatting.BLUE + "Happy Birthday, timelady_zoe!"));
+					if(player.getGameProfile().getId().equals(Reference.ZOE_UUID))
+					{
+						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
+					}
+				}
+				if(LocalDate.now().getMonthValue() == Reference.CSX_MONTH && LocalDate.now().getDayOfMonth() == Reference.CSX_DAY)
+				{
+					player.sendMessage(new TextComponentString(TextFormatting.AQUA + "Happy Birthday, CSX8600!"));
+					if(player.getGameProfile().getId().equals(Reference.CSX_UUID))
+					{
+						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
+					}
+				}
+				if(LocalDate.now().getMonthValue() == Reference.MD_MONTH && LocalDate.now().getDayOfMonth() == Reference.MD_DAY)
+				{
+					player.sendMessage(new TextComponentString(TextFormatting.RED + "Happy Birthday, MineDouble!"));
+					if(player.getGameProfile().getId().equals(Reference.MD_UUID))
+					{
+						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
+					}
+				}
+				if(LocalDate.now().getMonthValue() == Reference.SVV_MONTH && LocalDate.now().getDayOfMonth() == Reference.SVV_DAY)
+				{
+					player.sendMessage(new TextComponentString(TextFormatting.GOLD + "Happy Birthday, StarVicVader!"));
+					if(player.getGameProfile().getId().equals(Reference.SVV_UUID))
+					{
+						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
+					}
+				}
+				if(LocalDate.now().getMonthValue() == Reference.BAG_MONTH && LocalDate.now().getDayOfMonth() == Reference.BAG_DAY)
+				{
+					player.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Happy Birthday to Bagheera, RavenholmZombie's cat!"));
+				}
+				if(LocalDate.now().getMonthValue() == Reference.BB_MONTH && LocalDate.now().getDayOfMonth() == Reference.BB_DAY)
+				{
+					player.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Happy Birthday to Boo & Bubbles, RavenholmZombie's cats!"));
+					player.sendMessage(new TextComponentString(TextFormatting.GOLD + "Happy Halloween!"));
+					if(holidayItemsInInventoryOnJoin)
+					{
+						player.addItemStackToInventory(new ItemStack(ModItems.LOLIPOP_RED, 1));
+					}
+					if(!w.isRemote)
+					{
+						PlaySoundPacket packet = new PlaySoundPacket();
+						packet.pos = player.getPosition();
+						packet.modID = "minecraft";
+						packet.soundName = "record.11";
+						PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+					}
+				}
+				if(LocalDate.now().getMonthValue() == 12 && LocalDate.now().getDayOfMonth() == 24 || LocalDate.now().getMonthValue() == 12 && LocalDate.now().getDayOfMonth() == 25)
+				{
+					player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Happy Holidays!"));
+					if(!w.isRemote)
+					{
+						PlaySoundPacket packet = new PlaySoundPacket();
+						packet.pos = player.getPosition();
+						packet.soundName = "jingles";
+						PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+					}
+				}
 
-			TextComponentString mesaURL = new TextComponentString(PREFIX + TextFormatting.RESET + "https://mesabrook.com");
-			TextComponentString dynmap = new TextComponentString(PREFIX + TextFormatting.RESET + "http://map.mesabrook.com");
-			TextComponentString wikiURL = new TextComponentString(PREFIX + TextFormatting.RESET +"https://bit.ly/2S2G5Wt");
+				TextComponentTranslation mesaTitle = new TextComponentTranslation("im.website.title");
+				TextComponentTranslation wikiTitle = new TextComponentTranslation("im.wiki.title");
+				TextComponentTranslation mapTitle = new TextComponentTranslation("im.map.title");
 
-			mesaURL.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentTranslation("im.website.hover")));
-			wikiURL.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentTranslation("im.website.hover")));
-			dynmap.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentTranslation("im.website.hover")));
+				mesaTitle.getStyle().setColor(TextFormatting.GREEN);
+				wikiTitle.getStyle().setColor(TextFormatting.YELLOW);
 
-			mesaURL.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://mesabrook.com"));
-			wikiURL.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://bit.ly/2S2G5Wt"));
-			dynmap.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "http://www.map.mesabrook.com/"));
+				TextComponentString mesaURL = new TextComponentString(PREFIX + TextFormatting.RESET + "https://mesabrook.com");
+				TextComponentString dynmap = new TextComponentString(PREFIX + TextFormatting.RESET + "http://map.mesabrook.com");
+				TextComponentString wikiURL = new TextComponentString(PREFIX + TextFormatting.RESET +"https://bit.ly/2S2G5Wt");
 
-			player.sendMessage(new TextComponentString(""));
-			player.sendMessage(new TextComponentString(mesaTitle.getFormattedText()));
-			player.sendMessage(mesaURL);
-			player.sendMessage(dynmap);
-			player.sendMessage(new TextComponentString(""));
-			player.sendMessage(new TextComponentString(wikiTitle.getFormattedText()));
-			player.sendMessage(wikiURL);
+				mesaURL.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentTranslation("im.website.hover")));
+				wikiURL.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentTranslation("im.website.hover")));
+				dynmap.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentTranslation("im.website.hover")));
+
+				mesaURL.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://mesabrook.com"));
+				wikiURL.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://bit.ly/2S2G5Wt"));
+				dynmap.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "http://www.map.mesabrook.com/"));
+
+				player.sendMessage(new TextComponentString(""));
+				player.sendMessage(new TextComponentString(mesaTitle.getFormattedText()));
+				player.sendMessage(mesaURL);
+				player.sendMessage(dynmap);
+				player.sendMessage(new TextComponentString(""));
+				player.sendMessage(new TextComponentString(wikiTitle.getFormattedText()));
+				player.sendMessage(wikiURL);
+			}
 		}
 	}
 
