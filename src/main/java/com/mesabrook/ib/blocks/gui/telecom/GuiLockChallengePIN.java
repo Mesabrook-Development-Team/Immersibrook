@@ -48,7 +48,7 @@ public class GuiLockChallengePIN extends GuiPhoneBase {
 		super.doDraw(mouseX, mouseY, partialticks);
 		
 		int fontWidth = fontRenderer.getStringWidth("PIN Required");
-		fontRenderer.drawString("PIN Required", INNER_X + INNER_TEX_WIDTH / 2 - fontWidth / 2, INNER_Y + 30, 0xFFFFFF);
+		fontRenderer.drawString("PIN Required", INNER_X + INNER_TEX_WIDTH / 2 - fontWidth / 2, INNER_Y + 30, 0xFFFFFF, true);
 		
 		String mask = "";
 		for(int i = 0; i < enteredPIN.length(); i++)
@@ -58,7 +58,7 @@ public class GuiLockChallengePIN extends GuiPhoneBase {
 		
 		fontWidth = fontRenderer.getStringWidth(mask);
 		GlStateManager.scale(uBigFont, uBigFont, uBigFont);
-		fontRenderer.drawString(mask, scale(INNER_X + INNER_TEX_WIDTH / 2 - fontWidth, dBigFont), scale(INNER_Y + 72, dBigFont), 0xFFFFFF);
+		fontRenderer.drawString(mask, scale(INNER_X + INNER_TEX_WIDTH / 2 - fontWidth, dBigFont), scale(INNER_Y + 72, dBigFont), 0xFFFFFF, true);
 		GlStateManager.scale(dBigFont, dBigFont, dBigFont);
 	}
 	
