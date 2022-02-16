@@ -67,7 +67,7 @@ wbtc.config.title=Configuration File for Immersibrook
 entity.ItemFrame.name=Item Frame
 
 //Welcome message
-im.welcome=Thanks for playing with Immersibrook,
+im.welcome=Welcome to Mesabrook,
 im.welcome.disable=You can turn this message off in wbtc.cfg
 im.website.title=Our Websites
 im.wiki.title=Check out the Wiki!
@@ -1634,6 +1634,7 @@ im.present=Happy Holidays!
 im.tooltip.activate=No Number Assigned. Activation Required.
 im.tooltip.phone=Your Phone Number:
 im.tooltip.siding=Colorful Vinyl Plastic Panels that add Color to your builds.
+im.tooltip.manhole.hook=Tool used to open and close Manholes.
 
 
 //Manholes
