@@ -76,6 +76,7 @@ public class SoundInit
 	public static final SoundEvent SPICY;
 	public static final SoundEvent OK1;
 	public static final SoundEvent OK2;
+	public static final SoundEvent DEATH;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -217,6 +218,7 @@ public class SoundInit
 		SPICY = addSoundsToRegistry("spicy");
 		OK1 = addSoundsToRegistry("ok1");
 		OK2 = addSoundsToRegistry("ok2");
+		DEATH = addSoundsToRegistry("death");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -415,6 +417,7 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.PHONE_UNLOCK);
 				event.getRegistry().registerAll(SoundInit.OK1);
 				event.getRegistry().registerAll(SoundInit.OK2);
+				event.getRegistry().registerAll(SoundInit.DEATH);
 				event.getRegistry().registerAll(SoundInit.RING_1);
 				event.getRegistry().register(SoundInit.RING_2);
 				event.getRegistry().register(SoundInit.RING_3);

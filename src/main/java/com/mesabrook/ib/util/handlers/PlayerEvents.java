@@ -245,8 +245,8 @@ public class PlayerEvents
 				{
 					PlaySoundPacket packet = new PlaySoundPacket();
 					packet.pos = e.getPosition();
-					packet.soundName = "oof";
-					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(e.dimension, e.posX, e.posY, e.posZ, 25));
+					packet.soundName = "death";
+					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(e.dimension, e.posX, e.posY, e.posZ, Integer.MAX_VALUE));
 				}
 
 				if(specialDrops)

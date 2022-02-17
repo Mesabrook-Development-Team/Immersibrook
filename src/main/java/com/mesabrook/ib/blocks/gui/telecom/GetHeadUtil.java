@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -80,7 +81,15 @@ public class GetHeadUtil {
 			}
 			
 			MojangAPIResponse response = new Gson().fromJson(builder.toString(), MojangAPIResponse.class);
-			url = new URL("https://crafatar.com/avatars/" + response.id +"?default=MHF_Steve&overlay");
+			if(LocalDate.now().getMonthValue() == 4 && LocalDate.now().getDayOfMonth() == 1)
+			{
+				url = new URL("https://crafatar.com/renders/body/" + response.id +"?default=MHF_Steve&overlay");
+			}
+			else
+			{
+				url = new URL("https://crafatar.com/renders/head/" + response.id +"?default=MHF_Steve&overlay");
+			}
+
 			conn = (HttpURLConnection)url.openConnection();
 			conn.setRequestMethod("GET");
 			
