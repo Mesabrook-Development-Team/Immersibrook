@@ -1,8 +1,11 @@
 Immersibrook 1.0.0 Pre-Release 2 Build 2 (1.0.0-PR2.1) - The Technology Update
 
 Changes:
--Manhole Hook can now remove non-opening Manhole covers.
--MOTD will now only show if connected to a server. Displays a generic message when in single player.
+-[IB] Manhole Hook can now remove non-opening Manhole covers.
+-[IB] MOTD will now only show if connected to a server. Displays a generic message when in single player.
+-[IB] Death sound has been changed.
+-[Minedroid] New wallpapers courtesy of CSX8600.
+-[Minedroid] Player faces are now rendered in isometric 3D in the Address Book and Phone apps.
 
 Fixes
--
+-[Minedroid] Sound Player app now works on Multiplayer.
