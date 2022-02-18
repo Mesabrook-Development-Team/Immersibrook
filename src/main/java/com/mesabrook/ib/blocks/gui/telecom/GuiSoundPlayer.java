@@ -1,8 +1,10 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.google.common.collect.ImmutableList;
+import com.mesabrook.ib.Main;
 import com.mesabrook.ib.net.SoundPlayerAppInfoPacket;
 import com.mesabrook.ib.util.ModUtils;
+import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -13,6 +15,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextFormatting;
+import org.lwjgl.input.Keyboard;
 
 import java.io.IOException;
 
@@ -80,6 +83,9 @@ public class GuiSoundPlayer extends GuiPhoneBase
         volumeText.drawTextBox();
         pitchText.drawTextBox();
 
+        volumeText.setText("1.0");
+        pitchText.setText("1.0");
+
         GlStateManager.color(1, 1, 1);
     }
 
@@ -101,6 +107,30 @@ public class GuiSoundPlayer extends GuiPhoneBase
         soundIDText.textboxKeyTyped(typedChar, keyCode);
         volumeText.textboxKeyTyped(typedChar, keyCode);
         pitchText.textboxKeyTyped(typedChar, keyCode);
+
+        if(keyCode == Keyboard.KEY_TAB)
+        {
+            if(modIDText.isFocused())
+            {
+                modIDText.setFocused(false);
+                soundIDText.setFocused(true);
+            }
+            else if(soundIDText.isFocused())
+            {
+                soundIDText.setFocused(false);
+                volumeText.setFocused(true);
+            }
+            else if(volumeText.isFocused())
+            {
+                volumeText.setFocused(false);
+                pitchText.setFocused(true);
+            }
+            else if(pitchText.isFocused())
+            {
+                pitchText.setFocused(false);
+                modIDText.setFocused(true);
+            }
+        }
     }
 
     @Override
@@ -111,7 +141,7 @@ public class GuiSoundPlayer extends GuiPhoneBase
 
         if(button == playSound)
         {
-            if(modIDText.getText().isEmpty() || soundIDText.getText().isEmpty())
+            if(modIDText.getText().isEmpty() || soundIDText.getText().isEmpty() || volumeText.getText().isEmpty() || pitchText.getText().isEmpty())
             {
                 Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "Missing Entry", 0xFFFFFF));
             }
@@ -136,8 +166,8 @@ public class GuiSoundPlayer extends GuiPhoneBase
                 }
 
                 PacketHandler.INSTANCE.sendToServer(packet);
-
                 currentlyPlaying = ModUtils.truncator(packet.modID + ":" + packet.soundName, "...", INNER_TEX_WIDTH / 6);
+                Main.logger.info("[" + Reference.MODNAME + "] Minedroid Notice! " + player.getName() + " just played sound " + packet.modID + ":" + packet.soundName + " using the Sound Player app.");
             }
         }
 
