@@ -145,6 +145,8 @@ public class GuiSoundPlayer extends GuiPhoneBase
         {
             modIDText.setText("");
             soundIDText.setText("");
+            volumeText.setText("");
+            pitchText.setText("");
         }
 
         if(button == example)
