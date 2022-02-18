@@ -2,6 +2,7 @@ package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.net.SoundPlayerAppInfoPacket;
 import com.mesabrook.ib.util.ModUtils;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
@@ -94,7 +95,7 @@ public class GuiSoundPlayer extends GuiPhoneBase
         super.actionPerformed(button);
 
         EntityPlayer player = Minecraft.getMinecraft().player;
-        World world = Minecraft.getMinecraft().world;
+        World world = player.world;
 
         if(button == playSound)
         {
@@ -104,11 +105,19 @@ public class GuiSoundPlayer extends GuiPhoneBase
             }
             else
             {
-                PlaySoundPacket packet = new PlaySoundPacket();
+//                PlaySoundPacket packet = new PlaySoundPacket();
+//                packet.pos = player.getPosition();
+//                packet.modID = modIDText.getText();
+//                packet.soundName = soundIDText.getText();
+//                PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+
+                SoundPlayerAppInfoPacket packet = new SoundPlayerAppInfoPacket();
                 packet.pos = player.getPosition();
                 packet.modID = modIDText.getText();
                 packet.soundName = soundIDText.getText();
-                PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+
+                PacketHandler.INSTANCE.sendToServer(packet);
+
                 currentlyPlaying = ModUtils.truncator(packet.modID + ":" + packet.soundName, "...", INNER_TEX_WIDTH / 6);
             }
         }
