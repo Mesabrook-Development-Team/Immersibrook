@@ -6,7 +6,7 @@ public class Reference
 {
 	public static final String MODID = "wbtc";
 	public static final String MODNAME = "Immersibrook";
-	public static final String UPDATE_NAME = "The Technology Update - Pre-Release 2";
+	public static final String UPDATE_NAME = "The Technology Update - Pre-Release 2.1";
 	public static final String VERSION = "1.0.0-PR2.1";
 	public static final String MINEDROID_VERSION = "0.0.2a";
 	public static final String CHANGELOG = "https://bit.ly/3oTNHHS";
@@ -49,7 +49,7 @@ public class Reference
 	public static final String RING_TONE = "ringTone";
 	public static final String CONTACTS_NBTKEY = "contacts";
 	
-	public static final int MAX_PHONE_BACKGROUNDS = 17; // This is an INCLUSIVE number
+	public static final int MAX_PHONE_BACKGROUNDS = 33; // This is an INCLUSIVE number
 	public static final int MAX_CHAT_NOTIFICATIONS = 8; // This is an INCLUSIVE number
 	public static final int MAX_RINGTONES = 12; // This is an INCLUSIVE number
 
