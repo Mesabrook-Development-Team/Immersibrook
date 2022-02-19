@@ -1,5 +1,7 @@
 package com.mesabrook.ib.blocks;
 
+import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
@@ -31,6 +33,7 @@ import com.mesabrook.ib.items.tools.ItemManholeHook;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.ModUtils;
 import com.mesabrook.ib.util.Reference;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -169,77 +172,142 @@ public class BlockManhole extends Block implements IHasModel
         if(this == ModBlocks.MANHOLE_CLOSED)
         {
             world.setBlockState(pos, ModBlocks.MANHOLE_OPEN.getDefaultState().withProperty(FACING, direction));
-            world.playSound(player, pos, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
-
             if(sendAlertsToConsole)
             {
                 Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole in dimension " + player.dimension + " at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been opened by " + player.getName());
+            }
+            if(!world.isRemote)
+            {
+                PlaySoundPacket packet = new PlaySoundPacket();
+                packet.pos = player.getPosition();
+                packet.soundName = "manhole_open";
+                packet.volume = 0.5F;
+                packet.pitch = 1.0F;
+                PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
             }
         }
         else if(this == ModBlocks.MANHOLE_OPEN)
         {
             world.setBlockState(pos, ModBlocks.MANHOLE_CLOSED.getDefaultState().withProperty(FACING, direction));
-            world.playSound(player, pos, SoundEvents.BLOCK_ANVIL_LAND, SoundCategory.BLOCKS, 1.0F, 0.1F);
             if(sendAlertsToConsole)
             {
                 Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole in dimension " + player.dimension + " at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been opened by " + player.getName());
+            }
+            if(!world.isRemote)
+            {
+                PlaySoundPacket packet = new PlaySoundPacket();
+                packet.pos = player.getPosition();
+                packet.soundName = "manhole_close";
+                packet.volume = 0.5F;
+                packet.pitch = 1.0F;
+                PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
             }
         }
 
         if(this == ModBlocks.UTIL_MANHOLE_CLOSED)
         {
             world.setBlockState(pos, ModBlocks.UTIL_MANHOLE_OPEN.getDefaultState().withProperty(FACING, direction));
-            world.playSound(player, pos, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
             if(sendAlertsToConsole)
             {
                 Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole in dimension " + player.dimension + " at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been opened by " + player.getName());
+            }
+
+            if(!world.isRemote)
+            {
+                PlaySoundPacket packet = new PlaySoundPacket();
+                packet.pos = player.getPosition();
+                packet.soundName = "manhole_open";
+                packet.volume = 0.5F;
+                packet.pitch = 1.0F;
+                PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
             }
         }
         else if(this == ModBlocks.UTIL_MANHOLE_OPEN)
         {
             world.setBlockState(pos, ModBlocks.UTIL_MANHOLE_CLOSED.getDefaultState().withProperty(FACING, direction));
-            world.playSound(player, pos, SoundEvents.BLOCK_ANVIL_LAND, SoundCategory.BLOCKS, 1.0F, 0.1F);
             if(sendAlertsToConsole)
             {
                 Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole in dimension " + player.dimension + " at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been opened by " + player.getName());
+            }
+
+            if(!world.isRemote)
+            {
+                PlaySoundPacket packet = new PlaySoundPacket();
+                packet.pos = player.getPosition();
+                packet.soundName = "manhole_close";
+                packet.volume = 0.5F;
+                packet.pitch = 1.0F;
+                PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
             }
         }
 
         if(this == ModBlocks.BLANK_MANHOLE_CLOSED)
         {
             world.setBlockState(pos, ModBlocks.BLANK_MANHOLE_OPEN.getDefaultState().withProperty(FACING, direction));
-            world.playSound(player, pos, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
             if(sendAlertsToConsole)
             {
                 Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole in dimension " + player.dimension + " at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been opened by " + player.getName());
+            }
+            if(!world.isRemote)
+            {
+                PlaySoundPacket packet = new PlaySoundPacket();
+                packet.pos = player.getPosition();
+                packet.soundName = "manhole_open";
+                packet.volume = 0.5F;
+                packet.pitch = 1.0F;
+                PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
             }
         }
         else if(this == ModBlocks.BLANK_MANHOLE_OPEN)
         {
             world.setBlockState(pos, ModBlocks.BLANK_MANHOLE_CLOSED.getDefaultState().withProperty(FACING, direction));
-            world.playSound(player, pos, SoundEvents.BLOCK_ANVIL_LAND, SoundCategory.BLOCKS, 1.0F, 0.1F);
             if(sendAlertsToConsole)
             {
                 Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole in dimension " + player.dimension + " at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been opened by " + player.getName());
+            }
+            if(!world.isRemote)
+            {
+                PlaySoundPacket packet = new PlaySoundPacket();
+                packet.pos = player.getPosition();
+                packet.soundName = "manhole_close";
+                packet.volume = 0.5F;
+                packet.pitch = 1.0F;
+                PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
             }
         }
 
         if(this == ModBlocks.LVN_MANHOLE_CLOSED)
         {
             world.setBlockState(pos, ModBlocks.LVN_MANHOLE_OPEN.getDefaultState().withProperty(FACING, direction));
-            world.playSound(player, pos, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
             if(sendAlertsToConsole)
             {
                 Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole in dimension " + player.dimension + " at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been opened by " + player.getName());
+            }
+            if(!world.isRemote)
+            {
+                PlaySoundPacket packet = new PlaySoundPacket();
+                packet.pos = player.getPosition();
+                packet.soundName = "manhole_open";
+                packet.volume = 0.5F;
+                packet.pitch = 1.0F;
+                PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
             }
         }
         else if(this == ModBlocks.LVN_MANHOLE_OPEN)
         {
             world.setBlockState(pos, ModBlocks.LVN_MANHOLE_CLOSED.getDefaultState().withProperty(FACING, direction));
-            world.playSound(player, pos, SoundEvents.BLOCK_ANVIL_LAND, SoundCategory.BLOCKS, 1.0F, 0.1F);
             if(sendAlertsToConsole)
             {
                 Main.logger.warn("[" + Reference.MODNAME + " Alert] Manhole in dimension " + player.dimension + " at [X: " + pos.getX() + "], [Y: " + pos.getY() + "], [Z: " + pos.getZ() + "] has been opened by " + player.getName());
+            }
+            if(!world.isRemote)
+            {
+                PlaySoundPacket packet = new PlaySoundPacket();
+                packet.pos = player.getPosition();
+                packet.soundName = "manhole_close";
+                packet.volume = 0.5F;
+                packet.pitch = 1.0F;
+                PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
             }
         }
     }

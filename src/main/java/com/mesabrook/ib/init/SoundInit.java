@@ -105,6 +105,13 @@ public class SoundInit
 	public static final SoundEvent PLASTIC_STEP;
 	public static final SoundEvent PLASTIC_LAND;
 
+	// Manhole SoundType
+	public static final SoundEvent MANHOLE_OPEN;
+	public static final SoundEvent MANHOLE_CLOSE;
+	public static final SoundEvent MANHOLE_PLACE;
+	public static final SoundEvent MANHOLE_BREAK;
+	public static final SoundEvent MANHOLE_STEP;
+
 	// Warp Metro
 	public static final SoundEvent TM_BEEP;
 
@@ -244,6 +251,13 @@ public class SoundInit
 		PLASTIC_LAND = addSoundsToRegistry("plastic_land");
 		PLASTIC_PLACE = addSoundsToRegistry("plastic_place");
 		PLASTIC_STEP = addSoundsToRegistry("plastic_step");
+
+		// Manhole SoundType
+		MANHOLE_OPEN = addSoundsToRegistry("manhole_open");
+		MANHOLE_CLOSE = addSoundsToRegistry("manhole_close");
+		MANHOLE_PLACE = addSoundsToRegistry("manhole_place");
+		MANHOLE_BREAK = addSoundsToRegistry("manhole_break");
+		MANHOLE_STEP = addSoundsToRegistry("manhole_step");
 
 		// Warp Metro
 		TM_BEEP = addSoundsToRegistry("tm_beep");
@@ -431,6 +445,11 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.RING_11);
 				event.getRegistry().register(SoundInit.DING_8);
 				event.getRegistry().register(SoundInit.RING_12);
+				event.getRegistry().register(SoundInit.MANHOLE_OPEN);
+				event.getRegistry().register(SoundInit.MANHOLE_CLOSE);
+				event.getRegistry().register(SoundInit.MANHOLE_BREAK);
+				event.getRegistry().register(SoundInit.MANHOLE_PLACE);
+				event.getRegistry().register(SoundInit.MANHOLE_STEP);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

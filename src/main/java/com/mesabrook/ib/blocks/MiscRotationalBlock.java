@@ -1,6 +1,9 @@
 package com.mesabrook.ib.blocks;
 
 import com.mesabrook.ib.items.tools.ItemManholeHook;
+import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
@@ -15,16 +18,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import com.mesabrook.ib.Main;
@@ -226,6 +227,16 @@ public class MiscRotationalBlock extends Block implements IHasModel
                 playerIn.addItemStackToInventory(new ItemStack(ModBlocks.BLANK_MANHOLE, 1));
                 worldIn.setBlockToAir(pos);
 
+                if(!worldIn.isRemote)
+                {
+                    PlaySoundPacket packet = new PlaySoundPacket();
+                    packet.pos = playerIn.getPosition();
+                    packet.soundName = "manhole_break";
+                    packet.volume = 0.5F;
+                    packet.pitch = 1.0F;
+                    PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));
+                }
+
                 if(!playerIn.isCreative())
                 {
                     stack.damageItem(1, playerIn);
@@ -236,6 +247,16 @@ public class MiscRotationalBlock extends Block implements IHasModel
             {
                 playerIn.addItemStackToInventory(new ItemStack(ModBlocks.LVN_MANHOLE, 1));
                 worldIn.setBlockToAir(pos);
+
+                if(!worldIn.isRemote)
+                {
+                    PlaySoundPacket packet = new PlaySoundPacket();
+                    packet.pos = playerIn.getPosition();
+                    packet.soundName = "manhole_break";
+                    packet.volume = 0.5F;
+                    packet.pitch = 1.0F;
+                    PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));
+                }
 
                 if(!playerIn.isCreative())
                 {
@@ -248,6 +269,16 @@ public class MiscRotationalBlock extends Block implements IHasModel
                 playerIn.addItemStackToInventory(new ItemStack(ModBlocks.RELAY_MANHOLE, 1));
                 worldIn.setBlockToAir(pos);
 
+                if(!worldIn.isRemote)
+                {
+                    PlaySoundPacket packet = new PlaySoundPacket();
+                    packet.pos = playerIn.getPosition();
+                    packet.soundName = "manhole_break";
+                    packet.volume = 0.5F;
+                    packet.pitch = 1.0F;
+                    PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));
+                }
+
                 if(!playerIn.isCreative())
                 {
                     stack.damageItem(1, playerIn);
@@ -258,6 +289,16 @@ public class MiscRotationalBlock extends Block implements IHasModel
             {
                 playerIn.addItemStackToInventory(new ItemStack(ModBlocks.UTIL_MANHOLE, 1));
                 worldIn.setBlockToAir(pos);
+
+                if(!worldIn.isRemote)
+                {
+                    PlaySoundPacket packet = new PlaySoundPacket();
+                    packet.pos = playerIn.getPosition();
+                    packet.soundName = "manhole_break";
+                    packet.volume = 0.5F;
+                    packet.pitch = 1.0F;
+                    PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));
+                }
 
                 if(!playerIn.isCreative())
                 {

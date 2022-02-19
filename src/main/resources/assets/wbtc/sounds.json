@@ -123,5 +123,10 @@
 	"ring_10": {"category": "master","sounds": [{"name": "wbtc:ring_10","stream": true}]},
 	"ring_11": {"category": "master","sounds": [{"name": "wbtc:ring_11","stream": true}]},
 	"ring_12": {"category": "master","sounds": [{"name": "wbtc:ring_12","stream": true}]},
-	"death": {"category": "master","sounds": [{"name": "wbtc:death","stream": true}]}
+	"death": {"category": "master","sounds": [{"name": "wbtc:death","stream": true}]},
+	"manhole_open": {"category": "master","sounds": [{"name": "wbtc:manhole_open","stream": true}]},
+	"manhole_close": {"category": "master","sounds": [{"name": "wbtc:manhole_close","stream": true}]},
+	"manhole_place": {"category": "master","sounds": [{"name": "wbtc:manhole_place","stream": true}]},
+	"manhole_break": {"category": "master","sounds": [{"name": "wbtc:manhole_break","stream": true}]},
+	"manhole_step": {"category": "master","sounds": [{"name": "wbtc:manhole_step","stream": true}]}
 }

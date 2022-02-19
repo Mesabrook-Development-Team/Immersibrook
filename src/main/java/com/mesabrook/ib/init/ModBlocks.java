@@ -1100,10 +1100,10 @@ public class ModBlocks
 	public static final Block MARKER_POLE_WOOD_BLUE = new MiscRotationalBlock("marker_pole_wood_blue", Material.ROCK, SoundType.WOOD, "axe", 1, 2.5F, 3.0F, ModUtils.getPixelatedAABB(7,0,7, 9,26,9));
 
 	// Manhole Covers
-	public static final Block RELAY_MANHOLE = new MiscRotationalBlock("relay_manhole", Material.IRON, SoundType.ANVIL, "pickaxe", 1, 1.0F, 2.0F, ModUtils.getPixelatedAABB(0,0,0, 16,1,16));
-	public static final Block LVN_MANHOLE = new MiscRotationalBlock("lvn_manhole", Material.IRON, SoundType.ANVIL, "pickaxe", 1, 1.0F, 2.0F, ModUtils.getPixelatedAABB(0,0,0, 16,1,16));
-	public static final Block UTIL_MANHOLE = new MiscRotationalBlock("util_manhole", Material.IRON, SoundType.ANVIL, "pickaxe", 1, 1.0F, 2.0F, ModUtils.getPixelatedAABB(0,0,0, 16,1,16));
-	public static final Block BLANK_MANHOLE = new MiscRotationalBlock("manhole", Material.IRON, SoundType.ANVIL, "pickaxe", 1, 1.0F, 2.0F, ModUtils.getPixelatedAABB(0,0,0, 16,1,16));
+	public static final Block RELAY_MANHOLE = new MiscRotationalBlock("relay_manhole", Material.IRON, SoundTypeInit.MANHOLE, "pickaxe", 1, 1.0F, 2.0F, ModUtils.getPixelatedAABB(0,0,0, 16,1,16));
+	public static final Block LVN_MANHOLE = new MiscRotationalBlock("lvn_manhole", Material.IRON, SoundTypeInit.MANHOLE, "pickaxe", 1, 1.0F, 2.0F, ModUtils.getPixelatedAABB(0,0,0, 16,1,16));
+	public static final Block UTIL_MANHOLE = new MiscRotationalBlock("util_manhole", Material.IRON, SoundTypeInit.MANHOLE, "pickaxe", 1, 1.0F, 2.0F, ModUtils.getPixelatedAABB(0,0,0, 16,1,16));
+	public static final Block BLANK_MANHOLE = new MiscRotationalBlock("manhole", Material.IRON, SoundTypeInit.MANHOLE, "pickaxe", 1, 1.0F, 2.0F, ModUtils.getPixelatedAABB(0,0,0, 16,1,16));
 
 	// Manhole Blocks
 	public static final Block MANHOLE_CLOSED = new BlockManhole("relay_manhole_closed", ModUtils.getPixelatedAABB(0,0,0, 16,16,16)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
