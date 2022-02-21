@@ -1668,5 +1668,15 @@ tile.siding_green.name=Green Vinyl Siding
 tile.siding_red.name=Red Vinyl Siding
 tile.siding_black.name=Black Vinyl Siding
 
-//Minedroid Translation Project
+//Minedroid Translation Project - Sound Player App
 ib.musicapp.statusdefault=Nothing
+im.musicapp.buttonplay=Play
+im.musicapp.buttonreset=Reset
+im.musicapp.buttonexample=Example
+im.musicapp.labelnowplaying=Now Playing
+im.musicapp.labelmodid=Mod ID:
+im.musicapp.labelsoundid=Sound ID:
+im.musicapp.labelvolume=Volume:
+im.musicapp.labelpitch=Pitch:
+
+//Minedroid Translation Project - Address Book App

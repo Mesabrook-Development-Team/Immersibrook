@@ -14,6 +14,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import org.lwjgl.input.Keyboard;
 
@@ -21,7 +22,7 @@ import java.io.IOException;
 
 public class GuiSoundPlayer extends GuiPhoneBase
 {
-    private String currentlyPlaying = I18n.format("ib.musicapp.statusdefault");
+    private String currentlyPlaying = new TextComponentTranslation("ib.musicapp.statusdefault").getFormattedText();
     MinedroidButton playSound;
     MinedroidButton reset;
     MinedroidButton example;
@@ -47,9 +48,9 @@ public class GuiSoundPlayer extends GuiPhoneBase
         super.initGui();
 
         int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 32;
-        reset = new MinedroidButton(1, INNER_X + 50, lowerControlsY - 20, 32, "Reset", 0xFFFFFF);
-        playSound = new MinedroidButton(2, INNER_X + 85, lowerControlsY - 20, 30, "Play", 0xFFFFFF);
-        example = new MinedroidButton(3, reset.x, lowerControlsY - 35, 65, "Example", 0xFFFFFF);
+        reset = new MinedroidButton(1, INNER_X + 50, lowerControlsY - 20, 32, new TextComponentTranslation("im.musicapp.buttonreset").getFormattedText(), 0xFFFFFF);
+        playSound = new MinedroidButton(2, INNER_X + 85, lowerControlsY - 20, 30, new TextComponentTranslation("im.musicapp.buttonplay").getFormattedText(), 0xFFFFFF);
+        example = new MinedroidButton(3, reset.x, lowerControlsY - 35, 65, new TextComponentTranslation("im.musicapp.buttonexample").getFormattedText(), 0xFFFFFF);
 
         modIDText = new GuiTextField(10, fontRenderer, INNER_X + 60, INNER_Y + 50, 85, 10);
         soundIDText = new GuiTextField(11, fontRenderer, INNER_X + 60, INNER_Y + 70, 85, 10);
@@ -70,12 +71,12 @@ public class GuiSoundPlayer extends GuiPhoneBase
         super.doDraw(mouseX, mouseY, partialticks);
         fontRenderer.drawString("Minedroid Sound Player", INNER_X + 3, INNER_Y + 20, 0xFFFFFF);
 
-        fontRenderer.drawString("Mod ID:", INNER_X + 15, INNER_Y + 50, 0x4444FF);
-        fontRenderer.drawString("Sound ID:", INNER_X + 3, INNER_Y + 70, 0x4444FF);
-        fontRenderer.drawString("  Volume:", INNER_X + 3, INNER_Y + 90, 0x4444FF);
-        fontRenderer.drawString("  Pitch:", INNER_X + 82, INNER_Y + 90, 0x4444FF);
+        fontRenderer.drawString(new TextComponentTranslation("im.musicapp.labelmodid").getFormattedText(), INNER_X + 15, INNER_Y + 50, 0x4444FF);
+        fontRenderer.drawString(new TextComponentTranslation("im.musicapp.labelsoundid").getFormattedText(), INNER_X + 3, INNER_Y + 70, 0x4444FF);
+        fontRenderer.drawString("  " + new TextComponentTranslation("im.musicapp.labelvolume").getFormattedText(), INNER_X + 3, INNER_Y + 90, 0x4444FF);
+        fontRenderer.drawString("  " + new TextComponentTranslation("im.musicapp.labelpitch").getFormattedText(), INNER_X + 82, INNER_Y + 90, 0x4444FF);
 
-        drawCenteredString(fontRenderer, TextFormatting.BOLD + "Now Playing:", INNER_X + 80, INNER_Y + 115, 3395327);
+        drawCenteredString(fontRenderer, TextFormatting.BOLD + new TextComponentTranslation("im.musicapp.labelnowplaying").getFormattedText(), INNER_X + 80, INNER_Y + 115, 3395327);
         drawCenteredString(fontRenderer, TextFormatting.ITALIC + currentlyPlaying, INNER_X + 80, INNER_Y + 129, 3395327);
 
         modIDText.drawTextBox();
