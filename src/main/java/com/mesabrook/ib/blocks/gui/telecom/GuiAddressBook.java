@@ -25,7 +25,10 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
+
+import javax.xml.soap.Text;
 
 public class GuiAddressBook extends GuiPhoneBase {
 
@@ -40,7 +43,7 @@ public class GuiAddressBook extends GuiPhoneBase {
 	private int page = 1;
 	private int maxPage = 1;
 	
-	private final String filterPlaceholder = "" + TextFormatting.GRAY + TextFormatting.ITALIC + "Filter...";
+	private final String filterPlaceholder = "" + TextFormatting.GRAY + TextFormatting.ITALIC + new TextComponentTranslation("im.contacts.filter").getFormattedText();
 	
 	public GuiAddressBook(ItemStack phoneStack, EnumHand hand) {
 		super(phoneStack, hand);
@@ -60,7 +63,7 @@ public class GuiAddressBook extends GuiPhoneBase {
 		prevPage = new MinedroidButton(2, firstPage.x + firstPage.width + 3, lowerControlsY, 10, "<", 0);
 		lastPage = new MinedroidButton(4, INNER_X + INNER_TEX_WIDTH - 10 - 3, lowerControlsY, 10, ">>", 0);
 		nextPage = new MinedroidButton(3, lastPage.x - 3 - 10, lowerControlsY, 10, ">", 0);
-		addContact = new MinedroidButton(4, INNER_X + INNER_TEX_WIDTH - 25 - 3, INNER_Y + 17, 25, "Add", 0x00FF00);
+		addContact = new MinedroidButton(4, INNER_X + INNER_TEX_WIDTH - 25 - 3, INNER_Y + 17, 25, new TextComponentTranslation("im.contacts.buttonadd").getFormattedText(), 0x00FF00);
 		filter = new GuiTextField(100, fontRenderer, prevPage.x + prevPage.width + 3, lowerControlsY + 2, nextPage.x - (prevPage.x + prevPage.width) - 6, 10);
 		filter.setText(filterPlaceholder);
 		
@@ -110,7 +113,7 @@ public class GuiAddressBook extends GuiPhoneBase {
 	
 	@Override
 	protected void doDraw(int mouseX, int mouseY, float partialticks) {		
-		fontRenderer.drawString("Address Book", INNER_X + 3, INNER_Y + 20, 0xFFFFFF);
+		fontRenderer.drawString(new TextComponentTranslation("im.contacts.apptitle").getFormattedText(), INNER_X + 3, INNER_Y + 20, 0xFFFFFF);
 		filter.drawTextBox();
 		
 		for(int i = 0; i < 4; i++)
@@ -337,7 +340,7 @@ public class GuiAddressBook extends GuiPhoneBase {
 				{
 					if (response.responseType != PhoneQueryResponsePacket.ResponseTypes.idle)
 					{
-						Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Call in progress!", 0xFF0000));
+						Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.contacts.callinprogresstoast").getFormattedText(), 0xFF0000));
 					}
 					else
 					{
@@ -360,7 +363,7 @@ public class GuiAddressBook extends GuiPhoneBase {
 			{
 				if (!deleteClicked)
 				{
-					Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Press again to delete", 0xFF0000));
+					Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.contacts.deletetoast").getFormattedText(), 0xFF0000));
 					deleteClicked = true;
 					return;
 				}

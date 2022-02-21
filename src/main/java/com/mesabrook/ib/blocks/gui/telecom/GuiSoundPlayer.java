@@ -69,7 +69,7 @@ public class GuiSoundPlayer extends GuiPhoneBase
     protected void doDraw(int mouseX, int mouseY, float partialticks)
     {
         super.doDraw(mouseX, mouseY, partialticks);
-        fontRenderer.drawString("Minedroid Sound Player", INNER_X + 3, INNER_Y + 20, 0xFFFFFF);
+        fontRenderer.drawString(new TextComponentTranslation("im.musicapp.apptitle").getFormattedText(), INNER_X + 3, INNER_Y + 20, 0xFFFFFF);
 
         fontRenderer.drawString(new TextComponentTranslation("im.musicapp.labelmodid").getFormattedText(), INNER_X + 15, INNER_Y + 50, 0x4444FF);
         fontRenderer.drawString(new TextComponentTranslation("im.musicapp.labelsoundid").getFormattedText(), INNER_X + 3, INNER_Y + 70, 0x4444FF);
@@ -144,7 +144,7 @@ public class GuiSoundPlayer extends GuiPhoneBase
         {
             if(modIDText.getText().isEmpty() || soundIDText.getText().isEmpty() || volumeText.getText().isEmpty() || pitchText.getText().isEmpty())
             {
-                Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "Missing Entry", 0xFFFFFF));
+                Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, new TextComponentTranslation("im.musicapp.errortoast").getFormattedText(), 0xFFFFFF));
             }
             else
             {

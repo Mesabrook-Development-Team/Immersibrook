@@ -2,6 +2,7 @@ package com.mesabrook.ib.blocks.gui.telecom;
 
 import java.io.IOException;
 
+import net.minecraft.util.text.TextComponentTranslation;
 import org.lwjgl.input.Keyboard;
 
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData;
@@ -57,10 +58,10 @@ public class GuiAddressBookDetails extends GuiPhoneBase {
 
 		back = new LabelButton(4, INNER_X + 3, INNER_Y + 20, "<", 0xFFFFFF);
 		int lowerY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 28;
-		reset = new LabelButton(1, 0, lowerY, "Reset", 0x0000FF);
+		reset = new LabelButton(1, 0, lowerY, new TextComponentTranslation("im.contacts.reset").getFormattedText(), 0x0000FF);
 		reset.x = INNER_X + (INNER_TEX_WIDTH / 2) - reset.width - 10;
 		
-		save = new LabelButton(2, 0, lowerY, "Save", 0x0000FF);
+		save = new LabelButton(2, 0, lowerY, new TextComponentTranslation("im.contacts.save").getFormattedText(), 0x0000FF);
 		save.x = INNER_X + (INNER_TEX_WIDTH / 2) + 10;
 		
 		delete = new ImageButton(3, INNER_X + INNER_TEX_WIDTH - 16 - 3, INNER_Y + 16, 16, 16, "btn_delete.png", 32, 32, 32, 32);
@@ -83,12 +84,12 @@ public class GuiAddressBookDetails extends GuiPhoneBase {
 	protected void doDraw(int mouseX, int mouseY, float partialticks) {
 		super.doDraw(mouseX, mouseY, partialticks);
 		
-		String titleText = contact == null ? "New Contact" : "Edit Contact";
+		String titleText = contact == null ? new TextComponentTranslation("im.contacts.new").getFormattedText() : new TextComponentTranslation("im.contacts.edit").getFormattedText();
 		fontRenderer.drawString(titleText, INNER_X + 15, INNER_Y + 20, 0xFFFFFF);
 		
-		fontRenderer.drawString("Display Name:", INNER_X + 3, INNER_Y + 35, 0x000000);
-		fontRenderer.drawString("Phone Number:", INNER_X + 3, INNER_Y + 69, 0x000000);
-		fontRenderer.drawString("Address:", INNER_X + 3, INNER_Y + 103, 0x000000);
+		fontRenderer.drawString(new TextComponentTranslation("im.contacts.displayname").getFormattedText(), INNER_X + 3, INNER_Y + 35, 0x000000);
+		fontRenderer.drawString(new TextComponentTranslation("im.contacts.phone").getFormattedText(), INNER_X + 3, INNER_Y + 69, 0x000000);
+		fontRenderer.drawString(new TextComponentTranslation("im.contacts.address").getFormattedText(), INNER_X + 3, INNER_Y + 103, 0x000000);
 		
 		username.drawTextBox();
 		phoneNumber.drawTextBox();
@@ -161,14 +162,14 @@ public class GuiAddressBookDetails extends GuiPhoneBase {
 		{
 			if (username.getText().isEmpty())
 			{
-				Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Username is required", 0xFF0000));
+				Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.contacts.usernametoast").getFormattedText(), 0xFF0000));
 				return;
 			}
 			
 			String enteredPhoneNumber = phoneNumber.getText().replace("-", "");
 			if (enteredPhoneNumber.isEmpty())
 			{
-				Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Phone Number is required", 0xFF0000));
+				Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.contacts.phonetoast").getFormattedText(), 0xFF0000));
 				return;
 			}
 			
@@ -184,7 +185,7 @@ public class GuiAddressBookDetails extends GuiPhoneBase {
 			
 			if (enteredPhoneNumber.length() != 7 || !isAllNumbers)
 			{
-				Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Phone Number invalid", 0xFF0000));
+				Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.contacts.invalidtoast").getFormattedText(), 0xFF0000));
 				return;
 			}
 			
@@ -194,7 +195,7 @@ public class GuiAddressBookDetails extends GuiPhoneBase {
 			newContact.setPhoneNumber(enteredPhoneNumber);
 			newContact.setAddress(address.getText());
 			
-			Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Saved successfully!"));
+			Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.contacts.saved").getFormattedText()));
 			Minecraft.getMinecraft().displayGuiScreen(new GuiAddressBook(phoneStack, hand));
 			
 			SaveContactPacket saveContact = new SaveContactPacket();
@@ -208,7 +209,7 @@ public class GuiAddressBookDetails extends GuiPhoneBase {
 		{
 			if (!deleteClicked)
 			{
-				Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Press again to delete", 0xFF0000));
+				Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.contacts.deletetoast").getFormattedText(), 0xFF0000));
 				deleteClicked = true;
 				return;
 			}

@@ -1669,6 +1669,7 @@ tile.siding_red.name=Red Vinyl Siding
 tile.siding_black.name=Black Vinyl Siding
 
 //Minedroid Translation Project - Sound Player App
+im.musicapp.apptitle=Minedroid Sound Player
 ib.musicapp.statusdefault=Nothing
 im.musicapp.buttonplay=Play
 im.musicapp.buttonreset=Reset
@@ -1678,5 +1679,22 @@ im.musicapp.labelmodid=Mod ID:
 im.musicapp.labelsoundid=Sound ID:
 im.musicapp.labelvolume=Volume:
 im.musicapp.labelpitch=Pitch:
+im.musicapp.errortoast=Missing Entry
 
 //Minedroid Translation Project - Address Book App
+im.contacts.apptitle=Address Book
+im.contacts.new=New Contact
+im.contacts.edit=Edit Contact
+im.contacts.buttonadd=Add
+im.contacts.filter=Filter...
+im.contacts.callinprogresstoast=Call in Progress
+im.contacts.deletetoast=Press again to delete.
+im.contacts.reset=Reset
+im.contacts.save=Save
+im.contacts.displayname=Display Name:
+im.contacts.phone=Phone Number:
+im.contacts.address=Address:
+im.contacts.usernametoast=Username is required
+im.contacts.phonetoast=Phone Number is required
+im.contacts.invalidtoast=Invalid Phone Number
+im.contacts.saved=Saved Successfully
