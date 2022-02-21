@@ -28,7 +28,7 @@ public class TabImmersibrook extends CreativeTabs
         }
         else
         {
-            return new ItemStack(ModItems.IMMERSIBROOK_ICON);
+            return new ItemStack(ModItems.IB_ICON_NEW);
         }
     }
     

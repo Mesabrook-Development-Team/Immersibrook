@@ -19,9 +19,6 @@ import java.util.UUID;
 @SuppressWarnings("deprecated")
 public class EntityMesabrookM extends EntityThrowable
 {
-    public static final UUID RZ_UUID = Reference.RZ_UUID;
-    public static final UUID CSX_UUID = Reference.CSX_UUID;
-    public static final UUID TD_UUID = Reference.TD_UUID;
     private int damage;
 
     public EntityMesabrookM(World worldIn)
@@ -68,10 +65,9 @@ public class EntityMesabrookM extends EntityThrowable
                 if(result.entityHit instanceof EntityPlayerMP)
                 {
                     GameProfile profile = ((EntityPlayerMP) result.entityHit).getGameProfile();
-                    if(profile != null && RZ_UUID.equals(profile.getId()) || CSX_UUID.equals(profile.getId()) || TD_UUID.equals(profile.getId()))
+                    if(profile != null && Reference.RZ_UUID.equals(profile.getId()) || Reference.CSX_UUID.equals(profile.getId()) || Reference.TD_UUID.equals(profile.getId()) || Reference.SLOOSE_UUID.equals(profile.getId()) || Reference.ZOE_UUID.equals(profile.getId()))
                     {
                         hit = true;
-                        damage = Integer.MAX_VALUE;
                         EntityLightningBolt lightningBolt = new EntityLightningBolt(world, getThrower().posX, getThrower().posY, getThrower().posZ, true);
                         world.addWeatherEffect(lightningBolt);
                         world.spawnEntity(lightningBolt);
@@ -81,7 +77,7 @@ public class EntityMesabrookM extends EntityThrowable
 
             if(!hit)
             {
-                result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), 0.5f);
+                result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), 0.1f);
             }
 
         }
