@@ -10,3 +10,4 @@ Changes:
 
 Fixes
 -[Minedroid] Sound Player app now works on Multiplayer.
+-[IB] Being able to eat Immersibrook food items when in Creative Mode has been patched.
