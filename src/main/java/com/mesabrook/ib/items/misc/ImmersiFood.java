@@ -87,8 +87,15 @@ public class ImmersiFood extends ItemFood implements IHasModel
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
     {
-        playerIn.setActiveHand(handIn);
-        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
+        if(!playerIn.isCreative() && playerIn.getFoodStats().needFood())
+        {
+            playerIn.setActiveHand(handIn);
+            return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
+        }
+        else
+        {
+            return new ActionResult<ItemStack>(EnumActionResult.FAIL, playerIn.getHeldItem(handIn));
+        }
     }
 
     @Override

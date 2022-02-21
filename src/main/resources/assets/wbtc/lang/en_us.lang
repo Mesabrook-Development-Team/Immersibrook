@@ -65,6 +65,7 @@ advancements.imb.stampbook.desc=Open a Stamp Book
 //Config
 wbtc.config.title=Configuration File for Immersibrook
 entity.ItemFrame.name=Item Frame
+entity.Villager.nitwit=Being a Fucking Dumbass All Day
 
 //Welcome message
 im.welcome=Welcome to Mesabrook,
