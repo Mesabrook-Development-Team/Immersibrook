@@ -47,7 +47,11 @@ public class OutgoingCallResponsePacket implements IMessage {
 			}
 			else if (message.state == States.noReception)
 			{
-				
+				TelecomClientHandlers.onCallNoReception(message.fromNumber, message.toNumber);
+			}
+			else if (message.state == States.destinationBusy)
+			{
+				TelecomClientHandlers.onCallBusy(message.fromNumber, message.toNumber);
 			}
 		}
 	}
@@ -56,6 +60,7 @@ public class OutgoingCallResponsePacket implements IMessage {
 	{
 		success,
 		noSuchNumber,
-		noReception
+		noReception,
+		destinationBusy
 	}
 }

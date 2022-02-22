@@ -52,6 +52,19 @@ public class InitiateCallPacket implements IMessage {
 			}
 			
 			CallManager manager = CallManager.instance();
+			
+			CallManager.Call destinationExistingCall = manager.getCall(message.toNumber);
+			if (destinationExistingCall != null)
+			{
+				OutgoingCallResponsePacket response = new OutgoingCallResponsePacket();
+				response.fromNumber = message.fromNumber;
+				response.toNumber = message.toNumber;
+				response.state = States.destinationBusy;
+				PacketHandler.INSTANCE.sendTo(response, player);
+				
+				return;
+			}
+			
 			CallManager.Call currentCall = manager.getCall(message.fromNumber);
 			CallManager.Call newCall = manager.new Call(message.fromNumber, message.toNumber);
 			

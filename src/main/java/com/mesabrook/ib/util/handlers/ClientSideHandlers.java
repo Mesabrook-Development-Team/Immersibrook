@@ -286,6 +286,26 @@ public class ClientSideHandlers
 			}
 		}
 		
+		public static void onCallBusy(String fromNumber, String toNumber)
+		{
+			SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
+			ISound busy = PositionedSoundRecord.getMasterRecord(SoundInit.BUSY, 1F);
+			handler.playSound(busy);
+			
+			if (Minecraft.getMinecraft().currentScreen instanceof GuiPhoneCalling)
+			{
+				GuiPhoneCalling calling = (GuiPhoneCalling)Minecraft.getMinecraft().currentScreen;
+				if (!calling.getCurrentPhoneNumber().equals(fromNumber))
+				{
+					return;
+				}
+				
+				GuiCallEnd end = new GuiCallEnd(calling.getPhoneStack(), calling.getHand(), toNumber);
+				end.setMessage("Recipient Unavailable");
+				Minecraft.getMinecraft().displayGuiScreen(end);
+			}
+		}
+		
 		public static HashMap<Integer, Consumer<PhoneQueryResponsePacket>> phoneQueryResponseHandlers = new HashMap<>();
 		public static void onPhoneQueryResponsePacket(PhoneQueryResponsePacket packet)
 		{
