@@ -11,6 +11,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextComponentTranslation;
 
 public class GuiSettingsAboutPhone extends GuiPhoneBase {
 
@@ -44,16 +45,16 @@ public class GuiSettingsAboutPhone extends GuiPhoneBase {
 		
 		fontRenderer.drawString("About Phone", INNER_X + 15, INNER_Y + 20, 0xFFFFFF);
 
-		drawCenteredString(fontRenderer, "Minedroid " + Reference.MINEDROID_VERSION, INNER_X + 80, INNER_Y + 80, 3395327);
+		drawCenteredString(fontRenderer, new TextComponentTranslation("im.minedroid").getFormattedText() + " " + Reference.MINEDROID_VERSION, INNER_X + 80, INNER_Y + 80, 3395327);
 		
-		fontRenderer.drawString("Phone Information", INNER_X + 3, INNER_Y + 106, 0xFFFFFF);
+		fontRenderer.drawString(new TextComponentTranslation("im.settings.phoneinfo").getFormattedText(), INNER_X + 3, INNER_Y + 106, 0xFFFFFF);
 
-		fontRenderer.drawString("Phone Number:", INNER_X + 3, INNER_Y + 118, 0x5179bd);
-		int stringWidth = fontRenderer.getStringWidth("Phone Number:");
+		fontRenderer.drawString(new TextComponentTranslation("im.contacts.phone").getFormattedText(), INNER_X + 3, INNER_Y + 118, 0x5179bd);
+		int stringWidth = fontRenderer.getStringWidth(new TextComponentTranslation("im.contacts.phone").getFormattedText());
 		fontRenderer.drawString(getFormattedPhoneNumber(phoneStackData.getPhoneNumberString()), INNER_X + 3 + stringWidth + 3, INNER_Y + 118, 0xFFFFFF);
 
-		fontRenderer.drawString("Security Strategy:", INNER_X + 3, INNER_Y + 131, 0x5179bd);
-		int stratStringWidth = fontRenderer.getStringWidth("Security Strategy:");
+		fontRenderer.drawString(new TextComponentTranslation("im.settings.strategy").getFormattedText(), INNER_X + 3, INNER_Y + 131, 0x5179bd);
+		int stratStringWidth = fontRenderer.getStringWidth(new TextComponentTranslation("im.settings.strategy").getFormattedText());
 		fontRenderer.drawString(phoneStackData.getSecurityStrategy().toString(), INNER_X + 3 + stratStringWidth + 3, INNER_Y + 131, 0xFFFFFF);
 
 		GlStateManager.color(1, 1, 1);
@@ -72,7 +73,7 @@ public class GuiSettingsAboutPhone extends GuiPhoneBase {
 		{
 			if (!factoryResetPressed)
 			{
-				Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Press again to confirm"));
+				Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.settings.confirm").getFormattedText()));
 				factoryResetPressed = true;
 				return;
 			}
@@ -82,7 +83,7 @@ public class GuiSettingsAboutPhone extends GuiPhoneBase {
 			reset.phoneActivateGuiClassName = GuiSettingsAboutPhone.class.getName();
 			PacketHandler.INSTANCE.sendToServer(reset);
 			
-			Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Phone Reset"));
+			Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.settings.resetdone").getFormattedText()));
 		}
 	}
 }

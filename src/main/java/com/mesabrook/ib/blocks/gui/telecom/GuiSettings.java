@@ -8,6 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextComponentTranslation;
 
 public class GuiSettings extends GuiPhoneBase {
 
@@ -34,7 +35,7 @@ public class GuiSettings extends GuiPhoneBase {
 	protected void doDraw(int mouseX, int mouseY, float partialticks) {
 		super.doDraw(mouseX, mouseY, partialticks);
 		
-		fontRenderer.drawString("Settings", INNER_X + 3, INNER_Y + 20, 0xFFFFFF);
+		fontRenderer.drawString(new TextComponentTranslation("im.settings.appname").getFormattedText(), INNER_X + 3, INNER_Y + 20, 0xFFFFFF);
 	}
 	
 	@Override

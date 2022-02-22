@@ -7,6 +7,7 @@ import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.client.config.GuiCheckBox;
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData.SecurityStrategies;
 import com.mesabrook.ib.net.telecom.SecurityStrategySelectedPacket;
@@ -43,16 +44,16 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 		boolean usePin = phoneStackData.getSecurityStrategy() == SecurityStrategies.PIN;
 		boolean useUUID = phoneStackData.getSecurityStrategy() == SecurityStrategies.UUID;
 		
-		pin = new GuiCheckBox(0, INNER_X + 10, INNER_Y + 52, "PIN", usePin);
-		playerID = new GuiCheckBox(1, INNER_X + 10, INNER_Y + 69, "Player UUID", useUUID);
-		reset = new LabelButton(2, INNER_X + (INNER_TEX_WIDTH / 4), INNER_Y + INNER_TEX_HEIGHT - 33, "Reset", 0x0000FF);
-		apply = new LabelButton(3, INNER_X + INNER_TEX_WIDTH - (INNER_TEX_WIDTH / 4), INNER_Y + INNER_TEX_HEIGHT - 33, "Apply", 0x0000FF);
+		pin = new GuiCheckBox(0, INNER_X + 10, INNER_Y + 52, new TextComponentTranslation("im.settings.pin").getFormattedText(), usePin);
+		playerID = new GuiCheckBox(1, INNER_X + 10, INNER_Y + 69, new TextComponentTranslation("im.settings.uuid").getFormattedText(), useUUID);
+		reset = new LabelButton(2, INNER_X + (INNER_TEX_WIDTH / 4), INNER_Y + INNER_TEX_HEIGHT - 33, new TextComponentTranslation("im.settings.reset").getFormattedText(), 0x0000FF);
+		apply = new LabelButton(3, INNER_X + INNER_TEX_WIDTH - (INNER_TEX_WIDTH / 4), INNER_Y + INNER_TEX_HEIGHT - 33, new TextComponentTranslation("im.settings.apply").getFormattedText(), 0x0000FF);
 		apply.x = apply.x - apply.width;
 		back = new LabelButton(4, INNER_X + 3, INNER_Y + 20, "<", 0xFFFFFF);
-		changePIN = new LabelButton(5, 0, pin.y + 2, "Change PIN", 0x0000FF);
+		changePIN = new LabelButton(5, 0, pin.y + 2, new TextComponentTranslation("im.settings.changepin").getFormattedText(), 0x0000FF);
 		changePIN.x = INNER_X + INNER_TEX_WIDTH - changePIN.width - 5;
 		changePIN.visible = usePin;
-		changeUUID = new LabelButton(6, 0, playerID.y + 2, "Change UUID", 0x0000FF);
+		changeUUID = new LabelButton(6, 0, playerID.y + 2, new TextComponentTranslation("im.settings.changeuuid").getFormattedText(), 0x0000FF);
 		changeUUID.x = INNER_X + INNER_TEX_WIDTH - changeUUID.width - 5;
 		changeUUID.visible = useUUID;
 		
@@ -74,8 +75,8 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 	protected void doDraw(int mouseX, int mouseY, float partialticks) {
 		super.doDraw(mouseX, mouseY, partialticks);
 		
-		fontRenderer.drawString("Lock Screen Settings", INNER_X + 15, INNER_Y + 20, 0xFFFFFF);
-		fontRenderer.drawString("Security Strategy:", INNER_X + 3, INNER_Y + 36, 0x4444FF);
+		fontRenderer.drawString(new TextComponentTranslation("im.settings.securitytitle").getFormattedText(), INNER_X + 15, INNER_Y + 20, 0xFFFFFF);
+		fontRenderer.drawString(new TextComponentTranslation("im.settings.strategy").getFormattedText(), INNER_X + 3, INNER_Y + 36, 0x4444FF);
 		
 		pinValue.drawTextBox();
 		uuidValue.drawTextBox();
@@ -142,7 +143,7 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 			{
 				if (pinValue.getMaskedText().isEmpty())
 				{
-					Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "PIN Required!", 0xFF0000));
+					Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, new TextComponentTranslation("im.settings.pinerror").getFormattedText(), 0xFF0000));
 					return;
 				}
 				
@@ -154,7 +155,7 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 				if (uuidValue.getText().isEmpty())
 				{
 					Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Player UUID Required!", 0xFF0000));
-					Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "Player UUID Required!", 0xFF0000));
+					Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, new TextComponentTranslation("im.settings.uuiderror").getFormattedText(), 0xFF0000));
 					return;
 				}
 				
@@ -165,7 +166,7 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 				}
 				catch(IllegalArgumentException ex)
 				{
-					Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "Invalid Player UUID. Please try again.", 0xFF0000));
+					Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, new TextComponentTranslation("im.settings.tryagain").getFormattedText(), 0xFF0000));
 					return;
 				}
 				
@@ -174,7 +175,7 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 			
 			PacketHandler.INSTANCE.sendToServer(packet);
 
-			Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "Settings Applied", 0xFFFFFF));
+			Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, new TextComponentTranslation("im.settings.saved").getFormattedText(), 0xFFFFFF));
 
 			Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsLockScreen(phoneStack, hand));
 		}

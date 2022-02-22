@@ -16,6 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -71,8 +72,8 @@ public class GuiSettingsPersonalize extends GuiPhoneBase {
 		ringPrev = new LabelButton(11, INNER_X + 50, INNER_Y + 174, "<", 0xFFFFFF);
 		ringNext = new LabelButton(12, INNER_X + 70, INNER_Y + 174, ">", 0xFFFFFF);
 		
-		reset = new LabelButton(2, INNER_X + (INNER_TEX_WIDTH / 4), INNER_Y + INNER_TEX_HEIGHT - 33, "Reset", 0x0000FF);
-		apply = new LabelButton(3, INNER_X + INNER_TEX_WIDTH - (INNER_TEX_WIDTH / 4), INNER_Y + INNER_TEX_HEIGHT - 33, "Apply", 0x0000FF);
+		reset = new LabelButton(2, INNER_X + (INNER_TEX_WIDTH / 4), INNER_Y + INNER_TEX_HEIGHT - 33, new TextComponentTranslation("im.settings.reset").getFormattedText(), 0x0000FF);
+		apply = new LabelButton(3, INNER_X + INNER_TEX_WIDTH - (INNER_TEX_WIDTH / 4), INNER_Y + INNER_TEX_HEIGHT - 33, new TextComponentTranslation("im.settings.apply").getFormattedText(), 0x0000FF);
 		apply.x = apply.x - apply.width;
 		
 		buttonList.addAll(ImmutableList.<GuiButton>builder()
@@ -94,21 +95,21 @@ public class GuiSettingsPersonalize extends GuiPhoneBase {
 	protected void doDraw(int mouseX, int mouseY, float partialticks) {
 		super.doDraw(mouseX, mouseY, partialticks);
 		
-		fontRenderer.drawString("Personalize", INNER_X + 15, INNER_Y + 20, 0xFFFFFF);
+		fontRenderer.drawString(new TextComponentTranslation("im.settings.personalize").getFormattedText(), INNER_X + 15, INNER_Y + 20, 0xFFFFFF);
 		
-		fontRenderer.drawString("Lock Screen:", INNER_X + 3, INNER_Y + 36, 0x4444FF);
+		fontRenderer.drawString(new TextComponentTranslation("im.settings.lockscreen").getFormattedText(), INNER_X + 3, INNER_Y + 36, 0x4444FF);
 		int fontWidth = fontRenderer.getStringWidth(String.valueOf(currentLock));
 		fontRenderer.drawString(String.valueOf(currentLock), INNER_X + (INNER_TEX_WIDTH / 2) + 20 - (fontWidth / 2), INNER_Y + 87, 0xFFFFFF);
 		
-		fontRenderer.drawString("Home Screen:", INNER_X + 3, INNER_Y + 99, 0x4444FF);
+		fontRenderer.drawString(new TextComponentTranslation("im.settings.homescreen").getFormattedText(), INNER_X + 3, INNER_Y + 99, 0x4444FF);
 		fontWidth = fontRenderer.getStringWidth(String.valueOf(currentHome));
 		fontRenderer.drawString(String.valueOf(currentHome), INNER_X + (INNER_TEX_WIDTH / 2) + 20 - (fontWidth / 2), INNER_Y + 150, 0xFFFFFF);
 		
-		fontRenderer.drawString("Chat Notification:", INNER_X + 3, INNER_Y + 162, 0x4444FF);
+		fontRenderer.drawString(new TextComponentTranslation("im.settings.chat").getFormattedText(), INNER_X + 3, INNER_Y + 162, 0x4444FF);
 		fontWidth = fontRenderer.getStringWidth(String.valueOf(currentChatTone));
 		fontRenderer.drawString(String.valueOf(currentChatTone), INNER_X + 103 - (fontWidth / 2), INNER_Y + 162, 0xFFFFFF);
 		
-		fontRenderer.drawString("Ringtone:", INNER_X + 3, INNER_Y + 174, 0x4444FF);
+		fontRenderer.drawString(new TextComponentTranslation("im.settings.ringtone").getFormattedText(), INNER_X + 3, INNER_Y + 174, 0x4444FF);
 		fontWidth = fontRenderer.getStringWidth(String.valueOf(currentRingTone));
 		fontRenderer.drawString(String.valueOf(currentRingTone), INNER_X + 63 - (fontWidth / 2), INNER_Y + 174, 0xFFFFFF);
 		
@@ -245,7 +246,7 @@ public class GuiSettingsPersonalize extends GuiPhoneBase {
 			packet.guiClassName = GuiSettingsPersonalize.class.getName();
 			PacketHandler.INSTANCE.sendToServer(packet);
 			
-			Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Settings Applied", 0xFFFFFF));
+			Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.settings.saved").getFormattedText(), 0xFFFFFF));
 		}
 		
 		if (button == reset)
