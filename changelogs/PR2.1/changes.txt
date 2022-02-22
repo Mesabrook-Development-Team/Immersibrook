@@ -7,7 +7,9 @@ Changes:
 -[Minedroid] New wallpapers courtesy of CSX8600 and RavenholmZombie's Mesabrook Wallpaper Pack.
 -[Minedroid] Player faces are now rendered in isometric 3D in the Address Book and Phone apps.
 -[Minedroid] Sound Player app now accepts Volume and Pitch modifiers.
+-[Minedroid] Phones now check if the destination caller is in use and will return a busy signal.
 
 Fixes
 -[Minedroid] Sound Player app now works on Multiplayer.
+-[Minedroid] Phones will no longer break if someone calls it while it's already in a call.
 -[IB] Being able to eat Immersibrook food items when in Creative Mode has been patched.
