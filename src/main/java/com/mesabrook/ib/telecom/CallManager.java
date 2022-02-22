@@ -217,10 +217,13 @@ public class CallManager {
 					OutgoingCallResponsePacket outgoingPacket = new OutgoingCallResponsePacket();
 					outgoingPacket.fromNumber = getOriginPhone();
 					outgoingPacket.toNumber = getDestPhones().get(0);
-					if (!phoneNumbers.doesNumberExist(destNumber) && originPhone != null) // Notify user phone does not exist, only if user is holding phone
+					if (!phoneNumbers.doesNumberExist(destNumber))
 					{
-						outgoingPacket.state = States.noSuchNumber;
-						PacketHandler.INSTANCE.sendTo(outgoingPacket, originPhone.getFirst());
+						if (originPhone != null) // Notify user phone does not exist, only if user is holding phone
+						{
+							outgoingPacket.state = States.noSuchNumber;
+							PacketHandler.INSTANCE.sendTo(outgoingPacket, originPhone.getFirst());
+						}
 						
 						skipDisconnectNotification = true;
 						
@@ -231,7 +234,8 @@ public class CallManager {
 						dequeueCall(getID());
 						return;
 					}
-					else if (originPhone != null) // Notify call is going through, only if user is holding phone
+					
+					if (originPhone != null) // Notify call is going through, only if user is holding phone
 					{	
 						outgoingPacket.state = States.success;
 						PacketHandler.INSTANCE.sendTo(outgoingPacket, originPhone.getFirst());

@@ -131,9 +131,10 @@ public class SoundInit
 	public static final SoundEvent STARTCALL;
 	public static final SoundEvent ENDCALL;
 	public static final SoundEvent PHONE_UNLOCK;
-	public static final SoundEvent RING_1;
+	public static final SoundEvent BUSY;
 
 	// Ringtones
+	public static final SoundEvent RING_1;
 	public static final SoundEvent RING_2;
 	public static final SoundEvent RING_3;
 	public static final SoundEvent RING_4;
@@ -278,9 +279,10 @@ public class SoundInit
 		ENDCALL = addSoundsToRegistry("endcall");
 		PHONE_ACTIVATE = addSoundsToRegistry("welcome");
 		PHONE_UNLOCK = addSoundsToRegistry("phone_unlock");
-		RING_1 = addSoundsToRegistry("ring_1");
+		BUSY = addSoundsToRegistry("busy");
 
 		// Ringtones
+		RING_1 = addSoundsToRegistry("ring_1");
 		RING_2 = addSoundsToRegistry("ring_2");
 		RING_3 = addSoundsToRegistry("ring_3");
 		RING_4 = addSoundsToRegistry("ring_4");
@@ -432,7 +434,7 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.OK1);
 				event.getRegistry().registerAll(SoundInit.OK2);
 				event.getRegistry().registerAll(SoundInit.DEATH);
-				event.getRegistry().registerAll(SoundInit.RING_1);
+				event.getRegistry().register(SoundInit.RING_1);
 				event.getRegistry().register(SoundInit.RING_2);
 				event.getRegistry().register(SoundInit.RING_3);
 				event.getRegistry().register(SoundInit.RING_4);
@@ -450,6 +452,7 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.MANHOLE_BREAK);
 				event.getRegistry().register(SoundInit.MANHOLE_PLACE);
 				event.getRegistry().register(SoundInit.MANHOLE_STEP);
+				event.getRegistry().register(SoundInit.BUSY);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");
