@@ -42,6 +42,7 @@ import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SoundRandomizer;
 import com.mesabrook.ib.util.TooltipRandomizer;
 import com.mesabrook.ib.util.config.ModConfig;
+import com.mesabrook.ib.util.saveData.SpecialDropTrackingData;
 
 import javax.xml.soap.Text;
 import java.time.LocalDate;
@@ -65,6 +66,8 @@ public class PlayerEvents
 
 		if(ModConfig.showWelcome)
 		{
+			SpecialDropTrackingData dropData = SpecialDropTrackingData.getOrCreate(w);
+			
 			TextComponentString user = new TextComponentString(TextFormatting.GOLD + player.getDisplayNameString());
 
 			if(player instanceof EntityPlayer)
@@ -97,7 +100,8 @@ public class PlayerEvents
 					packet.soundName = "jingle";
 					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
 
-					if(holidayItemsInInventoryOnJoin)
+					
+					if(holidayItemsInInventoryOnJoin && dropData.canGiveChristmasPresent(player.getUniqueID()))
 					{
 						player.addItemStackToInventory(ItemRandomizer.presentItem);
 					}
@@ -118,7 +122,7 @@ public class PlayerEvents
 				if(LocalDate.now().getMonthValue() == Reference.RZ_MONTH && LocalDate.now().getDayOfMonth() == Reference.RZ_DAY)
 				{
 					player.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Happy Birthday, RavenholmZombie!"));
-					if(player.getGameProfile().getId().equals(Reference.RZ_UUID))
+					if(player.getGameProfile().getId().equals(Reference.RZ_UUID) && dropData.canGiveCake(Reference.RZ_UUID))
 					{
 						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
 					}
@@ -126,7 +130,7 @@ public class PlayerEvents
 				if(LocalDate.now().getMonthValue() == Reference.TD_MONTH && LocalDate.now().getDayOfMonth() == Reference.TD_DAY)
 				{
 					player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Happy Birthday, TrainDevil!"));
-					if(player.getGameProfile().getId().equals(Reference.TD_UUID))
+					if(player.getGameProfile().getId().equals(Reference.TD_UUID) && dropData.canGiveCake(Reference.TD_UUID))
 					{
 						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
 					}
@@ -134,7 +138,7 @@ public class PlayerEvents
 				if(LocalDate.now().getMonthValue() == Reference.TLZ_MONTH && LocalDate.now().getDayOfMonth() == Reference.TLZ_DAY)
 				{
 					player.sendMessage(new TextComponentString(TextFormatting.BLUE + "Happy Birthday, timelady_zoe!"));
-					if(player.getGameProfile().getId().equals(Reference.ZOE_UUID))
+					if(player.getGameProfile().getId().equals(Reference.ZOE_UUID) && dropData.canGiveCake(Reference.ZOE_UUID))
 					{
 						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
 					}
@@ -142,7 +146,7 @@ public class PlayerEvents
 				if(LocalDate.now().getMonthValue() == Reference.CSX_MONTH && LocalDate.now().getDayOfMonth() == Reference.CSX_DAY)
 				{
 					player.sendMessage(new TextComponentString(TextFormatting.AQUA + "Happy Birthday, CSX8600!"));
-					if(player.getGameProfile().getId().equals(Reference.CSX_UUID))
+					if(player.getGameProfile().getId().equals(Reference.CSX_UUID) && dropData.canGiveCake(Reference.CSX_UUID))
 					{
 						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
 					}
@@ -150,7 +154,7 @@ public class PlayerEvents
 				if(LocalDate.now().getMonthValue() == Reference.MD_MONTH && LocalDate.now().getDayOfMonth() == Reference.MD_DAY)
 				{
 					player.sendMessage(new TextComponentString(TextFormatting.RED + "Happy Birthday, MineDouble!"));
-					if(player.getGameProfile().getId().equals(Reference.MD_UUID))
+					if(player.getGameProfile().getId().equals(Reference.MD_UUID) && dropData.canGiveCake(Reference.MD_UUID))
 					{
 						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
 					}
@@ -158,7 +162,7 @@ public class PlayerEvents
 				if(LocalDate.now().getMonthValue() == Reference.SVV_MONTH && LocalDate.now().getDayOfMonth() == Reference.SVV_DAY)
 				{
 					player.sendMessage(new TextComponentString(TextFormatting.GOLD + "Happy Birthday, StarVicVader!"));
-					if(player.getGameProfile().getId().equals(Reference.SVV_UUID))
+					if(player.getGameProfile().getId().equals(Reference.SVV_UUID) && dropData.canGiveCake(Reference.SVV_UUID))
 					{
 						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
 					}
@@ -171,7 +175,7 @@ public class PlayerEvents
 				{
 					player.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Happy Birthday to Boo & Bubbles, RavenholmZombie's cats!"));
 					player.sendMessage(new TextComponentString(TextFormatting.GOLD + "Happy Halloween!"));
-					if(holidayItemsInInventoryOnJoin)
+					if(holidayItemsInInventoryOnJoin && dropData.canGiveHalloweenPresent(player.getUniqueID()))
 					{
 						player.addItemStackToInventory(new ItemStack(ModItems.LOLIPOP_RED, 1));
 					}
