@@ -62,16 +62,11 @@ public class ItemPhone extends Item implements IHasModel {
 		if(stackData.getPhoneNumberString() != null)
 		{
 			phoneNumber = GuiPhoneBase.getFormattedPhoneNumber(stackData.getPhoneNumberString());
-			tooltip.add(TextFormatting.BLUE + new TextComponentTranslation("im.tooltip.phone").getFormattedText() + " " + TextFormatting.GREEN + phoneNumber);
+			tooltip.add(TextFormatting.GREEN + phoneNumber);
 		}
 		else
 		{
 			tooltip.add(TextFormatting.RED + new TextComponentTranslation("im.tooltip.activate").getFormattedText());
-		}
-
-		if(this == ModItems.PHONE_MESABROOK)
-		{
-			tooltip.add(TextFormatting.AQUA + new TextComponentTranslation("im.tooltip.phone.gov").getFormattedText());
 		}
 	}
 	
