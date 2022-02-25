@@ -1384,6 +1384,8 @@ item.almond_water.name=Almond Water
 item.shittles.name=Shittles
 item.hfcs.name=High-Fructose Corn Syrup
 item.pilk.name=Pilk
+item.player_flesh.name=Player Flesh
+item.player_flesh_cooked.name=Player Steak
 
 //Dialog
 im.sugwarn=You wonder if you should risk taking another bite...

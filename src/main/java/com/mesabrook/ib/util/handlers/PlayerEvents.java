@@ -253,6 +253,8 @@ public class PlayerEvents
 					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(e.dimension, e.posX, e.posY, e.posZ, Integer.MAX_VALUE));
 				}
 
+				w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(ModItems.PLAYER_MEAT, 5)));
+
 				if(specialDrops)
 				{
 					if(profile != null && Reference.RZ_UUID.equals(profile.getId()))

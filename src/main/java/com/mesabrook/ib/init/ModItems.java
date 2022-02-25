@@ -269,6 +269,9 @@ public class ModItems
 	public static final Item PEPPERMINT_BARK = new ImmersiFood("peppermint_bark", 64, 0, 3, 2F, false);
 	public static final Item ALMOND_WATER = new ImmersiFood("almond_water", 1, 0, 4, 3F, false);
 	public static final Item PILK = new ImmersiFood("pilk", 1, 0, 3, 1F, false);
+	public static final Item PLAYER_MEAT = new ImmersiFood("player_flesh", 64, 0, 3, 2.1F, true);
+	public static final Item PLAYER_MEAT_COOKED = new ImmersiFood("player_flesh_cooked", 64, 0, 4, 3.1F, true);
+
 
 	// Decorative Wearables
 	public static final Item MASK_JASON = new FaceMasks("mask_jason", ArmorMaterialRegistry.MASK_JASON, EntityEquipmentSlot.HEAD);

@@ -93,6 +93,9 @@ public class RecipesHandler
 			// Plastiglass Sheet
 			GameRegistry.addSmelting(ModItems.PLASTIC_PLATE, new ItemStack(ModItems.PLASTIGLASS_SHEET, 1), 69F);
 
+			// Player Steak
+			GameRegistry.addSmelting(ModItems.PLAYER_MEAT, new ItemStack(ModItems.PLAYER_MEAT_COOKED, 1), 20F);
+
 			if(ModConfig.smeltingLeatherForASaddle)
 			{
 				GameRegistry.addSmelting(Items.LEATHER, new ItemStack(Items.SADDLE, 1), 24F);
