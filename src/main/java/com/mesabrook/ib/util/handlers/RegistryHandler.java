@@ -148,5 +148,9 @@ public class RegistryHandler
 		{
 			rules.addGameRule("holidayItemsInInventoryOnJoin", "true", GameRules.ValueType.BOOLEAN_VALUE);
 		}
+		if(!rules.hasRule("forbidCannibalism"))
+		{
+			rules.addGameRule("forbidCannibalism", "true", GameRules.ValueType.BOOLEAN_VALUE);
+		}
 	}
 }

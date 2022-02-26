@@ -239,6 +239,7 @@ public class PlayerEvents
 		Entity e = event.getEntity();
 		World w = event.getEntity().world;
 		boolean specialDrops = w.getGameRules().getBoolean("specialDrops");
+		boolean forbidCannibalism = w.getGameRules().getBoolean("forbidCannibalism");
 		if(event.getEntityLiving() instanceof EntityPlayer)
 		{
 			if(!w.isRemote)
@@ -253,7 +254,10 @@ public class PlayerEvents
 					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(e.dimension, e.posX, e.posY, e.posZ, Integer.MAX_VALUE));
 				}
 
-				w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(ModItems.PLAYER_MEAT, 5)));
+				if(!forbidCannibalism)
+				{
+					w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(ModItems.PLAYER_MEAT, 5)));
+				}
 
 				if(specialDrops)
 				{

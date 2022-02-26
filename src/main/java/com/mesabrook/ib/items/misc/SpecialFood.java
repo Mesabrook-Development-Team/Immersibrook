@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
 import java.lang.reflect.Field;
 import java.util.List;
 
-public class DamageableFood extends Item implements IHasModel
+public class SpecialFood extends Item implements IHasModel
 {
     private final float saturation;
     private final int amount;
@@ -34,7 +34,7 @@ public class DamageableFood extends Item implements IHasModel
     private final TextComponentTranslation cheeseEat = new TextComponentTranslation("im.truss.eat");
     private static Field setSaturationField = null;
 
-    public DamageableFood(String name, int amount, float saturation, boolean canFeedDoggos)
+    public SpecialFood(String name, int amount, float saturation, boolean canFeedDoggos)
     {
         setRegistryName(name);
         setUnlocalizedName(name);

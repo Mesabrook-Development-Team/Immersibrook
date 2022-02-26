@@ -27,7 +27,7 @@ import com.mesabrook.ib.util.handlers.PacketHandler;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ImmersiFood extends ItemFood implements IHasModel
+public class ItemIBFood extends ItemFood implements IHasModel
 {
     private final TextComponentTranslation burp = new TextComponentTranslation("im.sparkling");
     private final TextComponentTranslation milk = new TextComponentTranslation("im.truffle.milk");
@@ -38,7 +38,7 @@ public class ImmersiFood extends ItemFood implements IHasModel
     private final TextComponentTranslation bb = new TextComponentTranslation("im.truffle.bb");
     private final TextComponentTranslation grape = new TextComponentTranslation("im.truffle.grape");
 
-    public ImmersiFood(String name, int stackSize, int damage, int amount, float saturation, boolean canFeedDoggos)
+    public ItemIBFood(String name, int stackSize, int damage, int amount, float saturation, boolean canFeedDoggos)
     {
         super(amount, saturation, canFeedDoggos);
         setRegistryName(name);
@@ -87,15 +87,49 @@ public class ImmersiFood extends ItemFood implements IHasModel
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
     {
-        if(!playerIn.isCreative() && playerIn.getFoodStats().needFood())
+        ItemStack heldItem = playerIn.getHeldItem(handIn);
+        boolean hasNoMorality = worldIn.getGameRules().getBoolean("forbidCannibalism");
+
+        if(!playerIn.isCreative() && playerIn.getFoodStats().needFood() && heldItem.getItem() != ModItems.PLAYER_MEAT && heldItem.getItem() != ModItems.PLAYER_MEAT_COOKED)
         {
             playerIn.setActiveHand(handIn);
             return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
         }
-        else
+
+        if(!playerIn.isCreative() && heldItem.getItem() == ModItems.PLAYER_MEAT && playerIn.getFoodStats().needFood())
         {
-            return new ActionResult<ItemStack>(EnumActionResult.FAIL, playerIn.getHeldItem(handIn));
+            if(!worldIn.isRemote)
+            {
+                if(hasNoMorality)
+                {
+                    playerIn.sendMessage(new TextComponentString(TextFormatting.RED + new TextComponentTranslation("im.morality").getFormattedText()));
+                    return new ActionResult<ItemStack>(EnumActionResult.FAIL, playerIn.getHeldItem(handIn));
+                }
+                else
+                {
+                    playerIn.setActiveHand(handIn);
+                    return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
+                }
+            }
         }
+        else if(heldItem.getItem() == ModItems.PLAYER_MEAT_COOKED && !playerIn.isCreative() && playerIn.getFoodStats().needFood())
+        {
+            if(!worldIn.isRemote)
+            {
+                if(hasNoMorality)
+                {
+                    playerIn.sendMessage(new TextComponentString(TextFormatting.RED + new TextComponentTranslation("im.morality").getFormattedText()));
+                    return new ActionResult<ItemStack>(EnumActionResult.FAIL, heldItem);
+                }
+                else
+                {
+                    playerIn.setActiveHand(handIn);
+                    return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
+                }
+            }
+        }
+
+        return new ActionResult<ItemStack>(EnumActionResult.FAIL, playerIn.getHeldItem(handIn));
     }
 
     @Override
@@ -120,6 +154,21 @@ public class ImmersiFood extends ItemFood implements IHasModel
                     packet.soundName = "burp";
                     PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
                     player.sendStatusMessage(new TextComponentString(burp.getFormattedText()), true);
+                }
+            }
+        }
+
+        if(stack.getItem() == ModItems.PLAYER_MEAT || stack.getItem() == ModItems.PLAYER_MEAT_COOKED)
+        {
+            if(!player.isCreative())
+            {
+                stack.damageItem(1, player);
+                if(!worldIn.isRemote)
+                {
+                    PlaySoundPacket packet = new PlaySoundPacket();
+                    packet.pos = player.getPosition();
+                    packet.soundName = "waterphone";
+                    PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
                 }
             }
         }

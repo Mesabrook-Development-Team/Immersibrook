@@ -1424,6 +1424,7 @@ im.firecloth=A flame-resistant material.
 im.tooltip.peppermintbark=A deliciously festive and minty combination of white chocolate and peppermint.
 im.almondwater=A highly coveted source of hydration.
 im.tooltip.hfcs=A corn-based alternative to Sugar.
+im.morality=Eating another player's flesh is wrong. I should bury it instead.
 
 //Food Boxes
 tile.sugar_box.name=Granulated White Sugar
