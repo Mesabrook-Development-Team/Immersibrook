@@ -78,6 +78,7 @@ public class SoundInit
 	public static final SoundEvent OK2;
 	public static final SoundEvent DEATH;
 	public static final SoundEvent WATERPHONE;
+	public static final SoundEvent HEAL;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -229,6 +230,7 @@ public class SoundInit
 		OK2 = addSoundsToRegistry("ok2");
 		DEATH = addSoundsToRegistry("death");
 		WATERPHONE = addSoundsToRegistry("waterphone");
+		HEAL = addSoundsToRegistry("heal");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -456,6 +458,7 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.MANHOLE_STEP);
 				event.getRegistry().register(SoundInit.BUSY);
 				event.getRegistry().register(SoundInit.WATERPHONE);
+				event.getRegistry().register(SoundInit.HEAL);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

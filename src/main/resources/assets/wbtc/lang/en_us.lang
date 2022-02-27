@@ -61,6 +61,9 @@ advancements.imb.phone_use=Digital Revolution
 advancements.imb.phone_use.desc=Use a Smartphone
 advancements.imb.stampbook=Stamp Collector
 advancements.imb.stampbook.desc=Open a Stamp Book
+advancements.imb.aidothers=First Responder
+advancements.imb.aidothers.desc=Use the First Aid Kit to heal another player or mob.
+
 
 //Config
 wbtc.config.title=Configuration File for Immersibrook
@@ -1425,6 +1428,10 @@ im.tooltip.peppermintbark=A deliciously festive and minty combination of white c
 im.almondwater=A highly coveted source of hydration.
 im.tooltip.hfcs=A corn-based alternative to Sugar.
 im.morality=Eating another player's flesh is wrong. I should bury it instead.
+im.selfheal=You healed yourself.
+im.healed=You just healed a
+im.healed.wrong=Living Medicine is not safe for the Undead.
+im.firstaidkit=Use while Sneaking to heal yourself. Can be used to heal other players and non-hostile mobs.
 
 //Food Boxes
 tile.sugar_box.name=Granulated White Sugar

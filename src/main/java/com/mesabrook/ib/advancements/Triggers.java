@@ -23,6 +23,7 @@ public class Triggers
     public static final BasicTrigger WELCOME = register("imb_welcome");
     public static final BasicTrigger OWO = register("imb_owo_click");
     public static final BasicTrigger FIRST_AID = register("imb_first_aid");
+    public static final BasicTrigger FIRST_AID_OTHER_PLAYER = register("imb_heal_other");
     public static final BasicTrigger BONKED = register("imb_bonked");
     public static final BasicTrigger MESARANG = register("imb_mesarang");
     public static final BasicTrigger DOOT = register("imb_doot");
