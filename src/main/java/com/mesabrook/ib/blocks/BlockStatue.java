@@ -199,7 +199,7 @@ public class BlockStatue extends Block implements IHasModel
 			tooltip.add(TextFormatting.LIGHT_PURPLE + "Awarded By: " + TextFormatting.BLUE + "Government of Mesabrook");
 			tooltip.add(TextFormatting.LIGHT_PURPLE + "For: " + TextFormatting.GOLD +  "Being one of Mesabrook's founding members.");
 		}
-		else if(this.getUnlocalizedName().contains("statue_lw"))
+		else if(this.getUnlocalizedName().contains("statue_sloose"))
 		{
 			tooltip.add(TextFormatting.LIGHT_PURPLE + "Awarded By: " + TextFormatting.BLUE + "Government of Mesabrook");
 			tooltip.add(TextFormatting.LIGHT_PURPLE + "For: " + TextFormatting.GOLD +  "Being one of Mesabrook's founding members.");
