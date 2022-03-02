@@ -63,6 +63,9 @@ public class GuiSoundPlayer extends GuiPhoneBase
                 .add(playSound)
                 .add(example)
                 .build());
+
+        volumeText.setText("1.0");
+        pitchText.setText("1.0");
     }
 
     @Override
@@ -83,9 +86,6 @@ public class GuiSoundPlayer extends GuiPhoneBase
         soundIDText.drawTextBox();
         volumeText.drawTextBox();
         pitchText.drawTextBox();
-
-        volumeText.setText("1.0");
-        pitchText.setText("1.0");
 
         GlStateManager.color(1, 1, 1);
     }
