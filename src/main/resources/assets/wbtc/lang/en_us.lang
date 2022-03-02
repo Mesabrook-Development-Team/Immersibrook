@@ -1710,6 +1710,10 @@ im.contacts.invalidtoast=Invalid Phone Number
 im.contacts.saved=Saved Successfully
 
 //Minedroid Translation Project - Settings App
+im.settings.title=Minedroid Settings
+im.settings.securityicon=Security
+im.settings.personalizeicon=Personalize
+im.settings.abouticon=About Phone
 im.settings.appname=Settings
 im.settings.pin=PIN
 im.settings.uuid=Player UUID
