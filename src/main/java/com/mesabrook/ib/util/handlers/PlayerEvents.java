@@ -3,6 +3,7 @@ package com.mesabrook.ib.util.handlers;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
 import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.items.tools.ItemBanHammer;
 import com.mesabrook.ib.items.tools.ItemGavel;
 import com.mesabrook.ib.net.PlaySoundPacket;
 import com.mesabrook.ib.util.ItemRandomizer;
@@ -25,6 +26,7 @@ import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
@@ -329,6 +331,7 @@ public class PlayerEvents
 		World world = evt.getWorld();
 		ItemStack stack = player.getHeldItem(hand);
 
+		// Gavel Bang Sound
 		if(stack.getItem() instanceof ItemGavel)
 		{
 			if(!world.isRemote)
@@ -341,6 +344,25 @@ public class PlayerEvents
 			if(!player.isCreative())
 			{
 				stack.damageItem(1, player);
+			}
+		}
+
+		// Ban Hammer Sound
+		if(stack.getItem() instanceof ItemBanHammer)
+		{
+			NBTTagCompound tag = stack.getTagCompound();
+			if(!world.isRemote)
+			{
+				if(tag != null)
+				{
+					if(tag.hasKey("sndID"))
+					{
+						PlaySoundPacket packet = new PlaySoundPacket();
+						packet.pos = player.getPosition();
+						packet.soundName = tag.getString("sndID");
+						PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+					}
+				}
 			}
 		}
 	}
