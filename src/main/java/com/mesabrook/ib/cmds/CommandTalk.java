@@ -1,5 +1,7 @@
 package com.mesabrook.ib.cmds;
 
+import com.mesabrook.ib.util.saveData.PlayerLoudnessData;
+import com.mesabrook.ib.util.saveData.PlayerLoudnessLevel;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -7,8 +9,6 @@ import net.minecraft.command.WrongUsageException;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.TextComponentTranslation;
-import com.mesabrook.ib.util.saveData.PlayerLoudnessData;
-import com.mesabrook.ib.util.saveData.PlayerLoudnessLevel;
 
 public class CommandTalk extends CommandBase {
 

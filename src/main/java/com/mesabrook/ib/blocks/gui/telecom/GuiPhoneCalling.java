@@ -1,15 +1,14 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import com.mesabrook.ib.items.misc.ItemPhone.NBTData.Contact;
+import com.mesabrook.ib.net.telecom.DisconnectCallPacket;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
-
-import com.mesabrook.ib.items.misc.ItemPhone.NBTData.Contact;
-import com.mesabrook.ib.net.telecom.DisconnectCallPacket;
-import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import java.io.IOException;
 

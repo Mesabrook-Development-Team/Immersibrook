@@ -1,9 +1,9 @@
 package com.mesabrook.ib.client.category;
 
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 
 public class CategoryFood extends AbstractCategory 
 {

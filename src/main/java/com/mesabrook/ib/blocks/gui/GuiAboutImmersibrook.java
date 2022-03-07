@@ -1,11 +1,11 @@
 package com.mesabrook.ib.blocks.gui;
 
+import com.mesabrook.ib.blocks.gui.telecom.ImageButton;
+import com.mesabrook.ib.util.Reference;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
-import com.mesabrook.ib.blocks.gui.telecom.ImageButton;
-import com.mesabrook.ib.util.Reference;
 
 import java.net.URI;
 import java.net.URISyntaxException;

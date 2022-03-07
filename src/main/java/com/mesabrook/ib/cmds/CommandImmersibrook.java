@@ -1,6 +1,10 @@
 package com.mesabrook.ib.cmds;
 
 import com.google.common.collect.Lists;
+import com.mesabrook.ib.net.AboutGUIPacket;
+import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.config.ModConfig;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -13,10 +17,6 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
-import com.mesabrook.ib.net.AboutGUIPacket;
-import com.mesabrook.ib.util.Reference;
-import com.mesabrook.ib.util.config.ModConfig;
-import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;

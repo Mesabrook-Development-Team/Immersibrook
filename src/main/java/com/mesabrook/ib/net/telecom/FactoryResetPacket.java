@@ -3,7 +3,6 @@ package com.mesabrook.ib.net.telecom;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData;
 import com.mesabrook.ib.util.handlers.PacketHandler;
-
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;

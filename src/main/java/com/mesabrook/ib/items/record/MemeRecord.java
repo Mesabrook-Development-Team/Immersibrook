@@ -1,10 +1,10 @@
 package com.mesabrook.ib.items.record;
 
-import net.minecraft.item.ItemRecord;
-import net.minecraft.util.SoundEvent;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.util.IHasModel;
+import net.minecraft.item.ItemRecord;
+import net.minecraft.util.SoundEvent;
 
 public class MemeRecord extends ItemRecord implements IHasModel
 {

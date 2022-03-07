@@ -1,12 +1,21 @@
 package com.mesabrook.ib.util.handlers;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.advancements.Triggers;
+import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.tools.ItemGavel;
+import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.util.ItemRandomizer;
+import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.SoundRandomizer;
+import com.mesabrook.ib.util.TooltipRandomizer;
+import com.mesabrook.ib.util.config.ModConfig;
+import com.mesabrook.ib.util.saveData.SpecialDropTrackingData;
 import com.mojang.authlib.GameProfile;
 import com.pam.harvestcraft.blocks.blocks.BlockPamCake;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCake;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityItem;
@@ -35,18 +44,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.advancements.Triggers;
-import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.net.PlaySoundPacket;
-import com.mesabrook.ib.util.ItemRandomizer;
-import com.mesabrook.ib.util.Reference;
-import com.mesabrook.ib.util.SoundRandomizer;
-import com.mesabrook.ib.util.TooltipRandomizer;
-import com.mesabrook.ib.util.config.ModConfig;
-import com.mesabrook.ib.util.saveData.SpecialDropTrackingData;
 
-import javax.xml.soap.Text;
 import java.time.LocalDate;
 import java.util.Random;
 

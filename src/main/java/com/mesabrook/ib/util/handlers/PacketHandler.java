@@ -1,10 +1,10 @@
 package com.mesabrook.ib.util.handlers;
 
-import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import net.minecraftforge.fml.relauncher.Side;
 import com.mesabrook.ib.net.*;
 import com.mesabrook.ib.net.telecom.*;
 import com.mesabrook.ib.util.Reference;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.relauncher.Side;
 
 public class PacketHandler 
 {

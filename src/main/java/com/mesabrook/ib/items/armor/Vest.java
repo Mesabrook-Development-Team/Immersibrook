@@ -1,13 +1,13 @@
 package com.mesabrook.ib.items.armor;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.util.IHasModel;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.util.IHasModel;
 
 public class Vest extends ItemArmor implements IHasModel
 {

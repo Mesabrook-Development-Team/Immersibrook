@@ -1,19 +1,17 @@
 package com.mesabrook.ib.util.saveData;
 
+import com.mesabrook.ib.util.Reference;
+import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.world.World;
+import net.minecraft.world.storage.WorldSavedData;
+import net.minecraftforge.common.util.Constants.NBT;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.UUID;
-
-import com.mesabrook.ib.util.Reference;
-
-import net.minecraft.nbt.NBTBase;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.util.Tuple;
-import net.minecraft.world.World;
-import net.minecraft.world.storage.WorldSavedData;
-import net.minecraftforge.common.util.Constants.NBT;
 
 public class SpecialDropTrackingData extends WorldSavedData {
 

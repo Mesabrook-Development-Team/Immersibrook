@@ -1,32 +1,16 @@
 package com.mesabrook.ib.telecom;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Optional;
-import java.util.PrimitiveIterator.OfInt;
-import java.util.Random;
-import java.util.UUID;
-import java.util.stream.IntStream;
-
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.net.PlaySoundPacket;
-import com.mesabrook.ib.net.telecom.CallAcceptedPacket;
-import com.mesabrook.ib.net.telecom.CallRejectedPacket;
-import com.mesabrook.ib.net.telecom.DisconnectedCallNotificationPacket;
-import com.mesabrook.ib.net.telecom.IncomingCallPacket;
-import com.mesabrook.ib.net.telecom.OutgoingCallResponsePacket;
+import com.mesabrook.ib.net.telecom.*;
 import com.mesabrook.ib.net.telecom.OutgoingCallResponsePacket.States;
-import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket;
 import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket.ResponseTypes;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import com.mesabrook.ib.util.saveData.AntennaData;
 import com.mesabrook.ib.util.saveData.PhoneNumberData;
-
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -39,6 +23,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
+
+import java.util.*;
+import java.util.PrimitiveIterator.OfInt;
+import java.util.stream.IntStream;
 
 public class CallManager {
 	

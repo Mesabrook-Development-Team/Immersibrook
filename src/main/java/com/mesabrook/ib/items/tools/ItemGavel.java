@@ -1,15 +1,13 @@
 package com.mesabrook.ib.items.tools;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.util.IHasModel;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.util.IHasModel;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;

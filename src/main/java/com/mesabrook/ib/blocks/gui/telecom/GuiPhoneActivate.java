@@ -1,5 +1,11 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import com.mesabrook.ib.items.misc.ItemPhone;
+import com.mesabrook.ib.net.telecom.ActivateNumberChosenPacket;
+import com.mesabrook.ib.net.telecom.ActivatePhonePacket;
+import com.mesabrook.ib.util.GuiUtil;
+import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -8,12 +14,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
-import com.mesabrook.ib.items.misc.ItemPhone;
-import com.mesabrook.ib.net.telecom.ActivateNumberChosenPacket;
-import com.mesabrook.ib.net.telecom.ActivatePhonePacket;
-import com.mesabrook.ib.util.GuiUtil;
-import com.mesabrook.ib.util.Reference;
-import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import java.io.IOException;
 

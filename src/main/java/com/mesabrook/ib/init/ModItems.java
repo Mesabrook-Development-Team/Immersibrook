@@ -1,19 +1,19 @@
 package com.mesabrook.ib.init;
 
-import com.mesabrook.ib.items.tools.ItemGavel;
-import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
-import net.minecraft.item.Item.ToolMaterial;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.items.armor.*;
 import com.mesabrook.ib.items.misc.*;
 import com.mesabrook.ib.items.misc.ItemStamp.StampTypes;
 import com.mesabrook.ib.items.record.MemeRecord;
 import com.mesabrook.ib.items.tools.ItemBanHammer;
+import com.mesabrook.ib.items.tools.ItemGavel;
 import com.mesabrook.ib.items.tools.ItemManholeHook;
 import com.mesabrook.ib.items.weapons.ItemWeapon;
 import com.mesabrook.ib.util.ArmorMaterialRegistry;
 import com.mesabrook.ib.util.ToolMaterialRegistry;
+import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,5 +1,6 @@
 package com.mesabrook.ib.net;
 
+import com.mesabrook.ib.items.armor.PoliceHelmet;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -8,7 +9,6 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import com.mesabrook.ib.items.armor.PoliceHelmet;
 
 public class PoliceEffectsTogglePacket implements IMessage
 {

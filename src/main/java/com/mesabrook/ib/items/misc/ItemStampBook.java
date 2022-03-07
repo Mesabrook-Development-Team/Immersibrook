@@ -1,5 +1,12 @@
 package com.mesabrook.ib.items.misc;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.advancements.Triggers;
+import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.init.SoundInit;
+import com.mesabrook.ib.items.misc.ItemStamp.StampTypes;
+import com.mesabrook.ib.util.IHasModel;
+import com.mesabrook.ib.util.Reference;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -19,13 +26,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.advancements.Triggers;
-import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.init.SoundInit;
-import com.mesabrook.ib.items.misc.ItemStamp.StampTypes;
-import com.mesabrook.ib.util.IHasModel;
-import com.mesabrook.ib.util.Reference;
 
 import javax.annotation.Nullable;
 import java.util.List;

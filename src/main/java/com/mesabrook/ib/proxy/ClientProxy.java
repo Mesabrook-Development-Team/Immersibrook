@@ -1,5 +1,8 @@
 package com.mesabrook.ib.proxy;
 
+import com.mesabrook.ib.blocks.te.TileEntityPlaque;
+import com.mesabrook.ib.blocks.te.TileEntityPlaqueRenderer;
+import com.mesabrook.ib.util.handlers.ClientSideHandlers;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.item.Item;
@@ -8,9 +11,6 @@ import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.lwjgl.input.Keyboard;
-import com.mesabrook.ib.blocks.te.TileEntityPlaque;
-import com.mesabrook.ib.blocks.te.TileEntityPlaqueRenderer;
-import com.mesabrook.ib.util.handlers.ClientSideHandlers;
 
 public class ClientProxy extends CommonProxy
 {

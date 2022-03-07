@@ -1,10 +1,10 @@
 package com.mesabrook.ib.util;
 
+import com.mesabrook.ib.init.ModBlocks;
+import com.mesabrook.ib.init.ModItems;
 import com.pam.harvestcraft.item.ItemRegistry;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import com.mesabrook.ib.init.ModBlocks;
-import com.mesabrook.ib.init.ModItems;
 
 import java.util.Random;
 

@@ -1,5 +1,10 @@
 package com.mesabrook.ib.items.misc;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.util.IHasModel;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,11 +26,6 @@ import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.net.PlaySoundPacket;
-import com.mesabrook.ib.util.IHasModel;
-import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import javax.annotation.Nullable;
 import java.lang.reflect.Field;

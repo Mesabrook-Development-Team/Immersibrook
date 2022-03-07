@@ -1,7 +1,7 @@
 package com.mesabrook.ib.client.category;
 
-import net.minecraft.item.ItemStack;
 import com.mesabrook.ib.init.ModBlocks;
+import net.minecraft.item.ItemStack;
 
 /**
  * Original Author: MrCrayfish

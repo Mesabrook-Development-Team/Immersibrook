@@ -1,10 +1,5 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
-import java.io.IOException;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData;
@@ -15,7 +10,6 @@ import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.ClientSideHandlers.TelecomClientHandlers;
 import com.mesabrook.ib.util.handlers.PacketHandler;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
@@ -28,7 +22,10 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 
-import javax.xml.soap.Text;
+import java.io.IOException;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class GuiAddressBook extends GuiPhoneBase {
 

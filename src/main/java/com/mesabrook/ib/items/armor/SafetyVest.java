@@ -1,5 +1,9 @@
 package com.mesabrook.ib.items.armor;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.advancements.Triggers;
+import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.util.IHasModel;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -9,10 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.advancements.Triggers;
-import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.util.IHasModel;
 
 public class SafetyVest extends ItemArmor implements IHasModel
 {

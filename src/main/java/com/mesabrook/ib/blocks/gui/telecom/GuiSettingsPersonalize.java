@@ -1,12 +1,9 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
-import java.io.IOException;
-
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.net.telecom.PersonalizationPacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
@@ -19,6 +16,8 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
+
+import java.io.IOException;
 
 public class GuiSettingsPersonalize extends GuiPhoneBase {
 

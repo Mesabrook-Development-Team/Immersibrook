@@ -1,5 +1,10 @@
 package com.mesabrook.ib.blocks;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.init.ModBlocks;
+import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.init.SoundTypeInit;
+import com.mesabrook.ib.util.IHasModel;
 import net.minecraft.block.BlockGlass;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -8,11 +13,6 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.init.ModBlocks;
-import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.init.SoundTypeInit;
-import com.mesabrook.ib.util.IHasModel;
 
 import java.util.Random;
 

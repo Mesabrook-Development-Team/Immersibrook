@@ -1,14 +1,14 @@
 package com.mesabrook.ib.advancements;
 
 import com.google.common.collect.Lists;
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.util.Reference;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.ICriterionTrigger;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.util.Reference;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

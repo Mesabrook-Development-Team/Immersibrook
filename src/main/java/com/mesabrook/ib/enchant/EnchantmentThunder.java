@@ -1,12 +1,12 @@
 package com.mesabrook.ib.enchant;
 
+import com.mesabrook.ib.init.ModEnchants;
+import com.mesabrook.ib.util.config.ModConfig;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import com.mesabrook.ib.init.ModEnchants;
-import com.mesabrook.ib.util.config.ModConfig;
 
 public class EnchantmentThunder extends Enchantment
 {

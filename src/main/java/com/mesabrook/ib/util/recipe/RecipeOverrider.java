@@ -1,14 +1,14 @@
 package com.mesabrook.ib.util.recipe;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.config.ModConfig;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistryModifiable;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.util.Reference;
-import com.mesabrook.ib.util.config.ModConfig;
 
 @EventBusSubscriber
 public class RecipeOverrider

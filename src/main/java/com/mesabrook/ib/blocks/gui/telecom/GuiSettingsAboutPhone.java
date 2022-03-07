@@ -1,17 +1,16 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
-import java.io.IOException;
-
 import com.mesabrook.ib.net.telecom.FactoryResetPacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentTranslation;
+
+import java.io.IOException;
 
 public class GuiSettingsAboutPhone extends GuiPhoneBase {
 

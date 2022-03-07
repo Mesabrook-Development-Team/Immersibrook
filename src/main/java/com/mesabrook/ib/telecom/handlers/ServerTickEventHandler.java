@@ -1,10 +1,10 @@
 package com.mesabrook.ib.telecom.handlers;
 
+import com.mesabrook.ib.telecom.CallManager;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.ServerTickEvent;
-import com.mesabrook.ib.telecom.CallManager;
 
 @EventBusSubscriber
 public class ServerTickEventHandler {

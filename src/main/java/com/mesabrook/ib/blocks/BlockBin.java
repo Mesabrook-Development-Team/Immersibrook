@@ -1,5 +1,15 @@
 package com.mesabrook.ib.blocks;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.advancements.Triggers;
+import com.mesabrook.ib.blocks.te.TileEntityTrashBin;
+import com.mesabrook.ib.init.ModBlocks;
+import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.init.SoundTypeInit;
+import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.util.IHasModel;
+import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.Material;
@@ -19,16 +29,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.advancements.Triggers;
-import com.mesabrook.ib.blocks.te.TileEntityTrashBin;
-import com.mesabrook.ib.init.ModBlocks;
-import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.init.SoundTypeInit;
-import com.mesabrook.ib.net.PlaySoundPacket;
-import com.mesabrook.ib.util.IHasModel;
-import com.mesabrook.ib.util.Reference;
-import com.mesabrook.ib.util.handlers.PacketHandler;
 
 public class BlockBin extends BlockContainer implements IHasModel
 {

@@ -1,13 +1,13 @@
 package com.mesabrook.ib.blocks.gui;
 
+import com.mesabrook.ib.net.EngravePacket;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.fml.client.config.GuiButtonExt;
-import com.mesabrook.ib.net.EngravePacket;
-import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import java.io.IOException;
 

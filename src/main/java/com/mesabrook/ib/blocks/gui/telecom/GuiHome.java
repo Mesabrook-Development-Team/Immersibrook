@@ -1,14 +1,14 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import com.mesabrook.ib.net.telecom.PhoneQueryPacket;
+import com.mesabrook.ib.util.handlers.ClientSideHandlers.TelecomClientHandlers;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import com.mesabrook.ib.net.telecom.PhoneQueryPacket;
-import com.mesabrook.ib.util.handlers.ClientSideHandlers.TelecomClientHandlers;
-import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import java.io.IOException;
 

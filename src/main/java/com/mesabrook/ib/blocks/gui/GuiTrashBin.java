@@ -1,13 +1,13 @@
 package com.mesabrook.ib.blocks.gui;
 
+import com.mesabrook.ib.blocks.container.ContainerTrashBin;
+import com.mesabrook.ib.blocks.te.TileEntityTrashBin;
+import com.mesabrook.ib.util.Reference;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
-import com.mesabrook.ib.blocks.container.ContainerTrashBin;
-import com.mesabrook.ib.blocks.te.TileEntityTrashBin;
-import com.mesabrook.ib.util.Reference;
 
 public class GuiTrashBin extends GuiContainer
 {

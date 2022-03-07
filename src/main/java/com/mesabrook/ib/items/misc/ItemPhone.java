@@ -1,11 +1,5 @@
 package com.mesabrook.ib.items.misc;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
-
-import javax.annotation.Nullable;
-
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
@@ -13,7 +7,6 @@ import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneBase;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.Reference;
-
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -30,6 +23,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
+import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
 
 public class ItemPhone extends Item implements IHasModel {
 

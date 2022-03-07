@@ -1,5 +1,6 @@
 package com.mesabrook.ib.util.config;
 
+import com.mesabrook.ib.util.Reference;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.Config.Comment;
 import net.minecraftforge.common.config.Config.LangKey;
@@ -7,7 +8,6 @@ import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import com.mesabrook.ib.util.Reference;
 
 @SuppressWarnings("WeakerAccess")
 @Config(modid = Reference.MODID)

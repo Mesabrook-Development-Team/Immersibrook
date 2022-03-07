@@ -1,5 +1,9 @@
 package com.mesabrook.ib.items.misc;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.blocks.FoodBox;
+import com.mesabrook.ib.blocks.te.TileEntityFoodBox;
+import com.mesabrook.ib.util.Reference;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
@@ -12,10 +16,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.blocks.FoodBox;
-import com.mesabrook.ib.blocks.te.TileEntityFoodBox;
-import com.mesabrook.ib.util.Reference;
 
 public class FoodBoxItemBlock extends ItemBlock
 {

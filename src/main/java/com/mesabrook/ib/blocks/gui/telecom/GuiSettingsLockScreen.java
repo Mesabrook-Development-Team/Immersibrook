@@ -1,6 +1,9 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.google.common.collect.ImmutableList;
+import com.mesabrook.ib.items.misc.ItemPhone.NBTData.SecurityStrategies;
+import com.mesabrook.ib.net.telecom.SecurityStrategySelectedPacket;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiTextField;
@@ -9,9 +12,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.client.config.GuiCheckBox;
-import com.mesabrook.ib.items.misc.ItemPhone.NBTData.SecurityStrategies;
-import com.mesabrook.ib.net.telecom.SecurityStrategySelectedPacket;
-import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import java.io.IOException;
 import java.util.UUID;

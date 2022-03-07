@@ -1,11 +1,11 @@
 package com.mesabrook.ib.util.handlers;
 
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import com.mesabrook.ib.blocks.te.TileEntityFoodBox;
 import com.mesabrook.ib.blocks.te.TileEntityPlaque;
 import com.mesabrook.ib.blocks.te.TileEntityTrashBin;
 import com.mesabrook.ib.util.Reference;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class TileEntityHandler
 {

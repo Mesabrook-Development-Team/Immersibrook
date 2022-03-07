@@ -1,5 +1,6 @@
 package com.mesabrook.ib.net;
 
+import com.mesabrook.ib.items.misc.PlaqueItemBlock;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -10,7 +11,6 @@ import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import com.mesabrook.ib.items.misc.PlaqueItemBlock;
 
 public class EngravePacket implements IMessage {
 	public String awardedTo = "";

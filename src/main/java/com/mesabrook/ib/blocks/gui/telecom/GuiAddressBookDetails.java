@@ -1,20 +1,18 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
-import java.io.IOException;
-
-import net.minecraft.util.text.TextComponentTranslation;
-import org.lwjgl.input.Keyboard;
-
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData;
 import com.mesabrook.ib.net.telecom.DeleteContactPacket;
 import com.mesabrook.ib.net.telecom.SaveContactPacket;
 import com.mesabrook.ib.util.handlers.PacketHandler;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextComponentTranslation;
+import org.lwjgl.input.Keyboard;
+
+import java.io.IOException;
 
 public class GuiAddressBookDetails extends GuiPhoneBase {
 

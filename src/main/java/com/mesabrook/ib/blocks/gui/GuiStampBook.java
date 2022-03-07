@@ -1,10 +1,10 @@
 package com.mesabrook.ib.blocks.gui;
 
+import com.mesabrook.ib.blocks.container.ContainerStampBook;
+import com.mesabrook.ib.util.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.util.ResourceLocation;
-import com.mesabrook.ib.blocks.container.ContainerStampBook;
-import com.mesabrook.ib.util.Reference;
 
 public class GuiStampBook extends GuiContainer {
 

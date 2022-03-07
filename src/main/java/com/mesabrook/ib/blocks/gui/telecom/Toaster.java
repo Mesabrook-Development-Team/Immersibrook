@@ -1,12 +1,12 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.google.common.collect.ImmutableSet;
+import com.mesabrook.ib.util.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
-import com.mesabrook.ib.util.Reference;
 
 import java.util.HashMap;
 import java.util.LinkedList;

@@ -1,8 +1,12 @@
 package com.mesabrook.ib.blocks;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.init.ModBlocks;
+import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.tools.ItemManholeHook;
 import com.mesabrook.ib.net.PlaySoundPacket;
-import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.IHasModel;
+import com.mesabrook.ib.util.ModUtils;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
@@ -18,7 +22,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -28,11 +34,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.init.ModBlocks;
-import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.util.IHasModel;
-import com.mesabrook.ib.util.ModUtils;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;

@@ -1,5 +1,7 @@
 package com.mesabrook.ib.net;
 
+import com.mesabrook.ib.items.tools.ItemBanHammer;
+import com.mesabrook.ib.util.SoundRandomizer;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -12,8 +14,6 @@ import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import com.mesabrook.ib.items.tools.ItemBanHammer;
-import com.mesabrook.ib.util.SoundRandomizer;
 
 public class SoundRandomizerPacket implements IMessage
 {

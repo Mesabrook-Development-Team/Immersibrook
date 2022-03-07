@@ -1,12 +1,9 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
-import java.io.IOException;
-
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.net.telecom.GetReceptionStrengthPacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
@@ -17,6 +14,8 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.io.IOException;
 
 @SideOnly(Side.CLIENT)
 public abstract class GuiPhoneBase extends GuiScreen {

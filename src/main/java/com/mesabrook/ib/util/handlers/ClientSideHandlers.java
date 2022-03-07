@@ -1,25 +1,9 @@
 package com.mesabrook.ib.util.handlers;
 
-import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map.Entry;
-import java.util.Optional;
-import java.util.function.Consumer;
-
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.gui.GuiAboutImmersibrook;
-import com.mesabrook.ib.blocks.gui.telecom.GuiCallEnd;
-import com.mesabrook.ib.blocks.gui.telecom.GuiHome;
-import com.mesabrook.ib.blocks.gui.telecom.GuiIncomingCall;
-import com.mesabrook.ib.blocks.gui.telecom.GuiLockScreen;
-import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneActivate;
+import com.mesabrook.ib.blocks.gui.telecom.*;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneActivate.ActivationScreens;
-import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneBase;
-import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneCall;
-import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneCalling;
-import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneConnected;
-import com.mesabrook.ib.blocks.gui.telecom.SignalStrengths;
 import com.mesabrook.ib.init.SoundInit;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.net.PlaySoundPacket;
@@ -27,7 +11,6 @@ import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket;
 import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket.ResponseTypes;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.config.ModConfig;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.ISound.AttenuationType;
@@ -50,6 +33,13 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
+
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map.Entry;
+import java.util.Optional;
+import java.util.function.Consumer;
 
 @SideOnly(Side.CLIENT)
 public class ClientSideHandlers 

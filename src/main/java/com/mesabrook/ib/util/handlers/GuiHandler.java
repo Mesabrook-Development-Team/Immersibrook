@@ -1,12 +1,5 @@
 package com.mesabrook.ib.util.handlers;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.common.network.IGuiHandler;
 import com.mesabrook.ib.blocks.container.ContainerStampBook;
 import com.mesabrook.ib.blocks.container.ContainerTrashBin;
 import com.mesabrook.ib.blocks.gui.*;
@@ -17,6 +10,13 @@ import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.net.telecom.PhoneQueryPacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.ClientSideHandlers.TelecomClientHandlers;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.IGuiHandler;
 
 public class GuiHandler implements IGuiHandler
 {

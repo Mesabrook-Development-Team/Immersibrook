@@ -1,9 +1,9 @@
 package com.mesabrook.ib.util;
 
+import com.mesabrook.ib.init.SoundInit;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemArmor;
 import net.minecraftforge.common.util.EnumHelper;
-import com.mesabrook.ib.init.SoundInit;
 
 public class ArmorMaterialRegistry
 {

@@ -1,5 +1,10 @@
 package com.mesabrook.ib.items.misc;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.util.IHasModel;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -7,11 +12,6 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.net.PlaySoundPacket;
-import com.mesabrook.ib.util.IHasModel;
-import com.mesabrook.ib.util.handlers.PacketHandler;
 
 public class ItemRadio extends Item implements IHasModel
 {

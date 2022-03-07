@@ -1,13 +1,13 @@
 package com.mesabrook.ib.init;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.util.Reference;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.util.Reference;
 
 public class SoundInit
 {

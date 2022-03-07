@@ -1,5 +1,20 @@
 package com.mesabrook.ib.util.handlers;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.advancements.Triggers;
+import com.mesabrook.ib.cmds.CommandImmersibrook;
+import com.mesabrook.ib.cmds.CommandTalk;
+import com.mesabrook.ib.entity.EntityMesabrookM;
+import com.mesabrook.ib.entity.EntityWineBottle;
+import com.mesabrook.ib.init.ModBlocks;
+import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.rendering.RenderMesabrookIcon;
+import com.mesabrook.ib.rendering.RenderWineBottle;
+import com.mesabrook.ib.util.IHasModel;
+import com.mesabrook.ib.util.ItemRandomizer;
+import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.TooltipRandomizer;
+import com.mesabrook.ib.util.recipe.RecipesHandler;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -18,21 +33,6 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.advancements.Triggers;
-import com.mesabrook.ib.cmds.CommandImmersibrook;
-import com.mesabrook.ib.cmds.CommandTalk;
-import com.mesabrook.ib.entity.EntityMesabrookM;
-import com.mesabrook.ib.entity.EntityWineBottle;
-import com.mesabrook.ib.init.ModBlocks;
-import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.rendering.RenderMesabrookIcon;
-import com.mesabrook.ib.rendering.RenderWineBottle;
-import com.mesabrook.ib.util.IHasModel;
-import com.mesabrook.ib.util.ItemRandomizer;
-import com.mesabrook.ib.util.Reference;
-import com.mesabrook.ib.util.TooltipRandomizer;
-import com.mesabrook.ib.util.recipe.RecipesHandler;
 
 @EventBusSubscriber
 public class RegistryHandler 

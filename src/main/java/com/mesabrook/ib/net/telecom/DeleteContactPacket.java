@@ -1,10 +1,7 @@
 package com.mesabrook.ib.net.telecom;
 
-import java.util.UUID;
-
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.util.handlers.PacketHandler;
-
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -14,6 +11,8 @@ import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+
+import java.util.UUID;
 
 public class DeleteContactPacket implements IMessage {
 
