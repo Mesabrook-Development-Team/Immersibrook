@@ -170,8 +170,9 @@ item.levi_hammer.name=Levi's Ban Hammer
 item.gmod_hammer.name=Modern Ban Hammer
 item.hammer_head_levi.name=Hammer Head
 item.hammer_stick_levi.name=Hammer Staff
-item.gavel.name=Important Person's Gavel
-tile.cat_block.name=Cat Block
+item.gavel.name=Supreme Court Gavel
+item.gavel_silver.name=Lower Court Gavel
+item.gavel_quartz.name=Founding Councilor's Gavel
 
 //Signs
 tile.exit_sign.name=Exit Sign

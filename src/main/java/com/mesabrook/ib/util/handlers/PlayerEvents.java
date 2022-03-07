@@ -338,6 +338,10 @@ public class PlayerEvents
 				packet.soundName = "gavel";
 				PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 15));
 			}
+			if(!player.isCreative())
+			{
+				stack.damageItem(1, player);
+			}
 		}
 	}
 

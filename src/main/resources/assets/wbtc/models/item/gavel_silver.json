@@ -1,9 +1,10 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "blocks/gold_block",
-		"1": "wbtc:blocks/floor_dark_oak",
-		"2": "wbtc:misc/msemblem"
+		"0": "immersiveengineering:blocks/storage_silver",
+		"1": "wbtc:blocks/floor_spruce",
+		"2": "wbtc:misc/msemblem",
+		"particle": "immersiveengineering:blocks/storage_silver"
 	},
 	"elements": [
 		{

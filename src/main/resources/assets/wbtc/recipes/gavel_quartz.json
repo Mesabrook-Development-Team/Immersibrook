@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WGW",
+	" S ",
+	" S "
+  ],
+  "key": {
+    "G": {
+        "type": "forge:ore_dict",
+        "ore": "blockDiamond"
+    },
+    "W": {
+        "type": "forge:ore_dict",
+        "ore": "blockQuartz"
+    },
+    "S": {
+        "type": "forge:ore_dict",
+        "ore": "gemQuartz"
+    }
+  },
+  "result": {
+    "item": "wbtc:gavel_quartz",
+    "count": 1
+  }
+}

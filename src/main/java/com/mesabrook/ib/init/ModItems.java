@@ -44,7 +44,9 @@ public class ModItems
 	public static final Item ZOE_CANE = new ItemWeapon("zoe_cane", ToolMaterialRegistry.ZOE_CANE_MAT);
 	public static final Item LEVI_HAMMER = new ItemBanHammer("levi_hammer", ToolMaterialRegistry.LEVI_HAMMER_MAT);
 	public static final Item GMOD_HAMMER = new ItemBanHammer("gmod_hammer", ToolMaterialRegistry.LEVI_HAMMER_MAT);
-	public static final Item GAVEL = new ItemGavel("gavel");
+	public static final Item GAVEL = new ItemGavel("gavel", 50);
+	public static final Item GAVEL_SILVER = new ItemGavel("gavel_silver", 25);
+	public static final Item GAVEL_QUARTZ = new ItemGavel("gavel_quartz", 100);
 
 	// Hammer Items
 	public static final Item LEVI_HAMMER_HEAD = new ItemWeapon("hammer_head_levi", ToolMaterial.STONE);

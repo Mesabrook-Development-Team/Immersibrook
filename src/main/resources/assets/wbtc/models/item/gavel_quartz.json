@@ -1,9 +1,10 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "blocks/gold_block",
-		"1": "wbtc:blocks/floor_dark_oak",
-		"2": "wbtc:misc/msemblem"
+		"0": "blocks/diamond_block",
+		"1": "blocks/quartz_block_side",
+		"2": "wbtc:misc/msemblem",
+		"particle": "blocks/diamond_block"
 	},
 	"elements": [
 		{

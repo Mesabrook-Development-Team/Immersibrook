@@ -20,12 +20,12 @@ import java.util.List;
 
 public class ItemGavel extends Item implements IHasModel
 {
-    public ItemGavel(String name)
+    public ItemGavel(String name, int uses)
     {
         setUnlocalizedName(name);
         setRegistryName(name);
         setMaxStackSize(1);
-        setMaxDamage(50);
+        setMaxDamage(uses);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
 
         ModItems.ITEMS.add(this);
