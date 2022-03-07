@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WGW",
+	" S ",
+	" S "
+  ],
+  "key": {
+    "G": {
+        "type": "forge:ore_dict",
+        "ore": "blockGold"
+    },
+    "W": {
+		"item":"wbtc:wbtc_dark_oak"
+    },
+    "S": {
+        "type": "forge:ore_dict",
+        "ore": "stickTreatedWood"
+    }
+  },
+  "result": {
+    "item": "wbtc:gavel",
+    "count": 1
+  }
+}

@@ -1,5 +1,6 @@
 package com.mesabrook.ib.init;
 
+import com.mesabrook.ib.items.tools.ItemGavel;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
@@ -43,6 +44,7 @@ public class ModItems
 	public static final Item ZOE_CANE = new ItemWeapon("zoe_cane", ToolMaterialRegistry.ZOE_CANE_MAT);
 	public static final Item LEVI_HAMMER = new ItemBanHammer("levi_hammer", ToolMaterialRegistry.LEVI_HAMMER_MAT);
 	public static final Item GMOD_HAMMER = new ItemBanHammer("gmod_hammer", ToolMaterialRegistry.LEVI_HAMMER_MAT);
+	public static final Item GAVEL = new ItemGavel("gavel");
 
 	// Hammer Items
 	public static final Item LEVI_HAMMER_HEAD = new ItemWeapon("hammer_head_levi", ToolMaterial.STONE);

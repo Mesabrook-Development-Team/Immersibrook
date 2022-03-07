@@ -131,5 +131,6 @@
 	"manhole_step": {"category": "master","sounds": [{"name": "wbtc:manhole_step","stream": true}]},
 	"busy": {"category": "master","sounds": [{"name": "wbtc:busy"}]},
 	"waterphone": {"category": "master","sounds": [{"name": "wbtc:waterphone"}]},
-	"heal": {"category": "master","sounds": [{"name": "wbtc:heal"}]}
+	"heal": {"category": "master","sounds": [{"name": "wbtc:heal"}]},
+	"gavel": {"category": "master","sounds": [{"name": "wbtc:gavel"}]}
 }

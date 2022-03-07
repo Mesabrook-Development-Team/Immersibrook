@@ -89,6 +89,8 @@ public class RegistryHandler
 		Main.logger.info("");
 		Main.logger.info("Pre-Initialization");
 		Main.logger.info("");
+		Main.logger.info("Слава Україні!");
+		Main.logger.info("");
 		Main.logger.info("=============================================================================");
 		Main.logger.info("");
 

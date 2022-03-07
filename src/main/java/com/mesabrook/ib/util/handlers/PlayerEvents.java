@@ -1,5 +1,6 @@
 package com.mesabrook.ib.util.handlers;
 
+import com.mesabrook.ib.items.tools.ItemGavel;
 import com.mojang.authlib.GameProfile;
 import com.pam.harvestcraft.blocks.blocks.BlockPamCake;
 import net.minecraft.block.Block;
@@ -15,6 +16,7 @@ import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
@@ -301,6 +303,42 @@ public class PlayerEvents
 						}
 					}
 				}
+			}
+		}
+	}
+
+	/*
+    	Player Left Click Events.
+ 	*/
+	@SubscribeEvent
+	public void LeftClickEmpty(PlayerInteractEvent.LeftClickEmpty evt)
+	{
+		EntityPlayer player = evt.getEntityPlayer();
+		EnumHand hand = evt.getHand();
+		World w = evt.getWorld();
+		ItemStack stack = player.getHeldItem(hand);
+
+		if(stack.getItem() instanceof ItemGavel)
+		{
+			w.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, SoundCategory.MASTER, 1.0F, 1.0F);
+		}
+	}
+	@SubscribeEvent
+	public void LeftClickBlock(PlayerInteractEvent.LeftClickBlock evt)
+	{
+		EntityPlayer player = evt.getEntityPlayer();
+		EnumHand hand = evt.getHand();
+		World world = evt.getWorld();
+		ItemStack stack = player.getHeldItem(hand);
+
+		if(stack.getItem() instanceof ItemGavel)
+		{
+			if(!world.isRemote)
+			{
+				PlaySoundPacket packet = new PlaySoundPacket();
+				packet.pos = player.getPosition();
+				packet.soundName = "gavel";
+				PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 15));
 			}
 		}
 	}

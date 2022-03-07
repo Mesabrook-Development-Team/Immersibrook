@@ -34,6 +34,7 @@ public class CategoryTools extends AbstractCategory {
 		add(ModItems.ZOE_CANE);
 		add(ModItems.LEVI_HAMMER);
 		add(ModItems.GMOD_HAMMER);
+		add(ModItems.GAVEL);
 		
 		// First Aid Kit
 		add(ModItems.FIRST_AID_KIT);
