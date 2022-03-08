@@ -27,10 +27,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentString;
@@ -318,9 +315,9 @@ public class PlayerEvents
 		World w = evt.getWorld();
 		ItemStack stack = player.getHeldItem(hand);
 
-		if(stack.getItem() instanceof ItemGavel)
+		if(stack.getItem() instanceof ItemGavel || stack.getItem() instanceof ItemBanHammer)
 		{
-			w.playSound(player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, SoundCategory.MASTER, 1.0F, 1.0F);
+			player.playSound(SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, 1.0F, 1.0F);
 		}
 	}
 	@SubscribeEvent
