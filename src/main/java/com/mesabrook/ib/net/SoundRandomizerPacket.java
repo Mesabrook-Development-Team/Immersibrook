@@ -1,8 +1,11 @@
 package com.mesabrook.ib.net;
 
+import com.mesabrook.ib.init.ModEnchants;
 import com.mesabrook.ib.items.tools.ItemBanHammer;
 import com.mesabrook.ib.util.SoundRandomizer;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -57,15 +60,12 @@ public class SoundRandomizerPacket implements IMessage
                 tag = new NBTTagCompound();
                 stack.setTagCompound(tag);
             }
-            
+
             tag.setString("sndID", message.soundID);
 
             TextComponentTranslation hammerShift = new TextComponentTranslation("im.hammer.shift");
             hammerShift.getStyle().setBold(true);
 			hammerShift.getStyle().setColor(TextFormatting.GOLD);
-//			player0.sendMessage(hammerShift);
-//			player.sendMessage(new TextComponentString(TextFormatting.GREEN + stack.getTagCompound().getString("sndID")));
-
             player.sendStatusMessage(new TextComponentString(hammerShift.getFormattedText() + " " + TextFormatting.ITALIC + TextFormatting.YELLOW + stack.getTagCompound().getString("sndID")), true);
         }
     }

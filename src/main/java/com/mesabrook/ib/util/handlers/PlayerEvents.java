@@ -2,6 +2,7 @@ package com.mesabrook.ib.util.handlers;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
+import com.mesabrook.ib.init.ModEnchants;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.tools.ItemBanHammer;
 import com.mesabrook.ib.items.tools.ItemGavel;
@@ -17,6 +18,7 @@ import com.pam.harvestcraft.blocks.blocks.BlockPamCake;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCake;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityItem;
@@ -327,6 +329,7 @@ public class PlayerEvents
 		EnumHand hand = evt.getHand();
 		World world = evt.getWorld();
 		ItemStack stack = player.getHeldItem(hand);
+		float pitchFloat;
 
 		// Gavel Bang Sound
 		if(stack.getItem() instanceof ItemGavel)
@@ -352,11 +355,27 @@ public class PlayerEvents
 			{
 				if(tag != null)
 				{
+					if(EnchantmentHelper.getEnchantmentLevel(ModEnchants.RANDOM, stack) > 0)
+					{
+						Random rand = new Random();
+						float randPitch = 0.5F + rand.nextFloat();
+
+						if(randPitch > 1.25F) {randPitch = 1.25F;}
+						else if(randPitch < 0.25F) {randPitch = 0.75F;}
+
+						pitchFloat = randPitch;
+					}
+					else
+					{
+						pitchFloat = 1.0F;
+					}
+
 					if(tag.hasKey("sndID"))
 					{
 						PlaySoundPacket packet = new PlaySoundPacket();
 						packet.pos = player.getPosition();
 						packet.soundName = tag.getString("sndID");
+						packet.pitch = pitchFloat;
 						PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
 					}
 				}

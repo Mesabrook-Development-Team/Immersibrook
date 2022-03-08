@@ -1,6 +1,7 @@
 package com.mesabrook.ib.items.tools;
 
 import com.mesabrook.ib.Main;
+import com.mesabrook.ib.init.ModEnchants;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.init.SoundInit;
 import com.mesabrook.ib.net.PlaySoundPacket;
@@ -12,6 +13,7 @@ import com.mesabrook.ib.util.handlers.PacketHandler;
 import com.pam.harvestcraft.item.ItemRegistry;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemPickaxe;
@@ -31,6 +33,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Random;
 
 public class ItemBanHammer extends ItemPickaxe implements IHasModel
 {
@@ -87,8 +90,8 @@ public class ItemBanHammer extends ItemPickaxe implements IHasModel
     @Override
     public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
     {
-        NBTTagCompound tag = stack.getTagCompound(); 
-        String sndEvnt;
+        NBTTagCompound tag = stack.getTagCompound();
+        float pitchFloat;
         if(stack.getItem() instanceof ItemBanHammer)
         {
             try
@@ -98,11 +101,27 @@ public class ItemBanHammer extends ItemPickaxe implements IHasModel
                 {
                     if(tag != null)
                     {
+                        if(EnchantmentHelper.getEnchantmentLevel(ModEnchants.RANDOM, stack) > 0)
+                        {
+                            Random rand = new Random();
+                            float randPitch = 0.5F + rand.nextFloat();
+
+                            if(randPitch > 1.25F) {randPitch = 1.25F;}
+                            else if(randPitch < 0.25F) {randPitch = 0.75F;}
+
+                            pitchFloat = randPitch;
+                        }
+                        else
+                        {
+                            pitchFloat = 1.0F;
+                        }
+
                         if(tag.hasKey("sndID"))
                         {
                             PlaySoundPacket packet = new PlaySoundPacket();
                             packet.pos = player.getPosition();
                             packet.soundName = tag.getString("sndID");
+                            packet.pitch = pitchFloat;
                             PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(entity.dimension, entity.posX, entity.posY, entity.posZ, 25));
                             entity.setFire(100);
                         }
@@ -136,25 +155,32 @@ public class ItemBanHammer extends ItemPickaxe implements IHasModel
     {
         ItemStack item = player.getHeldItem(hand);
         SoundRandomizer.HammerRightClickRandomizer();
-        if(item.getItem() == ModItems.LEVI_HAMMER || item.getItem() == ModItems.GMOD_HAMMER)
+        float pitchFloat;
+        if(item.getItem() instanceof ItemBanHammer)
         {
             if(!world.isRemote)
             {
+                if(EnchantmentHelper.getEnchantmentLevel(ModEnchants.RANDOM, item) > 0)
+                {
+                    Random rand = new Random();
+                    float randPitch = 0.5F + rand.nextFloat();
+
+                    if(randPitch > 1.25F) {randPitch = 1.25F;}
+                    else if(randPitch < 0.25F) {randPitch = 0.75F;}
+
+                    pitchFloat = randPitch;
+                }
+                else
+                {
+                    pitchFloat = 1.0F;
+                }
+
                 PlaySoundPacket packet = new PlaySoundPacket();
                 packet.pos = player.getPosition();
                 packet.soundName = SoundRandomizer.hammerRightClick;
+                packet.pitch = pitchFloat;
                 PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
                 return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, item);
-            }
-
-            if(GuiScreen.isShiftKeyDown())
-            {
-                player.addItemStackToInventory(new ItemStack(ItemRegistry.cheeseItem, 5));
-                player.playSound(SoundInit.CHEESE_CLICK, 1.0F, 1.0F);
-                if(!player.isCreative())
-                {
-                    item.damageItem(69, player);
-                }
             }
         }
         else

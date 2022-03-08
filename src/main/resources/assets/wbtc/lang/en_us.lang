@@ -1289,6 +1289,7 @@ item.record.memory.desc=Bonnie - It's just a Burning Memory (8-bit)
 
 //Enchantments
 enchantment.thunder=The Power of Thor
+enchantment.randomizer=Curse of Many Tones
 
 //Keys
 key.immersibrook.category=Immersibrook
