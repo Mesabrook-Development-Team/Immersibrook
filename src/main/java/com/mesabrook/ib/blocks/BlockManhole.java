@@ -181,6 +181,7 @@ public class BlockManhole extends Block implements IHasModel
                 packet.soundName = "manhole_open";
                 packet.volume = 0.5F;
                 packet.pitch = 1.0F;
+                packet.rapidSounds = true;
                 PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
             }
         }
@@ -198,6 +199,7 @@ public class BlockManhole extends Block implements IHasModel
                 packet.soundName = "manhole_close";
                 packet.volume = 0.5F;
                 packet.pitch = 1.0F;
+                packet.rapidSounds = true;
                 PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
             }
         }
@@ -217,6 +219,7 @@ public class BlockManhole extends Block implements IHasModel
                 packet.soundName = "manhole_open";
                 packet.volume = 0.5F;
                 packet.pitch = 1.0F;
+                packet.rapidSounds = true;
                 PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
             }
         }
@@ -235,6 +238,7 @@ public class BlockManhole extends Block implements IHasModel
                 packet.soundName = "manhole_close";
                 packet.volume = 0.5F;
                 packet.pitch = 1.0F;
+                packet.rapidSounds = true;
                 PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
             }
         }
@@ -253,6 +257,7 @@ public class BlockManhole extends Block implements IHasModel
                 packet.soundName = "manhole_open";
                 packet.volume = 0.5F;
                 packet.pitch = 1.0F;
+                packet.rapidSounds = true;
                 PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
             }
         }
@@ -270,6 +275,7 @@ public class BlockManhole extends Block implements IHasModel
                 packet.soundName = "manhole_close";
                 packet.volume = 0.5F;
                 packet.pitch = 1.0F;
+                packet.rapidSounds = true;
                 PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
             }
         }
@@ -288,6 +294,7 @@ public class BlockManhole extends Block implements IHasModel
                 packet.soundName = "manhole_open";
                 packet.volume = 0.5F;
                 packet.pitch = 1.0F;
+                packet.rapidSounds = true;
                 PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
             }
         }
@@ -305,6 +312,7 @@ public class BlockManhole extends Block implements IHasModel
                 packet.soundName = "manhole_close";
                 packet.volume = 0.5F;
                 packet.pitch = 1.0F;
+                packet.rapidSounds = true;
                 PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
             }
         }

@@ -54,49 +54,68 @@ public class ClientSideHandlers
 
 	public static void playSoundHandler(PlaySoundPacket message, MessageContext ctx)
 	{
-		SoundHandler soundHandler = Minecraft.getMinecraft().getSoundHandler();
-
-		// Clear our cache of playing sounds
-		// Since we do this each time the packet is received, this
-		// shouldn't take a whole lot of extra processing time
-		HashSet<Long> keysToRemove = new HashSet<>();
-		for(Entry<Long, PositionedSoundRecord> kvp : soundsByBlockPos.entrySet())
+		if(!message.rapidSounds)
 		{
-			if (!soundHandler.isSoundPlaying(kvp.getValue()))
+			SoundHandler soundHandler = Minecraft.getMinecraft().getSoundHandler();
+
+			// Clear our cache of playing sounds
+			// Since we do this each time the packet is received, this
+			// shouldn't take a whole lot of extra processing time
+			HashSet<Long> keysToRemove = new HashSet<>();
+			for(Entry<Long, PositionedSoundRecord> kvp : soundsByBlockPos.entrySet())
 			{
-				keysToRemove.add(kvp.getKey());
+				if (!soundHandler.isSoundPlaying(kvp.getValue()))
+				{
+					keysToRemove.add(kvp.getKey());
+				}
 			}
-		}
-		
-		for(long key : keysToRemove)
-		{
-			soundsByBlockPos.remove(key);
-		}
-		
-		PositionedSoundRecord existingSoundAtPosition = soundsByBlockPos.get(message.pos.toLong());
-		if (existingSoundAtPosition != null)
-		{
-			return;
-		}
-		
-		EntityPlayer player = Minecraft.getMinecraft().player;
-		WorldClient world = Minecraft.getMinecraft().world;
 
-		ResourceLocation soundLocation = new ResourceLocation(message.modID, message.soundName);
-		IForgeRegistry<SoundEvent> soundRegistry = GameRegistry.findRegistry(SoundEvent.class);
-		SoundEvent sound = soundRegistry.getValue(soundLocation);
-		
-		if (sound == null)
-		{
-			Main.logger.warn(String.format("Tried to play sound %s but it does not exist!", message.modID + ":" + message.soundName));
-			return;
+			for(long key : keysToRemove)
+			{
+				soundsByBlockPos.remove(key);
+			}
+
+			PositionedSoundRecord existingSoundAtPosition = soundsByBlockPos.get(message.pos.toLong());
+			if (existingSoundAtPosition != null)
+			{
+				return;
+			}
+
+			EntityPlayer player = Minecraft.getMinecraft().player;
+			WorldClient world = Minecraft.getMinecraft().world;
+
+			ResourceLocation soundLocation = new ResourceLocation(message.modID, message.soundName);
+			IForgeRegistry<SoundEvent> soundRegistry = GameRegistry.findRegistry(SoundEvent.class);
+			SoundEvent sound = soundRegistry.getValue(soundLocation);
+
+			if (sound == null)
+			{
+				Main.logger.warn(String.format("Tried to play sound %s but it does not exist!", message.modID + ":" + message.soundName));
+				return;
+			}
+
+			PositionedSoundRecord record = new PositionedSoundRecord(sound, SoundCategory.BLOCKS, message.volume, message.pitch, message.pos);
+
+			soundsByBlockPos.put(message.pos.toLong(), record);
+
+			Minecraft.getMinecraft().getSoundHandler().playSound(record);
 		}
-		
-		PositionedSoundRecord record = new PositionedSoundRecord(sound, SoundCategory.BLOCKS, message.volume, message.pitch, message.pos);
-		
-		soundsByBlockPos.put(message.pos.toLong(), record);
-		
-		Minecraft.getMinecraft().getSoundHandler().playSound(record);
+		else
+		{
+			SoundHandler soundHandler = Minecraft.getMinecraft().getSoundHandler();
+			ResourceLocation soundLocation = new ResourceLocation(message.modID, message.soundName);
+			IForgeRegistry<SoundEvent> soundRegistry = GameRegistry.findRegistry(SoundEvent.class);
+			SoundEvent sound = soundRegistry.getValue(soundLocation);
+
+			if (sound == null)
+			{
+				Main.logger.warn(String.format("Tried to play sound %s but it does not exist!", message.modID + ":" + message.soundName));
+				return;
+			}
+
+			PositionedSoundRecord record = new PositionedSoundRecord(sound, SoundCategory.BLOCKS, message.volume, message.pitch, message.pos);
+			Minecraft.getMinecraft().getSoundHandler().playSound(record);
+		}
 	}
 	
 	// This little piece of shit is what actually loads the super duper poggy woggy creative menu for Immersibrook.

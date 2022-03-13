@@ -17,6 +17,7 @@ public class PlaySoundPacket implements IMessage
 	public String soundName;
 	public float volume = 1F;
 	public float pitch = 1F;
+	public boolean rapidSounds = false;
 
 	@Override
 	public void fromBytes(ByteBuf buf) 
@@ -26,6 +27,7 @@ public class PlaySoundPacket implements IMessage
 		soundName = ByteBufUtils.readUTF8String(buf);
 		volume = buf.readFloat();
 		pitch = buf.readFloat();
+		rapidSounds = buf.readBoolean();
 	}
 
 	@Override
@@ -36,6 +38,7 @@ public class PlaySoundPacket implements IMessage
 		ByteBufUtils.writeUTF8String(buf, soundName);
 		buf.writeFloat(volume);
 		buf.writeFloat(pitch);
+		buf.writeBoolean(rapidSounds);
 	}
 	
 	public static class Handler implements IMessageHandler<PlaySoundPacket, IMessage>

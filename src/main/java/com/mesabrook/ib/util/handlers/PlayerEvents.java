@@ -339,6 +339,7 @@ public class PlayerEvents
 				PlaySoundPacket packet = new PlaySoundPacket();
 				packet.pos = player.getPosition();
 				packet.soundName = "gavel";
+				packet.rapidSounds = true;
 				PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 15));
 			}
 			if(!player.isCreative())
