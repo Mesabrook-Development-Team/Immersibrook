@@ -1745,4 +1745,5 @@ im.settings.personalization=Personalization
 im.settings.personalization.wallpapers=Wallpapers
 im.settings.personalization.sounds=Ringtones
 im.settings.personalization.phonename=Phone Name
+im.settings.personalization.setphonename=Enter a Phone Name:
 im.settings.personalization.wallpaperreset=Settings Reset

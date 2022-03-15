@@ -1,0 +1,103 @@
+package com.mesabrook.ib.blocks.gui.telecom;
+
+import com.google.common.collect.ImmutableList;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiTextField;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextComponentTranslation;
+
+import java.io.IOException;
+
+public class GuiSettingsPhoneName extends GuiPhoneBase
+{
+    private String currentPhoneName;
+    LabelButton back;
+
+    MinedroidButton apply;
+    MinedroidButton reset;
+
+    GuiTextField nameTxtBox;
+
+    public GuiSettingsPhoneName(ItemStack phoneStack, EnumHand hand)
+    {
+        super(phoneStack, hand);
+
+        currentPhoneName = phoneStack.getDisplayName();
+    }
+
+    @Override
+    protected String getInnerTextureFileName() {
+        return "app_screen.png";
+    }
+
+    @Override
+    public void initGui()
+    {
+        super.initGui();
+        back = new LabelButton(0, INNER_X + 3, INNER_Y + 20, "<", 0xFFFFFF);
+
+        int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 32;
+        reset = new MinedroidButton(10, INNER_X + 45, lowerControlsY - 10, 32, new TextComponentTranslation("im.musicapp.buttonreset").getFormattedText(), 0xFFFFFF);
+        apply = new MinedroidButton(11, INNER_X + 85, lowerControlsY - 10, 32, new TextComponentTranslation("im.settings.apply").getFormattedText(), 0xFFFFFF);
+
+        nameTxtBox = new GuiTextField(100, fontRenderer, INNER_X + 10, INNER_Y + 100, INNER_X - 98, 10);
+
+        buttonList.addAll(ImmutableList.<GuiButton>builder()
+                .add(reset)
+                .add(apply)
+                .add(back)
+                .build());
+
+        nameTxtBox.setText(currentPhoneName);
+    }
+
+    @Override
+    protected void doDraw(int mouseX, int mouseY, float partialticks)
+    {
+        super.doDraw(mouseX, mouseY, partialticks);
+        fontRenderer.drawString(new TextComponentTranslation("im.settings.personalization.phonename").getFormattedText(), INNER_X + 15, INNER_Y + 20, 0xFFFFFF);
+
+        fontRenderer.drawString(new TextComponentTranslation("im.settings.personalization.setphonename").getFormattedText(), INNER_X + 10, INNER_Y + 85, 0xFFFFFF);
+
+        nameTxtBox.drawTextBox();
+        GlStateManager.color(1, 1, 1);
+    }
+
+    @Override
+    protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException
+    {
+        super.mouseClicked(mouseX, mouseY, mouseButton);
+        nameTxtBox.mouseClicked(mouseX, mouseY, mouseButton);
+    }
+
+    @Override
+    protected void keyTyped(char typedChar, int keyCode) throws IOException
+    {
+        super.keyTyped(typedChar, keyCode);
+        nameTxtBox.textboxKeyTyped(typedChar, keyCode);
+    }
+
+    @Override
+    protected void actionPerformed(GuiButton button) throws IOException
+    {
+        super.actionPerformed(button);
+
+        if(button == back)
+        {
+            Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsPersonalization(phoneStack, hand));
+        }
+
+        if(button == apply)
+        {
+
+        }
+
+        if(button == reset)
+        {
+
+        }
+    }
+}

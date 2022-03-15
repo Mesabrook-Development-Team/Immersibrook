@@ -89,14 +89,14 @@ public class GuiSettingsPersonalization extends GuiPhoneBase
             Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsWallpapers(phoneStack, hand));
         }
 
-        if(button == phoneName || button == phoneNameIcon)
-        {
-            Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "Feature Coming Soon", 0xFFFFFF));
-        }
-
         if(button == sounds || button == soundsIcon)
         {
             Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsRingtones(phoneStack, hand));
+        }
+
+        if(button == phoneName || button == phoneNameIcon)
+        {
+            Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsPhoneName(phoneStack, hand));
         }
     }
 }

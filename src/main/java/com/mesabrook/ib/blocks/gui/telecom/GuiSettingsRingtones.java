@@ -2,7 +2,6 @@ package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.net.telecom.PhoneRingtonesPacket;
-import com.mesabrook.ib.net.telecom.PhoneWallpaperPacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
