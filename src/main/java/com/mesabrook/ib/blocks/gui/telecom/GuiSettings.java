@@ -33,9 +33,6 @@ public class GuiSettings extends GuiPhoneBase {
 	@Override
 	protected void doDraw(int mouseX, int mouseY, float partialticks) {
 		super.doDraw(mouseX, mouseY, partialticks);
-		
-		//fontRenderer.drawString(new TextComponentTranslation("im.settings.appname").getFormattedText(), INNER_X + 3, INNER_Y + 20, 0xFFFFFF);
-
 		drawCenteredString(fontRenderer, new TextComponentTranslation("im.settings.title").getFormattedText(), INNER_X + 80, INNER_Y + 35, 0xFFFFFF);
 		fontRenderer.drawString(new TextComponentTranslation("im.settings.securityicon").getFormattedText(), INNER_X + 25, INNER_Y + 103, 0xFFFFFF);
 		fontRenderer.drawString(new TextComponentTranslation("im.settings.personalizeicon").getFormattedText(), INNER_X + 85, INNER_Y + 103, 0xFFFFFF);
@@ -54,7 +51,7 @@ public class GuiSettings extends GuiPhoneBase {
 		
 		if (button.id == 1)
 		{
-			Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsPersonalize(phoneStack, hand));
+			Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsPersonalization(phoneStack, hand));
 		}
 		
 		if (button.id == 2)
