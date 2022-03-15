@@ -93,5 +93,10 @@ public class GuiSettingsPersonalization extends GuiPhoneBase
         {
             Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "Feature Coming Soon", 0xFFFFFF));
         }
+
+        if(button == sounds || button == soundsIcon)
+        {
+            Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsRingtones(phoneStack, hand));
+        }
     }
 }
