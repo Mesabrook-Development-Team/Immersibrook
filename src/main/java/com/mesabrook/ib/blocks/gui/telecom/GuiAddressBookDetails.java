@@ -20,8 +20,8 @@ public class GuiAddressBookDetails extends GuiPhoneBase {
 	GuiTextField phoneNumber;
 	GuiTextField address;
 	LabelButton back;
-	LabelButton save;
-	LabelButton reset;
+	MinedroidButton save;
+	MinedroidButton reset;
 	ImageButton delete;
 	
 	boolean deleteClicked = false;
@@ -55,12 +55,10 @@ public class GuiAddressBookDetails extends GuiPhoneBase {
 		address.setMaxStringLength(Integer.MAX_VALUE);
 
 		back = new LabelButton(4, INNER_X + 3, INNER_Y + 20, "<", 0xFFFFFF);
-		int lowerY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 28;
-		reset = new LabelButton(1, 0, lowerY, new TextComponentTranslation("im.contacts.reset").getFormattedText(), 0x0000FF);
-		reset.x = INNER_X + (INNER_TEX_WIDTH / 2) - reset.width - 10;
-		
-		save = new LabelButton(2, 0, lowerY, new TextComponentTranslation("im.contacts.save").getFormattedText(), 0x0000FF);
-		save.x = INNER_X + (INNER_TEX_WIDTH / 2) + 10;
+
+		int lowerY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 32;
+		reset = new MinedroidButton(5, INNER_X + 45, lowerY - 10, 32, new TextComponentTranslation("im.musicapp.buttonreset").getFormattedText(), 0x006800);
+		save = new MinedroidButton(6, INNER_X + 85, lowerY - 10, 32, new TextComponentTranslation("im.contacts.save").getFormattedText(), 0x006800);
 		
 		delete = new ImageButton(3, INNER_X + INNER_TEX_WIDTH - 16 - 3, INNER_Y + 16, 16, 16, "btn_delete.png", 32, 32, 32, 32);
 		delete.visible = contact != null;
