@@ -335,14 +335,15 @@ public class GuiAddressBook extends GuiPhoneBase {
 				int nextID = TelecomClientHandlers.getNextHandlerID();
 				TelecomClientHandlers.phoneQueryResponseHandlers.put(nextID, response -> 
 				{
-					if (response.responseType != PhoneQueryResponsePacket.ResponseTypes.idle)
-					{
-						Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.contacts.callinprogresstoast").getFormattedText(), 0xFF0000));
-					}
-					else
-					{
-						Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneCall(phoneStack, hand, getContact().getPhoneNumber()));
-					}
+					Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneCall(phoneStack, hand, getContact().getPhoneNumber()));
+//					if (response.responseType != PhoneQueryResponsePacket.ResponseTypes.idle)
+//					{
+//						Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.contacts.callinprogresstoast").getFormattedText(), 0xFF0000));
+//					}
+//					else
+//					{
+//						Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneCall(phoneStack, hand, getContact().getPhoneNumber()));
+//					}
 				});
 				
 				PhoneQueryPacket queryPacket = new PhoneQueryPacket();
