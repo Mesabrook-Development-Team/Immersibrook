@@ -23,6 +23,7 @@ public class GuiPhoneCall extends GuiPhoneBase {
 
 	private String currentlyTypedNumber = "";
 	private ImageButton call;
+	private ImageButton contacts;
 	
 	public GuiPhoneCall(ItemStack phoneStack, EnumHand hand) {
 		super(phoneStack, hand);
@@ -56,7 +57,9 @@ public class GuiPhoneCall extends GuiPhoneBase {
 		buttonList.add(digit0);
 		
 		call = new ImageButton(10, INNER_X + INNER_TEX_WIDTH / 2 + 17, INNER_Y + INNER_TEX_HEIGHT / 2 + 55, 16, 16, "numcall.png", 16, 16);
+		contacts = new ImageButton(11, INNER_X + INNER_TEX_WIDTH / 5 + 16, INNER_Y + INNER_TEX_HEIGHT / 2 + 55, 16, 16, "icn_contacts.png", 16, 16);
 		buttonList.add(call);
+		buttonList.add(contacts);
 	}
 
 	@Override
@@ -119,6 +122,11 @@ public class GuiPhoneCall extends GuiPhoneBase {
 			packet.fromNumber = getCurrentPhoneNumber();
 			packet.toNumber = currentlyTypedNumber;
 			PacketHandler.INSTANCE.sendToServer(packet);
+		}
+
+		if(button == contacts)
+		{
+			Minecraft.getMinecraft().displayGuiScreen(new GuiAddressBook(phoneStack, hand));
 		}
 	}
 	
