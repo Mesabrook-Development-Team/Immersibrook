@@ -130,10 +130,11 @@ public abstract class GuiPhoneBase extends GuiScreen {
 		drawScaledCustomSizeModalRect(INNER_X, INNER_Y, 0, 0, INNER_TEX_WIDTH * WIDTH_SCALE, STATUS_BAR_HEIGHT * HEIGHT_SCALE, INNER_TEX_WIDTH, STATUS_BAR_HEIGHT, 512, 512);
 		
 		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/" + signalStrength.getTextureName()));
-		drawScaledCustomSizeModalRect(INNER_X + INNER_TEX_WIDTH - 16, INNER_Y - 1, 0, 0, 16, 16, 14, 14, 16, 16);
+		drawScaledCustomSizeModalRect(INNER_X + INNER_TEX_WIDTH - 16, INNER_Y - 1, 0, 0, 16, 16, 16, 16, 16, 16);
 		
 		fontRenderer.drawString(getTime(), INNER_X + 2, INNER_Y + 3, 0xFFFFFF);
-		
+		fontRenderer.drawString("MNET", INNER_X + INNER_TEX_WIDTH - 39, INNER_Y + 3, 0xFFFFFF);
+
 		// Lower bar
 		if (renderControlBar())
 		{
