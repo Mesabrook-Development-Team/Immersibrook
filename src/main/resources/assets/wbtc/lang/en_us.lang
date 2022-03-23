@@ -1694,6 +1694,7 @@ im.musicapp.labelsoundid=Sound ID:
 im.musicapp.labelvolume=Volume:
 im.musicapp.labelpitch=Pitch:
 im.musicapp.errortoast=Missing Entry
+im.musicapp.delaybox=Use Delay?
 
 //Minedroid Translation Project - Address Book App
 im.contacts.apptitle=Address Book
@@ -1747,3 +1748,5 @@ im.settings.personalization.sounds=Ringtones
 im.settings.personalization.phonename=Phone Name
 im.settings.personalization.setphonename=Enter a Phone Name:
 im.settings.personalization.wallpaperreset=Settings Reset
+im.alert.name=EMERGENCY ALERT
+im.alert.close=Dismiss
