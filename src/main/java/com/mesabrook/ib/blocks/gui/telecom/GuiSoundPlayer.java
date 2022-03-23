@@ -15,6 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.fml.client.config.GuiCheckBox;
 import org.lwjgl.input.Keyboard;
 
 import java.io.IOException;
@@ -29,6 +30,7 @@ public class GuiSoundPlayer extends GuiPhoneBase
     GuiTextField soundIDText;
     GuiTextField volumeText;
     GuiTextField pitchText;
+    GuiCheckBox delay;
 
     public GuiSoundPlayer(ItemStack phoneStack, EnumHand hand)
     {
@@ -46,10 +48,13 @@ public class GuiSoundPlayer extends GuiPhoneBase
     {
         super.initGui();
 
+        boolean useDelay = true;
+
         int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 32;
         reset = new MinedroidButton(1, INNER_X + 50, lowerControlsY - 20, 32, new TextComponentTranslation("im.musicapp.buttonreset").getFormattedText(), 0xFFFFFF);
         playSound = new MinedroidButton(2, INNER_X + 85, lowerControlsY - 20, 30, new TextComponentTranslation("im.musicapp.buttonplay").getFormattedText(), 0xFFFFFF);
         example = new MinedroidButton(3, reset.x, lowerControlsY - 35, 65, new TextComponentTranslation("im.musicapp.buttonexample").getFormattedText(), 0xFFFFFF);
+        delay = new GuiCheckBox(69, reset.x, lowerControlsY - 1, new TextComponentTranslation("im.musicapp.delaybox").getFormattedText(), useDelay);
 
         modIDText = new GuiTextField(10, fontRenderer, INNER_X + 60, INNER_Y + 50, 85, 10);
         soundIDText = new GuiTextField(11, fontRenderer, INNER_X + 60, INNER_Y + 70, 85, 10);
@@ -61,6 +66,7 @@ public class GuiSoundPlayer extends GuiPhoneBase
                 .add(reset)
                 .add(playSound)
                 .add(example)
+                .add(delay)
                 .build());
 
         volumeText.setText("1.0");
@@ -139,6 +145,11 @@ public class GuiSoundPlayer extends GuiPhoneBase
         super.actionPerformed(button);
         EntityPlayer player = Minecraft.getMinecraft().player;
 
+        if(button == delay)
+        {
+            GuiCheckBox checkBox = (GuiCheckBox)button;
+        }
+
         if(button == playSound)
         {
             if(modIDText.getText().isEmpty() || soundIDText.getText().isEmpty() || volumeText.getText().isEmpty() || pitchText.getText().isEmpty())
@@ -151,6 +162,15 @@ public class GuiSoundPlayer extends GuiPhoneBase
                 packet.pos = player.getPosition();
                 packet.modID = modIDText.getText();
                 packet.soundName = soundIDText.getText();
+
+                if(!delay.isChecked())
+                {
+                    packet.useDelay = true;
+                }
+                else
+                {
+                    packet.useDelay = false;
+                }
 
                 try
                 {
@@ -167,7 +187,6 @@ public class GuiSoundPlayer extends GuiPhoneBase
 
                 PacketHandler.INSTANCE.sendToServer(packet);
                 currentlyPlaying = ModUtils.truncator(packet.modID + ":" + packet.soundName, "...", INNER_TEX_WIDTH / 6);
-                Main.logger.info("[" + Reference.MODNAME + "] Minedroid Notice! " + player.getName() + " just played sound " + packet.modID + ":" + packet.soundName + " using the Sound Player app.");
             }
         }
 
@@ -175,8 +194,9 @@ public class GuiSoundPlayer extends GuiPhoneBase
         {
             modIDText.setText("");
             soundIDText.setText("");
-            volumeText.setText("");
-            pitchText.setText("");
+            volumeText.setText("1.0");
+            pitchText.setText("1.0");
+            delay.setIsChecked(true);
         }
 
         if(button == example)
@@ -185,6 +205,7 @@ public class GuiSoundPlayer extends GuiPhoneBase
             soundIDText.setText("record.chirp");
             volumeText.setText("1.0");
             pitchText.setText("1.0");
+            delay.setIsChecked(true);
         }
     }
 }
