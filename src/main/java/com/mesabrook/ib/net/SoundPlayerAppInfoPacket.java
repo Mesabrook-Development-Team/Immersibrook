@@ -16,6 +16,7 @@ public class SoundPlayerAppInfoPacket implements IMessage
     public BlockPos pos;
     public String modID = Reference.MODID;
     public String soundName;
+    public boolean useDelay = true;
     public float volume = 1.0F;
     public float pitch = 1.0F;
 
@@ -25,6 +26,7 @@ public class SoundPlayerAppInfoPacket implements IMessage
         pos = BlockPos.fromLong(buf.readLong());
         modID = ByteBufUtils.readUTF8String(buf);
         soundName = ByteBufUtils.readUTF8String(buf);
+        useDelay = buf.readBoolean();
         volume = buf.readFloat();
         pitch = buf.readFloat();
     }
@@ -35,6 +37,7 @@ public class SoundPlayerAppInfoPacket implements IMessage
         buf.writeLong(pos.toLong());
         ByteBufUtils.writeUTF8String(buf, modID);
         ByteBufUtils.writeUTF8String(buf, soundName);
+        buf.writeBoolean(useDelay);
         buf.writeFloat(volume);
         buf.writeFloat(pitch);
     }
@@ -56,6 +59,7 @@ public class SoundPlayerAppInfoPacket implements IMessage
             packet.soundName = message.soundName;
             packet.volume = message.volume;
             packet.pitch = message.pitch;
+            packet.rapidSounds = message.useDelay;
 
             PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(ctx.getServerHandler().player.dimension, ctx.getServerHandler().player.posX, ctx.getServerHandler().player.posY, ctx.getServerHandler().player.posZ, 25));
         }

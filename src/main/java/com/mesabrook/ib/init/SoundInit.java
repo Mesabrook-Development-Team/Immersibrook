@@ -135,6 +135,7 @@ public class SoundInit
 	public static final SoundEvent ENDCALL;
 	public static final SoundEvent PHONE_UNLOCK;
 	public static final SoundEvent BUSY;
+	public static final SoundEvent ALERT_TONE;
 
 	// Ringtones
 	public static final SoundEvent RING_1;
@@ -149,6 +150,7 @@ public class SoundInit
 	public static final SoundEvent RING_10;
 	public static final SoundEvent RING_11;
 	public static final SoundEvent RING_12;
+	public static final SoundEvent RING_13;
 
 	// DTMF Phone Tones
 	public static final SoundEvent DTMF_0;
@@ -286,6 +288,7 @@ public class SoundInit
 		PHONE_ACTIVATE = addSoundsToRegistry("welcome");
 		PHONE_UNLOCK = addSoundsToRegistry("phone_unlock");
 		BUSY = addSoundsToRegistry("busy");
+		ALERT_TONE = addSoundsToRegistry("alert_tone");
 
 		// Ringtones
 		RING_1 = addSoundsToRegistry("ring_1");
@@ -300,6 +303,7 @@ public class SoundInit
 		RING_10 = addSoundsToRegistry("ring_10");
 		RING_11 = addSoundsToRegistry("ring_11");
 		RING_12 = addSoundsToRegistry("ring_12");
+		RING_13 = addSoundsToRegistry("ring_13");
 
 		// DTMF Phone Tones
 		DTMF_0 = addSoundsToRegistry("dtmf_0");
@@ -453,6 +457,7 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.RING_11);
 				event.getRegistry().register(SoundInit.DING_8);
 				event.getRegistry().register(SoundInit.RING_12);
+				event.getRegistry().register(SoundInit.RING_13);
 				event.getRegistry().register(SoundInit.MANHOLE_OPEN);
 				event.getRegistry().register(SoundInit.MANHOLE_CLOSE);
 				event.getRegistry().register(SoundInit.MANHOLE_BREAK);
@@ -462,6 +467,7 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.WATERPHONE);
 				event.getRegistry().register(SoundInit.HEAL);
 				event.getRegistry().register(SoundInit.GAVEL);
+				event.getRegistry().register(SoundInit.ALERT_TONE);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

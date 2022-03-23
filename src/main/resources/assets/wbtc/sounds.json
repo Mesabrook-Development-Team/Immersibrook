@@ -123,6 +123,7 @@
 	"ring_10": {"category": "master","sounds": [{"name": "wbtc:ring_10","stream": true}]},
 	"ring_11": {"category": "master","sounds": [{"name": "wbtc:ring_11","stream": true}]},
 	"ring_12": {"category": "master","sounds": [{"name": "wbtc:ring_12","stream": true}]},
+	"ring_13": {"category": "master","sounds": [{"name": "wbtc:ring_13","stream": true}]},
 	"death": {"category": "master","sounds": [{"name": "wbtc:death","stream": true}]},
 	"manhole_open": {"category": "master","sounds": [{"name": "wbtc:manhole_open","stream": true}]},
 	"manhole_close": {"category": "master","sounds": [{"name": "wbtc:manhole_close","stream": true}]},
@@ -132,5 +133,6 @@
 	"busy": {"category": "master","sounds": [{"name": "wbtc:busy"}]},
 	"waterphone": {"category": "master","sounds": [{"name": "wbtc:waterphone"}]},
 	"heal": {"category": "master","sounds": [{"name": "wbtc:heal"}]},
-	"gavel": {"category": "master","sounds": [{"name": "wbtc:gavel"}]}
+	"gavel": {"category": "master","sounds": [{"name": "wbtc:gavel"}]},
+	"alert_tone": {"category": "master","sounds": [{"name": "wbtc:alert_tone"}]}
 }

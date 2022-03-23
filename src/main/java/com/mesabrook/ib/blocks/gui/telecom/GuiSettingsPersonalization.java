@@ -15,6 +15,7 @@ public class GuiSettingsPersonalization extends GuiPhoneBase
     LabelButton wallpapers;
     LabelButton sounds;
     LabelButton phoneName;
+    LabelButton alert;
     ImageButton wallpaperIcon;
     ImageButton soundsIcon;
     ImageButton phoneNameIcon;
@@ -39,6 +40,7 @@ public class GuiSettingsPersonalization extends GuiPhoneBase
         wallpapers = new LabelButton(1, INNER_X + 31, INNER_Y + 53, new TextComponentTranslation("im.settings.personalization.wallpapers").getFormattedText(), 0xFFFFFF);
         sounds = new LabelButton(2, INNER_X + 31, INNER_Y + 83, new TextComponentTranslation("im.settings.personalization.sounds").getFormattedText(), 0xFFFFFF);
         phoneName = new LabelButton(3, INNER_X + 31, INNER_Y + 113, new TextComponentTranslation("im.settings.personalization.phonename").getFormattedText(), 0xFFFFFF);
+        alert = new LabelButton(7, INNER_X + 31, INNER_Y + 143, "Alert Test", 0xFFFFFF);
 
         wallpaperIcon = new ImageButton(4, INNER_X + 0, INNER_Y + 40, 28, 28, "btn_personalize.png", 32, 32);
         soundsIcon = new ImageButton(5, INNER_X + 0, INNER_Y + 70, 28, 28, "icn_sound.png", 32, 32);
@@ -52,6 +54,7 @@ public class GuiSettingsPersonalization extends GuiPhoneBase
                 .add(wallpapers)
                 .add(sounds)
                 .add(phoneName)
+                .add(alert)
                 .build());
     }
 
@@ -85,6 +88,11 @@ public class GuiSettingsPersonalization extends GuiPhoneBase
         if(button == phoneName || button == phoneNameIcon)
         {
             Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsPhoneName(phoneStack, hand));
+        }
+
+        if(button == alert)
+        {
+            Minecraft.getMinecraft().displayGuiScreen(new GuiMobileAlert(phoneStack, hand));
         }
     }
 }
