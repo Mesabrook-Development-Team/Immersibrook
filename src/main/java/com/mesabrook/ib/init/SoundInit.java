@@ -136,6 +136,8 @@ public class SoundInit
 	public static final SoundEvent PHONE_UNLOCK;
 	public static final SoundEvent BUSY;
 	public static final SoundEvent ALERT_TONE;
+	public static final SoundEvent PHONE_OFF;
+	public static final SoundEvent MINEDROID_STARTUP;
 
 	// Ringtones
 	public static final SoundEvent RING_1;
@@ -289,6 +291,8 @@ public class SoundInit
 		PHONE_UNLOCK = addSoundsToRegistry("phone_unlock");
 		BUSY = addSoundsToRegistry("busy");
 		ALERT_TONE = addSoundsToRegistry("alert_tone");
+		PHONE_OFF = addSoundsToRegistry("phone_off");
+		MINEDROID_STARTUP = addSoundsToRegistry("minedroid_startup");
 
 		// Ringtones
 		RING_1 = addSoundsToRegistry("ring_1");
@@ -468,6 +472,8 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.HEAL);
 				event.getRegistry().register(SoundInit.GAVEL);
 				event.getRegistry().register(SoundInit.ALERT_TONE);
+				event.getRegistry().register(SoundInit.PHONE_OFF);
+				event.getRegistry().register(SoundInit.MINEDROID_STARTUP);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

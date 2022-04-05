@@ -1,6 +1,7 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.mesabrook.ib.items.misc.ItemPhone;
+import com.mesabrook.ib.net.SoundPlayerAppInfoPacket;
 import com.mesabrook.ib.net.telecom.ActivateNumberChosenPacket;
 import com.mesabrook.ib.net.telecom.ActivatePhonePacket;
 import com.mesabrook.ib.util.GuiUtil;
@@ -107,10 +108,15 @@ public class GuiPhoneActivate extends GuiScreen {
 		{
 			mainScreenDelay++;
 			
-			if (mainScreenDelay >= 45)
+			if (mainScreenDelay >= 150)
 			{
 				GuiLockScreen home = new GuiLockScreen(Minecraft.getMinecraft().player.getHeldItem(hand), hand);
 				Minecraft.getMinecraft().displayGuiScreen(home);
+
+				SoundPlayerAppInfoPacket soundPacket = new SoundPlayerAppInfoPacket();
+				soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
+				soundPacket.soundName = "minedroid_startup";
+				PacketHandler.INSTANCE.sendToServer(soundPacket);
 			}
 		}
 	}

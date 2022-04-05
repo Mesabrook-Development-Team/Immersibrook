@@ -1,6 +1,7 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.mesabrook.ib.items.misc.ItemPhone;
+import com.mesabrook.ib.net.SoundPlayerAppInfoPacket;
 import com.mesabrook.ib.net.telecom.GetReceptionStrengthPacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
@@ -239,10 +240,16 @@ public abstract class GuiPhoneBase extends GuiScreen {
 	@Override
 	public void onGuiClosed() {
 		super.onGuiClosed();
-		
+
 		if (!lastGuiWasPhone)
 		{
 			isPhoneUnlocked = false;
+			SoundPlayerAppInfoPacket packet = new SoundPlayerAppInfoPacket();
+			packet.pos = Minecraft.getMinecraft().player.getPosition();
+			packet.modID = Reference.MODID;
+			packet.soundName = "phone_off";
+			packet.useDelay = false;
+			PacketHandler.INSTANCE.sendToServer(packet);
 		}
 		lastGuiWasPhone = false;
 	}

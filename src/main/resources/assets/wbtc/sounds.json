@@ -134,5 +134,7 @@
 	"waterphone": {"category": "master","sounds": [{"name": "wbtc:waterphone"}]},
 	"heal": {"category": "master","sounds": [{"name": "wbtc:heal"}]},
 	"gavel": {"category": "master","sounds": [{"name": "wbtc:gavel"}]},
-	"alert_tone": {"category": "master","sounds": [{"name": "wbtc:alert_tone"}]}
+	"alert_tone": {"category": "master","sounds": [{"name": "wbtc:alert_tone"}]},
+	"phone_off": {"category": "master","sounds": [{"name": "wbtc:phone_off"}]},
+	"minedroid_startup": {"category": "master","sounds": [{"name": "wbtc:minedroid_startup"}]}
 }
