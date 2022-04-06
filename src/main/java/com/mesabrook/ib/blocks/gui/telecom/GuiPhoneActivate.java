@@ -110,13 +110,8 @@ public class GuiPhoneActivate extends GuiScreen {
 			
 			if (mainScreenDelay >= 150)
 			{
-				GuiLockScreen home = new GuiLockScreen(Minecraft.getMinecraft().player.getHeldItem(hand), hand);
+				GuiPhoneSetupStart home = new GuiPhoneSetupStart(Minecraft.getMinecraft().player.getHeldItem(hand), hand);
 				Minecraft.getMinecraft().displayGuiScreen(home);
-
-				SoundPlayerAppInfoPacket soundPacket = new SoundPlayerAppInfoPacket();
-				soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
-				soundPacket.soundName = "minedroid_startup";
-				PacketHandler.INSTANCE.sendToServer(soundPacket);
 			}
 		}
 	}
