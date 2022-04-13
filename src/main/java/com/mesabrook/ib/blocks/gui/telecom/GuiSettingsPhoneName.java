@@ -1,10 +1,13 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.google.common.collect.ImmutableList;
+import com.mesabrook.ib.net.telecom.PhoneNamePacket;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -24,7 +27,6 @@ public class GuiSettingsPhoneName extends GuiPhoneBase
     public GuiSettingsPhoneName(ItemStack phoneStack, EnumHand hand)
     {
         super(phoneStack, hand);
-
         currentPhoneName = phoneStack.getDisplayName();
     }
 
@@ -84,6 +86,7 @@ public class GuiSettingsPhoneName extends GuiPhoneBase
     protected void actionPerformed(GuiButton button) throws IOException
     {
         super.actionPerformed(button);
+        EntityPlayer player = Minecraft.getMinecraft().player;
 
         if(button == back)
         {
@@ -92,12 +95,33 @@ public class GuiSettingsPhoneName extends GuiPhoneBase
 
         if(button == apply)
         {
+            if(!nameTxtBox.getText().isEmpty())
+            {
+                PhoneNamePacket packet = new PhoneNamePacket();
+                packet.hand = hand.ordinal();
+                packet.newName = nameTxtBox.getText();
+                packet.guiClassName = GuiSettingsPhoneName.class.getName();
+                packet.resetName = false;
 
+                PacketHandler.INSTANCE.sendToServer(packet);
+                nameTxtBox.setText(packet.newName);
+            }
+            else
+            {
+                // TODO: Invoke a Toast Here.
+            }
         }
 
         if(button == reset)
         {
+            PhoneNamePacket packet = new PhoneNamePacket();
+            packet.hand = hand.ordinal();
+            packet.newName = phoneStack.getDisplayName();
+            packet.guiClassName = GuiSettingsPhoneName.class.getName();
+            packet.resetName = true;
 
+            PacketHandler.INSTANCE.sendToServer(packet);
+            nameTxtBox.setText(phoneStack.getDisplayName());
         }
     }
 }

@@ -50,9 +50,10 @@ public class PacketHandler
 		INSTANCE.registerMessage(RefreshStackPacket.Handler.class, RefreshStackPacket.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(PhoneWallpaperPacket.Handler.class, PhoneWallpaperPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(PhoneRingtonesPacket.Handler.class, PhoneRingtonesPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(PhoneNamePacket.Handler.class, PhoneNamePacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(FactoryResetPacket.Handler.class, FactoryResetPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(SaveContactPacket.Handler.class, SaveContactPacket.class, nextID(), Side.SERVER);
-		INSTANCE.registerMessage(DeleteContactPacket.Handler.class, DeleteContactPacket.class, nextID(), Side.SERVER);		
+		INSTANCE.registerMessage(DeleteContactPacket.Handler.class, DeleteContactPacket.class, nextID(), Side.SERVER);
 	}
 	
 	private static int nextID()
