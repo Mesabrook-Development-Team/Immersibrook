@@ -5,6 +5,8 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
+import java.util.Locale;
+
 public class ImageButton extends GuiButton {
 
 	private String textureFileName;

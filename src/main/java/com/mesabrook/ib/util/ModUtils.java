@@ -3,6 +3,8 @@ package com.mesabrook.ib.util;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 
+import java.util.Scanner;
+
 /**
 ** This class provides extra information
 **/
@@ -55,5 +57,4 @@ public class ModUtils
 	    }
 	    return bb;
 	  }
-
 }
