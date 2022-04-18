@@ -37,7 +37,7 @@ public class GuiCalculatorSplash extends GuiPhoneBase
         drawCenteredString(fontRenderer, "BETA", INNER_X + 80, INNER_Y + 150, 0xFFFFFF);
 
         progress++;
-        if(progress > 500)
+        if(progress > 200)
         {
             Minecraft.getMinecraft().displayGuiScreen(new GuiCalculator(phoneStack, hand));
         }
