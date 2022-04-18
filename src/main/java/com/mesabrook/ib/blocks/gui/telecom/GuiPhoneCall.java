@@ -49,11 +49,11 @@ public class GuiPhoneCall extends GuiPhoneBase {
 			int x = ((i % 3) - 1) * 25;
 			int y = ((i / 3) - 1) * 25;
 			
-			ImageButton digit = new ImageButton(i + 1, INNER_X + INNER_TEX_WIDTH / 2 + x - 8, INNER_Y + INNER_TEX_HEIGHT / 2 + y + 5, 16, 16, "num" + (i + 1) + ".png", 16, 16);
+			ImageButton digit = new ImageButton(i + 1, INNER_X + INNER_TEX_WIDTH / 2 + x - 8, INNER_Y + INNER_TEX_HEIGHT / 2 + y + 5, 16, 16, "calcbtn_" + (i + 1) + ".png", 16, 16);
 			buttonList.add(digit);
 		}
 		
-		ImageButton digit0 = new ImageButton(0, INNER_X + INNER_TEX_WIDTH / 2 - 8, INNER_Y + INNER_TEX_HEIGHT / 2 + 55, 16, 16, "num0.png", 16, 16);
+		ImageButton digit0 = new ImageButton(0, INNER_X + INNER_TEX_WIDTH / 2 - 8, INNER_Y + INNER_TEX_HEIGHT / 2 + 55, 16, 16, "calcbtn_0.png", 16, 16);
 		buttonList.add(digit0);
 		
 		call = new ImageButton(10, INNER_X + INNER_TEX_WIDTH / 2 + 17, INNER_Y + INNER_TEX_HEIGHT / 2 + 55, 16, 16, "numcall.png", 16, 16);

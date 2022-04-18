@@ -92,6 +92,8 @@ public class GuiCalculator extends GuiPhoneBase
                 .add(btnClear)
                 .add(btnPeriod)
                 .build());
+
+        calcText.setText("Not Yet Implemented");
     }
 
     @Override

@@ -114,43 +114,49 @@ public class GuiPhoneSetupStepSecurity extends GuiPhoneBase
         }
         if(button == next)
         {
-            SecurityStrategySelectedPacket packet = new SecurityStrategySelectedPacket();
-            packet.hand = hand.ordinal();
-            packet.guiScreenClassForRefresh = GuiPhoneSetupStepSecurity.class.getName();
-
-            if(pin.isChecked())
+            if(!pin.isChecked() && !playerID.isChecked())
             {
-                if (pinValue.getMaskedText().isEmpty())
-                {
-                    Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, new TextComponentTranslation("im.settings.pinerror").getFormattedText(), 0xFF0000));
-                    return;
-                }
-                packet.pin = Integer.parseInt(pinValue.getMaskedText());
+                Minecraft.getMinecraft().displayGuiScreen(new GuiSetupWarning(phoneStack, hand));
             }
-            if(playerID.isChecked())
+            else
             {
-                if (uuidValue.getText().isEmpty())
+                SecurityStrategySelectedPacket packet = new SecurityStrategySelectedPacket();
+                packet.hand = hand.ordinal();
+                packet.guiScreenClassForRefresh = GuiPhoneSetupStepSecurity.class.getName();
+                if(pin.isChecked())
                 {
-                    Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Player UUID Required!", 0xFF0000));
-                    Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, new TextComponentTranslation("im.settings.uuiderror").getFormattedText(), 0xFF0000));
-                    return;
+                    if (pinValue.getMaskedText().isEmpty())
+                    {
+                        Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, new TextComponentTranslation("im.settings.pinerror").getFormattedText(), 0xFF0000));
+                        return;
+                    }
+                    packet.pin = Integer.parseInt(pinValue.getMaskedText());
+                }
+                if(playerID.isChecked())
+                {
+                    if (uuidValue.getText().isEmpty())
+                    {
+                        Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Player UUID Required!", 0xFF0000));
+                        Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, new TextComponentTranslation("im.settings.uuiderror").getFormattedText(), 0xFF0000));
+                        return;
+                    }
+
+                    UUID parsedPlayerID;
+                    try
+                    {
+                        parsedPlayerID = UUID.fromString(uuidValue.getText());
+                    }
+                    catch(IllegalArgumentException ex)
+                    {
+                        Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, new TextComponentTranslation("im.settings.tryagain").getFormattedText(), 0xFF0000));
+                        return;
+                    }
+                    packet.playerID = parsedPlayerID;
                 }
 
-                UUID parsedPlayerID;
-                try
-                {
-                    parsedPlayerID = UUID.fromString(uuidValue.getText());
-                }
-                catch(IllegalArgumentException ex)
-                {
-                    Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, new TextComponentTranslation("im.settings.tryagain").getFormattedText(), 0xFF0000));
-                    return;
-                }
-                packet.playerID = parsedPlayerID;
+                PacketHandler.INSTANCE.sendToServer(packet);
+                Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneSetupComplete(phoneStack, hand));
             }
-
-            PacketHandler.INSTANCE.sendToServer(packet);
-            Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneSetupComplete(phoneStack, hand));
         }
     }
 
