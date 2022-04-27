@@ -50,11 +50,11 @@ public class GuiSettingsPersonalization extends GuiPhoneBase
                 .add(back)
                 .add(wallpaperIcon)
                 .add(soundsIcon)
-                .add(phoneNameIcon)
+                //.add(phoneNameIcon)
                 .add(wallpapers)
                 .add(sounds)
-                .add(phoneName)
-                .add(alert)
+                //.add(phoneName)
+                //.add(alert)
                 .build());
     }
 

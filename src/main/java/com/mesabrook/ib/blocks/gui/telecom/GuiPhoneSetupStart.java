@@ -48,13 +48,13 @@ public class GuiPhoneSetupStart extends GuiPhoneBase
     protected void doDraw(int mouseX, int mouseY, float partialticks)
     {
         super.doDraw(mouseX, mouseY, partialticks);
-        int stringWidth = fontRenderer.getStringWidth("Welcome!");
+        int stringWidth = fontRenderer.getStringWidth("Hello!");
 
         GlStateManager.scale(uBigFont, uBigFont, uBigFont);
-        fontRenderer.drawString("Welcome!", scale(INNER_X + INNER_TEX_WIDTH / 2, dBigFont) - stringWidth / 2, scale(INNER_Y + 60, dBigFont), 0xFFFFFF, true);
+        fontRenderer.drawString("Hello!", scale(INNER_X + INNER_TEX_WIDTH / 2, dBigFont) - stringWidth / 2, scale(INNER_Y + 60, dBigFont), 0xFFFFFF, true);
         GlStateManager.scale(dBigFont, dBigFont, dBigFont);
 
-        drawCenteredString(fontRenderer, TextFormatting.ITALIC + "Your new Minedroid awaits!!", INNER_X + 80, INNER_Y + 110, 0xFFFFFF);
+        drawCenteredString(fontRenderer, TextFormatting.ITALIC + "Welcome to Minedroid!", INNER_X + 80, INNER_Y + 110, 0xFFFFFF);
         drawCenteredString(fontRenderer, TextFormatting.ITALIC + "Click Start Setup to begin.", INNER_X + 80, INNER_Y + 130, 0xFFFFFF);
     }
 
