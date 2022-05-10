@@ -89,6 +89,7 @@ im.cmd.proxchat.set=Proximity Chat has been turned %s
 im.talk.usage=Talk Command
 im.talk.success=You are now talking %s
 im.talk.noglobalperm=You are not allowed to send global messages
+im.access.call=§7§lIncoming Phone Call from
 
 //First Aid
 item.first_aid.name=First Aid Kit
@@ -1750,3 +1751,15 @@ im.settings.personalization.setphonename=Enter a Phone Name:
 im.settings.personalization.wallpaperreset=Settings Reset
 im.alert.name=EMERGENCY ALERT
 im.alert.close=Dismiss
+
+//Subtitles
+ib.sub.phonelock=Phone Locking
+ib.sub.phoneunlock=Phone Unlocking
+ib.sub.phonering=Phone Ringing
+ib.sub.phoneding=Phone Message
+ib.sub.phone alert=Wireless Emergency Alert
+ib.sub.soundplayer=Phone Sound Player
+ib.sub.mhopen=Manhole Opening
+ib.sub.mhclose=Manhole Closing
+ib.sub.mhplace=Manhole Placed
+ib.sub.mhbreak=Manhole Breaking
