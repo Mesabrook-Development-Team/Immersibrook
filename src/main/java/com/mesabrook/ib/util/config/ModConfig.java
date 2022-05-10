@@ -74,7 +74,7 @@ public final class ModConfig
 	@Comment("[Debugging Option] Set to true if you want the fake light block created by Ceiling Lights to be rendered.")
 	public static boolean renderFakeLightBlocks = false;
 
-	@Comment("Set to false to disable the OOF sound effect that plays when a player dies.")
+	@Comment("Set to false to disable the funny death sound effect that plays when a player dies.")
 	public static boolean oofDeathSound = true;
 
 	@Comment("[Float] Phone Ringtone Loudness (default - 0.25F | max - 1.0F)")
@@ -91,6 +91,9 @@ public final class ModConfig
 	
 	@Comment("How far does a player's voice travel if talking loudly?")
 	public static int loudDistance = 29;
+
+	@Comment("Show Incoming Call Message? (Enabled by default if subtitles are active)")
+	public static boolean showCallMsg = false;
 	
 	@Mod.EventBusSubscriber(modid = Reference.MODID)
 	private static class EventHandler

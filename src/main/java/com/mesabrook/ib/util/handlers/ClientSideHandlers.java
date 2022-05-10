@@ -27,6 +27,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -216,9 +218,14 @@ public class ClientSideHandlers
 				incomingCallSoundsByPhone.put(phoneNumber, incomingCallSound);
 				handler.playSound(incomingCallSound);
 
-				if(Minecraft.getMinecraft().gameSettings.showSubtitles)
+				if(Minecraft.getMinecraft().gameSettings.showSubtitles || ModConfig.showCallMsg)
 				{
-					player.sendMessage(new TextComponentString("Incoming Phone Call from " + GuiPhoneBase.getFormattedPhoneNumber(phoneNumber)));
+					TextComponentString pn = new TextComponentString(GuiPhoneBase.getFormattedPhoneNumber(phoneNumber));
+					pn.getStyle().setBold(true);
+					pn.getStyle().setItalic(true);
+					pn.getStyle().setColor(TextFormatting.GRAY);
+
+					player.sendStatusMessage(new TextComponentString(new TextComponentTranslation("im.access.call").getFormattedText() + " " + TextFormatting.GRAY + pn.getFormattedText()), true);
 				}
 			}
 		}
