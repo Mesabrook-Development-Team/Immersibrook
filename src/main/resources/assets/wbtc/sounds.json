@@ -1,140 +1,989 @@
 {
-    "owo": {"category": "master","sounds": [{"name": "wbtc:owo","stream": true}]},
-	"rz_trophy": {"category": "master", "sounds": [{"name": "wbtc:rz_trophy", "stream": true}]},
-	"csx_trophy": {"category": "master", "sounds": [{"name": "wbtc:csx_trophy", "stream": true}]},
-	"td_trophy": {"category": "master", "sounds": [{"name": "wbtc:td_trophy", "stream": true}]},
-	"tlz_trophy": {"category": "master", "sounds": [{"name": "wbtc:tlz_trophy", "stream": true}]},
-	"lw_trophy": {"category": "master", "sounds": [{"name": "wbtc:lw_trophy", "stream": true}]},
-	"md_trophy": {"category": "master", "sounds": [{"name": "wbtc:md_trophy", "stream": true}]},
-	"svv_trophy": {"category": "master", "sounds": [{"name": "wbtc:svv_trophy", "stream": true}]},
-	"trophy_break": {"category": "master", "sounds": [{"name": "wbtc:trophy_break", "stream": true}]},
-	"oof": {"category": "master", "sounds": [{"name": "wbtc:oof", "stream": true}]},
-	"can_open": {"category": "master", "sounds": [{"name": "wbtc:can_open", "stream": true}]},
-	"can_close": {"category": "master", "sounds": [{"name": "wbtc:can_close", "stream": true}]},
-	"cheese_place": {"category": "master", "sounds": [{"name": "wbtc:cheese_place", "stream": true}]},
-	"cheese_click": {"category": "master", "sounds": [{"name": "wbtc:cheese_click", "stream": true}]},
-	"pie": {"category": "block", "sounds": [{"name": "wbtc:pie", "stream": true}]},
-	"amalthea": {"category": "master","sounds": [{"name": "wbtc:amalthea","stream": true}]},
-    "nyan": {"category": "master","sounds": [{"name": "wbtc:nyan","stream": true}]},
-	"ussr1": {"category": "master","sounds": [{"name": "wbtc:ussr1","stream": true}]},
-	"ussr2": {"category": "master","sounds": [{"name": "wbtc:ussr2","stream": true}]},
-	"baba_booey": {"category": "master","sounds": [{"name": "wbtc:baba_booey","stream": true}]},
-	"dolan": {"category": "master","sounds": [{"name": "wbtc:dolan","stream": true}]},
-	"murica": {"category": "master","sounds": [{"name": "wbtc:murica","stream": true}]},
-	"pigstep": {"category": "master","sounds": [{"name": "wbtc:pigstep","stream": true}]},
-	"krab_borg": {"category": "master","sounds": [{"name": "wbtc:krab_borg","stream": true}]},
-	"krab_borg_full": {"category": "master","sounds": [{"name": "wbtc:krab_borg_full","stream": true}]},
-	"fish": {"category": "master","sounds": [{"name": "wbtc:fish","stream": true}]},
-	"fish_full": {"category": "master","sounds": [{"name": "wbtc:fish_full","stream": true}]},
-	"no": {"category": "master","sounds": [{"name": "wbtc:no","stream": true}]},
-	"nv": {"category": "master","sounds": [{"name": "wbtc:nv","stream": true}]},
-	"vest": {"category": "master","sounds": [{"name": "wbtc:vest","stream": true}]},
-	"safety": {"category": "master","sounds": [{"name": "wbtc:safety","stream": true}]},
-	"yoink": {"category": "master","sounds": [{"name": "wbtc:yoink","stream": true}]},
-	"beaned": {"category": "master","sounds": [{"name": "wbtc:beaned","stream": true}]},
-	"bong": {"category": "master","sounds": [{"name": "wbtc:bong","stream": true}]},
-	"bonk": {"category": "master","sounds": [{"name": "wbtc:bonk","stream": true}]},
-	"pop": {"category": "master","sounds": [{"name": "wbtc:pop","stream": true}]},
-	"pop_single": {"category": "master","sounds": [{"name": "wbtc:pop_single","stream": true}]},
-	"spree": {"category": "master","sounds": [{"name": "wbtc:spree","stream": true}]},
-	"owie": {"category": "master","sounds": [{"name": "wbtc:owie","stream": true}]},
-	"dove": {"category": "master","sounds": [{"name": "wbtc:dove","stream": true}]},
-	"ms_xp": {"category": "master","sounds": [{"name": "wbtc:ms_xp","stream": true}]},
-	"plastic_break": {"category": "master","sounds": [{"name": "wbtc:plastic_break","stream": true}]},
-	"plastic_hit": {"category": "master","sounds": [{"name": "wbtc:plastic_hit","stream": true}]},
-	"plastic_land": {"category": "master","sounds": [{"name": "wbtc:plastic_land","stream": true}]},
-	"plastic_place": {"category": "master","sounds": [{"name": "wbtc:plastic_place","stream": true}]},
-	"plastic_step": {"category": "master","sounds": [{"name": "wbtc:plastic_step","stream": true}]},
-	"cpw": {"category": "master","sounds": [{"name": "wbtc:cpw","stream": true}]},
-	"sploot": {"category": "master","sounds": [{"name": "wbtc:sploot","stream": true}]},
-	"new_owo": {"category": "master","sounds": [{"name": "wbtc:new_owo","stream": true}]},
-	"new_owo_short": {"category": "master","sounds": [{"name": "wbtc:new_owo_short","stream": true}]},
-	"puff": {"category": "master","sounds": [{"name": "wbtc:puff","stream": true}]},
-	"woosh": {"category": "master","sounds": [{"name": "wbtc:woosh","stream": true}]},
-	"doot": {"category": "master","sounds": [{"name": "wbtc:doot","stream": true}]},
-	"shep": {"category": "master","sounds": [{"name": "wbtc:shep","stream": true}]},
-	"trumpet": {"category": "master","sounds": [{"name": "wbtc:trumpet","stream": true}]},
-	"tm_beep": {"category": "master","sounds": [{"name": "wbtc:tm_beep","stream": true}]},
-	"hb": {"category": "master","sounds": [{"name": "wbtc:hb","stream": true}]},
-	"spooky": {"category": "master","sounds": [{"name": "wbtc:spooky","stream": true}]},
-	"ritz": {"category": "master","sounds": [{"name": "wbtc:ritz","stream": true}]},
-	"hl3": {"category": "master","sounds": [{"name": "wbtc:hl3","stream": true}]},
-	"squidward": {"category": "master","sounds": [{"name": "wbtc:squidward","stream": true}]},
-	"reverb": {"category": "master","sounds": [{"name": "wbtc:reverb","stream": true}]},
-	"burp": {"category": "master","sounds": [{"name": "wbtc:burp","stream": true}]},
-	"radio_close": {"category": "master","sounds": [{"name": "wbtc:radio_close","stream": true}]},
-	"ding_1": {"category": "master","sounds": [{"name": "wbtc:ding_1","stream": true}]},
-	"ding_2": {"category": "master","sounds": [{"name": "wbtc:ding_2","stream": true}]},
-	"ding_3": {"category": "master","sounds": [{"name": "wbtc:ding_3","stream": true}]},
-	"ding_4": {"category": "master","sounds": [{"name": "wbtc:ding_4","stream": true}]},
-	"ding_5": {"category": "master","sounds": [{"name": "wbtc:ding_5","stream": true}]},
-	"ding_6": {"category": "master","sounds": [{"name": "wbtc:ding_6"}]},
-	"ding_7": {"category": "master","sounds": [{"name": "wbtc:ding_7","stream": true}]},
-	"ding_8": {"category": "master","sounds": [{"name": "wbtc:ding_8","stream": true}]},
-	"outgoingcall": {"category": "master","sounds": [{"name": "wbtc:outgoingcall"}]},
-	"sit": {"category": "master","sounds": [{"name": "wbtc:sit","stream": true}]},
-	"startcall": {"category": "master","sounds": [{"name": "wbtc:startcall","stream": true}]},
-	"endcall": {"category": "master","sounds": [{"name": "wbtc:endcall","stream": true}]},
-	"dtmf_0": {"category": "master","sounds": [{"name": "wbtc:dtmf_0","stream": true}]},
-	"dtmf_1": {"category": "master","sounds": [{"name": "wbtc:dtmf_1","stream": true}]},
-	"dtmf_2": {"category": "master","sounds": [{"name": "wbtc:dtmf_2","stream": true}]},
-	"dtmf_3": {"category": "master","sounds": [{"name": "wbtc:dtmf_3","stream": true}]},
-	"dtmf_4": {"category": "master","sounds": [{"name": "wbtc:dtmf_4","stream": true}]},
-	"dtmf_5": {"category": "master","sounds": [{"name": "wbtc:dtmf_5","stream": true}]},
-	"dtmf_6": {"category": "master","sounds": [{"name": "wbtc:dtmf_6","stream": true}]},
-	"dtmf_7": {"category": "master","sounds": [{"name": "wbtc:dtmf_7","stream": true}]},
-	"dtmf_8": {"category": "master","sounds": [{"name": "wbtc:dtmf_8","stream": true}]},
-	"dtmf_9": {"category": "master","sounds": [{"name": "wbtc:dtmf_9","stream": true}]},
-	"duck": {"category": "master","sounds": [{"name": "wbtc:duck","stream": true}]},
-	"duckboom": {"category": "master","sounds": [{"name": "wbtc:duckboom","stream": true}]},
-	"baka": {"category": "master","sounds": [{"name": "wbtc:baka","stream": true}]},
-	"mallet": {"category": "master","sounds": [{"name": "wbtc:mallet","stream": true}]},
-	"cooking": {"category": "master","sounds": [{"name": "wbtc:cooking","stream": true}]},
-	"police_helmet": {"category": "master","sounds": [{"name": "wbtc:police_helmet","stream": true}]},
-	"kekw": {"category": "master","sounds": [{"name": "wbtc:kekw","stream": true}]},
-	"welcome": {"category": "master","sounds": [{"name": "wbtc:welcome","stream": true}]},
-	"two_years": {"category": "master","sounds": [{"name": "wbtc:two_years","stream": true}]},
-	"leoteu_on": {"category": "master","sounds": [{"name": "wbtc:leoteu_on","stream": true}]},
-	"leoteu_off": {"category": "master","sounds": [{"name": "wbtc:leoteu_off","stream": true}]},
-	"exp": {"category": "master","sounds": [{"name": "wbtc:exp","stream": true}]},
-	"loudbong": {"category": "master","sounds": [{"name": "wbtc:loudbong","stream": true}]},
-	"memory": {"category": "master","sounds": [{"name": "wbtc:memory","stream": true}]},
-	"book_open": {"category": "master","sounds": [{"name": "wbtc:book_open","stream": true}]},
-	"book_close": {"category": "master","sounds": [{"name": "wbtc:book_close","stream": true}]},
-	"mh_close": {"category": "master","sounds": [{"name": "wbtc:mh_close","stream": true}]},
-	"mh_open": {"category": "master","sounds": [{"name": "wbtc:mh_open","stream": true}]},
-	"jingles": {"category": "master","sounds": [{"name": "wbtc:jingles","stream": true}]},
-	"rip": {"category": "master","sounds": [{"name": "wbtc:rip","stream": true}]},
-	"sus1": {"category": "master","sounds": [{"name": "wbtc:sus1","stream": true}]},
-	"sus2": {"category": "master","sounds": [{"name": "wbtc:sus2","stream": true}]},
-	"spicy": {"category": "master","sounds": [{"name": "wbtc:spicy","stream": true}]},
-	"phone_unlock": {"category": "master","sounds": [{"name": "wbtc:phone_unlock","stream": true}]},
-	"ok1": {"category": "master","sounds": [{"name": "wbtc:ok1","stream": true}]},
-	"ok2": {"category": "master","sounds": [{"name": "wbtc:ok2","stream": true}]},
-	"ring_1": {"category": "master","sounds": [{"name": "wbtc:ring_1","stream": true}]},
-	"ring_2": {"category": "master","sounds": [{"name": "wbtc:ring_2","stream": true}]},
-	"ring_3": {"category": "master","sounds": [{"name": "wbtc:ring_3","stream": true}]},
-	"ring_4": {"category": "master","sounds": [{"name": "wbtc:ring_4","stream": true}]},
-	"ring_5": {"category": "master","sounds": [{"name": "wbtc:ring_5","stream": true}]},
-	"ring_6": {"category": "master","sounds": [{"name": "wbtc:ring_6","stream": true}]},
-	"ring_7": {"category": "master","sounds": [{"name": "wbtc:ring_7","stream": true}]},
-	"ring_8": {"category": "master","sounds": [{"name": "wbtc:ring_8","stream": true}]},
-	"ring_9": {"category": "master","sounds": [{"name": "wbtc:ring_9","stream": true}]},
-	"ring_10": {"category": "master","sounds": [{"name": "wbtc:ring_10","stream": true}]},
-	"ring_11": {"category": "master","sounds": [{"name": "wbtc:ring_11","stream": true}]},
-	"ring_12": {"category": "master","sounds": [{"name": "wbtc:ring_12","stream": true}]},
-	"ring_13": {"category": "master","sounds": [{"name": "wbtc:ring_13","stream": true}]},
-	"death": {"category": "master","sounds": [{"name": "wbtc:death","stream": true}]},
-	"manhole_open": {"category": "master","sounds": [{"name": "wbtc:manhole_open","stream": true}]},
-	"manhole_close": {"category": "master","sounds": [{"name": "wbtc:manhole_close","stream": true}]},
-	"manhole_place": {"category": "master","sounds": [{"name": "wbtc:manhole_place","stream": true}]},
-	"manhole_break": {"category": "master","sounds": [{"name": "wbtc:manhole_break","stream": true}]},
-	"manhole_step": {"category": "master","sounds": [{"name": "wbtc:manhole_step","stream": true}]},
-	"busy": {"category": "master","sounds": [{"name": "wbtc:busy"}]},
-	"waterphone": {"category": "master","sounds": [{"name": "wbtc:waterphone"}]},
-	"heal": {"category": "master","sounds": [{"name": "wbtc:heal"}]},
-	"gavel": {"category": "master","sounds": [{"name": "wbtc:gavel"}]},
-	"alert_tone": {"category": "master","sounds": [{"name": "wbtc:alert_tone"}]},
-	"phone_off": {"category": "master","sounds": [{"name": "wbtc:phone_off"}]},
-	"minedroid_startup": {"category": "master","sounds": [{"name": "wbtc:minedroid_startup"}]}
+	"owo": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:owo",
+			"stream": true
+		}]
+	},
+	"rz_trophy": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:rz_trophy",
+			"stream": true
+		}]
+	},
+	"csx_trophy": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:csx_trophy",
+			"stream": true
+		}]
+	},
+	"td_trophy": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:td_trophy",
+			"stream": true
+		}]
+	},
+	"tlz_trophy": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:tlz_trophy",
+			"stream": true
+		}]
+	},
+	"lw_trophy": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:lw_trophy",
+			"stream": true
+		}]
+	},
+	"md_trophy": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:md_trophy",
+			"stream": true
+		}]
+	},
+	"svv_trophy": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:svv_trophy",
+			"stream": true
+		}]
+	},
+	"trophy_break": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:trophy_break",
+			"stream": true
+		}]
+	},
+	"oof": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:oof",
+			"stream": true
+		}]
+	},
+	"can_open": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:can_open",
+			"stream": true
+		}]
+	},
+	"can_close": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:can_close",
+			"stream": true
+		}]
+	},
+	"cheese_place": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:cheese_place",
+			"stream": true
+		}]
+	},
+	"cheese_click": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:cheese_click",
+			"stream": true
+		}]
+	},
+	"pie": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:pie",
+			"stream": true
+		}]
+	},
+	"amalthea": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:amalthea",
+			"stream": true
+		}]
+	},
+	"nyan": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:nyan",
+			"stream": true
+		}]
+	},
+	"ussr1": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ussr1",
+			"stream": true
+		}]
+	},
+	"ussr2": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ussr2",
+			"stream": true
+		}]
+	},
+	"baba_booey": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:baba_booey",
+			"stream": true
+		}]
+	},
+	"dolan": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:dolan",
+			"stream": true
+		}]
+	},
+	"murica": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:murica",
+			"stream": true
+		}]
+	},
+	"pigstep": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:pigstep",
+			"stream": true
+		}]
+	},
+	"krab_borg": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:krab_borg",
+			"stream": true
+		}]
+	},
+	"krab_borg_full": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:krab_borg_full",
+			"stream": true
+		}]
+	},
+	"fish": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:fish",
+			"stream": true
+		}]
+	},
+	"fish_full": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:fish_full",
+			"stream": true
+		}]
+	},
+	"no": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:no",
+			"stream": true
+		}]
+	},
+	"nv": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:nv",
+			"stream": true
+		}]
+	},
+	"vest": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:vest",
+			"stream": true
+		}]
+	},
+	"safety": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:safety",
+			"stream": true
+		}]
+	},
+	"yoink": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:yoink",
+			"stream": true
+		}]
+	},
+	"beaned": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:beaned",
+			"stream": true
+		}]
+	},
+	"bong": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:bong",
+			"stream": true
+		}]
+	},
+	"bonk": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:bonk",
+			"stream": true
+		}]
+	},
+	"pop": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:pop",
+			"stream": true
+		}]
+	},
+	"pop_single": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:pop_single",
+			"stream": true
+		}]
+	},
+	"spree": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:spree",
+			"stream": true
+		}]
+	},
+	"owie": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:owie",
+			"stream": true
+		}]
+	},
+	"dove": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:dove",
+			"stream": true
+		}]
+	},
+	"ms_xp": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ms_xp",
+			"stream": true
+		}]
+	},
+	"plastic_break": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:plastic_break",
+			"stream": true
+		}]
+	},
+	"plastic_hit": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:plastic_hit",
+			"stream": true
+		}]
+	},
+	"plastic_land": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:plastic_land",
+			"stream": true
+		}]
+	},
+	"plastic_place": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:plastic_place",
+			"stream": true
+		}]
+	},
+	"plastic_step": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:plastic_step",
+			"stream": true
+		}]
+	},
+	"cpw": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:cpw",
+			"stream": true
+		}]
+	},
+	"sploot": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:sploot",
+			"stream": true
+		}]
+	},
+	"new_owo": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:new_owo",
+			"stream": true
+		}]
+	},
+	"new_owo_short": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:new_owo_short",
+			"stream": true
+		}]
+	},
+	"puff": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:puff",
+			"stream": true
+		}]
+	},
+	"woosh": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:woosh",
+			"stream": true
+		}]
+	},
+	"doot": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:doot",
+			"stream": true
+		}]
+	},
+	"shep": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:shep",
+			"stream": true
+		}]
+	},
+	"trumpet": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:trumpet",
+			"stream": true
+		}]
+	},
+	"tm_beep": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:tm_beep",
+			"stream": true
+		}]
+	},
+	"hb": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:hb",
+			"stream": true
+		}]
+	},
+	"spooky": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:spooky",
+			"stream": true
+		}]
+	},
+	"ritz": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ritz",
+			"stream": true
+		}]
+	},
+	"hl3": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:hl3",
+			"stream": true
+		}]
+	},
+	"squidward": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:squidward",
+			"stream": true
+		}]
+	},
+	"reverb": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:reverb",
+			"stream": true
+		}]
+	},
+	"burp": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:burp",
+			"stream": true
+		}]
+	},
+	"radio_close": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:radio_close",
+			"stream": true
+		}]
+	},
+	"ding_1": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ding_1",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.phoneding"
+	},
+	"ding_2": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ding_2",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.phoneding"
+	},
+	"ding_3": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ding_3",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.phoneding"
+	},
+	"ding_4": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ding_4",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.phoneding"
+	},
+	"ding_5": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ding_5",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.phoneding"
+	},
+	"ding_6": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ding_6"
+		}],
+		"subtitle": "ib.sub.phoneding"
+	},
+	"ding_7": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ding_7",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.phoneding"
+	},
+	"ding_8": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ding_8",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.phoneding"
+	},
+	"outgoingcall": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:outgoingcall"
+		}]
+	},
+	"sit": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:sit",
+			"stream": true
+		}]
+	},
+	"startcall": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:startcall",
+			"stream": true
+		}]
+	},
+	"endcall": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:endcall",
+			"stream": true
+		}]
+	},
+	"dtmf_0": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:dtmf_0",
+			"stream": true
+		}]
+	},
+	"dtmf_1": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:dtmf_1",
+			"stream": true
+		}]
+	},
+	"dtmf_2": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:dtmf_2",
+			"stream": true
+		}]
+	},
+	"dtmf_3": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:dtmf_3",
+			"stream": true
+		}]
+	},
+	"dtmf_4": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:dtmf_4",
+			"stream": true
+		}]
+	},
+	"dtmf_5": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:dtmf_5",
+			"stream": true
+		}]
+	},
+	"dtmf_6": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:dtmf_6",
+			"stream": true
+		}]
+	},
+	"dtmf_7": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:dtmf_7",
+			"stream": true
+		}]
+	},
+	"dtmf_8": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:dtmf_8",
+			"stream": true
+		}]
+	},
+	"dtmf_9": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:dtmf_9",
+			"stream": true
+		}]
+	},
+	"duck": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:duck",
+			"stream": true
+		}]
+	},
+	"duckboom": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:duckboom",
+			"stream": true
+		}]
+	},
+	"baka": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:baka",
+			"stream": true
+		}]
+	},
+	"mallet": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:mallet",
+			"stream": true
+		}]
+	},
+	"cooking": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:cooking",
+			"stream": true
+		}]
+	},
+	"police_helmet": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:police_helmet",
+			"stream": true
+		}]
+	},
+	"kekw": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:kekw",
+			"stream": true
+		}]
+	},
+	"welcome": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:welcome",
+			"stream": true
+		}]
+	},
+	"two_years": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:two_years",
+			"stream": true
+		}]
+	},
+	"leoteu_on": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:leoteu_on",
+			"stream": true
+		}]
+	},
+	"leoteu_off": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:leoteu_off",
+			"stream": true
+		}]
+	},
+	"exp": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:exp",
+			"stream": true
+		}]
+	},
+	"loudbong": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:loudbong",
+			"stream": true
+		}]
+	},
+	"memory": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:memory",
+			"stream": true
+		}]
+	},
+	"book_open": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:book_open",
+			"stream": true
+		}]
+	},
+	"book_close": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:book_close",
+			"stream": true
+		}]
+	},
+	"mh_close": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:mh_close",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.mhclose"
+	},
+	"mh_open": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:mh_open",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.mhopen"
+	},
+	"jingles": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:jingles",
+			"stream": true
+		}]
+	},
+	"rip": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:rip",
+			"stream": true
+		}]
+	},
+	"sus1": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:sus1",
+			"stream": true
+		}]
+	},
+	"sus2": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:sus2",
+			"stream": true
+		}]
+	},
+	"spicy": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:spicy",
+			"stream": true
+		}]
+	},
+	"phone_unlock": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:phone_unlock",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.phoneunlock"
+	},
+	"ok1": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ok1",
+			"stream": true
+		}]
+	},
+	"ok2": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ok2",
+			"stream": true
+		}]
+	},
+	"ring_1": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_1",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.phonering"
+	},
+	"ring_2": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_2",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.phonering"
+	},
+	"ring_3": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_3",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.phonering"
+	},
+	"ring_4": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_4",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.phonering"
+	},
+	"ring_5": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_5",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.phonering"
+	},
+	"ring_6": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_6",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.phonering"
+	},
+	"ring_7": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_7",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.phonering"
+	},
+	"ring_8": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_8",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.phonering"
+	},
+	"ring_9": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_9",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.phonering"
+	},
+	"ring_10": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_10",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.phonering"
+	},
+	"ring_11": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_11",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.phonering"
+	},
+	"ring_12": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_12",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.phonering"
+	},
+	"ring_13": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_13",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.phonering"
+	},
+	"death": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:death",
+			"stream": true
+		}]
+	},
+	"manhole_open": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:manhole_open",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.mhopen"
+	},
+	"manhole_close": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:manhole_close",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.mhclose"
+	},
+	"manhole_place": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:manhole_place",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.mhplace"
+	},
+	"manhole_break": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:manhole_break",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.mhbreak"
+	},
+	"manhole_step": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:manhole_step",
+			"stream": true
+		}]
+	},
+	"busy": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:busy"
+		}]
+	},
+	"waterphone": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:waterphone"
+		}]
+	},
+	"heal": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:heal"
+		}]
+	},
+	"gavel": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:gavel"
+		}]
+	},
+	"alert_tone": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:alert_tone"
+		}],
+		"subtitle": "ib.sub.phonealert"
+	},
+	"phone_off": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:phone_off"
+		}],
+		"subtitle": "ib.sub.phonelock"
+	},
+	"minedroid_startup": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:minedroid_startup"
+		}]
+	}
 }
