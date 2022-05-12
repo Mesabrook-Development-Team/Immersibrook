@@ -7,6 +7,7 @@ import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneBase;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.SpecialBezelRandomizer;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -78,7 +79,7 @@ public class ItemPhone extends Item implements IHasModel {
 			{
 				return super.onItemRightClick(worldIn, playerIn, handIn);
 			}
-			
+			SpecialBezelRandomizer.RandomBezel();
 			playerIn.openGui(Main.instance, Reference.GUI_PHONE, worldIn, handIn.ordinal(), 0, 0);
 		}
 
