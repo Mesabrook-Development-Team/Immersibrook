@@ -7,13 +7,13 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.TextFormatting;
 
 import java.io.IOException;
 
 public class GuiPhoneSetupStart extends GuiPhoneBase
 {
     MinedroidButton beginSetup;
+    ImageButton mux;
 
     public GuiPhoneSetupStart(ItemStack phoneStack, EnumHand hand)
     {
@@ -35,8 +35,10 @@ public class GuiPhoneSetupStart extends GuiPhoneBase
     public void initGui()
     {
         super.initGui();
-        beginSetup = new MinedroidButton(1, INNER_X + 41, INNER_Y + 180, 80, "Start Setup", 0xFFFFFF);
+        beginSetup = new MinedroidButton(1, INNER_X + 100, INNER_Y + 180, 50, "Begin >", 0xFFFFFF);
+        mux = new ImageButton(2, INNER_X + 15, INNER_Y + 27, 25, 25, "icn_mux.png", 32, 32);
         buttonList.add(beginSetup);
+        buttonList.add(mux);
 
         SoundPlayerAppInfoPacket soundPacket = new SoundPlayerAppInfoPacket();
         soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
@@ -48,14 +50,14 @@ public class GuiPhoneSetupStart extends GuiPhoneBase
     protected void doDraw(int mouseX, int mouseY, float partialticks)
     {
         super.doDraw(mouseX, mouseY, partialticks);
-        int stringWidth = fontRenderer.getStringWidth("Hello!");
+        int stringWidth = fontRenderer.getStringWidth("Hi!");
 
         GlStateManager.scale(uBigFont, uBigFont, uBigFont);
-        fontRenderer.drawString("Hello!", scale(INNER_X + INNER_TEX_WIDTH / 2, dBigFont) - stringWidth / 2, scale(INNER_Y + 60, dBigFont), 0xFFFFFF, true);
+        fontRenderer.drawString("Hi!", scale(INNER_X + 29, dBigFont) - stringWidth / 2, scale(INNER_Y + 60, dBigFont), 0xFFFFFF, true);
         GlStateManager.scale(dBigFont, dBigFont, dBigFont);
 
-        drawCenteredString(fontRenderer, TextFormatting.ITALIC + "Welcome to Minedroid!", INNER_X + 80, INNER_Y + 110, 0xFFFFFF);
-        drawCenteredString(fontRenderer, TextFormatting.ITALIC + "Click Start Setup to begin.", INNER_X + 80, INNER_Y + 130, 0xFFFFFF);
+        fontRenderer.drawString("Welcome to Minedroid!", INNER_X + 15, INNER_Y + 105, 0xFFFFFF);
+        fontRenderer.drawString("Click Begin to start setup.", INNER_X + 15, INNER_Y + 125, 0xFFFFFF);
     }
 
     @Override

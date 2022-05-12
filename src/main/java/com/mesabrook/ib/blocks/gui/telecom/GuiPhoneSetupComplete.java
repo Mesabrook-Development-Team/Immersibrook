@@ -14,6 +14,7 @@ import java.io.IOException;
 public class GuiPhoneSetupComplete extends GuiPhoneBase
 {
     MinedroidButton complete;
+    ImageButton mux;
 
     public GuiPhoneSetupComplete(ItemStack phoneStack, EnumHand hand)
     {
@@ -35,8 +36,10 @@ public class GuiPhoneSetupComplete extends GuiPhoneBase
     public void initGui()
     {
         super.initGui();
-        complete = new MinedroidButton(1, INNER_X + 41, INNER_Y + 180, 80, "Finish Setup", 0xFFFFFF);
+        complete = new MinedroidButton(1, INNER_X + 110, INNER_Y + 180, 40, "Finish", 0xFFFFFF);
+        mux = new ImageButton(2, INNER_X + 15, INNER_Y + 27, 25, 25, "icn_mux.png", 32, 32);
         buttonList.add(complete);
+        buttonList.add(mux);
     }
 
     @Override
@@ -46,11 +49,11 @@ public class GuiPhoneSetupComplete extends GuiPhoneBase
         int stringWidth = fontRenderer.getStringWidth("Congrats!");
 
         GlStateManager.scale(uBigFont, uBigFont, uBigFont);
-        fontRenderer.drawString("Congrats!", scale(INNER_X + INNER_TEX_WIDTH / 2, dBigFont) - stringWidth / 2, scale(INNER_Y + 60, dBigFont), 0xFFFFFF, true);
+        fontRenderer.drawString("Congrats!", scale(INNER_X + 66, dBigFont) - stringWidth / 2, scale(INNER_Y + 60, dBigFont), 0xFFFFFF, true);
         GlStateManager.scale(dBigFont, dBigFont, dBigFont);
 
-        drawCenteredString(fontRenderer, TextFormatting.ITALIC + "Your new Minedroid phone", INNER_X + 80, INNER_Y + 110, 0xFFFFFF);
-        drawCenteredString(fontRenderer, TextFormatting.ITALIC + "is now ready to use!", INNER_X + 80, INNER_Y + 130, 0xFFFFFF);
+        fontRenderer.drawString("Your new phone is ready!", INNER_X + 15, INNER_Y + 105, 0xFFFFFF);
+        fontRenderer.drawString("Click Finish to exit setup.", INNER_X + 15, INNER_Y + 125, 0xFFFFFF);
     }
 
     @Override
