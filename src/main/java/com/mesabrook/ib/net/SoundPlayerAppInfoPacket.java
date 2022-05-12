@@ -53,15 +53,22 @@ public class SoundPlayerAppInfoPacket implements IMessage
 
         private void handle(SoundPlayerAppInfoPacket message, MessageContext ctx)
         {
-            PlaySoundPacket packet = new PlaySoundPacket();
-            packet.pos = message.pos;
-            packet.modID = message.modID;
-            packet.soundName = message.soundName;
-            packet.volume = message.volume;
-            packet.pitch = message.pitch;
-            packet.rapidSounds = message.useDelay;
+            try
+            {
+                PlaySoundPacket packet = new PlaySoundPacket();
+                packet.pos = message.pos;
+                packet.modID = message.modID;
+                packet.soundName = message.soundName;
+                packet.volume = message.volume;
+                packet.pitch = message.pitch;
+                packet.rapidSounds = message.useDelay;
 
-            PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(ctx.getServerHandler().player.dimension, ctx.getServerHandler().player.posX, ctx.getServerHandler().player.posY, ctx.getServerHandler().player.posZ, 25));
+                PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(ctx.getServerHandler().player.dimension, ctx.getServerHandler().player.posX, ctx.getServerHandler().player.posY, ctx.getServerHandler().player.posZ, 25));
+            }
+            catch(NullPointerException ex)
+            {
+
+            }
         }
     }
 }

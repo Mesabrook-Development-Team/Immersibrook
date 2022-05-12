@@ -52,7 +52,14 @@ public class PlaySoundPacket implements IMessage
 		
 		private void handle(PlaySoundPacket message, MessageContext ctx)
 		{
-			ClientSideHandlers.playSoundHandler(message, ctx);
+			try
+			{
+				ClientSideHandlers.playSoundHandler(message, ctx);
+			}
+			catch(NullPointerException ex)
+			{
+
+			}
 		}
 	}
 }
