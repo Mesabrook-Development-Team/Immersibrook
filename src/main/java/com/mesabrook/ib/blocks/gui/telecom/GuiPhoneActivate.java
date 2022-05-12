@@ -1,11 +1,14 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.net.SoundPlayerAppInfoPacket;
 import com.mesabrook.ib.net.telecom.ActivateNumberChosenPacket;
 import com.mesabrook.ib.net.telecom.ActivatePhonePacket;
 import com.mesabrook.ib.util.GuiUtil;
 import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.SpecialBezelRandomizer;
+import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -85,13 +88,31 @@ public class GuiPhoneActivate extends GuiScreen {
 	
 	private final int texWidth = 176;
 	private final int texHeight = 222;
+	private int timeToNextBezel;
 	
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		drawDefaultBackground();
 		//Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/phone_bezel.png"));
-		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", String.format("textures/gui/telecom/%s.png", ((ItemPhone)phoneStack.getItem()).getBezelTextureName())));
-		drawScaledCustomSizeModalRect((width - texWidth) / 2, (height - texHeight) / 2, 0, 0, 352, 444, texWidth, texHeight, 512, 512);
+		if(phoneStack.getItem() == ModItems.PHONE_SPECIAL)
+		{
+			if(ModConfig.specialPhoneBezel)
+			{
+				timeToNextBezel++;
+			}
+			if(timeToNextBezel > ModConfig.colorInterval)
+			{
+				SpecialBezelRandomizer.RandomBezel();
+				timeToNextBezel = 0;
+			}
+			Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/phone_bezel_" + SpecialBezelRandomizer.bezel + ".png"));
+			drawScaledCustomSizeModalRect((width - texWidth) / 2, (height - texHeight) / 2, 0, 0, 352, 444, texWidth, texHeight, 512, 512);
+		}
+		else
+		{
+			Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", String.format("textures/gui/telecom/%s.png", ((ItemPhone)phoneStack.getItem()).getBezelTextureName())));
+			drawScaledCustomSizeModalRect((width - texWidth) / 2, (height - texHeight) / 2, 0, 0, 352, 444, texWidth, texHeight, 512, 512);
+		}
 		
 		super.drawScreen(mouseX, mouseY, partialTicks);
 		
