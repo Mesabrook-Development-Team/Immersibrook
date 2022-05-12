@@ -218,7 +218,7 @@ public class ClientSideHandlers
 				incomingCallSoundsByPhone.put(phoneNumber, incomingCallSound);
 				handler.playSound(incomingCallSound);
 
-				if(Minecraft.getMinecraft().gameSettings.showSubtitles || ModConfig.showCallMsg)
+				if(Minecraft.getMinecraft().gameSettings.showSubtitles || ModConfig.showCallMsgInChat)
 				{
 					TextComponentString pn = new TextComponentString(GuiPhoneBase.getFormattedPhoneNumber(phoneNumber));
 					pn.getStyle().setBold(true);
