@@ -92,8 +92,17 @@ public final class ModConfig
 	@Comment("How far does a player's voice travel if talking loudly?")
 	public static int loudDistance = 29;
 
-	@Comment("Show Incoming Call Message? (Enabled by default if subtitles are active)")
-	public static boolean showCallMsg = false;
+	@Comment("[Accessibility] Show Incoming Call Message? (Enabled by default if subtitles are active)")
+	public static boolean showCallMsgInChat = false;
+
+	@Comment("[Special Smartphone] Randomly switch bezel colors when held?")
+	public static boolean specialPhoneBezel = true;
+
+	@Comment("[Special Smartphone] Bezel color change interval (WARNING: Do not set too low if you are prone to seizures!)")
+	public static int colorInterval = 200;
+
+	@Comment("[Minedroid] Enable debug mode?")
+	public static boolean enableDebug = false;
 	
 	@Mod.EventBusSubscriber(modid = Reference.MODID)
 	private static class EventHandler

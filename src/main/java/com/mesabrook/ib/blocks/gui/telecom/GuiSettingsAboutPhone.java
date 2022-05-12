@@ -2,6 +2,7 @@ package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.mesabrook.ib.net.telecom.FactoryResetPacket;
 import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -9,6 +10,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraftforge.fml.common.Mod;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
@@ -20,6 +22,8 @@ public class GuiSettingsAboutPhone extends GuiPhoneBase {
 	LabelButton back;
 	LabelButton number;
 	MinedroidButton factoryReset;
+	ImageButton mux;
+	int clicksToDebug = 0;
 	private boolean factoryResetPressed;
 
 	public GuiSettingsAboutPhone(ItemStack phoneStack, EnumHand hand) {
@@ -28,7 +32,7 @@ public class GuiSettingsAboutPhone extends GuiPhoneBase {
 	
 	@Override
 	protected String getInnerTextureFileName() {
-		return "app_screen_about.png";
+		return "app_screen.png";
 	}
 	
 	@Override
@@ -40,10 +44,13 @@ public class GuiSettingsAboutPhone extends GuiPhoneBase {
 		number = new LabelButton(5, INNER_X + 3 + stringWidth + 3, INNER_Y + 118, getFormattedPhoneNumber(phoneStackData.getPhoneNumberString()), 0xFFFFFF);
 
 		factoryReset = new MinedroidButton(1, INNER_X + 3, INNER_Y + 160, INNER_TEX_WIDTH - 6, "Factory Reset", 0xFF5733);
-		
+
+		mux = new ImageButton(100, INNER_X + 67, INNER_Y + 45, 28, 28, "icn_mux.png", 32, 32);
+
 		buttonList.add(back);
 		buttonList.add(number);
 		buttonList.add(factoryReset);
+		buttonList.add(mux);
 	}
 
 	@Override
@@ -94,6 +101,28 @@ public class GuiSettingsAboutPhone extends GuiPhoneBase {
 			PacketHandler.INSTANCE.sendToServer(reset);
 			
 			Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.settings.resetdone").getFormattedText()));
+		}
+
+		if(button == mux)
+		{
+			clicksToDebug++;
+			if(clicksToDebug == 4)
+			{
+				Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "One More Click", 0xFFFFFF));
+			}
+			if(clicksToDebug >= 5)
+			{
+				if(!ModConfig.enableDebug)
+				{
+					Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "Debug Mode Enabled", 0xFFFFFF));
+					ModConfig.enableDebug = true;
+				}
+				else
+				{
+					Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "Debug Mode Disabled", 0xFFFFFF));
+					ModConfig.enableDebug = false;
+				}
+			}
 		}
 	}
 }
