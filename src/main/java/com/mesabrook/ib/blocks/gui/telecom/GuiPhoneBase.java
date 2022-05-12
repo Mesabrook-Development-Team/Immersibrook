@@ -1,9 +1,13 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.net.SoundPlayerAppInfoPacket;
 import com.mesabrook.ib.net.telecom.GetReceptionStrengthPacket;
 import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.SpecialBezelRandomizer;
+import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -15,8 +19,12 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.apache.logging.log4j.core.util.Throwables;
 
 import java.io.IOException;
+import java.time.LocalTime;
+import java.util.Calendar;
+import java.util.Date;
 
 @SideOnly(Side.CLIENT)
 public abstract class GuiPhoneBase extends GuiScreen {
@@ -45,6 +53,7 @@ public abstract class GuiPhoneBase extends GuiScreen {
 	private int BACK_X;
 	private int HOME_X;
 	private boolean firstTick = true;
+	private int timeToNextBezel;
 	
 	private final int STATUS_BAR_HEIGHT = 14;
 	private SignalStrengths signalStrength = SignalStrengths.unknown;
@@ -111,8 +120,25 @@ public abstract class GuiPhoneBase extends GuiScreen {
 		drawDefaultBackground();
 		
 		// Phone border
-		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", String.format("textures/gui/telecom/%s.png", ((ItemPhone)phoneStack.getItem()).getBezelTextureName())));
-		drawScaledCustomSizeModalRect(OUTER_X, OUTER_Y, 0, 0, OUTER_TEX_WIDTH * WIDTH_SCALE, OUTER_TEX_HEIGHT * HEIGHT_SCALE, OUTER_TEX_WIDTH, OUTER_TEX_HEIGHT, 512, 512);
+		if(phoneStack.getItem() == ModItems.PHONE_SPECIAL)
+		{
+			if(ModConfig.specialPhoneBezel)
+			{
+				timeToNextBezel++;
+			}
+			if(timeToNextBezel > ModConfig.colorInterval)
+			{
+				SpecialBezelRandomizer.RandomBezel();
+				timeToNextBezel = 0;
+			}
+			Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/phone_bezel_" + SpecialBezelRandomizer.bezel + ".png"));
+			drawScaledCustomSizeModalRect(OUTER_X, OUTER_Y, 0, 0, OUTER_TEX_WIDTH * WIDTH_SCALE, OUTER_TEX_HEIGHT * HEIGHT_SCALE, OUTER_TEX_WIDTH, OUTER_TEX_HEIGHT, 512, 512);
+		}
+		else
+		{
+			Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", String.format("textures/gui/telecom/%s.png", ((ItemPhone)phoneStack.getItem()).getBezelTextureName())));
+			drawScaledCustomSizeModalRect(OUTER_X, OUTER_Y, 0, 0, OUTER_TEX_WIDTH * WIDTH_SCALE, OUTER_TEX_HEIGHT * HEIGHT_SCALE, OUTER_TEX_WIDTH, OUTER_TEX_HEIGHT, 512, 512);
+		}
 		
 		// Background
 		String innerTexName = getInnerTextureFileName();
@@ -244,12 +270,21 @@ public abstract class GuiPhoneBase extends GuiScreen {
 		if (!lastGuiWasPhone)
 		{
 			isPhoneUnlocked = false;
-			SoundPlayerAppInfoPacket packet = new SoundPlayerAppInfoPacket();
-			packet.pos = Minecraft.getMinecraft().player.getPosition();
-			packet.modID = Reference.MODID;
-			packet.soundName = "phone_off";
-			packet.useDelay = false;
-			PacketHandler.INSTANCE.sendToServer(packet);
+			try
+			{
+				SoundPlayerAppInfoPacket packet = new SoundPlayerAppInfoPacket();
+				packet.pos = Minecraft.getMinecraft().player.getPosition();
+				packet.modID = Reference.MODID;
+				packet.soundName = "phone_off";
+				packet.useDelay = false;
+				PacketHandler.INSTANCE.sendToServer(packet);
+			}
+			catch(NullPointerException ex)
+			{
+				Main.logger.error("[" + Reference.MODNAME + "] An error occurred in " + GuiPhoneBase.class.getName());
+				Main.logger.error(ex);
+				Main.logger.error("[" + Reference.MODNAME + "] Please report this error to us.");
+			}
 		}
 		lastGuiWasPhone = false;
 	}
