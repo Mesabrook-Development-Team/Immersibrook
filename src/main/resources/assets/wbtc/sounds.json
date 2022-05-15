@@ -896,6 +896,14 @@
 		}],
 		"subtitle": "ib.sub.phonering"
 	},
+	"ring_14": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_14",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.phonering"
+	},
 	"death": {
 		"category": "master",
 		"sounds": [{

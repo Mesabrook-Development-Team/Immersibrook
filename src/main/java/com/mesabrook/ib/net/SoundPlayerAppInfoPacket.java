@@ -1,5 +1,7 @@
 package com.mesabrook.ib.net;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneBase;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import io.netty.buffer.ByteBuf;
@@ -67,7 +69,9 @@ public class SoundPlayerAppInfoPacket implements IMessage
             }
             catch(NullPointerException ex)
             {
-
+                Main.logger.error("[" + Reference.MODNAME + "] An error occurred in " + GuiPhoneBase.class.getName());
+                Main.logger.error(ex);
+                Main.logger.error("[" + Reference.MODNAME + "] Please report this error to us.");
             }
         }
     }
