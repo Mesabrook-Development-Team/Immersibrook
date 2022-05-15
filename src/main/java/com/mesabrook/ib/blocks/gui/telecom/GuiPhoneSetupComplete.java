@@ -1,8 +1,10 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import com.mesabrook.ib.init.SoundInit;
 import com.mesabrook.ib.net.SoundPlayerAppInfoPacket;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
@@ -13,7 +15,8 @@ import java.io.IOException;
 
 public class GuiPhoneSetupComplete extends GuiPhoneBase
 {
-    MinedroidButton complete;
+    private GuiLockScreen.UnlockSlider complete;
+
     ImageButton mux;
 
     public GuiPhoneSetupComplete(ItemStack phoneStack, EnumHand hand)
@@ -36,9 +39,8 @@ public class GuiPhoneSetupComplete extends GuiPhoneBase
     public void initGui()
     {
         super.initGui();
-        complete = new MinedroidButton(1, INNER_X + 110, INNER_Y + 180, 40, "Finish", 0xFFFFFF);
+        complete = new GuiLockScreen.UnlockSlider(INNER_X + INNER_TEX_WIDTH / 2 - 60, INNER_Y + INNER_TEX_HEIGHT - 75);
         mux = new ImageButton(2, INNER_X + 15, INNER_Y + 27, 25, 25, "icn_mux.png", 32, 32);
-        buttonList.add(complete);
         buttonList.add(mux);
     }
 
@@ -53,23 +55,44 @@ public class GuiPhoneSetupComplete extends GuiPhoneBase
         GlStateManager.scale(dBigFont, dBigFont, dBigFont);
 
         fontRenderer.drawString("Your new phone is ready!", INNER_X + 15, INNER_Y + 105, 0xFFFFFF);
-        fontRenderer.drawString("Click Finish to exit setup.", INNER_X + 15, INNER_Y + 125, 0xFFFFFF);
+
+        complete.draw(mouseX, mouseY, partialticks);
+        String swipeText = "Swipe to finish Setup!";
+        int fontWidth = fontRenderer.getStringWidth(swipeText);
+
+        fontRenderer.drawString(swipeText, INNER_X + INNER_TEX_WIDTH / 2 - fontWidth / 2, INNER_Y + INNER_TEX_HEIGHT - 60, 0xFFFFFF, true);
+
+        if(complete.isSliderComplete())
+        {
+            goHome();
+        }
+    }
+
+    private void goHome()
+    {
+        Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundInit.PHONE_UNLOCK, 1F));
+        GuiPhoneBase.isPhoneUnlocked = true;
+        Minecraft.getMinecraft().displayGuiScreen(new GuiHome(phoneStack, hand));
     }
 
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException
     {
         super.mouseClicked(mouseX, mouseY, mouseButton);
+        complete.mouseClicked(mouseX, mouseY);
+    }
+
+    @Override
+    protected void mouseReleased(int mouseX, int mouseY, int state)
+    {
+        super.mouseReleased(mouseX, mouseY, state);
+        complete.mouseReleased();
     }
 
     @Override
     protected void actionPerformed(GuiButton button) throws IOException
     {
         super.actionPerformed(button);
-        if(button == complete)
-        {
-            GuiLockScreen done = new GuiLockScreen(Minecraft.getMinecraft().player.getHeldItem(hand), hand);
-            Minecraft.getMinecraft().displayGuiScreen(done);
-        }
+
     }
 }
