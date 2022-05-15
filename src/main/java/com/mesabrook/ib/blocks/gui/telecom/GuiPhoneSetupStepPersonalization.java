@@ -70,7 +70,7 @@ public class GuiPhoneSetupStepPersonalization extends GuiPhoneBase
     protected void doDraw(int mouseX, int mouseY, float partialticks)
     {
         super.doDraw(mouseX, mouseY, partialticks);
-        fontRenderer.drawString("Make Mindroid Yours", INNER_X + 3, INNER_Y + 20, 0xFFFFFF);
+        fontRenderer.drawString("Make Minedroid Yours", INNER_X + 3, INNER_Y + 20, 0xFFFFFF);
 
         fontRenderer.drawString(new TextComponentTranslation("im.settings.lockscreen").getFormattedText(), INNER_X + 10, INNER_Y + 45, 0xFFFFFF);
         int fontWidth = fontRenderer.getStringWidth(String.valueOf(currentLock));
