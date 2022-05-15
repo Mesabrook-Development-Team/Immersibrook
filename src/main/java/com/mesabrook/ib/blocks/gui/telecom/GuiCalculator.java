@@ -1,6 +1,7 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.google.common.collect.ImmutableList;
+import com.mesabrook.ib.util.Math;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.item.ItemStack;
@@ -35,6 +36,11 @@ public class GuiCalculator extends GuiPhoneBase
 
     // Others
     ImageButton btnClear;
+
+    // Math
+    float num1;
+    float num2;
+    char operator;
 
     public GuiCalculator(ItemStack phoneStack, EnumHand hand)
     {
@@ -121,5 +127,48 @@ public class GuiCalculator extends GuiPhoneBase
     protected void actionPerformed(GuiButton button) throws IOException
     {
         super.actionPerformed(button);
+
+        // Numbers
+        if(button == btn0)
+        {
+
+        }
+
+        // Addition
+        if(button == btnAdd)
+        {
+            operator = '+';
+        }
+
+        // Subtraction
+        if(button == btnSubtract)
+        {
+            operator = '-';
+        }
+
+        // Multiplication
+        if(button == btnMultiply)
+        {
+            operator = '*';
+        }
+
+        // Division
+        if(button == btnDivide)
+        {
+            operator = '/';
+        }
+
+        // Equals
+        if(button == btnEquals)
+        {
+            try
+            {
+                Math.calculate(num1, operator, num2);
+            }
+            catch(Exception ex)
+            {
+                calcText.setText("Math Error (" + ex + ")");
+            }
+        }
     }
 }
