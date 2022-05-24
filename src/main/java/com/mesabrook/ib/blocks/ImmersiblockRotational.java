@@ -40,12 +40,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MiscRotationalBlock extends Block implements IHasModel
+public class ImmersiblockRotational extends Block implements IHasModel
 {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
     protected final ArrayList<AxisAlignedBB> AABBs;
 
-    public MiscRotationalBlock(String name, Material materialIn, SoundType soundTypeIn, String harvestTool, int harvestLevel, float hardnessIn, float resistanceIn, AxisAlignedBB unrotatedAABB)
+    public ImmersiblockRotational(String name, Material materialIn, SoundType soundTypeIn, String harvestTool, int harvestLevel, float hardnessIn, float resistanceIn, AxisAlignedBB unrotatedAABB)
     {
         super(materialIn);
         setRegistryName(name);

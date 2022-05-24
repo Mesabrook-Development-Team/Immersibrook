@@ -26,9 +26,9 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Random;
 
-public class MiscBlock extends Block implements IHasModel
+public class Immersiblock extends Block implements IHasModel
 {
-	public MiscBlock(String name, Material material, SoundType sound, CreativeTabs tab, float lightLevel)
+	public Immersiblock(String name, Material material, SoundType sound, CreativeTabs tab, float lightLevel)
 	{
 		super(material);
 		setUnlocalizedName(name);
