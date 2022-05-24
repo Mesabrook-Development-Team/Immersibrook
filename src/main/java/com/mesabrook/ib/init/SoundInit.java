@@ -129,6 +129,7 @@ public class SoundInit
 	public static final SoundEvent DING_6;
 	public static final SoundEvent DING_7;
 	public static final SoundEvent DING_8;
+	public static final SoundEvent DING_9;
 	public static final SoundEvent OUTGOING_CALL;
 	public static final SoundEvent SIT;
 	public static final SoundEvent STARTCALL;
@@ -284,6 +285,7 @@ public class SoundInit
 		DING_6 = addSoundsToRegistry("ding_6");
 		DING_7 = addSoundsToRegistry("ding_7");
 		DING_8 = addSoundsToRegistry("ding_8");
+		DING_9 = addSoundsToRegistry("ding_9");
 		OUTGOING_CALL = addSoundsToRegistry("outgoingcall");
 		SIT = addSoundsToRegistry("sit");
 		STARTCALL = addSoundsToRegistry("startcall");
@@ -462,6 +464,7 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.RING_10);
 				event.getRegistry().register(SoundInit.RING_11);
 				event.getRegistry().register(SoundInit.DING_8);
+				event.getRegistry().register(SoundInit.DING_9);
 				event.getRegistry().register(SoundInit.RING_12);
 				event.getRegistry().register(SoundInit.RING_13);
 				event.getRegistry().register(SoundInit.RING_14);

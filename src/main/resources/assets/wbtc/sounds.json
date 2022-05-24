@@ -510,6 +510,14 @@
 		}],
 		"subtitle": "ib.sub.phoneding"
 	},
+	"ding_9": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ding_9",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.phoneding"
+	},
 	"outgoingcall": {
 		"category": "master",
 		"sounds": [{
