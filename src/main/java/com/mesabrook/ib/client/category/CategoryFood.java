@@ -105,6 +105,7 @@ public class CategoryFood extends AbstractCategory
 		add(ModItems.CANDY_CANE);
 		add(ModItems.PLAYER_MEAT);
 		add(ModItems.PLAYER_MEAT_COOKED);
+		add(ModItems.TASTYJUICE);
 
 		// Food Crafting Items
 		add(ModItems.DYE_RED);

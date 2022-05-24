@@ -74,7 +74,7 @@ public class ItemIBFood extends ItemFood implements IHasModel
     @Override
     public EnumAction getItemUseAction(ItemStack itemStack)
     {
-        if(this == ModItems.SPARKLING_PINK_LEMONADE || this == ModItems.ALMOND_WATER || this == ModItems.PINK_LEMONADE_DRINK || this == ModItems.PILK)
+        if(this == ModItems.SPARKLING_PINK_LEMONADE || this == ModItems.ALMOND_WATER || this == ModItems.PINK_LEMONADE_DRINK || this == ModItems.PILK || this == ModItems.TASTYJUICE)
         {
             return EnumAction.DRINK;
         }
@@ -207,6 +207,20 @@ public class ItemIBFood extends ItemFood implements IHasModel
                 }
             }
         }
+        if(this == ModItems.TASTYJUICE)
+        {
+            if(!player.isCreative())
+            {
+                stack.damageItem(1, player);
+                player.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE, 1));
+
+                if(!worldIn.isRemote)
+                {
+                    player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 1000, 3, false, true));
+                    player.heal(10F);
+                }
+            }
+        }
         else
         {
             if(!player.isCreative())
@@ -260,6 +274,10 @@ public class ItemIBFood extends ItemFood implements IHasModel
         if(this == ModItems.ALMOND_WATER)
         {
             tooltip.add(TextFormatting.AQUA + new TextComponentTranslation("im.almondwater").getFormattedText());
+        }
+        if(this == ModItems.TASTYJUICE)
+        {
+            tooltip.add(TextFormatting.GOLD + new TextComponentTranslation("ib.tastyjuice").getFormattedText());
         }
     }
 }
