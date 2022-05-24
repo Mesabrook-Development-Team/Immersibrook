@@ -4,6 +4,7 @@ import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
 import com.pam.harvestcraft.item.ItemRegistry;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import java.util.Random;
@@ -12,6 +13,78 @@ public class ItemRandomizer
 {
     public static ItemStack giftItem;
     public static ItemStack presentItem;
+    public static ItemStack halloweenItem;
+
+    public static void HalloweenItemRandomizer()
+    {
+        Random rand = new Random();
+        int choices;
+        choices = rand.nextInt(20);
+
+        switch(choices)
+        {
+            case 0:
+                halloweenItem = new ItemStack(ModItems.LOLIPOP_RED, 1);
+                break;
+            case 1:
+                halloweenItem = new ItemStack(ModItems.LOLIPOP_GREEN, 1);
+                break;
+            case 2:
+                halloweenItem = new ItemStack(ModItems.LOLIPOP_BLUE, 1);
+                break;
+            case 3:
+                halloweenItem = new ItemStack(ModItems.RAVEN_BAR, 1);
+                break;
+            case 4:
+                halloweenItem = new ItemStack(ModItems.KLUSS_BAR, 1);
+                break;
+            case 5:
+                halloweenItem = new ItemStack(ModItems.SHITTLES, 1);
+                break;
+            case 6:
+                halloweenItem = new ItemStack(ModItems.SERPENT_BAR, 1);
+                break;
+            case 7:
+                halloweenItem = new ItemStack(ItemRegistry.creepercookieItem, 5);
+                break;
+            case 8:
+                halloweenItem = new ItemStack(ItemRegistry.gummybearsItem, 5);
+                break;
+            case 9:
+                halloweenItem = new ItemStack(ItemRegistry.slimegummiesItem, 3);
+                break;
+            case 10:
+                halloweenItem = new ItemStack(ItemRegistry.caramelappleItem, 1);
+                break;
+            case 11:
+                halloweenItem = new ItemStack(ModItems.ALMOND_WATER, 1);
+                break;
+            case 12:
+                halloweenItem = new ItemStack(ModItems.PILK, 1);
+                break;
+            case 13:
+                halloweenItem = new ItemStack(ModItems.MASK_JASON, 1);
+                break;
+            case 14:
+                halloweenItem = new ItemStack(ModItems.MASK_SKELETON, 1);
+                break;
+            case 15:
+                halloweenItem = new ItemStack(ModItems.MASK_SLIME, 1);
+                break;
+            case 16:
+                halloweenItem = new ItemStack(ModItems.NUT_BAR, 1);
+                break;
+            case 17:
+                halloweenItem = new ItemStack(ModItems.WHITE_CHOCOLATE, 1);
+                break;
+            case 18:
+                halloweenItem = new ItemStack(ModItems.POPPER_RED, 1);
+                break;
+            case 19:
+                halloweenItem = new ItemStack(ModItems.CANDY_CORN, 15);
+                break;
+        }
+    }
 
     public static void RandomizePresent()
     {
