@@ -51,7 +51,7 @@ public class Reference
 	public static final String CONTACTS_NBTKEY = "contacts";
 	
 	public static final int MAX_PHONE_BACKGROUNDS = 33; // This is an INCLUSIVE number
-	public static final int MAX_CHAT_NOTIFICATIONS = 8; // This is an INCLUSIVE number
+	public static final int MAX_CHAT_NOTIFICATIONS = 9; // This is an INCLUSIVE number
 	public static final int MAX_RINGTONES = 14; // This is an INCLUSIVE number
 
 	// Birthdays (Day and Month only - NO YEARS)
@@ -70,6 +70,7 @@ public class Reference
 	public static final int TLZ_DAY = 22;
 	public static final int MD_DAY = 18;
 	public static final int SVV_DAY = 7;
+	public static final int SLOOSE_DAY = 23;
 	public static final int BAG_DAY = 4;
 	public static final int BB_DAY = 31;
 }

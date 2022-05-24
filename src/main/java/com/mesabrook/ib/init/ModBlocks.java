@@ -1141,4 +1141,21 @@ public class ModBlocks
 
 	// OBJ Test Block
 	public static final Block OBJ_EYE = new BlockTestEye("eye");
+
+	// Colored Stone
+	public static final Block ORANGE_STONE = new MiscBlock("orange_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block MAGENTA_STONE = new MiscBlock("magenta_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block LBLUE_STONE = new MiscBlock("lblue_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block YELLOW_STONE = new MiscBlock("yellow_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block LIME_STONE = new MiscBlock("lime_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PINK_STONE = new MiscBlock("pink_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block GRAY_STONE = new MiscBlock("gray_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block SILVER_STONE = new MiscBlock("silver_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block CYAN_STONE = new MiscBlock("cyan_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PURPLE_STONE = new MiscBlock("purple_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block BLUE_STONE = new MiscBlock("blue_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block BROWN_STONE = new MiscBlock("brown_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block GREEN_STONE = new MiscBlock("green_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block RED_STONE = new MiscBlock("red_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block BLACK_STONE = new MiscBlock("black_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 }

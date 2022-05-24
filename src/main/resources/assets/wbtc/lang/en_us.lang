@@ -1389,6 +1389,7 @@ item.candy_cane.name=Candy Cane
 item.peppermint_bark.name=Peppermint Bark
 item.almond_water.name=Almond Water
 item.shittles.name=Shittles
+item.tastyjuice.name=Tasty Juice
 item.hfcs.name=High-Fructose Corn Syrup
 item.pilk.name=Pilk
 item.player_flesh.name=Player Flesh
@@ -1430,6 +1431,7 @@ im.ff.mat=Material:
 im.firecloth=A flame-resistant material.
 im.tooltip.peppermintbark=A deliciously festive and minty combination of white chocolate and peppermint.
 im.almondwater=A highly coveted source of hydration.
+ib.tastyjuice=Drink it, then convert it to pee.
 im.tooltip.hfcs=A corn-based alternative to Sugar.
 im.morality=Eating another player's flesh is wrong. I should bury it instead.
 im.selfheal=You healed yourself.
@@ -1449,6 +1451,23 @@ tile.choc_pb_truffle_box.name=Chocolate Truffles
 tile.choc_strawberry_truffle_box.name=Chocolate Truffles
 tile.choc_grape_truffle_box.name=Chocolate Truffles
 tile.choc_blueberry_truffle_box.name=Chocolate Truffles
+
+//Colored Stone
+tile.orange_stone.name=Dyed Stone (Orange)
+tile.magenta_stone.name=Dyed Stone (Magenta)
+tile.lblue_stone.name=Dyed Stone (Light Blue)
+tile.yellow_stone.name=Dyed Stone (Yellow)
+tile.lime_stone.name=Dyed Stone (Lime)
+tile.pink_stone.name=Dyed Stone (Pink)
+tile.gray_stone.name=Dyed Stone (Gray)
+tile.silver_stone.name=Dyed Stone (Light Gray)
+tile.cyan_stone.name=Dyed Stone (Cyan)
+tile.purple_stone.name=Dyed Stone (Purple)
+tile.brown_stone.name=Dyed Stone (Brown)
+tile.blue_stone.name=Dyed Stone (Blue)
+tile.red_stone.name=Dyed Stone (Red)
+tile.green_stone.name=Dyed Stone (Green)
+tile.black_stone.name=Dyed Stone (Black)
 
 //Masks
 item.mask_jason.name=Decorative Face Mask
