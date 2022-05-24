@@ -17,6 +17,7 @@ import com.mojang.authlib.GameProfile;
 import com.pam.harvestcraft.blocks.blocks.BlockPamCake;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCake;
+import net.minecraft.block.BlockStone;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -46,6 +47,7 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
+import javax.xml.soap.Text;
 import java.time.LocalDate;
 import java.util.Random;
 
@@ -61,6 +63,9 @@ public class PlayerEvents
 	{
 		EntityPlayer player = e.player;
 		World w = e.player.world;
+		TextComponentString birthdayMessage = new TextComponentString("Happy Birthday, ");
+		birthdayMessage.getStyle().setColor(TextFormatting.GREEN);
+		birthdayMessage.getStyle().setBold(true);
 
 		TooltipRandomizer.ChosenTooltip();
 		boolean holidayItemsInInventoryOnJoin = w.getGameRules().getBoolean("holidayItemsInInventoryOnJoin");
@@ -69,7 +74,7 @@ public class PlayerEvents
 		{
 			SpecialDropTrackingData dropData = SpecialDropTrackingData.getOrCreate(w);
 			
-			TextComponentString user = new TextComponentString(TextFormatting.GOLD + player.getDisplayNameString());
+			TextComponentString user = new TextComponentString(TextFormatting.AQUA + player.getDisplayNameString());
 
 			if(player instanceof EntityPlayer)
 			{
@@ -116,13 +121,15 @@ public class PlayerEvents
 			else
 			{
 				TextComponentTranslation prefix = new TextComponentTranslation("im.welcome");
-				prefix.getStyle().setColor(TextFormatting.GREEN);
+				prefix.getStyle().setColor(TextFormatting.BLUE);
 				prefix.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentTranslation("im.welcome.disable")));
 				player.sendMessage(new TextComponentString(prefix.getFormattedText() + " " + user.getFormattedText() + "!"));
 
 				if(LocalDate.now().getMonthValue() == Reference.RZ_MONTH && LocalDate.now().getDayOfMonth() == Reference.RZ_DAY)
 				{
-					player.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Happy Birthday, RavenholmZombie!"));
+					birthdayMessage.getStyle().setColor(TextFormatting.GOLD);
+					player.sendStatusMessage(new TextComponentString(birthdayMessage.getFormattedText() + TextFormatting.DARK_GREEN + "RavenholmZombie"), true);
+
 					if(player.getGameProfile().getId().equals(Reference.RZ_UUID) && dropData.canGiveCake(Reference.RZ_UUID))
 					{
 						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
@@ -130,7 +137,9 @@ public class PlayerEvents
 				}
 				if(LocalDate.now().getMonthValue() == Reference.TD_MONTH && LocalDate.now().getDayOfMonth() == Reference.TD_DAY)
 				{
-					player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Happy Birthday, TrainDevil!"));
+					birthdayMessage.getStyle().setColor(TextFormatting.RED);
+					player.sendStatusMessage(new TextComponentString(birthdayMessage.getFormattedText() + TextFormatting.WHITE + "TrainDevil"), true);
+
 					if(player.getGameProfile().getId().equals(Reference.TD_UUID) && dropData.canGiveCake(Reference.TD_UUID))
 					{
 						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
@@ -138,7 +147,9 @@ public class PlayerEvents
 				}
 				if(LocalDate.now().getMonthValue() == Reference.TLZ_MONTH && LocalDate.now().getDayOfMonth() == Reference.TLZ_DAY)
 				{
-					player.sendMessage(new TextComponentString(TextFormatting.BLUE + "Happy Birthday, timelady_zoe!"));
+					birthdayMessage.getStyle().setColor(TextFormatting.DARK_PURPLE);
+					player.sendStatusMessage(new TextComponentString(birthdayMessage.getFormattedText() + TextFormatting.LIGHT_PURPLE + "timelady_zoe"), true);
+
 					if(player.getGameProfile().getId().equals(Reference.ZOE_UUID) && dropData.canGiveCake(Reference.ZOE_UUID))
 					{
 						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
@@ -146,7 +157,9 @@ public class PlayerEvents
 				}
 				if(LocalDate.now().getMonthValue() == Reference.CSX_MONTH && LocalDate.now().getDayOfMonth() == Reference.CSX_DAY)
 				{
-					player.sendMessage(new TextComponentString(TextFormatting.AQUA + "Happy Birthday, CSX8600!"));
+					birthdayMessage.getStyle().setColor(TextFormatting.BLUE);
+					player.sendStatusMessage(new TextComponentString(birthdayMessage.getFormattedText() + TextFormatting.GREEN + "CSX8600"), true);
+
 					if(player.getGameProfile().getId().equals(Reference.CSX_UUID) && dropData.canGiveCake(Reference.CSX_UUID))
 					{
 						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
@@ -154,7 +167,9 @@ public class PlayerEvents
 				}
 				if(LocalDate.now().getMonthValue() == Reference.MD_MONTH && LocalDate.now().getDayOfMonth() == Reference.MD_DAY)
 				{
-					player.sendMessage(new TextComponentString(TextFormatting.RED + "Happy Birthday, MineDouble!"));
+					birthdayMessage.getStyle().setColor(TextFormatting.BLUE);
+					player.sendStatusMessage(new TextComponentString(birthdayMessage.getFormattedText() + TextFormatting.RED + "MineDouble"), true);
+
 					if(player.getGameProfile().getId().equals(Reference.MD_UUID) && dropData.canGiveCake(Reference.MD_UUID))
 					{
 						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
@@ -162,23 +177,41 @@ public class PlayerEvents
 				}
 				if(LocalDate.now().getMonthValue() == Reference.SVV_MONTH && LocalDate.now().getDayOfMonth() == Reference.SVV_DAY)
 				{
-					player.sendMessage(new TextComponentString(TextFormatting.GOLD + "Happy Birthday, StarVicVader!"));
+					birthdayMessage.getStyle().setColor(TextFormatting.GREEN);
+					player.sendStatusMessage(new TextComponentString(birthdayMessage.getFormattedText() + TextFormatting.YELLOW + "StarVicVader"), true);
+
 					if(player.getGameProfile().getId().equals(Reference.SVV_UUID) && dropData.canGiveCake(Reference.SVV_UUID))
+					{
+						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
+					}
+				}
+				if(LocalDate.now().getMonthValue() == Reference.RZ_MONTH && LocalDate.now().getDayOfMonth() == Reference.SLOOSE_DAY)
+				{
+					birthdayMessage.getStyle().setColor(TextFormatting.GREEN);
+					player.sendStatusMessage(new TextComponentString(birthdayMessage.getFormattedText() + TextFormatting.YELLOW + "sloosecannon"), true);
+
+					if(player.getGameProfile().getId().equals(Reference.SLOOSE_UUID) && dropData.canGiveCake(Reference.SLOOSE_UUID))
 					{
 						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
 					}
 				}
 				if(LocalDate.now().getMonthValue() == Reference.BAG_MONTH && LocalDate.now().getDayOfMonth() == Reference.BAG_DAY)
 				{
-					player.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Happy Birthday to Bagheera, RavenholmZombie's cat!"));
+					birthdayMessage.getStyle().setColor(TextFormatting.GREEN);
+					player.sendStatusMessage(new TextComponentString(birthdayMessage.getFormattedText() + TextFormatting.DARK_GRAY + "Bagheera!"), true);
+					player.sendStatusMessage(new TextComponentString(TextFormatting.WHITE + "RavenholmZombie's cat!"), true);
 				}
 				if(LocalDate.now().getMonthValue() == Reference.BB_MONTH && LocalDate.now().getDayOfMonth() == Reference.BB_DAY)
 				{
-					player.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "Happy Birthday to Boo & Bubbles, RavenholmZombie's cats!"));
-					player.sendMessage(new TextComponentString(TextFormatting.GOLD + "Happy Halloween!"));
+					birthdayMessage.getStyle().setColor(TextFormatting.GREEN);
+					player.sendStatusMessage(new TextComponentString(birthdayMessage.getFormattedText() + TextFormatting.DARK_GRAY + "Boo and Bubbles!"), true);
+					player.sendStatusMessage(new TextComponentString(TextFormatting.WHITE + "RavenholmZombie's cats!"), true);
+					player.sendStatusMessage(new TextComponentString(TextFormatting.GOLD + "Happy Halloween!"), true);
+
 					if(holidayItemsInInventoryOnJoin && dropData.canGiveHalloweenPresent(player.getUniqueID()))
 					{
-						player.addItemStackToInventory(new ItemStack(ModItems.LOLIPOP_RED, 1));
+						ItemRandomizer.HalloweenItemRandomizer();
+						player.addItemStackToInventory(ItemRandomizer.halloweenItem);
 					}
 					if(!w.isRemote)
 					{
@@ -205,8 +238,8 @@ public class PlayerEvents
 				TextComponentTranslation wikiTitle = new TextComponentTranslation("im.wiki.title");
 				TextComponentTranslation mapTitle = new TextComponentTranslation("im.map.title");
 
-				mesaTitle.getStyle().setColor(TextFormatting.GREEN);
-				wikiTitle.getStyle().setColor(TextFormatting.YELLOW);
+				mesaTitle.getStyle().setColor(TextFormatting.AQUA);
+				wikiTitle.getStyle().setColor(TextFormatting.AQUA);
 
 				TextComponentString mesaURL = new TextComponentString(PREFIX + TextFormatting.RESET + "https://mesabrook.com");
 				TextComponentString dynmap = new TextComponentString(PREFIX + TextFormatting.RESET + "http://map.mesabrook.com");
