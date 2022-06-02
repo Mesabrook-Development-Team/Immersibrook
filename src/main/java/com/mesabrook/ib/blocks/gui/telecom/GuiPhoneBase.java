@@ -89,6 +89,8 @@ public abstract class GuiPhoneBase extends GuiScreen {
 		buttonList.add(homeButton);
 		
 		homeButton.visible = renderControlBar();
+		
+		firstTick = true;
 
 		// Back button to be implemented when determined necessary
 //		ImageButton backButton = new ImageButton(998, INNER_X + (INNER_TEX_WIDTH / 4) - 4, INNER_Y + INNER_TEX_HEIGHT - 23, 8, 8, "gui_btn_back.png", 32, 32);

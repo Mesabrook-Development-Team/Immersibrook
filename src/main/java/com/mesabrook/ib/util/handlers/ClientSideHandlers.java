@@ -3,6 +3,7 @@ package com.mesabrook.ib.util.handlers;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -19,6 +20,7 @@ import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneBase;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneCall;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneCalling;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneConnected;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneRecents;
 import com.mesabrook.ib.blocks.gui.telecom.SignalStrengths;
 import com.mesabrook.ib.init.SoundInit;
 import com.mesabrook.ib.items.misc.ItemPhone;
@@ -27,6 +29,7 @@ import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket;
 import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket.ResponseTypes;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.config.ModConfig;
+import com.mesabrook.ib.util.saveData.PhoneLogData;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
@@ -587,6 +590,23 @@ public class ClientSideHandlers
 			catch(Exception ex) { return; }
 			
 			Minecraft.getMinecraft().displayGuiScreen(gui);
+		}
+	
+		public static void onRecentsRetrieved(String forNumber, List<PhoneLogData.LogData> logDatum)
+		{
+			GuiScreen currentScreen = Minecraft.getMinecraft().currentScreen;
+			if (currentScreen == null || !(currentScreen instanceof GuiPhoneRecents))
+			{
+				return;
+			}
+			
+			GuiPhoneRecents recents = (GuiPhoneRecents)currentScreen;
+			if (!recents.getCurrentPhoneNumber().equalsIgnoreCase(forNumber))
+			{
+				return;
+			}
+			
+			recents.setLogDatum(logDatum);
 		}
 	}
 }

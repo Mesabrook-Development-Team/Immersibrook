@@ -1,5 +1,14 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import java.io.IOException;
+
+import org.lwjgl.input.Keyboard;
+
+import com.mesabrook.ib.init.SoundInit;
+import com.mesabrook.ib.net.telecom.InitiateCallPacket;
+import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.handlers.PacketHandler;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -11,18 +20,13 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
-import org.lwjgl.input.Keyboard;
-import com.mesabrook.ib.init.SoundInit;
-import com.mesabrook.ib.net.telecom.InitiateCallPacket;
-import com.mesabrook.ib.util.Reference;
-import com.mesabrook.ib.util.handlers.PacketHandler;
-
-import java.io.IOException;
 
 public class GuiPhoneCall extends GuiPhoneBase {
 
 	private String currentlyTypedNumber = "";
 	private ImageButton call;
+	private LabelButton keypad;
+	private LabelButton recents;
 	
 	public GuiPhoneCall(ItemStack phoneStack, EnumHand hand) {
 		super(phoneStack, hand);
@@ -57,6 +61,14 @@ public class GuiPhoneCall extends GuiPhoneBase {
 		
 		call = new ImageButton(10, INNER_X + INNER_TEX_WIDTH / 2 + 17, INNER_Y + INNER_TEX_HEIGHT / 2 + 55, 16, 16, "numcall.png", 16, 16);
 		buttonList.add(call);
+		
+		keypad = new LabelButton(11, 0, INNER_Y + INNER_TEX_HEIGHT - 34, "Keypad", 0xFFFFFF);
+		keypad.x = INNER_X + INNER_TEX_WIDTH / 2 - keypad.width - 20;
+		buttonList.add(keypad);
+		
+		recents = new LabelButton(12, 0, INNER_Y + INNER_TEX_HEIGHT - 34, "Recents", 0xFFFFFF);
+		recents.x = INNER_X + INNER_TEX_WIDTH / 2 + 20;
+		buttonList.add(recents);		
 	}
 
 	@Override
@@ -99,6 +111,7 @@ public class GuiPhoneCall extends GuiPhoneBase {
 				GuiCallEnd badCall = new GuiCallEnd(getPhoneStack(), getHand(), "");
 				badCall.setMessage("Phone number required!");
 				mc.displayGuiScreen(badCall);
+								
 				return;
 			}
 			
@@ -110,6 +123,7 @@ public class GuiPhoneCall extends GuiPhoneBase {
 				GuiCallEnd badCall = new GuiCallEnd(getPhoneStack(), getHand(), currentlyTypedNumber);
 				badCall.setMessage("Can't call same phone!");
 				mc.displayGuiScreen(badCall);
+						
 				return;
 			}
 			
@@ -119,6 +133,11 @@ public class GuiPhoneCall extends GuiPhoneBase {
 			packet.fromNumber = getCurrentPhoneNumber();
 			packet.toNumber = currentlyTypedNumber;
 			PacketHandler.INSTANCE.sendToServer(packet);
+		}
+		
+		if (button.id == 12)
+		{
+			Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneRecents(phoneStack, hand));
 		}
 	}
 	
