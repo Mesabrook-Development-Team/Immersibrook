@@ -86,10 +86,11 @@ public class RegistryHandler
 		Main.logger.info(Reference.UPDATE_NAME);
 		Main.logger.info("");
 		Main.logger.info("Developed By: RavenholmZombie and CSX8600");
+		Main.logger.info("/ib about for more info.");
 		Main.logger.info("");
 		Main.logger.info("Pre-Initialization");
 		Main.logger.info("");
-		Main.logger.info("Слава Україні!");
+		Main.logger.info(Reference.MOTTO);
 		Main.logger.info("");
 		Main.logger.info("=============================================================================");
 		Main.logger.info("");
@@ -106,7 +107,23 @@ public class RegistryHandler
 	
 	public static void initRegistries()
 	{
-		Main.logger.info("[" + Reference.MODNAME + "] Initialization");
+		Main.logger.info("");
+		Main.logger.info("=============================================================================");
+		Main.logger.info("");
+		Main.logger.info(Reference.MODNAME);
+		Main.logger.info("Version " + Reference.VERSION);
+		Main.logger.info("");
+		Main.logger.info(Reference.UPDATE_NAME);
+		Main.logger.info("");
+		Main.logger.info("Developed By: RavenholmZombie and CSX8600");
+		Main.logger.info("/ib about for more info.");
+		Main.logger.info("");
+		Main.logger.info("Initialization");
+		Main.logger.info("");
+		Main.logger.info(Reference.MOTTO);
+		Main.logger.info("");
+		Main.logger.info("=============================================================================");
+		Main.logger.info("");
 		MinecraftForge.EVENT_BUS.register(new PlayerEvents());
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new GuiHandler());
@@ -119,7 +136,23 @@ public class RegistryHandler
 	
 	public static void postInitRegistries(FMLPostInitializationEvent event)
 	{
-		Main.logger.info("[" + Reference.MODNAME + "] Post Initialization");
+		Main.logger.info("");
+		Main.logger.info("=============================================================================");
+		Main.logger.info("");
+		Main.logger.info(Reference.MODNAME);
+		Main.logger.info("Version " + Reference.VERSION);
+		Main.logger.info("");
+		Main.logger.info(Reference.UPDATE_NAME);
+		Main.logger.info("");
+		Main.logger.info("Developed By: RavenholmZombie and CSX8600");
+		Main.logger.info("/ib about for more info.");
+		Main.logger.info("");
+		Main.logger.info("Post Initialization");
+		Main.logger.info("");
+		Main.logger.info(Reference.MOTTO);
+		Main.logger.info("");
+		Main.logger.info("=============================================================================");
+		Main.logger.info("");
     	
 		TooltipRandomizer.ChosenTooltip();
 		ItemRandomizer.RandomizeItem();
@@ -131,7 +164,24 @@ public class RegistryHandler
 	
 	public static void serverRegistries(FMLServerStartingEvent event)
 	{
-		Main.logger.info("[" + Reference.MODNAME + "] Registering immersibrook commands");
+		Main.logger.info("");
+		Main.logger.info("=============================================================================");
+		Main.logger.info("");
+		Main.logger.info(Reference.MODNAME);
+		Main.logger.info("Version " + Reference.VERSION);
+		Main.logger.info("");
+		Main.logger.info(Reference.UPDATE_NAME);
+		Main.logger.info("");
+		Main.logger.info("Developed By: RavenholmZombie and CSX8600");
+		Main.logger.info("/ib about for more info.");
+		Main.logger.info("");
+		Main.logger.info("Server Initialization");
+		Main.logger.info("");
+		Main.logger.info(Reference.MOTTO);
+		Main.logger.info("");
+		Main.logger.info("=============================================================================");
+		Main.logger.info("");
+
 		event.registerServerCommand(new CommandImmersibrook());
 		event.registerServerCommand(new CommandTalk());
 
