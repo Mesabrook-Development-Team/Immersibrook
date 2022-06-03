@@ -55,6 +55,11 @@ public class PlayerEvents
 {
 	private final String PREFIX = "-> ";
 
+	public PlayerEvents()
+	{
+		Main.logger.info("[" + Reference.MODNAME + "] Registering PlayerEvents class...");
+	}
+
 	/*
 		MOTD
 	 */
