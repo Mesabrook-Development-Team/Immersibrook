@@ -1,30 +1,23 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
-import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.HashSet;
-
-import javax.imageio.ImageIO;
-
-import org.apache.commons.io.IOUtils;
-
 import com.google.gson.Gson;
 import com.mesabrook.ib.util.Reference;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.renderer.texture.ITextureObject;
 import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.client.resources.IResource;
 import net.minecraft.util.ResourceLocation;
+import org.apache.commons.io.IOUtils;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class GetHeadUtil {
 	private static HashMap<String, BufferedImage> imagesByUsername = new HashMap<>();

@@ -1,14 +1,14 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import com.mesabrook.ib.net.telecom.PhoneQueryPacket;
+import com.mesabrook.ib.util.handlers.ClientSideHandlers.TelecomClientHandlers;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import com.mesabrook.ib.net.telecom.PhoneQueryPacket;
-import com.mesabrook.ib.util.handlers.ClientSideHandlers.TelecomClientHandlers;
-import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import java.io.IOException;
 
@@ -47,6 +47,10 @@ public class GuiHome extends GuiPhoneBase {
 		// Music App
 		ImageButton button5 = new ImageButton(4, INNER_X + 5, INNER_Y + 65, 32, 32, "icn_musicplayer.png", 32, 32);
 		buttonList.add(button5);
+
+		// Calculator App
+		ImageButton button6 = new ImageButton(5, INNER_X + 46, INNER_Y + 65, 32, 32, "icn_calc.png", 32, 32);
+		buttonList.add(button6);
 	}
 	
 	@Override
@@ -76,6 +80,9 @@ public class GuiHome extends GuiPhoneBase {
 				break;
 			case 4:
 				Minecraft.getMinecraft().displayGuiScreen(new GuiSoundPlayer(phoneStack, hand));
+				break;
+			case 5:
+				Minecraft.getMinecraft().displayGuiScreen(new GuiCalculatorSplash(phoneStack, hand));
 				break;
 		}
 	}

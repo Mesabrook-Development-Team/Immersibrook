@@ -1,20 +1,20 @@
 package com.mesabrook.ib.util.handlers;
 
-import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import net.minecraftforge.fml.relauncher.Side;
 import com.mesabrook.ib.net.*;
 import com.mesabrook.ib.net.telecom.*;
 import com.mesabrook.ib.util.Reference;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.relauncher.Side;
 
-public class PacketHandler 
+public class PacketHandler
 {
 	public static SimpleNetworkWrapper INSTANCE = null;
 	private static int id = 0;
-	
+
 	public static void registerMessages()
 	{
 		INSTANCE = new SimpleNetworkWrapper(Reference.NETWORK_CHANNEL_NAME);
-		
+
 		INSTANCE.registerMessage(EngravePacket.Handler.class, EngravePacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(FoodBoxPacket.Handler.class, FoodBoxPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(PlaySoundPacket.Handler.class, PlaySoundPacket.class, nextID(), Side.CLIENT);
@@ -48,17 +48,19 @@ public class PacketHandler
 		INSTANCE.registerMessage(MergeCallPacket.Handler.class, MergeCallPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(SecurityStrategySelectedPacket.Handler.class, SecurityStrategySelectedPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(RefreshStackPacket.Handler.class, RefreshStackPacket.class, nextID(), Side.CLIENT);
-		INSTANCE.registerMessage(PersonalizationPacket.Handler.class, PersonalizationPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(PhoneWallpaperPacket.Handler.class, PhoneWallpaperPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(PhoneRingtonesPacket.Handler.class, PhoneRingtonesPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(PhoneNamePacket.Handler.class, PhoneNamePacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(FactoryResetPacket.Handler.class, FactoryResetPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(SaveContactPacket.Handler.class, SaveContactPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(DeleteContactPacket.Handler.class, DeleteContactPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(GetPhoneRecentsPacket.Handler.class, GetPhoneRecentsPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(GetPhoneRecentsResponsePacket.Handler.class, GetPhoneRecentsResponsePacket.class, nextID(), Side.CLIENT);
 	}
-	
+
 	private static int nextID()
 	{
 		return ++id;
 	}
-	
+
 }

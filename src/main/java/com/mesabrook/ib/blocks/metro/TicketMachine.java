@@ -1,5 +1,10 @@
 package com.mesabrook.ib.blocks.metro;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.init.ModBlocks;
+import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.init.SoundInit;
+import com.mesabrook.ib.util.IHasModel;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
@@ -16,11 +21,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.init.ModBlocks;
-import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.init.SoundInit;
-import com.mesabrook.ib.util.IHasModel;
 
 public class TicketMachine extends Block implements IHasModel
 {

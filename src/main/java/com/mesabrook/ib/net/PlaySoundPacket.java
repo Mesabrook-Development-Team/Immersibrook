@@ -1,5 +1,9 @@
 package com.mesabrook.ib.net;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneBase;
+import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.handlers.ClientSideHandlers;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -7,8 +11,6 @@ import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import com.mesabrook.ib.util.Reference;
-import com.mesabrook.ib.util.handlers.ClientSideHandlers;
 
 public class PlaySoundPacket implements IMessage
 {
@@ -17,6 +19,7 @@ public class PlaySoundPacket implements IMessage
 	public String soundName;
 	public float volume = 1F;
 	public float pitch = 1F;
+	public boolean rapidSounds = false;
 
 	@Override
 	public void fromBytes(ByteBuf buf) 
@@ -26,6 +29,7 @@ public class PlaySoundPacket implements IMessage
 		soundName = ByteBufUtils.readUTF8String(buf);
 		volume = buf.readFloat();
 		pitch = buf.readFloat();
+		rapidSounds = buf.readBoolean();
 	}
 
 	@Override
@@ -36,6 +40,7 @@ public class PlaySoundPacket implements IMessage
 		ByteBufUtils.writeUTF8String(buf, soundName);
 		buf.writeFloat(volume);
 		buf.writeFloat(pitch);
+		buf.writeBoolean(rapidSounds);
 	}
 	
 	public static class Handler implements IMessageHandler<PlaySoundPacket, IMessage>
@@ -49,7 +54,16 @@ public class PlaySoundPacket implements IMessage
 		
 		private void handle(PlaySoundPacket message, MessageContext ctx)
 		{
-			ClientSideHandlers.playSoundHandler(message, ctx);
+			try
+			{
+				ClientSideHandlers.playSoundHandler(message, ctx);
+			}
+			catch(NullPointerException ex)
+			{
+				Main.logger.error("[" + Reference.MODNAME + "] An error occurred in " + GuiPhoneBase.class.getName());
+				Main.logger.error(ex);
+				Main.logger.error("[" + Reference.MODNAME + "] Please report this error to us.");
+			}
 		}
 	}
 }

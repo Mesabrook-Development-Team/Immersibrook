@@ -1,5 +1,6 @@
 package com.mesabrook.ib.blocks.container;
 
+import com.mesabrook.ib.init.ModItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -9,7 +10,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
-import com.mesabrook.ib.init.ModItems;
 
 public class ContainerStampBook extends Container {
 

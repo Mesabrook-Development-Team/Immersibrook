@@ -1,8 +1,8 @@
 package com.mesabrook.ib.tab;
 
+import com.mesabrook.ib.init.ModItems;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
-import com.mesabrook.ib.init.ModItems;
 
 import java.time.LocalDate;
 

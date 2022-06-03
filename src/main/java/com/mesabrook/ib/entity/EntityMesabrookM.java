@@ -1,5 +1,7 @@
 package com.mesabrook.ib.entity;
 
+import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.util.Reference;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
@@ -11,10 +13,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.util.Reference;
-
-import java.util.UUID;
 
 @SuppressWarnings("deprecated")
 public class EntityMesabrookM extends EntityThrowable

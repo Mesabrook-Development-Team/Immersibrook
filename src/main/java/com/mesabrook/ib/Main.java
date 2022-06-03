@@ -1,5 +1,9 @@
 package com.mesabrook.ib;
 
+import com.mesabrook.ib.proxy.CommonProxy;
+import com.mesabrook.ib.tab.TabImmersibrook;
+import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.handlers.RegistryHandler;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -10,10 +14,6 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import org.apache.logging.log4j.Logger;
-import com.mesabrook.ib.proxy.CommonProxy;
-import com.mesabrook.ib.tab.TabImmersibrook;
-import com.mesabrook.ib.util.Reference;
-import com.mesabrook.ib.util.handlers.RegistryHandler;
 
 import java.io.File;
 import java.util.Random;

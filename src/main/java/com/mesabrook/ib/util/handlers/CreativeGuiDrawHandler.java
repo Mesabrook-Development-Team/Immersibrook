@@ -1,6 +1,10 @@
 package com.mesabrook.ib.util.handlers;
 
 import com.google.common.collect.Lists;
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.client.category.AbstractCategory;
+import com.mesabrook.ib.client.category.Categories;
+import com.mesabrook.ib.tab.TabImmersibrook;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
@@ -18,10 +22,6 @@ import net.minecraftforge.client.event.GuiScreenEvent.ActionPerformedEvent;
 import net.minecraftforge.client.event.GuiScreenEvent.DrawScreenEvent;
 import net.minecraftforge.client.event.GuiScreenEvent.InitGuiEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.client.category.AbstractCategory;
-import com.mesabrook.ib.client.category.Categories;
-import com.mesabrook.ib.tab.TabImmersibrook;
 
 import java.net.URI;
 import java.net.URISyntaxException;

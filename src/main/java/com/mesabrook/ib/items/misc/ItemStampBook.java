@@ -1,5 +1,12 @@
 package com.mesabrook.ib.items.misc;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.advancements.Triggers;
+import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.init.SoundInit;
+import com.mesabrook.ib.items.misc.ItemStamp.StampTypes;
+import com.mesabrook.ib.util.IHasModel;
+import com.mesabrook.ib.util.Reference;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -9,6 +16,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -19,13 +27,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.advancements.Triggers;
-import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.init.SoundInit;
-import com.mesabrook.ib.items.misc.ItemStamp.StampTypes;
-import com.mesabrook.ib.util.IHasModel;
-import com.mesabrook.ib.util.Reference;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -47,6 +48,12 @@ public class ItemStampBook extends Item implements IHasModel
     {
         Main.proxy.registerItemRenderer(this, 0);
     }
+
+	@Override
+	public boolean canDestroyBlockInCreative(World world, BlockPos pos, ItemStack stack, EntityPlayer player)
+	{
+		return false;
+	}
 
     @Override
     @SideOnly(Side.CLIENT)

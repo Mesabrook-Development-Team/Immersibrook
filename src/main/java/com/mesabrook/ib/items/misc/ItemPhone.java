@@ -1,11 +1,5 @@
 package com.mesabrook.ib.items.misc;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
-
-import javax.annotation.Nullable;
-
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
@@ -13,7 +7,7 @@ import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneBase;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.Reference;
-
+import com.mesabrook.ib.util.SpecialBezelRandomizer;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -24,12 +18,18 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTUtil;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
+import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
 
 public class ItemPhone extends Item implements IHasModel {
 
@@ -79,7 +79,7 @@ public class ItemPhone extends Item implements IHasModel {
 			{
 				return super.onItemRightClick(worldIn, playerIn, handIn);
 			}
-			
+			SpecialBezelRandomizer.RandomBezel();
 			playerIn.openGui(Main.instance, Reference.GUI_PHONE, worldIn, handIn.ordinal(), 0, 0);
 		}
 
@@ -89,6 +89,12 @@ public class ItemPhone extends Item implements IHasModel {
 		}
 
 		return super.onItemRightClick(worldIn, playerIn, handIn);
+	}
+
+	@Override
+	public boolean canDestroyBlockInCreative(World world, BlockPos pos, ItemStack stack, EntityPlayer player)
+	{
+		return false;
 	}
 
 	public String getBezelTextureName()

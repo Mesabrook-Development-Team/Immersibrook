@@ -1,11 +1,11 @@
 package com.mesabrook.ib.blocks.container;
 
+import com.mesabrook.ib.blocks.te.TileEntityTrashBin;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import com.mesabrook.ib.blocks.te.TileEntityTrashBin;
 
 public class ContainerTrashBin extends Container
 {

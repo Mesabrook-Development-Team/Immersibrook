@@ -1,21 +1,20 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData.Contact;
 import com.mesabrook.ib.net.telecom.DisconnectCallPacket;
 import com.mesabrook.ib.net.telecom.MergeCallPacket;
 import com.mesabrook.ib.util.handlers.ClientSideHandlers.TelecomClientHandlers;
 import com.mesabrook.ib.util.handlers.PacketHandler;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 
 public class GuiPhoneConnected extends GuiPhoneBase {
 

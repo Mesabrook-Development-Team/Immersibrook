@@ -1,11 +1,11 @@
 package com.mesabrook.ib.util;
 
+import com.mesabrook.ib.advancements.Triggers;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
-import com.mesabrook.ib.advancements.Triggers;
 
 public class DamageSourceHammer extends DamageSource
 {

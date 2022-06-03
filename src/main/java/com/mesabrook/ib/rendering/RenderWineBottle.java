@@ -1,5 +1,7 @@
 package com.mesabrook.ib.rendering;
 
+import com.mesabrook.ib.entity.EntityWineBottle;
+import com.mesabrook.ib.init.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderItem;
@@ -9,8 +11,6 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import com.mesabrook.ib.entity.EntityWineBottle;
-import com.mesabrook.ib.init.ModItems;
 
 public class RenderWineBottle extends Render<EntityWineBottle>
 {

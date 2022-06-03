@@ -1,5 +1,11 @@
 package com.mesabrook.ib.items.misc;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.util.DamageSourceDuckBoom;
+import com.mesabrook.ib.util.IHasModel;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -9,18 +15,13 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.net.PlaySoundPacket;
-import com.mesabrook.ib.util.DamageSourceDuckBoom;
-import com.mesabrook.ib.util.IHasModel;
-import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -46,6 +47,12 @@ public class ItemRubberDuck extends Item implements IHasModel
     public void registerModels()
     {
         Main.proxy.registerItemRenderer(this, 0);
+    }
+
+    @Override
+    public boolean canDestroyBlockInCreative(World world, BlockPos pos, ItemStack stack, EntityPlayer player)
+    {
+        return false;
     }
 
     @Override

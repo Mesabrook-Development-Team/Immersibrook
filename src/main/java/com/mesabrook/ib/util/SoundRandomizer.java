@@ -1,7 +1,7 @@
 package com.mesabrook.ib.util;
 
-import net.minecraft.util.SoundEvent;
 import com.mesabrook.ib.init.SoundInit;
+import net.minecraft.util.SoundEvent;
 
 import java.util.Random;
 

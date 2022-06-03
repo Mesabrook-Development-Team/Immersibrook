@@ -1,5 +1,6 @@
 package com.mesabrook.ib.net.telecom;
 
+import com.mesabrook.ib.util.handlers.ClientSideHandlers;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
@@ -8,7 +9,6 @@ import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import com.mesabrook.ib.util.handlers.ClientSideHandlers;
 
 public class RefreshStackPacket implements IMessage {
 

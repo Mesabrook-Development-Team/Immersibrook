@@ -1,10 +1,10 @@
 package com.mesabrook.ib.telecom.handlers;
 
+import com.mesabrook.ib.items.misc.ItemPhone;
+import com.mesabrook.ib.util.handlers.ClientSideHandlers.TelecomClientHandlers;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import com.mesabrook.ib.items.misc.ItemPhone;
-import com.mesabrook.ib.util.handlers.ClientSideHandlers.TelecomClientHandlers;
 
 @EventBusSubscriber
 public class ItemTossEventHandler {

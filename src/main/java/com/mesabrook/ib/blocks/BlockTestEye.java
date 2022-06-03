@@ -1,10 +1,10 @@
 package com.mesabrook.ib.blocks;
 
+import com.mesabrook.ib.init.ModBlocks;
+import com.mesabrook.ib.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
-import com.mesabrook.ib.init.ModBlocks;
-import com.mesabrook.ib.init.ModItems;
 
 public class BlockTestEye extends Block
 {

@@ -1,5 +1,11 @@
 package com.mesabrook.ib.blocks;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.init.ModBlocks;
+import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.util.IHasModel;
+import com.mesabrook.ib.util.config.ModConfig;
+import com.mesabrook.ib.util.saveData.AntennaData;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -11,12 +17,6 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.init.ModBlocks;
-import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.util.IHasModel;
-import com.mesabrook.ib.util.config.ModConfig;
-import com.mesabrook.ib.util.saveData.AntennaData;
 
 import java.util.Random;
 

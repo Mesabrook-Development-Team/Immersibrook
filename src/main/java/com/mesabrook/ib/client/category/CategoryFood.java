@@ -1,9 +1,9 @@
 package com.mesabrook.ib.client.category;
 
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 
 public class CategoryFood extends AbstractCategory 
 {
@@ -99,6 +99,13 @@ public class CategoryFood extends AbstractCategory
 		add(ModItems.TRUFFLE_WHITE_BB);
 		add(ModItems.TRUFFLE_WHITE_GRAPE);
 		add(ModItems.PEPPERMINT_BARK);
+		add(ModItems.ALMOND_WATER);
+		add(ModItems.PILK);
+		add(ModItems.SHITTLES);
+		add(ModItems.CANDY_CANE);
+		add(ModItems.PLAYER_MEAT);
+		add(ModItems.PLAYER_MEAT_COOKED);
+		add(ModItems.TASTYJUICE);
 
 		// Food Crafting Items
 		add(ModItems.DYE_RED);
@@ -126,7 +133,6 @@ public class CategoryFood extends AbstractCategory
 		add(ModItems.RAW_CANDY_RB);
 		add(ModItems.RAW_CANDY_CHOC);
 		add(ModItems.RAW_CANDY_PL);
-		add(ModItems.CANDY_CANE);
-		add(ModItems.SHITTLES);
+
 	}
 }

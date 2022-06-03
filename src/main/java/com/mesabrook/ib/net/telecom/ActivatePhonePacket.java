@@ -1,14 +1,14 @@
 package com.mesabrook.ib.net.telecom;
 
+import com.mesabrook.ib.util.handlers.PacketHandler;
+import com.mesabrook.ib.util.saveData.AntennaData;
+import com.mesabrook.ib.util.saveData.PhoneNumberData;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import com.mesabrook.ib.util.handlers.PacketHandler;
-import com.mesabrook.ib.util.saveData.AntennaData;
-import com.mesabrook.ib.util.saveData.PhoneNumberData;
 
 public class ActivatePhonePacket implements IMessage {
 

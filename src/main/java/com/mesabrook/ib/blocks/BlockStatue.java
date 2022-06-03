@@ -1,5 +1,14 @@
 package com.mesabrook.ib.blocks;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.advancements.Triggers;
+import com.mesabrook.ib.init.ModBlocks;
+import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.util.IHasModel;
+import com.mesabrook.ib.util.ModUtils;
+import com.mesabrook.ib.util.SoundRandomizer;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
@@ -25,15 +34,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.advancements.Triggers;
-import com.mesabrook.ib.init.ModBlocks;
-import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.net.PlaySoundPacket;
-import com.mesabrook.ib.util.IHasModel;
-import com.mesabrook.ib.util.ModUtils;
-import com.mesabrook.ib.util.SoundRandomizer;
-import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -199,7 +199,7 @@ public class BlockStatue extends Block implements IHasModel
 			tooltip.add(TextFormatting.LIGHT_PURPLE + "Awarded By: " + TextFormatting.BLUE + "Government of Mesabrook");
 			tooltip.add(TextFormatting.LIGHT_PURPLE + "For: " + TextFormatting.GOLD +  "Being one of Mesabrook's founding members.");
 		}
-		else if(this.getUnlocalizedName().contains("statue_lw"))
+		else if(this.getUnlocalizedName().contains("statue_sloose"))
 		{
 			tooltip.add(TextFormatting.LIGHT_PURPLE + "Awarded By: " + TextFormatting.BLUE + "Government of Mesabrook");
 			tooltip.add(TextFormatting.LIGHT_PURPLE + "For: " + TextFormatting.GOLD +  "Being one of Mesabrook's founding members.");

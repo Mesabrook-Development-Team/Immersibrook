@@ -1,11 +1,6 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
-import java.io.IOException;
-
-import org.lwjgl.input.Keyboard;
-
 import com.mesabrook.ib.init.SoundInit;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.GuiButton;
@@ -13,6 +8,9 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import org.lwjgl.input.Keyboard;
+
+import java.io.IOException;
 
 public class GuiLockChallengePIN extends GuiPhoneBase {
 
@@ -30,11 +28,11 @@ public class GuiLockChallengePIN extends GuiPhoneBase {
 		
 		for(int i = 1; i <= 9; i++)
 		{
-			ImageButton digit = new ImageButton(i, upperLeftX + 20 * ((i - 1) % 3), upperLeftY + 20 * ((i - 1) / 3), 16, 16, "num" + i + ".png", 16, 16);
+			ImageButton digit = new ImageButton(i, upperLeftX + 20 * ((i - 1) % 3), upperLeftY + 20 * ((i - 1) / 3), 16, 16, "calcbtn_" + i + ".png", 16, 16);
 			buttonList.add(digit);
 		}
 		
-		ImageButton zero = new ImageButton(0, upperLeftX + 20, upperLeftY + 60, 16, 16, "num0.png", 16, 16);
+		ImageButton zero = new ImageButton(0, upperLeftX + 20, upperLeftY + 60, 16, 16, "calcbtn_0.png", 16, 16);
 		buttonList.add(zero);
 	}
 

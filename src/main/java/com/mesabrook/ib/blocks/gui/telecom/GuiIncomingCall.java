@@ -1,18 +1,17 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
-import java.io.IOException;
-
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData.Contact;
 import com.mesabrook.ib.net.telecom.AcceptCallPacket;
 import com.mesabrook.ib.net.telecom.RejectCallPacket;
 import com.mesabrook.ib.util.handlers.PacketHandler;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+
+import java.io.IOException;
 
 public class GuiIncomingCall extends GuiPhoneBase {
 

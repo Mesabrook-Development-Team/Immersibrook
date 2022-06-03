@@ -1,15 +1,13 @@
 package com.mesabrook.ib.util.recipe;
 
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.config.ModConfig;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class RecipesHandler
 {
@@ -92,6 +90,9 @@ public class RecipesHandler
 
 			// Plastiglass Sheet
 			GameRegistry.addSmelting(ModItems.PLASTIC_PLATE, new ItemStack(ModItems.PLASTIGLASS_SHEET, 1), 69F);
+
+			// Player Steak
+			GameRegistry.addSmelting(ModItems.PLAYER_MEAT, new ItemStack(ModItems.PLAYER_MEAT_COOKED, 1), 20F);
 
 			if(ModConfig.smeltingLeatherForASaddle)
 			{

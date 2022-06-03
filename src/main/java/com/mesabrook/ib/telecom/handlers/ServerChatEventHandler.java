@@ -1,5 +1,10 @@
 package com.mesabrook.ib.telecom.handlers;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.telecom.CallManager;
+import com.mesabrook.ib.util.config.ModConfig;
+import com.mesabrook.ib.util.saveData.PlayerLoudnessData;
+import com.mesabrook.ib.util.saveData.PlayerLoudnessLevel;
 import net.minecraft.block.BlockDirt;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.NetHandlerPlayServer;
@@ -11,11 +16,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.ServerChatEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.telecom.CallManager;
-import com.mesabrook.ib.util.config.ModConfig;
-import com.mesabrook.ib.util.saveData.PlayerLoudnessData;
-import com.mesabrook.ib.util.saveData.PlayerLoudnessLevel;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;

@@ -1,13 +1,13 @@
 package com.mesabrook.ib.init;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.util.Reference;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.util.Reference;
 
 public class SoundInit
 {
@@ -77,6 +77,9 @@ public class SoundInit
 	public static final SoundEvent OK1;
 	public static final SoundEvent OK2;
 	public static final SoundEvent DEATH;
+	public static final SoundEvent WATERPHONE;
+	public static final SoundEvent HEAL;
+	public static final SoundEvent GAVEL;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -126,12 +129,16 @@ public class SoundInit
 	public static final SoundEvent DING_6;
 	public static final SoundEvent DING_7;
 	public static final SoundEvent DING_8;
+	public static final SoundEvent DING_9;
 	public static final SoundEvent OUTGOING_CALL;
 	public static final SoundEvent SIT;
 	public static final SoundEvent STARTCALL;
 	public static final SoundEvent ENDCALL;
 	public static final SoundEvent PHONE_UNLOCK;
 	public static final SoundEvent BUSY;
+	public static final SoundEvent ALERT_TONE;
+	public static final SoundEvent PHONE_OFF;
+	public static final SoundEvent MINEDROID_STARTUP;
 
 	// Ringtones
 	public static final SoundEvent RING_1;
@@ -146,6 +153,8 @@ public class SoundInit
 	public static final SoundEvent RING_10;
 	public static final SoundEvent RING_11;
 	public static final SoundEvent RING_12;
+	public static final SoundEvent RING_13;
+	public static final SoundEvent RING_14;
 
 	// DTMF Phone Tones
 	public static final SoundEvent DTMF_0;
@@ -227,6 +236,9 @@ public class SoundInit
 		OK1 = addSoundsToRegistry("ok1");
 		OK2 = addSoundsToRegistry("ok2");
 		DEATH = addSoundsToRegistry("death");
+		WATERPHONE = addSoundsToRegistry("waterphone");
+		HEAL = addSoundsToRegistry("heal");
+		GAVEL = addSoundsToRegistry("gavel");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -273,6 +285,7 @@ public class SoundInit
 		DING_6 = addSoundsToRegistry("ding_6");
 		DING_7 = addSoundsToRegistry("ding_7");
 		DING_8 = addSoundsToRegistry("ding_8");
+		DING_9 = addSoundsToRegistry("ding_9");
 		OUTGOING_CALL = addSoundsToRegistry("outgoingcall");
 		SIT = addSoundsToRegistry("sit");
 		STARTCALL = addSoundsToRegistry("startcall");
@@ -280,6 +293,9 @@ public class SoundInit
 		PHONE_ACTIVATE = addSoundsToRegistry("welcome");
 		PHONE_UNLOCK = addSoundsToRegistry("phone_unlock");
 		BUSY = addSoundsToRegistry("busy");
+		ALERT_TONE = addSoundsToRegistry("alert_tone");
+		PHONE_OFF = addSoundsToRegistry("phone_off");
+		MINEDROID_STARTUP = addSoundsToRegistry("minedroid_startup");
 
 		// Ringtones
 		RING_1 = addSoundsToRegistry("ring_1");
@@ -294,6 +310,8 @@ public class SoundInit
 		RING_10 = addSoundsToRegistry("ring_10");
 		RING_11 = addSoundsToRegistry("ring_11");
 		RING_12 = addSoundsToRegistry("ring_12");
+		RING_13 = addSoundsToRegistry("ring_13");
+		RING_14 = addSoundsToRegistry("ring_14");
 
 		// DTMF Phone Tones
 		DTMF_0 = addSoundsToRegistry("dtmf_0");
@@ -446,13 +464,22 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.RING_10);
 				event.getRegistry().register(SoundInit.RING_11);
 				event.getRegistry().register(SoundInit.DING_8);
+				event.getRegistry().register(SoundInit.DING_9);
 				event.getRegistry().register(SoundInit.RING_12);
+				event.getRegistry().register(SoundInit.RING_13);
+				event.getRegistry().register(SoundInit.RING_14);
 				event.getRegistry().register(SoundInit.MANHOLE_OPEN);
 				event.getRegistry().register(SoundInit.MANHOLE_CLOSE);
 				event.getRegistry().register(SoundInit.MANHOLE_BREAK);
 				event.getRegistry().register(SoundInit.MANHOLE_PLACE);
 				event.getRegistry().register(SoundInit.MANHOLE_STEP);
 				event.getRegistry().register(SoundInit.BUSY);
+				event.getRegistry().register(SoundInit.WATERPHONE);
+				event.getRegistry().register(SoundInit.HEAL);
+				event.getRegistry().register(SoundInit.GAVEL);
+				event.getRegistry().register(SoundInit.ALERT_TONE);
+				event.getRegistry().register(SoundInit.PHONE_OFF);
+				event.getRegistry().register(SoundInit.MINEDROID_STARTUP);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

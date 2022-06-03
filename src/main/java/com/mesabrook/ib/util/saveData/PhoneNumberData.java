@@ -1,10 +1,10 @@
 package com.mesabrook.ib.util.saveData;
 
+import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.config.ModConfig;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.WorldSavedData;
-import com.mesabrook.ib.util.Reference;
-import com.mesabrook.ib.util.config.ModConfig;
 
 import java.util.HashSet;
 import java.util.Random;

@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PJW",
+	"SFF",
+	"FFG"
+  ],
+  "key": {
+    "P": {
+        "type": "forge:ore_dict",
+        "ore": "toolPot"
+    },
+    "J": {
+        "type": "forge:ore_dict",
+        "ore": "toolJuicer"
+    },
+	"W": {
+        "type": "forge:ore_dict",
+        "ore": "listAllwater"
+    },
+	"S": {
+		"item": "wbtc:sugar_red"
+    },
+	"F": {
+        "type": "forge:ore_dict",
+        "ore": "listAllfruit"
+    },
+	"G": {
+		"item": "minecraft:glass_bottle"
+    }
+  },
+  "result": {
+    "item": "wbtc:tastyjuice",
+    "count": 1
+  }
+}

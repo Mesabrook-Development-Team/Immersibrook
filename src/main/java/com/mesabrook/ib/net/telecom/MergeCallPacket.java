@@ -1,5 +1,6 @@
 package com.mesabrook.ib.net.telecom;
 
+import com.mesabrook.ib.telecom.CallManager;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -7,7 +8,6 @@ import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import com.mesabrook.ib.telecom.CallManager;
 
 public class MergeCallPacket implements IMessage {
 

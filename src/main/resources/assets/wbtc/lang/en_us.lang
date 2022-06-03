@@ -61,6 +61,9 @@ advancements.imb.phone_use=Digital Revolution
 advancements.imb.phone_use.desc=Use a Smartphone
 advancements.imb.stampbook=Stamp Collector
 advancements.imb.stampbook.desc=Open a Stamp Book
+advancements.imb.aidothers=First Responder
+advancements.imb.aidothers.desc=Use the First Aid Kit to heal another player or mob.
+
 
 //Config
 wbtc.config.title=Configuration File for Immersibrook
@@ -86,6 +89,7 @@ im.cmd.proxchat.set=Proximity Chat has been turned %s
 im.talk.usage=Talk Command
 im.talk.success=You are now talking %s
 im.talk.noglobalperm=You are not allowed to send global messages
+im.access.call=§7§lIncoming Phone Call from
 
 //First Aid
 item.first_aid.name=First Aid Kit
@@ -167,7 +171,9 @@ item.levi_hammer.name=Levi's Ban Hammer
 item.gmod_hammer.name=Modern Ban Hammer
 item.hammer_head_levi.name=Hammer Head
 item.hammer_stick_levi.name=Hammer Staff
-tile.cat_block.name=Cat Block
+item.gavel.name=Supreme Court Gavel
+item.gavel_silver.name=Lower Court Gavel
+item.gavel_quartz.name=Founding Councilor's Gavel
 
 //Signs
 tile.exit_sign.name=Exit Sign
@@ -394,7 +400,7 @@ tile.statue_csx.name=Trophy for CSX8600 - Mesabrook Founders Award
 tile.statue_td.name=Trophy for TrainDevil - Mesabrook Founders Award
 tile.statue_tlz.name=Trophy for timelady_zoe - Mesabrook Founders Award
 tile.statue_md.name=Trophy for MineDouble - Mesabrook Founders Award
-tile.statue_lw.name=Trophy for lilWeece - Mesabrook Founders Award
+tile.statue_sloose.name=Trophy for sloosecannon - Mesabrook Founders Award
 tile.statue_svv.name=Trophy for StarVicVader - Mesabrook Founders Award
 tile.trophy_two_years.name=Mesabrook Second Anniversary Award
 
@@ -1284,6 +1290,7 @@ item.record.memory.desc=Bonnie - It's just a Burning Memory (8-bit)
 
 //Enchantments
 enchantment.thunder=The Power of Thor
+enchantment.randomizer=Curse of Many Tones
 
 //Keys
 key.immersibrook.category=Immersibrook
@@ -1382,8 +1389,11 @@ item.candy_cane.name=Candy Cane
 item.peppermint_bark.name=Peppermint Bark
 item.almond_water.name=Almond Water
 item.shittles.name=Shittles
+item.tastyjuice.name=Tasty Juice
 item.hfcs.name=High-Fructose Corn Syrup
 item.pilk.name=Pilk
+item.player_flesh.name=Player Flesh
+item.player_flesh_cooked.name=Player Steak
 
 //Dialog
 im.sugwarn=You wonder if you should risk taking another bite...
@@ -1421,7 +1431,13 @@ im.ff.mat=Material:
 im.firecloth=A flame-resistant material.
 im.tooltip.peppermintbark=A deliciously festive and minty combination of white chocolate and peppermint.
 im.almondwater=A highly coveted source of hydration.
+ib.tastyjuice=Drink it, then convert it to pee.
 im.tooltip.hfcs=A corn-based alternative to Sugar.
+im.morality=Eating another player's flesh is wrong. I should bury it instead.
+im.selfheal=You healed yourself.
+im.healed=You just healed
+im.healed.wrong=Living Medicine is not safe for the Undead.
+im.firstaidkit=Use while Sneaking to heal yourself. Can be used to heal other players and non-hostile mobs.
 
 //Food Boxes
 tile.sugar_box.name=Granulated White Sugar
@@ -1435,6 +1451,23 @@ tile.choc_pb_truffle_box.name=Chocolate Truffles
 tile.choc_strawberry_truffle_box.name=Chocolate Truffles
 tile.choc_grape_truffle_box.name=Chocolate Truffles
 tile.choc_blueberry_truffle_box.name=Chocolate Truffles
+
+//Colored Stone
+tile.orange_stone.name=Dyed Stone (Orange)
+tile.magenta_stone.name=Dyed Stone (Magenta)
+tile.lblue_stone.name=Dyed Stone (Light Blue)
+tile.yellow_stone.name=Dyed Stone (Yellow)
+tile.lime_stone.name=Dyed Stone (Lime)
+tile.pink_stone.name=Dyed Stone (Pink)
+tile.gray_stone.name=Dyed Stone (Gray)
+tile.silver_stone.name=Dyed Stone (Light Gray)
+tile.cyan_stone.name=Dyed Stone (Cyan)
+tile.purple_stone.name=Dyed Stone (Purple)
+tile.brown_stone.name=Dyed Stone (Brown)
+tile.blue_stone.name=Dyed Stone (Blue)
+tile.red_stone.name=Dyed Stone (Red)
+tile.green_stone.name=Dyed Stone (Green)
+tile.black_stone.name=Dyed Stone (Black)
 
 //Masks
 item.mask_jason.name=Decorative Face Mask
@@ -1636,6 +1669,7 @@ im.tooltip.activate=No Number Assigned. Activation Required.
 im.tooltip.phone=Your Phone Number:
 im.tooltip.siding=Colorful Vinyl Plastic Panels that add Color to your builds.
 im.tooltip.manhole.hook=Tool used to open and close Manholes.
+im.tooltip.gavel=Order! Order in the Court!
 
 
 //Manholes
@@ -1680,6 +1714,7 @@ im.musicapp.labelsoundid=Sound ID:
 im.musicapp.labelvolume=Volume:
 im.musicapp.labelpitch=Pitch:
 im.musicapp.errortoast=Missing Entry
+im.musicapp.delaybox=Use Delay?
 
 //Minedroid Translation Project - Address Book App
 im.contacts.apptitle=Address Book
@@ -1700,6 +1735,13 @@ im.contacts.invalidtoast=Invalid Phone Number
 im.contacts.saved=Saved Successfully
 
 //Minedroid Translation Project - Settings App
+im.settings.title=Minedroid Settings
+im.settings.securityicon=Security
+im.settings.personalizeicon=Personalize
+im.settings.abouticon=About Phone
+im.settings.debug=Debug
+im.settings.debug.wea=Wireless Emergency Alert
+im.settings.debug.oobe=Run Setup Again
 im.settings.appname=Settings
 im.settings.pin=PIN
 im.settings.uuid=Player UUID
@@ -1714,12 +1756,32 @@ im.settings.uuiderror=Player UUID Required
 im.settings.tryagain=Invalid Player UUID. Please try again.
 im.settings.saved=Settings Applied
 im.settings.personalize=Personalization
-im.settings.lockscreen=Lock Screen:
-im.settings.homescreen=Home Screen:
+im.settings.lockscreen=Lock Screen
+im.settings.homescreen=Home Screen
 im.settings.chat=Chat Notification:
-im.settings.ringtone=Ringtone:
+im.settings.ringtone=Current Ringtone:
 im.settings.factoryreset=Factory Reset
 im.minedroid=Minedroid
 im.settings.phoneinfo=Phone Information:
 im.settings.confirm=Press again to confirm
 im.settings.resetdone=Phone Reset
+im.settings.personalization=Personalization
+im.settings.personalization.wallpapers=Wallpapers
+im.settings.personalization.sounds=Ringtones
+im.settings.personalization.phonename=Phone Name
+im.settings.personalization.setphonename=Enter a Phone Name:
+im.settings.personalization.wallpaperreset=Settings Reset
+im.alert.name=EMERGENCY ALERT
+im.alert.close=Dismiss
+
+//Subtitles
+ib.sub.phonelock=Phone Locking
+ib.sub.phoneunlock=Phone Unlocking
+ib.sub.phonering=Phone Ringing
+ib.sub.phoneding=Phone Message
+ib.sub.phonealert=Wireless Emergency Alert
+ib.sub.soundplayer=Phone Sound Player
+ib.sub.mhopen=Manhole Opening
+ib.sub.mhclose=Manhole Closing
+ib.sub.mhplace=Manhole Placed
+ib.sub.mhbreak=Manhole Breaking

@@ -1,5 +1,10 @@
 package com.mesabrook.ib.blocks;
 
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.init.ModBlocks;
+import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.util.IHasModel;
+import com.mesabrook.ib.util.ModUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
@@ -22,11 +27,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.init.ModBlocks;
-import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.util.IHasModel;
-import com.mesabrook.ib.util.ModUtils;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;

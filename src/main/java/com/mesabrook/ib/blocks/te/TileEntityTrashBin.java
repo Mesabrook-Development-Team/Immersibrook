@@ -1,5 +1,8 @@
 package com.mesabrook.ib.blocks.te;
 
+import com.mesabrook.ib.blocks.container.ContainerTrashBin;
+import com.mesabrook.ib.init.SoundInit;
+import com.mesabrook.ib.util.Reference;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -11,9 +14,6 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
-import com.mesabrook.ib.blocks.container.ContainerTrashBin;
-import com.mesabrook.ib.init.SoundInit;
-import com.mesabrook.ib.util.Reference;
 
 public class TileEntityTrashBin extends TileEntityLockableLoot implements ITickable
 {

@@ -4,6 +4,7 @@ Changes:
 -[IB] Manhole Hook can now remove non-opening Manhole covers.
 -[IB] MOTD will now only show if connected to a server. Displays a generic message when in single player.
 -[IB] Death sound has been changed.
+-[IB] First Aid Kit can now heal other players and non-hostile mobs.
 -[Minedroid] New wallpapers courtesy of CSX8600 and RavenholmZombie's Mesabrook Wallpaper Pack.
 -[Minedroid] Player faces are now rendered in isometric 3D in the Address Book and Phone apps.
 -[Minedroid] Sound Player app now accepts Volume and Pitch modifiers.

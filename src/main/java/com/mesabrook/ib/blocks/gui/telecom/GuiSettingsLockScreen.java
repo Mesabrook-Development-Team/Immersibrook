@@ -1,6 +1,9 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.google.common.collect.ImmutableList;
+import com.mesabrook.ib.items.misc.ItemPhone.NBTData.SecurityStrategies;
+import com.mesabrook.ib.net.telecom.SecurityStrategySelectedPacket;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiTextField;
@@ -9,9 +12,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.client.config.GuiCheckBox;
-import com.mesabrook.ib.items.misc.ItemPhone.NBTData.SecurityStrategies;
-import com.mesabrook.ib.net.telecom.SecurityStrategySelectedPacket;
-import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -20,8 +20,8 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 
 	GuiCheckBox pin;
 	GuiCheckBox playerID;
-	LabelButton reset;
-	LabelButton apply;
+	MinedroidButton reset;
+	MinedroidButton apply;
 	LabelButton back;
 	LabelButton changePIN;
 	LabelButton changeUUID;
@@ -46,9 +46,9 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 		
 		pin = new GuiCheckBox(0, INNER_X + 10, INNER_Y + 52, new TextComponentTranslation("im.settings.pin").getFormattedText(), usePin);
 		playerID = new GuiCheckBox(1, INNER_X + 10, INNER_Y + 69, new TextComponentTranslation("im.settings.uuid").getFormattedText(), useUUID);
-		reset = new LabelButton(2, INNER_X + (INNER_TEX_WIDTH / 4), INNER_Y + INNER_TEX_HEIGHT - 33, new TextComponentTranslation("im.settings.reset").getFormattedText(), 0x0000FF);
-		apply = new LabelButton(3, INNER_X + INNER_TEX_WIDTH - (INNER_TEX_WIDTH / 4), INNER_Y + INNER_TEX_HEIGHT - 33, new TextComponentTranslation("im.settings.apply").getFormattedText(), 0x0000FF);
-		apply.x = apply.x - apply.width;
+		int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 32;
+		reset = new MinedroidButton(2, INNER_X + 45, lowerControlsY - 10, 32, new TextComponentTranslation("im.musicapp.buttonreset").getFormattedText(), 0xFFFFFF);
+		apply = new MinedroidButton(3, INNER_X + 85, lowerControlsY - 10, 32, new TextComponentTranslation("im.settings.apply").getFormattedText(), 0xFFFFFF);
 		back = new LabelButton(4, INNER_X + 3, INNER_Y + 20, "<", 0xFFFFFF);
 		changePIN = new LabelButton(5, 0, pin.y + 2, new TextComponentTranslation("im.settings.changepin").getFormattedText(), 0x0000FF);
 		changePIN.x = INNER_X + INNER_TEX_WIDTH - changePIN.width - 5;

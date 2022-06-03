@@ -1,7 +1,7 @@
 package com.mesabrook.ib.client.category;
 
-import net.minecraft.item.ItemStack;
 import com.mesabrook.ib.init.ModItems;
+import net.minecraft.item.ItemStack;
 
 /**
  * Original Author: MrCrayfish
@@ -34,7 +34,10 @@ public class CategoryTools extends AbstractCategory {
 		add(ModItems.ZOE_CANE);
 		add(ModItems.LEVI_HAMMER);
 		add(ModItems.GMOD_HAMMER);
-		
+		add(ModItems.GAVEL);
+		add(ModItems.GAVEL_SILVER);
+		add(ModItems.GAVEL_QUARTZ);
+
 		// First Aid Kit
 		add(ModItems.FIRST_AID_KIT);
 		

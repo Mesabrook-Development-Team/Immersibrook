@@ -1,0 +1,21 @@
+{
+    "display": {
+        "icon": {
+            "item": "wbtc:ems_vest"
+        },
+        "title": {
+            "translate": "advancements.imb.aidothers"
+        },
+        "description": {
+            "translate": "advancements.imb.aidothers.desc"
+        },
+		"show_toast": true,
+        "announce_to_chat": true
+    },
+	"parent": "wbtc:imb_first_aid",
+    "criteria": {
+        "tick": {
+            "trigger": "wbtc:imb_heal_other"
+        }
+    }
+}

@@ -1,5 +1,15 @@
 package com.mesabrook.ib.util.handlers;
 
+import com.mesabrook.ib.init.SoundInit;
+import com.mesabrook.ib.items.armor.NightVisionGoggles;
+import com.mesabrook.ib.items.armor.PoliceHelmet;
+import com.mesabrook.ib.items.armor.SafetyVest;
+import com.mesabrook.ib.items.tools.ItemBanHammer;
+import com.mesabrook.ib.net.NVTogglePacket;
+import com.mesabrook.ib.net.PoliceEffectsTogglePacket;
+import com.mesabrook.ib.net.SoundRandomizerPacket;
+import com.mesabrook.ib.net.VestTogglePacket;
+import com.mesabrook.ib.proxy.ClientProxy;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -12,16 +22,6 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.relauncher.Side;
-import com.mesabrook.ib.init.SoundInit;
-import com.mesabrook.ib.items.armor.NightVisionGoggles;
-import com.mesabrook.ib.items.armor.PoliceHelmet;
-import com.mesabrook.ib.items.armor.SafetyVest;
-import com.mesabrook.ib.items.tools.ItemBanHammer;
-import com.mesabrook.ib.net.NVTogglePacket;
-import com.mesabrook.ib.net.PoliceEffectsTogglePacket;
-import com.mesabrook.ib.net.SoundRandomizerPacket;
-import com.mesabrook.ib.net.VestTogglePacket;
-import com.mesabrook.ib.proxy.ClientProxy;
 
 @EventBusSubscriber(Side.CLIENT)
 public class KeyEventHandler

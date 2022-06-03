@@ -41,15 +41,15 @@ public class InitiateCallPacket implements IMessage {
 			FMLCommonHandler.instance().getWorldThread(ctx.netHandler).addScheduledTask(() -> handle(message, ctx));
 			return null;
 		}
-		
+
 		private void handle(InitiateCallPacket message, MessageContext ctx)
 		{
 			EntityPlayerMP player = ctx.getServerHandler().player;
 			World world = player.world;
-			
+
 			// Just in case we need this...
 			PhoneLogData data = PhoneLogData.getOrCreate(world);
-			
+
 			AntennaData antenna = AntennaData.getOrCreate(player.world);
 			if (antenna.getBestReception(player.getPosition()) <= 0.0)
 			{
@@ -58,14 +58,14 @@ public class InitiateCallPacket implements IMessage {
 				response.toNumber = message.toNumber;
 				response.state = States.noReception;
 				PacketHandler.INSTANCE.sendTo(response, player);
-				
+
 				data.addLog(Integer.parseInt(message.fromNumber), Integer.parseInt(message.toNumber), Calendar.getInstance(), 0, PhoneLogState.Failed);
-				
+
 				return;
 			}
-			
+
 			CallManager manager = CallManager.instance();
-			
+
 			CallManager.Call destinationExistingCall = manager.getCall(message.toNumber);
 			if (destinationExistingCall != null)
 			{
@@ -74,15 +74,15 @@ public class InitiateCallPacket implements IMessage {
 				response.toNumber = message.toNumber;
 				response.state = States.destinationBusy;
 				PacketHandler.INSTANCE.sendTo(response, player);
-				
+
 				data.addLog(Integer.parseInt(message.fromNumber), Integer.parseInt(message.toNumber), Calendar.getInstance(), 0, PhoneLogState.Failed);
-				
+
 				return;
 			}
-			
+
 			CallManager.Call currentCall = manager.getCall(message.fromNumber);
 			CallManager.Call newCall = manager.new Call(message.fromNumber, message.toNumber);
-			
+
 			if (currentCall == null)
 			{
 				manager.enqueueCall(newCall);

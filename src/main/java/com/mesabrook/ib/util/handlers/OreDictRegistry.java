@@ -1,9 +1,9 @@
 package com.mesabrook.ib.util.handlers;
 
-import net.minecraftforge.oredict.OreDictionary;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class OreDictRegistry 
 {

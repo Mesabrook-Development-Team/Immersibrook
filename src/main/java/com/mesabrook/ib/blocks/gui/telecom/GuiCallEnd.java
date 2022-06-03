@@ -1,15 +1,14 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import com.mesabrook.ib.items.misc.ItemPhone.NBTData.Contact;
+import com.mesabrook.ib.net.telecom.PhoneQueryPacket;
+import com.mesabrook.ib.util.handlers.ClientSideHandlers.TelecomClientHandlers;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
-
-import com.mesabrook.ib.items.misc.ItemPhone.NBTData.Contact;
-import com.mesabrook.ib.net.telecom.PhoneQueryPacket;
-import com.mesabrook.ib.util.handlers.ClientSideHandlers.TelecomClientHandlers;
-import com.mesabrook.ib.util.handlers.PacketHandler;
 
 public class GuiCallEnd extends GuiPhoneBase {
 

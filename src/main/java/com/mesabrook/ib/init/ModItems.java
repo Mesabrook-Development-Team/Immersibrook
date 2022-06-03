@@ -1,18 +1,19 @@
 package com.mesabrook.ib.init;
 
-import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
-import net.minecraft.item.Item.ToolMaterial;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.items.armor.*;
 import com.mesabrook.ib.items.misc.*;
 import com.mesabrook.ib.items.misc.ItemStamp.StampTypes;
 import com.mesabrook.ib.items.record.MemeRecord;
 import com.mesabrook.ib.items.tools.ItemBanHammer;
+import com.mesabrook.ib.items.tools.ItemGavel;
 import com.mesabrook.ib.items.tools.ItemManholeHook;
 import com.mesabrook.ib.items.weapons.ItemWeapon;
 import com.mesabrook.ib.util.ArmorMaterialRegistry;
 import com.mesabrook.ib.util.ToolMaterialRegistry;
+import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +44,9 @@ public class ModItems
 	public static final Item ZOE_CANE = new ItemWeapon("zoe_cane", ToolMaterialRegistry.ZOE_CANE_MAT);
 	public static final Item LEVI_HAMMER = new ItemBanHammer("levi_hammer", ToolMaterialRegistry.LEVI_HAMMER_MAT);
 	public static final Item GMOD_HAMMER = new ItemBanHammer("gmod_hammer", ToolMaterialRegistry.LEVI_HAMMER_MAT);
+	public static final Item GAVEL = new ItemGavel("gavel", 50);
+	public static final Item GAVEL_SILVER = new ItemGavel("gavel_silver", 25);
+	public static final Item GAVEL_QUARTZ = new ItemGavel("gavel_quartz", 100);
 
 	// Hammer Items
 	public static final Item LEVI_HAMMER_HEAD = new ItemWeapon("hammer_head_levi", ToolMaterial.STONE);
@@ -219,17 +223,18 @@ public class ModItems
 	public static final Item WINE_BOTTLE = new ItemWineBottle("wine_bottle");
 
 	// Foods
-	public static final Item CANDY_RUBY = new ImmersiFood("ruby_red_candy", 16, 0,8, 10, false);
-	public static final Item CANDY_LIME = new ImmersiFood("lime_candy", 16, 0,8, 10, false);
-	public static final Item CANDY_BLUE = new ImmersiFood("blue_candy", 16, 0,8, 10, false);
-	public static final Item CANDY_ORANGE = new ImmersiFood("orange_candy", 16, 0,8, 10, false);
-	public static final Item CANDY_GRAPE = new ImmersiFood("grape_candy", 16, 0,8, 10, false);
-	public static final Item CANDY_ROOT_BEER = new ImmersiFood("rb_candy", 16, 0,8, 10, false);
-	public static final Item CANDY_CHOCOLATE = new ImmersiFood("choc_candy", 16, 0,8, 10, false);
-	public static final Item CANDY_PINK_LEMONADE = new ImmersiFood("pl_candy", 16, 0,8, 10, false);
-	public static final Item PINK_LEMONADE_DRINK = new ImmersiFood("pink_lemonade_drink", 1, 0, 5, 10, false);
-	public static final Item SPARKLING_PINK_LEMONADE = new ImmersiFood("sparkling_pink_lemonade", 1, 0, 10, 12, false);
-	public static final Item SHITTLES = new ImmersiFood("shittles", 16, 0, 5, 12, false);
+	public static final Item CANDY_RUBY = new ItemIBFood("ruby_red_candy", 16, 0,8, 10, false);
+	public static final Item CANDY_LIME = new ItemIBFood("lime_candy", 16, 0,8, 10, false);
+	public static final Item CANDY_BLUE = new ItemIBFood("blue_candy", 16, 0,8, 10, false);
+	public static final Item CANDY_ORANGE = new ItemIBFood("orange_candy", 16, 0,8, 10, false);
+	public static final Item CANDY_GRAPE = new ItemIBFood("grape_candy", 16, 0,8, 10, false);
+	public static final Item CANDY_ROOT_BEER = new ItemIBFood("rb_candy", 16, 0,8, 10, false);
+	public static final Item CANDY_CHOCOLATE = new ItemIBFood("choc_candy", 16, 0,8, 10, false);
+	public static final Item CANDY_PINK_LEMONADE = new ItemIBFood("pl_candy", 16, 0,8, 10, false);
+	public static final Item PINK_LEMONADE_DRINK = new ItemIBFood("pink_lemonade_drink", 1, 0, 5, 10, false);
+	public static final Item SPARKLING_PINK_LEMONADE = new ItemIBFood("sparkling_pink_lemonade", 1, 0, 10, 12, false);
+	public static final Item SHITTLES = new ItemIBFood("shittles", 16, 0, 5, 12, false);
+	public static final Item TASTYJUICE = new ItemIBFood("tastyjuice", 1, 0, 8, 15, false);
 
 	// Non-Edible Candy Items
 	public static final Item RAW_CANDY_RED = new MiscItem("raw_candy_red", 64, Main.IMMERSIBROOK_MAIN);
@@ -241,34 +246,37 @@ public class ModItems
 	public static final Item RAW_CANDY_CHOC = new MiscItem("raw_candy_choc",  64, Main.IMMERSIBROOK_MAIN);
 	public static final Item RAW_CANDY_PL = new MiscItem("raw_candy_pl",  64, Main.IMMERSIBROOK_MAIN);
 
-	public static final Item LOLIPOP_GREEN = new ImmersiFood("green_lollipop", 32,0, 5, 10, false);
-	public static final Item LOLIPOP_ORANGE = new ImmersiFood("orange_lollipop", 32,0, 5, 10, false);
-	public static final Item LOLIPOP_RED = new ImmersiFood("red_lollipop", 32,0, 5, 10, false);
-	public static final Item LOLIPOP_RB = new ImmersiFood("root_beer_lollipop", 32,0, 5, 10, false);
-	public static final Item LOLIPOP_BLUE = new ImmersiFood("blue_lollipop", 32,0, 5, 10, false);
-	public static final Item LOLIPOP_PL = new ImmersiFood("pink_lemonade_lollipop", 32,0, 5, 10, false);
-	public static final Item LOLIPOP_CHOC = new ImmersiFood("chocolate_lollipop", 32,0, 5, 10, false);
-	public static final Item LOLIPOP_GRAPE = new ImmersiFood("grape_lollipop", 32,0, 5, 10, false);
-	public static final Item CANDY_CORN = new ImmersiFood("candy_corn", 64,0, 3, 10, false);
-	public static final Item RAVEN_BAR = new DamageableFood("chocolate_bar_raven", 20, 3F,  false);
-	public static final Item KLUSS_BAR = new DamageableFood("chocolate_bar_klussbar", 5, 3F,  false);
+	public static final Item LOLIPOP_GREEN = new ItemIBFood("green_lollipop", 32,0, 5, 10, false);
+	public static final Item LOLIPOP_ORANGE = new ItemIBFood("orange_lollipop", 32,0, 5, 10, false);
+	public static final Item LOLIPOP_RED = new ItemIBFood("red_lollipop", 32,0, 5, 10, false);
+	public static final Item LOLIPOP_RB = new ItemIBFood("root_beer_lollipop", 32,0, 5, 10, false);
+	public static final Item LOLIPOP_BLUE = new ItemIBFood("blue_lollipop", 32,0, 5, 10, false);
+	public static final Item LOLIPOP_PL = new ItemIBFood("pink_lemonade_lollipop", 32,0, 5, 10, false);
+	public static final Item LOLIPOP_CHOC = new ItemIBFood("chocolate_lollipop", 32,0, 5, 10, false);
+	public static final Item LOLIPOP_GRAPE = new ItemIBFood("grape_lollipop", 32,0, 5, 10, false);
+	public static final Item CANDY_CORN = new ItemIBFood("candy_corn", 64,0, 3, 10, false);
+	public static final Item RAVEN_BAR = new SpecialFood("chocolate_bar_raven", 20, 3F,  false);
+	public static final Item KLUSS_BAR = new SpecialFood("chocolate_bar_klussbar", 5, 3F,  false);
 	public static final Item SERPENT_BAR = new SerpentBar("chocolate_bar_serpent",10,10F, false);
-	public static final Item STRAWBERRY_BAR = new DamageableFood("chocolate_bar_strawberry", 6, 10F,  false);
-	public static final Item CARAMEL_BAR = new DamageableFood("chocolate_bar_caramel", 6, 10F, false);
-	public static final Item NUT_BAR = new DamageableFood("chocolate_bar_nut", 6, 10F, false);
-	public static final Item KRISP_BAR = new DamageableFood("chocolate_bar_krisp", 4, 10F, false);
-	public static final Item FOOD_TRUSS = new DamageableFood("cheese_truss_food", 4, 10F, true);
-	public static final Item WHITE_CHOCOLATE = new ImmersiFood("white_chocolate", 64, 0, 5, 5F, false);
-	public static final Item WHITE_TRUFFLE = new ImmersiFood("truffle_white", 64, 0, 5, 5F, false);
-	public static final Item MILK_TRUFFLE = new ImmersiFood("truffle_milk", 64, 0, 5, 5F, false);
-	public static final Item TRUFFLE_CARAMEL = new ImmersiFood("truffle_caramel", 64, 0, 5, 5F, false);
-	public static final Item TRUFFLE_PB = new ImmersiFood("truffle_pb", 64, 0, 5, 5F, false);
-	public static final Item TRUFFLE_STRAWBERRY = new ImmersiFood("truffle_strawberry", 64, 0, 5, 5F, false);
-	public static final Item TRUFFLE_WHITE_BB = new ImmersiFood("truffle_white_bb", 64, 0, 5, 5F, false);
-	public static final Item TRUFFLE_WHITE_GRAPE = new ImmersiFood("truffle_white_grape", 64, 0, 5, 5F, false);
-	public static final Item PEPPERMINT_BARK = new ImmersiFood("peppermint_bark", 64, 0, 3, 2F, false);
-	public static final Item ALMOND_WATER = new ImmersiFood("almond_water", 1, 0, 4, 3F, false);
-	public static final Item PILK = new ImmersiFood("pilk", 1, 0, 3, 1F, false);
+	public static final Item STRAWBERRY_BAR = new SpecialFood("chocolate_bar_strawberry", 6, 10F,  false);
+	public static final Item CARAMEL_BAR = new SpecialFood("chocolate_bar_caramel", 6, 10F, false);
+	public static final Item NUT_BAR = new SpecialFood("chocolate_bar_nut", 6, 10F, false);
+	public static final Item KRISP_BAR = new SpecialFood("chocolate_bar_krisp", 4, 10F, false);
+	public static final Item FOOD_TRUSS = new SpecialFood("cheese_truss_food", 4, 10F, true);
+	public static final Item WHITE_CHOCOLATE = new ItemIBFood("white_chocolate", 64, 0, 5, 5F, false);
+	public static final Item WHITE_TRUFFLE = new ItemIBFood("truffle_white", 64, 0, 5, 5F, false);
+	public static final Item MILK_TRUFFLE = new ItemIBFood("truffle_milk", 64, 0, 5, 5F, false);
+	public static final Item TRUFFLE_CARAMEL = new ItemIBFood("truffle_caramel", 64, 0, 5, 5F, false);
+	public static final Item TRUFFLE_PB = new ItemIBFood("truffle_pb", 64, 0, 5, 5F, false);
+	public static final Item TRUFFLE_STRAWBERRY = new ItemIBFood("truffle_strawberry", 64, 0, 5, 5F, false);
+	public static final Item TRUFFLE_WHITE_BB = new ItemIBFood("truffle_white_bb", 64, 0, 5, 5F, false);
+	public static final Item TRUFFLE_WHITE_GRAPE = new ItemIBFood("truffle_white_grape", 64, 0, 5, 5F, false);
+	public static final Item PEPPERMINT_BARK = new ItemIBFood("peppermint_bark", 64, 0, 3, 2F, false);
+	public static final Item ALMOND_WATER = new ItemIBFood("almond_water", 1, 0, 4, 3F, false);
+	public static final Item PILK = new ItemIBFood("pilk", 1, 0, 3, 1F, false);
+	public static final Item PLAYER_MEAT = new ItemIBFood("player_flesh", 64, 0, 3, 2.1F, true);
+	public static final Item PLAYER_MEAT_COOKED = new ItemIBFood("player_flesh_cooked", 64, 0, 4, 3.1F, true);
+
 
 	// Decorative Wearables
 	public static final Item MASK_JASON = new FaceMasks("mask_jason", ArmorMaterialRegistry.MASK_JASON, EntityEquipmentSlot.HEAD);
@@ -385,7 +393,7 @@ public class ModItems
 	public static final Item STAMP_BOOK = new ItemStampBook("stamp_book");
 
 	// Holiday 2021
-	public static final Item CANDY_CANE = new DamageableFood("candy_cane", 5, 1.25F, false);
+	public static final Item CANDY_CANE = new SpecialFood("candy_cane", 5, 1.25F, false);
 	public static final Item SANTA_HAT = new WearableHat("santa_hat");
 	public static final Item PRESENT_TEST = new ItemPresent("present_red");
 	public static final Item PRESENT_GREEN = new ItemPresent("present_green");
