@@ -25,9 +25,9 @@ public class GuiCalculatorSplash extends GuiPhoneBase
     @Override
     public void initGui()
     {
-        logo = new ImageButton(0, INNER_X + 304, INNER_Y + 150, 32, 32, "icn_calc.png", 32, 32);
+    	super.initGui();
+        logo = new ImageButton(0, INNER_X + (INNER_TEX_WIDTH / 2) - 16, INNER_Y + 50, 32, 32, "icn_calc.png", 32, 32);
         buttonList.add(logo);
-        super.initGui();
     }
 
     @Override

@@ -9,6 +9,8 @@ import net.minecraft.util.EnumHand;
 
 import java.io.IOException;
 
+import org.lwjgl.input.Keyboard;
+
 public class GuiCalculator extends GuiPhoneBase
 {
     // Text field
@@ -38,9 +40,9 @@ public class GuiCalculator extends GuiPhoneBase
     ImageButton btnClear;
 
     // Math
-    float num1;
-    float num2;
-    char operator;
+    float num1 = Float.MIN_VALUE;
+    float num2 = Float.MIN_VALUE;
+    char operator = ' ';
 
     public GuiCalculator(ItemStack phoneStack, EnumHand hand)
     {
@@ -57,7 +59,7 @@ public class GuiCalculator extends GuiPhoneBase
     public void initGui()
     {
         super.initGui();
-        calcText = new GuiTextField(30, fontRenderer, INNER_X + 5, INNER_Y + 20, INNER_TEX_WIDTH - 10, 30);
+        calcText = new GuiTextField(30, fontRenderer, INNER_X + 5, INNER_Y + 35, INNER_TEX_WIDTH - 10, 15);
 
         btn0 = new ImageButton(0, INNER_X + 40, INNER_Y + 160, 32, 32, "calcbtn_0.png", 32, 32);
         btn1 = new ImageButton(1, INNER_X + 5, INNER_Y + 125, 32, 32, "calcbtn_1.png", 32, 32);
@@ -98,8 +100,6 @@ public class GuiCalculator extends GuiPhoneBase
                 .add(btnClear)
                 .add(btnPeriod)
                 .build());
-
-        calcText.setText("Not Yet Implemented");
     }
 
     @Override
@@ -107,6 +107,24 @@ public class GuiCalculator extends GuiPhoneBase
     {
         super.doDraw(mouseX, mouseY, partialticks);
         calcText.drawTextBox();
+        
+        String strNum1 = "";
+        if (num1 != Float.MIN_VALUE)
+        {
+        	strNum1 = Float.toString(num1);
+        }
+        
+        String strNum2 = "";
+        if (num2 != Float.MIN_VALUE)
+        {
+        	strNum2 = Float.toString(num2);
+        }
+        
+        if (strNum1 != "" || strNum2 != "")
+        {
+	        String currentCalc = String.format("%s %s %s", strNum1, operator, strNum2);
+	        fontRenderer.drawString(currentCalc, INNER_X + 5, INNER_Y + 20, 0xFFFFFF);
+        }
     }
 
     @Override
@@ -120,6 +138,33 @@ public class GuiCalculator extends GuiPhoneBase
     protected void keyTyped(char typedChar, int keyCode) throws IOException
     {
         super.keyTyped(typedChar, keyCode);
+        
+        if (typedChar == '+')
+        {
+        	actionPerformed(btnAdd);
+        	return;
+        }
+        else if (typedChar == '-' && !calcText.getText().isEmpty())
+        {
+        	actionPerformed(btnSubtract);
+        	return;
+        }
+        else if (typedChar == '/')
+        {
+        	actionPerformed(btnDivide);
+        	return;
+        }
+        else if (typedChar == '*')
+        {
+        	actionPerformed(btnMultiply);
+        	return;
+        }
+        else if (keyCode == Keyboard.KEY_NUMPADENTER || keyCode == Keyboard.KEY_RETURN)
+        {
+        	actionPerformed(btnEquals);
+        	return;
+        }
+        
         calcText.textboxKeyTyped(typedChar, keyCode);
     }
 
@@ -129,9 +174,34 @@ public class GuiCalculator extends GuiPhoneBase
         super.actionPerformed(button);
 
         // Numbers
-        if(button == btn0)
+        if(button.id >= 0 && button.id <= 9)
         {
-
+        	calcText.setText(calcText.getText() + Integer.toString(button.id));
+        }
+        
+        // Operator buttons
+        if (button.id >= 10 && button.id <= 13)
+        {
+        	if (num1 == Float.MIN_VALUE)
+        	{
+        		num1 = tryParseFloat(calcText.getText());
+        		if (num1 != Float.MIN_VALUE)
+        		{
+        			calcText.setText("");
+        		}
+        	}
+        	else
+        	{
+        		num2 = tryParseFloat(calcText.getText());
+        		if (num2 == Float.MIN_VALUE)
+        		{
+        			return;
+        		}
+        		
+        		num1 = Math.calculate(num1, operator, num2);
+        		num2 = -1;
+        		calcText.setText("");
+        	}
         }
 
         // Addition
@@ -161,14 +231,55 @@ public class GuiCalculator extends GuiPhoneBase
         // Equals
         if(button == btnEquals)
         {
+        	num2 = tryParseFloat(calcText.getText());
+        	if (num2 == Float.MIN_VALUE)
+        	{
+        		return;
+        	}
+        	
             try
             {
-                Math.calculate(num1, operator, num2);
+                float answer = Math.calculate(num1, operator, num2);
+                num1 = Float.MIN_VALUE;
+                num2 = Float.MIN_VALUE;
+                operator = ' ';
+                calcText.setText(Float.toString(answer));
             }
             catch(Exception ex)
             {
                 calcText.setText("Math Error (" + ex + ")");
             }
         }
+        
+        // Clear
+        if (button == btnClear)
+        {
+        	num1 = Float.MIN_VALUE;
+            num2 = Float.MIN_VALUE;
+            operator = ' ';
+            calcText.setText("");
+        }
+        
+        // Period
+        if (button == btnPeriod)
+        {
+        	calcText.setText(calcText.getText() + ".");
+        }
+    }
+    
+    private float tryParseFloat(String fromString)
+    {
+    	float result = Float.MIN_VALUE;
+    	try
+		{
+			result = Float.parseFloat(calcText.getText());
+		}
+		catch(NumberFormatException ex)
+		{
+			Toaster.forPhoneNumber(getCurrentPhoneNumber()).queueToast(new Toast("Not a number!", 0xFF0000));
+			return Float.MIN_VALUE;
+		}
+    	
+    	return result;
     }
 }
