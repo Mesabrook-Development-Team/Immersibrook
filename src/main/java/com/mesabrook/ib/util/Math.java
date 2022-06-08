@@ -12,7 +12,7 @@ public class Math
      * Parameters are passed in the following order: num1 operator num2.
      * Example: 1 + 1
      */
-    public static void calculate(float num1In, char operatorIn, float num2In)
+    public static float calculate(float num1In, char operatorIn, float num2In)
     {
         num1 = num1In;
         num2 = num2In;
@@ -33,5 +33,7 @@ public class Math
                 answer = num1 / num2;
                 break;
         }
+        
+        return answer;
     }
 }
