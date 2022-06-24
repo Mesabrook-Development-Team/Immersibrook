@@ -1,5 +1,9 @@
 package com.mesabrook.ib.util;
 
+import java.util.List;
+
+import com.mesabrook.ib.telecom.WirelessEmergencyAlertManager.WirelessEmergencyAlert.Coordinate;
+
 public class Math
 {
     public static float num1;
@@ -35,5 +39,23 @@ public class Math
         }
         
         return answer;
+    }
+    
+    public static boolean isCoordinateInPolygon(Coordinate coordinate, List<Coordinate> polygon)
+    {
+        boolean result = false;
+        int j = polygon.size() - 1;
+        for (int i = 0; i < polygon.size(); i++)
+        {
+            if (polygon.get(i).getZ() < coordinate.getZ() && polygon.get(j).getZ() >= coordinate.getZ() || polygon.get(j).getZ() < coordinate.getZ() && polygon.get(i).getZ() >= coordinate.getZ())
+            {
+                if (polygon.get(i).getX() + (coordinate.getZ() - polygon.get(i).getZ()) / (polygon.get(j).getZ() - polygon.get(i).getZ()) * (polygon.get(j).getX() - polygon.get(i).getX()) < coordinate.getX())
+                {
+                    result = !result;
+                }
+            }
+            j = i;
+        }
+        return result;
     }
 }

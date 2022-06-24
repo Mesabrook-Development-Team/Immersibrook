@@ -90,6 +90,7 @@ im.talk.usage=Talk Command
 im.talk.success=You are now talking %s
 im.talk.noglobalperm=You are not allowed to send global messages
 im.access.call=§7§lIncoming Phone Call from
+im.cmd.wea.usage=Valid arguments: start, stop
 
 //First Aid
 item.first_aid.name=First Aid Kit

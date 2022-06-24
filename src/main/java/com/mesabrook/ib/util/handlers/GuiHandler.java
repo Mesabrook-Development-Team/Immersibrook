@@ -4,6 +4,7 @@ import com.mesabrook.ib.blocks.container.ContainerStampBook;
 import com.mesabrook.ib.blocks.container.ContainerTrashBin;
 import com.mesabrook.ib.blocks.gui.*;
 import com.mesabrook.ib.blocks.gui.telecom.GuiEmptyPhone;
+import com.mesabrook.ib.blocks.gui.telecom.GuiMobileAlert;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneActivate;
 import com.mesabrook.ib.blocks.te.TileEntityTrashBin;
 import com.mesabrook.ib.items.misc.ItemPhone;
@@ -47,6 +48,10 @@ public class GuiHandler implements IGuiHandler
 			if (phoneNumber == null)
 			{
 				return new GuiPhoneActivate(stack, hand);
+			}
+			else if (GuiMobileAlert.labelsByNumber.containsKey(stackNBTData.getPhoneNumber()) || GuiMobileAlert.textByNumber.containsKey(stackNBTData.getPhoneNumber()))
+			{
+				return new GuiMobileAlert(stack, hand);
 			}
 			else
 			{

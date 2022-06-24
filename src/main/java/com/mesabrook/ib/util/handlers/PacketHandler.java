@@ -56,6 +56,7 @@ public class PacketHandler
 		INSTANCE.registerMessage(DeleteContactPacket.Handler.class, DeleteContactPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(GetPhoneRecentsPacket.Handler.class, GetPhoneRecentsPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(GetPhoneRecentsResponsePacket.Handler.class, GetPhoneRecentsResponsePacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(WirelessEmergencyAlertPacket.Handler.class, WirelessEmergencyAlertPacket.class, nextID(), Side.CLIENT);
 	}
 
 	private static int nextID()
