@@ -92,6 +92,8 @@ public class GuiSettingsPersonalization extends GuiPhoneBase
 
         if(button == alert)
         {
+        	GuiMobileAlert.labelsByNumber.put(phoneStackData.getPhoneNumber(), "Test Alert");
+        	GuiMobileAlert.textByNumber.put(phoneStackData.getPhoneNumber(), "If this were a real emergency, more information would follow here.");
             Minecraft.getMinecraft().displayGuiScreen(new GuiMobileAlert(phoneStack, hand));
         }
     }

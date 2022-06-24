@@ -2,6 +2,7 @@ package com.mesabrook.ib.cmds;
 
 import com.google.common.collect.Lists;
 import com.mesabrook.ib.net.AboutGUIPacket;
+import com.mesabrook.ib.telecom.WirelessEmergencyAlertManager;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.handlers.PacketHandler;
@@ -75,6 +76,33 @@ public class CommandImmersibrook extends CommandBase
 				sender.sendMessage(new TextComponentString(TextFormatting.RED + "proxchat on/off - Turn Proximity Chat on or off."));
 				sender.sendMessage(new TextComponentString(""));
 				sender.sendMessage(new TextComponentString(TextFormatting.RED + "Example Usage: /ib proxchat off"));
+			}
+			else if ("wea".equals(args[0]))
+			{
+				if (!sender.canUseCommand(4, getName()))
+				{
+					throw new CommandException("command.generic.permission", new Object[0]);
+				}
+				
+				if (args.length < 2)
+				{
+					throw new WrongUsageException("im.cmd.wea.usage", new Object[0]);
+				}
+				
+				if ("start".equals(args[1]))
+				{
+					WirelessEmergencyAlertManager.instance().start();
+					sender.sendMessage(new TextComponentString("Start attempted for WEA"));
+				}
+				else if ("stop".equals(args[1]))
+				{
+					WirelessEmergencyAlertManager.instance().stop();
+					sender.sendMessage(new TextComponentString("Stop requested for WEA"));
+				}
+				else
+				{
+					throw new WrongUsageException("im.cmd.wea.usage", new Object[0]);
+				}
 			}
 		}
 	}

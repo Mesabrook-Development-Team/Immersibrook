@@ -1,6 +1,10 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.google.common.collect.ImmutableList;
+import com.mesabrook.ib.net.SoundPlayerAppInfoPacket;
+import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.handlers.PacketHandler;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.item.ItemStack;
@@ -66,6 +70,17 @@ public class GuiDebugMenu extends GuiPhoneBase
 
         if(button == weaIcon || button == weaLabel)
         {
+            SoundPlayerAppInfoPacket packet = new SoundPlayerAppInfoPacket();
+            packet.pos = Minecraft.getMinecraft().player.getPosition();
+            packet.modID = Reference.MODID;
+            packet.soundName = "alert_tone";
+            packet.volume = 1.0F;
+            packet.pitch = 1.0F;
+            packet.useDelay = false;
+            PacketHandler.INSTANCE.sendToServer(packet);
+            
+            GuiMobileAlert.labelsByNumber.put(phoneStackData.getPhoneNumber(), "Test Alert");
+        	GuiMobileAlert.textByNumber.put(phoneStackData.getPhoneNumber(), "If this were a real emergency, more information would follow here.");
             Minecraft.getMinecraft().displayGuiScreen(new GuiMobileAlert(phoneStack, hand));
         }
 

@@ -60,7 +60,7 @@ public class PlaySoundPacket implements IMessage
 			}
 			catch(NullPointerException ex)
 			{
-				Main.logger.error("[" + Reference.MODNAME + "] An error occurred in " + GuiPhoneBase.class.getName());
+				Main.logger.error("[" + Reference.MODNAME + "] An error occurred in " + Handler.class.getName());
 				Main.logger.error(ex);
 				Main.logger.error("[" + Reference.MODNAME + "] Please report this error to us.");
 			}

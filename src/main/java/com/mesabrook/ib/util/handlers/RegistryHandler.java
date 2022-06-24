@@ -10,6 +10,7 @@ import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.rendering.RenderMesabrookIcon;
 import com.mesabrook.ib.rendering.RenderWineBottle;
+import com.mesabrook.ib.telecom.DynmapAPIListener;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.ItemRandomizer;
 import com.mesabrook.ib.util.Reference;
@@ -101,6 +102,12 @@ public class RegistryHandler
 			Main.logger.info("[" + Reference.MODNAME + "] The RC Mod Detected.");
 		}
 		
+		Main.DYNMAP = Loader.isModLoaded("dynmap");
+		if(Main.DYNMAP)
+		{
+			Main.logger.info("[" + Reference.MODNAME + "] Dynmap Detected.");
+		}
+		
 		PacketHandler.registerMessages();
 		Triggers.init();
 	}
@@ -132,6 +139,10 @@ public class RegistryHandler
 		ResourceLocation nameLoc2 = new ResourceLocation(Reference.MODID + ":wine_bottle");
 		EntityRegistry.registerModEntity(nameLoc, EntityMesabrookM.class, nameLoc.toString(), 1, Main.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(nameLoc2, EntityWineBottle.class, nameLoc2.toString(), 2, Main.instance, 64, 1, true);
+		if (Main.DYNMAP)
+		{
+			DynmapAPIListener.register();
+		}
 	}
 	
 	public static void postInitRegistries(FMLPostInitializationEvent event)

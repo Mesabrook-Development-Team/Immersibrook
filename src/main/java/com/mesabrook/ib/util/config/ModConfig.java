@@ -104,6 +104,30 @@ public final class ModConfig
 	@Comment("[Minedroid] Enable debug mode?")
 	public static boolean enableDebug = false;
 	
+	@Comment("[WEA] Check WX Radio advisories?")
+	public static boolean enableWEAForWeather = false;
+	
+	@Comment("[WEA] IP Address of the WX Radio Advisory Product Server")
+	public static String advisoryProductServerIP = "";
+	
+	@Comment("[WEA] Port of the WX Radio Advisory Product Server")
+	public static int advisoryProductServerPort = 0;
+	
+	@Comment("[WEA] Marker Set ID for the display of weather polygons on DynMap (if installed)")
+	public static String wxMarkerSetID = "wx";
+	
+	@Comment("[WEA] Automatically start WEA on server start")
+	public static boolean autoStartWEA = false;
+	
+	@Comment("[WEA] Alert color options. Use this format for each item: Alert Name|Line Color|Fill Color. Use RRGGBB notation for colors. A fill color of \"transparent\" will use a transparent inner fill.")
+	public static String[] alertColorOptions = new String[]
+	{
+		"Severe Thunderstorm Watch|FFFF00|transparent",
+		"Severe Thunderstorm Warning|FFFF00|FFFF00",
+		"Tornado Watch|FF0000|transparent",
+		"Tornado Warning|FF0000|FF0000"
+	};
+	
 	@Mod.EventBusSubscriber(modid = Reference.MODID)
 	private static class EventHandler
 	{

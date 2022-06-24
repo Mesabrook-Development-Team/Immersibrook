@@ -1,14 +1,34 @@
 package com.mesabrook.ib.util.handlers;
 
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Optional;
+import java.util.function.Consumer;
+
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.gui.GuiAboutImmersibrook;
-import com.mesabrook.ib.blocks.gui.telecom.*;
+import com.mesabrook.ib.blocks.gui.telecom.GuiCallEnd;
+import com.mesabrook.ib.blocks.gui.telecom.GuiHome;
+import com.mesabrook.ib.blocks.gui.telecom.GuiIncomingCall;
+import com.mesabrook.ib.blocks.gui.telecom.GuiLockScreen;
+import com.mesabrook.ib.blocks.gui.telecom.GuiMobileAlert;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneActivate;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneActivate.ActivationScreens;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneBase;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneCall;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneCalling;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneConnected;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneRecents;
+import com.mesabrook.ib.blocks.gui.telecom.SignalStrengths;
 import com.mesabrook.ib.init.SoundInit;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.net.PlaySoundPacket;
 import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket;
 import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket.ResponseTypes;
+import com.mesabrook.ib.telecom.WirelessEmergencyAlertManager.WirelessEmergencyAlert;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.saveData.PhoneLogData;
@@ -32,20 +52,11 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
-
-import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Optional;
-import java.util.function.Consumer;
 
 @SideOnly(Side.CLIENT)
 public class ClientSideHandlers
@@ -629,6 +640,23 @@ public class ClientSideHandlers
 			}
 
 			recents.setLogDatum(logDatum);
+		}
+	
+		public static void onWirelessEmergencyAlert(String forNumber, WirelessEmergencyAlert alert)
+		{
+			GuiMobileAlert.labelsByNumber.put(Integer.parseInt(forNumber), alert.getName());
+			GuiMobileAlert.textByNumber.put(Integer.parseInt(forNumber), alert.getDescription());
+			
+			if (Minecraft.getMinecraft().currentScreen instanceof GuiPhoneBase)
+			{
+				GuiPhoneBase currentScreen = (GuiPhoneBase)Minecraft.getMinecraft().currentScreen;
+				if (!currentScreen.getCurrentPhoneNumber().equals(forNumber))
+				{
+					return;
+				}
+				
+				Minecraft.getMinecraft().displayGuiScreen(new GuiMobileAlert(currentScreen.getPhoneStack(), currentScreen.getHand()));
+			}
 		}
 	}
 }
