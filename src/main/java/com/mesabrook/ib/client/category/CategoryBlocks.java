@@ -250,20 +250,6 @@ public class CategoryBlocks extends AbstractCategory
 		add(ModBlocks.SIDING_BLACK);
 
 		// Colored Stone
-		add(ModBlocks.ORANGE_STONE);
-		add(ModBlocks.MAGENTA_STONE);
-		add(ModBlocks.LBLUE_STONE);
-		add(ModBlocks.YELLOW_STONE);
-		add(ModBlocks.LIME_STONE);
-		add(ModBlocks.PINK_STONE);
-		add(ModBlocks.GRAY_STONE);
-		add(ModBlocks.SILVER_STONE);
-		add(ModBlocks.CYAN_STONE);
-		add(ModBlocks.BLUE_STONE);
-		add(ModBlocks.PURPLE_STONE);
-		add(ModBlocks.BROWN_STONE);
-		add(ModBlocks.GREEN_STONE);
-		add(ModBlocks.RED_STONE);
-		add(ModBlocks.BLACK_STONE);
+		add(ModBlocks.COLORED_STONE);
 	}
 }

@@ -20,7 +20,12 @@ public class ClientProxy extends CommonProxy
 	public static KeyBinding policeHelmetKey;
 	public void registerItemRenderer(Item item, int meta)
 	{
-		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), "inventory"));
+		registerItemRenderer(item, meta, "inventory");
+	}
+	
+	@Override
+	public void registerItemRenderer(Item item, int meta, String variantName) {
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), variantName));
 	}
 	
 	@Override
