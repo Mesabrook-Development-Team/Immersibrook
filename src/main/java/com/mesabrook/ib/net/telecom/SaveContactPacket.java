@@ -58,6 +58,7 @@ public class SaveContactPacket implements IMessage {
 			}
 			
 			ItemPhone.NBTData phoneStackData = ItemPhone.NBTData.getFromItemStack(stack);
+			NBTTagCompound stackData = stack.getTagCompound();
 			if (message.contact.getIdentifier() == null || phoneStackData.getContactByIdentifier(message.contact.getIdentifier()) == null)
 			{
 				message.contact.setIdentifier(UUID.randomUUID());
@@ -69,7 +70,7 @@ public class SaveContactPacket implements IMessage {
 				existingContact.copyFrom(message.contact);
 			}
 			
-			stack.setTagCompound(phoneStackData.serializeNBT());
+			stackData.merge(phoneStackData.serializeNBT());
 			
 			RefreshStackPacket refresh = new RefreshStackPacket();
 			refresh.hand = message.hand;

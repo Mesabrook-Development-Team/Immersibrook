@@ -69,9 +69,8 @@ public class PhoneRingtonesPacket implements IMessage
 
             phoneData.setChatTone(message.chatTone);
             phoneData.setRingTone(message.ringTone);
-
-            tag = phoneData.serializeNBT();
-            phoneStack.setTagCompound(tag);
+            
+            tag.merge(phoneData.serializeNBT());
 
             RefreshStackPacket refresh = new RefreshStackPacket();
             refresh.hand = EnumHand.values()[message.hand];

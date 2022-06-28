@@ -70,8 +70,7 @@ public class PhoneWallpaperPacket implements IMessage
             phoneData.setHomeBackground(message.homeBackground);
             phoneData.setLockBackground(message.lockBackground);
 
-            tag = phoneData.serializeNBT();
-            phoneStack.setTagCompound(tag);
+            tag.merge(phoneData.serializeNBT());
 
             RefreshStackPacket refresh = new RefreshStackPacket();
             refresh.hand = EnumHand.values()[message.hand];
