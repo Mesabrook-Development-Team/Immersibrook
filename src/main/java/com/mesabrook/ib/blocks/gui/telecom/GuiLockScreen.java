@@ -47,6 +47,11 @@ public class GuiLockScreen extends GuiPhoneBase {
 		fontRenderer.drawString(getTime(), scale(INNER_X + INNER_TEX_WIDTH / 2, dBigFont) - stringWidth / 2, scale(INNER_Y + 40, dBigFont), 0xFFFFFF, true);
 		GlStateManager.scale(dBigFont, dBigFont, dBigFont);
 		
+		String phoneName = truncateIfExceeds(fontRenderer, phoneStack.getDisplayName(), INNER_TEX_WIDTH, 1.0);
+		stringWidth = fontRenderer.getStringWidth(phoneName);
+		
+		fontRenderer.drawString(phoneName, INNER_X + (INNER_TEX_WIDTH / 2) - (stringWidth / 2), INNER_Y + 20, 0xFFFFFF, true);
+		
 		unlockSlider.draw(mouseX, mouseY, partialticks);
 		String swipeText = "Swipe to unlock";
 		int fontWidth = fontRenderer.getStringWidth(swipeText);

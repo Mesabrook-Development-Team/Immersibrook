@@ -45,7 +45,8 @@ public class GuiSettingsPhoneName extends GuiPhoneBase
         reset = new MinedroidButton(10, INNER_X + 45, lowerControlsY - 10, 32, new TextComponentTranslation("im.musicapp.buttonreset").getFormattedText(), 0xFFFFFF);
         apply = new MinedroidButton(11, INNER_X + 85, lowerControlsY - 10, 32, new TextComponentTranslation("im.settings.apply").getFormattedText(), 0xFFFFFF);
 
-        nameTxtBox = new GuiTextField(100, fontRenderer, INNER_X + 10, INNER_Y + 100, INNER_X - 98, 10);
+        nameTxtBox = new GuiTextField(100, fontRenderer, INNER_X + 10, INNER_Y + 100, INNER_TEX_WIDTH - 20, 10);
+        nameTxtBox.setMaxStringLength(35);
 
         buttonList.addAll(ImmutableList.<GuiButton>builder()
                 .add(reset)

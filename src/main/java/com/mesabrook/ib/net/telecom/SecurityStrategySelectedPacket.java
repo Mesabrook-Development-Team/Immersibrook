@@ -1,19 +1,21 @@
 package com.mesabrook.ib.net.telecom;
 
+import java.util.UUID;
+
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData;
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData.SecurityStrategies;
 import com.mesabrook.ib.util.handlers.PacketHandler;
+
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-
-import java.util.UUID;
 
 public class SecurityStrategySelectedPacket implements IMessage {
 
@@ -67,6 +69,8 @@ public class SecurityStrategySelectedPacket implements IMessage {
 				return;
 			}
 			
+			NBTTagCompound stackData = phoneStack.getTagCompound();
+			
 			data.setPin(message.pin);
 			data.setUuid(message.playerID);
 			
@@ -83,7 +87,7 @@ public class SecurityStrategySelectedPacket implements IMessage {
 				data.setSecurityStrategy(SecurityStrategies.None);
 			}
 			
-			phoneStack.setTagCompound(data.serializeNBT());
+			stackData.merge(data.serializeNBT());
 			
 			RefreshStackPacket refreshPacket = new RefreshStackPacket();
 			refreshPacket.hand = hand;
