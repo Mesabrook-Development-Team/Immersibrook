@@ -144,7 +144,7 @@ public class GuiPhoneSetupStepPersonalization extends GuiPhoneBase
             packet.guiClassName = GuiSettingsWallpapers.class.getName();
             PacketHandler.INSTANCE.sendToServer(packet);
 
-            Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneSetupStepSecurity(phoneStack, hand));
+            Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneNameSetup(phoneStack, hand));
         }
     }
 }
