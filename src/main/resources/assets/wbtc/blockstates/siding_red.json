@@ -1,8 +1,31 @@
 {
+  	"forge_marker": 1,
+	"defaults":
+	{
+		"model": "wbtc:siding_red"
+	},
     "variants": {
-        "facing=north": { "model": "wbtc:siding_red" },
-        "facing=south": { "model": "wbtc:siding_red", "y": 180 },
-        "facing=west":  { "model": "wbtc:siding_red", "y": 270 },
-        "facing=east":  { "model": "wbtc:siding_red", "y": 90 }
+        "facing":
+        {
+    		"north": { },
+    		"south": { "y": 180 },
+    		"west": { "y": 270 },
+    		"east": { "y": 90 }
+        },
+        "back":
+        {
+        	"true": { "submodel": { "sub_back": { "model": "wbtc:siding_red", "y": 180  } } },
+        	"false": { }
+        },
+        "left":
+        {
+        	"true": { "submodel": { "sub_left": { "model": "wbtc:siding_red", "y": 270  } } },
+        	"false": { }
+        },
+        "right":
+        {
+        	"true": { "submodel": { "sub_right": { "model": "wbtc:siding_red", "y": 90 } } },
+        	"false": { }
+        }
     }
 }

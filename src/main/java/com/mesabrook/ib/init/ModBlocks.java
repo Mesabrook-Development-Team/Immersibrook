@@ -1122,22 +1122,22 @@ public class ModBlocks
 	public static final Block METAL_LADDER = new BlockImmersiLadder("metal_ladder");
 
 	// Vinyl Siding Panels
-	public static final Block SIDING_WHITE = new ImmersiblockRotational("siding_white", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_ORANGE = new ImmersiblockRotational("siding_orange", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_MAGENTA = new ImmersiblockRotational("siding_magenta", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_LBLUE = new ImmersiblockRotational("siding_lblue", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_YELLOW = new ImmersiblockRotational("siding_yellow", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_LIME = new ImmersiblockRotational("siding_lime", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_PINK = new ImmersiblockRotational("siding_pink", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_GRAY = new ImmersiblockRotational("siding_gray", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_SILVER = new ImmersiblockRotational("siding_silver", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_CYAN = new ImmersiblockRotational("siding_cyan", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_PURPLE = new ImmersiblockRotational("siding_purple", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_BROWN = new ImmersiblockRotational("siding_brown", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_BLUE = new ImmersiblockRotational("siding_blue", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_RED = new ImmersiblockRotational("siding_red", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_GREEN = new ImmersiblockRotational("siding_green", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_BLACK = new ImmersiblockRotational("siding_black", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_WHITE = new BlockSiding("siding_white", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_ORANGE = new BlockSiding("siding_orange", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_MAGENTA = new BlockSiding("siding_magenta", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_LBLUE = new BlockSiding("siding_lblue", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_YELLOW = new BlockSiding("siding_yellow", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_LIME = new BlockSiding("siding_lime", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_PINK = new BlockSiding("siding_pink", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_GRAY = new BlockSiding("siding_gray", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_SILVER = new BlockSiding("siding_silver", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_CYAN = new BlockSiding("siding_cyan", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_PURPLE = new BlockSiding("siding_purple", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_BROWN = new BlockSiding("siding_brown", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_BLUE = new BlockSiding("siding_blue", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_RED = new BlockSiding("siding_red", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_GREEN = new BlockSiding("siding_green", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_BLACK = new BlockSiding("siding_black", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
 
 	// OBJ Test Block
 	public static final Block OBJ_EYE = new BlockTestEye("eye");
