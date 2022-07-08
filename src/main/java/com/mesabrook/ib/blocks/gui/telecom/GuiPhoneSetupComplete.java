@@ -70,9 +70,9 @@ public class GuiPhoneSetupComplete extends GuiPhoneBase
 
     private void goHome()
     {
-        Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundInit.PHONE_UNLOCK, 1F));
-        GuiPhoneBase.isPhoneUnlocked = true;
-        Minecraft.getMinecraft().displayGuiScreen(new GuiHome(phoneStack, hand));
+        Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundInit.PHONE_OFF, 1F));
+        GuiPhoneBase.isPhoneUnlocked = false;
+        Minecraft.getMinecraft().displayGuiScreen(null);
     }
 
     @Override
