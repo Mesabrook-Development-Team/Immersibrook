@@ -11,7 +11,8 @@
         }
     ],
     "result": {
-        "item": "wbtc:silver_stone",
-        "count": 1
+        "item": "wbtc:colored_stone",
+        "count": 1,
+		"data": 8
     }
 }
