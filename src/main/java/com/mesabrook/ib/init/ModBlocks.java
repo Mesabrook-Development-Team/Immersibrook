@@ -1143,19 +1143,5 @@ public class ModBlocks
 	public static final Block OBJ_EYE = new BlockTestEye("eye");
 
 	// Colored Stone
-	public static final Block ORANGE_STONE = new Immersiblock("orange_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block MAGENTA_STONE = new Immersiblock("magenta_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block LBLUE_STONE = new Immersiblock("lblue_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block YELLOW_STONE = new Immersiblock("yellow_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block LIME_STONE = new Immersiblock("lime_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block PINK_STONE = new Immersiblock("pink_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block GRAY_STONE = new Immersiblock("gray_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block SILVER_STONE = new Immersiblock("silver_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block CYAN_STONE = new Immersiblock("cyan_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block PURPLE_STONE = new Immersiblock("purple_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block BLUE_STONE = new Immersiblock("blue_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block BROWN_STONE = new Immersiblock("brown_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block GREEN_STONE = new Immersiblock("green_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block RED_STONE = new Immersiblock("red_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block BLACK_STONE = new Immersiblock("black_stone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block COLORED_STONE = new BlockColoredStone();
 }

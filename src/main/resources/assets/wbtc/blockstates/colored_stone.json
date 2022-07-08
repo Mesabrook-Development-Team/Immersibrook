@@ -1,0 +1,30 @@
+{
+	"forge_marker": 1,
+	"defaults":
+	{
+		"model": "cube_all"
+	},
+	"variants": 
+	{
+		"inventory": [{}],
+		"color":
+		{
+			"white": { "textures": { "all": "wbtc:blocks/white_stone" } },
+			"orange": { "textures": { "all": "wbtc:blocks/orange_stone" } },
+			"magenta": { "textures": { "all": "wbtc:blocks/magenta_stone" } },
+			"light_blue": { "textures": { "all": "wbtc:blocks/lblue_stone" } },
+			"yellow": { "textures": { "all": "wbtc:blocks/yellow_stone" } },
+			"lime": { "textures": { "all": "wbtc:blocks/lime_stone" } },
+			"pink": { "textures": { "all": "wbtc:blocks/pink_stone" } },
+			"gray": { "textures": { "all": "wbtc:blocks/gray_stone" } },
+			"silver": { "textures": { "all": "wbtc:blocks/silver_stone" } },
+			"cyan": { "textures": { "all": "wbtc:blocks/cyan_stone" } },
+			"purple": { "textures": { "all": "wbtc:blocks/purple_stone" } },
+			"blue": { "textures": { "all": "wbtc:blocks/blue_stone" } },
+			"brown": { "textures": { "all": "wbtc:blocks/brown_stone" } },
+			"green": { "textures": { "all": "wbtc:blocks/green_stone" } },
+			"red": { "textures": { "all": "wbtc:blocks/red_stone" } },
+			"black": { "textures": { "all": "wbtc:blocks/black_stone" } }
+		}
+	}
+}

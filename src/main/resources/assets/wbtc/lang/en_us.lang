@@ -1454,21 +1454,22 @@ tile.choc_grape_truffle_box.name=Chocolate Truffles
 tile.choc_blueberry_truffle_box.name=Chocolate Truffles
 
 //Colored Stone
-tile.orange_stone.name=Dyed Stone (Orange)
-tile.magenta_stone.name=Dyed Stone (Magenta)
-tile.lblue_stone.name=Dyed Stone (Light Blue)
-tile.yellow_stone.name=Dyed Stone (Yellow)
-tile.lime_stone.name=Dyed Stone (Lime)
-tile.pink_stone.name=Dyed Stone (Pink)
-tile.gray_stone.name=Dyed Stone (Gray)
-tile.silver_stone.name=Dyed Stone (Light Gray)
-tile.cyan_stone.name=Dyed Stone (Cyan)
-tile.purple_stone.name=Dyed Stone (Purple)
-tile.brown_stone.name=Dyed Stone (Brown)
-tile.blue_stone.name=Dyed Stone (Blue)
-tile.red_stone.name=Dyed Stone (Red)
-tile.green_stone.name=Dyed Stone (Green)
-tile.black_stone.name=Dyed Stone (Black)
+tile.colored_stone.white.name=Dyed Stone (White)
+tile.colored_stone.orange.name=Dyed Stone (Orange)
+tile.colored_stone.magenta.name=Dyed Stone (Magenta)
+tile.colored_stone.light_blue.name=Dyed Stone (Light Blue)
+tile.colored_stone.yellow.name=Dyed Stone (Yellow)
+tile.colored_stone.lime.name=Dyed Stone (Lime)
+tile.colored_stone.pink.name=Dyed Stone (Pink)
+tile.colored_stone.gray.name=Dyed Stone (Gray)
+tile.colored_stone.silver.name=Dyed Stone (Light Gray)
+tile.colored_stone.cyan.name=Dyed Stone (Cyan)
+tile.colored_stone.purple.name=Dyed Stone (Purple)
+tile.colored_stone.brown.name=Dyed Stone (Brown)
+tile.colored_stone.blue.name=Dyed Stone (Blue)
+tile.colored_stone.red.name=Dyed Stone (Red)
+tile.colored_stone.green.name=Dyed Stone (Green)
+tile.colored_stone.black.name=Dyed Stone (Black)
 
 //Masks
 item.mask_jason.name=Decorative Face Mask
