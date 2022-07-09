@@ -1670,6 +1670,7 @@ im.present=Happy Holidays!
 im.tooltip.activate=No Number Assigned. Activation Required.
 im.tooltip.phone=Your Phone Number:
 im.tooltip.siding=Colorful Vinyl Plastic Panels that add Color to your builds.
+im.tooltip.siding.wood=Rustic Wooden Panels that add an outdoorsy feel to your builds.
 im.tooltip.manhole.hook=Tool used to open and close Manholes.
 im.tooltip.gavel=Order! Order in the Court!
 
@@ -1703,6 +1704,14 @@ tile.siding_brown.name=Brown Vinyl Siding
 tile.siding_green.name=Green Vinyl Siding
 tile.siding_red.name=Red Vinyl Siding
 tile.siding_black.name=Black Vinyl Siding
+
+//Non-plastic Siding Blocks
+tile.siding_oak.name=Oak Wooden Siding
+tile.siding_spruce.name=Spruce Wooden Siding
+tile.siding_birch.name=Birch Wooden Siding
+tile.siding_jungle.name=Jungle Wooden Siding
+tile.siding_acacia.name=Acacia Wooden Siding
+tile.siding_dark_oak.name=Dark Oak Wooden Siding
 
 //Minedroid Translation Project - Sound Player App
 im.musicapp.apptitle=Minedroid Sound Player

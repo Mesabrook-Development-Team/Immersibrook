@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "FP",
+    "FP",
+	"FP"
+  ],
+  "key": {
+    "P": {
+	   "item": "minecraft:log",
+	   "data": 1
+    },
+    "F": {
+	   "item": "minecraft:planks",
+	   "data": 1
+    }
+  },
+  "result": {
+    "item": "wbtc:siding_spruce",
+    "count": 3
+  }
+}
