@@ -72,7 +72,7 @@ public class GuiPhoneSetupComplete extends GuiPhoneBase
     {
         Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundInit.PHONE_OFF, 1F));
         GuiPhoneBase.isPhoneUnlocked = false;
-        Minecraft.getMinecraft().displayGuiScreen(null);
+        Minecraft.getMinecraft().player.closeScreen();
     }
 
     @Override
