@@ -1,16 +1,19 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.mesabrook.ib.net.telecom.PhoneQueryPacket;
+import com.mesabrook.ib.util.*;
 import com.mesabrook.ib.util.handlers.ClientSideHandlers.TelecomClientHandlers;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.*;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.io.IOException;
+import java.net.*;
 
 @SideOnly(Side.CLIENT)
 public class GuiHome extends GuiPhoneBase {
@@ -51,6 +54,10 @@ public class GuiHome extends GuiPhoneBase {
 		// Calculator App
 		ImageButton button6 = new ImageButton(5, INNER_X + 46, INNER_Y + 65, 32, 32, "icn_calc.png", 32, 32);
 		buttonList.add(button6);
+
+		// Calculator App
+		ImageButton button7 = new ImageButton(6, INNER_X + 86, INNER_Y + 65, 32, 32, "icn_help.png", 32, 32);
+		buttonList.add(button7);
 	}
 	
 	@Override
@@ -83,6 +90,18 @@ public class GuiHome extends GuiPhoneBase {
 				break;
 			case 5:
 				Minecraft.getMinecraft().displayGuiScreen(new GuiCalculatorSplash(phoneStack, hand));
+				break;
+			case 6:
+				try
+				{
+					Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, new TextComponentTranslation("im.misc.urlopened").getFormattedText(), 0xFFFFFF));
+					ModUtils.openWebLink(new URI("https://github.com/RavenholmZombie/Immersibrook/wiki/Minedroid-Help"));
+				}
+				catch (URISyntaxException e)
+				{
+					Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, new TextComponentTranslation("im.misc.error").getFormattedText(), 0xFFFFFF));
+					e.printStackTrace();
+				}
 				break;
 		}
 	}

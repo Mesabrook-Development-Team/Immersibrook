@@ -1787,6 +1787,10 @@ im.settings.personalization.wallpaperreset=Settings Reset
 im.alert.name=EMERGENCY ALERT
 im.alert.close=Dismiss
 
+//Minedroid Translation Project - Misc
+im.misc.error=An error occurred.
+im.misc.urlopened=Opening in Browser...
+
 //Subtitles
 ib.sub.phonelock=Phone Locking
 ib.sub.phoneunlock=Phone Unlocking
