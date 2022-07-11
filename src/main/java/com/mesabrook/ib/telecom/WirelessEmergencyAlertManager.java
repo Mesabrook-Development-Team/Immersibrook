@@ -258,7 +258,7 @@ public class WirelessEmergencyAlertManager {
 		}
 	}
 	
-	public static class WirelessEmergencyAlert implements INBTSerializable<NBTTagCompound> {
+	public static class WirelessEmergencyAlert implements net.minecraftforge.common.util.INBTSerializable<net.minecraft.nbt.NBTTagCompound> {
 
 		private UUID id;
 		private String name;
