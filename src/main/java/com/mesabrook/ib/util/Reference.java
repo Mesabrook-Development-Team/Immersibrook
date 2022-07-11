@@ -9,7 +9,7 @@ public class Reference
 	public static final String UPDATE_NAME = "The Technology Update";
 	public static final String MOTTO = "Слава Україні!";
 	public static final String VERSION = "1.0.0";
-	public static final String MINEDROID_VERSION = "0.0.4";
+	public static final String MINEDROID_VERSION = "0.0.5";
 	public static final String CHANGELOG = "https://bit.ly/3oTNHHS";
 	public static final String UPDATE_URL = "https://raw.githubusercontent.com/RavenholmZombie/RavenholmZombie/main/update.json";
 	
