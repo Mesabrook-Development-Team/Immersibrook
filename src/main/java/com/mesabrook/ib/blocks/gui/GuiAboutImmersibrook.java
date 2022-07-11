@@ -1,7 +1,7 @@
 package com.mesabrook.ib.blocks.gui;
 
 import com.mesabrook.ib.blocks.gui.telecom.ImageButton;
-import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.*;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
@@ -61,25 +61,14 @@ public class GuiAboutImmersibrook extends GuiScreen
 
         if(button.id == 1)
         {
-            try {
-                openWebLink(new URI("https://github.com/RavenholmZombie/Immersibrook/wiki"));
-            } catch (URISyntaxException e) {
+            try
+            {
+                ModUtils.openWebLink(new URI("https://github.com/RavenholmZombie/Immersibrook/wiki"));
+            }
+            catch (URISyntaxException e)
+            {
                 e.printStackTrace();
             }
-        }
-    }
-
-    private void openWebLink(URI url)
-    {
-        try
-        {
-            Class<?> oclass = Class.forName("java.awt.Desktop");
-            Object object = oclass.getMethod("getDesktop", new Class[0]).invoke(null);
-            oclass.getMethod("browse", new Class[]{URI.class}).invoke(object, url);
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
         }
     }
 
