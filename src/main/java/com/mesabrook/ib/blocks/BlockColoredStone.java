@@ -43,7 +43,7 @@ public class BlockColoredStone extends Block implements IHasModel {
 			}
 
 			public String getUnlocalizedName(ItemStack stack) {
-				return "tile.colored_stone." + EnumDyeColor.byMetadata(stack.getMetadata()).getDyeColorName();
+				return "tile.colored_stone." + EnumDyeColor.byMetadata(stack.getMetadata()).getName();
 			}
 		}.setRegistryName(this.getRegistryName()).setMaxStackSize(64).setHasSubtypes(true));
 	}
@@ -52,7 +52,7 @@ public class BlockColoredStone extends Block implements IHasModel {
 	public void registerModels() {
 		for (int i = 0; i < 16; i++) {
 			Main.proxy.registerItemRenderer(Item.getItemFromBlock(this), i,
-					"color=" + EnumDyeColor.byMetadata(i).getDyeColorName());
+					"color=" + EnumDyeColor.byMetadata(i).getName());
 		}
 	}
 
