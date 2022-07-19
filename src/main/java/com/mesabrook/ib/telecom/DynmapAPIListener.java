@@ -2,6 +2,8 @@ package com.mesabrook.ib.telecom;
 
 import org.dynmap.DynmapCommonAPI;
 import org.dynmap.DynmapCommonAPIListener;
+import org.dynmap.MapManager;
+import org.dynmap.forge_1_12_2.ForgeWorld;
 import org.dynmap.markers.AreaMarker;
 import org.dynmap.markers.MarkerAPI;
 import org.dynmap.markers.MarkerSet;
@@ -19,7 +21,7 @@ public class DynmapAPIListener extends DynmapCommonAPIListener {
 	public static DynmapCommonAPI getDynmapApi() { return api; }
 	private static String getWorldName()
 	{
-		return FMLCommonHandler.instance().getMinecraftServerInstance().getWorldName();
+		return ForgeWorld.getWorldName(FMLCommonHandler.instance().getMinecraftServerInstance().getWorld(0));
 	}
 	
 	@Override
