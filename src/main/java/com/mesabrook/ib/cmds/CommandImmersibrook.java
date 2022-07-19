@@ -1,9 +1,10 @@
 package com.mesabrook.ib.cmds;
 
 import com.google.common.collect.Lists;
+import com.mesabrook.ib.*;
 import com.mesabrook.ib.net.AboutGUIPacket;
 import com.mesabrook.ib.telecom.WirelessEmergencyAlertManager;
-import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.*;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.command.CommandBase;
@@ -22,6 +23,7 @@ import net.minecraftforge.common.config.ConfigManager;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
+import java.net.*;
 import java.util.Collections;
 import java.util.List;
 
@@ -40,16 +42,28 @@ public class CommandImmersibrook extends CommandBase
 		{
 			if("about".equals(args[0]))
 			{
-				EntityPlayerMP player = (EntityPlayerMP) sender;
-				AboutGUIPacket packet = new AboutGUIPacket();
-				PacketHandler.INSTANCE.sendTo(packet, player);
+				try
+				{
+					EntityPlayerMP player = (EntityPlayerMP) sender;
+					AboutGUIPacket packet = new AboutGUIPacket();
+					PacketHandler.INSTANCE.sendTo(packet, player);
+				}
+				catch(Exception ex)
+				{
+					Main.logger.info("Immersibrook " + Reference.VERSION);
+				}
 			}
 			else if("changelog".equals(args[0]))
 			{
-				sender.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "A link to the changelog has been copied to your Clipboard."));
-				StringSelection stringSelection = new StringSelection(Reference.CHANGELOG);
-				Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-				clipboard.setContents(stringSelection, null);
+				try
+				{
+					sender.sendMessage(new TextComponentString("Opening GitHub Release in default browser..."));
+					ModUtils.openWebLink(new URI(Reference.CHANGELOG));
+				}
+				catch(Exception ex)
+				{
+					Main.logger.info(Reference.CHANGELOG);
+				}
 			}
 			else if("proxchat".equals(args[0]))
 			{
