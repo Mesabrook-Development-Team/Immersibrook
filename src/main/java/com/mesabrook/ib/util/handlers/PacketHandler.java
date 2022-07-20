@@ -23,6 +23,7 @@ public class PacketHandler
 		INSTANCE.registerMessage(SoundRandomizerPacket.Handler.class, SoundRandomizerPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(PoliceEffectsTogglePacket.Handler.class, PoliceEffectsTogglePacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(AboutGUIPacket.class, AboutGUIPacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(CommandProcessorPacket.class, CommandProcessorPacket.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(SoundPlayerAppInfoPacket.Handler.class, SoundPlayerAppInfoPacket.class, nextID(), Side.SERVER);
 
 		// TELECOM

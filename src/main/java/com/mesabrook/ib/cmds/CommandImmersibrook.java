@@ -2,7 +2,7 @@ package com.mesabrook.ib.cmds;
 
 import com.google.common.collect.Lists;
 import com.mesabrook.ib.*;
-import com.mesabrook.ib.net.AboutGUIPacket;
+import com.mesabrook.ib.net.*;
 import com.mesabrook.ib.telecom.WirelessEmergencyAlertManager;
 import com.mesabrook.ib.util.*;
 import com.mesabrook.ib.util.config.ModConfig;
@@ -50,15 +50,30 @@ public class CommandImmersibrook extends CommandBase
 				}
 				catch(Exception ex)
 				{
-					Main.logger.info("Immersibrook " + Reference.VERSION);
+					MottoRandomizer.RandomMotto();
+					Main.logger.info("");
+					Main.logger.info("=============================================================================");
+					Main.logger.info("");
+					Main.logger.info(Reference.MODNAME);
+					Main.logger.info("Version " + Reference.VERSION);
+					Main.logger.info("");
+					Main.logger.info(Reference.UPDATE_NAME);
+					Main.logger.info("");
+					Main.logger.info("Developed By: RavenholmZombie and CSX8600");
+					Main.logger.info("");
+					Main.logger.info(Reference.MOTTO);
+					Main.logger.info("");
+					Main.logger.info("=============================================================================");
+					Main.logger.info("");
 				}
 			}
 			else if("changelog".equals(args[0]))
 			{
 				try
 				{
-					sender.sendMessage(new TextComponentString("Opening GitHub Release in default browser..."));
-					ModUtils.openWebLink(new URI(Reference.CHANGELOG));
+					EntityPlayerMP player = (EntityPlayerMP) sender;
+					CommandProcessorPacket packet = new CommandProcessorPacket();
+					PacketHandler.INSTANCE.sendTo(packet, player);
 				}
 				catch(Exception ex)
 				{

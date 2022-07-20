@@ -1,5 +1,6 @@
 package com.mesabrook.ib.util.handlers;
 
+import java.net.*;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -29,7 +30,7 @@ import com.mesabrook.ib.net.PlaySoundPacket;
 import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket;
 import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket.ResponseTypes;
 import com.mesabrook.ib.telecom.WirelessEmergencyAlertManager.WirelessEmergencyAlert;
-import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.*;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.saveData.PhoneLogData;
 
@@ -658,5 +659,10 @@ public class ClientSideHandlers
 				Minecraft.getMinecraft().displayGuiScreen(new GuiMobileAlert(currentScreen.getPhoneStack(), currentScreen.getHand()));
 			}
 		}
+	}
+
+	public static void processURIWebRequest(URI uri)
+	{
+		ModUtils.openWebLink(uri);
 	}
 }
