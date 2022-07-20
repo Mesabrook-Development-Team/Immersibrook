@@ -11,10 +11,7 @@ import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.rendering.RenderMesabrookIcon;
 import com.mesabrook.ib.rendering.RenderWineBottle;
 import com.mesabrook.ib.telecom.DynmapAPIListener;
-import com.mesabrook.ib.util.IHasModel;
-import com.mesabrook.ib.util.ItemRandomizer;
-import com.mesabrook.ib.util.Reference;
-import com.mesabrook.ib.util.TooltipRandomizer;
+import com.mesabrook.ib.util.*;
 import com.mesabrook.ib.util.recipe.RecipesHandler;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -78,6 +75,7 @@ public class RegistryHandler
 	
 	public static void preInitRegistries(FMLPreInitializationEvent event)
 	{
+		MottoRandomizer.RandomMotto();
 		Main.logger.info("");
 		Main.logger.info("=============================================================================");
 		Main.logger.info("");
@@ -114,6 +112,7 @@ public class RegistryHandler
 	
 	public static void initRegistries()
 	{
+		MottoRandomizer.RandomMotto();
 		Main.logger.info("");
 		Main.logger.info("=============================================================================");
 		Main.logger.info("");
@@ -147,6 +146,7 @@ public class RegistryHandler
 	
 	public static void postInitRegistries(FMLPostInitializationEvent event)
 	{
+		MottoRandomizer.RandomMotto();
 		Main.logger.info("");
 		Main.logger.info("=============================================================================");
 		Main.logger.info("");
@@ -175,6 +175,7 @@ public class RegistryHandler
 	
 	public static void serverRegistries(FMLServerStartingEvent event)
 	{
+		MottoRandomizer.RandomMotto();
 		Main.logger.info("");
 		Main.logger.info("=============================================================================");
 		Main.logger.info("");
