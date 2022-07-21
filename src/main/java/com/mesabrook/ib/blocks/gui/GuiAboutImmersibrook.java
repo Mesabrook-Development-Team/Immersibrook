@@ -5,6 +5,7 @@ import com.mesabrook.ib.util.*;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.input.*;
 import org.lwjgl.opengl.GL11;
 
 import java.net.URI;
@@ -32,7 +33,6 @@ public class GuiAboutImmersibrook extends GuiScreen
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
-        drawDefaultBackground();
         int x = (this.width - this.backgroundWidth) / 2;
         int y = (this.height - this.backgroundHeight) / 2 - this.closeButton.height;
 
