@@ -74,6 +74,10 @@ public class CommandImmersibrook extends CommandBase
 					EntityPlayerMP player = (EntityPlayerMP) sender;
 					CommandProcessorPacket packet = new CommandProcessorPacket();
 					PacketHandler.INSTANCE.sendTo(packet, player);
+					if(sender instanceof EntityPlayerMP)
+					{
+						player.sendMessage(new TextComponentString("Opening GitHub release in default browser..."));
+					}
 				}
 				catch(Exception ex)
 				{
