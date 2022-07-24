@@ -78,7 +78,7 @@ public final class ModConfig
 	public static boolean oofDeathSound = true;
 
 	@Comment("[Float] Phone Ringtone Loudness (default - 0.25F | max - 1.0F)")
-	public static float ringtoneVolume = 0.25F;
+	public static float ringtoneVolume = 0.75F;
 	
 	@Comment("Is proximity chat enabled?")
 	public static boolean proximityChatEnabled = true;
