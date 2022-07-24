@@ -93,7 +93,7 @@ public final class ModConfig
 	public static int loudDistance = 29;
 
 	@Comment("[Accessibility] Show Incoming Call Message? (Enabled by default if subtitles are active)")
-	public static boolean showCallMsgInChat = false;
+	public static boolean showCallMsgInChat = true;
 
 	@Comment("[Special Smartphone] Randomly switch bezel colors when held?")
 	public static boolean specialPhoneBezel = true;
