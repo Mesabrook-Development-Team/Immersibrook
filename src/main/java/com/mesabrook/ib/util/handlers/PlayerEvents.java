@@ -6,7 +6,7 @@ import com.mesabrook.ib.init.ModEnchants;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.tools.ItemBanHammer;
 import com.mesabrook.ib.items.tools.ItemGavel;
-import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.net.*;
 import com.mesabrook.ib.util.ItemRandomizer;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SoundRandomizer;
@@ -453,6 +453,20 @@ public class PlayerEvents
 				player.world.spawnParticle(EnumParticleTypes.ITEM_CRACK, pos.getX(), pos.getY(), pos.getZ(), vec3d.x, vec3d.y + 0.05D, vec3d.z, Item.getIdFromItem(stack.getItem()), stack.getMetadata());
 			}
 			world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_EAT, SoundCategory.BLOCKS, 0.5F + 0.5F * (float)rand.nextInt(2), (rand.nextFloat() - rand.nextFloat()) * 0.2F + 1.0F);
+		}
+
+		if(block.getUnlocalizedName().contains("toilet") && Loader.isModLoaded("cfm"))
+		{
+			if(world.isRemote && player.isSneaking())
+			{
+				SoundPlayerAppInfoPacket packet = new SoundPlayerAppInfoPacket();
+				packet.pos = player.getPosition();
+				packet.modID = "cfm";
+				packet.soundName = "flush";
+				packet.useDelay = true;
+				packet.range = 10;
+				PacketHandler.INSTANCE.sendToServer(packet);
+			}
 		}
 	}
 }
