@@ -21,6 +21,7 @@ public class SoundPlayerAppInfoPacket implements IMessage
     public boolean useDelay = true;
     public float volume = 1.0F;
     public float pitch = 1.0F;
+    public int range = 25;
 
     @Override
     public void fromBytes(ByteBuf buf)
@@ -31,6 +32,7 @@ public class SoundPlayerAppInfoPacket implements IMessage
         useDelay = buf.readBoolean();
         volume = buf.readFloat();
         pitch = buf.readFloat();
+        range = buf.readInt();
     }
 
     @Override
@@ -42,6 +44,7 @@ public class SoundPlayerAppInfoPacket implements IMessage
         buf.writeBoolean(useDelay);
         buf.writeFloat(volume);
         buf.writeFloat(pitch);
+        buf.writeInt(range);
     }
 
     public static class Handler implements IMessageHandler<SoundPlayerAppInfoPacket, IMessage>
@@ -65,7 +68,7 @@ public class SoundPlayerAppInfoPacket implements IMessage
                 packet.pitch = message.pitch;
                 packet.rapidSounds = message.useDelay;
 
-                PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(ctx.getServerHandler().player.dimension, ctx.getServerHandler().player.posX, ctx.getServerHandler().player.posY, ctx.getServerHandler().player.posZ, 25));
+                PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(ctx.getServerHandler().player.dimension, ctx.getServerHandler().player.posX, ctx.getServerHandler().player.posY, ctx.getServerHandler().player.posZ, message.range));
             }
             catch(NullPointerException ex)
             {
