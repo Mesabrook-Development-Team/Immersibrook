@@ -1802,3 +1802,11 @@ ib.sub.mhopen=Manhole Opening
 ib.sub.mhclose=Manhole Closing
 ib.sub.mhplace=Manhole Placed
 ib.sub.mhbreak=Manhole Breaking
+
+//Doors
+tile.oak_push_door.name=Oak Wood Push Door
+tile.spruce_push_door.name=Spruce Wood Push Door
+tile.birch_push_door.name=Birch Wood Push Door
+tile.jungle_push_door.name=Jungle Wood Push Door
+tile.acacia_push_door.name=Acacia Wood Push Door
+tile.dark_oak_push_door.name=Dark Oak Wood Push Door

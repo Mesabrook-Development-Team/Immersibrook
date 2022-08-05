@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WW",
+    "WI",
+	"II"
+  ],
+  "key": {
+    "W": {
+	   "item": "wbtc:smooth_acacia"
+    },
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "plateIron"
+    }
+  },
+  "result": {
+    "item": "wbtc:acacia_push_door",
+    "count": 1
+  }
+}
