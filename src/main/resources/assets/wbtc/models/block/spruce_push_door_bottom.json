@@ -1,0 +1,8 @@
+{
+    "parent": "block/door_bottom",
+    "textures":
+    {
+        "bottom": "wbtc:blocks/spruce_push_door_bottom",
+        "top": "wbtc:blocks/spruce_push_door_top"
+    }
+}

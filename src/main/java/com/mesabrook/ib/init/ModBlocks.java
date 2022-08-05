@@ -1150,4 +1150,12 @@ public class ModBlocks
 
 	// Colored Stone
 	public static final Block COLORED_STONE = new BlockColoredStone();
+
+	// Doors
+	public static final Block OAK_PUSH_DOOR = new BlockDoorBase("oak_push_door", Material.WOOD);
+	public static final Block SPRUCE_PUSH_DOOR = new BlockDoorBase("spruce_push_door", Material.WOOD);
+	public static final Block BIRCH_PUSH_DOOR = new BlockDoorBase("birch_push_door", Material.WOOD);
+	public static final Block JUNGLE_PUSH_DOOR = new BlockDoorBase("jungle_push_door", Material.WOOD);
+	public static final Block ACACIA_PUSH_DOOR = new BlockDoorBase("acacia_push_door", Material.WOOD);
+	public static final Block DARK_OAK_PUSH_DOOR = new BlockDoorBase("dark_oak_push_door", Material.WOOD);
 }
