@@ -52,6 +52,9 @@ public class RecipeOverrider
                 Main.logger.info("[" + Reference.MODNAME + "] wbtc.cfg/makePaperProductionMoreRealistic = false");
                 Main.logger.info("[" + Reference.MODNAME + "] Config option to disable Paper recipe is set to false. Recipe still active.");
             }
+
+            ResourceLocation bread = new ResourceLocation("harvestcraft:minecraft_bread");
+            modRegistry.remove(bread);
         }
         catch(Exception ex)
         {

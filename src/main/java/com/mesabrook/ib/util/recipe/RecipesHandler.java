@@ -5,6 +5,7 @@ import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.config.ModConfig;
+import com.pam.harvestcraft.item.*;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -93,6 +94,9 @@ public class RecipesHandler
 
 			// Player Steak
 			GameRegistry.addSmelting(ModItems.PLAYER_MEAT, new ItemStack(ModItems.PLAYER_MEAT_COOKED, 1), 20F);
+
+			// Bread
+			GameRegistry.addSmelting(ItemRegistry.doughItem, new ItemStack(Items.BREAD, 1), 5F);
 
 			if(ModConfig.smeltingLeatherForASaddle)
 			{
