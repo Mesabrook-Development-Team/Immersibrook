@@ -37,8 +37,14 @@ public class GuiPhoneRecents extends GuiPhoneBase {
 	boolean isInitializing = true;
 	int page = 1;
 	
-	public GuiPhoneRecents(ItemStack phoneStack, EnumHand hand) {
+	public GuiPhoneRecents(ItemStack phoneStack, EnumHand hand, int page) {
 		super(phoneStack, hand);
+		this.page = page;
+	}
+	
+	public GuiPhoneRecents(ItemStack phoneStack, EnumHand hand)
+	{
+		this(phoneStack, hand, 1);
 	}
 
 	@Override
@@ -123,8 +129,11 @@ public class GuiPhoneRecents extends GuiPhoneBase {
 			{
 				LogItem item = logItems.get(logIndex);
 				
-				GuiPhoneCall callScreen = new GuiPhoneCall(phoneStack, hand, Integer.toString(item.logData.getOtherNumber()));
-				Minecraft.getMinecraft().displayGuiScreen(callScreen);
+				if (item.logData.getOtherNumbers().length == 1)
+				{
+					GuiPhoneCall callScreen = new GuiPhoneCall(phoneStack, hand, Integer.toString(item.logData.getOtherNumbers()[0]));
+					Minecraft.getMinecraft().displayGuiScreen(callScreen);
+				}
 			}
 		}
 	}
@@ -158,7 +167,7 @@ public class GuiPhoneRecents extends GuiPhoneBase {
 		for(PhoneLogData.LogData logData : logDatum.stream().sorted((o1, o2) -> Long.compare(o1.getCallTime(), o2.getCallTime()) * -1).skip(4 * (page - 1)).limit(4).collect(Collectors.toList()))
 		{
 			logItems.add(new LogItem(fontRenderer, logData, INNER_X, INNER_Y + 35 + (LogItem.HEIGHT * counter), INNER_TEX_WIDTH));
-			callButtons.get(counter).visible = true;
+			callButtons.get(counter).visible = logData.getOtherNumbers().length == 1;
 			counter++;
 		}
 		
@@ -229,11 +238,15 @@ public class GuiPhoneRecents extends GuiPhoneBase {
 		public void draw()
 		{
 			// Head
-			Contact contact = phoneStackData.getContactByPhoneNumber(Integer.toString(logData.getOtherNumber()));
 			ResourceLocation headRL = new ResourceLocation(Reference.MODID, "textures/gui/telecom/loading.png");
-			if (contact != null)
+			Contact contact = null;
+			if (logData.getOtherNumbers().length == 1)
 			{
-				headRL = GetHeadUtil.getHeadResourceLocation(contact.getUsername());
+				contact = phoneStackData.getContactByPhoneNumber(Integer.toString(logData.getOtherNumbers()[0]));
+				if (contact != null)
+				{
+					headRL = GetHeadUtil.getHeadResourceLocation(contact.getUsername());
+				}
 			}
 
 			Minecraft.getMinecraft().getTextureManager().bindTexture(headRL);
@@ -241,7 +254,17 @@ public class GuiPhoneRecents extends GuiPhoneBase {
 			drawScaledCustomSizeModalRect(x, y + 2, 0, 0, 160, 160, 30, 30, 160, 160);
 			
 			// Name/Number
-			String contactName = TextFormatting.BOLD + (contact != null ? contact.getUsername() : getFormattedPhoneNumber(Integer.toString(logData.getOtherNumber())));
+			String contactName = TextFormatting.BOLD + "";
+			
+			if (logData.getOtherNumbers().length == 1)
+			{
+				contactName += contact != null ? contact.getUsername() : getFormattedPhoneNumber(Integer.toString(logData.getOtherNumbers()[0]));
+			}
+			else
+			{
+				contactName += "Conference";
+			}
+			
 			contactName = truncateIfExceeds(fontRenderer, contactName, width - 32, 1);
 			fontRenderer.drawString(contactName, x + 32, y + 2, 0xFFFFFF);
 			
@@ -277,7 +300,10 @@ public class GuiPhoneRecents extends GuiPhoneBase {
 		
 		public void mouseClicked(int mouseX, int mouseY)
 		{
-			
+			if (mouseX >= this.x && mouseX <= this.x + this.width && mouseY >= this.y && mouseY <= this.y + HEIGHT && logData.getOtherNumbers().length > 1)
+			{
+				Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneConferenceDetails(phoneStack, hand, page, logData));
+			}
 		}
 	}
 }
