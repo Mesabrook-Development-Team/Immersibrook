@@ -128,7 +128,7 @@ public class PhoneLogData extends WorldSavedData {
 	{
 
 		private UUID logID;
-		private int otherNumber;
+		private int[] otherNumbers;
 		private long callTime;
 		private long callLength;
 		private PhoneLogState phoneLogState;
@@ -138,7 +138,7 @@ public class PhoneLogData extends WorldSavedData {
 		
 		public LogData(int otherNumber, long callTime, long callLength, PhoneLogState phoneLogState)
 		{
-			setOtherNumber(otherNumber);
+			setOtherNumbers(new int[] { otherNumber });
 			setCallTime(callTime);
 			setCallLength(callLength);
 			setPhoneLogState(phoneLogState);
@@ -153,7 +153,7 @@ public class PhoneLogData extends WorldSavedData {
 		public NBTTagCompound serializeNBT() {
 			NBTTagCompound tag = new NBTTagCompound();
 			tag.setUniqueId("logID", logID);
-			tag.setInteger("otherNumber", getOtherNumber());
+			tag.setIntArray("otherNumbers", getOtherNumbers());
 			tag.setLong("callTime", getCallTime());
 			tag.setLong("callLength", getCallLength());
 			tag.setInteger("state", getPhoneLogState().ordinal());
@@ -163,7 +163,14 @@ public class PhoneLogData extends WorldSavedData {
 		@Override
 		public void deserializeNBT(NBTTagCompound nbt) {
 			setLogID(nbt.getUniqueId("logID"));
-			setOtherNumber(nbt.getInteger("otherNumber"));
+			if (nbt.hasKey("otherNumber"))
+			{
+				setOtherNumbers(new int[] { nbt.getInteger("otherNumber") });
+			}
+			else if (nbt.hasKey("otherNumbers"))
+			{
+				setOtherNumbers(nbt.getIntArray("otherNumbers"));
+			}
 			setCallTime(nbt.getLong("callTime"));
 			setCallLength(nbt.getLong("callLength"));
 			setPhoneLogState(PhoneLogState.values()[nbt.getInteger("state")]);
@@ -183,12 +190,12 @@ public class PhoneLogData extends WorldSavedData {
 			markDirty();
 		}
 
-		public int getOtherNumber() {
-			return otherNumber;
+		public int[] getOtherNumbers() {
+			return otherNumbers;
 		}
 
-		public void setOtherNumber(int otherNumber) {
-			this.otherNumber = otherNumber;
+		public void setOtherNumbers(int[] otherNumbers) {
+			this.otherNumbers = otherNumbers;
 			markDirty();
 		}
 
@@ -255,5 +262,19 @@ public class PhoneLogData extends WorldSavedData {
 		}
 		
 		return data;
+	}
+
+	public void removeLogByID(UUID id)
+	{
+		LogData data = logDatumByID.get(id);
+		if (data == null)
+		{
+			return;
+		}
+		
+		for(Entry<Integer, ArrayList<LogData>> entry : logDatumByPhoneNumber.entrySet())
+		{
+			entry.getValue().remove(data);
+		}
 	}
 }

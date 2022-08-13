@@ -192,7 +192,7 @@ public abstract class GuiPhoneBase extends GuiScreen {
 	protected String getTime()
 	{
 		long time = Minecraft.getMinecraft().world.getWorldTime();
-		int hours = (int) ((Math.floor(time / 1000.0) + 8) % 24); // '8' is the offset
+		int hours = (int) ((Math.floor(time / 1000.0) + 6) % 24); // '6' is the offset
 	    int minutes = (int) Math.floor((time % 1000) / 1000.0 * 60);
 	    return String.format("%02d:%02d", hours, minutes);
 	}

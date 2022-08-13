@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.PrimitiveIterator.OfInt;
 import java.util.Random;
@@ -15,8 +16,13 @@ import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData;
 import com.mesabrook.ib.net.PlaySoundPacket;
-import com.mesabrook.ib.net.telecom.*;
+import com.mesabrook.ib.net.telecom.CallAcceptedPacket;
+import com.mesabrook.ib.net.telecom.CallRejectedPacket;
+import com.mesabrook.ib.net.telecom.DisconnectedCallNotificationPacket;
+import com.mesabrook.ib.net.telecom.IncomingCallPacket;
+import com.mesabrook.ib.net.telecom.OutgoingCallResponsePacket;
 import com.mesabrook.ib.net.telecom.OutgoingCallResponsePacket.States;
+import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket;
 import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket.ResponseTypes;
 import com.mesabrook.ib.util.PhoneLogState;
 import com.mesabrook.ib.util.Reference;
@@ -26,6 +32,7 @@ import com.mesabrook.ib.util.saveData.AntennaData;
 import com.mesabrook.ib.util.saveData.PhoneLogData;
 import com.mesabrook.ib.util.saveData.PhoneLogData.LogData;
 import com.mesabrook.ib.util.saveData.PhoneNumberData;
+
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -38,10 +45,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
-
-import java.util.*;
-import java.util.PrimitiveIterator.OfInt;
-import java.util.stream.IntStream;
+import scala.actors.threadpool.Arrays;
 
 public class CallManager {
 
@@ -578,6 +582,58 @@ public class CallManager {
 			for (String destPhone : subCall.getDestPhones()) {
 				callsByPhone.put(destPhone, this);
 			}
+			
+			World logDataWorld = FMLCommonHandler.instance().getMinecraftServerInstance().getWorld(0);
+			PhoneLogData phoneLogData = PhoneLogData.getOrCreate(logDataWorld);
+			for (Entry<String, UUID> logDataByID : logDataIDsByNumber.entrySet()) // Add subcall destPhones to our originPhone/destPhone's logs
+			{
+				LogData logData = phoneLogData.getLogByID(logDataByID.getValue());
+				if (logData != null)
+				{
+					for(String strDestNumber : subCall.getDestPhones())
+					{
+						int destNumber = Integer.parseInt(strDestNumber);
+						int[] otherNumbers = Arrays.copyOf(logData.getOtherNumbers(), logData.getOtherNumbers().length + 1);
+						otherNumbers[otherNumbers.length - 1] = destNumber;
+						logData.setOtherNumbers(otherNumbers);
+					}
+				}
+			}
+			
+			for(Entry<String, UUID> logDataByID : subCall.logDataIDsByNumber.entrySet()) // Add all of our numbers to the subCall's destinations
+			{
+				LogData logData = phoneLogData.getLogByID(logDataByID.getValue());
+				if (logData != null)
+				{
+					for(String strDestNumber : getDestPhones())
+					{
+						if (strDestNumber.equalsIgnoreCase(subCall.getOriginPhone()))
+						{
+							continue;
+						}
+						
+						int destNumber = Integer.parseInt(strDestNumber);
+						int[] otherNumbers = Arrays.copyOf(logData.getOtherNumbers(), logData.getOtherNumbers().length + 1);
+						otherNumbers[otherNumbers.length - 1] = destNumber;
+						logData.setOtherNumbers(otherNumbers);
+					}
+					
+					if (!getOriginPhone().equalsIgnoreCase(subCall.getOriginPhone()))
+					{
+						int originNumber = Integer.parseInt(getOriginPhone());
+						int[] otherNumbers = Arrays.copyOf(logData.getOtherNumbers(), logData.getOtherNumbers().length + 1);
+						otherNumbers[otherNumbers.length - 1] = originNumber;
+						logData.setOtherNumbers(otherNumbers);
+					}
+				}
+				
+				if (!logDataByID.getKey().equalsIgnoreCase(getOriginPhone()))
+				{
+					logDataIDsByNumber.put(logDataByID.getKey(), logDataByID.getValue());
+				}
+			}
+			
+			phoneLogData.removeLogByID(subCall.logDataIDsByNumber.get(subCall.getOriginPhone())); // We need to delete this otherwise it'll show up twice in the origin's history)
 
 			PhoneQueryResponsePacket responsePacket = new PhoneQueryResponsePacket();
 
