@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:wall_sign_blue" },
+        "facing=south": { "model": "wbtc:wall_sign_blue", "y": 180 },
+        "facing=west":  { "model": "wbtc:wall_sign_blue", "y": 270 },
+        "facing=east":  { "model": "wbtc:wall_sign_blue", "y": 90 }
+    }
+}

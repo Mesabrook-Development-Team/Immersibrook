@@ -23,6 +23,7 @@ public class Reference
 	public static final int GUI_PHONE = 5;
 	public static final int GUI_STAMP_BOOK = 6;
 	public static final int GUI_ABOUT = 7;
+	public static final int GUI_WALLSIGN = 8;
 	
 	public static final String NETWORK_CHANNEL_NAME = "wbtc";
 	

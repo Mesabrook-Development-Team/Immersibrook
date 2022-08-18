@@ -1810,3 +1810,10 @@ tile.birch_push_door.name=Birch Wood Push Door
 tile.jungle_push_door.name=Jungle Wood Push Door
 tile.acacia_push_door.name=Acacia Wood Push Door
 tile.dark_oak_push_door.name=Dark Oak Wood Push Door
+
+//Wall Signs
+im.wallsign.reset=Sign Text Reset Successfully.
+tile.wall_sign_black.name=Black Wall Sign
+tile.wall_sign_red.name=Red Wall Sign
+tile.wall_sign_green.name=Green Wall Sign
+tile.wall_sign_blue.name=Blue Wall Sign

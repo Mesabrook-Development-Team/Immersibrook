@@ -1158,4 +1158,10 @@ public class ModBlocks
 	public static final Block JUNGLE_PUSH_DOOR = new BlockDoorBase("jungle_push_door", Material.WOOD);
 	public static final Block ACACIA_PUSH_DOOR = new BlockDoorBase("acacia_push_door", Material.WOOD);
 	public static final Block DARK_OAK_PUSH_DOOR = new BlockDoorBase("dark_oak_push_door", Material.WOOD);
+
+	// Wall Signs
+	public static final Block WALL_SIGN_BLACK = new BlockWallSign("wall_sign_black", MapColor.BLACK, ModUtils.getPixelatedAABB(5,5,0, 11,11,0.8)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block WALL_SIGN_RED = new BlockWallSign("wall_sign_red", MapColor.RED, ModUtils.getPixelatedAABB(5,5,0, 11,11,0.8)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block WALL_SIGN_GREEN = new BlockWallSign("wall_sign_green", MapColor.GREEN, ModUtils.getPixelatedAABB(5,5,0, 11,11,0.8)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block WALL_SIGN_BLUE = new BlockWallSign("wall_sign_blue", MapColor.BLUE, ModUtils.getPixelatedAABB(5,5,0, 11,11,0.8)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 }

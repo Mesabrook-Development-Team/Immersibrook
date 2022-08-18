@@ -119,6 +119,12 @@ public class CategoryHousehold extends AbstractCategory
 		add(ModItems.PRESENT_TEST);
 		add(ModItems.PRESENT_GREEN);
 		add(ModItems.PRESENT_BLUE);
+
+		// Wall Signs
+		add(ModBlocks.WALL_SIGN_BLACK);
+		add(ModBlocks.WALL_SIGN_RED);
+		add(ModBlocks.WALL_SIGN_GREEN);
+		add(ModBlocks.WALL_SIGN_BLUE);
 	}
 
 }

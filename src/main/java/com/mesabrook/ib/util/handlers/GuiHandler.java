@@ -67,6 +67,7 @@ public class GuiHandler implements IGuiHandler
 			}
 		}
 		else if (ID == Reference.GUI_STAMP_BOOK) return new GuiStampBook(new ContainerStampBook(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]));
+		else if (ID == Reference.GUI_WALLSIGN) return new GuiWallSign(EnumHand.values()[x]);
 		else return null;
 	}
 	

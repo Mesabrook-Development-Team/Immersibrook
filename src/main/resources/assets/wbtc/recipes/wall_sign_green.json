@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:sign"
+        },
+        {
+            "type": "forge:ore_dict",
+            "ore": "itemGreenPlastic"
+        },
+        {
+            "type": "forge:ore_dict",
+            "ore": "itemWhitePlastic"
+        }
+    ],
+    "result": {
+        "item": "wbtc:wall_sign_green",
+        "count": 1
+    }
+}

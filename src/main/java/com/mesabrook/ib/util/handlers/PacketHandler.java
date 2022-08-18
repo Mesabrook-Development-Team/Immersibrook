@@ -16,6 +16,7 @@ public class PacketHandler
 		INSTANCE = new SimpleNetworkWrapper(Reference.NETWORK_CHANNEL_NAME);
 
 		INSTANCE.registerMessage(EngravePacket.Handler.class, EngravePacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(WallSignPacket.Handler.class, WallSignPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(FoodBoxPacket.Handler.class, FoodBoxPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(PlaySoundPacket.Handler.class, PlaySoundPacket.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(VestTogglePacket.Handler.class, VestTogglePacket.class, nextID(), Side.SERVER);
