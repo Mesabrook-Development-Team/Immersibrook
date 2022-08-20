@@ -36,6 +36,7 @@ public class BlockWallSign extends Block implements IHasModel
         super(Material.IRON, color);
         setUnlocalizedName(name);
         setRegistryName(name);
+        setSoundType(SoundTypeInit.PLASTIC);
         setHardness(1.0F);
         setResistance(3.0F);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
@@ -55,6 +56,12 @@ public class BlockWallSign extends Block implements IHasModel
     }
 
     @Override
+    public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face)
+    {
+        return BlockFaceShape.UNDEFINED;
+    }
+
+    @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
     {
         return AABBs.get(((EnumFacing)state.getValue(FACING)).getIndex() & 0x7);
@@ -67,20 +74,20 @@ public class BlockWallSign extends Block implements IHasModel
     }
 
     @Override
-    public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side)
+    public boolean canPlaceBlockOnSide(World world, BlockPos pos, EnumFacing side)
     {
-        return side != EnumFacing.DOWN && side != EnumFacing.UP && this.canAttachTo(worldIn, pos, side);
+        return !(side == EnumFacing.UP || side == EnumFacing.DOWN) && world.isSideSolid(pos.offset(side.getOpposite()), side, true);
     }
-    public boolean canAttachTo(World worldIn, BlockPos pos, EnumFacing facing)
-    {
-        Block block = worldIn.getBlockState(pos.up()).getBlock();
-        return this.isAcceptableNeighbor(worldIn, pos.offset(facing.getOpposite()), facing) && (block == Blocks.AIR || block == Blocks.VINE || this.isAcceptableNeighbor(worldIn, pos.up(), EnumFacing.UP));
-    }
-    private boolean isAcceptableNeighbor(World worldIn, BlockPos pos, EnumFacing facing)
-    {
-        IBlockState iblockstate = worldIn.getBlockState(pos);
-        return iblockstate.getBlockFaceShape(worldIn, pos, facing) == BlockFaceShape.SOLID;
-    }
+//    public boolean canAttachTo(World worldIn, BlockPos pos, EnumFacing facing)
+//    {
+//        Block block = worldIn.getBlockState(pos.up()).getBlock();
+//        return this.isAcceptableNeighbor(worldIn, pos.offset(facing.getOpposite()), facing) && (block == Blocks.AIR || block == Blocks.VINE || this.isAcceptableNeighbor(worldIn, pos.up(), EnumFacing.UP));
+//    }
+//    private boolean isAcceptableNeighbor(World worldIn, BlockPos pos, EnumFacing facing)
+//    {
+//        IBlockState iblockstate = worldIn.getBlockState(pos);
+//        return iblockstate.getBlockFaceShape(worldIn, pos, facing) == BlockFaceShape.SOLID;
+//    }
 
     @Override
     public boolean isNormalCube(IBlockState state, IBlockAccess world, BlockPos pos)
