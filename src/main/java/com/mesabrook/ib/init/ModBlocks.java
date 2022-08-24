@@ -1148,8 +1148,9 @@ public class ModBlocks
 	// OBJ Test Block
 	public static final Block OBJ_EYE = new BlockTestEye("eye");
 
-	// Colored Stone
+	// Colored Blocks
 	public static final Block COLORED_STONE = new BlockColoredStone();
+	public static final Block COLORED_COBBLESTONE = new BlockColoredCobblestone();
 
 	// Doors
 	public static final Block OAK_PUSH_DOOR = new BlockDoorBase("oak_push_door", Material.WOOD);

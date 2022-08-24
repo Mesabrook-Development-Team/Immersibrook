@@ -1,0 +1,30 @@
+{
+	"forge_marker": 1,
+	"defaults":
+	{
+		"model": "cube_all"
+	},
+	"variants": 
+	{
+		"inventory": [{}],
+		"color":
+		{
+			"white": { "textures": { "all": "wbtc:blocks/white_cobblestone" } },
+			"orange": { "textures": { "all": "wbtc:blocks/orange_cobblestone" } },
+			"magenta": { "textures": { "all": "wbtc:blocks/magenta_cobblestone" } },
+			"light_blue": { "textures": { "all": "wbtc:blocks/lblue_cobblestone" } },
+			"yellow": { "textures": { "all": "wbtc:blocks/yellow_cobblestone" } },
+			"lime": { "textures": { "all": "wbtc:blocks/lime_cobblestone" } },
+			"pink": { "textures": { "all": "wbtc:blocks/pink_cobblestone" } },
+			"gray": { "textures": { "all": "wbtc:blocks/gray_cobblestone" } },
+			"silver": { "textures": { "all": "wbtc:blocks/silver_cobblestone" } },
+			"cyan": { "textures": { "all": "wbtc:blocks/cyan_cobblestone" } },
+			"purple": { "textures": { "all": "wbtc:blocks/purple_cobblestone" } },
+			"blue": { "textures": { "all": "wbtc:blocks/blue_cobblestone" } },
+			"brown": { "textures": { "all": "wbtc:blocks/brown_cobblestone" } },
+			"green": { "textures": { "all": "wbtc:blocks/green_cobblestone" } },
+			"red": { "textures": { "all": "wbtc:blocks/red_cobblestone" } },
+			"black": { "textures": { "all": "wbtc:blocks/black_cobblestone" } }
+		}
+	}
+}
