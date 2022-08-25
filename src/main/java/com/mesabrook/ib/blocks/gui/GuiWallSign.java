@@ -6,6 +6,7 @@ import net.minecraft.client.*;
 import net.minecraft.client.gui.*;
 import net.minecraft.util.*;
 import net.minecraftforge.fml.client.config.*;
+import org.lwjgl.input.*;
 
 import java.io.*;
 
@@ -30,7 +31,6 @@ public class GuiWallSign extends GuiScreen
         lineTwoBox = new GuiTextField(2, fontRenderer, lineOneBox.x, lineOneBox.y + lineOneBox.height + 4, 200, 20);
 
         submit = new GuiButtonExt(1, lineTwoBox.x, lineTwoBox.y + 24, lineTwoBox.width, 20, "Submit");
-
         buttonList.add(submit);
     }
 
@@ -40,11 +40,11 @@ public class GuiWallSign extends GuiScreen
 
         lineOneBox.drawTextBox();
         lineTwoBox.drawTextBox();
-        int stringWidth = fontRenderer.getStringWidth("Name:");
-        fontRenderer.drawString("Name:", lineOneBox.x - stringWidth - 4, lineOneBox.y + ((lineOneBox.height - fontRenderer.FONT_HEIGHT) / 2), 0xFFFFFF);
+        int stringWidth = fontRenderer.getStringWidth("Line One:");
+        fontRenderer.drawString("Line One:", lineOneBox.x - stringWidth - 4, lineOneBox.y + ((lineOneBox.height - fontRenderer.FONT_HEIGHT) / 2), 0xFFFFFF);
 
-        stringWidth = fontRenderer.getStringWidth("Info:");
-        fontRenderer.drawString("Info:", lineTwoBox.x - stringWidth - 4, lineTwoBox.y + ((lineTwoBox.height - fontRenderer.FONT_HEIGHT) / 2), 0xFFFFFF);
+        stringWidth = fontRenderer.getStringWidth("Line Two:");
+        fontRenderer.drawString("Line Two:", lineTwoBox.x - stringWidth - 4, lineTwoBox.y + ((lineTwoBox.height - fontRenderer.FONT_HEIGHT) / 2), 0xFFFFFF);
 
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
@@ -63,6 +63,20 @@ public class GuiWallSign extends GuiScreen
         lineOneBox.textboxKeyTyped(typedChar, keyCode);
         lineTwoBox.textboxKeyTyped(typedChar, keyCode);
         super.keyTyped(typedChar, keyCode);
+
+        if(keyCode == Keyboard.KEY_TAB)
+        {
+            if(lineOneBox.isFocused())
+            {
+                lineOneBox.setFocused(false);
+                lineTwoBox.setFocused(true);
+            }
+            else if(lineTwoBox.isFocused())
+            {
+                lineTwoBox.setFocused(false);
+                lineOneBox.setFocused(true);
+            }
+        }
     }
 
     @Override
