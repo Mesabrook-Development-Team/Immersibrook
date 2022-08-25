@@ -76,11 +76,11 @@ public class GetHeadUtil {
 			MojangAPIResponse response = new Gson().fromJson(builder.toString(), MojangAPIResponse.class);
 			if(LocalDate.now().getMonthValue() == 4 && LocalDate.now().getDayOfMonth() == 1)
 			{
-				url = new URL("https://crafatar.com/renders/body/" + response.id +"?default=MHF_Steve&overlay");
+				url = new URL("https://mc-heads.net/body/" + response.id);
 			}
 			else
 			{
-				url = new URL("https://crafatar.com/renders/head/" + response.id +"?default=MHF_Steve&overlay");
+				url = new URL("https://mc-heads.net/head/" + response.id);
 			}
 
 			conn = (HttpURLConnection)url.openConnection();
