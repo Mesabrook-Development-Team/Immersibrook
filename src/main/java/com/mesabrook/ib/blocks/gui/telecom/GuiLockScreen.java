@@ -42,11 +42,17 @@ public class GuiLockScreen extends GuiPhoneBase {
 		super.doDraw(mouseX, mouseY, partialticks);
 		
 		int stringWidth = fontRenderer.getStringWidth(getTime());
+		int stringWidth2 = fontRenderer.getStringWidth(getIRLTime());
 		
 		GlStateManager.scale(uBigFont, uBigFont, uBigFont);
 		fontRenderer.drawString(getTime(), scale(INNER_X + INNER_TEX_WIDTH / 2, dBigFont) - stringWidth / 2, scale(INNER_Y + 40, dBigFont), 0xFFFFFF, true);
 		GlStateManager.scale(dBigFont, dBigFont, dBigFont);
-		
+
+		if(phoneStackData.getShowIRLTime())
+		{
+			fontRenderer.drawString(getIRLTime(), INNER_X + INNER_TEX_WIDTH / 2 - stringWidth2 / 2, INNER_Y + INNER_TEX_HEIGHT - 155, 0xFFFFFF, true);
+		}
+
 		String phoneName = truncateIfExceeds(fontRenderer, phoneStack.getDisplayName(), INNER_TEX_WIDTH, 1.0);
 		stringWidth = fontRenderer.getStringWidth(phoneName);
 		

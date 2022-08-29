@@ -114,6 +114,8 @@ public class ItemPhone extends Item implements IHasModel {
 		private int ringTone = 1;
 		private HashMap<UUID, Contact> contactsByIdentifier = new HashMap<>();
 		private HashMap<String, Contact> contactsByPhoneNumber = new HashMap<>();
+
+		private boolean showIRLTime = true;
 		
 		public static NBTData getFromItemStack(ItemStack phoneStack)
 		{
@@ -221,6 +223,16 @@ public class ItemPhone extends Item implements IHasModel {
 		public void setRingTone(int ringTone) {
 			this.ringTone = ringTone;
 		}
+
+		public boolean getShowIRLTime()
+		{
+			return showIRLTime;
+		}
+
+		public boolean setShowIRLTime(boolean useIRLTime)
+		{
+			return this.showIRLTime = useIRLTime;
+		}
 		
 		public Contact getContactByIdentifier(UUID identifier)
 		{
@@ -276,6 +288,7 @@ public class ItemPhone extends Item implements IHasModel {
 			tag.setInteger(Reference.LOCK_BACKGROUND, getLockBackground());
 			tag.setInteger(Reference.CHAT_TONE, getChatTone());
 			tag.setInteger(Reference.RING_TONE, getRingTone());
+			tag.setBoolean(Reference.SHOW_IRL_TIME, getShowIRLTime());
 			
 			NBTTagList contactNBT = new NBTTagList();
 			for(Contact contact : contactsByIdentifier.values())
@@ -332,6 +345,11 @@ public class ItemPhone extends Item implements IHasModel {
 			if (nbt.hasKey(Reference.RING_TONE))
 			{
 				setRingTone(nbt.getInteger(Reference.RING_TONE));
+			}
+
+			if(nbt.hasKey(Reference.SHOW_IRL_TIME))
+			{
+				setShowIRLTime(nbt.getBoolean(Reference.SHOW_IRL_TIME));
 			}
 			
 			if (nbt.hasKey(Reference.CONTACTS_NBTKEY))

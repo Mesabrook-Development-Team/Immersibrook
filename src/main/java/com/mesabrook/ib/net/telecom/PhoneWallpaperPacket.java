@@ -19,6 +19,7 @@ public class PhoneWallpaperPacket implements IMessage
     public int hand;
     public int lockBackground;
     public int homeBackground;
+    public boolean setShowIRLTime;
     public String guiClassName;
 
     @Override
@@ -27,6 +28,7 @@ public class PhoneWallpaperPacket implements IMessage
         hand = buf.readInt();
         lockBackground = buf.readInt();
         homeBackground = buf.readInt();
+        setShowIRLTime = buf.readBoolean();
         guiClassName = ByteBufUtils.readUTF8String(buf);
     }
 
@@ -36,6 +38,7 @@ public class PhoneWallpaperPacket implements IMessage
         buf.writeInt(hand);
         buf.writeInt(lockBackground);
         buf.writeInt(homeBackground);
+        buf.writeBoolean(setShowIRLTime);
         ByteBufUtils.writeUTF8String(buf, guiClassName);
     }
 
@@ -69,6 +72,8 @@ public class PhoneWallpaperPacket implements IMessage
 
             phoneData.setHomeBackground(message.homeBackground);
             phoneData.setLockBackground(message.lockBackground);
+
+            phoneData.setShowIRLTime(message.setShowIRLTime);
 
             tag.merge(phoneData.serializeNBT());
 

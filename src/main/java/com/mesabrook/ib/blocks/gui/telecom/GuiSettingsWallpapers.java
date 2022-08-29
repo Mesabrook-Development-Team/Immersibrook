@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraftforge.fml.client.config.*;
 
 import java.io.IOException;
 
@@ -24,6 +25,7 @@ public class GuiSettingsWallpapers extends GuiPhoneBase
 
     MinedroidButton apply;
     MinedroidButton resetWallpapers;
+    GuiCheckBox showIRLTime;
 
     private int currentLock;
     private int currentHome;
@@ -54,7 +56,9 @@ public class GuiSettingsWallpapers extends GuiPhoneBase
         homePrev = new LabelButton(3, INNER_X + 107, INNER_Y + 145, "<", 0xFFFFFF);
         homeNext = new LabelButton(4, INNER_X + 127, INNER_Y + 145, ">", 0xFFFFFF);
 
-        int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 32;
+        showIRLTime = new GuiCheckBox(7, INNER_X + 9, INNER_Y + 160, "Real Time on Lock Screen", phoneStackData.getShowIRLTime());
+
+        int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 25;
         resetWallpapers = new MinedroidButton(5, INNER_X + 45, lowerControlsY - 10, 32, new TextComponentTranslation("im.musicapp.buttonreset").getFormattedText(), 0xFFFFFF);
         apply = new MinedroidButton(6, INNER_X + 85, lowerControlsY - 10, 32, new TextComponentTranslation("im.settings.apply").getFormattedText(), 0xFFFFFF);
 
@@ -66,6 +70,7 @@ public class GuiSettingsWallpapers extends GuiPhoneBase
                 .add(homeNext)
                 .add(resetWallpapers)
                 .add(apply)
+                .add(showIRLTime)
                 .build());
     }
 
@@ -151,6 +156,7 @@ public class GuiSettingsWallpapers extends GuiPhoneBase
             packet.hand = hand.ordinal();
             packet.lockBackground = currentLock;
             packet.homeBackground = currentHome;
+            packet.setShowIRLTime = showIRLTime.isChecked();
             packet.guiClassName = GuiSettingsWallpapers.class.getName();
             PacketHandler.INSTANCE.sendToServer(packet);
 

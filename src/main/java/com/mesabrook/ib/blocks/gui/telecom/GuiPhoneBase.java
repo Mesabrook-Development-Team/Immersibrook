@@ -22,7 +22,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.core.util.Throwables;
 
 import java.io.IOException;
-import java.time.LocalTime;
+import java.time.*;
+import java.time.format.*;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -195,6 +196,15 @@ public abstract class GuiPhoneBase extends GuiScreen {
 		int hours = (int) ((Math.floor(time / 1000.0) + 6) % 24); // '6' is the offset
 	    int minutes = (int) Math.floor((time % 1000) / 1000.0 * 60);
 	    return String.format("%02d:%02d", hours, minutes);
+	}
+
+	protected String getIRLTime()
+	{
+		LocalDateTime timeObject = LocalDateTime.now();
+		DateTimeFormatter formattedTime = DateTimeFormatter.ofPattern("h:mm:ss a");
+
+		String formattedTimeConversion = timeObject.format(formattedTime);
+		return formattedTimeConversion + " IRL";
 	}
 	
 	protected abstract String getInnerTextureFileName();
