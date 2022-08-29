@@ -6,8 +6,8 @@
 			"data": 0
         },
         {
-            "item": "minecraft:dye",
-			"data": 12
+            "type": "forge:ore_dict",
+            "ore": "dyeLightBlue"
         }
     ],
     "result": {
