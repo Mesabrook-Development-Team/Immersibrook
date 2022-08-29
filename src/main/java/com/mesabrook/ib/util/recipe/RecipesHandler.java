@@ -1,6 +1,7 @@
 package com.mesabrook.ib.util.recipe;
 
 import blusunrize.immersiveengineering.api.crafting.*;
+import blusunrize.immersiveengineering.common.util.compat.crafttweaker.*;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
@@ -22,11 +23,62 @@ public class RecipesHandler
 	{
 		try
 		{
+			int outputAmount = 1;
+
 			// White Mushroom > White Dye Dust
-			CrusherRecipe.addRecipe(new ItemStack(ModItems.DUST_WHITE), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("harvestcraft", "whitemushroomitem")), 2), 20);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.DUST_WHITE, 2), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("harvestcraft", "whitemushroomitem"))), 20);
 
 			// <color> Plastic Ingot > <color> Raw Plastic Dust.
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_WHITE, outputAmount), new ItemStack(ModItems.PLASTIC_WHITE), 10);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_ORANGE, outputAmount), new ItemStack(ModItems.PLASTIC_ORANGE), 10);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_MAGENTA, outputAmount), new ItemStack(ModItems.PLASTIC_MAGENTA), 10);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_LBLUE, outputAmount), new ItemStack(ModItems.PLASTIC_LBLUE), 10);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_LIME, outputAmount), new ItemStack(ModItems.PLASTIC_LIME), 10);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_PINK, outputAmount), new ItemStack(ModItems.PLASTIC_PINK), 10);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_YELLOW, outputAmount), new ItemStack(ModItems.PLASTIC_YELLOW), 10);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_GRAY, outputAmount), new ItemStack(ModItems.PLASTIC_GRAY), 10);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_SILVER, outputAmount), new ItemStack(ModItems.PLASTIC_SILVER), 10);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_CYAN, outputAmount), new ItemStack(ModItems.PLASTIC_CYAN), 10);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_PURPLE, outputAmount), new ItemStack(ModItems.PLASTIC_PURPLE), 10);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_BLUE, outputAmount), new ItemStack(ModItems.PLASTIC_BLUE), 10);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_GREEN, outputAmount), new ItemStack(ModItems.PLASTIC_GREEN), 10);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_BROWN, outputAmount), new ItemStack(ModItems.BRICK_O_SHIT), 10);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_RED, outputAmount), new ItemStack(ModItems.PLASTIC_RED), 10);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_BLACK, outputAmount), new ItemStack(ModItems.PLASTIC_BLACK), 10);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_GLOWING, outputAmount), new ItemStack(ModItems.PLASTIC_GLOWING), 10);
 
+			// <color> Plastic Block > <color> Raw Plastic Dust.
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_WHITE, 7), new ItemStack(ModBlocks.PLASTIC_CUBE_WHITE), 20);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_ORANGE, 7), new ItemStack(ModBlocks.PLASTIC_CUBE_ORANGE), 20);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_MAGENTA, 7), new ItemStack(ModBlocks.PLASTIC_CUBE_MAGENTA), 20);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_LBLUE, 7), new ItemStack(ModBlocks.PLASTIC_CUBE_LBLUE), 20);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_LIME, 7), new ItemStack(ModBlocks.PLASTIC_CUBE_LIME), 20);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_PINK, 7), new ItemStack(ModBlocks.PLASTIC_CUBE_PINK), 20);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_YELLOW, 7), new ItemStack(ModBlocks.PLASTIC_CUBE_YELLOW), 20);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_GRAY, 7), new ItemStack(ModBlocks.PLASTIC_CUBE_GRAY), 20);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_SILVER, 7), new ItemStack(ModBlocks.PLASTIC_CUBE_SILVER), 20);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_CYAN, 7), new ItemStack(ModBlocks.PLASTIC_CUBE_CYAN), 20);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_PURPLE, 7), new ItemStack(ModBlocks.PLASTIC_CUBE_PURPLE), 20);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_BLUE, 7), new ItemStack(ModBlocks.PLASTIC_CUBE_BLUE), 20);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_GREEN, 7), new ItemStack(ModBlocks.PLASTIC_CUBE_GREEN), 20);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_BROWN, 7), new ItemStack(ModBlocks.PLASTIC_CUBE_BROWN), 20);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_RED, 7), new ItemStack(ModBlocks.PLASTIC_CUBE_RED), 20);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_BLACK, 7), new ItemStack(ModBlocks.PLASTIC_CUBE_BLACK), 20);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_GLOWING, 7), new ItemStack(ModBlocks.PLASTIC_CUBE_GLOWING), 20);
+
+			// Food Blocks
+			CrusherRecipe.addRecipe(new ItemStack(ItemRegistry.groundbeefItem, 16), new ItemStack(ModBlocks.CUBE_BEEF), 20);
+			CrusherRecipe.addRecipe(new ItemStack(ItemRegistry.groundchickenItem, 16), new ItemStack(ModBlocks.CUBE_CHICKEN), 20);
+			CrusherRecipe.addRecipe(new ItemStack(ItemRegistry.groundporkItem, 16), new ItemStack(ModBlocks.CUBE_PORK), 20);
+			CrusherRecipe.addRecipe(new ItemStack(ItemRegistry.groundfishItem, 16), new ItemStack(ModBlocks.CUBE_FISH), 20);
+			CrusherRecipe.addRecipe(new ItemStack(ItemRegistry.applesauceItem, 7), new ItemStack(ModBlocks.CUBE_APPLES), 20);
+			CrusherRecipe.addRecipe(new ItemStack(ItemRegistry.applesauceItem, 20), new ItemStack(ModBlocks.CUBE_GAPPLE), 20);
+
+			// Food Items
+			CrusherRecipe.addRecipe(new ItemStack(ItemRegistry.groundbeefItem, 2), new ItemStack(Items.BEEF), 10);
+			CrusherRecipe.addRecipe(new ItemStack(ItemRegistry.groundchickenItem, 2), new ItemStack(Items.CHICKEN), 10);
+			CrusherRecipe.addRecipe(new ItemStack(ItemRegistry.groundporkItem, 2), new ItemStack(Items.PORKCHOP), 10);
+			CrusherRecipe.addRecipe(new ItemStack(ItemRegistry.groundfishItem, 2), new ItemStack(Items.FISH), 10);
 		}
 		catch(Exception ex)
 		{
