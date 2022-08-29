@@ -167,6 +167,7 @@ public class GuiSettingsWallpapers extends GuiPhoneBase
         {
             currentHome = phoneStackData.getHomeBackground();
             currentLock = phoneStackData.getLockBackground();
+            showIRLTime.setIsChecked(phoneStackData.getShowIRLTime());
         }
     }
 }
