@@ -169,6 +169,7 @@ public class RegistryHandler
 		ItemRandomizer.RandomizeItem();
 		ItemRandomizer.RandomizePresent();
     	RecipesHandler.registerSmeltingRecipes();
+		RecipesHandler.registerMachineRecipes();
     	
     	Main.logger.info("[Immersibrook] Version " + Reference.VERSION + " loaded.");
 	}

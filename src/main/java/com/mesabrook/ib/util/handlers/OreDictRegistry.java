@@ -116,6 +116,7 @@ public class OreDictRegistry
 		OreDictionary.registerOre("dyeGreen", ModItems.DYE_GREEN);
 		OreDictionary.registerOre("dyeBlue", ModItems.DYE_BLUE);
 		OreDictionary.registerOre("dyeYellow", ModItems.DYE_YELLOW);
+		OreDictionary.registerOre("dyeWhite", ModItems.DUST_WHITE);
 
 		// Sugars
 		OreDictionary.registerOre("sugar", ModItems.SUGAR_RED);

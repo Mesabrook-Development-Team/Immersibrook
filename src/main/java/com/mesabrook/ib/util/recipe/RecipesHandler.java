@@ -1,20 +1,37 @@
 package com.mesabrook.ib.util.recipe;
 
+import blusunrize.immersiveengineering.api.crafting.*;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.config.ModConfig;
+import com.pam.harvestcraft.blocks.*;
 import com.pam.harvestcraft.item.*;
 import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraft.item.*;
+import net.minecraft.util.*;
+import net.minecraftforge.fml.common.registry.*;
+import net.minecraftforge.oredict.*;
 
 public class RecipesHandler
 {
-	public static void registerCraftingRecipes()
-	{
+	public static void registerCraftingRecipes() {}
 
+	public static void registerMachineRecipes()
+	{
+		try
+		{
+			// White Mushroom > White Dye Dust
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.DUST_WHITE), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("harvestcraft", "whitemushroomitem")), 2), 20);
+
+			// <color> Plastic Ingot > <color> Raw Plastic Dust.
+
+		}
+		catch(Exception ex)
+		{
+			Main.logger.error("[" + Reference.MODNAME + "] ERROR!!! Unable to register one or more Crusher recipes!" + ex);
+		}
 	}
 
 	public static void registerSmeltingRecipes()
