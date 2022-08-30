@@ -16,10 +16,11 @@ public class GuiSettingsPersonalization extends GuiPhoneBase
     LabelButton wallpapers;
     LabelButton sounds;
     LabelButton phoneName;
-    LabelButton alert;
+    LabelButton clock;
     ImageButton wallpaperIcon;
     ImageButton soundsIcon;
     ImageButton phoneNameIcon;
+    ImageButton clockIcon;
 
     public GuiSettingsPersonalization(ItemStack phoneStack, EnumHand hand)
     {
@@ -41,11 +42,12 @@ public class GuiSettingsPersonalization extends GuiPhoneBase
         wallpapers = new LabelButton(1, INNER_X + 31, INNER_Y + 53, new TextComponentTranslation("im.settings.personalization.wallpapers").getFormattedText(), 0xFFFFFF);
         sounds = new LabelButton(2, INNER_X + 31, INNER_Y + 83, new TextComponentTranslation("im.settings.personalization.sounds").getFormattedText(), 0xFFFFFF);
         phoneName = new LabelButton(3, INNER_X + 31, INNER_Y + 113, new TextComponentTranslation("im.settings.personalization.phonename").getFormattedText(), 0xFFFFFF);
-        alert = new LabelButton(7, INNER_X + 31, INNER_Y + 143, "Alert Test", 0xFFFFFF);
+        clock = new LabelButton(4, INNER_X + 31, INNER_Y + 143, new TextComponentTranslation("im.settings.personalization.clock").getFormattedText(), 0xFFFFFF);
 
-        wallpaperIcon = new ImageButton(4, INNER_X + 0, INNER_Y + 40, 28, 28, "btn_personalize.png", 32, 32);
-        soundsIcon = new ImageButton(5, INNER_X + 0, INNER_Y + 70, 28, 28, "icn_sound.png", 32, 32);
-        phoneNameIcon = new ImageButton(6, INNER_X + 0, INNER_Y + 100, 28, 28, "icn_name.png", 32, 32);
+        wallpaperIcon = new ImageButton(5, INNER_X + 0, INNER_Y + 40, 28, 28, "btn_personalize.png", 32, 32);
+        soundsIcon = new ImageButton(6, INNER_X + 0, INNER_Y + 70, 28, 28, "icn_sound.png", 32, 32);
+        phoneNameIcon = new ImageButton(7, INNER_X + 0, INNER_Y + 100, 28, 28, "icn_name.png", 32, 32);
+        clockIcon = new ImageButton(8, INNER_X + 0, INNER_Y + 130, 28, 28, "icn_clock.png", 32, 32);
 
         buttonList.addAll(ImmutableList.<GuiButton>builder()
                 .add(back)
@@ -55,6 +57,8 @@ public class GuiSettingsPersonalization extends GuiPhoneBase
                 .add(sounds)
                 .add(phoneName)
                 .add(phoneNameIcon)
+                .add(clock)
+                .add(clockIcon)
                 .build());
     }
 
@@ -90,11 +94,9 @@ public class GuiSettingsPersonalization extends GuiPhoneBase
             Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsPhoneName(phoneStack, hand));
         }
 
-        if(button == alert)
+        if(button == clock || button == clockIcon)
         {
-        	GuiMobileAlert.labelsByNumber.put(phoneStackData.getPhoneNumber(), "Test Alert");
-        	GuiMobileAlert.textByNumber.put(phoneStackData.getPhoneNumber(), "If this were a real emergency, more information would follow here.");
-            Minecraft.getMinecraft().displayGuiScreen(new GuiMobileAlert(phoneStack, hand));
+            Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsClock(phoneStack, hand));
         }
     }
 }

@@ -1802,6 +1802,7 @@ im.settings.personalization.phonenamesetup=Name Your Phone
 im.settings.personalization.setphonename=Enter a Phone Name:
 im.settings.personalization.nameinfo1=You can change your phone's name later in §oSettings > Personalization > Phone Name
 im.settings.personalization.wallpaperreset=Settings Reset
+im.settings.personalization.clock=Clock Settings
 im.alert.name=EMERGENCY ALERT
 im.alert.close=Dismiss
 
