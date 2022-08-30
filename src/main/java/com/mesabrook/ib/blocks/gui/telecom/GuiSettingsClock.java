@@ -18,6 +18,7 @@ public class GuiSettingsClock extends GuiPhoneBase
 {
     LabelButton back;
     GuiCheckBox toggle;
+    GuiCheckBox toggleMilitaryTime;
     MinedroidButton apply;
     MinedroidButton reset;
 
@@ -39,18 +40,22 @@ public class GuiSettingsClock extends GuiPhoneBase
         back = new LabelButton(0, INNER_X + 3, INNER_Y + 20, "<", 0xFFFFFF);
 
         toggle = new GuiCheckBox(1, INNER_X + 9,  INNER_Y + 140, "Real Time on Lock Screen", phoneStackData.getShowIRLTime());
+        toggleMilitaryTime = new GuiCheckBox(2, INNER_X + 9,  INNER_Y + 153, "Use 24hr Time Format", phoneStackData.getShowIRLTime());
 
         int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 25;
-        reset = new MinedroidButton(2, INNER_X + 45, lowerControlsY - 10, 32, new TextComponentTranslation("im.musicapp.buttonreset").getFormattedText(), 0xFFFFFF);
-        apply = new MinedroidButton(3, INNER_X + 85, lowerControlsY - 10, 32, new TextComponentTranslation("im.settings.apply").getFormattedText(), 0xFFFFFF);
+        reset = new MinedroidButton(3, INNER_X + 45, lowerControlsY - 10, 32, new TextComponentTranslation("im.musicapp.buttonreset").getFormattedText(), 0xFFFFFF);
+        apply = new MinedroidButton(4, INNER_X + 85, lowerControlsY - 10, 32, new TextComponentTranslation("im.settings.apply").getFormattedText(), 0xFFFFFF);
 
         buttonList.addAll(ImmutableList.<GuiButton>builder()
                 .add(back)
                 .add(toggle)
+                .add(toggleMilitaryTime)
                 .add(reset)
                 .add(apply)
                 .build());
         toggle.setIsChecked(phoneStackData.getShowIRLTime());
+        toggleMilitaryTime.enabled = toggle.isChecked();
+        toggleMilitaryTime.setIsChecked(phoneStackData.getShowingMilitaryIRLTime());
     }
 
     @Override
@@ -74,6 +79,8 @@ public class GuiSettingsClock extends GuiPhoneBase
         {
             fontRenderer.drawString(getIRLTime(), INNER_X + INNER_TEX_WIDTH / 2 - stringWidth2 / 2, INNER_Y + INNER_TEX_HEIGHT - 134, 0xFFFFFF, true);
         }
+
+        toggleMilitaryTime.enabled = toggle.isChecked();
     }
 
     @Override
@@ -93,6 +100,7 @@ public class GuiSettingsClock extends GuiPhoneBase
             packet.homeBackground = phoneStackData.getHomeBackground();
             packet.guiClassName = GuiSettingsClock.class.getName();
             packet.setShowIRLTime = toggle.isChecked();
+            packet.useMilitaryTime = toggleMilitaryTime.isChecked();
             PacketHandler.INSTANCE.sendToServer(packet);
 
             Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.settings.saved").getFormattedText(), 0xFFFFFF));
@@ -101,6 +109,7 @@ public class GuiSettingsClock extends GuiPhoneBase
         if(button == reset)
         {
             toggle.setIsChecked(phoneStackData.getShowIRLTime());
+            toggleMilitaryTime.setIsChecked(phoneStackData.getShowingMilitaryIRLTime());
         }
     }
 }

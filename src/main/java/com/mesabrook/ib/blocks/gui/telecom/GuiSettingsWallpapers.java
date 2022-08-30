@@ -152,6 +152,8 @@ public class GuiSettingsWallpapers extends GuiPhoneBase
             packet.hand = hand.ordinal();
             packet.lockBackground = currentLock;
             packet.homeBackground = currentHome;
+            packet.setShowIRLTime = phoneStackData.getShowIRLTime();
+            packet.useMilitaryTime = phoneStackData.getShowingMilitaryIRLTime();
             packet.guiClassName = GuiSettingsWallpapers.class.getName();
             PacketHandler.INSTANCE.sendToServer(packet);
 

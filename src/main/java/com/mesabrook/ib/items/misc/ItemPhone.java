@@ -116,6 +116,7 @@ public class ItemPhone extends Item implements IHasModel {
 		private HashMap<String, Contact> contactsByPhoneNumber = new HashMap<>();
 
 		private boolean showIRLTime = true;
+		private boolean militaryTime = false;
 		
 		public static NBTData getFromItemStack(ItemStack phoneStack)
 		{
@@ -233,6 +234,16 @@ public class ItemPhone extends Item implements IHasModel {
 		{
 			return this.showIRLTime = useIRLTime;
 		}
+
+		public boolean getShowingMilitaryIRLTime()
+		{
+			return militaryTime;
+		}
+
+		public boolean setShowingMilitaryIRLTime(boolean isUsingMilitaryTime)
+		{
+			return this.militaryTime = isUsingMilitaryTime;
+		}
 		
 		public Contact getContactByIdentifier(UUID identifier)
 		{
@@ -289,6 +300,7 @@ public class ItemPhone extends Item implements IHasModel {
 			tag.setInteger(Reference.CHAT_TONE, getChatTone());
 			tag.setInteger(Reference.RING_TONE, getRingTone());
 			tag.setBoolean(Reference.SHOW_IRL_TIME, getShowIRLTime());
+			tag.setBoolean(Reference.SHOW_MILITARY_TIME, getShowingMilitaryIRLTime());
 			
 			NBTTagList contactNBT = new NBTTagList();
 			for(Contact contact : contactsByIdentifier.values())
@@ -350,6 +362,11 @@ public class ItemPhone extends Item implements IHasModel {
 			if(nbt.hasKey(Reference.SHOW_IRL_TIME))
 			{
 				setShowIRLTime(nbt.getBoolean(Reference.SHOW_IRL_TIME));
+			}
+
+			if(nbt.hasKey(Reference.SHOW_MILITARY_TIME))
+			{
+				setShowingMilitaryIRLTime(nbt.getBoolean(Reference.SHOW_MILITARY_TIME));
 			}
 			
 			if (nbt.hasKey(Reference.CONTACTS_NBTKEY))

@@ -201,8 +201,18 @@ public abstract class GuiPhoneBase extends GuiScreen {
 	protected String getIRLTime()
 	{
 		LocalDateTime timeObject = LocalDateTime.now();
-		DateTimeFormatter formattedTime = DateTimeFormatter.ofPattern("h:mm:ss a");
+		DateTimeFormatter formattedTime;
 
+		if(!phoneStackData.getShowingMilitaryIRLTime())
+		{
+			// AM-PM
+			formattedTime = DateTimeFormatter.ofPattern("h:mm:ss a");
+		}
+		else
+		{
+			// 24-hr
+			formattedTime = DateTimeFormatter.ofPattern("HH:mm:ss");
+		}
 		String formattedTimeConversion = timeObject.format(formattedTime);
 		return formattedTimeConversion + " IRL";
 	}

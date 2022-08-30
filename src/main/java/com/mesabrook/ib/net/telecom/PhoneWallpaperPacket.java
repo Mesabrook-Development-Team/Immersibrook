@@ -20,6 +20,7 @@ public class PhoneWallpaperPacket implements IMessage
     public int lockBackground;
     public int homeBackground;
     public boolean setShowIRLTime;
+    public boolean useMilitaryTime;
     public String guiClassName;
 
     @Override
@@ -29,6 +30,7 @@ public class PhoneWallpaperPacket implements IMessage
         lockBackground = buf.readInt();
         homeBackground = buf.readInt();
         setShowIRLTime = buf.readBoolean();
+        useMilitaryTime = buf.readBoolean();
         guiClassName = ByteBufUtils.readUTF8String(buf);
     }
 
@@ -39,6 +41,7 @@ public class PhoneWallpaperPacket implements IMessage
         buf.writeInt(lockBackground);
         buf.writeInt(homeBackground);
         buf.writeBoolean(setShowIRLTime);
+        buf.writeBoolean(useMilitaryTime);
         ByteBufUtils.writeUTF8String(buf, guiClassName);
     }
 
@@ -74,6 +77,7 @@ public class PhoneWallpaperPacket implements IMessage
             phoneData.setLockBackground(message.lockBackground);
 
             phoneData.setShowIRLTime(message.setShowIRLTime);
+            phoneData.setShowingMilitaryIRLTime(message.useMilitaryTime);
 
             tag.merge(phoneData.serializeNBT());
 
