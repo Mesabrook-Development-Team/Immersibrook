@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:water_bucket"
+        },
+		{
+			"item": "wbtc:colored_stone_bricks",
+			"data": 9
+		}
+    ],
+    "result": {
+        "item": "minecraft:stonebrick",
+		"data": 0,
+        "count": 1
+    }
+}

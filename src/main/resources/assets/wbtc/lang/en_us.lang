@@ -1489,6 +1489,24 @@ tile.colored_cobblestone.red.name=Dyed Cobblestone (Red)
 tile.colored_cobblestone.green.name=Dyed Cobblestone (Green)
 tile.colored_cobblestone.black.name=Dyed Cobblestone (Black)
 
+//Colored Stone Bricks
+tile.colored_stone_bricks.white.name=Dyed Stone Bricks (White)
+tile.colored_stone_bricks.orange.name=Dyed Stone Bricks (Orange)
+tile.colored_stone_bricks.magenta.name=Dyed Stone Bricks (Magenta)
+tile.colored_stone_bricks.light_blue.name=Dyed Stone Bricks (Light Blue)
+tile.colored_stone_bricks.yellow.name=Dyed Stone Bricks (Yellow)
+tile.colored_stone_bricks.lime.name=Dyed Stone Bricks (Lime)
+tile.colored_stone_bricks.pink.name=Dyed Stone Bricks (Pink)
+tile.colored_stone_bricks.gray.name=Dyed Stone Bricks (Gray)
+tile.colored_stone_bricks.silver.name=Dyed Stone Bricks (Light Gray)
+tile.colored_stone_bricks.cyan.name=Dyed Stone Bricks (Cyan)
+tile.colored_stone_bricks.purple.name=Dyed Stone Bricks (Purple)
+tile.colored_stone_bricks.brown.name=Dyed Stone Bricks (Brown)
+tile.colored_stone_bricks.blue.name=Dyed Stone Bricks (Blue)
+tile.colored_stone_bricks.red.name=Dyed Stone Bricks (Red)
+tile.colored_stone_bricks.green.name=Dyed Stone Bricks (Green)
+tile.colored_stone_bricks.black.name=Dyed Stone Bricks (Black)
+
 //Masks
 item.mask_jason.name=Decorative Face Mask
 item.mask_skeleton.name=Decorative Face Mask

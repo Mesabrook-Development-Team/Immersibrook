@@ -1151,6 +1151,7 @@ public class ModBlocks
 	// Colored Blocks
 	public static final Block COLORED_STONE = new BlockColoredStone();
 	public static final Block COLORED_COBBLESTONE = new BlockColoredCobblestone();
+	public static final Block COLORED_STONE_BRICKS = new BlockColoredStoneBricks();
 
 	// Doors
 	public static final Block OAK_PUSH_DOOR = new BlockDoorBase("oak_push_door", Material.WOOD);
