@@ -1854,3 +1854,7 @@ tile.wall_sign_black.name=Black Wall Sign
 tile.wall_sign_red.name=Red Wall Sign
 tile.wall_sign_green.name=Green Wall Sign
 tile.wall_sign_blue.name=Blue Wall Sign
+
+// Sponge
+item.sponge.name=Sponge
+tooltip.sponge=§eA handheld sponge that can edit signs.

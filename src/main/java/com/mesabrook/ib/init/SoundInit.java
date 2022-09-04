@@ -80,6 +80,8 @@ public class SoundInit
 	public static final SoundEvent WATERPHONE;
 	public static final SoundEvent HEAL;
 	public static final SoundEvent GAVEL;
+	public static final SoundEvent SPONGE_EQUIP;
+	public static final SoundEvent SPONGE_USE;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -239,6 +241,8 @@ public class SoundInit
 		WATERPHONE = addSoundsToRegistry("waterphone");
 		HEAL = addSoundsToRegistry("heal");
 		GAVEL = addSoundsToRegistry("gavel");
+		SPONGE_EQUIP = addSoundsToRegistry("sponge_equip");
+		SPONGE_USE = addSoundsToRegistry("sponge_use");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -480,6 +484,8 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.ALERT_TONE);
 				event.getRegistry().register(SoundInit.PHONE_OFF);
 				event.getRegistry().register(SoundInit.MINEDROID_STARTUP);
+				event.getRegistry().register(SoundInit.SPONGE_EQUIP);
+				event.getRegistry().register(SoundInit.SPONGE_USE);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

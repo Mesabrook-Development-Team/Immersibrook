@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "P",
+	"S"
+  ],
+  "key": {
+    "P": {
+        "type": "forge:ore_dict",
+        "ore": "itemBluePlastic"
+    },
+    "S": {
+        "item": "minecraft:sponge",
+		"data": 0
+    }
+  },
+  "result": {
+    "item": "wbtc:sponge",
+    "count": 3
+  }
+}

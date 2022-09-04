@@ -4,6 +4,7 @@ import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
 import com.mesabrook.ib.init.ModEnchants;
 import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.items.*;
 import com.mesabrook.ib.items.tools.ItemBanHammer;
 import com.mesabrook.ib.items.tools.ItemGavel;
 import com.mesabrook.ib.net.*;
@@ -382,6 +383,22 @@ public class PlayerEvents
 			if(!player.isCreative())
 			{
 				stack.damageItem(1, player);
+			}
+		}
+
+		// Sponge sound
+		if(stack.getItem() instanceof ItemSponge)
+		{
+			if(!world.isRemote)
+			{
+				if(!world.isRemote)
+				{
+					PlaySoundPacket packet = new PlaySoundPacket();
+					packet.pos = player.getPosition();
+					packet.soundName = "sponge_equip";
+					packet.rapidSounds = true;
+					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 15));
+				}
 			}
 		}
 

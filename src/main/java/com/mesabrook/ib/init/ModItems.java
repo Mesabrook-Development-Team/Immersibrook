@@ -1,6 +1,7 @@
 package com.mesabrook.ib.init;
 
 import com.mesabrook.ib.Main;
+import com.mesabrook.ib.items.*;
 import com.mesabrook.ib.items.armor.*;
 import com.mesabrook.ib.items.misc.*;
 import com.mesabrook.ib.items.misc.ItemStamp.StampTypes;
@@ -398,4 +399,5 @@ public class ModItems
 	public static final Item PRESENT_TEST = new ItemPresent("present_red");
 	public static final Item PRESENT_GREEN = new ItemPresent("present_green");
 	public static final Item PRESENT_BLUE = new ItemPresent("present_blue");
+	public static final Item SIGN_SPONGE = new ItemSponge("sponge");
 }

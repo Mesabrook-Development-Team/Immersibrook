@@ -1001,5 +1001,17 @@
 		"sounds": [{
 			"name": "wbtc:minedroid_startup"
 		}]
+	},
+	"sponge_equip": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:sponge_equip"
+		}]
+	},
+	"sponge_use": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:sponge_use"
+		}]
 	}
 }
