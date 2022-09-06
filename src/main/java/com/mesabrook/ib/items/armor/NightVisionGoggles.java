@@ -17,6 +17,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.*;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
@@ -28,10 +29,7 @@ public class NightVisionGoggles extends Item implements IHasModel
 		setRegistryName(name);
 		setCreativeTab(Main.IMMERSIBROOK_MAIN);
 		setMaxStackSize(1);
-		if(ModConfig.nightVisionDamage)
-		{
-			setMaxDamage(1000000000);
-		}
+		setMaxDamage(1000000000);
 
 		ModItems.ITEMS.add(this);
 	}
@@ -96,7 +94,7 @@ public class NightVisionGoggles extends Item implements IHasModel
 		if(player instanceof EntityPlayer && nightvision)
 		{
 			player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION, 210, 1, true, false));
-			if(ModConfig.nightVisionDamage)
+			if(!player.isCreative())
 			{
 				itemStack.damageItem(1, player);
 			}

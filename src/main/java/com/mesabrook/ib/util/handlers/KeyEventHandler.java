@@ -5,10 +5,7 @@ import com.mesabrook.ib.items.armor.NightVisionGoggles;
 import com.mesabrook.ib.items.armor.PoliceHelmet;
 import com.mesabrook.ib.items.armor.SafetyVest;
 import com.mesabrook.ib.items.tools.ItemBanHammer;
-import com.mesabrook.ib.net.NVTogglePacket;
-import com.mesabrook.ib.net.PoliceEffectsTogglePacket;
-import com.mesabrook.ib.net.SoundRandomizerPacket;
-import com.mesabrook.ib.net.VestTogglePacket;
+import com.mesabrook.ib.net.*;
 import com.mesabrook.ib.proxy.ClientProxy;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,9 +15,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.*;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
+import net.minecraftforge.fml.common.network.*;
 import net.minecraftforge.fml.relauncher.Side;
 
 @EventBusSubscriber(Side.CLIENT)
@@ -71,6 +70,7 @@ public class KeyEventHandler
 		if(ClientProxy.nvToggleKey.isPressed())
 		{
 			EntityPlayer player = Minecraft.getMinecraft().player;
+			World world = player.world;
 			ItemStack stack = player.inventory.armorInventory.get(3); // 3 = head
 
 			nvToggleOn = new TextComponentTranslation("im.nv.toggle.on");
@@ -87,13 +87,20 @@ public class KeyEventHandler
 				if(player.isPotionActive(MobEffects.NIGHT_VISION))
 				{
 					player.sendStatusMessage(new TextComponentString(nvToggleOff.getFormattedText()), true);
+					player.playSound(SoundEvents.UI_BUTTON_CLICK, 1.0F, 5.0F);
 				}
 				else
 				{
 					player.sendStatusMessage(new TextComponentString(nvToggleOn.getFormattedText()), true);
+					SoundPlayerAppInfoPacket packet = new SoundPlayerAppInfoPacket();
+					packet.pos = player.getPosition();
+					packet.soundName = "nv";
+					packet.useDelay = false;
+					packet.range = 5;
+					PacketHandler.INSTANCE.sendToServer(packet);
+					player.playSound(SoundEvents.UI_BUTTON_CLICK, 0.5F, 5.0F);
 				}
 
-				player.playSound(SoundEvents.UI_BUTTON_CLICK, 0.3F, 1.0F);
 				NVTogglePacket packet = new NVTogglePacket();
 				PacketHandler.INSTANCE.sendToServer(packet);
 			}
