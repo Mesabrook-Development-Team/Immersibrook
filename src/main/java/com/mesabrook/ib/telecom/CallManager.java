@@ -556,7 +556,8 @@ public class CallManager {
 
 			TextComponentString retVal = new TextComponentString("[Phone]");
 			Style style = new Style();
-			style.setColor(TextFormatting.DARK_PURPLE);
+			style.setColor(TextFormatting.GREEN);
+			style.setBold(true);
 			retVal.setStyle(style);
 			retVal.appendSibling(new TextComponentString(newText).setStyle(new Style().setColor(TextFormatting.RESET)));
 
