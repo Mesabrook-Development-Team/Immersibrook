@@ -1013,5 +1013,47 @@
 		"sounds": [{
 			"name": "wbtc:sponge_use"
 		}]
+	},
+	"fart_1": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:fart_1"
+		}],
+		"subtitle": "ib.sub.fart"
+	},
+	"fart_2": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:fart_2"
+		}],
+		"subtitle": "ib.sub.fart"
+	},
+	"fart_3": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:fart_3"
+		}],
+		"subtitle": "ib.sub.fart"
+	},
+	"fart_4": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:fart_4"
+		}],
+		"subtitle": "ib.sub.fart"
+	},
+	"cough_m": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:cough_m"
+		}],
+		"subtitle": "ib.sub.coughmale"
+	},
+	"cough_f": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:cough_f"
+		}],
+		"subtitle": "ib.sub.coughfemale"
 	}
 }

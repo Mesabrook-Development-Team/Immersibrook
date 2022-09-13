@@ -84,6 +84,10 @@ im.prerelease=PRE-RELEASE CANDIDATE BUILD
 //Commands
 im.cmd.error=/immersibrook help
 im.cmd.usage=Immersibrook Command
+im.cmd.meme.error=Available Subcommands: fart, cough
+im.cmd.meme.usage=A fun command that sends sounds to nearby players.
+im.cmd.meme.fart=§aBrrrrrrrpt!
+im.cmd.meme.cough=§eI hope you're covering your mouth...
 im.cmd.proxchat.usage=/immersibrook proxchat on|off
 im.cmd.proxchat.set=Proximity Chat has been turned %s
 im.talk.usage=Talk Command
@@ -1839,6 +1843,9 @@ ib.sub.mhopen=Manhole Opening
 ib.sub.mhclose=Manhole Closing
 ib.sub.mhplace=Manhole Placed
 ib.sub.mhbreak=Manhole Breaking
+ib.sub.fart=Player Farting
+ib.sub.coughfemale=Woman Coughing
+ib.sub.coughmale=Man Coughing
 
 //Doors
 tile.oak_push_door.name=Oak Wood Push Door

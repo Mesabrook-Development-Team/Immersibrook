@@ -82,6 +82,12 @@ public class SoundInit
 	public static final SoundEvent GAVEL;
 	public static final SoundEvent SPONGE_EQUIP;
 	public static final SoundEvent SPONGE_USE;
+	public static final SoundEvent FART_1;
+	public static final SoundEvent FART_2;
+	public static final SoundEvent FART_3;
+	public static final SoundEvent FART_4;
+	public static final SoundEvent COUGH_M;
+	public static final SoundEvent COUGH_F;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -243,6 +249,12 @@ public class SoundInit
 		GAVEL = addSoundsToRegistry("gavel");
 		SPONGE_EQUIP = addSoundsToRegistry("sponge_equip");
 		SPONGE_USE = addSoundsToRegistry("sponge_use");
+		FART_1 = addSoundsToRegistry("fart_1");
+		FART_2 = addSoundsToRegistry("fart_2");
+		FART_3 = addSoundsToRegistry("fart_3");
+		FART_4 = addSoundsToRegistry("fart_4");
+		COUGH_M = addSoundsToRegistry("cough_m");
+		COUGH_F = addSoundsToRegistry("cough_f");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -486,6 +498,12 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.MINEDROID_STARTUP);
 				event.getRegistry().register(SoundInit.SPONGE_EQUIP);
 				event.getRegistry().register(SoundInit.SPONGE_USE);
+				event.getRegistry().register(SoundInit.FART_1);
+				event.getRegistry().register(SoundInit.FART_2);
+				event.getRegistry().register(SoundInit.FART_3);
+				event.getRegistry().register(SoundInit.FART_4);
+				event.getRegistry().register(SoundInit.COUGH_M);
+				event.getRegistry().register(SoundInit.COUGH_F);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

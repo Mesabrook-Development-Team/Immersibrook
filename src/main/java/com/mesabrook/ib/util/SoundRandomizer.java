@@ -14,6 +14,7 @@ public class SoundRandomizer
 	public static SoundEvent catResult;
 	public static SoundEvent popResultSP;
 	public static String hammerRightClick;
+	public static String fartResult;
 
 	public static void RandomizeSound()
 	{
@@ -170,6 +171,28 @@ public class SoundRandomizer
 				break;
 			case 5:
 				hammerRightClick = "ok2";
+				break;
+		}
+	}
+
+	public static void FartRandomizer(Random randomizerIn)
+	{
+		int snds;
+		snds = randomizerIn.nextInt(4);
+
+		switch(snds)
+		{
+			case 0:
+				fartResult = "fart_1";
+				break;
+			case 1:
+				fartResult = "fart_2";
+				break;
+			case 2:
+				fartResult = "fart_3";
+				break;
+			case 3:
+				fartResult = "fart_4";
 				break;
 		}
 	}

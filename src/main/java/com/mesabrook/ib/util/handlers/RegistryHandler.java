@@ -2,12 +2,10 @@ package com.mesabrook.ib.util.handlers;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
-import com.mesabrook.ib.cmds.CommandImmersibrook;
-import com.mesabrook.ib.cmds.CommandTalk;
+import com.mesabrook.ib.cmds.*;
 import com.mesabrook.ib.entity.EntityMesabrookM;
 import com.mesabrook.ib.entity.EntityWineBottle;
-import com.mesabrook.ib.init.ModBlocks;
-import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.init.*;
 import com.mesabrook.ib.rendering.RenderMesabrookIcon;
 import com.mesabrook.ib.rendering.RenderWineBottle;
 import com.mesabrook.ib.telecom.DynmapAPIListener;
@@ -168,6 +166,8 @@ public class RegistryHandler
 		TooltipRandomizer.ChosenTooltip();
 		ItemRandomizer.RandomizeItem();
 		ItemRandomizer.RandomizePresent();
+		SoundRandomizer.FartRandomizer(Main.rand);
+
     	RecipesHandler.registerSmeltingRecipes();
 		RecipesHandler.registerMachineRecipes();
     	
@@ -197,6 +197,7 @@ public class RegistryHandler
 
 		event.registerServerCommand(new CommandImmersibrook());
 		event.registerServerCommand(new CommandTalk());
+		event.registerServerCommand(new CommandMeme());
 
 		// Gamerules
 		GameRules rules = FMLCommonHandler.instance().getMinecraftServerInstance().getWorld(0).getGameRules();
