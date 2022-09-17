@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LWL",
+	"LWL",
+	"BBB"
+  ],
+  "key": {
+    "L": {
+        "type": "forge:ore_dict",
+        "ore": "itemLimePlastic"
+    },
+    "W": {
+        "type": "forge:ore_dict",
+        "ore": "platePlastic"
+    },
+    "B": {
+        "type": "forge:ore_dict",
+        "ore": "itemBlackPlastic"
+    }
+  },
+  "result": {
+    "item": "wbtc:in_street_crosswalk_sign",
+    "count": 1
+  }
+}

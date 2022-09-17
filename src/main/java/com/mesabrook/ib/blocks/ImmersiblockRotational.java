@@ -205,6 +205,11 @@ public class ImmersiblockRotational extends Block implements IHasModel
             {
                 tooltip.add(TextFormatting.YELLOW + new TextComponentTranslation("im.tooltip.manhole.generic").getFormattedText());
             }
+
+            if(this == ModBlocks.IN_STREET_CROSSWALK_SIGN)
+            {
+                tooltip.add(TextFormatting.YELLOW + new TextComponentTranslation("im.tooltip.crosswalk").getFormattedText());
+            }
         }
         else
         {

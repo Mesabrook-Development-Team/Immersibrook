@@ -125,6 +125,7 @@ public class CategoryHousehold extends AbstractCategory
 		add(ModBlocks.WALL_SIGN_RED);
 		add(ModBlocks.WALL_SIGN_GREEN);
 		add(ModBlocks.WALL_SIGN_BLUE);
+		add(ModBlocks.IN_STREET_CROSSWALK_SIGN);
 
 		// Sponge
 		add(ModItems.SIGN_SPONGE);

@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:in_street_crosswalk_sign" },
+        "facing=south": { "model": "wbtc:in_street_crosswalk_sign", "y": 180 },
+        "facing=west":  { "model": "wbtc:in_street_crosswalk_sign", "y": 270 },
+        "facing=east":  { "model": "wbtc:in_street_crosswalk_sign", "y": 90 }
+    }
+}

@@ -218,6 +218,11 @@ public class BlockStatue extends Block implements IHasModel
 		{
 			tooltip.add(TextFormatting.LIGHT_PURPLE + "Celebrating Two Years of Mesabrook!");
 		}
+		else if(this.getUnlocalizedName().contains("monty"))
+		{
+			tooltip.add(TextFormatting.GRAY + "In Loving Memory of Montague");
+			tooltip.add(TextFormatting.GRAY + "May 2022 - September 2022");
+		}
 	}
 
 	@Override
@@ -301,25 +306,16 @@ public class BlockStatue extends Block implements IHasModel
 				packet.soundName = "two_years";
 				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
 			}
-		}
-		return true;
-	}
-	
-	@Override
-	public void onBlockHarvested(World world, BlockPos pos, IBlockState state, EntityPlayer player)
-	{
-		if(!world.isRemote)
-		{
-			if(player instanceof EntityPlayer)
+			if(state.getBlock() == ModBlocks.STATUE_MONTY)
 			{
 				PlaySoundPacket packet = new PlaySoundPacket();
 				packet.pos = pos;
-				packet.soundName = "oof";
-				packet.volume = 1.0F;
-				packet.pitch = 1.0F;
+				packet.modID = "minecraft";
+				packet.soundName = "entity.cat.ambient";
 				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
 			}
 		}
+		return true;
 	}
 	
 	@Override

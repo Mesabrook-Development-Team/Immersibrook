@@ -312,6 +312,7 @@ public class ModBlocks
 	public static final Block STATUE_LW = new BlockStatue("statue_sloose", MapColor.GRAY, ModUtils.getPixelatedAABB(3,0,5, 13,30,11)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block STATUE_SVV = new BlockStatue("statue_svv", MapColor.GRAY, ModUtils.getPixelatedAABB(3,0,5, 13,30,11)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block STATUE_TWO = new BlockStatue("trophy_two_years", MapColor.GRAY, ModUtils.getPixelatedAABB(3,0,5, 13,30,11)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block STATUE_MONTY = new BlockStatue("statue_monty", MapColor.BLACK, ModUtils.getPixelatedAABB(0,0,0, 16,16,16)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 
 	// Plaques
 	public static final Block PLAQUE_DEV = new BlockPlaque("plaque_dev", MapColor.GOLD, ModUtils.getPixelatedAABB(3,0,0, 13,12,1.5)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
@@ -1166,4 +1167,7 @@ public class ModBlocks
 	public static final Block WALL_SIGN_RED = new BlockWallSign("wall_sign_red", MapColor.RED, ModUtils.getPixelatedAABB(5,5,0, 11,11,0.8)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block WALL_SIGN_GREEN = new BlockWallSign("wall_sign_green", MapColor.GREEN, ModUtils.getPixelatedAABB(5,5,0, 11,11,0.8)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block WALL_SIGN_BLUE = new BlockWallSign("wall_sign_blue", MapColor.BLUE, ModUtils.getPixelatedAABB(5,5,0, 11,11,0.8)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+
+	// In-Street Crosswalk Sign
+	public static final Block IN_STREET_CROSSWALK_SIGN = new ImmersiblockRotational("in_street_crosswalk_sign", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.getPixelatedAABB(3,0,5, 13,21,11));
 }
