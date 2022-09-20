@@ -4,7 +4,7 @@ import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.ModUtils;
 import com.mesabrook.ib.util.SoundRandomizer;
@@ -239,7 +239,7 @@ public class BlockStatue extends Block implements IHasModel
 
 			if(state.getBlock() == ModBlocks.STATUE_OWO)
 			{
-				PlaySoundPacket packet = new PlaySoundPacket();
+				ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 				packet.pos = pos;
 				packet.soundName = SoundRandomizer.owoResult;
 				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
@@ -251,14 +251,14 @@ public class BlockStatue extends Block implements IHasModel
 			}
 			if(state.getBlock() == ModBlocks.STATUE_RZ)
 			{
-				PlaySoundPacket packet = new PlaySoundPacket();
+				ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 				packet.pos = pos;
 				packet.soundName = "rz_trophy";
 				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
 			}
 			if(state.getBlock() == ModBlocks.STATUE_CSX)
 			{
-				PlaySoundPacket packet = new PlaySoundPacket();
+				ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 				packet.pos = pos;
 				packet.soundName = "csx_trophy";
 				packet.pitch = csxPitch;
@@ -266,49 +266,49 @@ public class BlockStatue extends Block implements IHasModel
 			}
 			if(state.getBlock() == ModBlocks.STATUE_TD)
 			{
-				PlaySoundPacket packet = new PlaySoundPacket();
+				ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 				packet.pos = pos;
 				packet.soundName = "td_trophy";
 				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
 			}
 			if(state.getBlock() == ModBlocks.STATUE_TLZ)
 			{
-				PlaySoundPacket packet = new PlaySoundPacket();
+				ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 				packet.pos = pos;
 				packet.soundName = "tlz_trophy";
 				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
 			}
 			if(state.getBlock() == ModBlocks.STATUE_LW)
 			{
-				PlaySoundPacket packet = new PlaySoundPacket();
+				ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 				packet.pos = pos;
 				packet.soundName = "lw_trophy";
 				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
 			}
 			if(state.getBlock() == ModBlocks.STATUE_MD)
 			{
-				PlaySoundPacket packet = new PlaySoundPacket();
+				ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 				packet.pos = pos;
 				packet.soundName = "md_trophy";
 				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
 			}
 			if(state.getBlock() == ModBlocks.STATUE_SVV)
 			{
-				PlaySoundPacket packet = new PlaySoundPacket();
+				ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 				packet.pos = pos;
 				packet.soundName = "svv_trophy";
 				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
 			}
 			if(state.getBlock() == ModBlocks.STATUE_TWO)
 			{
-				PlaySoundPacket packet = new PlaySoundPacket();
+				ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 				packet.pos = pos;
 				packet.soundName = "two_years";
 				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
 			}
 			if(state.getBlock() == ModBlocks.STATUE_MONTY)
 			{
-				PlaySoundPacket packet = new PlaySoundPacket();
+				ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 				packet.pos = pos;
 				packet.modID = "minecraft";
 				packet.soundName = "entity.cat.ambient";

@@ -3,15 +3,12 @@ package com.mesabrook.ib.items.tools;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModEnchants;
 import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.init.SoundInit;
-import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.DamageSourceHammer;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.SoundRandomizer;
 import com.mesabrook.ib.util.ToolMaterialRegistry;
 import com.mesabrook.ib.util.handlers.PacketHandler;
-import com.pam.harvestcraft.item.ItemRegistry;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -118,7 +115,7 @@ public class ItemBanHammer extends ItemPickaxe implements IHasModel
 
                         if(tag.hasKey("sndID"))
                         {
-                            PlaySoundPacket packet = new PlaySoundPacket();
+                            ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                             packet.pos = player.getPosition();
                             packet.soundName = tag.getString("sndID");
                             packet.pitch = pitchFloat;
@@ -175,7 +172,7 @@ public class ItemBanHammer extends ItemPickaxe implements IHasModel
                     pitchFloat = 1.0F;
                 }
 
-                PlaySoundPacket packet = new PlaySoundPacket();
+                ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                 packet.pos = player.getPosition();
                 packet.soundName = SoundRandomizer.hammerRightClick;
                 packet.pitch = pitchFloat;

@@ -1,6 +1,6 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
-import com.mesabrook.ib.net.SoundPlayerAppInfoPacket;
+import com.mesabrook.ib.net.ClientSoundPacket;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -40,7 +40,7 @@ public class GuiPhoneSetupStart extends GuiPhoneBase
         buttonList.add(beginSetup);
         buttonList.add(mux);
 
-        SoundPlayerAppInfoPacket soundPacket = new SoundPlayerAppInfoPacket();
+        ClientSoundPacket soundPacket = new ClientSoundPacket();
         soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
         soundPacket.soundName = "minedroid_startup";
         PacketHandler.INSTANCE.sendToServer(soundPacket);

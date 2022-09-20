@@ -2,7 +2,7 @@ package com.mesabrook.ib.items.armor;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.entity.player.EntityPlayer;
@@ -55,7 +55,7 @@ public class WearableHat extends Item implements IHasModel
             {
                 if(this == ModItems.SANTA_HAT)
                 {
-                    PlaySoundPacket packet = new PlaySoundPacket();
+                    ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                     packet.pos = player.getPosition();
                     packet.soundName = "jingles";
                     PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));

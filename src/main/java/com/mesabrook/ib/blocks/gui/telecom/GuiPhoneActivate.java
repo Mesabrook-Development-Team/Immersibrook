@@ -2,7 +2,6 @@ package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.misc.ItemPhone;
-import com.mesabrook.ib.net.SoundPlayerAppInfoPacket;
 import com.mesabrook.ib.net.telecom.ActivateNumberChosenPacket;
 import com.mesabrook.ib.net.telecom.ActivatePhonePacket;
 import com.mesabrook.ib.util.GuiUtil;

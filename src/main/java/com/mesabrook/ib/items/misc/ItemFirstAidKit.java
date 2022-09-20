@@ -3,7 +3,7 @@ package com.mesabrook.ib.items.misc;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
 import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SoundRandomizer;
@@ -76,7 +76,7 @@ public class ItemFirstAidKit extends Item implements IHasModel
 
 				if(!w.isRemote)
 				{
-					PlaySoundPacket packet = new PlaySoundPacket();
+					ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 					packet.pos = playerIn.getPosition();
 					packet.soundName = "heal";
 					PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 10));
@@ -121,7 +121,7 @@ public class ItemFirstAidKit extends Item implements IHasModel
 
 					if(!world.isRemote)
 					{
-						PlaySoundPacket packet = new PlaySoundPacket();
+						ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 						packet.pos = player.getPosition();
 						packet.soundName = "heal";
 						PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 10));
@@ -149,7 +149,7 @@ public class ItemFirstAidKit extends Item implements IHasModel
 					{
 						player.sendMessage(new TextComponentString(TextFormatting.RED + "Not while in Creative Mode >:("));
 						SoundRandomizer.RandomizeSound();
-						PlaySoundPacket packet = new PlaySoundPacket();
+						ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 						packet.pos = player.getPosition();
 						packet.soundName = SoundRandomizer.result;
 						PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));

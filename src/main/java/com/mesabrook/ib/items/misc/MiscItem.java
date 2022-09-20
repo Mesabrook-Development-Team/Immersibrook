@@ -3,7 +3,7 @@ package com.mesabrook.ib.items.misc;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
 import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.DamageSourceAprilFools;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.SoundRandomizer;
@@ -198,7 +198,7 @@ public class MiscItem extends Item implements IHasModel
 			{
 				itemstack.setCount(0);
 				SoundRandomizer.RandomizeSound();
-				PlaySoundPacket packet = new PlaySoundPacket();
+				ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 				packet.pos = playerIn.getPosition();
 				packet.soundName = "kekw";
 				PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));

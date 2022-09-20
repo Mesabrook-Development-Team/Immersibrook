@@ -26,7 +26,7 @@ import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneRecents;
 import com.mesabrook.ib.blocks.gui.telecom.SignalStrengths;
 import com.mesabrook.ib.init.SoundInit;
 import com.mesabrook.ib.items.misc.ItemPhone;
-import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.net.*;
 import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket;
 import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket.ResponseTypes;
 import com.mesabrook.ib.telecom.WirelessEmergencyAlertManager.WirelessEmergencyAlert;
@@ -70,7 +70,7 @@ public class ClientSideHandlers
 		Minecraft.getMinecraft().displayGuiScreen(gui);
 	}
 
-	public static void playSoundHandler(PlaySoundPacket message, MessageContext ctx)
+	public static void playSoundHandler(ServerSoundBroadcastPacket message, MessageContext ctx)
 	{
 		if(!message.rapidSounds)
 		{

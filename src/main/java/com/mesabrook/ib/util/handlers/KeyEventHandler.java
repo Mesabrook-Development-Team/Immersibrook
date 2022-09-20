@@ -19,7 +19,6 @@ import net.minecraft.world.*;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
-import net.minecraftforge.fml.common.network.*;
 import net.minecraftforge.fml.relauncher.Side;
 
 @EventBusSubscriber(Side.CLIENT)
@@ -92,7 +91,7 @@ public class KeyEventHandler
 				else
 				{
 					player.sendStatusMessage(new TextComponentString(nvToggleOn.getFormattedText()), true);
-					SoundPlayerAppInfoPacket packet = new SoundPlayerAppInfoPacket();
+					ClientSoundPacket packet = new ClientSoundPacket();
 					packet.pos = player.getPosition();
 					packet.soundName = "nv";
 					packet.useDelay = false;

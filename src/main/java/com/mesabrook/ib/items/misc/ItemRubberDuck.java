@@ -2,7 +2,7 @@ package com.mesabrook.ib.items.misc;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.DamageSourceDuckBoom;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.handlers.PacketHandler;
@@ -64,7 +64,7 @@ public class ItemRubberDuck extends Item implements IHasModel
         {
             if(!worldIn.isRemote)
             {
-                PlaySoundPacket packet = new PlaySoundPacket();
+                ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                 packet.pos = playerIn.getPosition();
                 packet.soundName = "duck";
                 PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));
@@ -74,7 +74,7 @@ public class ItemRubberDuck extends Item implements IHasModel
         {
             if(!worldIn.isRemote)
             {
-                PlaySoundPacket packet = new PlaySoundPacket();
+                ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                 itemstack.damageItem(2, playerIn);
                 if(itemstack.getItem() == ModItems.RUBBER_DUCK_EVIL)
                 {

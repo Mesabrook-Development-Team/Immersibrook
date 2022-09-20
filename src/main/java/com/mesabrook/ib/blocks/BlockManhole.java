@@ -5,7 +5,7 @@ import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.tools.ItemBanHammer;
 import com.mesabrook.ib.items.tools.ItemManholeHook;
-import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.ModUtils;
 import com.mesabrook.ib.util.Reference;
@@ -176,7 +176,7 @@ public class BlockManhole extends Block implements IHasModel
             }
             if(!world.isRemote)
             {
-                PlaySoundPacket packet = new PlaySoundPacket();
+                ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                 packet.pos = player.getPosition();
                 packet.soundName = "manhole_open";
                 packet.volume = 0.5F;
@@ -194,7 +194,7 @@ public class BlockManhole extends Block implements IHasModel
             }
             if(!world.isRemote)
             {
-                PlaySoundPacket packet = new PlaySoundPacket();
+                ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                 packet.pos = player.getPosition();
                 packet.soundName = "manhole_close";
                 packet.volume = 0.5F;
@@ -214,7 +214,7 @@ public class BlockManhole extends Block implements IHasModel
 
             if(!world.isRemote)
             {
-                PlaySoundPacket packet = new PlaySoundPacket();
+                ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                 packet.pos = player.getPosition();
                 packet.soundName = "manhole_open";
                 packet.volume = 0.5F;
@@ -233,7 +233,7 @@ public class BlockManhole extends Block implements IHasModel
 
             if(!world.isRemote)
             {
-                PlaySoundPacket packet = new PlaySoundPacket();
+                ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                 packet.pos = player.getPosition();
                 packet.soundName = "manhole_close";
                 packet.volume = 0.5F;
@@ -252,7 +252,7 @@ public class BlockManhole extends Block implements IHasModel
             }
             if(!world.isRemote)
             {
-                PlaySoundPacket packet = new PlaySoundPacket();
+                ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                 packet.pos = player.getPosition();
                 packet.soundName = "manhole_open";
                 packet.volume = 0.5F;
@@ -270,7 +270,7 @@ public class BlockManhole extends Block implements IHasModel
             }
             if(!world.isRemote)
             {
-                PlaySoundPacket packet = new PlaySoundPacket();
+                ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                 packet.pos = player.getPosition();
                 packet.soundName = "manhole_close";
                 packet.volume = 0.5F;
@@ -289,7 +289,7 @@ public class BlockManhole extends Block implements IHasModel
             }
             if(!world.isRemote)
             {
-                PlaySoundPacket packet = new PlaySoundPacket();
+                ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                 packet.pos = player.getPosition();
                 packet.soundName = "manhole_open";
                 packet.volume = 0.5F;
@@ -307,7 +307,7 @@ public class BlockManhole extends Block implements IHasModel
             }
             if(!world.isRemote)
             {
-                PlaySoundPacket packet = new PlaySoundPacket();
+                ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                 packet.pos = player.getPosition();
                 packet.soundName = "manhole_close";
                 packet.volume = 0.5F;

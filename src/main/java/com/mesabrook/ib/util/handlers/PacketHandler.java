@@ -18,14 +18,15 @@ public class PacketHandler
 		INSTANCE.registerMessage(EngravePacket.Handler.class, EngravePacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(WallSignPacket.Handler.class, WallSignPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(FoodBoxPacket.Handler.class, FoodBoxPacket.class, nextID(), Side.SERVER);
-		INSTANCE.registerMessage(PlaySoundPacket.Handler.class, PlaySoundPacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(ServerSoundBroadcastPacket.Handler.class, ServerSoundBroadcastPacket.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(VestTogglePacket.Handler.class, VestTogglePacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(NVTogglePacket.Handler.class, NVTogglePacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(SoundRandomizerPacket.Handler.class, SoundRandomizerPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(PoliceEffectsTogglePacket.Handler.class, PoliceEffectsTogglePacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(AboutGUIPacket.class, AboutGUIPacket.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(CommandProcessorPacket.class, CommandProcessorPacket.class, nextID(), Side.CLIENT);
-		INSTANCE.registerMessage(SoundPlayerAppInfoPacket.Handler.class, SoundPlayerAppInfoPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(ClientSoundPacket.Handler.class, ClientSoundPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(CoughPacket.Handler.class, CoughPacket.class, nextID(), Side.CLIENT);
 
 		// TELECOM
 		INSTANCE.registerMessage(ActivatePhonePacket.Handler.class, ActivatePhonePacket.class, nextID(), Side.SERVER);

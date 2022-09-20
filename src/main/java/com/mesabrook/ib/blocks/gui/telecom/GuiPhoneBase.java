@@ -3,7 +3,7 @@ package com.mesabrook.ib.blocks.gui.telecom;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.misc.ItemPhone;
-import com.mesabrook.ib.net.SoundPlayerAppInfoPacket;
+import com.mesabrook.ib.net.ClientSoundPacket;
 import com.mesabrook.ib.net.telecom.GetReceptionStrengthPacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SpecialBezelRandomizer;
@@ -19,13 +19,10 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.apache.logging.log4j.core.util.Throwables;
 
 import java.io.IOException;
 import java.time.*;
 import java.time.format.*;
-import java.util.Calendar;
-import java.util.Date;
 
 @SideOnly(Side.CLIENT)
 public abstract class GuiPhoneBase extends GuiScreen {
@@ -294,7 +291,7 @@ public abstract class GuiPhoneBase extends GuiScreen {
 			isPhoneUnlocked = false;
 			try
 			{
-				SoundPlayerAppInfoPacket packet = new SoundPlayerAppInfoPacket();
+				ClientSoundPacket packet = new ClientSoundPacket();
 				packet.pos = Minecraft.getMinecraft().player.getPosition();
 				packet.modID = Reference.MODID;
 				packet.soundName = "phone_off";

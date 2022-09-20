@@ -2,7 +2,7 @@ package com.mesabrook.ib.items.misc;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.util.ITooltipFlag;
@@ -139,7 +139,7 @@ public class SerpentBar extends Item implements IHasModel
                 	else if(countToSugarCrash == 8)
                 	{
                         player.sendStatusMessage(new TextComponentString(sugarWarn.getFormattedText()), true);
-    					PlaySoundPacket packet = new PlaySoundPacket();
+    					ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
     					packet.pos = player.getPosition();					
     					packet.soundName = "hb";
     					PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 5));

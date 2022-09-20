@@ -15,7 +15,7 @@ import java.util.stream.IntStream;
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData;
-import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.net.telecom.CallAcceptedPacket;
 import com.mesabrook.ib.net.telecom.CallRejectedPacket;
 import com.mesabrook.ib.net.telecom.DisconnectedCallNotificationPacket;
@@ -497,7 +497,7 @@ public class CallManager {
 				playerToSendTo.sendMessage(textToSend);
 
 				// Play chat notification sound
-				PlaySoundPacket playSound = new PlaySoundPacket();
+				ServerSoundBroadcastPacket playSound = new ServerSoundBroadcastPacket();
 				playSound.pos = playerToSendTo.getPosition();
 				playSound.volume = 1;
 				playSound.pitch = 1;

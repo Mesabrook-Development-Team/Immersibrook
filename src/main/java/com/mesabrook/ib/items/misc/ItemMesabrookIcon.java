@@ -4,7 +4,7 @@ import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
 import com.mesabrook.ib.entity.EntityMesabrookM;
 import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.entity.player.EntityPlayer;
@@ -39,7 +39,7 @@ public class ItemMesabrookIcon extends Item implements IHasModel
                 Triggers.trigger(Triggers.MESARANG, playerIn);
             }
 
-            PlaySoundPacket packet = new PlaySoundPacket();
+            ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
             packet.pos = playerIn.getPosition();
             packet.soundName = "woosh";
             PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));

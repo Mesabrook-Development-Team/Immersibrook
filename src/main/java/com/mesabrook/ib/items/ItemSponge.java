@@ -59,7 +59,7 @@ public class ItemSponge extends Item implements IHasModel
                     item.damageItem(1, player);
                 }
 
-                PlaySoundPacket packet = new PlaySoundPacket();
+                ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                 packet.pos = pos;
                 packet.soundName = "sponge_use";
                 packet.rapidSounds = true;

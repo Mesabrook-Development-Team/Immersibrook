@@ -4,7 +4,7 @@ import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.TooltipRandomizer;
 import com.mesabrook.ib.util.config.ModConfig;
@@ -367,7 +367,7 @@ public class FoodBlock extends Block implements IHasModel
 			{
 				try
 				{
-					PlaySoundPacket packet = new PlaySoundPacket();
+					ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 					packet.pos = player.getPosition();
 					if(this.getUnlocalizedName().contains("cube_cheese"))
 					{
@@ -495,7 +495,7 @@ public class FoodBlock extends Block implements IHasModel
 			{
 				if(this.getUnlocalizedName().contains("cube_cheese"))
 				{
-					PlaySoundPacket packet = new PlaySoundPacket();
+					ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 					packet.pos = pos;
 					
 					packet.soundName = "cheese_place";

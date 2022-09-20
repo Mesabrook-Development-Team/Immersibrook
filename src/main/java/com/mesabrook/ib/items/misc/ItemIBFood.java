@@ -2,7 +2,7 @@ package com.mesabrook.ib.items.misc;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.util.ITooltipFlag;
@@ -149,7 +149,7 @@ public class ItemIBFood extends ItemFood implements IHasModel
                 player.addItemStackToInventory(new ItemStack(Items.GLASS_BOTTLE, 1));
                 if(!worldIn.isRemote)
                 {
-                    PlaySoundPacket packet = new PlaySoundPacket();
+                    ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                     packet.pos = player.getPosition();
                     packet.soundName = "burp";
                     PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
@@ -165,7 +165,7 @@ public class ItemIBFood extends ItemFood implements IHasModel
                 stack.damageItem(1, player);
                 if(!worldIn.isRemote)
                 {
-                    PlaySoundPacket packet = new PlaySoundPacket();
+                    ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                     packet.pos = player.getPosition();
                     packet.soundName = "waterphone";
                     PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
@@ -183,7 +183,7 @@ public class ItemIBFood extends ItemFood implements IHasModel
 
             if(!worldIn.isRemote)
             {
-                PlaySoundPacket packet = new PlaySoundPacket();
+                ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                 packet.pos = player.getPosition();
                 packet.soundName = "spicy";
                 PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));

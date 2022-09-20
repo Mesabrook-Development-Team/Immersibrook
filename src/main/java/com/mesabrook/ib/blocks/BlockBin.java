@@ -6,7 +6,7 @@ import com.mesabrook.ib.blocks.te.TileEntityTrashBin;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.init.SoundTypeInit;
-import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
@@ -53,7 +53,7 @@ public class BlockBin extends BlockContainer implements IHasModel
 	{
 		if(!worldIn.isRemote)
 		{
-			PlaySoundPacket packet = new PlaySoundPacket();
+			ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 			packet.pos = pos;
 
 			packet.soundName = "can_open";

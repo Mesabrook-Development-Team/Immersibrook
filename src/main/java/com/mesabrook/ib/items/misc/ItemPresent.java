@@ -2,7 +2,7 @@ package com.mesabrook.ib.items.misc;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.ItemRandomizer;
 import com.mesabrook.ib.util.handlers.PacketHandler;
@@ -55,7 +55,7 @@ public class ItemPresent extends Item implements IHasModel
             {
                 player.addItemStackToInventory(ItemRandomizer.giftItem);
                 player.sendStatusMessage(new TextComponentString(TextFormatting.GREEN + new TextComponentTranslation("im.present").getFormattedText()), true);
-                PlaySoundPacket packet = new PlaySoundPacket();
+                ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                 packet.pos = player.getPosition();
                 packet.soundName = "rip";
                 PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 5));
@@ -66,7 +66,7 @@ public class ItemPresent extends Item implements IHasModel
             }
             else
             {
-                PlaySoundPacket packet = new PlaySoundPacket();
+                ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                 packet.pos = player.getPosition();
                 packet.modID = "minecraft";
                 packet.soundName = "entity.item.pickup";

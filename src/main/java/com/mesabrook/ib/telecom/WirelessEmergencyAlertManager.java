@@ -18,7 +18,7 @@ import com.google.gson.stream.JsonReader;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData;
-import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.net.telecom.WirelessEmergencyAlertPacket;
 import com.mesabrook.ib.telecom.WirelessEmergencyAlertManager.WirelessEmergencyAlert.Coordinate;
 import com.mesabrook.ib.util.config.ModConfig;
@@ -31,7 +31,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.Tuple;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 
@@ -219,7 +218,7 @@ public class WirelessEmergencyAlertManager {
 				NBTData data = NBTData.getFromItemStack(phone.getFirst());
 				
 				BlockPos currentPos = phone.getSecond().getPosition();
-				PlaySoundPacket playSound = new PlaySoundPacket();
+				ServerSoundBroadcastPacket playSound = new ServerSoundBroadcastPacket();
 				playSound.soundName = "alert_tone";
 				playSound.pos = currentPos;
 				PacketHandler.INSTANCE.sendToAllAround(playSound, new TargetPoint(phone.getSecond().dimension, currentPos.getX(), currentPos.getY(), currentPos.getZ(), 25));

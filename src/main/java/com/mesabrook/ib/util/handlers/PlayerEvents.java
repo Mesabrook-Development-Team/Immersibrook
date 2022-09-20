@@ -29,7 +29,6 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.*;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -47,7 +46,6 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
-import javax.xml.soap.Text;
 import java.time.LocalDate;
 import java.util.Random;
 
@@ -87,7 +85,7 @@ public class PlayerEvents
 				if(LocalDate.now().getMonthValue() == 4 && LocalDate.now().getDayOfMonth() == 1)
 				{
 					SoundRandomizer.RandomizeSound();
-					PlaySoundPacket packet = new PlaySoundPacket();
+					ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 					packet.pos = player.getPosition();
 					packet.soundName = "kekw";
 					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
@@ -106,7 +104,7 @@ public class PlayerEvents
 				{
 					SoundRandomizer.RandomizeSound();
 					ItemRandomizer.RandomizePresent();
-					PlaySoundPacket packet = new PlaySoundPacket();
+					ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 					packet.pos = player.getPosition();
 					packet.soundName = "jingle";
 					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
@@ -220,7 +218,7 @@ public class PlayerEvents
 					}
 					if(!w.isRemote)
 					{
-						PlaySoundPacket packet = new PlaySoundPacket();
+						ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 						packet.pos = player.getPosition();
 						packet.modID = "minecraft";
 						packet.soundName = "record.11";
@@ -232,7 +230,7 @@ public class PlayerEvents
 					player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Happy Holidays!"));
 					if(!w.isRemote)
 					{
-						PlaySoundPacket packet = new PlaySoundPacket();
+						ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 						packet.pos = player.getPosition();
 						packet.soundName = "jingles";
 						PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
@@ -287,7 +285,7 @@ public class PlayerEvents
 
 				if(ModConfig.oofDeathSound)
 				{
-					PlaySoundPacket packet = new PlaySoundPacket();
+					ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 					packet.pos = e.getPosition();
 					packet.soundName = "death";
 					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(e.dimension, e.posX, e.posY, e.posZ, Integer.MAX_VALUE));
@@ -360,6 +358,10 @@ public class PlayerEvents
 			player.playSound(SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, 1.0F, 1.0F);
 		}
 	}
+
+	/*
+		Left Click Block Events
+	 */
 	@SubscribeEvent
 	public void LeftClickBlock(PlayerInteractEvent.LeftClickBlock evt)
 	{
@@ -374,7 +376,7 @@ public class PlayerEvents
 		{
 			if(!world.isRemote)
 			{
-				PlaySoundPacket packet = new PlaySoundPacket();
+				ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 				packet.pos = player.getPosition();
 				packet.soundName = "gavel";
 				packet.rapidSounds = true;
@@ -393,7 +395,7 @@ public class PlayerEvents
 			{
 				if(!world.isRemote)
 				{
-					PlaySoundPacket packet = new PlaySoundPacket();
+					ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 					packet.pos = player.getPosition();
 					packet.soundName = "sponge_equip";
 					packet.rapidSounds = true;
@@ -427,7 +429,7 @@ public class PlayerEvents
 
 					if(tag.hasKey("sndID"))
 					{
-						PlaySoundPacket packet = new PlaySoundPacket();
+						ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 						packet.pos = player.getPosition();
 						packet.soundName = tag.getString("sndID");
 						packet.pitch = pitchFloat;
@@ -439,7 +441,7 @@ public class PlayerEvents
 	}
 
 	/*
-		This block of code is responsible for making cakes produce particles and eating sounds when right-clicked.
+		Block Right Click Events.
 	 */
 	@SubscribeEvent
 	public void onBlockRightClick(PlayerInteractEvent.RightClickBlock evt)
@@ -450,6 +452,7 @@ public class PlayerEvents
 		IBlockState state = world.getBlockState(pos);
 		Block block = state.getBlock();
 
+		// Cake Particles
 		if (block instanceof BlockCake && player.canEat(false) || block instanceof BlockPamCake && player.canEat(false))
 		{
 			ItemStack stack = block.getPickBlock(state, null, world, pos, player);
@@ -471,11 +474,12 @@ public class PlayerEvents
 			world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_EAT, SoundCategory.BLOCKS, 0.5F + 0.5F * (float)rand.nextInt(2), (rand.nextFloat() - rand.nextFloat()) * 0.2F + 1.0F);
 		}
 
-		if(block.getUnlocalizedName().contains("toilet") && Loader.isModLoaded("cfm"))
+		// Make others hear your fat logs.
+		if(block.getUnlocalizedName().contains("toilet") && Loader.isModLoaded("cfm") && ModConfig.letOthersHearYourLogs)
 		{
 			if(world.isRemote && player.isSneaking())
 			{
-				SoundPlayerAppInfoPacket packet = new SoundPlayerAppInfoPacket();
+				ClientSoundPacket packet = new ClientSoundPacket();
 				packet.pos = player.getPosition();
 				packet.modID = "cfm";
 				packet.soundName = "flush";

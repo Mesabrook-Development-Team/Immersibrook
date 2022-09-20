@@ -3,7 +3,7 @@ package com.mesabrook.ib.items.misc;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.init.SoundInit;
-import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.SoundRandomizer;
 import com.mesabrook.ib.util.config.ModConfig;
@@ -48,7 +48,7 @@ public class ToyPopper extends Item implements IHasModel
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand)
     {
-        PlaySoundPacket packet = new PlaySoundPacket();
+        ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
         ItemStack item = player.getHeldItem(hand);
         try
         {

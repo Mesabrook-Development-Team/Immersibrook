@@ -1,7 +1,7 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.google.common.collect.ImmutableList;
-import com.mesabrook.ib.net.SoundPlayerAppInfoPacket;
+import com.mesabrook.ib.net.ClientSoundPacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 
@@ -70,7 +70,7 @@ public class GuiDebugMenu extends GuiPhoneBase
 
         if(button == weaIcon || button == weaLabel)
         {
-            SoundPlayerAppInfoPacket packet = new SoundPlayerAppInfoPacket();
+            ClientSoundPacket packet = new ClientSoundPacket();
             packet.pos = Minecraft.getMinecraft().player.getPosition();
             packet.modID = Reference.MODID;
             packet.soundName = "alert_tone";

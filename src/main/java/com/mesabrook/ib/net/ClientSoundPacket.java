@@ -13,7 +13,10 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-public class SoundPlayerAppInfoPacket implements IMessage
+/*
+    Client sided packet that feeds sound data to ServerSoundBroadcastPacket.
+ */
+public class ClientSoundPacket implements IMessage
 {
     public BlockPos pos;
     public String modID = Reference.MODID;
@@ -47,20 +50,20 @@ public class SoundPlayerAppInfoPacket implements IMessage
         buf.writeInt(range);
     }
 
-    public static class Handler implements IMessageHandler<SoundPlayerAppInfoPacket, IMessage>
+    public static class Handler implements IMessageHandler<ClientSoundPacket, IMessage>
     {
         @Override
-        public IMessage onMessage(SoundPlayerAppInfoPacket message, MessageContext ctx)
+        public IMessage onMessage(ClientSoundPacket message, MessageContext ctx)
         {
             FMLCommonHandler.instance().getWorldThread(ctx.netHandler).addScheduledTask(() -> handle(message, ctx));
             return null;
         }
 
-        private void handle(SoundPlayerAppInfoPacket message, MessageContext ctx)
+        private void handle(ClientSoundPacket message, MessageContext ctx)
         {
             try
             {
-                PlaySoundPacket packet = new PlaySoundPacket();
+                ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                 packet.pos = message.pos;
                 packet.modID = message.modID;
                 packet.soundName = message.soundName;
@@ -72,7 +75,7 @@ public class SoundPlayerAppInfoPacket implements IMessage
             }
             catch(NullPointerException ex)
             {
-                Main.logger.error("[" + Reference.MODNAME + "] An error occurred in " + GuiPhoneBase.class.getName());
+                Main.logger.error("[" + Reference.MODNAME + "] An error occurred in " + ClientSoundPacket.class.getName());
                 Main.logger.error(ex);
                 Main.logger.error("[" + Reference.MODNAME + "] Please report this error to us.");
             }

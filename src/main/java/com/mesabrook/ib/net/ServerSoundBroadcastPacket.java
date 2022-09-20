@@ -1,7 +1,6 @@
 package com.mesabrook.ib.net;
 
 import com.mesabrook.ib.Main;
-import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneBase;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.ClientSideHandlers;
 import io.netty.buffer.ByteBuf;
@@ -12,7 +11,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-public class PlaySoundPacket implements IMessage
+public class ServerSoundBroadcastPacket implements IMessage
 {
 	public BlockPos pos;
 	public String modID = Reference.MODID;
@@ -43,16 +42,16 @@ public class PlaySoundPacket implements IMessage
 		buf.writeBoolean(rapidSounds);
 	}
 	
-	public static class Handler implements IMessageHandler<PlaySoundPacket, IMessage>
+	public static class Handler implements IMessageHandler<ServerSoundBroadcastPacket, IMessage>
 	{
 		@Override
-		public IMessage onMessage(PlaySoundPacket message, MessageContext ctx) 
+		public IMessage onMessage(ServerSoundBroadcastPacket message, MessageContext ctx)
 		{
 			FMLCommonHandler.instance().getWorldThread(ctx.netHandler).addScheduledTask(() -> handle(message, ctx));
 			return null;
 		}
 		
-		private void handle(PlaySoundPacket message, MessageContext ctx)
+		private void handle(ServerSoundBroadcastPacket message, MessageContext ctx)
 		{
 			try
 			{

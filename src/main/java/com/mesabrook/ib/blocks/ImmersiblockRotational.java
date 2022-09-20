@@ -4,7 +4,7 @@ import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.tools.ItemManholeHook;
-import com.mesabrook.ib.net.PlaySoundPacket;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.ModUtils;
 import com.mesabrook.ib.util.handlers.PacketHandler;
@@ -230,7 +230,7 @@ public class ImmersiblockRotational extends Block implements IHasModel
 
                 if(!worldIn.isRemote)
                 {
-                    PlaySoundPacket packet = new PlaySoundPacket();
+                    ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                     packet.pos = playerIn.getPosition();
                     packet.soundName = "manhole_break";
                     packet.volume = 0.5F;
@@ -251,7 +251,7 @@ public class ImmersiblockRotational extends Block implements IHasModel
 
                 if(!worldIn.isRemote)
                 {
-                    PlaySoundPacket packet = new PlaySoundPacket();
+                    ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                     packet.pos = playerIn.getPosition();
                     packet.soundName = "manhole_break";
                     packet.volume = 0.5F;
@@ -272,7 +272,7 @@ public class ImmersiblockRotational extends Block implements IHasModel
 
                 if(!worldIn.isRemote)
                 {
-                    PlaySoundPacket packet = new PlaySoundPacket();
+                    ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                     packet.pos = playerIn.getPosition();
                     packet.soundName = "manhole_break";
                     packet.volume = 0.5F;
@@ -293,7 +293,7 @@ public class ImmersiblockRotational extends Block implements IHasModel
 
                 if(!worldIn.isRemote)
                 {
-                    PlaySoundPacket packet = new PlaySoundPacket();
+                    ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                     packet.pos = playerIn.getPosition();
                     packet.soundName = "manhole_break";
                     packet.volume = 0.5F;

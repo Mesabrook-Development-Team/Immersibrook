@@ -1,10 +1,8 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.google.common.collect.ImmutableList;
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.net.SoundPlayerAppInfoPacket;
+import com.mesabrook.ib.net.ClientSoundPacket;
 import com.mesabrook.ib.util.ModUtils;
-import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -158,7 +156,7 @@ public class GuiSoundPlayer extends GuiPhoneBase
             }
             else
             {
-                SoundPlayerAppInfoPacket packet = new SoundPlayerAppInfoPacket();
+                ClientSoundPacket packet = new ClientSoundPacket();
                 packet.pos = player.getPosition();
                 packet.modID = modIDText.getText();
                 packet.soundName = soundIDText.getText();
