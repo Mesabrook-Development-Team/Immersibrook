@@ -118,6 +118,9 @@ public final class ModConfig
 
 	@Comment("[Meme Command] Which voice tone do you want to use for the cough? (Options: masculine, feminine)")
 	public static String coughTone = "masculine";
+
+	@Comment("[Realism] Broadcast toilet flushing sound? [Requires MrCrayfish's Furniture Mod be installed]")
+	public static boolean letOthersHearYourLogs = false;
 	
 	@Comment("[WEA] Alert color options. Use this format for each item: Alert Name|Line Color|Fill Color. Use RRGGBB notation for colors. A fill color of \"transparent\" will use a transparent inner fill.")
 	public static String[] alertColorOptions = new String[]

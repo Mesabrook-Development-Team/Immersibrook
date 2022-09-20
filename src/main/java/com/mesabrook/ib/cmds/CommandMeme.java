@@ -32,7 +32,7 @@ public class CommandMeme extends CommandBase
             {
                 EntityPlayerMP player = (EntityPlayerMP) sender;
                 SoundRandomizer.FartRandomizer(Main.rand);
-                PlaySoundPacket packet = new PlaySoundPacket();
+                ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                 packet.pos = player.getPosition();
                 packet.soundName = SoundRandomizer.fartResult;
                 packet.rapidSounds = true;
@@ -43,25 +43,8 @@ public class CommandMeme extends CommandBase
             if("cough".equals(args[0]))
             {
                 EntityPlayerMP player = (EntityPlayerMP) sender;
-                PlaySoundPacket packet = new PlaySoundPacket();
-                packet.pos = player.getPosition();
-
-                switch(ModConfig.coughTone)
-                {
-                    case "masculine":
-                        packet.soundName = "cough_m";
-                        break;
-                    case "feminine":
-                        packet.soundName = "cough_f";
-                        break;
-                    default:
-                        packet.soundName = "cough_m";
-                        break;
-                }
-
-                packet.rapidSounds = true;
-                PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 15));
-
+                CoughPacket packet = new CoughPacket();
+                PacketHandler.INSTANCE.sendTo(packet, player);
                 player.sendMessage(new TextComponentTranslation("im.cmd.meme.cough"));
             }
         }
