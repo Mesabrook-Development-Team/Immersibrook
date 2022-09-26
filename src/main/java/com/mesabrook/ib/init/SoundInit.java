@@ -86,6 +86,7 @@ public class SoundInit
 	public static final SoundEvent FART_2;
 	public static final SoundEvent FART_3;
 	public static final SoundEvent FART_4;
+	public static final SoundEvent FART_5;
 	public static final SoundEvent COUGH_M;
 	public static final SoundEvent COUGH_F;
 
@@ -253,6 +254,7 @@ public class SoundInit
 		FART_2 = addSoundsToRegistry("fart_2");
 		FART_3 = addSoundsToRegistry("fart_3");
 		FART_4 = addSoundsToRegistry("fart_4");
+		FART_5 = addSoundsToRegistry("fart_5");
 		COUGH_M = addSoundsToRegistry("cough_m");
 		COUGH_F = addSoundsToRegistry("cough_f");
 
@@ -502,6 +504,7 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.FART_2);
 				event.getRegistry().register(SoundInit.FART_3);
 				event.getRegistry().register(SoundInit.FART_4);
+				event.getRegistry().register(SoundInit.FART_5);
 				event.getRegistry().register(SoundInit.COUGH_M);
 				event.getRegistry().register(SoundInit.COUGH_F);
 

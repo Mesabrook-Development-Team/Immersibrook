@@ -178,7 +178,7 @@ public class SoundRandomizer
 	public static void FartRandomizer(Random randomizerIn)
 	{
 		int snds;
-		snds = randomizerIn.nextInt(4);
+		snds = randomizerIn.nextInt(5);
 
 		switch(snds)
 		{
@@ -193,6 +193,12 @@ public class SoundRandomizer
 				break;
 			case 3:
 				fartResult = "fart_4";
+				break;
+			case 4:
+				fartResult = "fart_5";
+				break;
+			default:
+				fartResult = "fart_1";
 				break;
 		}
 	}

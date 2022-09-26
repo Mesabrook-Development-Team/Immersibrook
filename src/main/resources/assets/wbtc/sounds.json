@@ -1042,6 +1042,13 @@
 		}],
 		"subtitle": "ib.sub.fart"
 	},
+	"fart_5": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:fart_5"
+		}],
+		"subtitle": "ib.sub.fart"
+	},
 	"cough_m": {
 		"category": "master",
 		"sounds": [{
