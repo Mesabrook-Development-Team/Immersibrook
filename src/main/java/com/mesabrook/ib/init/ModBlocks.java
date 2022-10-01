@@ -306,7 +306,6 @@ public class ModBlocks
 	public static final Block STATUE_OWO = new BlockStatue("statue_owo", MapColor.BLUE, ModUtils.getPixelatedAABB(3,0,5, 13,25,11)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block STATUE_RZ = new BlockStatue("statue_rz", MapColor.GRAY, ModUtils.getPixelatedAABB(3,0,5, 13,30,11)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block STATUE_CSX = new BlockStatue("statue_csx", MapColor.GRAY, ModUtils.getPixelatedAABB(3,0,5, 13,30,11)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Block STATUE_TD = new BlockStatue("statue_td", MapColor.GRAY, ModUtils.getPixelatedAABB(3,0,5, 13,30,11)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block STATUE_TLZ = new BlockStatue("statue_tlz", MapColor.GRAY, ModUtils.getPixelatedAABB(3,0,5, 13,30,11)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block STATUE_MD = new BlockStatue("statue_md", MapColor.GRAY, ModUtils.getPixelatedAABB(3,0,5, 13,30,11)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block STATUE_LW = new BlockStatue("statue_sloose", MapColor.GRAY, ModUtils.getPixelatedAABB(3,0,5, 13,30,11)).setCreativeTab(Main.IMMERSIBROOK_MAIN);

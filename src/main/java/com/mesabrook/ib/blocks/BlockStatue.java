@@ -264,13 +264,6 @@ public class BlockStatue extends Block implements IHasModel
 				packet.pitch = csxPitch;
 				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
 			}
-			if(state.getBlock() == ModBlocks.STATUE_TD)
-			{
-				ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
-				packet.pos = pos;
-				packet.soundName = "td_trophy";
-				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
-			}
 			if(state.getBlock() == ModBlocks.STATUE_TLZ)
 			{
 				ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();

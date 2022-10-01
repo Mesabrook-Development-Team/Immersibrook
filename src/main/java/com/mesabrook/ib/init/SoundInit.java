@@ -14,7 +14,6 @@ public class SoundInit
 	public static final SoundEvent OWO_SFX;
 	public static final SoundEvent RZ_TROPHY;
 	public static final SoundEvent CSX_TROPHY;
-	public static final SoundEvent TD_TROPHY;
 	public static final SoundEvent TLZ_TROPHY;
 	public static final SoundEvent LW_TROPHY;
 	public static final SoundEvent MD_TROPHY;
@@ -182,7 +181,6 @@ public class SoundInit
 		OWO_SFX = addSoundsToRegistry("owo");
 		RZ_TROPHY = addSoundsToRegistry("rz_trophy");
 		CSX_TROPHY = addSoundsToRegistry("csx_trophy");
-		TD_TROPHY = addSoundsToRegistry("td_trophy");
 		TLZ_TROPHY = addSoundsToRegistry("tlz_trophy");
 		LW_TROPHY = addSoundsToRegistry("lw_trophy");
 		MD_TROPHY = addSoundsToRegistry("md_trophy");
@@ -363,7 +361,6 @@ public class SoundInit
 				event.getRegistry().registerAll(SoundInit.OWO_SFX);
 				event.getRegistry().registerAll(SoundInit.RZ_TROPHY);
 				event.getRegistry().registerAll(SoundInit.CSX_TROPHY);
-				event.getRegistry().registerAll(SoundInit.TD_TROPHY);
 				event.getRegistry().registerAll(SoundInit.TLZ_TROPHY);
 				event.getRegistry().registerAll(SoundInit.LW_TROPHY);
 				event.getRegistry().registerAll(SoundInit.MD_TROPHY);

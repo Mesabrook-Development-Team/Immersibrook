@@ -44,7 +44,7 @@ advancements.imb.owo.desc=You got noticed uwu
 advancements.imb.aid=Universal Healthcare!
 advancements.imb.aid.desc=Heal yourself with a First Aid Kit.
 advancements.imb.bonk=B o n k
-advancements.imb.bonk.desc=Get beaned by Levi's Ban Hammer.
+advancements.imb.bonk.desc=Get beaned by a Ban Hammer.
 advancements.imb.mesarang=Brand Loyalty!
 advancements.imb.mesarang.desc=Craft a Mesarang
 advancements.imb.doot=Tooting Your Own Horn
@@ -172,7 +172,7 @@ container.rubbish_bin:Wheelie Bin
 //Deco
 tile.pc_mouse.name=PC Mouse
 item.zoe_cane.name=Cane of Distinction
-item.levi_hammer.name=Levi's Ban Hammer
+item.levi_hammer.name=Classic Ban Hammer
 item.gmod_hammer.name=Modern Ban Hammer
 item.hammer_head_levi.name=Hammer Head
 item.hammer_stick_levi.name=Hammer Staff
@@ -402,7 +402,6 @@ tile.cube_pot_pie.name=Comically Large Chicken Pot Pie
 tile.statue_owo.name=Trophy - Outstanding OwO Behavior
 tile.statue_rz.name=Trophy for RavenholmZombie - Mesabrook Founders Award
 tile.statue_csx.name=Trophy for CSX8600 - Mesabrook Founders Award
-tile.statue_td.name=Trophy for TrainDevil - Mesabrook Founders Award
 tile.statue_tlz.name=Trophy for timelady_zoe - Mesabrook Founders Award
 tile.statue_md.name=Trophy for MineDouble - Mesabrook Founders Award
 tile.statue_sloose.name=Trophy for sloosecannon - Mesabrook Founders Award

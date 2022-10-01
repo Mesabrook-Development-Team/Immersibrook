@@ -20,13 +20,6 @@
 			"stream": true
 		}]
 	},
-	"td_trophy": {
-		"category": "master",
-		"sounds": [{
-			"name": "wbtc:td_trophy",
-			"stream": true
-		}]
-	},
 	"tlz_trophy": {
 		"category": "master",
 		"sounds": [{
