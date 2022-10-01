@@ -63,7 +63,7 @@ public class EntityMesabrookM extends EntityThrowable
                 if(result.entityHit instanceof EntityPlayerMP)
                 {
                     GameProfile profile = ((EntityPlayerMP) result.entityHit).getGameProfile();
-                    if(profile != null && Reference.RZ_UUID.equals(profile.getId()) || Reference.CSX_UUID.equals(profile.getId()) || Reference.TD_UUID.equals(profile.getId()) || Reference.SLOOSE_UUID.equals(profile.getId()) || Reference.ZOE_UUID.equals(profile.getId()))
+                    if(profile != null && Reference.RZ_UUID.equals(profile.getId()) || Reference.CSX_UUID.equals(profile.getId()) || Reference.SLOOSE_UUID.equals(profile.getId()) || Reference.ZOE_UUID.equals(profile.getId()))
                     {
                         hit = true;
                         EntityLightningBolt lightningBolt = new EntityLightningBolt(world, getThrower().posX, getThrower().posY, getThrower().posZ, true);

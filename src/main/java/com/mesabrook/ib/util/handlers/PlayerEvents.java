@@ -138,16 +138,6 @@ public class PlayerEvents
 						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
 					}
 				}
-				if(LocalDate.now().getMonthValue() == Reference.TD_MONTH && LocalDate.now().getDayOfMonth() == Reference.TD_DAY)
-				{
-					birthdayMessage.getStyle().setColor(TextFormatting.RED);
-					player.sendStatusMessage(new TextComponentString(birthdayMessage.getFormattedText() + TextFormatting.WHITE + "TrainDevil"), true);
-
-					if(player.getGameProfile().getId().equals(Reference.TD_UUID) && dropData.canGiveCake(Reference.TD_UUID))
-					{
-						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
-					}
-				}
 				if(LocalDate.now().getMonthValue() == Reference.TLZ_MONTH && LocalDate.now().getDayOfMonth() == Reference.TLZ_DAY)
 				{
 					birthdayMessage.getStyle().setColor(TextFormatting.DARK_PURPLE);
@@ -305,10 +295,6 @@ public class PlayerEvents
 					if(profile != null && Reference.CSX_UUID.equals(profile.getId()))
 					{
 						w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(ModItems.IRW_VEST, 1)));
-					}
-					if(profile != null && Reference.TD_UUID.equals(profile.getId()))
-					{
-						w.spawnEntity(new EntityItem(w, e.posX, e.posY, e.posZ, new ItemStack(ModItems.SERPENT_BAR, 1)));
 					}
 					if(profile != null && Reference.ZOE_UUID.equals(profile.getId()))
 					{
