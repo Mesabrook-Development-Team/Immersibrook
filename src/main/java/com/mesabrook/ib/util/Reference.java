@@ -53,6 +53,7 @@ public class Reference
 	public static final String CONTACTS_NBTKEY = "contacts";
 	public static final String SHOW_IRL_TIME = "showirltime";
 	public static final String SHOW_MILITARY_TIME = "show24hr";
+	public static final String DEBUG_MODE = "debug";
 
 	public static final int MAX_PHONE_BACKGROUNDS = 33; // This is an INCLUSIVE number
 	public static final int MAX_CHAT_NOTIFICATIONS = 9; // This is an INCLUSIVE number

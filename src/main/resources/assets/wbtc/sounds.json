@@ -1055,5 +1055,12 @@
 			"name": "wbtc:cough_f"
 		}],
 		"subtitle": "ib.sub.coughfemale"
+	},
+	"phone_crash": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:phone_crash"
+		}],
+		"subtitle": "ib.sub.phonecrash"
 	}
 }

@@ -1,6 +1,6 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
-import com.mesabrook.ib.net.telecom.FactoryResetPacket;
+import com.mesabrook.ib.net.telecom.*;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.handlers.PacketHandler;
@@ -112,15 +112,33 @@ public class GuiSettingsAboutPhone extends GuiPhoneBase {
 			}
 			if(clicksToDebug >= 5)
 			{
-				if(!ModConfig.enableDebug)
+				if(!phoneStackData.getIsDebugModeEnabled())
 				{
 					Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "Debug Mode Enabled", 0xFFFFFF));
-					ModConfig.enableDebug = true;
+
+					PhoneWallpaperPacket packet = new PhoneWallpaperPacket();
+					packet.hand = hand.ordinal();
+					packet.lockBackground = phoneStackData.getLockBackground();
+					packet.homeBackground = phoneStackData.getHomeBackground();
+					packet.setShowIRLTime = phoneStackData.getShowIRLTime();
+					packet.useMilitaryTime = phoneStackData.getShowingMilitaryIRLTime();
+					packet.toggleDebugMode = true;
+					packet.guiClassName = GuiSettingsAboutPhone.class.getName();
+					PacketHandler.INSTANCE.sendToServer(packet);
 				}
 				else
 				{
 					Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "Debug Mode Disabled", 0xFFFFFF));
-					ModConfig.enableDebug = false;
+
+					PhoneWallpaperPacket packet = new PhoneWallpaperPacket();
+					packet.hand = hand.ordinal();
+					packet.lockBackground = phoneStackData.getLockBackground();
+					packet.homeBackground = phoneStackData.getHomeBackground();
+					packet.setShowIRLTime = phoneStackData.getShowIRLTime();
+					packet.useMilitaryTime = phoneStackData.getShowingMilitaryIRLTime();
+					packet.toggleDebugMode = false;
+					packet.guiClassName = GuiSettingsAboutPhone.class.getName();
+					PacketHandler.INSTANCE.sendToServer(packet);
 				}
 			}
 		}

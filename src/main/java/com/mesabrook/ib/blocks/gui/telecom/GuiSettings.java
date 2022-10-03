@@ -9,7 +9,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentTranslation;
 
 import java.awt.*;
-import java.io.IOException;
+import java.io.*;
 
 public class GuiSettings extends GuiPhoneBase {
 
@@ -28,7 +28,7 @@ public class GuiSettings extends GuiPhoneBase {
 	public void initGui() {
 		super.initGui();
 
-		if(ModConfig.enableDebug)
+		if(phoneStackData.getIsDebugModeEnabled())
 		{
 			aboutBtnX = INNER_X + 20;
 			aboutBtnY = INNER_Y + 120;
@@ -44,7 +44,7 @@ public class GuiSettings extends GuiPhoneBase {
 		ImageButton aboutButton = new ImageButton(2, aboutBtnX, aboutBtnY, 48, 48, "btn_about.png", 32, 32);
 		ImageButton debugButton = new ImageButton(3, INNER_X + 90, aboutBtnY, 48, 48, "btn_debug.png", 32, 32);
 
-		if(ModConfig.enableDebug)
+		if(phoneStackData.getIsDebugModeEnabled())
 		{
 			buttonList.addAll(ImmutableList.of(lockScreenButton, personalizeButton, aboutButton, debugButton));
 		}
@@ -62,34 +62,51 @@ public class GuiSettings extends GuiPhoneBase {
 		fontRenderer.drawString(new TextComponentTranslation("im.settings.personalizeicon").getFormattedText(), INNER_X + 85, INNER_Y + 103, 0xFFFFFF);
 		fontRenderer.drawString(new TextComponentTranslation("im.settings.abouticon").getFormattedText(), aboutBtnX - 6, INNER_Y + 170, 0xFFFFFF);
 
-		if(ModConfig.enableDebug)
+		if(phoneStackData.getIsDebugModeEnabled())
 		{
 			fontRenderer.drawString(new TextComponentTranslation("im.settings.debug").getFormattedText(), INNER_X + 100, INNER_Y + 170, 0xFFFFFF);
 		}
 	}
 	
 	@Override
-	protected void actionPerformed(GuiButton button) throws IOException {
-		super.actionPerformed(button);
-		
-		if (button.id == 0)
+	protected void actionPerformed(GuiButton button) throws IOException
+	{
+		try
 		{
-			Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsLockScreen(phoneStack, hand));
-		}
-		
-		if (button.id == 1)
-		{
-			Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsPersonalization(phoneStack, hand));
-		}
-		
-		if (button.id == 2)
-		{
-			Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsAboutPhone(phoneStack, hand));
-		}
+			super.actionPerformed(button);
+			if (button.id == 0)
+			{
+				Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsLockScreen(phoneStack, hand));
+			}
 
-		if(button.id == 3)
+			if (button.id == 1)
+			{
+				Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsPersonalization(phoneStack, hand));
+			}
+
+			if (button.id == 2)
+			{
+				Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsAboutPhone(phoneStack, hand));
+			}
+
+			if(button.id == 3)
+			{
+				Minecraft.getMinecraft().displayGuiScreen(new GuiDebugMenu(phoneStack, hand));
+			}
+		}
+		catch (Exception ex)
 		{
-			Minecraft.getMinecraft().displayGuiScreen(new GuiDebugMenu(phoneStack, hand));
+			GuiPhoneCrashed crashGui = new GuiPhoneCrashed(phoneStack, hand);
+
+			StringWriter writer = new StringWriter();
+			PrintWriter printWriter = new PrintWriter( writer );
+			ex.printStackTrace(printWriter);
+			printWriter.flush();
+
+			crashGui.setErrorTitle(ex.getMessage());
+			crashGui.setErrorStackTrace(writer.toString());
+
+			Minecraft.getMinecraft().displayGuiScreen(crashGui);
 		}
 	}
 }

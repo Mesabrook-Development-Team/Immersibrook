@@ -101,6 +101,7 @@ public class GuiSettingsClock extends GuiPhoneBase
             packet.guiClassName = GuiSettingsClock.class.getName();
             packet.setShowIRLTime = toggle.isChecked();
             packet.useMilitaryTime = toggleMilitaryTime.isChecked();
+            packet.toggleDebugMode = phoneStackData.getIsDebugModeEnabled();
             PacketHandler.INSTANCE.sendToServer(packet);
 
             Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.settings.saved").getFormattedText(), 0xFFFFFF));

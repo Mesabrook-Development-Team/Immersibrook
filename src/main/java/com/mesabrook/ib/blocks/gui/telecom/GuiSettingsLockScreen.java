@@ -40,7 +40,7 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 	@Override
 	public void initGui() {
 		super.initGui();
-		
+
 		boolean usePin = phoneStackData.getSecurityStrategy() == SecurityStrategies.PIN;
 		boolean useUUID = phoneStackData.getSecurityStrategy() == SecurityStrategies.UUID;
 		
@@ -80,7 +80,7 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 		
 		pinValue.drawTextBox();
 		uuidValue.drawTextBox();
-		
+
 		GlStateManager.color(1, 1, 1);
 	}
 	

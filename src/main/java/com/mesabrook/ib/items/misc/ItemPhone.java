@@ -27,6 +27,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
+import java.sql.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -117,6 +118,7 @@ public class ItemPhone extends Item implements IHasModel {
 
 		private boolean showIRLTime = true;
 		private boolean militaryTime = false;
+		private boolean debugMode = false;
 		
 		public static NBTData getFromItemStack(ItemStack phoneStack)
 		{
@@ -244,6 +246,16 @@ public class ItemPhone extends Item implements IHasModel {
 		{
 			return this.militaryTime = isUsingMilitaryTime;
 		}
+
+		public boolean getIsDebugModeEnabled()
+		{
+			return debugMode;
+		}
+
+		public boolean setIsDebugModeEnabled(boolean debugModeIn)
+		{
+			return this.debugMode = debugModeIn;
+		}
 		
 		public Contact getContactByIdentifier(UUID identifier)
 		{
@@ -301,6 +313,7 @@ public class ItemPhone extends Item implements IHasModel {
 			tag.setInteger(Reference.RING_TONE, getRingTone());
 			tag.setBoolean(Reference.SHOW_IRL_TIME, getShowIRLTime());
 			tag.setBoolean(Reference.SHOW_MILITARY_TIME, getShowingMilitaryIRLTime());
+			tag.setBoolean(Reference.DEBUG_MODE, getIsDebugModeEnabled());
 			
 			NBTTagList contactNBT = new NBTTagList();
 			for(Contact contact : contactsByIdentifier.values())
@@ -367,6 +380,11 @@ public class ItemPhone extends Item implements IHasModel {
 			if(nbt.hasKey(Reference.SHOW_MILITARY_TIME))
 			{
 				setShowingMilitaryIRLTime(nbt.getBoolean(Reference.SHOW_MILITARY_TIME));
+			}
+
+			if(nbt.hasKey(Reference.DEBUG_MODE))
+			{
+				setIsDebugModeEnabled(nbt.getBoolean(Reference.DEBUG_MODE));
 			}
 			
 			if (nbt.hasKey(Reference.CONTACTS_NBTKEY))
