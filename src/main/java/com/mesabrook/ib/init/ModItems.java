@@ -56,6 +56,9 @@ public class ModItems
 	// Immersibrook Icons
 	public static final Item IMMERSIBROOK_ICON = new ItemMesabrookIcon("icon_immersibrook");
 	public static final Item IB_ICON_NEW = new MiscItem("icn_ib", 1, null);
+	public static final Item IB_ICON_OCT = new MiscItem("icn_ib_oct", 1, null);
+	public static final Item IB_ICON_XMAS = new MiscItem("icn_ib_xmas", 1, null);
+	public static final Item IB_ICON_SUMMER = new MiscItem("icn_ib_summer", 1, null);
 	public static final Item DOOT_ICON = new MiscItem("doot_icon", 1, null);
 	public static final Item KEKW = new MiscItem("wheezing", 1, null);
 

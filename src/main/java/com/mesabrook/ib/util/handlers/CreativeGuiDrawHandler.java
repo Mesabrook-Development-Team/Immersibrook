@@ -149,8 +149,8 @@ public class CreativeGuiDrawHandler
             this.guiCenterY = creative.getGuiTop();
             if(creative.getSelectedTabIndex() == Main.IMMERSIBROOK_MAIN.getTabIndex())
             {
-                buttonWebsite.visible = true;
-                buttonPatreon.visible = true;
+                buttonWebsite.visible = false;
+                buttonPatreon.visible = false;
                 categoryUp.visible = true;
                 categoryDown.visible = true;
                 categoryEnableAll.visible = true;
