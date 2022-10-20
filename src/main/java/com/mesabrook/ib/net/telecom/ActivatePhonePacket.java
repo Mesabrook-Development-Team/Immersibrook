@@ -37,7 +37,7 @@ public class ActivatePhonePacket implements IMessage {
 			EntityPlayerMP player = ctx.getServerHandler().player;
 			double reception = AntennaData.getOrCreate(player.world).getBestReception(player.getPosition());
 			
-			if (reception <= 0.0)
+			if (reception <= 0.0 || player.world.provider.getDimension() != 0)
 			{
 				ActivateNoReceptionPacket noReception = new ActivateNoReceptionPacket();
 				PacketHandler.INSTANCE.sendTo(noReception, player);

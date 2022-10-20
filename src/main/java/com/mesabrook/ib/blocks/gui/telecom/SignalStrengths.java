@@ -1,5 +1,8 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import net.minecraft.client.*;
+import net.minecraft.world.*;
+
 public enum SignalStrengths {
 	unknown("icn_bar_scan.png"),
 	none("icn_bar_no_coverage.png"),
@@ -17,7 +20,9 @@ public enum SignalStrengths {
 	
 	public static SignalStrengths getForReceptionAmount(double reception)
 	{
-		if (reception <= 0)
+		World world = Minecraft.getMinecraft().player.world;
+
+		if (reception <= 0 || world.provider.getDimension() > 0 || world.provider.getDimension() < 0)
 		{
 			return none;
 		}
