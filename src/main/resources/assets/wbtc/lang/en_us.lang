@@ -142,11 +142,9 @@ item.green_vest.name=Green Safety Vest
 item.black_vest.name=Black Safety Vest
 item.cooling_vest.name=Supplemental Abdominal Cooling Apparatus
 item.icon_immersibrook.name=Small Plastic Disc That You Toss
-
-//Leviathan Safety Vests
-item.lvn_vest.name=Light Blue Safety Vest
-item.lvn_vest_x.name=Light Blue Safety Vest - Railroad Pattern
-item.lvn_vest_txt.name=Safety Vest - LVN Branding
+item.lblue_vest.name=Light Blue Safety Vest
+item.lblue_vest_x.name=Light Blue Safety Vest - Railroad Pattern
+item.yellow_vest_nc.name=Yellow Safety Vest - Nether Corporation Branding
 
 //Stairs
 tile.oak_laminate_stairs.name=Oak Wood Laminate Stairs

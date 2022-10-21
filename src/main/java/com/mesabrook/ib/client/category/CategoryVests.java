@@ -29,9 +29,9 @@ public class CategoryVests extends AbstractCategory
 		add(ModItems.SAFETY_VEST_TGES);
 		add(ModItems.SAFETY_VEST_RED);
 		add(ModItems.SAFETY_VEST_EMS);
-		add(ModItems.LVN_VEST);
-		add(ModItems.LVN_VEST_X);
-		add(ModItems.LVN_VEST_TXT);
+		add(ModItems.LBLUE_VEST);
+		add(ModItems.LBLUE_VEST_X);
+		add(ModItems.NC_VEST);
 		add(ModItems.IRW_VEST);
 		add(ModItems.SAFETY_VEST_WHITE);
 		add(ModItems.SAFETY_VEST_MAGENTA);

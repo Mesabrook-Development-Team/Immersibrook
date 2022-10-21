@@ -1,6 +1,6 @@
 {
    "parent": "item/generated",
    "textures": {
-       "layer0": "wbtc:items/lvn_vest_txt"
+       "layer0": "wbtc:items/lblue_vest_x"
    }
 }

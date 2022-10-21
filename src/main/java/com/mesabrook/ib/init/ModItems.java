@@ -151,14 +151,12 @@ public class ModItems
 	public static final Item SAFETY_VEST_GREEN = new SafetyVest("green_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.MAT_GREEN_VEST, EntityEquipmentSlot.CHEST);
 	public static final Item SAFETY_VEST_BLACK = new SafetyVest("black_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.MAT_BLACK_VEST, EntityEquipmentSlot.CHEST);
 	public static final Item POLICE_VEST = new Vest("police_vest", ArmorMaterialRegistry.POLICE_VEST, EntityEquipmentSlot.CHEST);
+	public static final Item LBLUE_VEST = new SafetyVest("lblue_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.LVN_SAFETY_VEST_NO_X, EntityEquipmentSlot.CHEST);
+	public static final Item LBLUE_VEST_X = new SafetyVest("lblue_vest_x", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.LVN_SAFETY_VEST_X, EntityEquipmentSlot.CHEST);
 
-	// IRW Vest
+	// Branded Vests
 	public static final Item IRW_VEST = new SafetyVest("irw_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.IRW_SAFETY_VEST_MAT, EntityEquipmentSlot.CHEST);
-
-	// LVN Safety Vests
-	public static final Item LVN_VEST = new SafetyVest("lvn_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.LVN_SAFETY_VEST_NO_X, EntityEquipmentSlot.CHEST);
-	public static final Item LVN_VEST_X = new SafetyVest("lvn_vest_x", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.LVN_SAFETY_VEST_X, EntityEquipmentSlot.CHEST);
-	public static final Item LVN_VEST_TXT = new SafetyVest("lvn_vest_txt", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.LVN_SAFETY_VEST_TXT, EntityEquipmentSlot.CHEST);
+	public static final Item NC_VEST = new SafetyVest("yellow_vest_nc", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.YELLOW_VEST_NC, EntityEquipmentSlot.CHEST);
 
 	// Cooling Vest
 	public static final Item COOLING_VEST = new SACA("cooling_vest", ArmorMaterialRegistry.COOLING_VEST, EntityEquipmentSlot.CHEST);
