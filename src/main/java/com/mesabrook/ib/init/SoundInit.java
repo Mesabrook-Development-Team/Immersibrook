@@ -163,6 +163,7 @@ public class SoundInit
 	public static final SoundEvent RING_12;
 	public static final SoundEvent RING_13;
 	public static final SoundEvent RING_14;
+	public static final SoundEvent RING_15;
 
 	// DTMF Phone Tones
 	public static final SoundEvent DTMF_0;
@@ -330,6 +331,7 @@ public class SoundInit
 		RING_12 = addSoundsToRegistry("ring_12");
 		RING_13 = addSoundsToRegistry("ring_13");
 		RING_14 = addSoundsToRegistry("ring_14");
+		RING_15 = addSoundsToRegistry("ring_15");
 
 		// DTMF Phone Tones
 		DTMF_0 = addSoundsToRegistry("dtmf_0");
@@ -485,6 +487,7 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.RING_12);
 				event.getRegistry().register(SoundInit.RING_13);
 				event.getRegistry().register(SoundInit.RING_14);
+				event.getRegistry().register(SoundInit.RING_15);
 				event.getRegistry().register(SoundInit.MANHOLE_OPEN);
 				event.getRegistry().register(SoundInit.MANHOLE_CLOSE);
 				event.getRegistry().register(SoundInit.MANHOLE_BREAK);

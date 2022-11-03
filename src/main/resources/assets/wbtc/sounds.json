@@ -905,6 +905,14 @@
 		}],
 		"subtitle": "ib.sub.phonering"
 	},
+	"ring_15": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_15",
+			"stream": true
+		}],
+		"subtitle": "ib.sub.phonering"
+	},
 	"death": {
 		"category": "master",
 		"sounds": [{
