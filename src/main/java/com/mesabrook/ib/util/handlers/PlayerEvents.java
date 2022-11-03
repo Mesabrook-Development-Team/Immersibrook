@@ -5,9 +5,12 @@ import com.mesabrook.ib.advancements.Triggers;
 import com.mesabrook.ib.init.ModEnchants;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.*;
+import com.mesabrook.ib.items.misc.*;
 import com.mesabrook.ib.items.tools.ItemBanHammer;
 import com.mesabrook.ib.items.tools.ItemGavel;
 import com.mesabrook.ib.net.*;
+import com.mesabrook.ib.net.telecom.*;
+import com.mesabrook.ib.telecom.*;
 import com.mesabrook.ib.util.ItemRandomizer;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SoundRandomizer;
@@ -39,9 +42,10 @@ import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.entity.player.*;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -472,6 +476,47 @@ public class PlayerEvents
 				packet.useDelay = true;
 				packet.range = 10;
 				PacketHandler.INSTANCE.sendToServer(packet);
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void PlayerChangedDimensionEvent(PlayerEvent.PlayerChangedDimensionEvent event)
+	{
+		EntityPlayer player = event.player;
+		for (int i = 0; i < player.inventory.getSizeInventory(); i++)
+		{
+			ItemStack phoneStack = player.inventory.getStackInSlot(i);
+			if (!(phoneStack.getItem() instanceof ItemPhone))
+			{
+				continue;
+			}
+
+			NBTTagCompound tag = phoneStack.getTagCompound();
+			ItemPhone.NBTData stackData = new ItemPhone.NBTData();
+			stackData.deserializeNBT(tag);
+
+			String phoneNumber = stackData.getPhoneNumberString();
+			if(phoneNumber == null)
+			{
+				return;
+			}
+
+			try
+			{
+				CallManager manager = CallManager.instance();
+				CallManager.Call callToDisconnect = manager.getCall(phoneNumber);
+
+				if(callToDisconnect == null)
+				{
+					return;
+				}
+
+				callToDisconnect.disconnectDest(phoneNumber);
+			}
+			catch(Exception ex)
+			{
+				player.sendMessage(new TextComponentString(ex.getMessage()));
 			}
 		}
 	}

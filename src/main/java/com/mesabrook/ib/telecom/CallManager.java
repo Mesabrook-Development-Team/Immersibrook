@@ -554,7 +554,7 @@ public class CallManager {
 				}
 			}
 
-			TextComponentString retVal = new TextComponentString("[Phone]");
+			TextComponentString retVal = new TextComponentString("[Call]");
 			Style style = new Style();
 			style.setColor(TextFormatting.GREEN);
 			style.setBold(true);
@@ -749,7 +749,7 @@ public class CallManager {
 		World world = player.world;
 
 		AntennaData antennaData = AntennaData.getOrCreate(world);
-		if (antennaData.getBestReception(player.getPosition()) <= 0.0) {
+		if (world.provider.getDimension() != 0 || antennaData.getBestReception(player.getPosition()) <= 0.0) {
 			// Too far away
 			return new Tuple<>(ResponseTypes.idle, "");
 		}

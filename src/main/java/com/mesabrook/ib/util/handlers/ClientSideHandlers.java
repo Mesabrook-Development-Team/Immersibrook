@@ -52,6 +52,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -247,19 +248,24 @@ public class ClientSideHandlers
 
 		public static void onIncomingCall(String fromNumber, String toNumber)
 		{
-			playIncomingCallSound(toNumber);
-
 			Minecraft mc = Minecraft.getMinecraft();
-			if (mc.currentScreen instanceof GuiPhoneBase)
-			{
-				GuiPhoneBase screen = (GuiPhoneBase)mc.currentScreen;
-				if (!screen.getCurrentPhoneNumber().equals(toNumber))
-				{
-					return;
-				}
+			EntityPlayer player = mc.player;
 
-				GuiIncomingCall incoming = new GuiIncomingCall(screen.getPhoneStack(), screen.getHand(), fromNumber);
-				mc.displayGuiScreen(incoming);
+			if(player.world.provider.getDimension() == 0)
+			{
+				playIncomingCallSound(toNumber);
+
+				if (mc.currentScreen instanceof GuiPhoneBase)
+				{
+					GuiPhoneBase screen = (GuiPhoneBase)mc.currentScreen;
+					if (!screen.getCurrentPhoneNumber().equals(toNumber))
+					{
+						return;
+					}
+
+					GuiIncomingCall incoming = new GuiIncomingCall(screen.getPhoneStack(), screen.getHand(), fromNumber);
+					mc.displayGuiScreen(incoming);
+				}
 			}
 		}
 
@@ -406,6 +412,7 @@ public class ClientSideHandlers
 		public static void onCallDisconnected(String forNumber, String toNumber)
 		{
 			Minecraft mc = Minecraft.getMinecraft();
+			World world = mc.player.world;
 
 			ISound incomingCallSound = incomingCallSoundsByPhone.get(forNumber);
 			if (incomingCallSound != null && mc.getSoundHandler().isSoundPlaying(incomingCallSound))
@@ -450,7 +457,14 @@ public class ClientSideHandlers
 				mc.displayGuiScreen(new GuiCallEnd(callingScreen.getPhoneStack(), callingScreen.getHand(), toNumber));
 			}
 
-			mc.player.sendMessage(new TextComponentString("Phone call with " + GuiPhoneBase.getFormattedPhoneNumber(toNumber) + " has been disconnected"));
+			if(world.provider.getDimension() == 0)
+			{
+				mc.player.sendMessage(new TextComponentString("Phone call with " + GuiPhoneBase.getFormattedPhoneNumber(toNumber) + " has been disconnected"));
+			}
+			else
+			{
+				mc.player.sendMessage(new TextComponentString("Call Failed - Outside Service Dimension"));
+			}
 		}
 
 		public static HashMap<String, LocalDateTime> callStartsByPhone = new HashMap<>();
