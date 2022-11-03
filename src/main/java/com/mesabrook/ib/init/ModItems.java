@@ -323,7 +323,6 @@ public class ModItems
 	public static final Item PHONE_RED = new ItemPhone("smartphone_red", "phone_bezel_red").setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PHONE_BLACK = new ItemPhone("smartphone_black", "phone_bezel_black").setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PHONE_SPECIAL = new ItemPhone("smartphone_special", "phone_bezel").setCreativeTab(Main.IMMERSIBROOK_MAIN);
-	public static final Item PHONE_LVN = new ItemPhone("smartphone_nether", "phone_bezel_red").setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PHONE_MESABROOK = new ItemPhone("smartphone_mesabrook", "phone_bezel_lblue").setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PHONE_RC = new ItemPhone("smartphone_rc", "phone_bezel_blue").setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Item PHONE_ZOE = new ItemPhone("smartphone_dw", "phone_bezel_purple").setCreativeTab(Main.IMMERSIBROOK_MAIN);
