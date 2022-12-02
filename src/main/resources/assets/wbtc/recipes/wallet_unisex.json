@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP",
+    "PPG",
+    "PPP"
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:leather"
+    },
+	"G": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "result": {
+    "item": "wbtc:wallet_unisex",
+    "count": 1
+  }
+}

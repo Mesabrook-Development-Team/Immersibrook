@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wbtc:wallet_unisex"
+        },
+		{
+			"item": "minecraft:dye",
+			"data": 0
+		}
+    ],
+    "result": {
+        "item": "wbtc:wallet_masculine",
+        "count": 1
+    }
+}

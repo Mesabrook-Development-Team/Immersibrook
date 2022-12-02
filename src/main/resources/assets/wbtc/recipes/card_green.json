@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP",
+    "CPP",
+    "PPP"
+  ],
+  "key": {
+    "P": {
+      "item": "wbtc:green_plastic"
+    },
+	"C": {
+      "item": "immersiveengineering:material",
+	  "data": 27
+    }
+  },
+  "result": {
+    "item": "wbtc:card_green",
+    "count": 1
+  }
+}
