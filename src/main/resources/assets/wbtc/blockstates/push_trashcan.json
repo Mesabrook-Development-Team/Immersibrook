@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:push_trashcan" },
+        "facing=south": { "model": "wbtc:push_trashcan", "y": 180 },
+        "facing=west":  { "model": "wbtc:push_trashcan", "y": 270 },
+        "facing=east":  { "model": "wbtc:push_trashcan", "y": 90 }
+    }
+}

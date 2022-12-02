@@ -326,6 +326,7 @@ public class ModBlocks
 	public static final Block TRASH_BIN_GREEN = new BlockBin("rubbish_bin_green").setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block TRASH_BIN_BLUE = new BlockBin("rubbish_bin_blue").setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block TRASH_BIN_RED = new BlockBin("rubbish_bin_red").setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	public static final Block TRASH_BIN_PUSH = new BlockBin("push_trashcan").setCreativeTab(Main.IMMERSIBROOK_MAIN);
 
 	// Laminate Stairs
 	public static final Block STAIRS_OAK_L = new MiscStairs("oak_laminate_stairs", ModBlocks.FLOOR_OAK.getDefaultState(), SoundType.STONE, "axe", 0).setCreativeTab(Main.IMMERSIBROOK_MAIN);
