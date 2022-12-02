@@ -77,6 +77,7 @@ public class CreativeGuiDrawHandler
             		Categories.FOOD, 
             		Categories.RAW,
                     Categories.TECH,
+                    Categories.COMMERCE,
             };
             
             this.categoryButtons = Lists.newArrayList();
