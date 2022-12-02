@@ -3,6 +3,7 @@ package com.mesabrook.ib.init;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.items.*;
 import com.mesabrook.ib.items.armor.*;
+import com.mesabrook.ib.items.commerce.*;
 import com.mesabrook.ib.items.misc.*;
 import com.mesabrook.ib.items.misc.ItemStamp.StampTypes;
 import com.mesabrook.ib.items.record.MemeRecord;
@@ -400,4 +401,12 @@ public class ModItems
 	public static final Item PRESENT_GREEN = new ItemPresent("present_green");
 	public static final Item PRESENT_BLUE = new ItemPresent("present_blue");
 	public static final Item SIGN_SPONGE = new ItemSponge("sponge");
+
+	// Commerce
+	public static final Item WALLET_UNI = new ItemWallet("wallet_unisex");
+	public static final Item WALLET_MAS = new ItemWallet("wallet_masculine");
+	public static final Item WALLET_FEM = new ItemWallet("wallet_feminine");
+	public static final Item DEBIT_CARD_RED = new ItemDebitCard("card_red");
+	public static final Item DEBIT_CARD_GREEN = new ItemDebitCard("card_green");
+	public static final Item DEBIT_CARD_BLUE = new ItemDebitCard("card_blue");
 }
