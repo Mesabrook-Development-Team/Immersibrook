@@ -7,12 +7,14 @@ import net.minecraft.item.*;
 
 public class ItemMoney extends Item implements IHasModel
 {
-    public ItemMoney(String name)
+    private int denomination;
+    public ItemMoney(String name, int value)
     {
         setUnlocalizedName(name);
         setRegistryName(name);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
         setMaxStackSize(64);
+        denomination = value;
 
         ModItems.ITEMS.add(this);
     }
