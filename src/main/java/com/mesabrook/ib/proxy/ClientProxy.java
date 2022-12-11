@@ -1,10 +1,13 @@
 package com.mesabrook.ib.proxy;
 
+import com.mesabrook.ib.*;
 import com.mesabrook.ib.blocks.te.*;
+import com.mesabrook.ib.util.*;
 import com.mesabrook.ib.util.handlers.ClientSideHandlers;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.item.Item;
+import net.minecraft.util.*;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -50,5 +53,8 @@ public class ClientProxy extends CommonProxy
 		ClientRegistry.registerKeyBinding(nvToggleKey);
 		ClientRegistry.registerKeyBinding(hammerSoundKey);
 		ClientRegistry.registerKeyBinding(policeHelmetKey);
+
+		Main.logger.info("Starting download of statue player skins");
+		SkinDownloader.downloadSkin("RavenholmZombie", new ResourceLocation(Reference.MODID, "textures/skins/"));
 	}
 }
