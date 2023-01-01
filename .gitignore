@@ -20,9 +20,7 @@ build
 # other
 eclipse
 run
-
-# Files from Forge MDK
-forge*changelog.txt
-libs/Pam's+HarvestCraft+1.12.2zg.jar
-libs/JABCM-1.12.2-0.0.6_A.jar
+libs/Dynmap-3.4-forge-1.12.2.jar
 libs/ImmersiveEngineering-0.12-98.jar
+libs/JABCM-1.12.2-0.0.6_A.jar
+libs/Pam's+HarvestCraft+1.12.2zg.jar
