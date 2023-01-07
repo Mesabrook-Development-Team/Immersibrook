@@ -343,10 +343,7 @@ public class PlayerEvents
 		World w = evt.getWorld();
 		ItemStack stack = player.getHeldItem(hand);
 
-		if(stack.getItem() instanceof ItemGavel || stack.getItem() instanceof ItemBanHammer)
-		{
-			player.playSound(SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, 1.0F, 1.0F);
-		}
+		player.playSound(SoundEvents.ENTITY_PLAYER_ATTACK_WEAK, 0.38F, 1.0F);
 	}
 
 	/*

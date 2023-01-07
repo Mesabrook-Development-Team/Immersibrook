@@ -341,6 +341,7 @@ tile.rubbish_bin.name=Wheelie Bin
 tile.rubbish_bin_green.name=Wheelie Bin
 tile.rubbish_bin_red.name=Wheelie Bin
 tile.rubbish_bin_blue.name=Wheelie Bin
+tile.push_trashcan.name=Trash Can
 tile.synthetic_turf.name=Synthetic Turf
 tile.white_cobblestone.name=Chalked Cobblestone
 tile.white_stone_bricks.name=Chalked Stone Bricks
