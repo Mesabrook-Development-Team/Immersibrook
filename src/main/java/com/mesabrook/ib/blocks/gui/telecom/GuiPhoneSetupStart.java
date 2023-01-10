@@ -1,12 +1,19 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.mesabrook.ib.net.ClientSoundPacket;
+import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.PositionedSoundRecord;
+import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.registries.IForgeRegistry;
 
 import java.io.IOException;
 
@@ -14,7 +21,8 @@ public class GuiPhoneSetupStart extends GuiPhoneBase
 {
     MinedroidButton beginSetup;
     ImageButton mux;
-
+    private PositionedSoundRecord setupMusic = null;
+    
     public GuiPhoneSetupStart(ItemStack phoneStack, EnumHand hand)
     {
         super(phoneStack, hand);
@@ -28,6 +36,11 @@ public class GuiPhoneSetupStart extends GuiPhoneBase
 
     @Override
     protected boolean renderControlBar() {
+        return false;
+    }
+    
+    @Override
+    protected boolean renderTopBar() {
         return false;
     }
 
@@ -44,6 +57,14 @@ public class GuiPhoneSetupStart extends GuiPhoneBase
         soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
         soundPacket.soundName = "minedroid_startup";
         PacketHandler.INSTANCE.sendToServer(soundPacket);
+        
+        SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
+        ResourceLocation soundLocation = new ResourceLocation(Reference.MODID, "md_setup");
+        IForgeRegistry<SoundEvent> soundRegistry = GameRegistry.findRegistry(SoundEvent.class);
+        SoundEvent soundEvent = soundRegistry.getValue(soundLocation);
+
+        setupMusic = PositionedSoundRecord.getMasterRecord(soundEvent, 1F);
+        handler.playSound(setupMusic);
     }
 
     @Override
@@ -66,7 +87,18 @@ public class GuiPhoneSetupStart extends GuiPhoneBase
         super.actionPerformed(button);
         if(button == beginSetup)
         {
+        	SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
+        	handler.stopSound(setupMusic);
+        	
             Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneSetupStepPersonalization(phoneStack, hand));
         }
     }
+    
+	@Override
+	public void onGuiClosed()
+	{
+		super.onGuiClosed();
+    	SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
+    	handler.stopSound(setupMusic);
+	}
 }

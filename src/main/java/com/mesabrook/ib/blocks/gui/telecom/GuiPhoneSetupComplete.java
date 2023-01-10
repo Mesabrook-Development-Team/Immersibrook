@@ -1,20 +1,29 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.mesabrook.ib.init.SoundInit;
+import com.mesabrook.ib.net.ClientSoundPacket;
+import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.handlers.PacketHandler;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
+import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.registries.IForgeRegistry;
 
 import java.io.IOException;
 
 public class GuiPhoneSetupComplete extends GuiPhoneBase
 {
     private GuiLockScreen.UnlockSlider complete;
-
     ImageButton mux;
+    private PositionedSoundRecord setupMusic = null;
 
     public GuiPhoneSetupComplete(ItemStack phoneStack, EnumHand hand)
     {
@@ -29,6 +38,11 @@ public class GuiPhoneSetupComplete extends GuiPhoneBase
 
     @Override
     protected boolean renderControlBar() {
+        return false;
+    }
+    
+    @Override
+    protected boolean renderTopBar() {
         return false;
     }
 
@@ -67,6 +81,19 @@ public class GuiPhoneSetupComplete extends GuiPhoneBase
 
     private void goHome()
     {
+        SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
+        ResourceLocation soundLocation = new ResourceLocation(Reference.MODID, "md_setup");
+        IForgeRegistry<SoundEvent> soundRegistry = GameRegistry.findRegistry(SoundEvent.class);
+        SoundEvent soundEvent = soundRegistry.getValue(soundLocation);
+
+        setupMusic = PositionedSoundRecord.getMasterRecord(soundEvent, 1F);
+        handler.stopSound(setupMusic);
+    	
+        ClientSoundPacket soundPacket = new ClientSoundPacket();
+        soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
+        soundPacket.soundName = "phone_unlock";
+        PacketHandler.INSTANCE.sendToServer(soundPacket);
+        
         GuiPhoneBase.isPhoneUnlocked = true;
         Minecraft.getMinecraft().displayGuiScreen(new GuiHome(phoneStack, hand));
     }

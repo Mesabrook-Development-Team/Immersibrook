@@ -29,11 +29,16 @@ public class GuiPhoneNameSetup extends GuiPhoneBase
     @Override
     protected String getInnerTextureFileName()
     {
-        return "app_screen_blue.png";
+        return "app_screen_setup.png";
     }
 
     @Override
     protected boolean renderControlBar() {
+        return false;
+    }
+    
+    @Override
+    protected boolean renderTopBar() {
         return false;
     }
 

@@ -1070,5 +1070,12 @@
 			"name": "wbtc:phone_crash"
 		}],
 		"subtitle": "ib.sub.phonecrash"
+	},
+	"md_setup": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:md_setup"
+		}],
+		"subtitle": "ib.sub.setup"
 	}
 }
