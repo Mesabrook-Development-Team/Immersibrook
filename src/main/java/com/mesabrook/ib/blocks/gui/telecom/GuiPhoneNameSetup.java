@@ -29,7 +29,7 @@ public class GuiPhoneNameSetup extends GuiPhoneBase
     @Override
     protected String getInnerTextureFileName()
     {
-        return "app_screen_setup.png";
+        return "app_screen_blue.png";
     }
 
     @Override
