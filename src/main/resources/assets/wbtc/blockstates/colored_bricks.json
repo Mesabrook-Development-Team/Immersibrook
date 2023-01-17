@@ -1,0 +1,30 @@
+{
+	"forge_marker": 1,
+	"defaults":
+	{
+		"model": "cube_all"
+	},
+	"variants": 
+	{
+		"inventory": [{}],
+		"color":
+		{
+			"white": { "textures": { "all": "wbtc:blocks/colored_bricks_white" } },
+			"orange": { "textures": { "all": "wbtc:blocks/colored_bricks_orange" } },
+			"magenta": { "textures": { "all": "wbtc:blocks/colored_bricks_magenta" } },
+			"light_blue": { "textures": { "all": "wbtc:blocks/colored_bricks_light_blue" } },
+			"yellow": { "textures": { "all": "wbtc:blocks/colored_bricks_yellow" } },
+			"lime": { "textures": { "all": "wbtc:blocks/colored_bricks_lime" } },
+			"pink": { "textures": { "all": "wbtc:blocks/colored_bricks_pink" } },
+			"gray": { "textures": { "all": "wbtc:blocks/colored_bricks_gray" } },
+			"silver": { "textures": { "all": "wbtc:blocks/colored_bricks_silver" } },
+			"cyan": { "textures": { "all": "wbtc:blocks/colored_bricks_cyan" } },
+			"purple": { "textures": { "all": "wbtc:blocks/colored_bricks_purple" } },
+			"blue": { "textures": { "all": "wbtc:blocks/colored_bricks_blue" } },
+			"brown": { "textures": { "all": "wbtc:blocks/colored_bricks_brown" } },
+			"green": { "textures": { "all": "wbtc:blocks/colored_bricks_green" } },
+			"red": { "textures": { "all": "wbtc:blocks/colored_bricks_red" } },
+			"black": { "textures": { "all": "wbtc:blocks/colored_bricks_black" } }
+		}
+	}
+}

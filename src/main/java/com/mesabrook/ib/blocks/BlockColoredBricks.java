@@ -20,21 +20,21 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockColoredStoneBricks extends Block implements IHasModel {
-
-    public static PropertyEnum<EnumDyeColor> COLOR = PropertyEnum.create("color", EnumDyeColor.class);
-
-    public BlockColoredStoneBricks() {
-        super(Material.ROCK);
-        setUnlocalizedName("colored_stone_bricks");
-        setRegistryName("colored_stone_bricks");
-        setSoundType(SoundType.STONE);
+public class BlockColoredBricks extends Block implements IHasModel
+{
+	public static PropertyEnum<EnumDyeColor> COLOR = PropertyEnum.create("color", EnumDyeColor.class);
+	
+	public BlockColoredBricks()
+	{
+		super(Material.ROCK);
+		setUnlocalizedName("colored_bricks");
+		setRegistryName("colored_bricks");
         setHardness(5.0F);
         setResistance(8.0F);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
         setHarvestLevel("pickaxe", 0);
         setLightLevel(0);
-
+        
         ModBlocks.BLOCKS.add(this);
         ModItems.ITEMS.add(new ItemBlock(this)
         {
@@ -44,11 +44,11 @@ public class BlockColoredStoneBricks extends Block implements IHasModel {
 
             public String getUnlocalizedName(ItemStack stack)
             {
-                return "tile.colored_stone_bricks." + EnumDyeColor.byMetadata(stack.getMetadata()).getName();
+                return "tile.colored_bricks." + EnumDyeColor.byMetadata(stack.getMetadata()).getName();
             }
         }.setRegistryName(this.getRegistryName()).setMaxStackSize(64).setHasSubtypes(true));
-    }
-
+	}
+	
     @Override
     public void registerModels()
     {
@@ -58,7 +58,7 @@ public class BlockColoredStoneBricks extends Block implements IHasModel {
                     "color=" + EnumDyeColor.byMetadata(i).getName());
         }
     }
-
+	
     @Override
     public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items)
     {

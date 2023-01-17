@@ -39,7 +39,7 @@ public class GuiPhoneNameSetup extends GuiPhoneBase
     
     @Override
     protected boolean renderTopBar() {
-        return false;
+        return true;
     }
 
     @Override
