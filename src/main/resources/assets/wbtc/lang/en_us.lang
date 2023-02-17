@@ -1892,3 +1892,16 @@ item.wallet_feminine.name=§dWallet
 item.card_red.name=§cBusiness Debit Card
 item.card_green.name=§aGovernment Debit Card
 item.card_blue.name=§bDebit Card
+
+// Money
+item.one_dollar.name=One Dollar
+item.five_dollars.name=Five Dollars
+item.ten_dollars.name=Ten Dollars
+item.twenty_dollars.name=Twenty Dollars
+item.fifty_dollars.name=Fifty Dollars
+item.one_hundred_dollars.name=One Hundred Dollars
+item.penny.name=One Cent
+item.five_cents.name=Five Cents
+item.ten_cents.name=Ten Cents
+item.twenty_five_cents.name=Twenty Five Cents
+item.dollar_coin.name=One Dollar Coin
