@@ -7,8 +7,8 @@ import net.minecraft.item.*;
 
 public class ItemMoney extends Item implements IHasModel
 {
-    private float denomination;
-    public ItemMoney(String name, float value)
+    private int denomination;
+    public ItemMoney(String name, int value)
     {
         setUnlocalizedName(name);
         setRegistryName(name);
