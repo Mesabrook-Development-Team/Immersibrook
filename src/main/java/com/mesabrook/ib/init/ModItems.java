@@ -409,4 +409,20 @@ public class ModItems
 	public static final Item DEBIT_CARD_RED = new ItemDebitCard("card_red");
 	public static final Item DEBIT_CARD_GREEN = new ItemDebitCard("card_green");
 	public static final Item DEBIT_CARD_BLUE = new ItemDebitCard("card_blue");
+
+	// Mesabrookian Dollar Items - Banknotes
+	public static final Item ONE_DOLLAR = new ItemMoney("one_dollar", 1.00F);
+	public static final Item FIVE_DOLLARS = new ItemMoney("five_dollars", 5.00F);
+	public static final Item TEN_DOLLARS = new ItemMoney("ten_dollars", 10.00F);
+	public static final Item TWENTY_DOLLARS = new ItemMoney("twenty_dollars", 20.00F);
+	public static final Item FIFTY_DOLLARS = new ItemMoney("fifty_dollars", 50.00F);
+	public static final Item ONE_HUNDRED_DOLLARS = new ItemMoney("one_hundred_dollars", 100.00F);
+
+	// Mesabrookian Dollar Items - Coinage
+	public static final Item PENNY = new ItemMoney("penny", 0.01F);
+	public static final Item FIVE_CENTS = new ItemMoney("five_cents", 0.05F);
+	public static final Item TEN_CENTS = new ItemMoney("ten_cents", 0.10F);
+	public static final Item TWENTY_FIVE_CENTS = new ItemMoney("twenty_five_cents", 0.25F);
+	public static final Item DOLLAR_COIN = new ItemMoney("dollar_coin", 1.00F);
+
 }
