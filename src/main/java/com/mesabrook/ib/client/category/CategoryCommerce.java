@@ -27,5 +27,16 @@ public class CategoryCommerce extends AbstractCategory
         add(ModItems.DEBIT_CARD_RED);
         add(ModItems.DEBIT_CARD_GREEN);
         add(ModItems.DEBIT_CARD_BLUE);
+        add(ModItems.ONE_DOLLAR);
+        add(ModItems.FIVE_DOLLARS);
+        add(ModItems.TEN_DOLLARS);
+        add(ModItems.TWENTY_DOLLARS);
+        add(ModItems.FIFTY_DOLLARS);
+        add(ModItems.ONE_HUNDRED_DOLLARS);
+        add(ModItems.PENNY);
+        add(ModItems.FIVE_CENTS);
+        add(ModItems.TEN_CENTS);
+        add(ModItems.TWENTY_FIVE_CENTS);
+        add(ModItems.DOLLAR_COIN);
     }
 }
