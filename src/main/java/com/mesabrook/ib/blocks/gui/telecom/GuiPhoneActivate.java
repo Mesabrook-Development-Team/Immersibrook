@@ -4,6 +4,7 @@ import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.net.telecom.ActivateNumberChosenPacket;
 import com.mesabrook.ib.net.telecom.ActivatePhonePacket;
+import com.mesabrook.ib.net.telecom.SetBatteryLevelPacket;
 import com.mesabrook.ib.util.GuiUtil;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SpecialBezelRandomizer;
@@ -79,7 +80,7 @@ public class GuiPhoneActivate extends GuiScreen {
 			buttonList.add(label);
 			workingY += fontRenderer.FONT_HEIGHT + 2;
 		}
-		
+
 		ActivatePhonePacket packet = new ActivatePhonePacket();
 		packet.hand = hand.ordinal();
 		PacketHandler.INSTANCE.sendToServer(packet);
