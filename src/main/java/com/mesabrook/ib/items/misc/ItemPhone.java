@@ -27,7 +27,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
-import java.sql.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -113,6 +112,7 @@ public class ItemPhone extends Item implements IHasModel {
 		private int lockBackground = 1;
 		private int chatTone = 1;
 		private int ringTone = 1;
+		private int batteryLevel;
 		private HashMap<UUID, Contact> contactsByIdentifier = new HashMap<>();
 		private HashMap<String, Contact> contactsByPhoneNumber = new HashMap<>();
 
@@ -227,6 +227,16 @@ public class ItemPhone extends Item implements IHasModel {
 			this.ringTone = ringTone;
 		}
 
+		public int getBatteryLevel()
+		{
+			return batteryLevel;
+		}
+
+		public void setBatteryLevel(int newLevel)
+		{
+			this.batteryLevel = newLevel;
+		}
+
 		public boolean getShowIRLTime()
 		{
 			return showIRLTime;
@@ -311,6 +321,7 @@ public class ItemPhone extends Item implements IHasModel {
 			tag.setInteger(Reference.LOCK_BACKGROUND, getLockBackground());
 			tag.setInteger(Reference.CHAT_TONE, getChatTone());
 			tag.setInteger(Reference.RING_TONE, getRingTone());
+			tag.setInteger(Reference.BATTERY_LEVEL, getBatteryLevel());
 			tag.setBoolean(Reference.SHOW_IRL_TIME, getShowIRLTime());
 			tag.setBoolean(Reference.SHOW_MILITARY_TIME, getShowingMilitaryIRLTime());
 			tag.setBoolean(Reference.DEBUG_MODE, getIsDebugModeEnabled());
@@ -370,6 +381,11 @@ public class ItemPhone extends Item implements IHasModel {
 			if (nbt.hasKey(Reference.RING_TONE))
 			{
 				setRingTone(nbt.getInteger(Reference.RING_TONE));
+			}
+
+			if(nbt.hasKey(Reference.BATTERY_LEVEL))
+			{
+				setBatteryLevel(nbt.getInteger(Reference.BATTERY_LEVEL));
 			}
 
 			if(nbt.hasKey(Reference.SHOW_IRL_TIME))

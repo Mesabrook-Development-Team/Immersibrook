@@ -1077,5 +1077,12 @@
 			"name": "wbtc:md_setup"
 		}],
 		"subtitle": "ib.sub.setup"
+	},
+	"phone_battery_low": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:phone_battery_low"
+		}],
+		"subtitle": "ib.sub.lowbat"
 	}
 }

@@ -147,6 +147,7 @@ public class SoundInit
 	public static final SoundEvent ALERT_TONE;
 	public static final SoundEvent PHONE_OFF;
 	public static final SoundEvent MINEDROID_STARTUP;
+	public static final SoundEvent PHONE_BATTERY_LOW;
 
 	// Ringtones
 	public static final SoundEvent RING_1;
@@ -317,6 +318,7 @@ public class SoundInit
 		MINEDROID_STARTUP = addSoundsToRegistry("minedroid_startup");
 		PHONE_CRASH = addSoundsToRegistry("phone_crash");
 		PHONE_SETUP_MUSIC = addSoundsToRegistry("md_setup");
+		PHONE_BATTERY_LOW = addSoundsToRegistry("phone_battery_low");
 
 		// Ringtones
 		RING_1 = addSoundsToRegistry("ring_1");
@@ -513,6 +515,7 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.COUGH_F);
 				event.getRegistry().register(SoundInit.PHONE_CRASH);
 				event.getRegistry().register(SoundInit.PHONE_SETUP_MUSIC);
+				event.getRegistry().register(SoundInit.PHONE_BATTERY_LOW);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

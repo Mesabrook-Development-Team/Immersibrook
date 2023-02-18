@@ -2,6 +2,7 @@ package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.init.SoundInit;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.net.ClientSoundPacket;
 import com.mesabrook.ib.net.telecom.GetReceptionStrengthPacket;
@@ -17,6 +18,8 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -53,6 +56,7 @@ public abstract class GuiPhoneBase extends GuiScreen
 	private int HOME_X;
 	private boolean firstTick = true;
 	private int timeToNextBezel;
+	private int battery;
 	
 	private final int STATUS_BAR_HEIGHT = 14;
 	private SignalStrengths signalStrength = SignalStrengths.unknown;
@@ -67,6 +71,7 @@ public abstract class GuiPhoneBase extends GuiScreen
 		this.phoneStack = phoneStack;
 		this.hand = hand;
 		this.phoneStackData = new ItemPhone.NBTData();
+		this.battery = phoneStackData.getBatteryLevel();
 		this.phoneStackData.deserializeNBT(this.phoneStack.getTagCompound());
 	}
 	
@@ -139,6 +144,16 @@ public abstract class GuiPhoneBase extends GuiScreen
 				firstTick = false;
 			}
 			drawDefaultBackground();
+			battery--;
+			phoneStackData.setBatteryLevel(battery);
+			Minecraft.getMinecraft().player.sendMessage(new TextComponentString(String.valueOf(phoneStackData.getBatteryLevel())));
+
+			if(phoneStackData.getBatteryLevel() <= 0)
+			{
+				Minecraft.getMinecraft().displayGuiScreen(null);
+				Minecraft.getMinecraft().player.sendMessage(new TextComponentString("Phone battery is dead"));
+				Minecraft.getMinecraft().player.playSound(SoundInit.PHONE_BATTERY_LOW, 1.0F, 1.0F);
+			}
 
 			// Phone border
 			if(phoneStack.getItem() == ModItems.PHONE_SPECIAL)
