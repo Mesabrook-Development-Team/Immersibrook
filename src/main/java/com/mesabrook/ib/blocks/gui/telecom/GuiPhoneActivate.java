@@ -210,7 +210,7 @@ public class GuiPhoneActivate extends GuiScreen {
 
 			SetBatteryLevelPacket batPat = new SetBatteryLevelPacket();
 			batPat.hand = hand.ordinal();
-			batPat.batteryLevel = 9999;
+			batPat.batteryLevel = Reference.BATTERY_CHARGE;
 			PacketHandler.INSTANCE.sendToServer(batPat);
 		}
 	}

@@ -66,7 +66,16 @@ public class ItemPhone extends Item implements IHasModel {
 		{
 			phoneNumber = GuiPhoneBase.getFormattedPhoneNumber(stackData.getPhoneNumberString());
 			tooltip.add(TextFormatting.GREEN + phoneNumber);
-			tooltip.add(TextFormatting.AQUA + "Battery: " + stackData.getBatteryLevel());
+
+			if(stackData.getBatteryLevel() <= 0)
+			{
+				tooltip.add(TextFormatting.RED + "Battery: " + stackData.getBatteryLevel());
+				tooltip.add(TextFormatting.RED + "Phone battery is dead! Please recharge me!");
+			}
+			else
+			{
+				tooltip.add(TextFormatting.AQUA + "Battery: " + stackData.getBatteryLevel());
+			}
 		}
 		else
 		{
@@ -96,7 +105,7 @@ public class ItemPhone extends Item implements IHasModel {
 		{
 			SetBatteryLevelPacket packet = new SetBatteryLevelPacket();
 			packet.hand = handIn.ordinal();
-			packet.batteryLevel = 9999;
+			packet.batteryLevel = Reference.BATTERY_CHARGE;
 			PacketHandler.INSTANCE.sendToServer(packet);
 			playerIn.sendMessage(new TextComponentString("Phone recharged"));
 		}
