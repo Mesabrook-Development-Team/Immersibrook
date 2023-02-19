@@ -148,7 +148,8 @@ public abstract class GuiPhoneBase extends GuiScreen
 			drawDefaultBackground();
 			battery--;
 
-			Minecraft.getMinecraft().player.sendMessage(new TextComponentString(String.valueOf(phoneStackData.getBatteryLevel())));
+			Minecraft.getMinecraft().player.sendMessage(new TextComponentString("Server: " + phoneStackData.getBatteryLevel()));
+			Minecraft.getMinecraft().player.sendMessage(new TextComponentString("Client: " + battery));
 
 			if(phoneStackData.getBatteryLevel() <= 0)
 			{
@@ -382,6 +383,7 @@ public abstract class GuiPhoneBase extends GuiScreen
 			batPat.batteryLevel = battery;
 		}
 		PacketHandler.INSTANCE.sendToServer(batPat);
+		Minecraft.getMinecraft().player.sendMessage(new TextComponentString("Level Sent to Server: " + battery));
 
 		if (!lastGuiWasPhone)
 		{

@@ -66,7 +66,7 @@ public class ItemPhone extends Item implements IHasModel {
 		{
 			phoneNumber = GuiPhoneBase.getFormattedPhoneNumber(stackData.getPhoneNumberString());
 			tooltip.add(TextFormatting.GREEN + phoneNumber);
-			tooltip.add(TextFormatting.AQUA + String.valueOf(stackData.getBatteryLevel()));
+			tooltip.add(TextFormatting.AQUA + "Battery: " + stackData.getBatteryLevel());
 		}
 		else
 		{
