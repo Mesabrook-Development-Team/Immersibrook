@@ -373,7 +373,14 @@ public abstract class GuiPhoneBase extends GuiScreen
 
 		SetBatteryLevelPacket batPat = new SetBatteryLevelPacket();
 		batPat.hand = hand.ordinal();
-		batPat.batteryLevel = battery;
+		if(battery < 0)
+		{
+			batPat.batteryLevel = 0;
+		}
+		else
+		{
+			batPat.batteryLevel = battery;
+		}
 		PacketHandler.INSTANCE.sendToServer(batPat);
 
 		if (!lastGuiWasPhone)
