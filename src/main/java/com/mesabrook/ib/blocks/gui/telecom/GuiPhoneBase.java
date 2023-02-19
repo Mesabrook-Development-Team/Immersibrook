@@ -151,7 +151,7 @@ public abstract class GuiPhoneBase extends GuiScreen
 			Minecraft.getMinecraft().player.sendMessage(new TextComponentString("Server: " + phoneStackData.getBatteryLevel()));
 			Minecraft.getMinecraft().player.sendMessage(new TextComponentString("Client: " + battery));
 
-			if(phoneStackData.getBatteryLevel() <= 0)
+			if(phoneStackData.getBatteryLevel() <= 0 || battery <= 0)
 			{
 				Minecraft.getMinecraft().displayGuiScreen(null);
 				Minecraft.getMinecraft().player.sendMessage(new TextComponentString("Phone battery is dead"));
