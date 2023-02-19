@@ -207,6 +207,11 @@ public class GuiPhoneActivate extends GuiScreen {
 			chosen.hand = hand.ordinal();
 			chosen.number = label.getNumber();
 			PacketHandler.INSTANCE.sendToServer(chosen);
+
+			SetBatteryLevelPacket batPat = new SetBatteryLevelPacket();
+			batPat.hand = hand.ordinal();
+			batPat.batteryLevel = 9999;
+			PacketHandler.INSTANCE.sendToServer(batPat);
 		}
 	}
 	

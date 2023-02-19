@@ -5,9 +5,11 @@ import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneBase;
 import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.net.telecom.SetBatteryLevelPacket;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SpecialBezelRandomizer;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -19,6 +21,7 @@ import net.minecraft.nbt.NBTUtil;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -63,6 +66,7 @@ public class ItemPhone extends Item implements IHasModel {
 		{
 			phoneNumber = GuiPhoneBase.getFormattedPhoneNumber(stackData.getPhoneNumberString());
 			tooltip.add(TextFormatting.GREEN + phoneNumber);
+			tooltip.add(TextFormatting.AQUA + String.valueOf(stackData.getBatteryLevel()));
 		}
 		else
 		{
@@ -86,6 +90,15 @@ public class ItemPhone extends Item implements IHasModel {
 		if(playerIn instanceof EntityPlayer)
 		{
 			Triggers.trigger(Triggers.PHONE_USE, playerIn);
+		}
+
+		if(playerIn.isSneaking())
+		{
+			SetBatteryLevelPacket packet = new SetBatteryLevelPacket();
+			packet.hand = handIn.ordinal();
+			packet.batteryLevel = 9999;
+			PacketHandler.INSTANCE.sendToServer(packet);
+			playerIn.sendMessage(new TextComponentString("Phone recharged"));
 		}
 
 		return super.onItemRightClick(worldIn, playerIn, handIn);

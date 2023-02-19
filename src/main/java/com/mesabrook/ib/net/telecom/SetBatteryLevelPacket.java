@@ -1,15 +1,11 @@
 package com.mesabrook.ib.net.telecom;
 
 import com.mesabrook.ib.items.misc.ItemPhone;
-import com.mesabrook.ib.util.Reference;
-import com.mesabrook.ib.util.handlers.PacketHandler;
-import com.mesabrook.ib.util.saveData.PhoneNumberData;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;

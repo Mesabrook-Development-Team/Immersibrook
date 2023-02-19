@@ -371,6 +371,11 @@ public abstract class GuiPhoneBase extends GuiScreen
 	public void onGuiClosed() {
 		super.onGuiClosed();
 
+		SetBatteryLevelPacket batPat = new SetBatteryLevelPacket();
+		batPat.hand = hand.ordinal();
+		batPat.batteryLevel = battery;
+		PacketHandler.INSTANCE.sendToServer(batPat);
+
 		if (!lastGuiWasPhone)
 		{
 			isPhoneUnlocked = false;
