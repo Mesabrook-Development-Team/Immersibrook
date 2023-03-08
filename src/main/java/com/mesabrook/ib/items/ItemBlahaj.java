@@ -54,6 +54,10 @@ public class ItemBlahaj extends Item implements IHasModel
         {
             tooltip.add(new TextComponentTranslation("tooltip.gray_shork").getFormattedText());
         }
+        else if(stack.getItem() == ModItems.BREAD_PILLOW)
+        {
+            tooltip.add(new TextComponentTranslation("tooltip.bread").getFormattedText());
+        }
     }
 
     @Override

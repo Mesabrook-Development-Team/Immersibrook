@@ -428,4 +428,5 @@ public class ModItems
 	// Blahaj
 	public static final Item BLAHAJ = new ItemBlahaj("blahaj");
 	public static final Item GRAY_BLAHAJ = new ItemBlahaj("gray_blahaj");
+	public static final Item BREAD_PILLOW = new ItemBlahaj("bread_pillow");
 }

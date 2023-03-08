@@ -1888,8 +1888,10 @@ tooltip.sponge=§eA handheld sponge that can edit signs.
 // Blahajs
 item.blahaj.name=§bBlåhaj
 item.gray_blahaj.name=§7Blåhaj
+item.bread_pillow.name=Bread Pillow
 tooltip.blue_shork=§bThis is Blåhaj, he is fren.
 tooltip.gray_shork=§7This is Blåhaj, he is fren.
+tooltip.bread=A big soft bread pillow
 
 // Commerce
 item.wallet_unisex.name=Wallet

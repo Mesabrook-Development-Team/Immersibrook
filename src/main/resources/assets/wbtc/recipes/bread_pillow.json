@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OOO",
+    "OOO"
+  ],
+  "key": {
+    "O": {
+      "item": "minecraft:wool",
+	  "data": 1
+    }
+  },
+  "result": {
+    "item": "wbtc:bread_pillow",
+    "count": 1
+  }
+}

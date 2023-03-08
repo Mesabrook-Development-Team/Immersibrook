@@ -134,6 +134,7 @@ public class CategoryHousehold extends AbstractCategory
 		// Blahaj
 		add(ModItems.BLAHAJ);
 		add(ModItems.GRAY_BLAHAJ);
+		add(ModItems.BREAD_PILLOW);
 	}
 
 }
