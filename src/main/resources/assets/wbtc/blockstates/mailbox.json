@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:mailbox" },
+        "facing=south": { "model": "wbtc:mailbox", "y": 180 },
+        "facing=west":  { "model": "wbtc:mailbox", "y": 270 },
+        "facing=east":  { "model": "wbtc:mailbox", "y": 90 }
+    }
+}

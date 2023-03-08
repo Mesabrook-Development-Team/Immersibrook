@@ -93,7 +93,7 @@ im.cmd.proxchat.set=Proximity Chat has been turned %s
 im.talk.usage=Talk Command
 im.talk.success=You are now talking %s
 im.talk.noglobalperm=You are not allowed to send global messages
-im.access.call=§7§lIncoming Phone Call from
+im.access.call=§e§lYou have an incoming call
 im.cmd.wea.usage=Valid arguments: start, stop
 
 //First Aid
@@ -1884,6 +1884,14 @@ tile.in_street_crosswalk_sign.name=In-Street Pedestrian Crossing Sign
 // Sponge
 item.sponge.name=Sponge
 tooltip.sponge=§eA handheld sponge that can edit signs.
+
+// Blahajs
+item.blahaj.name=§bBlåhaj
+item.gray_blahaj.name=§7Blåhaj
+item.bread_pillow.name=Bread Pillow
+tooltip.blue_shork=§bThis is Blåhaj, he is fren.
+tooltip.gray_shork=§7This is Blåhaj, he is fren.
+tooltip.bread=A big soft bread pillow
 
 // Commerce
 item.wallet_unisex.name=Wallet

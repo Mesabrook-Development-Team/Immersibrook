@@ -425,4 +425,8 @@ public class ModItems
 	public static final Item TWENTY_FIVE_CENTS = new ItemMoney("twenty_five_cents", 25);
 	public static final Item DOLLAR_COIN = new ItemMoney("dollar_coin", 100);
 
+	// Blahaj
+	public static final Item BLAHAJ = new ItemBlahaj("blahaj");
+	public static final Item GRAY_BLAHAJ = new ItemBlahaj("gray_blahaj");
+	public static final Item BREAD_PILLOW = new ItemBlahaj("bread_pillow");
 }
