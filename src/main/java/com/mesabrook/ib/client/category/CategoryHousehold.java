@@ -130,6 +130,10 @@ public class CategoryHousehold extends AbstractCategory
 
 		// Sponge
 		add(ModItems.SIGN_SPONGE);
+
+		// Blahaj
+		add(ModItems.BLAHAJ);
+		add(ModItems.GRAY_BLAHAJ);
 	}
 
 }

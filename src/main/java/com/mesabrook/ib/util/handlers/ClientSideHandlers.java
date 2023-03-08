@@ -241,7 +241,7 @@ public class ClientSideHandlers
 					pn.getStyle().setItalic(true);
 					pn.getStyle().setColor(TextFormatting.GRAY);
 
-					player.sendStatusMessage(new TextComponentString(new TextComponentTranslation("im.access.call").getFormattedText() + " " + TextFormatting.GRAY + pn.getFormattedText()), true);
+					player.sendStatusMessage(new TextComponentString(new TextComponentTranslation("im.access.call").getFormattedText()), true);
 				}
 			}
 		}
