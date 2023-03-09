@@ -55,6 +55,8 @@ public class ClientProxy extends CommonProxy
 		ClientRegistry.registerKeyBinding(policeHelmetKey);
 
 		Main.logger.info("Starting download of statue player skins");
-		SkinDownloader.downloadSkin("RavenholmZombie", new ResourceLocation(Reference.MODID, "textures/skins/"));
+
+		// Broken, needs to be fixed @CSX8600
+		// SkinDownloader.downloadSkin(Reference.RZ_UUID);
 	}
 }
