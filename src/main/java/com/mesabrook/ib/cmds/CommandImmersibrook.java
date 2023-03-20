@@ -45,8 +45,18 @@ public class CommandImmersibrook extends CommandBase
 				try
 				{
 					EntityPlayerMP player = (EntityPlayerMP) sender;
-					AboutGUIPacket packet = new AboutGUIPacket();
-					PacketHandler.INSTANCE.sendTo(packet, player);
+//					AboutGUIPacket packet = new AboutGUIPacket();
+//					PacketHandler.INSTANCE.sendTo(packet, player);
+
+					player.sendMessage(new TextComponentString("============================================"));
+					player.sendMessage(new TextComponentString("Immersibrook"));
+					player.sendMessage(new TextComponentString("Mod ID: " + Reference.MODID));
+					player.sendMessage(new TextComponentString("Version " + Reference.VERSION));
+					player.sendMessage(new TextComponentString(" "));
+					player.sendMessage(new TextComponentString("Developed by: RavenholmZombie and CSX8600"));
+					player.sendMessage(new TextComponentString("For the Mesabrook modded Minecraft server."));
+					player.sendMessage(new TextComponentString(" "));
+					player.sendMessage(new TextComponentString("============================================"));
 				}
 				catch(Exception ex)
 				{
