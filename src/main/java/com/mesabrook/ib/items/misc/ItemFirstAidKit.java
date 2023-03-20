@@ -98,6 +98,11 @@ public class ItemFirstAidKit extends Item implements IHasModel
 				harmful.getStyle().setBold(true);
 				harmful.getStyle().setColor(TextFormatting.RED);
 
+				if(playerIn instanceof EntityPlayer)
+				{
+					Triggers.trigger(Triggers.FIRST_AID_HOSTILES, playerIn);
+				}
+
 				playerIn.sendStatusMessage(new TextComponentString(harmful.getFormattedText()), true);
 				return false;
 			}
