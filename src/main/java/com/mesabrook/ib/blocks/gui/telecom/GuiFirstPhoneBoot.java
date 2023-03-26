@@ -10,12 +10,12 @@ import net.minecraft.util.EnumHand;
 
 import java.io.IOException;
 
-public class GuiPhoneSetupStart extends GuiPhoneBase
+
+public class GuiFirstPhoneBoot extends GuiPhoneBase
 {
-    MinedroidButton beginSetup;
-    ImageButton mux;
-    
-    public GuiPhoneSetupStart(ItemStack phoneStack, EnumHand hand)
+    private int timerToNextScreen;
+
+    public GuiFirstPhoneBoot(ItemStack phoneStack, EnumHand hand)
     {
         super(phoneStack, hand);
     }
@@ -30,7 +30,7 @@ public class GuiPhoneSetupStart extends GuiPhoneBase
     protected boolean renderControlBar() {
         return false;
     }
-    
+
     @Override
     protected boolean renderTopBar() {
         return false;
@@ -40,14 +40,10 @@ public class GuiPhoneSetupStart extends GuiPhoneBase
     public void initGui()
     {
         super.initGui();
-        beginSetup = new MinedroidButton(1, INNER_X + 100, INNER_Y + 180, 50, "Begin >", 0xFFFFFF);
-        mux = new ImageButton(2, INNER_X + 15, INNER_Y + 27, 25, 25, "icn_mux.png", 32, 32);
-        buttonList.add(beginSetup);
-        buttonList.add(mux);
 
         ClientSoundPacket soundPacket = new ClientSoundPacket();
         soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
-        soundPacket.soundName = "minedroid_startup";
+        soundPacket.soundName = "minedroid_firstboot";
         PacketHandler.INSTANCE.sendToServer(soundPacket);
     }
 
@@ -55,23 +51,23 @@ public class GuiPhoneSetupStart extends GuiPhoneBase
     protected void doDraw(int mouseX, int mouseY, float partialticks)
     {
         super.doDraw(mouseX, mouseY, partialticks);
-        int stringWidth = fontRenderer.getStringWidth("Hi!");
+        timerToNextScreen++;
 
-        GlStateManager.scale(uBigFont, uBigFont, uBigFont);
-        fontRenderer.drawString("Hi!", scale(INNER_X + 29, dBigFont) - stringWidth / 2, scale(INNER_Y + 60, dBigFont), 0xFFFFFF, true);
-        GlStateManager.scale(dBigFont, dBigFont, dBigFont);
+        if(timerToNextScreen >= 1125)
+        {
+            goToOOBE();
+        }
+    }
 
-        fontRenderer.drawString("Welcome to Minedroid!", INNER_X + 15, INNER_Y + 105, 0xFFFFFF);
-        fontRenderer.drawString("Click Begin to start setup.", INNER_X + 15, INNER_Y + 125, 0xFFFFFF);
+    private void goToOOBE()
+    {
+        GuiPhoneSetupStart oobe = new GuiPhoneSetupStart(Minecraft.getMinecraft().player.getHeldItem(hand), hand);
+        Minecraft.getMinecraft().displayGuiScreen(oobe);
     }
 
     @Override
     protected void actionPerformed(GuiButton button) throws IOException
     {
         super.actionPerformed(button);
-        if(button == beginSetup)
-        {
-            Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneSetupStepPersonalization(phoneStack, hand));
-        }
     }
 }
