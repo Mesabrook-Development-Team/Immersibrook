@@ -23,7 +23,7 @@ public class GuiFirstPhoneBoot extends GuiPhoneBase
     @Override
     protected String getInnerTextureFileName()
     {
-        return "app_screen_setup.png";
+        return "app_screen_boot.png";
     }
 
     @Override
@@ -53,7 +53,7 @@ public class GuiFirstPhoneBoot extends GuiPhoneBase
         super.doDraw(mouseX, mouseY, partialticks);
         timerToNextScreen++;
 
-        if(timerToNextScreen >= 1125)
+        if(timerToNextScreen >= 1180)
         {
             goToOOBE();
         }
