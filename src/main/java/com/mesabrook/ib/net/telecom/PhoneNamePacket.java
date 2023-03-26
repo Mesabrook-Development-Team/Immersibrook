@@ -5,6 +5,7 @@ import com.mesabrook.ib.util.handlers.PacketHandler;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
@@ -17,6 +18,11 @@ public class PhoneNamePacket implements IMessage
     public int hand;
     public String newName;
     public String guiClassName;
+    public int lockBackground;
+    public int homeBackground;
+    public boolean setShowIRLTime;
+    public boolean useMilitaryTime;
+    public boolean toggleDebugMode;
     public boolean resetName = false;
 
     @Override
@@ -25,6 +31,11 @@ public class PhoneNamePacket implements IMessage
         hand = buf.readInt();
         newName = ByteBufUtils.readUTF8String(buf);
         guiClassName = ByteBufUtils.readUTF8String(buf);
+        lockBackground = buf.readInt();
+        homeBackground = buf.readInt();
+        setShowIRLTime = buf.readBoolean();
+        useMilitaryTime = buf.readBoolean();
+        toggleDebugMode = buf.readBoolean();
         resetName = buf.readBoolean();
     }
 
@@ -34,6 +45,11 @@ public class PhoneNamePacket implements IMessage
         buf.writeInt(hand);
         ByteBufUtils.writeUTF8String(buf, newName);
         ByteBufUtils.writeUTF8String(buf, guiClassName);
+        buf.writeInt(lockBackground);
+        buf.writeInt(homeBackground);
+        buf.writeBoolean(setShowIRLTime);
+        buf.writeBoolean(useMilitaryTime);
+        buf.writeBoolean(toggleDebugMode);
         buf.writeBoolean(resetName);
     }
 
@@ -64,6 +80,25 @@ public class PhoneNamePacket implements IMessage
             {
                 phoneStack.clearCustomName();
             }
+
+            NBTTagCompound tag = phoneStack.getTagCompound();
+            if (tag == null)
+            {
+                tag = new NBTTagCompound();
+                phoneStack.setTagCompound(tag);
+            }
+
+            ItemPhone.NBTData phoneData = new ItemPhone.NBTData();
+            phoneData.deserializeNBT(tag);
+
+            phoneData.setHomeBackground(message.homeBackground);
+            phoneData.setLockBackground(message.lockBackground);
+
+            phoneData.setShowIRLTime(message.setShowIRLTime);
+            phoneData.setShowingMilitaryIRLTime(message.useMilitaryTime);
+            phoneData.setIsDebugModeEnabled(message.toggleDebugMode);
+
+            tag.merge(phoneData.serializeNBT());
 
             RefreshStackPacket refresh = new RefreshStackPacket();
             refresh.hand = EnumHand.values()[message.hand];

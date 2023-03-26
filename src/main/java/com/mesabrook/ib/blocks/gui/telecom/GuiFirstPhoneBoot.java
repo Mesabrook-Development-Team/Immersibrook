@@ -4,7 +4,6 @@ import com.mesabrook.ib.net.ClientSoundPacket;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 
@@ -13,7 +12,7 @@ import java.io.IOException;
 
 public class GuiFirstPhoneBoot extends GuiPhoneBase
 {
-    private int timerToNextScreen;
+    private int timerToNextScreen = 0;
 
     public GuiFirstPhoneBoot(ItemStack phoneStack, EnumHand hand)
     {
@@ -53,7 +52,7 @@ public class GuiFirstPhoneBoot extends GuiPhoneBase
         super.doDraw(mouseX, mouseY, partialticks);
         timerToNextScreen++;
 
-        if(timerToNextScreen >= 1180)
+        if(timerToNextScreen >= 1500)
         {
             goToOOBE();
         }
@@ -69,5 +68,12 @@ public class GuiFirstPhoneBoot extends GuiPhoneBase
     protected void actionPerformed(GuiButton button) throws IOException
     {
         super.actionPerformed(button);
+    }
+
+    @Override
+    public void onGuiClosed()
+    {
+        super.onGuiClosed();
+        timerToNextScreen = 0;
     }
 }

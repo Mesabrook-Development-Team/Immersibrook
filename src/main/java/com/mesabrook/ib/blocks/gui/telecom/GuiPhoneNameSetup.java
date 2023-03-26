@@ -109,6 +109,11 @@ public class GuiPhoneNameSetup extends GuiPhoneBase
                 packet.hand = hand.ordinal();
                 packet.newName = phoneNameTxtField.getText();
                 packet.guiClassName = GuiPhoneNameSetup.class.getName();
+                packet.homeBackground = phoneStackData.getHomeBackground();
+                packet.lockBackground = phoneStackData.getLockBackground();
+                packet.setShowIRLTime = phoneStackData.getShowIRLTime();
+                packet.useMilitaryTime = phoneStackData.getShowingMilitaryIRLTime();
+                packet.toggleDebugMode = phoneStackData.getIsDebugModeEnabled();
                 packet.resetName = false;
 
                 PacketHandler.INSTANCE.sendToServer(packet);

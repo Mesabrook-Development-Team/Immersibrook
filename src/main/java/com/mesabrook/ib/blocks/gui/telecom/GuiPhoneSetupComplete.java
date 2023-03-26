@@ -80,11 +80,6 @@ public class GuiPhoneSetupComplete extends GuiPhoneBase
 
     private void goHome()
     {
-        SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
-        ResourceLocation soundLocation = new ResourceLocation(Reference.MODID, "md_setup");
-        IForgeRegistry<SoundEvent> soundRegistry = GameRegistry.findRegistry(SoundEvent.class);
-        SoundEvent soundEvent = soundRegistry.getValue(soundLocation);
-    	
         ClientSoundPacket soundPacket = new ClientSoundPacket();
         soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
         soundPacket.soundName = "phone_unlock";
