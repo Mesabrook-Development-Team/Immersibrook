@@ -13,16 +13,44 @@ import java.io.IOException;
 public class GuiFirstPhoneBoot extends GuiPhoneBase
 {
     private int timerToNextScreen = 0;
+    private int fadeAnimationTimer = 0;
+    private String currentTexture;
 
     public GuiFirstPhoneBoot(ItemStack phoneStack, EnumHand hand)
     {
         super(phoneStack, hand);
+        fadeAnimationTimer++;
     }
 
     @Override
     protected String getInnerTextureFileName()
     {
-        return "app_screen_boot.png";
+        if(fadeAnimationTimer == 0)
+        {
+            currentTexture = "app_screen_boot_0.png";
+        }
+        if(fadeAnimationTimer == 50)
+        {
+            currentTexture = "app_screen_boot_1.png";
+        }
+        if(fadeAnimationTimer == 100)
+        {
+            currentTexture = "app_screen_boot_2.png";
+        }
+        if(fadeAnimationTimer == 150)
+        {
+            currentTexture = "app_screen_boot_3.png";
+        }
+        if(fadeAnimationTimer == 200)
+        {
+            currentTexture = "app_screen_boot_4.png";
+        }
+        if(fadeAnimationTimer == 250)
+        {
+            currentTexture = "app_screen_boot_5.png";
+        }
+
+        return currentTexture;
     }
 
     @Override
@@ -51,6 +79,7 @@ public class GuiFirstPhoneBoot extends GuiPhoneBase
     {
         super.doDraw(mouseX, mouseY, partialticks);
         timerToNextScreen++;
+        fadeAnimationTimer++;
 
         if(timerToNextScreen >= 1500)
         {
@@ -75,5 +104,6 @@ public class GuiFirstPhoneBoot extends GuiPhoneBase
     {
         super.onGuiClosed();
         timerToNextScreen = 0;
+        fadeAnimationTimer = 0;
     }
 }
