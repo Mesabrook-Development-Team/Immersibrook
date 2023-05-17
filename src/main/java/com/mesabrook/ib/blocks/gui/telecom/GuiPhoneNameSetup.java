@@ -98,7 +98,7 @@ public class GuiPhoneNameSetup extends GuiPhoneBase
         super.actionPerformed(button);
         if(button == back)
         {
-            Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneSetupStepPersonalization(phoneStack, hand));
+            Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneSetupStart(phoneStack, hand));
         }
 
         if(button == next)
