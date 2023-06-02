@@ -128,5 +128,32 @@ public class GuiIconSet extends GuiPhoneBase
             PacketHandler.INSTANCE.sendToServer(packet);
             Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.settings.saved").getFormattedText(), 0xFFFFFF));
         }
+
+        if(button == reset)
+        {
+            CustomizationPacket packet = new CustomizationPacket();
+            packet.hand = hand.ordinal();
+            packet.newName = phoneStack.getDisplayName();
+            packet.guiClassName = GuiIconSet.class.getName();
+            packet.iconTheme = "plex";
+            packet.lockBackground = phoneStackData.getLockBackground();
+            packet.homeBackground = phoneStackData.getHomeBackground();
+            packet.lockTone = phoneStackData.getChatTone();
+            packet.ringtone = phoneStackData.getRingTone();
+            packet.setShowIRLTime = phoneStackData.getShowIRLTime();
+            packet.useMilitaryTime = phoneStackData.getShowingMilitaryIRLTime();
+            packet.toggleDebugMode = phoneStackData.getIsDebugModeEnabled();
+            packet.resetName = false;
+            packet.pin = phoneStackData.getPin();
+            packet.playerID = phoneStackData.getUuid();
+
+            PacketHandler.INSTANCE.sendToServer(packet);
+            Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.settings.reset").getFormattedText(), 0xFFFFFF));
+        }
+
+        if(button == back)
+        {
+            Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsPersonalization(phoneStack, hand));
+        }
     }
 }
