@@ -64,7 +64,16 @@ public class CustomizationPacket implements IMessage
         buf.writeInt(hand);
         ByteBufUtils.writeUTF8String(buf, newName);
         ByteBufUtils.writeUTF8String(buf, guiClassName);
-        ByteBufUtils.writeUTF8String(buf, iconTheme);
+
+        if(iconTheme != null)
+        {
+            ByteBufUtils.writeUTF8String(buf, iconTheme);
+        }
+        else
+        {
+            ByteBufUtils.writeUTF8String(buf, "plex");
+        }
+
         buf.writeInt(lockBackground);
         buf.writeInt(homeBackground);
         buf.writeInt(lockTone);

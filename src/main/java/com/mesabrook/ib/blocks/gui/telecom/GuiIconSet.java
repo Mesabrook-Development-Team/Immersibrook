@@ -45,6 +45,7 @@ public class GuiIconSet extends GuiPhoneBase
     {
         super.initGui();
         currentTheme = phoneStackData.getIconTheme();
+        updatedTheme = phoneStackData.getIconTheme();
 
         int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 32;
         reset = new MinedroidButton(0, INNER_X + 45, lowerControlsY - 10, 32, new TextComponentTranslation("im.musicapp.buttonreset").getFormattedText(), 0xFFFFFF);
@@ -106,6 +107,8 @@ public class GuiIconSet extends GuiPhoneBase
 
         if(button == apply)
         {
+            currentTheme = updatedTheme;
+
             CustomizationPacket packet = new CustomizationPacket();
             packet.hand = hand.ordinal();
             packet.newName = phoneStack.getDisplayName();
