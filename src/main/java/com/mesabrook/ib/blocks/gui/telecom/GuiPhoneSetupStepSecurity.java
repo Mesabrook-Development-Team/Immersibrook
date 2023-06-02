@@ -2,6 +2,7 @@ package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.items.misc.ItemPhone;
+import com.mesabrook.ib.net.telecom.CustomizationPacket;
 import com.mesabrook.ib.net.telecom.SecurityStrategySelectedPacket;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
@@ -120,9 +121,21 @@ public class GuiPhoneSetupStepSecurity extends GuiPhoneBase
             }
             else
             {
-                SecurityStrategySelectedPacket packet = new SecurityStrategySelectedPacket();
+                // New Packet
+                CustomizationPacket packet = new CustomizationPacket();
                 packet.hand = hand.ordinal();
-                packet.guiScreenClassForRefresh = GuiPhoneSetupStepSecurity.class.getName();
+                packet.newName = phoneStack.getDisplayName();
+                packet.guiClassName = GuiPhoneSetupStepSecurity.class.getName();
+                packet.iconTheme = phoneStackData.getIconTheme();
+                packet.lockBackground = phoneStackData.getLockBackground();
+                packet.homeBackground = phoneStackData.getHomeBackground();
+                packet.lockTone = phoneStackData.getChatTone();
+                packet.ringtone = phoneStackData.getRingTone();
+                packet.setShowIRLTime = phoneStackData.getShowIRLTime();
+                packet.useMilitaryTime = phoneStackData.getShowingMilitaryIRLTime();
+                packet.toggleDebugMode = phoneStackData.getIsDebugModeEnabled();
+                packet.resetName = false;
+
                 if(pin.isChecked())
                 {
                     if (pinValue.getMaskedText().isEmpty())

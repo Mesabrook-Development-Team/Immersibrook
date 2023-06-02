@@ -1,6 +1,7 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.google.common.collect.ImmutableList;
+import com.mesabrook.ib.net.telecom.CustomizationPacket;
 import com.mesabrook.ib.net.telecom.PhoneRingtonesPacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
@@ -191,12 +192,21 @@ public class GuiSettingsRingtones extends GuiPhoneBase
 
         if(button == apply)
         {
-            PhoneRingtonesPacket packet = new PhoneRingtonesPacket();
+            CustomizationPacket packet = new CustomizationPacket();
             packet.hand = hand.ordinal();
-            packet.ringTone = currentRingtone;
-            packet.chatTone = currentNotifSound;
+            packet.newName = phoneStack.getDisplayName();
             packet.guiClassName = GuiSettingsRingtones.class.getName();
-            PacketHandler.INSTANCE.sendToServer(packet);
+            packet.iconTheme = "plex";
+            packet.lockBackground = phoneStackData.getLockBackground();
+            packet.homeBackground = phoneStackData.getHomeBackground();
+            packet.lockTone = currentNotifSound;
+            packet.ringtone = currentRingtone;
+            packet.setShowIRLTime = phoneStackData.getShowIRLTime();
+            packet.useMilitaryTime = phoneStackData.getShowingMilitaryIRLTime();
+            packet.toggleDebugMode = phoneStackData.getIsDebugModeEnabled();
+            packet.resetName = false;
+            packet.pin = phoneStackData.getPin();
+            packet.playerID = phoneStackData.getUuid();
 
             Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.settings.saved").getFormattedText(), 0xFFFFFF));
         }

@@ -119,6 +119,7 @@ public class ItemPhone extends Item implements IHasModel {
 		private boolean showIRLTime = true;
 		private boolean militaryTime = false;
 		private boolean debugMode = false;
+		private String iconTheme = "plex";
 		
 		public static NBTData getFromItemStack(ItemStack phoneStack)
 		{
@@ -256,6 +257,16 @@ public class ItemPhone extends Item implements IHasModel {
 		{
 			return this.debugMode = debugModeIn;
 		}
+
+		public String getIconTheme()
+		{
+			return iconTheme;
+		}
+
+		public String setIconTheme(String themeIn)
+		{
+			return this.iconTheme = themeIn;
+		}
 		
 		public Contact getContactByIdentifier(UUID identifier)
 		{
@@ -314,6 +325,7 @@ public class ItemPhone extends Item implements IHasModel {
 			tag.setBoolean(Reference.SHOW_IRL_TIME, getShowIRLTime());
 			tag.setBoolean(Reference.SHOW_MILITARY_TIME, getShowingMilitaryIRLTime());
 			tag.setBoolean(Reference.DEBUG_MODE, getIsDebugModeEnabled());
+			tag.setString(Reference.ICON_THEME, getIconTheme());
 			
 			NBTTagList contactNBT = new NBTTagList();
 			for(Contact contact : contactsByIdentifier.values())
@@ -385,6 +397,11 @@ public class ItemPhone extends Item implements IHasModel {
 			if(nbt.hasKey(Reference.DEBUG_MODE))
 			{
 				setIsDebugModeEnabled(nbt.getBoolean(Reference.DEBUG_MODE));
+			}
+
+			if(nbt.hasKey(Reference.ICON_THEME))
+			{
+				setIconTheme(nbt.getString(Reference.ICON_THEME));
 			}
 			
 			if (nbt.hasKey(Reference.CONTACTS_NBTKEY))

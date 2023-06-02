@@ -2,10 +2,7 @@ package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.mesabrook.ib.init.SoundInit;
 import com.mesabrook.ib.net.ClientSoundPacket;
-import com.mesabrook.ib.net.telecom.PhoneNamePacket;
-import com.mesabrook.ib.net.telecom.PhoneWallpaperPacket;
-import com.mesabrook.ib.net.telecom.RefreshStackPacket;
-import com.mesabrook.ib.net.telecom.SecurityStrategySelectedPacket;
+import com.mesabrook.ib.net.telecom.*;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 
@@ -84,27 +81,23 @@ public class GuiPhoneSetupComplete extends GuiPhoneBase
 
     private void goHome()
     {
-        PhoneWallpaperPacket packet = new PhoneWallpaperPacket();
-        packet.hand = hand.ordinal();
-        packet.lockBackground = phoneStackData.getLockBackground();
-        packet.homeBackground = phoneStackData.getHomeBackground();
-        packet.setShowIRLTime = phoneStackData.getShowIRLTime();
-        packet.useMilitaryTime = phoneStackData.getShowingMilitaryIRLTime();
-        packet.toggleDebugMode = phoneStackData.getIsDebugModeEnabled();
-        packet.guiClassName = GuiPhoneSetupComplete.class.getName();
-        PacketHandler.INSTANCE.sendToServer(packet);
-
-        SecurityStrategySelectedPacket spPacket = new SecurityStrategySelectedPacket();
-        spPacket.hand = hand.ordinal();
-        spPacket.pin = phoneStackData.getPin();
-        spPacket.playerID = phoneStackData.getUuid();
-        spPacket.guiScreenClassForRefresh = GuiPhoneSetupComplete.class.getName();
-        PacketHandler.INSTANCE.sendToServer(spPacket);
-
-        ClientSoundPacket soundPacket = new ClientSoundPacket();
-        soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
-        soundPacket.soundName = "phone_unlock";
-        PacketHandler.INSTANCE.sendToServer(soundPacket);
+//        CustomizationPacket packet = new CustomizationPacket();
+//        packet.hand = hand.ordinal();
+//        packet.newName = phoneStack.getDisplayName();
+//        packet.guiClassName = GuiPhoneSetupComplete.class.getName();
+//        packet.iconTheme = phoneStackData.getIconTheme();
+//        packet.lockBackground = phoneStackData.getLockBackground();
+//        packet.homeBackground = phoneStackData.getHomeBackground();
+//        packet.lockTone = phoneStackData.getChatTone();
+//        packet.ringtone = phoneStackData.getRingTone();
+//        packet.setShowIRLTime = phoneStackData.getShowIRLTime();
+//        packet.useMilitaryTime = phoneStackData.getShowingMilitaryIRLTime();
+//        packet.toggleDebugMode = phoneStackData.getIsDebugModeEnabled();
+//        packet.resetName = false;
+//        packet.pin = phoneStackData.getPin();
+//        packet.playerID = phoneStackData.getUuid();
+//
+//        PacketHandler.INSTANCE.sendToServer(packet);
 
         GuiPhoneBase.isPhoneUnlocked = true;
         Minecraft.getMinecraft().displayGuiScreen(new GuiHome(phoneStack, hand));

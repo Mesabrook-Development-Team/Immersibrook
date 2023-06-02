@@ -81,7 +81,7 @@ public class GuiPhoneSetupStart extends GuiPhoneBase
         soundPacket.soundName = "ding_2";
         PacketHandler.INSTANCE.sendToServer(soundPacket);
 
-        Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneNameSetup(phoneStack, hand));
+        Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneSetupStepPersonalization(phoneStack, hand));
     }
 
     @Override
