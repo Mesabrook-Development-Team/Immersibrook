@@ -56,6 +56,12 @@ public class GuiIconSet extends GuiPhoneBase
         aero_bubbles = new GuiCheckBox(4, INNER_X + 10, INNER_Y + 69, new TextComponentTranslation("im.settings.personalization.icontheme.aero").getFormattedText(), currentTheme.contains("aero_bubble"));
         luna = new GuiCheckBox(5, INNER_X + 10, INNER_Y + 86, new TextComponentTranslation("im.settings.personalization.icontheme.luna").getFormattedText(), currentTheme.contains("luna"));
 
+        // Icon Showcase
+        ImageButton button1 = new ImageButton(6, INNER_X + 8, INNER_Y + 130, 32, 32, phoneStackData.getIconTheme() + "/icn_phone.png", 32, 32);
+        ImageButton button2 = new ImageButton(7, INNER_X + 45, INNER_Y + 130, 32, 32, phoneStackData.getIconTheme() + "/icn_mail.png", 32, 32);
+        ImageButton button3 = new ImageButton(8, INNER_X + 83, INNER_Y + 130, 32, 32, phoneStackData.getIconTheme() + "/icn_settings.png", 32, 32);
+        ImageButton button4 = new ImageButton(9, INNER_X + 120, INNER_Y + 130, 32, 32, phoneStackData.getIconTheme() + "/icn_musicplayer.png", 32, 32);
+
         buttonList.addAll(ImmutableList.<GuiButton>builder()
                 .add(reset)
                 .add(apply)
@@ -63,6 +69,10 @@ public class GuiIconSet extends GuiPhoneBase
                 .add(plex)
                 .add(aero_bubbles)
                 .add(luna)
+                .add(button1)
+                .add(button2)
+                .add(button3)
+                .add(button4)
                 .build());
     }
 
@@ -73,7 +83,11 @@ public class GuiIconSet extends GuiPhoneBase
 
         fontRenderer.drawString(new TextComponentTranslation("im.settings.personalization.icontheme").getFormattedText(), INNER_X + 15, INNER_Y + 20, 0xFFFFFF);
         fontRenderer.drawString(new TextComponentTranslation("im.settings.personalization.icontheme.current").getFormattedText(), INNER_X + 10, INNER_Y + 115, 0xFFFFFF);
-        fontRenderer.drawString(new TextComponentString(TextFormatting.ITALIC + phoneStackData.getIconTheme()).getFormattedText(), INNER_X + 85, INNER_Y + 115, 0xFFFFFF);
+
+        if(phoneStackData.getIsDebugModeEnabled())
+        {
+            fontRenderer.drawString(new TextComponentString(TextFormatting.ITALIC + phoneStackData.getIconTheme()).getFormattedText(), INNER_X + 85, INNER_Y + 115, 0xFFFFFF);
+        }
     }
 
     @Override
