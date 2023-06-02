@@ -122,19 +122,9 @@ public class GuiPhoneSetupStepSecurity extends GuiPhoneBase
             else
             {
                 // New Packet
-                CustomizationPacket packet = new CustomizationPacket();
+                SecurityStrategySelectedPacket packet = new SecurityStrategySelectedPacket();
                 packet.hand = hand.ordinal();
-                packet.newName = phoneStack.getDisplayName();
-                packet.guiClassName = GuiPhoneSetupStepSecurity.class.getName();
-                packet.iconTheme = phoneStackData.getIconTheme();
-                packet.lockBackground = phoneStackData.getLockBackground();
-                packet.homeBackground = phoneStackData.getHomeBackground();
-                packet.lockTone = phoneStackData.getChatTone();
-                packet.ringtone = phoneStackData.getRingTone();
-                packet.setShowIRLTime = phoneStackData.getShowIRLTime();
-                packet.useMilitaryTime = phoneStackData.getShowingMilitaryIRLTime();
-                packet.toggleDebugMode = phoneStackData.getIsDebugModeEnabled();
-                packet.resetName = false;
+                packet.guiScreenClassForRefresh = GuiPhoneSetupStepSecurity.class.getName();
 
                 if(pin.isChecked())
                 {

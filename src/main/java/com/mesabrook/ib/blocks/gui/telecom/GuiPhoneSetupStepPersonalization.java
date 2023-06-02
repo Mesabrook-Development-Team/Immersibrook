@@ -30,8 +30,8 @@ public class GuiPhoneSetupStepPersonalization extends GuiPhoneBase
     public GuiPhoneSetupStepPersonalization(ItemStack phoneStack, EnumHand hand)
     {
         super(phoneStack, hand);
-        currentLock = phoneStackData.getLockBackground();
-        currentHome = phoneStackData.getHomeBackground();
+        currentLock = 1;
+        currentHome = 1;
     }
 
     @Override

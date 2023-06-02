@@ -23,7 +23,7 @@ public class SecurityStrategySelectedPacket implements IMessage {
 	public int pin;
 	public UUID playerID;
 	public String guiScreenClassForRefresh;
-	
+
 	@Override
 	public void fromBytes(ByteBuf buf) {
 		hand = buf.readInt();
@@ -88,12 +88,12 @@ public class SecurityStrategySelectedPacket implements IMessage {
 			}
 			
 			stackData.merge(data.serializeNBT());
-			
-			RefreshStackPacket refreshPacket = new RefreshStackPacket();
-			refreshPacket.hand = hand;
-			refreshPacket.newStack = phoneStack;
-			refreshPacket.guiClassName = message.guiScreenClassForRefresh;
-			PacketHandler.INSTANCE.sendTo(refreshPacket, player);
+//
+//			RefreshStackPacket refreshPacket = new RefreshStackPacket();
+//			refreshPacket.hand = hand;
+//			refreshPacket.newStack = phoneStack;
+//			refreshPacket.guiClassName = message.guiScreenClassForRefresh;
+//			PacketHandler.INSTANCE.sendTo(refreshPacket, player);
 		}
 	}
 }
