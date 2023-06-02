@@ -52,9 +52,9 @@ public class GuiSettingsPersonalization extends GuiPhoneBase
         soundsIcon = new ImageButton(6, INNER_X + 0, INNER_Y + 70, 28, 28, "icn_sound.png", 32, 32);
         phoneNameIcon = new ImageButton(7, INNER_X + 0, INNER_Y + 100, 28, 28, "icn_name.png", 32, 32);
         clockIcon = new ImageButton(8, INNER_X + 0, INNER_Y + 130, 28, 28, "icn_clock.png", 32, 32);
-        iconsIcon = new ImageButton(10, INNER_X + 0, INNER_Y + 160, 28, 28, "icn_clock.png", 32, 32);
+        iconsIcon = new ImageButton(10, INNER_X + 0, INNER_Y + 160, 28, 28, "btn_icons.png", 32, 32);
 
-        buttonList.addAll(ImmutableList.<GuiButton>builder()
+        buttonList.addAll(ImmutableList.<GuiButton>builder() 
                 .add(back)
                 .add(wallpaperIcon)
                 .add(soundsIcon)
