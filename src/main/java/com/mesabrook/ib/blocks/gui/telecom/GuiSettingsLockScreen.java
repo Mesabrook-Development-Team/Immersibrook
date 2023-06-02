@@ -3,7 +3,6 @@ package com.mesabrook.ib.blocks.gui.telecom;
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData.SecurityStrategies;
 import com.mesabrook.ib.net.telecom.CustomizationPacket;
-import com.mesabrook.ib.net.telecom.SecurityStrategySelectedPacket;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;

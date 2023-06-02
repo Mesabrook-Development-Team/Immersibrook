@@ -183,7 +183,7 @@ public abstract class GuiPhoneBase extends GuiScreen
 				drawScaledCustomSizeModalRect(INNER_X + INNER_TEX_WIDTH - 16, INNER_Y - 1, 0, 0, 16, 16, 16, 16, 16, 16);
 
 				fontRenderer.drawString(getTime(), INNER_X + 2, INNER_Y + 3, 0xFFFFFF);
-				fontRenderer.drawString(phoneStackData.getIconTheme(), INNER_X + INNER_TEX_WIDTH - 35, INNER_Y + 3, 0xFFFFFF);
+				fontRenderer.drawString("Bell", INNER_X + INNER_TEX_WIDTH - 35, INNER_Y + 3, 0xFFFFFF);
 
 				if(phoneStackData.getIsDebugModeEnabled())
 				{

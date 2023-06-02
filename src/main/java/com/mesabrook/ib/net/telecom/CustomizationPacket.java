@@ -151,11 +151,11 @@ public class CustomizationPacket implements IMessage
 
             tag.merge(phoneData.serializeNBT());
 
-//            RefreshStackPacket refresh = new RefreshStackPacket();
-//            refresh.hand = EnumHand.values()[message.hand];
-//            refresh.guiClassName = message.guiClassName;
-//            refresh.newStack = phoneStack;
-//            PacketHandler.INSTANCE.sendTo(refresh, player);
+            RefreshStackPacket refresh = new RefreshStackPacket();
+            refresh.hand = EnumHand.values()[message.hand];
+            refresh.guiClassName = message.guiClassName;
+            refresh.newStack = phoneStack;
+            PacketHandler.INSTANCE.sendTo(refresh, player);
         }
     }
 }
