@@ -98,7 +98,7 @@ public class GuiSettingsClock extends GuiPhoneBase
             packet.hand = hand.ordinal();
             packet.newName = phoneStack.getDisplayName();
             packet.guiClassName = GuiSettingsClock.class.getName();
-            packet.iconTheme = "plex";
+            packet.iconTheme = phoneStackData.getIconTheme();
             packet.lockBackground = phoneStackData.getLockBackground();
             packet.homeBackground = phoneStackData.getHomeBackground();
             packet.lockTone = phoneStackData.getChatTone();
