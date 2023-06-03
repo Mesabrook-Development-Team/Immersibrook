@@ -196,7 +196,7 @@ public class GuiSettingsRingtones extends GuiPhoneBase
             packet.hand = hand.ordinal();
             packet.newName = phoneStack.getDisplayName();
             packet.guiClassName = GuiSettingsRingtones.class.getName();
-            packet.iconTheme = "plex";
+            packet.iconTheme = phoneStackData.getIconTheme();
             packet.lockBackground = phoneStackData.getLockBackground();
             packet.homeBackground = phoneStackData.getHomeBackground();
             packet.lockTone = currentNotifSound;
@@ -208,6 +208,7 @@ public class GuiSettingsRingtones extends GuiPhoneBase
             packet.pin = phoneStackData.getPin();
             packet.playerID = phoneStackData.getUuid();
 
+            PacketHandler.INSTANCE.sendToServer(packet);
             Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.settings.saved").getFormattedText(), 0xFFFFFF));
         }
 
