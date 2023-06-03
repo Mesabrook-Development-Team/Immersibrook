@@ -110,6 +110,7 @@ public class GuiSettingsClock extends GuiPhoneBase
             packet.pin = phoneStackData.getPin();
             packet.playerID = phoneStackData.getUuid();
 
+            PacketHandler.INSTANCE.sendToServer(packet);
             Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.settings.saved").getFormattedText(), 0xFFFFFF));
         }
 
