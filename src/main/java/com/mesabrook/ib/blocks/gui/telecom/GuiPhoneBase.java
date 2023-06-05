@@ -58,6 +58,7 @@ public abstract class GuiPhoneBase extends GuiScreen
 	private boolean firstTick = true;
 	private int timeToNextBezel;
 	private int battery;
+	private int batteryReductionTimer;
 	
 	private final int STATUS_BAR_HEIGHT = 14;
 	private SignalStrengths signalStrength = SignalStrengths.unknown;
@@ -146,12 +147,14 @@ public abstract class GuiPhoneBase extends GuiScreen
 				this.battery = phoneStackData.getBatteryLevel();
 			}
 			drawDefaultBackground();
-			battery--;
+			
+			if (--batteryReductionTimer <= 0)
+			{
+				battery--;
+				batteryReductionTimer = 200; // Reduce by one point every 10 seconds
+			}
 
-			Minecraft.getMinecraft().player.sendMessage(new TextComponentString("Server: " + phoneStackData.getBatteryLevel()));
-			Minecraft.getMinecraft().player.sendMessage(new TextComponentString("Client: " + battery));
-
-			if(phoneStackData.getBatteryLevel() <= 0 || battery <= 0)
+			if(battery <= 0)
 			{
 				Minecraft.getMinecraft().displayGuiScreen(null);
 				Minecraft.getMinecraft().player.sendMessage(new TextComponentString("Phone battery is dead"));

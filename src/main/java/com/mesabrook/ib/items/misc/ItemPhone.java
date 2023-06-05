@@ -9,6 +9,7 @@ import com.mesabrook.ib.net.telecom.SetBatteryLevelPacket;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SpecialBezelRandomizer;
+import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,13 +20,18 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTUtil;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.INBTSerializable;
+import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -564,5 +570,90 @@ public class ItemPhone extends Item implements IHasModel {
 				setAddress(otherContact.getAddress());
 			}
 		}
+	}
+
+	@Override
+	public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt) {
+		return new PhoneEnergyCapabilityProvider(stack);
+	}
+	
+	public static class PhoneEnergyCapabilityProvider implements ICapabilityProvider
+	{
+		private final ItemStack phoneStack;
+		private final PhoneEnergyStorage energyStorage;
+		public PhoneEnergyCapabilityProvider(ItemStack phoneStack)
+		{
+			this.phoneStack = phoneStack;
+			energyStorage = new PhoneEnergyStorage(this.phoneStack);
+		}
+		
+		@Override
+		public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+			if (capability == CapabilityEnergy.ENERGY)
+			{
+				return true;
+			}
+			return false;
+		}
+
+		@Override
+		public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+			if (capability == CapabilityEnergy.ENERGY)
+			{
+				return CapabilityEnergy.ENERGY.cast(energyStorage);
+			}
+			return null;
+		}
+		
+	}
+	
+	public static class PhoneEnergyStorage implements IEnergyStorage
+	{
+		private final ItemStack phoneStack;
+		public PhoneEnergyStorage(ItemStack phoneStack)
+		{
+			this.phoneStack = phoneStack;
+		}
+		
+		@Override
+		public int receiveEnergy(int maxReceive, boolean simulate) {
+			NBTData data = NBTData.getFromItemStack(phoneStack);
+			int toReceive = maxReceive + data.getBatteryLevel() > Reference.BATTERY_CHARGE ? maxReceive - data.getBatteryLevel() : maxReceive;
+			
+			if (!simulate)
+			{
+				data.setBatteryLevel(data.getBatteryLevel() + toReceive);
+			}
+			phoneStack.getTagCompound().merge(data.serializeNBT());
+			
+			return toReceive;
+		}
+
+		@Override
+		public int extractEnergy(int maxExtract, boolean simulate) {
+			return 0;
+		}
+
+		@Override
+		public int getEnergyStored() {
+			NBTData data = NBTData.getFromItemStack(phoneStack);
+			return data.getBatteryLevel();
+		}
+
+		@Override
+		public int getMaxEnergyStored() {
+			return Reference.BATTERY_CHARGE;
+		}
+
+		@Override
+		public boolean canExtract() {
+			return false;
+		}
+
+		@Override
+		public boolean canReceive() {
+			return true;
+		}
+		
 	}
 }

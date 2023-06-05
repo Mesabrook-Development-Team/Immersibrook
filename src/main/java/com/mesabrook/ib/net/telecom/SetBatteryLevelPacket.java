@@ -59,8 +59,7 @@ public class SetBatteryLevelPacket implements IMessage
             ItemPhone.NBTData phoneData = new ItemPhone.NBTData();
             phoneData.deserializeNBT(tag);
             phoneData.setBatteryLevel(message.batteryLevel);
-            tag = phoneData.serializeNBT();
-            phoneStack.setTagCompound(tag);
+            tag.merge(phoneData.serializeNBT());
         }
     }
 }

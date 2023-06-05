@@ -61,6 +61,7 @@ public class ActivateNumberChosenPacket implements IMessage {
 				}
 				
 				nbt.setInteger(Reference.PHONE_NUMBER_NBTKEY, message.number);
+				nbt.setInteger(Reference.BATTERY_LEVEL, Reference.BATTERY_CHARGE);
 				ActivationCompletePacket complete = new ActivationCompletePacket();
 				complete.hand = EnumHand.values()[message.hand];
 				PacketHandler.INSTANCE.sendTo(complete, player);
