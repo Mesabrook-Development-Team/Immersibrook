@@ -23,12 +23,14 @@ public class SecurityStrategySelectedPacket implements IMessage {
 	public int pin;
 	public UUID playerID;
 	public String guiScreenClassForRefresh;
+	public String nextGuiScreenClassAfterRefresh;
 
 	@Override
 	public void fromBytes(ByteBuf buf) {
 		hand = buf.readInt();
 		pin = buf.readInt();
 		guiScreenClassForRefresh = ByteBufUtils.readUTF8String(buf);
+		nextGuiScreenClassAfterRefresh = ByteBufUtils.readUTF8String(buf);
 		if (buf.readBoolean())
 		{
 			playerID = new UUID(buf.readLong(), buf.readLong());
@@ -40,6 +42,14 @@ public class SecurityStrategySelectedPacket implements IMessage {
 		buf.writeInt(hand);
 		buf.writeInt(pin);
 		ByteBufUtils.writeUTF8String(buf, guiScreenClassForRefresh);
+		if (nextGuiScreenClassAfterRefresh == null)
+		{
+			ByteBufUtils.writeUTF8String(buf, "");
+		}
+		else
+		{
+			ByteBufUtils.writeUTF8String(buf, nextGuiScreenClassAfterRefresh);
+		}
 		buf.writeBoolean(playerID != null);
 		if (playerID != null)
 		{
@@ -88,12 +98,20 @@ public class SecurityStrategySelectedPacket implements IMessage {
 			}
 			
 			stackData.merge(data.serializeNBT());
-//
-//			RefreshStackPacket refreshPacket = new RefreshStackPacket();
-//			refreshPacket.hand = hand;
-//			refreshPacket.newStack = phoneStack;
-//			refreshPacket.guiClassName = message.guiScreenClassForRefresh;
-//			PacketHandler.INSTANCE.sendTo(refreshPacket, player);
+
+			RefreshStackPacket refreshPacket = new RefreshStackPacket();
+			refreshPacket.hand = hand;
+			refreshPacket.newStack = phoneStack;
+			refreshPacket.guiClassName = message.guiScreenClassForRefresh;
+			if (message.nextGuiScreenClassAfterRefresh == null || message.nextGuiScreenClassAfterRefresh == "")
+			{
+				refreshPacket.nextGuiClassName = message.guiScreenClassForRefresh;
+			}
+			else
+			{
+				refreshPacket.nextGuiClassName = message.nextGuiScreenClassAfterRefresh;
+			}
+			PacketHandler.INSTANCE.sendTo(refreshPacket, player);
 		}
 	}
 }

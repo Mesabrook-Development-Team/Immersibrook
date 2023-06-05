@@ -125,6 +125,7 @@ public class GuiPhoneSetupStepSecurity extends GuiPhoneBase
                 SecurityStrategySelectedPacket packet = new SecurityStrategySelectedPacket();
                 packet.hand = hand.ordinal();
                 packet.guiScreenClassForRefresh = GuiPhoneSetupStepSecurity.class.getName();
+                packet.nextGuiScreenClassAfterRefresh = GuiPhoneSetupComplete.class.getName();
 
                 if(pin.isChecked())
                 {
@@ -158,7 +159,6 @@ public class GuiPhoneSetupStepSecurity extends GuiPhoneBase
                 }
 
                 PacketHandler.INSTANCE.sendToServer(packet);
-                Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneSetupComplete(phoneStack, hand));
             }
         }
     }

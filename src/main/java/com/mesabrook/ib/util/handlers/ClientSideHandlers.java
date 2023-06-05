@@ -621,10 +621,15 @@ public class ClientSideHandlers
 				mc.displayGuiScreen(newScreen);
 			}
 		}
-
-		public static void refreshStack(String guiClassName, ItemStack newStack, EnumHand hand)
+		
+		public static void refreshStack(String currentGuiClassName, ItemStack newStack, EnumHand hand)
 		{
-			if (Minecraft.getMinecraft().currentScreen == null || !Minecraft.getMinecraft().currentScreen.getClass().getName().equals(guiClassName))
+			refreshStack(currentGuiClassName, currentGuiClassName, newStack, hand);
+		}
+
+		public static void refreshStack(String currentGuiClassName, String nextGuiClassName, ItemStack newStack, EnumHand hand)
+		{
+			if (Minecraft.getMinecraft().currentScreen == null || !Minecraft.getMinecraft().currentScreen.getClass().getName().equals(currentGuiClassName))
 			{
 				return;
 			}
@@ -632,7 +637,7 @@ public class ClientSideHandlers
 			GuiScreen gui;
 			try
 			{
-				Class<?> guiClass = Class.forName(guiClassName);
+				Class<?> guiClass = Class.forName(nextGuiClassName);
 				gui = (GuiScreen)guiClass.getConstructor(ItemStack.class, EnumHand.class).newInstance(newStack, hand);
 			}
 			catch(Exception ex) { return; }

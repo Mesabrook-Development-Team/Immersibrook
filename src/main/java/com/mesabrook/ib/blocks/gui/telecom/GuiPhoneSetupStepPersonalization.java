@@ -142,6 +142,7 @@ public class GuiPhoneSetupStepPersonalization extends GuiPhoneBase
             packet.hand = hand.ordinal();
             packet.newName = phoneStack.getDisplayName();
             packet.guiClassName = GuiPhoneSetupStepPersonalization.class.getName();
+            packet.nextGuiClassName = GuiPhoneNameSetup.class.getName();
             packet.iconTheme = "plex";
             packet.lockBackground = currentLock;
             packet.homeBackground = currentHome;
@@ -155,8 +156,6 @@ public class GuiPhoneSetupStepPersonalization extends GuiPhoneBase
             packet.playerID = phoneStackData.getUuid();
 
             PacketHandler.INSTANCE.sendToServer(packet);
-
-            Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneNameSetup(phoneStack, hand));
         }
     }
 }
