@@ -131,6 +131,12 @@ public final class ModConfig
 		"Tornado Warning|FF0000|FF0000"
 	};
 	
+	@Comment("[MesaSuite] MesaSuite Base API URL")
+	public static String mesasuiteBaseAPIUrl = "";
+	
+	@Comment("[MesaSuite] MesaSuite Base OAuth URL")
+	public static String mesasuiteBaseOAuthUrl = "";
+	
 	@Mod.EventBusSubscriber(modid = Reference.MODID)
 	private static class EventHandler
 	{
