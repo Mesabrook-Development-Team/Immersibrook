@@ -32,31 +32,31 @@ public class GuiHome extends GuiPhoneBase {
 	public void initGui() {
 		super.initGui();
 		// Phone
-		ImageButton button = new ImageButton(0, INNER_X + 5, INNER_Y + 24, 32, 32, "icn_phone.png", 32, 32);
+		ImageButton button = new ImageButton(0, INNER_X + 5, INNER_Y + 24, 32, 32, phoneStackData.getIconTheme() + "/icn_phone.png", 32, 32);
 		buttonList.add(button);
 
 		// Messages
-		ImageButton button2 = new ImageButton(1, INNER_X + 46, INNER_Y + 24, 32, 32, "icn_mail.png", 32, 32);
+		ImageButton button2 = new ImageButton(1, INNER_X + 46, INNER_Y + 24, 32, 32, phoneStackData.getIconTheme() + "/icn_mail.png", 32, 32);
 		buttonList.add(button2);
 
 		// Address Book
-		ImageButton button3 = new ImageButton(2, INNER_X + 86, INNER_Y + 24, 32, 32, "icn_contacts.png", 32, 32);
+		ImageButton button3 = new ImageButton(2, INNER_X + 86, INNER_Y + 24, 32, 32, phoneStackData.getIconTheme() + "/icn_contacts.png", 32, 32);
 		buttonList.add(button3);
 
 		// Settings
-		ImageButton button4 = new ImageButton(3, INNER_X + 126, INNER_Y + 24, 32, 32, "icn_settings.png", 32, 32);
+		ImageButton button4 = new ImageButton(3, INNER_X + 126, INNER_Y + 24, 32, 32, phoneStackData.getIconTheme() + "/icn_settings.png", 32, 32);
 		buttonList.add(button4);
 
 		// Music App
-		ImageButton button5 = new ImageButton(4, INNER_X + 5, INNER_Y + 65, 32, 32, "icn_musicplayer.png", 32, 32);
+		ImageButton button5 = new ImageButton(4, INNER_X + 5, INNER_Y + 65, 32, 32, phoneStackData.getIconTheme() + "/icn_musicplayer.png", 32, 32);
 		buttonList.add(button5);
 
 		// Calculator App
-		ImageButton button6 = new ImageButton(5, INNER_X + 46, INNER_Y + 65, 32, 32, "icn_calc.png", 32, 32);
+		ImageButton button6 = new ImageButton(5, INNER_X + 46, INNER_Y + 65, 32, 32, phoneStackData.getIconTheme() + "/icn_calc.png", 32, 32);
 		buttonList.add(button6);
 
-		// Calculator App
-		ImageButton button7 = new ImageButton(6, INNER_X + 86, INNER_Y + 65, 32, 32, "icn_help.png", 32, 32);
+		// Help App
+		ImageButton button7 = new ImageButton(6, INNER_X + 86, INNER_Y + 65, 32, 32, phoneStackData.getIconTheme() + "/icn_help.png", 32, 32);
 		buttonList.add(button7);
 	}
 	

@@ -2,6 +2,7 @@ package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.mesabrook.ib.init.SoundInit;
 import com.mesabrook.ib.net.ClientSoundPacket;
+import com.mesabrook.ib.net.telecom.*;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 
@@ -23,7 +24,6 @@ public class GuiPhoneSetupComplete extends GuiPhoneBase
 {
     private GuiLockScreen.UnlockSlider complete;
     ImageButton mux;
-    private PositionedSoundRecord setupMusic = null;
 
     public GuiPhoneSetupComplete(ItemStack phoneStack, EnumHand hand)
     {
@@ -81,19 +81,24 @@ public class GuiPhoneSetupComplete extends GuiPhoneBase
 
     private void goHome()
     {
-        SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
-        ResourceLocation soundLocation = new ResourceLocation(Reference.MODID, "md_setup");
-        IForgeRegistry<SoundEvent> soundRegistry = GameRegistry.findRegistry(SoundEvent.class);
-        SoundEvent soundEvent = soundRegistry.getValue(soundLocation);
+//        CustomizationPacket packet = new CustomizationPacket();
+//        packet.hand = hand.ordinal();
+//        packet.newName = phoneStack.getDisplayName();
+//        packet.guiClassName = GuiPhoneSetupComplete.class.getName();
+//        packet.iconTheme = phoneStackData.getIconTheme();
+//        packet.lockBackground = phoneStackData.getLockBackground();
+//        packet.homeBackground = phoneStackData.getHomeBackground();
+//        packet.lockTone = phoneStackData.getChatTone();
+//        packet.ringtone = phoneStackData.getRingTone();
+//        packet.setShowIRLTime = phoneStackData.getShowIRLTime();
+//        packet.useMilitaryTime = phoneStackData.getShowingMilitaryIRLTime();
+//        packet.toggleDebugMode = phoneStackData.getIsDebugModeEnabled();
+//        packet.resetName = false;
+//        packet.pin = phoneStackData.getPin();
+//        packet.playerID = phoneStackData.getUuid();
+//
+//        PacketHandler.INSTANCE.sendToServer(packet);
 
-        setupMusic = PositionedSoundRecord.getMasterRecord(soundEvent, 1F);
-        handler.stopSound(setupMusic);
-    	
-        ClientSoundPacket soundPacket = new ClientSoundPacket();
-        soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
-        soundPacket.soundName = "phone_unlock";
-        PacketHandler.INSTANCE.sendToServer(soundPacket);
-        
         GuiPhoneBase.isPhoneUnlocked = true;
         Minecraft.getMinecraft().displayGuiScreen(new GuiHome(phoneStack, hand));
     }

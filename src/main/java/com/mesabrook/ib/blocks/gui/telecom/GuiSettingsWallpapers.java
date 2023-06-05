@@ -1,6 +1,7 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.google.common.collect.ImmutableList;
+import com.mesabrook.ib.net.telecom.CustomizationPacket;
 import com.mesabrook.ib.net.telecom.PhoneWallpaperPacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
@@ -148,14 +149,22 @@ public class GuiSettingsWallpapers extends GuiPhoneBase
 
         if(button == apply)
         {
-            PhoneWallpaperPacket packet = new PhoneWallpaperPacket();
+            CustomizationPacket packet = new CustomizationPacket();
             packet.hand = hand.ordinal();
+            packet.newName = phoneStack.getDisplayName();
+            packet.guiClassName = GuiSettingsWallpapers.class.getName();
+            packet.iconTheme = phoneStackData.getIconTheme();
             packet.lockBackground = currentLock;
             packet.homeBackground = currentHome;
+            packet.lockTone = phoneStackData.getChatTone();
+            packet.ringtone = phoneStackData.getRingTone();
             packet.setShowIRLTime = phoneStackData.getShowIRLTime();
             packet.useMilitaryTime = phoneStackData.getShowingMilitaryIRLTime();
             packet.toggleDebugMode = phoneStackData.getIsDebugModeEnabled();
-            packet.guiClassName = GuiSettingsWallpapers.class.getName();
+            packet.resetName = false;
+            packet.pin = phoneStackData.getPin();
+            packet.playerID = phoneStackData.getUuid();
+
             PacketHandler.INSTANCE.sendToServer(packet);
 
             Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.settings.saved").getFormattedText(), 0xFFFFFF));

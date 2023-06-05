@@ -15,10 +15,14 @@ import com.mesabrook.ib.util.ItemRandomizer;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SoundRandomizer;
 import com.mesabrook.ib.util.TooltipRandomizer;
+import com.mesabrook.ib.util.apiaccess.PutData;
+import com.mesabrook.ib.util.apiaccess.DataAccess.API;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.saveData.SpecialDropTrackingData;
 import com.mojang.authlib.GameProfile;
 import com.pam.harvestcraft.blocks.blocks.BlockPamCake;
+
+import blusunrize.immersiveengineering.ImmersiveEngineering;
 import net.minecraft.block.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -67,7 +71,7 @@ public class PlayerEvents
 	 */
 	@SubscribeEvent
 	public void onPlayerLogin(PlayerLoggedInEvent e)
-	{
+	{		
 		EntityPlayer player = e.player;
 		World w = e.player.world;
 		TextComponentString birthdayMessage = new TextComponentString("Happy Birthday, ");
@@ -259,6 +263,20 @@ public class PlayerEvents
 				player.sendMessage(wikiURL);
 			}
 		}
+		
+		if (!player.getServer().isSinglePlayer())
+		{			
+			ResetInactivityParam param = new ResetInactivityParam();
+			param.username = player.getDisplayNameString();
+			PutData put = new PutData(API.System, "Inactivity/ResetInactivity", param);
+			put.executeNoResult();
+		}
+	}
+	
+	private class ResetInactivityParam
+	{
+		public String username = "";
+		public String reason = "Logged into the Mesabrook server"; 
 	}
 
 	/*

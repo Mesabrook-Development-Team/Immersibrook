@@ -2,6 +2,7 @@ package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.items.misc.ItemPhone;
+import com.mesabrook.ib.net.telecom.CustomizationPacket;
 import com.mesabrook.ib.net.telecom.SecurityStrategySelectedPacket;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
@@ -120,9 +121,12 @@ public class GuiPhoneSetupStepSecurity extends GuiPhoneBase
             }
             else
             {
+                // New Packet
                 SecurityStrategySelectedPacket packet = new SecurityStrategySelectedPacket();
                 packet.hand = hand.ordinal();
                 packet.guiScreenClassForRefresh = GuiPhoneSetupStepSecurity.class.getName();
+                packet.nextGuiScreenClassAfterRefresh = GuiPhoneSetupComplete.class.getName();
+
                 if(pin.isChecked())
                 {
                     if (pinValue.getMaskedText().isEmpty())
@@ -155,7 +159,6 @@ public class GuiPhoneSetupStepSecurity extends GuiPhoneBase
                 }
 
                 PacketHandler.INSTANCE.sendToServer(packet);
-                Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneSetupComplete(phoneStack, hand));
             }
         }
     }

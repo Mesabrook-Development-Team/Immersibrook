@@ -94,16 +94,23 @@ public class GuiSettingsClock extends GuiPhoneBase
 
         if(button == apply)
         {
-            PhoneWallpaperPacket packet = new PhoneWallpaperPacket();
+            CustomizationPacket packet = new CustomizationPacket();
             packet.hand = hand.ordinal();
+            packet.newName = phoneStack.getDisplayName();
+            packet.guiClassName = GuiSettingsClock.class.getName();
+            packet.iconTheme = phoneStackData.getIconTheme();
             packet.lockBackground = phoneStackData.getLockBackground();
             packet.homeBackground = phoneStackData.getHomeBackground();
-            packet.guiClassName = GuiSettingsClock.class.getName();
+            packet.lockTone = phoneStackData.getChatTone();
+            packet.ringtone = phoneStackData.getRingTone();
             packet.setShowIRLTime = toggle.isChecked();
             packet.useMilitaryTime = toggleMilitaryTime.isChecked();
             packet.toggleDebugMode = phoneStackData.getIsDebugModeEnabled();
-            PacketHandler.INSTANCE.sendToServer(packet);
+            packet.resetName = false;
+            packet.pin = phoneStackData.getPin();
+            packet.playerID = phoneStackData.getUuid();
 
+            PacketHandler.INSTANCE.sendToServer(packet);
             Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.settings.saved").getFormattedText(), 0xFFFFFF));
         }
 

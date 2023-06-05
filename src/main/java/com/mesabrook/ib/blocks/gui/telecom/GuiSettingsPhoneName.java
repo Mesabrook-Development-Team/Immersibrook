@@ -1,6 +1,7 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.google.common.collect.ImmutableList;
+import com.mesabrook.ib.net.telecom.CustomizationPacket;
 import com.mesabrook.ib.net.telecom.PhoneNamePacket;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
@@ -98,11 +99,21 @@ public class GuiSettingsPhoneName extends GuiPhoneBase
         {
             if(!nameTxtBox.getText().isEmpty())
             {
-                PhoneNamePacket packet = new PhoneNamePacket();
+                CustomizationPacket packet = new CustomizationPacket();
                 packet.hand = hand.ordinal();
                 packet.newName = nameTxtBox.getText();
                 packet.guiClassName = GuiSettingsPhoneName.class.getName();
+                packet.iconTheme = phoneStackData.getIconTheme();
+                packet.lockBackground = phoneStackData.getLockBackground();
+                packet.homeBackground = phoneStackData.getHomeBackground();
+                packet.lockTone = phoneStackData.getChatTone();
+                packet.ringtone = phoneStackData.getRingTone();
+                packet.setShowIRLTime = phoneStackData.getShowIRLTime();
+                packet.useMilitaryTime = phoneStackData.getShowingMilitaryIRLTime();
+                packet.toggleDebugMode = phoneStackData.getIsDebugModeEnabled();
                 packet.resetName = false;
+                packet.pin = phoneStackData.getPin();
+                packet.playerID = phoneStackData.getUuid();
 
                 PacketHandler.INSTANCE.sendToServer(packet);
                 nameTxtBox.setText(packet.newName);
@@ -115,11 +126,18 @@ public class GuiSettingsPhoneName extends GuiPhoneBase
 
         if(button == reset)
         {
-            PhoneNamePacket packet = new PhoneNamePacket();
+            CustomizationPacket packet = new CustomizationPacket();
             packet.hand = hand.ordinal();
-            packet.newName = phoneStack.getDisplayName();
+            packet.newName = nameTxtBox.getText();
             packet.guiClassName = GuiSettingsPhoneName.class.getName();
-            packet.resetName = true;
+            packet.iconTheme = "plex";
+            packet.lockBackground = phoneStackData.getLockBackground();
+            packet.homeBackground = phoneStackData.getHomeBackground();
+            packet.lockTone = phoneStackData.getChatTone();
+            packet.ringtone = phoneStackData.getRingTone();
+            packet.setShowIRLTime = phoneStackData.getShowIRLTime();
+            packet.useMilitaryTime = phoneStackData.getShowingMilitaryIRLTime();
+            packet.toggleDebugMode = phoneStackData.getIsDebugModeEnabled();
 
             PacketHandler.INSTANCE.sendToServer(packet);
             nameTxtBox.setText(phoneStack.getDisplayName());

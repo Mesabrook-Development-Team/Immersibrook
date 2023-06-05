@@ -1,5 +1,6 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import com.mesabrook.ib.net.telecom.CustomizationPacket;
 import com.mesabrook.ib.net.telecom.PhoneNamePacket;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
@@ -98,22 +99,31 @@ public class GuiPhoneNameSetup extends GuiPhoneBase
         super.actionPerformed(button);
         if(button == back)
         {
-            Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneSetupStepPersonalization(phoneStack, hand));
+            Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneSetupStart(phoneStack, hand));
         }
 
         if(button == next)
         {
             if(!phoneNameTxtField.getText().isEmpty())
             {
-                PhoneNamePacket packet = new PhoneNamePacket();
+                CustomizationPacket packet = new CustomizationPacket();
                 packet.hand = hand.ordinal();
                 packet.newName = phoneNameTxtField.getText();
                 packet.guiClassName = GuiPhoneNameSetup.class.getName();
+                packet.nextGuiClassName = GuiPhoneSetupStepSecurity.class.getName();
+                packet.iconTheme = phoneStackData.getIconTheme();
+                packet.lockBackground = phoneStackData.getLockBackground();
+                packet.homeBackground = phoneStackData.getHomeBackground();
+                packet.lockTone = phoneStackData.getChatTone();
+                packet.ringtone = phoneStackData.getRingTone();
+                packet.setShowIRLTime = phoneStackData.getShowIRLTime();
+                packet.useMilitaryTime = phoneStackData.getShowingMilitaryIRLTime();
+                packet.toggleDebugMode = phoneStackData.getIsDebugModeEnabled();
                 packet.resetName = false;
+                packet.pin = phoneStackData.getPin();
+                packet.playerID = phoneStackData.getUuid();
 
                 PacketHandler.INSTANCE.sendToServer(packet);
-
-                Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneSetupStepSecurity(phoneStack, hand));
             }
             else
             {
