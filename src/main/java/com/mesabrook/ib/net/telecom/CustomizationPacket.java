@@ -20,6 +20,7 @@ public class CustomizationPacket implements IMessage
     public int hand;
     public String newName;
     public String guiClassName;
+    public String nextGuiClassName;
     public String iconTheme;
     public int lockBackground;
     public int homeBackground;
@@ -40,6 +41,7 @@ public class CustomizationPacket implements IMessage
         hand = buf.readInt();
         newName = ByteBufUtils.readUTF8String(buf);
         guiClassName = ByteBufUtils.readUTF8String(buf);
+        nextGuiClassName = ByteBufUtils.readUTF8String(buf);
         iconTheme = ByteBufUtils.readUTF8String(buf);
         lockBackground = buf.readInt();
         homeBackground = buf.readInt();
@@ -64,6 +66,14 @@ public class CustomizationPacket implements IMessage
         buf.writeInt(hand);
         ByteBufUtils.writeUTF8String(buf, newName);
         ByteBufUtils.writeUTF8String(buf, guiClassName);
+        if (nextGuiClassName == null)
+        {
+        	ByteBufUtils.writeUTF8String(buf, "");
+        }
+        else
+        {
+        	ByteBufUtils.writeUTF8String(buf, nextGuiClassName);
+        }
 
         if(iconTheme != null)
         {
@@ -163,6 +173,15 @@ public class CustomizationPacket implements IMessage
             RefreshStackPacket refresh = new RefreshStackPacket();
             refresh.hand = EnumHand.values()[message.hand];
             refresh.guiClassName = message.guiClassName;
+            if (message.nextGuiClassName == null || message.nextGuiClassName == "")
+            {
+            	refresh.nextGuiClassName = message.guiClassName;
+            }
+            else
+            	
+            {
+            	refresh.nextGuiClassName = message.nextGuiClassName;
+            }
             refresh.newStack = phoneStack;
             PacketHandler.INSTANCE.sendTo(refresh, player);
         }

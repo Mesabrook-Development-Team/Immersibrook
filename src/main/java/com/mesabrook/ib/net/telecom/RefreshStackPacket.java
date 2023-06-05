@@ -15,10 +15,12 @@ public class RefreshStackPacket implements IMessage {
 	public EnumHand hand;
 	public ItemStack newStack;
 	public String guiClassName;
+	public String nextGuiClassName;
 	@Override
 	public void fromBytes(ByteBuf buf) {
 		hand = EnumHand.values()[buf.readInt()];
 		guiClassName = ByteBufUtils.readUTF8String(buf);
+		nextGuiClassName = ByteBufUtils.readUTF8String(buf);
 		newStack = ByteBufUtils.readItemStack(buf);
 	}
 
@@ -26,6 +28,14 @@ public class RefreshStackPacket implements IMessage {
 	public void toBytes(ByteBuf buf) {
 		buf.writeInt(hand.ordinal());
 		ByteBufUtils.writeUTF8String(buf, guiClassName);
+		if (nextGuiClassName == null)
+		{
+			ByteBufUtils.writeUTF8String(buf, "");
+		}
+		else
+		{
+			ByteBufUtils.writeUTF8String(buf, nextGuiClassName);
+		}
 		ByteBufUtils.writeItemStack(buf, newStack);
 	}
 
@@ -40,7 +50,12 @@ public class RefreshStackPacket implements IMessage {
 		
 		private void handle(RefreshStackPacket message, MessageContext ctx)
 		{
-			ClientSideHandlers.TelecomClientHandlers.refreshStack(message.guiClassName, message.newStack, message.hand);
+			String nextGuiClassName = message.nextGuiClassName;
+			if (nextGuiClassName == null || nextGuiClassName == "")
+			{
+				nextGuiClassName = message.guiClassName;
+			}
+			ClientSideHandlers.TelecomClientHandlers.refreshStack(message.guiClassName, nextGuiClassName, message.newStack, message.hand);
 		}
 	}
 }

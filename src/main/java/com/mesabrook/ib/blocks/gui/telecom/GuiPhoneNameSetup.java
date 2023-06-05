@@ -110,6 +110,7 @@ public class GuiPhoneNameSetup extends GuiPhoneBase
                 packet.hand = hand.ordinal();
                 packet.newName = phoneNameTxtField.getText();
                 packet.guiClassName = GuiPhoneNameSetup.class.getName();
+                packet.nextGuiClassName = GuiPhoneSetupStepSecurity.class.getName();
                 packet.iconTheme = phoneStackData.getIconTheme();
                 packet.lockBackground = phoneStackData.getLockBackground();
                 packet.homeBackground = phoneStackData.getHomeBackground();
@@ -123,8 +124,6 @@ public class GuiPhoneNameSetup extends GuiPhoneBase
                 packet.playerID = phoneStackData.getUuid();
 
                 PacketHandler.INSTANCE.sendToServer(packet);
-
-                Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneSetupStepSecurity(phoneStack, hand));
             }
             else
             {
