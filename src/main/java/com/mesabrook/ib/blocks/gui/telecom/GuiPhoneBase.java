@@ -1,16 +1,22 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.init.SoundInit;
 import com.mesabrook.ib.items.misc.ItemPhone;
+import com.mesabrook.ib.items.misc.ItemPhone.NBTData;
 import com.mesabrook.ib.net.ClientSoundPacket;
 import com.mesabrook.ib.net.telecom.GetReceptionStrengthPacket;
-import com.mesabrook.ib.net.telecom.SetBatteryLevelPacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SpecialBezelRandomizer;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.handlers.PacketHandler;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
@@ -20,20 +26,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.io.*;
-import java.time.*;
-import java.time.format.*;
 
 @SideOnly(Side.CLIENT)
 public abstract class GuiPhoneBase extends GuiScreen
 {
-	protected final ItemStack phoneStack;
+	protected ItemStack phoneStack;
 	protected final EnumHand hand;
-	protected final ItemPhone.NBTData phoneStackData;
+	protected ItemPhone.NBTData phoneStackData;
 	
 	protected final int OUTER_TEX_WIDTH = 176;
 	protected final int OUTER_TEX_HEIGHT = 222;
@@ -57,8 +58,7 @@ public abstract class GuiPhoneBase extends GuiScreen
 	private int HOME_X;
 	private boolean firstTick = true;
 	private int timeToNextBezel;
-	private int battery;
-	private int batteryReductionTimer;
+	private int timeToRefreshStack = 200;
 	
 	private final int STATUS_BAR_HEIGHT = 14;
 	private SignalStrengths signalStrength = SignalStrengths.unknown;
@@ -74,7 +74,6 @@ public abstract class GuiPhoneBase extends GuiScreen
 		this.hand = hand;
 		this.phoneStackData = new ItemPhone.NBTData();
 		this.phoneStackData.deserializeNBT(this.phoneStack.getTagCompound());
-		this.battery = phoneStackData.getBatteryLevel();
 	}
 	
 	public void setSignalStrength(SignalStrengths signalStrength)
@@ -144,17 +143,18 @@ public abstract class GuiPhoneBase extends GuiScreen
 
 				firstDrawingTick(mouseX, mouseY, partialTicks);
 				firstTick = false;
-				this.battery = phoneStackData.getBatteryLevel();
 			}
 			drawDefaultBackground();
 			
-			if (--batteryReductionTimer <= 0)
+			if (--timeToRefreshStack <= 0)
 			{
-				battery--;
-				batteryReductionTimer = 200; // Reduce by one point every 10 seconds
+				phoneStack = Minecraft.getMinecraft().player.getHeldItem(hand);
+				phoneStackData = NBTData.getFromItemStack(phoneStack);
+				
+				timeToRefreshStack = 200;
 			}
 
-			if(battery <= 0)
+			if(phoneStackData.getBatteryLevel() <= 0)
 			{
 				Minecraft.getMinecraft().displayGuiScreen(null);
 				Minecraft.getMinecraft().player.sendMessage(new TextComponentString("Phone battery is dead"));
@@ -205,16 +205,26 @@ public abstract class GuiPhoneBase extends GuiScreen
 				drawScaledCustomSizeModalRect(INNER_X, INNER_Y, 0, 0, INNER_TEX_WIDTH * WIDTH_SCALE, STATUS_BAR_HEIGHT * HEIGHT_SCALE, INNER_TEX_WIDTH, STATUS_BAR_HEIGHT, 512, 512);
 
 				Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/" + signalStrength.getTextureName()));
-				drawScaledCustomSizeModalRect(INNER_X + INNER_TEX_WIDTH - 16, INNER_Y - 1, 0, 0, 16, 16, 16, 16, 16, 16);
+				drawScaledCustomSizeModalRect(INNER_X + INNER_TEX_WIDTH - 34, INNER_Y - 1, 0, 0, 16, 16, 16, 16, 16, 16);
 
 				fontRenderer.drawString(getTime(), INNER_X + 2, INNER_Y + 3, 0xFFFFFF);
-				fontRenderer.drawString("Bell", INNER_X + INNER_TEX_WIDTH - 35, INNER_Y + 3, 0xFFFFFF);
+				fontRenderer.drawString("Bell", INNER_X + INNER_TEX_WIDTH - 52, INNER_Y + 3, 0xFFFFFF);
 
 				if(phoneStackData.getIsDebugModeEnabled())
 				{
 					Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/" + "tray_debug.png"));
-					drawScaledCustomSizeModalRect(INNER_X + INNER_TEX_WIDTH - 48, INNER_Y + 2, 0, 0, 16, 16, 10, 10, 16, 16);
+					drawScaledCustomSizeModalRect(INNER_X + INNER_TEX_WIDTH - 66, INNER_Y + 2, 0, 0, 16, 16, 10, 10, 16, 16);
 				}
+				
+				int levelPart = ModConfig.smartphoneMaxBattery / 5;
+				int chargeLevel = phoneStackData.getBatteryLevel() / levelPart;
+				if (chargeLevel > 4)
+				{
+					chargeLevel = 4;
+				}
+				
+				Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/bat_" + chargeLevel + ".png"));
+				drawScaledCustomSizeModalRect(INNER_X + INNER_TEX_WIDTH - 18, INNER_Y - 1, 0, 0, 16, 16, 16, 16, 16, 16);
 			}
 
 			// Lower bar
@@ -374,19 +384,6 @@ public abstract class GuiPhoneBase extends GuiScreen
 	@Override
 	public void onGuiClosed() {
 		super.onGuiClosed();
-
-		SetBatteryLevelPacket batPat = new SetBatteryLevelPacket();
-		batPat.hand = hand.ordinal();
-		if(battery < 0)
-		{
-			batPat.batteryLevel = 0;
-		}
-		else
-		{
-			batPat.batteryLevel = battery;
-		}
-		PacketHandler.INSTANCE.sendToServer(batPat);
-		Minecraft.getMinecraft().player.sendMessage(new TextComponentString("Level Sent to Server: " + battery));
 
 		if (!lastGuiWasPhone)
 		{

@@ -1,8 +1,10 @@
 package com.mesabrook.ib.net.telecom;
 
 import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import com.mesabrook.ib.util.saveData.PhoneNumberData;
+
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -61,7 +63,7 @@ public class ActivateNumberChosenPacket implements IMessage {
 				}
 				
 				nbt.setInteger(Reference.PHONE_NUMBER_NBTKEY, message.number);
-				nbt.setInteger(Reference.BATTERY_LEVEL, Reference.BATTERY_CHARGE);
+				nbt.setInteger(Reference.BATTERY_LEVEL, ModConfig.smartphoneMaxBattery);
 				ActivationCompletePacket complete = new ActivationCompletePacket();
 				complete.hand = EnumHand.values()[message.hand];
 				PacketHandler.INSTANCE.sendTo(complete, player);

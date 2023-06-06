@@ -1,16 +1,21 @@
 package com.mesabrook.ib.items.misc;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
+
+import javax.annotation.Nullable;
+
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneBase;
 import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.net.telecom.SetBatteryLevelPacket;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SpecialBezelRandomizer;
 import com.mesabrook.ib.util.config.ModConfig;
-import com.mesabrook.ib.util.handlers.PacketHandler;
+
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -23,7 +28,6 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -34,11 +38,6 @@ import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
 
 public class ItemPhone extends Item implements IHasModel {
 
@@ -107,15 +106,6 @@ public class ItemPhone extends Item implements IHasModel {
 			Triggers.trigger(Triggers.PHONE_USE, playerIn);
 		}
 
-		if(playerIn.isSneaking())
-		{
-			SetBatteryLevelPacket packet = new SetBatteryLevelPacket();
-			packet.hand = handIn.ordinal();
-			packet.batteryLevel = Reference.BATTERY_CHARGE;
-			PacketHandler.INSTANCE.sendToServer(packet);
-			playerIn.sendMessage(new TextComponentString("Phone recharged"));
-		}
-
 		return super.onItemRightClick(worldIn, playerIn, handIn);
 	}
 
@@ -140,7 +130,7 @@ public class ItemPhone extends Item implements IHasModel {
 		private int lockBackground = 1;
 		private int chatTone = 1;
 		private int ringTone = 1;
-		private int batteryLevel;
+		private int batteryLevel = ModConfig.smartphoneMaxBattery;
 		private HashMap<UUID, Contact> contactsByIdentifier = new HashMap<>();
 		private HashMap<String, Contact> contactsByPhoneNumber = new HashMap<>();
 
@@ -618,7 +608,7 @@ public class ItemPhone extends Item implements IHasModel {
 		@Override
 		public int receiveEnergy(int maxReceive, boolean simulate) {
 			NBTData data = NBTData.getFromItemStack(phoneStack);
-			int toReceive = maxReceive + data.getBatteryLevel() > Reference.BATTERY_CHARGE ? maxReceive - data.getBatteryLevel() : maxReceive;
+			int toReceive = maxReceive + data.getBatteryLevel() > ModConfig.smartphoneMaxBattery ? maxReceive - data.getBatteryLevel() : maxReceive;
 			
 			if (!simulate)
 			{
@@ -642,7 +632,7 @@ public class ItemPhone extends Item implements IHasModel {
 
 		@Override
 		public int getMaxEnergyStored() {
-			return Reference.BATTERY_CHARGE;
+			return ModConfig.smartphoneMaxBattery;
 		}
 
 		@Override

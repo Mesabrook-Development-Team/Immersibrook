@@ -60,7 +60,6 @@ public class Reference
 	public static final int MAX_PHONE_BACKGROUNDS = 33; // This is an INCLUSIVE number
 	public static final int MAX_CHAT_NOTIFICATIONS = 9; // This is an INCLUSIVE number
 	public static final int MAX_RINGTONES = 15; // This is an INCLUSIVE number
-	public static final int BATTERY_CHARGE = 1600;
 
 	// Birthdays (Day and Month only - NO YEARS)
 	public static final int RZ_MONTH = 9;

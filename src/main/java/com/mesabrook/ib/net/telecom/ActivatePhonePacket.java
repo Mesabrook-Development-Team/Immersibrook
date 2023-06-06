@@ -55,11 +55,6 @@ public class ActivatePhonePacket implements IMessage {
 			ActivateChooseNumberPacket chooseNumber = new ActivateChooseNumberPacket();
 			chooseNumber.numberChoices = numbers;
 			PacketHandler.INSTANCE.sendTo(chooseNumber, player);
-
-			SetBatteryLevelPacket batPacket = new SetBatteryLevelPacket();
-			batPacket.hand = message.hand;
-			batPacket.batteryLevel = 9999;
-			PacketHandler.INSTANCE.sendToServer(batPacket);
 		}
 	}
 }
