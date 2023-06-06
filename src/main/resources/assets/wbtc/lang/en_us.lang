@@ -1852,6 +1852,8 @@ im.settings.personalization.icontheme.aero=Aero Bubbles
 im.settings.personalization.icontheme.luna=Luna
 im.alert.name=EMERGENCY ALERT
 im.alert.close=Dismiss
+im.crash.uploaded=Crash Log Uploaded
+im.crash.error=Unable to upload
 
 //Minedroid Translation Project - Misc
 im.misc.error=An error occurred.

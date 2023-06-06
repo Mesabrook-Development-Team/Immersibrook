@@ -1,6 +1,9 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import com.mesabrook.ib.Main;
 import com.mesabrook.ib.net.*;
+import com.mesabrook.ib.util.MinedroidCrashLogUploader;
+import com.mesabrook.ib.util.ModUtils;
 import com.mesabrook.ib.util.handlers.*;
 import net.minecraft.client.*;
 import net.minecraft.client.gui.*;
@@ -9,9 +12,7 @@ import net.minecraft.util.*;
 import net.minecraft.util.text.*;
 
 import java.io.*;
-import java.awt.datatransfer.StringSelection;
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
+import java.net.URI;
 
 public class GuiPhoneCrashed extends GuiPhoneBase
 {
@@ -20,7 +21,7 @@ public class GuiPhoneCrashed extends GuiPhoneBase
     private int delay = 0;
 
     MinedroidButton resetButton;
-    MinedroidButton copyStackToClipboardButton;
+    MinedroidButton uploadToPastebinButton;
 
     ImageButton crashIcon;
 
@@ -63,15 +64,15 @@ public class GuiPhoneCrashed extends GuiPhoneBase
         super.initGui();
 
         resetButton = new MinedroidButton(1, INNER_X + 3, INNER_Y + 180, INNER_TEX_WIDTH - 6, "Restart Phone", 0xFFFFFF);
-        copyStackToClipboardButton = new MinedroidButton(2, INNER_X + 3, INNER_Y + 160, INNER_TEX_WIDTH - 6, "Copy Error to Clipboard", 0xFFFFFF);
+        uploadToPastebinButton = new MinedroidButton(2, INNER_X + 3, INNER_Y + 160, INNER_TEX_WIDTH - 6, "Upload Crash to Pastebin", 0xFFFFFF);
 
         resetButton.visible = false;
-        copyStackToClipboardButton.visible = false;
+        uploadToPastebinButton.visible = false;
 
         crashIcon = new ImageButton(3, INNER_X + 59, INNER_Y + 8, 32, 32, "crashed.png", 32, 32);
 
         buttonList.add(resetButton);
-        buttonList.add(copyStackToClipboardButton);
+        buttonList.add(uploadToPastebinButton);
         buttonList.add(crashIcon);
 
         ClientSoundPacket soundPacket = new ClientSoundPacket();
@@ -103,7 +104,7 @@ public class GuiPhoneCrashed extends GuiPhoneBase
             fontRenderer.drawSplitString(new TextComponentString(TextFormatting.ITALIC + getCrashTitle()).getFormattedText(), INNER_X + 20, INNER_Y + 65, 125, 0xFFFFFF);
 
             resetButton.visible = true;
-            copyStackToClipboardButton.visible = true;
+            uploadToPastebinButton.visible = true;
         }
     }
 
@@ -122,15 +123,23 @@ public class GuiPhoneCrashed extends GuiPhoneBase
             Minecraft.getMinecraft().displayGuiScreen(new GuiLockScreen(phoneStack, hand));
         }
 
-        if(button == copyStackToClipboardButton)
+        if(button == uploadToPastebinButton)
         {
-            StringSelection stringSelection = new StringSelection(getErrorStackTrace());
-            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+            try
+            {
+                String stackToUpload = errorStackTrace;
+                String PastebinURL = MinedroidCrashLogUploader.uploadText(stackToUpload);
 
-            clipboard.setContents(stringSelection, null);
-            copyStackToClipboardButton.enabled = false;
+                ModUtils.openWebLink(new URI(PastebinURL));
+                uploadToPastebinButton.enabled = false;
 
-            Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Error Copied"));
+                Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.crash.uploaded").getFormattedText(), 0xFFFFFF));
+            }
+            catch(Exception ex)
+            {
+                Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.crash.error").getFormattedText(), 0xFFFFFF));
+                Main.logger.error(ex);
+            }
         }
     }
 }
