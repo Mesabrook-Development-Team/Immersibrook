@@ -22,6 +22,8 @@ public class GuiPhoneCrashed extends GuiPhoneBase
     MinedroidButton resetButton;
     MinedroidButton copyStackToClipboardButton;
 
+    ImageButton crashIcon;
+
     public GuiPhoneCrashed(ItemStack phoneStack, EnumHand hand)
     {
         super(phoneStack, hand);
@@ -52,7 +54,7 @@ public class GuiPhoneCrashed extends GuiPhoneBase
     @Override
     protected String getInnerTextureFileName()
     {
-        return "app_screen_no_bar.png";
+        return "bsod.png";
     }
 
     @Override
@@ -66,8 +68,11 @@ public class GuiPhoneCrashed extends GuiPhoneBase
         resetButton.visible = false;
         copyStackToClipboardButton.visible = false;
 
+        crashIcon = new ImageButton(3, INNER_X + 59, INNER_Y + 8, 32, 32, "crashed.png", 32, 32);
+
         buttonList.add(resetButton);
         buttonList.add(copyStackToClipboardButton);
+        buttonList.add(crashIcon);
 
         ClientSoundPacket soundPacket = new ClientSoundPacket();
         soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
@@ -93,7 +98,6 @@ public class GuiPhoneCrashed extends GuiPhoneBase
 
         if(delay > 325)
         {
-            drawCenteredString(fontRenderer, ":(" , INNER_X + 80, INNER_Y + 31, 0xFFFFFF);
             drawCenteredString(fontRenderer, new TextComponentString(TextFormatting.BOLD + "Minedroid has crashed.").getFormattedText() , INNER_X + 80, INNER_Y + 50, 0xFFFFFF);
 
             fontRenderer.drawSplitString(new TextComponentString(TextFormatting.ITALIC + getCrashTitle()).getFormattedText(), INNER_X + 20, INNER_Y + 65, 125, 0xFFFFFF);
