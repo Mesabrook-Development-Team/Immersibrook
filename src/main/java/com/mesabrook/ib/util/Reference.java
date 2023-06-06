@@ -50,6 +50,7 @@ public class Reference
 	public static final String LOCK_BACKGROUND = "lockBackground";
 	public static final String CHAT_TONE = "chatTone";
 	public static final String RING_TONE = "ringTone";
+	public static final String BATTERY_LEVEL = "battery";
 	public static final String CONTACTS_NBTKEY = "contacts";
 	public static final String SHOW_IRL_TIME = "showirltime";
 	public static final String SHOW_MILITARY_TIME = "show24hr";

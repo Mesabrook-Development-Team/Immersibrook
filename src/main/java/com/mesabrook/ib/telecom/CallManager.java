@@ -475,12 +475,20 @@ public class CallManager {
 			ArrayList<Tuple<EntityPlayerMP, ItemStack>> phones = getDestOwners();
 			phones.add(getOriginOwner());
 			for (Tuple<EntityPlayerMP, ItemStack> phone : phones) {
-				if (phone.getFirst() == player) {
-					continue;
-				}
-
 				ItemPhone.NBTData nbtData = new ItemPhone.NBTData();
 				nbtData.deserializeNBT(phone.getSecond().getTagCompound());
+				
+				if (phone.getFirst() == player) {
+					int drainage = 1;
+					if (playerReception < 1.0)
+					{
+						drainage += (int)((1.0 - playerReception) * 10);
+					}
+					nbtData.setBatteryLevel(nbtData.getBatteryLevel() - drainage);
+					phone.getSecond().getTagCompound().merge(nbtData.serializeNBT());
+					
+					continue;
+				}
 
 				if (doesConferenceSubCallsContainOrigin(nbtData.getPhoneNumberString())) {
 					continue;
@@ -488,6 +496,12 @@ public class CallManager {
 
 				double effectiveReception = playerReception;
 				double receiverReception = antenna.getBestReception(phone.getFirst().getPosition());
+				int drainage = 1;
+				if (receiverReception < 1.0)
+				{
+					drainage += (int)((1.0 - receiverReception) * 10);
+				}
+				
 				if (receiverReception < effectiveReception) {
 					effectiveReception = receiverReception;
 				}
@@ -495,6 +509,8 @@ public class CallManager {
 				EntityPlayerMP playerToSendTo = phone.getFirst();
 				ITextComponent textToSend = getScrambledText(text, effectiveReception);
 				playerToSendTo.sendMessage(textToSend);
+				nbtData.setBatteryLevel(nbtData.getBatteryLevel() - drainage);
+				phone.getSecond().getTagCompound().merge(nbtData.serializeNBT());
 
 				// Play chat notification sound
 				ServerSoundBroadcastPacket playSound = new ServerSoundBroadcastPacket();

@@ -1078,6 +1078,13 @@
 		}],
 		"subtitle": "ib.sub.setup"
 	},
+	"phone_battery_low": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:phone_battery_low"
+		}],
+		"subtitle": "ib.sub.lowbat"
+	},
 	"minedroid_firstboot": {
 		"category": "master",
 		"sounds": [{
