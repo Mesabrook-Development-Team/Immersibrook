@@ -116,11 +116,7 @@ public class GuiPhoneCrashed extends GuiPhoneBase
         if(button == resetButton)
         {
             isPhoneUnlocked = false;
-            ClientSoundPacket soundPacket = new ClientSoundPacket();
-            soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
-            soundPacket.soundName = "minedroid_startup";
-            PacketHandler.INSTANCE.sendToServer(soundPacket);
-            Minecraft.getMinecraft().displayGuiScreen(new GuiLockScreen(phoneStack, hand));
+            Minecraft.getMinecraft().displayGuiScreen(new GuiBootScreen(phoneStack, hand));
         }
 
         if(button == uploadToPastebinButton)
