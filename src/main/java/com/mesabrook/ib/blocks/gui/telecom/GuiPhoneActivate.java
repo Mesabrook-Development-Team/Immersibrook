@@ -1,5 +1,7 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import java.io.IOException;
+
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.net.telecom.ActivateNumberChosenPacket;
@@ -9,6 +11,7 @@ import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SpecialBezelRandomizer;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.handlers.PacketHandler;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -17,8 +20,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
-
-import java.io.IOException;
 
 public class GuiPhoneActivate extends GuiScreen {
 	
@@ -79,7 +80,7 @@ public class GuiPhoneActivate extends GuiScreen {
 			buttonList.add(label);
 			workingY += fontRenderer.FONT_HEIGHT + 2;
 		}
-		
+
 		ActivatePhonePacket packet = new ActivatePhonePacket();
 		packet.hand = hand.ordinal();
 		PacketHandler.INSTANCE.sendToServer(packet);

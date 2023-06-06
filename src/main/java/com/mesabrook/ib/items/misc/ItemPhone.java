@@ -1,5 +1,11 @@
 package com.mesabrook.ib.items.misc;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
+
+import javax.annotation.Nullable;
+
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
@@ -8,6 +14,8 @@ import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SpecialBezelRandomizer;
+import com.mesabrook.ib.util.config.ModConfig;
+
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -17,20 +25,19 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTUtil;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.INBTSerializable;
+import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
-import java.sql.*;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
 
 public class ItemPhone extends Item implements IHasModel {
 
@@ -64,6 +71,16 @@ public class ItemPhone extends Item implements IHasModel {
 		{
 			phoneNumber = GuiPhoneBase.getFormattedPhoneNumber(stackData.getPhoneNumberString());
 			tooltip.add(TextFormatting.GREEN + phoneNumber);
+
+			if(stackData.getBatteryLevel() <= 0)
+			{
+				tooltip.add(TextFormatting.RED + "Battery: " + stackData.getBatteryLevel());
+				tooltip.add(TextFormatting.RED + "Phone battery is dead! Please recharge me!");
+			}
+			else
+			{
+				tooltip.add(TextFormatting.AQUA + "Battery: " + stackData.getBatteryLevel());
+			}
 		}
 		else
 		{
@@ -113,6 +130,7 @@ public class ItemPhone extends Item implements IHasModel {
 		private int lockBackground = 1;
 		private int chatTone = 1;
 		private int ringTone = 1;
+		private int batteryLevel = ModConfig.smartphoneMaxBattery;
 		private HashMap<UUID, Contact> contactsByIdentifier = new HashMap<>();
 		private HashMap<String, Contact> contactsByPhoneNumber = new HashMap<>();
 
@@ -228,6 +246,16 @@ public class ItemPhone extends Item implements IHasModel {
 			this.ringTone = ringTone;
 		}
 
+		public int getBatteryLevel()
+		{
+			return batteryLevel;
+		}
+
+		public void setBatteryLevel(int newLevel)
+		{
+			this.batteryLevel = newLevel;
+		}
+
 		public boolean getShowIRLTime()
 		{
 			return showIRLTime;
@@ -322,6 +350,7 @@ public class ItemPhone extends Item implements IHasModel {
 			tag.setInteger(Reference.LOCK_BACKGROUND, getLockBackground());
 			tag.setInteger(Reference.CHAT_TONE, getChatTone());
 			tag.setInteger(Reference.RING_TONE, getRingTone());
+			tag.setInteger(Reference.BATTERY_LEVEL, getBatteryLevel());
 			tag.setBoolean(Reference.SHOW_IRL_TIME, getShowIRLTime());
 			tag.setBoolean(Reference.SHOW_MILITARY_TIME, getShowingMilitaryIRLTime());
 			tag.setBoolean(Reference.DEBUG_MODE, getIsDebugModeEnabled());
@@ -382,6 +411,11 @@ public class ItemPhone extends Item implements IHasModel {
 			if (nbt.hasKey(Reference.RING_TONE))
 			{
 				setRingTone(nbt.getInteger(Reference.RING_TONE));
+			}
+
+			if(nbt.hasKey(Reference.BATTERY_LEVEL))
+			{
+				setBatteryLevel(nbt.getInteger(Reference.BATTERY_LEVEL));
 			}
 
 			if(nbt.hasKey(Reference.SHOW_IRL_TIME))
@@ -526,5 +560,90 @@ public class ItemPhone extends Item implements IHasModel {
 				setAddress(otherContact.getAddress());
 			}
 		}
+	}
+
+	@Override
+	public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt) {
+		return new PhoneEnergyCapabilityProvider(stack);
+	}
+	
+	public static class PhoneEnergyCapabilityProvider implements ICapabilityProvider
+	{
+		private final ItemStack phoneStack;
+		private final PhoneEnergyStorage energyStorage;
+		public PhoneEnergyCapabilityProvider(ItemStack phoneStack)
+		{
+			this.phoneStack = phoneStack;
+			energyStorage = new PhoneEnergyStorage(this.phoneStack);
+		}
+		
+		@Override
+		public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+			if (capability == CapabilityEnergy.ENERGY)
+			{
+				return true;
+			}
+			return false;
+		}
+
+		@Override
+		public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+			if (capability == CapabilityEnergy.ENERGY)
+			{
+				return CapabilityEnergy.ENERGY.cast(energyStorage);
+			}
+			return null;
+		}
+		
+	}
+	
+	public static class PhoneEnergyStorage implements IEnergyStorage
+	{
+		private final ItemStack phoneStack;
+		public PhoneEnergyStorage(ItemStack phoneStack)
+		{
+			this.phoneStack = phoneStack;
+		}
+		
+		@Override
+		public int receiveEnergy(int maxReceive, boolean simulate) {
+			NBTData data = NBTData.getFromItemStack(phoneStack);
+			int toReceive = maxReceive + data.getBatteryLevel() > ModConfig.smartphoneMaxBattery ? maxReceive - data.getBatteryLevel() : maxReceive;
+			
+			if (!simulate)
+			{
+				data.setBatteryLevel(data.getBatteryLevel() + toReceive);
+			}
+			phoneStack.getTagCompound().merge(data.serializeNBT());
+			
+			return toReceive;
+		}
+
+		@Override
+		public int extractEnergy(int maxExtract, boolean simulate) {
+			return 0;
+		}
+
+		@Override
+		public int getEnergyStored() {
+			NBTData data = NBTData.getFromItemStack(phoneStack);
+			return data.getBatteryLevel();
+		}
+
+		@Override
+		public int getMaxEnergyStored() {
+			return ModConfig.smartphoneMaxBattery;
+		}
+
+		@Override
+		public boolean canExtract() {
+			return false;
+		}
+
+		@Override
+		public boolean canReceive() {
+			return true;
+		}
+		
 	}
 }
