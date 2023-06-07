@@ -485,6 +485,10 @@ public class CallManager {
 						drainage += (int)((1.0 - playerReception) * 10);
 					}
 					nbtData.setBatteryLevel(nbtData.getBatteryLevel() - drainage);
+					if (nbtData.getBatteryLevel() <= 0)
+					{
+						nbtData.setBatteryLevel(0);
+					}
 					phone.getSecond().getTagCompound().merge(nbtData.serializeNBT());
 					
 					continue;
@@ -510,6 +514,11 @@ public class CallManager {
 				ITextComponent textToSend = getScrambledText(text, effectiveReception);
 				playerToSendTo.sendMessage(textToSend);
 				nbtData.setBatteryLevel(nbtData.getBatteryLevel() - drainage);
+				if (nbtData.getBatteryLevel() <= 0)
+				{
+					nbtData.setBatteryLevel(0);
+					disconnectDest(nbtData.getPhoneNumberString());
+				}
 				phone.getSecond().getTagCompound().merge(nbtData.serializeNBT());
 
 				// Play chat notification sound
@@ -742,6 +751,7 @@ public class CallManager {
 
 	public void onPlayerChat(EntityPlayerMP player, ITextComponent text) {
 		ArrayList<String> playerNumbers = new ArrayList<>();
+		ArrayList<String> deadPhoneNumbers = new ArrayList<>();
 		for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
 			ItemStack stack = player.inventory.getStackInSlot(i);
 			if (!(stack.getItem() instanceof ItemPhone)) {
@@ -756,20 +766,39 @@ public class CallManager {
 				continue;
 			}
 
-			playerNumbers.add(phoneNumber);
+			if (data.getBatteryLevel() > 0)
+			{
+				playerNumbers.add(phoneNumber);
+			}
+			else
+			{
+				deadPhoneNumbers.add(phoneNumber);
+			}
 		}
 
 		for (Call call : callsByID.values()) {
-			boolean containsNumber = false;
+			String phoneNumber = null;
+			String deadPhoneNumber = null;
 			for (String playerNumber : playerNumbers) {
 				if (call.containsNumber(playerNumber)) {
-					containsNumber = true;
+					phoneNumber = playerNumber;
+					break;
+				}
+			}
+			
+			for (String playerNumber : deadPhoneNumbers) {
+				if (call.containsNumber(playerNumber)) {
+					deadPhoneNumber = playerNumber;
 					break;
 				}
 			}
 
-			if (containsNumber) {
+			if (phoneNumber != null) {
 				call.onPlayerChat(player, text);
+			}
+			else if (deadPhoneNumber != null)
+			{
+				call.disconnectDest(deadPhoneNumber);
 			}
 		}
 	}
