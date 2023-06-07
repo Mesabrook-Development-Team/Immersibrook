@@ -525,17 +525,30 @@ public class CallManager {
 
 		private ITextComponent getScrambledText(ITextComponent text, double reception) {
 			String formattedText = text.getFormattedText();
-			char[] textChars = formattedText.replace(" ", "").toCharArray();
 			char[] originalText = formattedText.toCharArray();
+			String unFormattedText = "";
+			for(int i = 0; i < formattedText.length(); i++)
+			{
+				if (formattedText.charAt(i) == ' ' || formattedText.charAt(i) == '\u00A7'
+						|| (i > 0 && formattedText.charAt(i - 1) == '\u00A7')) {
+					continue;
+				}
+				
+				unFormattedText += formattedText.charAt(i);
+			}
+			char[] textChars = unFormattedText.toCharArray();
+			
 			int amountOfCharsToScramble = (int) (textChars.length * (1.0 - reception));
 
 			if (amountOfCharsToScramble == textChars.length) {
 				String returnedText = "";
 				for (int i = 0; i < originalText.length; i++) {
 					char originalChar = originalText[i];
-					if (originalChar == ' ') {
-						returnedText += " ";
-					} else {
+					if (originalChar == ' ' || originalChar == '\u00A7' || (i > 0 && originalText[i - 1] == '\u00A7')) {
+						returnedText += originalChar;
+					} 
+					else
+					{
 						returnedText += ModConfig.scrambleCharacter;
 					}
 				}
