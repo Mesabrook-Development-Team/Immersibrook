@@ -51,7 +51,8 @@ public class ServerTickEventHandler {
 				ItemPhone.NBTData nbtData = ItemPhone.NBTData.getFromItemStack(phoneStack);
 				if (nbtData.getBatteryLevel() > 0)
 				{
-					nbtData.setBatteryLevel(nbtData.getBatteryLevel() - 1);
+//					nbtData.setBatteryLevel(nbtData.getBatteryLevel() - 1);
+					nbtData.setBatteryLevel(50);
 				}
 				
 				if (nbtData.getBatteryLevel() <= 0) // Battery died lmbo F rip no more call 4 u :skull:
