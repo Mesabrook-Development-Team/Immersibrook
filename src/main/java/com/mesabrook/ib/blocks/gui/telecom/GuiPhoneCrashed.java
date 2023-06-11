@@ -116,7 +116,7 @@ public class GuiPhoneCrashed extends GuiPhoneBase
         if(button == resetButton)
         {
             isPhoneUnlocked = false;
-            Minecraft.getMinecraft().displayGuiScreen(new GuiBootScreen(phoneStack, hand));
+            Minecraft.getMinecraft().displayGuiScreen(new GuiMSACBootScreen(phoneStack, hand));
         }
 
         if(button == uploadToPastebinButton)
