@@ -59,12 +59,12 @@ public class GuiMSACBootScreen extends GuiPhoneBase
         }
         if(fadeAnimationTimer == 500)
         {
-            currentTexture = "msac/boot_screen_msac_2.png";
+            currentTexture = "msac/boot_screen_msac_1.png";
         }
 
         if(fadeAnimationTimer > 550)
         {
-            fadeAnimationTimer = 150;
+            fadeAnimationTimer = 100;
         }
 
         return currentTexture;
