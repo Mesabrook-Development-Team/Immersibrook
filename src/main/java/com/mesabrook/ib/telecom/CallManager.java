@@ -17,7 +17,6 @@ import java.util.UUID;
 import java.util.stream.IntStream;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterators;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData;
@@ -46,10 +45,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.Tuple;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TextComponentBase;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.event.ClickEvent;
+import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -554,25 +554,7 @@ public class CallManager {
 			boolean isFirst = true;
 			
 			ArrayList<ITextComponent> components = new ArrayList<>();
-			if (parent instanceof TextComponentTranslation)
-			{
-				try
-				{
-					textComponentTranslationEnsureInitializedMethod.invoke(parent, new Object[0]);
-					@SuppressWarnings("unchecked")
-					List<ITextComponent> translationComponents = (List<ITextComponent>)textComponentTranslationChildrenField.get(parent);
-					components.addAll(translationComponents);
-				}
-				catch(Exception ex)
-				{
-					Main.logger.error("Failed to handle TextComponentTranslation", ex);
-					return null;
-				}
-			}
-			else
-			{
-				components.addAll(parent.getSiblings());
-			}
+			fillComponentList(parent, components);
 			
 			for(ITextComponent component : components)
 			{
@@ -585,8 +567,8 @@ public class CallManager {
 						continue;
 					}
 					
-					textPartIndexes.add(new Tuple<>((TextComponentString)component, i));
 					scramblableText += character;
+					textPartIndexes.add(new Tuple<>((TextComponentString)component, i));
 				}
 				
 				if (componentChars.length > 0)
@@ -595,6 +577,34 @@ public class CallManager {
 				}
 			}
 			return scramblableText;
+		}
+		
+		private void fillComponentList(ITextComponent parent, ArrayList<ITextComponent> components)
+		{
+			if (parent instanceof TextComponentTranslation)
+			{
+				try
+				{
+					textComponentTranslationEnsureInitializedMethod.invoke(parent, new Object[0]);
+					@SuppressWarnings("unchecked")
+					List<ITextComponent> translationComponents = (List<ITextComponent>)textComponentTranslationChildrenField.get(parent);
+					for(ITextComponent component : translationComponents)
+					{
+						components.add(component);
+						fillComponentList(component, components);
+					}
+				}
+				catch(Exception ex)
+				{
+					Main.logger.error("Failed to handle TextComponentTranslation", ex);
+				}
+			}
+			
+			for(ITextComponent component : parent.getSiblings())
+			{
+				components.add(component);
+				fillComponentList(component, components);
+			}
 		}
 		
 		private boolean doReflection()
@@ -666,52 +676,51 @@ public class CallManager {
 			String scramblableText = getTextComponentStringsForScramble(textCopy, textPartIndexes, textParts);
 			
 			int scrambleAmount = (int)(textPartIndexes.size() * (1.0 - reception));
-			if (scrambleAmount == 0) // Nothing to scramble
-			{
-				return textCopy;
-			}
-			
-			// Get random indexes
-			Random rand = new Random();
-			IntStream ints = rand.ints(0, scramblableText.length());
-			OfInt iterator = ints.iterator();
-			ArrayList<Integer> indexesToScramble = new ArrayList<>();
-			while(indexesToScramble.size() < scrambleAmount)
-			{
-				indexesToScramble.add(iterator.next());
-			}
-			
-			ints.close();
-			
-			// Modify respective text components based on the indexes to scramble
-			for(int indexToScramble : indexesToScramble)
-			{
-				Tuple<TextComponentString, Integer> componentLocalIndex = textPartIndexes.get(indexToScramble);
-				String currentText = componentLocalIndex.getFirst().getUnformattedComponentText();
-				String newText = "";
-				char[] textChars = currentText.toCharArray();
-				for(int i = 0; i < textChars.length; i++)
+			if (scrambleAmount > 0) // Nothing to scramble
+			{			
+				// Get random indexes
+				Random rand = new Random();
+				IntStream ints = rand.ints(0, scramblableText.length());
+				OfInt iterator = ints.iterator();
+				ArrayList<Integer> indexesToScramble = new ArrayList<>();
+				while(indexesToScramble.size() < scrambleAmount)
 				{
-					if (i == componentLocalIndex.getSecond())
-					{
-						newText += ModConfig.scrambleCharacter;
-					}
-					else
-					{
-						newText += textChars[i];
-					}
+					indexesToScramble.add(iterator.next());
 				}
 				
-				componentLocalIndex.getFirst().getStyle().setClickEvent(null);
-				componentLocalIndex.getFirst().getStyle().setHoverEvent(null);
+				ints.close();
 				
-				try
+				// Modify respective text components based on the indexes to scramble
+				for(int indexToScramble : indexesToScramble)
 				{
-					textComponentStringTextField.set(componentLocalIndex.getFirst(), newText);
-				}
-				catch(Exception ex)
-				{
-					Main.logger.error("Failed to set text for chat during scramble");
+					Tuple<TextComponentString, Integer> componentLocalIndex = textPartIndexes.get(indexToScramble);
+					String currentText = componentLocalIndex.getFirst().getUnformattedComponentText();
+					String newText = "";
+					char[] textChars = currentText.toCharArray();
+					for(int i = 0; i < textChars.length; i++)
+					{
+						if (i == componentLocalIndex.getSecond())
+						{
+							newText += ModConfig.scrambleCharacter;
+						}
+						else
+						{
+							newText += textChars[i];
+						}
+					}
+					
+					// Known issue: Parent styles still have their click event in effect
+					componentLocalIndex.getFirst().getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, ""));
+					componentLocalIndex.getFirst().getStyle().setHoverEvent(null);
+					
+					try
+					{
+						textComponentStringTextField.set(componentLocalIndex.getFirst(), newText);
+					}
+					catch(Exception ex)
+					{
+						Main.logger.error("Failed to set text for chat during scramble");
+					}
 				}
 			}
 			
@@ -721,172 +730,16 @@ public class CallManager {
 			style.setColor(TextFormatting.GREEN);
 			style.setBold(true);
 			retVal.setStyle(style);
+			
+			Style oldStyle = textCopy.getStyle().createDeepCopy();
+			if (oldStyle.getColor() == null)
+			{
+				oldStyle.setColor(TextFormatting.WHITE);
+			}
 			retVal.appendSibling(textCopy);
-			textCopy.getStyle().setParentStyle(null);
+			textCopy.setStyle(oldStyle);
 			return retVal;
 		}
-
-//		private ITextComponent getScrambledText(ITextComponent text, double reception) {
-//			String formattedText = text.getFormattedText();
-//			char[] originalText = formattedText.toCharArray();
-//			String unFormattedText = "";
-//			for(int i = 0; i < formattedText.length(); i++)
-//			{
-//				if (formattedText.charAt(i) == ' ' || formattedText.charAt(i) == '\u00A7'
-//						|| (i > 0 && formattedText.charAt(i - 1) == '\u00A7')) {
-//					continue;
-//				}
-//				
-//				unFormattedText += formattedText.charAt(i);
-//			}
-//			char[] textChars = unFormattedText.toCharArray();
-//			
-//			int amountOfCharsToScramble = (int) (textChars.length * (1.0 - reception));
-//
-//			if (amountOfCharsToScramble == textChars.length) {
-//				String returnedText = "";
-//				for (int i = 0; i < originalText.length; i++) {
-//					char originalChar = originalText[i];
-//					if (originalChar == ' ' || originalChar == '\u00A7' || (i > 0 && originalText[i - 1] == '\u00A7')) {
-//						returnedText += originalChar;
-//					} 
-//					else
-//					{
-//						returnedText += ModConfig.scrambleCharacter;
-//					}
-//				}
-//
-//				return new TextComponentString(returnedText);
-//			}
-//			
-//			// Build up an indexing of each character and it's respective ITextComponent
-//			ArrayList<ITextComponent> componentMapping = new ArrayList<>(textChars.length);
-//			ArrayList<ITextComponent> allTexts = new ArrayList<>();
-//			allTexts.add(text);
-//			Iterators.addAll(allTexts, text.iterator());
-//			
-//			for(ITextComponent textComponent : allTexts)
-//			{
-//				String textComponentFormattedText = textComponent.getUnformattedComponentText();
-//				for(int i = 0; i < textComponentFormattedText.length(); i++)
-//				{
-//					char textComponentChar = textComponentFormattedText.charAt(i);
-//					if (textComponentChar == ' ') // Formatting codes not included, so we don't need to check those
-//					{
-//						continue;
-//					}
-//					
-//					componentMapping.add(textComponent);
-//				}
-//			}
-//
-//			Random rand = new Random();
-//			HashSet<Integer> indexesToScramble = new HashSet<>(amountOfCharsToScramble);
-//			IntStream ints = rand.ints(0, originalText.length);
-//
-//			OfInt iterator = ints.iterator();
-//			while (indexesToScramble.size() < amountOfCharsToScramble) {
-//				int index = iterator.next();
-//
-//				if (originalText[index] == ' ' || originalText[index] == '\u00A7'
-//						|| (index > 0 && originalText[index - 1] == '\u00A7')) {
-//					continue;
-//				}
-//
-//				indexesToScramble.add(index);
-//			}
-//
-//			ints.close();
-//
-//			IdentityHashMap<ITextComponent, TextComponentString> replacedComponents = new IdentityHashMap<>();
-//			
-//			for(int indexToScramble : indexesToScramble)
-//			{
-//				ITextComponent oldComponent = componentMapping.get(indexToScramble);
-//				TextComponentString component = replacedComponents.get(oldComponent);
-//				if (component == null)
-//				{
-//					component = (TextComponentString)new TextComponentString(oldComponent.getUnformattedComponentText()).setStyle(oldComponent.getStyle());
-//					replacedComponents.put(oldComponent, component);
-//				}
-//				
-//				int firstIndex = componentMapping.indexOf(oldComponent);
-//				int localScrambleIndex = indexToScramble - firstIndex;
-//				char[] currentComponentChars = component.getUnformattedComponentText().toCharArray();
-//				String newComponentText = "";
-//				for(int i = 0; i < currentComponentChars.length; i++)
-//				{					
-//					if (currentComponentChars[i] == ' ' || i != localScrambleIndex)
-//					{
-//						newComponentText += currentComponentChars[i];
-//					}
-//					else
-//					{
-//						newComponentText = ModConfig.scrambleCharacter;
-//					}
-//				}
-//				
-//				TextComponentString newComponent = (TextComponentString)new TextComponentString(newComponentText).setStyle(component.getStyle());
-//				// Add siblings
-//				for(ITextComponent sibling : oldComponent.getSiblings())
-//				{
-//					newComponent.appendSibling(sibling);
-//				}
-//				
-//				// Replace old component with new component in all other texts
-//				final ITextComponent componentToCompare = component;
-//				for(ITextComponent aComponent : allTexts)
-//				{
-//					if (aComponent.getSiblings().stream().anyMatch(c -> c == oldComponent))
-//					{
-//						int siblingIndex = aComponent.getSiblings().indexOf(oldComponent);
-//						aComponent.getSiblings().remove(oldComponent);
-//						aComponent.getSiblings().add(siblingIndex, newComponent);
-//					}
-//					
-//					if (aComponent.getSiblings().stream().anyMatch(c -> c == componentToCompare))
-//					{
-//						int siblingIndex = aComponent.getSiblings().indexOf(componentToCompare);
-//						aComponent.getSiblings().remove(componentToCompare);
-//						aComponent.getSiblings().add(siblingIndex, newComponent);
-//					}
-//				}
-//				
-//				for(TextComponentString aComponent : replacedComponents.values())
-//				{
-//					if (aComponent.getSiblings().stream().anyMatch(c -> c == oldComponent))
-//					{
-//						int siblingIndex = aComponent.getSiblings().indexOf(oldComponent);
-//						aComponent.getSiblings().remove(oldComponent);
-//						aComponent.getSiblings().add(siblingIndex, newComponent);
-//					}
-//					
-//					if (aComponent.getSiblings().stream().anyMatch(c -> c == componentToCompare))
-//					{
-//						int siblingIndex = aComponent.getSiblings().indexOf(componentToCompare);
-//						aComponent.getSiblings().remove(componentToCompare);
-//						aComponent.getSiblings().add(siblingIndex, newComponent);
-//					}
-//				}
-//				
-//				replacedComponents.put(oldComponent, newComponent);
-//			}
-//
-//			TextComponentString retVal = new TextComponentString("[Call]");
-//			Style style = new Style();
-//			style.setColor(TextFormatting.GREEN);
-//			style.setBold(true);
-//			retVal.setStyle(style);
-//			ITextComponent sibling = text;
-//			if (replacedComponents.containsKey(text))
-//			{
-//				sibling = replacedComponents.get(text);
-//			}
-//			retVal.appendSibling(sibling);
-//			sibling.getStyle().setParentStyle(null);
-//
-//			return retVal;
-//		}
 
 		public void merge(String mergingNumber) {
 			Optional<Call> optSubCall = conferenceSubCalls.stream()
