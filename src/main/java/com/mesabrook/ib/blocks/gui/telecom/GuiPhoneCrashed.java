@@ -124,9 +124,9 @@ public class GuiPhoneCrashed extends GuiPhoneBase
             try
             {
                 String stackToUpload = errorStackTrace;
-                String PastebinURL = MinedroidCrashLogUploader.uploadText(stackToUpload);
+                String pastebinURL = MinedroidCrashLogUploader.uploadText(stackToUpload);
 
-                ModUtils.openWebLink(new URI(PastebinURL));
+                ModUtils.openWebLink(new URI(pastebinURL));
                 uploadToPastebinButton.enabled = false;
 
                 Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.crash.uploaded").getFormattedText(), 0xFFFFFF));
