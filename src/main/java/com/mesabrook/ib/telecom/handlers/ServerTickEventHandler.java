@@ -66,7 +66,6 @@ public class ServerTickEventHandler {
 				
 				NBTTagCompound phoneTag = phoneStack.getTagCompound();
 				phoneTag.merge(nbtData.serializeNBT());
-				Main.logger.info("Phone charge: " + phoneTag.getInteger(Reference.BATTERY_LEVEL));
 			}
 		}
 		
