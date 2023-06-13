@@ -66,7 +66,7 @@ public final class ModConfig
 	public static int maximumPhoneNumber = 7999999;
 	
 	@Comment("What character should be used for scrambling text when outside of maximum reception range?")
-	public static String scrambleCharacter = "§k-§r";
+	public static String scrambleCharacter = "-";
 
 	@Comment("[Debugging Option] Set to true if you want the fake light block created by Ceiling Lights to be rendered.")
 	public static boolean renderFakeLightBlocks = false;
