@@ -1,10 +1,14 @@
 package com.mesabrook.ib.telecom;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.PrimitiveIterator.OfInt;
@@ -13,6 +17,7 @@ import java.util.UUID;
 import java.util.stream.IntStream;
 
 import com.google.common.collect.ImmutableList;
+import com.mesabrook.ib.Main;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
@@ -33,6 +38,7 @@ import com.mesabrook.ib.util.saveData.PhoneLogData;
 import com.mesabrook.ib.util.saveData.PhoneLogData.LogData;
 import com.mesabrook.ib.util.saveData.PhoneNumberData;
 
+import net.minecraft.block.BlockDirt;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -40,16 +46,21 @@ import net.minecraft.util.Tuple;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.event.ClickEvent;
+import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
-import scala.actors.threadpool.Arrays;
 
 public class CallManager {
 
 	private static CallManager instance = null;
+	private static Field textComponentStringTextField;
+	private static Field textComponentTranslationChildrenField;
+	private static Method textComponentTranslationEnsureInitializedMethod;
 
 	public static CallManager instance() {
 		if (instance == null) {
@@ -475,6 +486,11 @@ public class CallManager {
 			ArrayList<Tuple<EntityPlayerMP, ItemStack>> phones = getDestOwners();
 			phones.add(getOriginOwner());
 			for (Tuple<EntityPlayerMP, ItemStack> phone : phones) {
+				if (phone == null)
+				{
+					continue;
+				}
+				
 				ItemPhone.NBTData nbtData = new ItemPhone.NBTData();
 				nbtData.deserializeNBT(phone.getSecond().getTagCompound());
 				
@@ -485,6 +501,10 @@ public class CallManager {
 						drainage += (int)((1.0 - playerReception) * 10);
 					}
 					nbtData.setBatteryLevel(nbtData.getBatteryLevel() - drainage);
+					if (nbtData.getBatteryLevel() <= 0)
+					{
+						nbtData.setBatteryLevel(0);
+					}
 					phone.getSecond().getTagCompound().merge(nbtData.serializeNBT());
 					
 					continue;
@@ -510,6 +530,11 @@ public class CallManager {
 				ITextComponent textToSend = getScrambledText(text, effectiveReception);
 				playerToSendTo.sendMessage(textToSend);
 				nbtData.setBatteryLevel(nbtData.getBatteryLevel() - drainage);
+				if (nbtData.getBatteryLevel() <= 0)
+				{
+					nbtData.setBatteryLevel(0);
+					disconnectDest(nbtData.getPhoneNumberString());
+				}
 				phone.getSecond().getTagCompound().merge(nbtData.serializeNBT());
 
 				// Play chat notification sound
@@ -522,61 +547,197 @@ public class CallManager {
 						playerToSendTo.posX, playerToSendTo.posY, playerToSendTo.posZ, 25));
 			}
 		}
-
-		private ITextComponent getScrambledText(ITextComponent text, double reception) {
-			String formattedText = text.getFormattedText();
-			char[] textChars = formattedText.replace(" ", "").toCharArray();
-			char[] originalText = formattedText.toCharArray();
-			int amountOfCharsToScramble = (int) (textChars.length * (1.0 - reception));
-
-			if (amountOfCharsToScramble == textChars.length) {
-				String returnedText = "";
-				for (int i = 0; i < originalText.length; i++) {
-					char originalChar = originalText[i];
-					if (originalChar == ' ') {
-						returnedText += " ";
-					} else {
-						returnedText += ModConfig.scrambleCharacter;
+		
+		private String getTextComponentStringsForScramble(ITextComponent parent, ArrayList<Tuple<TextComponentString, Integer>> textPartIndexes, ArrayList<TextComponentString> textParts)
+		{
+			String scramblableText = "";
+			boolean isFirst = true;
+			
+			ArrayList<ITextComponent> components = new ArrayList<>();
+			fillComponentList(parent, components);
+			
+			for(ITextComponent component : components)
+			{
+				char[] componentChars = component.getUnformattedComponentText().toCharArray();
+				for(int i = 0; i < componentChars.length; i++)
+				{
+					char character = componentChars[i];
+					if (character == ' ')
+					{
+						continue;
+					}
+					
+					scramblableText += character;
+					textPartIndexes.add(new Tuple<>((TextComponentString)component, i));
+				}
+				
+				if (componentChars.length > 0)
+				{
+					textParts.add((TextComponentString)component);
+				}
+			}
+			return scramblableText;
+		}
+		
+		private void fillComponentList(ITextComponent parent, ArrayList<ITextComponent> components)
+		{
+			if (parent instanceof TextComponentTranslation)
+			{
+				try
+				{
+					textComponentTranslationEnsureInitializedMethod.invoke(parent, new Object[0]);
+					@SuppressWarnings("unchecked")
+					List<ITextComponent> translationComponents = (List<ITextComponent>)textComponentTranslationChildrenField.get(parent);
+					for(ITextComponent component : translationComponents)
+					{
+						components.add(component);
+						fillComponentList(component, components);
 					}
 				}
-
-				return new TextComponentString(returnedText);
-			}
-
-			Random rand = new Random();
-			HashSet<Integer> indexesToScramble = new HashSet<>(amountOfCharsToScramble);
-			IntStream ints = rand.ints(0, originalText.length);
-
-			OfInt iterator = ints.iterator();
-			while (indexesToScramble.size() < amountOfCharsToScramble) {
-				int index = iterator.next();
-
-				if (originalText[index] == ' ' || originalText[index] == '\u00A7'
-						|| (index > 0 && originalText[index - 1] == '\u00A7')) {
-					continue;
-				}
-
-				indexesToScramble.add(index);
-			}
-
-			ints.close();
-
-			String newText = "";
-			for (int i = 0; i < originalText.length; i++) {
-				if (indexesToScramble.contains(i)) {
-					newText += ModConfig.scrambleCharacter;
-				} else {
-					newText += originalText[i];
+				catch(Exception ex)
+				{
+					Main.logger.error("Failed to handle TextComponentTranslation", ex);
 				}
 			}
-
+			
+			for(ITextComponent component : parent.getSiblings())
+			{
+				components.add(component);
+				fillComponentList(component, components);
+			}
+		}
+		
+		private boolean doReflection()
+		{
+			boolean isObfuscated = !java.util.Arrays.stream(BlockDirt.class.getMethods()).anyMatch(m -> m.getName() == "getStateFromMeta");
+			if (textComponentStringTextField == null)
+			{
+				try
+				{
+					textComponentStringTextField = TextComponentString.class.getDeclaredField(isObfuscated ? "field_150267_b" : "text");
+					textComponentStringTextField.setAccessible(true);
+					
+					Field modifiersField = Field.class.getDeclaredField("modifiers");
+					modifiersField.setAccessible(true);
+					modifiersField.setInt(textComponentStringTextField, textComponentStringTextField.getModifiers() & ~Modifier.FINAL);
+				}
+				catch(Exception ex)
+				{
+					textComponentStringTextField = null;
+					Main.logger.error("An error occurred while trying to modify text field for chat scrambling.", ex);
+					return false;
+				}
+			}
+			
+			if (textComponentTranslationChildrenField == null)
+			{
+				try
+				{
+					textComponentTranslationChildrenField = TextComponentTranslation.class.getDeclaredField(isObfuscated ? "field_150278_b" : "children");
+					textComponentTranslationChildrenField.setAccessible(true);
+				}
+				catch(Exception ex)
+				{
+					textComponentTranslationChildrenField = null;
+					Main.logger.error("An error occurred while trying to modify children field for chat scrambling.", ex);
+					return false;
+				}
+			}
+			
+			if (textComponentTranslationEnsureInitializedMethod == null)
+			{
+				try
+				{
+					textComponentTranslationEnsureInitializedMethod = TextComponentTranslation.class.getDeclaredMethod(isObfuscated ? "func_150270_g" : "ensureInitialized", new Class<?>[0]);
+					textComponentTranslationEnsureInitializedMethod.setAccessible(true);
+				}
+				catch(Exception ex)
+				{
+					textComponentTranslationEnsureInitializedMethod = null;
+					Main.logger.error("An error occurred while trying to modify ensureInitialized method for chat scrambling.", ex);
+					return false;
+				}
+			}
+			
+			return true;
+		}
+		
+		private ITextComponent getScrambledText(ITextComponent text, double reception) {
+			if (!doReflection())
+			{
+				return text;
+			}
+			
+			ITextComponent textCopy = text.createCopy();
+			
+			// Figure out what is eligible to be scrambled
+			ArrayList<Tuple<TextComponentString, Integer>> textPartIndexes = new ArrayList<>();
+			ArrayList<TextComponentString> textParts = new ArrayList<>();
+			String scramblableText = getTextComponentStringsForScramble(textCopy, textPartIndexes, textParts);
+			
+			int scrambleAmount = (int)(textPartIndexes.size() * (1.0 - reception));
+			if (scrambleAmount > 0) // Nothing to scramble
+			{			
+				// Get random indexes
+				Random rand = new Random();
+				IntStream ints = rand.ints(0, scramblableText.length());
+				OfInt iterator = ints.iterator();
+				ArrayList<Integer> indexesToScramble = new ArrayList<>();
+				while(indexesToScramble.size() < scrambleAmount)
+				{
+					indexesToScramble.add(iterator.next());
+				}
+				
+				ints.close();
+				
+				// Modify respective text components based on the indexes to scramble
+				for(int indexToScramble : indexesToScramble)
+				{
+					Tuple<TextComponentString, Integer> componentLocalIndex = textPartIndexes.get(indexToScramble);
+					String currentText = componentLocalIndex.getFirst().getUnformattedComponentText();
+					String newText = "";
+					char[] textChars = currentText.toCharArray();
+					for(int i = 0; i < textChars.length; i++)
+					{
+						if (i == componentLocalIndex.getSecond())
+						{
+							newText += ModConfig.scrambleCharacter;
+						}
+						else
+						{
+							newText += textChars[i];
+						}
+					}
+					
+					// Known issue: Parent styles still have their click event in effect
+					componentLocalIndex.getFirst().getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, ""));
+					componentLocalIndex.getFirst().getStyle().setHoverEvent(null);
+					
+					try
+					{
+						textComponentStringTextField.set(componentLocalIndex.getFirst(), newText);
+					}
+					catch(Exception ex)
+					{
+						Main.logger.error("Failed to set text for chat during scramble");
+					}
+				}
+			}
+			
+			// Prepend text and return
 			TextComponentString retVal = new TextComponentString("[Call]");
 			Style style = new Style();
 			style.setColor(TextFormatting.GREEN);
 			style.setBold(true);
 			retVal.setStyle(style);
-			retVal.appendSibling(new TextComponentString(newText).setStyle(new Style().setColor(TextFormatting.RESET)));
-
+			
+			Style oldStyle = textCopy.getStyle().createDeepCopy();
+			if (oldStyle.getColor() == null)
+			{
+				oldStyle.setColor(TextFormatting.WHITE);
+			}
+			retVal.appendSibling(textCopy);
+			textCopy.setStyle(oldStyle);
 			return retVal;
 		}
 
@@ -729,6 +890,7 @@ public class CallManager {
 
 	public void onPlayerChat(EntityPlayerMP player, ITextComponent text) {
 		ArrayList<String> playerNumbers = new ArrayList<>();
+		ArrayList<String> deadPhoneNumbers = new ArrayList<>();
 		for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
 			ItemStack stack = player.inventory.getStackInSlot(i);
 			if (!(stack.getItem() instanceof ItemPhone)) {
@@ -743,20 +905,39 @@ public class CallManager {
 				continue;
 			}
 
-			playerNumbers.add(phoneNumber);
+			if (data.getBatteryLevel() > 0)
+			{
+				playerNumbers.add(phoneNumber);
+			}
+			else
+			{
+				deadPhoneNumbers.add(phoneNumber);
+			}
 		}
 
 		for (Call call : callsByID.values()) {
-			boolean containsNumber = false;
+			String phoneNumber = null;
+			String deadPhoneNumber = null;
 			for (String playerNumber : playerNumbers) {
 				if (call.containsNumber(playerNumber)) {
-					containsNumber = true;
+					phoneNumber = playerNumber;
+					break;
+				}
+			}
+			
+			for (String playerNumber : deadPhoneNumbers) {
+				if (call.containsNumber(playerNumber)) {
+					deadPhoneNumber = playerNumber;
 					break;
 				}
 			}
 
-			if (containsNumber) {
+			if (phoneNumber != null) {
 				call.onPlayerChat(player, text);
+			}
+			else if (deadPhoneNumber != null)
+			{
+				call.disconnectDest(deadPhoneNumber);
 			}
 		}
 	}

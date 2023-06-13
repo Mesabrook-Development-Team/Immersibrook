@@ -1,5 +1,9 @@
 package com.mesabrook.ib.items.misc;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
 import com.mesabrook.ib.init.ModItems;
@@ -7,10 +11,12 @@ import com.mesabrook.ib.init.SoundInit;
 import com.mesabrook.ib.items.misc.ItemStamp.StampTypes;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.Reference;
+
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -26,10 +32,8 @@ import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-
-import javax.annotation.Nullable;
-import java.util.List;
 
 public class ItemStampBook extends Item implements IHasModel
 {
@@ -81,6 +85,33 @@ public class ItemStampBook extends Item implements IHasModel
     public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound nbt) {
     	return new StampBookCapabilityProvider();
     }
+    
+    @Override
+    public NBTTagCompound getNBTShareTag(ItemStack stack) {
+    	NBTTagCompound tag = super.getNBTShareTag(stack);
+		
+		if (tag == null)
+		{
+			tag = new NBTTagCompound();
+		}
+		
+		IItemHandler handler = stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+		NBTBase capTag = CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.getStorage().writeNBT(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, handler, null);
+		tag.setTag("ClientInventory", capTag);
+		
+		return tag;
+    }
+    
+    @Override
+	public void readNBTShareTag(ItemStack stack, NBTTagCompound nbt) {
+		super.readNBTShareTag(stack, nbt);
+		
+		if (nbt != null && nbt.hasKey("ClientInventory"))
+		{
+			IItemHandler handler = stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+			CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.getStorage().readNBT(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, handler, null, nbt.getTag("ClientInventory"));
+		}
+	}
     
     public static class StampBookCapabilityProvider implements ICapabilityProvider, ICapabilitySerializable<NBTTagCompound>
     {

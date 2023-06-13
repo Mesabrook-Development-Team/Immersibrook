@@ -54,6 +54,16 @@ public class ServerTickEventHandler {
 					nbtData.setBatteryLevel(nbtData.getBatteryLevel() - 1);
 				}
 				
+				if (nbtData.getBatteryLevel() <= 0) // Battery died lmbo F rip no more call 4 u :skull:
+				{
+					CallManager.Call call = CallManager.instance().getCall(nbtData.getPhoneNumberString());
+					
+					if (call != null)
+					{
+						call.disconnectDest(nbtData.getPhoneNumberString());
+					}
+				}
+				
 				NBTTagCompound phoneTag = phoneStack.getTagCompound();
 				phoneTag.merge(nbtData.serializeNBT());
 			}
