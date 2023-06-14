@@ -1,6 +1,12 @@
 package com.mesabrook.ib;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.sql.Ref;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import org.apache.logging.log4j.Logger;
@@ -44,17 +50,54 @@ public class Main
     
     // Creative Tab
     public static final CreativeTabs IMMERSIBROOK_MAIN = new TabImmersibrook("tab_immersibrook");
+
+    // New motto system
+    private List<String> mottos;
+
+    private List<String> loadMottos()
+    {
+        List<String> mottos = new ArrayList<>();
+
+        try
+        {
+            InputStream inputStream = getClass().getResourceAsStream("/assets/wbtc/mottos.txt");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+
+            while ((line = reader.readLine()) != null)
+            {
+                mottos.add(line);
+            }
+
+            reader.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return mottos;
+    }
+
+    private String getRandomMotto()
+    {
+        int index = rand.nextInt(mottos.size());
+        return mottos.get(index);
+    }
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
         logger = event.getModLog();
+        mottos = loadMottos();
+        Reference.MOTTO = getRandomMotto();
         RegistryHandler.preInitRegistries(event);
     }
 
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
+        Reference.MOTTO = getRandomMotto();
         RegistryHandler.initRegistries();
         proxy.init(event);
     }
@@ -62,6 +105,7 @@ public class Main
     @EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
+        Reference.MOTTO = getRandomMotto();
     	RegistryHandler.postInitRegistries(event);
     }
     

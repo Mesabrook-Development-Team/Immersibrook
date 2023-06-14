@@ -1,9 +1,44 @@
 package com.mesabrook.ib.util;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.*;
 public class MottoRandomizer
 {
     public static String MOTTO;
+
+    public List<String> loadMottos()
+    {
+        List<String> mottos = new ArrayList<>();
+
+        try
+        {
+            InputStream inputStream = getClass().getResourceAsStream("/assets/wbtc/mottos.txt");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+
+            while((line = reader.readLine()) != null)
+            {
+                mottos.add(line);
+            }
+
+            reader.close();
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+
+        return mottos;
+    }
+
+    public String getRandomMotto(List<String> mottos)
+    {
+        Random random = new Random();
+        int index = random.nextInt(mottos.size());
+        return mottos.get(index);
+    }
 
     public static void RandomMotto()
     {

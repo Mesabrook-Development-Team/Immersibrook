@@ -60,7 +60,6 @@ public class CommandImmersibrook extends CommandBase
 				}
 				catch(Exception ex)
 				{
-					MottoRandomizer.RandomMotto();
 					Main.logger.info("");
 					Main.logger.info("=============================================================================");
 					Main.logger.info("");
@@ -70,8 +69,6 @@ public class CommandImmersibrook extends CommandBase
 					Main.logger.info(Reference.UPDATE_NAME);
 					Main.logger.info("");
 					Main.logger.info("Developed By: RavenholmZombie and CSX8600");
-					Main.logger.info("");
-					Main.logger.info(Reference.MOTTO);
 					Main.logger.info("");
 					Main.logger.info("=============================================================================");
 					Main.logger.info("");

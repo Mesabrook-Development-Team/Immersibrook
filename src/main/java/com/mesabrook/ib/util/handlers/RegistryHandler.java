@@ -30,9 +30,11 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
+import java.util.List;
+
 @EventBusSubscriber
 public class RegistryHandler 
-{	
+{
 	@SubscribeEvent
 	public static void onItemRegister(RegistryEvent.Register<Item> event)
 	{
@@ -73,7 +75,7 @@ public class RegistryHandler
 	
 	public static void preInitRegistries(FMLPreInitializationEvent event)
 	{
-		MottoRandomizer.RandomMotto();
+		//MottoRandomizer.RandomMotto();
 		Main.logger.info("");
 		Main.logger.info("=============================================================================");
 		Main.logger.info("");
@@ -110,7 +112,7 @@ public class RegistryHandler
 	
 	public static void initRegistries()
 	{
-		MottoRandomizer.RandomMotto();
+		//MottoRandomizer.RandomMotto();
 		Main.logger.info("");
 		Main.logger.info("=============================================================================");
 		Main.logger.info("");
@@ -144,7 +146,7 @@ public class RegistryHandler
 	
 	public static void postInitRegistries(FMLPostInitializationEvent event)
 	{
-		MottoRandomizer.RandomMotto();
+		//MottoRandomizer.RandomMotto();
 		Main.logger.info("");
 		Main.logger.info("=============================================================================");
 		Main.logger.info("");
@@ -176,7 +178,7 @@ public class RegistryHandler
 	
 	public static void serverRegistries(FMLServerStartingEvent event)
 	{
-		MottoRandomizer.RandomMotto();
+		//MottoRandomizer.RandomMotto();
 		Main.logger.info("");
 		Main.logger.info("=============================================================================");
 		Main.logger.info("");
@@ -189,8 +191,6 @@ public class RegistryHandler
 		Main.logger.info("/ib about for more info.");
 		Main.logger.info("");
 		Main.logger.info("Server Initialization");
-		Main.logger.info("");
-		Main.logger.info(Reference.MOTTO);
 		Main.logger.info("");
 		Main.logger.info("=============================================================================");
 		Main.logger.info("");
