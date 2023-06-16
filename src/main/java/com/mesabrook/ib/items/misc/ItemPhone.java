@@ -1,5 +1,6 @@
 package com.mesabrook.ib.items.misc;
 
+import java.sql.Ref;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -138,6 +139,7 @@ public class ItemPhone extends Item implements IHasModel {
 		private boolean militaryTime = false;
 		private boolean debugMode = false;
 		private String iconTheme = "plex";
+		private boolean needsToDoOOBE = true;
 		
 		public static NBTData getFromItemStack(ItemStack phoneStack)
 		{
@@ -295,6 +297,16 @@ public class ItemPhone extends Item implements IHasModel {
 		{
 			return this.iconTheme = themeIn;
 		}
+
+		public boolean getNeedToDoOOBE()
+		{
+			return needsToDoOOBE;
+		}
+
+		public boolean setNeedToDoOOBE(boolean trigger)
+		{
+			return this.needsToDoOOBE = trigger;
+		}
 		
 		public Contact getContactByIdentifier(UUID identifier)
 		{
@@ -355,6 +367,7 @@ public class ItemPhone extends Item implements IHasModel {
 			tag.setBoolean(Reference.SHOW_MILITARY_TIME, getShowingMilitaryIRLTime());
 			tag.setBoolean(Reference.DEBUG_MODE, getIsDebugModeEnabled());
 			tag.setString(Reference.ICON_THEME, getIconTheme());
+			tag.setBoolean(Reference.OOBE_STATUS, getNeedToDoOOBE());
 			
 			NBTTagList contactNBT = new NBTTagList();
 			for(Contact contact : contactsByIdentifier.values())
@@ -436,6 +449,11 @@ public class ItemPhone extends Item implements IHasModel {
 			if(nbt.hasKey(Reference.ICON_THEME))
 			{
 				setIconTheme(nbt.getString(Reference.ICON_THEME));
+			}
+
+			if(nbt.hasKey(Reference.OOBE_STATUS))
+			{
+				setNeedToDoOOBE(nbt.getBoolean(Reference.OOBE_STATUS));
 			}
 			
 			if (nbt.hasKey(Reference.CONTACTS_NBTKEY))

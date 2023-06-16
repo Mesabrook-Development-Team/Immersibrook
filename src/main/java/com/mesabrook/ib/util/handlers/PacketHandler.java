@@ -55,6 +55,7 @@ public class PacketHandler
 		INSTANCE.registerMessage(PhoneRingtonesPacket.Handler.class, PhoneRingtonesPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(PhoneNamePacket.Handler.class, PhoneNamePacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(CustomizationPacket.Handler.class, CustomizationPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(OOBEStatusPacket.Handler.class, OOBEStatusPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(FactoryResetPacket.Handler.class, FactoryResetPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(SaveContactPacket.Handler.class, SaveContactPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(DeleteContactPacket.Handler.class, DeleteContactPacket.class, nextID(), Side.SERVER);

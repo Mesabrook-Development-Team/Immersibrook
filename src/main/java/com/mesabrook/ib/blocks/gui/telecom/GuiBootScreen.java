@@ -97,8 +97,17 @@ public class GuiBootScreen extends GuiPhoneBase
         soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
         soundPacket.soundName = "minedroid_startup";
         PacketHandler.INSTANCE.sendToServer(soundPacket);
-        GuiLockScreen lock = new GuiLockScreen(Minecraft.getMinecraft().player.getHeldItem(hand), hand);
-        Minecraft.getMinecraft().displayGuiScreen(lock);
+
+        if(phoneStackData.getNeedToDoOOBE())
+        {
+            GuiLockScreen lock = new GuiLockScreen(Minecraft.getMinecraft().player.getHeldItem(hand), hand);
+            Minecraft.getMinecraft().displayGuiScreen(lock);
+        }
+        else
+        {
+            GuiPhoneSetupStart lock = new GuiPhoneSetupStart(Minecraft.getMinecraft().player.getHeldItem(hand), hand);
+            Minecraft.getMinecraft().displayGuiScreen(lock);
+        }
     }
 
     @Override

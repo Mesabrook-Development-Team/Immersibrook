@@ -101,12 +101,16 @@ public class GuiMSACBootScreen extends GuiPhoneBase
 
     private void finishBoot()
     {
-        ClientSoundPacket soundPacket = new ClientSoundPacket();
-        soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
-        soundPacket.soundName = "minedroid_firstboot";
-        PacketHandler.INSTANCE.sendToServer(soundPacket);
-        GuiBootScreen boot = new GuiBootScreen(Minecraft.getMinecraft().player.getHeldItem(hand), hand);
-        Minecraft.getMinecraft().displayGuiScreen(boot);
+        if(phoneStackData.getNeedToDoOOBE())
+        {
+            GuiFirstPhoneBoot boot = new GuiFirstPhoneBoot(phoneStack, hand);
+            Minecraft.getMinecraft().displayGuiScreen(boot);
+        }
+        else
+        {
+            GuiBootScreen boot = new GuiBootScreen(phoneStack, hand);
+            Minecraft.getMinecraft().displayGuiScreen(boot);
+        }
     }
 
     @Override

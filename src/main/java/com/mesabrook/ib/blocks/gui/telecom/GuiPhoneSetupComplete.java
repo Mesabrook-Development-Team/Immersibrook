@@ -81,26 +81,15 @@ public class GuiPhoneSetupComplete extends GuiPhoneBase
 
     private void goHome()
     {
-//        CustomizationPacket packet = new CustomizationPacket();
-//        packet.hand = hand.ordinal();
-//        packet.newName = phoneStack.getDisplayName();
-//        packet.guiClassName = GuiPhoneSetupComplete.class.getName();
-//        packet.iconTheme = phoneStackData.getIconTheme();
-//        packet.lockBackground = phoneStackData.getLockBackground();
-//        packet.homeBackground = phoneStackData.getHomeBackground();
-//        packet.lockTone = phoneStackData.getChatTone();
-//        packet.ringtone = phoneStackData.getRingTone();
-//        packet.setShowIRLTime = phoneStackData.getShowIRLTime();
-//        packet.useMilitaryTime = phoneStackData.getShowingMilitaryIRLTime();
-//        packet.toggleDebugMode = phoneStackData.getIsDebugModeEnabled();
-//        packet.resetName = false;
-//        packet.pin = phoneStackData.getPin();
-//        packet.playerID = phoneStackData.getUuid();
-//
-//        PacketHandler.INSTANCE.sendToServer(packet);
-
         GuiPhoneBase.isPhoneUnlocked = true;
-        Minecraft.getMinecraft().displayGuiScreen(new GuiHome(phoneStack, hand));
+
+        OOBEStatusPacket packet = new OOBEStatusPacket();
+        packet.hand = hand.ordinal();
+        packet.guiClassName = GuiPhoneSetupComplete.class.getName();
+        packet.nextGuiClassName = GuiHome.class.getName();
+        packet.isOOBEDone = true;
+
+        PacketHandler.INSTANCE.sendToServer(packet);
     }
 
     @Override
