@@ -19,6 +19,7 @@ public class GuiDebugMenu extends GuiPhoneBase
     LabelButton weaLabel;
     LabelButton oobeLabel;
     LabelButton crashLabel;
+    LabelButton lowBatTest;
 
     ImageButton weaIcon;
     ImageButton oobeIcon;
@@ -42,6 +43,7 @@ public class GuiDebugMenu extends GuiPhoneBase
         weaLabel = new LabelButton(1, INNER_X + 31, INNER_Y + 53, new TextComponentTranslation("im.settings.debug.wea").getFormattedText(), 0xFFFFFF);
         oobeLabel = new LabelButton(2, INNER_X + 31, INNER_Y + 83, new TextComponentTranslation("im.settings.debug.oobe").getFormattedText(), 0xFFFFFF);
         crashLabel = new LabelButton(3, INNER_X + 31, INNER_Y + 113, new TextComponentString("Crash Device").getFormattedText(), 0xFFFFFF);
+        lowBatTest = new LabelButton(4, INNER_X + 31, INNER_Y + 133, new TextComponentString("Low Battery Screen").getFormattedText(), 0xFFFFFF);
 
         weaIcon = new ImageButton(100, INNER_X + 0, INNER_Y + 40, 28, 28, "btn_debug.png", 32, 32);
         oobeIcon = new ImageButton(101, INNER_X + 0, INNER_Y + 70, 28, 28, "btn_debug.png", 32, 32);
@@ -52,6 +54,7 @@ public class GuiDebugMenu extends GuiPhoneBase
                 .add(weaLabel)
                 .add(oobeLabel)
                 .add(crashLabel)
+                .add(lowBatTest)
                 .add(weaIcon)
                 .add(oobeIcon)
                 .add(crashIcon)
@@ -115,6 +118,11 @@ public class GuiDebugMenu extends GuiPhoneBase
 
                 Minecraft.getMinecraft().displayGuiScreen(crashGui);
             }
+        }
+
+        if(button == lowBatTest)
+        {
+            Minecraft.getMinecraft().displayGuiScreen(new GuiLowBatWarning(phoneStack, hand));
         }
     }
 }

@@ -1091,5 +1091,12 @@
 			"name": "wbtc:minedroid_firstboot"
 		}],
 		"subtitle": "ib.sub.firstboot"
+	},
+	"battery_low": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:battery_low"
+		}],
+		"subtitle": "ib.sub.lowbat"
 	}
 }
