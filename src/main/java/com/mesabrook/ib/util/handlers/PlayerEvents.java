@@ -8,6 +8,7 @@ import com.mesabrook.ib.items.*;
 import com.mesabrook.ib.items.misc.*;
 import com.mesabrook.ib.items.tools.ItemBanHammer;
 import com.mesabrook.ib.items.tools.ItemGavel;
+import com.mesabrook.ib.items.tools.ItemIceChisel;
 import com.mesabrook.ib.net.*;
 import com.mesabrook.ib.net.telecom.*;
 import com.mesabrook.ib.telecom.*;
@@ -374,7 +375,51 @@ public class PlayerEvents
 		EnumHand hand = evt.getHand();
 		World world = evt.getWorld();
 		ItemStack stack = player.getHeldItem(hand);
+		BlockPos pos = evt.getPos();
+		IBlockState state = world.getBlockState(pos);
+		Block block = state.getBlock();
 		float pitchFloat;
+
+		// Ice Chisel
+		if(stack.getItem() instanceof ItemIceChisel)
+		{
+			if(!player.isCreative())
+			{
+				if(block instanceof BlockIce)
+				{
+					stack.damageItem(5, player);
+				}
+				else if(block instanceof BlockPackedIce)
+				{
+					stack.damageItem(10, player);
+				}
+			}
+
+			if(block instanceof BlockIce)
+			{
+				player.addItemStackToInventory(new ItemStack(Items.SNOWBALL,1));
+				if(!world.isRemote)
+				{
+					ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
+					packet.pos = player.getPosition();
+					packet.soundName = "chisel";
+					packet.rapidSounds = true;
+					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 15));
+				}
+			}
+			else if(block instanceof BlockPackedIce)
+			{
+				player.addItemStackToInventory(new ItemStack(Items.SNOWBALL,5));
+				if(!world.isRemote)
+				{
+					ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
+					packet.pos = player.getPosition();
+					packet.soundName = "chisel";
+					packet.rapidSounds = true;
+					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 15));
+				}
+			}
+		}
 
 		// Gavel Bang Sound
 		if(stack.getItem() instanceof ItemGavel)

@@ -1098,5 +1098,12 @@
 			"name": "wbtc:battery_low"
 		}],
 		"subtitle": "ib.sub.lowbat"
+	},
+	"chisel": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:chisel"
+		}],
+		"subtitle": "ib.sub.chisel"
 	}
 }

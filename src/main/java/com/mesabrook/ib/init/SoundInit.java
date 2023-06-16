@@ -88,6 +88,7 @@ public class SoundInit
 	public static final SoundEvent FART_5;
 	public static final SoundEvent COUGH_M;
 	public static final SoundEvent COUGH_F;
+	public static final SoundEvent CHISEL;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -260,6 +261,7 @@ public class SoundInit
 		FART_5 = addSoundsToRegistry("fart_5");
 		COUGH_M = addSoundsToRegistry("cough_m");
 		COUGH_F = addSoundsToRegistry("cough_f");
+		CHISEL = addSoundsToRegistry("chisel");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -519,6 +521,7 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.PHONE_BATTERY_LOW);
 				event.getRegistry().register(SoundInit.PHONE_BOOTUP);
 				event.getRegistry().register(SoundInit.BATTERY_LOW);
+				event.getRegistry().register(SoundInit.CHISEL);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

@@ -9,6 +9,7 @@ import com.mesabrook.ib.items.misc.ItemStamp.StampTypes;
 import com.mesabrook.ib.items.record.MemeRecord;
 import com.mesabrook.ib.items.tools.ItemBanHammer;
 import com.mesabrook.ib.items.tools.ItemGavel;
+import com.mesabrook.ib.items.tools.ItemIceChisel;
 import com.mesabrook.ib.items.tools.ItemManholeHook;
 import com.mesabrook.ib.items.weapons.ItemWeapon;
 import com.mesabrook.ib.util.ArmorMaterialRegistry;
@@ -33,6 +34,7 @@ public class ModItems
 	public static final Item ALUMINUM_SOD = new ItemWeapon("aluminum_sod", ToolMaterialRegistry.SOD_ALUMINUM);
 	public static final Item ALUMINUM_SWORD = new ItemWeapon("aluminum_sword", ToolMaterialRegistry.SWORD_ALUMINUM);
 	public static final Item MANHOLE_HOOK = new ItemManholeHook("manhole_hook");
+	public static final Item ICE_CHISEL = new ItemIceChisel("ice_chisel");
 
 	// Joke Items/Tools
 	public static final Item EMERALD_SWORD = new ItemWeapon("emerald_sword", ToolMaterial.GOLD);
