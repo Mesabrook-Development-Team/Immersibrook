@@ -18,7 +18,7 @@ public class OOBEStatusPacket implements IMessage
     public int hand;
     public String guiClassName;
     public String nextGuiClassName;
-    public boolean isOOBEDone = false;
+    public boolean needToDoOOBE = false;
 
     @Override
     public void fromBytes(ByteBuf buf)
@@ -26,7 +26,7 @@ public class OOBEStatusPacket implements IMessage
         hand = buf.readInt();
         guiClassName = ByteBufUtils.readUTF8String(buf);
         nextGuiClassName = ByteBufUtils.readUTF8String(buf);
-        isOOBEDone = buf.readBoolean();
+        needToDoOOBE = buf.readBoolean();
     }
 
     @Override
@@ -35,7 +35,7 @@ public class OOBEStatusPacket implements IMessage
         buf.writeInt(hand);
         ByteBufUtils.writeUTF8String(buf, guiClassName);
         ByteBufUtils.writeUTF8String(buf, nextGuiClassName);
-        buf.writeBoolean(isOOBEDone);
+        buf.writeBoolean(needToDoOOBE);
     }
 
     public static class Handler implements IMessageHandler<OOBEStatusPacket, IMessage>
@@ -65,7 +65,7 @@ public class OOBEStatusPacket implements IMessage
 
             ItemPhone.NBTData phoneData = new ItemPhone.NBTData();
             phoneData.deserializeNBT(tag);
-            phoneData.setNeedToDoOOBE(message.isOOBEDone);
+            phoneData.setNeedToDoOOBE(message.needToDoOOBE);
             tag.merge(phoneData.serializeNBT());
 
             RefreshStackPacket refresh = new RefreshStackPacket();

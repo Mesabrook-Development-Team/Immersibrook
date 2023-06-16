@@ -87,7 +87,7 @@ public class GuiPhoneSetupComplete extends GuiPhoneBase
         packet.hand = hand.ordinal();
         packet.guiClassName = GuiPhoneSetupComplete.class.getName();
         packet.nextGuiClassName = GuiHome.class.getName();
-        packet.isOOBEDone = true;
+        packet.needToDoOOBE = false;
 
         PacketHandler.INSTANCE.sendToServer(packet);
     }

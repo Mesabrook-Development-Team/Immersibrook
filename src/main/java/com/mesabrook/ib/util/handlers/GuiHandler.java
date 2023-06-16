@@ -42,7 +42,7 @@ public class GuiHandler implements IGuiHandler
 			ItemPhone.NBTData stackNBTData = new ItemPhone.NBTData();
 			stackNBTData.deserializeNBT(stackData);
 			String phoneNumber = stackNBTData.getPhoneNumberString();
-			boolean oobeDone = stackNBTData.getNeedToDoOOBE();
+			boolean needToDoOOBE = stackNBTData.getNeedToDoOOBE();
 			
 			if (phoneNumber == null)
 			{
@@ -52,7 +52,7 @@ public class GuiHandler implements IGuiHandler
 			{
 				return new GuiMobileAlert(stack, hand);
 			}
-			else if(!oobeDone)
+			else if(needToDoOOBE)
 			{
 				return new GuiFirstPhoneBoot(stack, hand);
 			}
