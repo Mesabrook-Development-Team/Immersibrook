@@ -1,0 +1,21 @@
+{
+   "forge_marker": 1,
+   "defaults": {
+   		"model": "wbtc:cell_tower_middle_red"
+   },
+   "variants": {
+  		"normal": [{}],
+  		"is_bottom": {
+  			"true": {
+  				"submodel": { "pillar_bottom": { "model": "wbtc:cell_tower_base_red" } }
+  			},
+  			"false": { }
+  		},
+  		"is_top": {
+  			"true": {
+  				"submodel": { "pillar_top": { "model": "wbtc:cell_tower_top_red" } }
+  			},
+  			"false": { }
+  		}
+   }
+}

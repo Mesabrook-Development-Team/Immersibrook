@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IPI",
+    "ISI",
+    "IPI"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "P": {
+      "type": "forge:ore_dict",
+      "ore": "itemBlackPlastic"
+    },
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "stickIron"
+    }
+  },
+  "result": {
+    "item": "wbtc:cell_tower",
+    "count": 3
+  }
+}

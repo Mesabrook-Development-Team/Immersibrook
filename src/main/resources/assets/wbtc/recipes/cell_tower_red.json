@@ -1,0 +1,16 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "type": "forge:ore_dict",
+		 "ore": "dyeRed"
+      },
+      {
+		 "item": "wbtc:cell_tower"
+      }
+   ],
+   "result": {
+      "item": "wbtc:cell_tower_red",
+      "count": 1
+   }
+}

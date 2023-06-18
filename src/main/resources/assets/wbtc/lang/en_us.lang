@@ -1226,6 +1226,9 @@ tile.wbtc_pillar_white_stonebricks.name=Chalked Stone Brick Pillar
 tile.wbtc_pillar_white_stone.name=Chalked Stone Pillar
 tile.wbtc_pillar_white_cobble.name=Chalked Cobblestone Pillar
 tile.wbtc_pillar_smoothed_stone.name=Smoothed Stone Pillar
+tile.cell_tower.name=Cell Tower Scaffolding
+tile.cell_tower_red.name=Cell Tower Scaffolding (Red)
+tile.cell_tower_combo.name=Cell Tower Scaffolding (Red and White)
 
 //Misc Blocks
 tile.white_stone.name=Chalked Stone

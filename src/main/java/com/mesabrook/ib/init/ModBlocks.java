@@ -182,6 +182,8 @@ public class ModBlocks
 	public static final Block PILLAR_WHITE_STONE = new Pillar("wbtc_pillar_white_stone", Material.ROCK, SoundType.STONE, "pickaxe", 1);
 	public static final Block PILLAR_WHITE_COBBLESTONE = new Pillar("wbtc_pillar_white_cobble", Material.ROCK, SoundType.STONE, "pickaxe", 1);
 	public static final Block PILLAR_SMOOTHED_STONE = new Pillar("wbtc_pillar_smoothed_stone", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block CELL_TOWER = new Pillar("cell_tower", Material.IRON, SoundType.METAL, "pickaxe", 1);
+	public static final Block CELL_TOWER_RED = new Pillar("cell_tower_red", Material.IRON, SoundType.METAL, "pickaxe", 1);
 
 	// Commercial Kitchen Floor Blocks
 	public static final Block FLOOR_KITCHEN_1 = new Immersiblock("floor_kitchen_1", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
