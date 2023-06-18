@@ -38,5 +38,10 @@ public class CategoryCommerce extends AbstractCategory
         add(ModItems.TEN_CENTS);
         add(ModItems.TWENTY_FIVE_CENTS);
         add(ModItems.DOLLAR_COIN);
+
+        // SCO
+        add(ModBlocks.SCO_POS);
+        add(ModBlocks.SCO_SCANNER);
+        add(ModBlocks.SCO_BAGGING);
     }
 }

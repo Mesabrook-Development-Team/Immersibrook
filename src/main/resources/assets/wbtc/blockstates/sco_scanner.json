@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:sco_scanner" },
+        "facing=south": { "model": "wbtc:sco_scanner", "y": 180 },
+        "facing=west":  { "model": "wbtc:sco_scanner", "y": 270 },
+        "facing=east":  { "model": "wbtc:sco_scanner", "y": 90 }
+    }
+}
