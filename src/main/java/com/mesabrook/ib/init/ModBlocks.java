@@ -1183,4 +1183,7 @@ public class ModBlocks
 	public static final Block SHELF_ONE_LEVEL_TWO_PEGHOOKS = new ImmersiblockRotational("shelf_one_level_two_peghooks", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
 	public static final Block SHELF_FOUR_PEGHOOKS = new ImmersiblockRotational("shelf_four_peghooks", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
 	public static final Block SHELF_TWO_LEVELS_NO_PEGHOOKS = new ImmersiblockRotational("shelf_two_levels_no_peghooks", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
+
+	// Security Station
+	public static final Block SECURITY_STATION = new ImmersiblockRotational("security_station", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
 }

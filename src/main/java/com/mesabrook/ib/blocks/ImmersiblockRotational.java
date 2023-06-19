@@ -106,15 +106,11 @@ public class ImmersiblockRotational extends Block implements IHasModel
     @Override
     public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos)
     {
-        if(blockState.getBlock() == ModBlocks.SCO_POS || blockState.getBlock() == ModBlocks.SCO_SCANNER || blockState.getBlock() == ModBlocks.SHELF_ONE_LEVEL_TWO_PEGHOOKS || blockState.getBlock() == ModBlocks.SHELF_TWO_LEVELS_NO_PEGHOOKS)
-        {
-            return FULL_BLOCK_AABB;
-        }
         if(blockState.getBlock() == ModBlocks.SCO_BAGGING)
         {
             return new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D);
         }
-        return NULL_AABB;
+        return FULL_BLOCK_AABB;
     }
 
     @Override

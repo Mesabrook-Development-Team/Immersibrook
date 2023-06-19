@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:security_station" },
+        "facing=south": { "model": "wbtc:security_station", "y": 180 },
+        "facing=west":  { "model": "wbtc:security_station", "y": 270 },
+        "facing=east":  { "model": "wbtc:security_station", "y": 90 }
+    }
+}
