@@ -43,5 +43,10 @@ public class CategoryCommerce extends AbstractCategory
         add(ModBlocks.SCO_POS);
         add(ModBlocks.SCO_SCANNER);
         add(ModBlocks.SCO_BAGGING);
+
+        // Shelving
+        add(ModBlocks.SHELF_ONE_LEVEL_TWO_PEGHOOKS);
+        add(ModBlocks.SHELF_FOUR_PEGHOOKS);
+        add(ModBlocks.SHELF_TWO_LEVELS_NO_PEGHOOKS);
     }
 }

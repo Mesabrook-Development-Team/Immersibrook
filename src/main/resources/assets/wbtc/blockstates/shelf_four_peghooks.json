@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:shelf_four_peghooks" },
+        "facing=south": { "model": "wbtc:shelf_four_peghooks", "y": 180 },
+        "facing=west":  { "model": "wbtc:shelf_four_peghooks", "y": 270 },
+        "facing=east":  { "model": "wbtc:shelf_four_peghooks", "y": 90 }
+    }
+}
