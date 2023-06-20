@@ -300,6 +300,8 @@ public class ModBlocks
 	public static final Block EXIT_SIGN_GREEN_RIGHT = new SignBlock("exit_sign_green_right", Material.IRON, SoundType.METAL, 1.0F, 1.0F, "pickaxe", 0, ModUtils.getPixelatedAABB(3,5,0, 13,12,1), 0.4F, Main.IMMERSIBROOK_MAIN);
 	public static final Block CEILING_EXIT_SIGN_GREEN = new SignBlock("ceiling_exit_green", Material.IRON, SoundType.METAL, 1.0F, 1.0F, "pickaxe", 0, ModUtils.getPixelatedAABB(3,9,7, 13,16,9), 0.4F, Main.IMMERSIBROOK_MAIN);
 	public static final Block CEILING_EXIT_SIGN_RED = new SignBlock("ceiling_exit_red", Material.IRON, SoundType.METAL, 1.0F, 1.0F, "pickaxe", 0, ModUtils.getPixelatedAABB(3,9,7, 13,16,9), 0.4F, Main.IMMERSIBROOK_MAIN);
+	public static final Block CHARGING_STATION_WALLSIGN = new SignBlock("charging_station_wallsign", Material.IRON, SoundType.METAL, 1.0F, 1.0F, "pickaxe", 0, ModUtils.DEFAULT_AABB, 0.4F, Main.IMMERSIBROOK_MAIN);
+
 
 	// Decor
 	public static final Block PC_MOUSE = new DecorPCMouse("pc_mouse", Material.IRON, SoundType.METAL, 0.2F, 1.0F, ModUtils.getPixelatedAABB(7,0,6, 9,1,10), 0.4F, Main.IMMERSIBROOK_MAIN);
