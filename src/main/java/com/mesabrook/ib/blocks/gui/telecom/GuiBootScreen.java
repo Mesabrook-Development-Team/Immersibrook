@@ -27,31 +27,31 @@ public class GuiBootScreen extends GuiPhoneBase
     {
         if(fadeAnimationTimer == 0)
         {
-            currentTexture = "app_screen_no_bar.png";
+            currentTexture = "system/app_screen_no_bar.png";
         }
         if(fadeAnimationTimer == 50)
         {
-            currentTexture = "app_screen_boot_0.png";
+            currentTexture = "system/app_screen_boot_0.png";
         }
         if(fadeAnimationTimer == 100)
         {
-            currentTexture = "app_screen_boot_1.png";
+            currentTexture = "system/app_screen_boot_1.png";
         }
         if(fadeAnimationTimer == 150)
         {
-            currentTexture = "app_screen_boot_2.png";
+            currentTexture = "system/app_screen_boot_2.png";
         }
         if(fadeAnimationTimer == 200)
         {
-            currentTexture = "app_screen_boot_3.png";
+            currentTexture = "system/app_screen_boot_3.png";
         }
         if(fadeAnimationTimer == 250)
         {
-            currentTexture = "app_screen_boot_4.png";
+            currentTexture = "system/app_screen_boot_4.png";
         }
         if(fadeAnimationTimer == 300)
         {
-            currentTexture = "app_screen_boot_5.png";
+            currentTexture = "system/app_screen_boot_5.png";
         }
 
         return currentTexture;
@@ -99,17 +99,6 @@ public class GuiBootScreen extends GuiPhoneBase
         PacketHandler.INSTANCE.sendToServer(soundPacket);
         GuiLockScreen lock = new GuiLockScreen(Minecraft.getMinecraft().player.getHeldItem(hand), hand);
         Minecraft.getMinecraft().displayGuiScreen(lock);
-
-//        if(phoneStackData.getNeedToDoOOBE())
-//        {
-//            GuiLockScreen lock = new GuiLockScreen(Minecraft.getMinecraft().player.getHeldItem(hand), hand);
-//            Minecraft.getMinecraft().displayGuiScreen(lock);
-//        }
-//        else
-//        {
-//            GuiPhoneSetupStart lock = new GuiPhoneSetupStart(Minecraft.getMinecraft().player.getHeldItem(hand), hand);
-//            Minecraft.getMinecraft().displayGuiScreen(lock);
-//        }
     }
 
     @Override

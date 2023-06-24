@@ -49,7 +49,7 @@ public class GuiPhoneRecents extends GuiPhoneBase {
 
 	@Override
 	protected String getInnerTextureFileName() {
-		return "app_screen.png";
+		return "system/app_screen.png";
 	}
 
 	@Override

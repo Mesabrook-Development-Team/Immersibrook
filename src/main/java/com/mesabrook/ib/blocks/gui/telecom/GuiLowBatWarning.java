@@ -22,7 +22,7 @@ public class GuiLowBatWarning extends GuiPhoneBase
     @Override
     protected String getInnerTextureFileName()
     {
-        return "msac/battery_warning.png";
+        return "system/battery_warning.png";
     }
 
     @Override

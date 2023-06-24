@@ -55,7 +55,7 @@ public class GuiPhoneCrashed extends GuiPhoneBase
     @Override
     protected String getInnerTextureFileName()
     {
-        return "bsod.png";
+        return "system/bsod.png";
     }
 
     @Override

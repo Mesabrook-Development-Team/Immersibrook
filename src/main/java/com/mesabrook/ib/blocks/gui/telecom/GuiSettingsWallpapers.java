@@ -40,7 +40,7 @@ public class GuiSettingsWallpapers extends GuiPhoneBase
 
     @Override
     protected String getInnerTextureFileName() {
-        return "app_screen.png";
+        return "system/app_screen.png";
     }
 
     @Override
@@ -89,12 +89,12 @@ public class GuiSettingsWallpapers extends GuiPhoneBase
         GlStateManager.color(1, 1, 1);
 
         // Lock Screen Preview
-        Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/telecom/gui_phone_bg_" + currentLock + ".png"));
-        drawScaledCustomSizeModalRect(INNER_X + 7, INNER_Y + 60, 0, 0, 323, 414, 69, 80, 512, 512);
+        Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/telecom/wallpapers/gui_phone_bg_" + currentLock + ".png"));
+        drawScaledCustomSizeModalRect(INNER_X + 7, INNER_Y + 60, 0, 0, 323, 414, 69, 80, 324, 415);
 
         // Home Screen Preview
-        Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/telecom/gui_phone_bg_" + currentHome + ".png"));
-        drawScaledCustomSizeModalRect(INNER_X + 85, INNER_Y + 60, 0, 0, 323, 414, 69, 80, 512, 512);
+        Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/telecom/wallpapers/gui_phone_bg_" + currentHome + ".png"));
+        drawScaledCustomSizeModalRect(INNER_X + 85, INNER_Y + 60, 0, 0, 323, 414, 69, 80, 324, 415);
     }
 
     @Override

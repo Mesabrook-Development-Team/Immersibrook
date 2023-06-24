@@ -25,7 +25,7 @@ public class GuiSetupWarning extends GuiPhoneBase
     @Override
     protected String getInnerTextureFileName()
     {
-        return "app_screen_blue.png";
+        return "system/app_screen_blue.png";
     }
 
     @Override

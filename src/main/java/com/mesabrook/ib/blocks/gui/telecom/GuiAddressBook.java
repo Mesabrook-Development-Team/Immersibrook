@@ -48,7 +48,7 @@ public class GuiAddressBook extends GuiPhoneBase {
 
 	@Override
 	protected String getInnerTextureFileName() {
-		return "app_screen_contacts.png";
+		return "system/app_screen_contacts.png";
 	}
 
 	@Override

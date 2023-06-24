@@ -26,7 +26,7 @@ public class GuiPhoneSetupStart extends GuiPhoneBase
     @Override
     protected String getInnerTextureFileName()
     {
-        return "app_screen_setup.png";
+        return "system/app_screen_setup.png";
     }
 
     @Override

@@ -27,39 +27,39 @@ public class GuiMSACBootScreen extends GuiPhoneBase
     {
         if(fadeAnimationTimer == 0)
         {
-            currentTexture = "app_screen_no_bar.png";
+            currentTexture = "system/app_screen_no_bar.png";
         }
         if(fadeAnimationTimer == 50)
         {
-            currentTexture = "msac/boot_screen_msac_0.png";
+            currentTexture = "system/boot_screen_msac_0.png";
         }
         if(fadeAnimationTimer == 100)
         {
-            currentTexture = "msac/boot_screen_msac_1.png";
+            currentTexture = "system/boot_screen_msac_1.png";
         }
         if(fadeAnimationTimer == 150)
         {
-            currentTexture = "msac/boot_screen_msac_2.png";
+            currentTexture = "system/boot_screen_msac_2.png";
         }
         if(fadeAnimationTimer == 200)
         {
-            currentTexture = "msac/boot_screen_msac_3.png";
+            currentTexture = "system/boot_screen_msac_3.png";
         }
         if(fadeAnimationTimer == 250)
         {
-            currentTexture = "msac/boot_screen_msac_4.png";
+            currentTexture = "system/boot_screen_msac_4.png";
         }
         if(fadeAnimationTimer == 300)
         {
-            currentTexture = "msac/boot_screen_msac_5.png";
+            currentTexture = "system/boot_screen_msac_5.png";
         }
         if(fadeAnimationTimer == 400)
         {
-            currentTexture = "msac/boot_screen_msac_6.png";
+            currentTexture = "system/boot_screen_msac_6.png";
         }
         if(fadeAnimationTimer == 500)
         {
-            currentTexture = "msac/boot_screen_msac_1.png";
+            currentTexture = "system/boot_screen_msac_1.png";
         }
 
         if(fadeAnimationTimer > 550)

@@ -21,7 +21,7 @@ public class GuiSettings extends GuiPhoneBase {
 
 	@Override
 	protected String getInnerTextureFileName() {
-		return "app_screen_no_bar.png";
+		return "system/app_screen_no_bar.png";
 	}
 	
 	@Override

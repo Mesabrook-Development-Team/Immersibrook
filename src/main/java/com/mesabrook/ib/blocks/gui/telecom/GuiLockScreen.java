@@ -22,7 +22,7 @@ public class GuiLockScreen extends GuiPhoneBase {
 
 	@Override
 	protected String getInnerTextureFileName() {
-		return "gui_phone_bg_" + Integer.toString(phoneStackData.getLockBackground()) + ".png";		
+		return "wallpapers/gui_phone_bg_" + Integer.toString(phoneStackData.getLockBackground()) + ".png";
 	}
 	
 	@Override
