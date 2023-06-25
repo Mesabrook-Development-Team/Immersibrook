@@ -2,6 +2,7 @@ package com.mesabrook.ib.blocks.gui.telecom;
 
 import java.io.IOException;
 
+import com.mesabrook.ib.Main;
 import net.minecraft.entity.player.*;
 import org.lwjgl.input.Keyboard;
 
@@ -104,47 +105,61 @@ public class GuiPhoneCall extends GuiPhoneBase {
 		{
 			EntityPlayer player = Minecraft.getMinecraft().player;
 
-			if(player.world.provider.getDimension() == 0)
+			try
 			{
-				PositionedSoundRecord startSound = PositionedSoundRecord.getMasterRecord(SoundInit.STARTCALL, 1F);
-				Minecraft.getMinecraft().getSoundHandler().playSound(startSound);
-
-				if (currentlyTypedNumber == null || currentlyTypedNumber.equals(""))
+				if(player.world.provider.getDimension() == 0)
 				{
-					PositionedSoundRecord sit = PositionedSoundRecord.getMasterRecord(SoundInit.SIT, 1F);
-					Minecraft.getMinecraft().getSoundHandler().playSound(sit);
+					PositionedSoundRecord startSound = PositionedSoundRecord.getMasterRecord(SoundInit.STARTCALL, 1F);
+					Minecraft.getMinecraft().getSoundHandler().playSound(startSound);
 
-					GuiCallEnd badCall = new GuiCallEnd(getPhoneStack(), getHand(), "");
-					badCall.setMessage("Phone number required!");
-					mc.displayGuiScreen(badCall);
+					if (currentlyTypedNumber == null || currentlyTypedNumber.equals(""))
+					{
+						PositionedSoundRecord sit = PositionedSoundRecord.getMasterRecord(SoundInit.SIT_1, 1F);
+						Minecraft.getMinecraft().getSoundHandler().playSound(sit);
 
-					return;
+						GuiCallEnd badCall = new GuiCallEnd(getPhoneStack(), getHand(), "");
+						badCall.setMessage("Phone number required!");
+						mc.displayGuiScreen(badCall);
+
+						return;
+					}
+
+					if (currentlyTypedNumber.equals(getCurrentPhoneNumber()))
+					{
+						PositionedSoundRecord sit = PositionedSoundRecord.getMasterRecord(SoundInit.SIT_1, 1F);
+						Minecraft.getMinecraft().getSoundHandler().playSound(sit);
+
+						GuiCallEnd badCall = new GuiCallEnd(getPhoneStack(), getHand(), currentlyTypedNumber);
+						badCall.setMessage("Can't call same phone!");
+						mc.displayGuiScreen(badCall);
+
+						return;
+					}
+
+					Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneCalling(phoneStack, hand, currentlyTypedNumber));
+
+					InitiateCallPacket packet = new InitiateCallPacket();
+					packet.fromNumber = getCurrentPhoneNumber();
+					packet.toNumber = currentlyTypedNumber;
+					PacketHandler.INSTANCE.sendToServer(packet);
 				}
-
-				if (currentlyTypedNumber.equals(getCurrentPhoneNumber()))
+				else
 				{
-					PositionedSoundRecord sit = PositionedSoundRecord.getMasterRecord(SoundInit.SIT, 1F);
+					PositionedSoundRecord sit = PositionedSoundRecord.getMasterRecord(SoundInit.SIT_5, 1F);
 					Minecraft.getMinecraft().getSoundHandler().playSound(sit);
-
 					GuiCallEnd badCall = new GuiCallEnd(getPhoneStack(), getHand(), currentlyTypedNumber);
-					badCall.setMessage("Can't call same phone!");
+					badCall.setMessage("Unsupported Dimension");
 					mc.displayGuiScreen(badCall);
-
-					return;
 				}
-
-				Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneCalling(phoneStack, hand, currentlyTypedNumber));
-
-				InitiateCallPacket packet = new InitiateCallPacket();
-				packet.fromNumber = getCurrentPhoneNumber();
-				packet.toNumber = currentlyTypedNumber;
-				PacketHandler.INSTANCE.sendToServer(packet);
 			}
-			else
+			catch(Exception ex)
 			{
+				PositionedSoundRecord sit = PositionedSoundRecord.getMasterRecord(SoundInit.SIT_4, 1F);
+				Minecraft.getMinecraft().getSoundHandler().playSound(sit);
 				GuiCallEnd badCall = new GuiCallEnd(getPhoneStack(), getHand(), currentlyTypedNumber);
-				badCall.setMessage("Unsupported Dimension");
+				badCall.setMessage("Unable to complete call");
 				mc.displayGuiScreen(badCall);
+				Main.logger.error(ex.toString());
 			}
 		}
 		if (button.id == 12)

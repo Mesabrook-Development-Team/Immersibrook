@@ -1105,5 +1105,35 @@
 			"name": "wbtc:chisel"
 		}],
 		"subtitle": "ib.sub.chisel"
+	},
+	"sit_1": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:sit_1"
+		}]
+	},
+	"sit_2": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:sit_2"
+		}]
+	},
+	"sit_3": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:sit_3"
+		}]
+	},
+	"sit_4": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:sit_4"
+		}]
+	},
+	"sit_5": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:sit_5"
+		}]
 	}
 }

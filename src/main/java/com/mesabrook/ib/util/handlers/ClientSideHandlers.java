@@ -295,9 +295,9 @@ public class ClientSideHandlers
 
 		public static void onOutgoingCallNoSuchNumber(String fromNumber, String toNumber)
 		{
-			SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
-			ISound sit = PositionedSoundRecord.getMasterRecord(SoundInit.SIT, 1F);
-			handler.playSound(sit);
+//			SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
+//			ISound sit = PositionedSoundRecord.getMasterRecord(SoundInit.SIT_2, 1F);
+//			handler.playSound(sit);
 
 			if (Minecraft.getMinecraft().currentScreen instanceof GuiPhoneCalling)
 			{
@@ -306,6 +306,10 @@ public class ClientSideHandlers
 				{
 					return;
 				}
+
+				SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
+				ISound sit = PositionedSoundRecord.getMasterRecord(SoundInit.SIT_2, 1F);
+				handler.playSound(sit);
 
 				GuiCallEnd end = new GuiCallEnd(calling.getPhoneStack(), calling.getHand(), toNumber);
 				end.setMessage("No such number!");

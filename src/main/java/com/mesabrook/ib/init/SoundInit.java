@@ -141,6 +141,11 @@ public class SoundInit
 	public static final SoundEvent DING_9;
 	public static final SoundEvent OUTGOING_CALL;
 	public static final SoundEvent SIT;
+	public static final SoundEvent SIT_1;
+	public static final SoundEvent SIT_2;
+	public static final SoundEvent SIT_3;
+	public static final SoundEvent SIT_4;
+	public static final SoundEvent SIT_5;
 	public static final SoundEvent STARTCALL;
 	public static final SoundEvent ENDCALL;
 	public static final SoundEvent PHONE_UNLOCK;
@@ -311,6 +316,11 @@ public class SoundInit
 		DING_9 = addSoundsToRegistry("ding_9");
 		OUTGOING_CALL = addSoundsToRegistry("outgoingcall");
 		SIT = addSoundsToRegistry("sit");
+		SIT_1 = addSoundsToRegistry("sit_1");
+		SIT_2 = addSoundsToRegistry("sit_2");
+		SIT_3 = addSoundsToRegistry("sit_3");
+		SIT_4 = addSoundsToRegistry("sit_4");
+		SIT_5 = addSoundsToRegistry("sit_5");
 		STARTCALL = addSoundsToRegistry("startcall");
 		ENDCALL = addSoundsToRegistry("endcall");
 		PHONE_ACTIVATE = addSoundsToRegistry("welcome");
@@ -522,6 +532,11 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.PHONE_BOOTUP);
 				event.getRegistry().register(SoundInit.BATTERY_LOW);
 				event.getRegistry().register(SoundInit.CHISEL);
+				event.getRegistry().register(SoundInit.SIT_1);
+				event.getRegistry().register(SoundInit.SIT_2);
+				event.getRegistry().register(SoundInit.SIT_3);
+				event.getRegistry().register(SoundInit.SIT_4);
+				event.getRegistry().register(SoundInit.SIT_5);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");
