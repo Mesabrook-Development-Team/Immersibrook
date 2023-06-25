@@ -73,14 +73,19 @@ public class ItemPhone extends Item implements IHasModel {
 			phoneNumber = GuiPhoneBase.getFormattedPhoneNumber(stackData.getPhoneNumberString());
 			tooltip.add(TextFormatting.GREEN + phoneNumber);
 
-			if(stackData.getBatteryLevel() <= 0)
+			if(stackData.getBatteryLevel() <= 100)
 			{
-				tooltip.add(TextFormatting.RED + "Battery: " + stackData.getBatteryLevel() + " RF");
-				tooltip.add(TextFormatting.RED + "Phone battery is dead! Please recharge me!");
+				tooltip.add(TextFormatting.GRAY + "Battery: " + stackData.getBatteryLevel() + " Flux");
+				tooltip.add(TextFormatting.GRAY + "Phone battery is low. Recharge soon to avoid interruptions.");
+			}
+			else if(stackData.getBatteryLevel() <= 0)
+			{
+				tooltip.add(TextFormatting.RED + "Battery: " + stackData.getBatteryLevel() + " Flux");
+				tooltip.add(TextFormatting.RED + "Phone battery is depleted. Recharge required.");
 			}
 			else
 			{
-				tooltip.add(TextFormatting.AQUA + "Battery: " + stackData.getBatteryLevel() + " RF");
+				tooltip.add(TextFormatting.AQUA + "Battery: " + stackData.getBatteryLevel() + " Flux");
 			}
 		}
 		else
