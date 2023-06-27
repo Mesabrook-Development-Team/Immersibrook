@@ -1188,4 +1188,7 @@ public class ModBlocks
 
 	// Security Station
 	public static final Block SECURITY_STATION = new ImmersiblockRotational("security_station", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
+
+	// SIM Card Programming Station
+	public static final Block SIM_STATION = new ImmersiblockRotational("sim_station", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
 }

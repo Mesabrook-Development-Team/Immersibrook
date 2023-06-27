@@ -1,11 +1,13 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.mesabrook.ib.net.ClientSoundPacket;
+import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextComponentTranslation;
 
 import java.io.IOException;
 
@@ -15,6 +17,7 @@ public class GuiMSACBootScreen extends GuiPhoneBase
     private int timerToNextScreen = 0;
     private int fadeAnimationTimer = 0;
     private String currentTexture;
+    private String bootingText;
 
     public GuiMSACBootScreen(ItemStack phoneStack, EnumHand hand)
     {
@@ -27,7 +30,7 @@ public class GuiMSACBootScreen extends GuiPhoneBase
     {
         if(fadeAnimationTimer == 0)
         {
-            currentTexture = "system/app_screen_no_bar.png";
+            currentTexture = "system/boot_screen_msac_0.png";
         }
         if(fadeAnimationTimer == 50)
         {
@@ -36,6 +39,7 @@ public class GuiMSACBootScreen extends GuiPhoneBase
         if(fadeAnimationTimer == 100)
         {
             currentTexture = "system/boot_screen_msac_1.png";
+            bootingText = "Starting Minedroid";
         }
         if(fadeAnimationTimer == 150)
         {
@@ -64,7 +68,7 @@ public class GuiMSACBootScreen extends GuiPhoneBase
 
         if(fadeAnimationTimer > 550)
         {
-            fadeAnimationTimer = 100;
+            fadeAnimationTimer = 50;
         }
 
         return currentTexture;
@@ -92,6 +96,8 @@ public class GuiMSACBootScreen extends GuiPhoneBase
         super.doDraw(mouseX, mouseY, partialticks);
         timerToNextScreen++;
         fadeAnimationTimer++;
+
+        drawCenteredString(fontRenderer, bootingText, INNER_X + 80, INNER_Y + 180, 0xFFFFFF);
 
         if(timerToNextScreen >= 1500)
         {

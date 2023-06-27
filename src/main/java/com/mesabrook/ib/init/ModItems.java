@@ -431,4 +431,7 @@ public class ModItems
 	public static final Item BLAHAJ = new ItemBlahaj("blahaj");
 	public static final Item GRAY_BLAHAJ = new ItemBlahaj("gray_blahaj");
 	public static final Item BREAD_PILLOW = new ItemBlahaj("bread_pillow");
+
+	// SIM
+	public static final Item SIM_CARD = new MiscItem("sim_card", 1, Main.IMMERSIBROOK_MAIN);
 }

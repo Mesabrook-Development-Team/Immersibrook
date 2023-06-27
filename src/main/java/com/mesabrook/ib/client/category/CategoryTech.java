@@ -46,5 +46,6 @@ public class CategoryTech extends AbstractCategory
         add(ModItems.PHONE_FR);
         add(ModItems.CELL_TRANSMITTER);
         add(ModBlocks.CELL_ANTENNA);
+        add(ModItems.SIM_CARD);
     }
 }
