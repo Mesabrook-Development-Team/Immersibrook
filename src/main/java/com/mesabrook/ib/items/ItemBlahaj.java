@@ -58,6 +58,10 @@ public class ItemBlahaj extends Item implements IHasModel
         {
             tooltip.add(new TextComponentTranslation("tooltip.bread").getFormattedText());
         }
+        else if(stack.getItem() == ModItems.ISOPOD)
+        {
+            tooltip.add(new TextComponentTranslation("tooltip.isopod").getFormattedText());
+        }
     }
 
     @Override

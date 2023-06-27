@@ -1903,9 +1903,11 @@ tooltip.sponge=§eA handheld sponge that can edit signs.
 item.blahaj.name=§bBlåhaj
 item.gray_blahaj.name=§7Blåhaj
 item.bread_pillow.name=Bread Pillow
+item.isopod.name=Isopod Plushie
 tooltip.blue_shork=§bThis is Blåhaj, he is fren.
 tooltip.gray_shork=§7This is Blåhaj, he is fren.
 tooltip.bread=A big soft bread pillow
+tooltip.isopod=A cuddly ocean pal
 
 // Commerce
 item.wallet_unisex.name=Wallet
