@@ -83,24 +83,28 @@ public class GuiHome extends GuiPhoneBase {
 				GuiAppSplashScreen guiA = new GuiAppSplashScreen(phoneStack, hand);
 				guiA.setLogoPath("icn_contacts.png");
 				guiA.setAppName("Contacts");
+				guiA.setSplashColor("green");
 				Minecraft.getMinecraft().displayGuiScreen(guiA);
 				break;
 			case 3:
 				GuiAppSplashScreen guiS = new GuiAppSplashScreen(phoneStack, hand);
 				guiS.setLogoPath("icn_settings.png");
 				guiS.setAppName("Settings");
+				guiS.setSplashColor("blue");
 				Minecraft.getMinecraft().displayGuiScreen(guiS);
 				break;
 			case 4:
 				GuiAppSplashScreen guiM = new GuiAppSplashScreen(phoneStack, hand);
 				guiM.setLogoPath("icn_musicplayer.png");
 				guiM.setAppName("Sound Player");
+				guiM.setSplashColor("blue");
 				Minecraft.getMinecraft().displayGuiScreen(guiM);
 				break;
 			case 5:
 				GuiAppSplashScreen guiC = new GuiAppSplashScreen(phoneStack, hand);
 				guiC.setLogoPath("icn_calc.png");
 				guiC.setAppName("Calculator");
+				guiC.setSplashColor("red");
 				Minecraft.getMinecraft().displayGuiScreen(guiC);
 				break;
 			case 6:

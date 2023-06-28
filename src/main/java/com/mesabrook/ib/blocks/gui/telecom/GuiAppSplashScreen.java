@@ -12,7 +12,18 @@ public class GuiAppSplashScreen extends GuiPhoneBase
     ImageButton logo;
     private String logoPath;
     private String appName;
+    private String splashColor;
     int progress = 0;
+
+    public String getSplashColor()
+    {
+        return splashColor;
+    }
+
+    public String setSplashColor(String colorIn)
+    {
+        return this.splashColor = "system/app_splash_" + colorIn + ".png";
+    }
 
     public String getLogoPath()
     {
@@ -42,7 +53,14 @@ public class GuiAppSplashScreen extends GuiPhoneBase
     @Override
     protected String getInnerTextureFileName()
     {
-        return "system/app_screen_no_bar.png";
+       try
+       {
+           return splashColor;
+       }
+       catch(Exception ex)
+       {
+           return "system/app_screen_no_bar.png";
+       }
     }
 
     @Override
