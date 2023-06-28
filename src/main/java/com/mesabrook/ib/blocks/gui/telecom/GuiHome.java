@@ -80,16 +80,28 @@ public class GuiHome extends GuiPhoneBase {
 				Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "App Coming Soon", 0xFFFFFF));
 				break;
 			case 2:
-				Minecraft.getMinecraft().displayGuiScreen(new GuiAddressBook(phoneStack, hand));
+				GuiAppSplashScreen guiA = new GuiAppSplashScreen(phoneStack, hand);
+				guiA.setLogoPath("icn_contacts.png");
+				guiA.setAppName("Contacts");
+				Minecraft.getMinecraft().displayGuiScreen(guiA);
 				break;
 			case 3:
-				Minecraft.getMinecraft().displayGuiScreen(new GuiSettings(phoneStack, hand));
+				GuiAppSplashScreen guiS = new GuiAppSplashScreen(phoneStack, hand);
+				guiS.setLogoPath("icn_settings.png");
+				guiS.setAppName("Settings");
+				Minecraft.getMinecraft().displayGuiScreen(guiS);
 				break;
 			case 4:
-				Minecraft.getMinecraft().displayGuiScreen(new GuiSoundPlayer(phoneStack, hand));
+				GuiAppSplashScreen guiM = new GuiAppSplashScreen(phoneStack, hand);
+				guiM.setLogoPath("icn_musicplayer.png");
+				guiM.setAppName("Sound Player");
+				Minecraft.getMinecraft().displayGuiScreen(guiM);
 				break;
 			case 5:
-				Minecraft.getMinecraft().displayGuiScreen(new GuiCalculatorSplash(phoneStack, hand));
+				GuiAppSplashScreen guiC = new GuiAppSplashScreen(phoneStack, hand);
+				guiC.setLogoPath("icn_calc.png");
+				guiC.setAppName("Calculator");
+				Minecraft.getMinecraft().displayGuiScreen(guiC);
 				break;
 			case 6:
 				try

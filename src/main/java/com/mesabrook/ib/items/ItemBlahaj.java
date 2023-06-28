@@ -31,7 +31,6 @@ public class ItemBlahaj extends Item implements IHasModel
         setRegistryName(name);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
         setMaxStackSize(1);
-        setMaxDamage(145);
 
         ModItems.ITEMS.add(this);
     }
