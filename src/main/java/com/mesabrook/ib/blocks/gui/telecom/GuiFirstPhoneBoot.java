@@ -15,6 +15,7 @@ public class GuiFirstPhoneBoot extends GuiPhoneBase
     private int timerToNextScreen = 0;
     private int fadeAnimationTimer = 0;
     private String currentTexture;
+    private String bootFramesDirectory = "system/newboot/frame_";
 
     public GuiFirstPhoneBoot(ItemStack phoneStack, EnumHand hand)
     {
@@ -27,27 +28,54 @@ public class GuiFirstPhoneBoot extends GuiPhoneBase
     {
         if(fadeAnimationTimer == 0)
         {
-            currentTexture = "system/app_screen_boot_0.png";
+            currentTexture = "system/app_screen_no_bar.png";
         }
+
+        // Start Frames
         if(fadeAnimationTimer == 50)
         {
-            currentTexture = "system/app_screen_boot_1.png";
+            currentTexture = bootFramesDirectory + 0 + ".png";
         }
         if(fadeAnimationTimer == 100)
         {
-            currentTexture = "system/app_screen_boot_2.png";
+            currentTexture = bootFramesDirectory + 1 + ".png";
         }
         if(fadeAnimationTimer == 150)
         {
-            currentTexture = "system/app_screen_boot_3.png";
+            currentTexture = bootFramesDirectory + 2 + ".png";
         }
         if(fadeAnimationTimer == 200)
         {
-            currentTexture = "system/app_screen_boot_4.png";
+            currentTexture = bootFramesDirectory + 3 + ".png";
         }
         if(fadeAnimationTimer == 250)
         {
-            currentTexture = "system/app_screen_boot_5.png";
+            currentTexture = bootFramesDirectory + 4 + ".png";
+        }
+        if(fadeAnimationTimer == 300)
+        {
+            currentTexture = bootFramesDirectory + 5 + ".png";
+        }
+        if(fadeAnimationTimer == 350)
+        {
+            currentTexture = bootFramesDirectory + 6 + ".png";
+        }
+        if(fadeAnimationTimer == 400)
+        {
+            currentTexture = bootFramesDirectory + 7 + ".png";
+        }
+        if(fadeAnimationTimer == 450)
+        {
+            currentTexture = bootFramesDirectory + 8 + ".png";
+        }
+        if(fadeAnimationTimer == 500)
+        {
+            currentTexture = bootFramesDirectory + 9 + ".png";
+        }
+        if(fadeAnimationTimer == 550)
+        {
+            currentTexture = bootFramesDirectory + 10 + ".png";
+            fadeAnimationTimer = 550;
         }
 
         return currentTexture;
