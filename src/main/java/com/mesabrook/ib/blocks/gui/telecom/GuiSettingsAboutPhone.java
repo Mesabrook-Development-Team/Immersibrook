@@ -49,7 +49,6 @@ public class GuiSettingsAboutPhone extends GuiPhoneBase {
 
 		buttonList.add(back);
 		buttonList.add(number);
-		buttonList.add(factoryReset);
 		buttonList.add(mux);
 	}
 

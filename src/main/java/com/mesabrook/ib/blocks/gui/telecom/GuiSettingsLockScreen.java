@@ -22,6 +22,7 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 	GuiCheckBox playerID;
 	MinedroidButton reset;
 	MinedroidButton apply;
+	MinedroidButton factoryReset;
 	LabelButton back;
 	LabelButton changePIN;
 	LabelButton changeUUID;
@@ -49,6 +50,8 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 		int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 32;
 		reset = new MinedroidButton(2, INNER_X + 45, lowerControlsY - 10, 32, new TextComponentTranslation("im.musicapp.buttonreset").getFormattedText(), 0xFFFFFF);
 		apply = new MinedroidButton(3, INNER_X + 85, lowerControlsY - 10, 32, new TextComponentTranslation("im.settings.apply").getFormattedText(), 0xFFFFFF);
+		factoryReset = new MinedroidButton(69, INNER_X + 10, INNER_Y + 90, 85, new TextComponentTranslation("im.settings.factoryreset").getFormattedText(), 0xFF0000);
+
 		back = new LabelButton(4, INNER_X + 3, INNER_Y + 20, "<", 0xFFFFFF);
 		changePIN = new LabelButton(5, 0, pin.y + 2, new TextComponentTranslation("im.settings.changepin").getFormattedText(), 0x0000FF);
 		changePIN.x = INNER_X + INNER_TEX_WIDTH - changePIN.width - 5;
@@ -68,7 +71,7 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 			uuidValue.setText(phoneStackData.getUuid().toString());
 		}
 		
-		buttonList.addAll(ImmutableList.of(pin, playerID, reset, apply, back, changePIN, changeUUID));
+		buttonList.addAll(ImmutableList.of(pin, playerID, reset, apply, back, changePIN, changeUUID, factoryReset));
 	}
 	
 	@Override
@@ -131,6 +134,11 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 			{
 				uuidValue.setText(Minecraft.getMinecraft().player.getUniqueID().toString());
 			}
+		}
+
+		if(button == factoryReset)
+		{
+			Minecraft.getMinecraft().displayGuiScreen(new GuiFactoryResetConfirmation(phoneStack, hand));
 		}
 		
 		if (button == apply)
