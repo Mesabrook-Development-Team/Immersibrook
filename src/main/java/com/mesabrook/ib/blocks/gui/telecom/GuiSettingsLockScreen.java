@@ -71,14 +71,14 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 			uuidValue.setText(phoneStackData.getUuid().toString());
 		}
 		
-		buttonList.addAll(ImmutableList.of(pin, playerID, reset, apply, back, changePIN, changeUUID, factoryReset));
+		buttonList.addAll(ImmutableList.of(pin, playerID, reset, apply, back, changePIN, changeUUID));
 	}
 	
 	@Override
 	protected void doDraw(int mouseX, int mouseY, float partialticks) {
 		super.doDraw(mouseX, mouseY, partialticks);
 		
-		fontRenderer.drawString(new TextComponentTranslation("im.settings.securitytitle").getFormattedText(), INNER_X + 15, INNER_Y + 20, 0xFFFFFF);
+		fontRenderer.drawString(new TextComponentTranslation("im.settings.securitytitle1").getFormattedText(), INNER_X + 15, INNER_Y + 20, 0xFFFFFF);
 		fontRenderer.drawString(new TextComponentTranslation("im.settings.strategy").getFormattedText(), INNER_X + 3, INNER_Y + 36, 0x4444FF);
 		
 		pinValue.drawTextBox();
@@ -205,7 +205,7 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 		
 		if (button == back)
 		{
-			Minecraft.getMinecraft().displayGuiScreen(new GuiSettings(phoneStack, hand));
+			Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsSecurity(phoneStack, hand));
 		}
 	}
 	

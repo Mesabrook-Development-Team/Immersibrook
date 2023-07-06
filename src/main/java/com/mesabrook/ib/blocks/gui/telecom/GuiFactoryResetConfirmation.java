@@ -73,7 +73,7 @@ public class GuiFactoryResetConfirmation extends GuiPhoneBase
 
         if(button == back)
         {
-            Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsLockScreen(phoneStack, hand));
+            Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsSecurity(phoneStack, hand));
         }
     }
 }

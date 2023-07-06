@@ -76,7 +76,7 @@ public class GuiSettings extends GuiPhoneBase {
 			super.actionPerformed(button);
 			if (button.id == 0)
 			{
-				Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsLockScreen(phoneStack, hand));
+				Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsSecurity(phoneStack, hand));
 			}
 
 			if (button.id == 1)
