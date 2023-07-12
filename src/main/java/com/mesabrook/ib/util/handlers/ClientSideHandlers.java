@@ -1,6 +1,6 @@
 package com.mesabrook.ib.util.handlers;
 
-import java.net.*;
+import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,7 +10,10 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 import com.mesabrook.ib.Main;
+import com.mesabrook.ib.blocks.BlockRegister;
 import com.mesabrook.ib.blocks.gui.GuiAboutImmersibrook;
+import com.mesabrook.ib.blocks.gui.sco.GuiPOSIdentifierSetup;
+import com.mesabrook.ib.blocks.gui.sco.GuiPOSWaitingForNetwork;
 import com.mesabrook.ib.blocks.gui.telecom.GuiCallEnd;
 import com.mesabrook.ib.blocks.gui.telecom.GuiHome;
 import com.mesabrook.ib.blocks.gui.telecom.GuiIncomingCall;
@@ -24,16 +27,19 @@ import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneCalling;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneConnected;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneRecents;
 import com.mesabrook.ib.blocks.gui.telecom.SignalStrengths;
+import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.init.SoundInit;
 import com.mesabrook.ib.items.misc.ItemPhone;
-import com.mesabrook.ib.net.*;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket;
 import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket.ResponseTypes;
 import com.mesabrook.ib.telecom.WirelessEmergencyAlertManager.WirelessEmergencyAlert;
-import com.mesabrook.ib.util.*;
+import com.mesabrook.ib.util.ModUtils;
+import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.saveData.PhoneLogData;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.ISound.AttenuationType;
@@ -42,6 +48,8 @@ import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.multiplayer.WorldClient;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderGlobal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -49,11 +57,19 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.RayTraceResult.Type;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.*;
+import net.minecraft.world.World;
+import net.minecraftforge.client.event.DrawBlockHighlightEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -61,6 +77,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
 @SideOnly(Side.CLIENT)
+@EventBusSubscriber
 public class ClientSideHandlers
 {
 	private static HashMap<Long, PositionedSoundRecord> soundsByBlockPos = new HashMap<>();
@@ -687,5 +704,96 @@ public class ClientSideHandlers
 	public static void processURIWebRequest(URI uri)
 	{
 		ModUtils.openWebLink(uri);
+	}
+
+	public static class SelfCheckOutHandlers
+	{
+		public static void onInitializeRegisterResponse(boolean wasSuccessful, String error, BlockPos pos)
+		{
+			if (!(Minecraft.getMinecraft().currentScreen instanceof GuiPOSIdentifierSetup))
+			{
+				return;
+			}
+			
+			GuiPOSIdentifierSetup gui = (GuiPOSIdentifierSetup)Minecraft.getMinecraft().currentScreen;
+			if (!wasSuccessful)
+			{
+				gui.displayError(error);
+			}
+			else
+			{
+				TileEntityRegister register = (TileEntityRegister)Minecraft.getMinecraft().world.getTileEntity(pos);
+				GuiPOSWaitingForNetwork waitingForNetwork = new GuiPOSWaitingForNetwork(register);
+				Minecraft.getMinecraft().displayGuiScreen(waitingForNetwork);
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public static void drawSelectionBoxEvent(DrawBlockHighlightEvent e)
+	{
+		RayTraceResult rtr = e.getTarget();
+		if (rtr.typeOfHit != Type.BLOCK)
+		{
+			return;
+		}
+		
+		World world = e.getPlayer().world;
+		IBlockState blockState = world.getBlockState(rtr.getBlockPos());
+		if (blockState.getBlock() instanceof BlockRegister)
+		{
+			e.setCanceled(true);
+			drawRegisterBlockHighlight(e.getPlayer(), e.getPartialTicks(), rtr.getBlockPos());
+		}
+	}
+	
+	private static void drawRegisterBlockHighlight(EntityPlayer player, float partialTicks, BlockPos pos)
+	{
+		final double d3 = player.lastTickPosX + (player.posX - player.lastTickPosX) * partialTicks;
+		final double d4 = player.lastTickPosY + (player.posY - player.lastTickPosY) * partialTicks;
+		final double d5 = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * partialTicks;
+		final Vec3d start = player.getPositionEyes(partialTicks);
+		final Vec3d eyes = player.getLook(partialTicks);
+		final float reach = Minecraft.getMinecraft().playerController.getBlockReachDistance();
+		final Vec3d end = start.addVector(eyes.x * reach, eyes.y * reach, eyes.z * reach);
+		
+		AxisAlignedBB boxToDraw = null;
+		double leastDistance = reach + 1;
+		
+		// Check monitor
+		RayTraceResult result = BlockRegister.monitorBoundingBox.offset(pos).calculateIntercept(start, end);
+		if (result != null)
+		{
+			leastDistance = result.hitVec.distanceTo(start);
+			boxToDraw = BlockRegister.monitorBoundingBox;
+		}
+		
+		// Check card reader
+		result = BlockRegister.cardReaderBoundingBox.offset(pos).calculateIntercept(start, end);
+		if (result != null)
+		{
+			double distance = result.hitVec.distanceTo(start);
+			if (distance < leastDistance)
+			{
+				boxToDraw = BlockRegister.cardReaderBoundingBox;
+			}
+		}
+		
+		if (boxToDraw != null)
+		{			
+			GlStateManager.disableAlpha();
+			GlStateManager.enableBlend();
+	        GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+	        GlStateManager.glLineWidth(2.0F);
+	        GlStateManager.disableTexture2D();
+	        GlStateManager.depthMask(false);
+	        
+			RenderGlobal.drawSelectionBoundingBox(boxToDraw.offset(pos).offset(-d3, -d4, -d5), 0.0F, 0.0F, 0.0F, 1F);
+			
+			GlStateManager.depthMask(true);
+            GlStateManager.enableTexture2D();
+            GlStateManager.disableBlend();
+			GlStateManager.enableAlpha();
+		}
 	}
 }

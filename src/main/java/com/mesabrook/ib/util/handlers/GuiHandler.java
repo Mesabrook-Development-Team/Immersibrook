@@ -2,16 +2,28 @@ package com.mesabrook.ib.util.handlers;
 
 import com.mesabrook.ib.blocks.container.ContainerStampBook;
 import com.mesabrook.ib.blocks.container.ContainerTrashBin;
-import com.mesabrook.ib.blocks.gui.*;
-import com.mesabrook.ib.blocks.gui.telecom.*;
+import com.mesabrook.ib.blocks.gui.GuiAboutImmersibrook;
+import com.mesabrook.ib.blocks.gui.GuiFoodBox;
+import com.mesabrook.ib.blocks.gui.GuiPlaque;
+import com.mesabrook.ib.blocks.gui.GuiStampBook;
+import com.mesabrook.ib.blocks.gui.GuiTrashBin;
+import com.mesabrook.ib.blocks.gui.GuiWallSign;
+import com.mesabrook.ib.blocks.gui.sco.GuiPOSStarter;
+import com.mesabrook.ib.blocks.gui.telecom.GuiEmptyPhone;
+import com.mesabrook.ib.blocks.gui.telecom.GuiFirstPhoneBoot;
+import com.mesabrook.ib.blocks.gui.telecom.GuiMobileAlert;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneActivate;
+import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.blocks.te.TileEntityTrashBin;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.net.telecom.PhoneQueryPacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.ClientSideHandlers.TelecomClientHandlers;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -71,6 +83,16 @@ public class GuiHandler implements IGuiHandler
 		}
 		else if (ID == Reference.GUI_STAMP_BOOK) return new GuiStampBook(new ContainerStampBook(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]));
 		else if (ID == Reference.GUI_WALLSIGN) return new GuiWallSign(EnumHand.values()[x]);
+		else if (ID == Reference.GUI_SCO_POS)
+		{
+			TileEntity te = world.getTileEntity(new BlockPos(x, y, z));
+			if (te == null || !(te instanceof TileEntityRegister))
+			{
+				return null;
+			}
+			
+			return new GuiPOSStarter((TileEntityRegister)te);
+		}
 		else return null;
 	}
 	

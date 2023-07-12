@@ -17,7 +17,9 @@ import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SoundRandomizer;
 import com.mesabrook.ib.util.TooltipRandomizer;
 import com.mesabrook.ib.util.apiaccess.PutData;
+import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.apiaccess.DataAccess.API;
+import com.mesabrook.ib.util.apiaccess.DataAccess.AuthenticationStatus;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.saveData.SpecialDropTrackingData;
 import com.mojang.authlib.GameProfile;
@@ -270,7 +272,13 @@ public class PlayerEvents
 			ResetInactivityParam param = new ResetInactivityParam();
 			param.username = player.getDisplayNameString();
 			PutData put = new PutData(API.System, "Inactivity/ResetInactivity", param);
-			put.executeNoResult();
+			put.setRequireAuthToken(false);
+			put.execute();
+		}
+		
+		if (DataAccess.getAuthenticationStatus() == AuthenticationStatus.LoggedOut && player.canUseCommand(2, ""))
+		{
+			player.sendMessage(new TextComponentString("" + TextFormatting.BOLD + TextFormatting.YELLOW + "WARNING! The server is currently NOT signed into MesaSuite!"));
 		}
 	}
 	

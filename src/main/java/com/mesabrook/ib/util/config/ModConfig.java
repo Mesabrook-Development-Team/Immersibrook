@@ -137,6 +137,9 @@ public final class ModConfig
 	@Comment("[MesaSuite] MesaSuite Base OAuth URL")
 	public static String mesasuiteBaseOAuthUrl = "";
 	
+	@Comment("[MesaSuite] MesaSuite Client ID")
+	public static String mesasuiteClientID = "";
+	
 	@Comment("[Minedroid] What is the maximum battery charge for a Smartphone?")
 	public static int smartphoneMaxBattery = 1600;
 	

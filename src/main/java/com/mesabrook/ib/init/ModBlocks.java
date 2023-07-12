@@ -1177,7 +1177,7 @@ public class ModBlocks
 	public static final Block IN_STREET_CROSSWALK_SIGN = new ImmersiblockRotational("in_street_crosswalk_sign", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.getPixelatedAABB(3,0,5, 13,21,11));
 
 	// Self-Checkout Blocks
-	public static final Block SCO_POS = new ImmersiblockRotational("sco_pos", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
+	public static final Block SCO_POS = new BlockRegister();
 	public static final Block SCO_SCANNER = new ImmersiblockRotational("sco_scanner", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
 	public static final Block SCO_BAGGING = new ImmersiblockRotational("sco_bagging", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
 

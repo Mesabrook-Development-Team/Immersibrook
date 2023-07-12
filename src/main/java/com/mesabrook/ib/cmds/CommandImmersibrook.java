@@ -1,12 +1,17 @@
 package com.mesabrook.ib.cmds;
 
+import java.util.Collections;
+import java.util.List;
+
 import com.google.common.collect.Lists;
-import com.mesabrook.ib.*;
-import com.mesabrook.ib.net.*;
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.net.CommandProcessorPacket;
 import com.mesabrook.ib.telecom.WirelessEmergencyAlertManager;
-import com.mesabrook.ib.util.*;
+import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.handlers.PacketHandler;
+
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -19,13 +24,6 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
-
-import java.awt.*;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
-import java.net.*;
-import java.util.Collections;
-import java.util.List;
 
 public class CommandImmersibrook extends CommandBase
 {
@@ -142,6 +140,31 @@ public class CommandImmersibrook extends CommandBase
 				else
 				{
 					throw new WrongUsageException("im.cmd.wea.usage", new Object[0]);
+				}
+			}
+			else if ("mesasuite".equals(args[0]))
+			{
+				if (!sender.canUseCommand(4, getName()))
+				{
+					throw new CommandException("command.generic.permission", new Object[0]);
+				}
+				
+				if (args.length < 2)
+				{
+					throw new WrongUsageException("im.cmd.mesasuite.usage", new Object[0]);
+				}
+				
+				if ("login".equals(args[1]))
+				{
+					DataAccess.login(sender.getCommandSenderEntity().getUniqueID());
+				}
+				else if ("logout".equals(args[1]))
+				{
+					DataAccess.logout(sender.getCommandSenderEntity().getUniqueID());
+				}
+				else
+				{
+					throw new WrongUsageException("im.cmd.mesasuite.usage", new Object[0]);
 				}
 			}
 		}

@@ -13,12 +13,15 @@ import org.apache.logging.log4j.Logger;
 
 import com.mesabrook.ib.proxy.CommonProxy;
 import com.mesabrook.ib.tab.TabImmersibrook;
+import com.mesabrook.ib.telecom.CallManager;
 import com.mesabrook.ib.telecom.WirelessEmergencyAlertManager;
 import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.handlers.RegistryHandler;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -131,5 +134,7 @@ public class Main
 		{
 			WirelessEmergencyAlertManager.instance().stop();
 		}
+		CallManager.instance().onServerStop();
+		DataAccess.shutdown(FMLCommonHandler.instance().getMinecraftServerInstance().getWorld(0));
 	}
 }
