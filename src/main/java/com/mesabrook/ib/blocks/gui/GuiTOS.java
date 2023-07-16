@@ -8,7 +8,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mesabrook.ib.net.ClosedTOSPacket;
 import com.mesabrook.ib.util.config.ModConfig;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -58,6 +60,10 @@ public class GuiTOS extends GuiScreen {
 	private void fetchTOS()
 	{
 		try {
+			this.text = new String[] { "Fetching Terms of Service..." };
+			currentPage = 1;
+			totalPages = 1;
+			
 			URL tosURL = new URL(ModConfig.mesasuiteBaseAPIUrl + "/system/TermsofService/Get/Mesabrook");
 			HttpURLConnection connection = (HttpURLConnection)tosURL.openConnection();
 			connection.setRequestMethod("GET");
@@ -74,7 +80,17 @@ public class GuiTOS extends GuiScreen {
 					tos += line;
 				}
 				
-				tos = tos.replace("\\r", "").replace("\\\"", "\"");				
+				tos = tos.replace("\\r", "").replace("\\\"", "\"");
+				if (tos.startsWith("\""))
+				{
+					tos = tos.substring(1);
+				}
+				
+				if (tos.endsWith("\""))
+				{
+					tos = tos.substring(0, tos.length() - 1);
+				}
+				
 				String[] untruncatedLines = tos.split("\\\\n");
 				ArrayList<String> lines = new ArrayList<>();
 				for(String untruncatedLine : untruncatedLines)
@@ -124,21 +140,9 @@ public class GuiTOS extends GuiScreen {
 	public void onGuiClosed() {
 		super.onGuiClosed();
 		
-		if (!acceptClicked)
-		{
-			boolean singlePlayer = this.mc.isIntegratedServerRunning();
-            this.mc.world.sendQuittingDisconnectingPacket();
-            this.mc.loadWorld((WorldClient)null);
-
-            if (singlePlayer)
-            {
-                this.mc.displayGuiScreen(new GuiMainMenu());
-            }
-            else
-            {
-                this.mc.displayGuiScreen(new GuiMultiplayer(new GuiMainMenu()));
-            }
-		}
+		ClosedTOSPacket closedPacket = new ClosedTOSPacket();
+		closedPacket.accepted = acceptClicked;
+		PacketHandler.INSTANCE.sendToServer(closedPacket);
 	}
 	
 	@Override
@@ -150,7 +154,7 @@ public class GuiTOS extends GuiScreen {
 			currentPage ++;
 		}
 		
-		if (button == prev && currentPage >= 1)
+		if (button == prev && currentPage > 1)
 		{
 			currentPage--;
 		}
