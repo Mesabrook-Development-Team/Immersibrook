@@ -154,10 +154,9 @@ public abstract class GuiPhoneBase extends GuiScreen
 				timeToRefreshStack = 200;
 			}
 
-			if(phoneStackData.getBatteryLevel() <= 0)
+			if(phoneStackData.getIsPhoneDead())
 			{
-				Minecraft.getMinecraft().displayGuiScreen(null);
-				Minecraft.getMinecraft().player.sendMessage(new TextComponentString("Phone battery is dead"));
+				Minecraft.getMinecraft().displayGuiScreen(new GuiDeadPhone(phoneStack, hand));
 
 				ClientSoundPacket soundPacket = new ClientSoundPacket();
 				soundPacket.pos = Minecraft.getMinecraft().player.getPosition();

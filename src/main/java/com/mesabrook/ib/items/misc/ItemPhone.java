@@ -144,6 +144,7 @@ public class ItemPhone extends Item implements IHasModel {
 		private boolean debugMode = false;
 		private String iconTheme = "plex";
 		private boolean needsToDoOOBE = true;
+		private boolean isPhoneDead = false;
 		
 		public static NBTData getFromItemStack(ItemStack phoneStack)
 		{
@@ -311,6 +312,16 @@ public class ItemPhone extends Item implements IHasModel {
 		{
 			return this.needsToDoOOBE = trigger;
 		}
+
+		public boolean getIsPhoneDead()
+		{
+			return isPhoneDead;
+		}
+
+		public boolean setIsPhoneDead(boolean trigger)
+		{
+			return this.isPhoneDead = trigger;
+		}
 		
 		public Contact getContactByIdentifier(UUID identifier)
 		{
@@ -372,6 +383,7 @@ public class ItemPhone extends Item implements IHasModel {
 			tag.setBoolean(Reference.DEBUG_MODE, getIsDebugModeEnabled());
 			tag.setString(Reference.ICON_THEME, getIconTheme());
 			tag.setBoolean(Reference.OOBE_STATUS, getNeedToDoOOBE());
+			tag.setBoolean(Reference.PHONE_DEAD, getIsPhoneDead());
 			
 			NBTTagList contactNBT = new NBTTagList();
 			for(Contact contact : contactsByIdentifier.values())
@@ -458,6 +470,11 @@ public class ItemPhone extends Item implements IHasModel {
 			if(nbt.hasKey(Reference.OOBE_STATUS))
 			{
 				setNeedToDoOOBE(nbt.getBoolean(Reference.OOBE_STATUS));
+			}
+
+			if(nbt.hasKey(Reference.PHONE_DEAD))
+			{
+				setIsPhoneDead(nbt.getBoolean(Reference.PHONE_DEAD));
 			}
 			
 			if (nbt.hasKey(Reference.CONTACTS_NBTKEY))
