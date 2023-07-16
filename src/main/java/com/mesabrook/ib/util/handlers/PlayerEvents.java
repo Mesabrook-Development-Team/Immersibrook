@@ -272,10 +272,7 @@ public class PlayerEvents
 			param.username = player.getDisplayNameString();
 			PutData put = new PutData(API.System, "Inactivity/ResetInactivity", param);
 			put.executeNoResult();
-		}
-		
-		if (!player.world.isRemote)
-		{
+			
 			TOSData tos = (TOSData)player.world.loadData(TOSData.class, Reference.TOS_DATA_NAME);
 			if (tos == null)
 			{
