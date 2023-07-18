@@ -132,10 +132,10 @@ public final class ModConfig
 	};
 	
 	@Comment("[MesaSuite] MesaSuite Base API URL")
-	public static String mesasuiteBaseAPIUrl = "";
+	public static String mesasuiteBaseAPIUrl = "https://api.mesabrook.com";
 	
 	@Comment("[MesaSuite] MesaSuite Base OAuth URL")
-	public static String mesasuiteBaseOAuthUrl = "";
+	public static String mesasuiteBaseOAuthUrl = "https://auth.mesabrook.com";
 	
 	@Comment("[Minedroid] What is the maximum battery charge for a Smartphone?")
 	public static int smartphoneMaxBattery = 1600;
