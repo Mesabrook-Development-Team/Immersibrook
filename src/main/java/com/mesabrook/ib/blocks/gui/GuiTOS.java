@@ -104,6 +104,10 @@ public class GuiTOS extends GuiScreen {
 				totalPages = lines.size() / maxLinesShown + 1;
 				this.text = lines.toArray(new String[0]);
 			}
+			else
+			{
+				throw new Exception("Server responded with " + statusCode);
+			}
 		} catch (Exception e) {
 			List<String> lines = fontRenderer.listFormattedStringToWidth("An error occurred fetching Terms Of Service: " + e.getLocalizedMessage() + ". Please visit https://www.mesabrook.com/tos.html to view our Terms Of Service.", boxWidth);
 			totalPages = 1;
