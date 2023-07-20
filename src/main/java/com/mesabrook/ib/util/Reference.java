@@ -24,6 +24,7 @@ public class Reference
 	public static final int GUI_STAMP_BOOK = 6;
 	public static final int GUI_ABOUT = 7;
 	public static final int GUI_WALLSIGN = 8;
+	public static final int GUI_TOS = 9;
 	
 	public static final String NETWORK_CHANNEL_NAME = "wbtc";
 	
@@ -32,6 +33,7 @@ public class Reference
 	public static final String LOUDNESS_DATA_NAME = "loudnessData";
 	public static final String SPECIAL_DROP_TRACKING_DATA_NAME = "ib.specialdrops";
 	public static final String PHONE_LOG_DATA_NAME = "ib.phonelog";
+	public static final String TOS_DATA_NAME = "ib.tos";
 
 	public static final UUID RZ_UUID = UUID.fromString("c2907bdd-9aba-4c20-b83b-ddb41c004e78");
 	public static final UUID CSX_UUID = UUID.fromString("717bb4e7-c701-42a6-b06f-bbe17e0518ae");
