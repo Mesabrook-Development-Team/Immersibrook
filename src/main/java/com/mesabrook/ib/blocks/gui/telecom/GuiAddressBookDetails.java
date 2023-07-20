@@ -40,7 +40,7 @@ public class GuiAddressBookDetails extends GuiPhoneBase {
 
 	@Override
 	protected String getInnerTextureFileName() {
-		return "system/app_screen_contacts.png";
+		return phoneStackData.getIconTheme() + "/app_screen_contacts.png";
 	}
 
 	@Override

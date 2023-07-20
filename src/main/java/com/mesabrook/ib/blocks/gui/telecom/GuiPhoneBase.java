@@ -101,7 +101,7 @@ public abstract class GuiPhoneBase extends GuiScreen
 			BACK_X = INNER_X + (INNER_TEX_WIDTH / 4) - 8;
 			HOME_X = (INNER_X + INNER_TEX_WIDTH) - (INNER_TEX_WIDTH / 4) - 8;
 
-			ImageButton homeButton = new ImageButton(999, INNER_X + INNER_TEX_WIDTH / 2 - 4, INNER_Y + INNER_TEX_HEIGHT - 23, 8, 8, "gui_btn_home.png", 32, 32);
+			ImageButton homeButton = new ImageButton(999, INNER_X + INNER_TEX_WIDTH / 2 - 4, INNER_Y + INNER_TEX_HEIGHT - 23, 8, 8, phoneStackData.getIconTheme() + "/gui_btn_home.png", 32, 32);
 			buttonList.add(homeButton);
 
 			homeButton.visible = renderControlBar();
@@ -200,7 +200,7 @@ public abstract class GuiPhoneBase extends GuiScreen
 			// Upper bar
 			if(renderTopBar())
 			{
-				Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/gui_top_statusbar.png"));
+				Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/" + phoneStackData.getIconTheme() + "/gui_top_statusbar.png"));
 				drawScaledCustomSizeModalRect(INNER_X, INNER_Y, 0, 0, INNER_TEX_WIDTH * WIDTH_SCALE, STATUS_BAR_HEIGHT * HEIGHT_SCALE, INNER_TEX_WIDTH, STATUS_BAR_HEIGHT, 512, 512);
 
 				Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/" + signalStrength.getTextureName()));
@@ -229,7 +229,7 @@ public abstract class GuiPhoneBase extends GuiScreen
 			// Lower bar
 			if (renderControlBar())
 			{
-				Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/gui_navbar.png"));
+				Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/" + phoneStackData.getIconTheme() + "/gui_navbar.png"));
 				drawScaledCustomSizeModalRect(INNER_X, INNER_Y, 0, 0, INNER_TEX_WIDTH * WIDTH_SCALE, INNER_TEX_HEIGHT * HEIGHT_SCALE, INNER_TEX_WIDTH, INNER_TEX_HEIGHT + 1, 512, 512);
 			}
 

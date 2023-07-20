@@ -23,7 +23,7 @@ public class GuiCallEnd extends GuiPhoneBase {
 
 	@Override
 	protected String getInnerTextureFileName() {
-		return "system/app_screen.png";
+		return phoneStackData.getIconTheme() + "/app_screen.png";
 	}
 	
 	private int displayedTicks = 0;	

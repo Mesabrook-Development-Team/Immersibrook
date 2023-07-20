@@ -37,7 +37,7 @@ public class GuiMobileAlert extends GuiPhoneBase
     @Override
     protected String getInnerTextureFileName()
     {
-        return "system/app_screen.png";
+        return phoneStackData.getIconTheme() + "/app_screen.png";
     }
 
     @Override
