@@ -105,7 +105,7 @@ public class GuiTOS extends GuiScreen {
 				this.text = lines.toArray(new String[0]);
 			}
 		} catch (Exception e) {
-			List<String> lines = fontRenderer.listFormattedStringToWidth("An error occurred fetching Terms Of Service: " + e.getLocalizedMessage(), boxWidth);
+			List<String> lines = fontRenderer.listFormattedStringToWidth("An error occurred fetching Terms Of Service: " + e.getLocalizedMessage() + ". Please visit https://www.mesabrook.com/tos.html to view our Terms Of Service.", boxWidth);
 			totalPages = 1;
 			this.text = lines.toArray(new String[0]);
 		}

@@ -27,6 +27,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 
 public class CommandImmersibrook extends CommandBase
 {
@@ -152,6 +153,10 @@ public class CommandImmersibrook extends CommandBase
 			else if ("resettos".equalsIgnoreCase(args[0]))
 			{
 				World world = server.getWorld(0);
+				if (FMLCommonHandler.instance().getMinecraftServerInstance().isSinglePlayer())
+				{
+					throw new WrongUsageException("im.cmd.resettos.singleplayer", new Object[0]);
+				}
 				TOSData tos = (TOSData)world.loadData(TOSData.class, Reference.TOS_DATA_NAME);
 				if (tos == null)
 				{
