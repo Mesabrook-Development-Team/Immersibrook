@@ -33,7 +33,7 @@ public class GuiLockScreen extends GuiPhoneBase {
 		super.initGui();
 		int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 32;
 		unlockSlider = new UnlockSlider(INNER_X + INNER_TEX_WIDTH / 2 - 60, INNER_Y + INNER_TEX_HEIGHT - 75);
-		unlockButton = new MinedroidButton(69, INNER_X + 85, lowerControlsY - 20, 30, "Unlock", 0xFFFFFF);
+		unlockButton = new MinedroidButton(69, INNER_X + 55, lowerControlsY - 20, 50, "Unlock", 0xFFFFFF);
 
 		if(phoneStackData.getUseButtonInsteadOfSlider())
 		{

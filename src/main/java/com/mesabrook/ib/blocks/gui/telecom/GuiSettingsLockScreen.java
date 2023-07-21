@@ -50,7 +50,7 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 		
 		pin = new GuiCheckBox(0, INNER_X + 10, INNER_Y + 52, new TextComponentTranslation("im.settings.pin").getFormattedText(), usePin);
 		playerID = new GuiCheckBox(1, INNER_X + 10, INNER_Y + 69, new TextComponentTranslation("im.settings.uuid").getFormattedText(), useUUID);
-		useButtonInsteadOfSlider = new GuiCheckBox(70, INNER_X + 10, INNER_Y + 69, "Use Button instead of Slider", useButton);
+		useButtonInsteadOfSlider = new GuiCheckBox(70, INNER_X + 10, INNER_Y + 120, "Use Unlock Button?", useButton);
 
 
 		int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 32;
