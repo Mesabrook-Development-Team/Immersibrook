@@ -39,10 +39,10 @@ public class GuiSettings extends GuiPhoneBase {
 			aboutBtnY = INNER_Y + 120;
 		}
 
-		ImageButton lockScreenButton = new ImageButton(0, INNER_X + 20, INNER_Y + 55, 48, 48, "btn_lock_screen.png", 32, 32);
-		ImageButton personalizeButton = new ImageButton(1, INNER_X + 90, INNER_Y + 55, 48, 48, "btn_personalize.png", 32, 32);
-		ImageButton aboutButton = new ImageButton(2, aboutBtnX, aboutBtnY, 48, 48, "btn_about.png", 32, 32);
-		ImageButton debugButton = new ImageButton(3, INNER_X + 90, aboutBtnY, 48, 48, "btn_debug.png", 32, 32);
+		ImageButton lockScreenButton = new ImageButton(0, INNER_X + 20, INNER_Y + 55, 48, 48, phoneStackData.getIconTheme() + "/btn_lock_screen.png", 32, 32);
+		ImageButton personalizeButton = new ImageButton(1, INNER_X + 90, INNER_Y + 55, 48, 48, phoneStackData.getIconTheme() + "/btn_personalize.png", 32, 32);
+		ImageButton aboutButton = new ImageButton(2, aboutBtnX, aboutBtnY, 48, 48, phoneStackData.getIconTheme() + "/btn_about.png", 32, 32);
+		ImageButton debugButton = new ImageButton(3, INNER_X + 90, aboutBtnY, 48, 48, phoneStackData.getIconTheme() + "/btn_debug.png", 32, 32);
 
 		if(phoneStackData.getIsDebugModeEnabled())
 		{

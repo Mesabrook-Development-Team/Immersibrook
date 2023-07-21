@@ -49,6 +49,8 @@ public class GuiIconSet extends GuiPhoneBase
         aero_bubbles = new GuiCheckBox(4, INNER_X + 10, INNER_Y + 69, new TextComponentTranslation("im.settings.personalization.icontheme.aero").getFormattedText(), currentTheme.contains("aero_bubble"));
         luna = new GuiCheckBox(5, INNER_X + 10, INNER_Y + 86, new TextComponentTranslation("im.settings.personalization.icontheme.luna").getFormattedText(), currentTheme.contains("luna"));
 
+
+
         // Icon Showcase
         ImageButton button1 = new ImageButton(6, INNER_X + 8, INNER_Y + 130, 32, 32, phoneStackData.getIconTheme() + "/icn_phone.png", 32, 32);
         ImageButton button2 = new ImageButton(7, INNER_X + 45, INNER_Y + 130, 32, 32, phoneStackData.getIconTheme() + "/icn_mail.png", 32, 32);
@@ -114,6 +116,12 @@ public class GuiIconSet extends GuiPhoneBase
 
         if(button == apply)
         {
+            if(!plex.isChecked() && !aero_bubbles.isChecked() && !luna.isChecked())
+            {
+                Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "A theme must be chosen", 0xFF0000));
+                return;
+            }
+
             if(updatedTheme != currentTheme)
             {
                 Minecraft.getMinecraft().displayGuiScreen(new GuiChangingTheme(phoneStack, hand));

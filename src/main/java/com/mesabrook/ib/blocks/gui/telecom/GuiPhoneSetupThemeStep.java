@@ -124,6 +124,21 @@ public class GuiPhoneSetupThemeStep extends GuiPhoneBase
 
         if(button == apply)
         {
+            if(!plex.isChecked() && !aero_bubbles.isChecked() && !luna.isChecked())
+            {
+                Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "A theme must be chosen", 0xFF0000));
+                return;
+            }
+
+            if(updatedTheme != currentTheme)
+            {
+                Minecraft.getMinecraft().displayGuiScreen(new GuiChangingTheme(phoneStack, hand));
+            }
+            else
+            {
+                Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "Theme is already active", 0xFF0000));
+            }
+
             CustomizationPacket packet = new CustomizationPacket();
             packet.hand = hand.ordinal();
             packet.newName = phoneStack.getDisplayName();

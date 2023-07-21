@@ -45,9 +45,9 @@ public class GuiDebugMenu extends GuiPhoneBase
         crashLabel = new LabelButton(3, INNER_X + 31, INNER_Y + 113, new TextComponentString("Crash Device").getFormattedText(), 0xFFFFFF);
         lowBatTest = new LabelButton(4, INNER_X + 31, INNER_Y + 133, new TextComponentString("Low Battery Screen").getFormattedText(), 0xFFFFFF);
 
-        weaIcon = new ImageButton(100, INNER_X + 0, INNER_Y + 40, 28, 28, "btn_debug.png", 32, 32);
-        oobeIcon = new ImageButton(101, INNER_X + 0, INNER_Y + 70, 28, 28, "btn_debug.png", 32, 32);
-        crashIcon = new ImageButton(102, INNER_X + 0, INNER_Y + 100, 28, 28, "btn_debug.png", 32, 32);
+        weaIcon = new ImageButton(100, INNER_X + 0, INNER_Y + 40, 28, 28, phoneStackData.getIconTheme() + "/btn_debug.png", 32, 32);
+        oobeIcon = new ImageButton(101, INNER_X + 0, INNER_Y + 70, 28, 28, phoneStackData.getIconTheme() + "/btn_debug.png", 32, 32);
+        crashIcon = new ImageButton(102, INNER_X + 0, INNER_Y + 100, 28, 28, phoneStackData.getIconTheme() + "/btn_debug.png", 32, 32);
 
         buttonList.addAll(ImmutableList.<GuiButton>builder()
                 .add(back)

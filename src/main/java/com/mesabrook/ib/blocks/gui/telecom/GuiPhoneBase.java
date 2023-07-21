@@ -222,7 +222,7 @@ public abstract class GuiPhoneBase extends GuiScreen
 					chargeLevel = 4;
 				}
 				
-				Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/bat_" + chargeLevel + ".png"));
+				Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/" + phoneStackData.getIconTheme() + "/bat_" + chargeLevel + ".png"));
 				drawScaledCustomSizeModalRect(INNER_X + INNER_TEX_WIDTH - 18, INNER_Y - 1, 0, 0, 16, 16, 16, 16, 16, 16);
 			}
 

@@ -39,8 +39,8 @@ public class GuiSettingsSecurity extends GuiPhoneBase
         lockScreen = new LabelButton(1, INNER_X + 31, INNER_Y + 53, new TextComponentTranslation("im.settings.securitytitle1").getFormattedText(), 0xFFFFFF);
         factoryReset = new LabelButton(2, INNER_X + 31, INNER_Y + 83, new TextComponentTranslation("im.settings.factoryreset").getFormattedText(), 0xFF0000);
 
-        lockScreenIcon = new ImageButton(5, INNER_X + 0, INNER_Y + 40, 28, 28, "btn_lock.png", 32, 32);
-        factoryResetIcon = new ImageButton(6, INNER_X + 0, INNER_Y + 70, 28, 28, "btn_factory_reset.png", 32, 32);
+        lockScreenIcon = new ImageButton(5, INNER_X + 0, INNER_Y + 40, 28, 28, phoneStackData.getIconTheme() + "/btn_lock.png", 32, 32);
+        factoryResetIcon = new ImageButton(6, INNER_X + 0, INNER_Y + 70, 28, 28, phoneStackData.getIconTheme() + "/btn_factory_reset.png", 32, 32);
 
         buttonList.addAll(ImmutableList.<GuiButton>builder()
                 .add(back)

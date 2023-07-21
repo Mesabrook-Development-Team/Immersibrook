@@ -37,7 +37,7 @@ public class GuiFactoryResetConfirmation extends GuiPhoneBase
     public void initGui()
     {
         super.initGui();
-        icon = new ImageButton(1, INNER_X + 72, INNER_Y + 22, 16, 16, "icn_alert_yellow.png", 32, 32);
+        icon = new ImageButton(1, INNER_X + 72, INNER_Y + 22, 16, 16, phoneStackData.getIconTheme() + "/icn_alert_yellow.png", 32, 32);
 
         confirmation = new GuiCheckBox(2, INNER_X + 30, INNER_Y + 155, "I wish to continue", false);
 
