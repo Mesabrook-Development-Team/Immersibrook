@@ -9,7 +9,7 @@ public class Reference
 	public static final String UPDATE_NAME = "The Technology Update";
 	public static String MOTTO = MottoRandomizer.MOTTO;
 	public static final String VERSION = "1.0.0.10";
-	public static final String MINEDROID_VERSION = "0.1.3";
+	public static final String MINEDROID_VERSION = VERSION;
 	public static final String CHANGELOG = "https://github.com/RavenholmZombie/Immersibrook/releases/tag/" + VERSION;
 	public static final String UPDATE_URL = "https://raw.githubusercontent.com/RavenholmZombie/RavenholmZombie/main/update.json";
 	
@@ -33,6 +33,7 @@ public class Reference
 	public static final String LOUDNESS_DATA_NAME = "loudnessData";
 	public static final String SPECIAL_DROP_TRACKING_DATA_NAME = "ib.specialdrops";
 	public static final String PHONE_LOG_DATA_NAME = "ib.phonelog";
+	public static final String TOS_DATA_NAME = "ib.tos";
 
 	public static final UUID RZ_UUID = UUID.fromString("c2907bdd-9aba-4c20-b83b-ddb41c004e78");
 	public static final UUID CSX_UUID = UUID.fromString("717bb4e7-c701-42a6-b06f-bbe17e0518ae");
