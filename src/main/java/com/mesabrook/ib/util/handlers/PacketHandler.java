@@ -1,8 +1,22 @@
 package com.mesabrook.ib.util.handlers;
 
-import com.mesabrook.ib.net.*;
+import com.mesabrook.ib.net.AboutGUIPacket;
+import com.mesabrook.ib.net.ClientSoundPacket;
+import com.mesabrook.ib.net.ClosedTOSPacket;
+import com.mesabrook.ib.net.CommandProcessorPacket;
+import com.mesabrook.ib.net.CoughPacket;
+import com.mesabrook.ib.net.EngravePacket;
+import com.mesabrook.ib.net.FoodBoxPacket;
+import com.mesabrook.ib.net.NVTogglePacket;
+import com.mesabrook.ib.net.OpenTOSPacket;
+import com.mesabrook.ib.net.PoliceEffectsTogglePacket;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
+import com.mesabrook.ib.net.SoundRandomizerPacket;
+import com.mesabrook.ib.net.VestTogglePacket;
+import com.mesabrook.ib.net.WallSignPacket;
 import com.mesabrook.ib.net.telecom.*;
 import com.mesabrook.ib.util.Reference;
+
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 
@@ -27,6 +41,8 @@ public class PacketHandler
 		INSTANCE.registerMessage(CommandProcessorPacket.class, CommandProcessorPacket.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(ClientSoundPacket.Handler.class, ClientSoundPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(CoughPacket.Handler.class, CoughPacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(OpenTOSPacket.Handler.class, OpenTOSPacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(ClosedTOSPacket.Handler.class, ClosedTOSPacket.class, nextID(), Side.SERVER);
 
 		// TELECOM
 		INSTANCE.registerMessage(ActivatePhonePacket.Handler.class, ActivatePhonePacket.class, nextID(), Side.SERVER);
@@ -63,6 +79,7 @@ public class PacketHandler
 		INSTANCE.registerMessage(GetPhoneRecentsPacket.Handler.class, GetPhoneRecentsPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(GetPhoneRecentsResponsePacket.Handler.class, GetPhoneRecentsResponsePacket.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(WirelessEmergencyAlertPacket.Handler.class, WirelessEmergencyAlertPacket.class, nextID(), Side.CLIENT);
+		
 	}
 
 	private static int nextID()

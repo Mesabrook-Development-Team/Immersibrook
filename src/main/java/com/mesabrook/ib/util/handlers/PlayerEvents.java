@@ -20,6 +20,7 @@ import com.mesabrook.ib.util.apiaccess.PutData;
 import com.mesabrook.ib.util.apiaccess.DataAccess.API;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.saveData.SpecialDropTrackingData;
+import com.mesabrook.ib.util.saveData.TOSData;
 import com.mojang.authlib.GameProfile;
 import com.pam.harvestcraft.blocks.blocks.BlockPamCake;
 
@@ -48,6 +49,7 @@ import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.*;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
@@ -271,6 +273,18 @@ public class PlayerEvents
 			param.username = player.getDisplayNameString();
 			PutData put = new PutData(API.System, "Inactivity/ResetInactivity", param);
 			put.executeNoResult();
+			
+			TOSData tos = (TOSData)player.world.loadData(TOSData.class, Reference.TOS_DATA_NAME);
+			if (tos == null)
+			{
+				tos = new TOSData(Reference.TOS_DATA_NAME);
+				player.world.setData(Reference.TOS_DATA_NAME, tos);
+			}
+			
+			if (!tos.containsPlayer(player.getUniqueID()))
+			{
+				PacketHandler.INSTANCE.sendTo(new OpenTOSPacket(), FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerByUUID(player.getUniqueID()));
+			}
 		}
 	}
 	

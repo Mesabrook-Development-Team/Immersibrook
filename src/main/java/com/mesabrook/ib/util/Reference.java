@@ -24,7 +24,8 @@ public class Reference
 	public static final int GUI_STAMP_BOOK = 6;
 	public static final int GUI_ABOUT = 7;
 	public static final int GUI_WALLSIGN = 8;
-	
+	public static final int GUI_TOS = 9;
+
 	public static final String NETWORK_CHANNEL_NAME = "wbtc";
 	
 	public static final String ANTENNA_DATA_NAME = "antennaData";
