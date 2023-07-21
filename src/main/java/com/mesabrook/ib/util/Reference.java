@@ -58,6 +58,7 @@ public class Reference
 	public static final String ICON_THEME = "icontheme";
 	public static final String OOBE_STATUS = "oobe";
 	public static final String PHONE_DEAD = "phone_dead";
+	public static final String USE_BUTTON_INSTEAD_OF_SLIDER = "usebuttoninsteadofslider";
 
 	public static final int MAX_PHONE_BACKGROUNDS = 42; // This is an INCLUSIVE number
 	public static final int MAX_CHAT_NOTIFICATIONS = 9; // This is an INCLUSIVE number

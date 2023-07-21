@@ -3,6 +3,7 @@ package com.mesabrook.ib.blocks.gui.telecom;
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData.SecurityStrategies;
 import com.mesabrook.ib.net.telecom.CustomizationPacket;
+import com.mesabrook.ib.net.telecom.ToggleUnlockSliderPacket;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -20,6 +21,7 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 
 	GuiCheckBox pin;
 	GuiCheckBox playerID;
+	GuiCheckBox useButtonInsteadOfSlider;
 	MinedroidButton reset;
 	MinedroidButton apply;
 	MinedroidButton factoryReset;
@@ -44,9 +46,13 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 
 		boolean usePin = phoneStackData.getSecurityStrategy() == SecurityStrategies.PIN;
 		boolean useUUID = phoneStackData.getSecurityStrategy() == SecurityStrategies.UUID;
+		boolean useButton = phoneStackData.getUseButtonInsteadOfSlider();
 		
 		pin = new GuiCheckBox(0, INNER_X + 10, INNER_Y + 52, new TextComponentTranslation("im.settings.pin").getFormattedText(), usePin);
 		playerID = new GuiCheckBox(1, INNER_X + 10, INNER_Y + 69, new TextComponentTranslation("im.settings.uuid").getFormattedText(), useUUID);
+		useButtonInsteadOfSlider = new GuiCheckBox(70, INNER_X + 10, INNER_Y + 69, "Use Button instead of Slider", useButton);
+
+
 		int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 32;
 		reset = new MinedroidButton(2, INNER_X + 45, lowerControlsY - 10, 32, new TextComponentTranslation("im.musicapp.buttonreset").getFormattedText(), 0xFFFFFF);
 		apply = new MinedroidButton(3, INNER_X + 85, lowerControlsY - 10, 32, new TextComponentTranslation("im.settings.apply").getFormattedText(), 0xFFFFFF);
@@ -71,7 +77,7 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 			uuidValue.setText(phoneStackData.getUuid().toString());
 		}
 		
-		buttonList.addAll(ImmutableList.of(pin, playerID, reset, apply, back, changePIN, changeUUID));
+		buttonList.addAll(ImmutableList.of(pin, playerID, reset, apply, back, changePIN, changeUUID, useButtonInsteadOfSlider));
 	}
 	
 	@Override
@@ -190,8 +196,15 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 				
 				packet.playerID = parsedPlayerID;
 			}
+
+			ToggleUnlockSliderPacket toggleUnlockSliderPacket = new ToggleUnlockSliderPacket();
+			toggleUnlockSliderPacket.hand = hand.ordinal();
+			toggleUnlockSliderPacket.guiClassName = GuiSettingsLockScreen.class.getName();
+			toggleUnlockSliderPacket.nextGuiClassName = GuiSettingsLockScreen.class.getName();
+			toggleUnlockSliderPacket.useButtonInsteadOfSlider = useButtonInsteadOfSlider.isChecked();
 			
 			PacketHandler.INSTANCE.sendToServer(packet);
+			PacketHandler.INSTANCE.sendToServer(toggleUnlockSliderPacket);
 
 			Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, new TextComponentTranslation("im.settings.saved").getFormattedText(), 0xFFFFFF));
 
