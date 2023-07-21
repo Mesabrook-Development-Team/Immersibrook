@@ -7,9 +7,9 @@ public class Reference
 	public static final String MODID = "wbtc";
 	public static final String MODNAME = "Immersibrook";
 	public static final String UPDATE_NAME = "The Technology Update";
-	public static final String MOTTO = MottoRandomizer.MOTTO;
-	public static final String VERSION = "1.0.0.9";
-	public static final String MINEDROID_VERSION = "0.1.2";
+	public static String MOTTO = MottoRandomizer.MOTTO;
+	public static final String VERSION = "1.0.0.9_a";
+	public static final String MINEDROID_VERSION = "0.1.3";
 	public static final String CHANGELOG = "https://github.com/RavenholmZombie/Immersibrook/releases/tag/" + VERSION;
 	public static final String UPDATE_URL = "https://raw.githubusercontent.com/RavenholmZombie/RavenholmZombie/main/update.json";
 	
@@ -24,6 +24,7 @@ public class Reference
 	public static final int GUI_STAMP_BOOK = 6;
 	public static final int GUI_ABOUT = 7;
 	public static final int GUI_WALLSIGN = 8;
+	public static final int GUI_TOS = 9;
 	
 	public static final String NETWORK_CHANNEL_NAME = "wbtc";
 	
@@ -32,6 +33,7 @@ public class Reference
 	public static final String LOUDNESS_DATA_NAME = "loudnessData";
 	public static final String SPECIAL_DROP_TRACKING_DATA_NAME = "ib.specialdrops";
 	public static final String PHONE_LOG_DATA_NAME = "ib.phonelog";
+	public static final String TOS_DATA_NAME = "ib.tos";
 
 	public static final UUID RZ_UUID = UUID.fromString("c2907bdd-9aba-4c20-b83b-ddb41c004e78");
 	public static final UUID CSX_UUID = UUID.fromString("717bb4e7-c701-42a6-b06f-bbe17e0518ae");
@@ -56,6 +58,8 @@ public class Reference
 	public static final String SHOW_MILITARY_TIME = "show24hr";
 	public static final String DEBUG_MODE = "debug";
 	public static final String ICON_THEME = "icontheme";
+	public static final String OOBE_STATUS = "oobe";
+	public static final String PHONE_DEAD = "phone_dead";
 
 	public static final int MAX_PHONE_BACKGROUNDS = 33; // This is an INCLUSIVE number
 	public static final int MAX_CHAT_NOTIFICATIONS = 9; // This is an INCLUSIVE number

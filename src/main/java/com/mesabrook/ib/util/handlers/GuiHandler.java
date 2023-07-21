@@ -2,7 +2,13 @@ package com.mesabrook.ib.util.handlers;
 
 import com.mesabrook.ib.blocks.container.ContainerStampBook;
 import com.mesabrook.ib.blocks.container.ContainerTrashBin;
-import com.mesabrook.ib.blocks.gui.*;
+import com.mesabrook.ib.blocks.gui.GuiAboutImmersibrook;
+import com.mesabrook.ib.blocks.gui.GuiFoodBox;
+import com.mesabrook.ib.blocks.gui.GuiPlaque;
+import com.mesabrook.ib.blocks.gui.GuiStampBook;
+import com.mesabrook.ib.blocks.gui.GuiTOS;
+import com.mesabrook.ib.blocks.gui.GuiTrashBin;
+import com.mesabrook.ib.blocks.gui.GuiWallSign;
 import com.mesabrook.ib.blocks.gui.telecom.GuiEmptyPhone;
 import com.mesabrook.ib.blocks.gui.telecom.GuiMobileAlert;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneActivate;
@@ -11,6 +17,7 @@ import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.net.telecom.PhoneQueryPacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.ClientSideHandlers.TelecomClientHandlers;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -68,6 +75,7 @@ public class GuiHandler implements IGuiHandler
 		}
 		else if (ID == Reference.GUI_STAMP_BOOK) return new GuiStampBook(new ContainerStampBook(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]));
 		else if (ID == Reference.GUI_WALLSIGN) return new GuiWallSign(EnumHand.values()[x]);
+		else if (ID == Reference.GUI_TOS) return new GuiTOS();
 		else return null;
 	}
 	
