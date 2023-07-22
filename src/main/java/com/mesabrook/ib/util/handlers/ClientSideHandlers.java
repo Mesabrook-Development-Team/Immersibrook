@@ -192,6 +192,8 @@ public class ClientSideHandlers
 		{
 			EntityPlayerSP player = Minecraft.getMinecraft().player;
 			int ringTone = -1;
+			boolean allowRingtone = true;
+
 			for(int i = 0; i < player.inventory.getSizeInventory(); i++)
 			{
 				ItemStack stack = player.inventory.getStackInSlot(i);
@@ -203,6 +205,7 @@ public class ClientSideHandlers
 				NBTTagCompound tag = stack.getTagCompound();
 				ItemPhone.NBTData stackData = new ItemPhone.NBTData();
 				stackData.deserializeNBT(tag);
+				allowRingtone = stackData.getBatteryLevel() > 0 || Minecraft.getMinecraft().player.dimension != 0;
 
 				String stackPhoneNumber = stackData.getPhoneNumberString();
 				if (!phoneNumber.equalsIgnoreCase(stackPhoneNumber))
@@ -234,16 +237,19 @@ public class ClientSideHandlers
 
 				incomingCallSound = new PositionedSoundRecord(sound, SoundCategory.MASTER, ModConfig.ringtoneVolume, 1F, player.getPosition());
 				incomingCallSoundsByPhone.put(phoneNumber, incomingCallSound);
-				handler.playSound(incomingCallSound);
 
-				if(Minecraft.getMinecraft().gameSettings.showSubtitles || ModConfig.showCallMsgInChat)
+				if(allowRingtone)
 				{
-					TextComponentString pn = new TextComponentString(GuiPhoneBase.getFormattedPhoneNumber(phoneNumber));
-					pn.getStyle().setBold(true);
-					pn.getStyle().setItalic(true);
-					pn.getStyle().setColor(TextFormatting.GRAY);
+					handler.playSound(incomingCallSound);
+					if(Minecraft.getMinecraft().gameSettings.showSubtitles || ModConfig.showCallMsgInChat)
+					{
+						TextComponentString pn = new TextComponentString(GuiPhoneBase.getFormattedPhoneNumber(phoneNumber));
+						pn.getStyle().setBold(true);
+						pn.getStyle().setItalic(true);
+						pn.getStyle().setColor(TextFormatting.GRAY);
 
-					player.sendStatusMessage(new TextComponentString(new TextComponentTranslation("im.access.call").getFormattedText()), true);
+						player.sendStatusMessage(new TextComponentString(new TextComponentTranslation("im.access.call").getFormattedText()), true);
+					}
 				}
 			}
 		}
