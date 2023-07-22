@@ -37,7 +37,14 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 
 	@Override
 	protected String getInnerTextureFileName() {
-		return phoneStackData.getIconTheme() + "/app_screen.png";
+		if(phoneStackData.getIconTheme().contains("luna"))
+		{
+			return "luna/app_background_settings_bar.png";
+		}
+		else
+		{
+			return phoneStackData.getIconTheme() + "/app_screen.png";
+		}
 	}
 	
 	@Override
@@ -67,7 +74,7 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 		changeUUID.visible = useUUID;
 		
 		pinValue = new PINTextField(7, fontRenderer, pin.x + pin.width + 4, pin.y-4, INNER_X + INNER_TEX_WIDTH - (pin.x + pin.width) - 7, 20);
-		pinValue.setMaskedText(String.valueOf(phoneStackData.getPin()));
+		pinValue.setMaskedText(String.valueOf(phoneStackData.getPin())); 
 		pinValue.setVisible(false);
 		uuidValue = new GuiTextField(8, fontRenderer, playerID.x + playerID.width + 4, playerID.y-4, INNER_X + INNER_TEX_WIDTH - (playerID.x + playerID.width) - 7, 20);
 		uuidValue.setVisible(false);
@@ -85,7 +92,15 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 		super.doDraw(mouseX, mouseY, partialticks);
 		
 		fontRenderer.drawString(new TextComponentTranslation("im.settings.securitytitle1").getFormattedText(), INNER_X + 15, INNER_Y + 20, 0xFFFFFF);
-		fontRenderer.drawString(new TextComponentTranslation("im.settings.strategy").getFormattedText(), INNER_X + 3, INNER_Y + 36, 0x4444FF);
+
+		if(phoneStackData.getIconTheme().contains("luna"))
+		{
+			fontRenderer.drawString(new TextComponentTranslation("im.settings.strategy").getFormattedText(), INNER_X + 3, INNER_Y + 36, 0xFFFFFF);
+		}
+		else
+		{
+			fontRenderer.drawString(new TextComponentTranslation("im.settings.strategy").getFormattedText(), INNER_X + 3, INNER_Y + 36, 0x4444FF);
+		}
 		
 		pinValue.drawTextBox();
 		uuidValue.drawTextBox();

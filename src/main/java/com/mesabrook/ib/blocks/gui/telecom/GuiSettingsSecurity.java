@@ -27,7 +27,14 @@ public class GuiSettingsSecurity extends GuiPhoneBase
     @Override
     protected String getInnerTextureFileName()
     {
-        return phoneStackData.getIconTheme() + "/app_screen.png";
+        if(phoneStackData.getIconTheme().contains("luna"))
+        {
+            return "luna/app_background_settings_bar.png";
+        }
+        else
+        {
+            return phoneStackData.getIconTheme() + "/app_screen.png";
+        }
     }
 
     @Override

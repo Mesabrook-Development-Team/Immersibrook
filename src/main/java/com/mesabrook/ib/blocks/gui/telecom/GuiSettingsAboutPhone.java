@@ -32,7 +32,14 @@ public class GuiSettingsAboutPhone extends GuiPhoneBase {
 	
 	@Override
 	protected String getInnerTextureFileName() {
-		return phoneStackData.getIconTheme() + "/app_screen.png";
+		if(phoneStackData.getIconTheme().contains("luna"))
+		{
+			return "luna/app_background_settings_bar.png";
+		}
+		else
+		{
+			return phoneStackData.getIconTheme() + "/app_screen.png";
+		}
 	}
 	
 	@Override
@@ -59,11 +66,23 @@ public class GuiSettingsAboutPhone extends GuiPhoneBase {
 		fontRenderer.drawString("About Phone", INNER_X + 15, INNER_Y + 20, 0xFFFFFF);
 
 		drawCenteredString(fontRenderer, new TextComponentTranslation("im.minedroid").getFormattedText() + " " + Reference.MINEDROID_VERSION, INNER_X + 80, INNER_Y + 80, 3395327);
-		fontRenderer.drawString(new TextComponentTranslation("im.settings.phoneinfo").getFormattedText(), INNER_X + 3, INNER_Y + 106, 0xFFFFFF);
-		fontRenderer.drawString(new TextComponentTranslation("im.contacts.phone").getFormattedText(), INNER_X + 3, INNER_Y + 118, 0x5179bd);
-		fontRenderer.drawString(new TextComponentTranslation("im.settings.strategy").getFormattedText(), INNER_X + 3, INNER_Y + 131, 0x5179bd);
-		int stratStringWidth = fontRenderer.getStringWidth(new TextComponentTranslation("im.settings.strategy").getFormattedText());
-		fontRenderer.drawString(phoneStackData.getSecurityStrategy().toString(), INNER_X + 3 + stratStringWidth + 3, INNER_Y + 131, 0xFFFFFF);
+
+		if(phoneStackData.getIconTheme().contains("luna"))
+		{
+			fontRenderer.drawString(new TextComponentTranslation("im.settings.phoneinfo").getFormattedText(), INNER_X + 3, INNER_Y + 106, 0xFFFFFF);
+			fontRenderer.drawString(new TextComponentTranslation("im.contacts.phone").getFormattedText(), INNER_X + 3, INNER_Y + 118, 0xFFFFFF);
+			fontRenderer.drawString(new TextComponentTranslation("im.settings.strategy").getFormattedText(), INNER_X + 3, INNER_Y + 131, 0xFFFFFF);
+			int stratStringWidth = fontRenderer.getStringWidth(new TextComponentTranslation("im.settings.strategy").getFormattedText());
+			fontRenderer.drawString(phoneStackData.getSecurityStrategy().toString(), INNER_X + 3 + stratStringWidth + 3, INNER_Y + 131, 0xFFFFFF);
+		}
+		else
+		{
+			fontRenderer.drawString(new TextComponentTranslation("im.settings.phoneinfo").getFormattedText(), INNER_X + 3, INNER_Y + 106, 0xFFFFFF);
+			fontRenderer.drawString(new TextComponentTranslation("im.contacts.phone").getFormattedText(), INNER_X + 3, INNER_Y + 118, 0x5179bd);
+			fontRenderer.drawString(new TextComponentTranslation("im.settings.strategy").getFormattedText(), INNER_X + 3, INNER_Y + 131, 0x5179bd);
+			int stratStringWidth = fontRenderer.getStringWidth(new TextComponentTranslation("im.settings.strategy").getFormattedText());
+			fontRenderer.drawString(phoneStackData.getSecurityStrategy().toString(), INNER_X + 3 + stratStringWidth + 3, INNER_Y + 131, 0xFFFFFF);
+		}
 
 		GlStateManager.color(1, 1, 1);
 	}

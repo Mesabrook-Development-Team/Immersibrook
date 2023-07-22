@@ -20,8 +20,16 @@ public class GuiSettings extends GuiPhoneBase {
 	}
 
 	@Override
-	protected String getInnerTextureFileName() {
-		return "system/app_screen_no_bar.png";
+	protected String getInnerTextureFileName()
+	{
+		if(phoneStackData.getIconTheme().contains("luna"))
+		{
+			return "luna/app_background_settings.png";
+		}
+		else
+		{
+			return "system/app_screen_no_bar.png";
+		}
 	}
 	
 	@Override
