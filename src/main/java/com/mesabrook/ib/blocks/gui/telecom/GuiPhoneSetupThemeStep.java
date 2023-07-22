@@ -72,10 +72,6 @@ public class GuiPhoneSetupThemeStep extends GuiPhoneBase
                 .add(plex)
                 .add(aero_bubbles)
                 .add(luna)
-                .add(button1)
-                .add(button2)
-                .add(button3)
-                .add(button4)
                 .build());
     }
 
@@ -85,7 +81,8 @@ public class GuiPhoneSetupThemeStep extends GuiPhoneBase
         super.doDraw(mouseX, mouseY, partialticks);
 
         drawCenteredString(fontRenderer, new TextComponentTranslation("im.settings.personalization.iconthemesetup").getFormattedText(), INNER_X + 80, INNER_Y + 20, 0xFFFFFF);
-        fontRenderer.drawString(new TextComponentTranslation("im.settings.personalization.icontheme.current").getFormattedText(), INNER_X + 10, INNER_Y + 115, 0xFFFFFF);
+        fontRenderer.drawSplitString(new TextComponentTranslation("im.settings.personalization.themesetupblurb").getFormattedText(), INNER_X + 10, INNER_Y + 120, INNER_TEX_WIDTH - 12, 0xFFFFFF);
+
     }
 
     public static String getUpdatedTheme()
