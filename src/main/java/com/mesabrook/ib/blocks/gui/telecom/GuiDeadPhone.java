@@ -1,5 +1,6 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import com.mesabrook.ib.net.ClientSoundPacket;
 import com.mesabrook.ib.net.telecom.FactoryResetPacket;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
@@ -10,6 +11,7 @@ import net.minecraft.util.text.TextFormatting;
 public class GuiDeadPhone extends GuiPhoneBase
 {
     private int currentFrame = 0;
+    private String currentFrameImg = "system/dead_0.png";
     private int timerToGUIKill;
 
     public GuiDeadPhone(ItemStack phoneStack, EnumHand hand)
@@ -20,15 +22,7 @@ public class GuiDeadPhone extends GuiPhoneBase
     @Override
     protected String getInnerTextureFileName()
     {
-        if(currentFrame == 0)
-        {
-            return "system/dead_0.png";
-        }
-        if(currentFrame == 10)
-        {
-            return "system/dead_1.png";
-        }
-        return "system/dead_0.png";
+        return currentFrameImg;
     }
 
     @Override
@@ -46,6 +40,12 @@ public class GuiDeadPhone extends GuiPhoneBase
     public void initGui()
     {
         super.initGui();
+
+        ClientSoundPacket soundPacket = new ClientSoundPacket();
+		soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
+		soundPacket.soundName = "phone_battery_low";
+
+		PacketHandler.INSTANCE.sendToServer(soundPacket);
     }
 
     @Override
@@ -56,10 +56,16 @@ public class GuiDeadPhone extends GuiPhoneBase
         currentFrame++;
         timerToGUIKill++;
 
-        if(currentFrame > 10)
+        if(currentFrame == 200)
         {
+            currentFrameImg = "system/dead_1.png";
+        }
+        if(currentFrame >= 400)
+        {
+            currentFrameImg = "system/dead_0.png";
             currentFrame = 0;
         }
+
 
         if(timerToGUIKill >= 1000)
         {
