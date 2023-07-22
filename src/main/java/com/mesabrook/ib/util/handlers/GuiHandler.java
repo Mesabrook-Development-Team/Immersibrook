@@ -10,6 +10,7 @@ import com.mesabrook.ib.blocks.gui.GuiTOS;
 import com.mesabrook.ib.blocks.gui.GuiTrashBin;
 import com.mesabrook.ib.blocks.gui.GuiWallSign;
 import com.mesabrook.ib.blocks.gui.telecom.GuiEmptyPhone;
+import com.mesabrook.ib.blocks.gui.telecom.GuiFirstPhoneBoot;
 import com.mesabrook.ib.blocks.gui.telecom.GuiMobileAlert;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneActivate;
 import com.mesabrook.ib.blocks.te.TileEntityTrashBin;
@@ -51,6 +52,7 @@ public class GuiHandler implements IGuiHandler
 			ItemPhone.NBTData stackNBTData = new ItemPhone.NBTData();
 			stackNBTData.deserializeNBT(stackData);
 			String phoneNumber = stackNBTData.getPhoneNumberString();
+			boolean hasToDoOOBE = stackNBTData.getNeedToDoOOBE();
 			
 			if (phoneNumber == null)
 			{
@@ -59,6 +61,10 @@ public class GuiHandler implements IGuiHandler
 			else if (GuiMobileAlert.labelsByNumber.containsKey(stackNBTData.getPhoneNumber()) || GuiMobileAlert.textByNumber.containsKey(stackNBTData.getPhoneNumber()))
 			{
 				return new GuiMobileAlert(stack, hand);
+			}
+			else if(hasToDoOOBE)
+			{
+				return new GuiFirstPhoneBoot(stack, hand);
 			}
 			else
 			{
