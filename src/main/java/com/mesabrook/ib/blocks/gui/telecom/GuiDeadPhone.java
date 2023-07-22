@@ -73,6 +73,12 @@ public class GuiDeadPhone extends GuiPhoneBase
         }
     }
 
+    @Override
+    protected boolean closeOnDeadBattery()
+    {
+        return false;
+    }
+
     private void killPhone()
     {
         Minecraft.getMinecraft().displayGuiScreen(null);

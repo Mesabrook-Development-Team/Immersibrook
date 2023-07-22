@@ -28,11 +28,11 @@ public class GuiLockChallengePIN extends GuiPhoneBase {
 		
 		for(int i = 1; i <= 9; i++)
 		{
-			ImageButton digit = new ImageButton(i, upperLeftX + 20 * ((i - 1) % 3), upperLeftY + 20 * ((i - 1) / 3), 16, 16, "calcbtn_" + i + ".png", 16, 16);
+			ImageButton digit = new ImageButton(i, upperLeftX + 20 * ((i - 1) % 3), upperLeftY + 20 * ((i - 1) / 3), 16, 16, phoneStackData.getIconTheme() + "/numpad/numpad_" + i + ".png", 16, 16);
 			buttonList.add(digit);
 		}
 		
-		ImageButton zero = new ImageButton(0, upperLeftX + 20, upperLeftY + 60, 16, 16, "calcbtn_0.png", 16, 16);
+		ImageButton zero = new ImageButton(0, upperLeftX + 20, upperLeftY + 60, 16, 16, phoneStackData.getIconTheme() + "/numpad/numpad_0.png", 16, 16);
 		buttonList.add(zero);
 	}
 

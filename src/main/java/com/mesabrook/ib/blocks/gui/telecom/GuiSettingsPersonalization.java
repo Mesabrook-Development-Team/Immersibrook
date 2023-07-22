@@ -49,7 +49,7 @@ public class GuiSettingsPersonalization extends GuiPhoneBase
         icons = new LabelButton(9, INNER_X + 31, INNER_Y + 173, new TextComponentTranslation("im.settings.personalization.icontheme").getFormattedText(), 0xFFFFFF);
 
         wallpaperIcon = new ImageButton(5, INNER_X + 0, INNER_Y + 40, 28, 28, phoneStackData.getIconTheme() + "/btn_personalize.png", 32, 32);
-        soundsIcon = new ImageButton(6, INNER_X + 0, INNER_Y + 70, 28, 28, phoneStackData.getIconTheme() + "/icn_call.png", 32, 32);
+        soundsIcon = new ImageButton(6, INNER_X + 0, INNER_Y + 70, 28, 28, phoneStackData.getIconTheme() + "/icn_msg.png", 32, 32);
         phoneNameIcon = new ImageButton(7, INNER_X + 0, INNER_Y + 100, 28, 28, phoneStackData.getIconTheme() + "/icn_name.png", 32, 32);
         clockIcon = new ImageButton(8, INNER_X + 0, INNER_Y + 130, 28, 28, phoneStackData.getIconTheme() + "/icn_clock.png", 32, 32);
         iconsIcon = new ImageButton(10, INNER_X + 0, INNER_Y + 160, 28, 28, phoneStackData.getIconTheme() + "/btn_personalize.png", 32, 32);

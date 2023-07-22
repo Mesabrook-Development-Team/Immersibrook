@@ -2,6 +2,7 @@ package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.net.ClientSoundPacket;
+import com.mesabrook.ib.net.telecom.OOBEStatusPacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 
@@ -95,7 +96,14 @@ public class GuiDebugMenu extends GuiPhoneBase
 
         if(button == oobeIcon || button == oobeLabel)
         {
-            Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneSetupStart(phoneStack, hand));
+            OOBEStatusPacket packet = new OOBEStatusPacket();
+            packet.hand = hand.ordinal();
+            packet.guiClassName = GuiDebugMenu.class.getName();
+            packet.nextGuiClassName = GuiMSACBootScreen.class.getName();
+            packet.needToDoOOBE = true;
+
+            PacketHandler.INSTANCE.sendToServer(packet);
+
         }
 
         if(button == crashIcon || button == crashLabel)

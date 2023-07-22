@@ -107,7 +107,7 @@ public class GuiChangingTheme extends GuiPhoneBase
 
         PacketHandler.INSTANCE.sendToServer(packet);
 
-        if(phoneStackData.getNeedToDoOOBE() || phoneStackData.getIsDebugModeEnabled())
+        if(phoneStackData.getNeedToDoOOBE())
         {
             Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneNameSetup(phoneStack, hand));
         }

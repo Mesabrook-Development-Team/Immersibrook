@@ -154,9 +154,9 @@ public abstract class GuiPhoneBase extends GuiScreen
 				timeToRefreshStack = 200;
 			}
 
-			if(phoneStackData.getBatteryLevel() <= 0)
+			if(phoneStackData.getBatteryLevel() <= 0 && closeOnDeadBattery())
 			{
-				//Minecraft.getMinecraft().displayGuiScreen(null);
+				Minecraft.getMinecraft().displayGuiScreen(null);
 				Minecraft.getMinecraft().player.sendMessage(new TextComponentString("Phone is dead"));
 			}
 
@@ -253,6 +253,8 @@ public abstract class GuiPhoneBase extends GuiScreen
 	{
 		return phoneStackData.getPhoneNumber() != 0;
 	}
+
+	protected boolean closeOnDeadBattery() { return true; }
 	
 	protected void doDraw(int mouseX, int mouseY, float partialticks){}
 	

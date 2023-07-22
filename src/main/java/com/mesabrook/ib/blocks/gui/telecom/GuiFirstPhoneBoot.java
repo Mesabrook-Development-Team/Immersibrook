@@ -96,10 +96,13 @@ public class GuiFirstPhoneBoot extends GuiPhoneBase
     {
         super.initGui();
 
-        ClientSoundPacket soundPacket = new ClientSoundPacket();
-        soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
-        soundPacket.soundName = "minedroid_firstboot";
-        PacketHandler.INSTANCE.sendToServer(soundPacket);
+        if(phoneStackData.getBatteryLevel() > 0)
+        {
+            ClientSoundPacket soundPacket = new ClientSoundPacket();
+            soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
+            soundPacket.soundName = "minedroid_firstboot";
+            PacketHandler.INSTANCE.sendToServer(soundPacket);
+        }
     }
 
     @Override

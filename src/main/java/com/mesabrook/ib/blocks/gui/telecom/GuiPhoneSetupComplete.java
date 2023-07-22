@@ -90,6 +90,8 @@ public class GuiPhoneSetupComplete extends GuiPhoneBase
         packet.needToDoOOBE = false;
 
         PacketHandler.INSTANCE.sendToServer(packet);
+
+        Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundInit.PHONE_UNLOCK, 1F));
     }
 
     @Override
