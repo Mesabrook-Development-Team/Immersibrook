@@ -64,7 +64,7 @@ public class GuiTOS extends GuiScreen {
 			currentPage = 1;
 			totalPages = 1;
 			
-			URL tosURL = new URL(ModConfig.mesasuiteBaseAPIUrl + "/system/TermsofService/Get/Mesabrook");
+			URL tosURL = new URL("https://api.mesabrook.com/system/TermsofService/Get/Mesabrook");
 			HttpURLConnection connection = (HttpURLConnection)tosURL.openConnection();
 			connection.setRequestMethod("GET");
 			connection.setDoInput(true);
