@@ -307,9 +307,9 @@ public class GuiAddressBook extends GuiPhoneBase {
 			
 			if (clicked && !isClicked)
 			{
-				callButton = new ImageButton(50, x + (this.width / 2) - 8 - 2 - 16 - 2, this.y + (this.HEIGHT / 2) - 8, 16, 16, "numcall.png", 32, 32, 32, 32);
-				detailsButton = new ImageButton(51, x + (this.width / 2) - 8, this.y + (this.HEIGHT / 2) - 8, 16, 16, "btn_details.png", 32, 32, 32, 32);
-				deleteButton = new ImageButton(52, x + (this.width / 2) + 8 + 2, this.y + (this.HEIGHT / 2) - 8, 16, 16, "btn_delete.png", 32, 32, 32, 32);
+				callButton = new ImageButton(50, x + (this.width / 2) - 8 - 2 - 16 - 2, this.y + (this.HEIGHT / 2) - 8, 16, 16, phoneStackData.getIconTheme() + "/numpad/numpad_call.png", 32, 32, 32, 32);
+				detailsButton = new ImageButton(51, x + (this.width / 2) - 8, this.y + (this.HEIGHT / 2) - 8, 16, 16, phoneStackData.getIconTheme() + "/btn_details.png", 32, 32, 32, 32);
+				deleteButton = new ImageButton(52, x + (this.width / 2) + 8 + 2, this.y + (this.HEIGHT / 2) - 8, 16, 16, phoneStackData.getIconTheme() + "/btn_delete.png", 32, 32, 32, 32);
 				
 				buttonList.add(callButton);
 				buttonList.add(detailsButton);
