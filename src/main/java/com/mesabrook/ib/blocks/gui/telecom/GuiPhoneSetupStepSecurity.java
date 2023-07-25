@@ -64,6 +64,7 @@ public class GuiPhoneSetupStepSecurity extends GuiPhoneBase
         pinValue = new PINTextField(7, fontRenderer, pin.x + pin.width + 4, pin.y-4, INNER_X + INNER_TEX_WIDTH - (pin.x + pin.width) - 7, 20);
         pinValue.setMaskedText(String.valueOf(phoneStackData.getPin()));
         pinValue.setVisible(false);
+        pinValue.setMaxStringLength(8);
         uuidValue = new GuiTextField(8, fontRenderer, playerID.x + playerID.width + 4, playerID.y-4, INNER_X + INNER_TEX_WIDTH - (playerID.x + playerID.width) - 7, 20);
         uuidValue.setVisible(false);
         uuidValue.setMaxStringLength(36);

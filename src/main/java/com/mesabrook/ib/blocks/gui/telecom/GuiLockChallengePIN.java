@@ -73,7 +73,10 @@ public class GuiLockChallengePIN extends GuiPhoneBase {
 			{
 				return;
 			}
-			enteredPIN += String.valueOf(button.id);
+			if(enteredPIN.length() <= 8)
+			{
+				enteredPIN += String.valueOf(button.id);
+			}
 			
 			if (Integer.parseInt(enteredPIN) == phoneStackData.getPin())
 			{
