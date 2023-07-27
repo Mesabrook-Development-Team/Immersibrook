@@ -435,4 +435,8 @@ public class ModItems
 
 	// SIM
 	public static final Item SIM_CARD = new MiscItem("sim_card", 1, Main.IMMERSIBROOK_MAIN);
+
+	// Flagger
+	public static final Item FLAGGER_STOP = new ItemFlagger("flagger_stop");
+	public static final Item FLAGGER_SLOW = new ItemFlagger("flagger_slow");
 }
