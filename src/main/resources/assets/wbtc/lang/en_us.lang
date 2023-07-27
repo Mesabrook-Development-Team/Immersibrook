@@ -251,6 +251,8 @@ item.cell_transmitter.name=Cellular Transmitter
 item.present_red.name=Present
 item.present_green.name=Present
 item.present_blue.name=Present
+item.flagger_stop.name=Flagger's Sign
+item.flagger_slow.name=Flagger's Sign
 
 //Smooth Wood Blocks
 tile.smooth_oak.name=Smooth Oak Wood
