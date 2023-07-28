@@ -14,7 +14,9 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -57,26 +59,34 @@ public class ItemFlagger extends Item implements IHasModel
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
     {
-        ItemStack currentStack = playerIn.getHeldItem(handIn);
-        if(worldIn.isRemote)
+        try
         {
+            ItemStack currentStack = playerIn.getHeldItem(handIn);
+            if(worldIn.isRemote)
+            {
+                return super.onItemRightClick(worldIn, playerIn, handIn);
+            }
+            int slot = getSlotForStack(playerIn, currentStack);
+
+            if(currentStack.getItem() == ModItems.FLAGGER_STOP)
+            {
+                ItemStack changedStack = new ItemStack(ModItems.FLAGGER_SLOW);
+                playerIn.inventory.setInventorySlotContents(slot, changedStack);
+
+                return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, changedStack);
+            }
+            else
+            {
+                ItemStack changedStack = new ItemStack(ModItems.FLAGGER_STOP);
+                playerIn.inventory.setInventorySlotContents(slot, changedStack);
+
+                return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, changedStack);
+            }
+        }
+        catch(Exception ex)
+        {
+            playerIn.sendMessage(new TextComponentString(TextFormatting.RED + "Item cannot be used in your off-hand."));
             return super.onItemRightClick(worldIn, playerIn, handIn);
-        }
-        int slot = getSlotForStack(playerIn, currentStack);
-
-        if(currentStack.getItem() == ModItems.FLAGGER_STOP)
-        {
-            ItemStack changedStack = new ItemStack(ModItems.FLAGGER_SLOW);
-            playerIn.inventory.setInventorySlotContents(slot, changedStack);
-
-            return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, changedStack);
-        }
-        else
-        {
-            ItemStack changedStack = new ItemStack(ModItems.FLAGGER_STOP);
-            playerIn.inventory.setInventorySlotContents(slot, changedStack);
-
-            return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, changedStack);
         }
     }
 
