@@ -17,12 +17,22 @@ public class GuiMSACBootScreen extends GuiPhoneBase
     private int timerToNextScreen = 0;
     private int fadeAnimationTimer = 0;
     private String currentTexture;
-    private String bootingText;
+    private String bootingText = "";
 
     public GuiMSACBootScreen(ItemStack phoneStack, EnumHand hand)
     {
         super(phoneStack, hand);
         fadeAnimationTimer++;
+    }
+
+    public String getBootingText()
+    {
+        return bootingText;
+    }
+
+    public String setBootingText(String step)
+    {
+        return bootingText = step;
     }
 
     @Override
@@ -39,7 +49,7 @@ public class GuiMSACBootScreen extends GuiPhoneBase
         if(fadeAnimationTimer == 100)
         {
             currentTexture = "system/boot_screen_msac_1.png";
-            bootingText = "Starting Minedroid";
+            setBootingText("Starting Minedroid");
         }
         if(fadeAnimationTimer == 150)
         {
@@ -97,7 +107,7 @@ public class GuiMSACBootScreen extends GuiPhoneBase
         timerToNextScreen++;
         fadeAnimationTimer++;
 
-        drawCenteredString(fontRenderer, bootingText, INNER_X + 80, INNER_Y + 180, 0xFFFFFF);
+        drawCenteredString(fontRenderer, getBootingText(), INNER_X + 80, INNER_Y + 180, 0xFFFFFF);
 
         if(timerToNextScreen >= 1500)
         {
