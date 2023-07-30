@@ -62,11 +62,15 @@ public class GuiHandler implements IGuiHandler
 			}
 			else if(hasToDoOOBE)
 			{
-				return new GuiFirstPhoneBoot(stack, hand);
+				return new GuiPhoneSetupStart(stack, hand);
 			}
 			else if(stackNBTData.getBatteryLevel() <= 0)
 			{
 				return new GuiDeadPhone(stack, hand);
+			}
+			else if(stackNBTData.getBatteryLevel() <= 100)
+			{
+				return new GuiLowBatWarning(stack, hand);
 			}
 			else
 			{

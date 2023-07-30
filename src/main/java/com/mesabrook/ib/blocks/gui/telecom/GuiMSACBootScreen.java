@@ -16,23 +16,15 @@ public class GuiMSACBootScreen extends GuiPhoneBase
 {
     private int timerToNextScreen = 0;
     private int fadeAnimationTimer = 0;
+    private int bootStepTracker = 0;
     private String currentTexture;
-    private String bootingText = "";
+    private String bootStep = "";
+    private String banner;
 
     public GuiMSACBootScreen(ItemStack phoneStack, EnumHand hand)
     {
         super(phoneStack, hand);
         fadeAnimationTimer++;
-    }
-
-    public String getBootingText()
-    {
-        return bootingText;
-    }
-
-    public String setBootingText(String step)
-    {
-        return bootingText = step;
     }
 
     @Override
@@ -46,12 +38,12 @@ public class GuiMSACBootScreen extends GuiPhoneBase
         {
             currentTexture = "system/boot_screen_msac_0.png";
         }
-        if(fadeAnimationTimer == 100)
+        if(fadeAnimationTimer == 100 && bootStepTracker == 100)
         {
             currentTexture = "system/boot_screen_msac_1.png";
-            setBootingText("Starting Minedroid");
+            banner = "Starting Minedroid";
         }
-        if(fadeAnimationTimer == 150)
+        if(fadeAnimationTimer == 150 && bootStepTracker == 150)
         {
             currentTexture = "system/boot_screen_msac_2.png";
         }
@@ -63,7 +55,7 @@ public class GuiMSACBootScreen extends GuiPhoneBase
         {
             currentTexture = "system/boot_screen_msac_4.png";
         }
-        if(fadeAnimationTimer == 300)
+        if(fadeAnimationTimer == 300 && bootStepTracker == 300)
         {
             currentTexture = "system/boot_screen_msac_5.png";
         }
@@ -71,7 +63,7 @@ public class GuiMSACBootScreen extends GuiPhoneBase
         {
             currentTexture = "system/boot_screen_msac_6.png";
         }
-        if(fadeAnimationTimer == 500)
+        if(fadeAnimationTimer == 500 && bootStepTracker == 500)
         {
             currentTexture = "system/boot_screen_msac_1.png";
         }
@@ -106,8 +98,53 @@ public class GuiMSACBootScreen extends GuiPhoneBase
         super.doDraw(mouseX, mouseY, partialticks);
         timerToNextScreen++;
         fadeAnimationTimer++;
+        bootStepTracker++;
 
-        drawCenteredString(fontRenderer, getBootingText(), INNER_X + 80, INNER_Y + 180, 0xFFFFFF);
+        drawCenteredString(fontRenderer, banner, INNER_X + 80, INNER_Y + 180, 0xFFFFFF);
+
+        if(phoneStackData.getIsDebugModeEnabled())
+        {
+            bootStepTracker++;
+
+            if(bootStepTracker == 100)
+            {
+                bootStep = "Initializing system...\n";
+            }
+            if(bootStepTracker == 350)
+            {
+                bootStep += "Caching resources...\n";
+            }
+            if(bootStepTracker == 645)
+            {
+                bootStep += "Verifying system files...\n";
+            }
+            if(bootStepTracker == 700)
+            {
+                bootStep += "OS.preInit();...\n";
+            }
+            if(bootStepTracker == 850)
+            {
+                bootStep += "OS.init();...\n";
+            }
+            if(bootStepTracker == 944)
+            {
+                bootStep += "Initialization complete...\n";
+            }
+            if(bootStepTracker == 1200)
+            {
+                bootStep += "Handing UEFI over to OS...\n";
+            }
+            if(bootStepTracker == 1350)
+            {
+                bootStep += "Handover complete...\n";
+            }
+            if(bootStepTracker == 1480)
+            {
+                bootStep += "System boot complete.\n";
+            }
+
+            fontRenderer.drawSplitString(bootStep, INNER_X + 2, INNER_Y + 3, INNER_TEX_WIDTH - 12, 0xFFFFFF);
+        }
 
         if(timerToNextScreen >= 1500)
         {

@@ -65,7 +65,14 @@ public class GuiLowBatWarning extends GuiPhoneBase
 
         if(button == okButton)
         {
-            Minecraft.getMinecraft().displayGuiScreen(new GuiDebugMenu(phoneStack, hand));
+            if(isPhoneUnlocked)
+            {
+                Minecraft.getMinecraft().displayGuiScreen(new GuiHome(phoneStack, hand));
+            }
+            else
+            {
+                Minecraft.getMinecraft().displayGuiScreen(new GuiLockScreen(phoneStack, hand));
+            }
         }
     }
 

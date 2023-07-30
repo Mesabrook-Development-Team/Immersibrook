@@ -62,7 +62,6 @@ public class GuiDebugMenu extends GuiPhoneBase
                 .add(weaLabel)
                 .add(oobeLabel)
                 .add(crashLabel)
-                .add(lowBatTest)
                 .add(weaIcon)
                 .add(oobeIcon)
                 .add(crashIcon)
