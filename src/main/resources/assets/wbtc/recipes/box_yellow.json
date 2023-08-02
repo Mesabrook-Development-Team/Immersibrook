@@ -1,0 +1,18 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+		 "item": "wbtc:box_small"
+      },
+      {
+		 "item": "wbtc:smartphone_yellow"
+      },
+      {
+		 "item": "wbtc:ot_charger"
+      }
+   ],
+   "result": {
+      "item": "wbtc:box_yellow",
+      "count": 1
+   }
+}

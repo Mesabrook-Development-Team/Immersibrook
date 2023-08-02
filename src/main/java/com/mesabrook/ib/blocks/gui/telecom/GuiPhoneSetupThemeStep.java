@@ -131,10 +131,6 @@ public class GuiPhoneSetupThemeStep extends GuiPhoneBase
             {
                 Minecraft.getMinecraft().displayGuiScreen(new GuiChangingTheme(phoneStack, hand));
             }
-            else
-            {
-                Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "Theme is already active", 0xFF0000));
-            }
 
             CustomizationPacket packet = new CustomizationPacket();
             packet.hand = hand.ordinal();
@@ -157,6 +153,14 @@ public class GuiPhoneSetupThemeStep extends GuiPhoneBase
             PacketHandler.INSTANCE.sendToServer(packet);
 
             Minecraft.getMinecraft().displayGuiScreen(new GuiChangingTheme(phoneStack, hand));
+            if(updatedTheme != phoneStackData.getIconTheme())
+            {
+                Minecraft.getMinecraft().displayGuiScreen(new GuiChangingTheme(phoneStack, hand));
+            }
+            else
+            {
+                Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneNameSetup(phoneStack, hand));
+            }
         }
 
         if(button == back)

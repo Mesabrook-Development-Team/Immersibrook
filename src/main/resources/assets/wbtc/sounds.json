@@ -6,6 +6,13 @@
 			"stream": true
 		}]
 	},
+	"phone_unbox": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:phone_unbox",
+			"stream": true
+		}]
+	},
 	"rz_trophy": {
 		"category": "master",
 		"sounds": [{

@@ -439,4 +439,23 @@ public class ModItems
 	// Flagger
 	public static final Item FLAGGER_STOP = new ItemFlagger("flagger_stop");
 	public static final Item FLAGGER_SLOW = new ItemFlagger("flagger_slow");
+
+	// Minedroid retail boxes uwu
+	public static final Item BOX_WHITE = new ItemMinedroidBox("box_white");
+	public static final Item BOX_ORANGE = new ItemMinedroidBox("box_orange");
+	public static final Item BOX_MAGENTA = new ItemMinedroidBox("box_magenta");
+	public static final Item BOX_YELLOW = new ItemMinedroidBox("box_yellow");
+	public static final Item BOX_LIME = new ItemMinedroidBox("box_lime");
+	public static final Item BOX_PINK = new ItemMinedroidBox("box_pink");
+	public static final Item BOX_GRAY = new ItemMinedroidBox("box_gray");
+	public static final Item BOX_SILVER = new ItemMinedroidBox("box_silver");
+	public static final Item BOX_CYAN = new ItemMinedroidBox("box_cyan");
+	public static final Item BOX_LBLUE = new ItemMinedroidBox("box_lblue");
+	public static final Item BOX_PURPLE = new ItemMinedroidBox("box_purple");
+	public static final Item BOX_BROWN = new ItemMinedroidBox("box_brown");
+	public static final Item BOX_GREEN = new ItemMinedroidBox("box_green");
+	public static final Item BOX_RED = new ItemMinedroidBox("box_red");
+	public static final Item BOX_BLACK = new ItemMinedroidBox("box_black");
+	public static final Item BOX_BLUE = new ItemMinedroidBox("box_blue");
+	public static final Item OT_CHARGER = new MiscItem("ot_charger", 1, Main.IMMERSIBROOK_MAIN);
 }

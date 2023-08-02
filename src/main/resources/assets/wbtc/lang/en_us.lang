@@ -1871,6 +1871,25 @@ im.alert.close=Dismiss
 im.crash.uploaded=Crash Log Uploaded
 im.crash.error=Unable to upload
 
+//Minedroid Retail Packaging
+item.box_white.name=Minedroid Phone - Snow
+item.box_orange.name=Minedroid Phone - Orange
+item.box_magenta.name=Minedroid Phone - Magenta
+item.box_lblue.name=Minedroid Phone - Light Blue
+item.box_yellow.name=Minedroid Phone - Sunshine
+item.box_pink.name=Minedroid Phone - Pink
+item.box_lime.name=Minedroid Phone - Lime
+item.box_gray.name=Minedroid Phone - Graphite
+item.box_silver.name=Minedroid Phone - Silver
+item.box_cyan.name=Minedroid Phone - Cyan
+item.box_purple.name=Minedroid Phone - Purple
+item.box_blue.name=Minedroid Phone - Blue
+item.box_brown.name=Minedroid Phone - Chocolate
+item.box_green.name=Minedroid Phone - Leaf
+item.box_red.name=Minedroid Phone - Rose
+item.box_black.name=Minedroid Phone - Midnight
+item.ot_charger.name=One-Time Charger
+
 //Minedroid Translation Project - Misc
 im.misc.error=An error occurred.
 im.misc.urlopened=Opening in Browser...
