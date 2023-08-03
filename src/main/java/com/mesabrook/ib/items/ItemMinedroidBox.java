@@ -72,7 +72,7 @@ public class ItemMinedroidBox extends Item implements IHasModel
         if(stack.getItem() == ModItems.BOX_LBLUE)
         {
             tooltip.add(new TextComponentString(TextFormatting.BOLD + "Product: " + TextFormatting.RESET + "MSAC Minedroid Smartphone").getFormattedText());
-            tooltip.add(new TextComponentString(TextFormatting.BOLD + "Color: " + TextFormatting.RESET + TextFormatting.BLUE + "Cyan").getFormattedText());
+            tooltip.add(new TextComponentString(TextFormatting.BOLD + "Color: " + TextFormatting.RESET + TextFormatting.BLUE + "Aqua").getFormattedText());
         }
         if(stack.getItem() == ModItems.BOX_YELLOW)
         {
