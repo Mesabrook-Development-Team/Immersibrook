@@ -12,19 +12,8 @@ import java.util.function.Consumer;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.gui.GuiAboutImmersibrook;
 import com.mesabrook.ib.blocks.gui.GuiTOS;
-import com.mesabrook.ib.blocks.gui.telecom.GuiCallEnd;
-import com.mesabrook.ib.blocks.gui.telecom.GuiHome;
-import com.mesabrook.ib.blocks.gui.telecom.GuiIncomingCall;
-import com.mesabrook.ib.blocks.gui.telecom.GuiLockScreen;
-import com.mesabrook.ib.blocks.gui.telecom.GuiMobileAlert;
-import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneActivate;
+import com.mesabrook.ib.blocks.gui.telecom.*;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneActivate.ActivationScreens;
-import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneBase;
-import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneCall;
-import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneCalling;
-import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneConnected;
-import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneRecents;
-import com.mesabrook.ib.blocks.gui.telecom.SignalStrengths;
 import com.mesabrook.ib.init.SoundInit;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
@@ -676,8 +665,8 @@ public class ClientSideHandlers
 	
 		public static void onWirelessEmergencyAlert(String forNumber, WirelessEmergencyAlert alert)
 		{
-			GuiMobileAlert.labelsByNumber.put(Integer.parseInt(forNumber), alert.getName());
-			GuiMobileAlert.textByNumber.put(Integer.parseInt(forNumber), alert.getDescription());
+			GuiNewEmergencyAlert.labelsByNumber.put(Integer.parseInt(forNumber), alert.getName());
+			GuiNewEmergencyAlert.textByNumber.put(Integer.parseInt(forNumber), alert.getDescription());
 			
 			if (Minecraft.getMinecraft().currentScreen instanceof GuiPhoneBase)
 			{
@@ -687,7 +676,7 @@ public class ClientSideHandlers
 					return;
 				}
 				
-				Minecraft.getMinecraft().displayGuiScreen(new GuiMobileAlert(currentScreen.getPhoneStack(), currentScreen.getHand()));
+				Minecraft.getMinecraft().displayGuiScreen(new GuiNewEmergencyAlert(currentScreen.getPhoneStack(), currentScreen.getHand()));
 			}
 		}
 	}

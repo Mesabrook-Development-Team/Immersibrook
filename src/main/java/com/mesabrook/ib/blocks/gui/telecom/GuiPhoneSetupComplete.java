@@ -91,7 +91,11 @@ public class GuiPhoneSetupComplete extends GuiPhoneBase
 
         PacketHandler.INSTANCE.sendToServer(packet);
 
-        Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundInit.PHONE_UNLOCK, 1F));
+        ClientSoundPacket soundPacket = new ClientSoundPacket();
+        soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
+        soundPacket.soundName = "phone_unlock";
+        soundPacket.volume = 1.0F;
+        PacketHandler.INSTANCE.sendToServer(soundPacket);
     }
 
     @Override

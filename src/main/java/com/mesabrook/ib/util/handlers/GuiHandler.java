@@ -56,9 +56,9 @@ public class GuiHandler implements IGuiHandler
 			{
 				return new GuiPhoneActivate(stack, hand);
 			}
-			else if (GuiMobileAlert.labelsByNumber.containsKey(stackNBTData.getPhoneNumber()) || GuiMobileAlert.textByNumber.containsKey(stackNBTData.getPhoneNumber()))
+			else if (GuiNewEmergencyAlert.labelsByNumber.containsKey(stackNBTData.getPhoneNumber()) || GuiNewEmergencyAlert.textByNumber.containsKey(stackNBTData.getPhoneNumber()))
 			{
-				return new GuiMobileAlert(stack, hand);
+				return new GuiNewEmergencyAlert(stack, hand);
 			}
 			else if(hasToDoOOBE)
 			{
