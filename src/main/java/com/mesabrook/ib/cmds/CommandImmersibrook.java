@@ -8,7 +8,6 @@ import com.mesabrook.ib.Main;
 import com.mesabrook.ib.net.CommandProcessorPacket;
 import com.mesabrook.ib.net.OpenTOSPacket;
 import com.mesabrook.ib.telecom.WirelessEmergencyAlertManager;
-import com.mesabrook.ib.util.MottoRandomizer;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.handlers.PacketHandler;
@@ -47,8 +46,6 @@ public class CommandImmersibrook extends CommandBase
 				try
 				{
 					EntityPlayerMP player = (EntityPlayerMP) sender;
-//					AboutGUIPacket packet = new AboutGUIPacket();
-//					PacketHandler.INSTANCE.sendTo(packet, player);
 
 					player.sendMessage(new TextComponentString("============================================"));
 					player.sendMessage(new TextComponentString("Immersibrook"));
