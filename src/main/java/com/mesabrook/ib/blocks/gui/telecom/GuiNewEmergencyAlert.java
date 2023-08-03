@@ -73,6 +73,11 @@ public class GuiNewEmergencyAlert extends GuiPhoneBase
     }
 
     @Override
+    protected boolean renderControlBar() {
+        return false;
+    }
+
+    @Override
     public void initGui()
     {
         super.initGui();

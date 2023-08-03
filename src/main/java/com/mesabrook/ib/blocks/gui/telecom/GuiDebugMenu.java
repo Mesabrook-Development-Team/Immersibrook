@@ -95,8 +95,8 @@ public class GuiDebugMenu extends GuiPhoneBase
             packet.useDelay = false;
             PacketHandler.INSTANCE.sendToServer(packet);
 
-            GuiNewEmergencyAlert.labelsByNumber.put(phoneStackData.getPhoneNumber(), "Exercise Warning");
-            GuiNewEmergencyAlert.textByNumber.put(phoneStackData.getPhoneNumber(), "The FitnessGram™ Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly, but gets faster each minute after you hear this signal. [beep] A single lap should be completed each time you hear this sound. [ding] Remember to run in a straight line, and run as long as possible. The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word start. On your mark, get ready, start.");
+            GuiNewEmergencyAlert.labelsByNumber.put(phoneStackData.getPhoneNumber(), "National Periodic Test");
+            GuiNewEmergencyAlert.textByNumber.put(phoneStackData.getPhoneNumber(), "THIS IS A TEST OF THE NATIONAL WIRELESS EMERGENCY ALERT SYSTEM, THIS MESSAGE ORIGINATES FROM THE CENTERS OF MESABROOK BELL IN COOPERATION WITH THE DEPARTMENT OF PUBLIC SAFETY. IF THIS WERE AN ACTUAL EMERGENCY SUCH AS A TORNADO WARNING OR CIVIL DANGER WARNING, OFFICIAL INFORMATION OR INSTRUCTIONS WOULD BE BROADCAST TO ALL SMARTPHONES IN THE NATION. THIS IS ONLY A TEST, NO ACTION IS REQUIRED. THIS TEST OF THE NATIONAL WIRELESS EMERGENCY ALERT SYSTEM IS NOW CONCLUDED.");
             Minecraft.getMinecraft().displayGuiScreen(new GuiNewEmergencyAlert(phoneStack, hand));
         }
 
