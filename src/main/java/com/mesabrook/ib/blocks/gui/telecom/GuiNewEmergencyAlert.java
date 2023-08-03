@@ -86,9 +86,9 @@ public class GuiNewEmergencyAlert extends GuiPhoneBase
         boxHeight = 22 + fontRenderer.FONT_HEIGHT * maxLinesShown;
 
         int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 50;
-        backPage = new MinedroidButton(1, INNER_X + 15, lowerControlsY - 3, 35, "<<", 0xFFFFFF);
-        nextPage = new MinedroidButton(2, INNER_X + 115, lowerControlsY - 3, 35, ">>", 0xFFFFFF);
-        dismiss = new MinedroidButton(3, INNER_X + 62, lowerControlsY + 15, 40, "Dismiss", 0xFFFFFF);
+        backPage = new MinedroidButton(1, INNER_X + 3, lowerControlsY - 10, 35, "<<", 0xFFFFFF);
+        nextPage = new MinedroidButton(2, INNER_X + 124, lowerControlsY - 10, 35, ">>", 0xFFFFFF);
+        dismiss = new MinedroidButton(3, INNER_X + 61, lowerControlsY + 15, 40, "OK", 0xFFFFFF);
 
         buttonList.add(backPage);
         buttonList.add(nextPage);
@@ -99,8 +99,8 @@ public class GuiNewEmergencyAlert extends GuiPhoneBase
     protected void doDraw(int mouseX, int mouseY, float partialticks)
     {
         super.doDraw(mouseX, mouseY, partialticks);
-        drawCenteredString(fontRenderer, new TextComponentString(TextFormatting.BOLD + "EMERGENCY ALERT").getFormattedText(), INNER_X + 80, INNER_Y + 8, 0xFFFFFF);
-        drawCenteredString(fontRenderer, new TextComponentString(TextFormatting.ITALIC + currentLabel.toUpperCase(Locale.ROOT)).getFormattedText(), INNER_X + 80, INNER_Y + 22, 0xFFFFFF);
+        drawCenteredString(fontRenderer, new TextComponentString(TextFormatting.BOLD + "EMERGENCY ALERT").getFormattedText(), INNER_X + 80, INNER_Y + 12, 0xFFFFFF);
+        drawCenteredString(fontRenderer, new TextComponentString(currentLabel.toUpperCase(Locale.ROOT)).getFormattedText(), INNER_X + 80, INNER_Y + 28, 0xFFFFFF);
 
         drawRect(INNER_X + 3, INNER_Y + 40, INNER_X + 159, INNER_Y + 150, 0xFFAAAAAA);
         drawRect(INNER_X + 5, INNER_Y + 42, INNER_X + 157, INNER_Y + 148, 0xFF000000);
@@ -130,7 +130,7 @@ public class GuiNewEmergencyAlert extends GuiPhoneBase
 
         int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 50;
         String pageCountLabel = String.format("Page %s/%s", currentPage, totalPages);
-        drawCenteredString(fontRenderer, pageCountLabel, width / 2, lowerControlsY, 0xFFFFFF);
+        drawCenteredString(fontRenderer, new TextComponentString(TextFormatting.BOLD + pageCountLabel).getFormattedText(), width / 2, lowerControlsY - 7, 0xFFFFFF);
     }
 
     @Override
