@@ -458,4 +458,7 @@ public class ModItems
 	public static final Item BOX_BLACK = new ItemMinedroidBox("box_black");
 	public static final Item BOX_BLUE = new ItemMinedroidBox("box_blue");
 	public static final Item OT_CHARGER = new MiscItem("ot_charger", 1, Main.IMMERSIBROOK_MAIN);
+
+	// Rations
+	public static final Item ES_RATION = new ItemRation("ration_1");
 }

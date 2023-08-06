@@ -1959,3 +1959,6 @@ item.five_cents.name=Five Cents
 item.ten_cents.name=Ten Cents
 item.twenty_five_cents.name=Twenty Five Cents
 item.dollar_coin.name=One Dollar Coin
+
+// Rations
+item.ration_1.name=Emergency Survival Ration
