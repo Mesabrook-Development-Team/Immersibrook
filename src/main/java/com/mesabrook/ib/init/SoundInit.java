@@ -89,6 +89,7 @@ public class SoundInit
 	public static final SoundEvent COUGH_M;
 	public static final SoundEvent COUGH_F;
 	public static final SoundEvent CHISEL;
+	public static final SoundEvent RATION_OPEN;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -268,6 +269,7 @@ public class SoundInit
 		COUGH_M = addSoundsToRegistry("cough_m");
 		COUGH_F = addSoundsToRegistry("cough_f");
 		CHISEL = addSoundsToRegistry("chisel");
+		RATION_OPEN = addSoundsToRegistry("ration_open");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -540,6 +542,7 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.SIT_4);
 				event.getRegistry().register(SoundInit.SIT_5);
 				event.getRegistry().register(SoundInit.PHONE_UNBOX);
+				event.getRegistry().register(SoundInit.RATION_OPEN);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

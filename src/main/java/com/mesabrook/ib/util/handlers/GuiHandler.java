@@ -1,14 +1,9 @@
 package com.mesabrook.ib.util.handlers;
 
+import com.mesabrook.ib.blocks.container.ContainerRation;
 import com.mesabrook.ib.blocks.container.ContainerStampBook;
 import com.mesabrook.ib.blocks.container.ContainerTrashBin;
-import com.mesabrook.ib.blocks.gui.GuiAboutImmersibrook;
-import com.mesabrook.ib.blocks.gui.GuiFoodBox;
-import com.mesabrook.ib.blocks.gui.GuiPlaque;
-import com.mesabrook.ib.blocks.gui.GuiStampBook;
-import com.mesabrook.ib.blocks.gui.GuiTOS;
-import com.mesabrook.ib.blocks.gui.GuiTrashBin;
-import com.mesabrook.ib.blocks.gui.GuiWallSign;
+import com.mesabrook.ib.blocks.gui.*;
 import com.mesabrook.ib.blocks.gui.telecom.*;
 import com.mesabrook.ib.blocks.te.TileEntityTrashBin;
 import com.mesabrook.ib.items.misc.ItemPhone;
@@ -31,6 +26,7 @@ public class GuiHandler implements IGuiHandler
 	{
 		if(ID == Reference.GUI_TRASHBIN) return new ContainerTrashBin(player.inventory, (TileEntityTrashBin)world.getTileEntity(new BlockPos(x,y,z)), player);
 		else if (ID == Reference.GUI_STAMP_BOOK) return new ContainerStampBook(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]);
+		else if (ID == Reference.GUI_RATION) return new ContainerRation(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]);
 		return null;
 	}
 	
@@ -86,6 +82,7 @@ public class GuiHandler implements IGuiHandler
 			}
 		}
 		else if (ID == Reference.GUI_STAMP_BOOK) return new GuiStampBook(new ContainerStampBook(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]));
+		else if (ID == Reference.GUI_RATION) return new GuiRation(new ContainerRation(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]));
 		else if (ID == Reference.GUI_WALLSIGN) return new GuiWallSign(EnumHand.values()[x]);
 		else if (ID == Reference.GUI_TOS) return new GuiTOS();
 		else return null;
