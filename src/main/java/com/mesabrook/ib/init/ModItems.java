@@ -461,4 +461,5 @@ public class ModItems
 
 	// Rations
 	public static final Item ES_RATION = new ItemRation("ration_1");
+	public static final Item RS_RATION = new ItemRation("ration_2");
 }

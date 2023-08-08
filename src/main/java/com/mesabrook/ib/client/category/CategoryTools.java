@@ -46,8 +46,14 @@ public class CategoryTools extends AbstractCategory {
 
 		// Manhole Hook
 		add(ModItems.MANHOLE_HOOK);
+
+		// Tools
 		add(ModItems.ICE_CHISEL);
 		add(ModItems.FLAGGER_STOP);
+
+		// Rations
+		add(ModItems.ES_RATION);
+		add(ModItems.RS_RATION);
 	}
 
 }
