@@ -28,7 +28,7 @@ public class GuiRation extends GuiContainer
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
     {
         // Inventory Text
-        this.fontRenderer.drawString("Ration", 7, 8, 0x0f0f0f, false);
+        this.fontRenderer.drawString("Ration", 7, 7, 0x0f0f0f, false);
     }
 
     @Override

@@ -74,7 +74,7 @@ public class ItemIBFood extends ItemFood implements IHasModel
     @Override
     public EnumAction getItemUseAction(ItemStack itemStack)
     {
-        if(this == ModItems.SPARKLING_PINK_LEMONADE || this == ModItems.ALMOND_WATER || this == ModItems.PINK_LEMONADE_DRINK || this == ModItems.PILK || this == ModItems.TASTYJUICE)
+        if(this == ModItems.SPARKLING_PINK_LEMONADE || this == ModItems.ALMOND_WATER || this == ModItems.PINK_LEMONADE_DRINK || this == ModItems.PILK || this == ModItems.TASTYJUICE || this == ModItems.WATER_SACHET)
         {
             return EnumAction.DRINK;
         }

@@ -103,7 +103,8 @@
 			"translation": [0, 13, 7]
 		},
 		"fixed": {
-			"rotation": [0, 180, 0]
+			"rotation": [0, 180, 0],
+			"translation": [0, -1.5, 0]
 		}
 	}
 }

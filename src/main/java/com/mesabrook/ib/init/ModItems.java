@@ -238,6 +238,7 @@ public class ModItems
 	public static final Item CANDY_PINK_LEMONADE = new ItemIBFood("pl_candy", 16, 0,8, 10, false);
 	public static final Item PINK_LEMONADE_DRINK = new ItemIBFood("pink_lemonade_drink", 1, 0, 5, 10, false);
 	public static final Item SPARKLING_PINK_LEMONADE = new ItemIBFood("sparkling_pink_lemonade", 1, 0, 10, 12, false);
+	public static final Item WATER_SACHET = new ItemIBFood("water_sachet", 15, 0, 0, 0, false);
 	public static final Item SHITTLES = new ItemIBFood("shittles", 16, 0, 5, 12, false);
 	public static final Item TASTYJUICE = new ItemIBFood("tastyjuice", 1, 0, 8, 15, false);
 
