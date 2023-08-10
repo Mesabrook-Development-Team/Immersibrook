@@ -25,6 +25,7 @@ public class Reference
 	public static final int GUI_ABOUT = 7;
 	public static final int GUI_WALLSIGN = 8;
 	public static final int GUI_SCO_POS = 9;
+	public static final int GUI_SCO_STOREMODE = 10;
 	
 	public static final String NETWORK_CHANNEL_NAME = "wbtc";
 	

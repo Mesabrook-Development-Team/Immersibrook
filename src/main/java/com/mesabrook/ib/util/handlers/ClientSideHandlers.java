@@ -10,10 +10,12 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 import com.mesabrook.ib.Main;
+import com.mesabrook.ib.apimodels.company.LocationEmployee;
 import com.mesabrook.ib.blocks.BlockRegister;
 import com.mesabrook.ib.blocks.gui.GuiAboutImmersibrook;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSIdentifierSetup;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSWaitingForNetwork;
+import com.mesabrook.ib.blocks.gui.sco.GuiStoreMode;
 import com.mesabrook.ib.blocks.gui.telecom.GuiCallEnd;
 import com.mesabrook.ib.blocks.gui.telecom.GuiHome;
 import com.mesabrook.ib.blocks.gui.telecom.GuiIncomingCall;
@@ -28,6 +30,8 @@ import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneConnected;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneRecents;
 import com.mesabrook.ib.blocks.gui.telecom.SignalStrengths;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
+import com.mesabrook.ib.capability.employee.CapabilityEmployee;
+import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.init.SoundInit;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
@@ -726,6 +730,28 @@ public class ClientSideHandlers
 				GuiPOSWaitingForNetwork waitingForNetwork = new GuiPOSWaitingForNetwork(register);
 				Minecraft.getMinecraft().displayGuiScreen(waitingForNetwork);
 			}
+		}
+	
+		public static void onStoreModeGUIResponse(LocationEmployee[] employees)
+		{
+			GuiScreen screen = Minecraft.getMinecraft().currentScreen;
+			if (screen == null || !(screen instanceof GuiStoreMode))
+			{
+				return;
+			}
+			
+			((GuiStoreMode)screen).setLocationEmployees(employees);
+		}
+		
+		public static void openStoreModeGUI()
+		{
+			Minecraft.getMinecraft().displayGuiScreen(new GuiStoreMode());
+		}
+		
+		public static void updateEmployeeCapaiblity(LocationEmployee locationEmployee)
+		{
+			IEmployeeCapability capability = Minecraft.getMinecraft().player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
+			capability.setLocationEmployee(locationEmployee);
 		}
 	}
 

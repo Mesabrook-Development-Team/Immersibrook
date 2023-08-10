@@ -12,8 +12,13 @@ import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.net.SoundRandomizerPacket;
 import com.mesabrook.ib.net.VestTogglePacket;
 import com.mesabrook.ib.net.WallSignPacket;
+import com.mesabrook.ib.net.sco.EmployeeCapServerToClientPacket;
 import com.mesabrook.ib.net.sco.POSInitializeRegisterPacket;
 import com.mesabrook.ib.net.sco.POSInitializeRegisterResponsePacket;
+import com.mesabrook.ib.net.sco.StoreModeGuiLocationSelectedPacket;
+import com.mesabrook.ib.net.sco.StoreModeGuiOpenedPacket;
+import com.mesabrook.ib.net.sco.StoreModeGuiPacket;
+import com.mesabrook.ib.net.sco.StoreModeGuiResponse;
 import com.mesabrook.ib.net.telecom.AcceptCallPacket;
 import com.mesabrook.ib.net.telecom.ActivateChooseNumberPacket;
 import com.mesabrook.ib.net.telecom.ActivateNoReceptionPacket;
@@ -108,6 +113,11 @@ public class PacketHandler
 		INSTANCE.registerMessage(GetPhoneRecentsPacket.Handler.class, GetPhoneRecentsPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(GetPhoneRecentsResponsePacket.Handler.class, GetPhoneRecentsResponsePacket.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(WirelessEmergencyAlertPacket.Handler.class, WirelessEmergencyAlertPacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(StoreModeGuiPacket.Handler.class, StoreModeGuiPacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(StoreModeGuiOpenedPacket.Handler.class, StoreModeGuiOpenedPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(StoreModeGuiResponse.Handler.class, StoreModeGuiResponse.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(StoreModeGuiLocationSelectedPacket.Handler.class, StoreModeGuiLocationSelectedPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(EmployeeCapServerToClientPacket.Handler.class, EmployeeCapServerToClientPacket.class, nextID(), Side.CLIENT);
 		
 		// SELFCHECKOUT
 		INSTANCE.registerMessage(POSInitializeRegisterPacket.Handler.class, POSInitializeRegisterPacket.class, nextID(), Side.SERVER);

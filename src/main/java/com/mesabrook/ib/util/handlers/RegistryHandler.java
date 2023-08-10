@@ -1,7 +1,11 @@
 package com.mesabrook.ib.util.handlers;
 
+import java.lang.reflect.Type;
+
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
+import com.mesabrook.ib.capability.employee.CapabilityEmployee;
+import com.mesabrook.ib.capability.employee.CapabilityEmployeePlayerProvider;
 import com.mesabrook.ib.cmds.CommandImmersibrook;
 import com.mesabrook.ib.cmds.CommandMeme;
 import com.mesabrook.ib.cmds.CommandTalk;
@@ -21,13 +25,19 @@ import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.recipe.RecipesHandler;
 
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -230,5 +240,16 @@ public class RegistryHandler
 		
 		// MesaSuite Data Access
 		DataAccess.init(world);
+	}
+	
+	@SubscribeEvent
+	public static void attachEmployeeCapability(AttachCapabilitiesEvent<Entity> e)
+	{
+		if (!(e.getObject() instanceof EntityPlayer))
+		{
+			return;
+		}
+		
+		e.addCapability(new ResourceLocation(Reference.MODID, "cap_employee"), new CapabilityEmployeePlayerProvider((EntityPlayer)e.getObject()));
 	}
 }

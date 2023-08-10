@@ -411,6 +411,8 @@ public class ModItems
 	public static final Item DEBIT_CARD_RED = new ItemDebitCard("card_red");
 	public static final Item DEBIT_CARD_GREEN = new ItemDebitCard("card_green");
 	public static final Item DEBIT_CARD_BLUE = new ItemDebitCard("card_blue");
+	public static final Item SECURITY_BOX = new ItemSecurityBox();
+	
 
 	// Mesabrookian Dollar Items - Banknotes
 	public static final Item ONE_DOLLAR = new ItemMoney("one_dollar", 100);

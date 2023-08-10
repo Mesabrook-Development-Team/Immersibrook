@@ -11,6 +11,7 @@ import java.util.Random;
 
 import org.apache.logging.log4j.Logger;
 
+import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.proxy.CommonProxy;
 import com.mesabrook.ib.tab.TabImmersibrook;
 import com.mesabrook.ib.telecom.CallManager;
@@ -95,6 +96,7 @@ public class Main
         mottos = loadMottos();
         Reference.MOTTO = getRandomMotto();
         RegistryHandler.preInitRegistries(event);
+        CapabilityEmployee.init();
     }
 
     @EventHandler

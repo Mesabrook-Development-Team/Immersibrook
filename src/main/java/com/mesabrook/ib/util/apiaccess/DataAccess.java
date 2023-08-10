@@ -60,6 +60,7 @@ public abstract class DataAccess {
 	private HashMap<String, String> headerOverrides = new HashMap<>();
 	private HashMap<Class<?>, Object> resultsByType = new HashMap<>();
 	protected Object sendableObject = null;
+	private int responseCode = 0;
 	public DataAccess(API api, String resource)
 	{
 		this(api, resource, new Class<?>[0]);
@@ -109,7 +110,7 @@ public abstract class DataAccess {
 				writeOutput(connection, sendableObject);
 			}
 			
-			int responseCode = connection.getResponseCode();
+			responseCode = connection.getResponseCode();
 			switch(responseCode)
 			{
 				case HttpURLConnection.HTTP_OK:
@@ -260,6 +261,11 @@ public abstract class DataAccess {
 	public void setRequireAuthToken(boolean requireAuthToken)
 	{
 		this.requireAuthToken = requireAuthToken;
+	}
+	
+	public int getResponseCode()
+	{
+		return responseCode;
 	}
 	
 	// === AUTH SETUP STUFF ===

@@ -1,19 +1,30 @@
 package com.mesabrook.ib.proxy;
 
-import com.mesabrook.ib.*;
-import com.mesabrook.ib.blocks.te.*;
-import com.mesabrook.ib.util.*;
+import org.lwjgl.input.Keyboard;
+
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.blocks.te.TileEntityPlaque;
+import com.mesabrook.ib.blocks.te.TileEntityPlaqueRenderer;
+import com.mesabrook.ib.blocks.te.TileEntityRegister;
+import com.mesabrook.ib.blocks.te.TileEntityRegisterRenderer;
+import com.mesabrook.ib.blocks.te.TileEntityWallSign;
+import com.mesabrook.ib.blocks.te.TileEntityWallSignRenderer;
+import com.mesabrook.ib.items.commerce.models.ItemSecurityBoxModel;
 import com.mesabrook.ib.util.handlers.ClientSideHandlers;
+
+import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.item.Item;
-import net.minecraft.util.*;
+import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import org.lwjgl.input.Keyboard;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+@EventBusSubscriber
 public class ClientProxy extends CommonProxy
 {
 	public static KeyBinding vestToggleKey;
@@ -59,5 +70,18 @@ public class ClientProxy extends CommonProxy
 
 		// Broken, needs to be fixed @CSX8600
 		// SkinDownloader.downloadSkin(Reference.RZ_UUID);
+	}
+	
+	@SubscribeEvent
+	public static void onModelBakeEvent(ModelBakeEvent e)
+	{
+		ModelResourceLocation securityBoxRL = new ModelResourceLocation("wbtc:security_box", "inventory");
+		Object object = e.getModelRegistry().getObject(securityBoxRL);
+		if (object instanceof IBakedModel)
+		{
+			IBakedModel existingModel = (IBakedModel)object;
+			ItemSecurityBoxModel customModel = new ItemSecurityBoxModel(existingModel);
+			e.getModelRegistry().putObject(securityBoxRL, customModel);
+		}
 	}
 }

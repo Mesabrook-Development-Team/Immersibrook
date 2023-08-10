@@ -9,6 +9,7 @@ import com.mesabrook.ib.blocks.gui.GuiStampBook;
 import com.mesabrook.ib.blocks.gui.GuiTrashBin;
 import com.mesabrook.ib.blocks.gui.GuiWallSign;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSStarter;
+import com.mesabrook.ib.blocks.gui.sco.GuiStoreMode;
 import com.mesabrook.ib.blocks.gui.telecom.GuiEmptyPhone;
 import com.mesabrook.ib.blocks.gui.telecom.GuiFirstPhoneBoot;
 import com.mesabrook.ib.blocks.gui.telecom.GuiMobileAlert;
@@ -92,6 +93,10 @@ public class GuiHandler implements IGuiHandler
 			}
 			
 			return new GuiPOSStarter((TileEntityRegister)te);
+		}
+		else if (ID == Reference.GUI_SCO_STOREMODE)
+		{
+			return new GuiStoreMode();
 		}
 		else return null;
 	}

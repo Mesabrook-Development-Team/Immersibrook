@@ -6,6 +6,7 @@ import java.util.List;
 import com.google.common.collect.Lists;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.net.CommandProcessorPacket;
+import com.mesabrook.ib.net.sco.StoreModeGuiPacket;
 import com.mesabrook.ib.telecom.WirelessEmergencyAlertManager;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.apiaccess.DataAccess;
@@ -165,6 +166,15 @@ public class CommandImmersibrook extends CommandBase
 				else
 				{
 					throw new WrongUsageException("im.cmd.mesasuite.usage", new Object[0]);
+				}
+			}
+			else if ("storemode".equalsIgnoreCase(args[0]))
+			{
+				if (sender instanceof EntityPlayerMP)
+				{
+					EntityPlayerMP player = (EntityPlayerMP)sender;
+					StoreModeGuiPacket packet = new StoreModeGuiPacket();
+					PacketHandler.INSTANCE.sendTo(packet, player);
 				}
 			}
 		}

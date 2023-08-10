@@ -3,6 +3,7 @@ package com.mesabrook.ib.blocks.te;
 import org.lwjgl.opengl.GL11;
 
 import com.mesabrook.ib.blocks.BlockRegister;
+import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.util.Reference;
 
 import net.minecraft.block.state.IBlockState;
@@ -27,6 +28,11 @@ public class TileEntityRegisterRenderer extends TileEntitySpecialRenderer<TileEn
 	public void render(TileEntityRegister te, double x, double y, double z, float partialTicks, int destroyStage,
 			float alpha) {
 		super.render(te, x, y, z, partialTicks, destroyStage, alpha);
+		if (getWorld().getBlockState(te.getPos()).getBlock() != ModBlocks.SCO_POS)
+		{
+			return;
+		}
+		
 		setupMatrix(te, x, y, z);
 		
 		switch(te.getRegisterStatus())
