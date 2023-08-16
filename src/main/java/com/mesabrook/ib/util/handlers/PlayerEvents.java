@@ -36,6 +36,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.*;
@@ -508,8 +509,7 @@ public class PlayerEvents
 		Block Right Click Events.
 	 */
 	@SubscribeEvent
-	public void onBlockRightClick(PlayerInteractEvent.RightClickBlock evt)
-	{
+	public void onBlockRightClick(PlayerInteractEvent.RightClickBlock evt) {
 		World world = evt.getWorld();
 		EntityPlayer player = evt.getEntityPlayer();
 		BlockPos pos = evt.getPos();
@@ -517,32 +517,28 @@ public class PlayerEvents
 		Block block = state.getBlock();
 
 		// Cake Particles
-		if (block instanceof BlockCake && player.canEat(false) || block instanceof BlockPamCake && player.canEat(false))
-		{
+		if (block instanceof BlockCake && player.canEat(false) || block instanceof BlockPamCake && player.canEat(false)) {
 			ItemStack stack = block.getPickBlock(state, null, world, pos, player);
 			Random rand = Main.rand;
 
-			for (int i = 0; i < 5; ++i)
-			{
-				Vec3d vec3d = new Vec3d(((double)rand.nextFloat() - 0.5D) * 0.1D, Math.random() * 0.1D + 0.1D, 0.0D);
+			for (int i = 0; i < 5; ++i) {
+				Vec3d vec3d = new Vec3d(((double) rand.nextFloat() - 0.5D) * 0.1D, Math.random() * 0.1D + 0.1D, 0.0D);
 				vec3d = vec3d.rotatePitch(-player.rotationPitch * 0.017453292F);
 				vec3d = vec3d.rotateYaw(-player.rotationYaw * 0.017453292F);
-				double d0 = (double)(-rand.nextFloat()) * 0.6D - 0.3D;
-				Vec3d vec3d1 = new Vec3d(((double)rand.nextFloat() - 0.5D) * 0.3D, d0, 0.6D);
+				double d0 = (double) (-rand.nextFloat()) * 0.6D - 0.3D;
+				Vec3d vec3d1 = new Vec3d(((double) rand.nextFloat() - 0.5D) * 0.3D, d0, 0.6D);
 				vec3d1 = vec3d1.rotatePitch(-player.rotationPitch * 0.017453292F);
 				vec3d1 = vec3d1.rotateYaw(-player.rotationYaw * 0.017453292F);
 				vec3d1 = vec3d1.add(player.getLookVec());
 				player.world.spawnParticle(EnumParticleTypes.ITEM_CRACK, vec3d1.x, vec3d1.y, vec3d1.z, vec3d.x, vec3d.y + 0.05D, vec3d.z, Item.getIdFromItem(stack.getItem()), stack.getMetadata());
 				player.world.spawnParticle(EnumParticleTypes.ITEM_CRACK, pos.getX(), pos.getY(), pos.getZ(), vec3d.x, vec3d.y + 0.05D, vec3d.z, Item.getIdFromItem(stack.getItem()), stack.getMetadata());
 			}
-			world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_EAT, SoundCategory.BLOCKS, 0.5F + 0.5F * (float)rand.nextInt(2), (rand.nextFloat() - rand.nextFloat()) * 0.2F + 1.0F);
+			world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_EAT, SoundCategory.BLOCKS, 0.5F + 0.5F * (float) rand.nextInt(2), (rand.nextFloat() - rand.nextFloat()) * 0.2F + 1.0F);
 		}
 
 		// Make others hear your fat logs.
-		if(block.getUnlocalizedName().contains("toilet") && Loader.isModLoaded("cfm") && ModConfig.letOthersHearYourLogs)
-		{
-			if(world.isRemote && player.isSneaking())
-			{
+		if (block.getUnlocalizedName().contains("toilet") && Loader.isModLoaded("cfm") && ModConfig.letOthersHearYourLogs) {
+			if (world.isRemote && player.isSneaking()) {
 				ClientSoundPacket packet = new ClientSoundPacket();
 				packet.pos = player.getPosition();
 				packet.modID = "cfm";

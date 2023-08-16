@@ -1191,4 +1191,7 @@ public class ModBlocks
 
 	// SIM Card Programming Station
 	public static final Block SIM_STATION = new ImmersiblockRotational("sim_station", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
+
+	// Item Stand
+	public static final Block ITEM_STAND = new BlockItemStand("smartphone_stand", ModUtils.DEFAULT_AABB);
 }
