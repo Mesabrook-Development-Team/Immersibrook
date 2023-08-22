@@ -27,7 +27,12 @@ public class MinedroidButton extends GuiButton {
 		
 		this.height = font.FONT_HEIGHT + 4;
 	}
-	
+
+	public String getDisplayString()
+	{
+		return displayString;
+	}
+
 	@Override
 	public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
 		if (!visible)
