@@ -262,6 +262,7 @@ public class CategoryBlocks extends AbstractCategory
 		add(ModBlocks.COLORED_COBBLESTONE);
 		add(ModBlocks.COLORED_STONE_BRICKS);
 		add(ModBlocks.COLORED_BRICKS);
+		add(ModBlocks.COLORED_QUARTZ);
 
 		// Doors
 		add(ModBlocks.OAK_PUSH_DOOR);

@@ -1,0 +1,30 @@
+{
+	"forge_marker": 1,
+	"defaults":
+	{
+		"model": "cube_all"
+	},
+	"variants": 
+	{
+		"inventory": [{}],
+		"color":
+		{
+			"white": { "textures": { "all": "wbtc:blocks/white_quartz" } },
+			"orange": { "textures": { "all": "wbtc:blocks/orange_quartz" } },
+			"magenta": { "textures": { "all": "wbtc:blocks/magenta_quartz" } },
+			"light_blue": { "textures": { "all": "wbtc:blocks/lblue_quartz" } },
+			"yellow": { "textures": { "all": "wbtc:blocks/yellow_quartz" } },
+			"lime": { "textures": { "all": "wbtc:blocks/lime_quartz" } },
+			"pink": { "textures": { "all": "wbtc:blocks/pink_quartz" } },
+			"gray": { "textures": { "all": "wbtc:blocks/gray_quartz" } },
+			"silver": { "textures": { "all": "wbtc:blocks/silver_quartz" } },
+			"cyan": { "textures": { "all": "wbtc:blocks/cyan_quartz" } },
+			"purple": { "textures": { "all": "wbtc:blocks/purple_quartz" } },
+			"blue": { "textures": { "all": "wbtc:blocks/blue_quartz" } },
+			"brown": { "textures": { "all": "wbtc:blocks/brown_quartz" } },
+			"green": { "textures": { "all": "wbtc:blocks/green_quartz" } },
+			"red": { "textures": { "all": "wbtc:blocks/red_quartz" } },
+			"black": { "textures": { "all": "wbtc:blocks/black_quartz" } }
+		}
+	}
+}
