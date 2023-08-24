@@ -14,5 +14,6 @@ public class TileEntityHandler
 		GameRegistry.registerTileEntity(TileEntityFoodBox.class, new ResourceLocation(Reference.MODID + ":foodbox"));
 		GameRegistry.registerTileEntity(TileEntityWallSign.class, new ResourceLocation(Reference.MODID + ":wallsign"));
 		GameRegistry.registerTileEntity(TileEntityRegister.class, new ResourceLocation(Reference.MODID + ":sco_pos"));
+		GameRegistry.registerTileEntity(ShelvingTileEntity.class, new ResourceLocation(Reference.MODID + ":shelving"));
 	}
 }

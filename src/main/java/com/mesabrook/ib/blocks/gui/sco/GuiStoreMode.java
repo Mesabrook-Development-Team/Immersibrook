@@ -6,7 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang3.ArrayUtils;
+import org.dynmap.jetty.util.ArrayUtil;
+
 import com.mesabrook.ib.apimodels.company.LocationEmployee;
+import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.net.sco.StoreModeGuiLocationSelectedPacket;
 import com.mesabrook.ib.net.sco.StoreModeGuiOpenedPacket;
 import com.mesabrook.ib.util.handlers.PacketHandler;
@@ -34,6 +38,7 @@ public class GuiStoreMode extends GuiScreen {
 	HashMap<Long, ArrayList<LocationEmployee>> LocationsByCompany = new HashMap<>();
 	private int companyPage = 0;
 	private int locationPage = 0;
+	private GuiButtonExt logoutDuringFetch;
 	private GuiButtonExt nextPage;
 	private GuiButtonExt prevPage;
 	private GuiButtonExt toCompanyList;
@@ -53,9 +58,15 @@ public class GuiStoreMode extends GuiScreen {
 		companyPage = 0;
 		locationPage = 0;
 		
+		logoutDuringFetch = new GuiButtonExt(0, modalLeft + 4, modalTop + fontRenderer.FONT_HEIGHT + 15, 248, 20, "Go Off Duty");
 		nextPage = new GuiButtonExt(0, modalLeft + 256 - 4 - 20, modalTop + 4, 20, fontRenderer.FONT_HEIGHT + 4, ">");
 		prevPage = new GuiButtonExt(0, modalLeft + 256 - 4 - 20 - 4 - 20, modalTop + 4, 20, fontRenderer.FONT_HEIGHT + 4, "<");
 		toCompanyList = new GuiButtonExt(0, modalLeft + 256 - 4 - 20 - 4 - 20 - 4 - 35, modalTop + 4, 35, fontRenderer.FONT_HEIGHT + 4, "Back");
+		
+		if (mc.player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null).getLocationID() != 0)
+		{
+			buttonList.add(logoutDuringFetch);
+		}
 	}
 	
 	@Override
@@ -110,15 +121,31 @@ public class GuiStoreMode extends GuiScreen {
 		buttonList.add(prevPage);
 		
 		Long[] companyIDs = LocationsByCompany.keySet().toArray(new Long[0]);
-		for(int i = buttonsPerPage * companyPage; i < LocationsByCompany.size(); i++)
+		int iterationLimitModifier = 0;
+		if (mc.player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null).getLocationID() != 0)
+		{
+			companyIDs = ArrayUtils.add(companyIDs, 0, 0L);
+			iterationLimitModifier = 1;
+		}
+		
+		for(int i = buttonsPerPage * companyPage; i < LocationsByCompany.size() + iterationLimitModifier; i++)
 		{
 			if (i >= buttonsPerPage * (companyPage + 1))
 			{
 				break;
 			}
 			
-			ArrayList<LocationEmployee> locations = LocationsByCompany.get(companyIDs[i]);
-			GuiButtonExt button = new GuiButtonExt(companyIDs[i].intValue(), modalLeft + 4, modalTop + fontRenderer.FONT_HEIGHT + 15 + 22 * (i - buttonsPerPage * companyPage), 248, 20, locations.get(0).Location.Company.Name);
+			String companyName;
+			if (companyIDs[i] == 0L)
+			{
+				companyName = "Go Off Duty";
+			}
+			else
+			{
+				ArrayList<LocationEmployee> locations = LocationsByCompany.get(companyIDs[i]);
+				companyName = locations.get(0).Location.Company.Name;
+			}
+			GuiButtonExt button = new GuiButtonExt(companyIDs[i].intValue(), modalLeft + 4, modalTop + fontRenderer.FONT_HEIGHT + 15 + 22 * (i - buttonsPerPage * companyPage), 248, 20, companyName);
 			buttonList.add(button);
 		}
 		
@@ -158,7 +185,15 @@ public class GuiStoreMode extends GuiScreen {
 	
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
-		if (button == nextPage)
+		if (button == logoutDuringFetch)
+		{
+			StoreModeGuiLocationSelectedPacket selected = new StoreModeGuiLocationSelectedPacket();
+			selected.locationID = button.id;
+			PacketHandler.INSTANCE.sendToServer(selected);
+			
+			mc.displayGuiScreen(null);
+		}
+		else if (button == nextPage)
 		{
 			if (companyID == -1)
 			{
@@ -190,6 +225,12 @@ public class GuiStoreMode extends GuiScreen {
 		}
 		else if (companyID == -1)
 		{
+			if (button.id == 0)
+			{
+				actionPerformed(logoutDuringFetch);
+				return;
+			}
+			
 			companyID = button.id;
 			companyName = button.displayString;
 			setLocationButtons();
@@ -199,6 +240,8 @@ public class GuiStoreMode extends GuiScreen {
 			StoreModeGuiLocationSelectedPacket selected = new StoreModeGuiLocationSelectedPacket();
 			selected.locationID = button.id;
 			PacketHandler.INSTANCE.sendToServer(selected);
+			
+			mc.displayGuiScreen(null);
 		}
 	}
 	

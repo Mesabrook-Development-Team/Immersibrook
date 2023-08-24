@@ -3,6 +3,8 @@ package com.mesabrook.ib.proxy;
 import org.lwjgl.input.Keyboard;
 
 import com.mesabrook.ib.Main;
+import com.mesabrook.ib.blocks.te.ShelvingTileEntity;
+import com.mesabrook.ib.blocks.te.ShelvingTileEntityRenderer;
 import com.mesabrook.ib.blocks.te.TileEntityPlaque;
 import com.mesabrook.ib.blocks.te.TileEntityPlaqueRenderer;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
@@ -55,6 +57,7 @@ public class ClientProxy extends CommonProxy
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlaque.class, new TileEntityPlaqueRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWallSign.class, new TileEntityWallSignRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRegister.class, new TileEntityRegisterRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(ShelvingTileEntity.class, new ShelvingTileEntityRenderer());
 
 		vestToggleKey = new KeyBinding("key.vestToggle.toggle", Keyboard.KEY_V, "key.immersibrook.category");
 		nvToggleKey = new KeyBinding("key.nvtoggle.toggle", Keyboard.KEY_SEMICOLON, "key.immersibrook.category");
@@ -72,6 +75,13 @@ public class ClientProxy extends CommonProxy
 		// SkinDownloader.downloadSkin(Reference.RZ_UUID);
 	}
 	
+	final String[] shelvingModels = new String[]
+	{
+		"shelf_four_peghooks",
+		"shelf_one_level_two_peghooks",
+		"shelf_two_levels_no_peghooks"
+	};
+	
 	@SubscribeEvent
 	public static void onModelBakeEvent(ModelBakeEvent e)
 	{
@@ -83,5 +93,7 @@ public class ClientProxy extends CommonProxy
 			ItemSecurityBoxModel customModel = new ItemSecurityBoxModel(existingModel);
 			e.getModelRegistry().putObject(securityBoxRL, customModel);
 		}
+		
+		
 	}
 }

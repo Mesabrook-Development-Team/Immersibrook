@@ -1,11 +1,11 @@
 package com.mesabrook.ib.util.handlers;
 
-import java.lang.reflect.Type;
-
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.CapabilityEmployeePlayerProvider;
+import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
+import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItemProvider;
 import com.mesabrook.ib.cmds.CommandImmersibrook;
 import com.mesabrook.ib.cmds.CommandMeme;
 import com.mesabrook.ib.cmds.CommandTalk;
@@ -13,6 +13,7 @@ import com.mesabrook.ib.entity.EntityMesabrookM;
 import com.mesabrook.ib.entity.EntityWineBottle;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.items.commerce.ItemSecurityBox;
 import com.mesabrook.ib.rendering.RenderMesabrookIcon;
 import com.mesabrook.ib.rendering.RenderWineBottle;
 import com.mesabrook.ib.telecom.DynmapAPIListener;
@@ -28,20 +29,19 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.LoaderState;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -126,6 +126,8 @@ public class RegistryHandler
 		
 		PacketHandler.registerMessages();
 		Triggers.init();
+		CapabilityEmployee.init();
+		CapabilitySecuredItem.init();
 	}
 	
 	public static void initRegistries()
@@ -251,5 +253,14 @@ public class RegistryHandler
 		}
 		
 		e.addCapability(new ResourceLocation(Reference.MODID, "cap_employee"), new CapabilityEmployeePlayerProvider((EntityPlayer)e.getObject()));
+	}
+	
+	@SubscribeEvent
+	public static void attachSecuredItemCapability(AttachCapabilitiesEvent<ItemStack> e)
+	{
+		if (Main.logger == null ? e.getObject().getItem() instanceof ItemSecurityBox : e.getObject().getItem() == ModItems.SECURITY_BOX)
+		{
+			e.addCapability(new ResourceLocation(Reference.MODID, "cap_secureditem"), new CapabilitySecuredItemProvider());
+		}
 	}
 }

@@ -2,6 +2,8 @@ package com.mesabrook.ib.util.apiaccess;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import com.mesabrook.ib.Main;
+
 public class DataRequestQueue {
 	private volatile boolean running = false;
 	private volatile boolean cancel = false;
@@ -76,10 +78,18 @@ public class DataRequestQueue {
 				}
 			}
 		}
+		catch(Exception ex)
+		{
+			if (Main.logger != null)
+			{
+				Main.logger.error("An unexpected error occurred with the Data Request Queue", ex);
+			}
+		}
 		finally
 		{
 			requestTasks.clear();
 			running = false;
+			cancel = false;
 		}
 	}
 }

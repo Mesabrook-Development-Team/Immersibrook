@@ -1,18 +1,55 @@
 package com.mesabrook.ib.init;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.mesabrook.ib.Main;
-import com.mesabrook.ib.blocks.*;
+import com.mesabrook.ib.blocks.BlockBin;
+import com.mesabrook.ib.blocks.BlockCeilingLight;
+import com.mesabrook.ib.blocks.BlockCellAntenna;
+import com.mesabrook.ib.blocks.BlockColoredBricks;
+import com.mesabrook.ib.blocks.BlockColoredCobblestone;
+import com.mesabrook.ib.blocks.BlockColoredStone;
+import com.mesabrook.ib.blocks.BlockColoredStoneBricks;
+import com.mesabrook.ib.blocks.BlockColumn;
+import com.mesabrook.ib.blocks.BlockDoorBase;
+import com.mesabrook.ib.blocks.BlockFakeLight;
+import com.mesabrook.ib.blocks.BlockHandrail;
+import com.mesabrook.ib.blocks.BlockImmersiLadder;
+import com.mesabrook.ib.blocks.BlockLargePlaque;
+import com.mesabrook.ib.blocks.BlockManhole;
+import com.mesabrook.ib.blocks.BlockPlaque;
+import com.mesabrook.ib.blocks.BlockPlexiglass;
+import com.mesabrook.ib.blocks.BlockPlexiglassPane;
+import com.mesabrook.ib.blocks.BlockRawPlastic;
+import com.mesabrook.ib.blocks.BlockRegister;
+import com.mesabrook.ib.blocks.BlockShippingBox;
+import com.mesabrook.ib.blocks.BlockSiding;
+import com.mesabrook.ib.blocks.BlockStatue;
+import com.mesabrook.ib.blocks.BlockTestEye;
+import com.mesabrook.ib.blocks.BlockWallSign;
+import com.mesabrook.ib.blocks.ChromaScreen;
+import com.mesabrook.ib.blocks.DecorPCMouse;
+import com.mesabrook.ib.blocks.FoodBox;
+import com.mesabrook.ib.blocks.Immersiblock;
+import com.mesabrook.ib.blocks.ImmersiblockRotational;
+import com.mesabrook.ib.blocks.Pillar;
+import com.mesabrook.ib.blocks.SignBlock;
+import com.mesabrook.ib.blocks.SignStand;
+import com.mesabrook.ib.blocks.Truss;
 import com.mesabrook.ib.blocks.food.FoodBlock;
 import com.mesabrook.ib.blocks.metro.TicketMachine;
+import com.mesabrook.ib.blocks.sco.BlockSecurityTaggingStation;
+import com.mesabrook.ib.blocks.sco.BlockShelf;
+import com.mesabrook.ib.blocks.sco.ProductPlacement;
 import com.mesabrook.ib.blocks.stairs.MiscStairs;
 import com.mesabrook.ib.util.ModUtils;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
-
-import java.util.ArrayList;
-import java.util.List;
+import net.minecraft.util.math.AxisAlignedBB;
 
 public class ModBlocks 
 {
@@ -1182,12 +1219,25 @@ public class ModBlocks
 	public static final Block SCO_BAGGING = new ImmersiblockRotational("sco_bagging", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
 
 	// Retail Shelving Blocks
-	public static final Block SHELF_ONE_LEVEL_TWO_PEGHOOKS = new ImmersiblockRotational("shelf_one_level_two_peghooks", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
+	public static final Block SHELF_ONE_LEVEL_TWO_PEGHOOKS = new BlockShelf("shelf_one_level_two_peghooks", new ProductPlacement[]
+			{
+				new ProductPlacement(1, 3, ModUtils.getPixelatedAABB(1, 7, 4, 6, 12, 14)),
+				new ProductPlacement(2, 3, ModUtils.getPixelatedAABB(1, 1, 1, 6, 6, 14)),
+				new ProductPlacement(3, 3, ModUtils.getPixelatedAABB(10, 1, 1, 15, 6, 14)),
+				new ProductPlacement(4, 3, ModUtils.getPixelatedAABB(10, 7, 4, 15, 12, 14))
+			}, 
+			new AxisAlignedBB[]
+			{
+				ModUtils.getPixelatedAABB(0, 0, 14.025, 16, 16, 16.025),
+				ModUtils.getPixelatedAABB(0, 0, 1.025, 16, 1.5, 14.025)
+			});
+	
+			//new ImmersiblockRotational("shelf_one_level_two_peghooks", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
 	public static final Block SHELF_FOUR_PEGHOOKS = new ImmersiblockRotational("shelf_four_peghooks", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
 	public static final Block SHELF_TWO_LEVELS_NO_PEGHOOKS = new ImmersiblockRotational("shelf_two_levels_no_peghooks", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
 
 	// Security Station
-	public static final Block SECURITY_STATION = new ImmersiblockRotational("security_station", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
+	public static final Block SECURITY_STATION = new BlockSecurityTaggingStation();
 
 	// SIM Card Programming Station
 	public static final Block SIM_STATION = new ImmersiblockRotational("sim_station", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);

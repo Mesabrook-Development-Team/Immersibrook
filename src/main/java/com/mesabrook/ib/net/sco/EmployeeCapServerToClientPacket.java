@@ -23,6 +23,10 @@ public class EmployeeCapServerToClientPacket implements IMessage {
 
 	@Override
 	public void toBytes(ByteBuf buf) {
+		if (locationEmployee == null)
+		{
+			locationEmployee = new LocationEmployee();
+		}
 		ByteBufUtils.writeTag(buf, locationEmployee.serializeNBT());
 	}
 

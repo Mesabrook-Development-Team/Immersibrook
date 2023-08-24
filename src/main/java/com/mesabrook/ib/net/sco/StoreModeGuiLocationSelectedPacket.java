@@ -3,6 +3,8 @@ package com.mesabrook.ib.net.sco;
 import com.mesabrook.ib.apimodels.company.LocationEmployee;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
+import com.mesabrook.ib.util.handlers.PacketHandler;
+import com.mesabrook.ib.util.handlers.ServerTickHandler;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -39,6 +41,15 @@ public class StoreModeGuiLocationSelectedPacket implements IMessage {
 			EntityPlayerMP player = ctx.getServerHandler().player;
 			IEmployeeCapability employeeCap = player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
 			employeeCap.setLocationEmployee(locEmp.LocationID == 0 ? null : locEmp);
+			
+			if (locEmp.LocationID == 0)
+			{
+				employeeCap.serverToClientSync();
+			}
+			else
+			{
+				ServerTickHandler.enqueueStoreModeUpdateNow(player);
+			}
 		}	
 	}
 }

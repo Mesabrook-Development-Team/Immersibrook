@@ -9,9 +9,11 @@ import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.function.Consumer;
 
+import com.google.common.collect.ImmutableCollection;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.apimodels.company.LocationEmployee;
 import com.mesabrook.ib.blocks.BlockRegister;
+import com.mesabrook.ib.blocks.ImmersiblockRotationalManyBB;
 import com.mesabrook.ib.blocks.gui.GuiAboutImmersibrook;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSIdentifierSetup;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSWaitingForNetwork;
@@ -57,6 +59,7 @@ import net.minecraft.client.renderer.RenderGlobal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
@@ -765,11 +768,11 @@ public class ClientSideHandlers
 		}
 		
 		World world = e.getPlayer().world;
-		IBlockState blockState = world.getBlockState(rtr.getBlockPos());
-		if (blockState.getBlock() instanceof BlockRegister)
+		IBlockState blockState = world.getBlockState(rtr.getBlockPos());		
+		if (blockState.getBlock() instanceof ImmersiblockRotationalManyBB)
 		{
 			e.setCanceled(true);
-			drawRegisterBlockHighlight(e.getPlayer(), e.getPartialTicks(), rtr.getBlockPos());
+			drawManyBoundingBoxBlockHighlight(e.getPlayer(), e.getPartialTicks(), rtr.getBlockPos(), blockState);
 		}
 	}
 	
@@ -802,6 +805,54 @@ public class ClientSideHandlers
 			if (distance < leastDistance)
 			{
 				boxToDraw = BlockRegister.cardReaderBoundingBox;
+			}
+		}
+		
+		if (boxToDraw != null)
+		{			
+			GlStateManager.disableAlpha();
+			GlStateManager.enableBlend();
+	        GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+	        GlStateManager.glLineWidth(2.0F);
+	        GlStateManager.disableTexture2D();
+	        GlStateManager.depthMask(false);
+	        
+			RenderGlobal.drawSelectionBoundingBox(boxToDraw.offset(pos).offset(-d3, -d4, -d5), 0.0F, 0.0F, 0.0F, 1F);
+			
+			GlStateManager.depthMask(true);
+            GlStateManager.enableTexture2D();
+            GlStateManager.disableBlend();
+			GlStateManager.enableAlpha();
+		}
+	}
+	
+	private static void drawManyBoundingBoxBlockHighlight(EntityPlayer player, float partialTicks, BlockPos pos, IBlockState blockState)
+	{
+		EnumFacing facing = blockState.getValue(ImmersiblockRotationalManyBB.FACING);
+		ImmutableCollection<AxisAlignedBB> boundingBoxesForFacing = ((ImmersiblockRotationalManyBB)blockState.getBlock()).SUB_BOUNDING_BOXES.get(facing);
+		
+		final double d3 = player.lastTickPosX + (player.posX - player.lastTickPosX) * partialTicks;
+		final double d4 = player.lastTickPosY + (player.posY - player.lastTickPosY) * partialTicks;
+		final double d5 = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * partialTicks;
+		final Vec3d start = player.getPositionEyes(partialTicks);
+		final Vec3d eyes = player.getLook(partialTicks);
+		final float reach = Minecraft.getMinecraft().playerController.getBlockReachDistance();
+		final Vec3d end = start.addVector(eyes.x * reach, eyes.y * reach, eyes.z * reach);
+		
+		AxisAlignedBB boxToDraw = null;
+		double leastDistance = reach + 1;
+		
+		for(AxisAlignedBB box : boundingBoxesForFacing)
+		{
+			RayTraceResult result = box.offset(pos).calculateIntercept(start, end);
+			if (result != null)
+			{
+				double distance = result.hitVec.distanceTo(start);
+				if (distance < leastDistance)
+				{
+					boxToDraw = box;
+					leastDistance = distance;
+				}
 			}
 		}
 		

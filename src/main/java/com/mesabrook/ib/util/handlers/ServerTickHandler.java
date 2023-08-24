@@ -9,6 +9,7 @@ import com.mesabrook.ib.Main;
 import com.mesabrook.ib.apimodels.company.LocationEmployee;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
+import com.mesabrook.ib.net.sco.EmployeeCapServerToClientPacket;
 import com.mesabrook.ib.net.sco.StoreModeGuiResponse;
 import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.apiaccess.DataRequestQueue;
@@ -86,7 +87,7 @@ public class ServerTickHandler {
 	private static int updateEmployeeStoreModesChecker = 0;
 	private static void updateEmployeeStoreModes()
 	{
-		if (++updateEmployeeStoreModesChecker < 200)
+		if (++updateEmployeeStoreModesChecker < 100)
 		{
 			return;
 		}
@@ -104,16 +105,11 @@ public class ServerTickHandler {
 				IEmployeeCapability employeeCap = player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
 				if (employeeCap.getLocationID() == 0)
 				{
-					continue;
+					employeeCap.serverToClientSync();
+					return;
 				}
 				
-				GetData get = new GetData(API.Company, "LocationEmployeeIBAccess/GetLocationForPlayerLocation", LocationEmployee.class);
-				get.addQueryString("player", player.getName());
-				get.addQueryString("locationID", Long.toString(employeeCap.getLocationID()));
-				
-				DataRequestTask task = new DataRequestTask(get);
-				employeeStoreModeRequests.put(player.getUniqueID(), task);
-				DataRequestQueue.INSTANCE.addTask(task);
+				enqueueStoreModeUpdateNow(player);
 			}
 			
 		}
@@ -150,5 +146,18 @@ public class ServerTickHandler {
 		IEmployeeCapability employeeCap = player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
 		employeeCap.setLocationEmployee(locationEmployee);
 		employeeCap.serverToClientSync();
+	}
+	
+	public static void enqueueStoreModeUpdateNow(EntityPlayerMP player)
+	{
+		IEmployeeCapability employeeCap = player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
+		
+		GetData get = new GetData(API.Company, "LocationEmployeeIBAccess/GetLocationForPlayerLocation", LocationEmployee.class);
+		get.addQueryString("player", player.getName());
+		get.addQueryString("locationID", Long.toString(employeeCap.getLocationID()));
+		
+		DataRequestTask task = new DataRequestTask(get);
+		employeeStoreModeRequests.put(player.getUniqueID(), task);
+		DataRequestQueue.INSTANCE.addTask(task);
 	}
 }

@@ -4,14 +4,12 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.sql.Ref;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import org.apache.logging.log4j.Logger;
 
-import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.proxy.CommonProxy;
 import com.mesabrook.ib.tab.TabImmersibrook;
 import com.mesabrook.ib.telecom.CallManager;
@@ -96,7 +94,6 @@ public class Main
         mottos = loadMottos();
         Reference.MOTTO = getRandomMotto();
         RegistryHandler.preInitRegistries(event);
-        CapabilityEmployee.init();
     }
 
     @EventHandler

@@ -38,7 +38,7 @@ public class ItemSecurityBoxFinalModel implements IBakedModel {
 		{
 			for(BakedQuad quad : subModel.getQuads(state, side, rand))
 			{
-				quads.add(scaleAndTranslateQuad(quad, new Vec3d(0.5, 0.5, 0), 0.25F));
+				quads.add(scaleAndTranslateQuad(quad, new Vec3d(0.25, 0.05, 0.2), 0.75F));
 			}
 		}
 		
@@ -209,7 +209,6 @@ public class ItemSecurityBoxFinalModel implements IBakedModel {
 
 	@Override
 	public boolean isAmbientOcclusion() {
-		// TODO Auto-generated method stub
 		return parentModel.isAmbientOcclusion();
 	}
 

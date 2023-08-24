@@ -2,18 +2,15 @@ package com.mesabrook.ib.items.commerce.models;
 
 import java.util.List;
 
-import com.mesabrook.ib.init.ModBlocks;
-import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
+import com.mesabrook.ib.capability.secureditem.ISecuredItem;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ItemOverride;
 import net.minecraft.client.renderer.block.model.ItemOverrideList;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 public class ItemSecurityBoxItemOverrideList extends ItemOverrideList {
@@ -25,13 +22,11 @@ public class ItemSecurityBoxItemOverrideList extends ItemOverrideList {
 	@Override
 	public IBakedModel handleItemState(IBakedModel originalModel, ItemStack stack, World world,
 			EntityLivingBase entity) {
-		NBTTagCompound compound = stack.getTagCompound();
+		ISecuredItem item = stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
 		IBakedModel itemModel = null;
-		if (compound != null && compound.hasKey("innerItem"))
+		if (!item.getInnerStack().isEmpty())
 		{
-			NBTTagCompound innerItemNBT = compound.getCompoundTag("innerItem");
-			ItemStack containedItem = new ItemStack(innerItemNBT);
-			itemModel = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getItemModel(containedItem);
+			itemModel = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getItemModel(item.getInnerStack());
 		}
 		
 //		IBakedModel itemModel = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getItemModel(new ItemStack(ModBlocks.IN_STREET_CROSSWALK_SIGN));
