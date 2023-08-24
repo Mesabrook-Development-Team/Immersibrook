@@ -1,14 +1,14 @@
 package com.mesabrook.ib.blocks.te;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
-import com.google.common.collect.ImmutableMap;
-import com.mesabrook.ib.blocks.sco.BlockShelf;
 import com.mesabrook.ib.blocks.sco.ProductPlacement;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
+import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
+import com.mesabrook.ib.capability.secureditem.ISecuredItem;
 import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.items.commerce.ItemSecurityBox;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -19,7 +19,6 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants.NBT;
@@ -54,13 +53,13 @@ public class ShelvingTileEntity extends TileEntity {
 		}
 		else
 		{
-			if (playerStack.getItem() == ModItems.SECURITY_BOX) // Maybe putting back on shelf?
-			{
-				checkAndAddAsCustomer(spot, player, hand);
-			}
-			else // Pulling something off shelf
+			if (playerStack.isEmpty()) // Pulling something off shelf
 			{
 				removeItemAsCustomer(spot, player, hand);
+			}
+			else // Maybe putting back on shelf?
+			{
+				checkAndAddAsCustomer(spot, player, hand);
 			}
 		}
 		
@@ -69,11 +68,51 @@ public class ShelvingTileEntity extends TileEntity {
 	
 	private void removeItemAsEmployee(ProductSpot spot, EntityPlayer player, EnumHand hand)
 	{
+		ItemStack stackToRemove = spot.items[0];
+		if (stackToRemove.isEmpty())
+		{
+			return;
+		}
 		
+		IEmployeeCapability employeeCapability = player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
+		if (stackToRemove.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
+		{
+			ISecuredItem secureCap = stackToRemove.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
+			if (employeeCapability.getLocationID() == 0 || (secureCap.getLocationIDOwner() != 0 && secureCap.getLocationIDOwner() != employeeCapability.getLocationID())) // Player is an employee, just not for this item
+			{
+				removeItemAsCustomer(spot, player, hand);
+				return;
+			}
+			
+			secureCap.setHomeLocation(null);
+			secureCap.setHomeSpot(0);
+		}
+		
+		player.setHeldItem(hand, stackToRemove);
+		for(int i = 0; i < spot.items.length; i++)
+		{
+			if (i < spot.items.length - 1)
+			{
+				spot.items[i] = spot.items[i + 1];
+			}
+			else
+			{
+				spot.items[i] = ItemStack.EMPTY;
+			}
+		}
+		
+		markDirty();
+		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
 	}
 	
 	private void addItemAsEmployee(ProductSpot spot, EntityPlayer player, EnumHand hand)
 	{
+		if (!spot.items[spot.items.length - 1].isEmpty())
+		{
+			player.sendMessage(new TextComponentString("This spot is full!"));
+			return;
+		}
+		
 		int indexToSet = -1;
 		for(int i = 0; i < spot.items.length; i++)
 		{
@@ -84,14 +123,16 @@ public class ShelvingTileEntity extends TileEntity {
 			}
 		}
 		
-		if (indexToSet == -1)
+		ItemStack heldItem = player.getHeldItem(hand);
+		ItemStack placedStack = heldItem.copy();
+		if (placedStack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
 		{
-			player.sendMessage(new TextComponentString("This spot is full!"));
-			return;
+			ISecuredItem secureCap = placedStack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
+			secureCap.setHomeLocation(getPos());
+			secureCap.setHomeSpot(spot.placementID);
 		}
 		
-		ItemStack heldItem = player.getHeldItem(hand);
-		spot.items[indexToSet] = heldItem.copy();
+		spot.items[indexToSet] = placedStack;
 		player.setHeldItem(hand, ItemStack.EMPTY);
 		
 		markDirty();
@@ -101,12 +142,63 @@ public class ShelvingTileEntity extends TileEntity {
 	
 	private void checkAndAddAsCustomer(ProductSpot spot, EntityPlayer player, EnumHand hand)
 	{
+		ItemStack heldItem = player.getHeldItem(hand);
 		
+		if (heldItem.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
+		{
+			ISecuredItem secureCap = heldItem.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
+			if (secureCap.getHomeLocation().getY() != -1 && (!secureCap.getHomeLocation().equals(getPos()) || secureCap.getHomeSpot() != spot.placementID))
+			{
+				return;
+			}
+		}
+		
+		if (!spot.items[spot.items.length - 1].isEmpty())
+		{
+			player.sendMessage(new TextComponentString("This spot is full!"));
+			return;
+		}
+		
+		int indexToSet = -1;
+		for(int i = 0; i < spot.items.length; i++)
+		{
+			if (spot.items[i].isEmpty())
+			{
+				indexToSet = i;
+				break;
+			}
+		}
+		
+		spot.items[indexToSet] = heldItem.copy();
+		player.setHeldItem(hand, ItemStack.EMPTY);
+		
+		markDirty();
+		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
 	}
 	
 	private void removeItemAsCustomer(ProductSpot spot, EntityPlayer player, EnumHand hand)
 	{
+		ItemStack stack = spot.items[0];
+		if (stack.isEmpty())
+		{
+			return;
+		}
 		
+		player.setHeldItem(hand, stack);
+		for(int i = 0; i < spot.items.length; i++)
+		{
+			if (i < spot.items.length - 1)
+			{
+				spot.items[i] = spot.items[i + 1];
+			}
+			else
+			{
+				spot.items[i] = ItemStack.EMPTY;
+			}
+		}
+		
+		markDirty();
+		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
 	}
 	
 	public ProductSpot[] getProductSpots() { return productSpotsByPlacementID.values().toArray(new ProductSpot[0]); }

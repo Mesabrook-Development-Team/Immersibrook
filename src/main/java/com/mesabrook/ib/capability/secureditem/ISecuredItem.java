@@ -10,10 +10,13 @@ public interface ISecuredItem {
 	void setLocationIDOwner(long locationIDOwner);
 	ItemStack getInnerStack();
 	void setInnerStack(ItemStack stack);
+	int getHomeSpot();
+	void setHomeSpot(int spot);
 	
 	public static class Impl implements ISecuredItem
 	{
 		private BlockPos homeLocation;
+		private int homeSpot;
 		private long locationIDOwner;
 		ItemStack innerStack;
 
@@ -55,6 +58,17 @@ public interface ISecuredItem {
 		public void setInnerStack(ItemStack stack) {
 			innerStack = stack;
 		}
+
+		@Override
+		public int getHomeSpot() {
+			return homeSpot;
+		}
+
+		@Override
+		public void setHomeSpot(int spot) {
+			homeSpot = spot;
+		}
+		
 		
 	}
 }

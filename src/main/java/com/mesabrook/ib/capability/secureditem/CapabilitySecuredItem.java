@@ -28,6 +28,7 @@ public class CapabilitySecuredItem {
 			tag.setLong("homeLocation", instance.getHomeLocation().toLong());
 			tag.setLong("locationIDOwner", instance.getLocationIDOwner());
 			tag.setTag("innerStack", instance.getInnerStack().serializeNBT());
+			tag.setInteger("homeSpot", instance.getHomeSpot());
 			return tag;
 		}
 
@@ -37,6 +38,7 @@ public class CapabilitySecuredItem {
 			instance.setHomeLocation(BlockPos.fromLong(compound.getLong("homeLocation")));
 			instance.setLocationIDOwner(compound.getLong("locationIDOwner"));
 			instance.setInnerStack(new ItemStack(compound.getCompoundTag("innerStack")));
+			instance.setHomeSpot(compound.getInteger("homeSpot"));
 		}
 		
 	}

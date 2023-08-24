@@ -110,7 +110,10 @@ public abstract class ImmersiblockRotationalManyBB extends ImmersiblockRotationa
 		{
 			facing = facing.getOpposite();
 		}
-		SUB_BOUNDING_BOXES.get(facing).forEach(subBB -> bb.union(subBB));
+		for(AxisAlignedBB subBB : SUB_BOUNDING_BOXES.get(facing))
+		{
+			bb = subBB.union(bb);
+		}
 		return bb;
 	}
 	
