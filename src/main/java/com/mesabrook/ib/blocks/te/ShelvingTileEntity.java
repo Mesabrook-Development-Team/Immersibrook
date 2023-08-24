@@ -25,17 +25,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.common.util.INBTSerializable;
 
-public class ShelvingTileEntity extends TileEntity {
-	@Override
-	public boolean hasFastRenderer() {
-		return true;
-	}
-	
-	@Override
-	public boolean shouldRenderInPass(int pass) {
-		return pass == 1;
-	}
-	
+public class ShelvingTileEntity extends TileEntity {	
 	private HashMap<Integer, ProductSpot> productSpotsByPlacementID = new HashMap<>();
 	private long locationIDOwner;
 	

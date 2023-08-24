@@ -6,6 +6,7 @@ import javax.vecmath.Vector4f;
 
 import org.apache.commons.lang3.tuple.Pair;
 import org.dynmap.jetty.util.ArrayUtil;
+import org.lwjgl.opengl.GL11;
 
 import com.mesabrook.ib.blocks.sco.BlockShelf;
 import com.mesabrook.ib.blocks.sco.ProductPlacement;
@@ -13,10 +14,14 @@ import com.mesabrook.ib.blocks.te.ShelvingTileEntity.ProductSpot;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
 import net.minecraft.client.renderer.color.BlockColors;
+import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.renderer.vertex.VertexFormatElement;
 import net.minecraft.item.ItemStack;
@@ -32,25 +37,51 @@ import net.minecraftforge.client.model.pipeline.VertexTransformer;
 import net.minecraftforge.common.model.TRSRTransformation;
 import scala.actors.threadpool.Arrays;
 
-public class ShelvingTileEntityRenderer extends FastTESR<ShelvingTileEntity> {
+// BREAK INCASE OF PERFORMANCE PROBLEMS! https://web.archive.org/web/20220704085618/https://forums.minecraftforge.net/topic/78157-solved1122-most-efficient-way-to-render/
+public class ShelvingTileEntityRenderer extends TileEntitySpecialRenderer<ShelvingTileEntity> {	
 	@Override
-	public void renderTileEntityFast(ShelvingTileEntity te, double x, double y, double z, float partialTicks,
-			int destroyStage, float partial, BufferBuilder buffer) {
+	public void render(ShelvingTileEntity te, double x, double y, double z, float partialTicks,
+			int destroyStage, float partial) {
 		if (!(te.getWorld().getBlockState(te.getPos()).getBlock() instanceof BlockShelf))
 		{
 			return;
 		}
 		
+		bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
+		GlStateManager.pushMatrix();
+		GlStateManager.translate(x + 0.5, y + 0.5, z + 0.5);
+		
 		BlockShelf shelf = (BlockShelf)te.getBlockType();
 		EnumFacing blockFacing = te.getWorld().getBlockState(te.getPos()).getValue(BlockShelf.FACING);
+		
+		float angle = 0;
+		switch(blockFacing)
+		{
+			case SOUTH:
+				angle = 180;
+				break;
+			case NORTH: // Do nothing
+				break;
+			case WEST:
+				angle = 90;
+				break;
+			case EAST:
+				angle = 270;
+				break;
+		}
+		
+		GlStateManager.rotate(angle, 0, 1, 0);
+		GlStateManager.translate(-0.5, -0.5, -0.5);
+		
 		EnumFacing[] facings = EnumFacing.VALUES;
 		facings = ArrayUtil.addToArray(facings, null, EnumFacing.class);
-		int lightMap = te.getWorld().getCombinedLight(te.getPos().offset(blockFacing), 0);
+		
+		Tessellator tess = Tessellator.getInstance();
+		BufferBuilder buffer = tess.getBuffer();
+		buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
 		
 		for(ProductSpot spot : te.getProductSpots())
 		{
-			Vector3f offset = new Vector3f((float)x, (float)y, (float)z);
-			float positionOffsetX = 0;
 			float positionOffsetZ = 0;
 			ProductPlacement placement = shelf.getProductPlacementByID(spot.getPlacementID());
 			if (placement == null)
@@ -59,39 +90,8 @@ public class ShelvingTileEntityRenderer extends FastTESR<ShelvingTileEntity> {
 			}
 			
 			AxisAlignedBB spotBB = placement.getBoundingBox();
-			spotBB = shelf.ORIGINAL_BOX_TO_ROTATED_BY_FACING.get(blockFacing).get(spotBB);
 			
-			offset.y += spotBB.minY;
-			float xOffsetFactor = 0;
-			float zOffsetFactor = 0;
-			if (blockFacing == EnumFacing.SOUTH)
-			{
-				offset.x += spotBB.maxX;
-				offset.z += spotBB.maxZ;
-				
-				zOffsetFactor = 1;
-			}
-			else if (blockFacing == EnumFacing.EAST)
-			{
-				offset.x += spotBB.maxX;
-				offset.z += spotBB.minZ;
-				
-				xOffsetFactor = 1;
-			}
-			else if (blockFacing == EnumFacing.NORTH)
-			{
-				offset.x += spotBB.minX;
-				offset.z += spotBB.minZ;
-				
-				zOffsetFactor = -1;
-			}
-			else if (blockFacing == EnumFacing.WEST)
-			{
-				offset.x += spotBB.minX;
-				offset.z += spotBB.maxZ;
-				
-				xOffsetFactor = -1;
-			}
+			Vector3f offset = new Vector3f((float)spotBB.minX, (float)spotBB.minY, (float)spotBB.minZ);
 			
 			float scale = (float)(spotBB.maxY - spotBB.minY);
 			if (scale > spotBB.maxX - spotBB.minX)
@@ -99,18 +99,16 @@ public class ShelvingTileEntityRenderer extends FastTESR<ShelvingTileEntity> {
 				scale = (float)(spotBB.maxX - spotBB.minX);
 			}
 			
-			TRSRTransformation baseTransform = new TRSRTransformation(blockFacing);
-			baseTransform = baseTransform.compose(new TRSRTransformation(
+			TRSRTransformation baseTransform = new TRSRTransformation(
 					null,
 					null,
 					new Vector3f(scale, scale, scale),
-					null));
+					null);
 			
 			ItemStack[] items = spot.getItems();
 			for (int i = 0; i < items.length; i++)
 			{
-				float maximumX = xOffsetFactor == 0 ? 0F : Float.MIN_VALUE;
-				float maximumZ = zOffsetFactor == 0 ? 0F : Float.MIN_VALUE;
+				float maximumZ = Float.MIN_VALUE;
 				ItemStack item = items[i];
 				if (item.isEmpty())
 				{
@@ -131,31 +129,25 @@ public class ShelvingTileEntityRenderer extends FastTESR<ShelvingTileEntity> {
 					for(BakedQuad quad : model.getQuads(null, facing, 0))
 					{
 						Vector3f vecLoc = new Vector3f();
-						BakedQuad newQuad = transform(quad, itemTransform, offset, vecLoc, positionOffsetX, positionOffsetZ);
-//						LightUtil.renderQuadColor(buffer, newQuad, 15 << 20);
+						BakedQuad newQuad = transform(quad, itemTransform, offset, vecLoc, positionOffsetZ);
 						buffer.addVertexData(newQuad.getVertexData());
 						
-						if ((xOffsetFactor > 0 && vecLoc.x < maximumX) ||
-							(xOffsetFactor < 0 && vecLoc.x > maximumX))
-						{
-							maximumX = vecLoc.x;
-						}
-						
-						if ((zOffsetFactor > 0 && vecLoc.z < maximumZ) ||
-							(zOffsetFactor < 0 && vecLoc.z > maximumZ))
+						if (vecLoc.z > maximumZ)
 						{
 							maximumZ = vecLoc.z;
 						}
 					}
 				}
 				
-				positionOffsetX += maximumX;
 				positionOffsetZ += maximumZ;
 			}
 		}
+		
+		tess.draw();
+		GlStateManager.popMatrix();
 	}
 	
-	protected static BakedQuad transform(BakedQuad quad, final TRSRTransformation transform, Vector3f offset, Vector3f ret, float additionalXOffset, float additionalZOffset) {
+	protected static BakedQuad transform(BakedQuad quad, final TRSRTransformation transform, Vector3f offset, Vector3f ret, float additionalZOffset) {
 		UnpackedBakedQuad.Builder builder = new UnpackedBakedQuad.Builder(quad.getFormat());
 		final IVertexConsumer consumer = new VertexTransformer(builder) {
 			@Override
@@ -170,20 +162,12 @@ public class ShelvingTileEntityRenderer extends FastTESR<ShelvingTileEntity> {
 					ret.x = newData[0];
 					ret.y = newData[1];
 					ret.z = newData[2];
-					newData[0] += offset.x + additionalXOffset;
+					newData[0] += offset.x;
 					newData[1] += offset.y;
 					newData[2] += offset.z + additionalZOffset;
 					parent.put(element, newData);
 					break;
 				}
-				case NORMAL:
-					float[] newData = Arrays.copyOf(data, data.length);					
-					newData[0] = 1F;
-//					newData[1] = 1.87F;
-//					newData[2] = 1.87F;
-//					newData[3] = 1.87F;
-					parent.put(element, newData);
-					break;
 				default: {
 					parent.put(element, data);
 					break;
