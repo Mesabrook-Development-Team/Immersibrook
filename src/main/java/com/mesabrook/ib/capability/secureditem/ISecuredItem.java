@@ -12,6 +12,8 @@ public interface ISecuredItem {
 	void setInnerStack(ItemStack stack);
 	int getHomeSpot();
 	void setHomeSpot(int spot);
+	double getResetDistance();
+	void setResetDistance(double distance);
 	
 	public static class Impl implements ISecuredItem
 	{
@@ -19,6 +21,7 @@ public interface ISecuredItem {
 		private int homeSpot;
 		private long locationIDOwner;
 		ItemStack innerStack;
+		private double resetDistance;
 
 		@Override
 		public BlockPos getHomeLocation() {
@@ -67,6 +70,14 @@ public interface ISecuredItem {
 		@Override
 		public void setHomeSpot(int spot) {
 			homeSpot = spot;
+		}
+
+		public double getResetDistance() {
+			return resetDistance;
+		}
+
+		public void setResetDistance(double resetDistance) {
+			this.resetDistance = resetDistance;
 		}
 		
 		

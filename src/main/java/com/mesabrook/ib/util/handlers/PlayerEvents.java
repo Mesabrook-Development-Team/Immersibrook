@@ -1,12 +1,20 @@
 package com.mesabrook.ib.util.handlers;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.Optional;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
+import com.mesabrook.ib.blocks.sco.BlockShelf;
+import com.mesabrook.ib.blocks.te.ShelvingTileEntity;
+import com.mesabrook.ib.blocks.te.ShelvingTileEntity.ProductSpot;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
+import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
+import com.mesabrook.ib.capability.secureditem.ISecuredItem;
 import com.mesabrook.ib.init.ModEnchants;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.ItemSponge;
@@ -59,6 +67,7 @@ import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -607,5 +616,69 @@ public class PlayerEvents
 		IEmployeeCapability oldEmployeeCapability = e.getOriginal().getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
 		IEmployeeCapability newEmployeeCapability = e.getEntityPlayer().getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
 		newEmployeeCapability.setLocationEmployee(oldEmployeeCapability.getLocationEmployee());
+	}
+	
+	@SubscribeEvent
+	public void onPlayerUpdateEvent(LivingUpdateEvent e)
+	{
+		if (e.getEntityLiving().world.isRemote || (Math.abs(e.getEntityLiving().motionX) < 0.1 && Math.abs(e.getEntityLiving().motionY) < 0.1 && Math.abs(e.getEntityLiving().motionZ) < 0.1))
+		{
+			return;
+		}
+		
+		if (e.getEntityLiving() instanceof EntityPlayer)
+		{
+			EntityPlayer player = (EntityPlayer)e.getEntityLiving();
+			IEmployeeCapability cap = player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
+			for(ItemStack stack : player.inventory.mainInventory.stream().filter(is -> is.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null)).collect(Collectors.toSet()))
+			{
+				ISecuredItem securedItem = stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
+				if (securedItem.getHomeLocation().getY() == -1 || cap.getLocationID() == securedItem.getLocationIDOwner())
+				{
+					continue;
+				}
+				
+				if (securedItem.getHomeLocation().getDistance((int)player.posX, (int)player.posY, (int)player.posZ) > securedItem.getResetDistance())
+				{
+					IBlockState state = player.world.getBlockState(securedItem.getHomeLocation());
+					if (!(state.getBlock() instanceof BlockShelf))
+					{
+						continue;
+					}
+					
+					ShelvingTileEntity shelf = (ShelvingTileEntity)player.world.getTileEntity(securedItem.getHomeLocation());
+					if (shelf == null)
+					{
+						continue;
+					}
+					
+					Optional<ProductSpot> spot = Arrays.stream(shelf.getProductSpots()).filter(ps -> ps.getPlacementID() == securedItem.getHomeSpot()).findFirst();
+					if (spot == null || !spot.isPresent())
+					{
+						continue;
+					}
+					
+					ItemStack[] stackArray = spot.get().getItems();
+					if (!stackArray[stackArray.length - 1].isEmpty())
+					{
+						continue;
+					}
+					
+					int indexToFill = -1;
+					for(int i = 0; i < stackArray.length; i++)
+					{
+						if (stackArray[i].isEmpty())
+						{
+							indexToFill = i;
+							break;
+						}
+					}
+					stackArray[indexToFill] = stack.copy();
+					stack.shrink(stack.getCount());
+					shelf.markDirty();
+					player.world.notifyBlockUpdate(shelf.getPos(), state, state, 3);
+				}
+			}
+		}
 	}
 }

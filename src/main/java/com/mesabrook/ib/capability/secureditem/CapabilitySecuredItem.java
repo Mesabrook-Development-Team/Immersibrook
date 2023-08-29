@@ -29,6 +29,7 @@ public class CapabilitySecuredItem {
 			tag.setLong("locationIDOwner", instance.getLocationIDOwner());
 			tag.setTag("innerStack", instance.getInnerStack().serializeNBT());
 			tag.setInteger("homeSpot", instance.getHomeSpot());
+			tag.setDouble("resetDistance", instance.getResetDistance());
 			return tag;
 		}
 
@@ -39,6 +40,7 @@ public class CapabilitySecuredItem {
 			instance.setLocationIDOwner(compound.getLong("locationIDOwner"));
 			instance.setInnerStack(new ItemStack(compound.getCompoundTag("innerStack")));
 			instance.setHomeSpot(compound.getInteger("homeSpot"));
+			instance.setResetDistance(compound.getDouble("resetDistance"));
 		}
 		
 	}

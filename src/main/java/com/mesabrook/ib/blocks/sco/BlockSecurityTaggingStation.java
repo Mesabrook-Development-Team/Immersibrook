@@ -2,6 +2,7 @@ package com.mesabrook.ib.blocks.sco;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.ImmersiblockRotational;
+import com.mesabrook.ib.blocks.te.TileEntityTaggingStation;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.util.ModUtils;
@@ -11,6 +12,7 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
@@ -40,5 +42,15 @@ public class BlockSecurityTaggingStation extends ImmersiblockRotational {
 			playerIn.openGui(Main.instance, Reference.GUI_TAGGING_STATION, worldIn, pos.getX(), pos.getY(), pos.getZ());
 		}
 		return true;
+	}
+	
+	@Override
+	public boolean hasTileEntity(IBlockState state) {
+		return true;
+	}
+	
+	@Override
+	public TileEntity createTileEntity(World world, IBlockState state) {
+		return new TileEntityTaggingStation();
 	}
 }

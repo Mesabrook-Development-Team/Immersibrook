@@ -19,6 +19,7 @@ import com.mesabrook.ib.net.sco.StoreModeGuiLocationSelectedPacket;
 import com.mesabrook.ib.net.sco.StoreModeGuiOpenedPacket;
 import com.mesabrook.ib.net.sco.StoreModeGuiPacket;
 import com.mesabrook.ib.net.sco.StoreModeGuiResponse;
+import com.mesabrook.ib.net.sco.TaggingStationDistanceChangedPacket;
 import com.mesabrook.ib.net.telecom.AcceptCallPacket;
 import com.mesabrook.ib.net.telecom.ActivateChooseNumberPacket;
 import com.mesabrook.ib.net.telecom.ActivateNoReceptionPacket;
@@ -118,6 +119,7 @@ public class PacketHandler
 		INSTANCE.registerMessage(StoreModeGuiResponse.Handler.class, StoreModeGuiResponse.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(StoreModeGuiLocationSelectedPacket.Handler.class, StoreModeGuiLocationSelectedPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(EmployeeCapServerToClientPacket.Handler.class, EmployeeCapServerToClientPacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(TaggingStationDistanceChangedPacket.Handler.class, TaggingStationDistanceChangedPacket.class, nextID(), Side.SERVER);
 		
 		// SELFCHECKOUT
 		INSTANCE.registerMessage(POSInitializeRegisterPacket.Handler.class, POSInitializeRegisterPacket.class, nextID(), Side.SERVER);

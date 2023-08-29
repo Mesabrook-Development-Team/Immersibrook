@@ -1,5 +1,7 @@
 package com.mesabrook.ib.blocks.container;
 
+import com.mesabrook.ib.blocks.te.ShelvingTileEntity;
+import com.mesabrook.ib.blocks.te.TileEntityTaggingStation;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
@@ -14,15 +16,16 @@ import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 
 public class ContainerTaggingStation extends Container {
 
 	private final InventoryPlayer playerInventory;
 	private final BlockPos taggingPos;
 	private final InventoryCrafting craftingInventory;
-	private final InventoryCraftResult craftResult;
+	public final InventoryCraftResult craftResult;
+	public double resetDistance;
 	public ContainerTaggingStation(InventoryPlayer playerInventory, BlockPos pos)
 	{
 		this.playerInventory = playerInventory;
@@ -33,7 +36,7 @@ public class ContainerTaggingStation extends Container {
 		// Hot bar
 		for(int i = 0; i < 9; i++)
 		{
-			addSlotToContainer(new Slot(playerInventory, i, 8 + i * 18, 101));
+			addSlotToContainer(new Slot(playerInventory, i, 8 + i * 18, 117));
 		}
 		
 		// Player inventory
@@ -49,7 +52,7 @@ public class ContainerTaggingStation extends Container {
 			
 			int column = i % 9;
 			
-			addSlotToContainer(new Slot(playerInventory, i, 8 + column * 18, 43 + 18 * row));
+			addSlotToContainer(new Slot(playerInventory, i, 8 + column * 18, 59 + 18 * row));
 		}
 		
 		// Crafting grid
@@ -63,17 +66,21 @@ public class ContainerTaggingStation extends Container {
 		addSlotToContainer(new Slot(craftingInventory, 1, 66, 14));
 		
 		addSlotToContainer(new Slot(craftResult, 0, 124, 14)
-				{
+				{					
 					@Override
-					public void onSlotChanged() {
-						super.onSlotChanged();
-						if (getStack().isEmpty())
-						{
-							craftingInventory.decrStackSize(0, 1);
-							craftingInventory.removeStackFromSlot(1);
-						}
+					public ItemStack onTake(EntityPlayer thePlayer, ItemStack stack) {
+						craftingInventory.decrStackSize(0, 1);
+						craftingInventory.removeStackFromSlot(1);
+						return super.onTake(thePlayer, stack);
 					}
 				});
+		
+		TileEntity te = playerInventory.player.world.getTileEntity(pos);
+		if (te instanceof TileEntityTaggingStation)
+		{
+			TileEntityTaggingStation tagStation = (TileEntityTaggingStation)te;
+			resetDistance = tagStation.getDistanceDefault();
+		}
 	}
 	
 	@Override
@@ -129,15 +136,25 @@ public class ContainerTaggingStation extends Container {
 				playerIn.dropItem(stack, false);
 			}
 		}
+		
+		if (!playerIn.world.isRemote)
+		{
+			TileEntity te = playerIn.world.getTileEntity(taggingPos);
+			if (te != null && te instanceof TileEntityTaggingStation)
+			{
+				TileEntityTaggingStation tagStation = (TileEntityTaggingStation)te;
+				tagStation.setDistanceDefault(resetDistance);
+				playerIn.world.notifyBlockUpdate(taggingPos, playerIn.world.getBlockState(taggingPos), playerIn.world.getBlockState(taggingPos), 3);
+			}
+		}
 	}
 	
 	@Override
 	public void onCraftMatrixChanged(IInventory inventoryIn) {
-		super.onCraftMatrixChanged(inventoryIn);
-		
-		if (inventoryIn.getStackInSlot(0).getItem() != ModItems.SECURITY_BOX || inventoryIn.getStackInSlot(1).isEmpty())
+		if (inventoryIn.getStackInSlot(0).getItem() != ModItems.SECURITY_BOX || inventoryIn.getStackInSlot(1).isEmpty() || getResetDistance() <= 0)
 		{
 			craftResult.setInventorySlotContents(0, ItemStack.EMPTY);
+			super.onCraftMatrixChanged(inventoryIn);
 			return;
 		}
 		
@@ -147,6 +164,21 @@ public class ContainerTaggingStation extends Container {
 		IEmployeeCapability empCap = playerInventory.player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
 		item.setInnerStack(stackToWrap);
 		item.setLocationIDOwner(empCap.getLocationID());
+		item.setResetDistance(resetDistance);
 		craftResult.setInventorySlotContents(0, securedItem);
+		super.onCraftMatrixChanged(inventoryIn);
+	}
+	
+	public double getResetDistance()
+	{
+		return resetDistance;
+	}
+	
+	public void setResetDistance(double resetDistance)
+	{
+		this.resetDistance = resetDistance;
+		
+		onCraftMatrixChanged(craftingInventory);
+		detectAndSendChanges();
 	}
 }
