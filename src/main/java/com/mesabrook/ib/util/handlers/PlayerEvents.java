@@ -621,11 +621,11 @@ public class PlayerEvents
 	@SubscribeEvent
 	public void onPlayerUpdateEvent(LivingUpdateEvent e)
 	{
-		if (e.getEntityLiving().world.isRemote || (Math.abs(e.getEntityLiving().motionX) < 0.1 && Math.abs(e.getEntityLiving().motionY) < 0.1 && Math.abs(e.getEntityLiving().motionZ) < 0.1))
+		if (e.getEntityLiving().world.isRemote)
 		{
 			return;
 		}
-		
+
 		if (e.getEntityLiving() instanceof EntityPlayer)
 		{
 			EntityPlayer player = (EntityPlayer)e.getEntityLiving();
