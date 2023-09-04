@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.UUID;
 
 import com.mesabrook.ib.apimodels.company.Register;
+import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
 import com.mesabrook.ib.net.sco.POSInitializeRegisterResponsePacket;
 import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.apiaccess.DataAccess.API;
@@ -31,6 +32,7 @@ import net.minecraftforge.items.ItemStackHandler;
 public class TileEntityRegister extends TileEntity implements ITickable {
 	private String name = "";
 	private UUID identifier = new UUID(0L, 0L);
+	private long locationIDOwner = 0;
 	private final RegisterItemHandler itemHandler = new RegisterItemHandler(this);
 	
 	RegisterStatuses registerStatus = RegisterStatuses.Uninitialized;
@@ -47,6 +49,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		identifier = compound.getUniqueId("identifier");
 		name = compound.getString("name");
 		registerStatus = RegisterStatuses.values()[compound.getInteger("registerStatus")];
+		locationIDOwner = compound.getLong("locationIDOwner");
 		if (compound.hasKey("inventory"))
 		{
 			CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.readNBT(itemHandler, null, compound.getTag("inventory"));
@@ -58,6 +61,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		compound.setUniqueId("identifier", identifier);
 		compound.setString("name", name);
 		compound.setInteger("registerStatus", registerStatus.ordinal());
+		compound.setLong("locationIDOwner", locationIDOwner);
 		compound.setTag("inventory", CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.writeNBT(itemHandler, null));
 		return super.writeToNBT(compound);
 	}
@@ -67,6 +71,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		NBTTagCompound compound = super.getUpdateTag();
 		compound.setInteger("registerStatus", registerStatus.ordinal());
 		compound.setString("name", name);
+		compound.setLong("locationIDOwner", locationIDOwner);
 		compound.setTag("inventory", CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.writeNBT(itemHandler, null));
 		return compound;
 	}
@@ -76,6 +81,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		super.handleUpdateTag(tag);
 		name = tag.getString("name");
 		registerStatus = RegisterStatuses.values()[tag.getInteger("registerStatus")];
+		locationIDOwner = tag.getLong("locationIDOwner");
 		for(int i = 0; i < itemHandler.getSlots(); i++)
 		{
 			itemHandler.extractItemInternalOnly(i);
@@ -123,8 +129,24 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		}
 		
 		this.registerStatus = registerStatus;
-		markDirty();
 		
+		markDirty();
+		getWorld().notifyBlockUpdate(getPos(), getWorld().getBlockState(getPos()), getWorld().getBlockState(getPos()), 3);
+	}
+
+	public long getLocationIDOwner() {
+		return locationIDOwner;
+	}
+
+	public void setLocationIDOwner(long locationIDOwner) {
+		if (this.locationIDOwner == locationIDOwner)
+		{
+			return;
+		}
+		
+		this.locationIDOwner = locationIDOwner;
+		
+		markDirty();
 		getWorld().notifyBlockUpdate(getPos(), getWorld().getBlockState(getPos()), getWorld().getBlockState(getPos()), 3);
 	}
 
@@ -208,23 +230,31 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 			}
 			
 			Register result = statusUpdateTask.getTask().getResult(Register.class);
-			if (result != null && result.CurrentStatus != null && result.CurrentStatus.Status != null)
+			if (result != null)
 			{
-				switch(result.CurrentStatus.Status)
+				if (result.CurrentStatus != null && result.CurrentStatus.Status != null)
 				{
-					case Offline:
-						setRegisterStatus(RegisterStatuses.Offline);
-						break;
-					case InternalStorageFull:
-						setRegisterStatus(RegisterStatuses.InternalStorageFull);
-						break;
-					case Online:
-						RegisterStatuses currentStatus = getRegisterStatus();
-						if (!currentStatus.isOperationalState())
-						{
-							setRegisterStatus(RegisterStatuses.Online);
-						}
-						break;
+					switch(result.CurrentStatus.Status)
+					{
+						case Offline:
+							setRegisterStatus(RegisterStatuses.Offline);
+							break;
+						case InternalStorageFull:
+							setRegisterStatus(RegisterStatuses.InternalStorageFull);
+							break;
+						case Online:
+							RegisterStatuses currentStatus = getRegisterStatus();
+							if (!currentStatus.isOperationalState())
+							{
+								setRegisterStatus(RegisterStatuses.Online);
+							}
+							break;
+					}
+				}
+				
+				if (result.LocationID != null)
+				{
+					setLocationIDOwner(result.LocationID);
 				}
 			}
 			else
@@ -318,7 +348,8 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		
 		@Override
 		public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
-			if (!register.getRegisterStatus().isOperationalState)
+			if (!register.getRegisterStatus().isOperationalState || register.getLocationIDOwner() == 0 ||
+					(stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null) && stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null).getLocationIDOwner() != register.getLocationIDOwner()))
 			{
 				return stack;
 			}

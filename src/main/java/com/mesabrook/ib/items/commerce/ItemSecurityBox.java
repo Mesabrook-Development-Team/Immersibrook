@@ -51,7 +51,7 @@ public class ItemSecurityBox extends Item implements IHasModel {
 	
 	@Override
 	public int getEntityLifespan(ItemStack itemStack, World world) { // DEBUG
-		return 40;
+		return super.getEntityLifespan(itemStack, world);
 	}
 	
 	@Override
@@ -107,6 +107,10 @@ public class ItemSecurityBox extends Item implements IHasModel {
 				shelf.markDirty();
 			}
 		};
+		newEntity.setPickupDelay(40);
+		newEntity.motionX = location.motionX;
+		newEntity.motionY = location.motionY;
+		newEntity.motionZ = location.motionZ;
 		return newEntity;
 	}
 }

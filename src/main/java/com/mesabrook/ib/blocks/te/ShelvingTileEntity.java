@@ -1,5 +1,6 @@
 package com.mesabrook.ib.blocks.te;
 
+import java.awt.TextComponent;
 import java.util.HashMap;
 
 import com.mesabrook.ib.blocks.sco.ProductPlacement;
@@ -20,6 +21,7 @@ import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.common.util.INBTSerializable;
@@ -128,6 +130,11 @@ public class ShelvingTileEntity extends TileEntity {
 		if (placedStack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
 		{
 			ISecuredItem secureCap = placedStack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
+			if (secureCap.getLocationIDOwner() != 0 && secureCap.getLocationIDOwner() != getLocationIDOwner())
+			{
+				player.sendMessage(new TextComponentString(TextFormatting.RED + "This item belongs to a different store"));
+				return;
+			}
 			secureCap.setHomeLocation(getPos());
 			secureCap.setHomeSpot(spot.placementID);
 		}
@@ -147,7 +154,7 @@ public class ShelvingTileEntity extends TileEntity {
 		if (heldItem.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
 		{
 			ISecuredItem secureCap = heldItem.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
-			if (secureCap.getHomeLocation().getY() != -1 && (!secureCap.getHomeLocation().equals(getPos()) || secureCap.getHomeSpot() != spot.placementID))
+			if (secureCap.getHomeLocation().getY() == -1 || !secureCap.getHomeLocation().equals(getPos()) || secureCap.getHomeSpot() != spot.placementID)
 			{
 				return;
 			}
