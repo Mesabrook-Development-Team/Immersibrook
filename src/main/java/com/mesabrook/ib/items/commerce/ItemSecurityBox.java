@@ -107,7 +107,6 @@ public class ItemSecurityBox extends Item implements IHasModel {
 				shelf.markDirty();
 			}
 		};
-		newEntity.setPickupDelay(30);
 		return newEntity;
 	}
 }

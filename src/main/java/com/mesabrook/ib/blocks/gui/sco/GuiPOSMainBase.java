@@ -16,5 +16,6 @@ public abstract class GuiPOSMainBase extends GuiPOSBase {
 	@Override
 	protected void doDraw(int mouseX, int mouseY, float partialTicks) {
 		super.doDraw(mouseX, mouseY, partialTicks);
+		fontRenderer.drawString("Self-Checkout System", innerLeft + 46, innerTop + 10, 0xFFFFFF);
 	}
 }

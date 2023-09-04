@@ -1,45 +1,56 @@
 package com.mesabrook.ib.blocks.te;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.UUID;
 
 import com.mesabrook.ib.apimodels.company.Register;
-import com.mesabrook.ib.apimodels.company.RegisterStatus.Statuses;
 import com.mesabrook.ib.net.sco.POSInitializeRegisterResponsePacket;
 import com.mesabrook.ib.util.apiaccess.DataAccess;
+import com.mesabrook.ib.util.apiaccess.DataAccess.API;
+import com.mesabrook.ib.util.apiaccess.DataAccess.AuthenticationStatus;
+import com.mesabrook.ib.util.apiaccess.DataAccess.GenericErrorResponse;
 import com.mesabrook.ib.util.apiaccess.DataRequestQueue;
 import com.mesabrook.ib.util.apiaccess.DataRequestTask;
 import com.mesabrook.ib.util.apiaccess.DataRequestTaskStatus;
 import com.mesabrook.ib.util.apiaccess.GetData;
-import com.mesabrook.ib.util.apiaccess.DataAccess.API;
-import com.mesabrook.ib.util.apiaccess.DataAccess.AuthenticationStatus;
-import com.mesabrook.ib.util.apiaccess.DataAccess.GenericErrorResponse;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class TileEntityRegister extends TileEntity implements ITickable {
 	private String name = "";
 	private UUID identifier = new UUID(0L, 0L);
-	RegisterStatuses registerStatus = RegisterStatuses.Uninitialized;
+	private final RegisterItemHandler itemHandler = new RegisterItemHandler(this);
 	
+	RegisterStatuses registerStatus = RegisterStatuses.Uninitialized;
+
 	// Runtime data
 	DataRequestTask statusUpdateTask = null;
 	DataRequestTask initializeTask = null;
 	Calendar nextUpdateTime = Calendar.getInstance();
 	
+	// Data methods
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
 		identifier = compound.getUniqueId("identifier");
 		name = compound.getString("name");
 		registerStatus = RegisterStatuses.values()[compound.getInteger("registerStatus")];
+		if (compound.hasKey("inventory"))
+		{
+			CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.readNBT(itemHandler, null, compound.getTag("inventory"));
+		}
 	}
 	
 	@Override
@@ -47,6 +58,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		compound.setUniqueId("identifier", identifier);
 		compound.setString("name", name);
 		compound.setInteger("registerStatus", registerStatus.ordinal());
+		compound.setTag("inventory", CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.writeNBT(itemHandler, null));
 		return super.writeToNBT(compound);
 	}
 	
@@ -55,6 +67,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		NBTTagCompound compound = super.getUpdateTag();
 		compound.setInteger("registerStatus", registerStatus.ordinal());
 		compound.setString("name", name);
+		compound.setTag("inventory", CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.writeNBT(itemHandler, null));
 		return compound;
 	}
 	
@@ -63,6 +76,14 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		super.handleUpdateTag(tag);
 		name = tag.getString("name");
 		registerStatus = RegisterStatuses.values()[tag.getInteger("registerStatus")];
+		for(int i = 0; i < itemHandler.getSlots(); i++)
+		{
+			itemHandler.extractItemInternalOnly(i);
+		}
+		if (tag.hasKey("inventory"))
+		{
+			CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.readNBT(itemHandler, null, tag.getTag("inventory"));
+		}
 	}
 	
 	@Override
@@ -76,9 +97,25 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		handleUpdateTag(pkt.getNbtCompound());
 	}
 	
+	@Override
+	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
+	}
+	
+	@Override
+	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+		if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+		{
+			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(itemHandler);
+		}
+		
+		return null;
+	}
+	
+	// Getters/setters
 	public RegisterStatuses getRegisterStatus() { return registerStatus; }
 	
-	private void setRegisterStatus(RegisterStatuses registerStatus)
+	public void setRegisterStatus(RegisterStatuses registerStatus)
 	{
 		if (this.registerStatus == registerStatus)
 		{
@@ -90,16 +127,8 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		
 		getWorld().notifyBlockUpdate(getPos(), getWorld().getBlockState(getPos()), getWorld().getBlockState(getPos()), 3);
 	}
-	
-	// Called from BlockRegister during random ticks
-	public void onRandomTick()
-	{
-		if (statusUpdateTask != null || identifier == null)
-		{
-			return;
-		}		
-	}
 
+	// Operational methods
 	@Override
 	public void update() {	
 		if (getWorld().isRemote)
@@ -190,7 +219,11 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 						setRegisterStatus(RegisterStatuses.InternalStorageFull);
 						break;
 					case Online:
-						setRegisterStatus(RegisterStatuses.Online);
+						RegisterStatuses currentStatus = getRegisterStatus();
+						if (!currentStatus.isOperationalState())
+						{
+							setRegisterStatus(RegisterStatuses.Online);
+						}
 						break;
 				}
 			}
@@ -221,13 +254,106 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		DataRequestQueue.INSTANCE.addTask(initializeTask);
 	}
 	
+	public boolean insertItemInFirstAvailableSlot(ItemStack stack)
+	{
+		IItemHandler itemHandler = getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+		for(int i = 0; i < itemHandler.getSlots(); i++)
+		{
+			ItemStack stackInSlot = itemHandler.getStackInSlot(i);
+			if (stackInSlot.isEmpty())
+			{
+				itemHandler.insertItem(i, stack, false);
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	public boolean hasItemsForSession()
+	{
+		IItemHandler itemHandler = getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+		for(int i = 0; i < itemHandler.getSlots(); i++)
+		{
+			ItemStack stackInSlot = itemHandler.getStackInSlot(i);
+			if (!stackInSlot.isEmpty())
+			{
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
 	public enum RegisterStatuses
 	{
-		WaitingForNetwork,
-		Uninitialized,
-		Initializing,
-		Offline,
-		InternalStorageFull,
-		Online;
+		WaitingForNetwork(false),
+		Uninitialized(false),
+		Initializing(false),
+		Offline(false),
+		InternalStorageFull(false),
+		Online(true),
+		InSession(true);
+		
+		private boolean isOperationalState;
+		private RegisterStatuses(boolean isOperationalState)
+		{
+			this.isOperationalState = isOperationalState;
+		}
+		
+		public boolean isOperationalState()
+		{
+			return isOperationalState;
+		}
+	}
+
+	public static class RegisterItemHandler extends ItemStackHandler
+	{
+		TileEntityRegister register;
+		public RegisterItemHandler(TileEntityRegister register)
+		{
+			super(100);
+			this.register = register;
+		}
+		
+		@Override
+		public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
+			if (!register.getRegisterStatus().isOperationalState)
+			{
+				return stack;
+			}
+			
+			return super.insertItem(slot, stack, simulate);
+		}
+		
+		@Override
+		public ItemStack extractItem(int slot, int amount, boolean simulate) {
+			return ItemStack.EMPTY;
+		}
+		
+		public ItemStack extractItemInternalOnly(int slot)
+		{
+			int maxAmountForSlot = getSlotLimit(slot);
+			ItemStack retVal = super.extractItem(slot, maxAmountForSlot, false);
+			for(int i = slot + 1; i < getSlots(); i++)
+			{
+				ItemStack nextStack = getStackInSlot(i);
+				if (!nextStack.isEmpty())
+				{
+					nextStack = super.extractItem(i, nextStack.getCount(), false);
+					insertItem(i - 1, nextStack, false);
+				}
+			}
+			
+			return retVal;
+		}
+		
+		@Override
+		protected void onContentsChanged(int slot) {
+			super.onContentsChanged(slot);
+			register.setRegisterStatus(RegisterStatuses.InSession);
+			register.markDirty();
+			register.world.notifyBlockUpdate(register.pos, register.world.getBlockState(register.pos), register.world.getBlockState(register.pos), 3);
+		}
 	}
 }

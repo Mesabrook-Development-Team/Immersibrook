@@ -25,6 +25,9 @@ public class GuiPOSStarter extends GuiPOSBase {
 			case Online:
 				Minecraft.getMinecraft().displayGuiScreen(new GuiPOSMainWelcome(register));
 				break;
+			case InSession:
+				Minecraft.getMinecraft().displayGuiScreen(new GuiPOSInSession(register));
+				break;
 			default:
 				drawCenteredString(fontRenderer, "error: unable to determine status", width / 2, height / 2 - (fontRenderer.FONT_HEIGHT / 2), 0xFFFFFF);
 		}		

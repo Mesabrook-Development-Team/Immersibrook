@@ -24,7 +24,6 @@ public class BlockRegister extends ImmersiblockRotationalManyBB {
 	
 	public BlockRegister() {
 		super("sco_pos", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, true, monitorBoundingBox, cardReaderBoundingBox);
-		setTickRandomly(true);
 	}
 	
 	@Override
@@ -52,22 +51,5 @@ public class BlockRegister extends ImmersiblockRotationalManyBB {
 	@Override
 	public TileEntity createTileEntity(World world, IBlockState state) {
 		return new TileEntityRegister();
-	}
-	
-	@Override
-	public void randomTick(World worldIn, BlockPos pos, IBlockState state, Random random) {
-		super.randomTick(worldIn, pos, state, random);
-		if (worldIn.isRemote)
-		{
-			return;
-		}
-		
-		TileEntity te = worldIn.getTileEntity(pos);
-		if (te == null || !(te instanceof TileEntityRegister))
-		{
-			return;
-		}
-		
-		((TileEntityRegister)te).onRandomTick();
 	}
 }

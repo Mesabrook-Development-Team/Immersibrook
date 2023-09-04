@@ -39,6 +39,7 @@ import com.mesabrook.ib.blocks.SignStand;
 import com.mesabrook.ib.blocks.Truss;
 import com.mesabrook.ib.blocks.food.FoodBlock;
 import com.mesabrook.ib.blocks.metro.TicketMachine;
+import com.mesabrook.ib.blocks.sco.BlockScanner;
 import com.mesabrook.ib.blocks.sco.BlockSecurityTaggingStation;
 import com.mesabrook.ib.blocks.sco.BlockShelf;
 import com.mesabrook.ib.blocks.sco.ProductPlacement;
@@ -1215,7 +1216,7 @@ public class ModBlocks
 
 	// Self-Checkout Blocks
 	public static final Block SCO_POS = new BlockRegister();
-	public static final Block SCO_SCANNER = new ImmersiblockRotational("sco_scanner", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
+	public static final Block SCO_SCANNER = new BlockScanner();
 	public static final Block SCO_BAGGING = new ImmersiblockRotational("sco_bagging", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
 
 	// Retail Shelving Blocks

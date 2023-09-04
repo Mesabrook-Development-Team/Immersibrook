@@ -13,8 +13,11 @@ import com.mesabrook.ib.net.SoundRandomizerPacket;
 import com.mesabrook.ib.net.VestTogglePacket;
 import com.mesabrook.ib.net.WallSignPacket;
 import com.mesabrook.ib.net.sco.EmployeeCapServerToClientPacket;
+import com.mesabrook.ib.net.sco.POSCancelSalePacket;
+import com.mesabrook.ib.net.sco.POSChangeStatusClientToServerPacket;
 import com.mesabrook.ib.net.sco.POSInitializeRegisterPacket;
 import com.mesabrook.ib.net.sco.POSInitializeRegisterResponsePacket;
+import com.mesabrook.ib.net.sco.POSRemoveItemPacket;
 import com.mesabrook.ib.net.sco.StoreModeGuiLocationSelectedPacket;
 import com.mesabrook.ib.net.sco.StoreModeGuiOpenedPacket;
 import com.mesabrook.ib.net.sco.StoreModeGuiPacket;
@@ -124,6 +127,9 @@ public class PacketHandler
 		// SELFCHECKOUT
 		INSTANCE.registerMessage(POSInitializeRegisterPacket.Handler.class, POSInitializeRegisterPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(POSInitializeRegisterResponsePacket.Handler.class, POSInitializeRegisterResponsePacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(POSCancelSalePacket.Handler.class, POSCancelSalePacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(POSChangeStatusClientToServerPacket.Handler.class, POSChangeStatusClientToServerPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(POSRemoveItemPacket.Handler.class, POSRemoveItemPacket.class, nextID(), Side.SERVER);
 	}
 
 	private static int nextID()
