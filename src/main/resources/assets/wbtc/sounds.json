@@ -6,6 +6,20 @@
 			"stream": true
 		}]
 	},
+	"tape_measure_open": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:tape_measure_open",
+			"stream": true
+		}]
+	},
+	"tape_measure_close": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:tape_measure_close",
+			"stream": true
+		}]
+	},
 	"ration_open": {
 		"category": "master",
 		"sounds": [{

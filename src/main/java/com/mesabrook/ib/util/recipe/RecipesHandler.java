@@ -1,6 +1,7 @@
 package com.mesabrook.ib.util.recipe;
 
 import blusunrize.immersiveengineering.api.crafting.*;
+import blusunrize.immersiveengineering.api.tool.ToolboxHandler;
 import blusunrize.immersiveengineering.common.util.compat.crafttweaker.*;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModBlocks;
@@ -35,7 +36,6 @@ public class RecipesHandler
 			// Emergency Water Sachet Bottling Machine Recipe Thing
 			FluidStack water = new FluidStack(FluidRegistry.WATER, 1000);
 			BottlingMachineRecipe.addRecipe(new ItemStack(ModItems.WATER_SACHET, 1), new ItemStack(ModItems.PLASTIC_SILVER), water);
-
 
 			// <color> Plastic Ingot > <color> Raw Plastic Dust.
 			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_WHITE, outputAmount), new ItemStack(ModItems.PLASTIC_WHITE), 10);
