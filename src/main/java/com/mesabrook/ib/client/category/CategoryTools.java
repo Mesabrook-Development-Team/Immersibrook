@@ -50,6 +50,7 @@ public class CategoryTools extends AbstractCategory {
 		// Tools
 		add(ModItems.ICE_CHISEL);
 		add(ModItems.FLAGGER_STOP);
+		add(ModItems.TAPE_MEASURE);
 
 		// Rations
 		add(ModItems.ES_RATION);

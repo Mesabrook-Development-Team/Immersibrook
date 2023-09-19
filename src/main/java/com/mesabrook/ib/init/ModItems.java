@@ -7,10 +7,7 @@ import com.mesabrook.ib.items.commerce.*;
 import com.mesabrook.ib.items.misc.*;
 import com.mesabrook.ib.items.misc.ItemStamp.StampTypes;
 import com.mesabrook.ib.items.record.MemeRecord;
-import com.mesabrook.ib.items.tools.ItemBanHammer;
-import com.mesabrook.ib.items.tools.ItemGavel;
-import com.mesabrook.ib.items.tools.ItemIceChisel;
-import com.mesabrook.ib.items.tools.ItemManholeHook;
+import com.mesabrook.ib.items.tools.*;
 import com.mesabrook.ib.items.weapons.ItemWeapon;
 import com.mesabrook.ib.util.ArmorMaterialRegistry;
 import com.mesabrook.ib.util.ToolMaterialRegistry;
@@ -463,4 +460,7 @@ public class ModItems
 	// Rations
 	public static final Item ES_RATION = new ItemRation("ration_1");
 	public static final Item RS_RATION = new ItemRation("ration_2");
+
+	// Tape Measure
+	public static final Item TAPE_MEASURE = new ItemTapeMeasure("tape_measure");
 }
