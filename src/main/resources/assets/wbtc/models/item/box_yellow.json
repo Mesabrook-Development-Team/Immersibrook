@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "wbtc:misc/box_back_white",
-		"1": "wbtc:misc/box_black",
-		"particle": "wbtc:misc/box_back_yellow"
+		"1": "wbtc:misc/box_yellow",
+		"particle": "wbtc:misc/box_black"
 	},
 	"elements": [
 		{
