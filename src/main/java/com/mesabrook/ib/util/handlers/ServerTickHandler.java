@@ -1,5 +1,6 @@
 package com.mesabrook.ib.util.handlers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -7,19 +8,21 @@ import java.util.UUID;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.apimodels.company.LocationEmployee;
+import com.mesabrook.ib.apimodels.company.LocationItem;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
-import com.mesabrook.ib.net.sco.EmployeeCapServerToClientPacket;
+import com.mesabrook.ib.net.sco.POSFetchPriceResponsePacket;
 import com.mesabrook.ib.net.sco.StoreModeGuiResponse;
 import com.mesabrook.ib.util.apiaccess.DataAccess;
+import com.mesabrook.ib.util.apiaccess.DataAccess.API;
+import com.mesabrook.ib.util.apiaccess.DataAccess.GenericErrorResponse;
 import com.mesabrook.ib.util.apiaccess.DataRequestQueue;
 import com.mesabrook.ib.util.apiaccess.DataRequestTask;
 import com.mesabrook.ib.util.apiaccess.DataRequestTaskStatus;
 import com.mesabrook.ib.util.apiaccess.GetData;
-import com.mesabrook.ib.util.apiaccess.DataAccess.API;
-import com.mesabrook.ib.util.apiaccess.DataAccess.GenericErrorResponse;
 
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -46,6 +49,7 @@ public class ServerTickHandler {
 		}
 		checkStoreModeRequests();
 		updateEmployeeStoreModes();
+		handlePriceLookups();
 	}
 	
 	public static HashMap<UUID, DataRequestTask> storeModeRequestsByUser = new HashMap<UUID, DataRequestTask>();
@@ -159,5 +163,39 @@ public class ServerTickHandler {
 		DataRequestTask task = new DataRequestTask(get);
 		employeeStoreModeRequests.put(player.getUniqueID(), task);
 		DataRequestQueue.INSTANCE.addTask(task);
+	}
+	
+	public static ArrayList<DataRequestTask> priceLookupTasks = new ArrayList<>();
+	private static void handlePriceLookups()
+	{
+		ArrayList<DataRequestTask> tasksToRemove = new ArrayList<>();
+		for(DataRequestTask task : priceLookupTasks)
+		{
+			if (task.getStatus() == DataRequestTaskStatus.Complete)
+			{
+				POSFetchPriceResponsePacket response = new POSFetchPriceResponsePacket();
+				response.pos = (BlockPos)task.getData().get("pos");
+				response.slotId = (int)task.getData().get("slotId");
+				
+				UUID playerID = (UUID)task.getData().get("playerId");
+				
+				DataAccess access = task.getTask();
+				response.success = access.getRequestSuccessful();
+				if (access.getRequestSuccessful())
+				{
+					LocationItem locationItem = access.getResult(LocationItem.class);
+					response.price = locationItem.BasePrice;
+				}
+				
+				EntityPlayerMP player = FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerByUUID(playerID);
+				PacketHandler.INSTANCE.sendTo(response, player);
+				tasksToRemove.add(task);
+			}
+		}
+		
+		for(DataRequestTask taskToRemove : tasksToRemove)
+		{
+			priceLookupTasks.remove(taskToRemove);
+		}
 	}
 }

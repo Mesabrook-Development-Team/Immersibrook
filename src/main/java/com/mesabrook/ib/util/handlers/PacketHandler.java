@@ -15,6 +15,8 @@ import com.mesabrook.ib.net.WallSignPacket;
 import com.mesabrook.ib.net.sco.EmployeeCapServerToClientPacket;
 import com.mesabrook.ib.net.sco.POSCancelSalePacket;
 import com.mesabrook.ib.net.sco.POSChangeStatusClientToServerPacket;
+import com.mesabrook.ib.net.sco.POSFetchPricePacket;
+import com.mesabrook.ib.net.sco.POSFetchPriceResponsePacket;
 import com.mesabrook.ib.net.sco.POSInitializeRegisterPacket;
 import com.mesabrook.ib.net.sco.POSInitializeRegisterResponsePacket;
 import com.mesabrook.ib.net.sco.POSRemoveItemPacket;
@@ -130,6 +132,8 @@ public class PacketHandler
 		INSTANCE.registerMessage(POSCancelSalePacket.Handler.class, POSCancelSalePacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(POSChangeStatusClientToServerPacket.Handler.class, POSChangeStatusClientToServerPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(POSRemoveItemPacket.Handler.class, POSRemoveItemPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(POSFetchPricePacket.Handler.class, POSFetchPricePacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(POSFetchPriceResponsePacket.Handler.class, POSFetchPriceResponsePacket.class, nextID(), Side.CLIENT);
 	}
 
 	private static int nextID()

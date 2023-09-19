@@ -61,12 +61,13 @@ public class POSCancelSalePacket implements IMessage {
 			BlockPos spawnPos = message.pos.offset(state.getValue(BlockRegister.FACING));
 			for(int i = 0; i < handler.getSlots(); i++)
 			{
-				ItemStack stack = handler.extractItemInternalOnly(i);
+				ItemStack stack = handler.getStackInSlot(i);
 				if (!stack.isEmpty())
 				{
 					InventoryHelper.spawnItemStack(world, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), stack);
 				}
 			}
+			handler.dumpInventory();
 			register.setRegisterStatus(RegisterStatuses.Online);
 			register.markDirty();
 			world.notifyBlockUpdate(message.pos, world.getBlockState(message.pos), world.getBlockState(message.pos), 3);

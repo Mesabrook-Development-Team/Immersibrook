@@ -1,5 +1,6 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.net.telecom.*;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.config.ModConfig;

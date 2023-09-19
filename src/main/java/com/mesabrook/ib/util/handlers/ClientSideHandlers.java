@@ -1,5 +1,6 @@
 package com.mesabrook.ib.util.handlers;
 
+import java.math.BigDecimal;
 import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -16,6 +17,8 @@ import com.mesabrook.ib.blocks.BlockRegister;
 import com.mesabrook.ib.blocks.ImmersiblockRotationalManyBB;
 import com.mesabrook.ib.blocks.gui.GuiAboutImmersibrook;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSIdentifierSetup;
+import com.mesabrook.ib.blocks.gui.sco.GuiPOSInSession;
+import com.mesabrook.ib.blocks.gui.sco.GuiPOSPaymentBase;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSWaitingForNetwork;
 import com.mesabrook.ib.blocks.gui.sco.GuiStoreMode;
 import com.mesabrook.ib.blocks.gui.telecom.GuiCallEnd;
@@ -755,6 +758,37 @@ public class ClientSideHandlers
 		{
 			IEmployeeCapability capability = Minecraft.getMinecraft().player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
 			capability.setLocationEmployee(locationEmployee);
+		}
+		
+		public static void onFetchPriceResponse(BlockPos registerPos, int slotId, boolean success, BigDecimal price)
+		{
+			GuiScreen screen = Minecraft.getMinecraft().currentScreen;
+			if (screen == null)
+			{
+				return;
+			}
+			
+			if (screen instanceof GuiPOSInSession)
+			{
+				GuiPOSInSession inSession = (GuiPOSInSession)screen;
+				if (!inSession.isPositionForRegister(registerPos))
+				{
+					return;
+				}
+				
+				inSession.setItemPrice(slotId, success, price);
+			}
+			
+			if (screen instanceof GuiPOSPaymentBase)
+			{
+				GuiPOSPaymentBase paymentSelect = (GuiPOSPaymentBase)screen;
+				if (!paymentSelect.isPositionForRegister(registerPos))
+				{
+					return;
+				}
+				
+				paymentSelect.setItemPrice(slotId, success, price);
+			}
 		}
 	}
 

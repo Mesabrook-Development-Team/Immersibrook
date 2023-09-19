@@ -1,5 +1,6 @@
 package com.mesabrook.ib.blocks.te;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.UUID;
 
@@ -33,6 +34,8 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 	private String name = "";
 	private UUID identifier = new UUID(0L, 0L);
 	private long locationIDOwner = 0;
+	private BigDecimal currentTaxRate = new BigDecimal(0);
+	private BigDecimal tenderedAmount = new BigDecimal(0);
 	private final RegisterItemHandler itemHandler = new RegisterItemHandler(this);
 	
 	RegisterStatuses registerStatus = RegisterStatuses.Uninitialized;
@@ -50,6 +53,14 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		name = compound.getString("name");
 		registerStatus = RegisterStatuses.values()[compound.getInteger("registerStatus")];
 		locationIDOwner = compound.getLong("locationIDOwner");
+		if (compound.hasKey("currentTaxRate"))
+		{
+			currentTaxRate = new BigDecimal(compound.getString("currentTaxRate"));
+		}
+		if (compound.hasKey("tenderedAmount"))
+		{
+			tenderedAmount = new BigDecimal(compound.getString("tenderedAmount"));
+		}
 		if (compound.hasKey("inventory"))
 		{
 			CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.readNBT(itemHandler, null, compound.getTag("inventory"));
@@ -62,6 +73,8 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		compound.setString("name", name);
 		compound.setInteger("registerStatus", registerStatus.ordinal());
 		compound.setLong("locationIDOwner", locationIDOwner);
+		compound.setString("currentTaxRate", currentTaxRate.toPlainString());
+		compound.setString("tenderedAmount", tenderedAmount.toPlainString());
 		compound.setTag("inventory", CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.writeNBT(itemHandler, null));
 		return super.writeToNBT(compound);
 	}
@@ -72,6 +85,8 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		compound.setInteger("registerStatus", registerStatus.ordinal());
 		compound.setString("name", name);
 		compound.setLong("locationIDOwner", locationIDOwner);
+		compound.setString("currentTaxRate", currentTaxRate.toPlainString());
+		compound.setString("tenderedAmount", tenderedAmount.toPlainString());
 		compound.setTag("inventory", CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.writeNBT(itemHandler, null));
 		return compound;
 	}
@@ -80,16 +95,15 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 	public void handleUpdateTag(NBTTagCompound tag) {
 		super.handleUpdateTag(tag);
 		name = tag.getString("name");
-		registerStatus = RegisterStatuses.values()[tag.getInteger("registerStatus")];
 		locationIDOwner = tag.getLong("locationIDOwner");
-		for(int i = 0; i < itemHandler.getSlots(); i++)
-		{
-			itemHandler.extractItemInternalOnly(i);
-		}
+		currentTaxRate = new BigDecimal(tag.getString("currentTaxRate"));
+		tenderedAmount = new BigDecimal(tag.getString("tenderedAmount"));
+		itemHandler.dumpInventory();
 		if (tag.hasKey("inventory"))
 		{
 			CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.readNBT(itemHandler, null, tag.getTag("inventory"));
 		}
+		registerStatus = RegisterStatuses.values()[tag.getInteger("registerStatus")];
 	}
 	
 	@Override
@@ -131,7 +145,11 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		this.registerStatus = registerStatus;
 		
 		markDirty();
-		getWorld().notifyBlockUpdate(getPos(), getWorld().getBlockState(getPos()), getWorld().getBlockState(getPos()), 3);
+		
+		if (world != null)
+		{
+			getWorld().notifyBlockUpdate(getPos(), getWorld().getBlockState(getPos()), getWorld().getBlockState(getPos()), 3);
+		}
 	}
 
 	public long getLocationIDOwner() {
@@ -147,7 +165,53 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		this.locationIDOwner = locationIDOwner;
 		
 		markDirty();
-		getWorld().notifyBlockUpdate(getPos(), getWorld().getBlockState(getPos()), getWorld().getBlockState(getPos()), 3);
+		
+		if (world != null)
+		{
+			getWorld().notifyBlockUpdate(getPos(), getWorld().getBlockState(getPos()), getWorld().getBlockState(getPos()), 3);
+		}
+	}
+	
+	public void setCurrentTaxRate(BigDecimal currentTaxRate)
+	{
+		if (this.currentTaxRate.equals(currentTaxRate))
+		{
+			return;
+		}
+		
+		this.currentTaxRate = currentTaxRate;
+		markDirty();
+		
+		if (world != null)
+		{
+			getWorld().notifyBlockUpdate(getPos(), getWorld().getBlockState(getPos()), getWorld().getBlockState(getPos()), 3);
+		}
+	}
+	
+	public BigDecimal getCurrentTaxRate()
+	{
+		return currentTaxRate;
+	}
+	
+	public void setTenderedAmount(BigDecimal tenderedAmount)
+	{
+		if (this.tenderedAmount.equals(tenderedAmount))
+		{
+			return;
+		}
+		
+		this.tenderedAmount = tenderedAmount;
+		markDirty();
+		
+		if (world != null)
+		{
+			getWorld().notifyBlockUpdate(getPos(), getWorld().getBlockState(getPos()), getWorld().getBlockState(getPos()), 3);
+		}
+	}
+	
+	public BigDecimal getTenderedAmount()
+	{
+		return tenderedAmount;
 	}
 
 	// Operational methods
@@ -256,6 +320,15 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 				{
 					setLocationIDOwner(result.LocationID);
 				}
+				
+				if (result.CurrentTaxRate == null)
+				{
+					setCurrentTaxRate(new BigDecimal(0));
+				}
+				else
+				{
+					setCurrentTaxRate(result.CurrentTaxRate);
+				}
 			}
 			else
 			{
@@ -323,7 +396,10 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		Offline(false),
 		InternalStorageFull(false),
 		Online(true),
-		InSession(true);
+		InSession(true),
+		PaymentSelect(true),
+		PaymentCash(true),
+		PaymentCard(true);
 		
 		private boolean isOperationalState;
 		private RegisterStatuses(boolean isOperationalState)
@@ -349,7 +425,8 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		@Override
 		public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
 			if (!register.getRegisterStatus().isOperationalState || register.getLocationIDOwner() == 0 ||
-					(stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null) && stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null).getLocationIDOwner() != register.getLocationIDOwner()))
+					(stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null) && stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null).getLocationIDOwner() != register.getLocationIDOwner()) ||
+					!getStackInSlot(slot).isEmpty())
 			{
 				return stack;
 			}
@@ -372,7 +449,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 				if (!nextStack.isEmpty())
 				{
 					nextStack = super.extractItem(i, nextStack.getCount(), false);
-					insertItem(i - 1, nextStack, false);
+					super.insertItem(i - 1, nextStack, false);
 				}
 			}
 			
@@ -384,7 +461,19 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 			super.onContentsChanged(slot);
 			register.setRegisterStatus(RegisterStatuses.InSession);
 			register.markDirty();
-			register.world.notifyBlockUpdate(register.pos, register.world.getBlockState(register.pos), register.world.getBlockState(register.pos), 3);
+			
+			if (register.world != null)
+			{
+				register.world.notifyBlockUpdate(register.pos, register.world.getBlockState(register.pos), register.world.getBlockState(register.pos), 3);
+			}
+		}
+		
+		public void dumpInventory()
+		{
+			for(ItemStack stack : stacks)
+			{
+				stack.shrink(stack.getCount());
+			}
 		}
 	}
 }

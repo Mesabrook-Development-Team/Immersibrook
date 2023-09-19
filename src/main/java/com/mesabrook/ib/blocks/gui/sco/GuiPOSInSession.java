@@ -1,17 +1,25 @@
 package com.mesabrook.ib.blocks.gui.sco;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.lwjgl.opengl.GL11;
 
 import com.mesabrook.ib.blocks.gui.GuiImageLabelButton;
 import com.mesabrook.ib.blocks.gui.GuiImageLabelButton.ImageOrientation;
+import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.blocks.te.TileEntityRegister.RegisterStatuses;
 import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
 import com.mesabrook.ib.capability.secureditem.ISecuredItem;
 import com.mesabrook.ib.net.sco.POSCancelSalePacket;
+import com.mesabrook.ib.net.sco.POSChangeStatusClientToServerPacket;
+import com.mesabrook.ib.net.sco.POSFetchPricePacket;
 import com.mesabrook.ib.net.sco.POSRemoveItemPacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
@@ -24,6 +32,8 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraftforge.fml.client.config.GuiButtonExt;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
@@ -32,8 +42,21 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 	private static final int MAX_SLATS = 10;
 	private GuiImageLabelButton cancelOrder;
 	private ArrayList<ItemSlat> itemSlats = new ArrayList<>();
+	private int currentPage = 0;
+	private String subTotal = "";
+	private String taxAmount = "";
+	private String total = "Calculating...";
+	
+	private ImageButton nextPage;
+	private ImageButton prevPage;
+	private GuiImageLabelButton pay;
 	public GuiPOSInSession(TileEntityRegister register) {
 		super(register);
+	}
+	
+	public boolean isPositionForRegister(BlockPos pos)
+	{
+		return register.getPos().toLong() == pos.toLong();
 	}
 	
 	@Override
@@ -42,19 +65,31 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 		
 		fontRenderer.drawString("Your Cart", innerLeft + 116, innerTop + 29, 0);
 		
-//		GlStateManager.disableTexture2D();
-//		Tessellator tess = Tessellator.getInstance();
-//		BufferBuilder builder = tess.getBuffer();
-//		builder.begin(GL11.GL_LINES, DefaultVertexFormats.POSITION_COLOR);
-//		builder.pos(innerLeft + 115, innerTop + 39, zLevel).color(0, 0, 0, 255).endVertex();
-//		builder.pos(innerLeft + 115, innerTop + 39 + 111, zLevel).color(0, 0, 0, 255).endVertex();
-//		tess.draw();
-//		GlStateManager.enableTexture2D();
-		
 		for(ItemSlat slat : itemSlats)
 		{
 			slat.draw();
 		}
+		
+		GlStateManager.scale(0.5, 0.5, 1);
+		String pageText = "" + (currentPage + 1) + "/" + ((itemSlats.size() / MAX_SLATS) + 1);
+		int textWidth = fontRenderer.getStringWidth(pageText);
+		fontRenderer.drawString(pageText, (innerLeft + 121 + ((innerLeft + innerWidth - 14) - (innerLeft + 121)) / 2) * 2 - (textWidth / 2), (innerTop + 153) * 2, 0x74A3E0);
+		
+		fontRenderer.drawString("Subtotal", (innerLeft + 114) * 2, (innerTop + 162) * 2, 0);
+		textWidth = fontRenderer.getStringWidth(subTotal);
+		fontRenderer.drawString(subTotal, (int)((innerLeft + innerWidth - 6) * 2 - textWidth), (innerTop + 162) * 2, 0);
+		
+		fontRenderer.drawString("Tax", (innerLeft + 114) * 2, (innerTop + 168) * 2, 0);
+		textWidth = fontRenderer.getStringWidth(taxAmount);
+		fontRenderer.drawString(taxAmount, (int)((innerLeft + innerWidth - 6) * 2 - textWidth), (innerTop + 168) * 2, 0);
+		GlStateManager.scale(2, 2, 1);
+		
+		double upScale = 1 / 0.75;
+		GlStateManager.scale(0.75, 0.75, 1);
+		fontRenderer.drawString("Grand Total", (int)((innerLeft + 114) * upScale), (int)((innerTop + 174) * upScale), 0);
+		textWidth = fontRenderer.getStringWidth(total);
+		fontRenderer.drawString(total, (int)((innerLeft + innerWidth - 6) * upScale - textWidth), (int)((innerTop + 174) * upScale), 0);
+		GlStateManager.scale(upScale, upScale, 1);
 	}
 
 	@Override
@@ -69,7 +104,8 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 		itemSlats.clear();
 
 		IItemHandler itemHandler = register.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-		for(int i = 0; i < MAX_SLATS; i++)
+		int slatCount = 0;
+		for(int i = 0; i < itemHandler.getSlots(); i++)
 		{
 			ItemStack stack = itemHandler.getStackInSlot(i);
 			if (stack.isEmpty())
@@ -77,10 +113,46 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 				break;
 			}
 			
-			ItemSlat newSlat = new ItemSlat(i, innerLeft + 115, innerTop + 39 + ItemSlat.HEIGHT * i, 133, stack, fontRenderer);
+			int pageShownOn = slatCount / MAX_SLATS;
+			int yMultiplier = slatCount % MAX_SLATS;
+			
+			ItemSlat newSlat = new ItemSlat(i, innerLeft + 115, innerTop + 39 + ItemSlat.HEIGHT * yMultiplier, 133, stack, fontRenderer);
+			newSlat.setVisible(false);
 			buttonList.add(newSlat.getRemoveButton());
 			itemSlats.add(newSlat);
+			slatCount++;
 		}
+		
+		currentPage = (slatCount - 1) / MAX_SLATS;
+		if (currentPage < 0)
+		{
+			currentPage = 0;
+		}
+		for(int i = currentPage * MAX_SLATS; i < (currentPage + 1) * MAX_SLATS; i++)
+		{
+			if (i >= itemSlats.size())
+			{
+				break;
+			}
+			
+			itemSlats.get(i).setVisible(true);
+		}
+		
+		nextPage = new ImageButton(0, innerLeft + innerWidth - 14, innerTop + 150, 8, 8, new ResourceLocation(Reference.MODID, "textures/gui/sco/resultset_next.png"), 16, 16, 16, 16);
+		prevPage = new ImageButton(0, innerLeft + 113, innerTop + 150, 8, 8, new ResourceLocation(Reference.MODID, "textures/gui/sco/resultset_previous.png"), 16, 16, 16, 16);
+		pay = new GuiImageLabelButton(0, innerLeft + innerWidth - 52, innerTop + innerHeight - 21, 46, 15, "Pay  ", new ResourceLocation(Reference.MODID, "textures/gui/sco/arrow_right.png"), 10, 10, 10, 10, ImageOrientation.Right)
+				.setEnabledColor(0x00FF00)
+				.setTextScale(0.8F);
+		
+		prevPage.enabled = currentPage != 0;
+		nextPage.enabled = false;
+		pay.enabled = false;
+		
+		buttonList.add(prevPage);
+		buttonList.add(nextPage);
+		buttonList.add(pay);
+		
+		submitPriceRequestForNextItemSlat();
 	}
 	
 	@Override
@@ -94,28 +166,40 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 			cancelSale.pos = register.getPos();
 			PacketHandler.INSTANCE.sendToServer(cancelSale);
 			
-			for(int i = 0; i < itemHandler.getSlots(); i++)
-			{
-				itemHandler.extractItemInternalOnly(i);
-			}
+			itemHandler.dumpInventory();
 			register.setRegisterStatus(RegisterStatuses.Online);
 			
 			mc.displayGuiScreen(new GuiPOSMainWelcome(register));
 			return;
 		}
 		
-		ItemSlat slat = null;
-		for(ItemSlat itemSlat : itemSlats)
+		if (button == nextPage && currentPage < itemSlats.size() / MAX_SLATS)
 		{
+			currentPage++;
+		}
+		
+		if (button == prevPage && currentPage > 0)
+		{
+			currentPage--;
+		}
+		
+		ItemSlat slat = null;
+		for(int i = 0; i < itemSlats.size(); i++)
+		{
+			ItemSlat itemSlat = itemSlats.get(i);
+			int effectiveIndex = i;
 			if (slat != null)
 			{
-				itemSlat.setY(itemSlat.y - ItemSlat.HEIGHT);
+				effectiveIndex--;
 			}
 			
 			if (itemSlat.getRemoveButton() == button)
 			{
 				slat = itemSlat;
 			}
+			
+			int effectivePosition = effectiveIndex % MAX_SLATS;
+			itemSlat.setY(innerTop + 39 + ItemSlat.HEIGHT * effectivePosition);
 		}
 		
 		if (slat != null)
@@ -131,8 +215,98 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 			if (!register.hasItemsForSession())
 			{
 				mc.displayGuiScreen(new GuiPOSMainWelcome(register));
+				return;
+			}
+			
+			if (itemSlats.stream().allMatch(is -> is.price != null && !is.priceNotFound))
+			{
+				updateTotals();
 			}
 		}
+		
+		for(int i = 0; i < itemSlats.size(); i++)
+		{
+			ItemSlat slatForVisible = itemSlats.get(i);
+			slatForVisible.setVisible(i / MAX_SLATS == currentPage);
+		}		
+		prevPage.enabled = currentPage != 0;
+		nextPage.enabled = (itemSlats.size() - 1) / MAX_SLATS < 0 ? false : currentPage < (itemSlats.size() - 1) / MAX_SLATS;
+		
+		if (button == pay)
+		{
+			POSChangeStatusClientToServerPacket changeStatus = new POSChangeStatusClientToServerPacket();
+			changeStatus.pos = register.getPos();
+			changeStatus.status = RegisterStatuses.PaymentSelect;
+			PacketHandler.INSTANCE.sendToServer(changeStatus);
+			
+			mc.displayGuiScreen(new GuiPOSPaymentSelect(register));
+		}
+	}
+	
+	public void setItemPrice(int slotId, boolean priceFound, BigDecimal price)
+	{
+		Optional<ItemSlat> slat = itemSlats.stream().filter(is -> is.slotIndex == slotId).findFirst();
+		if (!slat.isPresent())
+		{
+			return;
+		}
+		
+		slat.get().setPriceNotFound(!priceFound);
+		if (priceFound)
+		{
+			slat.get().setPrice(price);
+		}
+		
+		submitPriceRequestForNextItemSlat();
+	}
+	
+	private void submitPriceRequestForNextItemSlat()
+	{
+		for(ItemSlat slat : itemSlats)
+		{
+			if (!slat.getPriceNotFound() && slat.getPrice() == null)
+			{
+				POSFetchPricePacket fetch = new POSFetchPricePacket();
+				fetch.pos = register.getPos();
+				fetch.locationId = register.getLocationIDOwner();
+				fetch.slotId = slat.slotIndex;
+				if (slat.stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
+				{
+					fetch.stack = slat.stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null).getInnerStack();
+				}
+				else
+				{
+					fetch.stack = slat.stack;
+				}
+				PacketHandler.INSTANCE.sendToServer(fetch);
+				
+				return;
+			}
+		}
+		
+		updateTotals();
+	}
+	
+	private void updateTotals()
+	{
+		BigDecimal subtotal = new BigDecimal("0.00");
+		for(ItemSlat slat : itemSlats)
+		{
+			if (slat.priceNotFound)
+			{
+				this.subTotal = "";
+				this.taxAmount = "";
+				this.total = "Invalid Item";
+				pay.enabled = false;
+				return;
+			}
+			subtotal = subtotal.add(slat.price);
+		}
+		
+		this.subTotal = subtotal.toPlainString();
+		this.taxAmount = subtotal.multiply(register.getCurrentTaxRate().divide(new BigDecimal("100.00"))).setScale(2, RoundingMode.HALF_UP).toPlainString();
+		this.total = subtotal.add(new BigDecimal(this.taxAmount)).toPlainString();
+		pay.enabled = itemSlats.size() > 0;
 	}
 	
 	private static class ItemSlat
@@ -144,7 +318,10 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 		private int x;
 		private int y;
 		private int width;
+		private boolean visible = true;
 		private FontRenderer fontRenderer;
+		private boolean priceNotFound;
+		private BigDecimal price;
 		
 		private String stackName;
 		private GuiImageLabelButton removeButton;
@@ -192,11 +369,54 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 			this.y = y;
 			this.removeButton.y = y + HEIGHT / 2;
 		}
+		
+		public void setPrice(BigDecimal price)
+		{
+			this.price = price;
+		}
+		
+		public BigDecimal getPrice()
+		{
+			return price;
+		}
+		
+		public boolean getPriceNotFound()
+		{
+			return priceNotFound;
+		}
+		
+		public void setPriceNotFound(boolean priceNotFound)
+		{
+			this.priceNotFound = priceNotFound;
+		}
+
+		public boolean isVisible() {
+			return visible;
+		}
+
+		public void setVisible(boolean visible) {
+			this.visible = visible;
+			this.removeButton.visible = visible;
+		}
 
 		public void draw()
 		{
+			if (!visible)
+			{
+				return;
+			}
 			GlStateManager.scale(0.5, 0.5, 1);
 			fontRenderer.drawString(stackName, x * 2 + 1, y * 2 + 1, 0);
+			if (!getPriceNotFound() && price != null)
+			{
+				int priceWidth = fontRenderer.getStringWidth(price.toPlainString());
+				fontRenderer.drawString(price.toPlainString(), (x + width - 1) * 2 - priceWidth, y * 2 + 1, 0x888888);
+			}
+			else if (getPriceNotFound())
+			{
+				int invalidWidth = fontRenderer.getStringWidth("Invalid Item! Please Remove");
+				fontRenderer.drawString("Invalid Item! Please Remove", (x + width - 1) * 2 - invalidWidth, y * 2 + 1, 0xFF0000);
+			}
 			GlStateManager.scale(2, 2, 1);
 			
 			GlStateManager.disableTexture2D();

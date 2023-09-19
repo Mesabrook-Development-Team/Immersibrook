@@ -47,6 +47,11 @@ public class GuiImageLabelButton extends GuiButton {
 	
 	@Override
 	public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
+		if (!visible)
+		{
+			return;
+		}
+		
 		this.hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
 		
 		int effectiveColor = enabled ? enabledColor : disabledColor;
@@ -82,22 +87,25 @@ public class GuiImageLabelButton extends GuiButton {
 		mc.fontRenderer.drawString(displayString, (int)scale(x + (width / 2) - scale(textWidth / 2, textScale), 1/textScale), textY, effectiveColor);
 		GlStateManager.scale(1/textScale, 1/textScale, 1);
 		
-		mc.getTextureManager().bindTexture(texLocation);
-		
-		if (enabled)
+		if (texLocation != null)
 		{
-			GlStateManager.color(1, 1, 1);
-		}
-
-		int textureX = x + 1;
-		int textureY = y + (height / 2) - (texHeight / 2);
-		if (orientation == ImageOrientation.Left)
-		{
-			drawScaledCustomSizeModalRect(textureX, textureY, 0, 0, uvWidth, uvHeight, texWidth, texHeight, uvWidth, uvHeight);
-		}
-		else if (orientation == ImageOrientation.Right)
-		{
-			drawScaledCustomSizeModalRect(textureX + width - texWidth - 2, textureY, 0, 0, uvWidth, uvHeight, texWidth, texHeight, uvWidth, uvHeight);
+			mc.getTextureManager().bindTexture(texLocation);
+			
+			if (enabled)
+			{
+				GlStateManager.color(1, 1, 1);
+			}
+	
+			int textureX = x + 1;
+			int textureY = y + (height / 2) - (texHeight / 2);
+			if (orientation == ImageOrientation.Left)
+			{
+				drawScaledCustomSizeModalRect(textureX, textureY, 0, 0, uvWidth, uvHeight, texWidth, texHeight, uvWidth, uvHeight);
+			}
+			else if (orientation == ImageOrientation.Right)
+			{
+				drawScaledCustomSizeModalRect(textureX + width - texWidth - 2, textureY, 0, 0, uvWidth, uvHeight, texWidth, texHeight, uvWidth, uvHeight);
+			}
 		}
 		
 		if (enabled && hovered)

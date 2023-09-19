@@ -1,5 +1,6 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.init.SoundInit;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;

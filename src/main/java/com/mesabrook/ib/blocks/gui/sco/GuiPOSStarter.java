@@ -28,6 +28,15 @@ public class GuiPOSStarter extends GuiPOSBase {
 			case InSession:
 				Minecraft.getMinecraft().displayGuiScreen(new GuiPOSInSession(register));
 				break;
+			case PaymentSelect:
+				Minecraft.getMinecraft().displayGuiScreen(new GuiPOSPaymentSelect(register));
+				break;
+			case PaymentCard:
+				mc.displayGuiScreen(new GuiPOSPaymentCard(register));
+				break;
+			case PaymentCash:
+				mc.displayGuiScreen(new GuiPOSPaymentCash(register));
+				break;
 			default:
 				drawCenteredString(fontRenderer, "error: unable to determine status", width / 2, height / 2 - (fontRenderer.FONT_HEIGHT / 2), 0xFFFFFF);
 		}		

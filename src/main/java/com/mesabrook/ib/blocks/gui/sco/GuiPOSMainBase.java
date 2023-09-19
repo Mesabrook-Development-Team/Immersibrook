@@ -9,7 +9,7 @@ public abstract class GuiPOSMainBase extends GuiPOSBase {
 	}
 
 	@Override
-	protected final String getBackingTextureName() {
+	protected String getBackingTextureName() {
 		return "sco_gui.png";
 	}
 

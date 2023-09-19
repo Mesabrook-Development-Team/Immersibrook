@@ -3,6 +3,8 @@ package com.mesabrook.ib.blocks.gui.telecom;
 import java.io.IOException;
 
 import com.mesabrook.ib.Main;
+import com.mesabrook.ib.blocks.gui.ImageButton;
+
 import net.minecraft.entity.player.*;
 import org.lwjgl.input.Keyboard;
 

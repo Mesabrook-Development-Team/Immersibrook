@@ -1,15 +1,13 @@
-package com.mesabrook.ib.blocks.gui.telecom;
+package com.mesabrook.ib.blocks.gui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
-import java.util.Locale;
-
 public class ImageButton extends GuiButton {
 
-	private String textureFileName;
+	private ResourceLocation textureRL;
 	private int texWidth;
 	private int texHeight;
 	private int uvWidth;
@@ -20,22 +18,17 @@ public class ImageButton extends GuiButton {
 	
 	public ImageButton(int buttonId, int x, int y, int widthIn, int heightIn, String textureFileName, int texWidth, int texHeight, int uvWidth, int uvHeight)
 	{
+		this(buttonId, x, y, widthIn, heightIn, new ResourceLocation("wbtc", "textures/gui/telecom/" + textureFileName), texWidth, texHeight, uvWidth, uvHeight);
+	}
+	
+	public ImageButton(int buttonId, int x, int y, int widthIn, int heightIn, ResourceLocation textureLocation, int texWidth, int texHeight, int uvWidth, int uvHeight)
+	{
 		super(buttonId, x, y, widthIn, heightIn, "");
-		this.textureFileName = textureFileName;
+		this.textureRL = textureLocation;
 		this.texWidth = texWidth;
 		this.texHeight = texHeight;
 		this.uvWidth = uvWidth;
 		this.uvHeight = uvHeight;
-	}
-
-	public String getTextureFileName()
-	{
-		return textureFileName;
-	}
-	
-	public void setTextureFileName(String textureFileName)
-	{
-		this.textureFileName = textureFileName;
 	}
 	
 	public int getTexWidth() {
@@ -61,8 +54,15 @@ public class ImageButton extends GuiButton {
 			return;
 		}
 		
-		GlStateManager.color(1, 1, 1);
-		mc.getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/" + textureFileName));
+		if (enabled)
+		{
+			GlStateManager.color(1, 1, 1);
+		}
+		else
+		{
+			GlStateManager.color(0.5F, 0.5F, 0.5F);
+		}
+		mc.getTextureManager().bindTexture(textureRL);
 		drawScaledCustomSizeModalRect(x, y, 0, 0, uvWidth, uvHeight, width, height, texWidth, texHeight);
 	}
 }
