@@ -415,19 +415,19 @@ public class ModItems
 	
 
 	// Mesabrookian Dollar Items - Banknotes
-	public static final Item ONE_DOLLAR = new ItemMoney("one_dollar", 100);
-	public static final Item FIVE_DOLLARS = new ItemMoney("five_dollars", 500);
-	public static final Item TEN_DOLLARS = new ItemMoney("ten_dollars", 10000);
-	public static final Item TWENTY_DOLLARS = new ItemMoney("twenty_dollars", 20000);
-	public static final Item FIFTY_DOLLARS = new ItemMoney("fifty_dollars", 50000);
-	public static final Item ONE_HUNDRED_DOLLARS = new ItemMoney("one_hundred_dollars", 100000);
+	public static final Item ONE_DOLLAR = new ItemMoney("one_dollar", 100, ItemMoney.MoneyType.Bill);
+	public static final Item FIVE_DOLLARS = new ItemMoney("five_dollars", 500, ItemMoney.MoneyType.Bill);
+	public static final Item TEN_DOLLARS = new ItemMoney("ten_dollars", 1000, ItemMoney.MoneyType.Bill);
+	public static final Item TWENTY_DOLLARS = new ItemMoney("twenty_dollars", 2000, ItemMoney.MoneyType.Bill);
+	public static final Item FIFTY_DOLLARS = new ItemMoney("fifty_dollars", 5000, ItemMoney.MoneyType.Bill);
+	public static final Item ONE_HUNDRED_DOLLARS = new ItemMoney("one_hundred_dollars", 10000, ItemMoney.MoneyType.Bill);
 
 	// Mesabrookian Dollar Items - Coinage
-	public static final Item PENNY = new ItemMoney("penny", 1);
-	public static final Item FIVE_CENTS = new ItemMoney("five_cents", 5);
-	public static final Item TEN_CENTS = new ItemMoney("ten_cents", 10);
-	public static final Item TWENTY_FIVE_CENTS = new ItemMoney("twenty_five_cents", 25);
-	public static final Item DOLLAR_COIN = new ItemMoney("dollar_coin", 100);
+	public static final Item PENNY = new ItemMoney("penny", 1, ItemMoney.MoneyType.Coin);
+	public static final Item FIVE_CENTS = new ItemMoney("five_cents", 5, ItemMoney.MoneyType.Coin);
+	public static final Item TEN_CENTS = new ItemMoney("ten_cents", 10, ItemMoney.MoneyType.Coin);
+	public static final Item TWENTY_FIVE_CENTS = new ItemMoney("twenty_five_cents", 25, ItemMoney.MoneyType.Coin);
+	public static final Item DOLLAR_COIN = new ItemMoney("dollar_coin", 100, ItemMoney.MoneyType.Coin);
 
 	// Blahaj
 	public static final Item BLAHAJ = new ItemBlahaj("blahaj");

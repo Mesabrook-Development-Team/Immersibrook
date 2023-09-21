@@ -103,7 +103,7 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 		
 		itemSlats.clear();
 
-		IItemHandler itemHandler = register.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+		TileEntityRegister.RegisterItemHandler itemHandler = (TileEntityRegister.RegisterItemHandler)register.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 		int slatCount = 0;
 		for(int i = 0; i < itemHandler.getSlots(); i++)
 		{
@@ -113,10 +113,20 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 				break;
 			}
 			
+			BigDecimal price = itemHandler.getPrice(i);
+			
 			int pageShownOn = slatCount / MAX_SLATS;
 			int yMultiplier = slatCount % MAX_SLATS;
 			
 			ItemSlat newSlat = new ItemSlat(i, innerLeft + 115, innerTop + 39 + ItemSlat.HEIGHT * yMultiplier, 133, stack, fontRenderer);
+			if (price == null)
+			{
+				newSlat.setPriceNotFound(true);
+			}
+			else
+			{
+				newSlat.setPrice(price);
+			}
 			newSlat.setVisible(false);
 			buttonList.add(newSlat.getRemoveButton());
 			itemSlats.add(newSlat);
@@ -152,7 +162,7 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 		buttonList.add(nextPage);
 		buttonList.add(pay);
 		
-		submitPriceRequestForNextItemSlat();
+		updateTotals();
 	}
 	
 	@Override
@@ -241,50 +251,6 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 			
 			mc.displayGuiScreen(new GuiPOSPaymentSelect(register));
 		}
-	}
-	
-	public void setItemPrice(int slotId, boolean priceFound, BigDecimal price)
-	{
-		Optional<ItemSlat> slat = itemSlats.stream().filter(is -> is.slotIndex == slotId).findFirst();
-		if (!slat.isPresent())
-		{
-			return;
-		}
-		
-		slat.get().setPriceNotFound(!priceFound);
-		if (priceFound)
-		{
-			slat.get().setPrice(price);
-		}
-		
-		submitPriceRequestForNextItemSlat();
-	}
-	
-	private void submitPriceRequestForNextItemSlat()
-	{
-		for(ItemSlat slat : itemSlats)
-		{
-			if (!slat.getPriceNotFound() && slat.getPrice() == null)
-			{
-				POSFetchPricePacket fetch = new POSFetchPricePacket();
-				fetch.pos = register.getPos();
-				fetch.locationId = register.getLocationIDOwner();
-				fetch.slotId = slat.slotIndex;
-				if (slat.stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
-				{
-					fetch.stack = slat.stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null).getInnerStack();
-				}
-				else
-				{
-					fetch.stack = slat.stack;
-				}
-				PacketHandler.INSTANCE.sendToServer(fetch);
-				
-				return;
-			}
-		}
-		
-		updateTotals();
 	}
 	
 	private void updateTotals()

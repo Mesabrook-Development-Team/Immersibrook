@@ -45,14 +45,11 @@ public class GuiPOSPaymentSelect extends GuiPOSPaymentBase {
 	@Override
 	public void initGui() {
 		super.initGui();
-
+		
 		payByCard = new GuiImageLabelButton(0, innerLeft + innerWidth - 76, innerTop + 45, 66, 20, "Pay by Card     ", new ResourceLocation(Reference.MODID, "textures/items/card_blue.png"), 16, 16, 16, 16, ImageOrientation.Right).setEnabledColor(0x00C800).setTextScale(0.75F);
 		payByCash = new GuiImageLabelButton(0, innerLeft + innerWidth - 76, innerTop + 66, 66, 20, "Pay by Cash     ", new ResourceLocation(Reference.MODID, "textures/items/one_dollar.png"), 16, 16, 16, 16, ImageOrientation.Right).setEnabledColor(0x00C800).setTextScale(0.75F);
 		cancel = new GuiImageLabelButton(0, innerLeft + innerWidth - 76, innerTop + 87, 66, 20, "   Cancel", new ResourceLocation(Reference.MODID, "textures/gui/sco/cancel_order.png"), 16, 16, 16, 16, ImageOrientation.Left).setEnabledColor(0xFF0000);
 		back = new GuiImageLabelButton(0, innerLeft + innerWidth - 76, innerTop + 108, 66, 20, "   Back", new ResourceLocation(Reference.MODID, "textures/gui/sco/arrow_left.png"), 16, 16, 16, 16, ImageOrientation.Left);
-		
-		payByCard.enabled = false;
-		payByCash.enabled = false;
 		
 		buttonList.addAll(new ImmutableList.Builder<GuiButton>()
 				.add(payByCard)
@@ -106,8 +103,5 @@ public class GuiPOSPaymentSelect extends GuiPOSPaymentBase {
 	@Override
 	protected void updatePrices() {
 		super.updatePrices();
-		
-		payByCard.enabled = true;
-		payByCash.enabled = true;
 	}
 }

@@ -1,10 +1,15 @@
 package com.mesabrook.ib.blocks.sco;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import com.mesabrook.ib.blocks.ImmersiblockRotationalManyBB;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.blocks.te.TileEntityRegister.RegisterStatuses;
 import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
 import com.mesabrook.ib.init.ModBlocks;
+import com.mesabrook.ib.items.commerce.ItemMoney;
+import com.mesabrook.ib.items.commerce.ItemMoney.MoneyType;
 import com.mesabrook.ib.util.ModUtils;
 
 import net.minecraft.block.SoundType;
@@ -48,14 +53,16 @@ public class BlockScanner extends ImmersiblockRotationalManyBB {
 		
 		TileEntityRegister register = (TileEntityRegister)te;
 		if (register.getRegisterStatus() != RegisterStatuses.Online &&
-				register.getRegisterStatus() != RegisterStatuses.InSession)
+				register.getRegisterStatus() != RegisterStatuses.InSession && 
+				register.getRegisterStatus() != RegisterStatuses.PaymentSelect &&
+				register.getRegisterStatus() != RegisterStatuses.PaymentCash)
 		{
 			return false;
 		}
 		
+		ItemStack heldItem = playerIn.getHeldItem(hand);
 		if (subBoundingBox == SCANNER && !playerIn.getHeldItem(hand).isEmpty()) // Boop
 		{
-			ItemStack heldItem = playerIn.getHeldItem(hand);
 			if (heldItem.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, facing) && 
 					heldItem.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, facing).getLocationIDOwner() != register.getLocationIDOwner())
 			{
@@ -70,13 +77,19 @@ public class BlockScanner extends ImmersiblockRotationalManyBB {
 			
 			return true;
 		}
-		else if (subBoundingBox == BILL_ACCEPTER) // Brrr
+		else if (subBoundingBox == BILL_ACCEPTER && heldItem.getItem() instanceof ItemMoney && ((ItemMoney)heldItem.getItem()).getMoneyType() == MoneyType.Bill) // Brrr
 		{
+			BigDecimal amountForRegister = new BigDecimal(((ItemMoney)heldItem.getItem()).getValue() * heldItem.getCount()).divide(new BigDecimal(100)).setScale(2, RoundingMode.HALF_UP);
+			heldItem.shrink(heldItem.getCount());
 			
+			register.applyCashTender(amountForRegister);
 		}
-		else if (subBoundingBox == COIN_SLOT) // Ka-ching
+		else if (subBoundingBox == COIN_SLOT && heldItem.getItem() instanceof ItemMoney && ((ItemMoney)heldItem.getItem()).getMoneyType() == MoneyType.Coin) // Ka-ching
 		{
+			BigDecimal amountForRegister = new BigDecimal(((ItemMoney)heldItem.getItem()).getValue() * heldItem.getCount()).divide(new BigDecimal(100)).setScale(2, RoundingMode.HALF_UP);
+			heldItem.shrink(heldItem.getCount());
 			
+			register.applyCashTender(amountForRegister);
 		}
 		
 		return false;

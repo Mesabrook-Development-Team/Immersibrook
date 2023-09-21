@@ -9,9 +9,9 @@ import java.util.UUID;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.apimodels.company.LocationEmployee;
 import com.mesabrook.ib.apimodels.company.LocationItem;
+import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
-import com.mesabrook.ib.net.sco.POSFetchPriceResponsePacket;
 import com.mesabrook.ib.net.sco.StoreModeGuiResponse;
 import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.apiaccess.DataAccess.API;
@@ -22,12 +22,15 @@ import com.mesabrook.ib.util.apiaccess.DataRequestTaskStatus;
 import com.mesabrook.ib.util.apiaccess.GetData;
 
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.ServerTickEvent;
+import net.minecraftforge.items.CapabilityItemHandler;
 
 @EventBusSubscriber
 public class ServerTickHandler {
@@ -172,23 +175,27 @@ public class ServerTickHandler {
 		for(DataRequestTask task : priceLookupTasks)
 		{
 			if (task.getStatus() == DataRequestTaskStatus.Complete)
-			{
-				POSFetchPriceResponsePacket response = new POSFetchPriceResponsePacket();
-				response.pos = (BlockPos)task.getData().get("pos");
-				response.slotId = (int)task.getData().get("slotId");
-				
-				UUID playerID = (UUID)task.getData().get("playerId");
-				
+			{				
 				DataAccess access = task.getTask();
-				response.success = access.getRequestSuccessful();
 				if (access.getRequestSuccessful())
 				{
-					LocationItem locationItem = access.getResult(LocationItem.class);
-					response.price = locationItem.BasePrice;
+					BlockPos registerPos = BlockPos.fromLong((long)task.getData().get("pos"));
+					int slot = (int)task.getData().get("slot");
+					int dimensionID = (int)task.getData().get("dimId");
+					
+					World world = FMLCommonHandler.instance().getMinecraftServerInstance().getWorld(dimensionID);
+					if (world != null)
+					{
+						TileEntity te = world.getTileEntity(registerPos);
+						if (te instanceof TileEntityRegister)
+						{
+							TileEntityRegister register = (TileEntityRegister)te;
+							TileEntityRegister.RegisterItemHandler itemHandler = (TileEntityRegister.RegisterItemHandler)register.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+							LocationItem locationItem = access.getResult(LocationItem.class);
+							itemHandler.setPrice(slot, locationItem.BasePrice);
+						}
+					}
 				}
-				
-				EntityPlayerMP player = FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerByUUID(playerID);
-				PacketHandler.INSTANCE.sendTo(response, player);
 				tasksToRemove.add(task);
 			}
 		}

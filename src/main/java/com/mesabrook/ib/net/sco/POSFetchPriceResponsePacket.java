@@ -49,7 +49,7 @@ public class POSFetchPriceResponsePacket implements IMessage {
 		}
 
 		private void handle(POSFetchPriceResponsePacket message, MessageContext ctx) {
-			ClientSideHandlers.SelfCheckOutHandlers.onFetchPriceResponse(message.pos, message.slotId, message.success, message.price);
+			
 		}
 		
 	}

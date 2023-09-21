@@ -759,37 +759,6 @@ public class ClientSideHandlers
 			IEmployeeCapability capability = Minecraft.getMinecraft().player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
 			capability.setLocationEmployee(locationEmployee);
 		}
-		
-		public static void onFetchPriceResponse(BlockPos registerPos, int slotId, boolean success, BigDecimal price)
-		{
-			GuiScreen screen = Minecraft.getMinecraft().currentScreen;
-			if (screen == null)
-			{
-				return;
-			}
-			
-			if (screen instanceof GuiPOSInSession)
-			{
-				GuiPOSInSession inSession = (GuiPOSInSession)screen;
-				if (!inSession.isPositionForRegister(registerPos))
-				{
-					return;
-				}
-				
-				inSession.setItemPrice(slotId, success, price);
-			}
-			
-			if (screen instanceof GuiPOSPaymentBase)
-			{
-				GuiPOSPaymentBase paymentSelect = (GuiPOSPaymentBase)screen;
-				if (!paymentSelect.isPositionForRegister(registerPos))
-				{
-					return;
-				}
-				
-				paymentSelect.setItemPrice(slotId, success, price);
-			}
-		}
 	}
 
 	@SubscribeEvent

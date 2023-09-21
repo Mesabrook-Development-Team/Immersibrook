@@ -29,12 +29,9 @@ public class GuiPOSPaymentBase extends GuiPOSMainBase {
 	String total = "";
 	String tax = "";
 	String due = "Calculating...";
-	BigDecimal[] pricesBySlot;
 	
 	public GuiPOSPaymentBase(TileEntityRegister register) {
 		super(register);
-		IItemHandler handler = register.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-		pricesBySlot = new BigDecimal[handler.getSlots()];
 	}
 	
 	@Override
@@ -51,66 +48,25 @@ public class GuiPOSPaymentBase extends GuiPOSMainBase {
 	public void initGui() {
 		super.initGui();
 		
-		checkAndSendPriceRequest();
-	}
-	
-	private void checkAndSendPriceRequest()
-	{
-		IItemHandler handler = register.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-		for(int i = 0; i < handler.getSlots(); i++)
-		{
-			if (handler.getStackInSlot(i).isEmpty())
-			{
-				pricesBySlot[i] = new BigDecimal(0);
-			}
-			else if (pricesBySlot[i] == null)
-			{
-				POSFetchPricePacket fetch = new POSFetchPricePacket();
-				fetch.pos = register.getPos();
-				fetch.locationId = register.getLocationIDOwner();
-				fetch.slotId = i;
-				ItemStack stack = handler.getStackInSlot(i);
-				if (stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
-				{
-					ISecuredItem secured = stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
-					stack = secured.getInnerStack();
-				}
-				fetch.stack = stack;
-				PacketHandler.INSTANCE.sendToServer(fetch);
-				return;
-			}
-		}
-		
 		updatePrices();
 	}
 	
 	protected void updatePrices()
 	{
+		TileEntityRegister.RegisterItemHandler handler = (TileEntityRegister.RegisterItemHandler)register.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 		BigDecimal runningTotal = new BigDecimal(0);
-		for(BigDecimal priceBySlot : pricesBySlot)
+		for(int i = 0; i < handler.getSlots(); i++)
 		{
-			runningTotal = priceBySlot.add(runningTotal);
+			BigDecimal price = handler.getPrice(i);
+			if (price != null)
+			{
+				runningTotal = price.add(runningTotal);
+			}
 		}
 		
 		this.total = runningTotal.setScale(2, RoundingMode.HALF_UP).toPlainString();
 		this.tax = runningTotal.multiply(register.getCurrentTaxRate().divide(new BigDecimal(100))).setScale(2, RoundingMode.HALF_UP).toPlainString();
-		this.due = runningTotal.add(new BigDecimal(this.tax)).setScale(2, RoundingMode.HALF_UP).toPlainString();
-	}
-	
-	public void setItemPrice(int slotId, boolean success, BigDecimal price)
-	{
-		if (!success)
-		{
-			this.due = "Invalid Item!";
-			return;
-		}
-		if (price == null)
-		{
-			price = new BigDecimal(0);
-		}
-		pricesBySlot[slotId] = price;
-		
-		checkAndSendPriceRequest();
+		this.due = runningTotal.add(new BigDecimal(this.tax)).subtract(register.getTenderedAmount()).setScale(2, RoundingMode.HALF_UP).toPlainString();
 	}
 	
 	@Override

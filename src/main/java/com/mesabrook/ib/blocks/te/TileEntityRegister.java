@@ -1,11 +1,16 @@
 package com.mesabrook.ib.blocks.te;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.UUID;
 
+import com.mesabrook.ib.apimodels.company.LocationItem;
 import com.mesabrook.ib.apimodels.company.Register;
+import com.mesabrook.ib.blocks.BlockRegister;
 import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
+import com.mesabrook.ib.capability.secureditem.ISecuredItem;
 import com.mesabrook.ib.net.sco.POSInitializeRegisterResponsePacket;
 import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.apiaccess.DataAccess.API;
@@ -16,7 +21,9 @@ import com.mesabrook.ib.util.apiaccess.DataRequestTask;
 import com.mesabrook.ib.util.apiaccess.DataRequestTaskStatus;
 import com.mesabrook.ib.util.apiaccess.GetData;
 import com.mesabrook.ib.util.handlers.PacketHandler;
+import com.mesabrook.ib.util.handlers.ServerTickHandler;
 
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -24,8 +31,10 @@ import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
@@ -44,6 +53,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 	DataRequestTask statusUpdateTask = null;
 	DataRequestTask initializeTask = null;
 	Calendar nextUpdateTime = Calendar.getInstance();
+	int transactionCompleteCounter = 0;
 	
 	// Data methods
 	@Override
@@ -63,7 +73,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		}
 		if (compound.hasKey("inventory"))
 		{
-			CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.readNBT(itemHandler, null, compound.getTag("inventory"));
+			itemHandler.deserializeNBT(compound.getCompoundTag("inventory"));
 		}
 	}
 	
@@ -75,7 +85,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		compound.setLong("locationIDOwner", locationIDOwner);
 		compound.setString("currentTaxRate", currentTaxRate.toPlainString());
 		compound.setString("tenderedAmount", tenderedAmount.toPlainString());
-		compound.setTag("inventory", CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.writeNBT(itemHandler, null));
+		compound.setTag("inventory", itemHandler.serializeNBT());
 		return super.writeToNBT(compound);
 	}
 	
@@ -87,7 +97,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		compound.setLong("locationIDOwner", locationIDOwner);
 		compound.setString("currentTaxRate", currentTaxRate.toPlainString());
 		compound.setString("tenderedAmount", tenderedAmount.toPlainString());
-		compound.setTag("inventory", CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.writeNBT(itemHandler, null));
+		compound.setTag("inventory", itemHandler.serializeNBT());
 		return compound;
 	}
 	
@@ -101,7 +111,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		itemHandler.dumpInventory();
 		if (tag.hasKey("inventory"))
 		{
-			CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.readNBT(itemHandler, null, tag.getTag("inventory"));
+			itemHandler.deserializeNBT(tag.getCompoundTag("inventory"));
 		}
 		registerStatus = RegisterStatuses.values()[tag.getInteger("registerStatus")];
 	}
@@ -214,6 +224,69 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		return tenderedAmount;
 	}
 
+	public void applyCashTender(BigDecimal amount)
+	{
+		tenderedAmount = tenderedAmount.add(amount);
+		BigDecimal amountDue = getDueAmount();
+		if (amountDue.compareTo(new BigDecimal(0)) <= 0)
+		{
+			onPaid();
+		}
+		else
+		{
+			markDirty();
+			
+			if (world != null)
+			{
+				getWorld().notifyBlockUpdate(getPos(), getWorld().getBlockState(getPos()), getWorld().getBlockState(getPos()), 3);
+			}
+		}
+	}
+	
+	private BigDecimal getDueAmount()
+	{
+		BigDecimal runningTotal = new BigDecimal(0);
+		for(int i = 0; i < itemHandler.getSlots(); i++)
+		{
+			BigDecimal itemAmount = itemHandler.getPrice(i);
+			if (itemAmount == null)
+			{
+				continue;
+			}
+			
+			runningTotal = runningTotal.add(itemAmount);
+		}
+		
+		runningTotal = runningTotal.multiply(currentTaxRate.divide(new BigDecimal(100)).add(new BigDecimal(1))).setScale(2, RoundingMode.HALF_UP);
+		runningTotal = runningTotal.subtract(tenderedAmount);
+		return runningTotal;
+	}
+	
+	private void onPaid()
+	{
+		BlockPos spawnPos = getPos().offset(world.getBlockState(getPos()).getValue(BlockRegister.FACING));
+		for(int i = 0; i < itemHandler.getSlots(); i++)
+		{
+			ItemStack stack = itemHandler.getStackInSlot(i);
+			if (stack.isEmpty())
+			{
+				continue;
+			}
+			
+			if (stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
+			{
+				ISecuredItem securedItem = stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
+				stack = securedItem.getInnerStack();
+			}
+			
+			InventoryHelper.spawnItemStack(world, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), stack);
+		}
+		
+		tenderedAmount = new BigDecimal(0);
+		itemHandler.dumpInventory();
+		setRegisterStatus(RegisterStatuses.TransactionComplete);
+	}
+	
 	// Operational methods
 	@Override
 	public void update() {	
@@ -336,6 +409,15 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 			}
 			statusUpdateTask = null;
 		}
+		
+		if (registerStatus == RegisterStatuses.TransactionComplete)
+		{
+			if (transactionCompleteCounter++ >= 60)
+			{
+				transactionCompleteCounter = 0;
+				setRegisterStatus(RegisterStatuses.Online);
+			}
+		}
 	}
 	
 	private void createStatusUpdateTask()
@@ -399,7 +481,8 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		InSession(true),
 		PaymentSelect(true),
 		PaymentCash(true),
-		PaymentCard(true);
+		PaymentCard(true),
+		TransactionComplete(true);
 		
 		private boolean isOperationalState;
 		private RegisterStatuses(boolean isOperationalState)
@@ -416,10 +499,16 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 	public static class RegisterItemHandler extends ItemStackHandler
 	{
 		TileEntityRegister register;
+		private ArrayList<BigDecimal> prices;
 		public RegisterItemHandler(TileEntityRegister register)
 		{
 			super(100);
 			this.register = register;
+			prices = new ArrayList<>(100);
+			for(int i = 0; i < 100; i++)
+			{
+				prices.add(null);
+			}
 		}
 		
 		@Override
@@ -431,6 +520,31 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 				return stack;
 			}
 			
+			if (!simulate && register.getWorld() != null)
+			{
+				prices.set(slot, null);
+				
+				if (FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER)
+				{
+					GetData get = new GetData(API.Company, "LocationItemIBAccess/Get", LocationItem.class);
+					get.addQueryString("locationID", Long.toString(register.getLocationIDOwner()));
+					ItemStack checkStack = stack;
+					if (stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
+					{
+						ISecuredItem securedItem = stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
+						checkStack = securedItem.getInnerStack();
+					}
+					get.addQueryString("name", checkStack.getDisplayName());
+					get.addQueryString("quantity", Integer.toString(checkStack.getCount()));
+					
+					DataRequestTask task = new DataRequestTask(get);
+					task.getData().put("pos", register.getPos().toLong());
+					task.getData().put("slot", slot);
+					task.getData().put("dimId", register.getWorld().provider.getDimension());
+					ServerTickHandler.priceLookupTasks.add(task);
+					DataRequestQueue.INSTANCE.addTask(task);
+				}
+			}
 			return super.insertItem(slot, stack, simulate);
 		}
 		
@@ -443,6 +557,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		{
 			int maxAmountForSlot = getSlotLimit(slot);
 			ItemStack retVal = super.extractItem(slot, maxAmountForSlot, false);
+			prices.remove(slot);
 			for(int i = slot + 1; i < getSlots(); i++)
 			{
 				ItemStack nextStack = getStackInSlot(i);
@@ -473,6 +588,66 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 			for(ItemStack stack : stacks)
 			{
 				stack.shrink(stack.getCount());
+			}
+			
+			for(int i = 0; i < getSlots(); i++)
+			{
+				prices.set(i, null);
+			}
+		}
+		
+		public BigDecimal getPrice(int slot)
+		{
+			try
+			{
+				return prices.get(slot);
+			}
+			catch (Exception ex)
+			{
+				return null;
+			}
+		}
+		
+		public void setPrice(int slot, BigDecimal price)
+		{
+			prices.set(slot, price);
+			onContentsChanged(slot);
+		}
+	
+		@Override
+		public NBTTagCompound serializeNBT() {
+			NBTTagCompound tag = super.serializeNBT();
+			for(int i = 0; i < getSlots(); i++)
+			{
+				if (prices.size() <= i || prices.get(i) == null)
+				{
+					continue;
+				}
+				
+				tag.setString("Price" + i, prices.get(i).toPlainString());
+			}
+			
+			return tag;
+		}
+		
+		@Override
+		public void deserializeNBT(NBTTagCompound nbt) {
+			super.deserializeNBT(nbt);
+			
+			prices = new ArrayList<>(getSlots());
+			for(int i = 0; i < getSlots(); i++)
+			{
+				prices.add(null);
+			}
+			for(int i = 0; i < getSlots(); i++)
+			{
+				if (!nbt.hasKey("Price" + i))
+				{
+					continue;
+				}
+				
+				BigDecimal price = new BigDecimal(nbt.getString("Price" + i));
+				prices.set(i, price);
 			}
 		}
 	}
