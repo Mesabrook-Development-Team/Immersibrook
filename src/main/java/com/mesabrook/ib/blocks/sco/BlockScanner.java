@@ -79,8 +79,8 @@ public class BlockScanner extends ImmersiblockRotationalManyBB {
 		}
 		else if (subBoundingBox == BILL_ACCEPTER && heldItem.getItem() instanceof ItemMoney && ((ItemMoney)heldItem.getItem()).getMoneyType() == MoneyType.Bill) // Brrr
 		{
-			BigDecimal amountForRegister = new BigDecimal(((ItemMoney)heldItem.getItem()).getValue() * heldItem.getCount()).divide(new BigDecimal(100)).setScale(2, RoundingMode.HALF_UP);
-			heldItem.shrink(heldItem.getCount());
+			BigDecimal amountForRegister = new BigDecimal(((ItemMoney)heldItem.getItem()).getValue()).divide(new BigDecimal(100)).setScale(2, RoundingMode.HALF_UP);
+			heldItem.shrink(1);
 			
 			register.applyCashTender(amountForRegister);
 		}

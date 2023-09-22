@@ -11,6 +11,7 @@ import com.mesabrook.ib.apimodels.company.Register;
 import com.mesabrook.ib.blocks.BlockRegister;
 import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
 import com.mesabrook.ib.capability.secureditem.ISecuredItem;
+import com.mesabrook.ib.items.commerce.ItemMoney;
 import com.mesabrook.ib.net.sco.POSInitializeRegisterResponsePacket;
 import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.apiaccess.DataAccess.API;
@@ -280,6 +281,15 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 			}
 			
 			InventoryHelper.spawnItemStack(world, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), stack);
+		}
+		
+		BigDecimal change = getDueAmount().abs();
+		if(change.compareTo(new BigDecimal(0)) > 0)
+		{
+			for(ItemStack stack : ItemMoney.getMoneyStackForAmount(change))
+			{
+				InventoryHelper.spawnItemStack(world, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), stack);
+			}
 		}
 		
 		tenderedAmount = new BigDecimal(0);

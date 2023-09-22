@@ -1,8 +1,11 @@
 package com.mesabrook.ib.net.sco;
 
+import java.math.BigDecimal;
+
 import com.mesabrook.ib.blocks.BlockRegister;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.blocks.te.TileEntityRegister.RegisterStatuses;
+import com.mesabrook.ib.items.commerce.ItemMoney;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.state.IBlockState;
@@ -68,6 +71,13 @@ public class POSCancelSalePacket implements IMessage {
 				}
 			}
 			handler.dumpInventory();
+			if (register.getTenderedAmount().compareTo(new BigDecimal(0)) > 0)
+			{
+				for(ItemStack moneyStack : ItemMoney.getMoneyStackForAmount(register.getTenderedAmount()))
+				{
+					InventoryHelper.spawnItemStack(world, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), moneyStack);
+				}
+			}
 			register.setRegisterStatus(RegisterStatuses.Online);
 			register.markDirty();
 			world.notifyBlockUpdate(message.pos, world.getBlockState(message.pos), world.getBlockState(message.pos), 3);
