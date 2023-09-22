@@ -463,4 +463,7 @@ public class ModItems
 
 	// Tape Measure
 	public static final Item TAPE_MEASURE = new ItemTapeMeasure("tape_measure");
+
+	// Portable Ender Chest
+	public static final Item PORTABLE_ENDER_CHEST = new ItemEnderChest("portable_ender_chest");
 }

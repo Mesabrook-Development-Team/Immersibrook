@@ -113,7 +113,7 @@ public class GuiHome extends GuiPhoneBase {
 					Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, new TextComponentTranslation("im.misc.urlopened").getFormattedText(), 0xFFFFFF));
 					ModUtils.openWebLink(new URI("https://github.com/RavenholmZombie/Immersibrook/wiki/Minedroid-Help"));
 				}
-				catch (URISyntaxException e)
+				catch (Exception e)
 				{
 					Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, new TextComponentTranslation("im.misc.error").getFormattedText(), 0xFFFFFF));
 					e.printStackTrace();
