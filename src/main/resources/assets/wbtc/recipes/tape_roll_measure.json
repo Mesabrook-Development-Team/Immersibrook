@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "YWY",
+        "WYW",
+        "YWY"
+    ],
+    "key": {
+        "Y": {
+            "item": "minecraft:dye",
+			"data": 11
+        },
+        "W": {
+            "item": "immersiveengineering:material",
+			"data": 23
+        }
+    },
+    "result": 
+    {
+        "item": "wbtc:tape_roll_measure",
+        "count": 1
+    }
+}

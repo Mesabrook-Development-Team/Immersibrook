@@ -172,6 +172,10 @@ public class MiscItem extends Item implements IHasModel
 			{
 				tooltip.add(TextFormatting.YELLOW + "A single-use charger for Minedroid smartphones. To use it, combine this item with your phone in a Crafting Table.");
 			}
+			if(stack.getItem() == ModItems.TAPE_CRAFTING)
+			{
+				tooltip.add(TextFormatting.YELLOW + "Crafting Ingredient");
+			}
 		}
 		else
 		{

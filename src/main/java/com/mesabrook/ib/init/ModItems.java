@@ -463,6 +463,7 @@ public class ModItems
 
 	// Tape Measure
 	public static final Item TAPE_MEASURE = new ItemTapeMeasure("tape_measure");
+	public static final Item TAPE_CRAFTING = new MiscItem("tape_roll_measure", 64, Main.IMMERSIBROOK_MAIN);
 
 	// Portable Ender Chest
 	public static final Item PORTABLE_ENDER_CHEST = new ItemEnderChest("portable_ender_chest");
