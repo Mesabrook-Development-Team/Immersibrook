@@ -65,6 +65,8 @@ advancements.imb.aidothers=First Responder
 advancements.imb.aidothers.desc=Use the First Aid Kit to heal another player or mob.
 advancements.imb.aidmonsters=Medical Malpractice
 advancements.imb.aidmonsters.desc=Use the healing powers of medicine on a hostile mob.
+advancements.imb.tape_measure=Measure Twice, Cut Once
+advancements.imb.tape_measure.desc=Use a Tape Measure to measure a distance.
 
 
 //Config

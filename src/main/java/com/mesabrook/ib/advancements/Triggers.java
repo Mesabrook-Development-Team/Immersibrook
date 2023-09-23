@@ -51,6 +51,9 @@ public class Triggers
     // Tech
     public static final BasicTrigger PHONE_USE = register("imb_phone_use");
 
+    // Tools
+    public static final BasicTrigger TAPE_MEASURE = register("imb_measure");
+
     private static BasicTrigger register(String name)
     {
         BasicTrigger trigger = new BasicTrigger(new ResourceLocation(Reference.MODID, name));

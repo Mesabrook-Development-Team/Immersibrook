@@ -1,6 +1,7 @@
 package com.mesabrook.ib.items.tools;
 
 import com.mesabrook.ib.Main;
+import com.mesabrook.ib.advancements.Triggers;
 import com.mesabrook.ib.blocks.BlockPole;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
@@ -132,6 +133,11 @@ public class ItemTapeMeasure extends Item implements IHasModel
                     if(!player.isCreative())
                     {
                         stack.damageItem(1, player);
+                    }
+
+                    if(player instanceof EntityPlayer)
+                    {
+                        Triggers.trigger(Triggers.TAPE_MEASURE, player);
                     }
                 }
             }
