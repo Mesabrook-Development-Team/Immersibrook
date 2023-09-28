@@ -8,9 +8,11 @@ import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
@@ -71,9 +73,12 @@ public class ItemEnderChest extends Item implements IHasModel
             ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
             packet.pos = playerIn.getPosition();
             packet.modID = "minecraft";
-            packet.soundName = "block.enderchest.open";
+            packet.soundName = "entity.endermen.stare";
             packet.rapidSounds = true;
             PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));
+
+            playerIn.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 500, 1, true, false));
+            playerIn.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 500, 1, true, false));
 
             return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemstack);
         }
@@ -87,6 +92,7 @@ public class ItemEnderChest extends Item implements IHasModel
         if(GuiScreen.isShiftKeyDown())
         {
             tooltip.add(TextFormatting.LIGHT_PURPLE + "A mysterious pouch that opens into your Ender Chest");
+            tooltip.add(TextFormatting.RED + "WARNING! Prolonged exposure to this item may cause adverse health effects.");
         }
         else
         {
