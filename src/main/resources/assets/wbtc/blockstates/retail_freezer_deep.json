@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:retail_freezer_deep" },
+        "facing=south": { "model": "wbtc:retail_freezer_deep", "y": 180 },
+        "facing=west":  { "model": "wbtc:retail_freezer_deep", "y": 270 },
+        "facing=east":  { "model": "wbtc:retail_freezer_deep", "y": 90 }
+    }
+}
