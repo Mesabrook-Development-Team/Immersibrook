@@ -68,6 +68,10 @@ public class GuiHandler implements IGuiHandler
 			{
 				return new GuiLowBatWarning(stack, hand);
 			}
+			else if(player.dimension == -1)
+			{
+				return new GuiThermalWarning(stack, hand);
+			}
 			else
 			{
 				int nextID = TelecomClientHandlers.getNextHandlerID();
