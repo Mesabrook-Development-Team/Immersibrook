@@ -271,5 +271,6 @@ public class CategoryBlocks extends AbstractCategory
 		add(ModBlocks.JUNGLE_PUSH_DOOR);
 		add(ModBlocks.ACACIA_PUSH_DOOR);
 		add(ModBlocks.DARK_OAK_PUSH_DOOR);
+		add(ModBlocks.WOOD_JAIL_DOOR);
 	}
 }

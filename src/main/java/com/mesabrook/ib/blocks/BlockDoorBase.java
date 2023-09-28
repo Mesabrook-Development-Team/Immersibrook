@@ -5,6 +5,7 @@ import com.mesabrook.ib.init.*;
 import com.mesabrook.ib.items.*;
 import com.mesabrook.ib.util.*;
 import net.minecraft.block.BlockDoor;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.*;
 import net.minecraft.block.state.IBlockState;
@@ -20,12 +21,27 @@ import java.util.*;
 
 public class BlockDoorBase extends BlockDoor implements IHasModel
 {
-    public BlockDoorBase(String name, Material materialIn)
+    public BlockDoorBase(String name, Material materialIn, boolean isUnbreakable)
     {
         super(materialIn);
         setUnlocalizedName(name);
         setRegistryName(name);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
+        setHardness(3F);
+
+        if(isUnbreakable)
+        {
+            setBlockUnbreakable();
+        }
+
+        if(materialIn == Material.WOOD)
+        {
+            setSoundType(SoundType.WOOD);
+        }
+        else
+        {
+            setSoundType(SoundType.METAL);
+        }
 
         ModBlocks.BLOCKS.add(this);
         ModItems.ITEMS.add(new ItemBlockDoor(this).setRegistryName(name));

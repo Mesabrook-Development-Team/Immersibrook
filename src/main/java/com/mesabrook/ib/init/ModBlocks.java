@@ -1162,12 +1162,13 @@ public class ModBlocks
 	public static final Block COLORED_QUARTZ = new BlockColoredQuartz();
 
 	// Doors
-	public static final Block OAK_PUSH_DOOR = new BlockDoorBase("oak_push_door", Material.WOOD);
-	public static final Block SPRUCE_PUSH_DOOR = new BlockDoorBase("spruce_push_door", Material.WOOD);
-	public static final Block BIRCH_PUSH_DOOR = new BlockDoorBase("birch_push_door", Material.WOOD);
-	public static final Block JUNGLE_PUSH_DOOR = new BlockDoorBase("jungle_push_door", Material.WOOD);
-	public static final Block ACACIA_PUSH_DOOR = new BlockDoorBase("acacia_push_door", Material.WOOD);
-	public static final Block DARK_OAK_PUSH_DOOR = new BlockDoorBase("dark_oak_push_door", Material.WOOD);
+	public static final Block OAK_PUSH_DOOR = new BlockDoorBase("oak_push_door", Material.WOOD, false);
+	public static final Block SPRUCE_PUSH_DOOR = new BlockDoorBase("spruce_push_door", Material.WOOD, false);
+	public static final Block BIRCH_PUSH_DOOR = new BlockDoorBase("birch_push_door", Material.WOOD, false);
+	public static final Block JUNGLE_PUSH_DOOR = new BlockDoorBase("jungle_push_door", Material.WOOD, false);
+	public static final Block ACACIA_PUSH_DOOR = new BlockDoorBase("acacia_push_door", Material.WOOD, false);
+	public static final Block DARK_OAK_PUSH_DOOR = new BlockDoorBase("dark_oak_push_door", Material.WOOD, false);
+	public static final Block WOOD_JAIL_DOOR = new BlockDoorBase("jail_door", Material.IRON, true);
 
 	// Wall Signs
 	public static final Block WALL_SIGN_BLACK = new BlockWallSign("wall_sign_black", MapColor.BLACK, ModUtils.getPixelatedAABB(5,5,0, 11,11,0.8)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
@@ -1196,4 +1197,8 @@ public class ModBlocks
 
 	// Item Stand
 	public static final Block ITEM_STAND = new BlockItemStand("smartphone_stand", ModUtils.DEFAULT_AABB);
+
+	// Retail Freezers
+	public static final Block RETAIL_FREEZER_UPRIGHT = new ImmersiblockRotational("retail_freezer_upright", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
+	public static final Block RETAIL_FREEZER_DEEP = new ImmersiblockRotational("retail_freezer_deep", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
 }

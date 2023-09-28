@@ -1947,6 +1947,7 @@ tile.wall_sign_red.name=Red Wall Sign
 tile.wall_sign_green.name=Green Wall Sign
 tile.wall_sign_blue.name=Blue Wall Sign
 tile.in_street_crosswalk_sign.name=In-Street Pedestrian Crossing Sign
+tile.charging_station_wallsign.name=Mesabrook Bell Charging Station Sign
 
 // Sponge
 item.sponge.name=Sponge
@@ -1987,3 +1988,18 @@ item.dollar_coin.name=One Dollar Coin
 item.ration_1.name=Emergency Survival Ration
 item.ration_2.name=Radiation Survival Kit
 item.water_sachet.name=Emergency Water
+
+// Retail and SCO
+tile.sco_pos.name=MSAC Point of Sale System - Main Terminal
+tile.sco_scanner.name=MSAC Point of Sale System - Product Scanner
+tile.sco_bagging.name=MSAC Point of Sale System - Bagging Platform
+tile.shelf_one_level_two_peghooks=Retail Shelf
+tile.shelf_four_peghooks.name=Retail Shelf
+tile.shelf_two_levels_no_peghooks.name=Retail Shelf
+tile.security_station.name=MSAC Retail - Merchandise Securing Station
+tile.smartphone_stand.name=Smartphone Display Stand
+tile.retail_freezer_upright.name=Retail Freezer
+tile.retail_freezer_deep.name=Retail Deep Freezer Island
+tile.sim_station.name=Mesabrook Bell SIM Programming Terminal
+item.sim_card.name=Mesabrook Bell SIM Card
+item.shopping_basket_blue.name=Shopping Basket
