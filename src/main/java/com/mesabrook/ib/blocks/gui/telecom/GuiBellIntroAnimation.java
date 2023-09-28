@@ -100,17 +100,13 @@ public class GuiBellIntroAnimation extends GuiPhoneBase
     {
         if(phoneStackData.getNeedToDoOOBE())
         {
-            ClientSoundPacket soundPacket = new ClientSoundPacket();
-            soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
-            soundPacket.soundName = "minedroid_startup";
-            PacketHandler.INSTANCE.sendToServer(soundPacket);
             Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneSetupStart(phoneStack, hand));
         }
         else
         {
             ClientSoundPacket soundPacket = new ClientSoundPacket();
             soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
-            soundPacket.soundName = "minedroid_startup";
+            soundPacket.soundName = "normal_boot";
             PacketHandler.INSTANCE.sendToServer(soundPacket);
             GuiLockScreen lock = new GuiLockScreen(Minecraft.getMinecraft().player.getHeldItem(hand), hand);
             Minecraft.getMinecraft().displayGuiScreen(lock);
