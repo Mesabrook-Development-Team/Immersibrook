@@ -113,7 +113,7 @@ public class ItemTapeMeasure extends Item implements IHasModel
                     poleBlock = world.getBlockState(polePos);
                     double distance = pointA.distanceSq(pointB);
                     int roundedDistance = (int) Math.round(Math.sqrt(distance));
-                    player.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "§lDistance: " + roundedDistance + "m"));
+                    player.sendMessage(new TextComponentString(TextFormatting.LIGHT_PURPLE + "§lDistance: " + roundedDistance + " Meters"));
 
                     if (poleBlock.getBlock() == ModBlocks.POLE)
                     {

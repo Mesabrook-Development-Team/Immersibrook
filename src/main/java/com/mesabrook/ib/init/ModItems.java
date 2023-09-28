@@ -467,4 +467,7 @@ public class ModItems
 
 	// Portable Ender Chest
 	public static final Item PORTABLE_ENDER_CHEST = new ItemEnderChest("portable_ender_chest");
+
+	// Shopping Basket Test Item
+	public static final Item SHOPPING_BASKET = new MiscItem("shopping_basket_blue", 1, Main.IMMERSIBROOK_MAIN);
 }
