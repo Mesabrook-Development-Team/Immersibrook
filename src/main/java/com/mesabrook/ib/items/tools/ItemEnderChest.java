@@ -77,8 +77,11 @@ public class ItemEnderChest extends Item implements IHasModel
             packet.rapidSounds = true;
             PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));
 
-            playerIn.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 500, 1, true, false));
-            playerIn.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 500, 1, true, false));
+            if(worldIn.getGameRules().getBoolean("toxicEnderPouch"))
+            {
+                playerIn.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 500, 1, true, false));
+                playerIn.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 500, 1, true, false));
+            }
 
             return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemstack);
         }
@@ -92,11 +95,11 @@ public class ItemEnderChest extends Item implements IHasModel
         if(GuiScreen.isShiftKeyDown())
         {
             tooltip.add(TextFormatting.LIGHT_PURPLE + "A mysterious pouch that opens into your Ender Chest");
-            tooltip.add(TextFormatting.RED + "WARNING! Prolonged exposure to this item may cause adverse health effects.");
         }
         else
         {
             tooltip.add(TextFormatting.YELLOW + "Press [SHIFT] for more info.");
+            tooltip.add(TextFormatting.RED + "WARNING! Prolonged exposure to this item may cause adverse health effects.");
         }
     }
 }
