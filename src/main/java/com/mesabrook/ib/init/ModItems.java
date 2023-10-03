@@ -238,6 +238,8 @@ public class ModItems
 	public static final Item WATER_SACHET = new ItemIBFood("water_sachet", 15, 0, 0, 0, false);
 	public static final Item SHITTLES = new ItemIBFood("shittles", 16, 0, 5, 12, false);
 	public static final Item TASTYJUICE = new ItemIBFood("tastyjuice", 1, 0, 8, 15, false);
+	public static final Item RAW_CHICKEN_NUGGET = new ItemIBFood("raw_chicken_nugget", 64, 0, 5, 10, true);
+	public static final Item CHICKEN_NUGGET = new ItemIBFood("cooked_chicken_nugget", 64, 0, 8, 16, true);
 
 	// Non-Edible Candy Items
 	public static final Item RAW_CANDY_RED = new MiscItem("raw_candy_red", 64, Main.IMMERSIBROOK_MAIN);

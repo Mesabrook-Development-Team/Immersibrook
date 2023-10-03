@@ -176,6 +176,10 @@ public class RecipesHandler
 			// Bread
 			GameRegistry.addSmelting(ItemRegistry.doughItem, new ItemStack(Items.BREAD, 1), 5F);
 
+			// Food
+			GameRegistry.addSmelting(ModItems.RAW_CHICKEN_NUGGET, new ItemStack(ModItems.CHICKEN_NUGGET, 1), 5F);
+			GameRegistry.addSmelting(Items.BREAD, new ItemStack(ItemRegistry.toastItem, 1), 5F);
+
 			if(ModConfig.smeltingLeatherForASaddle)
 			{
 				GameRegistry.addSmelting(Items.LEATHER, new ItemStack(Items.SADDLE, 1), 24F);

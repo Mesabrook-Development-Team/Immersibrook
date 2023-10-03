@@ -1412,6 +1412,8 @@ item.hfcs.name=High-Fructose Corn Syrup
 item.pilk.name=Pilk
 item.player_flesh.name=Player Flesh
 item.player_flesh_cooked.name=Player Steak
+item.raw_chicken_nugget.name=Raw Chicken Nugget
+item.cooked_chicken_nugget.name=Chicken Nugget
 
 //Dialog
 im.sugwarn=You wonder if you should risk taking another bite...

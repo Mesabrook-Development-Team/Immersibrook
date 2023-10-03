@@ -141,6 +141,17 @@ public class ItemIBFood extends ItemFood implements IHasModel
             player.addItemStackToInventory(new ItemStack(ModItems.PAPER_STICK));
         }
 
+        if(stack.getItem() == ModItems.RAW_CHICKEN_NUGGET)
+        {
+            if(worldIn.rand.nextFloat() < 0.2F)
+            {
+                if(!worldIn.isRemote)
+                {
+                    player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 500, 1, true, true));
+                }
+            }
+        }
+
         if(stack.getItem() == ModItems.SPARKLING_PINK_LEMONADE)
         {
             if(!player.isCreative())
