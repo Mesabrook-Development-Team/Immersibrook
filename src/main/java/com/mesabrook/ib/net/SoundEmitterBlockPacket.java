@@ -43,7 +43,6 @@ public class SoundEmitterBlockPacket implements IMessage
         ByteBufUtils.writeUTF8String(buf, modID);
         ByteBufUtils.writeUTF8String(buf, soundID);
         buf.writeInt(range);
-        // Write the BlockPos to the buffer
         buf.writeInt(pos.getX());
         buf.writeInt(pos.getY());
         buf.writeInt(pos.getZ());

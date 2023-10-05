@@ -1,7 +1,9 @@
 package com.mesabrook.ib.blocks.te;
 
+import com.mesabrook.ib.blocks.BlockSoundEmitter;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.handlers.PacketHandler;
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -90,13 +92,11 @@ public class TileEntitySoundEmitter extends TileEntity implements ITickable
     @Override
     public void update()
     {
+        EntityPlayer player = world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), getRange(), false);
         if (world.isBlockPowered(pos))
         {
             try
             {
-                EntityPlayer player = world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), getRange(), false);
-                player.sendMessage(new TextComponentString("Active"));
-
                 ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                 packet.pos = pos;
                 packet.modID = getModID();
