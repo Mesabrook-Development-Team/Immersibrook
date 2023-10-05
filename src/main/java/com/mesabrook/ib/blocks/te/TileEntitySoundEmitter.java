@@ -13,9 +13,9 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 public class TileEntitySoundEmitter extends TileEntity implements ITickable
 {
-    private int range;
-    private String modID;
-    private String soundID;
+    private int range = 15;
+    private String modID = "";
+    private String soundID = "";
 
     @Override
     public void readFromNBT(NBTTagCompound compound)
