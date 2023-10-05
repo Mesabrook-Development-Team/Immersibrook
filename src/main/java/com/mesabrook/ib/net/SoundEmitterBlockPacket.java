@@ -68,7 +68,6 @@ public class SoundEmitterBlockPacket implements IMessage
                 te.setModID(message.modID);
                 te.setSoundID(message.soundID);
                 te.setRange(message.range);
-                te.markDirty();
 
                 ctx.getServerHandler().player.sendMessage(new TextComponentString("Sound Emitter Configured! (ModID: " + message.modID + " SoundID: " + message.soundID + " Range: " + message.range));
             }

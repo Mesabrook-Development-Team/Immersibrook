@@ -3,6 +3,9 @@ package com.mesabrook.ib.blocks.te;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.text.TextComponentString;
@@ -13,6 +16,24 @@ public class TileEntitySoundEmitter extends TileEntity implements ITickable
     private int range;
     private String modID;
     private String soundID;
+
+    @Override
+    public void readFromNBT(NBTTagCompound compound)
+    {
+        super.readFromNBT(compound);
+        modID = compound.getString("modID");
+        soundID = compound.getString("soundID");
+        range = compound.getInteger("range");
+    }
+
+    @Override
+    public NBTTagCompound writeToNBT(NBTTagCompound compound)
+    {
+        compound.setString("modID", modID);
+        compound.setString("soundID", soundID);
+        compound.setInteger("range", range);
+        return super.writeToNBT(compound);
+    }
 
     public int getRange()
     {
@@ -48,6 +69,25 @@ public class TileEntitySoundEmitter extends TileEntity implements ITickable
     }
 
     @Override
+    public NBTTagCompound getUpdateTag()
+    {
+        NBTTagCompound tag = super.getUpdateTag();
+        tag.setString("modID", getModID());
+        tag.setString("soundID", getSoundID());
+        tag.setInteger("range", getRange());
+        return tag;
+    }
+
+    @Override
+    public void handleUpdateTag(NBTTagCompound tag)
+    {
+        super.handleUpdateTag(tag);
+        this.modID = tag.getString("modID");
+        this.soundID = tag.getString("soundID");
+        this.range = tag.getInteger("range");
+    }
+
+    @Override
     public void update()
     {
         if (world.isBlockPowered(pos))
@@ -73,5 +113,24 @@ public class TileEntitySoundEmitter extends TileEntity implements ITickable
         {
             // Block is not powered, do something else here
         }
+    }
+
+    @Override
+    public SPacketUpdateTileEntity getUpdatePacket()
+    {
+        NBTTagCompound tag = new NBTTagCompound();
+        tag.setString("modID", getModID());
+        tag.setString("soundID", getSoundID());
+        tag.setInteger("range", getRange());
+        return new SPacketUpdateTileEntity(getPos(), 0, tag);
+    }
+
+    @Override
+    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt)
+    {
+        this.modID = pkt.getNbtCompound().getString("modID");
+        this.soundID = pkt.getNbtCompound().getString("soundID");
+        this.range = pkt.getNbtCompound().getInteger("range");
+        super.onDataPacket(net, pkt);
     }
 }
