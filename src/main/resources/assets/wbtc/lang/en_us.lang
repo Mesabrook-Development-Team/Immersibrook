@@ -2005,3 +2005,7 @@ tile.retail_freezer_deep.name=Retail Deep Freezer Island
 tile.sim_station.name=Mesabrook Bell SIM Programming Terminal
 item.sim_card.name=Mesabrook Bell SIM Card
 item.shopping_basket_blue.name=Shopping Basket
+
+//Sound Emitters
+tile.sound_emitter.name=Sound Emitter
+tile.sound_emitter_wall.name=Wall Mounted Sound Emitter
