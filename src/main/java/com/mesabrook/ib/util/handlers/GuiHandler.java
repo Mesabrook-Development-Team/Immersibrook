@@ -89,6 +89,7 @@ public class GuiHandler implements IGuiHandler
 		else if (ID == Reference.GUI_RATION) return new GuiRation(new ContainerRation(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]));
 		else if (ID == Reference.GUI_WALLSIGN) return new GuiWallSign(EnumHand.values()[x]);
 		else if (ID == Reference.GUI_TOS) return new GuiTOS();
+		else if (ID == Reference.GUI_SOUND_EMITTER) return new GuiSoundEmitter(player.swingingHand, new BlockPos(x,y,z));
 		else return null;
 	}
 	

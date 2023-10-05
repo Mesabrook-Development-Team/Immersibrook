@@ -1,0 +1,12 @@
+{
+   "parent": "block/cube",
+   "textures": {
+	   "particle": "wbtc:blocks/sound_emitter_side",
+       "up": "wbtc:blocks/sound_emitter_side",
+       "down": "wbtc:blocks/sound_emitter_side",
+       "south": "wbtc:blocks/sound_emitter_side",
+       "north": "wbtc:blocks/sound_emitter_front",
+       "west": "wbtc:blocks/sound_emitter_side",
+       "east": "wbtc:blocks/sound_emitter_side"
+   }
+}

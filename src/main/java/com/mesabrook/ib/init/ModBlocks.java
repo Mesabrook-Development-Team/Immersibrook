@@ -1201,4 +1201,7 @@ public class ModBlocks
 	// Retail Freezers
 	public static final Block RETAIL_FREEZER_UPRIGHT = new ImmersiblockRotational("retail_freezer_upright", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
 	public static final Block RETAIL_FREEZER_DEEP = new ImmersiblockRotational("retail_freezer_deep", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
+
+	// Sound Emitter
+	public static final Block SOUND_EMITTER_TEST = new BlockSoundEmitter("sound_emitter", Material.IRON, SoundType.METAL);
 }
