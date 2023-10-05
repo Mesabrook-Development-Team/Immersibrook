@@ -92,27 +92,7 @@ public class TileEntitySoundEmitter extends TileEntity implements ITickable
     @Override
     public void update()
     {
-        EntityPlayer player = world.getClosestPlayer(pos.getX(), pos.getY(), pos.getZ(), getRange(), false);
-        if (world.isBlockPowered(pos))
-        {
-            try
-            {
-                ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
-                packet.pos = pos;
-                packet.modID = getModID();
-                packet.soundName = getSoundID();
-                packet.rapidSounds = false;
-                PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, getRange()));
-            }
-            catch(Exception ex)
-            {
-                return;
-            }
-        }
-        else
-        {
-            // Block is not powered, do something else here
-        }
+
     }
 
     @Override

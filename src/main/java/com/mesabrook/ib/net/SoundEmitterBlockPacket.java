@@ -18,7 +18,7 @@ public class SoundEmitterBlockPacket implements IMessage
 {
     public String modID = "wbtc";
     public String soundID = "owo";
-    public int range = 25;
+    public int range = 0;
     public BlockPos pos;
     public EnumHand hand;
 

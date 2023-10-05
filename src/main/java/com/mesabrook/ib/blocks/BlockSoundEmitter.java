@@ -4,8 +4,11 @@ import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.te.TileEntitySoundEmitter;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.handlers.PacketHandler;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
@@ -13,6 +16,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -25,6 +29,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 import javax.annotation.Nullable;
 
@@ -160,6 +165,30 @@ public class BlockSoundEmitter extends BlockContainer implements IHasModel
     public BlockRenderLayer getBlockLayer()
     {
         return BlockRenderLayer.CUTOUT;
+    }
+
+    @Override
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos)
+    {
+        if (worldIn.isRemote)
+        {
+            super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
+            return;
+        }
+
+        TileEntitySoundEmitter te = (TileEntitySoundEmitter) worldIn.getTileEntity(pos);
+
+        if (worldIn.isBlockPowered(pos))
+        {
+            ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
+            packet.pos = pos;
+            packet.modID = te.getModID();
+            packet.soundName = te.getSoundID();
+            packet.rapidSounds = false;
+            PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(worldIn.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), te.getRange()));
+        }
+
+        super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
     }
 
     @Override

@@ -7,6 +7,7 @@ import net.minecraft.client.*;
 import net.minecraft.client.gui.*;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.client.config.*;
 import org.lwjgl.input.*;
 
@@ -113,6 +114,7 @@ public class GuiSoundEmitter extends GuiScreen
                 catch(Exception ex)
                 {
                     packet.range = 25;
+                    Minecraft.getMinecraft().player.sendMessage(new TextComponentString(ex.getMessage()));
                 }
 
                 packet.pos = blockPos;
