@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "S#S"
+  ],
+  "key": {
+    "#": {
+      "item": "wbtc:gray_plastic"
+    },
+    "S": {
+      "item": "wbtc:sound_emitter"
+    }
+  },
+  "result": {
+    "item": "wbtc:sound_emitter_wall",
+    "count": 1
+  }
+}
