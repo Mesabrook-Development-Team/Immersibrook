@@ -107,6 +107,7 @@ public class SoundInit
 	public static final SoundEvent MS_XP;
 	public static final SoundEvent COOKING;
 	public static final SoundEvent MEMORY;
+	public static final SoundEvent WIDE;
 
 	// Holiday Records
 	public static final SoundEvent SPOOKY;
@@ -295,6 +296,7 @@ public class SoundInit
 		HL3 = addSoundsToRegistry("hl3");
 		COOKING = addSoundsToRegistry("cooking");
 		MEMORY = addSoundsToRegistry("memory");
+		WIDE = addSoundsToRegistry("wide");
 
 		// Plastic SoundType
 		PLASTIC_BREAK = addSoundsToRegistry("plastic_break");
@@ -395,6 +397,7 @@ public class SoundInit
 			try
 			{
 				event.getRegistry().registerAll(SoundInit.OWO_SFX);
+				event.getRegistry().registerAll(SoundInit.WIDE);
 				event.getRegistry().registerAll(SoundInit.RZ_TROPHY);
 				event.getRegistry().registerAll(SoundInit.CSX_TROPHY);
 				event.getRegistry().registerAll(SoundInit.TLZ_TROPHY);

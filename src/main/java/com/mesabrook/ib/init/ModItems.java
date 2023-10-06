@@ -126,6 +126,7 @@ public class ModItems
 	public static final Item DISC_RITZ = new MemeRecord("disc_ritz", SoundInit.RITZ);
 	public static final Item DISC_HL3 = new MemeRecord("disc_pumpkin", SoundInit.HL3);
 	public static final Item DISC_MEMORY = new MemeRecord("memory", SoundInit.MEMORY);
+	public static final Item WIDE_DISC = new MemeRecord("wide_record", SoundInit.WIDE); 
 
 	// First Aid Kit
 	public static final Item FIRST_AID_KIT = new ItemFirstAidKit("first_aid", Main.IMMERSIBROOK_MAIN);

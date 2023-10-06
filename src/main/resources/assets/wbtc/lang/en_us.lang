@@ -1286,6 +1286,7 @@ item.disc_ritz.name=Music Disc
 item.disc_pumpkin.name=Music Disc
 item.cooking_music.name=Music Disc
 item.memory.name=Music Disc
+item.wide_record.name=Music Disc
 
 //Record Descriptions
 item.record.amalthea.desc=Amalthea
@@ -1305,6 +1306,7 @@ item.record.disc_ritz.desc=Taco - Puttin' on the Ritz (Re-Recorded)
 item.record.disc_pumpkin.desc=FreeUseMusic - Halloween
 item.record.cooking_music.desc=RavenholmZombie - Calm Cooking Music
 item.record.memory.desc=Bonnie - It's just a Burning Memory (8-bit)
+item.record.wide_record.desc=Слава Україні! (Wide Zelensky)
 
 //Enchantments
 enchantment.thunder=The Power of Thor
