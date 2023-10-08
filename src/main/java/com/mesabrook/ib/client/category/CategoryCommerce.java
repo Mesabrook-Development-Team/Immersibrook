@@ -55,5 +55,8 @@ public class CategoryCommerce extends AbstractCategory
         add(ModBlocks.SECURITY_STATION);
         add(ModBlocks.SIM_STATION);
         add(ModBlocks.ITEM_STAND);
+
+        // ATM
+        add(ModBlocks.ATM);
     }
 }

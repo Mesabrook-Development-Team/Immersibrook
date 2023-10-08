@@ -1205,4 +1205,7 @@ public class ModBlocks
 	// Sound Emitter
 	public static final Block SOUND_EMITTER_BLOCK = new BlockSoundEmitter("sound_emitter", Material.IRON, SoundType.METAL);
 	public static final Block SOUND_EMITTER_WALL = new BlockSoundEmitter("sound_emitter_wall", Material.IRON, SoundType.METAL);
+
+	// ATM
+	public static final Block ATM = new ImmersiblockRotational("atm", Material.IRON, SoundType.METAL, "pickaxe", 1, 10F, 10F, ModUtils.DEFAULT_AABB);
 }
