@@ -1,12 +1,10 @@
 package com.mesabrook.ib.util.apiaccess;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.StringBufferInputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -18,6 +16,7 @@ import java.util.UUID;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.SerializedName;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.util.config.ModConfig;
 
@@ -114,6 +113,7 @@ public abstract class DataAccess {
 			switch(responseCode)
 			{
 				case HttpURLConnection.HTTP_OK:
+				case HttpURLConnection.HTTP_CREATED:
 				case HttpURLConnection.HTTP_INTERNAL_ERROR:
 				case HttpURLConnection.HTTP_BAD_REQUEST:
 					readInput(connection);
@@ -134,7 +134,7 @@ public abstract class DataAccess {
 						setRequestSuccessful(false);
 						return;
 					}
-					setRequestSuccessful(true);
+					setRequestSuccessful(responseCode == HttpURLConnection.HTTP_OK || responseCode == HttpURLConnection.HTTP_CREATED);
 					break;
 				case HttpURLConnection.HTTP_NOT_FOUND:
 					GenericErrorResponse error = new GenericErrorResponse();
@@ -226,7 +226,7 @@ public abstract class DataAccess {
 			}
 		}
 		
-		GenericErrorResponse errorResponse = gson.fromJson(reader, GenericErrorResponse.class);
+		GenericErrorResponse errorResponse = gson.fromJson(data, GenericErrorResponse.class);
 		resultsByType.put(GenericErrorResponse.class, errorResponse);
 		
 		setRequestSuccessful(true);
@@ -489,6 +489,7 @@ public abstract class DataAccess {
 	
 	public static class GenericErrorResponse
 	{
+		@SerializedName(value = "message",  alternate = {"Message"})
 		public String message;
 	}
 	

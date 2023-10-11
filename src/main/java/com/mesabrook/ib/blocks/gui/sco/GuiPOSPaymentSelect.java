@@ -2,25 +2,21 @@ package com.mesabrook.ib.blocks.gui.sco;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.blocks.gui.GuiImageLabelButton;
 import com.mesabrook.ib.blocks.gui.GuiImageLabelButton.ImageOrientation;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.blocks.te.TileEntityRegister.RegisterStatuses;
-import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
-import com.mesabrook.ib.capability.secureditem.ISecuredItem;
 import com.mesabrook.ib.net.sco.POSCancelSalePacket;
 import com.mesabrook.ib.net.sco.POSChangeStatusClientToServerPacket;
-import com.mesabrook.ib.net.sco.POSFetchPricePacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
@@ -57,6 +53,34 @@ public class GuiPOSPaymentSelect extends GuiPOSPaymentBase {
 				.add(cancel)
 				.add(back)
 				.build());
+	}
+	
+	@Override
+	protected void doDraw(int mouseX, int mouseY, float partialTicks) {
+		super.doDraw(mouseX, mouseY, partialTicks);
+		
+		if (register.getTenderFailureMessage().isEmpty())
+		{
+			return;
+		}
+		
+		List<String> errorList = fontRenderer.listFormattedStringToWidth(register.getTenderFailureMessage(), 160);
+		ArrayList<String> stringList = new ArrayList<>();
+		for(int i = 0; i < 3; i++)
+		{
+			if (errorList.size() <= i)
+			{
+				break;
+			}
+			
+			stringList.add(errorList.get(i));
+		}
+		
+		for(int i = 0; i < stringList.size(); i++)
+		{
+			String errorLine = stringList.get(i);
+			fontRenderer.drawString(errorLine, innerLeft + 13, innerTop + 92 + fontRenderer.FONT_HEIGHT * i, 0xFF0000);
+		}
 	}
 	
 	@Override

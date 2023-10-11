@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.UUID;
 
 import com.mesabrook.ib.apimodels.company.LocationItem;
@@ -21,6 +22,7 @@ import com.mesabrook.ib.util.apiaccess.DataRequestQueue;
 import com.mesabrook.ib.util.apiaccess.DataRequestTask;
 import com.mesabrook.ib.util.apiaccess.DataRequestTaskStatus;
 import com.mesabrook.ib.util.apiaccess.GetData;
+import com.mesabrook.ib.util.apiaccess.PostData;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import com.mesabrook.ib.util.handlers.ServerTickHandler;
 
@@ -49,10 +51,12 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 	private final RegisterItemHandler itemHandler = new RegisterItemHandler(this);
 	
 	RegisterStatuses registerStatus = RegisterStatuses.Uninitialized;
+	private String tenderFailureMessage = "";
 
 	// Runtime data
 	DataRequestTask statusUpdateTask = null;
 	DataRequestTask initializeTask = null;
+	DataRequestTask paymentTask = null;
 	Calendar nextUpdateTime = Calendar.getInstance();
 	int transactionCompleteCounter = 0;
 	
@@ -76,6 +80,10 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		{
 			itemHandler.deserializeNBT(compound.getCompoundTag("inventory"));
 		}
+		if (compound.hasKey("tenderFailureMessage"))
+		{
+			tenderFailureMessage = compound.getString("tenderFailureMessage");
+		}
 	}
 	
 	@Override
@@ -87,6 +95,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		compound.setString("currentTaxRate", currentTaxRate.toPlainString());
 		compound.setString("tenderedAmount", tenderedAmount.toPlainString());
 		compound.setTag("inventory", itemHandler.serializeNBT());
+		compound.setString("tenderFailureMessage", tenderFailureMessage);
 		return super.writeToNBT(compound);
 	}
 	
@@ -99,6 +108,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		compound.setString("currentTaxRate", currentTaxRate.toPlainString());
 		compound.setString("tenderedAmount", tenderedAmount.toPlainString());
 		compound.setTag("inventory", itemHandler.serializeNBT());
+		compound.setString("tenderFailureMessage", tenderFailureMessage);
 		return compound;
 	}
 	
@@ -115,6 +125,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 			itemHandler.deserializeNBT(tag.getCompoundTag("inventory"));
 		}
 		registerStatus = RegisterStatuses.values()[tag.getInteger("registerStatus")];
+		tenderFailureMessage = tag.getString("tenderFailureMessage");
 	}
 	
 	@Override
@@ -154,6 +165,10 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		}
 		
 		this.registerStatus = registerStatus;
+		if (this.registerStatus != RegisterStatuses.PaymentSelect)
+		{
+			setTenderFailureMessage("");
+		}
 		
 		markDirty();
 		
@@ -225,6 +240,25 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		return tenderedAmount;
 	}
 
+	public String getTenderFailureMessage() {
+		return tenderFailureMessage;
+	}
+
+	public void setTenderFailureMessage(String tenderFailureMessage) {
+		if (this.tenderFailureMessage.equalsIgnoreCase(tenderFailureMessage))
+		{
+			return;
+		}
+		
+		this.tenderFailureMessage = tenderFailureMessage;
+		markDirty();
+		
+		if (world != null)
+		{
+			getWorld().notifyBlockUpdate(getPos(), getWorld().getBlockState(getPos()), getWorld().getBlockState(getPos()), 3);
+		}
+	}
+
 	public void applyCashTender(BigDecimal amount)
 	{
 		tenderedAmount = tenderedAmount.add(amount);
@@ -265,7 +299,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 	
 	private void onPaid()
 	{
-		BlockPos spawnPos = getPos().offset(world.getBlockState(getPos()).getValue(BlockRegister.FACING));
+		ArrayList<StoreSaleSubParameter> parameters = new ArrayList<>();
 		for(int i = 0; i < itemHandler.getSlots(); i++)
 		{
 			ItemStack stack = itemHandler.getStackInSlot(i);
@@ -280,21 +314,20 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 				stack = securedItem.getInnerStack();
 			}
 			
-			InventoryHelper.spawnItemStack(world, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), stack);
+			StoreSaleSubParameter param = new StoreSaleSubParameter();
+			param.Name = stack.getDisplayName();
+			param.Amount = stack.getCount();
+			param.SaleAmount = itemHandler.getPrice(i);
+			parameters.add(param);
 		}
 		
-		BigDecimal change = getDueAmount().abs();
-		if(change.compareTo(new BigDecimal(0)) > 0)
-		{
-			for(ItemStack stack : ItemMoney.getMoneyStackForAmount(change))
-			{
-				InventoryHelper.spawnItemStack(world, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), stack);
-			}
-		}
+		setRegisterStatus(RegisterStatuses.TransactionProcessing);
 		
-		tenderedAmount = new BigDecimal(0);
-		itemHandler.dumpInventory();
-		setRegisterStatus(RegisterStatuses.TransactionComplete);
+		PostData post = new PostData(API.Company, "StoreSaleItemIBAccess/Post", parameters, new Class<?>[0]);
+		post.getHeaderOverrides().put("RegisterIdentifier", identifier.toString());
+		
+		paymentTask = new DataRequestTask(post);
+		DataRequestQueue.INSTANCE.addTask(paymentTask);
 	}
 	
 	// Operational methods
@@ -420,6 +453,67 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 			statusUpdateTask = null;
 		}
 		
+		if (paymentTask != null && paymentTask.getStatus() == DataRequestTaskStatus.Complete)
+		{
+			if (paymentTask.getTask().getRequestSuccessful())
+			{
+				BlockPos spawnPos = getPos().offset(world.getBlockState(getPos()).getValue(BlockRegister.FACING));
+				
+				for(int i = 0; i < itemHandler.getSlots(); i++)
+				{
+					ItemStack stack = itemHandler.getStackInSlot(i);
+					if (stack.isEmpty())
+					{
+						continue;
+					}
+					
+					if (stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
+					{
+						ISecuredItem securedItem = stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
+						stack = securedItem.getInnerStack();
+					}
+					
+					InventoryHelper.spawnItemStack(world, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), stack);
+				}
+				
+				BigDecimal change = getDueAmount().abs();
+				if(change.compareTo(new BigDecimal(0)) > 0)
+				{
+					for(ItemStack stack : ItemMoney.getMoneyStackForAmount(change))
+					{
+						InventoryHelper.spawnItemStack(world, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), stack);
+					}
+				}
+				
+				itemHandler.dumpInventory();				
+				
+				setTenderedAmount(new BigDecimal(0));
+				setRegisterStatus(RegisterStatuses.TransactionComplete);
+			}
+			else
+			{
+				setRegisterStatus(RegisterStatuses.PaymentSelect);
+				
+				GenericErrorResponse errorMessage = paymentTask.getTask().getResult(GenericErrorResponse.class);
+				if (errorMessage != null)
+				{
+					setTenderFailureMessage(errorMessage.message);
+				}
+				
+				BlockPos spawnPos = getPos().offset(world.getBlockState(getPos()).getValue(BlockRegister.FACING));
+				List<ItemStack> tenderedStacks = ItemMoney.getMoneyStackForAmount(tenderedAmount);
+				for(ItemStack stack : tenderedStacks)
+				{
+					InventoryHelper.spawnItemStack(world, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), stack);
+				}
+				
+				setTenderedAmount(new BigDecimal(0));
+			}
+			
+			paymentTask = null;
+			return;
+		}
+		
 		if (registerStatus == RegisterStatuses.TransactionComplete)
 		{
 			if (transactionCompleteCounter++ >= 60)
@@ -492,6 +586,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		PaymentSelect(true),
 		PaymentCash(true),
 		PaymentCard(true),
+		TransactionProcessing(true),
 		TransactionComplete(true);
 		
 		private boolean isOperationalState;
@@ -568,6 +663,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 			int maxAmountForSlot = getSlotLimit(slot);
 			ItemStack retVal = super.extractItem(slot, maxAmountForSlot, false);
 			prices.remove(slot);
+			prices.add(null);
 			for(int i = slot + 1; i < getSlots(); i++)
 			{
 				ItemStack nextStack = getStackInSlot(i);
@@ -660,5 +756,12 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 				prices.set(i, price);
 			}
 		}
+	}
+
+	public static class StoreSaleSubParameter
+	{
+		public String Name;
+		public int Amount;
+		public BigDecimal SaleAmount;
 	}
 }

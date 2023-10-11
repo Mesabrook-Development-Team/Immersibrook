@@ -1,8 +1,6 @@
 package com.mesabrook.ib.util.apiaccess;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.function.Supplier;
 
 public class DataRequestTask {
 	private final DataAccess task;

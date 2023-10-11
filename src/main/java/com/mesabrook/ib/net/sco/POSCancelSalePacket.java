@@ -77,6 +77,8 @@ public class POSCancelSalePacket implements IMessage {
 				{
 					InventoryHelper.spawnItemStack(world, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), moneyStack);
 				}
+				
+				register.setTenderedAmount(new BigDecimal(0));
 			}
 			register.setRegisterStatus(RegisterStatuses.Online);
 			register.markDirty();
