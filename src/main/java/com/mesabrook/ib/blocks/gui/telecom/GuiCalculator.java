@@ -53,7 +53,7 @@ public class GuiCalculator extends GuiPhoneBase
     @Override
     protected String getInnerTextureFileName()
     {
-        return "system/app_screen_no_bar.png";
+        return phoneStackData.getIconTheme() + "/app_screen.png";
     }
 
     @Override

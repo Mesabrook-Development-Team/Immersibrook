@@ -34,11 +34,16 @@ public class GuiPhoneSetupStepSecurity extends GuiPhoneBase
     @Override
     protected String getInnerTextureFileName()
     {
-        return "system/app_screen_blue.png";
+        return phoneStackData.getIconTheme() + "/app_screen_setup.png";
     }
 
     @Override
     protected boolean renderControlBar() {
+        return false;
+    }
+
+    @Override
+    protected boolean renderTopBar() {
         return false;
     }
 
@@ -51,13 +56,15 @@ public class GuiPhoneSetupStepSecurity extends GuiPhoneBase
 
         pin = new GuiCheckBox(0, INNER_X + 10, INNER_Y + 52, new TextComponentTranslation("im.settings.pin").getFormattedText(), usePin);
         playerID = new GuiCheckBox(1, INNER_X + 10, INNER_Y + 69, new TextComponentTranslation("im.settings.uuid").getFormattedText(), useUUID);
+
         int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 32;
-        back = new MinedroidButton(2, INNER_X + 45, lowerControlsY - 3, 32, "Back", 0xFFFFFF);
-        next = new MinedroidButton(3, INNER_X + 85, lowerControlsY - 3, 32, "Next", 0xFFFFFF);
+        back = new MinedroidButton(2, INNER_X + 45, lowerControlsY - 3, 35, new TextComponentTranslation("im.settings.back").getFormattedText(), 0xFFFFFF);
+        next = new MinedroidButton(3, INNER_X + 85, lowerControlsY - 3, 35, new TextComponentTranslation("im.settings.next").getFormattedText(), 0xFFFFFF);
 
         pinValue = new PINTextField(7, fontRenderer, pin.x + pin.width + 4, pin.y-4, INNER_X + INNER_TEX_WIDTH - (pin.x + pin.width) - 7, 20);
         pinValue.setMaskedText(String.valueOf(phoneStackData.getPin()));
         pinValue.setVisible(false);
+        pinValue.setMaxStringLength(8);
         uuidValue = new GuiTextField(8, fontRenderer, playerID.x + playerID.width + 4, playerID.y-4, INNER_X + INNER_TEX_WIDTH - (playerID.x + playerID.width) - 7, 20);
         uuidValue.setVisible(false);
         uuidValue.setMaxStringLength(36);
@@ -73,8 +80,8 @@ public class GuiPhoneSetupStepSecurity extends GuiPhoneBase
     protected void doDraw(int mouseX, int mouseY, float partialticks)
     {
         super.doDraw(mouseX, mouseY, partialticks);
-        fontRenderer.drawString("Make Minedroid Secure", INNER_X + 3, INNER_Y + 20, 0xFFFFFF);
-        fontRenderer.drawString(new TextComponentTranslation("im.settings.strategy").getFormattedText(), INNER_X + 3, INNER_Y + 36, 0x4444FF);
+        drawCenteredString(fontRenderer, new TextComponentTranslation("im.settings.securitytitle1").getFormattedText(), INNER_X + 80, INNER_Y + 20, 0xFFFFFF);
+        fontRenderer.drawString(new TextComponentTranslation("im.settings.strategy").getFormattedText(), INNER_X + 3, INNER_Y + 36, 0xb5b5b5);
 
         pinValue.drawTextBox();
         uuidValue.drawTextBox();

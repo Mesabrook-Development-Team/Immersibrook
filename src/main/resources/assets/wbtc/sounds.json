@@ -6,6 +6,62 @@
 			"stream": true
 		}]
 	},
+	"wide": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:wide",
+			"stream": true
+		}]
+	},
+	"alert": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:alert",
+			"stream": true
+		}]
+	},
+	"normal_boot": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:normal_boot",
+			"stream": true
+		}]
+	},
+	"oobe_startup": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:oobe_startup",
+			"stream": true
+		}]
+	},
+	"tape_measure_open": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:tape_measure_open",
+			"stream": true
+		}]
+	},
+	"tape_measure_close": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:tape_measure_close",
+			"stream": true
+		}]
+	},
+	"ration_open": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ration_open",
+			"stream": true
+		}]
+	},
+	"phone_unbox": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:phone_unbox",
+			"stream": true
+		}]
+	},
 	"rz_trophy": {
 		"category": "master",
 		"sounds": [{

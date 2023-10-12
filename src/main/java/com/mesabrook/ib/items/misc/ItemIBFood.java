@@ -74,7 +74,7 @@ public class ItemIBFood extends ItemFood implements IHasModel
     @Override
     public EnumAction getItemUseAction(ItemStack itemStack)
     {
-        if(this == ModItems.SPARKLING_PINK_LEMONADE || this == ModItems.ALMOND_WATER || this == ModItems.PINK_LEMONADE_DRINK || this == ModItems.PILK || this == ModItems.TASTYJUICE)
+        if(this == ModItems.SPARKLING_PINK_LEMONADE || this == ModItems.ALMOND_WATER || this == ModItems.PINK_LEMONADE_DRINK || this == ModItems.PILK || this == ModItems.TASTYJUICE || this == ModItems.WATER_SACHET)
         {
             return EnumAction.DRINK;
         }
@@ -139,6 +139,17 @@ public class ItemIBFood extends ItemFood implements IHasModel
         {
             stack.damageItem(1, player);
             player.addItemStackToInventory(new ItemStack(ModItems.PAPER_STICK));
+        }
+
+        if(stack.getItem() == ModItems.RAW_CHICKEN_NUGGET)
+        {
+            if(worldIn.rand.nextFloat() < 0.2F)
+            {
+                if(!worldIn.isRemote)
+                {
+                    player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 500, 1, true, true));
+                }
+            }
         }
 
         if(stack.getItem() == ModItems.SPARKLING_PINK_LEMONADE)

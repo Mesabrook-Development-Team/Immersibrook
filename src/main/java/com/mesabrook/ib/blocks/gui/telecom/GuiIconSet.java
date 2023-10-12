@@ -1,19 +1,11 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.google.common.collect.ImmutableList;
-import com.mesabrook.ib.blocks.gui.ImageButton;
-import com.mesabrook.ib.items.misc.ItemPhone.NBTData.SecurityStrategies;
-import com.mesabrook.ib.net.telecom.CustomizationPacket;
-import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiTextField;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.client.config.GuiCheckBox;
 
 import java.io.IOException;
@@ -29,7 +21,7 @@ public class GuiIconSet extends GuiPhoneBase
     LabelButton back;
 
     String currentTheme;
-    String updatedTheme;
+    static String updatedTheme;
 
     public GuiIconSet(ItemStack phoneStack, EnumHand hand)
     {
@@ -38,7 +30,14 @@ public class GuiIconSet extends GuiPhoneBase
 
     @Override
     protected String getInnerTextureFileName() {
-        return "system/app_screen.png";
+        if(phoneStackData.getIconTheme().contains("luna"))
+        {
+            return "luna/app_background_settings_bar.png";
+        }
+        else
+        {
+            return phoneStackData.getIconTheme() + "/app_screen.png";
+        }
     }
 
     @Override
@@ -56,6 +55,8 @@ public class GuiIconSet extends GuiPhoneBase
         plex = new GuiCheckBox(3, INNER_X + 10, INNER_Y + 52, new TextComponentTranslation("im.settings.personalization.icontheme.plex").getFormattedText(), currentTheme.contains("plex"));
         aero_bubbles = new GuiCheckBox(4, INNER_X + 10, INNER_Y + 69, new TextComponentTranslation("im.settings.personalization.icontheme.aero").getFormattedText(), currentTheme.contains("aero_bubble"));
         luna = new GuiCheckBox(5, INNER_X + 10, INNER_Y + 86, new TextComponentTranslation("im.settings.personalization.icontheme.luna").getFormattedText(), currentTheme.contains("luna"));
+
+
 
         // Icon Showcase
         ImageButton button1 = new ImageButton(6, INNER_X + 8, INNER_Y + 130, 32, 32, phoneStackData.getIconTheme() + "/icn_phone.png", 32, 32);
@@ -84,11 +85,11 @@ public class GuiIconSet extends GuiPhoneBase
 
         fontRenderer.drawString(new TextComponentTranslation("im.settings.personalization.icontheme").getFormattedText(), INNER_X + 15, INNER_Y + 20, 0xFFFFFF);
         fontRenderer.drawString(new TextComponentTranslation("im.settings.personalization.icontheme.current").getFormattedText(), INNER_X + 10, INNER_Y + 115, 0xFFFFFF);
+    }
 
-        if(phoneStackData.getIsDebugModeEnabled())
-        {
-            fontRenderer.drawString(new TextComponentString(TextFormatting.ITALIC + phoneStackData.getIconTheme()).getFormattedText(), INNER_X + 85, INNER_Y + 115, 0xFFFFFF);
-        }
+    public static String getUpdatedTheme()
+    {
+        return updatedTheme;
     }
 
     @Override
@@ -122,48 +123,26 @@ public class GuiIconSet extends GuiPhoneBase
 
         if(button == apply)
         {
-            currentTheme = updatedTheme;
+            if(!plex.isChecked() && !aero_bubbles.isChecked() && !luna.isChecked())
+            {
+                Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "A theme must be chosen", 0xFF0000));
+                return;
+            }
 
-            CustomizationPacket packet = new CustomizationPacket();
-            packet.hand = hand.ordinal();
-            packet.newName = phoneStack.getDisplayName();
-            packet.guiClassName = GuiIconSet.class.getName();
-            packet.iconTheme = updatedTheme;
-            packet.lockBackground = phoneStackData.getLockBackground();
-            packet.homeBackground = phoneStackData.getHomeBackground();
-            packet.lockTone = phoneStackData.getChatTone();
-            packet.ringtone = phoneStackData.getRingTone();
-            packet.setShowIRLTime = phoneStackData.getShowIRLTime();
-            packet.useMilitaryTime = phoneStackData.getShowingMilitaryIRLTime();
-            packet.toggleDebugMode = phoneStackData.getIsDebugModeEnabled();
-            packet.resetName = false;
-            packet.pin = phoneStackData.getPin();
-            packet.playerID = phoneStackData.getUuid();
-
-            PacketHandler.INSTANCE.sendToServer(packet);
-            Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.settings.saved").getFormattedText(), 0xFFFFFF));
+            if(updatedTheme != currentTheme)
+            {
+                Minecraft.getMinecraft().displayGuiScreen(new GuiChangingTheme(phoneStack, hand));
+            }
+            else
+            {
+                Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "Theme is already active", 0xFF0000));
+            }
         }
 
         if(button == reset)
         {
-            CustomizationPacket packet = new CustomizationPacket();
-            packet.hand = hand.ordinal();
-            packet.newName = phoneStack.getDisplayName();
-            packet.guiClassName = GuiIconSet.class.getName();
-            packet.iconTheme = "plex";
-            packet.lockBackground = phoneStackData.getLockBackground();
-            packet.homeBackground = phoneStackData.getHomeBackground();
-            packet.lockTone = phoneStackData.getChatTone();
-            packet.ringtone = phoneStackData.getRingTone();
-            packet.setShowIRLTime = phoneStackData.getShowIRLTime();
-            packet.useMilitaryTime = phoneStackData.getShowingMilitaryIRLTime();
-            packet.toggleDebugMode = phoneStackData.getIsDebugModeEnabled();
-            packet.resetName = false;
-            packet.pin = phoneStackData.getPin();
-            packet.playerID = phoneStackData.getUuid();
-
-            PacketHandler.INSTANCE.sendToServer(packet);
-            Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.settings.reset").getFormattedText(), 0xFFFFFF));
+            updatedTheme = "plex";
+            Minecraft.getMinecraft().displayGuiScreen(new GuiChangingTheme(phoneStack, hand));
         }
 
         if(button == back)

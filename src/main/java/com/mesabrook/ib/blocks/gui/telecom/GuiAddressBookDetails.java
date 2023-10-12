@@ -41,7 +41,7 @@ public class GuiAddressBookDetails extends GuiPhoneBase {
 
 	@Override
 	protected String getInnerTextureFileName() {
-		return "system/app_screen_contacts.png";
+		return phoneStackData.getIconTheme() + "/app_screen_contacts.png";
 	}
 
 	@Override
@@ -61,7 +61,7 @@ public class GuiAddressBookDetails extends GuiPhoneBase {
 		reset = new MinedroidButton(5, INNER_X + 45, lowerY - 10, 32, new TextComponentTranslation("im.musicapp.buttonreset").getFormattedText(), 0x006800);
 		save = new MinedroidButton(6, INNER_X + 85, lowerY - 10, 32, new TextComponentTranslation("im.contacts.save").getFormattedText(), 0x006800);
 		
-		delete = new ImageButton(3, INNER_X + INNER_TEX_WIDTH - 16 - 3, INNER_Y + 16, 16, 16, "btn_delete.png", 32, 32, 32, 32);
+		delete = new ImageButton(3, INNER_X + INNER_TEX_WIDTH - 16 - 3, INNER_Y + 16, 16, 16, phoneStackData.getIconTheme() + "/btn_delete.png", 32, 32, 32, 32);
 		delete.visible = contact != null;
 		
 		buttonList.add(back);

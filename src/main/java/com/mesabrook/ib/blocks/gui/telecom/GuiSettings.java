@@ -21,8 +21,16 @@ public class GuiSettings extends GuiPhoneBase {
 	}
 
 	@Override
-	protected String getInnerTextureFileName() {
-		return "system/app_screen_no_bar.png";
+	protected String getInnerTextureFileName()
+	{
+		if(phoneStackData.getIconTheme().contains("luna"))
+		{
+			return "luna/app_background_settings.png";
+		}
+		else
+		{
+			return "system/app_screen_no_bar.png";
+		}
 	}
 	
 	@Override
@@ -40,10 +48,10 @@ public class GuiSettings extends GuiPhoneBase {
 			aboutBtnY = INNER_Y + 120;
 		}
 
-		ImageButton lockScreenButton = new ImageButton(0, INNER_X + 20, INNER_Y + 55, 48, 48, "btn_lock_screen.png", 32, 32);
-		ImageButton personalizeButton = new ImageButton(1, INNER_X + 90, INNER_Y + 55, 48, 48, "btn_personalize.png", 32, 32);
-		ImageButton aboutButton = new ImageButton(2, aboutBtnX, aboutBtnY, 48, 48, "btn_about.png", 32, 32);
-		ImageButton debugButton = new ImageButton(3, INNER_X + 90, aboutBtnY, 48, 48, "btn_debug.png", 32, 32);
+		ImageButton lockScreenButton = new ImageButton(0, INNER_X + 20, INNER_Y + 55, 48, 48, phoneStackData.getIconTheme() + "/btn_lock_screen.png", 32, 32);
+		ImageButton personalizeButton = new ImageButton(1, INNER_X + 90, INNER_Y + 55, 48, 48, phoneStackData.getIconTheme() + "/btn_personalize.png", 32, 32);
+		ImageButton aboutButton = new ImageButton(2, aboutBtnX, aboutBtnY, 48, 48, phoneStackData.getIconTheme() + "/btn_about.png", 32, 32);
+		ImageButton debugButton = new ImageButton(3, INNER_X + 90, aboutBtnY, 48, 48, phoneStackData.getIconTheme() + "/btn_debug.png", 32, 32);
 
 		if(phoneStackData.getIsDebugModeEnabled())
 		{
@@ -77,7 +85,7 @@ public class GuiSettings extends GuiPhoneBase {
 			super.actionPerformed(button);
 			if (button.id == 0)
 			{
-				Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsLockScreen(phoneStack, hand));
+				Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsSecurity(phoneStack, hand));
 			}
 
 			if (button.id == 1)

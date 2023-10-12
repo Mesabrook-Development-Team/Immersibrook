@@ -118,7 +118,7 @@ public class ItemRandomizer
                 giftItem = new ItemStack(ModItems.CANDY_CANE, 1);
                 break;
             case 1:
-                giftItem = new ItemStack(Items.DIAMOND,1);
+                giftItem = new ItemStack(Items.DIAMOND,9);
                 break;
             case 2:
                 giftItem = new ItemStack(ModItems.WHITE_CHOCOLATE,1);
@@ -199,10 +199,10 @@ public class ItemRandomizer
                 giftItem = new ItemStack(ModItems.CANDY_CHOCOLATE,1);
                 break;
             case 28:
-                giftItem = new ItemStack(ModItems.PHONE_RED,1);
+                giftItem = new ItemStack(ModItems.BOX_RED,1);
                 break;
             case 29:
-                giftItem = new ItemStack(ModItems.PHONE_GREEN,1);
+                giftItem = new ItemStack(ModItems.BOX_GREEN,1);
                 break;
         }
     }

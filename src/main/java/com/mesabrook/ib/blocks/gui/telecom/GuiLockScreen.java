@@ -4,11 +4,13 @@ import com.mesabrook.ib.init.SoundInit;
 import com.mesabrook.ib.util.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponentTranslation;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -16,6 +18,7 @@ import java.util.UUID;
 public class GuiLockScreen extends GuiPhoneBase {
 
 	private UnlockSlider unlockSlider;
+	MinedroidButton unlockButton;
 	public GuiLockScreen(ItemStack phoneStack, EnumHand hand) {
 		super(phoneStack, hand);
 	}
@@ -28,8 +31,14 @@ public class GuiLockScreen extends GuiPhoneBase {
 	@Override
 	public void initGui() {
 		super.initGui();
-		
+		int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 32;
 		unlockSlider = new UnlockSlider(INNER_X + INNER_TEX_WIDTH / 2 - 60, INNER_Y + INNER_TEX_HEIGHT - 75);
+		unlockButton = new MinedroidButton(69, INNER_X + 55, lowerControlsY - 20, 50, "Unlock", 0xFFFFFF);
+
+		if(phoneStackData.getUseButtonInsteadOfSlider())
+		{
+			buttonList.add(unlockButton);
+		}
 	}
 	
 	@Override
@@ -57,16 +66,19 @@ public class GuiLockScreen extends GuiPhoneBase {
 		stringWidth = fontRenderer.getStringWidth(phoneName);
 		
 		fontRenderer.drawString(phoneName, INNER_X + (INNER_TEX_WIDTH / 2) - (stringWidth / 2), INNER_Y + 20, 0xFFFFFF, true);
-		
-		unlockSlider.draw(mouseX, mouseY, partialticks);
-		String swipeText = "Swipe to unlock";
-		int fontWidth = fontRenderer.getStringWidth(swipeText);
-		
-		fontRenderer.drawString(swipeText, INNER_X + INNER_TEX_WIDTH / 2 - fontWidth / 2, INNER_Y + INNER_TEX_HEIGHT - 60, 0xFFFFFF, true);
-		
-		if (unlockSlider.isSliderComplete())
+
+		if(!phoneStackData.getUseButtonInsteadOfSlider())
 		{
-			onScreenUnlocked();
+			unlockSlider.draw(mouseX, mouseY, partialticks);
+			String swipeText = "Swipe to unlock";
+			int fontWidth = fontRenderer.getStringWidth(swipeText);
+
+			fontRenderer.drawString(swipeText, INNER_X + INNER_TEX_WIDTH / 2 - fontWidth / 2, INNER_Y + INNER_TEX_HEIGHT - 60, 0xFFFFFF, true);
+
+			if (unlockSlider.isSliderComplete())
+			{
+				onScreenUnlocked();
+			}
 		}
 	}
 	
@@ -126,6 +138,16 @@ public class GuiLockScreen extends GuiPhoneBase {
 	protected void mouseReleased(int mouseX, int mouseY, int state) {
 		super.mouseReleased(mouseX, mouseY, state);
 		unlockSlider.mouseReleased();
+	}
+
+	@Override
+	protected void actionPerformed(GuiButton button) throws IOException
+	{
+		super.actionPerformed(button);
+		if(button == unlockButton)
+		{
+			onScreenUnlocked();
+		}
 	}
 	
 	public static class UnlockSlider

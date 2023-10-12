@@ -3,6 +3,7 @@ package com.mesabrook.ib.blocks.gui.telecom;
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData.SecurityStrategies;
 import com.mesabrook.ib.net.telecom.CustomizationPacket;
+import com.mesabrook.ib.net.telecom.ToggleUnlockSliderPacket;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -20,8 +21,10 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 
 	GuiCheckBox pin;
 	GuiCheckBox playerID;
+	GuiCheckBox useButtonInsteadOfSlider;
 	MinedroidButton reset;
 	MinedroidButton apply;
+	MinedroidButton factoryReset;
 	LabelButton back;
 	LabelButton changePIN;
 	LabelButton changeUUID;
@@ -34,7 +37,14 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 
 	@Override
 	protected String getInnerTextureFileName() {
-		return "system/app_screen.png";
+		if(phoneStackData.getIconTheme().contains("luna"))
+		{
+			return "luna/app_background_settings_bar.png";
+		}
+		else
+		{
+			return phoneStackData.getIconTheme() + "/app_screen.png";
+		}
 	}
 	
 	@Override
@@ -43,12 +53,18 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 
 		boolean usePin = phoneStackData.getSecurityStrategy() == SecurityStrategies.PIN;
 		boolean useUUID = phoneStackData.getSecurityStrategy() == SecurityStrategies.UUID;
+		boolean useButton = phoneStackData.getUseButtonInsteadOfSlider();
 		
 		pin = new GuiCheckBox(0, INNER_X + 10, INNER_Y + 52, new TextComponentTranslation("im.settings.pin").getFormattedText(), usePin);
 		playerID = new GuiCheckBox(1, INNER_X + 10, INNER_Y + 69, new TextComponentTranslation("im.settings.uuid").getFormattedText(), useUUID);
+		useButtonInsteadOfSlider = new GuiCheckBox(70, INNER_X + 10, INNER_Y + 120, "Use Unlock Button?", useButton);
+
+
 		int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 32;
 		reset = new MinedroidButton(2, INNER_X + 45, lowerControlsY - 10, 32, new TextComponentTranslation("im.musicapp.buttonreset").getFormattedText(), 0xFFFFFF);
 		apply = new MinedroidButton(3, INNER_X + 85, lowerControlsY - 10, 32, new TextComponentTranslation("im.settings.apply").getFormattedText(), 0xFFFFFF);
+		factoryReset = new MinedroidButton(69, INNER_X + 10, INNER_Y + 90, 85, new TextComponentTranslation("im.settings.factoryreset").getFormattedText(), 0xFF0000);
+
 		back = new LabelButton(4, INNER_X + 3, INNER_Y + 20, "<", 0xFFFFFF);
 		changePIN = new LabelButton(5, 0, pin.y + 2, new TextComponentTranslation("im.settings.changepin").getFormattedText(), 0x0000FF);
 		changePIN.x = INNER_X + INNER_TEX_WIDTH - changePIN.width - 5;
@@ -60,6 +76,7 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 		pinValue = new PINTextField(7, fontRenderer, pin.x + pin.width + 4, pin.y-4, INNER_X + INNER_TEX_WIDTH - (pin.x + pin.width) - 7, 20);
 		pinValue.setMaskedText(String.valueOf(phoneStackData.getPin()));
 		pinValue.setVisible(false);
+		pinValue.setMaxStringLength(8);
 		uuidValue = new GuiTextField(8, fontRenderer, playerID.x + playerID.width + 4, playerID.y-4, INNER_X + INNER_TEX_WIDTH - (playerID.x + playerID.width) - 7, 20);
 		uuidValue.setVisible(false);
 		uuidValue.setMaxStringLength(36);
@@ -68,15 +85,23 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 			uuidValue.setText(phoneStackData.getUuid().toString());
 		}
 		
-		buttonList.addAll(ImmutableList.of(pin, playerID, reset, apply, back, changePIN, changeUUID));
+		buttonList.addAll(ImmutableList.of(pin, playerID, reset, apply, back, changePIN, changeUUID, useButtonInsteadOfSlider));
 	}
 	
 	@Override
 	protected void doDraw(int mouseX, int mouseY, float partialticks) {
 		super.doDraw(mouseX, mouseY, partialticks);
 		
-		fontRenderer.drawString(new TextComponentTranslation("im.settings.securitytitle").getFormattedText(), INNER_X + 15, INNER_Y + 20, 0xFFFFFF);
-		fontRenderer.drawString(new TextComponentTranslation("im.settings.strategy").getFormattedText(), INNER_X + 3, INNER_Y + 36, 0x4444FF);
+		fontRenderer.drawString(new TextComponentTranslation("im.settings.securitytitle1").getFormattedText(), INNER_X + 15, INNER_Y + 20, 0xFFFFFF);
+
+		if(phoneStackData.getIconTheme().contains("luna"))
+		{
+			fontRenderer.drawString(new TextComponentTranslation("im.settings.strategy").getFormattedText(), INNER_X + 3, INNER_Y + 36, 0xFFFFFF);
+		}
+		else
+		{
+			fontRenderer.drawString(new TextComponentTranslation("im.settings.strategy").getFormattedText(), INNER_X + 3, INNER_Y + 36, 0x4444FF);
+		}
 		
 		pinValue.drawTextBox();
 		uuidValue.drawTextBox();
@@ -132,6 +157,11 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 				uuidValue.setText(Minecraft.getMinecraft().player.getUniqueID().toString());
 			}
 		}
+
+		if(button == factoryReset)
+		{
+			Minecraft.getMinecraft().displayGuiScreen(new GuiFactoryResetConfirmation(phoneStack, hand));
+		}
 		
 		if (button == apply)
 		{
@@ -182,8 +212,15 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 				
 				packet.playerID = parsedPlayerID;
 			}
+
+			ToggleUnlockSliderPacket toggleUnlockSliderPacket = new ToggleUnlockSliderPacket();
+			toggleUnlockSliderPacket.hand = hand.ordinal();
+			toggleUnlockSliderPacket.guiClassName = GuiSettingsLockScreen.class.getName();
+			toggleUnlockSliderPacket.nextGuiClassName = GuiSettingsLockScreen.class.getName();
+			toggleUnlockSliderPacket.useButtonInsteadOfSlider = useButtonInsteadOfSlider.isChecked();
 			
 			PacketHandler.INSTANCE.sendToServer(packet);
+			PacketHandler.INSTANCE.sendToServer(toggleUnlockSliderPacket);
 
 			Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, new TextComponentTranslation("im.settings.saved").getFormattedText(), 0xFFFFFF));
 
@@ -197,7 +234,7 @@ public class GuiSettingsLockScreen extends GuiPhoneBase {
 		
 		if (button == back)
 		{
-			Minecraft.getMinecraft().displayGuiScreen(new GuiSettings(phoneStack, hand));
+			Minecraft.getMinecraft().displayGuiScreen(new GuiSettingsSecurity(phoneStack, hand));
 		}
 	}
 	

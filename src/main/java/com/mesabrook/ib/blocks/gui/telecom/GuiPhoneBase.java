@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.gui.ImageButton;
@@ -27,6 +28,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -36,7 +38,7 @@ public abstract class GuiPhoneBase extends GuiScreen
 	protected ItemStack phoneStack;
 	protected final EnumHand hand;
 	protected ItemPhone.NBTData phoneStackData;
-	
+
 	protected final int OUTER_TEX_WIDTH = 176;
 	protected final int OUTER_TEX_HEIGHT = 222;
 	protected final int INNER_TEX_WIDTH = 162;
@@ -60,15 +62,15 @@ public abstract class GuiPhoneBase extends GuiScreen
 	private boolean firstTick = true;
 	private int timeToNextBezel;
 	private int timeToRefreshStack = 200;
-	
+
 	private final int STATUS_BAR_HEIGHT = 14;
 	private SignalStrengths signalStrength = SignalStrengths.unknown;
-	
+
 	@Override
 	public boolean doesGuiPauseGame() {
 		return false;
 	}
-	
+
 	public GuiPhoneBase(ItemStack phoneStack, EnumHand hand)
 	{
 		this.phoneStack = phoneStack;
@@ -76,17 +78,17 @@ public abstract class GuiPhoneBase extends GuiScreen
 		this.phoneStackData = new ItemPhone.NBTData();
 		this.phoneStackData.deserializeNBT(this.phoneStack.getTagCompound());
 	}
-	
+
 	public void setSignalStrength(SignalStrengths signalStrength)
 	{
 		this.signalStrength = signalStrength;
 	}
-	
+
 	public SignalStrengths getSignalStrength()
 	{
 		return signalStrength;
 	}
-	
+
 	@Override
 	public void initGui() {
 		super.initGui();
@@ -102,7 +104,7 @@ public abstract class GuiPhoneBase extends GuiScreen
 			BACK_X = INNER_X + (INNER_TEX_WIDTH / 4) - 8;
 			HOME_X = (INNER_X + INNER_TEX_WIDTH) - (INNER_TEX_WIDTH / 4) - 8;
 
-			ImageButton homeButton = new ImageButton(999, INNER_X + INNER_TEX_WIDTH / 2 - 4, INNER_Y + INNER_TEX_HEIGHT - 23, 8, 8, "gui_btn_home.png", 32, 32);
+			ImageButton homeButton = new ImageButton(999, INNER_X + INNER_TEX_WIDTH / 2 - 4, INNER_Y + INNER_TEX_HEIGHT - 23, 8, 8, phoneStackData.getIconTheme() + "/gui_btn_home.png", 32, 32);
 			buttonList.add(homeButton);
 
 			homeButton.visible = renderControlBar();
@@ -128,7 +130,7 @@ public abstract class GuiPhoneBase extends GuiScreen
 			Minecraft.getMinecraft().displayGuiScreen(crashGui);
 		}
 	}
-	
+
 	@Override
 	public final void drawScreen(int mouseX, int mouseY, float partialTicks)
 	{
@@ -146,24 +148,19 @@ public abstract class GuiPhoneBase extends GuiScreen
 				firstTick = false;
 			}
 			drawDefaultBackground();
-			
+
 			if (--timeToRefreshStack <= 0)
 			{
 				phoneStack = Minecraft.getMinecraft().player.getHeldItem(hand);
 				phoneStackData = NBTData.getFromItemStack(phoneStack);
-				
+
 				timeToRefreshStack = 200;
 			}
 
-			if(phoneStackData.getBatteryLevel() <= 0)
+			if(phoneStackData.getBatteryLevel() <= 0 && closeOnDeadBattery())
 			{
 				Minecraft.getMinecraft().displayGuiScreen(null);
-				Minecraft.getMinecraft().player.sendMessage(new TextComponentString("Phone battery is dead"));
-
-				ClientSoundPacket soundPacket = new ClientSoundPacket();
-				soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
-				soundPacket.soundName = "phone_battery_low";
-				PacketHandler.INSTANCE.sendToServer(soundPacket);
+				Minecraft.getMinecraft().player.sendMessage(new TextComponentString("Phone is dead"));
 			}
 
 			// Phone border
@@ -202,11 +199,26 @@ public abstract class GuiPhoneBase extends GuiScreen
 			// Upper bar
 			if(renderTopBar())
 			{
-				Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/gui_top_statusbar.png"));
+				Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/" + phoneStackData.getIconTheme() + "/gui_top_statusbar.png"));
 				drawScaledCustomSizeModalRect(INNER_X, INNER_Y, 0, 0, INNER_TEX_WIDTH * WIDTH_SCALE, STATUS_BAR_HEIGHT * HEIGHT_SCALE, INNER_TEX_WIDTH, STATUS_BAR_HEIGHT, 512, 512);
 
-				Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/" + signalStrength.getTextureName()));
-				drawScaledCustomSizeModalRect(INNER_X + INNER_TEX_WIDTH - 34, INNER_Y - 1, 0, 0, 16, 16, 16, 16, 16, 16);
+				Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc",  "textures/gui/telecom/" + phoneStackData.getIconTheme() + "/" + signalStrength.getTextureName()));
+				if(phoneStackData.getIconTheme().contains("aero"))
+				{
+					drawScaledCustomSizeModalRect(INNER_X + INNER_TEX_WIDTH - 34, INNER_Y - 1, 0, 0, 16, 16, 15, 14, 16, 16);
+				}
+				else
+				{
+					drawScaledCustomSizeModalRect(INNER_X + INNER_TEX_WIDTH - 34, INNER_Y - 1, 0, 0, 16, 16, 16, 16, 16, 16);
+				}
+
+				// Show player direction in top status bar.
+				String direction = Minecraft.getMinecraft().player.getHorizontalFacing().toString().toUpperCase(Locale.ROOT);
+				String directionTruncated = new TextComponentString(TextFormatting.BOLD + direction.substring(0,1)).getFormattedText();
+				if(phoneStackData.getIsDebugModeEnabled())
+				{
+					fontRenderer.drawString(directionTruncated, INNER_X + 30, INNER_Y + 3, 0xFFFFFF);
+				}
 
 				fontRenderer.drawString(getTime(), INNER_X + 2, INNER_Y + 3, 0xFFFFFF);
 				fontRenderer.drawString("Bell", INNER_X + INNER_TEX_WIDTH - 52, INNER_Y + 3, 0xFFFFFF);
@@ -216,22 +228,22 @@ public abstract class GuiPhoneBase extends GuiScreen
 					Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/" + "tray_debug.png"));
 					drawScaledCustomSizeModalRect(INNER_X + INNER_TEX_WIDTH - 66, INNER_Y + 2, 0, 0, 16, 16, 10, 10, 16, 16);
 				}
-				
+
 				int levelPart = ModConfig.smartphoneMaxBattery / 5;
 				int chargeLevel = phoneStackData.getBatteryLevel() / levelPart;
 				if (chargeLevel > 4)
 				{
 					chargeLevel = 4;
 				}
-				
-				Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/bat_" + chargeLevel + ".png"));
+
+				Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/" + phoneStackData.getIconTheme() + "/bat_" + chargeLevel + ".png"));
 				drawScaledCustomSizeModalRect(INNER_X + INNER_TEX_WIDTH - 18, INNER_Y - 1, 0, 0, 16, 16, 16, 16, 16, 16);
 			}
 
 			// Lower bar
 			if (renderControlBar())
 			{
-				Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/gui_navbar.png"));
+				Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/" + phoneStackData.getIconTheme() + "/gui_navbar.png"));
 				drawScaledCustomSizeModalRect(INNER_X, INNER_Y, 0, 0, INNER_TEX_WIDTH * WIDTH_SCALE, INNER_TEX_HEIGHT * HEIGHT_SCALE, INNER_TEX_WIDTH, INNER_TEX_HEIGHT + 1, 512, 512);
 			}
 
@@ -259,15 +271,17 @@ public abstract class GuiPhoneBase extends GuiScreen
 	{
 		return phoneStackData.getPhoneNumber() != 0;
 	}
-	
+
+	protected boolean closeOnDeadBattery() { return true; }
+
 	protected void doDraw(int mouseX, int mouseY, float partialticks){}
-	
+
 	protected void firstDrawingTick(int mouseX, int mouseY, float partialTicks)
 	{
 		GetReceptionStrengthPacket packet = new GetReceptionStrengthPacket();
 		PacketHandler.INSTANCE.sendToServer(packet);
 	}
-	
+
 	protected String getTime()
 	{
 		long time = Minecraft.getMinecraft().world.getWorldTime();
@@ -294,7 +308,7 @@ public abstract class GuiPhoneBase extends GuiScreen
 		String formattedTimeConversion = timeObject.format(formattedTime);
 		return formattedTimeConversion + " IRL";
 	}
-	
+
 	protected abstract String getInnerTextureFileName();
 
 	protected int scale(int number, double scale)
@@ -324,10 +338,10 @@ public abstract class GuiPhoneBase extends GuiScreen
 			text = font.trimStringToWidth(text, (int)(availableSpace / scale));
 			text = text.substring(0, text.length() - 3) + "...";
 		}
-		
+
 		return text;
 	}
-	
+
 	public ItemStack getPhoneStack() {
 		return phoneStack;
 	}
@@ -379,7 +393,7 @@ public abstract class GuiPhoneBase extends GuiScreen
 
 	protected boolean renderControlBar() { return true; }
 	protected boolean renderTopBar() {return true;}
-	
+
 	public static boolean lastGuiWasPhone;
 	public static boolean isPhoneUnlocked;
 	@Override

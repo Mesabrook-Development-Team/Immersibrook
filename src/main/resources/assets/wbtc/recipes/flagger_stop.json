@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "r",
+        "s",
+	"p"
+    ],
+    "key":
+    {
+        "r":
+        {
+            "type": "forge:ore_dict",
+            "ore": "itemRedPlastic"
+        },
+        "s":
+        {
+            "type": "forge:ore_dict",
+            "ore": "stickIron"
+        },
+        "p":
+        {
+            "type": "forge:ore_dict",
+            "ore": "itemWhitePlastic"
+        }
+    },
+    "result":
+    {
+        "item": "wbtc:flagger_stop",
+        "count": 1
+    }
+}

@@ -65,6 +65,8 @@ advancements.imb.aidothers=First Responder
 advancements.imb.aidothers.desc=Use the First Aid Kit to heal another player or mob.
 advancements.imb.aidmonsters=Medical Malpractice
 advancements.imb.aidmonsters.desc=Use the healing powers of medicine on a hostile mob.
+advancements.imb.tape_measure=Measure Twice, Cut Once
+advancements.imb.tape_measure.desc=Use a Tape Measure to measure a distance.
 
 
 //Config
@@ -98,6 +100,7 @@ im.talk.noglobalperm=You are not allowed to send global messages
 im.access.call=§e§lYou have an incoming call
 im.cmd.wea.usage=Valid arguments: start, stop
 im.cmd.mesasuite.usage=Valid arguments: login, logout
+im.cmd.resettos.singleplayer=Terms Of Service does not apply to Single Player
 
 //First Aid
 item.first_aid.name=First Aid Kit
@@ -251,6 +254,11 @@ item.cell_transmitter.name=Cellular Transmitter
 item.present_red.name=Present
 item.present_green.name=Present
 item.present_blue.name=Present
+item.flagger_stop.name=Flagger's Sign
+item.flagger_slow.name=Flagger's Sign
+item.tape_measure.name=Tape Measure
+item.portable_ender_chest.name=§dEnder Pouch
+item.tape_roll_measure.name=Measuring Tape
 
 //Smooth Wood Blocks
 tile.smooth_oak.name=Smooth Oak Wood
@@ -1279,6 +1287,7 @@ item.disc_ritz.name=Music Disc
 item.disc_pumpkin.name=Music Disc
 item.cooking_music.name=Music Disc
 item.memory.name=Music Disc
+item.wide_record.name=Music Disc
 
 //Record Descriptions
 item.record.amalthea.desc=Amalthea
@@ -1298,6 +1307,7 @@ item.record.disc_ritz.desc=Taco - Puttin' on the Ritz (Re-Recorded)
 item.record.disc_pumpkin.desc=FreeUseMusic - Halloween
 item.record.cooking_music.desc=RavenholmZombie - Calm Cooking Music
 item.record.memory.desc=Bonnie - It's just a Burning Memory (8-bit)
+item.record.wide_record.desc=Слава Україні! (Wide Zelensky)
 
 //Enchantments
 enchantment.thunder=The Power of Thor
@@ -1405,6 +1415,8 @@ item.hfcs.name=High-Fructose Corn Syrup
 item.pilk.name=Pilk
 item.player_flesh.name=Player Flesh
 item.player_flesh_cooked.name=Player Steak
+item.raw_chicken_nugget.name=Raw Chicken Nugget
+item.cooked_chicken_nugget.name=Chicken Nugget
 
 //Dialog
 im.sugwarn=You wonder if you should risk taking another bite...
@@ -1480,6 +1492,24 @@ tile.colored_stone.blue.name=Dyed Stone (Blue)
 tile.colored_stone.red.name=Dyed Stone (Red)
 tile.colored_stone.green.name=Dyed Stone (Green)
 tile.colored_stone.black.name=Dyed Stone (Black)
+
+//Colored Quartz
+tile.colored_quartz.white.name=Dyed Quartz (White)
+tile.colored_quartz.orange.name=Dyed Quartz (Orange)
+tile.colored_quartz.magenta.name=Dyed Quartz (Magenta)
+tile.colored_quartz.light_blue.name=Dyed Quartz (Light Blue)
+tile.colored_quartz.yellow.name=Dyed Quartz (Yellow)
+tile.colored_quartz.lime.name=Dyed Quartz (Lime)
+tile.colored_quartz.pink.name=Dyed Quartz (Pink)
+tile.colored_quartz.gray.name=Dyed Quartz (Gray)
+tile.colored_quartz.silver.name=Dyed Quartz (Light Gray)
+tile.colored_quartz.cyan.name=Dyed Quartz (Cyan)
+tile.colored_quartz.purple.name=Dyed Quartz (Purple)
+tile.colored_quartz.brown.name=Dyed Quartz (Brown)
+tile.colored_quartz.blue.name=Dyed Quartz (Blue)
+tile.colored_quartz.red.name=Dyed Quartz (Red)
+tile.colored_quartz.green.name=Dyed Quartz (Green)
+tile.colored_quartz.black.name=Dyed Quartz (Black)
 
 //Colored Cobblestone
 tile.colored_cobblestone.white.name=Dyed Cobblestone (White)
@@ -1812,7 +1842,7 @@ im.contacts.invalidtoast=Invalid Phone Number
 im.contacts.saved=Saved Successfully
 
 //Minedroid Translation Project - Settings App
-im.settings.title=Minedroid Settings
+im.settings.title=§lMinedroid Settings
 im.settings.securityicon=Security
 im.settings.personalizeicon=Personalize
 im.settings.abouticon=About Phone
@@ -1823,10 +1853,14 @@ im.settings.appname=Settings
 im.settings.pin=PIN
 im.settings.uuid=Player UUID
 im.settings.reset=Reset
+im.settings.factoryreset=Factory Reset
 im.settings.apply=Apply
+im.settings.back=< Back
+im.settings.next=Next >
 im.settings.changepin=Change PIN
 im.settings.changeuuid=Change UUID
-im.settings.securitytitle=Lock Screen Settings
+im.settings.securitytitle=Phone Security
+im.settings.securitytitle1=Screen Lock
 im.settings.strategy=Security Strategy:
 im.settings.pinerror=PIN Required
 im.settings.uuiderror=Player UUID Required
@@ -1837,6 +1871,7 @@ im.settings.lockscreen=Lock Screen
 im.settings.homescreen=Home Screen
 im.settings.chat=Chat Notification:
 im.settings.ringtone=Current Ringtone:
+im.settings.factoryreset=Factory Reset
 im.settings.factoryreset=Factory Reset
 im.minedroid=Minedroid
 im.settings.phoneinfo=Phone Information:
@@ -1849,17 +1884,39 @@ im.settings.personalization.phonename=Phone Name
 im.settings.personalization.phonenamesetup=Name Your Phone
 im.settings.personalization.setphonename=Enter a Phone Name:
 im.settings.personalization.nameinfo1=You can change your phone's name later in §oSettings > Personalization > Phone Name
+im.settings.personalization.themesetupblurb=You can change your phone's theme later in §oSettings > Personalization > Themes
 im.settings.personalization.wallpaperreset=Settings Reset
 im.settings.personalization.clock=Clock Settings
-im.settings.personalization.icontheme=Change Your Icon Pack
-im.settings.personalization.icontheme.current=Current Pack:
+im.settings.personalization.icontheme=Change Your Theme
+im.settings.personalization.iconthemesetup=Choose a Theme
+im.settings.personalization.wallpapersoobe=Choose Wallpapers
+im.settings.personalization.icontheme.current=Current Theme:
 im.settings.personalization.icontheme.plex=Plex (Default)
-im.settings.personalization.icontheme.aero=Aero Bubbles
+im.settings.personalization.icontheme.aero=Frutiger Aero
 im.settings.personalization.icontheme.luna=Luna
 im.alert.name=EMERGENCY ALERT
 im.alert.close=Dismiss
 im.crash.uploaded=Crash Log Uploaded
 im.crash.error=Unable to upload
+
+//Minedroid Retail Packaging
+item.box_white.name=Minedroid Phone - Snow
+item.box_orange.name=Minedroid Phone - Orange
+item.box_magenta.name=Minedroid Phone - Magenta
+item.box_lblue.name=Minedroid Phone - Aqua
+item.box_yellow.name=Minedroid Phone - Sunshine
+item.box_pink.name=Minedroid Phone - Pink
+item.box_lime.name=Minedroid Phone - Lime
+item.box_gray.name=Minedroid Phone - Graphite
+item.box_silver.name=Minedroid Phone - Silver
+item.box_cyan.name=Minedroid Phone - Cyan
+item.box_purple.name=Minedroid Phone - Purple
+item.box_blue.name=Minedroid Phone - Blue
+item.box_brown.name=Minedroid Phone - Chocolate
+item.box_green.name=Minedroid Phone - Leaf
+item.box_red.name=Minedroid Phone - Rose
+item.box_black.name=Minedroid Phone - Midnight
+item.ot_charger.name=One-Time Charger
 
 //Minedroid Translation Project - Misc
 im.misc.error=An error occurred.
@@ -1895,6 +1952,7 @@ tile.wall_sign_red.name=Red Wall Sign
 tile.wall_sign_green.name=Green Wall Sign
 tile.wall_sign_blue.name=Blue Wall Sign
 tile.in_street_crosswalk_sign.name=In-Street Pedestrian Crossing Sign
+tile.charging_station_wallsign.name=Mesabrook Bell Charging Station Sign
 
 // Sponge
 item.sponge.name=Sponge
@@ -1930,3 +1988,27 @@ item.five_cents.name=Five Cents
 item.ten_cents.name=Ten Cents
 item.twenty_five_cents.name=Twenty Five Cents
 item.dollar_coin.name=One Dollar Coin
+
+// Rations
+item.ration_1.name=Emergency Survival Ration
+item.ration_2.name=Radiation Survival Kit
+item.water_sachet.name=Emergency Water
+
+// Retail and SCO
+tile.sco_pos.name=MSAC Point of Sale System - Main Terminal
+tile.sco_scanner.name=MSAC Point of Sale System - Product Scanner
+tile.sco_bagging.name=MSAC Point of Sale System - Bagging Platform
+tile.shelf_one_level_two_peghooks=Retail Shelf
+tile.shelf_four_peghooks.name=Retail Shelf
+tile.shelf_two_levels_no_peghooks.name=Retail Shelf
+tile.security_station.name=MSAC Retail - Merchandise Securing Station
+tile.smartphone_stand.name=Smartphone Display Stand
+tile.retail_freezer_upright.name=Retail Freezer
+tile.retail_freezer_deep.name=Retail Deep Freezer Island
+tile.sim_station.name=Mesabrook Bell SIM Programming Terminal
+item.sim_card.name=Mesabrook Bell SIM Card
+item.shopping_basket_blue.name=Shopping Basket
+
+//Sound Emitters
+tile.sound_emitter.name=Sound Emitter
+tile.sound_emitter_wall.name=Wall Mounted Sound Emitter

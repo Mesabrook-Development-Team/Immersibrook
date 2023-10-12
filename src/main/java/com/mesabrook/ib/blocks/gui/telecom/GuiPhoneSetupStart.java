@@ -27,7 +27,7 @@ public class GuiPhoneSetupStart extends GuiPhoneBase
     @Override
     protected String getInnerTextureFileName()
     {
-        return "system/app_screen_setup.png";
+        return phoneStackData.getIconTheme() + "/app_screen_setup.png";
     }
 
     @Override
@@ -77,7 +77,7 @@ public class GuiPhoneSetupStart extends GuiPhoneBase
 
         ClientSoundPacket soundPacket = new ClientSoundPacket();
         soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
-        soundPacket.soundName = "minedroid_startup";
+        soundPacket.soundName = "oobe_startup";
         PacketHandler.INSTANCE.sendToServer(soundPacket);
     }
 

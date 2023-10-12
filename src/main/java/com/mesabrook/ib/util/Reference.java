@@ -9,7 +9,7 @@ public class Reference
 	public static final String UPDATE_NAME = "The Technology Update";
 	public static String MOTTO = MottoRandomizer.MOTTO;
 	public static final String VERSION = "1.0.0.10";
-	public static final String MINEDROID_VERSION = "0.1.3";
+	public static final String MINEDROID_VERSION = VERSION;
 	public static final String CHANGELOG = "https://github.com/RavenholmZombie/Immersibrook/releases/tag/" + VERSION;
 	public static final String UPDATE_URL = "https://raw.githubusercontent.com/RavenholmZombie/RavenholmZombie/main/update.json";
 	
@@ -28,6 +28,10 @@ public class Reference
 	public static final int GUI_SCO_STOREMODE = 10;
 	public static final int GUI_TAGGING_STATION = 11;
 	
+	public static final int GUI_TOS = 12;
+	public static final int GUI_RATION = 13;
+	public static final int GUI_SOUND_EMITTER = 14;
+	
 	public static final String NETWORK_CHANNEL_NAME = "wbtc";
 	
 	public static final String ANTENNA_DATA_NAME = "antennaData";
@@ -35,6 +39,7 @@ public class Reference
 	public static final String LOUDNESS_DATA_NAME = "loudnessData";
 	public static final String SPECIAL_DROP_TRACKING_DATA_NAME = "ib.specialdrops";
 	public static final String PHONE_LOG_DATA_NAME = "ib.phonelog";
+	public static final String TOS_DATA_NAME = "ib.tos";
 
 	public static final UUID RZ_UUID = UUID.fromString("c2907bdd-9aba-4c20-b83b-ddb41c004e78");
 	public static final UUID CSX_UUID = UUID.fromString("717bb4e7-c701-42a6-b06f-bbe17e0518ae");
@@ -60,6 +65,8 @@ public class Reference
 	public static final String DEBUG_MODE = "debug";
 	public static final String ICON_THEME = "icontheme";
 	public static final String OOBE_STATUS = "oobe";
+	public static final String PHONE_DEAD = "phone_dead";
+	public static final String USE_BUTTON_INSTEAD_OF_SLIDER = "usebuttoninsteadofslider";
 
 	public static final int MAX_PHONE_BACKGROUNDS = 42; // This is an INCLUSIVE number
 	public static final int MAX_CHAT_NOTIFICATIONS = 9; // This is an INCLUSIVE number

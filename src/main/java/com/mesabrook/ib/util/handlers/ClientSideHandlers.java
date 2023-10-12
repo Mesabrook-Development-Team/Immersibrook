@@ -21,22 +21,12 @@ import com.mesabrook.ib.blocks.gui.sco.GuiPOSInSession;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSPaymentBase;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSWaitingForNetwork;
 import com.mesabrook.ib.blocks.gui.sco.GuiStoreMode;
-import com.mesabrook.ib.blocks.gui.telecom.GuiCallEnd;
-import com.mesabrook.ib.blocks.gui.telecom.GuiHome;
-import com.mesabrook.ib.blocks.gui.telecom.GuiIncomingCall;
-import com.mesabrook.ib.blocks.gui.telecom.GuiLockScreen;
-import com.mesabrook.ib.blocks.gui.telecom.GuiMobileAlert;
-import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneActivate;
+import com.mesabrook.ib.blocks.gui.telecom.*;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneActivate.ActivationScreens;
-import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneBase;
-import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneCall;
-import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneCalling;
-import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneConnected;
-import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneRecents;
-import com.mesabrook.ib.blocks.gui.telecom.SignalStrengths;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
+import com.mesabrook.ib.blocks.gui.GuiTOS;
 import com.mesabrook.ib.init.SoundInit;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
@@ -217,6 +207,8 @@ public class ClientSideHandlers
 		{
 			EntityPlayerSP player = Minecraft.getMinecraft().player;
 			int ringTone = -1;
+			boolean allowRingtone = true;
+
 			for(int i = 0; i < player.inventory.getSizeInventory(); i++)
 			{
 				ItemStack stack = player.inventory.getStackInSlot(i);
@@ -228,6 +220,7 @@ public class ClientSideHandlers
 				NBTTagCompound tag = stack.getTagCompound();
 				ItemPhone.NBTData stackData = new ItemPhone.NBTData();
 				stackData.deserializeNBT(tag);
+				allowRingtone = stackData.getBatteryLevel() > 0 || Minecraft.getMinecraft().player.dimension != 0;
 
 				String stackPhoneNumber = stackData.getPhoneNumberString();
 				if (!phoneNumber.equalsIgnoreCase(stackPhoneNumber))
@@ -259,16 +252,19 @@ public class ClientSideHandlers
 
 				incomingCallSound = new PositionedSoundRecord(sound, SoundCategory.MASTER, ModConfig.ringtoneVolume, 1F, player.getPosition());
 				incomingCallSoundsByPhone.put(phoneNumber, incomingCallSound);
-				handler.playSound(incomingCallSound);
 
-				if(Minecraft.getMinecraft().gameSettings.showSubtitles || ModConfig.showCallMsgInChat)
+				if(allowRingtone)
 				{
-					TextComponentString pn = new TextComponentString(GuiPhoneBase.getFormattedPhoneNumber(phoneNumber));
-					pn.getStyle().setBold(true);
-					pn.getStyle().setItalic(true);
-					pn.getStyle().setColor(TextFormatting.GRAY);
+					handler.playSound(incomingCallSound);
+					if(Minecraft.getMinecraft().gameSettings.showSubtitles || ModConfig.showCallMsgInChat)
+					{
+						TextComponentString pn = new TextComponentString(GuiPhoneBase.getFormattedPhoneNumber(phoneNumber));
+						pn.getStyle().setBold(true);
+						pn.getStyle().setItalic(true);
+						pn.getStyle().setColor(TextFormatting.GRAY);
 
-					player.sendStatusMessage(new TextComponentString(new TextComponentTranslation("im.access.call").getFormattedText()), true);
+						player.sendStatusMessage(new TextComponentString(new TextComponentTranslation("im.access.call").getFormattedText()), true);
+					}
 				}
 			}
 		}
@@ -695,8 +691,8 @@ public class ClientSideHandlers
 	
 		public static void onWirelessEmergencyAlert(String forNumber, WirelessEmergencyAlert alert)
 		{
-			GuiMobileAlert.labelsByNumber.put(Integer.parseInt(forNumber), alert.getName());
-			GuiMobileAlert.textByNumber.put(Integer.parseInt(forNumber), alert.getDescription());
+			GuiNewEmergencyAlert.labelsByNumber.put(Integer.parseInt(forNumber), alert.getName());
+			GuiNewEmergencyAlert.textByNumber.put(Integer.parseInt(forNumber), alert.getDescription());
 			
 			if (Minecraft.getMinecraft().currentScreen instanceof GuiPhoneBase)
 			{
@@ -706,7 +702,7 @@ public class ClientSideHandlers
 					return;
 				}
 				
-				Minecraft.getMinecraft().displayGuiScreen(new GuiMobileAlert(currentScreen.getPhoneStack(), currentScreen.getHand()));
+				Minecraft.getMinecraft().displayGuiScreen(new GuiNewEmergencyAlert(currentScreen.getPhoneStack(), currentScreen.getHand()));
 			}
 		}
 	}
@@ -875,5 +871,9 @@ public class ClientSideHandlers
             GlStateManager.disableBlend();
 			GlStateManager.enableAlpha();
 		}
+	}
+	
+	public static void openTOSGUI() {
+		Minecraft.getMinecraft().displayGuiScreen(new GuiTOS());
 	}
 }

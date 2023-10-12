@@ -18,7 +18,7 @@ public class GuiPhoneNameSetup extends GuiPhoneBase
 {
     private String currentPhoneName;
     MinedroidButton next;
-    LabelButton back;
+    MinedroidButton back;
     GuiTextField phoneNameTxtField;
 
     public GuiPhoneNameSetup(ItemStack phoneStack, EnumHand hand)
@@ -30,7 +30,7 @@ public class GuiPhoneNameSetup extends GuiPhoneBase
     @Override
     protected String getInnerTextureFileName()
     {
-        return "system/app_screen_blue.png";
+        return phoneStackData.getIconTheme() + "/app_screen_setup.png";
     }
 
     @Override
@@ -40,15 +40,17 @@ public class GuiPhoneNameSetup extends GuiPhoneBase
     
     @Override
     protected boolean renderTopBar() {
-        return true;
+        return false;
     }
 
     @Override
     public void initGui()
     {
         super.initGui();
-        back = new LabelButton(0, INNER_X + 3, INNER_Y + 20, "<", 0xFFFFFF);
-        next = new MinedroidButton(1, INNER_X + 50, INNER_Y + 180, 65, "Next", 0xFFFFFF);
+
+        int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 32;
+        back = new MinedroidButton(0, INNER_X + 45, lowerControlsY - 3, 35, new TextComponentTranslation("im.settings.back").getFormattedText(), 0xFFFFFF);
+        next = new MinedroidButton(1, INNER_X + 85, lowerControlsY - 3, 35, new TextComponentTranslation("im.settings.next").getFormattedText(), 0xFFFFFF);
 
         phoneNameTxtField = new GuiTextField(100, fontRenderer, INNER_X + 10, INNER_Y + 70, INNER_TEX_WIDTH - 20, 10);
         phoneNameTxtField.setMaxStringLength(35);
@@ -72,7 +74,7 @@ public class GuiPhoneNameSetup extends GuiPhoneBase
     {
         super.doDraw(mouseX, mouseY, partialticks);
         GlStateManager.color(1, 1, 1);
-        fontRenderer.drawString(new TextComponentTranslation("im.settings.personalization.phonenamesetup").getFormattedText(), INNER_X + 15, INNER_Y + 20, 0xFFFFFF);
+        drawCenteredString(fontRenderer, new TextComponentTranslation("im.settings.personalization.phonenamesetup").getFormattedText(), INNER_X + 80, INNER_Y + 20, 0xFFFFFF);
         fontRenderer.drawString(new TextComponentTranslation("im.settings.personalization.setphonename").getFormattedText(), INNER_X + 10, INNER_Y + 50, 0xFFFFFF);
 
         fontRenderer.drawSplitString(new TextComponentTranslation("im.settings.personalization.nameinfo1").getFormattedText(), INNER_X + 10, INNER_Y + 100, INNER_TEX_WIDTH - 12, 0xFFFFFF);
@@ -99,7 +101,7 @@ public class GuiPhoneNameSetup extends GuiPhoneBase
         super.actionPerformed(button);
         if(button == back)
         {
-            Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneSetupStart(phoneStack, hand));
+            Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneSetupThemeStep(phoneStack, hand));
         }
 
         if(button == next)

@@ -34,7 +34,7 @@ public class GuiPhoneSetupComplete extends GuiPhoneBase
     @Override
     protected String getInnerTextureFileName()
     {
-        return "system/app_screen_setup.png";
+        return phoneStackData.getIconTheme() + "/app_screen_setup.png";
     }
 
     @Override
@@ -91,6 +91,13 @@ public class GuiPhoneSetupComplete extends GuiPhoneBase
         packet.needToDoOOBE = false;
 
         PacketHandler.INSTANCE.sendToServer(packet);
+
+        ClientSoundPacket soundPacket = new ClientSoundPacket();
+        soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
+        soundPacket.soundName = "phone_unlock";
+        soundPacket.useDelay = true;
+        soundPacket.volume = 1.0F;
+        PacketHandler.INSTANCE.sendToServer(soundPacket);
     }
 
     @Override

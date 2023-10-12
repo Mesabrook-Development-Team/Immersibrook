@@ -89,6 +89,9 @@ public class SoundInit
 	public static final SoundEvent COUGH_M;
 	public static final SoundEvent COUGH_F;
 	public static final SoundEvent CHISEL;
+	public static final SoundEvent RATION_OPEN;
+	public static final SoundEvent TAPE_MEASURE_OPEN;
+	public static final SoundEvent TAPE_MEASURE_CLOSE;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -104,6 +107,7 @@ public class SoundInit
 	public static final SoundEvent MS_XP;
 	public static final SoundEvent COOKING;
 	public static final SoundEvent MEMORY;
+	public static final SoundEvent WIDE;
 
 	// Holiday Records
 	public static final SoundEvent SPOOKY;
@@ -154,6 +158,10 @@ public class SoundInit
 	public static final SoundEvent PHONE_OFF;
 	public static final SoundEvent MINEDROID_STARTUP;
 	public static final SoundEvent PHONE_BATTERY_LOW;
+	public static final SoundEvent PHONE_UNBOX;
+	public static final SoundEvent ALERT;
+	public static final SoundEvent NORMAL_BOOT;
+	public static final SoundEvent OOBE_BOOT;
 
 	// Ringtones
 	public static final SoundEvent RING_1;
@@ -267,6 +275,9 @@ public class SoundInit
 		COUGH_M = addSoundsToRegistry("cough_m");
 		COUGH_F = addSoundsToRegistry("cough_f");
 		CHISEL = addSoundsToRegistry("chisel");
+		RATION_OPEN = addSoundsToRegistry("ration_open");
+		TAPE_MEASURE_OPEN = addSoundsToRegistry("tape_measure_open");
+		TAPE_MEASURE_CLOSE = addSoundsToRegistry("tape_measure_close");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -285,6 +296,7 @@ public class SoundInit
 		HL3 = addSoundsToRegistry("hl3");
 		COOKING = addSoundsToRegistry("cooking");
 		MEMORY = addSoundsToRegistry("memory");
+		WIDE = addSoundsToRegistry("wide");
 
 		// Plastic SoundType
 		PLASTIC_BREAK = addSoundsToRegistry("plastic_break");
@@ -333,6 +345,10 @@ public class SoundInit
 		PHONE_BATTERY_LOW = addSoundsToRegistry("phone_battery_low");
 		PHONE_BOOTUP = addSoundsToRegistry("minedroid_firstboot");
 		BATTERY_LOW = addSoundsToRegistry("battery_low");
+		PHONE_UNBOX = addSoundsToRegistry("phone_unbox");
+		ALERT = addSoundsToRegistry("alert");
+		NORMAL_BOOT = addSoundsToRegistry("normal_boot");
+		OOBE_BOOT = addSoundsToRegistry("oobe_startup");
 
 		// Ringtones
 		RING_1 = addSoundsToRegistry("ring_1");
@@ -381,6 +397,7 @@ public class SoundInit
 			try
 			{
 				event.getRegistry().registerAll(SoundInit.OWO_SFX);
+				event.getRegistry().registerAll(SoundInit.WIDE);
 				event.getRegistry().registerAll(SoundInit.RZ_TROPHY);
 				event.getRegistry().registerAll(SoundInit.CSX_TROPHY);
 				event.getRegistry().registerAll(SoundInit.TLZ_TROPHY);
@@ -537,6 +554,13 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.SIT_3);
 				event.getRegistry().register(SoundInit.SIT_4);
 				event.getRegistry().register(SoundInit.SIT_5);
+				event.getRegistry().register(SoundInit.PHONE_UNBOX);
+				event.getRegistry().register(SoundInit.RATION_OPEN);
+				event.getRegistry().register(SoundInit.TAPE_MEASURE_OPEN);
+				event.getRegistry().register(SoundInit.TAPE_MEASURE_CLOSE);
+				event.getRegistry().register(SoundInit.ALERT);
+				event.getRegistry().register(SoundInit.NORMAL_BOOT);
+				event.getRegistry().register(SoundInit.OOBE_BOOT);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

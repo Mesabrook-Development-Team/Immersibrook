@@ -7,10 +7,7 @@ import com.mesabrook.ib.items.commerce.*;
 import com.mesabrook.ib.items.misc.*;
 import com.mesabrook.ib.items.misc.ItemStamp.StampTypes;
 import com.mesabrook.ib.items.record.MemeRecord;
-import com.mesabrook.ib.items.tools.ItemBanHammer;
-import com.mesabrook.ib.items.tools.ItemGavel;
-import com.mesabrook.ib.items.tools.ItemIceChisel;
-import com.mesabrook.ib.items.tools.ItemManholeHook;
+import com.mesabrook.ib.items.tools.*;
 import com.mesabrook.ib.items.weapons.ItemWeapon;
 import com.mesabrook.ib.util.ArmorMaterialRegistry;
 import com.mesabrook.ib.util.ToolMaterialRegistry;
@@ -129,6 +126,7 @@ public class ModItems
 	public static final Item DISC_RITZ = new MemeRecord("disc_ritz", SoundInit.RITZ);
 	public static final Item DISC_HL3 = new MemeRecord("disc_pumpkin", SoundInit.HL3);
 	public static final Item DISC_MEMORY = new MemeRecord("memory", SoundInit.MEMORY);
+	public static final Item WIDE_DISC = new MemeRecord("wide_record", SoundInit.WIDE); 
 
 	// First Aid Kit
 	public static final Item FIRST_AID_KIT = new ItemFirstAidKit("first_aid", Main.IMMERSIBROOK_MAIN);
@@ -238,8 +236,11 @@ public class ModItems
 	public static final Item CANDY_PINK_LEMONADE = new ItemIBFood("pl_candy", 16, 0,8, 10, false);
 	public static final Item PINK_LEMONADE_DRINK = new ItemIBFood("pink_lemonade_drink", 1, 0, 5, 10, false);
 	public static final Item SPARKLING_PINK_LEMONADE = new ItemIBFood("sparkling_pink_lemonade", 1, 0, 10, 12, false);
+	public static final Item WATER_SACHET = new ItemIBFood("water_sachet", 15, 0, 0, 0, false);
 	public static final Item SHITTLES = new ItemIBFood("shittles", 16, 0, 5, 12, false);
 	public static final Item TASTYJUICE = new ItemIBFood("tastyjuice", 1, 0, 8, 15, false);
+	public static final Item RAW_CHICKEN_NUGGET = new ItemIBFood("raw_chicken_nugget", 64, 0, 5, 10, true);
+	public static final Item CHICKEN_NUGGET = new ItemIBFood("cooked_chicken_nugget", 64, 0, 8, 16, true);
 
 	// Non-Edible Candy Items
 	public static final Item RAW_CANDY_RED = new MiscItem("raw_candy_red", 64, Main.IMMERSIBROOK_MAIN);
@@ -437,4 +438,41 @@ public class ModItems
 
 	// SIM
 	public static final Item SIM_CARD = new MiscItem("sim_card", 1, Main.IMMERSIBROOK_MAIN);
+
+	// Flagger
+	public static final Item FLAGGER_STOP = new ItemFlagger("flagger_stop");
+	public static final Item FLAGGER_SLOW = new ItemFlagger("flagger_slow");
+
+	// Minedroid retail boxes uwu
+	public static final Item BOX_WHITE = new ItemMinedroidBox("box_white");
+	public static final Item BOX_ORANGE = new ItemMinedroidBox("box_orange");
+	public static final Item BOX_MAGENTA = new ItemMinedroidBox("box_magenta");
+	public static final Item BOX_YELLOW = new ItemMinedroidBox("box_yellow");
+	public static final Item BOX_LIME = new ItemMinedroidBox("box_lime");
+	public static final Item BOX_PINK = new ItemMinedroidBox("box_pink");
+	public static final Item BOX_GRAY = new ItemMinedroidBox("box_gray");
+	public static final Item BOX_SILVER = new ItemMinedroidBox("box_silver");
+	public static final Item BOX_CYAN = new ItemMinedroidBox("box_cyan");
+	public static final Item BOX_LBLUE = new ItemMinedroidBox("box_lblue");
+	public static final Item BOX_PURPLE = new ItemMinedroidBox("box_purple");
+	public static final Item BOX_BROWN = new ItemMinedroidBox("box_brown");
+	public static final Item BOX_GREEN = new ItemMinedroidBox("box_green");
+	public static final Item BOX_RED = new ItemMinedroidBox("box_red");
+	public static final Item BOX_BLACK = new ItemMinedroidBox("box_black");
+	public static final Item BOX_BLUE = new ItemMinedroidBox("box_blue");
+	public static final Item OT_CHARGER = new MiscItem("ot_charger", 1, Main.IMMERSIBROOK_MAIN);
+
+	// Rations
+	public static final Item ES_RATION = new ItemRation("ration_1");
+	public static final Item RS_RATION = new ItemRation("ration_2");
+
+	// Tape Measure
+	public static final Item TAPE_MEASURE = new ItemTapeMeasure("tape_measure");
+	public static final Item TAPE_CRAFTING = new MiscItem("tape_roll_measure", 64, Main.IMMERSIBROOK_MAIN);
+
+	// Portable Ender Chest
+	public static final Item PORTABLE_ENDER_CHEST = new ItemEnderChest("portable_ender_chest");
+
+	// Shopping Basket Test Item
+	public static final Item SHOPPING_BASKET = new MiscItem("shopping_basket_blue", 1, Main.IMMERSIBROOK_MAIN);
 }

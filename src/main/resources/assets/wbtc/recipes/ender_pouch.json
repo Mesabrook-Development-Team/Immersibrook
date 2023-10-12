@@ -1,0 +1,34 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "wsw",
+        "oeo",
+		"wow"
+    ],
+    "key":
+    {
+        "o":
+        {
+			"item": "minecraft:obsidian"
+        },
+		"s":
+		{
+			"item": "minecraft:string"
+		},
+		"w":
+		{
+			"item": "minecraft:wool",
+			"data": 15
+		},
+		"e":
+		{
+			"item": "minecraft:ender_eye"
+		}
+    },
+    "result":
+    {
+        "item": "wbtc:portable_ender_chest",
+        "count": 1
+    }
+}

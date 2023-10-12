@@ -12,6 +12,8 @@ import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.handlers.PacketHandler;
+import com.mesabrook.ib.net.OpenTOSPacket;
+import com.mesabrook.ib.util.saveData.TOSData;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
@@ -23,8 +25,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 
 public class CommandImmersibrook extends CommandBase
 {
@@ -44,8 +48,6 @@ public class CommandImmersibrook extends CommandBase
 				try
 				{
 					EntityPlayerMP player = (EntityPlayerMP) sender;
-//					AboutGUIPacket packet = new AboutGUIPacket();
-//					PacketHandler.INSTANCE.sendTo(packet, player);
 
 					player.sendMessage(new TextComponentString("============================================"));
 					player.sendMessage(new TextComponentString("Immersibrook"));
@@ -113,6 +115,7 @@ public class CommandImmersibrook extends CommandBase
 				sender.sendMessage(new TextComponentString(TextFormatting.RED + "about - Shows Immersibrook's version info."));
 				sender.sendMessage(new TextComponentString(TextFormatting.RED + "changelog - Shows a link to Immersibrook's changelog."));
 				sender.sendMessage(new TextComponentString(TextFormatting.RED + "proxchat on/off - Turn Proximity Chat on or off."));
+				sender.sendMessage(new TextComponentString(TextFormatting.RED + "resettos - Reset Terms Of Service acceptance for all players."));
 				sender.sendMessage(new TextComponentString(""));
 				sender.sendMessage(new TextComponentString(TextFormatting.RED + "Example Usage: /ib proxchat off"));
 			}
@@ -177,6 +180,28 @@ public class CommandImmersibrook extends CommandBase
 					PacketHandler.INSTANCE.sendTo(packet, player);
 				}
 			}
+			else if ("resettos".equalsIgnoreCase(args[0]))
+			{
+				World world = server.getWorld(0);
+				if (FMLCommonHandler.instance().getMinecraftServerInstance().isSinglePlayer())
+				{
+					throw new WrongUsageException("im.cmd.resettos.singleplayer", new Object[0]);
+				}
+				TOSData tos = (TOSData)world.loadData(TOSData.class, Reference.TOS_DATA_NAME);
+				if (tos == null)
+				{
+					tos = new TOSData(Reference.TOS_DATA_NAME);
+					world.setData(Reference.TOS_DATA_NAME, tos);
+				}
+				
+				tos.clearPlayers();
+				
+				for(EntityPlayerMP player : server.getPlayerList().getPlayers()) 
+				{
+					OpenTOSPacket openTOS = new OpenTOSPacket();
+					PacketHandler.INSTANCE.sendTo(openTOS, player);
+				}
+			}
 		}
 	}
 	
@@ -207,6 +232,6 @@ public class CommandImmersibrook extends CommandBase
 	@Override
 	public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, BlockPos targetPos) 
 	{
-		return args.length == 1 ? getListOfStringsMatchingLastWord(args, new String[] {"about", "changelog", "help", "proxchat"}) : Collections.emptyList();
+		return args.length == 1 ? getListOfStringsMatchingLastWord(args, new String[] {"about", "changelog", "help", "proxchat", "resettos"}) : Collections.emptyList();
 	}
 }

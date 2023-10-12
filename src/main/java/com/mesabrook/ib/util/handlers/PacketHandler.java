@@ -84,6 +84,9 @@ public class PacketHandler
 		INSTANCE.registerMessage(CommandProcessorPacket.class, CommandProcessorPacket.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(ClientSoundPacket.Handler.class, ClientSoundPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(CoughPacket.Handler.class, CoughPacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(OpenTOSPacket.Handler.class, OpenTOSPacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(ClosedTOSPacket.Handler.class, ClosedTOSPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(SoundEmitterBlockPacket.Handler.class, SoundEmitterBlockPacket.class, nextID(), Side.SERVER);
 
 		// TELECOM
 		INSTANCE.registerMessage(ActivatePhonePacket.Handler.class, ActivatePhonePacket.class, nextID(), Side.SERVER);
@@ -112,6 +115,7 @@ public class PacketHandler
 		INSTANCE.registerMessage(PhoneRingtonesPacket.Handler.class, PhoneRingtonesPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(PhoneNamePacket.Handler.class, PhoneNamePacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(CustomizationPacket.Handler.class, CustomizationPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(ToggleUnlockSliderPacket.Handler.class, ToggleUnlockSliderPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(OOBEStatusPacket.Handler.class, OOBEStatusPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(FactoryResetPacket.Handler.class, FactoryResetPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(SaveContactPacket.Handler.class, SaveContactPacket.class, nextID(), Side.SERVER);

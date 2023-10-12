@@ -38,7 +38,7 @@ public class GuiMobileAlert extends GuiPhoneBase
     @Override
     protected String getInnerTextureFileName()
     {
-        return "system/app_screen.png";
+        return phoneStackData.getIconTheme() + "/app_screen.png";
     }
 
     @Override
@@ -46,7 +46,7 @@ public class GuiMobileAlert extends GuiPhoneBase
     {
         super.initGui();
 
-        alertIcon = new ImageButton(0, INNER_X + 3, INNER_Y + 18, 13, 13, "icn_alert.png", 32, 32);
+        alertIcon = new ImageButton(0, INNER_X + 3, INNER_Y + 18, 13, 13,  phoneStackData.getIconTheme() + "/icn_alert.png", 32, 32);
         close = new MinedroidButton(4, INNER_X + INNER_TEX_WIDTH - 43, INNER_Y + 17, 39, new TextComponentTranslation("im.alert.close").getFormattedText(), 0xFFFFFF);
 
         buttonList.addAll(ImmutableList.<GuiButton>builder()

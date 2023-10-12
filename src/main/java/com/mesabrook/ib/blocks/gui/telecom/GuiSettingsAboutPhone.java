@@ -22,8 +22,9 @@ public class GuiSettingsAboutPhone extends GuiPhoneBase {
 
 	LabelButton back;
 	LabelButton number;
-	MinedroidButton factoryReset;
 	ImageButton mux;
+	MinedroidButton copyPhoneNumber;
+
 	int clicksToDebug = 0;
 	private boolean factoryResetPressed;
 
@@ -33,7 +34,14 @@ public class GuiSettingsAboutPhone extends GuiPhoneBase {
 	
 	@Override
 	protected String getInnerTextureFileName() {
-		return "system/app_screen.png";
+		if(phoneStackData.getIconTheme().contains("luna"))
+		{
+			return "luna/app_background_settings_bar.png";
+		}
+		else
+		{
+			return phoneStackData.getIconTheme() + "/app_screen.png";
+		}
 	}
 	
 	@Override
@@ -44,14 +52,15 @@ public class GuiSettingsAboutPhone extends GuiPhoneBase {
 		back = new LabelButton(4, INNER_X + 3, INNER_Y + 20, "<", 0xFFFFFF);
 		number = new LabelButton(5, INNER_X + 3 + stringWidth + 3, INNER_Y + 118, getFormattedPhoneNumber(phoneStackData.getPhoneNumberString()), 0xFFFFFF);
 
-		factoryReset = new MinedroidButton(1, INNER_X + 3, INNER_Y + 160, INNER_TEX_WIDTH - 6, "Factory Reset", 0xFF5733);
+		int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 32;
+		copyPhoneNumber = new MinedroidButton(3, INNER_X + 21, lowerControlsY - 20, 120, "Copy Phone Number", 0xFFFFFF);
 
 		mux = new ImageButton(100, INNER_X + 67, INNER_Y + 45, 28, 28, "icn_mux.png", 32, 32);
 
 		buttonList.add(back);
 		buttonList.add(number);
-		buttonList.add(factoryReset);
 		buttonList.add(mux);
+		buttonList.add(copyPhoneNumber);
 	}
 
 	@Override
@@ -61,11 +70,23 @@ public class GuiSettingsAboutPhone extends GuiPhoneBase {
 		fontRenderer.drawString("About Phone", INNER_X + 15, INNER_Y + 20, 0xFFFFFF);
 
 		drawCenteredString(fontRenderer, new TextComponentTranslation("im.minedroid").getFormattedText() + " " + Reference.MINEDROID_VERSION, INNER_X + 80, INNER_Y + 80, 3395327);
-		fontRenderer.drawString(new TextComponentTranslation("im.settings.phoneinfo").getFormattedText(), INNER_X + 3, INNER_Y + 106, 0xFFFFFF);
-		fontRenderer.drawString(new TextComponentTranslation("im.contacts.phone").getFormattedText(), INNER_X + 3, INNER_Y + 118, 0x5179bd);
-		fontRenderer.drawString(new TextComponentTranslation("im.settings.strategy").getFormattedText(), INNER_X + 3, INNER_Y + 131, 0x5179bd);
-		int stratStringWidth = fontRenderer.getStringWidth(new TextComponentTranslation("im.settings.strategy").getFormattedText());
-		fontRenderer.drawString(phoneStackData.getSecurityStrategy().toString(), INNER_X + 3 + stratStringWidth + 3, INNER_Y + 131, 0xFFFFFF);
+
+		if(phoneStackData.getIconTheme().contains("luna"))
+		{
+			fontRenderer.drawString(new TextComponentTranslation("im.settings.phoneinfo").getFormattedText(), INNER_X + 3, INNER_Y + 106, 0xFFFFFF);
+			fontRenderer.drawString(new TextComponentTranslation("im.contacts.phone").getFormattedText(), INNER_X + 3, INNER_Y + 118, 0xFFFFFF);
+			fontRenderer.drawString(new TextComponentTranslation("im.settings.strategy").getFormattedText(), INNER_X + 3, INNER_Y + 131, 0xFFFFFF);
+			int stratStringWidth = fontRenderer.getStringWidth(new TextComponentTranslation("im.settings.strategy").getFormattedText());
+			fontRenderer.drawString(phoneStackData.getSecurityStrategy().toString(), INNER_X + 3 + stratStringWidth + 3, INNER_Y + 131, 0xFFFFFF);
+		}
+		else
+		{
+			fontRenderer.drawString(new TextComponentTranslation("im.settings.phoneinfo").getFormattedText(), INNER_X + 3, INNER_Y + 106, 0xFFFFFF);
+			fontRenderer.drawString(new TextComponentTranslation("im.contacts.phone").getFormattedText(), INNER_X + 3, INNER_Y + 118, 0x5179bd);
+			fontRenderer.drawString(new TextComponentTranslation("im.settings.strategy").getFormattedText(), INNER_X + 3, INNER_Y + 131, 0x5179bd);
+			int stratStringWidth = fontRenderer.getStringWidth(new TextComponentTranslation("im.settings.strategy").getFormattedText());
+			fontRenderer.drawString(phoneStackData.getSecurityStrategy().toString(), INNER_X + 3 + stratStringWidth + 3, INNER_Y + 131, 0xFFFFFF);
+		}
 
 		GlStateManager.color(1, 1, 1);
 	}
@@ -79,29 +100,14 @@ public class GuiSettingsAboutPhone extends GuiPhoneBase {
 			Minecraft.getMinecraft().displayGuiScreen(new GuiSettings(phoneStack, hand));
 		}
 
-		if(button == number)
+		if(button == number || button == copyPhoneNumber)
 		{
 			StringSelection stringSelection = new StringSelection(getFormattedPhoneNumber(phoneStackData.getPhoneNumberString()));
 			Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 			clipboard.setContents(stringSelection, null);
-			Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "Phone Number Copied", 0xFFFFFF));
-		}
-		
-		if (button == factoryReset)
-		{
-			if (!factoryResetPressed)
-			{
-				Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.settings.confirm").getFormattedText()));
-				factoryResetPressed = true;
-				return;
-			}
-			
-			FactoryResetPacket reset = new FactoryResetPacket();
-			reset.hand = hand.ordinal();
-			reset.phoneActivateGuiClassName = GuiSettingsAboutPhone.class.getName();
-			PacketHandler.INSTANCE.sendToServer(reset);
-			
-			Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.settings.resetdone").getFormattedText()));
+
+			copyPhoneNumber.enabled = false;
+			copyPhoneNumber.displayString = "Copied";
 		}
 
 		if(button == mux)

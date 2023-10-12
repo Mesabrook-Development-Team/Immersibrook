@@ -1,5 +1,6 @@
 package com.mesabrook.ib.util.handlers;
 
+import com.mesabrook.ib.blocks.container.ContainerRation;
 import com.mesabrook.ib.blocks.container.ContainerStampBook;
 import com.mesabrook.ib.blocks.container.ContainerTaggingStation;
 import com.mesabrook.ib.blocks.container.ContainerTrashBin;
@@ -41,6 +42,7 @@ public class GuiHandler implements IGuiHandler
 		if(ID == Reference.GUI_TRASHBIN) return new ContainerTrashBin(player.inventory, (TileEntityTrashBin)world.getTileEntity(new BlockPos(x,y,z)), player);
 		else if (ID == Reference.GUI_STAMP_BOOK) return new ContainerStampBook(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]);
 		else if (ID == Reference.GUI_TAGGING_STATION) return new ContainerTaggingStation(player.inventory, new BlockPos(x,y,z));
+		else if (ID == Reference.GUI_RATION) return new ContainerRation(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]);
 		return null;
 	}
 	
@@ -59,19 +61,32 @@ public class GuiHandler implements IGuiHandler
 			ItemPhone.NBTData stackNBTData = new ItemPhone.NBTData();
 			stackNBTData.deserializeNBT(stackData);
 			String phoneNumber = stackNBTData.getPhoneNumberString();
-			boolean needToDoOOBE = stackNBTData.getNeedToDoOOBE();
+			boolean hasToDoOOBE = stackNBTData.getNeedToDoOOBE();
+			boolean isPhoneDead = stackNBTData.getIsPhoneDead();
 			
 			if (phoneNumber == null)
 			{
 				return new GuiPhoneActivate(stack, hand);
 			}
-			else if (GuiMobileAlert.labelsByNumber.containsKey(stackNBTData.getPhoneNumber()) || GuiMobileAlert.textByNumber.containsKey(stackNBTData.getPhoneNumber()))
+			else if (GuiNewEmergencyAlert.labelsByNumber.containsKey(stackNBTData.getPhoneNumber()) || GuiNewEmergencyAlert.textByNumber.containsKey(stackNBTData.getPhoneNumber()))
 			{
-				return new GuiMobileAlert(stack, hand);
+				return new GuiNewEmergencyAlert(stack, hand);
 			}
-			else if(needToDoOOBE)
+			else if(hasToDoOOBE)
 			{
-				return new GuiFirstPhoneBoot(stack, hand);
+				return new GuiPhoneSetupStart(stack, hand);
+			}
+			else if(stackNBTData.getBatteryLevel() <= 0)
+			{
+				return new GuiDeadPhone(stack, hand);
+			}
+			else if(stackNBTData.getBatteryLevel() <= 100)
+			{
+				return new GuiLowBatWarning(stack, hand);
+			}
+			else if(player.dimension == -1)
+			{
+				return new GuiThermalWarning(stack, hand);
 			}
 			else
 			{
@@ -87,6 +102,7 @@ public class GuiHandler implements IGuiHandler
 			}
 		}
 		else if (ID == Reference.GUI_STAMP_BOOK) return new GuiStampBook(new ContainerStampBook(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]));
+		else if (ID == Reference.GUI_RATION) return new GuiRation(new ContainerRation(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]));
 		else if (ID == Reference.GUI_WALLSIGN) return new GuiWallSign(EnumHand.values()[x]);
 		else if (ID == Reference.GUI_SCO_POS)
 		{
@@ -106,6 +122,8 @@ public class GuiHandler implements IGuiHandler
 		{
 			return new GuiTaggingStation(player.inventory, new BlockPos(x, y, z));
 		}
+		else if (ID == Reference.GUI_TOS) return new GuiTOS();
+		else if (ID == Reference.GUI_SOUND_EMITTER) return new GuiSoundEmitter(player.swingingHand, new BlockPos(x,y,z));
 		else return null;
 	}
 	

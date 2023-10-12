@@ -241,6 +241,10 @@ public class RegistryHandler
 		{
 			rules.addGameRule("forbidCannibalism", "true", GameRules.ValueType.BOOLEAN_VALUE);
 		}
+		if(!rules.hasRule("toxicEnderPouch"))
+		{
+			rules.addGameRule("toxicEnderPouch", "false", GameRules.ValueType.BOOLEAN_VALUE);
+		}
 		
 		// MesaSuite Data Access
 		DataAccess.init(world);

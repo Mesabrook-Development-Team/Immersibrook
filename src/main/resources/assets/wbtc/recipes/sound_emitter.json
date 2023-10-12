@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#C#",
+    "#J#"
+  ],
+  "key": {
+    "#": {
+      "item": "wbtc:gray_plastic"
+    },
+    "C": {
+      "item": "immersiveengineering:material",
+	  "data": 27
+    },
+    "J": {
+      "item": "minecraft:jukebox"
+    }
+  },
+  "result": {
+    "item": "wbtc:sound_emitter",
+    "count": 1
+  }
+}

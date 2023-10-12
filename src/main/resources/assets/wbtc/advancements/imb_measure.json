@@ -1,0 +1,20 @@
+{
+    "display": {
+        "icon": {
+            "item": "wbtc:tape_measure"
+        },
+        "title": {
+            "translate": "advancements.imb.tape_measure"
+        },
+        "description": {
+            "translate": "advancements.imb.tape_measure.desc"
+        },
+		"show_toast": true,
+        "announce_to_chat": true
+    },
+    "criteria": {
+        "tick": {
+            "trigger": "wbtc:imb_measure"
+        }
+    }
+}

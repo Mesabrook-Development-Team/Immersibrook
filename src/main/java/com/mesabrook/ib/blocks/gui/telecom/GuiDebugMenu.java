@@ -3,6 +3,7 @@ package com.mesabrook.ib.blocks.gui.telecom;
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.net.ClientSoundPacket;
+import com.mesabrook.ib.net.telecom.OOBEStatusPacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 
@@ -31,7 +32,14 @@ public class GuiDebugMenu extends GuiPhoneBase
 
     @Override
     protected String getInnerTextureFileName() {
-        return "system/app_screen.png";
+        if(phoneStackData.getIconTheme().contains("luna"))
+        {
+            return "luna/app_background_settings_bar.png";
+        }
+        else
+        {
+            return phoneStackData.getIconTheme() + "/app_screen.png";
+        }
     }
 
     @Override
@@ -46,16 +54,15 @@ public class GuiDebugMenu extends GuiPhoneBase
         crashLabel = new LabelButton(3, INNER_X + 31, INNER_Y + 113, new TextComponentString("Crash Device").getFormattedText(), 0xFFFFFF);
         lowBatTest = new LabelButton(4, INNER_X + 31, INNER_Y + 133, new TextComponentString("Low Battery Screen").getFormattedText(), 0xFFFFFF);
 
-        weaIcon = new ImageButton(100, INNER_X + 0, INNER_Y + 40, 28, 28, "btn_debug.png", 32, 32);
-        oobeIcon = new ImageButton(101, INNER_X + 0, INNER_Y + 70, 28, 28, "btn_debug.png", 32, 32);
-        crashIcon = new ImageButton(102, INNER_X + 0, INNER_Y + 100, 28, 28, "btn_debug.png", 32, 32);
+        weaIcon = new ImageButton(100, INNER_X + 0, INNER_Y + 40, 28, 28, phoneStackData.getIconTheme() + "/btn_debug.png", 32, 32);
+        oobeIcon = new ImageButton(101, INNER_X + 0, INNER_Y + 70, 28, 28, phoneStackData.getIconTheme() + "/btn_debug.png", 32, 32);
+        crashIcon = new ImageButton(102, INNER_X + 0, INNER_Y + 100, 28, 28, phoneStackData.getIconTheme() + "/btn_debug.png", 32, 32);
 
         buttonList.addAll(ImmutableList.<GuiButton>builder()
                 .add(back)
                 .add(weaLabel)
                 .add(oobeLabel)
                 .add(crashLabel)
-                .add(lowBatTest)
                 .add(weaIcon)
                 .add(oobeIcon)
                 .add(crashIcon)
@@ -88,15 +95,22 @@ public class GuiDebugMenu extends GuiPhoneBase
             packet.pitch = 1.0F;
             packet.useDelay = false;
             PacketHandler.INSTANCE.sendToServer(packet);
-            
-            GuiMobileAlert.labelsByNumber.put(phoneStackData.getPhoneNumber(), "Test Alert");
-        	GuiMobileAlert.textByNumber.put(phoneStackData.getPhoneNumber(), "If this were a real emergency, more information would follow here.");
-            Minecraft.getMinecraft().displayGuiScreen(new GuiMobileAlert(phoneStack, hand));
+
+            GuiNewEmergencyAlert.labelsByNumber.put(phoneStackData.getPhoneNumber(), "National Periodic Test");
+            GuiNewEmergencyAlert.textByNumber.put(phoneStackData.getPhoneNumber(), "THIS IS A TEST OF THE NATIONAL WIRELESS EMERGENCY ALERT SYSTEM, THIS MESSAGE ORIGINATES FROM THE CENTERS OF MESABROOK BELL IN COOPERATION WITH THE DEPARTMENT OF PUBLIC SAFETY. IF THIS WERE AN ACTUAL EMERGENCY SUCH AS A TORNADO WARNING OR CIVIL DANGER WARNING, OFFICIAL INFORMATION OR INSTRUCTIONS WOULD BE BROADCAST TO ALL SMARTPHONES IN THE NATION. THIS IS ONLY A TEST, NO ACTION IS REQUIRED. THIS TEST OF THE NATIONAL WIRELESS EMERGENCY ALERT SYSTEM IS NOW CONCLUDED.");
+            Minecraft.getMinecraft().displayGuiScreen(new GuiNewEmergencyAlert(phoneStack, hand));
         }
 
         if(button == oobeIcon || button == oobeLabel)
         {
-            Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneSetupStart(phoneStack, hand));
+            OOBEStatusPacket packet = new OOBEStatusPacket();
+            packet.hand = hand.ordinal();
+            packet.guiClassName = GuiDebugMenu.class.getName();
+            packet.nextGuiClassName = GuiMSACBootScreen.class.getName();
+            packet.needToDoOOBE = true;
+
+            PacketHandler.INSTANCE.sendToServer(packet);
+
         }
 
         if(button == crashIcon || button == crashLabel)

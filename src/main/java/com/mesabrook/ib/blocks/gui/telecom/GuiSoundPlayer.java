@@ -38,7 +38,7 @@ public class GuiSoundPlayer extends GuiPhoneBase
     @Override
     protected String getInnerTextureFileName()
     {
-        return "system/app_screen_music.png";
+        return phoneStackData.getIconTheme() + "/app_screen_music.png";
     }
 
     @Override

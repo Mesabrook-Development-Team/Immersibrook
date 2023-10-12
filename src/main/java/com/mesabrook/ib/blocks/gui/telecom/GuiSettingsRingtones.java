@@ -51,7 +51,14 @@ public class GuiSettingsRingtones extends GuiPhoneBase
 
     @Override
     protected String getInnerTextureFileName() {
-        return "system/app_screen.png";
+        if(phoneStackData.getIconTheme().contains("luna"))
+        {
+            return "luna/app_background_settings_bar.png";
+        }
+        else
+        {
+            return phoneStackData.getIconTheme() + "/app_screen.png";
+        }
     }
 
     @Override
@@ -60,8 +67,8 @@ public class GuiSettingsRingtones extends GuiPhoneBase
         super.initGui();
         back = new LabelButton(0, INNER_X + 3, INNER_Y + 20, "<", 0xFFFFFF);
 
-        ringtone = new ImageButton(1, INNER_X + 0, INNER_Y + 40, 32, 32, "icn_call.png", 64, 64);
-        msgSound = new ImageButton(2, INNER_X + 0, INNER_Y + 80, 32, 32, "icn_msg.png", 64, 64);
+        ringtone = new ImageButton(1, INNER_X + 0, INNER_Y + 40, 32, 32, phoneStackData.getIconTheme() + "/icn_call.png", 64, 64);
+        msgSound = new ImageButton(2, INNER_X + 0, INNER_Y + 80, 32, 32, phoneStackData.getIconTheme() + "/icn_call.png", 64, 64);
 
         int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 32;
         reset = new MinedroidButton(10, INNER_X + 45, lowerControlsY - 10, 32, new TextComponentTranslation("im.musicapp.buttonreset").getFormattedText(), 0xFFFFFF);
