@@ -1,16 +1,18 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import java.io.IOException;
+
 import com.google.common.collect.ImmutableList;
+import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.net.telecom.CustomizationPacket;
 import com.mesabrook.ib.util.handlers.PacketHandler;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.client.config.GuiCheckBox;
-
-import java.io.IOException;
 
 public class GuiPhoneSetupThemeStep extends GuiPhoneBase
 {
