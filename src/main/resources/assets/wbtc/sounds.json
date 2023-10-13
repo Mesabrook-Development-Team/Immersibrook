@@ -6,6 +6,34 @@
 			"stream": true
 		}]
 	},
+	"toilet_1": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:toilet_1",
+			"stream": true
+		}]
+	},
+	"toilet_2": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:toilet_2",
+			"stream": true
+		}]
+	},
+	"toilet_3": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:toilet_3",
+			"stream": true
+		}]
+	},
+	"urinal": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:urinal",
+			"stream": true
+		}]
+	},
 	"ring_16": {
 		"category": "master",
 		"sounds": [{

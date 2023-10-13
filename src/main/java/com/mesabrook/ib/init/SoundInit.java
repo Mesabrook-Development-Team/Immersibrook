@@ -92,6 +92,10 @@ public class SoundInit
 	public static final SoundEvent RATION_OPEN;
 	public static final SoundEvent TAPE_MEASURE_OPEN;
 	public static final SoundEvent TAPE_MEASURE_CLOSE;
+	public static final SoundEvent TOILET_1;
+	public static final SoundEvent TOILET_2;
+	public static final SoundEvent TOILET_3;
+	public static final SoundEvent URINAL;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -288,6 +292,10 @@ public class SoundInit
 		RATION_OPEN = addSoundsToRegistry("ration_open");
 		TAPE_MEASURE_OPEN = addSoundsToRegistry("tape_measure_open");
 		TAPE_MEASURE_CLOSE = addSoundsToRegistry("tape_measure_close");
+		TOILET_1 = addSoundsToRegistry("toilet_1");
+		TOILET_2 = addSoundsToRegistry("toilet_2");
+		TOILET_3 = addSoundsToRegistry("toilet_3");
+		URINAL = addSoundsToRegistry("urinal");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -591,6 +599,10 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.ALERT);
 				event.getRegistry().register(SoundInit.NORMAL_BOOT);
 				event.getRegistry().register(SoundInit.OOBE_BOOT);
+				event.getRegistry().register(SoundInit.TOILET_1);
+				event.getRegistry().register(SoundInit.TOILET_2);
+				event.getRegistry().register(SoundInit.TOILET_3);
+				event.getRegistry().register(SoundInit.URINAL);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

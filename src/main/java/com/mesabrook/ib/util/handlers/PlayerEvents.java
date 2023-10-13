@@ -2,30 +2,34 @@ package com.mesabrook.ib.util.handlers;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
+import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModEnchants;
 import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.items.*;
-import com.mesabrook.ib.items.misc.*;
+import com.mesabrook.ib.items.ItemMinedroidBox;
+import com.mesabrook.ib.items.ItemSponge;
+import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.items.tools.ItemBanHammer;
 import com.mesabrook.ib.items.tools.ItemGavel;
 import com.mesabrook.ib.items.tools.ItemIceChisel;
-import com.mesabrook.ib.net.*;
-import com.mesabrook.ib.net.telecom.*;
-import com.mesabrook.ib.telecom.*;
+import com.mesabrook.ib.net.ClientSoundPacket;
+import com.mesabrook.ib.net.OpenTOSPacket;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
+import com.mesabrook.ib.telecom.CallManager;
 import com.mesabrook.ib.util.ItemRandomizer;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SoundRandomizer;
 import com.mesabrook.ib.util.TooltipRandomizer;
-import com.mesabrook.ib.util.apiaccess.PutData;
 import com.mesabrook.ib.util.apiaccess.DataAccess.API;
+import com.mesabrook.ib.util.apiaccess.PutData;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.saveData.SpecialDropTrackingData;
 import com.mesabrook.ib.util.saveData.TOSData;
 import com.mojang.authlib.GameProfile;
 import com.pam.harvestcraft.blocks.blocks.BlockPamCake;
-
-import blusunrize.immersiveengineering.ImmersiveEngineering;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockCake;
+import net.minecraft.block.BlockIce;
+import net.minecraft.block.BlockPackedIce;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -36,10 +40,12 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.*;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentString;
@@ -48,8 +54,9 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.player.*;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -546,6 +553,25 @@ public class PlayerEvents
 				packet.useDelay = true;
 				packet.range = 10;
 				PacketHandler.INSTANCE.sendToServer(packet);
+			}
+		}
+
+		if(block.getBlockState().getBlock() == ModBlocks.PRISON_TOILET)
+		{
+			if(player == null || world.isRemote)
+			{
+				return;
+			}
+
+			if(player.isSneaking())
+			{
+				ItemStack heldItem = player.getHeldItemMainhand();
+
+				if(!heldItem.isEmpty() && !(player instanceof FakePlayer) && !(heldItem.getItem() instanceof ItemPhone) && !(heldItem.getItem() instanceof ItemMinedroidBox))
+				{
+					heldItem.shrink(heldItem.getCount());
+					player.sendMessage(new TextComponentString(TextFormatting.RED + "I hope this doesn't clog the pipes..."));
+				}
 			}
 		}
 	}

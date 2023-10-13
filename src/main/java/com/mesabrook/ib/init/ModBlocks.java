@@ -1208,4 +1208,9 @@ public class ModBlocks
 
 	// ATM
 	public static final Block ATM = new ImmersiblockRotational("atm", Material.IRON, SoundType.METAL, "pickaxe", 1, 10F, 10F, ModUtils.DEFAULT_AABB);
+
+	// Terlets
+	public static final Block PRISON_TOILET = new ImmersiToilet("toilet", ModUtils.DEFAULT_AABB);
+	public static final Block WALL_TOILET = new ImmersiToilet("wall_toilet", ModUtils.DEFAULT_AABB);
+	public static final Block URINAL = new ImmersiToilet("urinal", ModUtils.getPixelatedAABB(1,5,0, 16,20,0.8));
 }

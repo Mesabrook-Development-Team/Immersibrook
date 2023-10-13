@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:urinal" },
+        "facing=south": { "model": "wbtc:urinal", "y": 180 },
+        "facing=west":  { "model": "wbtc:urinal", "y": 270 },
+        "facing=east":  { "model": "wbtc:urinal", "y": 90 }
+    }
+}
