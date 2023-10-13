@@ -48,5 +48,7 @@ public class CategoryTech extends AbstractCategory
         add(ModItems.CELL_TRANSMITTER);
         add(ModBlocks.CELL_ANTENNA);
         add(ModItems.SIM_CARD);
+        add(ModBlocks.SOUND_EMITTER_WALL);
+        add(ModBlocks.SOUND_EMITTER_BLOCK);
     }
 }
