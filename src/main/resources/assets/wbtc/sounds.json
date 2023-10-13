@@ -6,6 +6,76 @@
 			"stream": true
 		}]
 	},
+	"ring_16": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_16",
+			"stream": true
+		}]
+	},
+	"ring_17": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_17",
+			"stream": true
+		}]
+	},
+	"ring_18": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_18",
+			"stream": true
+		}]
+	},
+	"ring_19": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_19",
+			"stream": true
+		}]
+	},
+	"ring_20": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_20",
+			"stream": true
+		}]
+	},
+	"ring_21": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_21",
+			"stream": true
+		}]
+	},
+	"ring_22": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_22",
+			"stream": true
+		}]
+	},
+	"ring_23": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_23",
+			"stream": true
+		}]
+	},
+	"ring_24": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_24",
+			"stream": true
+		}]
+	},
+	"ring_25": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_25",
+			"stream": true
+		}]
+	},
 	"wide": {
 		"category": "master",
 		"sounds": [{
