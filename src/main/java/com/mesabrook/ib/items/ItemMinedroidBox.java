@@ -15,7 +15,6 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -23,7 +22,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
-import javax.xml.soap.Text;
 import java.util.List;
 
 public class ItemMinedroidBox extends Item implements IHasModel
@@ -168,7 +166,6 @@ public class ItemMinedroidBox extends Item implements IHasModel
                 packet.soundName = "phone_unbox";
                 packet.rapidSounds = true;
                 PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));
-                playerIn.sendMessage(new TextComponentString(TextFormatting.GREEN + "Congratulations on your purchase of a new MSAC Minedroid smartphone!"));
             }
 
             if(currentStack.getItem() == ModItems.BOX_WHITE)
