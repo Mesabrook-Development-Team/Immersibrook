@@ -1,6 +1,7 @@
 package com.mesabrook.ib.items;
 
 import com.mesabrook.ib.Main;
+import com.mesabrook.ib.advancements.Triggers;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.IHasModel;
@@ -152,6 +153,12 @@ public class ItemMinedroidBox extends Item implements IHasModel
         try
         {
             ItemStack currentStack = playerIn.getHeldItem(handIn);
+
+            if(playerIn instanceof EntityPlayer)
+            {
+                Triggers.trigger(Triggers.PHONE_USE, playerIn);
+            }
+
             if(worldIn.isRemote)
             {
                 return super.onItemRightClick(worldIn, playerIn, handIn);
