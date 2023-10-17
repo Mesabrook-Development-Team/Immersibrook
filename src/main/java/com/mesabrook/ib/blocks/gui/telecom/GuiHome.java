@@ -1,23 +1,26 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.mesabrook.ib.net.telecom.PhoneQueryPacket;
-import com.mesabrook.ib.util.*;
+import com.mesabrook.ib.util.ModUtils;
 import com.mesabrook.ib.util.handlers.ClientSideHandlers.TelecomClientHandlers;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.*;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.io.IOException;
-import java.net.*;
+import java.net.URI;
 
 @SideOnly(Side.CLIENT)
 public class GuiHome extends GuiPhoneBase {
 
+	private ResourceLocation dockTexture = new ResourceLocation("wbtc", "textures/gui/telecom/system/dock.png");
 	public GuiHome(ItemStack phoneStack, EnumHand hand) {
 		super(phoneStack, hand);
 	}
@@ -32,32 +35,45 @@ public class GuiHome extends GuiPhoneBase {
 	public void initGui() {
 		super.initGui();
 		// Phone
-		ImageButton button = new ImageButton(0, INNER_X + 5, INNER_Y + 24, 32, 32, phoneStackData.getIconTheme() + "/icn_phone.png", 32, 32);
+		ImageButton button = new ImageButton(0, INNER_X + 6, INNER_Y + 163, 32, 32, phoneStackData.getIconTheme() + "/icn_phone.png", 32, 32);
 		buttonList.add(button);
 
 		// Messages
-		ImageButton button2 = new ImageButton(1, INNER_X + 46, INNER_Y + 24, 32, 32, phoneStackData.getIconTheme() + "/icn_mail.png", 32, 32);
+		ImageButton button2 = new ImageButton(1, INNER_X + 46, INNER_Y + 163, 32, 32, phoneStackData.getIconTheme() + "/icn_mail.png", 32, 32);
 		buttonList.add(button2);
 
 		// Address Book
-		ImageButton button3 = new ImageButton(2, INNER_X + 86, INNER_Y + 24, 32, 32, phoneStackData.getIconTheme() + "/icn_contacts.png", 32, 32);
+		ImageButton button3 = new ImageButton(2, INNER_X + 86, INNER_Y + 163, 32, 32, phoneStackData.getIconTheme() + "/icn_contacts.png", 32, 32);
 		buttonList.add(button3);
 
 		// Settings
-		ImageButton button4 = new ImageButton(3, INNER_X + 126, INNER_Y + 24, 32, 32, phoneStackData.getIconTheme() + "/icn_settings.png", 32, 32);
+		ImageButton button4 = new ImageButton(3, INNER_X + 126, INNER_Y + 163, 32, 32, phoneStackData.getIconTheme() + "/icn_settings.png", 32, 32);
 		buttonList.add(button4);
 
 		// Music App
-		ImageButton button5 = new ImageButton(4, INNER_X + 5, INNER_Y + 65, 32, 32, phoneStackData.getIconTheme() + "/icn_musicplayer.png", 32, 32);
+		ImageButton button5 = new ImageButton(4, INNER_X + 5, INNER_Y + 24, 32, 32, phoneStackData.getIconTheme() + "/icn_musicplayer.png", 32, 32);
 		buttonList.add(button5);
 
 		// Calculator App
-		ImageButton button6 = new ImageButton(5, INNER_X + 46, INNER_Y + 65, 32, 32, phoneStackData.getIconTheme() + "/icn_calc.png", 32, 32);
+		ImageButton button6 = new ImageButton(5, INNER_X + 46, INNER_Y + 24, 32, 32, phoneStackData.getIconTheme() + "/icn_calc.png", 32, 32);
 		buttonList.add(button6);
 
 		// Help App
-		ImageButton button7 = new ImageButton(6, INNER_X + 86, INNER_Y + 65, 32, 32, phoneStackData.getIconTheme() + "/icn_help.png", 32, 32);
+		ImageButton button7 = new ImageButton(6, INNER_X + 86, INNER_Y + 24, 32, 32, phoneStackData.getIconTheme() + "/icn_help.png", 32, 32);
 		buttonList.add(button7);
+	}
+
+	@Override
+	protected void doDraw(int mouseX, int mouseY, float partialticks)
+	{
+		super.doDraw(mouseX, mouseY, partialticks);
+		GlStateManager.enableAlpha();
+		GlStateManager.enableBlend();
+		Minecraft.getMinecraft().getTextureManager().bindTexture(dockTexture);
+		drawScaledCustomSizeModalRect(INNER_X + 4, INNER_Y + 160, 0, 0, INNER_TEX_WIDTH * WIDTH_SCALE, INNER_TEX_HEIGHT * HEIGHT_SCALE, INNER_TEX_WIDTH - 6, INNER_TEX_HEIGHT - 185, 324, 450);
+		GlStateManager.disableAlpha(); 
+
+		GlStateManager.color(1, 1, 1);
 	}
 	
 	@Override
