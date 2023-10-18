@@ -50,7 +50,7 @@ public class SeatEvent
             return;
         }
 
-        if(state.getBlock() == ModBlocks.PRISON_TOILET || state.getBlock() == ModBlocks.WALL_TOILET && !player.isSneaking())
+        if(state.getBlock() == ModBlocks.PRISON_TOILET || state.getBlock() == ModBlocks.WALL_TOILET || state.getBlock() == ModBlocks.HOME_TOILET && !player.isSneaking())
         {
             SeatEntity seat = new SeatEntity(worldIn, pos);
             worldIn.spawnEntity(seat);
@@ -65,7 +65,7 @@ public class SeatEvent
             this(worldIn);
             EnumFacing facing = worldIn.getBlockState(pos).getValue(BlockHorizontal.FACING);
 
-            if(worldIn.getBlockState(pos).getBlock() == ModBlocks.PRISON_TOILET)
+            if(worldIn.getBlockState(pos).getBlock() == ModBlocks.PRISON_TOILET  || worldIn.getBlockState(pos).getBlock() == ModBlocks.HOME_TOILET)
             {
                 switch(facing)
                 {
@@ -182,7 +182,7 @@ public class SeatEvent
                             packet.soundName = "toilet_3";
                         }
 
-                        packet.rapidSounds = false;
+                        packet.rapidSounds = true;
                         PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
                     }
                 }

@@ -25,6 +25,15 @@ public class GuiHome extends GuiPhoneBase {
 		super(phoneStack, hand);
 	}
 
+	ImageButton button;
+	ImageButton button1;
+	ImageButton button2;
+	ImageButton button3;
+	ImageButton button4;
+	ImageButton button5;
+	ImageButton button6;
+	ImageButton button7;
+
 	@Override
 	protected String getInnerTextureFileName()
 	{
@@ -35,31 +44,31 @@ public class GuiHome extends GuiPhoneBase {
 	public void initGui() {
 		super.initGui();
 		// Phone
-		ImageButton button = new ImageButton(0, INNER_X + 6, INNER_Y + 163, 32, 32, phoneStackData.getIconTheme() + "/icn_phone.png", 32, 32);
+		button = new ImageButton(0, INNER_X + 5, INNER_Y + 163, 32, 32, phoneStackData.getIconTheme() + "/icn_phone.png", 32, 32);
 		buttonList.add(button);
 
 		// Messages
-		ImageButton button2 = new ImageButton(1, INNER_X + 46, INNER_Y + 163, 32, 32, phoneStackData.getIconTheme() + "/icn_mail.png", 32, 32);
+		button2 = new ImageButton(1, button.x + 40, INNER_Y + 163, 32, 32, phoneStackData.getIconTheme() + "/icn_mail.png", 32, 32);
 		buttonList.add(button2);
 
 		// Address Book
-		ImageButton button3 = new ImageButton(2, INNER_X + 86, INNER_Y + 163, 32, 32, phoneStackData.getIconTheme() + "/icn_contacts.png", 32, 32);
+		button3 = new ImageButton(2, button2.x + 40, INNER_Y + 163, 32, 32, phoneStackData.getIconTheme() + "/icn_contacts.png", 32, 32);
 		buttonList.add(button3);
 
 		// Settings
-		ImageButton button4 = new ImageButton(3, INNER_X + 126, INNER_Y + 163, 32, 32, phoneStackData.getIconTheme() + "/icn_settings.png", 32, 32);
+		button4 = new ImageButton(3, button3.x + 40, INNER_Y + 163, 32, 32, phoneStackData.getIconTheme() + "/icn_settings.png", 32, 32);
 		buttonList.add(button4);
 
 		// Music App
-		ImageButton button5 = new ImageButton(4, INNER_X + 5, INNER_Y + 24, 32, 32, phoneStackData.getIconTheme() + "/icn_musicplayer.png", 32, 32);
+		button5 = new ImageButton(4, INNER_X + 5, INNER_Y + 24, 32, 32, phoneStackData.getIconTheme() + "/icn_musicplayer.png", 32, 32);
 		buttonList.add(button5);
 
 		// Calculator App
-		ImageButton button6 = new ImageButton(5, INNER_X + 46, INNER_Y + 24, 32, 32, phoneStackData.getIconTheme() + "/icn_calc.png", 32, 32);
+		button6 = new ImageButton(5, INNER_X + 46, INNER_Y + 24, 32, 32, phoneStackData.getIconTheme() + "/icn_calc.png", 32, 32);
 		buttonList.add(button6);
 
 		// Help App
-		ImageButton button7 = new ImageButton(6, INNER_X + 86, INNER_Y + 24, 32, 32, phoneStackData.getIconTheme() + "/icn_help.png", 32, 32);
+		button7 = new ImageButton(6, INNER_X + 86, INNER_Y + 24, 32, 32, phoneStackData.getIconTheme() + "/icn_help.png", 32, 32);
 		buttonList.add(button7);
 	}
 
@@ -70,9 +79,8 @@ public class GuiHome extends GuiPhoneBase {
 		GlStateManager.enableAlpha();
 		GlStateManager.enableBlend();
 		Minecraft.getMinecraft().getTextureManager().bindTexture(dockTexture);
-		drawScaledCustomSizeModalRect(INNER_X + 4, INNER_Y + 160, 0, 0, INNER_TEX_WIDTH * WIDTH_SCALE, INNER_TEX_HEIGHT * HEIGHT_SCALE, INNER_TEX_WIDTH - 6, INNER_TEX_HEIGHT - 185, 324, 450);
-		GlStateManager.disableAlpha(); 
-
+		drawScaledCustomSizeModalRect(INNER_X + 2, INNER_Y + 160, 0, 0, INNER_TEX_WIDTH * WIDTH_SCALE, INNER_TEX_HEIGHT * HEIGHT_SCALE, INNER_TEX_WIDTH - 3, INNER_TEX_HEIGHT - 185, 324, 450);
+		GlStateManager.disableAlpha();
 		GlStateManager.color(1, 1, 1);
 	}
 	

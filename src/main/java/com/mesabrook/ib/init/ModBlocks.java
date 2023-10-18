@@ -1212,5 +1212,6 @@ public class ModBlocks
 	// Terlets
 	public static final Block PRISON_TOILET = new ImmersiToilet("toilet", ModUtils.DEFAULT_AABB);
 	public static final Block WALL_TOILET = new ImmersiToilet("wall_toilet", ModUtils.DEFAULT_AABB);
+	public static final Block HOME_TOILET = new ImmersiToilet("home_toilet", ModUtils.DEFAULT_AABB);
 	public static final Block URINAL = new ImmersiToilet("urinal", ModUtils.getPixelatedAABB(1,5,0, 16,20,0.8));
 }
