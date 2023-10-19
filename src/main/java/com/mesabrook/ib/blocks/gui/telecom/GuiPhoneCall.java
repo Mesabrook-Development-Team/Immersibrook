@@ -1,11 +1,6 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
-import java.io.IOException;
-
 import com.mesabrook.ib.Main;
-import net.minecraft.entity.player.*;
-import org.lwjgl.input.Keyboard;
-
 import com.mesabrook.ib.init.SoundInit;
 import com.mesabrook.ib.net.telecom.InitiateCallPacket;
 import com.mesabrook.ib.util.Reference;
@@ -15,12 +10,16 @@ import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
+import org.lwjgl.input.Keyboard;
+
+import java.io.IOException;
 
 public class GuiPhoneCall extends GuiPhoneBase {
 
@@ -169,7 +168,11 @@ public class GuiPhoneCall extends GuiPhoneBase {
 
 		if(button == contacts)
 		{
-			Minecraft.getMinecraft().displayGuiScreen(new GuiAddressBook(phoneStack, hand));
+			GuiAppSplashScreen guiA = new GuiAppSplashScreen(phoneStack, hand);
+			guiA.setLogoPath("icn_contacts.png");
+			guiA.setAppName("Contacts");
+			guiA.setSplashColor("green");
+			Minecraft.getMinecraft().displayGuiScreen(guiA);
 		}
 	}
 

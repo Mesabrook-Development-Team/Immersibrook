@@ -1,9 +1,6 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
-import com.mesabrook.ib.net.telecom.PhoneQueryPacket;
 import com.mesabrook.ib.util.ModUtils;
-import com.mesabrook.ib.util.handlers.ClientSideHandlers.TelecomClientHandlers;
-import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
@@ -26,7 +23,6 @@ public class GuiHome extends GuiPhoneBase {
 	}
 
 	ImageButton button;
-	ImageButton button1;
 	ImageButton button2;
 	ImageButton button3;
 	ImageButton button4;
@@ -89,16 +85,22 @@ public class GuiHome extends GuiPhoneBase {
 		super.actionPerformed(button);
 		switch(button.id) {
 			case 0:
-				Minecraft.getMinecraft().displayGuiScreen(new GuiEmptyPhone(phoneStack, hand));
-				
-				PhoneQueryPacket queryPacket = new PhoneQueryPacket();
-				queryPacket.forNumber = getCurrentPhoneNumber();
-				
-				int nextID = TelecomClientHandlers.getNextHandlerID();
-				
-				TelecomClientHandlers.phoneQueryResponseHandlers.put(nextID, TelecomClientHandlers::onPhoneQueryResponseForPhoneApp);
-				queryPacket.clientHandlerCode = nextID;
-				PacketHandler.INSTANCE.sendToServer(queryPacket);
+				GuiAppSplashScreen gui = new GuiAppSplashScreen(phoneStack, hand);
+				gui.setLogoPath("icn_phone.png");
+				gui.setAppName("Phone");
+				gui.setSplashColor("green");
+				Minecraft.getMinecraft().displayGuiScreen(gui);
+
+//				Minecraft.getMinecraft().displayGuiScreen(new GuiEmptyPhone(phoneStack, hand));
+//
+//				PhoneQueryPacket queryPacket = new PhoneQueryPacket();
+//				queryPacket.forNumber = getCurrentPhoneNumber();
+//
+//				int nextID = TelecomClientHandlers.getNextHandlerID();
+//
+//				TelecomClientHandlers.phoneQueryResponseHandlers.put(nextID, TelecomClientHandlers::onPhoneQueryResponseForPhoneApp);
+//				queryPacket.clientHandlerCode = nextID;
+//				PacketHandler.INSTANCE.sendToServer(queryPacket);
 				break;
 			case 1:
 				Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "App Coming Soon", 0xFFFFFF));

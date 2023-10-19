@@ -1,6 +1,9 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import com.mesabrook.ib.net.telecom.PhoneQueryPacket;
 import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.handlers.ClientSideHandlers;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
@@ -95,6 +98,19 @@ public class GuiAppSplashScreen extends GuiPhoneBase
             if(getLogoPath().contains("icn_settings"))
             {
                 Minecraft.getMinecraft().displayGuiScreen(new GuiSettings(phoneStack, hand));
+            }
+            if(getLogoPath().contains("phone"))
+            {
+                Minecraft.getMinecraft().displayGuiScreen(new GuiEmptyPhone(phoneStack, hand));
+
+                PhoneQueryPacket queryPacket = new PhoneQueryPacket();
+                queryPacket.forNumber = getCurrentPhoneNumber();
+
+                int nextID = ClientSideHandlers.TelecomClientHandlers.getNextHandlerID();
+
+                ClientSideHandlers.TelecomClientHandlers.phoneQueryResponseHandlers.put(nextID, ClientSideHandlers.TelecomClientHandlers::onPhoneQueryResponseForPhoneApp);
+                queryPacket.clientHandlerCode = nextID;
+                PacketHandler.INSTANCE.sendToServer(queryPacket);
             }
         }
     }
