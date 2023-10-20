@@ -2011,3 +2011,11 @@ item.shopping_basket_blue.name=Shopping Basket
 //Sound Emitters
 tile.sound_emitter.name=Sound Emitter
 tile.sound_emitter_wall.name=Wall Mounted Sound Emitter
+
+//Fixtures
+tile.wall_toilet.name=Toilet
+tile.home_toilet.name=Toilet
+tile.urinal.name=Urinal
+
+//ATM
+tile.atm.name=ATM
