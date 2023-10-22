@@ -44,6 +44,7 @@ public class ImmersiToilet extends Block implements IHasModel
         setResistance(4F);
         setHardness(10F);
         setSoundType(SoundType.METAL);
+        setCreativeTab(Main.IMMERSIBROOK_MAIN);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 
         AABBs = new ArrayList<AxisAlignedBB>(Arrays.asList(

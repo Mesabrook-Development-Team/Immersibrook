@@ -1199,7 +1199,7 @@ public class ModBlocks
 	public static final Block ITEM_STAND = new BlockItemStand("smartphone_stand", ModUtils.DEFAULT_AABB);
 
 	// Retail Freezers
-	public static final Block RETAIL_FREEZER_UPRIGHT = new ImmersiblockRotational("retail_freezer_upright", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
+	public static final Block RETAIL_FREEZER_UPRIGHT = new ImmersiblockRotational("retail_freezer_upright", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DOUBLE_AABB);
 	public static final Block RETAIL_FREEZER_DEEP = new ImmersiblockRotational("retail_freezer_deep", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
 
 	// Sound Emitter

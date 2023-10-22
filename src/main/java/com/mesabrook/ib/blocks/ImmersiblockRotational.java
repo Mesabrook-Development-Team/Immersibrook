@@ -110,6 +110,10 @@ public class ImmersiblockRotational extends Block implements IHasModel
         {
             return new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D);
         }
+        if(blockState.getBlock() == ModBlocks.RETAIL_FREEZER_UPRIGHT)
+        {
+            return ModUtils.DOUBLE_AABB;
+        }
         return FULL_BLOCK_AABB;
     }
 

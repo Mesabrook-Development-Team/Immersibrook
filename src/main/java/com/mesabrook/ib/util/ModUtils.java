@@ -13,6 +13,7 @@ public class ModUtils
 {
 	// Default AABB
 	public static final AxisAlignedBB DEFAULT_AABB = new AxisAlignedBB(0D, 0D, 0D, 1D, 1D, 1D);
+	public static final AxisAlignedBB DOUBLE_AABB = new AxisAlignedBB(0D, 0D, 0D, 1D, 2D, 1D);
 
 	/**
 	 * A basic handler that allows us to open the user's default browser and navigate to the provided URL.
