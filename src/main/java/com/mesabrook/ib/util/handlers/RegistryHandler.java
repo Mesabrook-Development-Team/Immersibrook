@@ -2,6 +2,7 @@ package com.mesabrook.ib.util.handlers;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
+import com.mesabrook.ib.cdm.apps.TestApp;
 import com.mesabrook.ib.cmds.CommandImmersibrook;
 import com.mesabrook.ib.cmds.CommandMeme;
 import com.mesabrook.ib.cmds.CommandTalk;
@@ -15,6 +16,7 @@ import com.mesabrook.ib.rendering.RenderWineBottle;
 import com.mesabrook.ib.telecom.DynmapAPIListener;
 import com.mesabrook.ib.util.*;
 import com.mesabrook.ib.util.recipe.RecipesHandler;
+import com.mrcrayfish.device.api.ApplicationManager;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -180,7 +182,9 @@ public class RegistryHandler
 
     	RecipesHandler.registerSmeltingRecipes();
 		RecipesHandler.registerMachineRecipes();
-    	
+
+		ApplicationManager.registerApplication(new ResourceLocation(Reference.MODID, "ta"), TestApp.class);
+
     	Main.logger.info("[Immersibrook] Version " + Reference.VERSION + " loaded.");
 	}
 	
