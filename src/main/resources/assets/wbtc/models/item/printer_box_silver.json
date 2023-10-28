@@ -1,0 +1,46 @@
+{
+	"credit": "Made by RavenholmZombie using Blockbench",
+	"textures": {
+		"0": "wbtc:misc/printer_box_top",
+		"1": "wbtc:misc/printer_box_silver",
+		"particle": "wbtc:misc/printer_box_top"
+	},
+	"elements": [
+		{
+			"from": [1.5, 0, 2],
+			"to": [14.5, 9, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [1.5, 0, 2]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 11.28125], "texture": "#1"},
+				"east": {"uv": [0, 0, 16, 12.3125], "texture": "#1"},
+				"south": {"uv": [0, 0, 16, 11.28125], "texture": "#1"},
+				"west": {"uv": [0, 0, 16, 12.3125], "texture": "#1"},
+				"up": {"uv": [0, 0, 16, 16], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [70, 0, 0],
+			"translation": [-5.75, 0, 0.75],
+			"scale": [0.7, 0.7, 0.7]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [70, 0, 0],
+			"translation": [-6, 0, 0.75],
+			"scale": [0.7, 0.7, 0.7]
+		},
+		"ground": {
+			"translation": [0, 3.5, 0],
+			"scale": [0.75, 0.75, 0.75]
+		},
+		"gui": {
+			"rotation": [30, 225, 0],
+			"scale": [0.7, 0.7, 0.7]
+		},
+		"head": {
+			"translation": [0, 14.5, 0]
+		}
+	}
+}

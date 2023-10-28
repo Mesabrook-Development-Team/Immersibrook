@@ -1,0 +1,53 @@
+{
+	"credit": "Made by RavenholmZombie using Blockbench",
+	"textures": {
+		"0": "wbtc:misc/router_pink",
+		"particle": "wbtc:misc/router_white"
+	},
+	"elements": [
+		{
+			"from": [5.5, 0, 6.5],
+			"to": [10.5, 5, 9.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4.5, 0, 6.5]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"east": {"uv": [0, 0, 3, 5], "texture": "#0"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"west": {"uv": [0, 0, 3, 5], "texture": "#0"},
+				"up": {"uv": [4.78125, 12.71875, 11.28125, 15.75], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [0, 0, 6, 3], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, -0.5, 3.25]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"firstperson_righthand": {
+			"rotation": [0.35, -8.98, 2.27],
+			"translation": [-3, 7.5, 0.5]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 225, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"ground": {
+			"translation": [0, 5, 0]
+		},
+		"gui": {
+			"rotation": [30, 225, 0],
+			"translation": [0, 9.25, 0],
+			"scale": [2, 2, 2]
+		},
+		"fixed": {
+			"translation": [-0.25, 11.25, 0],
+			"scale": [2, 2, 2]
+		}
+	}
+}

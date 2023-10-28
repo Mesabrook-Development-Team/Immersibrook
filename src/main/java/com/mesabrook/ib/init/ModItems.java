@@ -3,7 +3,9 @@ package com.mesabrook.ib.init;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.items.*;
 import com.mesabrook.ib.items.armor.*;
-import com.mesabrook.ib.items.commerce.*;
+import com.mesabrook.ib.items.commerce.ItemDebitCard;
+import com.mesabrook.ib.items.commerce.ItemMoney;
+import com.mesabrook.ib.items.commerce.ItemWallet;
 import com.mesabrook.ib.items.misc.*;
 import com.mesabrook.ib.items.misc.ItemStamp.StampTypes;
 import com.mesabrook.ib.items.record.MemeRecord;
@@ -11,9 +13,11 @@ import com.mesabrook.ib.items.tools.*;
 import com.mesabrook.ib.items.weapons.ItemWeapon;
 import com.mesabrook.ib.util.ArmorMaterialRegistry;
 import com.mesabrook.ib.util.ToolMaterialRegistry;
+import com.mrcrayfish.device.init.DeviceBlocks;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -442,23 +446,77 @@ public class ModItems
 	public static final Item FLAGGER_SLOW = new ItemFlagger("flagger_slow");
 
 	// Minedroid retail boxes uwu
-	public static final Item BOX_WHITE = new ItemMinedroidBox("box_white");
-	public static final Item BOX_ORANGE = new ItemMinedroidBox("box_orange");
-	public static final Item BOX_MAGENTA = new ItemMinedroidBox("box_magenta");
-	public static final Item BOX_YELLOW = new ItemMinedroidBox("box_yellow");
-	public static final Item BOX_LIME = new ItemMinedroidBox("box_lime");
-	public static final Item BOX_PINK = new ItemMinedroidBox("box_pink");
-	public static final Item BOX_GRAY = new ItemMinedroidBox("box_gray");
-	public static final Item BOX_SILVER = new ItemMinedroidBox("box_silver");
-	public static final Item BOX_CYAN = new ItemMinedroidBox("box_cyan");
-	public static final Item BOX_LBLUE = new ItemMinedroidBox("box_lblue");
-	public static final Item BOX_PURPLE = new ItemMinedroidBox("box_purple");
-	public static final Item BOX_BROWN = new ItemMinedroidBox("box_brown");
-	public static final Item BOX_GREEN = new ItemMinedroidBox("box_green");
-	public static final Item BOX_RED = new ItemMinedroidBox("box_red");
-	public static final Item BOX_BLACK = new ItemMinedroidBox("box_black");
-	public static final Item BOX_BLUE = new ItemMinedroidBox("box_blue");
+	public static final Item BOX_WHITE = new ItemTechRetailBox("box_white", new ItemStack(ModItems.PHONE_WHITE, 1));
+	public static final Item BOX_ORANGE = new ItemTechRetailBox("box_orange", new ItemStack(ModItems.PHONE_ORANGE, 1));
+	public static final Item BOX_MAGENTA = new ItemTechRetailBox("box_magenta", new ItemStack(ModItems.PHONE_MAGENTA, 1));
+	public static final Item BOX_YELLOW = new ItemTechRetailBox("box_yellow", new ItemStack(ModItems.PHONE_YELLOW, 1));
+	public static final Item BOX_LIME = new ItemTechRetailBox("box_lime", new ItemStack(ModItems.PHONE_LIME, 1));
+	public static final Item BOX_PINK = new ItemTechRetailBox("box_pink", new ItemStack(ModItems.PHONE_PINK, 1));
+	public static final Item BOX_GRAY = new ItemTechRetailBox("box_gray", new ItemStack(ModItems.PHONE_GRAY, 1));
+	public static final Item BOX_SILVER = new ItemTechRetailBox("box_silver", new ItemStack(ModItems.PHONE_SILVER, 1));
+	public static final Item BOX_CYAN = new ItemTechRetailBox("box_cyan", new ItemStack(ModItems.PHONE_CYAN, 1));
+	public static final Item BOX_LBLUE = new ItemTechRetailBox("box_lblue", new ItemStack(ModItems.PHONE_LBLUE, 1));
+	public static final Item BOX_PURPLE = new ItemTechRetailBox("box_purple", new ItemStack(ModItems.PHONE_PURPLE, 1));
+	public static final Item BOX_BROWN = new ItemTechRetailBox("box_brown", new ItemStack(ModItems.PHONE_BROWN, 1));
+	public static final Item BOX_GREEN = new ItemTechRetailBox("box_green", new ItemStack(ModItems.PHONE_GREEN, 1));
+	public static final Item BOX_RED = new ItemTechRetailBox("box_red", new ItemStack(ModItems.PHONE_RED, 1));
+	public static final Item BOX_BLACK = new ItemTechRetailBox("box_black", new ItemStack(ModItems.PHONE_BLACK, 1));
+	public static final Item BOX_BLUE = new ItemTechRetailBox("box_blue", new ItemStack(ModItems.PHONE_BLUE, 1));
 	public static final Item OT_CHARGER = new MiscItem("ot_charger", 1, Main.IMMERSIBROOK_MAIN);
+
+	// CDM Retail Boxes - Laptops
+	public static final Item LAPTOP_BOX_BLACK = new ItemTechRetailBox("laptop_box_black", new ItemStack(DeviceBlocks.LAPTOP, 1, 15));
+	public static final Item LAPTOP_BOX_WHITE = new ItemTechRetailBox("laptop_box_white", new ItemStack(DeviceBlocks.LAPTOP, 1, 0));
+	public static final Item LAPTOP_BOX_ORANGE = new ItemTechRetailBox("laptop_box_orange", new ItemStack(DeviceBlocks.LAPTOP, 1, 0));
+	public static final Item LAPTOP_BOX_MAGENTA = new ItemTechRetailBox("laptop_box_magenta", new ItemStack(DeviceBlocks.LAPTOP, 1, 0));
+	public static final Item LAPTOP_BOX_YELLOW = new ItemTechRetailBox("laptop_box_yellow", new ItemStack(DeviceBlocks.LAPTOP, 1, 0));
+	public static final Item LAPTOP_BOX_LIME = new ItemTechRetailBox("laptop_box_lime", new ItemStack(DeviceBlocks.LAPTOP, 1, 0));
+	public static final Item LAPTOP_BOX_PINK = new ItemTechRetailBox("laptop_box_pink", new ItemStack(DeviceBlocks.LAPTOP, 1, 0));
+	public static final Item LAPTOP_BOX_GRAY = new ItemTechRetailBox("laptop_box_gray", new ItemStack(DeviceBlocks.LAPTOP, 1, 0));
+	public static final Item LAPTOP_BOX_SILVER = new ItemTechRetailBox("laptop_box_silver", new ItemStack(DeviceBlocks.LAPTOP, 1, 0));
+	public static final Item LAPTOP_BOX_LBLUE = new ItemTechRetailBox("laptop_box_lblue", new ItemStack(DeviceBlocks.LAPTOP, 1, 0));
+	public static final Item LAPTOP_BOX_CYAN = new ItemTechRetailBox("laptop_box_cyan", new ItemStack(DeviceBlocks.LAPTOP, 1, 0));
+	public static final Item LAPTOP_BOX_BLUE = new ItemTechRetailBox("laptop_box_blue", new ItemStack(DeviceBlocks.LAPTOP, 1, 0));
+	public static final Item LAPTOP_BOX_PURPLE = new ItemTechRetailBox("laptop_box_purple", new ItemStack(DeviceBlocks.LAPTOP, 1, 0));
+	public static final Item LAPTOP_BOX_BROWN = new ItemTechRetailBox("laptop_box_brown", new ItemStack(DeviceBlocks.LAPTOP, 1, 0));
+	public static final Item LAPTOP_BOX_GREEN = new ItemTechRetailBox("laptop_box_green", new ItemStack(DeviceBlocks.LAPTOP, 1, 0));
+	public static final Item LAPTOP_BOX_RED = new ItemTechRetailBox("laptop_box_red", new ItemStack(DeviceBlocks.LAPTOP, 1, 0));
+
+	// CDM Retail Boxes - Routers
+	public static final Item ROUTER_BOX_WHITE = new ItemTechRetailBox("router_box_white", new ItemStack(DeviceBlocks.ROUTER, 1, 0));
+	public static final Item ROUTER_BOX_ORANGE = new ItemTechRetailBox("router_box_orange", new ItemStack(DeviceBlocks.ROUTER, 1, 0));
+	public static final Item ROUTER_BOX_MAGENTA = new ItemTechRetailBox("router_box_magenta", new ItemStack(DeviceBlocks.ROUTER, 1, 0));
+	public static final Item ROUTER_BOX_LBLUE = new ItemTechRetailBox("router_box_lblue", new ItemStack(DeviceBlocks.ROUTER, 1, 0));
+	public static final Item ROUTER_BOX_YELLOW = new ItemTechRetailBox("router_box_yellow", new ItemStack(DeviceBlocks.ROUTER, 1, 0));
+	public static final Item ROUTER_BOX_PINK = new ItemTechRetailBox("router_box_pink", new ItemStack(DeviceBlocks.ROUTER, 1, 0));
+	public static final Item ROUTER_BOX_GRAY = new ItemTechRetailBox("router_box_gray", new ItemStack(DeviceBlocks.ROUTER, 1, 0));
+	public static final Item ROUTER_BOX_SILVER = new ItemTechRetailBox("router_box_silver", new ItemStack(DeviceBlocks.ROUTER, 1, 0));
+	public static final Item ROUTER_BOX_LIME = new ItemTechRetailBox("router_box_lime", new ItemStack(DeviceBlocks.ROUTER, 1, 0));
+	public static final Item ROUTER_BOX_CYAN = new ItemTechRetailBox("router_box_cyan", new ItemStack(DeviceBlocks.ROUTER, 1, 0));
+	public static final Item ROUTER_BOX_PURPLE = new ItemTechRetailBox("router_box_purple", new ItemStack(DeviceBlocks.ROUTER, 1, 0));
+	public static final Item ROUTER_BOX_BLUE = new ItemTechRetailBox("router_box_blue", new ItemStack(DeviceBlocks.ROUTER, 1, 0));
+	public static final Item ROUTER_BOX_BROWN = new ItemTechRetailBox("router_box_brown", new ItemStack(DeviceBlocks.ROUTER, 1, 0));
+	public static final Item ROUTER_BOX_GREEN = new ItemTechRetailBox("router_box_green", new ItemStack(DeviceBlocks.ROUTER, 1, 0));
+	public static final Item ROUTER_BOX_RED = new ItemTechRetailBox("router_box_red", new ItemStack(DeviceBlocks.ROUTER, 1, 0));
+	public static final Item ROUTER_BOX_BLACK = new ItemTechRetailBox("router_box_black", new ItemStack(DeviceBlocks.ROUTER, 1, 0));
+
+	// CDM Retail Boxes - Printers
+	public static final Item PRINTER_BOX_WHITE = new ItemTechRetailBox("printer_box_white", new ItemStack(DeviceBlocks.PRINTER, 1, 0));
+	public static final Item PRINTER_BOX_ORANGE = new ItemTechRetailBox("printer_box_orange", new ItemStack(DeviceBlocks.PRINTER, 1, 0));
+	public static final Item PRINTER_BOX_MAGENTA = new ItemTechRetailBox("printer_box_magenta", new ItemStack(DeviceBlocks.PRINTER, 1, 0));
+	public static final Item PRINTER_BOX_LBLUE = new ItemTechRetailBox("printer_box_lblue", new ItemStack(DeviceBlocks.PRINTER, 1, 0));
+	public static final Item PRINTER_BOX_YELLOW = new ItemTechRetailBox("printer_box_yellow", new ItemStack(DeviceBlocks.PRINTER, 1, 0));
+	public static final Item PRINTER_BOX_PINK = new ItemTechRetailBox("printer_box_pink", new ItemStack(DeviceBlocks.PRINTER, 1, 0));
+	public static final Item PRINTER_BOX_GRAY = new ItemTechRetailBox("printer_box_gray", new ItemStack(DeviceBlocks.PRINTER, 1, 0));
+	public static final Item PRINTER_BOX_SILVER = new ItemTechRetailBox("printer_box_silver", new ItemStack(DeviceBlocks.PRINTER, 1, 0));
+	public static final Item PRINTER_BOX_LIME = new ItemTechRetailBox("printer_box_lime", new ItemStack(DeviceBlocks.PRINTER, 1, 0));
+	public static final Item PRINTER_BOX_CYAN = new ItemTechRetailBox("printer_box_cyan", new ItemStack(DeviceBlocks.PRINTER, 1, 0));
+	public static final Item PRINTER_BOX_PURPLE = new ItemTechRetailBox("printer_box_purple", new ItemStack(DeviceBlocks.PRINTER, 1, 0));
+	public static final Item PRINTER_BOX_BLUE = new ItemTechRetailBox("printer_box_blue", new ItemStack(DeviceBlocks.PRINTER, 1, 0));
+	public static final Item PRINTER_BOX_BROWN = new ItemTechRetailBox("printer_box_brown", new ItemStack(DeviceBlocks.PRINTER, 1, 0));
+	public static final Item PRINTER_BOX_GREEN = new ItemTechRetailBox("printer_box_green", new ItemStack(DeviceBlocks.PRINTER, 1, 0));
+	public static final Item PRINTER_BOX_RED = new ItemTechRetailBox("printer_box_red", new ItemStack(DeviceBlocks.PRINTER, 1, 0));
+	public static final Item PRINTER_BOX_BLACK = new ItemTechRetailBox("printer_box_black", new ItemStack(DeviceBlocks.PRINTER, 1, 0));
 
 	// Rations
 	public static final Item ES_RATION = new ItemRation("ration_1");

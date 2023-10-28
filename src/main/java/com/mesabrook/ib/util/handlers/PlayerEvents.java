@@ -5,7 +5,7 @@ import com.mesabrook.ib.advancements.Triggers;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModEnchants;
 import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.items.ItemMinedroidBox;
+import com.mesabrook.ib.items.ItemTechRetailBox;
 import com.mesabrook.ib.items.ItemSponge;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.items.tools.ItemBanHammer;
@@ -567,7 +567,7 @@ public class PlayerEvents
 			{
 				ItemStack heldItem = player.getHeldItemMainhand();
 
-				if(!heldItem.isEmpty() && !(player instanceof FakePlayer) && !(heldItem.getItem() instanceof ItemPhone) && !(heldItem.getItem() instanceof ItemMinedroidBox))
+				if(!heldItem.isEmpty() && !(player instanceof FakePlayer) && !(heldItem.getItem() instanceof ItemPhone) && !(heldItem.getItem() instanceof ItemTechRetailBox))
 				{
 					heldItem.shrink(heldItem.getCount());
 					player.sendMessage(new TextComponentString(TextFormatting.RED + "I hope this doesn't clog the pipes..."));
