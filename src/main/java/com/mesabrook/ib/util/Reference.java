@@ -1,5 +1,7 @@
 package com.mesabrook.ib.util;
 
+import com.mesabrook.ib.Main;
+
 import java.util.UUID;
 
 public class Reference
@@ -7,7 +9,7 @@ public class Reference
 	public static final String MODID = "wbtc";
 	public static final String MODNAME = "Immersibrook";
 	public static final String UPDATE_NAME = "The Technology Update";
-	public static String MOTTO = MottoRandomizer.MOTTO;
+	public static String MOTTO = Main.instance.getRandomMotto();
 	public static final String VERSION = "1.0.0.10";
 	public static final String MINEDROID_VERSION = VERSION;
 	public static final String CHANGELOG = "https://github.com/RavenholmZombie/Immersibrook/releases/tag/" + VERSION;

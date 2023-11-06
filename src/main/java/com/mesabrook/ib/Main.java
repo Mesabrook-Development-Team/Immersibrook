@@ -73,7 +73,7 @@ public class Main
         return mottos;
     }
 
-    private String getRandomMotto()
+    public String getRandomMotto()
     {
         int index = rand.nextInt(mottos.size());
         return mottos.get(index);
