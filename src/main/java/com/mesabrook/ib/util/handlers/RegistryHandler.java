@@ -2,6 +2,8 @@ package com.mesabrook.ib.util.handlers;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
+import com.mesabrook.ib.cdm.apps.CompanyStudioLiteApp;
+import com.mesabrook.ib.cdm.apps.GovernmentPortalLiteApp;
 import com.mesabrook.ib.cdm.apps.TestApp;
 import com.mesabrook.ib.cmds.CommandImmersibrook;
 import com.mesabrook.ib.cmds.CommandMeme;
@@ -184,6 +186,8 @@ public class RegistryHandler
 		RecipesHandler.registerMachineRecipes();
 
 		CDMApps.registerIBApp(new ResourceLocation(Reference.MODID, "ta"), TestApp.class);
+		CDMApps.registerIBApp(new ResourceLocation(Reference.MODID, "cstudio_lite"), CompanyStudioLiteApp.class);
+		CDMApps.registerIBApp(new ResourceLocation(Reference.MODID, "gportal"), GovernmentPortalLiteApp.class);
 
     	Main.logger.info("[Immersibrook] Version " + Reference.VERSION + " loaded.");
 	}

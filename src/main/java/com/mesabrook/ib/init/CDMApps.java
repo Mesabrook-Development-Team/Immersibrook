@@ -20,7 +20,7 @@ public class CDMApps
         catch (Exception ex)
         {
             Main.logger.error("[" + Reference.MODNAME + " CDM App Loader] ERROR IN APP REGISTRATION FOR  " + appClass.getSimpleName().toUpperCase(Locale.ROOT));
-            Main.logger.error(ex);
+            ex.printStackTrace();
             Main.logger.error(appClass.getSimpleName() + " will not be availble in-game until this error is rectified.");
         }
     }
