@@ -14,5 +14,6 @@ public class TileEntityHandler
 		GameRegistry.registerTileEntity(TileEntityFoodBox.class, new ResourceLocation(Reference.MODID + ":foodbox"));
 		GameRegistry.registerTileEntity(TileEntityWallSign.class, new ResourceLocation(Reference.MODID + ":wallsign"));
 		GameRegistry.registerTileEntity(TileEntitySoundEmitter.class, new ResourceLocation(Reference.MODID + ":soundblock"));
+		GameRegistry.registerTileEntity(TileEntityPhoneStand.class, new ResourceLocation(Reference.MODID + ":itemstand"));
 	}
 }

@@ -1,13 +1,11 @@
 package com.mesabrook.ib.proxy;
 
-import com.mesabrook.ib.*;
+import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.te.*;
-import com.mesabrook.ib.util.*;
 import com.mesabrook.ib.util.handlers.ClientSideHandlers;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.item.Item;
-import net.minecraft.util.*;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -43,6 +41,7 @@ public class ClientProxy extends CommonProxy
 		ClientSideHandlers.loadCreativeGUI();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlaque.class, new TileEntityPlaqueRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWallSign.class, new TileEntityWallSignRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPhoneStand.class, new ItemStandRenderer());
 
 		vestToggleKey = new KeyBinding("key.vestToggle.toggle", Keyboard.KEY_V, "key.immersibrook.category");
 		nvToggleKey = new KeyBinding("key.nvtoggle.toggle", Keyboard.KEY_SEMICOLON, "key.immersibrook.category");

@@ -1152,7 +1152,7 @@ public class ModBlocks
 	public static final Block SIDING_DARK_OAK = new BlockSiding("siding_dark_oak", Material.WOOD, SoundType.WOOD, "axe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
 
 	// OBJ Test Block
-	public static final Block OBJ_EYE = new BlockTestEye("eye");
+//	public static final Block OBJ_EYE = new BlockTestEye("eye");
 
 	// Colored Blocks
 	public static final Block COLORED_STONE = new BlockColoredStone();
@@ -1214,5 +1214,5 @@ public class ModBlocks
 	public static final Block PRISON_TOILET = new ImmersiToilet("toilet", ModUtils.DEFAULT_AABB);
 	public static final Block WALL_TOILET = new ImmersiToilet("wall_toilet", ModUtils.DEFAULT_AABB);
 	public static final Block HOME_TOILET = new ImmersiToilet("home_toilet", ModUtils.DEFAULT_AABB);
-	public static final Block URINAL = new ImmersiToilet("urinal", ModUtils.getPixelatedAABB(1,5,0, 16,20,0.8));
+	public static final Block URINAL = new ImmersiToilet("urinal", ModUtils.getPixelatedAABB(3,5,0, 12,20,0.8));
 }

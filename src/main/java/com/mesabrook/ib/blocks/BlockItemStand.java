@@ -1,19 +1,19 @@
 package com.mesabrook.ib.blocks;
 
 import com.mesabrook.ib.Main;
+import com.mesabrook.ib.blocks.te.TileEntityPhoneStand;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.ModUtils;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -26,6 +26,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -53,6 +54,55 @@ public class BlockItemStand extends Block implements IHasModel
 
         ModBlocks.BLOCKS.add(this);
         ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
+    }
+
+    @Override
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+    {
+        ItemStack heldItem = playerIn.getHeldItem(hand);
+        TileEntity tileEntity = worldIn.getTileEntity(pos);
+
+        if(!(tileEntity instanceof TileEntityPhoneStand))
+        {
+            return false;
+        }
+
+        TileEntityPhoneStand tileEntityPhoneStand = (TileEntityPhoneStand) tileEntity;
+        if(!heldItem.isEmpty() && tileEntityPhoneStand.getPhoneItem().isEmpty())
+        {
+            ItemStack copy = heldItem.copy();
+            copy.setCount(1);
+            tileEntityPhoneStand.setPhone(copy);
+            tileEntityPhoneStand.setRotation(playerIn.getHorizontalFacing().getHorizontalIndex());
+            tileEntityPhoneStand.sync();
+            heldItem.shrink(1);
+            return true;
+        }
+
+        if(!tileEntityPhoneStand.getPhoneItem().isEmpty())
+        {
+            if(!worldIn.isRemote)
+            {
+                EntityItem entityFood = new EntityItem(worldIn, pos.getX() + 0.5, pos.getY() + 0.4, pos.getZ() + 0.5, tileEntityPhoneStand.getPhoneItem());
+                worldIn.spawnEntity(entityFood);
+            }
+            tileEntityPhoneStand.setPhone(ItemStack.EMPTY);
+            tileEntityPhoneStand.sync();
+        }
+        return true;
+    }
+
+    @Override
+    public boolean hasTileEntity(IBlockState state)
+    {
+        return true;
+    }
+
+    @Nullable
+    @Override
+    public TileEntity createTileEntity(World world, IBlockState state)
+    {
+        return new TileEntityPhoneStand();
     }
 
     @Override
@@ -145,42 +195,6 @@ public class BlockItemStand extends Block implements IHasModel
     {
         return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
     }
-
-//    @Override
-//    public TileEntity createNewTileEntity(World worldIn, int meta)
-//    {
-//        return new TileEntityItemStand();
-//    }
-
-//    @Override
-//    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-//    {
-//        if (!worldIn.isRemote)
-//        {
-//            TileEntity tileEntity = worldIn.getTileEntity(pos);
-//
-//            if (tileEntity instanceof TileEntityItemStand)
-//            {
-//                TileEntityItemStand teIS = (TileEntityItemStand) tileEntity;
-//
-//                // Get the item held by the player
-//                ItemStack heldItem = playerIn.getHeldItem(hand);
-//
-//                if (!heldItem.isEmpty() && heldItem.getItem() instanceof ItemPhone)
-//                {
-//                    // Store the held item in the tile entity's inventory
-//                    teIS.setStoredItem(heldItem.copy());
-//
-//                    // Clear the player's held item
-//                    if (!playerIn.capabilities.isCreativeMode)
-//                    {
-//                        heldItem.shrink(1);
-//                    }
-//                }
-//            }
-//        }
-//        return true;
-//    }
 
     @Override
     public void registerModels()
