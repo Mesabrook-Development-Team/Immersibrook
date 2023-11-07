@@ -2,11 +2,12 @@ package com.mesabrook.ib.util.handlers;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
+import com.mesabrook.ib.blocks.te.TileEntityPhoneStand;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModEnchants;
 import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.items.ItemTechRetailBox;
 import com.mesabrook.ib.items.ItemSponge;
+import com.mesabrook.ib.items.ItemTechRetailBox;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.items.tools.ItemBanHammer;
 import com.mesabrook.ib.items.tools.ItemGavel;
@@ -42,6 +43,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
@@ -57,6 +59,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -613,6 +616,33 @@ public class PlayerEvents
 			catch(Exception ex)
 			{
 				player.sendMessage(new TextComponentString(ex.getMessage()));
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onBlockBreak(BlockEvent.BreakEvent event)
+	{
+		EntityPlayer player = event.getPlayer();
+		World world = event.getWorld();
+		BlockPos pos = event.getPos();
+		TileEntity te = world.getTileEntity(pos);
+
+		if(te instanceof TileEntityPhoneStand)
+		{
+			TileEntityPhoneStand tileEntityPhoneStand = (TileEntityPhoneStand) te;
+			if(tileEntityPhoneStand.getOwnerUUID() != player.getUniqueID() && tileEntityPhoneStand.getOwnerUUID() != null)
+			{
+				if(!player.world.isRemote)
+				{
+					player.sendMessage(new TextComponentString(TextFormatting.RED + "Only the owner of this block can break it."));
+					event.setCanceled(true);
+				}
+			}
+
+			if(tileEntityPhoneStand.getOwnerUUID() == null)
+			{
+				event.setCanceled(false);
 			}
 		}
 	}

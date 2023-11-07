@@ -78,15 +78,20 @@ public class BlockSmartphoneStand extends Block implements IHasModel
 
         TileEntityPhoneStand tileEntityPhoneStand = (TileEntityPhoneStand) tileEntity;
 
-        if(tileEntityPhoneStand.getOwnerName() == null)
+        if(tileEntityPhoneStand.getOwnerUUID() == null)
         {
-            tileEntityPhoneStand.setOwnerName(playerIn.getName());
-            playerIn.sendMessage(new TextComponentString("Owner name set."));
+            tileEntityPhoneStand.setOwnerUUID(playerIn.getUniqueID());
+
+            if(!worldIn.isRemote)
+            {
+                playerIn.sendMessage(new TextComponentString("Owner set to: " + playerIn.getName() + " [" + tileEntityPhoneStand.getOwnerUUID() + "]"));
+            }
+
             tileEntityPhoneStand.markDirty();
             return true;
         }
 
-        if(!heldItem.isEmpty() && tileEntityPhoneStand.getPhoneItem().isEmpty() && heldItem.getItem() instanceof ItemPhone)
+        if(!heldItem.isEmpty() && tileEntityPhoneStand.getPhoneItem().isEmpty() && heldItem.getItem() instanceof ItemPhone && playerIn.getUniqueID() == tileEntityPhoneStand.getOwnerUUID())
         {
             ItemStack copy = heldItem.copy();
             copy.setCount(1);
@@ -97,12 +102,12 @@ public class BlockSmartphoneStand extends Block implements IHasModel
             return true;
         }
 
-        if(!tileEntityPhoneStand.getPhoneItem().isEmpty())
+        if(!tileEntityPhoneStand.getPhoneItem().isEmpty() && playerIn.getUniqueID() == tileEntityPhoneStand.getOwnerUUID())
         {
             if(!worldIn.isRemote)
             {
-                EntityItem entityFood = new EntityItem(worldIn, pos.getX() + 0.5, pos.getY() + 0.4, pos.getZ() + 0.5, tileEntityPhoneStand.getPhoneItem());
-                worldIn.spawnEntity(entityFood);
+                EntityItem entityPhone = new EntityItem(worldIn, pos.getX() + 0.5, pos.getY() + 0.4, pos.getZ() + 0.5, tileEntityPhoneStand.getPhoneItem());
+                worldIn.spawnEntity(entityPhone);
             }
             tileEntityPhoneStand.setPhone(ItemStack.EMPTY);
             tileEntityPhoneStand.sync();
@@ -121,6 +126,18 @@ public class BlockSmartphoneStand extends Block implements IHasModel
     public TileEntity createTileEntity(World world, IBlockState state)
     {
         return new TileEntityPhoneStand();
+    }
+
+    @Override
+    public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
+    {
+        TileEntityPhoneStand te = (TileEntityPhoneStand) worldIn.getTileEntity(pos);
+        if(!(te instanceof TileEntityPhoneStand))
+        {
+            return;
+
+        }
+        ModUtils.dropTileEntityInventoryItems(worldIn, pos, te);
     }
 
     @Override
@@ -187,6 +204,18 @@ public class BlockSmartphoneStand extends Block implements IHasModel
             }
 
             worldIn.setBlockState(pos, state.withProperty(FACING, enumfacing), 2);
+        }
+    }
+
+    @Override
+    public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
+    {
+        if(placer instanceof EntityPlayer)
+        {
+            if(world.isRemote)
+            {
+                placer.sendMessage(new TextComponentString("Right click the stand to claim it."));
+            }
         }
     }
 

@@ -6,10 +6,12 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.common.util.Constants;
 
+import java.util.UUID;
+
 public class TileEntityPhoneStand extends TileEntitySyncClient implements ISimpleInventory
 {
     private ItemStack phoneItem = ItemStack.EMPTY;
-    private String ownerName;
+    private UUID playerUUID = null;
     private int rotation = 0;
 
     public void setPhone(ItemStack phoneIn)
@@ -32,14 +34,14 @@ public class TileEntityPhoneStand extends TileEntitySyncClient implements ISimpl
         return rotation;
     }
 
-    public void setOwnerName(String playerNameIn)
+    public void setOwnerUUID(UUID ownerUUIDIn)
     {
-        this.ownerName = playerNameIn;
+        this.playerUUID = ownerUUIDIn;
     }
 
-    public String getOwnerName()
+    public UUID getOwnerUUID()
     {
-        return ownerName;
+        return this.playerUUID;
     }
 
     @Override
@@ -62,7 +64,7 @@ public class TileEntityPhoneStand extends TileEntitySyncClient implements ISimpl
             this.setPhone(new ItemStack(tagCompound.getCompoundTag("Item")));
         }
         this.rotation = tagCompound.getInteger("Rotation");
-        this.ownerName = tagCompound.getString("Owner");
+        this.playerUUID = tagCompound.getUniqueId("Owner");
     }
 
     @Override
@@ -74,7 +76,7 @@ public class TileEntityPhoneStand extends TileEntitySyncClient implements ISimpl
             tagCompound.setTag("Item", this.phoneItem.writeToNBT(new NBTTagCompound()));
         }
         tagCompound.setInteger("Rotation", this.rotation);
-        tagCompound.setString("Owner", this.ownerName);
+        tagCompound.setUniqueId("Owner", this.playerUUID);
         return tagCompound;
     }
 

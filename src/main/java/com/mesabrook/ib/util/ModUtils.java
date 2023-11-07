@@ -1,9 +1,15 @@
 package com.mesabrook.ib.util;
 
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
-import java.net.*;
+import java.net.URI;
 
 /**
 ** Immersibrook Utilities Class
@@ -14,6 +20,32 @@ public class ModUtils
 	// Default AABB
 	public static final AxisAlignedBB DEFAULT_AABB = new AxisAlignedBB(0D, 0D, 0D, 1D, 1D, 1D);
 	public static final AxisAlignedBB DOUBLE_AABB = new AxisAlignedBB(0D, 0D, 0D, 1D, 2D, 1D);
+
+	public static void dropTileEntityInventoryItems(World world, BlockPos pos, TileEntity te)
+	{
+		if(te instanceof ISimpleInventory)
+		{
+			dropInventoryItems(world, pos, (ISimpleInventory) te);
+		}
+		if(te instanceof IInventory)
+		{
+			InventoryHelper.dropInventoryItems(world, pos, (IInventory) te);
+		}
+	}
+
+	public static void dropInventoryItems(World world, BlockPos pos, ISimpleInventory inv)
+	{
+		for(int i = 0; i < inv.getSize(); i++)
+		{
+			ItemStack stack = inv.getItem(i);
+
+			if(stack != null && !stack.isEmpty())
+			{
+				InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+			}
+		}
+	}
+
 
 	/**
 	 * A basic handler that allows us to open the user's default browser and navigate to the provided URL.
