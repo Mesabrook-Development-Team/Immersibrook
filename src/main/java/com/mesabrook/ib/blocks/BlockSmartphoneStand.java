@@ -16,6 +16,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -31,6 +32,7 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.UUID;
 
 public class BlockSmartphoneStand extends Block implements IHasModel
 {
@@ -78,7 +80,7 @@ public class BlockSmartphoneStand extends Block implements IHasModel
 
         TileEntityPhoneStand tileEntityPhoneStand = (TileEntityPhoneStand) tileEntity;
 
-        if(tileEntityPhoneStand.getOwnerUUID() == null)
+        if(tileEntityPhoneStand.getOwnerUUID() == new UUID(0,0))
         {
             tileEntityPhoneStand.setOwnerUUID(playerIn.getUniqueID());
 
@@ -88,6 +90,7 @@ public class BlockSmartphoneStand extends Block implements IHasModel
             }
 
             tileEntityPhoneStand.markDirty();
+            tileEntityPhoneStand.sync();
             return true;
         }
 
@@ -112,6 +115,21 @@ public class BlockSmartphoneStand extends Block implements IHasModel
             tileEntityPhoneStand.setPhone(ItemStack.EMPTY);
             tileEntityPhoneStand.sync();
         }
+
+        // Unclaim block
+        if(heldItem.getItem() == Items.STICK && playerIn.getUniqueID() == tileEntityPhoneStand.getOwnerUUID())
+        {
+            tileEntityPhoneStand.setOwnerUUID(new UUID(0,0));
+            ModUtils.dropTileEntityInventoryItems(worldIn, pos, tileEntityPhoneStand);
+            tileEntityPhoneStand.sync();
+
+            if(!worldIn.isRemote)
+            {
+                playerIn.sendMessage(new TextComponentString("Stand has been unclaimed."));
+            }
+        }
+
+
         return true;
     }
 
@@ -170,11 +188,6 @@ public class BlockSmartphoneStand extends Block implements IHasModel
         return 1;
     }
 
-    @Override
-    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
-    {
-        this.setDefaultFacing(worldIn, pos, state);
-    }
 
     private void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state)
     {
@@ -210,6 +223,7 @@ public class BlockSmartphoneStand extends Block implements IHasModel
     @Override
     public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
     {
+        this.setDefaultFacing(world, pos, state);
         if(placer instanceof EntityPlayer)
         {
             if(world.isRemote)

@@ -11,7 +11,7 @@ import java.util.UUID;
 public class TileEntityPhoneStand extends TileEntitySyncClient implements ISimpleInventory
 {
     private ItemStack phoneItem = ItemStack.EMPTY;
-    private UUID playerUUID = null;
+    private UUID playerUUID = new UUID(0, 0);
     private int rotation = 0;
 
     public void setPhone(ItemStack phoneIn)

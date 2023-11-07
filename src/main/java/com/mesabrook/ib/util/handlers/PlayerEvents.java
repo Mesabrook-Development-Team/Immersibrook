@@ -43,6 +43,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
@@ -70,6 +71,7 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import java.time.LocalDate;
 import java.util.Random;
+import java.util.UUID;
 
 public class PlayerEvents 
 {
@@ -627,11 +629,12 @@ public class PlayerEvents
 		World world = event.getWorld();
 		BlockPos pos = event.getPos();
 		TileEntity te = world.getTileEntity(pos);
+		MinecraftServer mcServer = event.getWorld().getMinecraftServer();
 
 		if(te instanceof TileEntityPhoneStand)
 		{
 			TileEntityPhoneStand tileEntityPhoneStand = (TileEntityPhoneStand) te;
-			if(tileEntityPhoneStand.getOwnerUUID() != player.getUniqueID() && tileEntityPhoneStand.getOwnerUUID() != null)
+			if(tileEntityPhoneStand.getOwnerUUID() != player.getUniqueID() && tileEntityPhoneStand.getOwnerUUID() != new UUID(0,0) && mcServer.getPlayerList().canSendCommands(player.getGameProfile()))
 			{
 				if(!player.world.isRemote)
 				{
@@ -640,7 +643,7 @@ public class PlayerEvents
 				}
 			}
 
-			if(tileEntityPhoneStand.getOwnerUUID() == null)
+			if(tileEntityPhoneStand.getOwnerUUID() == new UUID(0,0) || mcServer.getPlayerList().canSendCommands(player.getGameProfile()))
 			{
 				event.setCanceled(false);
 			}
