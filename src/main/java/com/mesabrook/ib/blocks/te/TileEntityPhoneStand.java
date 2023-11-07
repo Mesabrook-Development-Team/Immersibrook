@@ -9,6 +9,7 @@ import net.minecraftforge.common.util.Constants;
 public class TileEntityPhoneStand extends TileEntitySyncClient implements ISimpleInventory
 {
     private ItemStack phoneItem = ItemStack.EMPTY;
+    private String ownerName;
     private int rotation = 0;
 
     public void setPhone(ItemStack phoneIn)
@@ -31,6 +32,16 @@ public class TileEntityPhoneStand extends TileEntitySyncClient implements ISimpl
         return rotation;
     }
 
+    public void setOwnerName(String playerNameIn)
+    {
+        this.ownerName = playerNameIn;
+    }
+
+    public String getOwnerName()
+    {
+        return ownerName;
+    }
+
     @Override
     public void readFromNBT(NBTTagCompound tagCompound)
     {
@@ -51,6 +62,7 @@ public class TileEntityPhoneStand extends TileEntitySyncClient implements ISimpl
             this.setPhone(new ItemStack(tagCompound.getCompoundTag("Item")));
         }
         this.rotation = tagCompound.getInteger("Rotation");
+        this.ownerName = tagCompound.getString("Owner");
     }
 
     @Override
@@ -62,6 +74,7 @@ public class TileEntityPhoneStand extends TileEntitySyncClient implements ISimpl
             tagCompound.setTag("Item", this.phoneItem.writeToNBT(new NBTTagCompound()));
         }
         tagCompound.setInteger("Rotation", this.rotation);
+        tagCompound.setString("Owner", this.ownerName);
         return tagCompound;
     }
 

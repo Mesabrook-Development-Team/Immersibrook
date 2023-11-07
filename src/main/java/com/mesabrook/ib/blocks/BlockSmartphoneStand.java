@@ -4,6 +4,7 @@ import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.te.TileEntityPhoneStand;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.ModUtils;
 import net.minecraft.block.Block;
@@ -23,6 +24,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -30,11 +32,11 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class BlockItemStand extends Block implements IHasModel
+public class BlockSmartphoneStand extends Block implements IHasModel
 {
     protected final ArrayList<AxisAlignedBB> AABBs;
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
-    public BlockItemStand(String name, AxisAlignedBB unrotatedAABB)
+    public BlockSmartphoneStand(String name, AxisAlignedBB unrotatedAABB)
     {
         super(Material.IRON);
         setUnlocalizedName(name);
@@ -61,14 +63,30 @@ public class BlockItemStand extends Block implements IHasModel
     {
         ItemStack heldItem = playerIn.getHeldItem(hand);
         TileEntity tileEntity = worldIn.getTileEntity(pos);
+        EnumFacing standFacing = worldIn.getBlockState(pos).getValue(FACING).getOpposite();
+        EnumFacing playerFacing = playerIn.getHorizontalFacing();
 
         if(!(tileEntity instanceof TileEntityPhoneStand))
         {
             return false;
         }
 
+        if(standFacing != playerFacing)
+        {
+            return false;
+        }
+
         TileEntityPhoneStand tileEntityPhoneStand = (TileEntityPhoneStand) tileEntity;
-        if(!heldItem.isEmpty() && tileEntityPhoneStand.getPhoneItem().isEmpty())
+
+        if(tileEntityPhoneStand.getOwnerName() == null)
+        {
+            tileEntityPhoneStand.setOwnerName(playerIn.getName());
+            playerIn.sendMessage(new TextComponentString("Owner name set."));
+            tileEntityPhoneStand.markDirty();
+            return true;
+        }
+
+        if(!heldItem.isEmpty() && tileEntityPhoneStand.getPhoneItem().isEmpty() && heldItem.getItem() instanceof ItemPhone)
         {
             ItemStack copy = heldItem.copy();
             copy.setCount(1);
@@ -194,6 +212,18 @@ public class BlockItemStand extends Block implements IHasModel
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
     {
         return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+    }
+
+    @Override
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
+    {
+        return AABBs.get(((EnumFacing)state.getValue(FACING)).getIndex() & 0x7);
+    }
+
+    @Override
+    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos)
+    {
+        return AABBs.get(((EnumFacing)blockState.getValue(FACING)).getIndex() & 0x7);
     }
 
     @Override

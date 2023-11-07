@@ -1196,7 +1196,7 @@ public class ModBlocks
 	public static final Block SIM_STATION = new ImmersiblockRotational("sim_station", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
 
 	// Item Stand
-	public static final Block ITEM_STAND = new BlockItemStand("smartphone_stand", ModUtils.DEFAULT_AABB);
+	public static final Block ITEM_STAND = new BlockSmartphoneStand("smartphone_stand", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
 
 	// Retail Freezers
 	public static final Block RETAIL_FREEZER_UPRIGHT = new ImmersiblockRotational("retail_freezer_upright", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DOUBLE_AABB);
