@@ -1,6 +1,5 @@
 package com.mesabrook.ib.proxy;
 
-import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.te.*;
 import com.mesabrook.ib.util.handlers.ClientSideHandlers;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -39,6 +38,7 @@ public class ClientProxy extends CommonProxy
 	{
 		super.init(e);
 		ClientSideHandlers.loadCreativeGUI();
+
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlaque.class, new TileEntityPlaqueRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWallSign.class, new TileEntityWallSignRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPhoneStand.class, new ItemStandRenderer());
@@ -53,7 +53,7 @@ public class ClientProxy extends CommonProxy
 		ClientRegistry.registerKeyBinding(hammerSoundKey);
 		ClientRegistry.registerKeyBinding(policeHelmetKey);
 
-		Main.logger.info("Starting download of statue player skins");
+		//Main.logger.info("Starting download of statue player skins");
 
 		// Broken, needs to be fixed @CSX8600
 		// SkinDownloader.downloadSkin(Reference.RZ_UUID);
