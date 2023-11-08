@@ -634,7 +634,7 @@ public class PlayerEvents
 		if(te instanceof TileEntityPhoneStand)
 		{
 			TileEntityPhoneStand tileEntityPhoneStand = (TileEntityPhoneStand) te;
-			if(tileEntityPhoneStand.getOwnerUUID() != player.getUniqueID() && tileEntityPhoneStand.getOwnerUUID() != new UUID(0,0) && mcServer.getPlayerList().canSendCommands(player.getGameProfile()))
+			if(tileEntityPhoneStand.getOwnerUUID() != player.getUniqueID() && !(tileEntityPhoneStand.getOwnerUUID().equals(new UUID(0,0))) && !mcServer.getPlayerList().canSendCommands(player.getGameProfile()))
 			{
 				if(!player.world.isRemote)
 				{
@@ -643,7 +643,7 @@ public class PlayerEvents
 				}
 			}
 
-			if(tileEntityPhoneStand.getOwnerUUID() == new UUID(0,0) || mcServer.getPlayerList().canSendCommands(player.getGameProfile()))
+			if(tileEntityPhoneStand.getOwnerUUID().equals(new UUID(0,0)) || mcServer.getPlayerList().canSendCommands(player.getGameProfile()))
 			{
 				event.setCanceled(false);
 			}

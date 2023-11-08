@@ -17,6 +17,7 @@ public class TileEntityPhoneStand extends TileEntitySyncClient implements ISimpl
     public void setPhone(ItemStack phoneIn)
     {
         this.phoneItem = phoneIn;
+        markDirty();
     }
 
     public ItemStack getPhoneItem()
@@ -27,6 +28,7 @@ public class TileEntityPhoneStand extends TileEntitySyncClient implements ISimpl
     public void setRotation(int rotation)
     {
         this.rotation = rotation;
+        markDirty();
     }
 
     public int getRotation()
@@ -37,6 +39,7 @@ public class TileEntityPhoneStand extends TileEntitySyncClient implements ISimpl
     public void setOwnerUUID(UUID ownerUUIDIn)
     {
         this.playerUUID = ownerUUIDIn;
+        markDirty();
     }
 
     public UUID getOwnerUUID()

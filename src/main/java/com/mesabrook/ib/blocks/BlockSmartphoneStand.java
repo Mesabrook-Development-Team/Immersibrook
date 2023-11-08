@@ -14,9 +14,7 @@ import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -26,6 +24,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -44,6 +43,8 @@ public class BlockSmartphoneStand extends Block implements IHasModel
         setUnlocalizedName(name);
         setRegistryName(name);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
+        setResistance(5F);
+        setHardness(2.5F);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 
         AABBs = new ArrayList<AxisAlignedBB>(Arrays.asList(
@@ -80,52 +81,61 @@ public class BlockSmartphoneStand extends Block implements IHasModel
 
         TileEntityPhoneStand tileEntityPhoneStand = (TileEntityPhoneStand) tileEntity;
 
-        if(tileEntityPhoneStand.getOwnerUUID() == new UUID(0,0))
+        if(tileEntityPhoneStand.getOwnerUUID().equals(new UUID(0,0)))
         {
             tileEntityPhoneStand.setOwnerUUID(playerIn.getUniqueID());
-
             if(!worldIn.isRemote)
             {
                 playerIn.sendMessage(new TextComponentString("Owner set to: " + playerIn.getName() + " [" + tileEntityPhoneStand.getOwnerUUID() + "]"));
             }
-
             tileEntityPhoneStand.markDirty();
             tileEntityPhoneStand.sync();
             return true;
         }
 
-        if(!heldItem.isEmpty() && tileEntityPhoneStand.getPhoneItem().isEmpty() && heldItem.getItem() instanceof ItemPhone && playerIn.getUniqueID() == tileEntityPhoneStand.getOwnerUUID())
+        if(!heldItem.isEmpty() && tileEntityPhoneStand.getPhoneItem().isEmpty() && heldItem.getItem() instanceof ItemPhone && tileEntityPhoneStand.getOwnerUUID().equals(playerIn.getUniqueID()))
         {
             ItemStack copy = heldItem.copy();
             copy.setCount(1);
             tileEntityPhoneStand.setPhone(copy);
             tileEntityPhoneStand.setRotation(playerIn.getHorizontalFacing().getHorizontalIndex());
+            tileEntityPhoneStand.markDirty();
             tileEntityPhoneStand.sync();
             heldItem.shrink(1);
             return true;
         }
 
-        if(!tileEntityPhoneStand.getPhoneItem().isEmpty() && playerIn.getUniqueID() == tileEntityPhoneStand.getOwnerUUID())
+        if(!tileEntityPhoneStand.getPhoneItem().isEmpty())
         {
             if(!worldIn.isRemote)
             {
-                EntityItem entityPhone = new EntityItem(worldIn, pos.getX() + 0.5, pos.getY() + 0.4, pos.getZ() + 0.5, tileEntityPhoneStand.getPhoneItem());
-                worldIn.spawnEntity(entityPhone);
+                if(tileEntityPhoneStand.getOwnerUUID().equals(playerIn.getUniqueID()))
+                {
+                    ModUtils.dropTileEntityInventoryItems(worldIn, pos, tileEntityPhoneStand);
+                    tileEntityPhoneStand.setPhone(ItemStack.EMPTY);
+                }
+                else
+                {
+                    playerIn.sendMessage(new TextComponentString(TextFormatting.RED + "You cannot interact with this block, only the owner can interact with or break it."));
+                }
             }
-            tileEntityPhoneStand.setPhone(ItemStack.EMPTY);
+
+            tileEntityPhoneStand.markDirty();
             tileEntityPhoneStand.sync();
         }
 
         // Unclaim block
-        if(heldItem.getItem() == Items.STICK && playerIn.getUniqueID() == tileEntityPhoneStand.getOwnerUUID())
+        if(tileEntityPhoneStand.getOwnerUUID().equals(playerIn.getUniqueID()) && playerIn.isSneaking())
         {
             tileEntityPhoneStand.setOwnerUUID(new UUID(0,0));
-            ModUtils.dropTileEntityInventoryItems(worldIn, pos, tileEntityPhoneStand);
+
+            tileEntityPhoneStand.markDirty();
             tileEntityPhoneStand.sync();
 
             if(!worldIn.isRemote)
             {
                 playerIn.sendMessage(new TextComponentString("Stand has been unclaimed."));
+                ModUtils.dropTileEntityInventoryItems(worldIn, pos, tileEntityPhoneStand);
             }
         }
 
@@ -153,9 +163,20 @@ public class BlockSmartphoneStand extends Block implements IHasModel
         if(!(te instanceof TileEntityPhoneStand))
         {
             return;
-
         }
+
         ModUtils.dropTileEntityInventoryItems(worldIn, pos, te);
+    }
+
+    @Override
+    public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, @Nullable TileEntity te, ItemStack stack)
+    {
+        TileEntityPhoneStand tileEntityPhoneStand = (TileEntityPhoneStand) te;
+        if(!tileEntityPhoneStand.getPhoneItem().isEmpty())
+        {
+            ModUtils.dropTileEntityInventoryItems(worldIn, pos, te);
+        }
+        state.getBlock().harvestBlock(worldIn, player, pos, state, te, stack);
     }
 
     @Override
