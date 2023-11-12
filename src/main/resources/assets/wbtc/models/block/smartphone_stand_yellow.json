@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "blocks/glass_white",
-		"particle": "wbtc:blocks/plastic_cube_white"
+		"0": "blocks/glass_yellow",
+		"particle": "wbtc:blocks/plastic_cube_yellow"
 	},
 	"elements": [
 		{

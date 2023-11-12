@@ -42,6 +42,7 @@ public class ClientProxy extends CommonProxy
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlaque.class, new TileEntityPlaqueRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWallSign.class, new TileEntityWallSignRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPhoneStand.class, new ItemStandRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWirelessChargingPad.class, new WirelessChargingPadRenderer());
 
 		vestToggleKey = new KeyBinding("key.vestToggle.toggle", Keyboard.KEY_V, "key.immersibrook.category");
 		nvToggleKey = new KeyBinding("key.nvtoggle.toggle", Keyboard.KEY_SEMICOLON, "key.immersibrook.category");

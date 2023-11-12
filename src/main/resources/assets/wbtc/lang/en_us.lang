@@ -2001,7 +2001,24 @@ tile.shelf_one_level_two_peghooks=Retail Shelf
 tile.shelf_four_peghooks.name=Retail Shelf
 tile.shelf_two_levels_no_peghooks.name=Retail Shelf
 tile.security_station.name=MSAC Retail - Merchandise Securing Station
+
 tile.smartphone_stand.name=Smartphone Display Stand
+tile.smartphone_stand_orange.name=Smartphone Display Stand
+tile.smartphone_stand_magenta.name=Smartphone Display Stand
+tile.smartphone_stand_lblue.name=Smartphone Display Stand
+tile.smartphone_stand_yellow.name=Smartphone Display Stand
+tile.smartphone_stand_lime.name=Smartphone Display Stand
+tile.smartphone_stand_pink.name=Smartphone Display Stand
+tile.smartphone_stand_gray.name=Smartphone Display Stand
+tile.smartphone_stand_silver.name=Smartphone Display Stand
+tile.smartphone_stand_cyan.name=Smartphone Display Stand
+tile.smartphone_stand_purple.name=Smartphone Display Stand
+tile.smartphone_stand_blue.name=Smartphone Display Stand
+tile.smartphone_stand_brown.name=Smartphone Display Stand
+tile.smartphone_stand_green.name=Smartphone Display Stand
+tile.smartphone_stand_red.name=Smartphone Display Stand
+tile.smartphone_stand_black.name=Smartphone Display Stand
+
 tile.retail_freezer_upright.name=Retail Freezer
 tile.retail_freezer_deep.name=Retail Deep Freezer Island
 tile.sim_station.name=Mesabrook Bell SIM Programming Terminal

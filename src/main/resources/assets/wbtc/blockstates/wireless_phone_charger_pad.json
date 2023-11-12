@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:wireless_phone_charger_pad" },
+        "facing=south": { "model": "wbtc:wireless_phone_charger_pad", "y": 180 },
+        "facing=west":  { "model": "wbtc:wireless_phone_charger_pad", "y": 270 },
+        "facing=east":  { "model": "wbtc:wireless_phone_charger_pad", "y": 90 }
+    }
+}

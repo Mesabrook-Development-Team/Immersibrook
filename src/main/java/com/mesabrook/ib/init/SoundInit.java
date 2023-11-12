@@ -96,6 +96,8 @@ public class SoundInit
 	public static final SoundEvent TOILET_2;
 	public static final SoundEvent TOILET_3;
 	public static final SoundEvent URINAL;
+	public static final SoundEvent WC_ON;
+	public static final SoundEvent WC_OFF;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -297,6 +299,8 @@ public class SoundInit
 		TOILET_2 = addSoundsToRegistry("toilet_2");
 		TOILET_3 = addSoundsToRegistry("toilet_3");
 		URINAL = addSoundsToRegistry("urinal");
+		WC_OFF = addSoundsToRegistry("wireless_charge_off");
+		WC_ON = addSoundsToRegistry("wireless_charge_on");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -606,6 +610,8 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.TOILET_3);
 				event.getRegistry().register(SoundInit.URINAL);
 				event.getRegistry().register(SoundInit.XP_STARTUP);
+				event.getRegistry().register(SoundInit.WC_OFF);
+				event.getRegistry().register(SoundInit.WC_ON);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

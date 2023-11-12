@@ -6,6 +6,20 @@
 			"stream": true
 		}]
 	},
+	"wireless_charge_off": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:wireless_charge_off",
+			"stream": true
+		}]
+	},
+	"wireless_charge_on": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:wireless_charge_on",
+			"stream": true
+		}]
+	},
 	"xp_startup": {
 		"category": "master",
 		"sounds": [{

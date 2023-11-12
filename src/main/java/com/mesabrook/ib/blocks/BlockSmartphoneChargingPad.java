@@ -1,12 +1,14 @@
 package com.mesabrook.ib.blocks;
 
 import com.mesabrook.ib.Main;
-import com.mesabrook.ib.blocks.te.TileEntityPhoneStand;
+import com.mesabrook.ib.blocks.te.TileEntityWirelessChargingPad;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.misc.ItemPhone;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.ModUtils;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
@@ -16,40 +18,33 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.UUID;
 
-public class BlockSmartphoneStand extends Block implements IHasModel
+public class BlockSmartphoneChargingPad extends Block implements IHasModel
 {
     protected final ArrayList<AxisAlignedBB> AABBs;
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
-    public BlockSmartphoneStand(String name, AxisAlignedBB unrotatedAABB)
+    public BlockSmartphoneChargingPad(String name, AxisAlignedBB unrotatedAABB)
     {
-        super(Material.GLASS);
+        super(Material.IRON);
         setUnlocalizedName(name);
         setRegistryName(name);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
-        setSoundType(SoundType.GLASS);
+        setSoundType(SoundType.METAL);
         setResistance(100F);
         setHardness(1.0F);
         setHarvestLevel("pickaxe", 0);
@@ -74,84 +69,56 @@ public class BlockSmartphoneStand extends Block implements IHasModel
     {
         ItemStack heldItem = playerIn.getHeldItem(hand);
         TileEntity tileEntity = worldIn.getTileEntity(pos);
-        EnumFacing standFacing = worldIn.getBlockState(pos).getValue(FACING).getOpposite();
-        EnumFacing playerFacing = playerIn.getHorizontalFacing();
 
-        if(!(tileEntity instanceof TileEntityPhoneStand))
+        if(!(tileEntity instanceof TileEntityWirelessChargingPad))
         {
             return false;
         }
 
-        if(standFacing != playerFacing)
-        {
-            return false;
-        }
-
-        TileEntityPhoneStand tileEntityPhoneStand = (TileEntityPhoneStand) tileEntity;
-
-        if(tileEntityPhoneStand.getOwnerUUID().equals(new UUID(0,0)))
-        {
-            tileEntityPhoneStand.setOwnerUUID(playerIn.getUniqueID());
-            if(!worldIn.isRemote)
-            {
-                playerIn.sendStatusMessage(new TextComponentString(TextFormatting.GREEN + "You have claimed this block successfully."), true);
-            }
-            playerIn.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5F, 1.5F);
-            tileEntityPhoneStand.markDirty();
-            tileEntityPhoneStand.sync();
-            return true;
-        }
-
-        if(!heldItem.isEmpty() && tileEntityPhoneStand.getPhoneItem().isEmpty() && heldItem.getItem() instanceof ItemPhone && tileEntityPhoneStand.getOwnerUUID().equals(playerIn.getUniqueID()))
+        TileEntityWirelessChargingPad tileEntityWirelessChargingPad = (TileEntityWirelessChargingPad) tileEntity;
+        if(!heldItem.isEmpty() && tileEntityWirelessChargingPad.getPhoneItem().isEmpty() && heldItem.getItem() instanceof ItemPhone)
         {
             ItemStack copy = heldItem.copy();
             copy.setCount(1);
-            tileEntityPhoneStand.setPhone(copy);
-            tileEntityPhoneStand.setRotation(playerIn.getHorizontalFacing().getHorizontalIndex());
-            tileEntityPhoneStand.markDirty();
-            tileEntityPhoneStand.sync();
+            tileEntityWirelessChargingPad.setPhone(copy);
+            tileEntityWirelessChargingPad.setRotation(playerIn.getHorizontalFacing().getHorizontalIndex());
+            tileEntityWirelessChargingPad.markDirty();
+            tileEntityWirelessChargingPad.sync();
             heldItem.shrink(1);
-            worldIn.playSound(playerIn, pos, SoundEvents.BLOCK_STONE_HIT, SoundCategory.BLOCKS, 1.0F, 1.6F);
+
+            if(!worldIn.isRemote)
+            {
+                ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
+                packet.pos = pos;
+                packet.soundName = "wireless_charge_on";
+                packet.rapidSounds = false;
+                PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));
+            }
+
             return true;
         }
 
-        if(!tileEntityPhoneStand.getPhoneItem().isEmpty())
+        if(!tileEntityWirelessChargingPad.getPhoneItem().isEmpty())
         {
-            worldIn.playSound(playerIn, pos, SoundEvents.BLOCK_STONE_HIT, SoundCategory.BLOCKS, 1.0F, 1.1F);
             if(!worldIn.isRemote)
             {
-                if(tileEntityPhoneStand.getOwnerUUID().equals(playerIn.getUniqueID()))
-                {
-                    ModUtils.dropTileEntityInventoryItems(worldIn, pos, tileEntityPhoneStand);
-                    tileEntityPhoneStand.setPhone(ItemStack.EMPTY);
-                }
-                else
-                {
-                    playerIn.sendMessage(new TextComponentString(TextFormatting.RED + "You cannot interact with this block, only the owner can interact with or break it."));
-                }
+                ModUtils.dropTileEntityInventoryItems(worldIn, pos, tileEntityWirelessChargingPad);
+                tileEntityWirelessChargingPad.setPhone(ItemStack.EMPTY);
             }
-
-            tileEntityPhoneStand.markDirty();
-            tileEntityPhoneStand.sync();
-        }
-
-        // Unclaim block
-        if(tileEntityPhoneStand.getOwnerUUID().equals(playerIn.getUniqueID()) && playerIn.isSneaking())
-        {
-            tileEntityPhoneStand.setOwnerUUID(new UUID(0,0));
-            playerIn.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5F, 0.5F);
-
-            tileEntityPhoneStand.markDirty();
-            tileEntityPhoneStand.sync();
+            tileEntityWirelessChargingPad.markDirty();
+            tileEntityWirelessChargingPad.sync();
 
             if(!worldIn.isRemote)
             {
-                playerIn.sendStatusMessage(new TextComponentString(TextFormatting.RED + "You have unclaimed this block successfully."), true);
-                ModUtils.dropTileEntityInventoryItems(worldIn, pos, tileEntityPhoneStand);
+                ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
+                packet.pos = pos;
+                packet.soundName = "wireless_charge_off";
+                packet.rapidSounds = false;
+                PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));
             }
+
+            return true;
         }
-
-
         return true;
     }
 
@@ -165,14 +132,14 @@ public class BlockSmartphoneStand extends Block implements IHasModel
     @Override
     public TileEntity createTileEntity(World world, IBlockState state)
     {
-        return new TileEntityPhoneStand();
+        return new TileEntityWirelessChargingPad();
     }
 
     @Override
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
     {
-        TileEntityPhoneStand te = (TileEntityPhoneStand) worldIn.getTileEntity(pos);
-        if(!(te instanceof TileEntityPhoneStand))
+        TileEntityWirelessChargingPad te = (TileEntityWirelessChargingPad) worldIn.getTileEntity(pos);
+        if(!(te instanceof TileEntityWirelessChargingPad))
         {
             return;
         }
@@ -183,8 +150,8 @@ public class BlockSmartphoneStand extends Block implements IHasModel
     @Override
     public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, @Nullable TileEntity te, ItemStack stack)
     {
-        TileEntityPhoneStand tileEntityPhoneStand = (TileEntityPhoneStand) te;
-        if(!tileEntityPhoneStand.getPhoneItem().isEmpty())
+        TileEntityWirelessChargingPad te1 = (TileEntityWirelessChargingPad) te;
+        if(!te1.getPhoneItem().isEmpty())
         {
             ModUtils.dropTileEntityInventoryItems(worldIn, pos, te);
         }
@@ -254,19 +221,6 @@ public class BlockSmartphoneStand extends Block implements IHasModel
     }
 
     @Override
-    public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
-    {
-        this.setDefaultFacing(world, pos, state);
-        if(placer instanceof EntityPlayer)
-        {
-            if(world.isRemote)
-            {
-                placer.sendMessage(new TextComponentString("Right click the stand to claim it."));
-            }
-        }
-    }
-
-    @Override
     public IBlockState getStateFromMeta(int meta)
     {
         return this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta));
@@ -300,13 +254,6 @@ public class BlockSmartphoneStand extends Block implements IHasModel
     public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos)
     {
         return AABBs.get(((EnumFacing)blockState.getValue(FACING)).getIndex() & 0x7);
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public BlockRenderLayer getBlockLayer()
-    {
-        return BlockRenderLayer.TRANSLUCENT;
     }
 
     @Override

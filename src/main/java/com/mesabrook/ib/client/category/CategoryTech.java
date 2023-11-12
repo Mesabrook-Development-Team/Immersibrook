@@ -22,6 +22,7 @@ public class CategoryTech extends AbstractCategory
     @Override
     public void init()
     {
+        add(ModBlocks.PHONE_CHARGING_PAD);
         add(ModItems.RADIO);
         add(ModItems.PHONE_SPECIAL);
         add(ModItems.PHONE_MESABROOK);

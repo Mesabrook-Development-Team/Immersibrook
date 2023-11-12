@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:smartphone_stand_purple" },
+        "facing=south": { "model": "wbtc:smartphone_stand_purple", "y": 180 },
+        "facing=west":  { "model": "wbtc:smartphone_stand_purple", "y": 270 },
+        "facing=east":  { "model": "wbtc:smartphone_stand_purple", "y": 90 }
+    }
+}

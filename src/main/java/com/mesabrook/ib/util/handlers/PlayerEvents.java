@@ -634,16 +634,21 @@ public class PlayerEvents
 		if(te instanceof TileEntityPhoneStand)
 		{
 			TileEntityPhoneStand tileEntityPhoneStand = (TileEntityPhoneStand) te;
-			if(tileEntityPhoneStand.getOwnerUUID() != player.getUniqueID() && !(tileEntityPhoneStand.getOwnerUUID().equals(new UUID(0,0))) && !mcServer.getPlayerList().canSendCommands(player.getGameProfile()))
+
+			if(!(tileEntityPhoneStand.getOwnerUUID().equals(new UUID(0,0))))
 			{
-				if(!player.world.isRemote)
+				if(tileEntityPhoneStand.getOwnerUUID().equals(player.getUniqueID()))
+				{
+					player.sendMessage(new TextComponentString(TextFormatting.RED + "Unclaim the block first before breaking it."));
+				}
+				else
 				{
 					player.sendMessage(new TextComponentString(TextFormatting.RED + "Only the owner of this block can break it."));
-					event.setCanceled(true);
 				}
+				event.setCanceled(true);
 			}
 
-			if(tileEntityPhoneStand.getOwnerUUID().equals(new UUID(0,0)) || mcServer.getPlayerList().canSendCommands(player.getGameProfile()))
+			if(tileEntityPhoneStand.getOwnerUUID().equals(new UUID(0,0)))
 			{
 				event.setCanceled(false);
 			}

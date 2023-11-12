@@ -56,6 +56,21 @@ public class CategoryCommerce extends AbstractCategory
         add(ModBlocks.SECURITY_STATION);
         add(ModBlocks.SIM_STATION);
         add(ModBlocks.ITEM_STAND);
+        add(ModBlocks.ITEM_STAND_ORANGE);
+        add(ModBlocks.ITEM_STAND_MAGENTA);
+        add(ModBlocks.ITEM_STAND_LBLUE);
+        add(ModBlocks.ITEM_STAND_YELLOW);
+        add(ModBlocks.ITEM_STAND_LIME);
+        add(ModBlocks.ITEM_STAND_PINK);
+        add(ModBlocks.ITEM_STAND_GRAY);
+        add(ModBlocks.ITEM_STAND_SILVER);
+        add(ModBlocks.ITEM_STAND_CYAN);
+        add(ModBlocks.ITEM_STAND_PURPLE);
+        add(ModBlocks.ITEM_STAND_BLUE);
+        add(ModBlocks.ITEM_STAND_BROWN);
+        add(ModBlocks.ITEM_STAND_GREEN);
+        add(ModBlocks.ITEM_STAND_RED);
+        add(ModBlocks.ITEM_STAND_BLACK);
 
         // ATM
         add(ModBlocks.ATM);
