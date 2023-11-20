@@ -42,7 +42,8 @@ public class GuiImageLabelButton extends GuiButton {
 	public enum ImageOrientation
 	{
 		Left,
-		Right;
+		Right,
+		Center;
 	}
 	
 	@Override
@@ -105,6 +106,10 @@ public class GuiImageLabelButton extends GuiButton {
 			else if (orientation == ImageOrientation.Right)
 			{
 				drawScaledCustomSizeModalRect(textureX + width - texWidth - 2, textureY, 0, 0, uvWidth, uvHeight, texWidth, texHeight, uvWidth, uvHeight);
+			}
+			else if (orientation == ImageOrientation.Center)
+			{
+				drawScaledCustomSizeModalRect(x + (width / 2) - (texWidth / 2), textureY, 0, 0, uvWidth, uvHeight, texWidth, texHeight, uvWidth, uvHeight);
 			}
 		}
 		

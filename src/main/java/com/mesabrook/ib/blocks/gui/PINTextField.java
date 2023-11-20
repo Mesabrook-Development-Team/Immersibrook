@@ -1,4 +1,4 @@
-package com.mesabrook.ib.blocks.gui.telecom;
+package com.mesabrook.ib.blocks.gui;
 
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiTextField;

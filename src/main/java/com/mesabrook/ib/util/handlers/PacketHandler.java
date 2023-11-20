@@ -15,6 +15,18 @@ import com.mesabrook.ib.net.SoundEmitterBlockPacket;
 import com.mesabrook.ib.net.SoundRandomizerPacket;
 import com.mesabrook.ib.net.VestTogglePacket;
 import com.mesabrook.ib.net.WallSignPacket;
+import com.mesabrook.ib.net.atm.CreateNewDebitCardATMPacket;
+import com.mesabrook.ib.net.atm.CreateNewDebitCardATMResponsePacket;
+import com.mesabrook.ib.net.atm.DepositATMPacket;
+import com.mesabrook.ib.net.atm.DepositATMResponsePacket;
+import com.mesabrook.ib.net.atm.FetchATMSettingsPacket;
+import com.mesabrook.ib.net.atm.FetchATMSettingsResponsePacket;
+import com.mesabrook.ib.net.atm.FetchAccountsPacket;
+import com.mesabrook.ib.net.atm.FetchAccountsResponsePacket;
+import com.mesabrook.ib.net.atm.UpdateATMSettingsPacket;
+import com.mesabrook.ib.net.atm.UpdateATMSettingsResponsePacket;
+import com.mesabrook.ib.net.atm.WithdrawATMPacket;
+import com.mesabrook.ib.net.atm.WithdrawATMResponsePacket;
 import com.mesabrook.ib.net.sco.EmployeeCapServerToClientPacket;
 import com.mesabrook.ib.net.sco.POSCancelSalePacket;
 import com.mesabrook.ib.net.sco.POSChangeStatusClientToServerPacket;
@@ -142,6 +154,20 @@ public class PacketHandler
 		INSTANCE.registerMessage(POSRemoveItemPacket.Handler.class, POSRemoveItemPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(POSFetchPricePacket.Handler.class, POSFetchPricePacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(POSFetchPriceResponsePacket.Handler.class, POSFetchPriceResponsePacket.class, nextID(), Side.CLIENT);
+		
+		// ATM
+		INSTANCE.registerMessage(FetchAccountsPacket.Handler.class, FetchAccountsPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(FetchAccountsResponsePacket.Handler.class, FetchAccountsResponsePacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(FetchATMSettingsPacket.Handler.class, FetchATMSettingsPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(FetchATMSettingsResponsePacket.Handler.class, FetchATMSettingsResponsePacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(UpdateATMSettingsPacket.Handler.class, UpdateATMSettingsPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(UpdateATMSettingsResponsePacket.Handler.class, UpdateATMSettingsResponsePacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(WithdrawATMPacket.Handler.class, WithdrawATMPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(WithdrawATMResponsePacket.Handler.class, WithdrawATMResponsePacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(DepositATMPacket.Handler.class, DepositATMPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(DepositATMResponsePacket.Handler.class, DepositATMResponsePacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(CreateNewDebitCardATMPacket.Handler.class, CreateNewDebitCardATMPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(CreateNewDebitCardATMResponsePacket.Handler.class, CreateNewDebitCardATMResponsePacket.class, nextID(), Side.CLIENT);
 	}
 
 	private static int nextID()

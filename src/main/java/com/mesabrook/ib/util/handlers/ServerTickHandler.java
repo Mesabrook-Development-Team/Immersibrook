@@ -1,17 +1,30 @@
 package com.mesabrook.ib.util.handlers;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 import com.mesabrook.ib.Main;
+import com.mesabrook.ib.apimodels.account.Account;
+import com.mesabrook.ib.apimodels.account.DebitCard;
 import com.mesabrook.ib.apimodels.company.LocationEmployee;
 import com.mesabrook.ib.apimodels.company.LocationItem;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
+import com.mesabrook.ib.capability.debitcard.CapabilityDebitCard;
+import com.mesabrook.ib.capability.debitcard.IDebitCard;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
+import com.mesabrook.ib.items.commerce.ItemDebitCard;
+import com.mesabrook.ib.items.commerce.ItemMoney;
+import com.mesabrook.ib.net.atm.CreateNewDebitCardATMResponsePacket;
+import com.mesabrook.ib.net.atm.DepositATMResponsePacket;
+import com.mesabrook.ib.net.atm.FetchAccountsResponsePacket;
+import com.mesabrook.ib.net.atm.WithdrawATMResponsePacket;
 import com.mesabrook.ib.net.sco.StoreModeGuiResponse;
 import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.apiaccess.DataAccess.API;
@@ -22,6 +35,8 @@ import com.mesabrook.ib.util.apiaccess.DataRequestTaskStatus;
 import com.mesabrook.ib.util.apiaccess.GetData;
 
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -53,6 +68,10 @@ public class ServerTickHandler {
 		checkStoreModeRequests();
 		updateEmployeeStoreModes();
 		handlePriceLookups();
+		handleFetchATMAccounts();
+		handleATMWithdrawRequests();
+		handleATMDepositRequests();
+		handleNewCardRequests();
 	}
 	
 	public static HashMap<UUID, DataRequestTask> storeModeRequestsByUser = new HashMap<UUID, DataRequestTask>();
@@ -203,6 +222,230 @@ public class ServerTickHandler {
 		for(DataRequestTask taskToRemove : tasksToRemove)
 		{
 			priceLookupTasks.remove(taskToRemove);
+		}
+	}
+	
+	public static ArrayList<DataRequestTask> fetchATMAccountsRequests = new ArrayList<>();
+	private static void handleFetchATMAccounts()
+	{
+		if (checkerCounter != 10 || fetchATMAccountsRequests.size() <= 0)
+		{
+			return;
+		}
+		
+		ArrayList<DataRequestTask> tasksToRemove = new ArrayList<>();
+		for(DataRequestTask task : fetchATMAccountsRequests)
+		{
+			if (task.getStatus() == DataRequestTaskStatus.Complete)
+			{
+				ArrayList<Account> accounts = new ArrayList<>();
+				String error = "";
+				
+				UUID playerID = (UUID)task.getData().get("playerID");
+				DataAccess access = task.getTask();
+				if (access.getRequestSuccessful())
+				{
+					Account[] accountArray = access.getResult(Account[].class);
+					if (accountArray != null)
+					{
+						accounts = new ArrayList<Account>(Arrays.asList(accountArray));
+					}
+				}
+				else
+				{
+					GenericErrorResponse errorResponse = access.getResult(GenericErrorResponse.class);
+					if (errorResponse != null)
+					{
+						error = errorResponse.message;
+					}
+					
+					if (error == "" || error == null)
+					{
+						error = "An unknown error occurred";
+					}
+				}
+				
+				FetchAccountsResponsePacket response = new FetchAccountsResponsePacket();
+				response.accounts = accounts;
+				response.error = error;
+				
+				EntityPlayerMP player = FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerByUUID(playerID);
+				
+				PacketHandler.INSTANCE.sendTo(response, player);
+				tasksToRemove.add(task);
+			}
+		}
+		
+		for(DataRequestTask task : tasksToRemove)
+		{
+			fetchATMAccountsRequests.remove(task);
+		}
+	}
+
+	public static ArrayList<DataRequestTask> atmWithdrawRequests = new ArrayList<>();
+	private static void handleATMWithdrawRequests()
+	{
+		if (checkerCounter != 3 || atmWithdrawRequests.size() <= 0)
+		{
+			return;
+		}
+		
+		ArrayList<DataRequestTask> tasksToRemove = new ArrayList<>();
+		for(DataRequestTask task : atmWithdrawRequests)
+		{
+			if (task.getStatus() != DataRequestTaskStatus.Complete)
+			{
+				continue;
+			}
+			
+			UUID playerID = (UUID)task.getData().get("playerID");
+			EntityPlayerMP player = FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerByUUID(playerID);
+			
+			WithdrawATMResponsePacket response = new WithdrawATMResponsePacket();
+			GenericErrorResponse error = task.getTask().getResult(GenericErrorResponse.class);
+			
+			if (error != null)
+			{
+				response.error = error.message;
+			}
+			else if (task.getTask().getRequestSuccessful())
+			{
+				BlockPos dispensePos = (BlockPos)task.getData().get("dispensePos");
+				BigDecimal amount = (BigDecimal)task.getData().get("amount");
+				List<ItemStack> moneyItems = ItemMoney.getMoneyStackForAmount(amount);
+				
+				for(ItemStack money : moneyItems)
+				{
+					InventoryHelper.spawnItemStack(player.world, dispensePos.getX(), dispensePos.getY(), dispensePos.getZ(), money);
+				}
+			}
+			
+			PacketHandler.INSTANCE.sendTo(response, player);
+			
+			tasksToRemove.add(task);
+		}
+		
+		for(DataRequestTask task : tasksToRemove)
+		{
+			atmWithdrawRequests.remove(task);
+		}
+	}
+
+	public static ArrayList<DataRequestTask> atmDepositRequests = new ArrayList<>();
+	private static void handleATMDepositRequests()
+	{
+		if (checkerCounter != 13 || atmDepositRequests.size() <= 0)
+		{
+			return;
+		}
+		
+		ArrayList<DataRequestTask> tasksToRemove = new ArrayList<>();
+		for(DataRequestTask task : atmDepositRequests)
+		{
+			if (task.getStatus() != DataRequestTaskStatus.Complete)
+			{
+				continue;
+			}
+			
+			UUID playerID = (UUID)task.getData().get("playerID");
+			EntityPlayerMP player = FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerByUUID(playerID);
+			
+			DepositATMResponsePacket response = new DepositATMResponsePacket();
+			GenericErrorResponse error = task.getTask().getResult(GenericErrorResponse.class);
+			
+			if (error != null)
+			{
+				response.error = error.message;
+				
+				BigDecimal amount = (BigDecimal)task.getData().get("amount");
+				List<ItemStack> moneyStacks = ItemMoney.getMoneyStackForAmount(amount);
+				for(ItemStack money : moneyStacks)
+				{
+					InventoryHelper.spawnItemStack(player.world, player.posX, player.posY, player.posZ, money);
+				}
+			}
+			
+			PacketHandler.INSTANCE.sendTo(response, player);
+			
+			tasksToRemove.add(task);
+		}
+		
+		for(DataRequestTask task : tasksToRemove)
+		{
+			atmDepositRequests.remove(task);
+		}
+	}
+
+	public static ArrayList<DataRequestTask> newCardRequests = new ArrayList<>();
+	public static void handleNewCardRequests()
+	{
+		if (checkerCounter != 15 || newCardRequests.size() <= 0)
+		{
+			return;
+		}
+		
+		ArrayList<DataRequestTask> tasksToRemove = new ArrayList<>();
+		for(DataRequestTask task : newCardRequests)
+		{
+			if (task.getStatus() != DataRequestTaskStatus.Complete)
+			{
+				continue;
+			}
+			
+			UUID playerID = (UUID)task.getData().get("playerID");
+			EntityPlayerMP player = FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerByUUID(playerID);
+			
+			CreateNewDebitCardATMResponsePacket response = new CreateNewDebitCardATMResponsePacket();
+			DebitCard debitCardResponse = task.getTask().getResult(DebitCard.class);
+			GenericErrorResponse error = task.getTask().getResult(GenericErrorResponse.class);
+			
+			if (debitCardResponse.DebitCardID != 0)
+			{
+				if (debitCardResponse.Account == null)
+				{
+					response.error = "No Account was associated with card";
+				}
+				else
+				{
+					ItemDebitCard.EnumDebitCardType type = null;
+					
+					if (debitCardResponse.Account.CompanyID != 0) 
+					{
+						type = ItemDebitCard.EnumDebitCardType.Business;
+					}
+					else if (debitCardResponse.Account.GovernmentID != 0)
+					{
+						type = ItemDebitCard.EnumDebitCardType.Government;
+					}
+					
+					if (type == null)
+					{
+						response.error = "No Card found for this type of Account";
+					}
+					else
+					{
+						ItemStack cardStack = new ItemStack(ItemDebitCard.debitCardsByType.get(type), 1);
+						IDebitCard debitCardCap = cardStack.getCapability(CapabilityDebitCard.DEBIT_CARD_CAPABILITY, null);
+						debitCardCap.setCardNumber(debitCardResponse.CardNumber);
+						
+						BlockPos spawnPos = (BlockPos)task.getData().get("spawnPos");
+						InventoryHelper.spawnItemStack(player.world, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), cardStack);
+					}
+				}
+			}
+			else if (error != null)
+			{
+				response.error = error.message;
+			}
+			
+			PacketHandler.INSTANCE.sendTo(response, player);
+			
+			tasksToRemove.add(task);
+		}
+		
+		for(DataRequestTask task : tasksToRemove)
+		{
+			newCardRequests.remove(task);
 		}
 	}
 }

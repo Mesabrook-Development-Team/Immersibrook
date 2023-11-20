@@ -13,6 +13,7 @@ import com.mesabrook.ib.blocks.gui.GuiStampBook;
 import com.mesabrook.ib.blocks.gui.GuiTOS;
 import com.mesabrook.ib.blocks.gui.GuiTrashBin;
 import com.mesabrook.ib.blocks.gui.GuiWallSign;
+import com.mesabrook.ib.blocks.gui.atm.GuiATMHome;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSStarter;
 import com.mesabrook.ib.blocks.gui.sco.GuiStoreMode;
 import com.mesabrook.ib.blocks.gui.sco.GuiTaggingStation;
@@ -23,6 +24,7 @@ import com.mesabrook.ib.blocks.gui.telecom.GuiNewEmergencyAlert;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneActivate;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneSetupStart;
 import com.mesabrook.ib.blocks.gui.telecom.GuiThermalWarning;
+import com.mesabrook.ib.blocks.te.TileEntityATM;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.blocks.te.TileEntityTrashBin;
 import com.mesabrook.ib.items.misc.ItemPhone;
@@ -129,6 +131,7 @@ public class GuiHandler implements IGuiHandler
 		}
 		else if (ID == Reference.GUI_TOS) return new GuiTOS();
 		else if (ID == Reference.GUI_SOUND_EMITTER) return new GuiSoundEmitter(player.swingingHand, new BlockPos(x,y,z));
+		else if (ID == Reference.GUI_ATM) return new GuiATMHome((TileEntityATM)world.getTileEntity(new BlockPos(x,y,z)));
 		else return null;
 	}
 	

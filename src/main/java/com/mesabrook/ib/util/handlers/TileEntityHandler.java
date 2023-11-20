@@ -17,5 +17,6 @@ public class TileEntityHandler
 		GameRegistry.registerTileEntity(ShelvingTileEntity.class, new ResourceLocation(Reference.MODID + ":shelving"));
 		GameRegistry.registerTileEntity(TileEntityTaggingStation.class, new ResourceLocation(Reference.MODID + ":taggingstation"));
 		GameRegistry.registerTileEntity(TileEntitySoundEmitter.class, new ResourceLocation(Reference.MODID + ":soundblock"));
+		GameRegistry.registerTileEntity(TileEntityATM.class, new ResourceLocation(Reference.MODID + ":atm"));
 	}
 }

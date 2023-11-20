@@ -26,11 +26,11 @@ public class Reference
 	public static final int GUI_WALLSIGN = 8;
 	public static final int GUI_SCO_POS = 9;
 	public static final int GUI_SCO_STOREMODE = 10;
-	public static final int GUI_TAGGING_STATION = 11;
-	
+	public static final int GUI_TAGGING_STATION = 11;	
 	public static final int GUI_TOS = 12;
 	public static final int GUI_RATION = 13;
 	public static final int GUI_SOUND_EMITTER = 14;
+	public static final int GUI_ATM = 15;
 	
 	public static final String NETWORK_CHANNEL_NAME = "wbtc";
 	

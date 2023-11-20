@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mesabrook.ib.Main;
+import com.mesabrook.ib.blocks.BlockATM;
 import com.mesabrook.ib.blocks.BlockBin;
 import com.mesabrook.ib.blocks.BlockCeilingLight;
 import com.mesabrook.ib.blocks.BlockCellAntenna;
@@ -1262,5 +1263,5 @@ public class ModBlocks
 	public static final Block SOUND_EMITTER_WALL = new BlockSoundEmitter("sound_emitter_wall", Material.IRON, SoundType.METAL);
 
 	// ATM
-	public static final Block ATM = new ImmersiblockRotational("atm", Material.IRON, SoundType.METAL, "pickaxe", 1, 10F, 10F, ModUtils.DEFAULT_AABB);
+	public static final Block ATM = new BlockATM();
 }

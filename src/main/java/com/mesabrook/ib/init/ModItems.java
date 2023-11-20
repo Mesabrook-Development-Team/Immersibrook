@@ -409,9 +409,9 @@ public class ModItems
 	public static final Item WALLET_UNI = new ItemWallet("wallet_unisex");
 	public static final Item WALLET_MAS = new ItemWallet("wallet_masculine");
 	public static final Item WALLET_FEM = new ItemWallet("wallet_feminine");
-	public static final Item DEBIT_CARD_RED = new ItemDebitCard("card_red");
-	public static final Item DEBIT_CARD_GREEN = new ItemDebitCard("card_green");
-	public static final Item DEBIT_CARD_BLUE = new ItemDebitCard("card_blue");
+	public static final Item DEBIT_CARD_RED = new ItemDebitCard("card_red", ItemDebitCard.EnumDebitCardType.Business);
+	public static final Item DEBIT_CARD_GREEN = new ItemDebitCard("card_green", ItemDebitCard.EnumDebitCardType.Government);
+	public static final Item DEBIT_CARD_BLUE = new ItemDebitCard("card_blue", ItemDebitCard.EnumDebitCardType.Personal);
 	public static final Item SECURITY_BOX = new ItemSecurityBox();
 	
 

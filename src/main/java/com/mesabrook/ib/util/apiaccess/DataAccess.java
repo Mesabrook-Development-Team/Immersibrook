@@ -226,8 +226,15 @@ public abstract class DataAccess {
 			}
 		}
 		
-		GenericErrorResponse errorResponse = gson.fromJson(data, GenericErrorResponse.class);
-		resultsByType.put(GenericErrorResponse.class, errorResponse);
+		try
+		{
+			GenericErrorResponse errorResponse = gson.fromJson(data, GenericErrorResponse.class);
+			resultsByType.put(GenericErrorResponse.class, errorResponse);
+		}
+		catch(Exception ex)
+		{
+			
+		}
 		
 		setRequestSuccessful(true);
 	}

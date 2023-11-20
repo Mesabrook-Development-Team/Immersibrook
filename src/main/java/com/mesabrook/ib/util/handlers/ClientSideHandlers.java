@@ -3,6 +3,7 @@ package com.mesabrook.ib.util.handlers;
 import java.math.BigDecimal;
 import java.net.URI;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -12,21 +13,36 @@ import java.util.function.Consumer;
 
 import com.google.common.collect.ImmutableCollection;
 import com.mesabrook.ib.Main;
+import com.mesabrook.ib.apimodels.account.Account;
 import com.mesabrook.ib.apimodels.company.LocationEmployee;
 import com.mesabrook.ib.blocks.BlockRegister;
 import com.mesabrook.ib.blocks.ImmersiblockRotationalManyBB;
 import com.mesabrook.ib.blocks.gui.GuiAboutImmersibrook;
+import com.mesabrook.ib.blocks.gui.GuiTOS;
+import com.mesabrook.ib.blocks.gui.atm.GuiATMDeposit;
+import com.mesabrook.ib.blocks.gui.atm.GuiATMHome;
+import com.mesabrook.ib.blocks.gui.atm.GuiATMNewCard;
+import com.mesabrook.ib.blocks.gui.atm.GuiATMSettings;
+import com.mesabrook.ib.blocks.gui.atm.GuiATMWithdraw;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSIdentifierSetup;
-import com.mesabrook.ib.blocks.gui.sco.GuiPOSInSession;
-import com.mesabrook.ib.blocks.gui.sco.GuiPOSPaymentBase;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSWaitingForNetwork;
 import com.mesabrook.ib.blocks.gui.sco.GuiStoreMode;
-import com.mesabrook.ib.blocks.gui.telecom.*;
+import com.mesabrook.ib.blocks.gui.telecom.GuiCallEnd;
+import com.mesabrook.ib.blocks.gui.telecom.GuiHome;
+import com.mesabrook.ib.blocks.gui.telecom.GuiIncomingCall;
+import com.mesabrook.ib.blocks.gui.telecom.GuiLockScreen;
+import com.mesabrook.ib.blocks.gui.telecom.GuiNewEmergencyAlert;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneActivate;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneActivate.ActivationScreens;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneBase;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneCall;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneCalling;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneConnected;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneRecents;
+import com.mesabrook.ib.blocks.gui.telecom.SignalStrengths;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
-import com.mesabrook.ib.blocks.gui.GuiTOS;
 import com.mesabrook.ib.init.SoundInit;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
@@ -875,5 +891,70 @@ public class ClientSideHandlers
 	
 	public static void openTOSGUI() {
 		Minecraft.getMinecraft().displayGuiScreen(new GuiTOS());
+	}
+
+	public static class ATMHandlers
+	{
+		public static void onATMFetchAccountsResponse(String error, ArrayList<Account> accounts)
+		{
+			if (!(Minecraft.getMinecraft().currentScreen instanceof GuiATMHome))
+			{
+				return;
+			}
+			
+			GuiATMHome home = (GuiATMHome)Minecraft.getMinecraft().currentScreen;
+			home.setData(error, accounts);;
+		}
+		
+		public static void onATMFetchSettingsResponse(String error, BigDecimal cardChargeAmount, String cardChargeAccount)
+		{
+			if (!(Minecraft.getMinecraft().currentScreen instanceof GuiATMSettings))
+			{
+				return;
+			}
+			
+			GuiATMSettings settings = (GuiATMSettings)Minecraft.getMinecraft().currentScreen;
+			settings.setData(error, cardChargeAmount, cardChargeAccount);
+		}
+		
+		public static void onATMUpdateSettingsResponse()
+		{
+			if (!(Minecraft.getMinecraft().currentScreen instanceof GuiATMSettings))
+			{
+				return;
+			}
+			
+			((GuiATMSettings)Minecraft.getMinecraft().currentScreen).onSettingsSaved();
+		}
+		
+		public static void onATMWithdrawResponse(String error)
+		{
+			if (!(Minecraft.getMinecraft().currentScreen instanceof GuiATMWithdraw))
+			{
+				return;
+			}
+			
+			((GuiATMWithdraw)Minecraft.getMinecraft().currentScreen).onResponse(error);
+		}
+		
+		public static void onATMDepositResponse(String error)
+		{
+			if (!(Minecraft.getMinecraft().currentScreen instanceof GuiATMDeposit))
+			{
+				return;
+			}
+			
+			((GuiATMDeposit)Minecraft.getMinecraft().currentScreen).onResponse(error);
+		}
+		
+		public static void onATMNewCardResponse(String error)
+		{
+			if (!(Minecraft.getMinecraft().currentScreen instanceof GuiATMNewCard))
+			{
+				return;
+			}
+			
+			((GuiATMNewCard)Minecraft.getMinecraft().currentScreen).onResponse(error);
+		}
 	}
 }
