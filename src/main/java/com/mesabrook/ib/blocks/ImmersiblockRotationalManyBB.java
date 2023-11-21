@@ -1,5 +1,6 @@
 package com.mesabrook.ib.blocks;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -37,7 +38,7 @@ public abstract class ImmersiblockRotationalManyBB extends ImmersiblockRotationa
 	
 	public ImmersiblockRotationalManyBB(String name, Material materialIn, SoundType soundTypeIn, String harvestTool,
 			int harvestLevel, float hardnessIn, float resistanceIn, boolean flipBoundingBoxes, AxisAlignedBB... subBoundingBoxes) {
-		super(name, materialIn, soundTypeIn, harvestTool, harvestLevel, hardnessIn, resistanceIn, ModUtils.DEFAULT_AABB);
+		super(name, materialIn, soundTypeIn, harvestTool, harvestLevel, hardnessIn, resistanceIn, getEncapsulatingBoundingBox(subBoundingBoxes, flipBoundingBoxes));
 		this.flipBoundingBoxes = flipBoundingBoxes;
 		
 		ArrayListMultimap<EnumFacing, AxisAlignedBB> boundingBoxesByFacing = ArrayListMultimap.create();
@@ -154,5 +155,21 @@ public abstract class ImmersiblockRotationalManyBB extends ImmersiblockRotationa
 			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ, AxisAlignedBB subBoundingBox)
 	{
 		return false;
+	}
+	
+	private static AxisAlignedBB getEncapsulatingBoundingBox(AxisAlignedBB[] subBoxes, boolean flipBoxes)
+	{
+		if (subBoxes == null || subBoxes.length == 0)
+		{
+			return ModUtils.DEFAULT_AABB;
+		}
+		
+		AxisAlignedBB box = subBoxes[0];
+		for(int i = 1; i < subBoxes.length; i++)
+		{
+			box = box.union(subBoxes[i]);
+		}
+		
+		return ModUtils.getRotatedAABB(box, flipBoxes ? EnumFacing.NORTH : EnumFacing.SOUTH, false);
 	}
 }
