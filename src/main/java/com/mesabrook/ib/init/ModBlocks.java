@@ -1214,7 +1214,7 @@ public class ModBlocks
 	public static final Block ITEM_STAND_BLACK = new BlockSmartphoneStand("smartphone_stand_black", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
 
 	// Smartphone Charging Pad
-	public static final Block PHONE_CHARGING_PAD = new BlockSmartphoneChargingPad("wireless_phone_charger_pad", ModUtils.DEFAULT_AABB);
+	public static final Block PHONE_CHARGING_PAD = new BlockSmartphoneChargingPad("wireless_phone_charger_pad", ModUtils.getPixelatedAABB(5,0,4,11,2.5,12));
 
 	// Retail Freezers
 	public static final Block RETAIL_FREEZER_UPRIGHT = new ImmersiblockRotational("retail_freezer_upright", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DOUBLE_AABB);

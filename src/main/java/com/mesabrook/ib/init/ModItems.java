@@ -163,6 +163,25 @@ public class ModItems
 	public static final Item IRW_VEST = new SafetyVest("irw_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.IRW_SAFETY_VEST_MAT, EntityEquipmentSlot.CHEST);
 	public static final Item NC_VEST = new SafetyVest("yellow_vest_nc", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.YELLOW_VEST_NC, EntityEquipmentSlot.CHEST);
 
+	// Conductor's Jackets
+	public static final Item CU_BL_VEST = new SafetyVest("conductors_jacket_blue", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.CU_BL_VEST, EntityEquipmentSlot.CHEST);
+	public static final Item CU_BLC_VEST = new SafetyVest("conductors_jacket_black", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.CU_BLC_VEST, EntityEquipmentSlot.CHEST);
+
+	// Conductor's Pants
+	public static final Item CU_BL_PANTS = new FirefighterSuit("conductors_pants_blue", ArmorMaterialRegistry.CU_BL_PANTS, EntityEquipmentSlot.LEGS, 1);
+	public static final Item CU_BLC_PANTS = new FirefighterSuit("conductors_pants_black", ArmorMaterialRegistry.CU_BLC_PANTS, EntityEquipmentSlot.LEGS, 1);
+
+	// Engineer's Overalls
+	public static final Item ENGINEERS_OVERALLS = new FirefighterSuit("engineers_overalls", ArmorMaterialRegistry.EO, EntityEquipmentSlot.LEGS, 1);
+
+	// Conductor and Engineer Hats
+	public static final Item CU_BL_HAT = new FirefighterSuit("conductors_hat_blue", ArmorMaterialRegistry.CU_BL_HAT, EntityEquipmentSlot.HEAD, 1);
+	public static final Item CU_BLC_HAT = new FirefighterSuit("conductors_hat_black", ArmorMaterialRegistry.CU_BLC_HAT, EntityEquipmentSlot.HEAD, 1);
+	public static final Item E_HAT = new FirefighterSuit("engineers_hat", ArmorMaterialRegistry.EO_HAT, EntityEquipmentSlot.HEAD, 1);
+
+	// Denim crafting item
+	public static final Item DENIM = new MiscItem("denim", 64, Main.IMMERSIBROOK_MAIN);
+
 	// Cooling Vest
 	public static final Item COOLING_VEST = new SACA("cooling_vest", ArmorMaterialRegistry.COOLING_VEST, EntityEquipmentSlot.CHEST);
 
@@ -462,6 +481,7 @@ public class ModItems
 	public static final Item BOX_RED = new ItemTechRetailBox("box_red", new ItemStack(ModItems.PHONE_RED, 1));
 	public static final Item BOX_BLACK = new ItemTechRetailBox("box_black", new ItemStack(ModItems.PHONE_BLACK, 1));
 	public static final Item BOX_BLUE = new ItemTechRetailBox("box_blue", new ItemStack(ModItems.PHONE_BLUE, 1));
+	public static final Item OT_CHARGER_BOX = new ItemTechRetailBox("ot_charger_box", new ItemStack(ModItems.OT_CHARGER, 1));
 	public static final Item OT_CHARGER = new MiscItem("ot_charger", 1, Main.IMMERSIBROOK_MAIN);
 
 	// CDM Retail Boxes - Laptops

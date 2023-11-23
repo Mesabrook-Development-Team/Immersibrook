@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WSW",
+    "SWS",
+    "WSW"
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:wool",
+	  "data": 3
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "wbtc:denim",
+    "count": 8
+  }
+}

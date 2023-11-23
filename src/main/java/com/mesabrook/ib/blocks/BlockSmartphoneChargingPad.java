@@ -91,7 +91,7 @@ public class BlockSmartphoneChargingPad extends Block implements IHasModel
                 ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                 packet.pos = pos;
                 packet.soundName = "wireless_charge_on";
-                packet.rapidSounds = false;
+                packet.rapidSounds = true;
                 PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));
             }
 
@@ -102,7 +102,8 @@ public class BlockSmartphoneChargingPad extends Block implements IHasModel
         {
             if(!worldIn.isRemote)
             {
-                ModUtils.dropTileEntityInventoryItems(worldIn, pos, tileEntityWirelessChargingPad);
+                heldItem = tileEntityWirelessChargingPad.getPhoneItem();
+                playerIn.addItemStackToInventory(heldItem);
                 tileEntityWirelessChargingPad.setPhone(ItemStack.EMPTY);
             }
             tileEntityWirelessChargingPad.markDirty();
@@ -113,7 +114,7 @@ public class BlockSmartphoneChargingPad extends Block implements IHasModel
                 ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
                 packet.pos = pos;
                 packet.soundName = "wireless_charge_off";
-                packet.rapidSounds = false;
+                packet.rapidSounds = true;
                 PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));
             }
 

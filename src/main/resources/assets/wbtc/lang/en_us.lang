@@ -152,6 +152,20 @@ item.lblue_vest.name=Light Blue Safety Vest
 item.lblue_vest_x.name=Light Blue Safety Vest - Railroad Pattern
 item.yellow_vest_nc.name=Yellow Safety Vest - Nether Corporation Branding
 
+//Conductor's Uniform
+item.conductors_jacket_blue.name=Blue Conductor's Coat
+item.conductors_jacket_black.name=Black Conductor's Coat
+item.conductors_pants_blue.name=Blue Conductor's Pants
+item.conductors_pants_black.name=Black Conductor's Pants
+item.conductors_hat_blue.name=Blue Conductor's Hat
+item.conductors_hat_black.name=Black Conductor's hat
+
+//Engineer's Uniform
+item.engineers_overalls.name=Denim Overalls
+item.denim.name=Denim
+
+item.engineers_hat.name=Engineer's Hat
+
 //Stairs
 tile.oak_laminate_stairs.name=Oak Wood Laminate Stairs
 tile.birch_laminate_stairs.name=Birch Wood Laminate Stairs

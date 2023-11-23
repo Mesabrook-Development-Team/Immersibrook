@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WWW",
+    "GGG"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:gold_nugget"
+    },
+    "W": {
+      "item": "minecraft:wool",
+	  "data":15 
+    }
+  },
+  "result": {
+    "item": "wbtc:conductors_hat_black",
+    "count": 1
+  }
+}

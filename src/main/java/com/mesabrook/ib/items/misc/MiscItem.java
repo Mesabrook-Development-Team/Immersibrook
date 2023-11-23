@@ -176,6 +176,10 @@ public class MiscItem extends Item implements IHasModel
 			{
 				tooltip.add(TextFormatting.YELLOW + "Crafting Ingredient");
 			}
+			if(stack.getItem() == ModItems.DENIM)
+			{
+				tooltip.add(TextFormatting.YELLOW + "Crafting Ingredient");
+			}
 		}
 		else
 		{

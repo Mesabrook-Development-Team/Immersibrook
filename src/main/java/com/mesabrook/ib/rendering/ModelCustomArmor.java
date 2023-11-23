@@ -24,9 +24,16 @@ public class ModelCustomArmor extends ModelBiped
 	}
 	
     @Override
-    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) 
-    { 
-    	super.render(entity, f, f1, f2, f3, f4, f5);
+    public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale)
+    {
+        this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entity);
+
+        this.bipedHead.render(scale);
+        this.bipedBody.render(scale);
+        this.bipedRightArm.render(scale);
+        this.bipedLeftArm.render(scale);
+        this.bipedRightLeg.render(scale);
+        this.bipedLeftLeg.render(scale);
     }
 
     public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) 

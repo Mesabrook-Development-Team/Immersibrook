@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DDD",
+    "DDD",
+    "D D"
+  ],
+  "key": {
+    "D": {
+      "item": "wbtc:denim"
+    }
+  },
+  "result": {
+    "item": "wbtc:engineers_overalls",
+    "count": 1
+  }
+}

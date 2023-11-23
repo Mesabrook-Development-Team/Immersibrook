@@ -169,6 +169,10 @@ public class ItemTechRetailBox extends Item implements IHasModel
             {
                 changedStack = new ItemStack(DeviceBlocks.PRINTER, 1, metadataPrinter);
             }
+            if(currentStack.getItem().getUnlocalizedName().contains("ot_charger"))
+            {
+                changedStack = new ItemStack(ModItems.OT_CHARGER, 1);
+            }
 
             return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, changedStack);
         }

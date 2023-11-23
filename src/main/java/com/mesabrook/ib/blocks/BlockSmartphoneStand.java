@@ -111,18 +111,19 @@ public class BlockSmartphoneStand extends Block implements IHasModel
             tileEntityPhoneStand.markDirty();
             tileEntityPhoneStand.sync();
             heldItem.shrink(1);
-            worldIn.playSound(playerIn, pos, SoundEvents.BLOCK_STONE_HIT, SoundCategory.BLOCKS, 1.0F, 1.6F);
+            worldIn.playSound(playerIn, pos, SoundEvents.BLOCK_GLASS_HIT, SoundCategory.BLOCKS, 1.0F, 1.6F);
             return true;
         }
 
         if(!tileEntityPhoneStand.getPhoneItem().isEmpty())
         {
-            worldIn.playSound(playerIn, pos, SoundEvents.BLOCK_STONE_HIT, SoundCategory.BLOCKS, 1.0F, 1.1F);
+            worldIn.playSound(playerIn, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1.0F, worldIn.rand.nextFloat());
             if(!worldIn.isRemote)
             {
                 if(tileEntityPhoneStand.getOwnerUUID().equals(playerIn.getUniqueID()))
                 {
-                    ModUtils.dropTileEntityInventoryItems(worldIn, pos, tileEntityPhoneStand);
+                    heldItem = tileEntityPhoneStand.getPhoneItem();
+                    playerIn.addItemStackToInventory(heldItem);
                     tileEntityPhoneStand.setPhone(ItemStack.EMPTY);
                 }
                 else
@@ -147,7 +148,8 @@ public class BlockSmartphoneStand extends Block implements IHasModel
             if(!worldIn.isRemote)
             {
                 playerIn.sendStatusMessage(new TextComponentString(TextFormatting.RED + "You have unclaimed this block successfully."), true);
-                ModUtils.dropTileEntityInventoryItems(worldIn, pos, tileEntityPhoneStand);
+                heldItem = tileEntityPhoneStand.getPhoneItem();
+                playerIn.addItemStackToInventory(heldItem);
             }
         }
 
