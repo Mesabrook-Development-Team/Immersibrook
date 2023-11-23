@@ -1,0 +1,22 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "item": "cdm:printer",
+         "data": 4
+      },
+      {
+         "item": "wbtc:box_large",
+         "data": 0
+      },
+      {
+         "item": "minecraft:paper",
+         "data": 0
+      }
+   ],
+   "result": {
+      "item": "wbtc:printer_box_yellow",
+      "data": 0,
+      "count": 1
+   }
+}

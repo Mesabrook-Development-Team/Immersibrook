@@ -5,8 +5,10 @@ import com.mesabrook.ib.blocks.te.TileEntityPhoneStand;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.misc.ItemPhone;
+import com.mesabrook.ib.net.ClientSoundPacket;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.ModUtils;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
@@ -117,14 +119,29 @@ public class BlockSmartphoneStand extends Block implements IHasModel
 
         if(!tileEntityPhoneStand.getPhoneItem().isEmpty())
         {
-            worldIn.playSound(playerIn, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1.0F, worldIn.rand.nextFloat());
             if(!worldIn.isRemote)
             {
                 if(tileEntityPhoneStand.getOwnerUUID().equals(playerIn.getUniqueID()))
                 {
-                    heldItem = tileEntityPhoneStand.getPhoneItem();
-                    playerIn.addItemStackToInventory(heldItem);
-                    tileEntityPhoneStand.setPhone(ItemStack.EMPTY);
+                    if(!playerIn.getHeldItem(hand).isEmpty())
+                    {
+                        playerIn.sendMessage(new TextComponentString(TextFormatting.RED + "Your hand needs to be empty before you can remove the item from the stand."));
+                    }
+                    else
+                    {
+
+                        ClientSoundPacket packet = new ClientSoundPacket();
+                        packet.modID = "minecraft";
+                        packet.pos = pos;
+                        packet.soundName = "entity.item.pickup";
+                        packet.volume = 1.0F;
+                        packet.pitch = worldIn.rand.nextFloat();
+                        PacketHandler.INSTANCE.sendToServer(packet);
+
+                        heldItem = tileEntityPhoneStand.getPhoneItem();
+                        playerIn.addItemStackToInventory(heldItem);
+                        tileEntityPhoneStand.setPhone(ItemStack.EMPTY);
+                    }
                 }
                 else
                 {

@@ -26,6 +26,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -102,21 +104,25 @@ public class BlockSmartphoneChargingPad extends Block implements IHasModel
         {
             if(!worldIn.isRemote)
             {
-                heldItem = tileEntityWirelessChargingPad.getPhoneItem();
-                playerIn.addItemStackToInventory(heldItem);
-                tileEntityWirelessChargingPad.setPhone(ItemStack.EMPTY);
+                if(!playerIn.getHeldItem(hand).isEmpty())
+                {
+                    playerIn.sendMessage(new TextComponentString(TextFormatting.RED + "Your hand needs to be empty before you can remove the phone from the charging pad."));
+                }
+                else
+                {
+                    heldItem = tileEntityWirelessChargingPad.getPhoneItem();
+                    playerIn.addItemStackToInventory(heldItem);
+                    tileEntityWirelessChargingPad.setPhone(ItemStack.EMPTY);
+
+                    ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
+                    packet.pos = pos;
+                    packet.soundName = "wireless_charge_off";
+                    packet.rapidSounds = true;
+                    PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));
+                }
             }
             tileEntityWirelessChargingPad.markDirty();
             tileEntityWirelessChargingPad.sync();
-
-            if(!worldIn.isRemote)
-            {
-                ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
-                packet.pos = pos;
-                packet.soundName = "wireless_charge_off";
-                packet.rapidSounds = true;
-                PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));
-            }
 
             return true;
         }
