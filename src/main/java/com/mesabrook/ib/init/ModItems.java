@@ -549,4 +549,7 @@ public class ModItems
 
 	// Shopping Basket Test Item
 	public static final Item SHOPPING_BASKET = new MiscItem("shopping_basket_blue", 1, Main.IMMERSIBROOK_MAIN);
+
+	// More food
+	public static final Item SPAM = new MiscItem("spam",1, Main.IMMERSIBROOK_MAIN);
 }

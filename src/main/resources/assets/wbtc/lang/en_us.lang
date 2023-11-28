@@ -2101,3 +2101,6 @@ item.printer_box_green.name=Craytech Printer
 item.printer_box_red.name=Craytech Printer
 item.printer_box_black.name=Craytech Printer
 item.printer_box_lime.name=Craytech Printer
+
+//More Food
+item.spam.name=Luncheon Meat
