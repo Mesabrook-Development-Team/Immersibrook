@@ -2,6 +2,7 @@ package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.net.*;
+import com.mesabrook.ib.util.IndependentTimer;
 import com.mesabrook.ib.util.MinedroidCrashLogUploader;
 import com.mesabrook.ib.util.ModUtils;
 import com.mesabrook.ib.util.handlers.*;
@@ -18,7 +19,7 @@ public class GuiPhoneCrashed extends GuiPhoneBase
 {
     private String errorTitle;
     private String errorStackTrace;
-    private int delay = 0;
+    private IndependentTimer timer;
 
     MinedroidButton resetButton;
     MinedroidButton uploadToPastebinButton;
@@ -28,6 +29,7 @@ public class GuiPhoneCrashed extends GuiPhoneBase
     public GuiPhoneCrashed(ItemStack phoneStack, EnumHand hand)
     {
         super(phoneStack, hand);
+        timer = new IndependentTimer();
     }
 
     public String getCrashTitle()
@@ -94,10 +96,9 @@ public class GuiPhoneCrashed extends GuiPhoneBase
     protected void doDraw(int mouseX, int mouseY, float partialticks)
     {
         super.doDraw(mouseX, mouseY, partialticks);
+        timer.update();
 
-        delay++;
-
-        if(delay > 325)
+        if(timer.getElapsedTime() > 3000)
         {
             drawCenteredString(fontRenderer, new TextComponentString(TextFormatting.BOLD + "Minedroid has crashed.").getFormattedText() , INNER_X + 80, INNER_Y + 50, 0xFFFFFF);
 
@@ -137,5 +138,12 @@ public class GuiPhoneCrashed extends GuiPhoneBase
                 Main.logger.error(ex);
             }
         }
+    }
+
+    @Override
+    public void onGuiClosed()
+    {
+        timer.reset();
+        timer.stop();
     }
 }
