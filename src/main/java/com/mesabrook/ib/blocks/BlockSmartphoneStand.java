@@ -5,10 +5,8 @@ import com.mesabrook.ib.blocks.te.TileEntityPhoneStand;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.misc.ItemPhone;
-import com.mesabrook.ib.net.ClientSoundPacket;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.ModUtils;
-import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
@@ -55,6 +53,7 @@ public class BlockSmartphoneStand extends Block implements IHasModel
         setResistance(100F);
         setHardness(1.0F);
         setHarvestLevel("pickaxe", 0);
+        setTickRandomly(true);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 
         AABBs = new ArrayList<AxisAlignedBB>(Arrays.asList(
@@ -129,15 +128,6 @@ public class BlockSmartphoneStand extends Block implements IHasModel
                     }
                     else
                     {
-
-                        ClientSoundPacket packet = new ClientSoundPacket();
-                        packet.modID = "minecraft";
-                        packet.pos = pos;
-                        packet.soundName = "entity.item.pickup";
-                        packet.volume = 1.0F;
-                        packet.pitch = worldIn.rand.nextFloat();
-                        PacketHandler.INSTANCE.sendToServer(packet);
-
                         heldItem = tileEntityPhoneStand.getPhoneItem();
                         playerIn.addItemStackToInventory(heldItem);
                         tileEntityPhoneStand.setPhone(ItemStack.EMPTY);
