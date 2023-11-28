@@ -25,54 +25,12 @@ public class GuiBellIntroAnimation extends GuiPhoneBase
     @Override
     protected String getInnerTextureFileName()
     {
-        if(timer.getElapsedTime() < 100)
-        {
-            currentTexture = "system/app_screen_no_bar.png";
-        }
-        if(timer.getElapsedTime() >= 150)
-        {
-            currentTexture = "system/newboot/frame_0.png";
-        }
-        if(timer.getElapsedTime() >= 200)
-        {
-            currentTexture = "system/newboot/frame_1.png";
-        }
-        if(timer.getElapsedTime() >= 400)
-        {
-            currentTexture = "system/newboot/frame_2.png";
-        }
-        if(timer.getElapsedTime() >= 600)
-        {
-            currentTexture = "system/newboot/frame_3.png";
-        }
-        if(timer.getElapsedTime() >= 800)
-        {
-            currentTexture = "system/newboot/frame_4.png";
-        }
-        if(timer.getElapsedTime() >= 1000)
-        {
-            currentTexture = "system/newboot/frame_5.png";
-        }
-        if(timer.getElapsedTime() >= 1200)
-        {
-            currentTexture = "system/newboot/frame_6.png";
-        }
-        if(timer.getElapsedTime() >= 1400)
-        {
-            currentTexture = "system/newboot/frame_7.png";
-        }
-        if(timer.getElapsedTime() >= 1600)
-        {
-            currentTexture = "system/newboot/frame_8.png";
-        }
-        if(timer.getElapsedTime() >= 1800)
-        {
-            currentTexture = "system/newboot/frame_9.png";
-        }
-        if(timer.getElapsedTime() >= 2000)
-        {
-            currentTexture = "system/newboot/frame_10.png";
-        }
+        int elapsedTime = (int) timer.getElapsedTime();
+        int frameNumber = (elapsedTime - 50) / 27;
+
+        frameNumber = Math.max(0, Math.min(frameNumber, 198));
+
+        currentTexture = "system/newboot/frame_" + frameNumber + ".png";
         return currentTexture;
     }
 
@@ -106,7 +64,12 @@ public class GuiBellIntroAnimation extends GuiPhoneBase
         super.doDraw(mouseX, mouseY, partialticks);
         timer.update();
 
-        if(timer.getElapsedTime() >= 5000)
+        if(timer.getElapsedTime() > 4600)
+        {
+            drawCenteredString(fontRenderer, "A service of", INNER_X + 80, INNER_Y + 55, 0xFFFFFF);
+        }
+
+        if(timer.getElapsedTime() >= 6000)
         {
             finishBoot();
         }
@@ -116,7 +79,7 @@ public class GuiBellIntroAnimation extends GuiPhoneBase
     {
         if(phoneStackData.getNeedToDoOOBE())
         {
-            Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneSetupStart(phoneStack, hand));
+            Minecraft.getMinecraft().displayGuiScreen(new GuiBubbleSplashAnim(phoneStack, hand));
         }
         else
         {

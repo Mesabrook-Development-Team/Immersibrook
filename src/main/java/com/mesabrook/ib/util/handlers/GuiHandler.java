@@ -58,7 +58,7 @@ public class GuiHandler implements IGuiHandler
 			}
 			else if(hasToDoOOBE)
 			{
-				return new GuiPhoneSetupStart(stack, hand);
+				return new GuiBubbleSplashAnim(stack, hand);
 			}
 			else if(stackNBTData.getBatteryLevel() <= 0)
 			{

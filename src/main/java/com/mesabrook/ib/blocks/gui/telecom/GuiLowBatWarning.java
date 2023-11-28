@@ -71,13 +71,20 @@ public class GuiLowBatWarning extends GuiPhoneBase
                 return;
             }
 
-            if(isPhoneUnlocked)
+            if(!phoneStackData.getNeedToDoOOBE())
             {
-                Minecraft.getMinecraft().displayGuiScreen(new GuiHome(phoneStack, hand));
+                if(isPhoneUnlocked)
+                {
+                    Minecraft.getMinecraft().displayGuiScreen(new GuiHome(phoneStack, hand));
+                }
+                else
+                {
+                    Minecraft.getMinecraft().displayGuiScreen(new GuiLockScreen(phoneStack, hand));
+                }
             }
             else
             {
-                Minecraft.getMinecraft().displayGuiScreen(new GuiLockScreen(phoneStack, hand));
+                Minecraft.getMinecraft().displayGuiScreen(new GuiBubbleSplashAnim(phoneStack, hand));
             }
         }
     }
