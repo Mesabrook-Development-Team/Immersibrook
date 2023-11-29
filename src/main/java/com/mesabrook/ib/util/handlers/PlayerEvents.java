@@ -328,7 +328,7 @@ public class PlayerEvents
 					ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 					packet.pos = e.getPosition();
 					packet.soundName = "death";
-					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(e.dimension, e.posX, e.posY, e.posZ, Integer.MAX_VALUE));
+					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(e.dimension, e.posX, e.posY, e.posZ, 100));
 				}
 
 				if(!forbidCannibalism)
