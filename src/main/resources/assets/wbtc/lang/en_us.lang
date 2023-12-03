@@ -1651,6 +1651,7 @@ item.phone_shell_red.name=Red Phone Shell
 item.phone_shell_black.name=Black Phone Shell
 item.phone_shell_special.name=Rainbow Phone Shell
 item.radio.name=Radio
+tile.wireless_phone_charger_pad.name=Wireless Smartphone Charging Pad
 
 //Ducks
 item.rubber_duck.name=Rubber Ducky
@@ -2105,3 +2106,8 @@ item.printer_box_lime.name=Craytech Printer
 
 //More Food
 item.spam.name=Luncheon Meat
+
+//Dishes
+tile.dish_bell.name=Satellite Dish - Mesabrook Bell
+tile.dish_msac.name=Satellite Dish - MSAC
+tile.dish_blank.name=Satellite Dish
