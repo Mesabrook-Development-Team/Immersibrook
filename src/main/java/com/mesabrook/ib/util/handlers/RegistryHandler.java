@@ -118,7 +118,6 @@ public class RegistryHandler
 	
 	public static void initRegistries()
 	{
-		//MottoRandomizer.RandomMotto();
 		Main.logger.info("");
 		Main.logger.info("=============================================================================");
 		Main.logger.info("");

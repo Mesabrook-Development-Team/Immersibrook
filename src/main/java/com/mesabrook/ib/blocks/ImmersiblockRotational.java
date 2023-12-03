@@ -74,27 +74,13 @@ public class ImmersiblockRotational extends Block implements IHasModel
     @Override
     public boolean isFlammable(IBlockAccess world, BlockPos pos, EnumFacing face)
     {
-        if(this.getUnlocalizedName().contains("siding"))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return false;
     }
 
     @Override
     public int getFlammability(IBlockAccess world, BlockPos pos, EnumFacing face)
     {
-        if(this.getUnlocalizedName().contains("siding"))
-        {
-            return 180;
-        }
-        else
-        {
-            return 0;
-        }
+        return 0;
     }
 
     @Override
@@ -113,6 +99,10 @@ public class ImmersiblockRotational extends Block implements IHasModel
         if(blockState.getBlock() == ModBlocks.RETAIL_FREEZER_UPRIGHT)
         {
             return ModUtils.DOUBLE_AABB;
+        }
+        if(blockState.getBlock() == ModBlocks.IN_STREET_CROSSWALK_SIGN)
+        {
+            return null;
         }
         return FULL_BLOCK_AABB;
     }
