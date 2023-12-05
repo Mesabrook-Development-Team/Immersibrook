@@ -16,5 +16,6 @@ public class TileEntityHandler
 		GameRegistry.registerTileEntity(TileEntitySoundEmitter.class, new ResourceLocation(Reference.MODID + ":soundblock"));
 		GameRegistry.registerTileEntity(TileEntityPhoneStand.class, new ResourceLocation(Reference.MODID + ":itemstand"));
 		GameRegistry.registerTileEntity(TileEntityWirelessChargingPad.class, new ResourceLocation(Reference.MODID + ":charger"));
+		GameRegistry.registerTileEntity(TileEntitySmoker.class, new ResourceLocation(Reference.MODID + ":smoker_block"));
 	}
 }

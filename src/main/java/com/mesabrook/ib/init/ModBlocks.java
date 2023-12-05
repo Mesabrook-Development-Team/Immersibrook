@@ -1238,4 +1238,7 @@ public class ModBlocks
 	public static final Block DISH_BELL = new ImmersiblockRotational("dish_bell", Material.IRON, SoundType.METAL, "pickaxe", 1, 10F, 10F, ModUtils.DEFAULT_AABB);
 	public static final Block DISH_MSAC = new ImmersiblockRotational("dish_msac", Material.IRON, SoundType.METAL, "pickaxe", 1, 10F, 10F, ModUtils.DEFAULT_AABB);
 	public static final Block DISH_BLANK = new ImmersiblockRotational("dish_blank", Material.IRON, SoundType.METAL, "pickaxe", 1, 10F, 10F, ModUtils.DEFAULT_AABB);
+
+	// Smoker
+	public static final Block SMOKER = new BlockSmoker("smoker");
 }
