@@ -35,6 +35,7 @@ public class BlockSmoker extends BlockContainer implements IHasModel
         super(Material.IRON);
         setUnlocalizedName(name);
         setRegistryName(name);
+        setCreativeTab(Main.IMMERSIBROOK_MAIN);
 
         ModBlocks.BLOCKS.add(this);
         ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));

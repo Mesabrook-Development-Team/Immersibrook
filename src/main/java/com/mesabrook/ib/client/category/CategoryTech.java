@@ -107,5 +107,7 @@ public class CategoryTech extends AbstractCategory
         add(ModBlocks.DISH_BELL);
         add(ModBlocks.DISH_MSAC);
         add(ModBlocks.DISH_BLANK);
+
+        add(ModBlocks.SMOKER);
     }
 }
