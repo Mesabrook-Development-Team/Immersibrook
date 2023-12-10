@@ -654,4 +654,39 @@ public class PlayerEvents
 			}
 		}
 	}
+
+	@SubscribeEvent
+	public void onPlayerRightClick(PlayerInteractEvent.RightClickBlock event)
+	{
+		EntityPlayer player = event.getEntityPlayer();
+		World world = event.getWorld();
+		ItemStack heldItem = player.getHeldItem(event.getHand());
+		BlockPos pos = event.getPos();
+		IBlockState state = world.getBlockState(pos);
+
+		// Get water bottle from certain block.
+		if (heldItem.getItem() == Items.GLASS_BOTTLE && state.getBlock() == ModBlocks.PRISON_TOILET)
+		{
+			ItemStack waterBottle = new ItemStack(Items.POTIONITEM, 1, 0);
+
+			NBTTagCompound nbt = new NBTTagCompound();
+			nbt.setString("Potion", "minecraft:water");
+			waterBottle.setTagCompound(nbt);
+
+			if(!player.isCreative())
+			{
+				heldItem.shrink(1);
+			}
+
+			player.addItemStackToInventory(waterBottle);
+			player.swingArm(event.getHand());
+
+			ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
+			packet.pos = pos;
+			packet.modID = "cfm";
+			packet.soundName = "tap";
+			packet.rapidSounds = true;
+			PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+		}
+	}
 }

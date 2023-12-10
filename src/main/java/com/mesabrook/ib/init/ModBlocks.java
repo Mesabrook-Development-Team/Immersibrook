@@ -1229,10 +1229,10 @@ public class ModBlocks
 	public static final Block ATM = new ImmersiblockRotational("atm", Material.IRON, SoundType.METAL, "pickaxe", 1, 10F, 10F, ModUtils.DEFAULT_AABB);
 
 	// Terlets
-	public static final Block PRISON_TOILET = new ImmersiToilet("toilet", ModUtils.DEFAULT_AABB);
-	public static final Block WALL_TOILET = new ImmersiToilet("wall_toilet", ModUtils.DEFAULT_AABB);
-	public static final Block HOME_TOILET = new ImmersiToilet("home_toilet", ModUtils.DEFAULT_AABB);
-	public static final Block URINAL = new ImmersiToilet("urinal", ModUtils.getPixelatedAABB(3,5,0, 12,20,0.8));
+	public static final Block PRISON_TOILET = new BlockToilet("toilet", ModUtils.DEFAULT_AABB);
+	public static final Block WALL_TOILET = new BlockToilet("wall_toilet", ModUtils.DEFAULT_AABB);
+	public static final Block HOME_TOILET = new BlockToilet("home_toilet", ModUtils.DEFAULT_AABB);
+	public static final Block URINAL = new BlockToilet("urinal", ModUtils.getPixelatedAABB(3,5,0, 12,20,0.8));
 
 	// Dishes
 	public static final Block DISH_BELL = new ImmersiblockRotational("dish_bell", Material.IRON, SoundType.METAL, "pickaxe", 1, 10F, 10F, ModUtils.DEFAULT_AABB);

@@ -30,12 +30,12 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ImmersiToilet extends Block implements IHasModel
+public class BlockToilet extends Block implements IHasModel
 {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
     protected final ArrayList<AxisAlignedBB> AABBs;
 
-    public ImmersiToilet(String name, AxisAlignedBB unrotatedAABB)
+    public BlockToilet(String name, AxisAlignedBB unrotatedAABB)
     {
         super(Material.IRON);
         setUnlocalizedName(name);

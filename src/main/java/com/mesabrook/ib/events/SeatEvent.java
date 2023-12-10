@@ -1,6 +1,6 @@
 package com.mesabrook.ib.events;
 
-import com.mesabrook.ib.blocks.ImmersiToilet;
+import com.mesabrook.ib.blocks.BlockToilet;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.Reference;
@@ -119,7 +119,7 @@ public class SeatEvent
             EntityPlayer player = world.getClosestPlayer(posX, posY, posZ, 5, false);
 
             // Seat Event for Immersibrook's Toilet blocks.
-            if(!(getEntityWorld().getBlockState(pos).getBlock() instanceof ImmersiToilet))
+            if(!(getEntityWorld().getBlockState(pos).getBlock() instanceof BlockToilet))
             {
                 setDead();
                 return;
