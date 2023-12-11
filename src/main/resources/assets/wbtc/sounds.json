@@ -6,6 +6,13 @@
 			"stream": true
 		}]
 	},
+	"ding_10": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ding_10",
+			"stream": true
+		}]
+	},
 	"wireless_charge_off": {
 		"category": "master",
 		"sounds": [{

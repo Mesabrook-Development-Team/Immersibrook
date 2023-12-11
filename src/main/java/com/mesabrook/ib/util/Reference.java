@@ -67,7 +67,7 @@ public class Reference
 	public static final String USE_BUTTON_INSTEAD_OF_SLIDER = "usebuttoninsteadofslider";
 
 	public static final int MAX_PHONE_BACKGROUNDS = 42; // This is an INCLUSIVE number
-	public static final int MAX_CHAT_NOTIFICATIONS = 9; // This is an INCLUSIVE number
+	public static final int MAX_CHAT_NOTIFICATIONS = 10; // This is an INCLUSIVE number
 	public static final int MAX_RINGTONES = 25; // This is an INCLUSIVE number
 
 	// Birthdays (Day and Month only - NO YEARS)
