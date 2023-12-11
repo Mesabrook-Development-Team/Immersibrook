@@ -149,6 +149,7 @@ public class SoundInit
 	public static final SoundEvent DING_7;
 	public static final SoundEvent DING_8;
 	public static final SoundEvent DING_9;
+	public static final SoundEvent DING_10;
 	public static final SoundEvent OUTGOING_CALL;
 	public static final SoundEvent SIT;
 	public static final SoundEvent SIT_1;
@@ -349,6 +350,7 @@ public class SoundInit
 		DING_7 = addSoundsToRegistry("ding_7");
 		DING_8 = addSoundsToRegistry("ding_8");
 		DING_9 = addSoundsToRegistry("ding_9");
+		DING_10 = addSoundsToRegistry("ding_10");
 		OUTGOING_CALL = addSoundsToRegistry("outgoingcall");
 		SIT = addSoundsToRegistry("sit");
 		SIT_1 = addSoundsToRegistry("sit_1");
@@ -612,6 +614,7 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.XP_STARTUP);
 				event.getRegistry().register(SoundInit.WC_OFF);
 				event.getRegistry().register(SoundInit.WC_ON);
+				event.getRegistry().register(SoundInit.DING_10);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");
