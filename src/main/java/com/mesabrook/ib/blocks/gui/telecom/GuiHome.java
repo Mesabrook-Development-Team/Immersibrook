@@ -3,16 +3,22 @@ package com.mesabrook.ib.blocks.gui.telecom;
 import com.mesabrook.ib.util.ModUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiConfirmOpenLink;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 
 @SideOnly(Side.CLIENT)
 public class GuiHome extends GuiPhoneBase {
@@ -137,7 +143,41 @@ public class GuiHome extends GuiPhoneBase {
 				try
 				{
 					Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, new TextComponentTranslation("im.misc.urlopened").getFormattedText(), 0xFFFFFF));
-					ModUtils.openWebLink(new URI("https://github.com/RavenholmZombie/Immersibrook/wiki/Minedroid-Help"));
+					GuiConfirmOpenLink guiConfirmOpenLink = new GuiConfirmOpenLink(this, "https://github.com/RavenholmZombie/Immersibrook/wiki/Minedroid-Help", 1, true)
+					{
+						@Override
+						protected void actionPerformed(GuiButton button) throws IOException
+						{
+							if (button.id == 0)
+							{ // Yes button
+								// Handle Yes button click
+								try {
+									ModUtils.openWebLink(new URI("https://github.com/RavenholmZombie/Immersibrook/wiki/Minedroid-Help"));
+								} catch (URISyntaxException e) {
+									e.printStackTrace();
+								}
+								Minecraft.getMinecraft().displayGuiScreen(null);
+							}
+							else if (button.id == 1)
+							{ // No button
+								// Handle No button click
+								Minecraft.getMinecraft().displayGuiScreen(null);
+							}
+							else if (button.id == 2)
+							{ // Copy to Clipboard button
+								// Handle Copy to Clipboard button click
+								StringSelection stringSelection = new StringSelection("https://github.com/RavenholmZombie/Immersibrook/wiki/Minedroid-Help");
+								Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+								clipboard.setContents(stringSelection, null);
+								Minecraft.getMinecraft().displayGuiScreen(null);
+								Minecraft.getMinecraft().player.sendMessage(new TextComponentString("Link copied to clipboard."));
+							}
+						}
+					};
+
+
+
+					Minecraft.getMinecraft().displayGuiScreen(guiConfirmOpenLink);
 				}
 				catch (Exception e)
 				{
