@@ -1,5 +1,8 @@
 package com.mesabrook.ib.util;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiConfirmOpenLink;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
@@ -7,9 +10,17 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 
 /**
 ** Immersibrook Utilities Class
@@ -63,6 +74,61 @@ public class ModUtils
 		catch(Exception e)
 		{
 			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * An extension of openWebLink that funnels the request through Minecraft's built-in External Website confirmation GUI.
+	 *
+	 * NOTE: THIS CAN ONLY BE RUN ON THE CLIENT SIDE, RUNNING IT ON THE SERVER SIDE WILL CAUSE CRASHING!
+	 * USE A PACKET IF NECESSARY TO USE THIS UTILITY ON THE SERVER SIDE.
+	 *
+	 * @param urlIn
+	 */
+	@SideOnly(Side.CLIENT)
+	public static void openWebLinkThroughMC(String urlIn)
+	{
+		try
+		{
+			GuiConfirmOpenLink guiConfirmOpenLink = new GuiConfirmOpenLink(Minecraft.getMinecraft().currentScreen, urlIn, 1, true)
+			{
+				@Override
+				protected void actionPerformed(GuiButton button) throws IOException
+				{
+					if (button.id == 0)
+					{
+						// Handle Yes button click
+						try
+						{
+							ModUtils.openWebLink(new URI(urlIn));
+						}
+						catch (URISyntaxException e)
+						{
+							return;
+						}
+						Minecraft.getMinecraft().displayGuiScreen(null);
+					}
+					else if (button.id == 1)
+					{
+						// Handle No button click
+						Minecraft.getMinecraft().displayGuiScreen(null);
+					}
+					else if (button.id == 2)
+					{
+						// Handle Copy to Clipboard button click
+						StringSelection stringSelection = new StringSelection(urlIn);
+						Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+						clipboard.setContents(stringSelection, null);
+						Minecraft.getMinecraft().displayGuiScreen(null);
+						Minecraft.getMinecraft().player.sendMessage(new TextComponentString("Link copied to clipboard."));
+					}
+				}
+			};
+			Minecraft.getMinecraft().displayGuiScreen(guiConfirmOpenLink);
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
 		}
 	}
 

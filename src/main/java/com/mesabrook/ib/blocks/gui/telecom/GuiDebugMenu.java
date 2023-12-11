@@ -20,11 +20,12 @@ public class GuiDebugMenu extends GuiPhoneBase
     LabelButton weaLabel;
     LabelButton oobeLabel;
     LabelButton crashLabel;
-    LabelButton lowBatTest;
+    LabelButton viewPhoneNBT;
 
     ImageButton weaIcon;
     ImageButton oobeIcon;
     ImageButton crashIcon;
+    ImageButton viewPhoneNBTIcon;
     public GuiDebugMenu(ItemStack phoneStack, EnumHand hand) {
         super(phoneStack, hand);
     }
@@ -51,11 +52,12 @@ public class GuiDebugMenu extends GuiPhoneBase
         weaLabel = new LabelButton(1, INNER_X + 31, INNER_Y + 53, new TextComponentTranslation("im.settings.debug.wea").getFormattedText(), 0xFFFFFF);
         oobeLabel = new LabelButton(2, INNER_X + 31, INNER_Y + 83, new TextComponentTranslation("im.settings.debug.oobe").getFormattedText(), 0xFFFFFF);
         crashLabel = new LabelButton(3, INNER_X + 31, INNER_Y + 113, new TextComponentString("Crash Device").getFormattedText(), 0xFFFFFF);
-        lowBatTest = new LabelButton(4, INNER_X + 31, INNER_Y + 133, new TextComponentString("Low Battery Screen").getFormattedText(), 0xFFFFFF);
+        viewPhoneNBT = new LabelButton(4, INNER_X + 31, INNER_Y + 145, new TextComponentString("View Phone NBT Data").getFormattedText(), 0xFFFFFF);
 
         weaIcon = new ImageButton(100, INNER_X + 0, INNER_Y + 40, 28, 28, phoneStackData.getIconTheme() + "/btn_debug.png", 32, 32);
         oobeIcon = new ImageButton(101, INNER_X + 0, INNER_Y + 70, 28, 28, phoneStackData.getIconTheme() + "/btn_debug.png", 32, 32);
         crashIcon = new ImageButton(102, INNER_X + 0, INNER_Y + 100, 28, 28, phoneStackData.getIconTheme() + "/btn_debug.png", 32, 32);
+        viewPhoneNBTIcon = new ImageButton(103, INNER_X + 0, INNER_Y + 133, 28, 28, phoneStackData.getIconTheme() + "/btn_debug.png", 32, 32);
 
         buttonList.addAll(ImmutableList.<GuiButton>builder()
                 .add(back)
@@ -65,6 +67,8 @@ public class GuiDebugMenu extends GuiPhoneBase
                 .add(weaIcon)
                 .add(oobeIcon)
                 .add(crashIcon)
+                .add(viewPhoneNBT)
+                .add(viewPhoneNBTIcon)
                 .build());
     }
 
@@ -82,6 +86,11 @@ public class GuiDebugMenu extends GuiPhoneBase
         if(button == back)
         {
             Minecraft.getMinecraft().displayGuiScreen(new GuiSettings(phoneStack, hand));
+        }
+
+        if(button == viewPhoneNBT || button == viewPhoneNBTIcon)
+        {
+            Minecraft.getMinecraft().displayGuiScreen(new GuiNBTInfo(phoneStack, hand));
         }
 
         if(button == weaIcon || button == weaLabel)
@@ -132,11 +141,6 @@ public class GuiDebugMenu extends GuiPhoneBase
 
                 Minecraft.getMinecraft().displayGuiScreen(crashGui);
             }
-        }
-
-        if(button == lowBatTest)
-        {
-            Minecraft.getMinecraft().displayGuiScreen(new GuiLowBatWarning(phoneStack, hand));
         }
     }
 }
