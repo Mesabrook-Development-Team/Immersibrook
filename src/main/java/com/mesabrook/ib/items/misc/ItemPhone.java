@@ -138,6 +138,7 @@ public class ItemPhone extends Item implements IHasModel {
 		private boolean needsToDoOOBE = true;
 		private boolean isPhoneDead = false;
 		private boolean useButtonInsteadOfSlider = false;
+		private String skinFetchingEngine = "mc-heads";
 		
 		public static NBTData getFromItemStack(ItemStack phoneStack)
 		{
@@ -296,6 +297,16 @@ public class ItemPhone extends Item implements IHasModel {
 			return this.iconTheme = themeIn;
 		}
 
+		public String getSkinFetchingEngine()
+		{
+			return skinFetchingEngine;
+		}
+
+		public String setSkinFetchingEngine(String engineIn)
+		{
+			return this.skinFetchingEngine = engineIn;
+		}
+
 		public boolean getNeedToDoOOBE()
 		{
 			return needsToDoOOBE;
@@ -385,6 +396,7 @@ public class ItemPhone extends Item implements IHasModel {
 			tag.setBoolean(Reference.SHOW_MILITARY_TIME, getShowingMilitaryIRLTime());
 			tag.setBoolean(Reference.DEBUG_MODE, getIsDebugModeEnabled());
 			tag.setString(Reference.ICON_THEME, getIconTheme());
+			tag.setString(Reference.SKIN_ENGINE, getSkinFetchingEngine());
 			tag.setBoolean(Reference.OOBE_STATUS, getNeedToDoOOBE());
 			tag.setBoolean(Reference.USE_BUTTON_INSTEAD_OF_SLIDER, getUseButtonInsteadOfSlider());
 			
@@ -468,6 +480,11 @@ public class ItemPhone extends Item implements IHasModel {
 			if(nbt.hasKey(Reference.ICON_THEME))
 			{
 				setIconTheme(nbt.getString(Reference.ICON_THEME));
+			}
+
+			if(nbt.hasKey(Reference.SKIN_ENGINE))
+			{
+				setSkinFetchingEngine(nbt.getString(Reference.SKIN_ENGINE));
 			}
 
 			if(nbt.hasKey(Reference.OOBE_STATUS))

@@ -6,7 +6,6 @@ import com.mesabrook.ib.items.misc.ItemPhone.NBTData;
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData.Contact;
 import com.mesabrook.ib.net.telecom.DeleteContactPacket;
 import com.mesabrook.ib.net.telecom.PhoneQueryPacket;
-import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.ClientSideHandlers.TelecomClientHandlers;
 import com.mesabrook.ib.util.handlers.PacketHandler;
@@ -35,6 +34,7 @@ public class GuiAddressBook extends GuiPhoneBase {
 	MinedroidButton nextPage;
 	MinedroidButton lastPage;
 	MinedroidButton addContact;
+	ImageButton settings;
 	AddressBookItem[] items = new AddressBookItem[4];
 	
 	private int page = 1;
@@ -54,13 +54,15 @@ public class GuiAddressBook extends GuiPhoneBase {
 	@Override
 	public void initGui() {
 		super.initGui();
-
 		int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 32;
 		firstPage = new MinedroidButton(1, INNER_X + 3, lowerControlsY, 10, "<<", 0);
 		prevPage = new MinedroidButton(2, firstPage.x + firstPage.width + 3, lowerControlsY, 10, "<", 0);
 		lastPage = new MinedroidButton(4, INNER_X + INNER_TEX_WIDTH - 10 - 3, lowerControlsY, 10, ">>", 0);
 		nextPage = new MinedroidButton(3, lastPage.x - 3 - 10, lowerControlsY, 10, ">", 0);
 		addContact = new MinedroidButton(4, INNER_X + INNER_TEX_WIDTH - 25 - 3, INNER_Y + 17, 25, new TextComponentTranslation("im.contacts.buttonadd").getFormattedText(), 0x00FF00);
+
+		settings = new ImageButton(5, INNER_X + 120, INNER_Y + 19, 12, 12, phoneStackData.getIconTheme() + "/btn_debug.png", 32, 32);
+
 		filter = new GuiTextField(100, fontRenderer, prevPage.x + prevPage.width + 3, lowerControlsY + 2, nextPage.x - (prevPage.x + prevPage.width) - 6, 10);
 		filter.setText(filterPlaceholder);
 		
@@ -72,6 +74,7 @@ public class GuiAddressBook extends GuiPhoneBase {
 				.add(nextPage)
 				.add(lastPage)
 				.add(addContact)
+				.add(settings)
 				.build());
 	}
 
@@ -128,7 +131,12 @@ public class GuiAddressBook extends GuiPhoneBase {
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
 		super.actionPerformed(button);
-		
+
+		if(button == settings)
+		{
+			Minecraft.getMinecraft().displayGuiScreen(new GuiAddressBookSettings(phoneStack, hand));
+		}
+
 		if (button == addContact)
 		{
 			Minecraft.getMinecraft().displayGuiScreen(new GuiAddressBookDetails(phoneStack, hand));
