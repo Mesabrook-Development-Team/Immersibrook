@@ -2,12 +2,13 @@ package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.mesabrook.ib.net.telecom.PhoneQueryPacket;
 import com.mesabrook.ib.util.IndependentTimer;
-import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.ClientSideHandlers;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 
 import java.io.IOException;
 
@@ -82,7 +83,7 @@ public class GuiAppSplashScreen extends GuiPhoneBase
     protected void doDraw(int mouseX, int mouseY, float partialticks)
     {
         super.doDraw(mouseX, mouseY, partialticks);
-        drawCenteredString(fontRenderer, getAppName() + " " + Reference.MINEDROID_VERSION, INNER_X + 80, INNER_Y + 150, 0xFFFFFF);
+        drawCenteredString(fontRenderer, new TextComponentString(TextFormatting.BOLD + getAppName()).getFormattedText(), INNER_X + 80, INNER_Y + 150, 0xFFFFFF);
 
         timer.update();
         if(timer.getElapsedTime() > 300)

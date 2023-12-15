@@ -7,16 +7,21 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @SideOnly(Side.CLIENT)
 public class GuiHome extends GuiPhoneBase {
 
 	private ResourceLocation dockTexture = new ResourceLocation("wbtc", "textures/gui/telecom/system/dock.png");
+	private List<String> buttonTooltip = new ArrayList<>();
 	public GuiHome(ItemStack phoneStack, EnumHand hand) {
 		super(phoneStack, hand);
 	}
@@ -65,6 +70,15 @@ public class GuiHome extends GuiPhoneBase {
 		// Help App
 		button7 = new ImageButton(6, INNER_X + 86, INNER_Y + 24, 32, 32, phoneStackData.getIconTheme() + "/icn_help.png", 32, 32);
 		buttonList.add(button7);
+
+		// Tooltips
+		buttonTooltip.add("Phone");
+		buttonTooltip.add("Messages");
+		buttonTooltip.add("Address Book");
+		buttonTooltip.add("Settings");
+		buttonTooltip.add("Music Player");
+		buttonTooltip.add("Calculator");
+		buttonTooltip.add("Minedroid Help");
 	}
 
 	@Override
@@ -74,7 +88,41 @@ public class GuiHome extends GuiPhoneBase {
 		GlStateManager.enableAlpha();
 		GlStateManager.enableBlend();
 		Minecraft.getMinecraft().getTextureManager().bindTexture(dockTexture);
-		drawScaledCustomSizeModalRect(INNER_X + 2, INNER_Y + 160, 0, 0, INNER_TEX_WIDTH * WIDTH_SCALE, INNER_TEX_HEIGHT * HEIGHT_SCALE, INNER_TEX_WIDTH - 3, INNER_TEX_HEIGHT - 185, 324, 450);
+		drawScaledCustomSizeModalRect(INNER_X, INNER_Y + 160, 0, 0, INNER_TEX_WIDTH * WIDTH_SCALE, INNER_TEX_HEIGHT * HEIGHT_SCALE, INNER_TEX_WIDTH - 0, INNER_TEX_HEIGHT - 175, 324, 450);
+
+		if(mouseX >= button.x && mouseY >= button.y && mouseX < button.x + button.width && mouseY < button.y + button.height)
+		{
+			drawCenteredString(fontRenderer, "Phone", INNER_X + 80, INNER_Y + 150, 0xFFFFFF);
+		}
+		else if(mouseX >= button2.x && mouseY >= button2.y && mouseX < button2.x + button2.width && mouseY < button2.y + button2.height)
+		{
+			drawCenteredString(fontRenderer, "Messages", INNER_X + 80, INNER_Y + 150, 0xFFFFFF);
+		}
+		else if(mouseX >= button3.x && mouseY >= button3.y && mouseX < button3.x + button3.width && mouseY < button3.y + button3.height)
+		{
+			drawCenteredString(fontRenderer, "Contacts", INNER_X + 80, INNER_Y + 150, 0xFFFFFF);
+		}
+		else if(mouseX >= button4.x && mouseY >= button4.y && mouseX < button4.x + button4.width && mouseY < button4.y + button4.height)
+		{
+			drawCenteredString(fontRenderer, "Settings", INNER_X + 80, INNER_Y + 150, 0xFFFFFF);
+		}
+		else if(mouseX >= button5.x && mouseY >= button5.y && mouseX < button5.x + button5.width && mouseY < button5.y + button5.height)
+		{
+			drawCenteredString(fontRenderer, "Sound Player", INNER_X + 80, INNER_Y + 150, 0xFFFFFF);
+		}
+		else if(mouseX >= button6.x && mouseY >= button6.y && mouseX < button6.x + button6.width && mouseY < button6.y + button6.height)
+		{
+			drawCenteredString(fontRenderer, "Calculator", INNER_X + 80, INNER_Y + 150, 0xFFFFFF);
+		}
+		else if(mouseX >= button7.x && mouseY >= button7.y && mouseX < button7.x + button7.width && mouseY < button7.y + button7.height)
+		{
+			drawCenteredString(fontRenderer, "Support", INNER_X + 80, INNER_Y + 150, 0xFFFFFF);
+		}
+		else if(phoneStackData.getBatteryLevel() <= 100)
+		{
+			drawCenteredString(fontRenderer, new TextComponentString(TextFormatting.DARK_RED + "Low Battery").getFormattedText(), INNER_X + 80, INNER_Y + 148, 0xFFFFFF);
+		}
+
 		GlStateManager.disableAlpha();
 		GlStateManager.color(1, 1, 1);
 	}
@@ -89,17 +137,6 @@ public class GuiHome extends GuiPhoneBase {
 				gui.setAppName("Phone");
 				gui.setSplashColor("green");
 				Minecraft.getMinecraft().displayGuiScreen(gui);
-
-//				Minecraft.getMinecraft().displayGuiScreen(new GuiEmptyPhone(phoneStack, hand));
-//
-//				PhoneQueryPacket queryPacket = new PhoneQueryPacket();
-//				queryPacket.forNumber = getCurrentPhoneNumber();
-//
-//				int nextID = TelecomClientHandlers.getNextHandlerID();
-//
-//				TelecomClientHandlers.phoneQueryResponseHandlers.put(nextID, TelecomClientHandlers::onPhoneQueryResponseForPhoneApp);
-//				queryPacket.clientHandlerCode = nextID;
-//				PacketHandler.INSTANCE.sendToServer(queryPacket);
 				break;
 			case 1:
 				Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "App Coming Soon", 0xFFFFFF));

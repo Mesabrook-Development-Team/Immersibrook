@@ -5,8 +5,6 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
-import java.util.Locale;
-
 public class ImageButton extends GuiButton {
 
 	private String textureFileName;
@@ -14,6 +12,7 @@ public class ImageButton extends GuiButton {
 	private int texHeight;
 	private int uvWidth;
 	private int uvHeight;
+	private boolean hover;
 	public ImageButton(int buttonId, int x, int y, int widthIn, int heightIn, String textureFileName, int texWidth, int texHeight) {
 		this(buttonId, x, y, widthIn, heightIn, textureFileName, texWidth, texHeight, texWidth, texHeight);
 	}
@@ -26,6 +25,7 @@ public class ImageButton extends GuiButton {
 		this.texHeight = texHeight;
 		this.uvWidth = uvWidth;
 		this.uvHeight = uvHeight;
+		this.hover = false;
 	}
 
 	public String getTextureFileName()
@@ -53,6 +53,10 @@ public class ImageButton extends GuiButton {
 	public void setTexHeight(int texHeight) {
 		this.texHeight = texHeight;
 	}
+	public boolean isHovering()
+	{
+		return this.hover;
+	}
 
 	@Override
 	public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
@@ -60,7 +64,7 @@ public class ImageButton extends GuiButton {
 		{
 			return;
 		}
-		
+		this.hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
 		GlStateManager.color(1, 1, 1);
 		mc.getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/" + textureFileName));
 		drawScaledCustomSizeModalRect(x, y, 0, 0, uvWidth, uvHeight, width, height, texWidth, texHeight);
