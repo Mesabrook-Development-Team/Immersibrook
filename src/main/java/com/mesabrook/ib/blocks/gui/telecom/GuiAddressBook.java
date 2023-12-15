@@ -61,7 +61,7 @@ public class GuiAddressBook extends GuiPhoneBase {
 		nextPage = new MinedroidButton(3, lastPage.x - 3 - 10, lowerControlsY, 10, ">", 0);
 		addContact = new MinedroidButton(4, INNER_X + INNER_TEX_WIDTH - 25 - 3, INNER_Y + 17, 25, new TextComponentTranslation("im.contacts.buttonadd").getFormattedText(), 0x00FF00);
 
-		settings = new ImageButton(5, INNER_X + 120, INNER_Y + 19, 12, 12, phoneStackData.getIconTheme() + "/btn_debug.png", 32, 32);
+		settings = new ImageButton(5, INNER_X + 119, INNER_Y + 18, 12, 12, phoneStackData.getIconTheme() + "/icn_settings.png", 32, 32);
 
 		filter = new GuiTextField(100, fontRenderer, prevPage.x + prevPage.width + 3, lowerControlsY + 2, nextPage.x - (prevPage.x + prevPage.width) - 6, 10);
 		filter.setText(filterPlaceholder);
