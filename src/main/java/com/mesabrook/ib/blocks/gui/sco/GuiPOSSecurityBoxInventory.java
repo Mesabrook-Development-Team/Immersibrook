@@ -50,6 +50,8 @@ public class GuiPOSSecurityBoxInventory extends GuiContainer {
 		GlStateManager.color(1F, 1F, 1F);
 		fontRenderer.drawString("Self-Checkout System", guiLeft + 68, guiTop + 11, 0xFFFFFF);
 		fontRenderer.drawString("Security Boxes", guiLeft + 105, guiTop + 29, 0);
+		
+		renderHoveredToolTip(mouseX, mouseY);
 	}
 	
 	@Override
