@@ -1,7 +1,5 @@
 package com.mesabrook.ib.blocks;
 
-import java.util.Random;
-
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.util.Reference;
@@ -10,12 +8,12 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
 public class BlockRegister extends ImmersiblockRotationalManyBB {	
@@ -36,7 +34,17 @@ public class BlockRegister extends ImmersiblockRotationalManyBB {
 		}
 		else if (subBoundingBox == cardReaderBoundingBox)
 		{
-			playerIn.sendMessage(new TextComponentString("this is a card reader"));
+			if (!worldIn.isRemote)
+			{
+				TileEntityRegister register = (TileEntityRegister)worldIn.getTileEntity(pos);
+				if (register == null)
+				{
+					return true;
+				}
+				
+				register.onCardReaderUse(playerIn.getHeldItem(hand), (EntityPlayerMP)playerIn);
+			}
+			
 			return true;
 		}
 		

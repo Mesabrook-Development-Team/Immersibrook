@@ -1,6 +1,7 @@
 package com.mesabrook.ib.util.handlers;
 
 import com.mesabrook.ib.blocks.container.ContainerRation;
+import com.mesabrook.ib.blocks.container.ContainerRegisterSecurityBoxInventory;
 import com.mesabrook.ib.blocks.container.ContainerStampBook;
 import com.mesabrook.ib.blocks.container.ContainerTaggingStation;
 import com.mesabrook.ib.blocks.container.ContainerTrashBin;
@@ -14,6 +15,7 @@ import com.mesabrook.ib.blocks.gui.GuiTOS;
 import com.mesabrook.ib.blocks.gui.GuiTrashBin;
 import com.mesabrook.ib.blocks.gui.GuiWallSign;
 import com.mesabrook.ib.blocks.gui.atm.GuiATMHome;
+import com.mesabrook.ib.blocks.gui.sco.GuiPOSSecurityBoxInventory;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSStarter;
 import com.mesabrook.ib.blocks.gui.sco.GuiStoreMode;
 import com.mesabrook.ib.blocks.gui.sco.GuiTaggingStation;
@@ -50,6 +52,7 @@ public class GuiHandler implements IGuiHandler
 		else if (ID == Reference.GUI_STAMP_BOOK) return new ContainerStampBook(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]);
 		else if (ID == Reference.GUI_TAGGING_STATION) return new ContainerTaggingStation(player.inventory, new BlockPos(x,y,z));
 		else if (ID == Reference.GUI_RATION) return new ContainerRation(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]);
+		else if (ID == Reference.GUI_REGISTER_SECURITY_BOX_INVENTORY) return new ContainerRegisterSecurityBoxInventory(player.inventory, (TileEntityRegister)world.getTileEntity(new BlockPos(x,y,z)));
 		return null;
 	}
 	
@@ -132,6 +135,7 @@ public class GuiHandler implements IGuiHandler
 		else if (ID == Reference.GUI_TOS) return new GuiTOS();
 		else if (ID == Reference.GUI_SOUND_EMITTER) return new GuiSoundEmitter(player.swingingHand, new BlockPos(x,y,z));
 		else if (ID == Reference.GUI_ATM) return new GuiATMHome((TileEntityATM)world.getTileEntity(new BlockPos(x,y,z)));
+		else if (ID == Reference.GUI_REGISTER_SECURITY_BOX_INVENTORY) return new GuiPOSSecurityBoxInventory((TileEntityRegister)world.getTileEntity(new BlockPos(x,y,z)), player.inventory);
 		else return null;
 	}
 	

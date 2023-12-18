@@ -29,11 +29,16 @@ import com.mesabrook.ib.net.atm.WithdrawATMPacket;
 import com.mesabrook.ib.net.atm.WithdrawATMResponsePacket;
 import com.mesabrook.ib.net.sco.EmployeeCapServerToClientPacket;
 import com.mesabrook.ib.net.sco.POSCancelSalePacket;
+import com.mesabrook.ib.net.sco.POSCardEjectPacket;
+import com.mesabrook.ib.net.sco.POSCardProcessPacket;
+import com.mesabrook.ib.net.sco.POSCardShowMessagePacket;
 import com.mesabrook.ib.net.sco.POSChangeStatusClientToServerPacket;
 import com.mesabrook.ib.net.sco.POSFetchPricePacket;
 import com.mesabrook.ib.net.sco.POSFetchPriceResponsePacket;
 import com.mesabrook.ib.net.sco.POSInitializeRegisterPacket;
 import com.mesabrook.ib.net.sco.POSInitializeRegisterResponsePacket;
+import com.mesabrook.ib.net.sco.POSOpenCardReaderGUIPacket;
+import com.mesabrook.ib.net.sco.POSOpenRegisterSecurityBoxInventoryGUIPacket;
 import com.mesabrook.ib.net.sco.POSRemoveItemPacket;
 import com.mesabrook.ib.net.sco.StoreModeGuiLocationSelectedPacket;
 import com.mesabrook.ib.net.sco.StoreModeGuiOpenedPacket;
@@ -154,6 +159,11 @@ public class PacketHandler
 		INSTANCE.registerMessage(POSRemoveItemPacket.Handler.class, POSRemoveItemPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(POSFetchPricePacket.Handler.class, POSFetchPricePacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(POSFetchPriceResponsePacket.Handler.class, POSFetchPriceResponsePacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(POSOpenCardReaderGUIPacket.Handler.class, POSOpenCardReaderGUIPacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(POSCardEjectPacket.Handler.class, POSCardEjectPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(POSCardShowMessagePacket.Handler.class, POSCardShowMessagePacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(POSCardProcessPacket.Handler.class, POSCardProcessPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(POSOpenRegisterSecurityBoxInventoryGUIPacket.Handler.class, POSOpenRegisterSecurityBoxInventoryGUIPacket.class, nextID(), Side.SERVER);
 		
 		// ATM
 		INSTANCE.registerMessage(FetchAccountsPacket.Handler.class, FetchAccountsPacket.class, nextID(), Side.SERVER);

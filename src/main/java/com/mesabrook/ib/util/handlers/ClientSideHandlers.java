@@ -24,6 +24,9 @@ import com.mesabrook.ib.blocks.gui.atm.GuiATMHome;
 import com.mesabrook.ib.blocks.gui.atm.GuiATMNewCard;
 import com.mesabrook.ib.blocks.gui.atm.GuiATMSettings;
 import com.mesabrook.ib.blocks.gui.atm.GuiATMWithdraw;
+import com.mesabrook.ib.blocks.gui.sco.GuiPOSCardBase;
+import com.mesabrook.ib.blocks.gui.sco.GuiPOSCardDetermine;
+import com.mesabrook.ib.blocks.gui.sco.GuiPOSCardMessage;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSIdentifierSetup;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSWaitingForNetwork;
 import com.mesabrook.ib.blocks.gui.sco.GuiStoreMode;
@@ -68,6 +71,7 @@ import net.minecraft.client.renderer.RenderGlobal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
@@ -770,6 +774,30 @@ public class ClientSideHandlers
 		{
 			IEmployeeCapability capability = Minecraft.getMinecraft().player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
 			capability.setLocationEmployee(locationEmployee);
+		}
+
+		public static void onOpenCardReaderPacket(BlockPos atmPos)
+		{
+			TileEntity te = Minecraft.getMinecraft().world.getTileEntity(atmPos);
+			if (!(te instanceof TileEntityRegister))
+			{
+				return;
+			}
+			
+			Minecraft.getMinecraft().displayGuiScreen(new GuiPOSCardDetermine((TileEntityRegister)te));
+		}
+		
+		public static void displayCardReaderMessage(String message)
+		{
+			Minecraft mc = Minecraft.getMinecraft();
+			
+			if (!(mc.currentScreen instanceof GuiPOSCardBase))
+			{
+				return;
+			}
+			
+			GuiPOSCardBase processingScreen = (GuiPOSCardBase)mc.currentScreen;
+			processingScreen.showNextGui(GuiPOSCardMessage.class, message);
 		}
 	}
 

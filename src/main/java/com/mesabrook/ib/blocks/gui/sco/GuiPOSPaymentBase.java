@@ -53,17 +53,7 @@ public class GuiPOSPaymentBase extends GuiPOSMainBase {
 	
 	protected void updatePrices()
 	{
-		TileEntityRegister.RegisterItemHandler handler = (TileEntityRegister.RegisterItemHandler)register.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-		BigDecimal runningTotal = new BigDecimal(0);
-		for(int i = 0; i < handler.getSlots(); i++)
-		{
-			BigDecimal price = handler.getPrice(i);
-			if (price != null)
-			{
-				runningTotal = price.add(runningTotal);
-			}
-		}
-		
+		BigDecimal runningTotal = register.getCurrentTotal();		
 		this.total = runningTotal.setScale(2, RoundingMode.HALF_UP).toPlainString();
 		this.tax = runningTotal.multiply(register.getCurrentTaxRate().divide(new BigDecimal(100))).setScale(2, RoundingMode.HALF_UP).toPlainString();
 		this.due = runningTotal.add(new BigDecimal(this.tax)).subtract(register.getTenderedAmount()).setScale(2, RoundingMode.HALF_UP).toPlainString();

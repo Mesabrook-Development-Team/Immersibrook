@@ -44,6 +44,7 @@ public class StoreModeGuiLocationSelectedPacket implements IMessage {
 			
 			if (locEmp.LocationID == 0)
 			{
+				ServerTickHandler.dequeueStoreModeUpdate(player);
 				employeeCap.serverToClientSync();
 			}
 			else

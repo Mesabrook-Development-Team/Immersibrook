@@ -15,6 +15,8 @@ import com.mesabrook.ib.blocks.gui.GuiImageLabelButton.ImageOrientation;
 import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.blocks.te.TileEntityRegister.RegisterStatuses;
+import com.mesabrook.ib.capability.employee.CapabilityEmployee;
+import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
 import com.mesabrook.ib.capability.secureditem.ISecuredItem;
 import com.mesabrook.ib.net.sco.POSCancelSalePacket;
@@ -41,6 +43,7 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 
 	private static final int MAX_SLATS = 10;
 	private GuiImageLabelButton cancelOrder;
+	private GuiImageLabelButton adminMode;
 	private ArrayList<ItemSlat> itemSlats = new ArrayList<>();
 	private int currentPage = 0;
 	private String subTotal = "";
@@ -99,7 +102,19 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 		cancelOrder = new GuiImageLabelButton(0, innerLeft + 13, innerTop + 41, 83, 20, "      Cancel Order", new ResourceLocation(Reference.MODID, "textures/gui/sco/cancel_order.png"), 16, 16, 16, 16, ImageOrientation.Left)
 						.setEnabledColor(0x373737)
 						.setTextScale(0.75F);
+		adminMode = new GuiImageLabelButton(0, innerLeft + 13, innerTop + 61, 83, 20, "      Admin Mode", new ResourceLocation(Reference.MODID, "textures/gui/cog.png"), 16, 16, 16, 16, ImageOrientation.Left)
+				.setEnabledColor(0x373737)
+				.setTextScale(0.75F);
+		adminMode.visible = false;
+		
+		if (mc.player.hasCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null))
+		{
+			IEmployeeCapability emp = mc.player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
+			adminMode.visible = emp != null && emp.manageRegisters();
+		}
+		
 		buttonList.add(cancelOrder);
+		buttonList.add(adminMode);
 		
 		itemSlats.clear();
 
@@ -168,6 +183,12 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
 		super.actionPerformed(button);
+		
+		if (button == adminMode)
+		{
+			mc.displayGuiScreen(new GuiPOSAdmin(register));
+			return;
+		}
 		
 		TileEntityRegister.RegisterItemHandler itemHandler = (TileEntityRegister.RegisterItemHandler)register.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 		if (button == cancelOrder)

@@ -1,5 +1,7 @@
 package com.mesabrook.ib.capability.secureditem;
 
+import com.mesabrook.ib.apimodels.company.Location;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 
@@ -7,7 +9,8 @@ public interface ISecuredItem {
 	BlockPos getHomeLocation();
 	void setHomeLocation(BlockPos homeLocation);
 	long getLocationIDOwner();
-	void setLocationIDOwner(long locationIDOwner);
+	String getLocationNameOwner();
+	void setLocation(Location location);
 	ItemStack getInnerStack();
 	void setInnerStack(ItemStack stack);
 	int getHomeSpot();
@@ -18,8 +21,9 @@ public interface ISecuredItem {
 	public static class Impl implements ISecuredItem
 	{
 		private BlockPos homeLocation;
-		private int homeSpot;
+		private int homeSpot = -1;
 		private long locationIDOwner;
+		private String locationNameOwner;
 		ItemStack innerStack;
 		private double resetDistance;
 
@@ -42,10 +46,39 @@ public interface ISecuredItem {
 		public long getLocationIDOwner() {
 			return locationIDOwner;
 		}
+		
+		@Override
+		public String getLocationNameOwner() {
+			if (locationNameOwner == null)
+			{
+				return "";
+			}
+			
+			return locationNameOwner;
+		}
 
 		@Override
-		public void setLocationIDOwner(long locationIDOwner) {
-			this.locationIDOwner = locationIDOwner;
+		public void setLocation(Location location) {
+			if (location == null)
+			{
+				this.locationIDOwner = 0;
+				this.locationNameOwner = "";
+			}
+			else
+			{
+				this.locationIDOwner = location.LocationID;
+				this.locationNameOwner = "";
+				
+				if (location.Company != null && location.Company.Name != null)
+				{
+					this.locationNameOwner = location.Company.Name;
+				}
+				
+				if (location.Name != null && !location.Name.isEmpty())
+				{
+					this.locationNameOwner += " (" + location.Name + ")";
+				}
+			}
 		}
 
 		@Override

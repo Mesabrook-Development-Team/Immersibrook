@@ -163,7 +163,7 @@ public class ContainerTaggingStation extends Container {
 		ISecuredItem item = securedItem.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
 		IEmployeeCapability empCap = playerInventory.player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
 		item.setInnerStack(stackToWrap);
-		item.setLocationIDOwner(empCap.getLocationID());
+		item.setLocation(empCap.getLocationEmployee().Location);
 		item.setResetDistance(resetDistance);
 		craftResult.setInventorySlotContents(0, securedItem);
 		super.onCraftMatrixChanged(inventoryIn);

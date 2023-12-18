@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.apimodels.account.Account;
@@ -109,7 +110,7 @@ public class ServerTickHandler {
 		}
 	}
 	
-	private static HashMap<UUID, DataRequestTask> employeeStoreModeRequests = new HashMap<>();
+	private static ConcurrentHashMap<UUID, DataRequestTask> employeeStoreModeRequests = new ConcurrentHashMap<>();
 	private static int updateEmployeeStoreModesChecker = 0;
 	private static void updateEmployeeStoreModes()
 	{
@@ -185,6 +186,11 @@ public class ServerTickHandler {
 		DataRequestTask task = new DataRequestTask(get);
 		employeeStoreModeRequests.put(player.getUniqueID(), task);
 		DataRequestQueue.INSTANCE.addTask(task);
+	}
+	
+	public static void dequeueStoreModeUpdate(EntityPlayerMP player)
+	{
+		employeeStoreModeRequests.remove(player.getUniqueID());
 	}
 	
 	public static ArrayList<DataRequestTask> priceLookupTasks = new ArrayList<>();

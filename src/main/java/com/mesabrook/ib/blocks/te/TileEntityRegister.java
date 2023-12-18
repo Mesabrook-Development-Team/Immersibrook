@@ -10,10 +10,15 @@ import java.util.UUID;
 import com.mesabrook.ib.apimodels.company.LocationItem;
 import com.mesabrook.ib.apimodels.company.Register;
 import com.mesabrook.ib.blocks.BlockRegister;
+import com.mesabrook.ib.capability.debitcard.CapabilityDebitCard;
+import com.mesabrook.ib.capability.debitcard.IDebitCard;
 import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
 import com.mesabrook.ib.capability.secureditem.ISecuredItem;
+import com.mesabrook.ib.items.commerce.ItemDebitCard;
 import com.mesabrook.ib.items.commerce.ItemMoney;
+import com.mesabrook.ib.net.sco.POSCardShowMessagePacket;
 import com.mesabrook.ib.net.sco.POSInitializeRegisterResponsePacket;
+import com.mesabrook.ib.net.sco.POSOpenCardReaderGUIPacket;
 import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.apiaccess.DataAccess.API;
 import com.mesabrook.ib.util.apiaccess.DataAccess.AuthenticationStatus;
@@ -26,6 +31,7 @@ import com.mesabrook.ib.util.apiaccess.PostData;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import com.mesabrook.ib.util.handlers.ServerTickHandler;
 
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -49,6 +55,8 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 	private BigDecimal currentTaxRate = new BigDecimal(0);
 	private BigDecimal tenderedAmount = new BigDecimal(0);
 	private final RegisterItemHandler itemHandler = new RegisterItemHandler(this);
+	private final SecurityBoxHandler securityBoxHandler = new SecurityBoxHandler(this);
+	private ItemStack insertedCardStack;
 	
 	RegisterStatuses registerStatus = RegisterStatuses.Uninitialized;
 	private String tenderFailureMessage = "";
@@ -84,6 +92,15 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		{
 			tenderFailureMessage = compound.getString("tenderFailureMessage");
 		}
+		insertedCardStack = null;
+		if (compound.hasKey("insertedCardStack"))
+		{
+			insertedCardStack = new ItemStack(compound.getCompoundTag("insertedCardStack"));
+		}
+		if (compound.hasKey("securityBoxInventory"))
+		{
+			securityBoxHandler.deserializeNBT(compound.getCompoundTag("securityBoxInventory"));
+		}
 	}
 	
 	@Override
@@ -96,6 +113,11 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		compound.setString("tenderedAmount", tenderedAmount.toPlainString());
 		compound.setTag("inventory", itemHandler.serializeNBT());
 		compound.setString("tenderFailureMessage", tenderFailureMessage);
+		if (insertedCardStack != null)
+		{
+			compound.setTag("insertedCardStack", insertedCardStack.serializeNBT());
+		}
+		compound.setTag("securityBoxInventory", securityBoxHandler.serializeNBT());
 		return super.writeToNBT(compound);
 	}
 	
@@ -109,6 +131,11 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		compound.setString("tenderedAmount", tenderedAmount.toPlainString());
 		compound.setTag("inventory", itemHandler.serializeNBT());
 		compound.setString("tenderFailureMessage", tenderFailureMessage);
+		if (insertedCardStack != null)
+		{
+			compound.setTag("insertedCardStack", insertedCardStack.serializeNBT());
+		}
+		compound.setTag("securityBoxInventory", securityBoxHandler.serializeNBT());
 		return compound;
 	}
 	
@@ -126,6 +153,16 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		}
 		registerStatus = RegisterStatuses.values()[tag.getInteger("registerStatus")];
 		tenderFailureMessage = tag.getString("tenderFailureMessage");
+		insertedCardStack = null;
+		if (tag.hasKey("insertedCardStack"))
+		{
+			insertedCardStack = new ItemStack(tag.getCompoundTag("insertedCardStack"));
+		}
+		
+		if (tag.hasKey("securityBoxInventory"))
+		{
+			securityBoxHandler.deserializeNBT(tag.getCompoundTag("securityBoxInventory"));
+		}
 	}
 	
 	@Override
@@ -258,7 +295,44 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 			getWorld().notifyBlockUpdate(getPos(), getWorld().getBlockState(getPos()), getWorld().getBlockState(getPos()), 3);
 		}
 	}
+	
+	public ItemStack getInsertedCardStack()
+	{
+		return insertedCardStack;
+	}
 
+	public void clearInsertedCardStack()
+	{
+		insertedCardStack = null;
+		markDirty();
+		
+		if (world != null)
+		{
+			getWorld().notifyBlockUpdate(getPos(), getWorld().getBlockState(getPos()), getWorld().getBlockState(getPos()), 3);
+		}
+	}
+	
+	public SecurityBoxHandler getSecurityBoxInventory()
+	{
+		return securityBoxHandler;
+	}
+	
+	public BigDecimal getCurrentTotal()
+	{
+		TileEntityRegister.RegisterItemHandler handler = (TileEntityRegister.RegisterItemHandler)getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+		BigDecimal runningTotal = new BigDecimal(0);
+		for(int i = 0; i < handler.getSlots(); i++)
+		{
+			BigDecimal price = handler.getPrice(i);
+			if (price != null)
+			{
+				runningTotal = price.add(runningTotal);
+			}
+		}
+		
+		return runningTotal.setScale(2, RoundingMode.HALF_UP);
+	}
+	
 	public void applyCashTender(BigDecimal amount)
 	{
 		tenderedAmount = tenderedAmount.add(amount);
@@ -278,7 +352,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		}
 	}
 	
-	private BigDecimal getDueAmount()
+	public BigDecimal getDueAmount()
 	{
 		BigDecimal runningTotal = new BigDecimal(0);
 		for(int i = 0; i < itemHandler.getSlots(); i++)
@@ -299,7 +373,12 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 	
 	private void onPaid()
 	{
-		ArrayList<StoreSaleSubParameter> parameters = new ArrayList<>();
+		onPaid(null, null);
+	}
+	
+	private void onPaid(DebitCardPaymentParameter debitCardInfo, UUID playerIDActor)
+	{
+		ArrayList<StoreSaleSubParameter> storeSales = new ArrayList<>();
 		for(int i = 0; i < itemHandler.getSlots(); i++)
 		{
 			ItemStack stack = itemHandler.getStackInSlot(i);
@@ -308,26 +387,75 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 				continue;
 			}
 			
-			if (stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
-			{
-				ISecuredItem securedItem = stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
-				stack = securedItem.getInnerStack();
-			}
-			
 			StoreSaleSubParameter param = new StoreSaleSubParameter();
 			param.Name = stack.getDisplayName();
 			param.Amount = stack.getCount();
 			param.SaleAmount = itemHandler.getPrice(i);
-			parameters.add(param);
+			storeSales.add(param);
 		}
 		
 		setRegisterStatus(RegisterStatuses.TransactionProcessing);
 		
-		PostData post = new PostData(API.Company, "StoreSaleItemIBAccess/Post", parameters, new Class<?>[0]);
+		StoreSaleParameter saleParam = new StoreSaleParameter();
+		saleParam.StoreItems = storeSales;
+		saleParam.DebitCardInformation = debitCardInfo;
+		
+		PostData post = new PostData(API.Company, "StoreSaleItemIBAccess/Post", saleParam, new Class<?>[0]);
 		post.getHeaderOverrides().put("RegisterIdentifier", identifier.toString());
 		
 		paymentTask = new DataRequestTask(post);
+		if (playerIDActor != null)
+		{
+			paymentTask.getData().put("playerIDActor", playerIDActor);
+		}
+		if (debitCardInfo != null)
+		{
+			paymentTask.getData().put("cashBack", debitCardInfo.AuthorizedAmount.subtract(debitCardInfo.PaymentAmount));
+			paymentTask.getData().put("cardPaymentAmount", debitCardInfo.PaymentAmount);
+		}
 		DataRequestQueue.INSTANCE.addTask(paymentTask);
+	}
+	
+	public void onCardReaderUse(ItemStack stack, EntityPlayerMP player)
+	{
+		if ((registerStatus == RegisterStatuses.PaymentSelect || registerStatus == RegisterStatuses.PaymentCard) && stack.getItem() instanceof ItemDebitCard)
+		{
+			insertedCardStack = stack.copy();
+			stack.shrink(stack.getCount());
+			setRegisterStatus(RegisterStatuses.PaymentCardInUse);
+		}
+		
+		POSOpenCardReaderGUIPacket openCardReaderGUI = new POSOpenCardReaderGUIPacket();
+		openCardReaderGUI.atmPos = getPos();
+		PacketHandler.INSTANCE.sendTo(openCardReaderGUI, player);
+	}
+	
+	public void performDebitCardProcessing(String enteredPIN, BigDecimal authorizedAmount, BigDecimal cashBack, UUID playerIDActor)
+	{
+		if (authorizedAmount.subtract(cashBack).compareTo(getDueAmount()) != 0)
+		{
+			// TODO: Going to need to display an error here
+			return;
+		}
+		
+		ItemStack cardStack = getInsertedCardStack();
+		if (!cardStack.hasCapability(CapabilityDebitCard.DEBIT_CARD_CAPABILITY, null))
+		{
+			return;
+		}
+		
+		tenderedAmount = getTenderedAmount().add(authorizedAmount); // Skipping setter because onPaid will do the syncing
+		
+		IDebitCard debitCard = cardStack.getCapability(CapabilityDebitCard.DEBIT_CARD_CAPABILITY, null);
+		
+		DebitCardPaymentParameter param = new DebitCardPaymentParameter();
+		param.RegisterIdentifier = identifier;
+		param.CardNumber = debitCard.getCardNumber();
+		param.PIN = enteredPIN;
+		param.AuthorizedAmount = authorizedAmount;
+		param.PaymentAmount = authorizedAmount.subtract(cashBack);
+		
+		onPaid(param, playerIDActor);
 	}
 	
 	// Operational methods
@@ -426,7 +554,14 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 							RegisterStatuses currentStatus = getRegisterStatus();
 							if (!currentStatus.isOperationalState())
 							{
-								setRegisterStatus(RegisterStatuses.Online);
+								if (hasItemsForSession())
+								{
+									setRegisterStatus(RegisterStatuses.InSession);
+								}
+								else
+								{
+									setRegisterStatus(RegisterStatuses.Online);
+								}
 							}
 							break;
 					}
@@ -455,62 +590,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		
 		if (paymentTask != null && paymentTask.getStatus() == DataRequestTaskStatus.Complete)
 		{
-			if (paymentTask.getTask().getRequestSuccessful())
-			{
-				BlockPos spawnPos = getPos().offset(world.getBlockState(getPos()).getValue(BlockRegister.FACING));
-				
-				for(int i = 0; i < itemHandler.getSlots(); i++)
-				{
-					ItemStack stack = itemHandler.getStackInSlot(i);
-					if (stack.isEmpty())
-					{
-						continue;
-					}
-					
-					if (stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
-					{
-						ISecuredItem securedItem = stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
-						stack = securedItem.getInnerStack();
-					}
-					
-					InventoryHelper.spawnItemStack(world, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), stack);
-				}
-				
-				BigDecimal change = getDueAmount().abs();
-				if(change.compareTo(new BigDecimal(0)) > 0)
-				{
-					for(ItemStack stack : ItemMoney.getMoneyStackForAmount(change))
-					{
-						InventoryHelper.spawnItemStack(world, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), stack);
-					}
-				}
-				
-				itemHandler.dumpInventory();				
-				
-				setTenderedAmount(new BigDecimal(0));
-				setRegisterStatus(RegisterStatuses.TransactionComplete);
-			}
-			else
-			{
-				setRegisterStatus(RegisterStatuses.PaymentSelect);
-				
-				GenericErrorResponse errorMessage = paymentTask.getTask().getResult(GenericErrorResponse.class);
-				if (errorMessage != null)
-				{
-					setTenderFailureMessage(errorMessage.message);
-				}
-				
-				BlockPos spawnPos = getPos().offset(world.getBlockState(getPos()).getValue(BlockRegister.FACING));
-				List<ItemStack> tenderedStacks = ItemMoney.getMoneyStackForAmount(tenderedAmount);
-				for(ItemStack stack : tenderedStacks)
-				{
-					InventoryHelper.spawnItemStack(world, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), stack);
-				}
-				
-				setTenderedAmount(new BigDecimal(0));
-			}
-			
-			paymentTask = null;
+			onProcessingTaskCompleted();
 			return;
 		}
 		
@@ -521,6 +601,112 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 				transactionCompleteCounter = 0;
 				setRegisterStatus(RegisterStatuses.Online);
 			}
+		}
+	}
+
+	private void onProcessingTaskCompleted() {
+		BlockPos spawnPos = getPos().offset(world.getBlockState(getPos()).getValue(BlockRegister.FACING));
+		
+		if (paymentTask.getTask().getRequestSuccessful())
+		{				
+			for(int i = 0; i < itemHandler.getSlots(); i++)
+			{
+				ItemStack stack = itemHandler.getStackInSlot(i).copy();
+				if (stack.isEmpty())
+				{
+					continue;
+				}
+				
+				if (stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
+				{
+					ISecuredItem securedItem = stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
+					ItemStack securedItemStack = stack.copy();
+					stack = securedItem.getInnerStack();
+					
+					securedItem = securedItemStack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
+					securedItem.setHomeLocation(null);
+					securedItem.setHomeSpot(-1);
+					securedItem.setInnerStack(null);
+					securedItem.setLocation(null);
+					securedItem.setResetDistance(0);
+					
+					securityBoxHandler.insertItem(securedItemStack);
+				}
+				
+				InventoryHelper.spawnItemStack(world, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), stack);
+			}
+			
+			BigDecimal change = getDueAmount().abs();
+			if(change.compareTo(new BigDecimal(0)) > 0)
+			{
+				for(ItemStack stack : ItemMoney.getMoneyStackForAmount(change))
+				{
+					InventoryHelper.spawnItemStack(world, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), stack);
+				}
+			}
+			
+			itemHandler.dumpInventory();				
+			
+			setTenderedAmount(new BigDecimal(0));
+			setRegisterStatus(RegisterStatuses.TransactionComplete);
+					
+			if (paymentTask.getData().containsKey("playerIDActor"))
+			{
+				UUID playerID = (UUID)paymentTask.getData().get("playerIDActor");
+				EntityPlayerMP player = FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerByUUID(playerID);
+				
+				POSCardShowMessagePacket showMessage = new POSCardShowMessagePacket();
+				showMessage.message = "Accepted";
+				PacketHandler.INSTANCE.sendTo(showMessage, player);
+			}
+		}
+		else
+		{
+			BigDecimal cashBack = new BigDecimal(0);
+			if (paymentTask.getData().containsKey("cashBack"))
+			{
+				cashBack = (BigDecimal)paymentTask.getData().get("cashBack");
+			}
+			
+			BigDecimal cardPaymentAmount = new BigDecimal(0);
+			if (paymentTask.getData().containsKey("cardPaymentAmount"))
+			{
+				cardPaymentAmount = (BigDecimal)paymentTask.getData().get("cardPaymentAmount");
+			}
+			
+			setRegisterStatus(RegisterStatuses.PaymentSelect);
+			
+			GenericErrorResponse errorMessage = paymentTask.getTask().getResult(GenericErrorResponse.class);
+			if (errorMessage != null)
+			{
+				setTenderFailureMessage(errorMessage.message);
+				
+				if (paymentTask.getData().containsKey("playerIDActor"))
+				{
+					UUID playerID = (UUID)paymentTask.getData().get("playerIDActor");
+					EntityPlayerMP player = FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerByUUID(playerID);
+					
+					POSCardShowMessagePacket showMessage = new POSCardShowMessagePacket();
+					showMessage.message = errorMessage.message;
+					PacketHandler.INSTANCE.sendTo(showMessage, player);
+				}
+			}
+			
+			List<ItemStack> tenderedStacks = ItemMoney.getMoneyStackForAmount(tenderedAmount.subtract(cashBack).subtract(cardPaymentAmount));
+			for(ItemStack stack : tenderedStacks)
+			{
+				InventoryHelper.spawnItemStack(world, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), stack);
+			}
+			
+			setTenderedAmount(new BigDecimal(0));
+		}
+		
+		paymentTask = null;
+		
+		if (getInsertedCardStack() != null)
+		{
+			InventoryHelper.spawnItemStack(world, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), insertedCardStack);
+			clearInsertedCardStack();
 		}
 	}
 	
@@ -586,6 +772,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		PaymentSelect(true),
 		PaymentCash(true),
 		PaymentCard(true),
+		PaymentCardInUse(true),
 		TransactionProcessing(true),
 		TransactionComplete(true);
 		
@@ -758,10 +945,71 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		}
 	}
 
+	public static class SecurityBoxHandler extends ItemStackHandler
+	{
+		private TileEntityRegister register;
+		public SecurityBoxHandler(TileEntityRegister register)
+		{
+			super(27);
+			this.register = register;
+		}
+		
+		@Override
+		public boolean isItemValid(int slot, ItemStack stack) {
+			return stack.isEmpty() || stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
+		}
+		
+		@Override
+		protected void onContentsChanged(int slot) {
+			super.onContentsChanged(slot);
+			
+			register.markDirty();
+		}
+		
+		@Override
+		public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
+			return stack;
+		}
+		
+		protected ItemStack insertItemInternal(int slot, ItemStack stack, boolean simulate)
+		{
+			return super.insertItem(slot, stack, simulate);
+		}
+		
+		public ItemStack insertItem(ItemStack stack)
+		{
+			for(int i = 0; i < getSlots(); i++)
+			{
+				stack = insertItemInternal(i, stack, false);
+				if (stack.isEmpty())
+				{
+					return stack;
+				}
+			}
+			
+			return stack;
+		}
+	}
+	
 	public static class StoreSaleSubParameter
 	{
 		public String Name;
 		public int Amount;
 		public BigDecimal SaleAmount;
+	}
+	
+	private static class DebitCardPaymentParameter
+	{
+		public UUID RegisterIdentifier;
+		public String CardNumber;
+		public String PIN;
+		public BigDecimal AuthorizedAmount;
+		public BigDecimal PaymentAmount;
+	}
+	
+	public static class StoreSaleParameter
+	{
+		public ArrayList<StoreSaleSubParameter> StoreItems = new ArrayList<>();
+		public DebitCardPaymentParameter DebitCardInformation;
 	}
 }

@@ -31,6 +31,7 @@ public class Reference
 	public static final int GUI_RATION = 13;
 	public static final int GUI_SOUND_EMITTER = 14;
 	public static final int GUI_ATM = 15;
+	public static final int GUI_REGISTER_SECURITY_BOX_INVENTORY = 16;
 	
 	public static final String NETWORK_CHANNEL_NAME = "wbtc";
 	

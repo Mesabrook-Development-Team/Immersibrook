@@ -11,8 +11,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 
@@ -50,6 +52,11 @@ public class TileEntityRegisterRenderer extends TileEntitySpecialRenderer<TileEn
 			case Offline:
 				drawOffline();
 				break;
+		}
+		
+		if (te.getInsertedCardStack() != null)
+		{
+			drawInsertedCardStack(te.getInsertedCardStack());
 		}
 		
 		GlStateManager.enableLighting();
@@ -178,5 +185,18 @@ public class TileEntityRegisterRenderer extends TileEntitySpecialRenderer<TileEn
 		GlStateManager.color(1, 1, 1);
 		drawBackgroundTextured(tess.getBuffer());
 		tess.draw();
+	}
+	
+	private void drawInsertedCardStack(ItemStack stack)
+	{
+		GlStateManager.rotate(90, 0, 0, 1);
+		GlStateManager.scale(2.5, -2.5, -2.5);
+		GlStateManager.translate(2.5, -1.1, -0.8);
+		
+		Minecraft.getMinecraft().getRenderItem().renderItem(stack, TransformType.NONE);
+
+		GlStateManager.translate(-2.5, 1.1, 0.8);
+		GlStateManager.scale(1F/2.5, -1F/2.5, -1F/2.5);
+		GlStateManager.rotate(-90, 0, 0, 1);
 	}
 }

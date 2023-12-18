@@ -87,7 +87,7 @@ public class ShelvingTileEntity extends TileEntity {
 			}
 			
 			secureCap.setHomeLocation(null);
-			secureCap.setHomeSpot(0);
+			secureCap.setHomeSpot(-1);
 		}
 		
 		player.setHeldItem(hand, stackToRemove);
@@ -125,14 +125,22 @@ public class ShelvingTileEntity extends TileEntity {
 			}
 		}
 		
-		ItemStack heldItem = player.getHeldItem(hand);
-		ItemStack placedStack = heldItem.copy();
+		ItemStack placedStack = player.getHeldItem(hand).splitStack(1);
 		if (placedStack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
 		{
 			ISecuredItem secureCap = placedStack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
 			if (secureCap.getLocationIDOwner() != 0 && secureCap.getLocationIDOwner() != getLocationIDOwner())
 			{
 				player.sendMessage(new TextComponentString(TextFormatting.RED + "This item belongs to a different store"));
+				if (player.getHeldItem(hand).isEmpty())
+				{
+					player.setHeldItem(hand, placedStack);
+				}
+				else
+				{
+					player.getHeldItem(hand).grow(1);
+				}
+				
 				return;
 			}
 			secureCap.setHomeLocation(getPos());
@@ -140,7 +148,6 @@ public class ShelvingTileEntity extends TileEntity {
 		}
 		
 		spot.items[indexToSet] = placedStack;
-		player.setHeldItem(hand, ItemStack.EMPTY);
 		
 		markDirty();
 		
@@ -176,8 +183,7 @@ public class ShelvingTileEntity extends TileEntity {
 			}
 		}
 		
-		spot.items[indexToSet] = heldItem.copy();
-		player.setHeldItem(hand, ItemStack.EMPTY);
+		spot.items[indexToSet] = heldItem.splitStack(1);
 		
 		markDirty();
 		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);

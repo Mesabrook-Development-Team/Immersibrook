@@ -1,5 +1,8 @@
 package com.mesabrook.ib.capability.secureditem;
 
+import com.mesabrook.ib.apimodels.company.Company;
+import com.mesabrook.ib.apimodels.company.Location;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -27,6 +30,7 @@ public class CapabilitySecuredItem {
 			NBTTagCompound tag = new NBTTagCompound();
 			tag.setLong("homeLocation", instance.getHomeLocation().toLong());
 			tag.setLong("locationIDOwner", instance.getLocationIDOwner());
+			tag.setString("locationNameOwner", instance.getLocationNameOwner());
 			tag.setTag("innerStack", instance.getInnerStack().serializeNBT());
 			tag.setInteger("homeSpot", instance.getHomeSpot());
 			tag.setDouble("resetDistance", instance.getResetDistance());
@@ -37,7 +41,11 @@ public class CapabilitySecuredItem {
 		public void readNBT(Capability<ISecuredItem> capability, ISecuredItem instance, EnumFacing side, NBTBase nbt) {
 			NBTTagCompound compound = (NBTTagCompound)nbt;
 			instance.setHomeLocation(BlockPos.fromLong(compound.getLong("homeLocation")));
-			instance.setLocationIDOwner(compound.getLong("locationIDOwner"));
+			Location newLocation = new Location();
+			newLocation.LocationID = compound.getLong("locationIDOwner");
+			newLocation.Company = new Company();
+			newLocation.Company.Name = compound.getString("locationNameOwner");
+			instance.setLocation(newLocation);
 			instance.setInnerStack(new ItemStack(compound.getCompoundTag("innerStack")));
 			instance.setHomeSpot(compound.getInteger("homeSpot"));
 			instance.setResetDistance(compound.getDouble("resetDistance"));

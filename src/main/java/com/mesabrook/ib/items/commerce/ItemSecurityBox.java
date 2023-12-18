@@ -28,7 +28,7 @@ public class ItemSecurityBox extends Item implements IHasModel {
 		setUnlocalizedName("security_box");
         setRegistryName("security_box");
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
-        setMaxStackSize(1);
+        setMaxStackSize(32);
 
         ModItems.ITEMS.add(this);
 	}
@@ -46,6 +46,18 @@ public class ItemSecurityBox extends Item implements IHasModel {
 		if (!item.getInnerStack().isEmpty())
 		{
 			tooltip.add(TextFormatting.YELLOW + "Item: " + TextFormatting.RESET + item.getInnerStack().getDisplayName() + " x" + item.getInnerStack().getCount());
+		}
+		if (item.getLocationNameOwner() != null && !item.getLocationNameOwner().isEmpty())
+		{
+			tooltip.add(TextFormatting.YELLOW + "Store: " + TextFormatting.RESET + item.getLocationNameOwner());
+		}
+		if (item.getHomeLocation().getY() != -1)
+		{
+			tooltip.add(TextFormatting.YELLOW + "Shelf: " + TextFormatting.RESET + String.format("X=%s,Y=%s,Z=%S", item.getHomeLocation().getX(), item.getHomeLocation().getY(), item.getHomeLocation().getZ()));
+		}
+		if (item.getHomeSpot() >= 0)
+		{
+			tooltip.add(TextFormatting.YELLOW + "Spot: " + TextFormatting.RESET + item.getHomeSpot());
 		}
 	}
 	
