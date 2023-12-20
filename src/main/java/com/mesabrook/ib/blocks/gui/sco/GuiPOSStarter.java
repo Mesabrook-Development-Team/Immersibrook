@@ -22,6 +22,9 @@ public class GuiPOSStarter extends GuiPOSBase {
 			case WaitingForNetwork:
 				Minecraft.getMinecraft().displayGuiScreen(new GuiPOSWaitingForNetwork(register));
 				break;
+			case InternalStorageFull:
+				mc.displayGuiScreen(new GuiPOSInventoryFull(register));
+				break;
 			case Online:
 				Minecraft.getMinecraft().displayGuiScreen(new GuiPOSMainWelcome(register));
 				break;

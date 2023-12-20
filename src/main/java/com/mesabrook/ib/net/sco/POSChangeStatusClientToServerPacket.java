@@ -1,5 +1,6 @@
 package com.mesabrook.ib.net.sco;
 
+import com.mesabrook.ib.apimodels.company.RegisterStatus;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.blocks.te.TileEntityRegister.RegisterStatuses;
 
@@ -17,17 +18,27 @@ public class POSChangeStatusClientToServerPacket implements IMessage {
 
 	public BlockPos pos;
 	public RegisterStatuses status;
+	public RegisterStatus.Statuses onlineStatusChange = null;
 
 	@Override
 	public void fromBytes(ByteBuf buf) {
 		pos = BlockPos.fromLong(buf.readLong());
 		status = RegisterStatuses.values()[buf.readInt()];
+		if (buf.readBoolean())
+		{
+			onlineStatusChange = RegisterStatus.Statuses.values()[buf.readInt()];
+		}
 	}
 
 	@Override
 	public void toBytes(ByteBuf buf) {
 		buf.writeLong(pos.toLong());
 		buf.writeInt(status.ordinal());
+		buf.writeBoolean(onlineStatusChange != null);
+		if (onlineStatusChange != null)
+		{
+			buf.writeInt(onlineStatusChange.ordinal());
+		}
 	}
 	
 	public static class Handler implements IMessageHandler<POSChangeStatusClientToServerPacket, IMessage>
@@ -50,6 +61,11 @@ public class POSChangeStatusClientToServerPacket implements IMessage {
 			
 			TileEntityRegister register = (TileEntityRegister)te;
 			register.setRegisterStatus(message.status);
+			
+			if (message.onlineStatusChange != null)
+			{
+				register.notifyMesaSuiteOfStatusChange(message.onlineStatusChange, player.getName());
+			}
 		}
 		
 	}

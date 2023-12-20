@@ -2,6 +2,7 @@ package com.mesabrook.ib.blocks.gui.sco;
 
 import java.io.IOException;
 
+import com.mesabrook.ib.apimodels.company.RegisterStatus.Statuses;
 import com.mesabrook.ib.blocks.gui.GuiImageLabelButton;
 import com.mesabrook.ib.blocks.gui.GuiImageLabelButton.ImageOrientation;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
@@ -14,6 +15,7 @@ import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiPOSAdmin extends GuiPOSMainBase {
@@ -73,7 +75,7 @@ public class GuiPOSAdmin extends GuiPOSMainBase {
 	protected void actionPerformed(GuiButton button) throws IOException {
 		if (button == back)
 		{
-			mc.displayGuiScreen(new GuiPOSInSession(register));
+			mc.displayGuiScreen(new GuiPOSStarter(register));
 			return;
 		}
 		
@@ -83,6 +85,20 @@ public class GuiPOSAdmin extends GuiPOSMainBase {
 			openSecurityBoxInvPacket.pos = register.getPos();
 			PacketHandler.INSTANCE.sendToServer(openSecurityBoxInvPacket);
 			return;
+		}
+		
+		if (button == online || button == offline)
+		{
+			RegisterStatuses registerStatus = button == online ? RegisterStatuses.Online : RegisterStatuses.Offline;
+			Statuses onlineStatus = button == online ? Statuses.Online : Statuses.Offline;
+			
+			POSChangeStatusClientToServerPacket changeStatusPacket = new POSChangeStatusClientToServerPacket();
+			changeStatusPacket.pos = register.getPos();
+			changeStatusPacket.status = registerStatus;
+			changeStatusPacket.onlineStatusChange = onlineStatus;
+			PacketHandler.INSTANCE.sendToServer(changeStatusPacket);
+			
+			register.setRegisterStatus(registerStatus);
 		}
 	}
 }

@@ -52,6 +52,9 @@ public class TileEntityRegisterRenderer extends TileEntitySpecialRenderer<TileEn
 			case Offline:
 				drawOffline();
 				break;
+			case InternalStorageFull:
+				drawInventoryFull();
+				break;
 		}
 		
 		if (te.getInsertedCardStack() != null)
@@ -181,6 +184,15 @@ public class TileEntityRegisterRenderer extends TileEntitySpecialRenderer<TileEn
 	private void drawOffline()
 	{
 		bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/sco/sco_offline.png"));
+		Tessellator tess = Tessellator.getInstance();
+		GlStateManager.color(1, 1, 1);
+		drawBackgroundTextured(tess.getBuffer());
+		tess.draw();
+	}
+	
+	private void drawInventoryFull()
+	{
+		bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/sco/sco_inv_full.png"));
 		Tessellator tess = Tessellator.getInstance();
 		GlStateManager.color(1, 1, 1);
 		drawBackgroundTextured(tess.getBuffer());

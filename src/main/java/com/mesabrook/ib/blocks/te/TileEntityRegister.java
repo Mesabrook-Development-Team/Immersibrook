@@ -9,11 +9,14 @@ import java.util.UUID;
 
 import com.mesabrook.ib.apimodels.company.LocationItem;
 import com.mesabrook.ib.apimodels.company.Register;
+import com.mesabrook.ib.apimodels.company.RegisterStatus;
+import com.mesabrook.ib.apimodels.company.RegisterStatus.Statuses;
 import com.mesabrook.ib.blocks.BlockRegister;
 import com.mesabrook.ib.capability.debitcard.CapabilityDebitCard;
 import com.mesabrook.ib.capability.debitcard.IDebitCard;
 import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
 import com.mesabrook.ib.capability.secureditem.ISecuredItem;
+import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.commerce.ItemDebitCard;
 import com.mesabrook.ib.items.commerce.ItemMoney;
 import com.mesabrook.ib.net.sco.POSCardShowMessagePacket;
@@ -580,6 +583,23 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 				{
 					setCurrentTaxRate(result.CurrentTaxRate);
 				}
+				
+				// Make sure the security box inventory is not full
+				int currentlyStoredCount = 0;
+				for(int i = 0; i < securityBoxHandler.getSlots(); i++)
+				{
+					ItemStack boxStack = securityBoxHandler.getStackInSlot(i);
+					if (boxStack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
+					{
+						currentlyStoredCount += boxStack.getCount();
+					}
+				}
+				
+				if (currentlyStoredCount >= securityBoxHandler.getSlots() * ModItems.SECURITY_BOX.getItemStackLimit(new ItemStack(ModItems.SECURITY_BOX)) && getRegisterStatus() != RegisterStatuses.InternalStorageFull)
+				{
+					setRegisterStatus(RegisterStatuses.InternalStorageFull);
+					notifyMesaSuiteOfStatusChange(Statuses.InternalStorageFull, "Automatic");
+				}
 			}
 			else
 			{
@@ -731,13 +751,18 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 	
 	public boolean insertItemInFirstAvailableSlot(ItemStack stack)
 	{
+		return insertItemInFirstAvailableSlot(stack, false);
+	}
+	
+	public boolean insertItemInFirstAvailableSlot(ItemStack stack, boolean simulate)
+	{
 		IItemHandler itemHandler = getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 		for(int i = 0; i < itemHandler.getSlots(); i++)
 		{
 			ItemStack stackInSlot = itemHandler.getStackInSlot(i);
 			if (stackInSlot.isEmpty())
 			{
-				itemHandler.insertItem(i, stack, false);
+				itemHandler.insertItem(i, stack, simulate);
 				return true;
 			}
 		}
@@ -758,6 +783,51 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		}
 		
 		return false;
+	}
+	
+	public boolean hasSecurityBoxCapacityForStack(ItemStack securedItemStack)
+	{
+		if (!securedItemStack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
+		{
+			return true;
+		}
+		
+		int totalSecurityBoxCount = 0;
+		for(int i = 0; i < itemHandler.getSlots(); i++)
+		{
+			if (itemHandler.getStackInSlot(i).hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
+			{
+				totalSecurityBoxCount++;
+			}
+		}
+		
+		for(int i = 0; i < securityBoxHandler.getSlots(); i++)
+		{
+			ItemStack boxStack = securityBoxHandler.getStackInSlot(i);
+			if (boxStack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
+			{
+				totalSecurityBoxCount += boxStack.getCount();
+			}
+		}
+		
+		return totalSecurityBoxCount < securityBoxHandler.getSlots() * ModItems.SECURITY_BOX.getItemStackLimit(new ItemStack(ModItems.SECURITY_BOX));
+	}
+	
+	public void notifyMesaSuiteOfStatusChange(RegisterStatus.Statuses status, String performer)
+	{
+		// Cancel status update
+		statusUpdateTask = null;
+		nextUpdateTime = Calendar.getInstance();
+		nextUpdateTime.add(Calendar.SECOND, 10);
+		
+		RegisterStatus registerStatus = new RegisterStatus();
+		registerStatus.Status = status;
+		registerStatus.Initiator = performer;
+		
+		PostData post = new PostData(API.Company, "RegisterAccess/SetStatus", registerStatus, RegisterStatus.class);
+		post.getHeaderOverrides().put("RegisterIdentifier", identifier.toString());
+		DataRequestTask postTask = new DataRequestTask(post);
+		DataRequestQueue.INSTANCE.addTask(postTask);
 	}
 	
 	public enum RegisterStatuses
@@ -808,6 +878,11 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 			if (!register.getRegisterStatus().isOperationalState || register.getLocationIDOwner() == 0 ||
 					(stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null) && stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null).getLocationIDOwner() != register.getLocationIDOwner()) ||
 					!getStackInSlot(slot).isEmpty())
+			{
+				return stack;
+			}
+			
+			if (stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null) && !register.hasSecurityBoxCapacityForStack(stack))
 			{
 				return stack;
 			}
@@ -943,6 +1018,16 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 				prices.set(i, price);
 			}
 		}
+	
+		@Override
+		protected int getStackLimit(int slot, ItemStack stack) {
+			if (stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
+			{
+				return 1;
+			}
+			
+			return super.getStackLimit(slot, stack);
+		}
 	}
 
 	public static class SecurityBoxHandler extends ItemStackHandler
@@ -978,9 +1063,14 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		
 		public ItemStack insertItem(ItemStack stack)
 		{
+			return insertItem(stack, false);
+		}
+	
+		public ItemStack insertItem(ItemStack stack, boolean simulate)
+		{
 			for(int i = 0; i < getSlots(); i++)
 			{
-				stack = insertItemInternal(i, stack, false);
+				stack = insertItemInternal(i, stack, simulate);
 				if (stack.isEmpty())
 				{
 					return stack;

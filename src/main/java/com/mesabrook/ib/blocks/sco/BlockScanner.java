@@ -63,11 +63,22 @@ public class BlockScanner extends ImmersiblockRotationalManyBB {
 		ItemStack heldItem = playerIn.getHeldItem(hand);
 		if (subBoundingBox == SCANNER && !playerIn.getHeldItem(hand).isEmpty()) // Boop
 		{
+			if (!register.insertItemInFirstAvailableSlot(heldItem, true))
+			{
+				playerIn.sendMessage(new TextComponentString(TextFormatting.RED + "You cannot scan any more items. Please complete this transaction and try again."));
+			}
+			
 			if (heldItem.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, facing))
 			{
 				if (heldItem.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, facing).getLocationIDOwner() != register.getLocationIDOwner())
 				{
 					playerIn.sendMessage(new TextComponentString(TextFormatting.RED + "This item cannot be rung up at this register"));
+					return false;
+				}
+				
+				if (!register.hasSecurityBoxCapacityForStack(heldItem.copy().splitStack(1)))
+				{
+					playerIn.sendMessage(new TextComponentString(TextFormatting.RED + "This register's internal security box inventory is full or will be full after this current session is complete."));
 					return false;
 				}
 				
