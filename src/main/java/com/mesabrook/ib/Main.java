@@ -4,12 +4,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.sql.Ref;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraftforge.common.MinecraftForge;
 import org.apache.logging.log4j.Logger;
 
 import com.mesabrook.ib.proxy.CommonProxy;
@@ -21,22 +19,19 @@ import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.handlers.RegistryHandler;
+
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.*;
-import org.apache.logging.log4j.Logger;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
 
 @Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION, dependencies = "required-after:harvestcraft;required-after:immersiveengineering;required-after:jabcm;required-after:cdm", updateJSON = Reference.UPDATE_URL)
 public class Main 

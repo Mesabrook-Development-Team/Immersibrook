@@ -77,6 +77,7 @@ import com.mesabrook.ib.net.telecom.RefreshStackPacket;
 import com.mesabrook.ib.net.telecom.RejectCallPacket;
 import com.mesabrook.ib.net.telecom.SaveContactPacket;
 import com.mesabrook.ib.net.telecom.SecurityStrategySelectedPacket;
+import com.mesabrook.ib.net.telecom.SetSkinFetcherPacket;
 import com.mesabrook.ib.net.telecom.ToggleUnlockSliderPacket;
 import com.mesabrook.ib.net.telecom.WirelessEmergencyAlertPacket;
 import com.mesabrook.ib.util.Reference;

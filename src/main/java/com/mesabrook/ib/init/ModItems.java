@@ -1,24 +1,60 @@
 package com.mesabrook.ib.init;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.mesabrook.ib.Main;
-import com.mesabrook.ib.items.*;
-import com.mesabrook.ib.items.armor.*;
+import com.mesabrook.ib.items.ItemBlahaj;
+import com.mesabrook.ib.items.ItemFlagger;
+import com.mesabrook.ib.items.ItemRation;
+import com.mesabrook.ib.items.ItemSponge;
+import com.mesabrook.ib.items.ItemTechRetailBox;
+import com.mesabrook.ib.items.armor.FaceMasks;
+import com.mesabrook.ib.items.armor.FirefighterSuit;
+import com.mesabrook.ib.items.armor.Hardhat;
+import com.mesabrook.ib.items.armor.NightVisionGoggles;
+import com.mesabrook.ib.items.armor.PoliceHelmet;
+import com.mesabrook.ib.items.armor.SACA;
+import com.mesabrook.ib.items.armor.SafetyHelmet;
+import com.mesabrook.ib.items.armor.SafetyVest;
+import com.mesabrook.ib.items.armor.Vest;
+import com.mesabrook.ib.items.armor.WearableHat;
 import com.mesabrook.ib.items.commerce.ItemDebitCard;
 import com.mesabrook.ib.items.commerce.ItemMoney;
+import com.mesabrook.ib.items.commerce.ItemSecurityBox;
 import com.mesabrook.ib.items.commerce.ItemWallet;
-import com.mesabrook.ib.items.misc.*;
+import com.mesabrook.ib.items.misc.ItemDooter;
+import com.mesabrook.ib.items.misc.ItemFirstAidKit;
+import com.mesabrook.ib.items.misc.ItemIBFood;
+import com.mesabrook.ib.items.misc.ItemMesabrookIcon;
+import com.mesabrook.ib.items.misc.ItemPhone;
+import com.mesabrook.ib.items.misc.ItemPlasticIngot;
+import com.mesabrook.ib.items.misc.ItemPresent;
+import com.mesabrook.ib.items.misc.ItemRadio;
+import com.mesabrook.ib.items.misc.ItemRawPlastic;
+import com.mesabrook.ib.items.misc.ItemRubberDuck;
+import com.mesabrook.ib.items.misc.ItemStamp;
 import com.mesabrook.ib.items.misc.ItemStamp.StampTypes;
+import com.mesabrook.ib.items.misc.ItemStampBook;
+import com.mesabrook.ib.items.misc.ItemWineBottle;
+import com.mesabrook.ib.items.misc.MiscItem;
+import com.mesabrook.ib.items.misc.SerpentBar;
+import com.mesabrook.ib.items.misc.SpecialFood;
+import com.mesabrook.ib.items.misc.ToyPopper;
 import com.mesabrook.ib.items.record.MemeRecord;
-import com.mesabrook.ib.items.tools.*;
+import com.mesabrook.ib.items.tools.ItemBanHammer;
+import com.mesabrook.ib.items.tools.ItemEnderChest;
+import com.mesabrook.ib.items.tools.ItemGavel;
+import com.mesabrook.ib.items.tools.ItemIceChisel;
+import com.mesabrook.ib.items.tools.ItemManholeHook;
+import com.mesabrook.ib.items.tools.ItemTapeMeasure;
 import com.mesabrook.ib.items.weapons.ItemWeapon;
 import com.mesabrook.ib.util.ArmorMaterialRegistry;
 import com.mesabrook.ib.util.ToolMaterialRegistry;
+
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ModItems
 {
