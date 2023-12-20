@@ -74,11 +74,6 @@ public class GuiPhoneSetupStart extends GuiPhoneBase
             buttonList.add(divider);
             buttonList.add(specialLogo);
         }
-
-        ClientSoundPacket soundPacket = new ClientSoundPacket();
-        soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
-        soundPacket.soundName = "oobe_startup";
-        PacketHandler.INSTANCE.sendToServer(soundPacket);
     }
 
     @Override

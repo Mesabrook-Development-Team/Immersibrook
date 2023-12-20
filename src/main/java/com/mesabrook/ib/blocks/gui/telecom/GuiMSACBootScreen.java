@@ -1,5 +1,6 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import com.mesabrook.ib.util.IndependentTimer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.item.ItemStack;
@@ -10,55 +11,58 @@ import java.io.IOException;
 
 public class GuiMSACBootScreen extends GuiPhoneBase
 {
-    private int timerToNextScreen = 0;
-    private int fadeAnimationTimer = 0;
-    private int bootStepTracker = 0;
+    private IndependentTimer timer;
+    private IndependentTimer bootTimer;
     private String currentTexture;
-    private String bootStep = "";
     private String banner;
 
     public GuiMSACBootScreen(ItemStack phoneStack, EnumHand hand)
     {
         super(phoneStack, hand);
-        fadeAnimationTimer++;
+        timer = new IndependentTimer();
+        bootTimer = new IndependentTimer();
     }
 
     @Override
     protected String getInnerTextureFileName()
     {
-        String[] textures = {
-                "system/app_screen_no_bar.png",
-                "system/boot_screen_msac_0.png",
-                "system/boot_screen_msac_1.png",
-                "system/boot_screen_msac_2.png",
-                "system/boot_screen_msac_3.png",
-                "system/boot_screen_msac_4.png",
-                "system/boot_screen_msac_5.png",
-                "system/boot_screen_msac_6.png",
-                "system/boot_screen_msac_1.png"
-        };
-
-        int[] animationTimers = {0, 50, 100, 150, 200, 250, 300, 350, 400};
-
-        int index = -1;
-
-        for (int i = 0; i < animationTimers.length; i++) {
-            if (fadeAnimationTimer <= animationTimers[i]) {
-                index = i;
-                break;
-            }
+        if(timer.getElapsedTime() < 100)
+        {
+            currentTexture = "system/boot_screen_msac_1.png";
         }
-
-        if (index == -1) {
-            index = 2; // Default index if fadeAnimationTimer is greater than 400
-            fadeAnimationTimer = 100; // Reset timer to 100
+        if(timer.getElapsedTime() >= 150)
+        {
+            currentTexture = "system/boot_screen_msac_1.png";
         }
-
-        if (index == 2) {
+        if(timer.getElapsedTime() >= 200)
+        {
+            currentTexture = "system/boot_screen_msac_1.png";
             banner = "Starting Minedroid";
         }
-
-        currentTexture = textures[index];
+        if(timer.getElapsedTime() >= 400)
+        {
+            currentTexture = "system/boot_screen_msac_2.png";
+        }
+        if(timer.getElapsedTime() >= 600)
+        {
+            currentTexture = "system/boot_screen_msac_3.png";
+        }
+        if(timer.getElapsedTime() >= 800)
+        {
+            currentTexture = "system/boot_screen_msac_4.png";
+        }
+        if(timer.getElapsedTime() >= 1000)
+        {
+            currentTexture = "system/boot_screen_msac_5.png";
+        }
+        if(timer.getElapsedTime() >= 1200)
+        {
+            currentTexture = "system/boot_screen_msac_6.png";
+        }
+        if(timer.getElapsedTime() >= 1400)
+        {
+            timer.reset();
+        }
         return currentTexture;
     }
 
@@ -82,12 +86,12 @@ public class GuiMSACBootScreen extends GuiPhoneBase
     protected void doDraw(int mouseX, int mouseY, float partialticks)
     {
         super.doDraw(mouseX, mouseY, partialticks);
-        timerToNextScreen++;
-        fadeAnimationTimer++;
+        timer.update();
+        bootTimer.update();
 
         drawCenteredString(fontRenderer, banner, INNER_X + 80, INNER_Y + 180, 0xFFFFFF);
 
-        if(timerToNextScreen >= 1500)
+        if(bootTimer.getElapsedTime() >= 3000)
         {
             finishBoot();
         }
@@ -109,7 +113,9 @@ public class GuiMSACBootScreen extends GuiPhoneBase
     public void onGuiClosed()
     {
         super.onGuiClosed();
-        timerToNextScreen = 0;
-        fadeAnimationTimer = 0;
+        timer.reset();
+        timer.stop();
+        bootTimer.reset();
+        bootTimer.stop();
     }
 }

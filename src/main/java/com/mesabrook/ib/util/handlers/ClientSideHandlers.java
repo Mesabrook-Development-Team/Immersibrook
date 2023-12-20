@@ -56,7 +56,6 @@ import com.mesabrook.ib.util.ModUtils;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.saveData.PhoneLogData;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
@@ -96,11 +95,26 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
+import java.net.URI;
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Optional;
+import java.util.function.Consumer;
+
 @SideOnly(Side.CLIENT)
 @EventBusSubscriber
 public class ClientSideHandlers
 {
 	private static HashMap<Long, PositionedSoundRecord> soundsByBlockPos = new HashMap<>();
+
+	public static void updateSkinRenderer(String engine)
+	{
+		ModConfig.skinFetcherEngine = engine;
+		Minecraft.getMinecraft().player.sendMessage(new TextComponentString(engine));
+	}
 
 	public static void openAboutGUI()
 	{

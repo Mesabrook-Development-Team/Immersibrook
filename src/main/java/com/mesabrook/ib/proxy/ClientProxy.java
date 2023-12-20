@@ -2,15 +2,7 @@ package com.mesabrook.ib.proxy;
 
 import org.lwjgl.input.Keyboard;
 
-import com.mesabrook.ib.Main;
-import com.mesabrook.ib.blocks.te.ShelvingTileEntity;
-import com.mesabrook.ib.blocks.te.ShelvingTileEntityRenderer;
-import com.mesabrook.ib.blocks.te.TileEntityPlaque;
-import com.mesabrook.ib.blocks.te.TileEntityPlaqueRenderer;
-import com.mesabrook.ib.blocks.te.TileEntityRegister;
-import com.mesabrook.ib.blocks.te.TileEntityRegisterRenderer;
-import com.mesabrook.ib.blocks.te.TileEntityWallSign;
-import com.mesabrook.ib.blocks.te.TileEntityWallSignRenderer;
+import com.mesabrook.ib.blocks.te.*;
 import com.mesabrook.ib.items.commerce.models.ItemSecurityBoxModel;
 import com.mesabrook.ib.util.handlers.ClientSideHandlers;
 
@@ -54,8 +46,11 @@ public class ClientProxy extends CommonProxy
 	{
 		super.init(e);
 		ClientSideHandlers.loadCreativeGUI();
+
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlaque.class, new TileEntityPlaqueRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWallSign.class, new TileEntityWallSignRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPhoneStand.class, new ItemStandRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWirelessChargingPad.class, new WirelessChargingPadRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRegister.class, new TileEntityRegisterRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(ShelvingTileEntity.class, new ShelvingTileEntityRenderer());
 
@@ -69,7 +64,7 @@ public class ClientProxy extends CommonProxy
 		ClientRegistry.registerKeyBinding(hammerSoundKey);
 		ClientRegistry.registerKeyBinding(policeHelmetKey);
 
-		Main.logger.info("Starting download of statue player skins");
+		//Main.logger.info("Starting download of statue player skins");
 
 		// Broken, needs to be fixed @CSX8600
 		// SkinDownloader.downloadSkin(Reference.RZ_UUID);

@@ -1,10 +1,15 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.mesabrook.ib.blocks.gui.ImageButton;
-import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.net.telecom.PhoneQueryPacket;
+import com.mesabrook.ib.util.IndependentTimer;
+import com.mesabrook.ib.util.handlers.ClientSideHandlers;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 
 import java.io.IOException;
 
@@ -15,6 +20,7 @@ public class GuiAppSplashScreen extends GuiPhoneBase
     private String appName;
     private String splashColor;
     int progress = 0;
+    IndependentTimer timer;
 
     public String getSplashColor()
     {
@@ -70,16 +76,18 @@ public class GuiAppSplashScreen extends GuiPhoneBase
     	super.initGui();
         logo = new ImageButton(0, INNER_X + (INNER_TEX_WIDTH / 2) - 16, INNER_Y + 70, 32, 32, phoneStackData.getIconTheme() + "/" + getLogoPath(), 32, 32);
         buttonList.add(logo);
+        timer = new IndependentTimer();
+        timer.update();
     }
 
     @Override
     protected void doDraw(int mouseX, int mouseY, float partialticks)
     {
         super.doDraw(mouseX, mouseY, partialticks);
-        drawCenteredString(fontRenderer, getAppName() + " " + Reference.MINEDROID_VERSION, INNER_X + 80, INNER_Y + 150, 0xFFFFFF);
+        drawCenteredString(fontRenderer, new TextComponentString(TextFormatting.BOLD + getAppName()).getFormattedText(), INNER_X + 80, INNER_Y + 150, 0xFFFFFF);
 
-        progress++;
-        if(progress > 135)
+        timer.update();
+        if(timer.getElapsedTime() > 300)
         {
             if(getLogoPath().contains("icn_calc"))
             {
@@ -97,6 +105,21 @@ public class GuiAppSplashScreen extends GuiPhoneBase
             {
                 Minecraft.getMinecraft().displayGuiScreen(new GuiSettings(phoneStack, hand));
             }
+            if(getLogoPath().contains("phone"))
+            {
+                Minecraft.getMinecraft().displayGuiScreen(new GuiEmptyPhone(phoneStack, hand));
+
+                PhoneQueryPacket queryPacket = new PhoneQueryPacket();
+                queryPacket.forNumber = getCurrentPhoneNumber();
+
+                int nextID = ClientSideHandlers.TelecomClientHandlers.getNextHandlerID();
+
+                ClientSideHandlers.TelecomClientHandlers.phoneQueryResponseHandlers.put(nextID, ClientSideHandlers.TelecomClientHandlers::onPhoneQueryResponseForPhoneApp);
+                queryPacket.clientHandlerCode = nextID;
+                PacketHandler.INSTANCE.sendToServer(queryPacket);
+            }
+            timer.stop();
+            timer.reset();
         }
     }
 

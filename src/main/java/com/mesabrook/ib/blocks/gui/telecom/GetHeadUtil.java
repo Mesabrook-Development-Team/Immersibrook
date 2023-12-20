@@ -2,6 +2,7 @@ package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.google.gson.Gson;
 import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.config.ModConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.renderer.texture.ITextureObject;
@@ -15,7 +16,6 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -74,14 +74,21 @@ public class GetHeadUtil {
 			}
 			
 			MojangAPIResponse response = new Gson().fromJson(builder.toString(), MojangAPIResponse.class);
-			if(LocalDate.now().getMonthValue() == 4 && LocalDate.now().getDayOfMonth() == 1)
+			String fetcherURL = "";
+			if(ModConfig.skinFetcherEngine.contains("mc-heads"))
 			{
-				url = new URL("https://mc-heads.net/body/" + response.id);
+				fetcherURL = "https://mc-heads.net/head/" + response.id;
+			}
+			else if(ModConfig.skinFetcherEngine.contains("crafatar"))
+			{
+				fetcherURL = "https://crafatar.com/renders/head/" + response.id;
 			}
 			else
 			{
-				url = new URL("https://mc-heads.net/head/" + response.id);
+				fetcherURL = "https://mc-heads.net/head/" + response.id;
 			}
+
+			url = new URL(fetcherURL);
 
 			conn = (HttpURLConnection)url.openConnection();
 			conn.setRequestMethod("GET");

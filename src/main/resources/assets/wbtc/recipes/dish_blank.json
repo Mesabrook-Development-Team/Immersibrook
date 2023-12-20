@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " P ",
+    "SP ",
+    "SPS"
+  ],
+  "key": {
+    "P": {
+      "type": "forge:ore_dict",
+	  "ore": "plateSteel"
+    },
+    "S": {
+      "type": "forge:ore_dict",
+	  "ore": "stickSteel"
+    }
+  },
+  "result": {
+    "item": "wbtc:dish_blank",
+    "count": 1
+  }
+}

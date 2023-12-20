@@ -3,7 +3,9 @@ package com.mesabrook.ib.init;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.items.*;
 import com.mesabrook.ib.items.armor.*;
-import com.mesabrook.ib.items.commerce.*;
+import com.mesabrook.ib.items.commerce.ItemDebitCard;
+import com.mesabrook.ib.items.commerce.ItemMoney;
+import com.mesabrook.ib.items.commerce.ItemWallet;
 import com.mesabrook.ib.items.misc.*;
 import com.mesabrook.ib.items.misc.ItemStamp.StampTypes;
 import com.mesabrook.ib.items.record.MemeRecord;
@@ -158,6 +160,25 @@ public class ModItems
 	// Branded Vests
 	public static final Item IRW_VEST = new SafetyVest("irw_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.IRW_SAFETY_VEST_MAT, EntityEquipmentSlot.CHEST);
 	public static final Item NC_VEST = new SafetyVest("yellow_vest_nc", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.YELLOW_VEST_NC, EntityEquipmentSlot.CHEST);
+
+	// Conductor's Jackets
+	public static final Item CU_BL_VEST = new SafetyVest("conductors_jacket_blue", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.CU_BL_VEST, EntityEquipmentSlot.CHEST);
+	public static final Item CU_BLC_VEST = new SafetyVest("conductors_jacket_black", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.CU_BLC_VEST, EntityEquipmentSlot.CHEST);
+
+	// Conductor's Pants
+	public static final Item CU_BL_PANTS = new FirefighterSuit("conductors_pants_blue", ArmorMaterialRegistry.CU_BL_PANTS, EntityEquipmentSlot.LEGS, 1);
+	public static final Item CU_BLC_PANTS = new FirefighterSuit("conductors_pants_black", ArmorMaterialRegistry.CU_BLC_PANTS, EntityEquipmentSlot.LEGS, 1);
+
+	// Engineer's Overalls
+	public static final Item ENGINEERS_OVERALLS = new FirefighterSuit("engineers_overalls", ArmorMaterialRegistry.EO, EntityEquipmentSlot.LEGS, 1);
+
+	// Conductor and Engineer Hats
+	public static final Item CU_BL_HAT = new FirefighterSuit("conductors_hat_blue", ArmorMaterialRegistry.CU_BL_HAT, EntityEquipmentSlot.HEAD, 1);
+	public static final Item CU_BLC_HAT = new FirefighterSuit("conductors_hat_black", ArmorMaterialRegistry.CU_BLC_HAT, EntityEquipmentSlot.HEAD, 1);
+	public static final Item E_HAT = new FirefighterSuit("engineers_hat", ArmorMaterialRegistry.EO_HAT, EntityEquipmentSlot.HEAD, 1);
+
+	// Denim crafting item
+	public static final Item DENIM = new MiscItem("denim", 64, Main.IMMERSIBROOK_MAIN);
 
 	// Cooling Vest
 	public static final Item COOLING_VEST = new SACA("cooling_vest", ArmorMaterialRegistry.COOLING_VEST, EntityEquipmentSlot.CHEST);
@@ -444,23 +465,78 @@ public class ModItems
 	public static final Item FLAGGER_SLOW = new ItemFlagger("flagger_slow");
 
 	// Minedroid retail boxes uwu
-	public static final Item BOX_WHITE = new ItemMinedroidBox("box_white");
-	public static final Item BOX_ORANGE = new ItemMinedroidBox("box_orange");
-	public static final Item BOX_MAGENTA = new ItemMinedroidBox("box_magenta");
-	public static final Item BOX_YELLOW = new ItemMinedroidBox("box_yellow");
-	public static final Item BOX_LIME = new ItemMinedroidBox("box_lime");
-	public static final Item BOX_PINK = new ItemMinedroidBox("box_pink");
-	public static final Item BOX_GRAY = new ItemMinedroidBox("box_gray");
-	public static final Item BOX_SILVER = new ItemMinedroidBox("box_silver");
-	public static final Item BOX_CYAN = new ItemMinedroidBox("box_cyan");
-	public static final Item BOX_LBLUE = new ItemMinedroidBox("box_lblue");
-	public static final Item BOX_PURPLE = new ItemMinedroidBox("box_purple");
-	public static final Item BOX_BROWN = new ItemMinedroidBox("box_brown");
-	public static final Item BOX_GREEN = new ItemMinedroidBox("box_green");
-	public static final Item BOX_RED = new ItemMinedroidBox("box_red");
-	public static final Item BOX_BLACK = new ItemMinedroidBox("box_black");
-	public static final Item BOX_BLUE = new ItemMinedroidBox("box_blue");
+	public static final Item BOX_WHITE = new ItemTechRetailBox("phone_box_white");
+	public static final Item BOX_ORANGE = new ItemTechRetailBox("phone_box_orange");
+	public static final Item BOX_MAGENTA = new ItemTechRetailBox("phone_box_magenta");
+	public static final Item BOX_YELLOW = new ItemTechRetailBox("phone_box_yellow");
+	public static final Item BOX_LIME = new ItemTechRetailBox("phone_box_lime");
+	public static final Item BOX_PINK = new ItemTechRetailBox("phone_box_pink");
+	public static final Item BOX_GRAY = new ItemTechRetailBox("phone_box_gray");
+	public static final Item BOX_SILVER = new ItemTechRetailBox("phone_box_silver");
+	public static final Item BOX_CYAN = new ItemTechRetailBox("phone_box_cyan");
+	public static final Item BOX_LBLUE = new ItemTechRetailBox("phone_box_lblue");
+	public static final Item BOX_PURPLE = new ItemTechRetailBox("phone_box_purple");
+	public static final Item BOX_BROWN = new ItemTechRetailBox("phone_box_brown");
+	public static final Item BOX_GREEN = new ItemTechRetailBox("phone_box_green");
+	public static final Item BOX_RED = new ItemTechRetailBox("phone_box_red");
+	public static final Item BOX_BLACK = new ItemTechRetailBox("phone_box_black");
+	public static final Item BOX_BLUE = new ItemTechRetailBox("phone_box_blue");
+	public static final Item OT_CHARGER_BOX = new ItemTechRetailBox("ot_charger_box");
 	public static final Item OT_CHARGER = new MiscItem("ot_charger", 1, Main.IMMERSIBROOK_MAIN);
+
+	// CDM Retail Boxes - Laptops
+	public static final Item LAPTOP_BOX_BLACK = new ItemTechRetailBox("laptop_box_black");
+	public static final Item LAPTOP_BOX_WHITE = new ItemTechRetailBox("laptop_box_white");
+	public static final Item LAPTOP_BOX_ORANGE = new ItemTechRetailBox("laptop_box_orange");
+	public static final Item LAPTOP_BOX_MAGENTA = new ItemTechRetailBox("laptop_box_magenta");
+	public static final Item LAPTOP_BOX_YELLOW = new ItemTechRetailBox("laptop_box_yellow");
+	public static final Item LAPTOP_BOX_LIME = new ItemTechRetailBox("laptop_box_lime");
+	public static final Item LAPTOP_BOX_PINK = new ItemTechRetailBox("laptop_box_pink");
+	public static final Item LAPTOP_BOX_GRAY = new ItemTechRetailBox("laptop_box_gray");
+	public static final Item LAPTOP_BOX_SILVER = new ItemTechRetailBox("laptop_box_silver");
+	public static final Item LAPTOP_BOX_LBLUE = new ItemTechRetailBox("laptop_box_lblue");
+	public static final Item LAPTOP_BOX_CYAN = new ItemTechRetailBox("laptop_box_cyan");
+	public static final Item LAPTOP_BOX_BLUE = new ItemTechRetailBox("laptop_box_blue");
+	public static final Item LAPTOP_BOX_PURPLE = new ItemTechRetailBox("laptop_box_purple");
+	public static final Item LAPTOP_BOX_BROWN = new ItemTechRetailBox("laptop_box_brown");
+	public static final Item LAPTOP_BOX_GREEN = new ItemTechRetailBox("laptop_box_green");
+	public static final Item LAPTOP_BOX_RED = new ItemTechRetailBox("laptop_box_red");
+
+	// CDM Retail Boxes - Routers
+	public static final Item ROUTER_BOX_WHITE = new ItemTechRetailBox("router_box_white");
+	public static final Item ROUTER_BOX_ORANGE = new ItemTechRetailBox("router_box_orange");
+	public static final Item ROUTER_BOX_MAGENTA = new ItemTechRetailBox("router_box_magenta");
+	public static final Item ROUTER_BOX_LBLUE = new ItemTechRetailBox("router_box_lblue");
+	public static final Item ROUTER_BOX_YELLOW = new ItemTechRetailBox("router_box_yellow");
+	public static final Item ROUTER_BOX_PINK = new ItemTechRetailBox("router_box_pink");
+	public static final Item ROUTER_BOX_GRAY = new ItemTechRetailBox("router_box_gray");
+	public static final Item ROUTER_BOX_SILVER = new ItemTechRetailBox("router_box_silver");
+	public static final Item ROUTER_BOX_LIME = new ItemTechRetailBox("router_box_lime");
+	public static final Item ROUTER_BOX_CYAN = new ItemTechRetailBox("router_box_cyan");
+	public static final Item ROUTER_BOX_PURPLE = new ItemTechRetailBox("router_box_purple");
+	public static final Item ROUTER_BOX_BLUE = new ItemTechRetailBox("router_box_blue");
+	public static final Item ROUTER_BOX_BROWN = new ItemTechRetailBox("router_box_brown");
+	public static final Item ROUTER_BOX_GREEN = new ItemTechRetailBox("router_box_green");
+	public static final Item ROUTER_BOX_RED = new ItemTechRetailBox("router_box_red");
+	public static final Item ROUTER_BOX_BLACK = new ItemTechRetailBox("router_box_black");
+
+	// CDM Retail Boxes - Printers
+	public static final Item PRINTER_BOX_WHITE = new ItemTechRetailBox("printer_box_white");
+	public static final Item PRINTER_BOX_ORANGE = new ItemTechRetailBox("printer_box_orange");
+	public static final Item PRINTER_BOX_MAGENTA = new ItemTechRetailBox("printer_box_magenta");
+	public static final Item PRINTER_BOX_LBLUE = new ItemTechRetailBox("printer_box_lblue");
+	public static final Item PRINTER_BOX_YELLOW = new ItemTechRetailBox("printer_box_yellow");
+	public static final Item PRINTER_BOX_PINK = new ItemTechRetailBox("printer_box_pink");
+	public static final Item PRINTER_BOX_GRAY = new ItemTechRetailBox("printer_box_gray");
+	public static final Item PRINTER_BOX_SILVER = new ItemTechRetailBox("printer_box_silver");
+	public static final Item PRINTER_BOX_LIME = new ItemTechRetailBox("printer_box_lime");
+	public static final Item PRINTER_BOX_CYAN = new ItemTechRetailBox("printer_box_cyan");
+	public static final Item PRINTER_BOX_PURPLE = new ItemTechRetailBox("printer_box_purple");
+	public static final Item PRINTER_BOX_BLUE = new ItemTechRetailBox("printer_box_blue");
+	public static final Item PRINTER_BOX_BROWN = new ItemTechRetailBox("printer_box_brown");
+	public static final Item PRINTER_BOX_GREEN = new ItemTechRetailBox("printer_box_green");
+	public static final Item PRINTER_BOX_RED = new ItemTechRetailBox("printer_box_red");
+	public static final Item PRINTER_BOX_BLACK = new ItemTechRetailBox("printer_box_black");
 
 	// Rations
 	public static final Item ES_RATION = new ItemRation("ration_1");
@@ -475,4 +551,7 @@ public class ModItems
 
 	// Shopping Basket Test Item
 	public static final Item SHOPPING_BASKET = new MiscItem("shopping_basket_blue", 1, Main.IMMERSIBROOK_MAIN);
+
+	// More food
+	public static final Item SPAM = new SpecialFood("spam", 5, 4F, false);
 }

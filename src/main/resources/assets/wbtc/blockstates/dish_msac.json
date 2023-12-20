@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:dish_msac" },
+        "facing=south": { "model": "wbtc:dish_msac", "y": 180 },
+        "facing=west":  { "model": "wbtc:dish_msac", "y": 270 },
+        "facing=east":  { "model": "wbtc:dish_msac", "y": 90 }
+    }
+}

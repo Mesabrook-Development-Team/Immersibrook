@@ -1,21 +1,13 @@
 package com.mesabrook.ib.items.misc;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
-
-import javax.annotation.Nullable;
-
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.Main;
-import com.mesabrook.ib.advancements.Triggers;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneBase;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SpecialBezelRandomizer;
 import com.mesabrook.ib.util.config.ModConfig;
-
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -38,6 +30,11 @@ import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
+import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
 
 public class ItemPhone extends Item implements IHasModel {
 
@@ -106,11 +103,6 @@ public class ItemPhone extends Item implements IHasModel {
 			playerIn.openGui(Main.instance, Reference.GUI_PHONE, worldIn, handIn.ordinal(), 0, 0);
 		}
 
-		if(playerIn instanceof EntityPlayer)
-		{
-			Triggers.trigger(Triggers.PHONE_USE, playerIn);
-		}
-
 		return super.onItemRightClick(worldIn, playerIn, handIn);
 	}
 
@@ -146,6 +138,7 @@ public class ItemPhone extends Item implements IHasModel {
 		private boolean needsToDoOOBE = true;
 		private boolean isPhoneDead = false;
 		private boolean useButtonInsteadOfSlider = false;
+		private String skinFetchingEngine = "mc-heads";
 		
 		public static NBTData getFromItemStack(ItemStack phoneStack)
 		{
@@ -304,6 +297,16 @@ public class ItemPhone extends Item implements IHasModel {
 			return this.iconTheme = themeIn;
 		}
 
+		public String getSkinFetchingEngine()
+		{
+			return skinFetchingEngine;
+		}
+
+		public String setSkinFetchingEngine(String engineIn)
+		{
+			return this.skinFetchingEngine = engineIn;
+		}
+
 		public boolean getNeedToDoOOBE()
 		{
 			return needsToDoOOBE;
@@ -393,6 +396,7 @@ public class ItemPhone extends Item implements IHasModel {
 			tag.setBoolean(Reference.SHOW_MILITARY_TIME, getShowingMilitaryIRLTime());
 			tag.setBoolean(Reference.DEBUG_MODE, getIsDebugModeEnabled());
 			tag.setString(Reference.ICON_THEME, getIconTheme());
+			tag.setString(Reference.SKIN_ENGINE, getSkinFetchingEngine());
 			tag.setBoolean(Reference.OOBE_STATUS, getNeedToDoOOBE());
 			tag.setBoolean(Reference.USE_BUTTON_INSTEAD_OF_SLIDER, getUseButtonInsteadOfSlider());
 			
@@ -476,6 +480,11 @@ public class ItemPhone extends Item implements IHasModel {
 			if(nbt.hasKey(Reference.ICON_THEME))
 			{
 				setIconTheme(nbt.getString(Reference.ICON_THEME));
+			}
+
+			if(nbt.hasKey(Reference.SKIN_ENGINE))
+			{
+				setSkinFetchingEngine(nbt.getString(Reference.SKIN_ENGINE));
 			}
 
 			if(nbt.hasKey(Reference.OOBE_STATUS))

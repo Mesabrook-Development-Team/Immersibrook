@@ -12,6 +12,7 @@ im.death.reverb=%s needs more reverb.
 im.death.rubberduck=%s got their fingers blown off by a rubber duck
 im.death.kekw=%s found an item they weren't supposed to have and used it. Smooooooth...
 im.death.sus=%s got caught in the vents.
+im.death.dodo=%s went the way of the Dodo.
 
 im.hammer.shift=New Sound Event:
 im.hammer.nosound=Hammer has no sound bound to it.
@@ -152,6 +153,20 @@ item.icon_immersibrook.name=Small Plastic Disc That You Toss
 item.lblue_vest.name=Light Blue Safety Vest
 item.lblue_vest_x.name=Light Blue Safety Vest - Railroad Pattern
 item.yellow_vest_nc.name=Yellow Safety Vest - Nether Corporation Branding
+
+//Conductor's Uniform
+item.conductors_jacket_blue.name=Blue Conductor's Coat
+item.conductors_jacket_black.name=Black Conductor's Coat
+item.conductors_pants_blue.name=Blue Conductor's Pants
+item.conductors_pants_black.name=Black Conductor's Pants
+item.conductors_hat_blue.name=Blue Conductor's Hat
+item.conductors_hat_black.name=Black Conductor's hat
+
+//Engineer's Uniform
+item.engineers_overalls.name=Denim Overalls
+item.denim.name=Denim
+
+item.engineers_hat.name=Engineer's Hat
 
 //Stairs
 tile.oak_laminate_stairs.name=Oak Wood Laminate Stairs
@@ -1637,6 +1652,7 @@ item.phone_shell_red.name=Red Phone Shell
 item.phone_shell_black.name=Black Phone Shell
 item.phone_shell_special.name=Rainbow Phone Shell
 item.radio.name=Radio
+tile.wireless_phone_charger_pad.name=Wireless Smartphone Charging Pad
 
 //Ducks
 item.rubber_duck.name=Rubber Ducky
@@ -1888,6 +1904,7 @@ im.settings.personalization.themesetupblurb=You can change your phone's theme la
 im.settings.personalization.wallpaperreset=Settings Reset
 im.settings.personalization.clock=Clock Settings
 im.settings.personalization.icontheme=Change Your Theme
+im.settings.personalization.iconthemea=System Themes
 im.settings.personalization.iconthemesetup=Choose a Theme
 im.settings.personalization.wallpapersoobe=Choose Wallpapers
 im.settings.personalization.icontheme.current=Current Theme:
@@ -1900,23 +1917,24 @@ im.crash.uploaded=Crash Log Uploaded
 im.crash.error=Unable to upload
 
 //Minedroid Retail Packaging
-item.box_white.name=Minedroid Phone - Snow
-item.box_orange.name=Minedroid Phone - Orange
-item.box_magenta.name=Minedroid Phone - Magenta
-item.box_lblue.name=Minedroid Phone - Aqua
-item.box_yellow.name=Minedroid Phone - Sunshine
-item.box_pink.name=Minedroid Phone - Pink
-item.box_lime.name=Minedroid Phone - Lime
-item.box_gray.name=Minedroid Phone - Graphite
-item.box_silver.name=Minedroid Phone - Silver
-item.box_cyan.name=Minedroid Phone - Cyan
-item.box_purple.name=Minedroid Phone - Purple
-item.box_blue.name=Minedroid Phone - Blue
-item.box_brown.name=Minedroid Phone - Chocolate
-item.box_green.name=Minedroid Phone - Leaf
-item.box_red.name=Minedroid Phone - Rose
-item.box_black.name=Minedroid Phone - Midnight
+item.phone_box_white.name=Minedroid Phone - Snow
+item.phone_box_orange.name=Minedroid Phone - Orange
+item.phone_box_magenta.name=Minedroid Phone - Magenta
+item.phone_box_lblue.name=Minedroid Phone - Aqua
+item.phone_box_yellow.name=Minedroid Phone - Sunshine
+item.phone_box_pink.name=Minedroid Phone - Pink
+item.phone_box_lime.name=Minedroid Phone - Lime
+item.phone_box_gray.name=Minedroid Phone - Graphite
+item.phone_box_silver.name=Minedroid Phone - Silver
+item.phone_box_cyan.name=Minedroid Phone - Cyan
+item.phone_box_purple.name=Minedroid Phone - Purple
+item.phone_box_blue.name=Minedroid Phone - Blue
+item.phone_box_brown.name=Minedroid Phone - Chocolate
+item.phone_box_green.name=Minedroid Phone - Leaf
+item.phone_box_red.name=Minedroid Phone - Rose
+item.phone_box_black.name=Minedroid Phone - Midnight
 item.ot_charger.name=One-Time Charger
+item.ot_charger_box.name=MSAC One-Time Charger
 
 //Minedroid Translation Project - Misc
 im.misc.error=An error occurred.
@@ -2002,7 +2020,24 @@ tile.shelf_one_level_two_peghooks=Retail Shelf
 tile.shelf_four_peghooks.name=Retail Shelf
 tile.shelf_two_levels_no_peghooks.name=Retail Shelf
 tile.security_station.name=MSAC Retail - Merchandise Securing Station
+
 tile.smartphone_stand.name=Smartphone Display Stand
+tile.smartphone_stand_orange.name=Smartphone Display Stand
+tile.smartphone_stand_magenta.name=Smartphone Display Stand
+tile.smartphone_stand_lblue.name=Smartphone Display Stand
+tile.smartphone_stand_yellow.name=Smartphone Display Stand
+tile.smartphone_stand_lime.name=Smartphone Display Stand
+tile.smartphone_stand_pink.name=Smartphone Display Stand
+tile.smartphone_stand_gray.name=Smartphone Display Stand
+tile.smartphone_stand_silver.name=Smartphone Display Stand
+tile.smartphone_stand_cyan.name=Smartphone Display Stand
+tile.smartphone_stand_purple.name=Smartphone Display Stand
+tile.smartphone_stand_blue.name=Smartphone Display Stand
+tile.smartphone_stand_brown.name=Smartphone Display Stand
+tile.smartphone_stand_green.name=Smartphone Display Stand
+tile.smartphone_stand_red.name=Smartphone Display Stand
+tile.smartphone_stand_black.name=Smartphone Display Stand
+
 tile.retail_freezer_upright.name=Retail Freezer
 tile.retail_freezer_deep.name=Retail Deep Freezer Island
 tile.sim_station.name=Mesabrook Bell SIM Programming Terminal
@@ -2012,3 +2047,70 @@ item.shopping_basket_blue.name=Shopping Basket
 //Sound Emitters
 tile.sound_emitter.name=Sound Emitter
 tile.sound_emitter_wall.name=Wall Mounted Sound Emitter
+
+//Fixtures
+tile.wall_toilet.name=Toilet
+tile.home_toilet.name=Toilet
+tile.urinal.name=Urinal
+
+//ATM
+tile.atm.name=ATM
+
+//Retail Boxes - CDM
+item.laptop_box_white.name=Craytech Laptop
+item.laptop_box_orange.name=Craytech Laptop
+item.laptop_box_magenta.name=Craytech Laptop
+item.laptop_box_lblue.name=Craytech Laptop
+item.laptop_box_yellow.name=Craytech Laptop
+item.laptop_box_pink.name=Craytech Laptop
+item.laptop_box_gray.name=Craytech Laptop
+item.laptop_box_silver.name=Craytech Laptop
+item.laptop_box_cyan.name=Craytech Laptop
+item.laptop_box_purple.name=Craytech Laptop
+item.laptop_box_blue.name=Craytech Laptop
+item.laptop_box_brown.name=Craytech Laptop
+item.laptop_box_green.name=Craytech Laptop
+item.laptop_box_red.name=Craytech Laptop
+item.laptop_box_black.name=Craytech Laptop
+item.laptop_box_lime.name=Craytech Laptop
+item.router_box_white.name=Craytech Router
+item.router_box_orange.name=Craytech Router
+item.router_box_magenta.name=Craytech Router
+item.router_box_lblue.name=Craytech Router
+item.router_box_yellow.name=Craytech Router
+item.router_box_pink.name=Craytech Router
+item.router_box_gray.name=Craytech Router
+item.router_box_silver.name=Craytech Router
+item.router_box_cyan.name=Craytech Router
+item.router_box_purple.name=Craytech Router
+item.router_box_blue.name=Craytech Router
+item.router_box_brown.name=Craytech Router
+item.router_box_green.name=Craytech Router
+item.router_box_red.name=Craytech Router
+item.router_box_black.name=Craytech Router
+item.router_box_lime.name=Craytech Router
+item.printer_box_white.name=Craytech Printer
+item.printer_box_orange.name=Craytech Printer
+item.printer_box_magenta.name=Craytech Printer
+item.printer_box_lblue.name=Craytech Printer
+item.printer_box_yellow.name=Craytech Printer
+item.printer_box_pink.name=Craytech Printer
+item.printer_box_gray.name=Craytech Printer
+item.printer_box_silver.name=Craytech Printer
+item.printer_box_cyan.name=Craytech Printer
+item.printer_box_purple.name=Craytech Printer
+item.printer_box_blue.name=Craytech Printer
+item.printer_box_brown.name=Craytech Printer
+item.printer_box_green.name=Craytech Printer
+item.printer_box_red.name=Craytech Printer
+item.printer_box_black.name=Craytech Printer
+item.printer_box_lime.name=Craytech Printer
+
+//More Food
+item.spam.name=Luncheon Meat
+
+//Dishes
+tile.dish_bell.name=Satellite Dish - Mesabrook Bell
+tile.dish_msac.name=Satellite Dish - MSAC
+tile.dish_blank.name=Satellite Dish
+tile.smoker.name=Smoker

@@ -6,6 +6,132 @@
 			"stream": true
 		}]
 	},
+	"ding_10": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ding_10",
+			"stream": true
+		}]
+	},
+	"wireless_charge_off": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:wireless_charge_off",
+			"stream": true
+		}]
+	},
+	"wireless_charge_on": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:wireless_charge_on",
+			"stream": true
+		}]
+	},
+	"xp_startup": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:xp_startup",
+			"stream": true
+		}]
+	},
+	"toilet_1": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:toilet_1",
+			"stream": true
+		}]
+	},
+	"toilet_2": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:toilet_2",
+			"stream": true
+		}]
+	},
+	"toilet_3": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:toilet_3",
+			"stream": true
+		}]
+	},
+	"urinal": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:urinal",
+			"stream": true
+		}]
+	},
+	"ring_16": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_16",
+			"stream": true
+		}]
+	},
+	"ring_17": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_17",
+			"stream": true
+		}]
+	},
+	"ring_18": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_18",
+			"stream": true
+		}]
+	},
+	"ring_19": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_19",
+			"stream": true
+		}]
+	},
+	"ring_20": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_20",
+			"stream": true
+		}]
+	},
+	"ring_21": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_21",
+			"stream": true
+		}]
+	},
+	"ring_22": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_22",
+			"stream": true
+		}]
+	},
+	"ring_23": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_23",
+			"stream": true
+		}]
+	},
+	"ring_24": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_24",
+			"stream": true
+		}]
+	},
+	"ring_25": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_25",
+			"stream": true
+		}]
+	},
 	"wide": {
 		"category": "master",
 		"sounds": [{

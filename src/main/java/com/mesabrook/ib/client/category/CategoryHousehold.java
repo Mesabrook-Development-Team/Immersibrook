@@ -136,6 +136,12 @@ public class CategoryHousehold extends AbstractCategory
 		add(ModItems.BLAHAJ);
 		add(ModItems.GRAY_BLAHAJ);
 		add(ModItems.BREAD_PILLOW);
+
+		// Fixtures
+		add(ModBlocks.PRISON_TOILET);
+		add(ModBlocks.WALL_TOILET);
+		add(ModBlocks.HOME_TOILET);
+		add(ModBlocks.URINAL);
 	}
 
 }

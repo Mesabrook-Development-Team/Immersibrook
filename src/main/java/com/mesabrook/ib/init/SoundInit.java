@@ -92,6 +92,12 @@ public class SoundInit
 	public static final SoundEvent RATION_OPEN;
 	public static final SoundEvent TAPE_MEASURE_OPEN;
 	public static final SoundEvent TAPE_MEASURE_CLOSE;
+	public static final SoundEvent TOILET_1;
+	public static final SoundEvent TOILET_2;
+	public static final SoundEvent TOILET_3;
+	public static final SoundEvent URINAL;
+	public static final SoundEvent WC_ON;
+	public static final SoundEvent WC_OFF;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -143,6 +149,7 @@ public class SoundInit
 	public static final SoundEvent DING_7;
 	public static final SoundEvent DING_8;
 	public static final SoundEvent DING_9;
+	public static final SoundEvent DING_10;
 	public static final SoundEvent OUTGOING_CALL;
 	public static final SoundEvent SIT;
 	public static final SoundEvent SIT_1;
@@ -162,6 +169,7 @@ public class SoundInit
 	public static final SoundEvent ALERT;
 	public static final SoundEvent NORMAL_BOOT;
 	public static final SoundEvent OOBE_BOOT;
+	public static final SoundEvent XP_STARTUP;
 
 	// Ringtones
 	public static final SoundEvent RING_1;
@@ -179,6 +187,16 @@ public class SoundInit
 	public static final SoundEvent RING_13;
 	public static final SoundEvent RING_14;
 	public static final SoundEvent RING_15;
+	public static final SoundEvent RING_16;
+	public static final SoundEvent RING_17;
+	public static final SoundEvent RING_18;
+	public static final SoundEvent RING_19;
+	public static final SoundEvent RING_20;
+	public static final SoundEvent RING_21;
+	public static final SoundEvent RING_22;
+	public static final SoundEvent RING_23;
+	public static final SoundEvent RING_24;
+	public static final SoundEvent RING_25;
 
 	// DTMF Phone Tones
 	public static final SoundEvent DTMF_0;
@@ -278,6 +296,12 @@ public class SoundInit
 		RATION_OPEN = addSoundsToRegistry("ration_open");
 		TAPE_MEASURE_OPEN = addSoundsToRegistry("tape_measure_open");
 		TAPE_MEASURE_CLOSE = addSoundsToRegistry("tape_measure_close");
+		TOILET_1 = addSoundsToRegistry("toilet_1");
+		TOILET_2 = addSoundsToRegistry("toilet_2");
+		TOILET_3 = addSoundsToRegistry("toilet_3");
+		URINAL = addSoundsToRegistry("urinal");
+		WC_OFF = addSoundsToRegistry("wireless_charge_off");
+		WC_ON = addSoundsToRegistry("wireless_charge_on");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -326,6 +350,7 @@ public class SoundInit
 		DING_7 = addSoundsToRegistry("ding_7");
 		DING_8 = addSoundsToRegistry("ding_8");
 		DING_9 = addSoundsToRegistry("ding_9");
+		DING_10 = addSoundsToRegistry("ding_10");
 		OUTGOING_CALL = addSoundsToRegistry("outgoingcall");
 		SIT = addSoundsToRegistry("sit");
 		SIT_1 = addSoundsToRegistry("sit_1");
@@ -349,6 +374,7 @@ public class SoundInit
 		ALERT = addSoundsToRegistry("alert");
 		NORMAL_BOOT = addSoundsToRegistry("normal_boot");
 		OOBE_BOOT = addSoundsToRegistry("oobe_startup");
+		XP_STARTUP = addSoundsToRegistry("xp_startup");
 
 		// Ringtones
 		RING_1 = addSoundsToRegistry("ring_1");
@@ -366,6 +392,16 @@ public class SoundInit
 		RING_13 = addSoundsToRegistry("ring_13");
 		RING_14 = addSoundsToRegistry("ring_14");
 		RING_15 = addSoundsToRegistry("ring_15");
+		RING_16 = addSoundsToRegistry("ring_16");
+		RING_17 = addSoundsToRegistry("ring_17");
+		RING_18 = addSoundsToRegistry("ring_18");
+		RING_19 = addSoundsToRegistry("ring_19");
+		RING_20 = addSoundsToRegistry("ring_20");
+		RING_21 = addSoundsToRegistry("ring_21");
+		RING_22 = addSoundsToRegistry("ring_22");
+		RING_23 = addSoundsToRegistry("ring_23");
+		RING_24 = addSoundsToRegistry("ring_24");
+		RING_25 = addSoundsToRegistry("ring_25");
 
 		// DTMF Phone Tones
 		DTMF_0 = addSoundsToRegistry("dtmf_0");
@@ -523,6 +559,16 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.RING_13);
 				event.getRegistry().register(SoundInit.RING_14);
 				event.getRegistry().register(SoundInit.RING_15);
+				event.getRegistry().register(SoundInit.RING_16);
+				event.getRegistry().register(SoundInit.RING_17);
+				event.getRegistry().register(SoundInit.RING_18);
+				event.getRegistry().register(SoundInit.RING_19);
+				event.getRegistry().register(SoundInit.RING_20);
+				event.getRegistry().register(SoundInit.RING_21);
+				event.getRegistry().register(SoundInit.RING_22);
+				event.getRegistry().register(SoundInit.RING_23);
+				event.getRegistry().register(SoundInit.RING_24);
+				event.getRegistry().register(SoundInit.RING_25);
 				event.getRegistry().register(SoundInit.MANHOLE_OPEN);
 				event.getRegistry().register(SoundInit.MANHOLE_CLOSE);
 				event.getRegistry().register(SoundInit.MANHOLE_BREAK);
@@ -561,6 +607,14 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.ALERT);
 				event.getRegistry().register(SoundInit.NORMAL_BOOT);
 				event.getRegistry().register(SoundInit.OOBE_BOOT);
+				event.getRegistry().register(SoundInit.TOILET_1);
+				event.getRegistry().register(SoundInit.TOILET_2);
+				event.getRegistry().register(SoundInit.TOILET_3);
+				event.getRegistry().register(SoundInit.URINAL);
+				event.getRegistry().register(SoundInit.XP_STARTUP);
+				event.getRegistry().register(SoundInit.WC_OFF);
+				event.getRegistry().register(SoundInit.WC_ON);
+				event.getRegistry().register(SoundInit.DING_10);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

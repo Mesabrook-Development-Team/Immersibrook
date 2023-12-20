@@ -1,11 +1,8 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
-import com.google.common.collect.ImmutableList;
-import com.mesabrook.ib.net.ClientSoundPacket;
 import com.mesabrook.ib.net.telecom.CustomizationPacket;
-import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.IndependentTimer;
 import com.mesabrook.ib.util.handlers.PacketHandler;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
@@ -15,6 +12,7 @@ public class GuiChangingTheme extends GuiPhoneBase
     private String progress;
     private int timer = 0;
     private int animTimer = 0;
+    private IndependentTimer betterTimer;
 
     public GuiChangingTheme(ItemStack phoneStack, EnumHand hand)
     {
@@ -42,6 +40,7 @@ public class GuiChangingTheme extends GuiPhoneBase
     public void initGui()
     {
         super.initGui();
+        betterTimer = new IndependentTimer();
     }
 
     @Override
@@ -50,6 +49,7 @@ public class GuiChangingTheme extends GuiPhoneBase
         super.doDraw(mouseX, mouseY, partialticks);
         timer++;
         animTimer++;
+        betterTimer.update();
 
         String bar = "[";
         int animFrame = animTimer / 10;
@@ -70,7 +70,7 @@ public class GuiChangingTheme extends GuiPhoneBase
         drawCenteredString(fontRenderer, "Applying Theme", INNER_X + 80, INNER_Y + 50, 0xFFFFFF);
         drawCenteredString(fontRenderer, bar, INNER_X + 80, INNER_Y + 180, 0xFFFFFF);
 
-        if(timer >= 1200)
+        if(betterTimer.getElapsedTime() >= 1200)
         {
             changeSystemTheme();
         }

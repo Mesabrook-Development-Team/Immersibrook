@@ -1195,7 +1195,7 @@ public class ModBlocks
 	public static final Block SIDING_DARK_OAK = new BlockSiding("siding_dark_oak", Material.WOOD, SoundType.WOOD, "axe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
 
 	// OBJ Test Block
-	public static final Block OBJ_EYE = new BlockTestEye("eye");
+//	public static final Block OBJ_EYE = new BlockTestEye("eye");
 
 	// Colored Blocks
 	public static final Block COLORED_STONE = new BlockColoredStone();
@@ -1251,12 +1251,31 @@ public class ModBlocks
 	// SIM Card Programming Station
 	public static final Block SIM_STATION = new ImmersiblockRotational("sim_station", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
 
-	// Item Stand
-	public static final Block ITEM_STAND = new BlockItemStand("smartphone_stand", ModUtils.DEFAULT_AABB);
+	// Smartphone Stands
+	public static final Block ITEM_STAND = new BlockSmartphoneStand("smartphone_stand", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_ORANGE = new BlockSmartphoneStand("smartphone_stand_orange", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_MAGENTA = new BlockSmartphoneStand("smartphone_stand_magenta", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_LBLUE = new BlockSmartphoneStand("smartphone_stand_lblue", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_YELLOW = new BlockSmartphoneStand("smartphone_stand_yellow", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_LIME = new BlockSmartphoneStand("smartphone_stand_lime", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_PINK = new BlockSmartphoneStand("smartphone_stand_pink", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_GRAY = new BlockSmartphoneStand("smartphone_stand_gray", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_SILVER = new BlockSmartphoneStand("smartphone_stand_silver", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_CYAN = new BlockSmartphoneStand("smartphone_stand_cyan", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_PURPLE = new BlockSmartphoneStand("smartphone_stand_purple", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_BROWN = new BlockSmartphoneStand("smartphone_stand_brown", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_BLUE = new BlockSmartphoneStand("smartphone_stand_blue", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_GREEN = new BlockSmartphoneStand("smartphone_stand_green", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_RED = new BlockSmartphoneStand("smartphone_stand_red", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_BLACK = new BlockSmartphoneStand("smartphone_stand_black", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+
+	// Smartphone Charging Pad
+	public static final Block PHONE_CHARGING_PAD = new BlockSmartphoneChargingPad("wireless_phone_charger_pad", ModUtils.getPixelatedAABB(5,0,4,11,2.5,12));
 
 	// Retail Freezers
-	public static final Block RETAIL_FREEZER_UPRIGHT = new ImmersiblockRotational("retail_freezer_upright", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
+	public static final Block RETAIL_FREEZER_UPRIGHT = new ImmersiblockRotational("retail_freezer_upright", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DOUBLE_AABB);
 	public static final Block RETAIL_FREEZER_DEEP = new ImmersiblockRotational("retail_freezer_deep", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
+	public static final Block RETAIL_DRINK_COOLER = new ImmersiblockRotational("retail_drink_cooler", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
 
 	// Sound Emitter
 	public static final Block SOUND_EMITTER_BLOCK = new BlockSoundEmitter("sound_emitter", Material.IRON, SoundType.METAL);
@@ -1264,4 +1283,18 @@ public class ModBlocks
 
 	// ATM
 	public static final Block ATM = new BlockATM();
+
+	// Terlets
+	public static final Block PRISON_TOILET = new BlockToilet("toilet", ModUtils.DEFAULT_AABB);
+	public static final Block WALL_TOILET = new BlockToilet("wall_toilet", ModUtils.DEFAULT_AABB);
+	public static final Block HOME_TOILET = new BlockToilet("home_toilet", ModUtils.DEFAULT_AABB);
+	public static final Block URINAL = new BlockToilet("urinal", ModUtils.getPixelatedAABB(3,5,0, 12,20,0.8));
+
+	// Dishes
+	public static final Block DISH_BELL = new ImmersiblockRotational("dish_bell", Material.IRON, SoundType.METAL, "pickaxe", 1, 10F, 10F, ModUtils.DEFAULT_AABB);
+	public static final Block DISH_MSAC = new ImmersiblockRotational("dish_msac", Material.IRON, SoundType.METAL, "pickaxe", 1, 10F, 10F, ModUtils.DEFAULT_AABB);
+	public static final Block DISH_BLANK = new ImmersiblockRotational("dish_blank", Material.IRON, SoundType.METAL, "pickaxe", 1, 10F, 10F, ModUtils.DEFAULT_AABB);
+
+	// Smoker
+	public static final Block SMOKER = new BlockSmoker("smoker");
 }

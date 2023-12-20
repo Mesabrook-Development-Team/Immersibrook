@@ -62,4 +62,18 @@ public class ArmorMaterialRegistry
 
     // Cooling PPE
     public static final ItemArmor.ArmorMaterial COOLING_VEST = EnumHelper.addArmorMaterial("cool_vest", Reference.MODID + ":cool_vest", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 1.2F);
+
+    // Conductor's Uniform - Black
+    public static final ItemArmor.ArmorMaterial CU_BLC_HAT = EnumHelper.addArmorMaterial("conductor_hat_black", Reference.MODID + ":conductor_hat_black", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 1.2F);
+    public static final ItemArmor.ArmorMaterial CU_BLC_VEST = EnumHelper.addArmorMaterial("conductor_suit_black", Reference.MODID + ":conductor_suit_black", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 1.2F);
+    public static final ItemArmor.ArmorMaterial CU_BLC_PANTS = EnumHelper.addArmorMaterial("conductor_suit_pants_black", Reference.MODID + ":conductor_suit_pants_black", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 1.2F);
+
+    // Conductor's Uniform - Blue
+    public static final ItemArmor.ArmorMaterial CU_BL_HAT = EnumHelper.addArmorMaterial("conductor_hat_blue", Reference.MODID + ":conductor_hat_blue", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 1.2F);
+    public static final ItemArmor.ArmorMaterial CU_BL_VEST = EnumHelper.addArmorMaterial("conductor_suit_blue", Reference.MODID + ":conductor_suit_blue", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 1.2F);
+    public static final ItemArmor.ArmorMaterial CU_BL_PANTS = EnumHelper.addArmorMaterial("conductor_suit_pants_blue", Reference.MODID + ":conductor_suit_pants_blue", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 1.2F);
+
+    // Engineer's Overalls
+    public static final ItemArmor.ArmorMaterial EO = EnumHelper.addArmorMaterial("blue_overalls", Reference.MODID + ":blue_overalls", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 1.2F);
+    public static final ItemArmor.ArmorMaterial EO_HAT = EnumHelper.addArmorMaterial("blue_hat", Reference.MODID + ":blue_hat", 10, new int[] {4,4,4,4}, 0, SoundInit.VEST, 1.2F);
 }

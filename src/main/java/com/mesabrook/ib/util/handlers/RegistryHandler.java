@@ -11,12 +11,17 @@ import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItemProvider;
 import com.mesabrook.ib.cmds.CommandImmersibrook;
 import com.mesabrook.ib.cmds.CommandMeme;
 import com.mesabrook.ib.cmds.CommandTalk;
+import com.mesabrook.ib.cdm.apps.CompanyStudioLiteApp;
+import com.mesabrook.ib.cdm.apps.GovernmentPortalLiteApp;
+import com.mesabrook.ib.cdm.apps.TestApp;
 import com.mesabrook.ib.entity.EntityMesabrookM;
 import com.mesabrook.ib.entity.EntityWineBottle;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.commerce.ItemDebitCard;
 import com.mesabrook.ib.items.commerce.ItemSecurityBox;
+import com.mesabrook.ib.events.SeatEvent;
+import com.mesabrook.ib.init.CDMApps;
 import com.mesabrook.ib.rendering.RenderMesabrookIcon;
 import com.mesabrook.ib.rendering.RenderWineBottle;
 import com.mesabrook.ib.telecom.DynmapAPIListener;
@@ -135,7 +140,6 @@ public class RegistryHandler
 	
 	public static void initRegistries()
 	{
-		//MottoRandomizer.RandomMotto();
 		Main.logger.info("");
 		Main.logger.info("=============================================================================");
 		Main.logger.info("");
@@ -154,13 +158,19 @@ public class RegistryHandler
 		Main.logger.info("=============================================================================");
 		Main.logger.info("");
 		MinecraftForge.EVENT_BUS.register(new PlayerEvents());
-		
+		MinecraftForge.EVENT_BUS.register(new SeatEvent());
+
 		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new GuiHandler());
 
 		ResourceLocation nameLoc = new ResourceLocation(Reference.MODID + ":mesarang");
 		ResourceLocation nameLoc2 = new ResourceLocation(Reference.MODID + ":wine_bottle");
+		ResourceLocation nameLoc3 = new ResourceLocation(Reference.MODID + ":ibseat");
+
 		EntityRegistry.registerModEntity(nameLoc, EntityMesabrookM.class, nameLoc.toString(), 1, Main.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(nameLoc2, EntityWineBottle.class, nameLoc2.toString(), 2, Main.instance, 64, 1, true);
+		EntityRegistry.registerModEntity(nameLoc3, SeatEvent.SeatEntity.class, nameLoc2.toString(), 3, Main.instance, 80, 1, false);
+
+
 		if (Main.DYNMAP)
 		{
 			DynmapAPIListener.register();
@@ -195,7 +205,11 @@ public class RegistryHandler
 
     	RecipesHandler.registerSmeltingRecipes();
 		RecipesHandler.registerMachineRecipes();
-    	
+
+		CDMApps.registerIBApp(new ResourceLocation(Reference.MODID, "ta"), TestApp.class);
+		CDMApps.registerIBApp(new ResourceLocation(Reference.MODID, "cstudio_lite"), CompanyStudioLiteApp.class);
+		CDMApps.registerIBApp(new ResourceLocation(Reference.MODID, "gportal"), GovernmentPortalLiteApp.class);
+
     	Main.logger.info("[Immersibrook] Version " + Reference.VERSION + " loaded.");
 	}
 	

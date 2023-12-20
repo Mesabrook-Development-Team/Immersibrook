@@ -11,13 +11,16 @@ import com.mesabrook.ib.advancements.Triggers;
 import com.mesabrook.ib.blocks.sco.BlockShelf;
 import com.mesabrook.ib.blocks.te.ShelvingTileEntity;
 import com.mesabrook.ib.blocks.te.ShelvingTileEntity.ProductSpot;
+import com.mesabrook.ib.blocks.te.TileEntityPhoneStand;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
 import com.mesabrook.ib.capability.secureditem.ISecuredItem;
+import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModEnchants;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.ItemSponge;
+import com.mesabrook.ib.items.ItemTechRetailBox;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.items.tools.ItemBanHammer;
 import com.mesabrook.ib.items.tools.ItemGavel;
@@ -56,6 +59,8 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
@@ -68,9 +73,11 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -78,6 +85,7 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import java.util.UUID;
 
 public class PlayerEvents 
 {
@@ -340,7 +348,7 @@ public class PlayerEvents
 					ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 					packet.pos = e.getPosition();
 					packet.soundName = "death";
-					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(e.dimension, e.posX, e.posY, e.posZ, Integer.MAX_VALUE));
+					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(e.dimension, e.posX, e.posY, e.posZ, 100));
 				}
 
 				if(!forbidCannibalism)
@@ -572,6 +580,25 @@ public class PlayerEvents
 				PacketHandler.INSTANCE.sendToServer(packet);
 			}
 		}
+
+		if(block.getBlockState().getBlock() == ModBlocks.PRISON_TOILET)
+		{
+			if(player == null || world.isRemote)
+			{
+				return;
+			}
+
+			if(player.isSneaking())
+			{
+				ItemStack heldItem = player.getHeldItemMainhand();
+
+				if(!heldItem.isEmpty() && !(player instanceof FakePlayer) && !(heldItem.getItem() instanceof ItemPhone) && !(heldItem.getItem() instanceof ItemTechRetailBox))
+				{
+					heldItem.shrink(heldItem.getCount());
+					player.sendMessage(new TextComponentString(TextFormatting.RED + "I hope this doesn't clog the pipes..."));
+				}
+			}
+		}
 	}
 
 	@SubscribeEvent
@@ -612,6 +639,74 @@ public class PlayerEvents
 			{
 				player.sendMessage(new TextComponentString(ex.getMessage()));
 			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onBlockBreak(BlockEvent.BreakEvent event)
+	{
+		EntityPlayer player = event.getPlayer();
+		World world = event.getWorld();
+		BlockPos pos = event.getPos();
+		TileEntity te = world.getTileEntity(pos);
+		MinecraftServer mcServer = event.getWorld().getMinecraftServer();
+
+		if(te instanceof TileEntityPhoneStand)
+		{
+			TileEntityPhoneStand tileEntityPhoneStand = (TileEntityPhoneStand) te;
+
+			if(!(tileEntityPhoneStand.getOwnerUUID().equals(new UUID(0,0))))
+			{
+				if(tileEntityPhoneStand.getOwnerUUID().equals(player.getUniqueID()))
+				{
+					player.sendMessage(new TextComponentString(TextFormatting.RED + "Unclaim the block first before breaking it."));
+				}
+				else
+				{
+					player.sendMessage(new TextComponentString(TextFormatting.RED + "Only the owner of this block can break it."));
+				}
+				event.setCanceled(true);
+			}
+
+			if(tileEntityPhoneStand.getOwnerUUID().equals(new UUID(0,0)))
+			{
+				event.setCanceled(false);
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onPlayerRightClick(PlayerInteractEvent.RightClickBlock event)
+	{
+		EntityPlayer player = event.getEntityPlayer();
+		World world = event.getWorld();
+		ItemStack heldItem = player.getHeldItem(event.getHand());
+		BlockPos pos = event.getPos();
+		IBlockState state = world.getBlockState(pos);
+
+		// Get water bottle from certain block.
+		if (heldItem.getItem() == Items.GLASS_BOTTLE && state.getBlock() == ModBlocks.PRISON_TOILET)
+		{
+			ItemStack waterBottle = new ItemStack(Items.POTIONITEM, 1, 0);
+
+			NBTTagCompound nbt = new NBTTagCompound();
+			nbt.setString("Potion", "minecraft:water");
+			waterBottle.setTagCompound(nbt);
+
+			if(!player.isCreative())
+			{
+				heldItem.shrink(1);
+			}
+
+			player.addItemStackToInventory(waterBottle);
+			player.swingArm(event.getHand());
+
+			ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
+			packet.pos = pos;
+			packet.modID = "cfm";
+			packet.soundName = "tap";
+			packet.rapidSounds = true;
+			PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
 		}
 	}
 	

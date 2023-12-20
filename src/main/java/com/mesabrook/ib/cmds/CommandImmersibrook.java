@@ -1,26 +1,25 @@
 package com.mesabrook.ib.cmds;
 
-import java.util.Collections;
-import java.util.List;
-
 import com.google.common.collect.Lists;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.net.CommandProcessorPacket;
 import com.mesabrook.ib.net.sco.StoreModeGuiPacket;
 import com.mesabrook.ib.telecom.WirelessEmergencyAlertManager;
+import com.mesabrook.ib.util.DamageSourceDodo;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import com.mesabrook.ib.net.OpenTOSPacket;
 import com.mesabrook.ib.util.saveData.TOSData;
-
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.command.WrongUsageException;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -29,6 +28,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
+
+import java.util.Collections;
+import java.util.List;
 
 public class CommandImmersibrook extends CommandBase
 {
@@ -202,6 +206,60 @@ public class CommandImmersibrook extends CommandBase
 					PacketHandler.INSTANCE.sendTo(openTOS, player);
 				}
 			}
+			else if("debug".equalsIgnoreCase(args[0]))
+			{
+				EntityPlayerMP player = (EntityPlayerMP) sender;
+				if ("starve".equals(args[1]))
+				{
+					if(player.isCreative())
+					{
+						player.sendMessage(new TextComponentString(TextFormatting.RED + "[IB Debug] ERROR: You must be in Survival or Adventure Mode."));
+					}
+					else
+					{
+						player.sendMessage(new TextComponentString(TextFormatting.GREEN + "[IB Debug] Made you hungry"));
+						player.getFoodStats().setFoodLevel(0);
+					}
+				}
+				else if("die".equals(args[1]))
+				{
+					DamageSourceDodo dodo = new DamageSourceDodo("dodo");
+
+					player.sendMessage(new TextComponentString(TextFormatting.GOLD + "[IB Debug] Killed " + player.getName()));
+					player.attackEntityFrom(dodo, Integer.MAX_VALUE);
+				}
+				else if("feed".equals(args[1]))
+				{
+					if(player.isCreative())
+					{
+						player.sendMessage(new TextComponentString(TextFormatting.RED + "[IB Debug] ERROR: You must be in Survival or Adventure Mode."));
+					}
+					else
+					{
+						player.sendMessage(new TextComponentString(TextFormatting.GREEN + "[IB Debug] Stuffed you like the Thanksgiving turkey."));
+						player.getFoodStats().setFoodLevel(300);
+					}
+				}
+				else if("hydrate".equals(args[1]))
+				{
+					if(Loader.isModLoaded("toughasnails"))
+					{
+						if(player.isCreative())
+						{
+							player.sendMessage(new TextComponentString(TextFormatting.RED + "[IB Debug] ERROR: You must be in Survival or Adventure Mode."));
+						}
+						else
+						{
+							player.sendMessage(new TextComponentString(TextFormatting.GREEN + "[IB Debug] Drink up, baby~"));
+							player.addItemStackToInventory(new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("toughasnails", "purified_water_bottle")), 5));
+						}
+					}
+					else
+					{
+						player.sendMessage(new TextComponentString(TextFormatting.RED + "[IB Debug] ERROR: Tough As Nails mod is not installed."));
+					}
+				}
+			}
 		}
 	}
 	
@@ -232,6 +290,6 @@ public class CommandImmersibrook extends CommandBase
 	@Override
 	public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, BlockPos targetPos) 
 	{
-		return args.length == 1 ? getListOfStringsMatchingLastWord(args, new String[] {"about", "changelog", "help", "proxchat", "resettos"}) : Collections.emptyList();
+		return args.length == 1 ? getListOfStringsMatchingLastWord(args, new String[] {"about", "changelog", "help", "proxchat", "resettos", "debug"}) : Collections.emptyList();
 	}
 }

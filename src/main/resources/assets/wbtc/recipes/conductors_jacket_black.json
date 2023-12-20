@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "B B",
+    "BGB",
+	"BBB"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:gold_nugget"
+    },
+    "B": {
+      "item": "minecraft:wool",
+	  "data":11 
+    }
+  },
+  "result": {
+    "item": "wbtc:conductors_jacket_black",
+    "count": 1
+  }
+}

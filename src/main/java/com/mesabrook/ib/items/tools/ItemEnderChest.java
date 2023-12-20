@@ -7,16 +7,15 @@ import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -70,17 +69,33 @@ public class ItemEnderChest extends Item implements IHasModel
             }
             playerIn.displayGUIChest(playerIn.getInventoryEnderChest());
 
-            ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
-            packet.pos = playerIn.getPosition();
-            packet.modID = "minecraft";
-            packet.soundName = "entity.endermen.stare";
-            packet.rapidSounds = true;
-            PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));
-
             if(worldIn.getGameRules().getBoolean("toxicEnderPouch"))
             {
                 playerIn.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 500, 1, true, false));
                 playerIn.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 500, 1, true, false));
+
+                ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
+                packet.pos = playerIn.getPosition();
+                packet.modID = "minecraft";
+                packet.soundName = "entity.endermen.stare";
+                packet.rapidSounds = true;
+                PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));
+
+                if(worldIn.rand.nextFloat() < 0.005)
+                {
+                    EntityEnderman enderman = new EntityEnderman(worldIn);
+                    enderman.setLocationAndAngles(playerIn.posX + 3, playerIn.posY, playerIn.posZ + 4, playerIn.rotationYaw, playerIn.rotationPitch);
+                    worldIn.spawnEntity(enderman);
+                }
+            }
+            else
+            {
+                ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
+                packet.pos = playerIn.getPosition();
+                packet.modID = "minecraft";
+                packet.soundName = "block.enderchest.open";
+                packet.rapidSounds = true;
+                PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));
             }
 
             return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemstack);

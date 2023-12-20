@@ -144,6 +144,7 @@ public class PacketHandler
 		INSTANCE.registerMessage(GetPhoneRecentsPacket.Handler.class, GetPhoneRecentsPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(GetPhoneRecentsResponsePacket.Handler.class, GetPhoneRecentsResponsePacket.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(WirelessEmergencyAlertPacket.Handler.class, WirelessEmergencyAlertPacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(SetSkinFetcherPacket.Handler.class, SetSkinFetcherPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(StoreModeGuiPacket.Handler.class, StoreModeGuiPacket.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(StoreModeGuiOpenedPacket.Handler.class, StoreModeGuiOpenedPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(StoreModeGuiResponse.Handler.class, StoreModeGuiResponse.class, nextID(), Side.CLIENT);

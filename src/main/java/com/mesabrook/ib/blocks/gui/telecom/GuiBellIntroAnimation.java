@@ -1,6 +1,7 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.mesabrook.ib.net.ClientSoundPacket;
+import com.mesabrook.ib.util.IndependentTimer;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -12,50 +13,24 @@ import java.io.IOException;
 
 public class GuiBellIntroAnimation extends GuiPhoneBase
 {
-    private int timerToNextScreen = 0;
-    private int fadeAnimationTimer = 0;
+    private IndependentTimer timer;
     private String currentTexture;
 
     public GuiBellIntroAnimation(ItemStack phoneStack, EnumHand hand)
     {
         super(phoneStack, hand);
-        fadeAnimationTimer++;
+        timer = new IndependentTimer();
     }
 
     @Override
     protected String getInnerTextureFileName()
     {
-        String[] textures = {
-                "system/app_screen_no_bar.png",
-                "system/newboot/frame_0.png",
-                "system/newboot/frame_1.png",
-                "system/newboot/frame_2.png",
-                "system/newboot/frame_3.png",
-                "system/newboot/frame_4.png",
-                "system/newboot/frame_5.png",
-                "system/newboot/frame_6.png",
-                "system/newboot/frame_7.png",
-                "system/newboot/frame_8.png",
-                "system/newboot/frame_9.png",
-                "system/newboot/frame_10.png",
-        };
+        int elapsedTime = (int) timer.getElapsedTime();
+        int frameNumber = (elapsedTime - 50) / 27;
 
-        int[] animationTimers = {0, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550};
+        frameNumber = Math.max(0, Math.min(frameNumber, 198));
 
-        int index = -1;
-
-        for (int i = 0; i < animationTimers.length; i++) {
-            if (fadeAnimationTimer <= animationTimers[i]) {
-                index = i;
-                break;
-            }
-        }
-
-        if (index == -1) {
-            index = 11; // Default index if fadeAnimationTimer is greater than 400
-        }
-
-        currentTexture = textures[index];
+        currentTexture = "system/newboot/frame_" + frameNumber + ".png";
         return currentTexture;
     }
 
@@ -87,10 +62,14 @@ public class GuiBellIntroAnimation extends GuiPhoneBase
     protected void doDraw(int mouseX, int mouseY, float partialticks)
     {
         super.doDraw(mouseX, mouseY, partialticks);
-        timerToNextScreen++;
-        fadeAnimationTimer++;
+        timer.update();
 
-        if(timerToNextScreen >= 1500)
+        if(timer.getElapsedTime() > 4600)
+        {
+            drawCenteredString(fontRenderer, "A service of", INNER_X + 80, INNER_Y + 55, 0xFFFFFF);
+        }
+
+        if(timer.getElapsedTime() >= 6000)
         {
             finishBoot();
         }
@@ -100,13 +79,22 @@ public class GuiBellIntroAnimation extends GuiPhoneBase
     {
         if(phoneStackData.getNeedToDoOOBE())
         {
-            Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneSetupStart(phoneStack, hand));
+            Minecraft.getMinecraft().displayGuiScreen(new GuiBubbleSplashAnim(phoneStack, hand));
         }
         else
         {
             ClientSoundPacket soundPacket = new ClientSoundPacket();
             soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
-            soundPacket.soundName = "normal_boot";
+
+            if(phoneStackData.getIconTheme().contains("luna"))
+            {
+                soundPacket.soundName = "xp_startup";
+            }
+            else
+            {
+                soundPacket.soundName = "normal_boot";
+            }
+
             PacketHandler.INSTANCE.sendToServer(soundPacket);
             GuiLockScreen lock = new GuiLockScreen(Minecraft.getMinecraft().player.getHeldItem(hand), hand);
             Minecraft.getMinecraft().displayGuiScreen(lock);
@@ -123,7 +111,7 @@ public class GuiBellIntroAnimation extends GuiPhoneBase
     public void onGuiClosed()
     {
         super.onGuiClosed();
-        timerToNextScreen = 0;
-        fadeAnimationTimer = 0;
+        timer.reset();
+        timer.stop();
     }
 }

@@ -1,0 +1,22 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "item": "cdm:router",
+         "data": 2
+      },
+      {
+         "item": "wbtc:box_medium",
+         "data": 0
+      },
+      {
+         "item": "cdm:ethernet_cable",
+         "data": 0
+      }
+   ],
+   "result": {
+      "item": "wbtc:router_box_magenta",
+      "data": 0,
+      "count": 1
+   }
+}

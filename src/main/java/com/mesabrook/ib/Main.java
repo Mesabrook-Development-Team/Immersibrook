@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.sql.Ref;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -15,25 +16,29 @@ import com.mesabrook.ib.proxy.CommonProxy;
 import com.mesabrook.ib.tab.TabImmersibrook;
 import com.mesabrook.ib.telecom.CallManager;
 import com.mesabrook.ib.telecom.WirelessEmergencyAlertManager;
+import com.mesabrook.ib.util.IndependentTimer;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.handlers.RegistryHandler;
-
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
-import net.minecraftforge.fml.common.event.FMLServerStoppingEvent;
+import net.minecraftforge.fml.common.event.*;
+import org.apache.logging.log4j.Logger;
 
-@Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION, dependencies = "required-after:harvestcraft;required-after:immersiveengineering;required-after:jabcm", updateJSON = Reference.UPDATE_URL)
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+@Mod(modid = Reference.MODID, name = Reference.MODNAME, version = Reference.VERSION, dependencies = "required-after:harvestcraft;required-after:immersiveengineering;required-after:jabcm;required-after:cdm", updateJSON = Reference.UPDATE_URL)
 public class Main 
 {
 	
@@ -47,6 +52,7 @@ public class Main
     public static boolean THERCMOD = false;
     public static boolean DYNMAP = false;
     public static final Random rand = new Random();
+    public IndependentTimer timer;
     
     // Config
  	public static File config;
@@ -82,7 +88,7 @@ public class Main
         return mottos;
     }
 
-    private String getRandomMotto()
+    public String getRandomMotto()
     {
         int index = rand.nextInt(mottos.size());
         return mottos.get(index);
@@ -101,6 +107,7 @@ public class Main
     public void init(FMLInitializationEvent event)
     {
         Reference.MOTTO = getRandomMotto();
+        timer = new IndependentTimer();
         RegistryHandler.initRegistries();
         proxy.init(event);
     }

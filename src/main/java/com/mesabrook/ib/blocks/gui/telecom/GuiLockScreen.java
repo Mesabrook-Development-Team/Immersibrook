@@ -10,7 +10,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TextComponentTranslation;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -47,9 +46,9 @@ public class GuiLockScreen extends GuiPhoneBase {
 	}
 	
 	@Override
-	protected void doDraw(int mouseX, int mouseY, float partialticks) {
+	protected void doDraw(int mouseX, int mouseY, float partialticks)
+	{
 		super.doDraw(mouseX, mouseY, partialticks);
-		
 		int stringWidth = fontRenderer.getStringWidth(getTime());
 		int stringWidth2 = fontRenderer.getStringWidth(getIRLTime());
 		

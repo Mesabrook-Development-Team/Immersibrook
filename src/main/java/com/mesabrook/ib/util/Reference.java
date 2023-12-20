@@ -1,5 +1,7 @@
 package com.mesabrook.ib.util;
 
+import com.mesabrook.ib.Main;
+
 import java.util.UUID;
 
 public class Reference
@@ -7,7 +9,7 @@ public class Reference
 	public static final String MODID = "wbtc";
 	public static final String MODNAME = "Immersibrook";
 	public static final String UPDATE_NAME = "The Technology Update";
-	public static String MOTTO = MottoRandomizer.MOTTO;
+	public static String MOTTO = Main.instance.getRandomMotto();
 	public static final String VERSION = "1.0.0.10";
 	public static final String MINEDROID_VERSION = VERSION;
 	public static final String CHANGELOG = "https://github.com/RavenholmZombie/Immersibrook/releases/tag/" + VERSION;
@@ -68,10 +70,11 @@ public class Reference
 	public static final String OOBE_STATUS = "oobe";
 	public static final String PHONE_DEAD = "phone_dead";
 	public static final String USE_BUTTON_INSTEAD_OF_SLIDER = "usebuttoninsteadofslider";
+	public static final String SKIN_ENGINE = "skinengine";
 
 	public static final int MAX_PHONE_BACKGROUNDS = 42; // This is an INCLUSIVE number
-	public static final int MAX_CHAT_NOTIFICATIONS = 9; // This is an INCLUSIVE number
-	public static final int MAX_RINGTONES = 15; // This is an INCLUSIVE number
+	public static final int MAX_CHAT_NOTIFICATIONS = 10; // This is an INCLUSIVE number
+	public static final int MAX_RINGTONES = 25; // This is an INCLUSIVE number
 
 	// Birthdays (Day and Month only - NO YEARS)
 	public static final int RZ_MONTH = 9;
