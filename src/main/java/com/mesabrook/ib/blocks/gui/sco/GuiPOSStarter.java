@@ -1,7 +1,6 @@
 package com.mesabrook.ib.blocks.gui.sco;
 
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
-import com.mesabrook.ib.blocks.te.TileEntityRegister.RegisterStatuses;
 
 import net.minecraft.client.Minecraft;
 
@@ -24,6 +23,9 @@ public class GuiPOSStarter extends GuiPOSBase {
 				break;
 			case InternalStorageFull:
 				mc.displayGuiScreen(new GuiPOSInventoryFull(register));
+				break;
+			case Offline:
+				mc.displayGuiScreen(new GuiPOSOffline(register));
 				break;
 			case Online:
 				Minecraft.getMinecraft().displayGuiScreen(new GuiPOSMainWelcome(register));
