@@ -46,6 +46,9 @@ public class TileEntityRegisterRenderer extends TileEntitySpecialRenderer<TileEn
 			case WaitingForNetwork:
 				drawWaitingForNetwork();
 				break;
+			case InSession:
+				drawInUse();
+				break;
 			case Online:
 				drawOnline();
 				break;
@@ -132,20 +135,9 @@ public class TileEntityRegisterRenderer extends TileEntitySpecialRenderer<TileEn
 		getFontRenderer().drawString(uninitializedLabel, (int)(width * scaleUp / 2 - (fontWidth / 2)), 8, 0xFFFFFF);
 		GlStateManager.scale(scaleUp, scaleUp, 1);
 	}
-	
-	private int currentWaitForNetworkFrame = 0;
-	private long nextUpdateTime = Minecraft.getSystemTime() + 1000;
 	private void drawWaitingForNetwork()
 	{
-		if (Minecraft.getSystemTime() >= nextUpdateTime)
-		{
-			if (++currentWaitForNetworkFrame > 4)
-			{
-				currentWaitForNetworkFrame = 0;
-			}
-			
-			nextUpdateTime = Minecraft.getSystemTime() + 500;
-		}
+		advanceAnimationFrames();
 		
 		bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/sco/shock_blue.png"));
 		Tessellator tess = Tessellator.getInstance();
@@ -170,6 +162,27 @@ public class TileEntityRegisterRenderer extends TileEntitySpecialRenderer<TileEn
 		GlStateManager.scale(scaleDown, scaleDown, 1);
 		getFontRenderer().drawString(waitingForNetworkLabel, (int)(width * scaleUp / 2 - (fontWidth / 2)), 8, 0xFFFFFF);
 		GlStateManager.scale(scaleUp, scaleUp, 1);
+	}
+
+	
+	private int currentWaitForNetworkFrame = 0;
+	private int currentInUseFrame = 0;
+	private long nextUpdateTime = Minecraft.getSystemTime() + 1000;
+	private void advanceAnimationFrames() {
+		if (Minecraft.getSystemTime() >= nextUpdateTime)
+		{
+			if (++currentWaitForNetworkFrame > 4)
+			{
+				currentWaitForNetworkFrame = 0;
+			}
+			
+			if (++currentInUseFrame > 7)
+			{
+				currentInUseFrame = 0;
+			}
+			
+			nextUpdateTime = Minecraft.getSystemTime() + 500;
+		}
 	}
 	
 	private void drawOnline()
@@ -210,5 +223,16 @@ public class TileEntityRegisterRenderer extends TileEntitySpecialRenderer<TileEn
 		GlStateManager.translate(-2.5, 1.1, 0.8);
 		GlStateManager.scale(1F/2.5, -1F/2.5, -1F/2.5);
 		GlStateManager.rotate(-90, 0, 0, 1);
+	}
+	
+	private void drawInUse()
+	{
+		advanceAnimationFrames();
+		
+		bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/sco/sco_inuse_" + currentInUseFrame + ".png"));
+		Tessellator tess = Tessellator.getInstance();
+		GlStateManager.color(1, 1, 1);
+		drawBackgroundTextured(tess.getBuffer());
+		tess.draw();
 	}
 }
