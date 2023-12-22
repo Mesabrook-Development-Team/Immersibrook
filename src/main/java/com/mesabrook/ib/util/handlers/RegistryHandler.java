@@ -20,6 +20,7 @@ import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.commerce.ItemDebitCard;
 import com.mesabrook.ib.items.commerce.ItemSecurityBox;
+import com.mesabrook.ib.items.commerce.ItemWallet;
 import com.mesabrook.ib.events.SeatEvent;
 import com.mesabrook.ib.init.CDMApps;
 import com.mesabrook.ib.rendering.RenderMesabrookIcon;
@@ -287,6 +288,11 @@ public class RegistryHandler
 		if (e.getObject().getItem() instanceof ItemDebitCard)
 		{
 			e.addCapability(new ResourceLocation(Reference.MODID, "cap_debitcard"), new CapabilityDebitCardItemProvider());
+		}
+		
+		if (e.getObject().getItem() instanceof ItemWallet)
+		{
+			e.addCapability(new ResourceLocation(Reference.MODID, "cap_walletinv"), null);
 		}
 	}
 }

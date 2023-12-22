@@ -5,6 +5,7 @@ import com.mesabrook.ib.blocks.container.ContainerRegisterSecurityBoxInventory;
 import com.mesabrook.ib.blocks.container.ContainerStampBook;
 import com.mesabrook.ib.blocks.container.ContainerTaggingStation;
 import com.mesabrook.ib.blocks.container.ContainerTrashBin;
+import com.mesabrook.ib.blocks.container.ContainerWallet;
 import com.mesabrook.ib.blocks.gui.GuiAboutImmersibrook;
 import com.mesabrook.ib.blocks.gui.GuiFoodBox;
 import com.mesabrook.ib.blocks.gui.GuiPlaque;
@@ -14,6 +15,7 @@ import com.mesabrook.ib.blocks.gui.GuiStampBook;
 import com.mesabrook.ib.blocks.gui.GuiTOS;
 import com.mesabrook.ib.blocks.gui.GuiTrashBin;
 import com.mesabrook.ib.blocks.gui.GuiWallSign;
+import com.mesabrook.ib.blocks.gui.GuiWallet;
 import com.mesabrook.ib.blocks.gui.atm.GuiATMHome;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSSecurityBoxInventory;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSStarter;
@@ -53,6 +55,7 @@ public class GuiHandler implements IGuiHandler
 		else if (ID == Reference.GUI_TAGGING_STATION) return new ContainerTaggingStation(player.inventory, new BlockPos(x,y,z));
 		else if (ID == Reference.GUI_RATION) return new ContainerRation(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]);
 		else if (ID == Reference.GUI_REGISTER_SECURITY_BOX_INVENTORY) return new ContainerRegisterSecurityBoxInventory(player.inventory, (TileEntityRegister)world.getTileEntity(new BlockPos(x,y,z)));
+		else if (ID == Reference.GUI_WALLET) return new ContainerWallet(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]);
 		return null;
 	}
 	
@@ -136,6 +139,7 @@ public class GuiHandler implements IGuiHandler
 		else if (ID == Reference.GUI_SOUND_EMITTER) return new GuiSoundEmitter(player.swingingHand, new BlockPos(x,y,z));
 		else if (ID == Reference.GUI_ATM) return new GuiATMHome((TileEntityATM)world.getTileEntity(new BlockPos(x,y,z)));
 		else if (ID == Reference.GUI_REGISTER_SECURITY_BOX_INVENTORY) return new GuiPOSSecurityBoxInventory((TileEntityRegister)world.getTileEntity(new BlockPos(x,y,z)), player.inventory);
+		else if (ID == Reference.GUI_WALLET) return new GuiWallet(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]);
 		else return null;
 	}
 	

@@ -18,9 +18,6 @@ group = "com.mesabrook.ib" // http://maven.apache.org/guides/mini/guide-naming-c
 archivesBaseName = "wbtc"
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
-compileJava {
-    sourceCompatibility = targetCompatibility = '1.8'
-}
 
 minecraft {
     mappings channel: 'snapshot', version: '20171003-1.12'
@@ -75,6 +72,7 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
     minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2860'
+    compile fileTree(dir:'libs',include:'*.jar')
 }
 
-sourceSets { main { output.resourcesDir = output.classesDir } }
+//sourceSets { main { output.resourcesDir = output.classesDir } }
