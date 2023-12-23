@@ -1,6 +1,38 @@
 {
-   "parent": "item/generated",
-   "textures": {
-      "layer0": "wbtc:items/twenty_five_cents"
-   }
+	"credit": "Made by RavenholmZombie using Blockbench",
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "wbtc:items/twenty_five_cents"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 2, 1],
+			"scale": [0.2, 0.2, 0.2]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, 2, 1],
+			"scale": [0.2, 0.2, 0.2]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, -90, 25],
+			"translation": [-2.87, 3.95, 3.63],
+			"scale": [0.2, 0.2, 0.2]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, -90, 25],
+			"translation": [1.13, 3.2, 1.13],
+			"scale": [0.2, 0.2, 0.2]
+		},
+		"ground": {
+			"translation": [0, -0.5, 0],
+			"scale": [0.2, 0.2, 0.2]
+		},
+		"gui": {
+			"scale": [0.35, 0.35, 0.35]
+		},
+		"fixed": {
+			"rotation": [0, 180, 0],
+			"scale": [0.25, 0.25, 0.25]
+		}
+	}
 }
