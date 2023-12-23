@@ -120,7 +120,7 @@ public class GuiPhoneCrashed extends GuiPhoneBase
         ClientSoundPacket soundPacket = new ClientSoundPacket();
         soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
         soundPacket.soundName = "phone_crash";
-        soundPacket.volume = 0.2F;
+        soundPacket.volume = 1F;
         PacketHandler.INSTANCE.sendToServer(soundPacket);
 
         LocalDateTime currentDateTime = LocalDateTime.now();
@@ -158,7 +158,7 @@ public class GuiPhoneCrashed extends GuiPhoneBase
         super.doDraw(mouseX, mouseY, partialticks);
         timer.update();
 
-        if(timer.getElapsedTime() > 3000)
+        if(timer.getElapsedTime() > 4000)
         {
             drawCenteredString(fontRenderer, new TextComponentString(TextFormatting.BOLD + "Minedroid has crashed.").getFormattedText() , INNER_X + 80, INNER_Y + 35, 0xFFFFFF);
 
