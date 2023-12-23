@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:fluid_meter" },
+        "facing=south": { "model": "wbtc:fluid_meter", "y": 180 },
+        "facing=west":  { "model": "wbtc:fluid_meter", "y": 270 },
+        "facing=east":  { "model": "wbtc:fluid_meter", "y": 90 }
+    }
+}

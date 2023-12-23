@@ -1241,4 +1241,7 @@ public class ModBlocks
 
 	// Smoker
 	public static final Block SMOKER = new BlockSmoker("smoker");
+
+	// Fluid Meter
+	public static final Block FLUID_METER = new ImmersiblockRotational("fluid_meter", Material.IRON, SoundType.METAL, "pickaxe", 1, 10F, 10F, ModUtils.DEFAULT_AABB);
 }
