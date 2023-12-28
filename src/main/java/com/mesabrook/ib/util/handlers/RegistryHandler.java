@@ -8,6 +8,7 @@ import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.CapabilityEmployeePlayerProvider;
 import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
 import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItemProvider;
+import com.mesabrook.ib.capability.wallet.ItemWalletCapabilityProvider;
 import com.mesabrook.ib.cmds.CommandImmersibrook;
 import com.mesabrook.ib.cmds.CommandMeme;
 import com.mesabrook.ib.cmds.CommandTalk;
@@ -292,7 +293,7 @@ public class RegistryHandler
 		
 		if (e.getObject().getItem() instanceof ItemWallet)
 		{
-			e.addCapability(new ResourceLocation(Reference.MODID, "cap_walletinv"), null);
+			e.addCapability(new ResourceLocation(Reference.MODID, "cap_walletinv"), new ItemWalletCapabilityProvider());
 		}
 	}
 }

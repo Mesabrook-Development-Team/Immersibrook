@@ -42,6 +42,11 @@ public class ItemSecurityBox extends Item implements IHasModel {
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		
+		if (!stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
+		{
+			return;
+		}
+		
 		ISecuredItem item = stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
 		if (!item.getInnerStack().isEmpty())
 		{

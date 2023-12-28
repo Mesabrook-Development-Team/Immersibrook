@@ -27,14 +27,14 @@ public class ContainerWallet extends Container {
 		this.hand = hand;
 		
 		// Wallet slots - cards
-		addSlotToContainer(new SlotItemHandler(walletInventory, 0, 16, 25));
-		addSlotToContainer(new SlotItemHandler(walletInventory, 1, 55, 25));
-		addSlotToContainer(new SlotItemHandler(walletInventory, 2, 90, 25));
+		addSlotToContainer(new SlotItemHandler(walletInventory, 0, 8, 18));
+		addSlotToContainer(new SlotItemHandler(walletInventory, 1, 28, 18));
+		addSlotToContainer(new SlotItemHandler(walletInventory, 2, 46, 18));
 		
 		// Wallet slots - money
 		for(int i = 3; i < walletInventory.getSlots(); i++)
 		{
-			addSlotToContainer(new SlotItemHandler(walletInventory, i, 16 + 35 * (i - 3), 67));
+			addSlotToContainer(new SlotItemHandler(walletInventory, i, 8 + 18 * (i - 3), 39));
 		}
 		
 		// Player inventory
@@ -42,14 +42,14 @@ public class ContainerWallet extends Container {
 		{
 			for(int y = 0; y < 3; y++)
 			{
-				this.addSlotToContainer(new Slot(playerInventory, x + 9 + 9 * y, 16 + x*35, 129 + y*35));
+				this.addSlotToContainer(new Slot(playerInventory, x + 9 + 9 * y, 8 + x*18, 71 + y*18));
 			}
 		}
 		
 		// Player hotbar
 		for(int x = 0; x < 9; x++)
 		{
-			this.addSlotToContainer(new Slot(playerInventory, x, 16 + x*18, 243));
+			this.addSlotToContainer(new Slot(playerInventory, x, 8 + x*18, 129));
 		}
 	}
 	
