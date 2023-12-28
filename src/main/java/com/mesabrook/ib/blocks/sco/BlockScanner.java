@@ -2,6 +2,8 @@ package com.mesabrook.ib.blocks.sco;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.TreeMap;
 
 import com.mesabrook.ib.blocks.ImmersiblockRotationalManyBB;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
@@ -10,6 +12,7 @@ import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.items.commerce.ItemMoney;
 import com.mesabrook.ib.items.commerce.ItemMoney.MoneyType;
+import com.mesabrook.ib.items.commerce.ItemWallet;
 import com.mesabrook.ib.util.ModUtils;
 
 import net.minecraft.block.SoundType;
@@ -25,6 +28,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 
 public class BlockScanner extends ImmersiblockRotationalManyBB {
 
@@ -40,7 +45,7 @@ public class BlockScanner extends ImmersiblockRotationalManyBB {
 	@Override
 	public boolean onSubBoundingBoxActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
 			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ, AxisAlignedBB subBoundingBox) {
-		if (worldIn.isRemote || worldIn.getBlockState(pos.up()).getBlock() != ModBlocks.SCO_POS)
+		if (worldIn.getBlockState(pos.up()).getBlock() != ModBlocks.SCO_POS)
 		{
 			return super.onSubBoundingBoxActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ, subBoundingBox);
 		}
@@ -58,6 +63,11 @@ public class BlockScanner extends ImmersiblockRotationalManyBB {
 				register.getRegisterStatus() != RegisterStatuses.PaymentCash)
 		{
 			return false;
+		}
+		
+		if (worldIn.isRemote)
+		{
+			return subBoundingBox == BILL_ACCEPTER || subBoundingBox == COIN_SLOT;
 		}
 		
 		ItemStack heldItem = playerIn.getHeldItem(hand);
@@ -91,19 +101,69 @@ public class BlockScanner extends ImmersiblockRotationalManyBB {
 			
 			return true;
 		}
-		else if (subBoundingBox == BILL_ACCEPTER && heldItem.getItem() instanceof ItemMoney && ((ItemMoney)heldItem.getItem()).getMoneyType() == MoneyType.Bill) // Brrr
+		else if (subBoundingBox == BILL_ACCEPTER && heldItem.getItem() instanceof ItemMoney && ((ItemMoney)heldItem.getItem()).getMoneyType() == MoneyType.Bill && register.hasItemsForSession()) // Brrr
 		{
 			BigDecimal amountForRegister = new BigDecimal(((ItemMoney)heldItem.getItem()).getValue()).divide(new BigDecimal(100)).setScale(2, RoundingMode.HALF_UP);
 			heldItem.shrink(1);
 			
 			register.applyCashTender(amountForRegister);
+			
+			return true;
 		}
-		else if (subBoundingBox == COIN_SLOT && heldItem.getItem() instanceof ItemMoney && ((ItemMoney)heldItem.getItem()).getMoneyType() == MoneyType.Coin) // Ka-ching
+		else if (subBoundingBox == COIN_SLOT && heldItem.getItem() instanceof ItemMoney && ((ItemMoney)heldItem.getItem()).getMoneyType() == MoneyType.Coin && register.hasItemsForSession()) // Ka-ching
 		{
 			BigDecimal amountForRegister = new BigDecimal(((ItemMoney)heldItem.getItem()).getValue() * heldItem.getCount()).divide(new BigDecimal(100)).setScale(2, RoundingMode.HALF_UP);
 			heldItem.shrink(heldItem.getCount());
 			
 			register.applyCashTender(amountForRegister);
+			
+			return true;
+		}
+		else if ((subBoundingBox == BILL_ACCEPTER || subBoundingBox == COIN_SLOT) && heldItem.getItem() instanceof ItemWallet && heldItem.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, facing) && register.hasItemsForSession())
+		{			
+			IItemHandler walletInventory = heldItem.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+			BigDecimal amountRemaining = register.getDueAmount();
+			final BigDecimal zero = new BigDecimal(0);
+			ItemMoney currentDenomination = ItemMoney.SORTED_MONEY.last();
+			while(amountRemaining.compareTo(zero) > 0)
+			{
+				for(int i = 0; i < walletInventory.getSlots(); i++)
+				{
+					ItemStack slotStack = walletInventory.getStackInSlot(i);
+					if (slotStack.getItem() != currentDenomination)
+					{
+						continue;
+					}
+					
+					int stacksToPop = 0;
+					for(int j = 0; j < slotStack.getCount(); j++)
+					{
+						stacksToPop++;
+						amountRemaining = amountRemaining.subtract(new BigDecimal(currentDenomination.getValue()).divide(new BigDecimal(100)));
+						if (amountRemaining.compareTo(zero) <= 0)
+						{
+							break;
+						}
+					}
+					
+					walletInventory.extractItem(i, stacksToPop, false);
+					
+					if (amountRemaining.compareTo(zero) <= 0)
+					{
+						break;
+					}
+				}
+				
+				currentDenomination = ItemMoney.SORTED_MONEY.lower(currentDenomination);
+				if (currentDenomination == null)
+				{
+					break;
+				}
+			}
+			
+			register.applyCashTender(register.getDueAmount().subtract(amountRemaining));
+			
+			return true;
 		}
 		
 		return false;

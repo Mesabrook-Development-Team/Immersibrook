@@ -19,6 +19,7 @@ import com.mesabrook.ib.capability.secureditem.ISecuredItem;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.commerce.ItemDebitCard;
 import com.mesabrook.ib.items.commerce.ItemMoney;
+import com.mesabrook.ib.items.commerce.ItemWallet;
 import com.mesabrook.ib.net.sco.POSCardShowMessagePacket;
 import com.mesabrook.ib.net.sco.POSInitializeRegisterResponsePacket;
 import com.mesabrook.ib.net.sco.POSOpenCardReaderGUIPacket;
@@ -421,11 +422,26 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 	
 	public void onCardReaderUse(ItemStack stack, EntityPlayerMP player)
 	{
-		if ((registerStatus == RegisterStatuses.PaymentSelect || registerStatus == RegisterStatuses.PaymentCard) && stack.getItem() instanceof ItemDebitCard)
+		if (registerStatus == RegisterStatuses.PaymentSelect || registerStatus == RegisterStatuses.PaymentCard)
 		{
-			insertedCardStack = stack.copy();
-			stack.shrink(stack.getCount());
-			setRegisterStatus(RegisterStatuses.PaymentCardInUse);
+			if (stack.getItem() instanceof ItemDebitCard)
+			{
+				insertedCardStack = stack.copy();
+				stack.shrink(stack.getCount());
+				setRegisterStatus(RegisterStatuses.PaymentCardInUse);
+			}
+			
+			if (stack.getItem() instanceof ItemWallet && stack.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null))
+			{
+				IItemHandler walletInventory = stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+				ItemStack firstCardSlotStack = walletInventory.getStackInSlot(0);
+				if (firstCardSlotStack.hasCapability(CapabilityDebitCard.DEBIT_CARD_CAPABILITY, null))
+				{
+					insertedCardStack = firstCardSlotStack.copy();
+					walletInventory.extractItem(0, insertedCardStack.getCount(), false);
+					setRegisterStatus(RegisterStatuses.PaymentCardInUse);
+				}
+			}
 		}
 		
 		POSOpenCardReaderGUIPacket openCardReaderGUI = new POSOpenCardReaderGUIPacket();

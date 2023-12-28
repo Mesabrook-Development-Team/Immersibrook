@@ -83,4 +83,28 @@ public class ItemMoney extends Item implements IHasModel, Comparable<ItemMoney>
 		
 		return items;
 	}
+	
+	public static BigDecimal getAmountFromMoneyStacks(ArrayList<ItemStack> moneyStacks)
+	{
+		BigDecimal totalValue = new BigDecimal(0);
+    	for(ItemStack moneyStack : moneyStacks)
+    	{
+    		if (!(moneyStack.getItem() instanceof ItemMoney))
+    		{
+    			continue;
+    		}
+    		
+    		if (!(moneyStack.getItem() instanceof ItemMoney))
+    		{
+    			continue;
+    		}
+    		
+    		ItemMoney moneyItem = (ItemMoney)moneyStack.getItem();
+    		totalValue = totalValue.add(new BigDecimal(moneyItem.getValue()).divide(new BigDecimal(100)).multiply(new BigDecimal(moneyStack.getCount())));
+    	}
+    	
+    	totalValue = totalValue.setScale(2, RoundingMode.HALF_UP);
+    	
+    	return totalValue;
+	}
 }
