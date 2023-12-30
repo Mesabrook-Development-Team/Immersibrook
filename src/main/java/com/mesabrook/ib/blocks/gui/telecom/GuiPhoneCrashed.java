@@ -94,7 +94,7 @@ public class GuiPhoneCrashed extends GuiPhoneBase
         maxLinesShown = (INNER_TEX_HEIGHT - 120) / fontRenderer.FONT_HEIGHT;
         boxHeight = 22 + fontRenderer.FONT_HEIGHT * maxLinesShown;
 
-        resetButton = new MinedroidButton(1, INNER_X + 3, INNER_Y + 180, INNER_TEX_WIDTH - 6, "Restart Phone", 0xFFFFFF);
+        resetButton = new MinedroidButton(1, INNER_X + 3, INNER_Y + 180, INNER_TEX_WIDTH - 6, "Recover Session", 0xFFFFFF);
         uploadToPastebinButton = new MinedroidButton(2, INNER_X + 3, INNER_Y + 160, INNER_TEX_WIDTH - 6, "Upload Crash to Pastebin", 0xFFFFFF);
         copyToClipboardFailback = new MinedroidButton(4, INNER_X + 3, INNER_Y + 140, INNER_TEX_WIDTH - 6, "Copy Error to Clipboard", 0xFFFFFF);
 
@@ -171,7 +171,7 @@ public class GuiPhoneCrashed extends GuiPhoneBase
 
             drawRect(INNER_X + 3, INNER_Y + 50, INNER_X + 159, INNER_Y + 150, 0xFFAAAAAA);
             drawRect(INNER_X + 5, INNER_Y + 52, INNER_X + 157, INNER_Y + 148, 0xFF000000);
-            currentText = new TextComponentString("Minedroid has crashed. The crash report has been saved to your /crash-reports directory." + "\n" + "You can view the report below or tap Restart Phone. \n" + "========================= \n" + getCrashTitle() + "\n\n" + getErrorStackTrace()).getFormattedText();
+            currentText = new TextComponentString("Minedroid has crashed. The crash report has been saved to your /crash-reports directory." + "\n" + "You can view the report below or tap Recover Session. \n" + "========================= \n" + getCrashTitle() + "\n\n" + getErrorStackTrace()).getFormattedText();
             for(int i = (currentPage - 1) * maxLinesShown; i < maxLinesShown * currentPage; i++)
             {
                 if (i >= crashText.length)
@@ -210,7 +210,7 @@ public class GuiPhoneCrashed extends GuiPhoneBase
         if(button == resetButton)
         {
             isPhoneUnlocked = false;
-            Minecraft.getMinecraft().displayGuiScreen(new GuiMSACBootScreen(phoneStack, hand));
+            Minecraft.getMinecraft().displayGuiScreen(new GuiBellIntroAnimation(phoneStack, hand));
         }
 
         if (button == nextPage && currentPage != totalPages)
