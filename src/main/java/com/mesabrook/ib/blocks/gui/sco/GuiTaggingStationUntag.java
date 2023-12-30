@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.container.ContainerTaggingStation;
+import com.mesabrook.ib.blocks.container.ContainerTaggingStationUntag;
 import com.mesabrook.ib.net.sco.TaggingStationChangeTabsPacket;
 import com.mesabrook.ib.net.sco.TaggingStationDistanceChangedPacket;
 import com.mesabrook.ib.util.Reference;
@@ -17,35 +18,20 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 
-public class GuiTaggingStation extends GuiContainer {
+public class GuiTaggingStationUntag extends GuiContainer {
 	
 	private final ResourceLocation tagAdd = new ResourceLocation(Reference.MODID, "textures/gui/sco/security_tagging_station_add.png");
 	private final ResourceLocation tagRemove = new ResourceLocation(Reference.MODID, "textures/gui/sco/security_tagging_station_remove.png");
-	private final ResourceLocation guiTexture = new ResourceLocation(Reference.MODID, "textures/gui/sco/security_tagging_station.png");
+	private final ResourceLocation guiTexture = new ResourceLocation(Reference.MODID, "textures/gui/sco/security_tagging_station_untag.png");
 	private final ResourceLocation creative_inventory_tabs = new ResourceLocation("textures/gui/container/creative_inventory/tabs.png");
-	private final ContainerTaggingStation tagStationContainer;
 	private final BlockPos taggingPos;
-	private final String distanceLabel = "Max Distance: ";
-	private int distanceLabelLength;
-	GuiTextField distance;
 	
-	public GuiTaggingStation(InventoryPlayer playerInventory, BlockPos pos) {
-		super(new ContainerTaggingStation(playerInventory, pos));
-		tagStationContainer = (ContainerTaggingStation)this.inventorySlots;
+	public GuiTaggingStationUntag(InventoryPlayer playerInventory, BlockPos pos) {
+		super(new ContainerTaggingStationUntag(playerInventory, pos));
 		taggingPos = pos;
 		
 		this.xSize = 175;
 		this.ySize = 168;
-	}
-	
-	@Override
-	public void initGui() {
-		super.initGui();
-		
-		Slot slot = tagStationContainer.getSlotFromInventory(tagStationContainer.craftResult, 0);
-		distance = new GuiTextField(0, fontRenderer, guiLeft + slot.xPos - 4 - 26, guiTop + slot.yPos + 26, 50, fontRenderer.FONT_HEIGHT + 3);
-		distance.setText(Double.toString(tagStationContainer.getResetDistance()));
-		distanceLabelLength = fontRenderer.getStringWidth(distanceLabel);
 	}
 
 	@Override
@@ -56,8 +42,8 @@ public class GuiTaggingStation extends GuiContainer {
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop + 28, 0, 0, this.xSize, this.ySize - 28);
 		
 		this.mc.getTextureManager().bindTexture(creative_inventory_tabs);
-		drawTexturedModalRect(guiLeft, guiTop, 0, 32, 27, 32);
-		drawTexturedModalRect(guiLeft + 29, guiTop, 0, 0, 27, 28);
+		drawTexturedModalRect(guiLeft, guiTop, 0, 0, 27, 28);
+		drawTexturedModalRect(guiLeft + 29, guiTop, 28, 32, 27, 32);
 		
 		this.mc.getTextureManager().bindTexture(tagAdd);
 		drawScaledCustomSizeModalRect(guiLeft + 6, guiTop + 6, 0, 0, 249, 315, 16, 20, 249, 315);
@@ -82,64 +68,20 @@ public class GuiTaggingStation extends GuiContainer {
 				drawHoveringText("Untagging Mode", mouseX - guiLeft, mouseY - guiTop);
 			}
 		}
-	}
-	
-	@Override
-	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-		super.drawScreen(mouseX, mouseY, partialTicks);
-		fontRenderer.drawString(distanceLabel, distance.x - distanceLabelLength, distance.y + 2, 0x777777);
-		distance.drawTextBox();
-		renderHoveredToolTip(mouseX, mouseY);
+		
+		renderHoveredToolTip(mouseX - guiLeft, mouseY - guiTop);
 	}
 	
 	@Override
 	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
-		distance.mouseClicked(mouseX, mouseY, mouseButton); // handle first so that the result is set properly
-		if (!distance.isFocused())
-		{
-			try
-			{
-				Double.parseDouble(distance.getText());
-			}
-			catch(Exception ex)
-			{
-				distance.setText("");
-			}
-		}
-		notifyResetDistance();
-		
-		if (mouseY >= guiTop && mouseY < guiTop + 28 && mouseX >= guiLeft + 29 && mouseX <= guiLeft + 56)
+		if (mouseY >= guiTop && mouseY < guiTop + 28 && mouseX >= guiLeft && mouseX <= guiLeft + 27)
 		{
 			TaggingStationChangeTabsPacket changeTabs = new TaggingStationChangeTabsPacket();
 			changeTabs.taggingPos = taggingPos;
-			changeTabs.toUntag = true;
+			changeTabs.toUntag = false;
 			PacketHandler.INSTANCE.sendToServer(changeTabs);
-			mc.player.openGui(Main.instance, Reference.GUI_TAGGING_STATION_UNTAG, mc.player.world, taggingPos.getX(), taggingPos.getX(), taggingPos.getX());
+			mc.player.openGui(Main.instance, Reference.GUI_TAGGING_STATION, mc.player.world, taggingPos.getX(), taggingPos.getX(), taggingPos.getX());
 		}
-		
 		super.mouseClicked(mouseX, mouseY, mouseButton);
-	}
-	
-	private void notifyResetDistance()
-	{
-		double distanceVal = 0;
-		try
-		{
-			distanceVal = Double.parseDouble(distance.getText());
-		}
-		catch(Exception ex) {}
-		
-		TaggingStationDistanceChangedPacket notifyServer = new TaggingStationDistanceChangedPacket();
-		notifyServer.distance = distanceVal;
-		PacketHandler.INSTANCE.sendToServer(notifyServer);
-		
-		tagStationContainer.setResetDistance(distanceVal);
-	}
-	
-	@Override
-	protected void keyTyped(char typedChar, int keyCode) throws IOException {
-		super.keyTyped(typedChar, keyCode);
-		distance.textboxKeyTyped(typedChar, keyCode);
-		notifyResetDistance();
 	}
 }

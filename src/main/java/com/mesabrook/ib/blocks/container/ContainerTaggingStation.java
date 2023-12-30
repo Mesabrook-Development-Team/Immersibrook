@@ -12,6 +12,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
@@ -23,20 +24,27 @@ public class ContainerTaggingStation extends Container {
 
 	private final InventoryPlayer playerInventory;
 	private final BlockPos taggingPos;
-	private final InventoryCrafting craftingInventory;
+	private final InventoryBasic craftingInventory;
 	public final InventoryCraftResult craftResult;
 	public double resetDistance;
 	public ContainerTaggingStation(InventoryPlayer playerInventory, BlockPos pos)
 	{
 		this.playerInventory = playerInventory;
 		this.taggingPos = pos;
-		this.craftingInventory = new InventoryCrafting(this, 2, 1);
+		this.craftingInventory = new InventoryBasic("Tagging Station", true, 2)
+		{
+			@Override
+			public void markDirty() {
+				super.markDirty();
+				ContainerTaggingStation.this.onCraftMatrixChanged(this);
+			}
+		};
 		this.craftResult = new InventoryCraftResult();
 		
 		// Hot bar
 		for(int i = 0; i < 9; i++)
 		{
-			addSlotToContainer(new Slot(playerInventory, i, 8 + i * 18, 117));
+			addSlotToContainer(new Slot(playerInventory, i, 8 + i * 18, 145));
 		}
 		
 		// Player inventory
@@ -52,26 +60,33 @@ public class ContainerTaggingStation extends Container {
 			
 			int column = i % 9;
 			
-			addSlotToContainer(new Slot(playerInventory, i, 8 + column * 18, 59 + 18 * row));
+			addSlotToContainer(new Slot(playerInventory, i, 8 + column * 18, 87 + 18 * row));
 		}
 		
 		// Crafting grid
-		addSlotToContainer(new Slot(craftingInventory, 0, 30, 14)
+		addSlotToContainer(new Slot(craftingInventory, 0, 30, 42)
 				{
 					@Override
 					public boolean isItemValid(ItemStack stack) {
-						return stack.getItem() == ModItems.SECURITY_BOX;
+						return stack.getItem() == ModItems.SECURITY_BOX &&
+								stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null) &&
+								stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null).getInnerStack().isEmpty();
 					}
 				});
-		addSlotToContainer(new Slot(craftingInventory, 1, 66, 14));
+		addSlotToContainer(new Slot(craftingInventory, 1, 66, 42));
 		
-		addSlotToContainer(new Slot(craftResult, 0, 124, 14)
+		addSlotToContainer(new Slot(craftResult, 0, 124, 42)
 				{					
 					@Override
 					public ItemStack onTake(EntityPlayer thePlayer, ItemStack stack) {
-						craftingInventory.decrStackSize(0, 1);
+						craftingInventory.getStackInSlot(0).shrink(1);
 						craftingInventory.removeStackFromSlot(1);
 						return super.onTake(thePlayer, stack);
+					}
+					
+					@Override
+					public boolean isItemValid(ItemStack stack) {
+						return false;
 					}
 				});
 		
@@ -119,6 +134,8 @@ public class ContainerTaggingStation extends Container {
             {
                 slot.onSlotChanged();
             }
+            
+            slot.onTake(playerIn, itemstack1);
         }
 
         return itemstack;
@@ -178,7 +195,11 @@ public class ContainerTaggingStation extends Container {
 	{
 		this.resetDistance = resetDistance;
 		
-		onCraftMatrixChanged(craftingInventory);
+		if (!craftResult.getStackInSlot(0).isEmpty() && craftResult.getStackInSlot(0).hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
+		{
+			craftResult.getStackInSlot(0).getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null).setResetDistance(resetDistance);
+		}
+		
 		detectAndSendChanges();
 	}
 }
