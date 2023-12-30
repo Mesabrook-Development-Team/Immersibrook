@@ -50,13 +50,29 @@ public class TileEntityRegisterRenderer extends TileEntitySpecialRenderer<TileEn
 				drawInUse();
 				break;
 			case Online:
-				drawOnline();
+				drawGeneralTexture("textures/gui/sco/sco_welcome.png");
 				break;
 			case Offline:
-				drawOffline();
+				drawGeneralTexture("textures/gui/sco/sco_offline.png");
 				break;
 			case InternalStorageFull:
-				drawInventoryFull();
+				drawGeneralTexture("textures/gui/sco/sco_inv_full.png");
+				break;
+			case PaymentCardInUse:
+			case PaymentCard:
+				drawGeneralTexture("textures/gui/sco/sco_gui_card_selected.png");
+				break;
+			case PaymentCash:
+				drawGeneralTexture("textures/gui/sco/sco_gui_cash.png");
+				break;
+			case PaymentSelect:
+				drawGeneralTexture("textures/gui/sco/sco_spt.png");
+				break;
+			case TransactionProcessing:
+				drawGeneralTexture("textures/gui/sco/sco_gui_payment_processing.png");
+				break;
+			case TransactionComplete:
+				drawGeneralTexture("textures/gui/sco/sco_gui_payment_complete.png");
 				break;
 		}
 		
@@ -185,27 +201,9 @@ public class TileEntityRegisterRenderer extends TileEntitySpecialRenderer<TileEn
 		}
 	}
 	
-	private void drawOnline()
+	private void drawGeneralTexture(String texturePath)
 	{
-		bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/sco/sco_welcome.png"));
-		Tessellator tess = Tessellator.getInstance();
-		GlStateManager.color(1, 1, 1);
-		drawBackgroundTextured(tess.getBuffer());
-		tess.draw();
-	}
-	
-	private void drawOffline()
-	{
-		bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/sco/sco_offline.png"));
-		Tessellator tess = Tessellator.getInstance();
-		GlStateManager.color(1, 1, 1);
-		drawBackgroundTextured(tess.getBuffer());
-		tess.draw();
-	}
-	
-	private void drawInventoryFull()
-	{
-		bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/sco/sco_inv_full.png"));
+		bindTexture(new ResourceLocation(Reference.MODID, texturePath));
 		Tessellator tess = Tessellator.getInstance();
 		GlStateManager.color(1, 1, 1);
 		drawBackgroundTextured(tess.getBuffer());
