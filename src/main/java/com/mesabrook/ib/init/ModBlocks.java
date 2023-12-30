@@ -1229,10 +1229,10 @@ public class ModBlocks
 	public static final Block ATM = new ImmersiblockRotational("atm", Material.IRON, SoundType.METAL, "pickaxe", 1, 10F, 10F, ModUtils.DEFAULT_AABB);
 
 	// Terlets
-	public static final Block PRISON_TOILET = new BlockToilet("toilet", ModUtils.DEFAULT_AABB);
-	public static final Block WALL_TOILET = new BlockToilet("wall_toilet", ModUtils.DEFAULT_AABB);
-	public static final Block HOME_TOILET = new BlockToilet("home_toilet", ModUtils.DEFAULT_AABB);
-	public static final Block URINAL = new BlockToilet("urinal", ModUtils.getPixelatedAABB(3,5,0, 12,20,0.8));
+	public static final Block PRISON_TOILET = new BlockSeat("toilet", ModUtils.DEFAULT_AABB, 1.5F);
+	public static final Block WALL_TOILET = new BlockSeat("wall_toilet", ModUtils.DEFAULT_AABB, 1.5F);
+	public static final Block HOME_TOILET = new BlockSeat("home_toilet", ModUtils.DEFAULT_AABB, 1.5F);
+	public static final Block URINAL = new BlockSeat("urinal", ModUtils.getPixelatedAABB(3,5,0, 12,20,0.8), 1.5F);
 
 	// Dishes
 	public static final Block DISH_BELL = new ImmersiblockRotational("dish_bell", Material.IRON, SoundType.METAL, "pickaxe", 1, 10F, 10F, ModUtils.DEFAULT_AABB);
@@ -1243,5 +1243,10 @@ public class ModBlocks
 	public static final Block SMOKER = new BlockSmoker("smoker");
 
 	// Fluid Meter
-	public static final Block FLUID_METER = new ImmersiblockRotational("fluid_meter", Material.IRON, SoundType.METAL, "pickaxe", 1, 10F, 10F, ModUtils.DEFAULT_AABB);
+	public static final Block FLUID_METER = new BlockFluidMeter("fluid_meter", ModUtils.DEFAULT_AABB);
+
+	// Awesome Chairs
+	public static final Block THRONE_FC = new BlockSeat("throne_fc", ModUtils.DOUBLE_AABB, -1.0F);
+	public static final Block THRONE = new BlockSeat("throne", ModUtils.DOUBLE_AABB, -1.0F);
+	public static final Block THRONE_GOV = new BlockSeat("throne_gov", ModUtils.DOUBLE_AABB, 4.0F);
 }

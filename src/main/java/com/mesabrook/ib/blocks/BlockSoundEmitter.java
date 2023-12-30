@@ -16,7 +16,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -44,6 +43,7 @@ public class BlockSoundEmitter extends BlockContainer implements IHasModel
         setRegistryName(nameIn);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
         setSoundType(soundTypeIn);
+        setHardness(2F);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 
         ModBlocks.BLOCKS.add(this);

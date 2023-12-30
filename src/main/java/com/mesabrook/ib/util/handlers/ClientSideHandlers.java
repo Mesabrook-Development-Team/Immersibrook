@@ -22,6 +22,7 @@ import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.toasts.SystemToast;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -31,8 +32,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -235,15 +234,6 @@ public class ClientSideHandlers
 				if(allowRingtone)
 				{
 					handler.playSound(incomingCallSound);
-					if(Minecraft.getMinecraft().gameSettings.showSubtitles || ModConfig.showCallMsgInChat)
-					{
-						TextComponentString pn = new TextComponentString(GuiPhoneBase.getFormattedPhoneNumber(phoneNumber));
-						pn.getStyle().setBold(true);
-						pn.getStyle().setItalic(true);
-						pn.getStyle().setColor(TextFormatting.GRAY);
-
-						player.sendStatusMessage(new TextComponentString(new TextComponentTranslation("im.access.call").getFormattedText()), true);
-					}
 				}
 			}
 		}
@@ -256,6 +246,7 @@ public class ClientSideHandlers
 			if(player.world.provider.getDimension() == 0)
 			{
 				playIncomingCallSound(toNumber);
+				Minecraft.getMinecraft().getToastGui().add(new SystemToast(SystemToast.Type.TUTORIAL_HINT, new TextComponentString("Incoming Phone Call"), new TextComponentString(fromNumber.substring(0, 3) + "-" + fromNumber.substring(3))));
 
 				if (mc.currentScreen instanceof GuiPhoneBase)
 				{
@@ -465,11 +456,13 @@ public class ClientSideHandlers
 
 			if(world.provider.getDimension() == 0)
 			{
-				mc.player.sendMessage(new TextComponentString("Phone call with " + GuiPhoneBase.getFormattedPhoneNumber(toNumber) + " has been disconnected"));
+				Minecraft.getMinecraft().getToastGui().add(new SystemToast(SystemToast.Type.TUTORIAL_HINT, new TextComponentString("Call Ended"), new TextComponentString(GuiPhoneBase.getFormattedPhoneNumber(toNumber))));
+				//mc.player.sendMessage(new TextComponentString("Phone call with " + GuiPhoneBase.getFormattedPhoneNumber(toNumber) + " has been disconnected"));
 			}
 			else
 			{
-				mc.player.sendMessage(new TextComponentString("Call Failed - Outside Service Dimension"));
+				Minecraft.getMinecraft().getToastGui().add(new SystemToast(SystemToast.Type.TUTORIAL_HINT, new TextComponentString("Call to " + GuiPhoneBase.getFormattedPhoneNumber(toNumber) + " Failed"), new TextComponentString("Outside Service Area")));
+				//mc.player.sendMessage(new TextComponentString("Call Failed - Outside Service Dimension"));
 			}
 		}
 
@@ -494,7 +487,8 @@ public class ClientSideHandlers
 				outgoingCallsByPhone.remove(forNumber);
 			}
 
-			mc.player.sendMessage(new TextComponentString("You are now connected to " + GuiPhoneBase.getFormattedPhoneNumber(toNumber)));
+			//mc.player.sendMessage(new TextComponentString("You are now connected to " + GuiPhoneBase.getFormattedPhoneNumber(toNumber)));
+			Minecraft.getMinecraft().getToastGui().add(new SystemToast(SystemToast.Type.TUTORIAL_HINT, new TextComponentString("Call Connected."), new TextComponentString(GuiPhoneBase.getFormattedPhoneNumber(toNumber))));
 
 			if (mc.currentScreen instanceof GuiPhoneCalling || mc.currentScreen instanceof GuiIncomingCall)
 			{
@@ -556,11 +550,7 @@ public class ClientSideHandlers
 					displayRejectedMessage = false;
 				}
 			}
-
-			if (displayRejectedMessage)
-			{
-				mc.player.sendMessage(new TextComponentString("Phone call attempt with " + GuiPhoneBase.getFormattedPhoneNumber(toNumber) + " was rejected"));
-			}
+			Minecraft.getMinecraft().getToastGui().add(new SystemToast(SystemToast.Type.TUTORIAL_HINT, new TextComponentString("Call Rejected."), null));
 		}
 
 		public static void onPhoneToss(String number)

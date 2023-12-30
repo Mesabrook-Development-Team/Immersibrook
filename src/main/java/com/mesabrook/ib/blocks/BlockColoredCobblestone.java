@@ -29,7 +29,7 @@ public class BlockColoredCobblestone extends Block implements IHasModel {
         setUnlocalizedName("colored_cobblestone");
         setRegistryName("colored_cobblestone");
         setSoundType(SoundType.STONE);
-        setHardness(5.0F);
+        setHardness(1.5F);
         setResistance(8.0F);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
         setHarvestLevel("pickaxe", 0);

@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:throne_gov" },
+        "facing=south": { "model": "wbtc:throne_gov", "y": 180 },
+        "facing=west":  { "model": "wbtc:throne_gov", "y": 270 },
+        "facing=east":  { "model": "wbtc:throne_gov", "y": 90 }
+    }
+}

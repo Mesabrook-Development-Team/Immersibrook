@@ -142,6 +142,11 @@ public class CategoryHousehold extends AbstractCategory
 		add(ModBlocks.WALL_TOILET);
 		add(ModBlocks.HOME_TOILET);
 		add(ModBlocks.URINAL);
+
+		// Chairs
+		add(ModBlocks.THRONE_FC);
+		add(ModBlocks.THRONE);
+		add(ModBlocks.THRONE_GOV);
 	}
 
 }

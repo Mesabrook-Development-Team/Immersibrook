@@ -2112,4 +2112,12 @@ item.spam.name=Luncheon Meat
 tile.dish_bell.name=Satellite Dish - Mesabrook Bell
 tile.dish_msac.name=Satellite Dish - MSAC
 tile.dish_blank.name=Satellite Dish
+
+//Machines
 tile.smoker.name=Smoker
+tile.fluid_meter.name=Fluid Meter
+
+//Thrones
+tile.throne.name=Counselor's Chair
+tile.throne_fc.name=First Consul's Chair
+tile.throne_gov.name=Elected Official's Chair
