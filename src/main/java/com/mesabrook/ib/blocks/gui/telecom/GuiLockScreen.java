@@ -1,6 +1,7 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.mesabrook.ib.init.SoundInit;
+import com.mesabrook.ib.util.IndependentTimer;
 import com.mesabrook.ib.util.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -17,7 +18,10 @@ import java.util.UUID;
 public class GuiLockScreen extends GuiPhoneBase {
 
 	private UnlockSlider unlockSlider;
+	IndependentTimer lockTextureAnim;
 	MinedroidButton unlockButton;
+	ImageButton unlockIcon;
+	String lockIconTexture = phoneStackData.getIconTheme() + "/icn_lock_1.png";
 	public GuiLockScreen(ItemStack phoneStack, EnumHand hand) {
 		super(phoneStack, hand);
 	}
@@ -30,13 +34,14 @@ public class GuiLockScreen extends GuiPhoneBase {
 	@Override
 	public void initGui() {
 		super.initGui();
+		lockTextureAnim = new IndependentTimer();
 		int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 32;
 		unlockSlider = new UnlockSlider(INNER_X + INNER_TEX_WIDTH / 2 - 60, INNER_Y + INNER_TEX_HEIGHT - 75);
-		unlockButton = new MinedroidButton(69, INNER_X + 55, lowerControlsY - 20, 50, "Unlock", 0xFFFFFF);
+		unlockIcon = new ImageButton(0, INNER_X + 65, lowerControlsY - 30, 30, 30, lockIconTexture, 32, 32);
 
 		if(phoneStackData.getUseButtonInsteadOfSlider())
 		{
-			buttonList.add(unlockButton);
+			buttonList.add(unlockIcon);
 		}
 	}
 	
@@ -78,6 +83,12 @@ public class GuiLockScreen extends GuiPhoneBase {
 			{
 				onScreenUnlocked();
 			}
+		}
+		else
+		{
+			String buttonText = "Click Lock to Unlock Phone";
+			int fontWidth = fontRenderer.getStringWidth(buttonText);
+			fontRenderer.drawString(buttonText, INNER_X + INNER_TEX_WIDTH / 2 - fontWidth / 2, INNER_Y + INNER_TEX_HEIGHT - 35, 0xFFFFFF, true);
 		}
 	}
 	
@@ -143,7 +154,7 @@ public class GuiLockScreen extends GuiPhoneBase {
 	protected void actionPerformed(GuiButton button) throws IOException
 	{
 		super.actionPerformed(button);
-		if(button == unlockButton)
+		if(button == unlockIcon)
 		{
 			onScreenUnlocked();
 		}
