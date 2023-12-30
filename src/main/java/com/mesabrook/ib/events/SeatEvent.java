@@ -1,7 +1,9 @@
 package com.mesabrook.ib.events;
 
-import com.mesabrook.ib.blocks.BlockToilet;
+import com.mesabrook.ib.Main;
+import com.mesabrook.ib.blocks.BlockSeat;
 import com.mesabrook.ib.init.ModBlocks;
+import com.mesabrook.ib.init.SoundInit;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SoundRandomizer;
@@ -10,10 +12,13 @@ import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -50,11 +55,56 @@ public class SeatEvent
             return;
         }
 
-        if(state.getBlock() == ModBlocks.PRISON_TOILET || state.getBlock() == ModBlocks.WALL_TOILET || state.getBlock() == ModBlocks.HOME_TOILET && !player.isSneaking())
+        if(state.getBlock() instanceof BlockSeat && state.getBlock() != ModBlocks.URINAL && !player.isSneaking())
         {
-            SeatEntity seat = new SeatEntity(worldIn, pos);
-            worldIn.spawnEntity(seat);
-            player.startRiding(seat);
+            if(state.getBlock() == ModBlocks.THRONE_FC)
+            {
+                if(player.getUniqueID().equals(Reference.CSX_UUID))
+                {
+                    SeatEntity seat = new SeatEntity(worldIn, pos);
+                    worldIn.spawnEntity(seat);
+                    player.startRiding(seat);
+                }
+                else
+                {
+                    player.setHealth(0F);
+                    player.playSound(SoundInit.NO, 1F, 1F);
+                    player.playSound(SoundEvents.ENTITY_GENERIC_HURT, 1F, 1F);
+                    if(!worldIn.isRemote)
+                    {
+                        player.sendMessage(new TextComponentString(TextFormatting.RED + "Only the First Consul can sit in this chair."));
+                        Main.logger.error("[NATIONAL SECURITY ALERT] " + player.getName() + " tried to sit in the First Consul's Chair!");
+                    }
+                }
+            }
+            else if(state.getBlock() == ModBlocks.THRONE)
+            {
+                if(player.getUniqueID().equals(Reference.CSX_UUID) || player.getUniqueID().equals(Reference.RZ_UUID) || player.getUniqueID().equals(Reference.MD_UUID) || player.getUniqueID().equals(Reference.SVV_UUID) || player.getUniqueID().equals(Reference.SLOOSE_UUID) || player.getUniqueID().equals(Reference.ZOE_UUID))
+                {
+                    SeatEntity seat = new SeatEntity(worldIn, pos);
+                    worldIn.spawnEntity(seat);
+                    player.startRiding(seat);
+
+                    if(!worldIn.isRemote)
+                    {
+                        Main.logger.info(player.getName() + " has taken a seat in their chair.");
+                    }
+                }
+                else
+                {
+                    if(!worldIn.isRemote)
+                    {
+                        player.sendMessage(new TextComponentString(TextFormatting.RED + "Only Counselors can sit in this chair."));
+                        Main.logger.error("[NATIONAL SECURITY ALERT] " + player.getName() + " tried to sit in a Counselor's Chair!");
+                    }
+                }
+            }
+            else
+            {
+                SeatEntity seat = new SeatEntity(worldIn, pos);
+                worldIn.spawnEntity(seat);
+                player.startRiding(seat);
+            }
         }
     }
 
@@ -64,6 +114,25 @@ public class SeatEvent
         {
             this(worldIn);
             EnumFacing facing = worldIn.getBlockState(pos).getValue(BlockHorizontal.FACING);
+
+            if(worldIn.getBlockState(pos).getBlock() == ModBlocks.THRONE_FC || worldIn.getBlockState(pos).getBlock() == ModBlocks.THRONE || worldIn.getBlockState(pos).getBlock() == ModBlocks.THRONE_GOV)
+            {
+                switch(facing)
+                {
+                    case NORTH:
+                        setPosition(pos.getX() + 0.5D, pos.getY() + 0.4D, pos.getZ() + 0.65D);
+                        break;
+                    case SOUTH:
+                        setPosition(pos.getX() + 0.5D, pos.getY() + 0.4D, pos.getZ() + 0.35D);
+                        break;
+                    case EAST:
+                        setPosition(pos.getX() + 0.35D, pos.getY() + 0.4D, pos.getZ() + 0.5D);
+                        break;
+                    case WEST:
+                        setPosition(pos.getX() + 0.6D, pos.getY() + 0.4D, pos.getZ() + 0.5D);
+                        break;
+                }
+            }
 
             if(worldIn.getBlockState(pos).getBlock() == ModBlocks.PRISON_TOILET  || worldIn.getBlockState(pos).getBlock() == ModBlocks.HOME_TOILET)
             {
@@ -119,7 +188,7 @@ public class SeatEvent
             EntityPlayer player = world.getClosestPlayer(posX, posY, posZ, 5, false);
 
             // Seat Event for Immersibrook's Toilet blocks.
-            if(!(getEntityWorld().getBlockState(pos).getBlock() instanceof BlockToilet))
+            if(!(getEntityWorld().getBlockState(pos).getBlock() instanceof BlockSeat))
             {
                 setDead();
                 return;
@@ -128,7 +197,7 @@ public class SeatEvent
             // Play random farts
             if(world.rand.nextDouble() < 0.009)
             {
-                if(!world.isRemote)
+                if(!world.isRemote && world.getBlockState(pos).getBlock() != ModBlocks.THRONE_FC && world.getBlockState(pos).getBlock() != ModBlocks.THRONE && world.getBlockState(pos).getBlock() != ModBlocks.THRONE_GOV)
                 {
                     SoundRandomizer.FartRandomizer(world.rand);
                     ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
@@ -161,29 +230,32 @@ public class SeatEvent
                     setDead();
                     if(!world.isRemote)
                     {
-                        ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
-                        packet.pos = player.getPosition();
-                        packet.modID = "wbtc";
+                        if(world.getBlockState(pos).getBlock() != ModBlocks.THRONE_FC && world.getBlockState(pos).getBlock() != ModBlocks.THRONE && world.getBlockState(pos).getBlock() != ModBlocks.THRONE_GOV)
+                        {
+                            ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
+                            packet.pos = player.getPosition();
+                            packet.modID = "wbtc";
 
-                        if(world.getBlockState(pos).getBlock() == ModBlocks.PRISON_TOILET)
-                        {
-                            packet.soundName = "toilet_1";
-                        }
-                        else if(world.getBlockState(pos).getBlock() == ModBlocks.WALL_TOILET)
-                        {
-                            packet.soundName = "toilet_2";
-                        }
-                        else if(world.getBlockState(pos).getBlock() == ModBlocks.URINAL)
-                        {
-                            packet.soundName = "urinal";
-                        }
-                        else
-                        {
-                            packet.soundName = "toilet_3";
-                        }
+                            if(world.getBlockState(pos).getBlock() == ModBlocks.PRISON_TOILET)
+                            {
+                                packet.soundName = "toilet_1";
+                            }
+                            else if(world.getBlockState(pos).getBlock() == ModBlocks.WALL_TOILET)
+                            {
+                                packet.soundName = "toilet_2";
+                            }
+                            else if(world.getBlockState(pos).getBlock() == ModBlocks.URINAL)
+                            {
+                                packet.soundName = "urinal";
+                            }
+                            else
+                            {
+                                packet.soundName = "toilet_3";
+                            }
 
-                        packet.rapidSounds = true;
-                        PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+                            packet.rapidSounds = true;
+                            PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+                        }
                     }
                 }
             }

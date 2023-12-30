@@ -709,6 +709,28 @@ public class PlayerEvents
 			PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
 		}
 	}
+
+	/*
+		Block Place event.
+	 */
+	@SubscribeEvent
+	public void onBlockPlace(BlockEvent.PlaceEvent event)
+	{
+		EntityPlayer player = event.getPlayer();
+		World world = event.getWorld();
+		BlockPos pos = event.getPos();
+		IBlockState state = event.getPlacedBlock();
+
+		if(state.getBlock() == ModBlocks.THRONE_FC)
+		{
+			ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
+			packet.pos = pos;
+			packet.modID = "minecraft";
+			packet.soundName = "ui.toast.challenge_complete";
+			packet.rapidSounds = false;
+			PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+		}
+	}
 	
 	@SubscribeEvent
 	public void onPlayerCloneEvent(net.minecraftforge.event.entity.player.PlayerEvent.Clone e)

@@ -28,7 +28,7 @@ public class BlockColoredQuartz extends Block implements IHasModel
         super(Material.ROCK);
         setUnlocalizedName("colored_quartz");
         setRegistryName("colored_quartz");
-        setHardness(5.0F);
+        setHardness(1.5F);
         setResistance(8.0F);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
         setHarvestLevel("pickaxe", 0);

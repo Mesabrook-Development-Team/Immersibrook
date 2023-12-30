@@ -109,5 +109,7 @@ public class CategoryTech extends AbstractCategory
         add(ModBlocks.DISH_BLANK);
 
         add(ModBlocks.SMOKER);
+
+        add(ModBlocks.FLUID_METER);
     }
 }

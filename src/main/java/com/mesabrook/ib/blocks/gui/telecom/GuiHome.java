@@ -15,14 +15,11 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @SideOnly(Side.CLIENT)
 public class GuiHome extends GuiPhoneBase {
 
 	private ResourceLocation dockTexture = new ResourceLocation("wbtc", "textures/gui/telecom/system/dock.png");
-	private List<String> buttonTooltip = new ArrayList<>();
 	public GuiHome(ItemStack phoneStack, EnumHand hand) {
 		super(phoneStack, hand);
 	}
@@ -71,15 +68,6 @@ public class GuiHome extends GuiPhoneBase {
 		// Help App
 		button7 = new ImageButton(6, INNER_X + 86, INNER_Y + 24, 32, 32, phoneStackData.getIconTheme() + "/icn_help.png", 32, 32);
 		buttonList.add(button7);
-
-		// Tooltips
-		buttonTooltip.add("Phone");
-		buttonTooltip.add("Messages");
-		buttonTooltip.add("Address Book");
-		buttonTooltip.add("Settings");
-		buttonTooltip.add("Music Player");
-		buttonTooltip.add("Calculator");
-		buttonTooltip.add("Minedroid Help");
 	}
 
 	@Override

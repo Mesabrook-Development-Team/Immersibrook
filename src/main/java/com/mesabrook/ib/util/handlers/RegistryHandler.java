@@ -9,12 +9,12 @@ import com.mesabrook.ib.capability.employee.CapabilityEmployeePlayerProvider;
 import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
 import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItemProvider;
 import com.mesabrook.ib.capability.wallet.ItemWalletCapabilityProvider;
+import com.mesabrook.ib.cdm.apps.CompanyStudioLiteApp;
+import com.mesabrook.ib.cdm.apps.GovernmentPortalLiteApp;
+import com.mesabrook.ib.cdm.apps.MesaMailApp;
 import com.mesabrook.ib.cmds.CommandImmersibrook;
 import com.mesabrook.ib.cmds.CommandMeme;
 import com.mesabrook.ib.cmds.CommandTalk;
-import com.mesabrook.ib.cdm.apps.CompanyStudioLiteApp;
-import com.mesabrook.ib.cdm.apps.GovernmentPortalLiteApp;
-import com.mesabrook.ib.cdm.apps.TestApp;
 import com.mesabrook.ib.entity.EntityMesabrookM;
 import com.mesabrook.ib.entity.EntityWineBottle;
 import com.mesabrook.ib.init.ModBlocks;
@@ -211,6 +211,7 @@ public class RegistryHandler
 		CDMApps.registerIBApp(new ResourceLocation(Reference.MODID, "ta"), TestApp.class);
 		CDMApps.registerIBApp(new ResourceLocation(Reference.MODID, "cstudio_lite"), CompanyStudioLiteApp.class);
 		CDMApps.registerIBApp(new ResourceLocation(Reference.MODID, "gportal"), GovernmentPortalLiteApp.class);
+		CDMApps.registerIBApp(new ResourceLocation(Reference.MODID, "mesamail"), MesaMailApp.class);
 
     	Main.logger.info("[Immersibrook] Version " + Reference.VERSION + " loaded.");
 	}
