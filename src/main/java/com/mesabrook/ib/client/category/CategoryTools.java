@@ -56,6 +56,8 @@ public class CategoryTools extends AbstractCategory {
 		// Rations
 		add(ModItems.ES_RATION);
 		add(ModItems.RS_RATION);
+
+		add(ModItems.ITEM_LAUNCHER);
 	}
 
 }

@@ -552,4 +552,7 @@ public class ModItems
 
 	// More food
 	public static final Item SPAM = new SpecialFood("spam", 5, 4F, false);
+
+	// Item Launcher
+	public static final Item ITEM_LAUNCHER = new ItemLauncher("item_launcher");
 }
