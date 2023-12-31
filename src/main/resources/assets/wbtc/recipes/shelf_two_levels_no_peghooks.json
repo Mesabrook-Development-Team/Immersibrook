@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "I  ",
+	"IPP",
+	"IPP"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+	  "ore": "ingotIron"
+    },
+    "P": {
+      "type": "forge:ore_dict",
+	  "ore": "plateIron"
+    }
+  },
+  "result": {
+    "item": "wbtc:shelf_two_levels_no_peghooks",
+    "count": 1
+  }
+}

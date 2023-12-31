@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IP ",
+	"IP ",
+	"III"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+	  "ore": "ingotIron"
+    },
+    "P": {
+      "item": "wbtc:peghook"
+    }
+  },
+  "result": {
+    "item": "wbtc:shelf_one_level_two_peghooks",
+    "count": 1
+  }
+}

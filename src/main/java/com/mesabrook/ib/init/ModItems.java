@@ -555,4 +555,7 @@ public class ModItems
 
 	// Item Launcher
 	public static final Item ITEM_LAUNCHER = new ItemLauncher("item_launcher");
+
+	// Retail Crafting Item
+	public static final Item PEGHOOK = new MiscItem("peghook", 16, Main.IMMERSIBROOK_MAIN);
 }

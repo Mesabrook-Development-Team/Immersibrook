@@ -3,8 +3,8 @@ package com.mesabrook.ib.events;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.BlockSeat;
 import com.mesabrook.ib.init.ModBlocks;
-import com.mesabrook.ib.init.SoundInit;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
+import com.mesabrook.ib.util.DamageSourceAprilFools;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SoundRandomizer;
 import com.mesabrook.ib.util.handlers.PacketHandler;
@@ -12,13 +12,13 @@ import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.GameType;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -59,45 +59,15 @@ public class SeatEvent
         {
             if(state.getBlock() == ModBlocks.THRONE_FC)
             {
-                if(player.getUniqueID().equals(Reference.CSX_UUID))
-                {
-                    SeatEntity seat = new SeatEntity(worldIn, pos);
-                    worldIn.spawnEntity(seat);
-                    player.startRiding(seat);
-                }
-                else
-                {
-                    player.setHealth(0F);
-                    player.playSound(SoundInit.NO, 1F, 1F);
-                    player.playSound(SoundEvents.ENTITY_GENERIC_HURT, 1F, 1F);
-                    if(!worldIn.isRemote)
-                    {
-                        player.sendMessage(new TextComponentString(TextFormatting.RED + "Only the First Consul can sit in this chair."));
-                        Main.logger.error("[NATIONAL SECURITY ALERT] " + player.getName() + " tried to sit in the First Consul's Chair!");
-                    }
-                }
+                SeatEntity seat = new SeatEntity(worldIn, pos);
+                worldIn.spawnEntity(seat);
+                player.startRiding(seat);
             }
             else if(state.getBlock() == ModBlocks.THRONE)
             {
-                if(player.getUniqueID().equals(Reference.CSX_UUID) || player.getUniqueID().equals(Reference.RZ_UUID) || player.getUniqueID().equals(Reference.MD_UUID) || player.getUniqueID().equals(Reference.SVV_UUID) || player.getUniqueID().equals(Reference.SLOOSE_UUID) || player.getUniqueID().equals(Reference.ZOE_UUID))
-                {
-                    SeatEntity seat = new SeatEntity(worldIn, pos);
-                    worldIn.spawnEntity(seat);
-                    player.startRiding(seat);
-
-                    if(!worldIn.isRemote)
-                    {
-                        Main.logger.info(player.getName() + " has taken a seat in their chair.");
-                    }
-                }
-                else
-                {
-                    if(!worldIn.isRemote)
-                    {
-                        player.sendMessage(new TextComponentString(TextFormatting.RED + "Only Counselors can sit in this chair."));
-                        Main.logger.error("[NATIONAL SECURITY ALERT] " + player.getName() + " tried to sit in a Counselor's Chair!");
-                    }
-                }
+                SeatEntity seat = new SeatEntity(worldIn, pos);
+                worldIn.spawnEntity(seat);
+                player.startRiding(seat);
             }
             else
             {
@@ -228,6 +198,27 @@ public class SeatEvent
                 if(entity.isSneaking())
                 {
                     setDead();
+
+                    if(world.getBlockState(pos).getBlock() == ModBlocks.THRONE_FC)
+                    {
+                        if(!player.getUniqueID().equals(Reference.CSX_UUID))
+                        {
+                            DamageSourceAprilFools dodo = new DamageSourceAprilFools("dodo");
+                            player.setGameType(GameType.SURVIVAL);
+                            player.attackEntityFrom(dodo, Integer.MAX_VALUE);
+
+                            if(!world.isRemote)
+                            {
+                                player.sendMessage(new TextComponentString(TextFormatting.RED + "Only the First Consul can sit in this seat."));
+                                Main.logger.warn("[NATIONAL SECURITY ALERT] An unauthorized player (" + player.getName() + ") just tried to sit in the First Consul's chair!");
+                            }
+                        }
+                    }
+                    else if(world.getBlockState(pos).getBlock() == ModBlocks.THRONE)
+                    {
+
+                    }
+
                     if(!world.isRemote)
                     {
                         if(world.getBlockState(pos).getBlock() != ModBlocks.THRONE_FC && world.getBlockState(pos).getBlock() != ModBlocks.THRONE && world.getBlockState(pos).getBlock() != ModBlocks.THRONE_GOV)
