@@ -2013,13 +2013,15 @@ item.ration_2.name=Radiation Survival Kit
 item.water_sachet.name=Emergency Water
 
 // Retail and SCO
-tile.sco_pos.name=MSAC Point of Sale System - Main Terminal
-tile.sco_scanner.name=MSAC Point of Sale System - Product Scanner
-tile.sco_bagging.name=MSAC Point of Sale System - Bagging Platform
-tile.shelf_one_level_two_peghooks=Retail Shelf
-tile.shelf_four_peghooks.name=Retail Shelf
-tile.shelf_two_levels_no_peghooks.name=Retail Shelf
-tile.security_station.name=MSAC Retail - Merchandise Securing Station
+tile.sco_pos.name=Point Of Sale Terminal
+tile.sco_scanner.name=Point Of Sale Product Scanner
+tile.sco_bagging.name=Point Of Sale Bagging Platform
+tile.shelf_one_level_two_peghooks.name=Retail Shelf - Two Peghooks, One Shelf
+tile.shelf_four_peghooks.name=Retail Shelf - Four Peghooks, No Shelves
+tile.shelf_two_levels_no_peghooks.name=Retail Shelf - Two Shelves, No Peghooks
+tile.security_station.name=Retail Merchandise Securing Station
+item.peghook.name=Peghook
+item.security_box.name=Merchandise Security Box
 
 tile.smartphone_stand.name=Smartphone Display Stand
 tile.smartphone_stand_orange.name=Smartphone Display Stand

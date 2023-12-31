@@ -127,5 +127,6 @@ public class CategoryResources extends AbstractCategory
 		add(ModItems.PLASTIGLASS_SHEET);
 		add(ModItems.TAPE_CRAFTING);
 		add(ModItems.DENIM);
+		add(ModItems.PEGHOOK);
 	}
 }

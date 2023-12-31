@@ -32,7 +32,6 @@ import com.mesabrook.ib.telecom.CallManager;
 import com.mesabrook.ib.util.ItemRandomizer;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SoundRandomizer;
-import com.mesabrook.ib.util.TooltipRandomizer;
 import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.apiaccess.DataAccess.API;
 import com.mesabrook.ib.util.apiaccess.DataAccess.AuthenticationStatus;
@@ -68,10 +67,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.event.ClickEvent;
-import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -85,12 +81,21 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClients;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.time.LocalDate;
+import java.util.Random;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class PlayerEvents 
 {
-	private final String PREFIX = "-> ";
-
 	public PlayerEvents()
 	{
 		Main.logger.info("[" + Reference.MODNAME + "] Registering PlayerEvents class...");
@@ -108,14 +113,11 @@ public class PlayerEvents
 		birthdayMessage.getStyle().setColor(TextFormatting.GREEN);
 		birthdayMessage.getStyle().setBold(true);
 
-		TooltipRandomizer.ChosenTooltip();
 		boolean holidayItemsInInventoryOnJoin = w.getGameRules().getBoolean("holidayItemsInInventoryOnJoin");
 
 		if(ModConfig.showWelcome)
 		{
 			SpecialDropTrackingData dropData = SpecialDropTrackingData.getOrCreate(w);
-			
-			TextComponentString user = new TextComponentString(TextFormatting.AQUA + player.getDisplayNameString());
 
 			if(player instanceof EntityPlayer)
 			{
@@ -155,142 +157,42 @@ public class PlayerEvents
 				}
 			}
 
-			if(player.getServer().isSinglePlayer())
+			// This inversion is intentional for testing purposes.
+			if(!player.getServer().isSinglePlayer())
 			{
-				player.sendMessage(new TextComponentString(TextFormatting.GOLD + "[" + Reference.MODNAME + " " + Reference.VERSION + "]"  + TextFormatting.LIGHT_PURPLE + " " + "Loaded Successfully. Welcome " + user.getFormattedText()));
+				player.sendMessage(new TextComponentString(TextFormatting.GOLD + "[" + Reference.MODNAME + " " + Reference.VERSION + "]"  + TextFormatting.LIGHT_PURPLE + " " + "Loaded Successfully"));
 			}
 			else
 			{
-				TextComponentTranslation prefix = new TextComponentTranslation("im.welcome");
-				prefix.getStyle().setColor(TextFormatting.BLUE);
-				prefix.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentTranslation("im.welcome.disable")));
-				player.sendMessage(new TextComponentString(prefix.getFormattedText() + " " + user.getFormattedText() + "!"));
-
-				if(LocalDate.now().getMonthValue() == Reference.RZ_MONTH && LocalDate.now().getDayOfMonth() == Reference.RZ_DAY)
+				try
 				{
-					birthdayMessage.getStyle().setColor(TextFormatting.GOLD);
-					player.sendStatusMessage(new TextComponentString(birthdayMessage.getFormattedText() + TextFormatting.DARK_GREEN + "RavenholmZombie"), true);
+					String url = Reference.MOTD_URL;
+					HttpClient httpClient = HttpClients.createDefault();
+					HttpGet request = new HttpGet(url);
+					HttpResponse response = httpClient.execute(request);
 
-					if(player.getGameProfile().getId().equals(Reference.RZ_UUID) && dropData.canGiveCake(Reference.RZ_UUID))
+					if (response.getStatusLine().getStatusCode() == 200)
 					{
-						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
+						BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+						StringBuilder content = new StringBuilder();
+						String line;
+
+						while ((line = reader.readLine()) != null)
+						{
+							line = line.replace("%p", player.getDisplayNameString());
+							content.append(line).append("\n");
+						}
+
+						player.sendMessage(new TextComponentString(content.toString()));
+						reader.close();
 					}
 				}
-				if(LocalDate.now().getMonthValue() == Reference.TLZ_MONTH && LocalDate.now().getDayOfMonth() == Reference.TLZ_DAY)
+				catch(Exception ex)
 				{
-					birthdayMessage.getStyle().setColor(TextFormatting.DARK_PURPLE);
-					player.sendStatusMessage(new TextComponentString(birthdayMessage.getFormattedText() + TextFormatting.LIGHT_PURPLE + "timelady_zoe"), true);
-
-					if(player.getGameProfile().getId().equals(Reference.ZOE_UUID) && dropData.canGiveCake(Reference.ZOE_UUID))
-					{
-						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
-					}
+					player.sendMessage(new TextComponentString(TextFormatting.RED + "[IB] Unable to fetch MOTD from remote source. That isn't supposed to happen! :("));
+					player.sendMessage(new TextComponentString(TextFormatting.GOLD + "[" + Reference.MODNAME + " " + Reference.VERSION + "]"  + TextFormatting.LIGHT_PURPLE + " " + "Loaded Successfully"));
+					ex.printStackTrace();
 				}
-				if(LocalDate.now().getMonthValue() == Reference.CSX_MONTH && LocalDate.now().getDayOfMonth() == Reference.CSX_DAY)
-				{
-					birthdayMessage.getStyle().setColor(TextFormatting.BLUE);
-					player.sendStatusMessage(new TextComponentString(birthdayMessage.getFormattedText() + TextFormatting.GREEN + "CSX8600"), true);
-
-					if(player.getGameProfile().getId().equals(Reference.CSX_UUID) && dropData.canGiveCake(Reference.CSX_UUID))
-					{
-						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
-					}
-				}
-				if(LocalDate.now().getMonthValue() == Reference.MD_MONTH && LocalDate.now().getDayOfMonth() == Reference.MD_DAY)
-				{
-					birthdayMessage.getStyle().setColor(TextFormatting.BLUE);
-					player.sendStatusMessage(new TextComponentString(birthdayMessage.getFormattedText() + TextFormatting.RED + "MineDouble"), true);
-
-					if(player.getGameProfile().getId().equals(Reference.MD_UUID) && dropData.canGiveCake(Reference.MD_UUID))
-					{
-						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
-					}
-				}
-				if(LocalDate.now().getMonthValue() == Reference.SVV_MONTH && LocalDate.now().getDayOfMonth() == Reference.SVV_DAY)
-				{
-					birthdayMessage.getStyle().setColor(TextFormatting.GREEN);
-					player.sendStatusMessage(new TextComponentString(birthdayMessage.getFormattedText() + TextFormatting.YELLOW + "StarVicVader"), true);
-
-					if(player.getGameProfile().getId().equals(Reference.SVV_UUID) && dropData.canGiveCake(Reference.SVV_UUID))
-					{
-						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
-					}
-				}
-				if(LocalDate.now().getMonthValue() == Reference.RZ_MONTH && LocalDate.now().getDayOfMonth() == Reference.SLOOSE_DAY)
-				{
-					birthdayMessage.getStyle().setColor(TextFormatting.GREEN);
-					player.sendStatusMessage(new TextComponentString(birthdayMessage.getFormattedText() + TextFormatting.YELLOW + "sloosecannon"), true);
-
-					if(player.getGameProfile().getId().equals(Reference.SLOOSE_UUID) && dropData.canGiveCake(Reference.SLOOSE_UUID))
-					{
-						player.addItemStackToInventory(new ItemStack(Items.CAKE, 1));
-					}
-				}
-				if(LocalDate.now().getMonthValue() == Reference.BAG_MONTH && LocalDate.now().getDayOfMonth() == Reference.BAG_DAY)
-				{
-					birthdayMessage.getStyle().setColor(TextFormatting.GREEN);
-					player.sendStatusMessage(new TextComponentString(birthdayMessage.getFormattedText() + TextFormatting.DARK_GRAY + "Bagheera!"), true);
-					player.sendStatusMessage(new TextComponentString(TextFormatting.WHITE + "RavenholmZombie's cat!"), true);
-				}
-				if(LocalDate.now().getMonthValue() == Reference.BB_MONTH && LocalDate.now().getDayOfMonth() == Reference.BB_DAY)
-				{
-					birthdayMessage.getStyle().setColor(TextFormatting.GREEN);
-					player.sendStatusMessage(new TextComponentString(birthdayMessage.getFormattedText() + TextFormatting.DARK_GRAY + "Boo and Bubbles!"), true);
-					player.sendStatusMessage(new TextComponentString(TextFormatting.WHITE + "RavenholmZombie's cats!"), true);
-					player.sendStatusMessage(new TextComponentString(TextFormatting.GOLD + "Happy Halloween!"), true);
-
-					if(holidayItemsInInventoryOnJoin && dropData.canGiveHalloweenPresent(player.getUniqueID()))
-					{
-						ItemRandomizer.HalloweenItemRandomizer();
-						player.addItemStackToInventory(ItemRandomizer.halloweenItem);
-					}
-					if(!w.isRemote)
-					{
-						ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
-						packet.pos = player.getPosition();
-						packet.modID = "minecraft";
-						packet.soundName = "record.11";
-						PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
-					}
-				}
-				if(LocalDate.now().getMonthValue() == 12 && LocalDate.now().getDayOfMonth() == 24 || LocalDate.now().getMonthValue() == 12 && LocalDate.now().getDayOfMonth() == 25)
-				{
-					player.sendMessage(new TextComponentString(TextFormatting.GREEN + "Happy Holidays!"));
-					if(!w.isRemote)
-					{
-						ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
-						packet.pos = player.getPosition();
-						packet.soundName = "jingles";
-						PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
-					}
-				}
-
-				TextComponentTranslation mesaTitle = new TextComponentTranslation("im.website.title");
-				TextComponentTranslation wikiTitle = new TextComponentTranslation("im.wiki.title");
-				TextComponentTranslation mapTitle = new TextComponentTranslation("im.map.title");
-
-				mesaTitle.getStyle().setColor(TextFormatting.AQUA);
-				wikiTitle.getStyle().setColor(TextFormatting.AQUA);
-
-				TextComponentString mesaURL = new TextComponentString(PREFIX + TextFormatting.RESET + "https://mesabrook.com");
-				TextComponentString dynmap = new TextComponentString(PREFIX + TextFormatting.RESET + "http://map.mesabrook.com");
-				TextComponentString wikiURL = new TextComponentString(PREFIX + TextFormatting.RESET +"https://shorturl.at/gmqGV");
-
-				mesaURL.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentTranslation("im.website.hover")));
-				wikiURL.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentTranslation("im.website.hover")));
-				dynmap.getStyle().setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentTranslation("im.website.hover")));
-
-				mesaURL.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://mesabrook.com"));
-				wikiURL.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://bit.ly/2S2G5Wt"));
-				dynmap.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "http://www.map.mesabrook.com/"));
-
-				player.sendMessage(new TextComponentString(""));
-				player.sendMessage(new TextComponentString(mesaTitle.getFormattedText()));
-				player.sendMessage(mesaURL);
-				player.sendMessage(dynmap);
-				player.sendMessage(new TextComponentString(""));
-				player.sendMessage(new TextComponentString(wikiTitle.getFormattedText()));
-				player.sendMessage(wikiURL);
 			}
 		}
 		
@@ -319,6 +221,24 @@ public class PlayerEvents
 		{
 			player.sendMessage(new TextComponentString("" + TextFormatting.BOLD + TextFormatting.YELLOW + "WARNING! The server is currently NOT signed into MesaSuite!"));
 		}
+	}
+
+	private String makeUrlsClickable(String text)
+	{
+		String urlRegex = "(https?://\\S+)";
+		Pattern pattern = Pattern.compile(urlRegex);
+		Matcher matcher = pattern.matcher(text);
+
+		// Replace URLs with clickable format
+		StringBuffer clickableText = new StringBuffer();
+		while (matcher.find())
+		{
+			String url = matcher.group();
+			matcher.appendReplacement(clickableText, "[" + url + "](" + url + ")");
+		}
+		matcher.appendTail(clickableText);
+
+		return clickableText.toString();
 	}
 	
 	private class ResetInactivityParam
@@ -672,63 +592,6 @@ public class PlayerEvents
 			{
 				event.setCanceled(false);
 			}
-		}
-	}
-
-	@SubscribeEvent
-	public void onPlayerRightClick(PlayerInteractEvent.RightClickBlock event)
-	{
-		EntityPlayer player = event.getEntityPlayer();
-		World world = event.getWorld();
-		ItemStack heldItem = player.getHeldItem(event.getHand());
-		BlockPos pos = event.getPos();
-		IBlockState state = world.getBlockState(pos);
-
-		// Get water bottle from certain block.
-		if (heldItem.getItem() == Items.GLASS_BOTTLE && state.getBlock() == ModBlocks.PRISON_TOILET)
-		{
-			ItemStack waterBottle = new ItemStack(Items.POTIONITEM, 1, 0);
-
-			NBTTagCompound nbt = new NBTTagCompound();
-			nbt.setString("Potion", "minecraft:water");
-			waterBottle.setTagCompound(nbt);
-
-			if(!player.isCreative())
-			{
-				heldItem.shrink(1);
-			}
-
-			player.addItemStackToInventory(waterBottle);
-			player.swingArm(event.getHand());
-
-			ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
-			packet.pos = pos;
-			packet.modID = "cfm";
-			packet.soundName = "tap";
-			packet.rapidSounds = true;
-			PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
-		}
-	}
-
-	/*
-		Block Place event.
-	 */
-	@SubscribeEvent
-	public void onBlockPlace(BlockEvent.PlaceEvent event)
-	{
-		EntityPlayer player = event.getPlayer();
-		World world = event.getWorld();
-		BlockPos pos = event.getPos();
-		IBlockState state = event.getPlacedBlock();
-
-		if(state.getBlock() == ModBlocks.THRONE_FC)
-		{
-			ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
-			packet.pos = pos;
-			packet.modID = "minecraft";
-			packet.soundName = "ui.toast.challenge_complete";
-			packet.rapidSounds = false;
-			PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
 		}
 	}
 	

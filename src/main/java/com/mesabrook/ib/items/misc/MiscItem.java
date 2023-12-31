@@ -53,7 +53,7 @@ public class MiscItem extends Item implements IHasModel
 	{
 		if(GuiScreen.isShiftKeyDown())
 		{
-			if(stack.getItem() == ModItems.NV_LENS || stack.getItem() == ModItems.NV_BODY || stack.getItem() == ModItems.NV_INTERNALS || stack.getItem() == ModItems.NV_STRAPS || this.getUnlocalizedName().contains("shell") || stack.getItem() == ModItems.PHONE_SCREEN)
+			if(stack.getItem() == ModItems.NV_LENS || stack.getItem() == ModItems.NV_BODY || stack.getItem() == ModItems.NV_INTERNALS || stack.getItem() == ModItems.NV_STRAPS || this.getUnlocalizedName().contains("shell") || stack.getItem() == ModItems.PHONE_SCREEN || stack.getItem() == ModItems.PEGHOOK)
 			{
 				tooltip.add(TextFormatting.GOLD + "Crafting Ingredient");
 			}

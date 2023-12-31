@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSP"
+  ],
+  "key": {
+    "S": {
+      "type": "forge:ore_dict",
+	  "ore": "stickIron"
+    },
+    "P": {
+      "type": "forge:ore_dict",
+	  "ore": "paper"
+    }
+  },
+  "result": {
+    "item": "wbtc:peghook",
+    "count": 4
+  }
+}
