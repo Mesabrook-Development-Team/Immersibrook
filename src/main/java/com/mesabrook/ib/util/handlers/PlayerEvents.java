@@ -140,6 +140,7 @@ public class PlayerEvents
 				}
 			}
 
+			// This inversion is intentional for testing purposes.
 			if(!player.getServer().isSinglePlayer())
 			{
 				player.sendMessage(new TextComponentString(TextFormatting.GOLD + "[" + Reference.MODNAME + " " + Reference.VERSION + "]"  + TextFormatting.LIGHT_PURPLE + " " + "Loaded Successfully"));
