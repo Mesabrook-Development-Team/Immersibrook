@@ -86,7 +86,7 @@ public class GuiLockScreen extends GuiPhoneBase {
 		}
 		else
 		{
-			String buttonText = "Click Lock to Unlock Phone";
+			String buttonText = "Tap Lock to Unlock Phone";
 			int fontWidth = fontRenderer.getStringWidth(buttonText);
 			fontRenderer.drawString(buttonText, INNER_X + INNER_TEX_WIDTH / 2 - fontWidth / 2, INNER_Y + INNER_TEX_HEIGHT - 35, 0xFFFFFF, true);
 		}
