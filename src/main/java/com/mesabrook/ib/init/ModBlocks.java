@@ -1302,7 +1302,7 @@ public class ModBlocks
 	public static final Block SMOKER = new BlockSmoker("smoker");
 
 	// Fluid Meter
-	public static final Block FLUID_METER = new BlockFluidMeter("fluid_meter", ModUtils.DEFAULT_AABB);
+	public static final Block FLUID_METER = new BlockFluidMeter("fluid_meter");
 
 	// Awesome Chairs
 	public static final Block THRONE_FC = new BlockSeat("throne_fc", ModUtils.DOUBLE_AABB, -1.0F);
