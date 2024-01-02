@@ -1,18 +1,20 @@
 package com.mesabrook.ib.blocks;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.te.TileEntityFluidMeter;
 import com.mesabrook.ib.blocks.te.TileEntityFluidMeter.FlowDirection;
-import com.mesabrook.ib.init.ModBlocks;
-import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.capability.employee.CapabilityEmployee;
+import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.ModUtils;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockHorizontal;
+
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -21,7 +23,6 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
@@ -35,11 +36,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class BlockFluidMeter extends ImmersiblockRotationalManyBB implements IHasModel
 {
@@ -142,5 +138,37 @@ public class BlockFluidMeter extends ImmersiblockRotationalManyBB implements IHa
     	}
     	
     	return true;
+    }
+    
+    @Override
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer,
+    		ItemStack stack) {
+    	super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+		if (worldIn.isRemote)
+		{
+			return;
+		}
+		
+		boolean isPlayer = false;
+		if (placer instanceof EntityPlayer)
+		{
+			IEmployeeCapability employeeCap = placer.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
+			if (employeeCap.getLocationID() != 0 && employeeCap.getLocationEmployee().ManageInventory)
+			{
+				TileEntityFluidMeter te = (TileEntityFluidMeter)worldIn.getTileEntity(pos);
+				te.setLocationOwner(employeeCap.getLocationEmployee().Location);
+				
+				return;
+			}
+			
+			isPlayer = true;
+		}
+		
+		if (isPlayer)
+		{
+			placer.sendMessage(new TextComponentString("You must be on duty and have permission to manage inventory."));
+		}
+		
+		worldIn.setBlockToAir(pos);
     }
 }
