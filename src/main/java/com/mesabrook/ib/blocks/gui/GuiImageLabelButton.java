@@ -6,8 +6,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiImageLabelButton extends GuiButton {
@@ -19,6 +21,7 @@ public class GuiImageLabelButton extends GuiButton {
 	private int uvHeight;
 	private ImageOrientation orientation;
 	private int textWidth;
+	private ItemStack stack;
 	
 	private int enabledColor = 0xc6c6c6;
 	private int disabledColor = 0x555555;
@@ -36,6 +39,16 @@ public class GuiImageLabelButton extends GuiButton {
 		this.orientation = orientation;
 		
 		texLocation = textureLocation;
+		textWidth = Minecraft.getMinecraft().fontRenderer.getStringWidth(text);
+	}
+	
+	public GuiImageLabelButton(int id, int x, int y, int width, int height, String text,
+			ItemStack stack, ImageOrientation orientation)
+	{
+		super(id, x, y, width, height, text);
+		this.stack = stack;
+		this.orientation = orientation;
+		
 		textWidth = Minecraft.getMinecraft().fontRenderer.getStringWidth(text);
 	}
 	
@@ -111,6 +124,30 @@ public class GuiImageLabelButton extends GuiButton {
 			{
 				drawScaledCustomSizeModalRect(x + (width / 2) - (texWidth / 2), textureY, 0, 0, uvWidth, uvHeight, texWidth, texHeight, uvWidth, uvHeight);
 			}
+		}
+		else if (stack != null)
+		{
+			if (enabled)
+			{
+				GlStateManager.color(1, 1, 1);
+			}
+			
+			int textureX = x + 1;
+			int textureY = y + (height / 2) - 8;
+			RenderHelper.enableGUIStandardItemLighting();
+			if (orientation == ImageOrientation.Left)
+			{
+				mc.getRenderItem().renderItemIntoGUI(stack, textureX, textureY);
+			}
+			else if (orientation == ImageOrientation.Right)
+			{
+				mc.getRenderItem().renderItemIntoGUI(stack, textureX + width - 18, textureY);
+			}
+			else if (orientation == ImageOrientation.Center)
+			{
+				mc.getRenderItem().renderItemIntoGUI(stack, x + (width / 2) - 8, textureY);
+			}
+			RenderHelper.disableStandardItemLighting();
 		}
 		
 		if (enabled && hovered)
