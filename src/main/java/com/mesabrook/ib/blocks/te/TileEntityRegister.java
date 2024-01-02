@@ -38,7 +38,9 @@ import com.mesabrook.ib.util.handlers.ServerTickHandler;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
@@ -46,6 +48,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.Constants.NBT;
+import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -61,6 +65,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 	private final RegisterItemHandler itemHandler = new RegisterItemHandler(this);
 	private final SecurityBoxHandler securityBoxHandler = new SecurityBoxHandler(this);
 	private ItemStack insertedCardStack;
+	private ArrayList<TrackedFluidData> fluidData = new ArrayList<>();
 	
 	RegisterStatuses registerStatus = RegisterStatuses.Uninitialized;
 	private String tenderFailureMessage = "";
@@ -105,6 +110,18 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		{
 			securityBoxHandler.deserializeNBT(compound.getCompoundTag("securityBoxInventory"));
 		}
+		
+		fluidData.clear();
+		NBTTagList trackedFluidData = compound.getTagList("trackedFluidData", NBT.TAG_COMPOUND);
+		for(NBTBase nbt : trackedFluidData)
+		{
+			if (nbt instanceof NBTTagCompound)
+			{
+				TrackedFluidData newTrackedData = new TrackedFluidData();
+				newTrackedData.deserializeNBT((NBTTagCompound)nbt);
+				fluidData.add(newTrackedData);
+			}
+		}
 	}
 	
 	@Override
@@ -122,6 +139,12 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 			compound.setTag("insertedCardStack", insertedCardStack.serializeNBT());
 		}
 		compound.setTag("securityBoxInventory", securityBoxHandler.serializeNBT());
+		NBTTagList fluidDataList = new NBTTagList();
+		for(TrackedFluidData data : fluidData)
+		{
+			fluidDataList.appendTag(data.serializeNBT());
+		}
+		compound.setTag("trackedFluidData", fluidDataList);
 		return super.writeToNBT(compound);
 	}
 	
@@ -140,6 +163,12 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 			compound.setTag("insertedCardStack", insertedCardStack.serializeNBT());
 		}
 		compound.setTag("securityBoxInventory", securityBoxHandler.serializeNBT());
+		NBTTagList fluidDataList = new NBTTagList();
+		for(TrackedFluidData data : fluidData)
+		{
+			fluidDataList.appendTag(data.serializeNBT());
+		}
+		compound.setTag("trackedFluidData", fluidDataList);
 		return compound;
 	}
 	
@@ -166,6 +195,18 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		if (tag.hasKey("securityBoxInventory"))
 		{
 			securityBoxHandler.deserializeNBT(tag.getCompoundTag("securityBoxInventory"));
+		}
+
+		fluidData.clear();
+		NBTTagList trackedFluidData = tag.getTagList("trackedFluidData", NBT.TAG_COMPOUND);
+		for(NBTBase nbt : trackedFluidData)
+		{
+			if (nbt instanceof NBTTagCompound)
+			{
+				TrackedFluidData newTrackedData = new TrackedFluidData();
+				newTrackedData.deserializeNBT((NBTTagCompound)nbt);
+				fluidData.add(newTrackedData);
+			}
 		}
 	}
 	
@@ -871,6 +912,39 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		public boolean isOperationalState()
 		{
 			return isOperationalState;
+		}
+	}
+	
+	public static class TrackedFluidData implements INBTSerializable<NBTTagCompound>
+	{
+		private BlockPos fluidMeterPos = new BlockPos(0, -1, 0);
+		private int lastReading = 0;
+		
+		public BlockPos getFluidMeterPos() {
+			return fluidMeterPos;
+		}
+		public void setFluidMeterPos(BlockPos fluidMeterPos) {
+			this.fluidMeterPos = fluidMeterPos;
+		}
+		public int getLastReading() {
+			return lastReading;
+		}
+		public void setLastReading(int lastReading) {
+			this.lastReading = lastReading;
+		}
+		
+		@Override
+		public NBTTagCompound serializeNBT() {
+			NBTTagCompound tag = new NBTTagCompound();
+			tag.setLong("meterPos", getFluidMeterPos().toLong());
+			tag.setInteger("lastReading", lastReading);
+			return tag;
+		}
+		
+		@Override
+		public void deserializeNBT(NBTTagCompound nbt) {
+			fluidMeterPos = BlockPos.fromLong(nbt.getLong("meterPos"));
+			lastReading = nbt.getInteger("lastReading");
 		}
 	}
 
