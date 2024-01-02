@@ -98,7 +98,7 @@ public class TileEntityFluidMeterRenderer extends TileEntitySpecialRenderer<Tile
 	{
 		boolean doScrollUpdates = false;
 		scrollTimer.update();
-		if (scrollTimer.getElapsedTime() >= 200)
+		if (scrollTimer.getElapsedTime() >= 500)
 		{
 			doScrollUpdates = true;
 			scrollTimer.reset();
