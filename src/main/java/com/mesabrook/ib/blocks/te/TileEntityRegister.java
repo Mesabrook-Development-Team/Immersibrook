@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
 
+import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.apimodels.company.LocationItem;
 import com.mesabrook.ib.apimodels.company.Register;
 import com.mesabrook.ib.apimodels.company.RegisterStatus;
@@ -119,6 +120,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 			{
 				TrackedFluidData newTrackedData = new TrackedFluidData();
 				newTrackedData.deserializeNBT((NBTTagCompound)nbt);
+				newTrackedData.setMarkDirty(() -> markAndNotify());
 				fluidData.add(newTrackedData);
 			}
 		}
@@ -205,6 +207,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 			{
 				TrackedFluidData newTrackedData = new TrackedFluidData();
 				newTrackedData.deserializeNBT((NBTTagCompound)nbt);
+				newTrackedData.setMarkDirty(() -> markAndNotify());
 				fluidData.add(newTrackedData);
 			}
 		}
@@ -362,6 +365,43 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		return securityBoxHandler;
 	}
 	
+	public ImmutableList<TrackedFluidData> getTrackedFluidData()
+	{
+		return ImmutableList.copyOf(fluidData);
+	}
+	
+	public void addTrackedFluidData(BlockPos fluidMeterPos)
+	{
+		TrackedFluidData newFluidData = new TrackedFluidData();
+		newFluidData.fluidMeterPos = fluidMeterPos;
+		newFluidData.name = "";
+		newFluidData.setMarkDirty(() -> markAndNotify());
+		fluidData.add(newFluidData);
+		markDirty();
+		
+		if (world != null)
+		{
+			getWorld().notifyBlockUpdate(getPos(), getWorld().getBlockState(getPos()), getWorld().getBlockState(getPos()), 3);
+		}
+	}
+	
+	public void removeTrackedFluidData(BlockPos fluidMeterPos)
+	{
+		TrackedFluidData dataToRemove = null;
+		for(TrackedFluidData fluidData : fluidData)
+		{
+			if (fluidData.getFluidMeterPos().equals(fluidMeterPos))
+			{
+				dataToRemove = fluidData;
+				break;
+			}
+		}
+		
+		fluidData.remove(dataToRemove);
+		
+		markAndNotify();
+	}
+	
 	public BigDecimal getCurrentTotal()
 	{
 		TileEntityRegister.RegisterItemHandler handler = (TileEntityRegister.RegisterItemHandler)getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
@@ -516,6 +556,16 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		param.PaymentAmount = authorizedAmount.subtract(cashBack);
 		
 		onPaid(param, playerIDActor);
+	}
+	
+	private void markAndNotify()
+	{
+		markDirty();
+		
+		if (world != null)
+		{
+			getWorld().notifyBlockUpdate(getPos(), getWorld().getBlockState(getPos()), getWorld().getBlockState(getPos()), 3);
+		}
 	}
 	
 	// Operational methods
@@ -918,33 +968,47 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 	public static class TrackedFluidData implements INBTSerializable<NBTTagCompound>
 	{
 		private BlockPos fluidMeterPos = new BlockPos(0, -1, 0);
-		private int lastReading = 0;
+		private String name = "";
+		private Runnable markDirty = () -> {};
 		
 		public BlockPos getFluidMeterPos() {
 			return fluidMeterPos;
 		}
 		public void setFluidMeterPos(BlockPos fluidMeterPos) {
 			this.fluidMeterPos = fluidMeterPos;
+			markDirty.run();
 		}
-		public int getLastReading() {
-			return lastReading;
+		
+		public String getName() {
+			return name;
 		}
-		public void setLastReading(int lastReading) {
-			this.lastReading = lastReading;
+		public void setName(String name) {
+			this.name = name;
+			markDirty.run();
+		}
+		
+		public void setMarkDirty(Runnable method)
+		{
+			if (method == null)
+			{
+				method = () -> {};
+			}
+			
+			this.markDirty = method;
 		}
 		
 		@Override
 		public NBTTagCompound serializeNBT() {
 			NBTTagCompound tag = new NBTTagCompound();
 			tag.setLong("meterPos", getFluidMeterPos().toLong());
-			tag.setInteger("lastReading", lastReading);
+			tag.setString("name", name);
 			return tag;
 		}
 		
 		@Override
 		public void deserializeNBT(NBTTagCompound nbt) {
 			fluidMeterPos = BlockPos.fromLong(nbt.getLong("meterPos"));
-			lastReading = nbt.getInteger("lastReading");
+			name = nbt.getString("name");
 		}
 	}
 

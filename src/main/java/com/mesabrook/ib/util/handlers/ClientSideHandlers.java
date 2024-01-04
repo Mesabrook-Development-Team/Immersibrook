@@ -27,6 +27,7 @@ import com.mesabrook.ib.blocks.gui.atm.GuiATMWithdraw;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSCardBase;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSCardDetermine;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSCardMessage;
+import com.mesabrook.ib.blocks.gui.sco.GuiPOSFluidMeterAddList;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSIdentifierSetup;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSWaitingForNetwork;
 import com.mesabrook.ib.blocks.gui.sco.GuiStoreMode;
@@ -56,6 +57,7 @@ import com.mesabrook.ib.util.ModUtils;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.saveData.PhoneLogData;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
@@ -71,6 +73,7 @@ import net.minecraft.client.renderer.RenderGlobal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -93,15 +96,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
-
-import java.net.URI;
-import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Optional;
-import java.util.function.Consumer;
 
 @SideOnly(Side.CLIENT)
 @EventBusSubscriber
@@ -802,6 +796,28 @@ public class ClientSideHandlers
 			
 			GuiPOSCardBase processingScreen = (GuiPOSCardBase)mc.currentScreen;
 			processingScreen.showNextGui(GuiPOSCardMessage.class, message);
+		}
+		
+		public static void onAddFluidMeterListResponse(NBTTagList tagList)
+		{
+			if (!(Minecraft.getMinecraft().currentScreen instanceof GuiPOSFluidMeterAddList))
+			{
+				return;
+			}
+			
+			GuiPOSFluidMeterAddList addList = (GuiPOSFluidMeterAddList)Minecraft.getMinecraft().currentScreen;
+			addList.onDataReceived(tagList);
+		}
+		
+		public static void onAddFluidMeterSaveResponse(NBTTagCompound updateTag)
+		{
+			if (!(Minecraft.getMinecraft().currentScreen instanceof GuiPOSFluidMeterAddList))
+			{
+				return;
+			}
+			
+			GuiPOSFluidMeterAddList addList = (GuiPOSFluidMeterAddList)Minecraft.getMinecraft().currentScreen;
+			addList.onSaveResponse(updateTag);
 		}
 	}
 

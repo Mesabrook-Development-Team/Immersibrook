@@ -33,6 +33,7 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 	private int ownerScroll = 0;
 	
 	public TileEntityFluidMeter() {
+		super();
 		upwardFluidHandler = new FluidMeterFluidHandler(FlowDirection.Up);
 		downwardFluidHandler = new FluidMeterFluidHandler(FlowDirection.Down);
 	}

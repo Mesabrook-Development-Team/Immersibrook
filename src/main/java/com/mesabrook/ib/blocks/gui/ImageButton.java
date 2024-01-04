@@ -48,9 +48,36 @@ public class ImageButton extends GuiButton {
 	public void setTexHeight(int texHeight) {
 		this.texHeight = texHeight;
 	}
+	
+	
+	public int getUvWidth() {
+		return uvWidth;
+	}
+
+	public void setUvWidth(int uvWidth) {
+		this.uvWidth = uvWidth;
+	}
+
+	public int getUvHeight() {
+		return uvHeight;
+	}
+
+	public void setUvHeight(int uvHeight) {
+		this.uvHeight = uvHeight;
+	}
+
 	public boolean isHovering()
 	{
 		return this.hover;
+	}
+	
+
+	public ResourceLocation getTextureRL() {
+		return textureRL;
+	}
+
+	public void setTextureRL(ResourceLocation textureRL) {
+		this.textureRL = textureRL;
 	}
 
 	@Override

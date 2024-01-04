@@ -9,12 +9,14 @@ import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.blocks.te.TileEntityRegister.RegisterStatuses;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
+import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.net.sco.POSChangeStatusClientToServerPacket;
 import com.mesabrook.ib.net.sco.POSOpenRegisterSecurityBoxInventoryGUIPacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
@@ -23,6 +25,7 @@ public class GuiPOSAdmin extends GuiPOSMainBase {
 	private GuiImageLabelButton online;
 	private GuiImageLabelButton offline;
 	private GuiImageLabelButton securityBoxInv;
+	private GuiImageLabelButton fluidMeters;
 	private GuiImageLabelButton back;
 	
 	public GuiPOSAdmin(TileEntityRegister register) {
@@ -39,12 +42,15 @@ public class GuiPOSAdmin extends GuiPOSMainBase {
 				.setEnabledColor(0x880000);
 		securityBoxInv = new GuiImageLabelButton(0, innerLeft + 13, innerTop + 81, 83, 20, "    Sec Box Inv", new ResourceLocation(Reference.MODID, "textures/misc/logo_cube.png"), 16, 16, 16, 16, ImageOrientation.Left)
 				.setEnabledColor(0x373737);
+		fluidMeters = new GuiImageLabelButton(0, innerLeft + 13, innerTop + 101, 83, 20, "    Fluid Meters", new ItemStack(ModBlocks.FLUID_METER), ImageOrientation.Left)
+				.setEnabledColor(0x373737);
 		back = new GuiImageLabelButton(0, innerLeft + 13, innerTop + 130, 83, 20, " Back", new ResourceLocation(Reference.MODID, "textures/gui/sco/arrow_left.png"), 16, 16, 16, 16, ImageOrientation.Left)
 				.setEnabledColor(0x373737);
 		
 		buttonList.add(online);
 		buttonList.add(offline);
 		buttonList.add(securityBoxInv);
+		buttonList.add(fluidMeters);
 		buttonList.add(back);
 	}
 	
@@ -99,6 +105,13 @@ public class GuiPOSAdmin extends GuiPOSMainBase {
 			PacketHandler.INSTANCE.sendToServer(changeStatusPacket);
 			
 			register.setRegisterStatus(registerStatus);
+			return;
+		}
+		
+		if (button == fluidMeters)
+		{
+			mc.displayGuiScreen(new GuiPOSFluidMeterList(register));
+			return;
 		}
 	}
 }

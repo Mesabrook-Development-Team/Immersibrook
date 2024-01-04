@@ -1,5 +1,8 @@
 {
     "variants": {
+	    "inventory": [{
+				"model": "wbtc:fluid_meter_up"
+			}],
         "facing=north,isup=false": { "model": "wbtc:fluid_meter_down" },
         "facing=south,isup=false": { "model": "wbtc:fluid_meter_down", "y": 180 },
         "facing=west,isup=false":  { "model": "wbtc:fluid_meter_down", "y": 270 },
