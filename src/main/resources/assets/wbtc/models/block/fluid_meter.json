@@ -9,6 +9,7 @@
 		"5": "wbtc:misc/flow_1",
 		"6": "wbtc:blocks/fm_in",
 		"7": "wbtc:blocks/fm_out",
+		"8": "wbtc:misc/reset",
 		"particle": "wbtc:blocks/plastic_cube_silver"
 	},
 	"elements": [
@@ -157,6 +158,19 @@
 				"up": {"uv": [13.75, 3, 14.55, 3.75], "texture": "#4"},
 				"down": {"uv": [13.75, 3, 14.55, 3.75], "texture": "#4"}
 			}
+		},
+		{
+			"from": [7.5, 1.025, 3],
+			"to": [8.5, 2.025, 5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [11.425, 0, 7]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#8"},
+				"east": {"uv": [0, 0, 7, 0.5], "texture": "#8"},
+				"south": {"uv": [0, 0, 7, 0.5], "texture": "#8"},
+				"west": {"uv": [0, 0, 7, 0.5], "texture": "#8"},
+				"up": {"uv": [0, 0, 7, 0.5], "texture": "#8"},
+				"down": {"uv": [0, 0, 7, 0.5], "texture": "#8"}
+			}
 		}
 	],
 	"display": {
@@ -216,6 +230,7 @@
 			"origin": [15.5, 8, 8],
 			"color": 0,
 			"children": [8, 9, 10]
-		}
+		},
+		11
 	]
 }
