@@ -74,8 +74,6 @@ import java.io.InputStreamReader;
 import java.time.LocalDate;
 import java.util.Random;
 import java.util.UUID;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class PlayerEvents 
 {
@@ -92,10 +90,6 @@ public class PlayerEvents
 	{		
 		EntityPlayer player = e.player;
 		World w = e.player.world;
-		TextComponentString birthdayMessage = new TextComponentString("Happy Birthday, ");
-		birthdayMessage.getStyle().setColor(TextFormatting.GREEN);
-		birthdayMessage.getStyle().setBold(true);
-
 		boolean holidayItemsInInventoryOnJoin = w.getGameRules().getBoolean("holidayItemsInInventoryOnJoin");
 
 		if(ModConfig.showWelcome)
@@ -105,15 +99,6 @@ public class PlayerEvents
 			if(player instanceof EntityPlayer)
 			{
 				Triggers.trigger(Triggers.WELCOME, player);
-				if(LocalDate.now().getMonthValue() == 4 && LocalDate.now().getDayOfMonth() == 1)
-				{
-					SoundRandomizer.RandomizeSound();
-					ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
-					packet.pos = player.getPosition();
-					packet.soundName = "kekw";
-					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
-				}
-
 				if(LocalDate.now().getMonthValue() == 10)
 				{
 					w.playSound(player, player.getPosition(), SoundEvents.ENTITY_WITCH_AMBIENT, SoundCategory.BLOCKS, 1.0F, 1.0F);
@@ -132,7 +117,6 @@ public class PlayerEvents
 					packet.soundName = "jingle";
 					PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
 
-					
 					if(holidayItemsInInventoryOnJoin && dropData.canGiveChristmasPresent(player.getUniqueID()))
 					{
 						player.addItemStackToInventory(ItemRandomizer.presentItem);
@@ -198,24 +182,6 @@ public class PlayerEvents
 				PacketHandler.INSTANCE.sendTo(new OpenTOSPacket(), FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerByUUID(player.getUniqueID()));
 			}
 		}
-	}
-
-	private String makeUrlsClickable(String text)
-	{
-		String urlRegex = "(https?://\\S+)";
-		Pattern pattern = Pattern.compile(urlRegex);
-		Matcher matcher = pattern.matcher(text);
-
-		// Replace URLs with clickable format
-		StringBuffer clickableText = new StringBuffer();
-		while (matcher.find())
-		{
-			String url = matcher.group();
-			matcher.appendReplacement(clickableText, "[" + url + "](" + url + ")");
-		}
-		matcher.appendTail(clickableText);
-
-		return clickableText.toString();
 	}
 	
 	private class ResetInactivityParam
