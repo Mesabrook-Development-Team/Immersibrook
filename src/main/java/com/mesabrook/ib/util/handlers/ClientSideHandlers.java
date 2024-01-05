@@ -29,6 +29,7 @@ import com.mesabrook.ib.blocks.gui.sco.GuiPOSCardDetermine;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSCardMessage;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSFluidMeterAddList;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSIdentifierSetup;
+import com.mesabrook.ib.blocks.gui.sco.GuiPOSSelectFluid;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSWaitingForNetwork;
 import com.mesabrook.ib.blocks.gui.sco.GuiStoreMode;
 import com.mesabrook.ib.blocks.gui.telecom.GuiCallEnd;
@@ -44,6 +45,7 @@ import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneCalling;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneConnected;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneRecents;
 import com.mesabrook.ib.blocks.gui.telecom.SignalStrengths;
+import com.mesabrook.ib.blocks.te.TileEntityFluidMeter;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
@@ -72,6 +74,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderGlobal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
@@ -818,6 +821,30 @@ public class ClientSideHandlers
 			
 			GuiPOSFluidMeterAddList addList = (GuiPOSFluidMeterAddList)Minecraft.getMinecraft().currentScreen;
 			addList.onSaveResponse(updateTag);
+		}
+		
+		public static void onPayFluidsResponse(NBTTagList tagList)
+		{	
+			if (!(Minecraft.getMinecraft().currentScreen instanceof GuiPOSSelectFluid))
+			{
+				return;
+			}
+			
+			ArrayList<TileEntityFluidMeter> meters = new ArrayList<>();
+			
+			for(NBTBase nbt : tagList)
+			{
+				if (!(nbt instanceof NBTTagCompound))
+				{
+					continue;
+				}
+				
+				TileEntityFluidMeter meter = new TileEntityFluidMeter();
+				meter.handleUpdateTag((NBTTagCompound)nbt);
+				meters.add(meter);
+			}
+			
+			((GuiPOSSelectFluid)Minecraft.getMinecraft().currentScreen).onDataReceived(meters);
 		}
 	}
 

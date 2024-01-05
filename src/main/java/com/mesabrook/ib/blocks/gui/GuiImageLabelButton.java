@@ -179,6 +179,15 @@ public class GuiImageLabelButton extends GuiButton {
 		return this;
 	}
 	
+	public int getDisabledColor() {
+		return disabledColor;
+	}
+
+	public GuiImageLabelButton setDisabledColor(int disabledColor) {
+		this.disabledColor = disabledColor;
+		return this;
+	}
+
 	public GuiImageLabelButton setTextScale(float textScale)
 	{
 		this.textScale = textScale;

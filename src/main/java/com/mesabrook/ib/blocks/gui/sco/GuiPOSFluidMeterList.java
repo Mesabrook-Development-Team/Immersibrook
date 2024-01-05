@@ -2,6 +2,9 @@ package com.mesabrook.ib.blocks.gui.sco;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
+
+import org.lwjgl.input.Keyboard;
 
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.blocks.gui.GuiImageLabelButton;
@@ -200,6 +203,7 @@ public class GuiPOSFluidMeterList extends GuiPOSMainBase {
 	protected void keyTyped(char typedChar, int keyCode) throws IOException {
 		super.keyTyped(typedChar, keyCode);
 		
+		boolean didTab = false;
 		for(GuiTextField nameField : nameFields)
 		{
 			if (nameField.textboxKeyTyped(typedChar, keyCode))
@@ -212,6 +216,22 @@ public class GuiPOSFluidMeterList extends GuiPOSMainBase {
 				updatePacket.fluidMeterPos = fluidData.getFluidMeterPos();
 				updatePacket.newName = nameField.getText();
 				PacketHandler.INSTANCE.sendToServer(updatePacket);
+			}
+			
+			if (!didTab && nameField.isFocused() && keyCode == Keyboard.KEY_TAB)
+			{
+				didTab = true;
+				Optional<GuiTextField> nextField = nameFields.stream().filter(nf -> Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT) ? nf.getId() == nameField.getId() - 1 : nf.getId() == nameField.getId() + 1).findFirst();
+				if (!nextField.isPresent())
+				{
+					nextField = Optional.of(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT) ? nameFields.get(nameFields.size() - 1) : nameFields.get(0));
+				}
+				
+				if (nextField.isPresent())
+				{
+					nameField.setFocused(false);
+					nextField.get().setFocused(true);
+				}
 			}
 		}
 	}

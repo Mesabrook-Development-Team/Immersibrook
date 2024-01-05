@@ -2,11 +2,8 @@ package com.mesabrook.ib.blocks.gui.sco;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.ArrayList;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.lwjgl.opengl.GL11;
 
@@ -21,7 +18,6 @@ import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
 import com.mesabrook.ib.capability.secureditem.ISecuredItem;
 import com.mesabrook.ib.net.sco.POSCancelSalePacket;
 import com.mesabrook.ib.net.sco.POSChangeStatusClientToServerPacket;
-import com.mesabrook.ib.net.sco.POSFetchPricePacket;
 import com.mesabrook.ib.net.sco.POSRemoveItemPacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
@@ -32,17 +28,17 @@ import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.fml.client.config.GuiButtonExt;
 import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
 
 public class GuiPOSInSession extends GuiPOSMainBase {
 
 	private static final int MAX_SLATS = 10;
 	private GuiImageLabelButton cancelOrder;
+	private GuiImageLabelButton fluidPurchase;
 	private GuiImageLabelButton adminMode;
 	private ArrayList<ItemSlat> itemSlats = new ArrayList<>();
 	private int currentPage = 0;
@@ -102,7 +98,12 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 		cancelOrder = new GuiImageLabelButton(0, innerLeft + 13, innerTop + 41, 83, 20, "      Cancel Order", new ResourceLocation(Reference.MODID, "textures/gui/sco/cancel_order.png"), 16, 16, 16, 16, ImageOrientation.Left)
 						.setEnabledColor(0x373737)
 						.setTextScale(0.75F);
-		adminMode = new GuiImageLabelButton(0, innerLeft + 13, innerTop + 61, 83, 20, "      Admin Mode", new ResourceLocation(Reference.MODID, "textures/gui/cog.png"), 16, 16, 16, 16, ImageOrientation.Left)
+		fluidPurchase = new GuiImageLabelButton(0, innerLeft + 13, innerTop + 61, 83, 20, "     Pay for Fluids", new ItemStack(Items.BUCKET), ImageOrientation.Left)
+						.setEnabledColor(0x373737)
+						.setTextScale(0.75F);
+		fluidPurchase.visible = register.getTrackedFluidData().size() > 0;
+		
+		adminMode = new GuiImageLabelButton(0, innerLeft + 13, innerTop + 131, 83, 20, "      Admin Mode", new ResourceLocation(Reference.MODID, "textures/gui/cog.png"), 16, 16, 16, 16, ImageOrientation.Left)
 				.setEnabledColor(0x373737)
 				.setTextScale(0.75F);
 		adminMode.visible = false;
@@ -114,6 +115,7 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 		}
 		
 		buttonList.add(cancelOrder);
+		buttonList.add(fluidPurchase);
 		buttonList.add(adminMode);
 		
 		itemSlats.clear();
@@ -201,6 +203,12 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 			register.setRegisterStatus(RegisterStatuses.Online);
 			
 			mc.displayGuiScreen(new GuiPOSMainWelcome(register));
+			return;
+		}
+		
+		if (button == fluidPurchase)
+		{
+			mc.displayGuiScreen(new GuiPOSSelectFluid(register));
 			return;
 		}
 		
