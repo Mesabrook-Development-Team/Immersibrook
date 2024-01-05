@@ -17,7 +17,6 @@ public class TileEntityFluidMeterRenderer extends TileEntitySpecialRenderer<Tile
 	private final String maxWidthCharacters = "WWWWWWWWWWWWWWW";
 	private static int scrollLeft;
 	private static int scrollCharacterWidth;
-	private static IndependentTimer scrollTimer = new IndependentTimer();
 	
 	@Override
 	public void render(TileEntityFluidMeter te, double x, double y, double z, float partialTicks, int destroyStage,
@@ -37,10 +36,19 @@ public class TileEntityFluidMeterRenderer extends TileEntitySpecialRenderer<Tile
 		
 		GlStateManager.translate(x + 0.5F, y + 0.5F, z + 0.5F);
 		GlStateManager.rotate(-(blockState.getValue(BlockFluidMeter.FACING).getHorizontalIndex() + 2) * 90, 0, 1, 0);
-		GlStateManager.translate(0F, 0.295F, -0.325F);
+		GlStateManager.translate(0F, 0.305F, -0.325F);
 				
 		GlStateManager.scale(-1, -1, 1);
 		GlStateManager.scale(1F/256, 1F/256, 1F/256);
+		
+		boolean doScrollUpdates = false;
+		IndependentTimer scrollTimer = te.getScrollTimer();
+		scrollTimer.update();
+		if (scrollTimer.getElapsedTime() >= 500)
+		{
+			doScrollUpdates = true;
+			scrollTimer.reset();
+		}
 		
 		final String mbReadout = Integer.toString(te.getFluidCounter()) + "mb";
 		if (mbReadout.length() < 15)
@@ -49,7 +57,7 @@ public class TileEntityFluidMeterRenderer extends TileEntitySpecialRenderer<Tile
 		}
 		else
 		{
-			renderScroll(mbReadout, 0, te::getLevelScroll, te::setLevelScroll);
+			renderScroll(mbReadout, 0, te::getLevelScroll, te::setLevelScroll, doScrollUpdates);
 		}
 		
 		String lastUnlocalizedFluid;
@@ -71,7 +79,7 @@ public class TileEntityFluidMeterRenderer extends TileEntitySpecialRenderer<Tile
 		}
 		else
 		{
-			renderScroll(fluidReadout, 1, te::getFluidScroll, te::setFluidScroll);
+			renderScroll(fluidReadout, 1, te::getFluidScroll, te::setFluidScroll, doScrollUpdates);
 		}
 		
 		String locationNameReadout = te.getLocationOwnerName();
@@ -81,7 +89,17 @@ public class TileEntityFluidMeterRenderer extends TileEntitySpecialRenderer<Tile
 		}
 		else
 		{
-			renderScroll(locationNameReadout, 2, te::getOwnerScroll, te::setOwnerScroll);
+			renderScroll(locationNameReadout, 2, te::getOwnerScroll, te::setOwnerScroll, doScrollUpdates);
+		}
+		
+		String lifetimeReadout = "Lifetime: " + te.getLifetimeFluidCounter() + "mb";
+		if (lifetimeReadout.length() < 15)
+		{
+			renderReadoutCentered(lifetimeReadout, 3);
+		}
+		else
+		{
+			renderScroll(lifetimeReadout, 3, te::getLifetimeFluidScroll, te::setLifetimeFluidScroll, doScrollUpdates);
 		}
 		
 		GlStateManager.enableLighting();
@@ -94,16 +112,8 @@ public class TileEntityFluidMeterRenderer extends TileEntitySpecialRenderer<Tile
 		getFontRenderer().drawString(readout, -stringWidth / 2, line * getFontRenderer().FONT_HEIGHT, 0xFFFFFF);
 	}
 	
-	private void renderScroll(String readout, int line, Supplier<Integer> scrollSupplier, Consumer<Integer> scrollConsumer)
-	{
-		boolean doScrollUpdates = false;
-		scrollTimer.update();
-		if (scrollTimer.getElapsedTime() >= 500)
-		{
-			doScrollUpdates = true;
-			scrollTimer.reset();
-		}
-		
+	private void renderScroll(String readout, int line, Supplier<Integer> scrollSupplier, Consumer<Integer> scrollConsumer, boolean doScrollUpdates)
+	{		
 		int currentScroll = scrollSupplier.get();
 		int currentX = scrollLeft;
 		String readoutSubbed = readout;
@@ -124,6 +134,12 @@ public class TileEntityFluidMeterRenderer extends TileEntitySpecialRenderer<Tile
 			if (length > 15)
 			{
 				length = 15;
+			}
+			
+			if (length < 0) // Prevent index out of range...reset and try again
+			{
+				scrollConsumer.accept(0);
+				return;
 			}
 			
 			readoutSubbed = readoutSubbed.substring(currentScroll - 15, currentScroll - 15 + length);

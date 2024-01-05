@@ -1,6 +1,7 @@
 package com.mesabrook.ib.blocks.te;
 
 import com.mesabrook.ib.apimodels.company.Location;
+import com.mesabrook.ib.util.IndependentTimer;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -23,14 +24,17 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 	private long locationIDOwner = 0;
 	private String locationOwnerName = "";
 	private int fluidCounter = 0;
+	private int lifetimeFluidCounter = 0;
 	private String lastUnlocalizedFluid = "";
 	
 	private int lastSync = 0;
 	private boolean shouldSync = false;
 	
 	private int levelScroll = 0;
+	private int lifetimeFluidScroll = 0;
 	private int fluidScroll = 0;
 	private int ownerScroll = 0;
+	private IndependentTimer scrollTimer = new IndependentTimer();
 	
 	public TileEntityFluidMeter() {
 		super();
@@ -45,6 +49,7 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 		locationOwnerName = compound.getString("locationOwnerName");
 		fluidCounter = compound.getInteger("fluidCounter");
 		lastUnlocalizedFluid = compound.getString("lastUnlocalizedFluid");
+		lifetimeFluidCounter = compound.getInteger("lifetimeFluidCounter");
 		
 		super.readFromNBT(compound);
 	}
@@ -56,6 +61,7 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 		compound.setString("locationOwnerName", locationOwnerName);
 		compound.setInteger("fluidCounter", fluidCounter);
 		compound.setString("lastUnlocalizedFluid", lastUnlocalizedFluid);
+		compound.setInteger("lifetimeFluidCounter", lifetimeFluidCounter);
 		return super.writeToNBT(compound);
 	}
 	
@@ -120,9 +126,24 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 		markDirty();
 	}
 	
+	public int getLifetimeFluidCounter() {
+		return lifetimeFluidCounter;
+	}
+
+	public void setLifetimeFluidCounter(int lifetimeFluidCounter) {
+		this.lifetimeFluidCounter = lifetimeFluidCounter;
+		markDirty();
+	}
+
 	public void increaseFluidCounter(int amount)
 	{
 		this.fluidCounter += amount;
+		markDirty();
+	}
+	
+	public void increaseLifetimeFluidCounter(int amount)
+	{
+		this.lifetimeFluidCounter += amount;
 		markDirty();
 	}
 	
@@ -145,6 +166,14 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 		this.levelScroll = levelScroll;
 	}
 
+	public int getLifetimeFluidScroll() {
+		return lifetimeFluidScroll;
+	}
+
+	public void setLifetimeFluidScroll(int lifetimeFluidScroll) {
+		this.lifetimeFluidScroll = lifetimeFluidScroll;
+	}
+
 	public int getFluidScroll() {
 		return fluidScroll;
 	}
@@ -159,6 +188,10 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 
 	public void setOwnerScroll(int ownerScroll) {
 		this.ownerScroll = ownerScroll;
+	}
+
+	public IndependentTimer getScrollTimer() {
+		return scrollTimer;
 	}
 
 	@Override
@@ -189,6 +222,7 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 		tag.setString("locationOwnerName", locationOwnerName);
 		tag.setInteger("fluidCounter", fluidCounter);
 		tag.setString("lastUnlocalizedFluid", lastUnlocalizedFluid);
+		tag.setInteger("lifetimeFluidCounter", lifetimeFluidCounter);
 		return tag;
 	}
 	
@@ -201,6 +235,7 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 		locationOwnerName = tag.getString("locationOwnerName");
 		fluidCounter = tag.getInteger("fluidCounter");
 		lastUnlocalizedFluid = tag.getString("lastUnlocalizedFluid");
+		lifetimeFluidCounter = tag.getInteger("lifetimeFluidCounter");
 	}
 	
 	@Override
@@ -294,10 +329,12 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 				if (resource != null && resource.getUnlocalizedName().equalsIgnoreCase(getLastUnlocalizedFluid()))
 				{
 					increaseFluidCounter(fluidConsumed);
+					increaseLifetimeFluidCounter(fluidConsumed);
 				}
 				else
 				{
 					setFluidCounter(fluidConsumed);
+					increaseLifetimeFluidCounter(fluidConsumed);
 					setLastUnlocalizedFluid(resource == null ? "" : resource.getUnlocalizedName());
 				}
 			}
@@ -319,23 +356,25 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 				return noneDrained;
 			}
 			
-			TileEntity nextContainer = world.getTileEntity(pos.offset(nextContainerDirection));
-			if (nextContainer == null || !nextContainer.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, nextContainerDirection.getOpposite()))
+			TileEntity nextContainer = world.getTileEntity(pos.offset(nextContainerDirection.getOpposite()));
+			if (nextContainer == null || !nextContainer.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, nextContainerDirection))
 			{
 				return noneDrained;
 			}
 			
-			IFluidHandler fluidHandler = nextContainer.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, nextContainerDirection.getOpposite());
+			IFluidHandler fluidHandler = nextContainer.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, nextContainerDirection);
 			FluidStack drainedStack = fluidHandler.drain(resource, doDrain);
 			if (doDrain)
 			{
 				if (drainedStack != null && drainedStack.getUnlocalizedName().equalsIgnoreCase(getLastUnlocalizedFluid()))
 				{
-					increaseFluidCounter(fluidCounter);
+					increaseFluidCounter(drainedStack.amount);
+					increaseLifetimeFluidCounter(drainedStack.amount);
 				}
 				else
 				{
 					setFluidCounter(0);
+					increaseLifetimeFluidCounter(drainedStack.amount);
 					setLastUnlocalizedFluid(drainedStack == null ? "" : drainedStack.getUnlocalizedName());
 				}
 			}
@@ -349,23 +388,25 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 				return null;
 			}
 			
-			TileEntity nextContainer = world.getTileEntity(pos.offset(nextContainerDirection));
-			if (nextContainer == null || !nextContainer.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, nextContainerDirection.getOpposite()))
+			TileEntity nextContainer = world.getTileEntity(pos.offset(nextContainerDirection.getOpposite()));
+			if (nextContainer == null || !nextContainer.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, nextContainerDirection))
 			{
 				return null;
 			}
 			
-			IFluidHandler fluidHandler = nextContainer.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, nextContainerDirection.getOpposite());
+			IFluidHandler fluidHandler = nextContainer.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, nextContainerDirection);
 			FluidStack drainedStack = fluidHandler.drain(maxDrain, doDrain);
 			if (doDrain)
 			{
 				if (drainedStack != null && drainedStack.getUnlocalizedName().equalsIgnoreCase(getLastUnlocalizedFluid()))
 				{
-					increaseFluidCounter(fluidCounter);
+					increaseFluidCounter(drainedStack.amount);
+					increaseLifetimeFluidCounter(drainedStack.amount);
 				}
 				else
 				{
 					setFluidCounter(0);
+					increaseLifetimeFluidCounter(drainedStack.amount);
 					setLastUnlocalizedFluid(drainedStack == null ? "" : drainedStack.getUnlocalizedName());
 				}
 			}

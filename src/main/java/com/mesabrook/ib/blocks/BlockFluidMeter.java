@@ -9,8 +9,10 @@ import com.mesabrook.ib.blocks.te.TileEntityFluidMeter;
 import com.mesabrook.ib.blocks.te.TileEntityFluidMeter.FlowDirection;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.ModUtils;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -34,6 +36,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -42,10 +45,11 @@ public class BlockFluidMeter extends ImmersiblockRotationalManyBB implements IHa
     public static final PropertyBool ISUP = PropertyBool.create("isup");
     private static final AxisAlignedBB switchBB = ModUtils.getPixelatedAABB(5.57, 6.173, 1.9185, 6.38, 8.398, 3.1235);
     private static final AxisAlignedBB bodyBB = ModUtils.getPixelatedAABB(3.14, 0, 3.14, 12.86, 16, 12.86);
+    private static final AxisAlignedBB resetButtonBB = ModUtils.getPixelatedAABB(7.4, 0.925, 2.9, 8.6, 2.125, 3.25);
 
     public BlockFluidMeter(String name)
     {
-    	super(name, Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 2F, true, switchBB, bodyBB);
+    	super(name, Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 2F, true, switchBB, bodyBB, resetButtonBB);
     }
 
     @Override
@@ -125,17 +129,35 @@ public class BlockFluidMeter extends ImmersiblockRotationalManyBB implements IHa
     @Override
     public boolean onSubBoundingBoxActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
     		EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ, AxisAlignedBB subBoundingBox) {
+    	TileEntity te = worldIn.getTileEntity(pos);
+    	if (!(te instanceof TileEntityFluidMeter))
+    	{
+    		return false;
+    	}
+    	
+    	TileEntityFluidMeter fluidMeter = (TileEntityFluidMeter)te;
+    	
+    	if (subBoundingBox == resetButtonBB)
+    	{
+    		fluidMeter.setLifetimeFluidCounter(0);
+    		
+    		if (!worldIn.isRemote)
+    		{
+    			ServerSoundBroadcastPacket buttonSound = new ServerSoundBroadcastPacket();
+    			buttonSound.modID = "minecraft";
+    			buttonSound.soundName = "block.stone_button.click_on";
+    			buttonSound.pos = pos;
+    			buttonSound.pitch = 0.5F;
+    			PacketHandler.INSTANCE.sendToAllAround(buttonSound, new TargetPoint(worldIn.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 25));
+    		}
+    	}
+    	
     	if (worldIn.isRemote || subBoundingBox != switchBB)
     	{
     		return true;
     	}
     	
-    	TileEntity te = worldIn.getTileEntity(pos);
-    	if (te instanceof TileEntityFluidMeter)
-    	{
-    		TileEntityFluidMeter fluidMeter = (TileEntityFluidMeter)te;
-    		fluidMeter.setFlowDirection(fluidMeter.getFlowDirection() == FlowDirection.Up ? FlowDirection.Down : FlowDirection.Up);
-    	}
+		fluidMeter.setFlowDirection(fluidMeter.getFlowDirection() == FlowDirection.Up ? FlowDirection.Down : FlowDirection.Up);
     	
     	return true;
     }
