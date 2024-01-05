@@ -193,4 +193,21 @@ public class BlockFluidMeter extends ImmersiblockRotationalManyBB implements IHa
 		
 		worldIn.setBlockToAir(pos);
     }
+
+    @Override
+    public boolean hasComparatorInputOverride(IBlockState state) {
+    	return true;
+    }
+    
+    @Override
+    public int getComparatorInputOverride(IBlockState blockState, World worldIn, BlockPos pos) {
+    	TileEntity te = worldIn.getTileEntity(pos);
+    	if (!(te instanceof TileEntityFluidMeter))
+    	{
+    		return super.getComparatorInputOverride(blockState, worldIn, pos);
+    	}
+    	
+    	TileEntityFluidMeter meter = (TileEntityFluidMeter)te;
+    	return meter.getFluidCounter() > 0 ? 15 : 0;
+    }
 }
