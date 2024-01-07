@@ -53,7 +53,7 @@ public class RegistryHandler
 	public static void onBlockRegister(RegistryEvent.Register<Block> event)
 	{
 		event.getRegistry().registerAll(ModBlocks.BLOCKS.toArray(new Block[0]));
-		TileEntityHandler.registerTileEntities();
+		FuckingTileEntityHandler.registerTileEntities();
 	}
 	
 	@SubscribeEvent
@@ -238,6 +238,10 @@ public class RegistryHandler
 		if(!rules.hasRule("toxicEnderPouch"))
 		{
 			rules.addGameRule("toxicEnderPouch", "false", GameRules.ValueType.BOOLEAN_VALUE);
+		}
+		if(!rules.hasRule("funnyDeathSound"))
+		{
+			rules.addGameRule("funnyDeathSound", "true", GameRules.ValueType.BOOLEAN_VALUE);
 		}
 	}
 }

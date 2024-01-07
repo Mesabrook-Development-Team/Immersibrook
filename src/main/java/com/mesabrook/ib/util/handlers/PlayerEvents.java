@@ -200,13 +200,14 @@ public class PlayerEvents
 		World w = event.getEntity().world;
 		boolean specialDrops = w.getGameRules().getBoolean("specialDrops");
 		boolean forbidCannibalism = w.getGameRules().getBoolean("forbidCannibalism");
+		boolean funnyDeathSound = w.getGameRules().getBoolean("funnyDeathSound");
 		if(event.getEntityLiving() instanceof EntityPlayer)
 		{
 			if(!w.isRemote)
 			{
 				GameProfile profile = ((EntityPlayerMP) e).getGameProfile();
 
-				if(ModConfig.oofDeathSound)
+				if(funnyDeathSound)
 				{
 					ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 					packet.pos = e.getPosition();
