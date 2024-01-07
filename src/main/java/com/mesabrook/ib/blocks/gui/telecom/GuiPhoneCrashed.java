@@ -1,29 +1,19 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
-import com.mesabrook.ib.Main;
 import com.mesabrook.ib.net.ClientSoundPacket;
 import com.mesabrook.ib.util.IndependentTimer;
-import com.mesabrook.ib.util.MinedroidCrashLogUploader;
-import com.mesabrook.ib.util.ModUtils;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiConfirmOpenLink;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 
-import java.awt.*;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -210,7 +200,7 @@ public class GuiPhoneCrashed extends GuiPhoneBase
         if(button == resetButton)
         {
             isPhoneUnlocked = false;
-            Minecraft.getMinecraft().displayGuiScreen(new GuiBellIntroAnimation(phoneStack, hand));
+            Minecraft.getMinecraft().displayGuiScreen(new GuiRecoverSession(phoneStack, hand));
         }
 
         if (button == nextPage && currentPage != totalPages)
@@ -221,70 +211,6 @@ public class GuiPhoneCrashed extends GuiPhoneBase
         if (button == backPage && currentPage > 1)
         {
             currentPage--;
-        }
-
-        if(button == uploadToPastebinButton)
-        {
-            try
-            {
-                String stackToUpload = errorStackTrace;
-                String pastebinURL = MinedroidCrashLogUploader.uploadText(stackToUpload);
-                uploadToPastebinButton.enabled = false;
-
-                GuiConfirmOpenLink guiConfirmOpenLink = new GuiConfirmOpenLink(this, pastebinURL, 1, true)
-                {
-                    @Override
-                    protected void actionPerformed(GuiButton button) throws IOException
-                    {
-                        if (button.id == 0)
-                        {
-                            // Handle Yes button click
-                            try
-                            {
-                                ModUtils.openWebLink(new URI(pastebinURL));
-                                Minecraft.getMinecraft().displayGuiScreen(new GuiMSACBootScreen(phoneStack, hand));
-                            }
-                            catch (URISyntaxException e)
-                            {
-                                Minecraft.getMinecraft().displayGuiScreen(new GuiMSACBootScreen(phoneStack, hand));
-                                e.printStackTrace();
-                            }
-                            Minecraft.getMinecraft().displayGuiScreen(null);
-                        }
-                        else if (button.id == 1)
-                        {
-                            // Handle No button click
-                            Minecraft.getMinecraft().displayGuiScreen(new GuiMSACBootScreen(phoneStack, hand));
-                        }
-                        else if (button.id == 2)
-                        {
-                            // Handle Copy to Clipboard button click
-                            StringSelection stringSelection = new StringSelection(pastebinURL);
-                            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-                            clipboard.setContents(stringSelection, null);
-                            Minecraft.getMinecraft().displayGuiScreen(new GuiMSACBootScreen(phoneStack, hand));
-                            Minecraft.getMinecraft().player.sendMessage(new TextComponentString("Link copied to clipboard."));
-                        }
-                    }
-                };
-                Minecraft.getMinecraft().displayGuiScreen(guiConfirmOpenLink);
-            }
-            catch(Exception ex)
-            {
-                Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(new TextComponentTranslation("im.crash.error").getFormattedText(), 0xFFFFFF));
-                uploadToPastebinButton.enabled = false;
-                copyToClipboardFailback.visible = true;
-                Main.logger.error(ex);
-            }
-        }
-
-        if(button == copyToClipboardFailback)
-        {
-            StringSelection stringSelection = new StringSelection(errorStackTrace);
-            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-            clipboard.setContents(stringSelection, null);
-            copyToClipboardFailback.enabled = false;
-            Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("Log Copied to Clipboard.", 0xFFFFFF));
         }
     }
 
