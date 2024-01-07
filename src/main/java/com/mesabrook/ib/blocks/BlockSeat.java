@@ -189,12 +189,12 @@ public class BlockSeat extends Block implements IHasModel
 
         if(state.getBlock() == ModBlocks.THRONE_FC)
         {
-            DamageSourceAprilFools dodo = new DamageSourceAprilFools("dodo");
+            UniversalDeathSource dodo = new UniversalDeathSource("fc", "im.death.fc");
             if(playerIn.getUniqueID() != Reference.CSX_UUID)
             {
                 playerIn.setGameType(GameType.SURVIVAL);
                 playerIn.swingArm(hand);
-                playerIn.attackEntityFrom(dodo, Integer.MAX_VALUE);
+                playerIn.attackEntityFrom(dodo, 1000);
 
                 if(!worldIn.isRemote)
                 {
@@ -205,7 +205,7 @@ public class BlockSeat extends Block implements IHasModel
         }
         else if(state.getBlock() == ModBlocks.THRONE)
         {
-            DamageSourceAprilFools dodo = new DamageSourceAprilFools("dodo");
+            UniversalDeathSource dodo = new UniversalDeathSource("fc", "im.death.fc");
             if(playerIn.getUniqueID().equals(Reference.CSX_UUID) || playerIn.getUniqueID().equals(Reference.RZ_UUID) || playerIn.getUniqueID().equals(Reference.MD_UUID) || playerIn.getUniqueID().equals(Reference.SVV_UUID)  || playerIn.getUniqueID().equals(Reference.SLOOSE_UUID) || playerIn.getUniqueID().equals(Reference.ZOE_UUID))
             {
                 if(!worldIn.isRemote)
