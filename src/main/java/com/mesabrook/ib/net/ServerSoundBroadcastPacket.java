@@ -3,10 +3,14 @@ package com.mesabrook.ib.net;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.ClientSideHandlers;
+import com.mesabrook.ib.util.handlers.PacketHandler;
+
 import io.netty.buffer.ByteBuf;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
+import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -40,6 +44,14 @@ public class ServerSoundBroadcastPacket implements IMessage
 		buf.writeFloat(volume);
 		buf.writeFloat(pitch);
 		buf.writeBoolean(rapidSounds);
+	}
+	
+	public static void playIBSound(World world, String sound, BlockPos pos)
+	{
+		ServerSoundBroadcastPacket billAcceptorSound = new ServerSoundBroadcastPacket();
+		billAcceptorSound.soundName = sound;
+		billAcceptorSound.pos = pos;
+		PacketHandler.INSTANCE.sendToAllAround(billAcceptorSound, new TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 25));
 	}
 	
 	public static class Handler implements IMessageHandler<ServerSoundBroadcastPacket, IMessage>

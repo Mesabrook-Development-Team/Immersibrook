@@ -7,6 +7,7 @@ import java.math.RoundingMode;
 import org.lwjgl.input.Keyboard;
 
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
+import com.mesabrook.ib.net.ClientSoundPacket;
 
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.util.text.TextFormatting;
@@ -25,6 +26,8 @@ public class GuiPOSCardCashbackAmount extends GuiPOSCardBase {
 		amount = new GuiTextField(0, fontRenderer, midWidth - 50, midHeight + 2, 100, 20);
 		amount.setValidator(str -> validateAmount(str));
 		amount.setFocused(true);
+		
+		ClientSoundPacket.playIBSound("pos_cashback", register.getPos());
 	}
 	
 	private boolean validateAmount(String value)

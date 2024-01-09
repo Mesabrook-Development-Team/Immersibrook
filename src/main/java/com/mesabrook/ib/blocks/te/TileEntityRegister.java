@@ -22,6 +22,7 @@ import com.mesabrook.ib.items.commerce.ItemDebitCard;
 import com.mesabrook.ib.items.commerce.ItemMoney;
 import com.mesabrook.ib.items.commerce.ItemRegisterFluidWrapper;
 import com.mesabrook.ib.items.commerce.ItemWallet;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.net.sco.POSCardShowMessagePacket;
 import com.mesabrook.ib.net.sco.POSInitializeRegisterResponsePacket;
 import com.mesabrook.ib.net.sco.POSOpenCardReaderGUIPacket;
@@ -250,6 +251,19 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 			return;
 		}
 		
+		RegisterStatuses originalStatus = this.registerStatus;
+		if (!world.isRemote && registerStatus == RegisterStatuses.InSession && this.registerStatus == RegisterStatuses.Online)
+		{
+			if (hasItemsForSession())
+			{
+				ServerSoundBroadcastPacket.playIBSound(world, "pos_welcome", pos);
+			}
+			else
+			{
+				ServerSoundBroadcastPacket.playIBSound(world, "pos_scan", pos);
+			}
+		}
+		
 		this.registerStatus = registerStatus;
 		if (this.registerStatus != RegisterStatuses.PaymentSelect)
 		{
@@ -261,6 +275,29 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		if (world != null)
 		{
 			getWorld().notifyBlockUpdate(getPos(), getWorld().getBlockState(getPos()), getWorld().getBlockState(getPos()), 3);
+			
+			if (!world.isRemote)
+			{
+				switch(registerStatus)
+				{
+					case InSession:
+						if (originalStatus == RegisterStatuses.Online)
+						{
+							ServerSoundBroadcastPacket.playIBSound(world, hasItemsForSession() ? "pos_welcome" : "pos_scan", pos);
+						}
+						break;
+					case PaymentSelect:
+						ServerSoundBroadcastPacket.playIBSound(world, "pos_payment_type", pos);
+						break;
+					case PaymentCard:
+					case PaymentCardInUse:
+						if (originalStatus != RegisterStatuses.PaymentCard && originalStatus != RegisterStatuses.PaymentCardInUse)
+						{
+							ServerSoundBroadcastPacket.playIBSound(world, "pos_use_pinpad", pos);
+						}
+						break;
+				}
+			}
 		}
 	}
 
@@ -810,6 +847,8 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 				POSCardShowMessagePacket showMessage = new POSCardShowMessagePacket();
 				showMessage.message = "Accepted";
 				PacketHandler.INSTANCE.sendTo(showMessage, player);
+				
+				ServerSoundBroadcastPacket.playIBSound(world, "pos_take_card", pos);
 			}
 		}
 		else
@@ -841,6 +880,8 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 					POSCardShowMessagePacket showMessage = new POSCardShowMessagePacket();
 					showMessage.message = errorMessage.message;
 					PacketHandler.INSTANCE.sendTo(showMessage, player);
+					
+					ServerSoundBroadcastPacket.playIBSound(world, "pos_take_card", pos);
 				}
 			}
 			
@@ -1097,6 +1138,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 					task.getData().put("dimId", register.getWorld().provider.getDimension());
 					ServerTickHandler.priceLookupTasks.add(task);
 					DataRequestQueue.INSTANCE.addTask(task);
+					ServerSoundBroadcastPacket.playIBSound(register.getWorld(), "pos_scanner_beep", register.getPos());
 				}
 			}
 			return super.insertItem(slot, stack, simulate);

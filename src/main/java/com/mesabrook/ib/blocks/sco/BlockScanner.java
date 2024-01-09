@@ -2,8 +2,6 @@ package com.mesabrook.ib.blocks.sco;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.TreeMap;
 
 import com.mesabrook.ib.blocks.ImmersiblockRotationalManyBB;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
@@ -13,7 +11,9 @@ import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.items.commerce.ItemMoney;
 import com.mesabrook.ib.items.commerce.ItemMoney.MoneyType;
 import com.mesabrook.ib.items.commerce.ItemWallet;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.ModUtils;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -28,6 +28,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
@@ -108,6 +109,11 @@ public class BlockScanner extends ImmersiblockRotationalManyBB {
 			
 			register.applyCashTender(amountForRegister);
 			
+			if (!worldIn.isRemote)
+			{
+				ServerSoundBroadcastPacket.playIBSound(worldIn, "bill_acceptor", pos);
+			}
+			
 			return true;
 		}
 		else if (subBoundingBox == COIN_SLOT && heldItem.getItem() instanceof ItemMoney && ((ItemMoney)heldItem.getItem()).getMoneyType() == MoneyType.Coin && register.hasItemsForSession()) // Ka-ching
@@ -116,6 +122,11 @@ public class BlockScanner extends ImmersiblockRotationalManyBB {
 			heldItem.shrink(heldItem.getCount());
 			
 			register.applyCashTender(amountForRegister);
+			
+			if (!worldIn.isRemote)
+			{
+				ServerSoundBroadcastPacket.playIBSound(worldIn, "coin_slot", pos);
+			}
 			
 			return true;
 		}
@@ -162,6 +173,18 @@ public class BlockScanner extends ImmersiblockRotationalManyBB {
 			}
 			
 			register.applyCashTender(register.getDueAmount().subtract(amountRemaining));
+
+			if (!worldIn.isRemote)
+			{
+				if (subBoundingBox == BILL_ACCEPTER)
+				{
+					ServerSoundBroadcastPacket.playIBSound(worldIn, "bill_acceptor", pos);
+				}
+				else
+				{
+					ServerSoundBroadcastPacket.playIBSound(worldIn, "coin_slot", pos);
+				}
+			}
 			
 			return true;
 		}

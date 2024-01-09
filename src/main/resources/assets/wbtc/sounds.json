@@ -1317,5 +1317,59 @@
 		"sounds": [{
 			"name": "wbtc:sit_5"
 		}]
+	},
+	"bill_acceptor": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:bill_acceptor"
+		}]
+	},
+	"coin_slot": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:coin_slot"
+		}]
+	},
+	"pos_cashback": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:pos_cashback"
+		}]
+	},
+	"pos_payment_type": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:pos_payment_type"
+		}]
+	},
+	"pos_scan": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:pos_scan"
+		}]
+	},
+	"pos_scanner_beep": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:pos_scanner_beep"
+		}]
+	},
+	"pos_take_card": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:pos_take_card"
+		}]
+	},
+	"pos_use_pinpad": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:pos_use_pinpad"
+		}]
+	},
+	"pos_welcome": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:pos_welcome"
+		}]
 	}
 }
