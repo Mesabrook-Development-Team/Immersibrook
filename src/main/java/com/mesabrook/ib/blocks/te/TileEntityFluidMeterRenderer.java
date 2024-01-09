@@ -11,6 +11,8 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.resources.I18n;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 
 public class TileEntityFluidMeterRenderer extends TileEntitySpecialRenderer<TileEntityFluidMeter> {
 
@@ -60,19 +62,8 @@ public class TileEntityFluidMeterRenderer extends TileEntitySpecialRenderer<Tile
 			renderScroll(mbReadout, 0, te::getLevelScroll, te::setLevelScroll, doScrollUpdates);
 		}
 		
-		String lastUnlocalizedFluid;
-		switch(te.getLastUnlocalizedFluid())
-		{
-			case "fluid.tile.water":
-				lastUnlocalizedFluid = "tile.water.name";
-				break;
-			case "fluid.tile.lava":
-				lastUnlocalizedFluid = "tile.lava.name";
-				break;
-			default:
-				lastUnlocalizedFluid = te.getLastUnlocalizedFluid();
-		}
-		final String fluidReadout = I18n.format(lastUnlocalizedFluid);
+		FluidStack fluidStack = FluidRegistry.getFluidStack(te.getLastFluid(), 1);
+		final String fluidReadout = fluidStack == null ? "" : fluidStack.getLocalizedName();
 		if (fluidReadout.length() < 15)
 		{
 			renderReadoutCentered(fluidReadout, 1);

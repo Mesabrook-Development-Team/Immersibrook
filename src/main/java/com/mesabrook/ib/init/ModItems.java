@@ -22,6 +22,7 @@ import com.mesabrook.ib.items.armor.Vest;
 import com.mesabrook.ib.items.armor.WearableHat;
 import com.mesabrook.ib.items.commerce.ItemDebitCard;
 import com.mesabrook.ib.items.commerce.ItemMoney;
+import com.mesabrook.ib.items.commerce.ItemRegisterFluidWrapper;
 import com.mesabrook.ib.items.commerce.ItemSecurityBox;
 import com.mesabrook.ib.items.commerce.ItemWallet;
 import com.mesabrook.ib.items.misc.ItemDooter;
@@ -471,6 +472,7 @@ public class ModItems
 	public static final Item DEBIT_CARD_GREEN = new ItemDebitCard("card_green", ItemDebitCard.EnumDebitCardType.Government);
 	public static final Item DEBIT_CARD_BLUE = new ItemDebitCard("card_blue", ItemDebitCard.EnumDebitCardType.Personal);
 	public static final Item SECURITY_BOX = new ItemSecurityBox();
+	public static final Item REGISTER_FLUID_WRAPPER = new ItemRegisterFluidWrapper();
 	
 
 	// Mesabrookian Dollar Items - Banknotes

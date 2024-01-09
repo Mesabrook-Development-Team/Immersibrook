@@ -6,6 +6,7 @@ import com.mesabrook.ib.blocks.BlockRegister;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.blocks.te.TileEntityRegister.RegisterStatuses;
 import com.mesabrook.ib.items.commerce.ItemMoney;
+import com.mesabrook.ib.items.commerce.ItemRegisterFluidWrapper;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.state.IBlockState;
@@ -65,7 +66,7 @@ public class POSCancelSalePacket implements IMessage {
 			for(int i = 0; i < handler.getSlots(); i++)
 			{
 				ItemStack stack = handler.getStackInSlot(i);
-				if (!stack.isEmpty())
+				if (!stack.isEmpty() && !stack.hasCapability(ItemRegisterFluidWrapper.CapabilityRegisterFluidWrapper.REGISTER_FLUID_WRAPPER_CAPABILITY, null))
 				{
 					InventoryHelper.spawnItemStack(world, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), stack);
 				}

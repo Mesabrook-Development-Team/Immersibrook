@@ -1,6 +1,7 @@
 package com.mesabrook.ib.util.handlers;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -22,6 +23,7 @@ import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.items.commerce.ItemDebitCard;
 import com.mesabrook.ib.items.commerce.ItemMoney;
+import com.mesabrook.ib.items.commerce.ItemRegisterFluidWrapper;
 import com.mesabrook.ib.net.atm.CreateNewDebitCardATMResponsePacket;
 import com.mesabrook.ib.net.atm.DepositATMResponsePacket;
 import com.mesabrook.ib.net.atm.FetchAccountsResponsePacket;
@@ -216,8 +218,18 @@ public class ServerTickHandler {
 						{
 							TileEntityRegister register = (TileEntityRegister)te;
 							TileEntityRegister.RegisterItemHandler itemHandler = (TileEntityRegister.RegisterItemHandler)register.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+							ItemStack stack = itemHandler.getStackInSlot(slot);
 							LocationItem locationItem = access.getResult(LocationItem.class);
-							itemHandler.setPrice(slot, locationItem.BasePrice);
+							if (locationItem.Item != null && locationItem.Item.IsFluid && stack.hasCapability(ItemRegisterFluidWrapper.CapabilityRegisterFluidWrapper.REGISTER_FLUID_WRAPPER_CAPABILITY, null)) // Additional math required
+							{
+								ItemRegisterFluidWrapper.IRegisterFluidWrapper wrapper = stack.getCapability(ItemRegisterFluidWrapper.CapabilityRegisterFluidWrapper.REGISTER_FLUID_WRAPPER_CAPABILITY, null);
+								BigDecimal pricePerMB = locationItem.BasePrice.divide(new BigDecimal(locationItem.Quantity));
+								itemHandler.setPrice(slot, pricePerMB.multiply(new BigDecimal(wrapper.getFluidStack().amount)).setScale(2, RoundingMode.HALF_UP));
+							}
+							else
+							{
+								itemHandler.setPrice(slot, locationItem.BasePrice);
+							}
 						}
 					}
 				}

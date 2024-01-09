@@ -1,12 +1,16 @@
 package com.mesabrook.ib.net.sco;
 
+import java.util.HashSet;
+
 import com.mesabrook.ib.blocks.te.TileEntityFluidMeter;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.blocks.te.TileEntityRegister.TrackedFluidData;
+import com.mesabrook.ib.items.commerce.ItemRegisterFluidWrapper;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
@@ -16,6 +20,8 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 
 public class POSGetRegisterFluidMetersPacket implements IMessage {
 
@@ -51,11 +57,23 @@ public class POSGetRegisterFluidMetersPacket implements IMessage {
 			}
 			
 			TileEntityRegister register = (TileEntityRegister)te;
+			HashSet<Long> metersInCart = new HashSet<>();
+			IItemHandler cartInv = register.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+			for(int i = 0; i < cartInv.getSlots(); i++)
+			{
+				ItemStack stack = cartInv.getStackInSlot(i);
+				if (stack.hasCapability(ItemRegisterFluidWrapper.CapabilityRegisterFluidWrapper.REGISTER_FLUID_WRAPPER_CAPABILITY, null))
+				{
+					ItemRegisterFluidWrapper.IRegisterFluidWrapper wrapper = stack.getCapability(ItemRegisterFluidWrapper.CapabilityRegisterFluidWrapper.REGISTER_FLUID_WRAPPER_CAPABILITY, null);
+					metersInCart.add(wrapper.getMeterPosition().toLong());
+				}
+			}
+			
 			NBTTagList list = new NBTTagList();
 			for(TrackedFluidData fluidData : register.getTrackedFluidData())
 			{
 				te = world.getTileEntity(fluidData.getFluidMeterPos());
-				if (!(te instanceof TileEntityFluidMeter))
+				if (!(te instanceof TileEntityFluidMeter) || metersInCart.contains(fluidData.getFluidMeterPos().toLong()))
 				{
 					continue;
 				}

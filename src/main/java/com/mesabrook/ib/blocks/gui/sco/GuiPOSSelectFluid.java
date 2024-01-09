@@ -9,7 +9,10 @@ import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.blocks.te.TileEntityFluidMeter;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.blocks.te.TileEntityRegister.TrackedFluidData;
+import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.items.commerce.ItemRegisterFluidWrapper;
 import com.mesabrook.ib.net.sco.POSGetRegisterFluidMetersPacket;
+import com.mesabrook.ib.net.sco.POSScanFluidPacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 
@@ -18,8 +21,11 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 
 public class GuiPOSSelectFluid extends GuiPOSMainBase {
 
@@ -134,19 +140,8 @@ public class GuiPOSSelectFluid extends GuiPOSMainBase {
 				}
 				
 				ArrayList<String> text = new ArrayList<>();
-				String lastUnlocalizedFluid;
-				switch(meter.getLastUnlocalizedFluid())
-				{
-					case "fluid.tile.water":
-						lastUnlocalizedFluid = "tile.water.name";
-						break;
-					case "fluid.tile.lava":
-						lastUnlocalizedFluid = "tile.lava.name";
-						break;
-					default:
-						lastUnlocalizedFluid = meter.getLastUnlocalizedFluid();
-				}
-				final String fluidReadout = I18n.format(lastUnlocalizedFluid);
+				FluidStack fluid = FluidRegistry.getFluidStack(meter.getLastFluid(), 1);
+				final String fluidReadout = fluid == null ? "" : fluid.getLocalizedName();
 				text.add(TextFormatting.DARK_GREEN + fluidReadout);
 				text.add(Integer.toString(meter.getFluidCounter()) + "mb");
 				
@@ -178,6 +173,27 @@ public class GuiPOSSelectFluid extends GuiPOSMainBase {
 			page++;
 			setupButtons();
 		}
+		
+		if (button.id > 0)
+		{
+			TileEntityFluidMeter meter = meters.get(button.id - 1);
+			
+			FluidStack fluidStack = FluidRegistry.getFluidStack(meter.getLastFluid(), meter.getFluidCounter());
+			ItemStack registerFluidWrapper = new ItemStack(ModItems.REGISTER_FLUID_WRAPPER);
+			ItemRegisterFluidWrapper.IRegisterFluidWrapper wrapper = registerFluidWrapper.getCapability(ItemRegisterFluidWrapper.CapabilityRegisterFluidWrapper.REGISTER_FLUID_WRAPPER_CAPABILITY, null);
+			wrapper.setFluidStack(fluidStack);
+			wrapper.setMeterPosition(meter.getPos());
+			
+			for(GuiButton aButton : buttonList)
+			{
+				aButton.enabled = false;
+			}
+			
+			POSScanFluidPacket scan = new POSScanFluidPacket();
+			scan.registerFluidWrapper = registerFluidWrapper;
+			scan.registerPos = register.getPos();
+			PacketHandler.INSTANCE.sendToServer(scan);
+		}
 	}
 	
 	public void onDataReceived(ArrayList<TileEntityFluidMeter> fluidMeters)
@@ -185,5 +201,11 @@ public class GuiPOSSelectFluid extends GuiPOSMainBase {
 		meters = fluidMeters;
 		setupButtons();
 		dataRetrieved = true;
+	}
+
+	public void onSaveResponse(NBTTagCompound updateTag) {
+		register.handleUpdateTag(updateTag);
+		
+		mc.displayGuiScreen(new GuiPOSInSession(register));
 	}
 }

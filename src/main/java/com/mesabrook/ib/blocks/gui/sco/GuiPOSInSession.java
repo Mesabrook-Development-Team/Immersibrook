@@ -11,14 +11,17 @@ import com.mesabrook.ib.blocks.gui.GuiImageLabelButton;
 import com.mesabrook.ib.blocks.gui.GuiImageLabelButton.ImageOrientation;
 import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
+import com.mesabrook.ib.blocks.te.TileEntityRegister.RegisterItemHandler;
 import com.mesabrook.ib.blocks.te.TileEntityRegister.RegisterStatuses;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
 import com.mesabrook.ib.capability.secureditem.ISecuredItem;
+import com.mesabrook.ib.items.commerce.ItemRegisterFluidWrapper;
 import com.mesabrook.ib.net.sco.POSCancelSalePacket;
 import com.mesabrook.ib.net.sco.POSChangeStatusClientToServerPacket;
 import com.mesabrook.ib.net.sco.POSRemoveItemPacket;
+import com.mesabrook.ib.util.IndependentTimer;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 
@@ -30,6 +33,7 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -41,7 +45,7 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 	private GuiImageLabelButton fluidPurchase;
 	private GuiImageLabelButton adminMode;
 	private ArrayList<ItemSlat> itemSlats = new ArrayList<>();
-	private int currentPage = 0;
+	private int currentPage = -1;
 	private String subTotal = "";
 	private String taxAmount = "";
 	private String total = "Calculating...";
@@ -58,9 +62,41 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 		return register.getPos().toLong() == pos.toLong();
 	}
 	
+	private IndependentTimer refreshTimer=  new IndependentTimer();
 	@Override
 	protected void doDraw(int mouseX, int mouseY, float partialTicks) {
 		super.doDraw(mouseX, mouseY, partialTicks);
+		
+		refreshTimer.update();
+		if (refreshTimer.getElapsedTime() >= 500)
+		{
+//			TileEntity te = register.getWorld().getTileEntity(register.getPos());
+//			if (!(te instanceof TileEntityRegister))
+//			{
+//				mc.displayGuiScreen(null);
+//				return;
+//			}
+//			
+//			register.handleUpdateTag(((TileEntityRegister)te).getUpdateTag());
+//			RegisterItemHandler registerItemHandler = (RegisterItemHandler)register.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+//			for(ItemSlat slat : itemSlats)
+//			{
+//				BigDecimal price = registerItemHandler.getPrice(slat.slotIndex);
+//				if (price == null)
+//				{
+//					slat.setPriceNotFound(true);
+//				}
+//				else
+//				{
+//					slat.setPrice(price);
+//					slat.setPriceNotFound(false);
+//				}
+//			}
+//			updateTotals();
+			
+			initGui();
+			refreshTimer.reset();
+		}
 		
 		fontRenderer.drawString("Your Cart", innerLeft + 116, innerTop + 29, 0);
 		
@@ -70,7 +106,7 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 		}
 		
 		GlStateManager.scale(0.5, 0.5, 1);
-		String pageText = "" + (currentPage + 1) + "/" + ((itemSlats.size() / MAX_SLATS) + 1);
+		String pageText = "" + (currentPage + 1) + "/" + (((itemSlats.size() - 1) / MAX_SLATS) + 1);
 		int textWidth = fontRenderer.getStringWidth(pageText);
 		fontRenderer.drawString(pageText, (innerLeft + 121 + ((innerLeft + innerWidth - 14) - (innerLeft + 121)) / 2) * 2 - (textWidth / 2), (innerTop + 153) * 2, 0x74A3E0);
 		
@@ -114,6 +150,7 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 			adminMode.visible = emp != null && emp.manageRegisters();
 		}
 		
+		buttonList.clear();
 		buttonList.add(cancelOrder);
 		buttonList.add(fluidPurchase);
 		buttonList.add(adminMode);
@@ -150,11 +187,15 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 			slatCount++;
 		}
 		
-		currentPage = (slatCount - 1) / MAX_SLATS;
-		if (currentPage < 0)
+		if (currentPage == -1)
 		{
-			currentPage = 0;
+			currentPage = (slatCount - 1) / MAX_SLATS;
+			if (currentPage < 0)
+			{
+				currentPage = 0;
+			}
 		}
+			
 		for(int i = currentPage * MAX_SLATS; i < (currentPage + 1) * MAX_SLATS; i++)
 		{
 			if (i >= itemSlats.size())
@@ -172,7 +213,7 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 				.setTextScale(0.8F);
 		
 		prevPage.enabled = currentPage != 0;
-		nextPage.enabled = false;
+		nextPage.enabled = currentPage < (slatCount - 1) / MAX_SLATS;
 		pay.enabled = false;
 		
 		buttonList.add(prevPage);
@@ -329,13 +370,28 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 			this.stack = stack;
 			this.fontRenderer = fontRenderer;
 			
+			String stackCount;
 			stackName = stack.getDisplayName();
-			int stackCount = stack.getCount();
-			if (stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
+			stackCount = Integer.toString(stack.getCount());
+			if (stack.hasCapability(ItemRegisterFluidWrapper.CapabilityRegisterFluidWrapper.REGISTER_FLUID_WRAPPER_CAPABILITY, null))
+			{
+				ItemRegisterFluidWrapper.IRegisterFluidWrapper wrapper = stack.getCapability(ItemRegisterFluidWrapper.CapabilityRegisterFluidWrapper.REGISTER_FLUID_WRAPPER_CAPABILITY, null);
+				if (wrapper.getFluidStack() == null)
+				{
+					stackName = "Unknown";
+					stackCount = "0mb";
+				}
+				else
+				{
+					stackName = wrapper.getFluidStack().getLocalizedName();
+					stackCount = wrapper.getFluidStack().amount + "mb";
+				}
+			}
+			else if (stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
 			{
 				ISecuredItem secItem = stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
 				stackName = secItem.getInnerStack().getDisplayName();
-				stackCount = secItem.getInnerStack().getCount();
+				stackCount = Integer.toString(secItem.getInnerStack().getCount());
 			}
 			
 			int stackNameMaxWidth = fontRenderer.getStringWidth(stackName);
@@ -344,7 +400,7 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 				stackNameMaxWidth = (int)((width * 0.8) * 2);
 			}
 			stackName = fontRenderer.trimStringToWidth(stackName, stackNameMaxWidth);
-			if (stackCount > 1)
+			if (!stackCount.equalsIgnoreCase(Integer.toString(1)))
 			{
 				stackName += " (x" + stackCount + ")";
 			}

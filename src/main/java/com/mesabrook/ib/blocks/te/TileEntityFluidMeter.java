@@ -25,7 +25,7 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 	private String locationOwnerName = "";
 	private int fluidCounter = 0;
 	private int lifetimeFluidCounter = 0;
-	private String lastUnlocalizedFluid = "";
+	private String lastFluid = "";
 	
 	private int lastSync = 0;
 	private boolean shouldSync = false;
@@ -48,7 +48,7 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 		locationIDOwner = compound.getLong("locationIDOwner");
 		locationOwnerName = compound.getString("locationOwnerName");
 		fluidCounter = compound.getInteger("fluidCounter");
-		lastUnlocalizedFluid = compound.getString("lastUnlocalizedFluid");
+		lastFluid = compound.getString("lastFluid");
 		lifetimeFluidCounter = compound.getInteger("lifetimeFluidCounter");
 		
 		super.readFromNBT(compound);
@@ -60,7 +60,7 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 		compound.setLong("locationIDOwner", locationIDOwner);
 		compound.setString("locationOwnerName", locationOwnerName);
 		compound.setInteger("fluidCounter", fluidCounter);
-		compound.setString("lastUnlocalizedFluid", lastUnlocalizedFluid);
+		compound.setString("lastFluid", lastFluid);
 		compound.setInteger("lifetimeFluidCounter", lifetimeFluidCounter);
 		return super.writeToNBT(compound);
 	}
@@ -122,7 +122,7 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 	
 	public void setFluidCounter(int fluidCounter)
 	{
-		this.fluidCounter = fluidCounter;
+		this.fluidCounter = Math.max(fluidCounter, 0);
 		markDirty();
 	}
 	
@@ -147,14 +147,14 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 		markDirty();
 	}
 	
-	public String getLastUnlocalizedFluid()
+	public String getLastFluid()
 	{
-		return lastUnlocalizedFluid;
+		return lastFluid;
 	}
 	
-	public void setLastUnlocalizedFluid(String lastUnlocalizedFluid)
+	public void setLastFluid(String lastUnlocalizedFluid)
 	{
-		this.lastUnlocalizedFluid = lastUnlocalizedFluid;
+		this.lastFluid = lastUnlocalizedFluid;
 		markDirty();
 	}
 	
@@ -221,7 +221,7 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 		tag.setLong("locationIDOwner", locationIDOwner);
 		tag.setString("locationOwnerName", locationOwnerName);
 		tag.setInteger("fluidCounter", fluidCounter);
-		tag.setString("lastUnlocalizedFluid", lastUnlocalizedFluid);
+		tag.setString("lastFluid", lastFluid);
 		tag.setInteger("lifetimeFluidCounter", lifetimeFluidCounter);
 		return tag;
 	}
@@ -234,7 +234,7 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 		locationIDOwner = tag.getLong("locationIDOwner");
 		locationOwnerName = tag.getString("locationOwnerName");
 		fluidCounter = tag.getInteger("fluidCounter");
-		lastUnlocalizedFluid = tag.getString("lastUnlocalizedFluid");
+		lastFluid = tag.getString("lastFluid");
 		lifetimeFluidCounter = tag.getInteger("lifetimeFluidCounter");
 	}
 	
@@ -326,7 +326,7 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 			int fluidConsumed = fluidHandler.fill(resource, doFill);
 			if (doFill)
 			{
-				if (resource != null && resource.getUnlocalizedName().equalsIgnoreCase(getLastUnlocalizedFluid()))
+				if (resource != null && resource.getFluid().getName().equalsIgnoreCase(getLastFluid()))
 				{
 					increaseFluidCounter(fluidConsumed);
 					increaseLifetimeFluidCounter(fluidConsumed);
@@ -335,7 +335,7 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 				{
 					setFluidCounter(fluidConsumed);
 					increaseLifetimeFluidCounter(fluidConsumed);
-					setLastUnlocalizedFluid(resource == null ? "" : resource.getUnlocalizedName());
+					setLastFluid(resource == null ? "" : resource.getFluid().getName());
 				}
 			}
 			
@@ -366,7 +366,7 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 			FluidStack drainedStack = fluidHandler.drain(resource, doDrain);
 			if (doDrain)
 			{
-				if (drainedStack != null && drainedStack.getUnlocalizedName().equalsIgnoreCase(getLastUnlocalizedFluid()))
+				if (drainedStack != null && drainedStack.getFluid().getName().equalsIgnoreCase(getLastFluid()))
 				{
 					increaseFluidCounter(drainedStack.amount);
 					increaseLifetimeFluidCounter(drainedStack.amount);
@@ -375,7 +375,7 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 				{
 					setFluidCounter(0);
 					increaseLifetimeFluidCounter(drainedStack.amount);
-					setLastUnlocalizedFluid(drainedStack == null ? "" : drainedStack.getUnlocalizedName());
+					setLastFluid(drainedStack == null ? "" : drainedStack.getFluid().getName());
 				}
 			}
 			return drainedStack;
@@ -398,7 +398,7 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 			FluidStack drainedStack = fluidHandler.drain(maxDrain, doDrain);
 			if (doDrain)
 			{
-				if (drainedStack != null && drainedStack.getUnlocalizedName().equalsIgnoreCase(getLastUnlocalizedFluid()))
+				if (drainedStack != null && drainedStack.getFluid().getName().equalsIgnoreCase(getLastFluid()))
 				{
 					increaseFluidCounter(drainedStack.amount);
 					increaseLifetimeFluidCounter(drainedStack.amount);
@@ -407,7 +407,7 @@ public class TileEntityFluidMeter extends TileEntity implements ITickable {
 				{
 					setFluidCounter(0);
 					increaseLifetimeFluidCounter(drainedStack.amount);
-					setLastUnlocalizedFluid(drainedStack == null ? "" : drainedStack.getUnlocalizedName());
+					setLastFluid(drainedStack == null ? "" : drainedStack.getFluid().getName());
 				}
 			}
 			return drainedStack;

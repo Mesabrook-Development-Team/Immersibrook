@@ -23,6 +23,7 @@ import com.mesabrook.ib.init.CDMApps;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.commerce.ItemDebitCard;
+import com.mesabrook.ib.items.commerce.ItemRegisterFluidWrapper;
 import com.mesabrook.ib.items.commerce.ItemSecurityBox;
 import com.mesabrook.ib.items.commerce.ItemWallet;
 import com.mesabrook.ib.rendering.RenderMesabrookIcon;
@@ -139,6 +140,7 @@ public class RegistryHandler
 		CapabilityEmployee.init();
 		CapabilitySecuredItem.init();
 		CapabilityDebitCard.init();
+		ItemRegisterFluidWrapper.CapabilityRegisterFluidWrapper.init();
 	}
 	
 	public static void initRegistries()
@@ -296,6 +298,11 @@ public class RegistryHandler
 		if (e.getObject().getItem() instanceof ItemWallet)
 		{
 			e.addCapability(new ResourceLocation(Reference.MODID, "cap_walletinv"), new ItemWalletCapabilityProvider());
+		}
+		
+		if (e.getObject().getItem() instanceof ItemRegisterFluidWrapper)
+		{
+			e.addCapability(new ResourceLocation(Reference.MODID, "cap_registerfluidwrapper"), new ItemRegisterFluidWrapper.RegisterFluidWrapperCapabilityProvider());
 		}
 	}
 }

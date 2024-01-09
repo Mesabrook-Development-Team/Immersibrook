@@ -22,6 +22,8 @@ import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.client.config.GuiCheckBox;
 
 public class GuiPOSFluidMeterAddList extends GuiPOSMainBase {
@@ -129,20 +131,9 @@ public class GuiPOSFluidMeterAddList extends GuiPOSMainBase {
 				
 				TileEntityFluidMeter meter = fluidMeters.get(i);
 				fontRenderer.drawString(String.format("%s,%s,%s", meter.getPos().getX(), meter.getPos().getY(), meter.getPos().getZ()), innerLeft + 21, innerTop + 42 + 11 * (i - page * 13), 0);
-				String lastUnlocalizedFluid;
-				switch(meter.getLastUnlocalizedFluid())
-				{
-					case "fluid.tile.water":
-						lastUnlocalizedFluid = "tile.water.name";
-						break;
-					case "fluid.tile.lava":
-						lastUnlocalizedFluid = "tile.lava.name";
-						break;
-					default:
-						lastUnlocalizedFluid = meter.getLastUnlocalizedFluid();
-				}
-				lastUnlocalizedFluid = fontRenderer.trimStringToWidth(lastUnlocalizedFluid, 100);
-				fontRenderer.drawString(lastUnlocalizedFluid.isEmpty() ? "---" : I18n.format(lastUnlocalizedFluid), innerLeft + 111, innerTop + 42 + 11 * (i - page * 13), 0);
+				FluidStack fluid = FluidRegistry.getFluidStack(meter.getLastFluid(), 1);
+				String lastFluid = fluid == null ? "" : fontRenderer.trimStringToWidth(fluid.getLocalizedName(), 100);
+				fontRenderer.drawString(lastFluid.isEmpty() ? "---" : lastFluid, innerLeft + 111, innerTop + 42 + 11 * (i - page * 13), 0);
 				fontRenderer.drawString(Integer.toString(meter.getFluidCounter()), innerLeft + 211, innerTop + 42 + 11 * (i - page * 13), 0);
 			}
 			

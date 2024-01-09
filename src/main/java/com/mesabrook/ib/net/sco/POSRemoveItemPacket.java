@@ -3,6 +3,7 @@ package com.mesabrook.ib.net.sco;
 import com.mesabrook.ib.blocks.BlockRegister;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.blocks.te.TileEntityRegister.RegisterStatuses;
+import com.mesabrook.ib.items.commerce.ItemRegisterFluidWrapper;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.state.IBlockState;
@@ -56,9 +57,13 @@ public class POSRemoveItemPacket implements IMessage {
 			{
 				register.setRegisterStatus(RegisterStatuses.Online);
 			}
+			
 			IBlockState registerState = world.getBlockState(register.getPos());
-			EnumFacing facing = registerState.getValue(BlockRegister.FACING);
-			InventoryHelper.spawnItemStack(world, message.pos.offset(facing).getX(), message.pos.offset(facing).getY(), message.pos.offset(facing).getZ(), stack);
+			if (!stack.hasCapability(ItemRegisterFluidWrapper.CapabilityRegisterFluidWrapper.REGISTER_FLUID_WRAPPER_CAPABILITY, null))
+			{
+				EnumFacing facing = registerState.getValue(BlockRegister.FACING);
+				InventoryHelper.spawnItemStack(world, message.pos.offset(facing).getX(), message.pos.offset(facing).getY(), message.pos.offset(facing).getZ(), stack);
+			}
 			world.notifyBlockUpdate(message.pos, registerState, registerState, 3);
 		}
 		

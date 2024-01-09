@@ -846,6 +846,17 @@ public class ClientSideHandlers
 			
 			((GuiPOSSelectFluid)Minecraft.getMinecraft().currentScreen).onDataReceived(meters);
 		}
+		
+		public static void onScanFluidResponse(NBTTagCompound updateTag)
+		{
+			if (!(Minecraft.getMinecraft().currentScreen instanceof GuiPOSSelectFluid))
+			{
+				return;
+			}
+			
+			GuiPOSSelectFluid addList = (GuiPOSSelectFluid)Minecraft.getMinecraft().currentScreen;
+			addList.onSaveResponse(updateTag);
+		}
 	}
 
 	@SubscribeEvent

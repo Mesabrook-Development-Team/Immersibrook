@@ -20,6 +20,7 @@ import com.mesabrook.ib.capability.secureditem.ISecuredItem;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.commerce.ItemDebitCard;
 import com.mesabrook.ib.items.commerce.ItemMoney;
+import com.mesabrook.ib.items.commerce.ItemRegisterFluidWrapper;
 import com.mesabrook.ib.items.commerce.ItemWallet;
 import com.mesabrook.ib.net.sco.POSCardShowMessagePacket;
 import com.mesabrook.ib.net.sco.POSInitializeRegisterResponsePacket;
@@ -472,9 +473,19 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 				continue;
 			}
 			
+			String stackName = stack.getDisplayName();
+			int stackCount = stack.getCount();
+			
+			if (stack.hasCapability(ItemRegisterFluidWrapper.CapabilityRegisterFluidWrapper.REGISTER_FLUID_WRAPPER_CAPABILITY, null))
+			{
+				ItemRegisterFluidWrapper.IRegisterFluidWrapper wrapper = stack.getCapability(ItemRegisterFluidWrapper.CapabilityRegisterFluidWrapper.REGISTER_FLUID_WRAPPER_CAPABILITY, null);
+				stackName = wrapper.getFluidStack().getLocalizedName();
+				stackCount = wrapper.getFluidStack().amount;
+			}
+			
 			StoreSaleSubParameter param = new StoreSaleSubParameter();
-			param.Name = stack.getDisplayName();
-			param.Amount = stack.getCount();
+			param.Name = stackName;
+			param.Amount = stackCount;
 			param.SaleAmount = itemHandler.getPrice(i);
 			storeSales.add(param);
 		}
@@ -742,6 +753,20 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 				if (stack.isEmpty())
 				{
 					continue;
+				}
+				
+				if (stack.hasCapability(ItemRegisterFluidWrapper.CapabilityRegisterFluidWrapper.REGISTER_FLUID_WRAPPER_CAPABILITY, null))
+				{
+					ItemRegisterFluidWrapper.IRegisterFluidWrapper wrapper = stack.getCapability(ItemRegisterFluidWrapper.CapabilityRegisterFluidWrapper.REGISTER_FLUID_WRAPPER_CAPABILITY, null);
+					TileEntity te = world.getTileEntity(wrapper.getMeterPosition());
+					if (!(te instanceof TileEntityFluidMeter))
+					{
+						continue;
+					}
+					
+					TileEntityFluidMeter meter = (TileEntityFluidMeter)te;
+					meter.setFluidCounter(meter.getFluidCounter() - wrapper.getFluidStack().amount);
+					break;
 				}
 				
 				if (stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
@@ -1049,14 +1074,22 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 				{
 					GetData get = new GetData(API.Company, "LocationItemIBAccess/Get", LocationItem.class);
 					get.addQueryString("locationID", Long.toString(register.getLocationIDOwner()));
-					ItemStack checkStack = stack;
+					String stackName = stack.getDisplayName();
+					int stackCount = stack.getCount();
 					if (stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
 					{
 						ISecuredItem securedItem = stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
-						checkStack = securedItem.getInnerStack();
+						stackName = securedItem.getInnerStack().getDisplayName();
+						stackCount = securedItem.getInnerStack().getCount();
 					}
-					get.addQueryString("name", checkStack.getDisplayName());
-					get.addQueryString("quantity", Integer.toString(checkStack.getCount()));
+					else if (stack.hasCapability(ItemRegisterFluidWrapper.CapabilityRegisterFluidWrapper.REGISTER_FLUID_WRAPPER_CAPABILITY, null))
+					{
+						ItemRegisterFluidWrapper.IRegisterFluidWrapper wrapper = stack.getCapability(ItemRegisterFluidWrapper.CapabilityRegisterFluidWrapper.REGISTER_FLUID_WRAPPER_CAPABILITY, null);
+						stackName = wrapper.getFluidStack().getLocalizedName();
+						stackCount = wrapper.getFluidStack().amount;
+					}
+					get.addQueryString("name", stackName);
+					get.addQueryString("quantity", Integer.toString(stackCount));
 					
 					DataRequestTask task = new DataRequestTask(get);
 					task.getData().put("pos", register.getPos().toLong());
