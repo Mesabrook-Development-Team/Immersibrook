@@ -1,6 +1,7 @@
 package com.mesabrook.ib.blocks.gui.sco;
 
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
+import com.mesabrook.ib.blocks.te.TileEntityRegister.RegisterStatuses;
 
 import net.minecraft.client.Minecraft;
 
@@ -37,7 +38,8 @@ public class GuiPOSStarter extends GuiPOSBase {
 				Minecraft.getMinecraft().displayGuiScreen(new GuiPOSPaymentSelect(register));
 				break;
 			case PaymentCard:
-				mc.displayGuiScreen(new GuiPOSPaymentCard(register));
+			case PaymentCardInUse:
+				mc.displayGuiScreen(new GuiPOSPaymentCard(register, register.getRegisterStatus() == RegisterStatuses.PaymentCard));
 				break;
 			case PaymentCash:
 				mc.displayGuiScreen(new GuiPOSPaymentCash(register));

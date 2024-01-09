@@ -16,9 +16,16 @@ import net.minecraft.util.ResourceLocation;
 public class GuiPOSPaymentCard extends GuiPOSPaymentBase {
 
 	private GuiImageLabelButton back;
+	private boolean displayBackButton;
 	
 	public GuiPOSPaymentCard(TileEntityRegister register) {
+		this(register, true);
+	}
+	
+	public GuiPOSPaymentCard(TileEntityRegister register, boolean displayBackButton)
+	{
 		super(register);
+		this.displayBackButton = displayBackButton;
 	}
 	
 	@Override
@@ -34,6 +41,7 @@ public class GuiPOSPaymentCard extends GuiPOSPaymentBase {
 		super.initGui();
 		
 		back = new GuiImageLabelButton(0, innerLeft + innerWidth - 76, innerTop + 45, 66, 20, "   Back", new ResourceLocation(Reference.MODID, "textures/gui/sco/arrow_left.png"), 16, 16, 16, 16, ImageOrientation.Left);
+		back.visible = displayBackButton;
 		buttonList.add(back);
 	}
 	
