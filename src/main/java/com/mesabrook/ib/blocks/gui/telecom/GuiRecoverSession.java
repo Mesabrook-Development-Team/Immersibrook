@@ -67,7 +67,7 @@ public class GuiRecoverSession extends GuiPhoneBase
 
         if(timer.getElapsedTime() >= 1600)
         {
-            if(mc.world.rand.nextFloat() > 0.125)
+            if(mc.world.rand.nextFloat() > 0.5)
             {
                 if(timer.getElapsedTime() > 2300)
                 {
