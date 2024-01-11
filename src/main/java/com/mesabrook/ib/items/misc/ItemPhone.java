@@ -100,7 +100,16 @@ public class ItemPhone extends Item implements IHasModel {
 				return super.onItemRightClick(worldIn, playerIn, handIn);
 			}
 			SpecialBezelRandomizer.RandomBezel();
-			playerIn.openGui(Main.instance, Reference.GUI_PHONE, worldIn, handIn.ordinal(), 0, 0);
+
+			if(!playerIn.isSneaking())
+			{
+				playerIn.openGui(Main.instance, Reference.GUI_PHONE, worldIn, handIn.ordinal(), 0, 0);
+			}
+			else
+			{
+				playerIn.openGui(Main.instance, Reference.GUI_SMARTPHONE_INV, worldIn, handIn.ordinal(), 0, 0);
+			}
+
 		}
 
 		return super.onItemRightClick(worldIn, playerIn, handIn);

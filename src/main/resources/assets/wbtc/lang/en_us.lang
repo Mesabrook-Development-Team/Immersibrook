@@ -2044,7 +2044,25 @@ tile.retail_freezer_upright.name=Retail Freezer
 tile.retail_freezer_deep.name=Retail Deep Freezer Island
 tile.sim_station.name=Mesabrook Bell SIM Programming Terminal
 item.sim_card.name=Mesabrook Bell SIM Card
+item.sd_card.name=Memory Card
+
+//Shopping Baskets
+item.shopping_basket_white.name=Shopping Basket
+item.shopping_basket_orange.name=Shopping Basket
+item.shopping_basket_magenta.name=Shopping Basket
+item.shopping_basket_lblue.name=Shopping Basket
+item.shopping_basket_yellow.name=Shopping Basket
+item.shopping_basket_pink.name=Shopping Basket
+item.shopping_basket_gray.name=Shopping Basket
+item.shopping_basket_silver.name=Shopping Basket
+item.shopping_basket_cyan.name=Shopping Basket
+item.shopping_basket_purple.name=Shopping Basket
 item.shopping_basket_blue.name=Shopping Basket
+item.shopping_basket_brown.name=Shopping Basket
+item.shopping_basket_green.name=Shopping Basket
+item.shopping_basket_red.name=Shopping Basket
+item.shopping_basket_black.name=Shopping Basket
+item.shopping_basket_lime.name=Shopping Basket
 
 //Sound Emitters
 tile.sound_emitter.name=Sound Emitter
@@ -2124,3 +2142,5 @@ tile.fluid_meter.name=Fluid Meter
 tile.throne.name=Counselor's Chair
 tile.throne_fc.name=First Consul's Chair
 tile.throne_gov.name=Elected Official's Chair
+
+item.smartphone_battery.name=Smartphone Battery

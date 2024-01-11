@@ -5,6 +5,7 @@ import com.mesabrook.ib.items.*;
 import com.mesabrook.ib.items.armor.*;
 import com.mesabrook.ib.items.commerce.ItemDebitCard;
 import com.mesabrook.ib.items.commerce.ItemMoney;
+import com.mesabrook.ib.items.commerce.ItemShoppingBasket;
 import com.mesabrook.ib.items.commerce.ItemWallet;
 import com.mesabrook.ib.items.misc.*;
 import com.mesabrook.ib.items.misc.ItemStamp.StampTypes;
@@ -547,8 +548,23 @@ public class ModItems
 	// Portable Ender Chest
 	public static final Item PORTABLE_ENDER_CHEST = new ItemEnderChest("portable_ender_chest");
 
-	// Shopping Basket Test Item
-	public static final Item SHOPPING_BASKET = new MiscItem("shopping_basket_blue", 1, Main.IMMERSIBROOK_MAIN);
+	// Shopping Basket Item
+	public static final Item SHOPPING_BASKET_WHITE = new ItemShoppingBasket("shopping_basket_white");
+	public static final Item SHOPPING_BASKET_ORANGE = new ItemShoppingBasket("shopping_basket_orange");
+	public static final Item SHOPPING_BASKET_MAGENTA = new ItemShoppingBasket("shopping_basket_magenta");
+	public static final Item SHOPPING_BASKET_LBLUE = new ItemShoppingBasket("shopping_basket_lblue");
+	public static final Item SHOPPING_BASKET_YELLOW = new ItemShoppingBasket("shopping_basket_yellow");
+	public static final Item SHOPPING_BASKET_LIME = new ItemShoppingBasket("shopping_basket_lime");
+	public static final Item SHOPPING_BASKET_PINK = new ItemShoppingBasket("shopping_basket_pink");
+	public static final Item SHOPPING_BASKET_GRAY = new ItemShoppingBasket("shopping_basket_gray");
+	public static final Item SHOPPING_BASKET_SILVER = new ItemShoppingBasket("shopping_basket_silver");
+	public static final Item SHOPPING_BASKET_CYAN = new ItemShoppingBasket("shopping_basket_cyan");
+	public static final Item SHOPPING_BASKET_PURPLE = new ItemShoppingBasket("shopping_basket_purple");
+	public static final Item SHOPPING_BASKET_BLUE = new ItemShoppingBasket("shopping_basket_blue");
+	public static final Item SHOPPING_BASKET_BROWN = new ItemShoppingBasket("shopping_basket_brown");
+	public static final Item SHOPPING_BASKET_GREEN = new ItemShoppingBasket("shopping_basket_green");
+	public static final Item SHOPPING_BASKET_RED = new ItemShoppingBasket("shopping_basket_red");
+	public static final Item SHOPPING_BASKET_BLACK = new ItemShoppingBasket("shopping_basket_black");
 
 	// More food
 	public static final Item SPAM = new SpecialFood("spam", 5, 4F, false);
@@ -558,4 +574,8 @@ public class ModItems
 
 	// Retail Crafting Item
 	public static final Item PEGHOOK = new MiscItem("peghook", 16, Main.IMMERSIBROOK_MAIN);
+
+	// Smartphone Battery
+	public static final Item SMARTPHONE_BATTERY = new MiscItem("smartphone_battery", 1, Main.IMMERSIBROOK_MAIN);
+	public static final Item SD_CARD = new MiscItem("sd_card", 1, Main.IMMERSIBROOK_MAIN);
 }

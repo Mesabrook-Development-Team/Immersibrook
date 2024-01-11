@@ -30,6 +30,7 @@ public class Reference
 	public static final int GUI_TOS = 9;
 	public static final int GUI_RATION = 10;
 	public static final int GUI_SOUND_EMITTER = 11;
+	public static final int GUI_SMARTPHONE_INV = 12;
 
 	public static final String NETWORK_CHANNEL_NAME = "wbtc";
 	

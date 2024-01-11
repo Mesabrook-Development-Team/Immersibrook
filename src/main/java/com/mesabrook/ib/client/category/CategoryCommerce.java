@@ -74,5 +74,23 @@ public class CategoryCommerce extends AbstractCategory
 
         // ATM
         add(ModBlocks.ATM);
+
+        // Baskets
+        add(ModItems.SHOPPING_BASKET_WHITE);
+        add(ModItems.SHOPPING_BASKET_ORANGE);
+        add(ModItems.SHOPPING_BASKET_MAGENTA);
+        add(ModItems.SHOPPING_BASKET_LBLUE);
+        add(ModItems.SHOPPING_BASKET_YELLOW);
+        add(ModItems.SHOPPING_BASKET_LIME);
+        add(ModItems.SHOPPING_BASKET_PINK);
+        add(ModItems.SHOPPING_BASKET_GRAY);
+        add(ModItems.SHOPPING_BASKET_SILVER);
+        add(ModItems.SHOPPING_BASKET_CYAN);
+        add(ModItems.SHOPPING_BASKET_PURPLE);
+        add(ModItems.SHOPPING_BASKET_BLUE);
+        add(ModItems.SHOPPING_BASKET_BROWN);
+        add(ModItems.SHOPPING_BASKET_GREEN);
+        add(ModItems.SHOPPING_BASKET_RED);
+        add(ModItems.SHOPPING_BASKET_BLACK);
     }
 }

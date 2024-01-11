@@ -65,7 +65,7 @@ public class GuiRecoverSession extends GuiPhoneBase
             fontRenderer.drawString("Attempting to recover...", INNER_X + 1, INNER_Y + 65, 0xFFFFFF);
         }
 
-        if(timer.getElapsedTime() >= 1600)
+        if(timer.getElapsedTime() >= 3000)
         {
             if(mc.world.rand.nextFloat() > 0.5)
             {
