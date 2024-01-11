@@ -2064,6 +2064,12 @@ item.shopping_basket_red.name=Shopping Basket
 item.shopping_basket_black.name=Shopping Basket
 item.shopping_basket_lime.name=Shopping Basket
 
+//Shopping Basket Holders
+tile.basket_holder_red.name=Shopping Basket Holder - Red
+tile.basket_holder_green.name=Shopping Basket Holder - Green
+tile.basket_holder_blue.name=Shopping Basket Holder - Blue
+tile.basket_holder_black.name=Shopping Basket Holder - Black
+
 //Sound Emitters
 tile.sound_emitter.name=Sound Emitter
 tile.sound_emitter_wall.name=Wall Mounted Sound Emitter

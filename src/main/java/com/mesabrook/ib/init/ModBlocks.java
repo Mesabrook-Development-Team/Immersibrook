@@ -1249,4 +1249,10 @@ public class ModBlocks
 	public static final Block THRONE_FC = new BlockSeat("throne_fc", ModUtils.DOUBLE_AABB, -1.0F);
 	public static final Block THRONE = new BlockSeat("throne", ModUtils.DOUBLE_AABB, -1.0F);
 	public static final Block THRONE_GOV = new BlockSeat("throne_gov", ModUtils.DOUBLE_AABB, 4.0F);
+
+	// Retail Basket Holders
+	public static final Block BASKET_HOLDER_RED = new ImmersiblockRotational("basket_holder_red", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.25F, 2F, ModUtils.DOUBLE_AABB);
+	public static final Block BASKET_HOLDER_GREEN = new ImmersiblockRotational("basket_holder_green", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.25F, 2F, ModUtils.DOUBLE_AABB);
+	public static final Block BASKET_HOLDER_BLUE = new ImmersiblockRotational("basket_holder_blue", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.25F, 2F, ModUtils.DOUBLE_AABB);
+	public static final Block BASKET_HOLDER_BLACK = new ImmersiblockRotational("basket_holder_black", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.25F, 2F, ModUtils.DOUBLE_AABB);
 }

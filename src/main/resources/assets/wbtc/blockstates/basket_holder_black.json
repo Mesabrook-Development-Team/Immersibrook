@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:basket_holder_black" },
+        "facing=south": { "model": "wbtc:basket_holder_black", "y": 180 },
+        "facing=west":  { "model": "wbtc:basket_holder_black", "y": 270 },
+        "facing=east":  { "model": "wbtc:basket_holder_black", "y": 90 }
+    }
+}

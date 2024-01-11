@@ -92,5 +92,11 @@ public class CategoryCommerce extends AbstractCategory
         add(ModItems.SHOPPING_BASKET_GREEN);
         add(ModItems.SHOPPING_BASKET_RED);
         add(ModItems.SHOPPING_BASKET_BLACK);
+
+        // Basket Holders
+        add(ModBlocks.BASKET_HOLDER_RED);
+        add(ModBlocks.BASKET_HOLDER_GREEN);
+        add(ModBlocks.BASKET_HOLDER_BLUE);
+        add(ModBlocks.BASKET_HOLDER_BLACK);
     }
 }
