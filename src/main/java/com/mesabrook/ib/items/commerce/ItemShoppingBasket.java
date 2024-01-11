@@ -35,7 +35,7 @@ public class ItemShoppingBasket extends Item implements IHasModel
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag)
     {
-        tooltip.add(new TextComponentString(TextFormatting.GREEN + "Ideal for carrying a lot of products.").getFormattedText());
+        tooltip.add(new TextComponentString(TextFormatting.GREEN + "Your ideal shopping companion!").getFormattedText());
     }
 
     @Override
