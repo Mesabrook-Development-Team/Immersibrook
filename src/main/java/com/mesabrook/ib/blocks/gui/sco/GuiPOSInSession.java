@@ -36,6 +36,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.items.CapabilityItemHandler;
 
 public class GuiPOSInSession extends GuiPOSMainBase {
@@ -46,6 +47,7 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 	private GuiImageLabelButton adminMode;
 	private ArrayList<ItemSlat> itemSlats = new ArrayList<>();
 	private int currentPage = -1;
+	private String savingsTotal = "";
 	private String subTotal = "";
 	private String taxAmount = "";
 	private String total = "Calculating...";
@@ -69,31 +71,7 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 		
 		refreshTimer.update();
 		if (refreshTimer.getElapsedTime() >= 500)
-		{
-//			TileEntity te = register.getWorld().getTileEntity(register.getPos());
-//			if (!(te instanceof TileEntityRegister))
-//			{
-//				mc.displayGuiScreen(null);
-//				return;
-//			}
-//			
-//			register.handleUpdateTag(((TileEntityRegister)te).getUpdateTag());
-//			RegisterItemHandler registerItemHandler = (RegisterItemHandler)register.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-//			for(ItemSlat slat : itemSlats)
-//			{
-//				BigDecimal price = registerItemHandler.getPrice(slat.slotIndex);
-//				if (price == null)
-//				{
-//					slat.setPriceNotFound(true);
-//				}
-//				else
-//				{
-//					slat.setPrice(price);
-//					slat.setPriceNotFound(false);
-//				}
-//			}
-//			updateTotals();
-			
+		{			
 			initGui();
 			refreshTimer.reset();
 		}
@@ -117,6 +95,7 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 		fontRenderer.drawString("Tax", (innerLeft + 114) * 2, (innerTop + 168) * 2, 0);
 		textWidth = fontRenderer.getStringWidth(taxAmount);
 		fontRenderer.drawString(taxAmount, (int)((innerLeft + innerWidth - 6) * 2 - textWidth), (innerTop + 168) * 2, 0);
+		
 		GlStateManager.scale(2, 2, 1);
 		
 		double upScale = 1 / 0.75;
@@ -180,6 +159,7 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 			else
 			{
 				newSlat.setPrice(price);
+				newSlat.setRegularPrice(itemHandler.getRegularPrice(i));
 			}
 			newSlat.setVisible(false);
 			buttonList.add(newSlat.getRemoveButton());
@@ -326,6 +306,7 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 	private void updateTotals()
 	{
 		BigDecimal subtotal = new BigDecimal("0.00");
+		BigDecimal savingsTotal = new BigDecimal("0.00");
 		for(ItemSlat slat : itemSlats)
 		{
 			if (slat.priceNotFound)
@@ -337,8 +318,10 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 				return;
 			}
 			subtotal = subtotal.add(slat.price);
+			savingsTotal = savingsTotal.add(slat.regularPrice.subtract(slat.price));
 		}
 		
+		this.savingsTotal = savingsTotal.toPlainString();
 		this.subTotal = subtotal.toPlainString();
 		this.taxAmount = subtotal.multiply(register.getCurrentTaxRate().divide(new BigDecimal("100.00"))).setScale(2, RoundingMode.HALF_UP).toPlainString();
 		this.total = subtotal.add(new BigDecimal(this.taxAmount)).toPlainString();
@@ -358,6 +341,7 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 		private FontRenderer fontRenderer;
 		private boolean priceNotFound;
 		private BigDecimal price;
+		private BigDecimal regularPrice;
 		
 		private String stackName;
 		private GuiImageLabelButton removeButton;
@@ -431,6 +415,14 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 			return price;
 		}
 		
+		public BigDecimal getRegularPrice() {
+			return regularPrice;
+		}
+
+		public void setRegularPrice(BigDecimal regularPrice) {
+			this.regularPrice = regularPrice;
+		}
+
 		public boolean getPriceNotFound()
 		{
 			return priceNotFound;
@@ -458,10 +450,26 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 			}
 			GlStateManager.scale(0.5, 0.5, 1);
 			fontRenderer.drawString(stackName, x * 2 + 1, y * 2 + 1, 0);
-			if (!getPriceNotFound() && price != null)
+			if (!getPriceNotFound() && price != null && regularPrice != null)
 			{
-				int priceWidth = fontRenderer.getStringWidth(price.toPlainString());
-				fontRenderer.drawString(price.toPlainString(), (x + width - 1) * 2 - priceWidth, y * 2 + 1, 0x888888);
+				boolean hasPromotionPrice = price.compareTo(regularPrice) != 0;
+				
+				String priceText = hasPromotionPrice ? TextFormatting.STRIKETHROUGH + "" : "";
+				priceText += regularPrice.toPlainString();
+				
+				if (hasPromotionPrice)
+				{
+					priceText += TextFormatting.RESET + " "  + TextFormatting.DARK_GREEN + price.toPlainString();
+				}
+				
+				int stringWidth = fontRenderer.getStringWidth(priceText);
+				fontRenderer.drawString(priceText, (x + width - 1) * 2 - stringWidth, y * 2 + 1, 0x888888);
+				
+				if (hasPromotionPrice)
+				{
+					priceText = "" + TextFormatting.DARK_GREEN +  "You saved " + regularPrice.subtract(price).toPlainString() + "!";
+					fontRenderer.drawString(priceText, x * 2 + 1, y * 2 + 1 + fontRenderer.FONT_HEIGHT, 0);
+				}
 			}
 			else if (getPriceNotFound())
 			{

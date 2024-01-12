@@ -1082,14 +1082,17 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 	{
 		TileEntityRegister register;
 		private ArrayList<BigDecimal> prices;
+		private ArrayList<BigDecimal> regularPrices;
 		public RegisterItemHandler(TileEntityRegister register)
 		{
 			super(100);
 			this.register = register;
 			prices = new ArrayList<>(100);
+			regularPrices = new ArrayList<>(100);
 			for(int i = 0; i < 100; i++)
 			{
 				prices.add(null);
+				regularPrices.add(null);
 			}
 		}
 		
@@ -1155,6 +1158,8 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 			ItemStack retVal = super.extractItem(slot, maxAmountForSlot, false);
 			prices.remove(slot);
 			prices.add(null);
+			regularPrices.remove(slot);
+			regularPrices.add(null);
 			for(int i = slot + 1; i < getSlots(); i++)
 			{
 				ItemStack nextStack = getStackInSlot(i);
@@ -1190,6 +1195,7 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 			for(int i = 0; i < getSlots(); i++)
 			{
 				prices.set(i, null);
+				regularPrices.set(i, null);
 			}
 		}
 		
@@ -1210,6 +1216,24 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 			prices.set(slot, price);
 			onContentsChanged(slot);
 		}
+		
+		public BigDecimal getRegularPrice(int slot)
+		{
+			try
+			{
+				return regularPrices.get(slot);
+			}
+			catch(Exception ex)
+			{
+				return null;
+			}
+		}
+		
+		public void setRegularPrice(int slot, BigDecimal regularPrice)
+		{
+			regularPrices.set(slot, regularPrice);
+			onContentsChanged(slot);
+		}
 	
 		@Override
 		public NBTTagCompound serializeNBT() {
@@ -1222,6 +1246,13 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 				}
 				
 				tag.setString("Price" + i, prices.get(i).toPlainString());
+				
+				if (regularPrices.size() <= i || regularPrices.get(i) == null)
+				{
+					continue;
+				}
+				
+				tag.setString("RegularPrice" + i, regularPrices.get(i).toPlainString());
 			}
 			
 			return tag;
@@ -1238,13 +1269,17 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 			}
 			for(int i = 0; i < getSlots(); i++)
 			{
-				if (!nbt.hasKey("Price" + i))
+				if (nbt.hasKey("Price" + i))
 				{
-					continue;
+					BigDecimal price = new BigDecimal(nbt.getString("Price" + i));
+					prices.set(i, price);
 				}
 				
-				BigDecimal price = new BigDecimal(nbt.getString("Price" + i));
-				prices.set(i, price);
+				if (nbt.hasKey("RegularPrice" + i))
+				{
+					BigDecimal regularPrice = new BigDecimal(nbt.getString("RegularPrice" + i));
+					regularPrices.set(i, regularPrice);
+				}
 			}
 		}
 	

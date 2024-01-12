@@ -224,11 +224,29 @@ public class ServerTickHandler {
 							{
 								ItemRegisterFluidWrapper.IRegisterFluidWrapper wrapper = stack.getCapability(ItemRegisterFluidWrapper.CapabilityRegisterFluidWrapper.REGISTER_FLUID_WRAPPER_CAPABILITY, null);
 								BigDecimal pricePerMB = locationItem.BasePrice.divide(new BigDecimal(locationItem.Quantity));
-								itemHandler.setPrice(slot, pricePerMB.multiply(new BigDecimal(wrapper.getFluidStack().amount)).setScale(2, RoundingMode.HALF_UP));
+								itemHandler.setRegularPrice(slot, pricePerMB.multiply(new BigDecimal(wrapper.getFluidStack().amount)).setScale(2, RoundingMode.HALF_UP));
+								
+								if (locationItem.CurrentPromotionLocationItem != null && locationItem.CurrentPromotionLocationItem.PromotionPrice != null && pricePerMB.compareTo(locationItem.CurrentPromotionLocationItem.PromotionPrice) != 0)
+								{
+									BigDecimal promotionPricePerMB = locationItem.CurrentPromotionLocationItem.PromotionPrice.divide(new BigDecimal(locationItem.Quantity));
+									itemHandler.setPrice(slot, promotionPricePerMB.multiply(new BigDecimal(wrapper.getFluidStack().amount)).setScale(2, RoundingMode.HALF_UP));
+								}
+								else
+								{
+									itemHandler.setPrice(slot, itemHandler.getRegularPrice(slot));
+								}
 							}
 							else
 							{
-								itemHandler.setPrice(slot, locationItem.BasePrice);
+								itemHandler.setRegularPrice(slot, locationItem.BasePrice);
+								if (locationItem.CurrentPromotionLocationItem != null && locationItem.CurrentPromotionLocationItem.PromotionPrice != null && locationItem.BasePrice.compareTo(locationItem.CurrentPromotionLocationItem.PromotionPrice) != 0)
+								{
+									itemHandler.setPrice(slot, locationItem.CurrentPromotionLocationItem.PromotionPrice);
+								}
+								else
+								{
+									itemHandler.setPrice(slot, locationItem.BasePrice);
+								}
 							}
 						}
 					}

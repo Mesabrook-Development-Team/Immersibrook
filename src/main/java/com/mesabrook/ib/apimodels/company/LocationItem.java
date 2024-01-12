@@ -11,4 +11,5 @@ public class LocationItem {
 	public Item Item;
 	public short Quantity;
 	public BigDecimal BasePrice;
+	public PromotionLocationItem CurrentPromotionLocationItem;
 }
