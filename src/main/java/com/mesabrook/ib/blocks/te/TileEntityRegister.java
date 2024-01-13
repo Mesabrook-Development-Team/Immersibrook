@@ -456,6 +456,22 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		return runningTotal.setScale(2, RoundingMode.HALF_UP);
 	}
 	
+	public BigDecimal getCurrentRegularPriceTotal()
+	{
+		TileEntityRegister.RegisterItemHandler handler = (TileEntityRegister.RegisterItemHandler)getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+		BigDecimal runningTotal = new BigDecimal(0);
+		for(int i = 0; i < handler.getSlots(); i++)
+		{
+			BigDecimal price = handler.getRegularPrice(i);
+			if (price != null)
+			{
+				runningTotal = price.add(runningTotal);
+			}
+		}
+		
+		return runningTotal.setScale(2, RoundingMode.HALF_UP);
+	}
+	
 	public void applyCashTender(BigDecimal amount)
 	{
 		tenderedAmount = tenderedAmount.add(amount);

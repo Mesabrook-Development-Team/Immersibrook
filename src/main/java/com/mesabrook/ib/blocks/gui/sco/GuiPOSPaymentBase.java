@@ -26,7 +26,8 @@ import net.minecraftforge.items.IItemHandler;
 
 public class GuiPOSPaymentBase extends GuiPOSMainBase {
 
-	String total = "";
+	String subtotal = "";
+	String savings = "";
 	String tax = "";
 	String due = "Calculating...";
 	
@@ -53,33 +54,37 @@ public class GuiPOSPaymentBase extends GuiPOSMainBase {
 	
 	protected void updatePrices()
 	{
-		BigDecimal runningTotal = register.getCurrentTotal();		
-		this.total = runningTotal.setScale(2, RoundingMode.HALF_UP).toPlainString();
-		this.tax = runningTotal.multiply(register.getCurrentTaxRate().divide(new BigDecimal(100))).setScale(2, RoundingMode.HALF_UP).toPlainString();
-		this.due = runningTotal.add(new BigDecimal(this.tax)).subtract(register.getTenderedAmount()).setScale(2, RoundingMode.HALF_UP).toPlainString();
+		BigDecimal runningTotal = register.getCurrentRegularPriceTotal();
+		this.subtotal = runningTotal.setScale(2, RoundingMode.HALF_UP).toPlainString();
+		this.savings = "-" + runningTotal.subtract(register.getCurrentTotal()).setScale(2, RoundingMode.HALF_UP).toPlainString();
+		this.tax = "+" + runningTotal.multiply(register.getCurrentTaxRate().divide(new BigDecimal(100))).setScale(2, RoundingMode.HALF_UP).toPlainString();
+		this.due = runningTotal.subtract(runningTotal.subtract(register.getCurrentTotal())).add(new BigDecimal(this.tax)).subtract(register.getTenderedAmount()).setScale(2, RoundingMode.HALF_UP).toPlainString();
 	}
 	
 	@Override
 	protected void doDraw(int mouseX, int mouseY, float partialTicks) {
 		super.doDraw(mouseX, mouseY, partialTicks);
 		
-		drawRect(innerLeft + 11, innerTop + 36, innerLeft + 176, innerTop + 46, 0xFFC8C8C8);
-		drawRect(innerLeft + 11, innerTop + 57, innerLeft + 176, innerTop + 68, 0xFFC8C8C8);
-		drawRect(innerLeft + 11, innerTop + 80, innerLeft + 176, innerTop + 90, 0xFFC8C8C8);
+		drawRect(innerLeft + 11, innerTop + 47, innerLeft + 176, innerTop + 57, 0xFFC8C8C8);
+		drawRect(innerLeft + 11, innerTop + 69, innerLeft + 176, innerTop + 79, 0xFFC8C8C8);
+		drawRect(innerLeft + 11, innerTop + 91, innerLeft + 176, innerTop + 101, 0xFFC8C8C8);
 		
-		fontRenderer.drawString("Total:", innerLeft + 14, innerTop + 37, 0);
-		fontRenderer.drawString("Tax:", innerLeft + 14, innerTop + 48, 0);
-		fontRenderer.drawString("Tendered:", innerLeft + 14, innerTop + 59, 0);
-		fontRenderer.drawString("Due:", innerLeft + 14, innerTop + 81, 0);
+		fontRenderer.drawString("Subtotal:", innerLeft + 14, innerTop + 37, 0);
+		fontRenderer.drawString("Total Savings:", innerLeft + 14, innerTop + 48, 0x008800);
+		fontRenderer.drawString("Tax:", innerLeft + 14, innerTop + 59, 0);
+		fontRenderer.drawString("Tendered:", innerLeft + 14, innerTop + 70, 0);
+		fontRenderer.drawString("Due:", innerLeft + 14, innerTop + 92, 0);
 		
-		int stringWidth = fontRenderer.getStringWidth(total);
-		fontRenderer.drawString(total, innerLeft + 176 - stringWidth, innerTop + 37, 0);
+		int stringWidth = fontRenderer.getStringWidth(subtotal);
+		fontRenderer.drawString(subtotal, innerLeft + 176 - stringWidth, innerTop + 37, 0);
+		stringWidth = fontRenderer.getStringWidth(savings);
+		fontRenderer.drawString(savings, innerLeft + 176 - stringWidth, innerTop + 48, 0x008800);
 		stringWidth = fontRenderer.getStringWidth(tax);
-		fontRenderer.drawString(tax, innerLeft + 176 - stringWidth, innerTop + 48, 0);
-		String tendered = register.getTenderedAmount().setScale(2, RoundingMode.HALF_UP).toPlainString();
+		fontRenderer.drawString(tax, innerLeft + 176 - stringWidth, innerTop + 59, 0);
+		String tendered = "-" + register.getTenderedAmount().setScale(2, RoundingMode.HALF_UP).toPlainString();
 		stringWidth = fontRenderer.getStringWidth(tendered);
-		fontRenderer.drawString(tendered, innerLeft + 176 - stringWidth, innerTop + 59, 0);
+		fontRenderer.drawString(tendered, innerLeft + 176 - stringWidth, innerTop + 70, 0);
 		stringWidth = fontRenderer.getStringWidth(due);
-		fontRenderer.drawString(due, innerLeft + 176 - stringWidth, innerTop + 81, 0);
+		fontRenderer.drawString(due, innerLeft + 176 - stringWidth, innerTop + 92, 0);
 	}
 }

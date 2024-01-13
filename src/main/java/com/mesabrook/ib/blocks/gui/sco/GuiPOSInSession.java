@@ -84,17 +84,21 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 		}
 		
 		GlStateManager.scale(0.5, 0.5, 1);
-		String pageText = "" + (currentPage + 1) + "/" + (((itemSlats.size() - 1) / MAX_SLATS) + 1);
+		String pageText = "Page " + (currentPage + 1) + "/" + (((itemSlats.size() - 1) / MAX_SLATS) + 1);
 		int textWidth = fontRenderer.getStringWidth(pageText);
-		fontRenderer.drawString(pageText, (innerLeft + 121 + ((innerLeft + innerWidth - 14) - (innerLeft + 121)) / 2) * 2 - (textWidth / 2), (innerTop + 153) * 2, 0x74A3E0);
+		fontRenderer.drawString(pageText, (innerLeft + innerWidth - 32) * 2 - (textWidth / 2), (innerTop + 30) * 2, 0);
 		
-		fontRenderer.drawString("Subtotal", (innerLeft + 114) * 2, (innerTop + 162) * 2, 0);
+		fontRenderer.drawString("Subtotal", (innerLeft + 114) * 2, (innerTop + 156) * 2, 0);
 		textWidth = fontRenderer.getStringWidth(subTotal);
-		fontRenderer.drawString(subTotal, (int)((innerLeft + innerWidth - 6) * 2 - textWidth), (innerTop + 162) * 2, 0);
+		fontRenderer.drawString(subTotal, (int)((innerLeft + innerWidth - 6) * 2 - textWidth), (innerTop + 156) * 2, 0);
+		
+		fontRenderer.drawString("Total Savings", (innerLeft + 114) * 2, (innerTop + 162) * 2, 0x008800);
+		textWidth = fontRenderer.getStringWidth("-" + savingsTotal);
+		fontRenderer.drawString("-" + savingsTotal, (int)((innerLeft + innerWidth - 6) * 2 - textWidth), (innerTop + 162) * 2, 0x008800);
 		
 		fontRenderer.drawString("Tax", (innerLeft + 114) * 2, (innerTop + 168) * 2, 0);
-		textWidth = fontRenderer.getStringWidth(taxAmount);
-		fontRenderer.drawString(taxAmount, (int)((innerLeft + innerWidth - 6) * 2 - textWidth), (innerTop + 168) * 2, 0);
+		textWidth = fontRenderer.getStringWidth("+" + taxAmount);
+		fontRenderer.drawString("+" + taxAmount, (int)((innerLeft + innerWidth - 6) * 2 - textWidth), (innerTop + 168) * 2, 0);
 		
 		GlStateManager.scale(2, 2, 1);
 		
@@ -103,6 +107,7 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 		fontRenderer.drawString("Grand Total", (int)((innerLeft + 114) * upScale), (int)((innerTop + 174) * upScale), 0);
 		textWidth = fontRenderer.getStringWidth(total);
 		fontRenderer.drawString(total, (int)((innerLeft + innerWidth - 6) * upScale - textWidth), (int)((innerTop + 174) * upScale), 0);
+		drawHorizontalLine((int)((innerLeft + innerWidth - 6) * upScale - textWidth), (int)((innerLeft + innerWidth - 6) * upScale), (int)((innerTop + 173) * upScale), 0xFF000000);
 		GlStateManager.scale(upScale, upScale, 1);
 	}
 
@@ -186,8 +191,8 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 			itemSlats.get(i).setVisible(true);
 		}
 		
-		nextPage = new ImageButton(0, innerLeft + innerWidth - 14, innerTop + 150, 8, 8, new ResourceLocation(Reference.MODID, "textures/gui/sco/resultset_next.png"), 16, 16, 16, 16);
-		prevPage = new ImageButton(0, innerLeft + 113, innerTop + 150, 8, 8, new ResourceLocation(Reference.MODID, "textures/gui/sco/resultset_previous.png"), 16, 16, 16, 16);
+		nextPage = new ImageButton(0, innerLeft + innerWidth - 16, innerTop + 28, 8, 8, new ResourceLocation(Reference.MODID, "textures/gui/sco/resultset_next.png"), 16, 16, 16, 16);
+		prevPage = new ImageButton(0, innerLeft + innerWidth - 56, innerTop + 28, 8, 8, new ResourceLocation(Reference.MODID, "textures/gui/sco/resultset_previous.png"), 16, 16, 16, 16);
 		pay = new GuiImageLabelButton(0, innerLeft + innerWidth - 52, innerTop + innerHeight - 21, 46, 15, "Pay  ", new ResourceLocation(Reference.MODID, "textures/gui/sco/arrow_right.png"), 10, 10, 10, 10, ImageOrientation.Right)
 				.setEnabledColor(0x00FF00)
 				.setTextScale(0.8F);
@@ -317,14 +322,14 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 				pay.enabled = false;
 				return;
 			}
-			subtotal = subtotal.add(slat.price);
+			subtotal = subtotal.add(slat.regularPrice);
 			savingsTotal = savingsTotal.add(slat.regularPrice.subtract(slat.price));
 		}
 		
 		this.savingsTotal = savingsTotal.toPlainString();
 		this.subTotal = subtotal.toPlainString();
-		this.taxAmount = subtotal.multiply(register.getCurrentTaxRate().divide(new BigDecimal("100.00"))).setScale(2, RoundingMode.HALF_UP).toPlainString();
-		this.total = subtotal.add(new BigDecimal(this.taxAmount)).toPlainString();
+		this.taxAmount = subtotal.subtract(savingsTotal).multiply(register.getCurrentTaxRate().divide(new BigDecimal("100.00"))).setScale(2, RoundingMode.HALF_UP).toPlainString();
+		this.total = subtotal.subtract(savingsTotal).add(new BigDecimal(this.taxAmount)).toPlainString();
 		pay.enabled = itemSlats.size() > 0;
 	}
 	
