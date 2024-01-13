@@ -93,7 +93,8 @@ public class GuiPOSSelectFluid extends GuiPOSMainBase {
 			
 			GuiImageLabelButton meterButton = new GuiImageLabelButton(meterIndex + 1, innerLeft + (i % 2 == 0 ? 115 : 183), innerTop + (47 + 24 * (i / 2)), 64, 20, "  " + fluidData.getName(), new ItemStack(Items.BUCKET), ImageOrientation.Left)
 					.setEnabledColor(0x373737)
-					.setDisabledColor(0xc6c6c6);
+					.setDisabledColor(0xc6c6c6)
+					.setTextScale(0.75F);
 			meterButton.enabled = meter.getFluidCounter() > 0;
 			buttonList.add(meterButton);
 		}

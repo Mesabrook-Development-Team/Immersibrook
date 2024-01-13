@@ -96,11 +96,6 @@ public class GuiImageLabelButton extends GuiButton {
 			GlStateManager.enableTexture2D();
 		}
 		
-		GlStateManager.scale(textScale, textScale, 1);
-		int textY = (int)(scale(y + height / 2, 1/textScale) - mc.fontRenderer.FONT_HEIGHT / 2) + 2;
-		mc.fontRenderer.drawString(displayString, (int)scale(x + (width / 2) - scale(textWidth / 2, textScale), 1/textScale), textY, effectiveColor);
-		GlStateManager.scale(1/textScale, 1/textScale, 1);
-		
 		if (texLocation != null)
 		{
 			mc.getTextureManager().bindTexture(texLocation);
@@ -149,6 +144,13 @@ public class GuiImageLabelButton extends GuiButton {
 			}
 			RenderHelper.disableStandardItemLighting();
 		}
+		
+		GlStateManager.scale(textScale, textScale, 1);
+		GlStateManager.translate(0, 0, 200);
+		int textY = (int)(scale(y + height / 2, 1/textScale) - mc.fontRenderer.FONT_HEIGHT / 2) + 2;
+		mc.fontRenderer.drawString(displayString, (int)scale(x + (width / 2) - scale(textWidth / 2, textScale), 1/textScale), textY, effectiveColor);
+		GlStateManager.translate(0, 0, -200);
+		GlStateManager.scale(1/textScale, 1/textScale, 1);
 		
 		if (enabled && hovered)
 		{
