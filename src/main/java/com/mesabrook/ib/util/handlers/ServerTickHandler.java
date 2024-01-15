@@ -28,6 +28,7 @@ import com.mesabrook.ib.net.atm.CreateNewDebitCardATMResponsePacket;
 import com.mesabrook.ib.net.atm.DepositATMResponsePacket;
 import com.mesabrook.ib.net.atm.FetchAccountsResponsePacket;
 import com.mesabrook.ib.net.atm.WithdrawATMResponsePacket;
+import com.mesabrook.ib.net.sco.QueryPriceResponsePacket;
 import com.mesabrook.ib.net.sco.StoreModeGuiResponse;
 import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.apiaccess.DataAccess.API;
@@ -75,6 +76,7 @@ public class ServerTickHandler {
 		handleATMWithdrawRequests();
 		handleATMDepositRequests();
 		handleNewCardRequests();
+		handleShelfPriceLookupTasks();
 	}
 	
 	public static HashMap<UUID, DataRequestTask> storeModeRequestsByUser = new HashMap<UUID, DataRequestTask>();
@@ -483,5 +485,50 @@ public class ServerTickHandler {
 		{
 			newCardRequests.remove(task);
 		}
+	}
+	
+	public static ArrayList<DataRequestTask> shelfPriceLookupTasks = new ArrayList<>();
+	private static void handleShelfPriceLookupTasks()
+	{
+		if (checkerCounter != 7 || shelfPriceLookupTasks.size() <= 0)
+		{
+			return;
+		}
+		
+		ArrayList<DataRequestTask> tasksToRemove = new ArrayList<>();
+		for(DataRequestTask task : shelfPriceLookupTasks)
+		{
+			if (task.getStatus() != DataRequestTaskStatus.Complete)
+			{
+				continue;
+			}
+			
+			QueryPriceResponsePacket response = new QueryPriceResponsePacket();
+			
+			GetData get = (GetData)task.getTask();
+			if (!get.getRequestSuccessful())
+			{
+				String consoleMessage = "An error occurred while fetching price";
+				GenericErrorResponse error = get.getResult(GenericErrorResponse.class);
+				if (error != null)
+				{
+					consoleMessage += ": " + error.message;
+				}
+				
+				Main.logger.error(consoleMessage);
+			}
+			
+			response.pos = (BlockPos)task.getData().get("shelfPos");
+			response.placementID = (int)task.getData().get("placementID");
+			response.locationItem = get.getResult(LocationItem.class);
+			UUID playerID = (UUID)task.getData().get("playerID");
+			
+			EntityPlayerMP player = FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerByUUID(playerID);
+			PacketHandler.INSTANCE.sendTo(response, player);
+			
+			tasksToRemove.add(task);
+		}
+		
+		shelfPriceLookupTasks.removeAll(tasksToRemove);
 	}
 }

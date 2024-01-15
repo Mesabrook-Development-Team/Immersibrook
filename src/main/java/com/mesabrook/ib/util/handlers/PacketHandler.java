@@ -51,6 +51,8 @@ import com.mesabrook.ib.net.sco.POSResetFluidMeterCounterPacket;
 import com.mesabrook.ib.net.sco.POSScanFluidPacket;
 import com.mesabrook.ib.net.sco.POSScanFluidResponsePacket;
 import com.mesabrook.ib.net.sco.POSUpdateFluidMeterNamePacket;
+import com.mesabrook.ib.net.sco.QueryPricePacket;
+import com.mesabrook.ib.net.sco.QueryPriceResponsePacket;
 import com.mesabrook.ib.net.sco.StoreModeGuiLocationSelectedPacket;
 import com.mesabrook.ib.net.sco.StoreModeGuiOpenedPacket;
 import com.mesabrook.ib.net.sco.StoreModeGuiPacket;
@@ -190,6 +192,8 @@ public class PacketHandler
 		INSTANCE.registerMessage(POSGetRegisterFluidMetersResponsePacket.Handler.class, POSGetRegisterFluidMetersResponsePacket.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(POSScanFluidPacket.Handler.class, POSScanFluidPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(POSScanFluidResponsePacket.Handler.class, POSScanFluidResponsePacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(QueryPricePacket.Handler.class, QueryPricePacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(QueryPriceResponsePacket.Handler.class, QueryPriceResponsePacket.class, nextID(), Side.CLIENT);
 		
 		// ATM
 		INSTANCE.registerMessage(FetchAccountsPacket.Handler.class, FetchAccountsPacket.class, nextID(), Side.SERVER);

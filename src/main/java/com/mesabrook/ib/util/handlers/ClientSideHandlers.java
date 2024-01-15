@@ -15,6 +15,7 @@ import com.google.common.collect.ImmutableCollection;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.apimodels.account.Account;
 import com.mesabrook.ib.apimodels.company.LocationEmployee;
+import com.mesabrook.ib.apimodels.company.LocationItem;
 import com.mesabrook.ib.blocks.BlockRegister;
 import com.mesabrook.ib.blocks.ImmersiblockRotationalManyBB;
 import com.mesabrook.ib.blocks.gui.GuiAboutImmersibrook;
@@ -45,6 +46,7 @@ import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneCalling;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneConnected;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneRecents;
 import com.mesabrook.ib.blocks.gui.telecom.SignalStrengths;
+import com.mesabrook.ib.blocks.te.ShelvingTileEntityRenderer;
 import com.mesabrook.ib.blocks.te.TileEntityFluidMeter;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
@@ -856,6 +858,25 @@ public class ClientSideHandlers
 			
 			GuiPOSSelectFluid addList = (GuiPOSSelectFluid)Minecraft.getMinecraft().currentScreen;
 			addList.onSaveResponse(updateTag);
+		}
+		
+		public static void onShelfPriceLookupResponse(BlockPos shelfPos, int placementID, LocationItem locationItem)
+		{
+			if (!ShelvingTileEntityRenderer.priceDisplayInformationsByBlockPos.containsKey(shelfPos.toLong()))
+			{
+				return;
+			}
+			
+			Optional<ShelvingTileEntityRenderer.ShelfPriceDisplayInformation> optDisplayInfo = ShelvingTileEntityRenderer.priceDisplayInformationsByBlockPos.get(shelfPos.toLong()).stream().filter(spdi -> spdi.placementID == placementID).findFirst();
+			if (!optDisplayInfo.isPresent())
+			{
+				return;
+			}
+			
+			ShelvingTileEntityRenderer.ShelfPriceDisplayInformation displayInfo = optDisplayInfo.get();
+			displayInfo.isRetrieved = true;
+			displayInfo.locationItem = locationItem;
+			displayInfo.timeInitiallyDisplayed = System.currentTimeMillis();
 		}
 	}
 

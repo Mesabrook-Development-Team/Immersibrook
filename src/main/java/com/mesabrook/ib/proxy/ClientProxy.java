@@ -12,6 +12,7 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.client.settings.KeyModifier;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -25,6 +26,7 @@ public class ClientProxy extends CommonProxy
 	public static KeyBinding nvToggleKey;
 	public static KeyBinding hammerSoundKey;
 	public static KeyBinding policeHelmetKey;
+	public static KeyBinding shelfPriceKey;
 	public void registerItemRenderer(Item item, int meta)
 	{
 		registerItemRenderer(item, meta, "inventory");
@@ -59,11 +61,14 @@ public class ClientProxy extends CommonProxy
 		nvToggleKey = new KeyBinding("key.nvtoggle.toggle", Keyboard.KEY_SEMICOLON, "key.immersibrook.category");
 		hammerSoundKey = new KeyBinding("key.hammer.toggle", Keyboard.KEY_R, "key.immersibrook.category");
 		policeHelmetKey = new KeyBinding("key.police.toggle", Keyboard.KEY_P, "key.immersibrook.category");
+		shelfPriceKey = new KeyBinding("key.shelfprice", Keyboard.KEY_P, "key.immersibrook.category");
+		shelfPriceKey.setKeyModifierAndCode(KeyModifier.SHIFT, Keyboard.KEY_P);
 
 		ClientRegistry.registerKeyBinding(vestToggleKey);
 		ClientRegistry.registerKeyBinding(nvToggleKey);
 		ClientRegistry.registerKeyBinding(hammerSoundKey);
 		ClientRegistry.registerKeyBinding(policeHelmetKey);
+		ClientRegistry.registerKeyBinding(shelfPriceKey);
 
 		//Main.logger.info("Starting download of statue player skins");
 

@@ -105,6 +105,11 @@ public class BlockShelf extends ImmersiblockRotationalManyBB {
 		return productPlacementByID.get(id);
 	}
 	
+	public ProductPlacement getProductPlacementByBoundingBox(AxisAlignedBB boundingBox)
+	{
+		return productPlacementByBB.get(boundingBox);
+	}
+	
 	@Override
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.SOLID;
