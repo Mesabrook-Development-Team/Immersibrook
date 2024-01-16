@@ -1327,6 +1327,7 @@ item.record.wide_record.desc=Слава Україні! (Wide Zelensky)
 //Enchantments
 enchantment.thunder=The Power of Thor
 enchantment.randomizer=Curse of Many Tones
+enchantment.auto_feed=Auto Feeding Servo
 
 //Keys
 key.immersibrook.category=Immersibrook

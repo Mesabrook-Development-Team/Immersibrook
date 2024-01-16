@@ -8,6 +8,7 @@ import com.mesabrook.ib.init.ModEnchants;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.ItemSponge;
 import com.mesabrook.ib.items.ItemTechRetailBox;
+import com.mesabrook.ib.items.misc.ItemIBFood;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.items.tools.ItemBanHammer;
 import com.mesabrook.ib.items.tools.ItemGavel;
@@ -26,6 +27,7 @@ import com.mesabrook.ib.util.saveData.SpecialDropTrackingData;
 import com.mesabrook.ib.util.saveData.TOSData;
 import com.mojang.authlib.GameProfile;
 import com.pam.harvestcraft.blocks.blocks.BlockPamCake;
+import com.pam.harvestcraft.item.items.ItemPamFood;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCake;
 import net.minecraft.block.BlockIce;
@@ -39,15 +41,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentString;
@@ -55,6 +56,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -273,7 +275,10 @@ public class PlayerEvents
 		World w = evt.getWorld();
 		ItemStack stack = player.getHeldItem(hand);
 
-		player.playSound(SoundEvents.ENTITY_PLAYER_ATTACK_WEAK, 0.38F, 1.0F);
+		if(stack.isEmpty())
+		{
+			player.playSound(SoundEvents.ENTITY_PLAYER_ATTACK_WEAK, 0.38F, 1.0F);
+		}
 	}
 
 	/*
@@ -537,5 +542,55 @@ public class PlayerEvents
 				event.setCanceled(false);
 			}
 		}
+	}
+
+	@SubscribeEvent
+	public void onLivingUpdate(LivingEvent.LivingUpdateEvent event)
+	{
+		if (event.getEntityLiving() instanceof EntityPlayer)
+		{
+			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+			ItemStack helmet = player.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+
+			if (EnchantmentHelper.getEnchantmentLevel(ModEnchants.AUTO_FEED, helmet) > 0)
+			{
+				autoFeedPlayer(player);
+			}
+		}
+	}
+
+	private void autoFeedPlayer(EntityPlayer player)
+	{
+		FoodStats foodStats = player.getFoodStats();
+		int foodLevel = foodStats.getFoodLevel();
+		int autoFeedThreshold = 20;
+
+		if (foodLevel < autoFeedThreshold)
+		{
+			ItemStack foodToConsume = findFoodInInventory(player);
+
+			if (!foodToConsume.isEmpty())
+			{
+				foodStats.addStats((ItemFood) foodToConsume.getItem(), foodToConsume);
+				player.playSound(SoundEvents.ENTITY_PLAYER_BURP, 0.3F, 1.0F);
+
+				ItemStack helmet = player.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+				helmet.damageItem(1, player);
+			}
+		}
+	}
+
+	private ItemStack findFoodInInventory(EntityPlayer player)
+	{
+		for (ItemStack stack : player.inventory.mainInventory)
+		{
+			if (stack.getItem() instanceof ItemFood || stack.getItem() instanceof ItemIBFood || stack.getItem() instanceof ItemPamFood)
+			{
+				ItemStack foodToConsume = stack.copy();
+				stack.shrink(1);
+				return foodToConsume;
+			}
+		}
+		return ItemStack.EMPTY;
 	}
 }
