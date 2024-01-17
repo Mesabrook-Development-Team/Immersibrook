@@ -3,8 +3,8 @@ package com.mesabrook.ib.items.misc;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
-import com.mesabrook.ib.util.DamageSourceDuckBoom;
 import com.mesabrook.ib.util.IHasModel;
+import com.mesabrook.ib.util.UniversalDeathSource;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,7 +12,6 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
@@ -30,7 +29,7 @@ import java.util.Random;
 public class ItemRubberDuck extends Item implements IHasModel
 {
     private final TextComponentTranslation angry = new TextComponentTranslation("im.angry");
-    public static final DamageSource DUCK_GO_BOOM = new DamageSourceDuckBoom("duckboom");
+    public static final UniversalDeathSource DUCK_GO_BOOM = new UniversalDeathSource("duckboom", "im.death.rubberduck");
     public ItemRubberDuck(String name)
     {
         setRegistryName(name);

@@ -111,5 +111,6 @@ public class CategoryTech extends AbstractCategory
         add(ModBlocks.SMOKER);
 
         add(ModBlocks.FLUID_METER);
+        add(ModItems.SMARTPHONE_BATTERY);
     }
 }

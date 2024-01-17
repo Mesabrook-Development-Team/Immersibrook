@@ -4,7 +4,7 @@ import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
-import com.mesabrook.ib.util.DamageSourceAprilFools;
+import com.mesabrook.ib.util.UniversalDeathSource;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.SoundRandomizer;
 import com.mesabrook.ib.util.handlers.PacketHandler;
@@ -30,7 +30,7 @@ import java.util.List;
 
 public class MiscItem extends Item implements IHasModel
 {
-	public static final DamageSource KEKW = new DamageSourceAprilFools("kekw");
+	public static final DamageSource KEKW = new UniversalDeathSource("kekw", "im.death.kekw");
 	private final TextComponentTranslation color = new TextComponentTranslation("im.color");
 	private final TextComponentTranslation firecloth = new TextComponentTranslation("im.firecloth");
 	public MiscItem(String name, int stack, CreativeTabs creativeTab)

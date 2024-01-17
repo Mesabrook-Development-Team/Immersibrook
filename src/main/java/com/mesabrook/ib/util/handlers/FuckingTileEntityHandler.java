@@ -5,7 +5,7 @@ import com.mesabrook.ib.util.Reference;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class TileEntityHandler
+public class FuckingTileEntityHandler
 {
 	public static void registerTileEntities()
 	{

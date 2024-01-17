@@ -5,9 +5,9 @@ import com.mesabrook.ib.Main;
 import com.mesabrook.ib.net.CommandProcessorPacket;
 import com.mesabrook.ib.net.sco.StoreModeGuiPacket;
 import com.mesabrook.ib.telecom.WirelessEmergencyAlertManager;
-import com.mesabrook.ib.util.DamageSourceDodo;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.apiaccess.DataAccess;
+import com.mesabrook.ib.util.UniversalDeathSource;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import com.mesabrook.ib.net.OpenTOSPacket;
@@ -223,10 +223,10 @@ public class CommandImmersibrook extends CommandBase
 				}
 				else if("die".equals(args[1]))
 				{
-					DamageSourceDodo dodo = new DamageSourceDodo("dodo");
+					UniversalDeathSource death = new UniversalDeathSource("dodo", "im.death.dodo");
 
 					player.sendMessage(new TextComponentString(TextFormatting.GOLD + "[IB Debug] Killed " + player.getName()));
-					player.attackEntityFrom(dodo, Integer.MAX_VALUE);
+					player.attackEntityFrom(death, 6000);
 				}
 				else if("feed".equals(args[1]))
 				{

@@ -7,9 +7,9 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 
-public class DamageSourceHammer extends DamageSource
+public class BanHammerDeathSource extends DamageSource
 {
-    public DamageSourceHammer(String damageSourceIn)
+    public BanHammerDeathSource(String damageSourceIn)
     {
         super(damageSourceIn);
     }

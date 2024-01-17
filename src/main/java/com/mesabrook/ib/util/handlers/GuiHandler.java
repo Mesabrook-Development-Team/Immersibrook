@@ -2,6 +2,7 @@ package com.mesabrook.ib.util.handlers;
 
 import com.mesabrook.ib.blocks.container.ContainerRation;
 import com.mesabrook.ib.blocks.container.ContainerRegisterSecurityBoxInventory;
+import com.mesabrook.ib.blocks.container.ContainerSmartphone;
 import com.mesabrook.ib.blocks.container.ContainerStampBook;
 import com.mesabrook.ib.blocks.container.ContainerTaggingStation;
 import com.mesabrook.ib.blocks.container.ContainerTaggingStationUntag;
@@ -119,6 +120,7 @@ public class GuiHandler implements IGuiHandler
 		}
 		else if (ID == Reference.GUI_STAMP_BOOK) return new GuiStampBook(new ContainerStampBook(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]));
 		else if (ID == Reference.GUI_RATION) return new GuiRation(new ContainerRation(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]));
+		else if (ID == Reference.GUI_SMARTPHONE_INV) return new GuiSmartphoneInv(new ContainerSmartphone(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]));
 		else if (ID == Reference.GUI_WALLSIGN) return new GuiWallSign(EnumHand.values()[x]);
 		else if (ID == Reference.GUI_SCO_POS)
 		{

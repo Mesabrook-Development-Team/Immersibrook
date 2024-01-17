@@ -1,5 +1,6 @@
 package com.mesabrook.ib.init;
 
+import com.mesabrook.ib.enchant.EnchantmentAutoFeed;
 import com.mesabrook.ib.enchant.EnchantmentRandomizer;
 import com.mesabrook.ib.enchant.EnchantmentThunder;
 import com.mesabrook.ib.items.tools.ItemBanHammer;
@@ -20,11 +21,13 @@ public class ModEnchants
 
 	public static final Enchantment THUNDER = new EnchantmentThunder();
 	public static final Enchantment RANDOM = new EnchantmentRandomizer();
+	public static final Enchantment AUTO_FEED = new EnchantmentAutoFeed();
 
 	@SubscribeEvent
 	public static void registerEnchantments(Register<Enchantment> event)
 	{
 		event.getRegistry().registerAll(THUNDER);
+		event.getRegistry().registerAll(AUTO_FEED);
 		event.getRegistry().registerAll(RANDOM);
 	}
 }

@@ -4,7 +4,7 @@ import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.BlockSeat;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
-import com.mesabrook.ib.util.DamageSourceAprilFools;
+import com.mesabrook.ib.util.UniversalDeathSource;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SoundRandomizer;
 import com.mesabrook.ib.util.handlers.PacketHandler;
@@ -203,7 +203,7 @@ public class SeatEvent
                     {
                         if(!player.getUniqueID().equals(Reference.CSX_UUID))
                         {
-                            DamageSourceAprilFools dodo = new DamageSourceAprilFools("dodo");
+                            UniversalDeathSource dodo = new UniversalDeathSource("fc", "im.death.fc");
                             player.setGameType(GameType.SURVIVAL);
                             player.attackEntityFrom(dodo, Integer.MAX_VALUE);
 

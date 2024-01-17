@@ -4,7 +4,7 @@ import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModEnchants;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
-import com.mesabrook.ib.util.DamageSourceHammer;
+import com.mesabrook.ib.util.BanHammerDeathSource;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.SoundRandomizer;
 import com.mesabrook.ib.util.ToolMaterialRegistry;
@@ -34,7 +34,7 @@ import java.util.Random;
 
 public class ItemBanHammer extends ItemPickaxe implements IHasModel
 {
-    public static final DamageSource HAMMER_GO_BONK = new DamageSourceHammer("hammer");
+    public static final DamageSource HAMMER_GO_BONK = new BanHammerDeathSource("hammer");
     private final TextComponentTranslation hammerShift = new TextComponentTranslation("im.hammer.shift");
     private final TextComponentTranslation noSound = new TextComponentTranslation("im.hammer.nosound");
     private final TextComponentTranslation currentSnd = new TextComponentTranslation("im.hammer.currentsnd");

@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wbtc:retail_freezer_upright"
+        }
+    ],
+    "result": {
+        "item": "wbtc:retail_drink_cooler",
+        "count": 1
+    }
+}
