@@ -125,7 +125,7 @@ public class ShelvingTileEntity extends TileEntity {
 			}
 		}
 		
-		ItemStack placedStack = player.getHeldItem(hand).splitStack(1);
+		ItemStack placedStack = player.getHeldItem(hand).copy();
 		if (placedStack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
 		{
 			ISecuredItem secureCap = placedStack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
@@ -145,9 +145,11 @@ public class ShelvingTileEntity extends TileEntity {
 			}
 			secureCap.setHomeLocation(getPos());
 			secureCap.setHomeSpot(spot.placementID);
+			placedStack.setCount(1);
 		}
 		
 		spot.items[indexToSet] = placedStack;
+		player.getHeldItem(hand).shrink(placedStack.getCount());
 		
 		markDirty();
 		
@@ -157,6 +159,7 @@ public class ShelvingTileEntity extends TileEntity {
 	private void checkAndAddAsCustomer(ProductSpot spot, EntityPlayer player, EnumHand hand)
 	{
 		ItemStack heldItem = player.getHeldItem(hand);
+		ItemStack stackToSet = heldItem.copy();
 		
 		if (heldItem.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
 		{
@@ -165,6 +168,8 @@ public class ShelvingTileEntity extends TileEntity {
 			{
 				return;
 			}
+			
+			stackToSet.setCount(1);
 		}
 		
 		if (!spot.items[spot.items.length - 1].isEmpty())
@@ -183,7 +188,8 @@ public class ShelvingTileEntity extends TileEntity {
 			}
 		}
 		
-		spot.items[indexToSet] = heldItem.splitStack(1);
+		spot.items[indexToSet] = stackToSet;
+		heldItem.shrink(stackToSet.getCount());
 		
 		markDirty();
 		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);

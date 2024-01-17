@@ -103,7 +103,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
 @SideOnly(Side.CLIENT)
-@EventBusSubscriber
+@EventBusSubscriber(Side.CLIENT)
 public class ClientSideHandlers
 {
 	private static HashMap<Long, PositionedSoundRecord> soundsByBlockPos = new HashMap<>();
@@ -950,36 +950,13 @@ public class ClientSideHandlers
 	
 	private static void drawManyBoundingBoxBlockHighlight(EntityPlayer player, float partialTicks, BlockPos pos, IBlockState blockState)
 	{
-		EnumFacing facing = blockState.getValue(ImmersiblockRotationalManyBB.FACING);
-		ImmutableCollection<AxisAlignedBB> boundingBoxesForFacing = ((ImmersiblockRotationalManyBB)blockState.getBlock()).SUB_BOUNDING_BOXES.get(facing);
-		
-		final double d3 = player.lastTickPosX + (player.posX - player.lastTickPosX) * partialTicks;
-		final double d4 = player.lastTickPosY + (player.posY - player.lastTickPosY) * partialTicks;
-		final double d5 = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * partialTicks;
-		final Vec3d start = player.getPositionEyes(partialTicks);
-		final Vec3d eyes = player.getLook(partialTicks);
-		final float reach = Minecraft.getMinecraft().playerController.getBlockReachDistance();
-		final Vec3d end = start.addVector(eyes.x * reach, eyes.y * reach, eyes.z * reach);
-		
-		AxisAlignedBB boxToDraw = null;
-		double leastDistance = reach + 1;
-		
-		for(AxisAlignedBB box : boundingBoxesForFacing)
-		{
-			RayTraceResult result = box.offset(pos).calculateIntercept(start, end);
-			if (result != null)
-			{
-				double distance = result.hitVec.distanceTo(start);
-				if (distance < leastDistance)
-				{
-					boxToDraw = box;
-					leastDistance = distance;
-				}
-			}
-		}
+		AxisAlignedBB boxToDraw = ImmersiblockRotationalManyBB.findSubBoundingBox(pos, blockState, player, partialTicks);
 		
 		if (boxToDraw != null)
 		{			
+			final double d3 = player.lastTickPosX + (player.posX - player.lastTickPosX) * partialTicks;
+			final double d4 = player.lastTickPosY + (player.posY - player.lastTickPosY) * partialTicks;
+			final double d5 = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * partialTicks;
 			GlStateManager.disableAlpha();
 			GlStateManager.enableBlend();
 	        GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);

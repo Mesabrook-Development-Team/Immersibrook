@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMultimap;
 import com.mesabrook.ib.util.ModUtils;
@@ -12,6 +13,7 @@ import com.mesabrook.ib.util.ModUtils;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
@@ -22,6 +24,8 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public abstract class ImmersiblockRotationalManyBB extends ImmersiblockRotational {
 
@@ -121,27 +125,7 @@ public abstract class ImmersiblockRotationalManyBB extends ImmersiblockRotationa
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
 			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		final Vec3d start = playerIn.getPositionEyes(hitZ);
-		final Vec3d look = playerIn.getLookVec();
-		final float reach = 4F;
-		final Vec3d end = start.addVector(look.x * reach, look.y * reach, look.z * reach);
-		
-		AxisAlignedBB boxHit = null;
-		double leastDistance = reach + 1;
-		
-		for(AxisAlignedBB subBoundingBox : SUB_BOUNDING_BOXES.get(state.getValue(FACING)))
-		{
-			RayTraceResult result = subBoundingBox.offset(pos).calculateIntercept(start, end);
-			if (result != null)
-			{
-				double distance = result.hitVec.distanceTo(start);
-				if (distance < leastDistance)
-				{
-					boxHit = subBoundingBox;
-					leastDistance = distance;
-				}
-			}
-		}
+		AxisAlignedBB boxHit = findSubBoundingBox(pos, state, playerIn, 0);
 		
 		if (boxHit != null)
 		{
@@ -171,5 +155,35 @@ public abstract class ImmersiblockRotationalManyBB extends ImmersiblockRotationa
 		}
 		
 		return ModUtils.getRotatedAABB(box, flipBoxes ? EnumFacing.NORTH : EnumFacing.SOUTH, false);
+	}
+
+	public static AxisAlignedBB findSubBoundingBox(BlockPos rotationalBlockPos, IBlockState rotationalBlockState, EntityPlayer player, float partialTicks)
+	{
+		EnumFacing facing = rotationalBlockState.getValue(ImmersiblockRotationalManyBB.FACING);
+		ImmutableCollection<AxisAlignedBB> boundingBoxesForFacing = ((ImmersiblockRotationalManyBB)rotationalBlockState.getBlock()).SUB_BOUNDING_BOXES.get(facing);
+		
+		final Vec3d start = player.getPositionEyes(partialTicks);
+		final Vec3d eyes = player.getLook(partialTicks);
+		final float reach = Minecraft.getMinecraft().playerController.getBlockReachDistance();
+		final Vec3d end = start.addVector(eyes.x * reach, eyes.y * reach, eyes.z * reach);
+		
+		AxisAlignedBB boxToDraw = null;
+		double leastDistance = reach + 1;
+		
+		for(AxisAlignedBB box : boundingBoxesForFacing)
+		{
+			RayTraceResult result = box.offset(rotationalBlockPos).calculateIntercept(start, end);
+			if (result != null)
+			{
+				double distance = result.hitVec.distanceTo(start);
+				if (distance < leastDistance)
+				{
+					boxToDraw = box;
+					leastDistance = distance;
+				}
+			}
+		}
+		
+		return boxToDraw;
 	}
 }

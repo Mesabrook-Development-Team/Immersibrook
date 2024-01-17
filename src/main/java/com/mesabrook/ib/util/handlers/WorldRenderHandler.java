@@ -31,8 +31,9 @@ import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.client.event.RenderBlockOverlayEvent.OverlayType;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
 
-@EventBusSubscriber
+@EventBusSubscriber(Side.CLIENT)
 public class WorldRenderHandler {
 
 	@SubscribeEvent
@@ -72,30 +73,7 @@ public class WorldRenderHandler {
 					
 					float partialTicks = e.getPartialTicks();
 					
-					EnumFacing facing = blockState.getValue(BlockShelf.FACING);
-					ImmutableCollection<AxisAlignedBB> boundingBoxesForFacing = ((BlockShelf)blockState.getBlock()).SUB_BOUNDING_BOXES.get(facing);
-					
-					final Vec3d start = player.getPositionEyes(partialTicks);
-					final Vec3d eyes = player.getLook(partialTicks);
-					final float reach = Minecraft.getMinecraft().playerController.getBlockReachDistance();
-					final Vec3d end = start.addVector(eyes.x * reach, eyes.y * reach, eyes.z * reach);
-					
-					AxisAlignedBB foundBox = null;
-					double leastDistance = reach + 1;
-					
-					for(AxisAlignedBB box : boundingBoxesForFacing)
-					{
-						RayTraceResult result = box.offset(lookingRTRResult.getBlockPos()).calculateIntercept(start, end);
-						if (result != null)
-						{
-							double distance = result.hitVec.distanceTo(start);
-							if (distance < leastDistance)
-							{
-								foundBox = box;
-								leastDistance = distance;
-							}
-						}
-					}
+					AxisAlignedBB foundBox = BlockShelf.findSubBoundingBox(lookingRTRResult.getBlockPos(), blockState, player, partialTicks);
 					
 					if (foundBox != null)
 					{
