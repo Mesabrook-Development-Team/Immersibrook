@@ -30,6 +30,7 @@ import com.mesabrook.ib.blocks.gui.telecom.GuiEmptyPhone;
 import com.mesabrook.ib.blocks.gui.telecom.GuiLowBatWarning;
 import com.mesabrook.ib.blocks.gui.telecom.GuiNewEmergencyAlert;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneActivate;
+import com.mesabrook.ib.blocks.gui.telecom.GuiSmartphoneInv;
 import com.mesabrook.ib.blocks.gui.telecom.GuiThermalWarning;
 import com.mesabrook.ib.blocks.te.TileEntityATM;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
