@@ -131,7 +131,7 @@ public class GuiPOSInSession extends GuiPOSMainBase {
 		if (mc.player.hasCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null))
 		{
 			IEmployeeCapability emp = mc.player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
-			adminMode.visible = emp != null && emp.manageRegisters();
+			adminMode.visible = emp != null && emp.getLocationID() == register.getLocationIDOwner() && emp.manageRegisters();
 		}
 		
 		buttonList.clear();

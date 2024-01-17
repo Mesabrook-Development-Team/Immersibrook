@@ -42,7 +42,7 @@ public class ShelvingTileEntity extends TileEntity {
 		IEmployeeCapability employeeCap = player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
 		ProductSpot spot = productSpotsByPlacementID.get(placement.getPlacementID());
 		
-		if (employeeCap.getLocationID() == getLocationIDOwner())
+		if (employeeCap.getLocationID() == getLocationIDOwner() && employeeCap.manageInventory())
 		{
 			if (playerStack.isEmpty()) // Pulling item off shelf
 			{
