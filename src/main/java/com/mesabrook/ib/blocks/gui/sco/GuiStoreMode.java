@@ -102,6 +102,11 @@ public class GuiStoreMode extends GuiScreen {
 			String loadingMessage = TextFormatting.ITALIC + "Fetching Stores...";
 			drawCenteredString(fontRenderer, loadingMessage, xCenter, yCenter, 0xFFFFFF);
 		}
+		else if (LocationsByCompany.size() <= 0)
+		{
+			String noStoresMessage = TextFormatting.ITALIC + "No Stores";
+			drawCenteredString(fontRenderer, noStoresMessage, xCenter, yCenter, 0xFFFFFF);
+		}
 		
 		synchronized(drawLock)
 		{

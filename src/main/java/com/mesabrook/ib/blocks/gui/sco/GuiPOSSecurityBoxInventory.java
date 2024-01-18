@@ -51,6 +51,14 @@ public class GuiPOSSecurityBoxInventory extends GuiContainer {
 		fontRenderer.drawString("Self-Checkout System", guiLeft + 68, guiTop + 11, 0xFFFFFF);
 		fontRenderer.drawString("Security Boxes", guiLeft + 105, guiTop + 29, 0);
 		
+		if (register.getName() != null)
+		{
+			GlStateManager.scale(0.5, 0.5, 1);
+			int stringWidth = fontRenderer.getStringWidth(register.getName());
+			fontRenderer.drawString(register.getName(), (guiLeft + xSize - 29) * 2 - stringWidth, (guiTop + 17) * 2 - fontRenderer.FONT_HEIGHT, 0);
+			GlStateManager.scale(2, 2, 1);
+		}
+		
 		renderHoveredToolTip(mouseX, mouseY);
 	}
 	

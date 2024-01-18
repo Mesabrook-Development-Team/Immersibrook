@@ -398,6 +398,25 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 		}
 	}
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		if (this.name.equalsIgnoreCase(name))
+		{
+			return;
+		}
+		
+		this.name = name;
+		markDirty();
+		
+		if (world != null)
+		{
+			getWorld().notifyBlockUpdate(getPos(), getWorld().getBlockState(getPos()), getWorld().getBlockState(getPos()), 3);
+		}
+	}
+
 	public SecurityBoxHandler getSecurityBoxInventory()
 	{
 		return securityBoxHandler;
@@ -753,6 +772,15 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 				else
 				{
 					setCurrentTaxRate(result.CurrentTaxRate);
+				}
+				
+				if (result.Name == null)
+				{
+					setName("");
+				}
+				else
+				{
+					setName(result.Name);
 				}
 				
 				// Make sure the security box inventory is not full
