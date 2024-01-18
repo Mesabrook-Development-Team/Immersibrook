@@ -1,24 +1,22 @@
 package com.mesabrook.ib.util.recipe;
 
-import blusunrize.immersiveengineering.api.crafting.*;
-import blusunrize.immersiveengineering.api.tool.ToolboxHandler;
-import blusunrize.immersiveengineering.common.util.compat.crafttweaker.*;
+import blusunrize.immersiveengineering.api.crafting.BlueprintCraftingRecipe;
+import blusunrize.immersiveengineering.api.crafting.BottlingMachineRecipe;
+import blusunrize.immersiveengineering.api.crafting.CrusherRecipe;
+import blusunrize.immersiveengineering.common.IEContent;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.config.ModConfig;
-import com.pam.harvestcraft.blocks.*;
-import com.pam.harvestcraft.item.*;
-import net.minecraft.init.Blocks;
+import com.pam.harvestcraft.item.ItemRegistry;
 import net.minecraft.init.Items;
-import net.minecraft.item.*;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.*;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fml.common.registry.*;
-import net.minecraftforge.oredict.*;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class RecipesHandler
 {
@@ -36,6 +34,8 @@ public class RecipesHandler
 			// Emergency Water Sachet Bottling Machine Recipe Thing
 			FluidStack water = new FluidStack(FluidRegistry.WATER, 1000);
 			BottlingMachineRecipe.addRecipe(new ItemStack(ModItems.WATER_SACHET, 1), new ItemStack(ModItems.PLASTIC_SILVER), water);
+
+			BlueprintCraftingRecipe.addRecipe("components", new ItemStack(ModItems.SIM_CARD), ModItems.PLASTIC_WHITE, new ItemStack(IEContent.itemMaterial, 1, 27), new ItemStack(IEContent.itemMaterial, 3, 20));
 
 			// <color> Plastic Ingot > <color> Raw Plastic Dust.
 			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_WHITE, outputAmount), new ItemStack(ModItems.PLASTIC_WHITE), 10);

@@ -242,6 +242,10 @@ public class ItemTechRetailBox extends Item implements IHasModel
         {
             productStack = new ItemStack(ModItems.OT_CHARGER);
         }
+        if(boxItem.getItem() == ModItems.SIM_BOX)
+        {
+            productStack = new ItemStack(ModItems.SIM_CARD);
+        }
 
         // Laptops
         if(boxItem.getItem() == ModItems.LAPTOP_BOX_WHITE)
