@@ -118,6 +118,7 @@ public class GuiATMDeposit extends GuiATMBase {
 			DepositATMPacket packet = new DepositATMPacket();
 			packet.accountID = account.AccountID;
 			packet.amount = depositAmount;
+			packet.companyIDOwner = atm.getCompanyIDOwner();
 			PacketHandler.INSTANCE.sendToServer(packet);
 		}
 	}

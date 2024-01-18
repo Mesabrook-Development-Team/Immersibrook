@@ -68,6 +68,7 @@ public class CreateNewDebitCardATMPacket implements IMessage {
 			parameter.PIN = message.pin;
 			parameter.CardFeeAccount = atm.getAccountRevenue();
 			parameter.CardFeeAmount = atm.getCardChargeAmount();
+			parameter.CompanyIDOwner = atm.getCompanyIDOwner();
 			
 			PostData post = new PostData(API.Company, "DebitCardIBAccess/IssueDebitCard", parameter, DebitCard.class);
 			post.getHeaderOverrides().put("playerName", player.getName());
@@ -85,6 +86,7 @@ public class CreateNewDebitCardATMPacket implements IMessage {
 			public String PIN;
 			public String CardFeeAccount;
 			public BigDecimal CardFeeAmount;
+			public long CompanyIDOwner;
 		}
 	}
 }

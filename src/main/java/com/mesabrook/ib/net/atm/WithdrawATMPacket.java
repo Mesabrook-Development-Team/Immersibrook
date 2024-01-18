@@ -21,11 +21,13 @@ public class WithdrawATMPacket implements IMessage {
 	public BlockPos dispensePos;
 	public long accountID;
 	public BigDecimal amount;
+	public long companyIDOwner;
 	@Override
 	public void fromBytes(ByteBuf buf) {
 		dispensePos = BlockPos.fromLong(buf.readLong());
 		accountID = buf.readLong();
 		amount = new BigDecimal(ByteBufUtils.readUTF8String(buf));
+		companyIDOwner = buf.readLong();
 	}
 
 	@Override
@@ -33,6 +35,7 @@ public class WithdrawATMPacket implements IMessage {
 		buf.writeLong(dispensePos.toLong());
 		buf.writeLong(accountID);
 		ByteBufUtils.writeUTF8String(buf, amount.toPlainString());
+		buf.writeLong(companyIDOwner);
 	}
 
 	public static class Handler implements IMessageHandler<WithdrawATMPacket, IMessage>
@@ -48,7 +51,7 @@ public class WithdrawATMPacket implements IMessage {
 			WithdrawParameter parameter = new WithdrawParameter();
 			parameter.AccountID = message.accountID;
 			parameter.Amount = message.amount;
-			
+			parameter.CompanyIDOwner = message.companyIDOwner;
 			PostData post = new PostData(API.Company, "AccountIBAccess/Withdraw", parameter, new Class<?>[0]);
 			post.getHeaderOverrides().put("PlayerName", ctx.getServerHandler().player.getName());
 			
@@ -64,6 +67,7 @@ public class WithdrawATMPacket implements IMessage {
 		{
 			public long AccountID;
 			public BigDecimal Amount;
+			public long CompanyIDOwner;
 		}
 	}
 }

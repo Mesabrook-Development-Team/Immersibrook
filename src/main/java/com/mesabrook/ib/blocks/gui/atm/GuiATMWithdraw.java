@@ -109,6 +109,7 @@ public class GuiATMWithdraw extends GuiATMBase {
 			packet.dispensePos = atm.getPos().offset(atmFacing);
 			packet.accountID = account.AccountID;
 			packet.amount = withdrawAmount;
+			packet.companyIDOwner = atm.getCompanyIDOwner();
 			PacketHandler.INSTANCE.sendToServer(packet);
 		}
 	}

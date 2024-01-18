@@ -32,17 +32,20 @@ public class DepositATMPacket implements IMessage {
 
 	public long accountID;
 	public BigDecimal amount;
+	public long companyIDOwner;
 	
 	@Override
 	public void toBytes(ByteBuf buf) {
 		buf.writeLong(accountID);
 		ByteBufUtils.writeUTF8String(buf, amount.toPlainString());
+		buf.writeLong(companyIDOwner);
 	}
 	
 	@Override
 	public void fromBytes(ByteBuf buf) {
 		accountID = buf.readLong();
 		amount = new BigDecimal(ByteBufUtils.readUTF8String(buf));
+		companyIDOwner = buf.readLong();
 	}
 	
 	public static class Handler implements IMessageHandler<DepositATMPacket, IMessage>
@@ -135,7 +138,7 @@ public class DepositATMPacket implements IMessage {
 			DepositObject deposit = new DepositObject();
 			deposit.AccountID = message.accountID;
 			deposit.Amount = message.amount;
-			
+			deposit.CompanyIDOwner = message.companyIDOwner;
 			PostData post = new PostData(API.Company, "AccountIBAccess/Deposit", deposit, new Class<?>[0]);
 			post.getHeaderOverrides().put("PlayerName", player.getName());
 			
@@ -150,6 +153,7 @@ public class DepositATMPacket implements IMessage {
 		{
 			public long AccountID;
 			public BigDecimal Amount;
+			public long CompanyIDOwner;
 		}
 	}
 }
