@@ -11,7 +11,6 @@ import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-import com.google.common.collect.ImmutableCollection;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.apimodels.account.Account;
 import com.mesabrook.ib.apimodels.company.LocationEmployee;
@@ -33,6 +32,7 @@ import com.mesabrook.ib.blocks.gui.sco.GuiPOSIdentifierSetup;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSSelectFluid;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSWaitingForNetwork;
 import com.mesabrook.ib.blocks.gui.sco.GuiStoreMode;
+import com.mesabrook.ib.blocks.gui.sco.GuiTaggingStation;
 import com.mesabrook.ib.blocks.gui.telecom.GuiCallEnd;
 import com.mesabrook.ib.blocks.gui.telecom.GuiHome;
 import com.mesabrook.ib.blocks.gui.telecom.GuiIncomingCall;
@@ -46,9 +46,11 @@ import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneCalling;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneConnected;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneRecents;
 import com.mesabrook.ib.blocks.gui.telecom.SignalStrengths;
+import com.mesabrook.ib.blocks.te.ShelvingTileEntity;
 import com.mesabrook.ib.blocks.te.ShelvingTileEntityRenderer;
 import com.mesabrook.ib.blocks.te.TileEntityFluidMeter;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
+import com.mesabrook.ib.blocks.te.TileEntityTaggingStation;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.init.SoundInit;
@@ -80,7 +82,6 @@ import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
@@ -862,21 +863,32 @@ public class ClientSideHandlers
 		
 		public static void onShelfPriceLookupResponse(BlockPos shelfPos, int placementID, LocationItem locationItem)
 		{
-			if (!ShelvingTileEntityRenderer.priceDisplayInformationsByBlockPos.containsKey(shelfPos.toLong()))
+			TileEntity te = Minecraft.getMinecraft().world.getTileEntity(shelfPos);
+			
+			if (te instanceof ShelvingTileEntity)
 			{
-				return;
+				if (!ShelvingTileEntityRenderer.priceDisplayInformationsByBlockPos.containsKey(shelfPos.toLong()))
+				{
+					return;
+				}
+				
+				Optional<ShelvingTileEntityRenderer.ShelfPriceDisplayInformation> optDisplayInfo = ShelvingTileEntityRenderer.priceDisplayInformationsByBlockPos.get(shelfPos.toLong()).stream().filter(spdi -> spdi.placementID == placementID).findFirst();
+				if (!optDisplayInfo.isPresent())
+				{
+					return;
+				}
+				
+				ShelvingTileEntityRenderer.ShelfPriceDisplayInformation displayInfo = optDisplayInfo.get();
+				displayInfo.isRetrieved = true;
+				displayInfo.locationItem = locationItem;
+				displayInfo.timeInitiallyDisplayed = System.currentTimeMillis();
 			}
 			
-			Optional<ShelvingTileEntityRenderer.ShelfPriceDisplayInformation> optDisplayInfo = ShelvingTileEntityRenderer.priceDisplayInformationsByBlockPos.get(shelfPos.toLong()).stream().filter(spdi -> spdi.placementID == placementID).findFirst();
-			if (!optDisplayInfo.isPresent())
+			if (te instanceof TileEntityTaggingStation && Minecraft.getMinecraft().currentScreen instanceof GuiTaggingStation)
 			{
-				return;
+				GuiTaggingStation gui = (GuiTaggingStation)Minecraft.getMinecraft().currentScreen;
+				gui.onPriceResult(locationItem);
 			}
-			
-			ShelvingTileEntityRenderer.ShelfPriceDisplayInformation displayInfo = optDisplayInfo.get();
-			displayInfo.isRetrieved = true;
-			displayInfo.locationItem = locationItem;
-			displayInfo.timeInitiallyDisplayed = System.currentTimeMillis();
 		}
 	}
 

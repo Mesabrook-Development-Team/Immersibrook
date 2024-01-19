@@ -72,7 +72,7 @@ public class LocationItem implements INBTSerializable<NBTTagCompound>{
 		{
 			BasePrice = new BigDecimal(nbt.getString("BasePrice"));
 		}
-		finally {}
+		catch(Exception ex) {}
 		
 		CurrentPromotionLocationItem = new PromotionLocationItem();
 		CurrentPromotionLocationItem.PromotionLocationItemID = nbt.getLong("CurrentPromotionLocationItem.PromotionLocationItemID");
@@ -83,6 +83,6 @@ public class LocationItem implements INBTSerializable<NBTTagCompound>{
 		{
 			CurrentPromotionLocationItem.PromotionPrice = new BigDecimal(nbt.getString("CurrentPromotionLocationItem.PromotionPrice"));
 		}
-		finally {}
+		catch(Exception ex) {}
 	}
 }

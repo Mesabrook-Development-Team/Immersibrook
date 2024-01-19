@@ -2,6 +2,9 @@ package com.mesabrook.ib.net.sco;
 
 import com.mesabrook.ib.apimodels.company.LocationItem;
 import com.mesabrook.ib.blocks.te.ShelvingTileEntity;
+import com.mesabrook.ib.blocks.te.TileEntityTaggingStation;
+import com.mesabrook.ib.capability.employee.CapabilityEmployee;
+import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.util.apiaccess.DataAccess.API;
 import com.mesabrook.ib.util.handlers.ServerTickHandler;
 import com.mesabrook.ib.util.apiaccess.DataRequestQueue;
@@ -53,16 +56,31 @@ public class QueryPricePacket implements IMessage {
 			EntityPlayerMP player = ctx.getServerHandler().player;
 			World world = player.world;
 			
+			long locationID = 0;
+			
 			TileEntity te = world.getTileEntity(message.shelfPos);
-			if (!(te instanceof ShelvingTileEntity))
+			if (te instanceof ShelvingTileEntity)
+			{
+				ShelvingTileEntity shelf = (ShelvingTileEntity)te;
+				locationID = shelf.getLocationIDOwner();
+			}
+			
+			if (te instanceof TileEntityTaggingStation)
+			{
+				IEmployeeCapability emp = player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null); // Tagging stations don't have owners - it's based on player
+				if (emp != null)
+				{
+					locationID = emp.getLocationID();
+				}
+			}
+			
+			if (locationID == 0)
 			{
 				return;
 			}
 			
-			ShelvingTileEntity shelf = (ShelvingTileEntity)te;
-			
 			GetData get = new GetData(API.Company, "PriceCheck/GetItem", LocationItem.class);
-			get.addQueryString("locationID", Long.toString(shelf.getLocationIDOwner()));
+			get.addQueryString("locationID", Long.toString(locationID));
 			get.addQueryString("itemName", message.stack.getDisplayName());
 			get.addQueryString("quantity", Integer.toString(message.stack.getCount()));
 			

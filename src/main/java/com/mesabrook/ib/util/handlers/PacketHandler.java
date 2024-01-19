@@ -59,6 +59,7 @@ import com.mesabrook.ib.net.sco.StoreModeGuiPacket;
 import com.mesabrook.ib.net.sco.StoreModeGuiResponse;
 import com.mesabrook.ib.net.sco.TaggingStationChangeTabsPacket;
 import com.mesabrook.ib.net.sco.TaggingStationDistanceChangedPacket;
+import com.mesabrook.ib.net.sco.TaggingStationSetPricePacket;
 import com.mesabrook.ib.net.telecom.AcceptCallPacket;
 import com.mesabrook.ib.net.telecom.ActivateChooseNumberPacket;
 import com.mesabrook.ib.net.telecom.ActivateNoReceptionPacket;
@@ -194,6 +195,7 @@ public class PacketHandler
 		INSTANCE.registerMessage(POSScanFluidResponsePacket.Handler.class, POSScanFluidResponsePacket.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(QueryPricePacket.Handler.class, QueryPricePacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(QueryPriceResponsePacket.Handler.class, QueryPriceResponsePacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(TaggingStationSetPricePacket.Handler.class, TaggingStationSetPricePacket.class, nextID(), Side.SERVER);
 		
 		// ATM
 		INSTANCE.registerMessage(FetchAccountsPacket.Handler.class, FetchAccountsPacket.class, nextID(), Side.SERVER);

@@ -77,6 +77,7 @@ public class ServerTickHandler {
 		handleATMDepositRequests();
 		handleNewCardRequests();
 		handleShelfPriceLookupTasks();
+		handlePriceSetTasks();
 	}
 	
 	public static HashMap<UUID, DataRequestTask> storeModeRequestsByUser = new HashMap<UUID, DataRequestTask>();
@@ -530,5 +531,51 @@ public class ServerTickHandler {
 		}
 		
 		shelfPriceLookupTasks.removeAll(tasksToRemove);
+	}
+
+	public static ArrayList<DataRequestTask> priceSetTasks = new ArrayList<>();
+	private static void handlePriceSetTasks()
+	{
+		if (checkerCounter != 3 || priceSetTasks.size() <= 0)
+		{
+			return;
+		}
+		
+		ArrayList<DataRequestTask> tasksToRemove = new ArrayList<>();
+		for(DataRequestTask task : priceSetTasks)
+		{
+			if (task.getStatus() != DataRequestTaskStatus.Complete)
+			{
+				continue;
+			}
+			
+			DataAccess access = task.getTask();
+			if (!access.getRequestSuccessful())
+			{
+				String errorLog = "An error occurred while trying to set prices";
+				GenericErrorResponse errorResponse = access.getResult(GenericErrorResponse.class);
+				if (errorResponse != null)
+				{
+					errorLog += ": " + errorResponse.message;
+				}
+				
+				Main.logger.error(errorLog);
+				tasksToRemove.add(task);
+				continue;
+			}
+			
+			LocationItem item = access.getResult(LocationItem.class);
+			QueryPriceResponsePacket responsePacket = new QueryPriceResponsePacket();
+			responsePacket.locationItem = item;
+			responsePacket.pos = (BlockPos)task.getData().get("tagStationPos");
+			responsePacket.placementID = 0;
+			
+			UUID playerID = (UUID)task.getData().get("playerID");
+			EntityPlayerMP player = FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerByUUID(playerID);
+			PacketHandler.INSTANCE.sendTo(responsePacket, player);
+			tasksToRemove.add(task);
+		}
+		
+		priceSetTasks.removeAll(tasksToRemove);
 	}
 }
