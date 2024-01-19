@@ -2,6 +2,8 @@ package com.mesabrook.ib.blocks;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
+import com.mesabrook.ib.capability.employee.CapabilityEmployee;
+import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.util.Reference;
 
 import net.minecraft.block.SoundType;
@@ -14,6 +16,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
 public class BlockRegister extends ImmersiblockRotationalManyBB {	
@@ -59,5 +62,40 @@ public class BlockRegister extends ImmersiblockRotationalManyBB {
 	@Override
 	public TileEntity createTileEntity(World world, IBlockState state) {
 		return new TileEntityRegister();
+	}
+	
+	@Override
+	public boolean removedByPlayer(IBlockState state, World world, BlockPos pos, EntityPlayer player,
+			boolean willHarvest) {
+		TileEntity te = world.getTileEntity(pos);
+		if (te instanceof TileEntityRegister)
+		{
+			TileEntityRegister register = (TileEntityRegister)te;
+			if (register.getLocationIDOwner() == 0)
+			{
+				return super.removedByPlayer(state, world, pos, player, willHarvest);
+			}
+			
+			if (!player.hasCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null))
+			{
+				if (!world.isRemote)
+    			{
+					player.sendMessage(new TextComponentString("You must be on duty and have permission to manage prices."));
+    			}
+				return false;
+			}
+			
+			IEmployeeCapability emp = player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
+			if (!emp.managePrices() || emp.getLocationID() != register.getLocationIDOwner())
+			{
+				if (!world.isRemote)
+    			{
+					player.sendMessage(new TextComponentString("You must be on duty and have permission to manage prices."));
+    			}
+				return false;
+			}
+		}
+		
+		return super.removedByPlayer(state, world, pos, player, willHarvest);
 	}
 }

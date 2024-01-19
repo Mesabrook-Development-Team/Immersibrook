@@ -69,7 +69,7 @@ public class GuiPOSFluidMeterAddRange extends GuiPOSMainBase {
 			try
 			{
 				scanDistance = Integer.parseInt(distance.getText());
-				if (scanDistance <= 0)
+				if (scanDistance <= 0 || scanDistance > 100)
 				{
 					return;
 				}

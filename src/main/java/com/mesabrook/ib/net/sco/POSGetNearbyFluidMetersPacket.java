@@ -1,10 +1,14 @@
 package com.mesabrook.ib.net.sco;
 
+import java.util.concurrent.TimeUnit;
+
+import com.google.common.base.Stopwatch;
+import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.te.TileEntityFluidMeter;
+import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import io.netty.buffer.ByteBuf;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -44,6 +48,12 @@ public class POSGetNearbyFluidMetersPacket implements IMessage {
 		{
 			EntityPlayerMP player = ctx.getServerHandler().player;
 			World world = player.world;
+			if (!(world.getTileEntity(message.registerPos) instanceof TileEntityRegister))
+			{
+				return;
+			}
+			
+			TileEntityRegister register = (TileEntityRegister)world.getTileEntity(message.registerPos);
 			
 			NBTTagList tagList = new NBTTagList();
 			
@@ -53,6 +63,7 @@ public class POSGetNearbyFluidMetersPacket implements IMessage {
 				{
 					for(int z = message.registerPos.getZ() - message.scanDistance; z < message.registerPos.getZ() + message.scanDistance; z++)
 					{
+						
 						TileEntity te = world.getTileEntity(new BlockPos(x, y, z));
 						if (!(te instanceof TileEntityFluidMeter))
 						{
@@ -60,6 +71,11 @@ public class POSGetNearbyFluidMetersPacket implements IMessage {
 						}
 						
 						TileEntityFluidMeter meter = (TileEntityFluidMeter)te;
+						if (meter.getLocationIDOwner() != register.getLocationIDOwner())
+						{
+							continue;
+						}
+						
 						NBTTagCompound meterData = meter.getUpdateTag();
 						tagList.appendTag(meterData);
 					}

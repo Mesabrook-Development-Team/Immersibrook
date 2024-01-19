@@ -24,6 +24,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockShelf extends ImmersiblockRotationalManyBB {
@@ -113,5 +114,35 @@ public class BlockShelf extends ImmersiblockRotationalManyBB {
 	@Override
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.SOLID;
+	}
+
+	@Override
+	public boolean removedByPlayer(IBlockState state, World world, BlockPos pos, EntityPlayer player,
+			boolean willHarvest) {
+		if (!player.hasCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null))
+		{
+			if (!world.isRemote)
+			{
+				player.sendMessage(new TextComponentString("You must be on duty and have permission to manage inventory."));
+			}
+			return false;
+		}
+		
+		IEmployeeCapability emp = player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
+		TileEntity te = world.getTileEntity(pos);
+		if (te instanceof ShelvingTileEntity)
+		{
+			ShelvingTileEntity shelving = (ShelvingTileEntity)te;
+			if (!emp.manageInventory() || shelving.getLocationIDOwner() != emp.getLocationID())
+			{
+				if (!world.isRemote)
+    			{
+					player.sendMessage(new TextComponentString("You must be on duty and have permission to manage inventory."));
+    			}
+				return false;
+			}
+			return super.removedByPlayer(state, world, pos, player, willHarvest);
+		}
+		return false;
 	}
 }

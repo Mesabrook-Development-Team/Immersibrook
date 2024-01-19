@@ -94,4 +94,18 @@ public class BlockATM extends ImmersiblockRotational {
 			e.setCanceled(isCanceled);
 		}
 	}
+	
+	@Override
+	public boolean removedByPlayer(IBlockState state, World world, BlockPos pos, EntityPlayer player,
+			boolean willHarvest) {
+		IEmployeeCapability emp = player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
+		TileEntityATM atmTE = (TileEntityATM)world.getTileEntity(pos);
+		boolean isCanceled = emp.getLocationID() == 0 || emp.getLocationEmployee().Location.CompanyID != atmTE.getCompanyIDOwner();
+		if (isCanceled && !world.isRemote)
+		{
+			player.sendMessage(new TextComponentString(TextFormatting.RED + "You must be on duty as the owning company to break this ATM"));
+		}
+		
+		return isCanceled ? false : super.removedByPlayer(state, world, pos, player, willHarvest);
+	}
 }

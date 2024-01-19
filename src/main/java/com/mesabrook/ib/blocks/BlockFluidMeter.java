@@ -210,4 +210,39 @@ public class BlockFluidMeter extends ImmersiblockRotationalManyBB implements IHa
     	TileEntityFluidMeter meter = (TileEntityFluidMeter)te;
     	return meter.getFluidCounter() > 0 ? 15 : 0;
     }
+    
+    @Override
+    public boolean removedByPlayer(IBlockState state, World world, BlockPos pos, EntityPlayer player,
+    		boolean willHarvest) {
+    	TileEntity te = world.getTileEntity(pos);
+    	if (te instanceof TileEntityFluidMeter)
+    	{
+    		TileEntityFluidMeter meter = (TileEntityFluidMeter)te;
+    		if (meter.getLocationIDOwner() == 0)
+    		{
+    			return super.removedByPlayer(state, world, pos, player, willHarvest);
+    		}
+    		
+    		if (!player.hasCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null))
+    		{
+    			if (!world.isRemote)
+    			{
+    				player.sendMessage(new TextComponentString("You must be on duty and have permission to manage inventory."));
+    			}
+				return false;
+    		}
+    		
+    		IEmployeeCapability emp = player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
+    		if (emp.getLocationID() != meter.getLocationIDOwner() || !emp.manageInventory())
+    		{
+    			if (!world.isRemote)
+    			{
+    				player.sendMessage(new TextComponentString("You must be on duty and have permission to manage inventory."));
+    			}
+				return false;
+    		}
+    	}
+    	
+    	return super.removedByPlayer(state, world, pos, player, willHarvest);
+    }
 }
