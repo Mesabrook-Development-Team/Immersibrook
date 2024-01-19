@@ -57,8 +57,8 @@ public class GuiPOSPaymentBase extends GuiPOSMainBase {
 		BigDecimal runningTotal = register.getCurrentRegularPriceTotal();
 		this.subtotal = runningTotal.setScale(2, RoundingMode.HALF_UP).toPlainString();
 		this.savings = "-" + runningTotal.subtract(register.getCurrentTotal()).setScale(2, RoundingMode.HALF_UP).toPlainString();
-		this.tax = "+" + runningTotal.multiply(register.getCurrentTaxRate().divide(new BigDecimal(100))).setScale(2, RoundingMode.HALF_UP).toPlainString();
-		this.due = runningTotal.subtract(runningTotal.subtract(register.getCurrentTotal())).add(new BigDecimal(this.tax)).subtract(register.getTenderedAmount()).setScale(2, RoundingMode.HALF_UP).toPlainString();
+		this.tax = "+" + runningTotal.subtract(runningTotal.subtract(register.getCurrentTotal())).multiply(register.getCurrentTaxRate().divide(new BigDecimal(100))).setScale(2, RoundingMode.HALF_UP).toPlainString();
+		this.due = runningTotal.subtract(runningTotal.subtract(register.getCurrentTotal())).add(new BigDecimal(this.tax.substring(1))).subtract(register.getTenderedAmount()).setScale(2, RoundingMode.HALF_UP).toPlainString();
 	}
 	
 	@Override

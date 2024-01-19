@@ -2,12 +2,14 @@ package com.mesabrook.ib.blocks.sco;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.ArrayUtils;
 
 import com.mesabrook.ib.blocks.ImmersiblockRotationalManyBB;
 import com.mesabrook.ib.blocks.te.ShelvingTileEntity;
+import com.mesabrook.ib.blocks.te.ShelvingTileEntity.ProductSpot;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 
@@ -16,11 +18,13 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
@@ -144,5 +148,34 @@ public class BlockShelf extends ImmersiblockRotationalManyBB {
 			return super.removedByPlayer(state, world, pos, player, willHarvest);
 		}
 		return false;
+	}
+	
+	@Override
+	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+		TileEntity te = worldIn.getTileEntity(pos);
+		if (te instanceof ShelvingTileEntity)
+		{
+			ShelvingTileEntity shelf = (ShelvingTileEntity)te;
+			for(ProductPlacement placement : productPlacementByID.values())
+			{
+				Optional<ProductSpot> spot = Arrays.stream(shelf.getProductSpots()).filter(ps -> ps.getPlacementID() == placement.getPlacementID()).findFirst();
+				if (!spot.isPresent())
+				{
+					continue;
+				}
+				
+				for(ItemStack stack : spot.get().getItems())
+				{
+					if (stack.isEmpty())
+					{
+						continue;
+					}
+					
+					InventoryHelper.spawnItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), stack.copy());
+				}
+			}
+		}
+		
+		super.breakBlock(worldIn, pos, state);
 	}
 }
