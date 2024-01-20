@@ -33,6 +33,6 @@ public class GuiShoppingBasket extends GuiContainer {
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 		super.drawGuiContainerForegroundLayer(mouseX, mouseY);
 		
-		renderHoveredToolTip(mouseX, mouseY);
+		renderHoveredToolTip(mouseX - guiLeft, mouseY - guiTop);
 	}
 }

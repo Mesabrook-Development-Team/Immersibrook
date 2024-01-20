@@ -1,6 +1,5 @@
 package com.mesabrook.ib.blocks.te;
 
-import java.awt.TextComponent;
 import java.util.HashMap;
 
 import com.mesabrook.ib.blocks.sco.ProductPlacement;
@@ -9,9 +8,9 @@ import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
 import com.mesabrook.ib.capability.secureditem.ISecuredItem;
 import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.items.commerce.ItemSecurityBox;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -25,6 +24,8 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.common.util.INBTSerializable;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 
 public class ShelvingTileEntity extends TileEntity {	
 	private HashMap<Integer, ProductSpot> productSpotsByPlacementID = new HashMap<>();
@@ -55,7 +56,7 @@ public class ShelvingTileEntity extends TileEntity {
 		}
 		else
 		{
-			if (playerStack.isEmpty()) // Pulling something off shelf
+			if (playerStack.isEmpty() || playerStack.getItem() == ModItems.SHOPPING_BASKET) // Pulling something off shelf
 			{
 				removeItemAsCustomer(spot, player, hand);
 			}
@@ -203,7 +204,34 @@ public class ShelvingTileEntity extends TileEntity {
 			return;
 		}
 		
-		player.setHeldItem(hand, stack);
+		ItemStack heldItem = player.getHeldItem(hand);
+		if (heldItem.getItem() == ModItems.SHOPPING_BASKET)
+		{
+			IItemHandler handler = heldItem.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+			int insertIndex = -1;
+			for(int i = 0; i < handler.getSlots(); i++)
+			{
+				if (handler.getStackInSlot(i).isEmpty())
+				{
+					insertIndex = i;
+					break;
+				}
+			}
+			
+			if (insertIndex == -1)
+			{
+				InventoryHelper.spawnItemStack(world, player.posX, player.posY + player.eyeHeight, player.posZ, stack);
+			}
+			else
+			{
+				handler.insertItem(insertIndex, stack, false);
+				player.sendStatusMessage(new TextComponentString(TextFormatting.GOLD + stack.getDisplayName() + " (x" + stack.getCount() + ") added to shopping basket"), true);
+			}
+		}
+		else
+		{
+			player.setHeldItem(hand, stack);			
+		}
 		for(int i = 0; i < spot.items.length; i++)
 		{
 			if (i < spot.items.length - 1)
