@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wbtc:sim_card"
+        },
+        {
+            "item": "cfm:item_envelope",
+			"data": 0
+        }
+    ],
+    "result": {
+        "item": "wbtc:sim_box",
+        "count": 1
+    }
+}

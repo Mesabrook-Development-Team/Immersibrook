@@ -523,6 +523,7 @@ public class ModItems
 	public static final Item BOX_BLUE = new ItemTechRetailBox("phone_box_blue");
 	public static final Item OT_CHARGER_BOX = new ItemTechRetailBox("ot_charger_box");
 	public static final Item OT_CHARGER = new MiscItem("ot_charger", 1, Main.IMMERSIBROOK_MAIN);
+	public static final Item SIM_BOX = new ItemTechRetailBox("sim_box");
 
 	// CDM Retail Boxes - Laptops
 	public static final Item LAPTOP_BOX_BLACK = new ItemTechRetailBox("laptop_box_black");

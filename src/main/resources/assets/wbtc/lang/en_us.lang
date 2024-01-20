@@ -2047,6 +2047,7 @@ tile.retail_freezer_deep.name=Retail Deep Freezer Island
 tile.sim_station.name=Mesabrook Bell SIM Programming Terminal
 item.sim_card.name=Mesabrook Bell SIM Card
 item.sd_card.name=Memory Card
+item.sim_box.name=Mesabrook Bell SIM Card Kit
 
 //Shopping Baskets
 item.shopping_basket_white.name=Shopping Basket
