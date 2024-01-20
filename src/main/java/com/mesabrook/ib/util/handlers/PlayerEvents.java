@@ -1,8 +1,29 @@
 package com.mesabrook.ib.util.handlers;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.Random;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClients;
+
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
+import com.mesabrook.ib.blocks.sco.BlockShelf;
+import com.mesabrook.ib.blocks.te.ShelvingTileEntity;
+import com.mesabrook.ib.blocks.te.ShelvingTileEntity.ProductSpot;
 import com.mesabrook.ib.blocks.te.TileEntityPhoneStand;
+import com.mesabrook.ib.capability.employee.CapabilityEmployee;
+import com.mesabrook.ib.capability.employee.IEmployeeCapability;
+import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
+import com.mesabrook.ib.capability.secureditem.ISecuredItem;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModEnchants;
 import com.mesabrook.ib.init.ModItems;
@@ -20,7 +41,9 @@ import com.mesabrook.ib.telecom.CallManager;
 import com.mesabrook.ib.util.ItemRandomizer;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SoundRandomizer;
+import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.apiaccess.DataAccess.API;
+import com.mesabrook.ib.util.apiaccess.DataAccess.AuthenticationStatus;
 import com.mesabrook.ib.util.apiaccess.PutData;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.saveData.SpecialDropTrackingData;
@@ -28,6 +51,7 @@ import com.mesabrook.ib.util.saveData.TOSData;
 import com.mojang.authlib.GameProfile;
 import com.pam.harvestcraft.blocks.blocks.BlockPamCake;
 import com.pam.harvestcraft.item.items.ItemPamFood;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCake;
 import net.minecraft.block.BlockIce;
@@ -48,7 +72,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.*;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.FoodStats;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentString;
@@ -56,7 +84,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -66,16 +94,6 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.HttpClients;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.time.LocalDate;
-import java.util.Random;
-import java.util.UUID;
 
 public class PlayerEvents 
 {
@@ -170,7 +188,8 @@ public class PlayerEvents
 			ResetInactivityParam param = new ResetInactivityParam();
 			param.username = player.getDisplayNameString();
 			PutData put = new PutData(API.System, "Inactivity/ResetInactivity", param);
-			put.executeNoResult();
+			put.setRequireAuthToken(false);
+			put.execute();
 			
 			TOSData tos = (TOSData)player.world.loadData(TOSData.class, Reference.TOS_DATA_NAME);
 			if (tos == null)
@@ -183,6 +202,11 @@ public class PlayerEvents
 			{
 				PacketHandler.INSTANCE.sendTo(new OpenTOSPacket(), FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerByUUID(player.getUniqueID()));
 			}
+		}
+		
+		if (DataAccess.getAuthenticationStatus() == AuthenticationStatus.LoggedOut && player.canUseCommand(2, ""))
+		{
+			player.sendMessage(new TextComponentString("" + TextFormatting.BOLD + TextFormatting.YELLOW + "WARNING! The server is currently NOT signed into MesaSuite!"));
 		}
 	}
 	
@@ -543,18 +567,87 @@ public class PlayerEvents
 			}
 		}
 	}
-
+	
 	@SubscribeEvent
-	public void onLivingUpdate(LivingEvent.LivingUpdateEvent event)
+	public void onPlayerCloneEvent(net.minecraftforge.event.entity.player.PlayerEvent.Clone e)
 	{
-		if (event.getEntityLiving() instanceof EntityPlayer)
+		if (e.getEntityPlayer() == null || e.getOriginal() == null || !e.isWasDeath())
 		{
-			EntityPlayer player = (EntityPlayer) event.getEntityLiving();
+			return;
+		}
+		
+		IEmployeeCapability oldEmployeeCapability = e.getOriginal().getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
+		IEmployeeCapability newEmployeeCapability = e.getEntityPlayer().getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
+		newEmployeeCapability.setLocationEmployee(oldEmployeeCapability.getLocationEmployee());
+	}
+	
+	@SubscribeEvent
+	public void onPlayerUpdateEvent(LivingUpdateEvent e)
+	{
+		if (e.getEntityLiving().world.isRemote)
+		{
+			return;
+		}
+
+		if (e.getEntityLiving() instanceof EntityPlayer)
+		{
+			EntityPlayer player = (EntityPlayer)e.getEntityLiving();
 			ItemStack helmet = player.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
 
 			if (EnchantmentHelper.getEnchantmentLevel(ModEnchants.AUTO_FEED, helmet) > 0)
 			{
 				autoFeedPlayer(player);
+			}
+
+			IEmployeeCapability cap = player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
+			for(ItemStack stack : player.inventory.mainInventory.stream().filter(is -> is.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null)).collect(Collectors.toSet()))
+			{
+				ISecuredItem securedItem = stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
+				if (securedItem.getHomeLocation().getY() == -1 || cap.getLocationID() == securedItem.getLocationIDOwner())
+				{
+					continue;
+				}
+				
+				if (securedItem.getHomeLocation().getDistance((int)player.posX, (int)player.posY, (int)player.posZ) > securedItem.getResetDistance())
+				{
+					IBlockState state = player.world.getBlockState(securedItem.getHomeLocation());
+					if (!(state.getBlock() instanceof BlockShelf))
+					{
+						continue;
+					}
+					
+					ShelvingTileEntity shelf = (ShelvingTileEntity)player.world.getTileEntity(securedItem.getHomeLocation());
+					if (shelf == null)
+					{
+						continue;
+					}
+					
+					Optional<ProductSpot> spot = Arrays.stream(shelf.getProductSpots()).filter(ps -> ps.getPlacementID() == securedItem.getHomeSpot()).findFirst();
+					if (spot == null || !spot.isPresent())
+					{
+						continue;
+					}
+					
+					ItemStack[] stackArray = spot.get().getItems();
+					if (!stackArray[stackArray.length - 1].isEmpty())
+					{
+						continue;
+					}
+					
+					int indexToFill = -1;
+					for(int i = 0; i < stackArray.length; i++)
+					{
+						if (stackArray[i].isEmpty())
+						{
+							indexToFill = i;
+							break;
+						}
+					}
+					stackArray[indexToFill] = stack.copy();
+					stack.shrink(stack.getCount());
+					shelf.markDirty();
+					player.world.notifyBlockUpdate(shelf.getPos(), state, state, 3);
+				}
 			}
 		}
 	}

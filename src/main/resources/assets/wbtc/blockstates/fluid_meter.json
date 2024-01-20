@@ -1,8 +1,15 @@
 {
     "variants": {
-        "facing=north": { "model": "wbtc:fluid_meter" },
-        "facing=south": { "model": "wbtc:fluid_meter", "y": 180 },
-        "facing=west":  { "model": "wbtc:fluid_meter", "y": 270 },
-        "facing=east":  { "model": "wbtc:fluid_meter", "y": 90 }
+	    "inventory": [{
+				"model": "wbtc:fluid_meter_up"
+			}],
+        "facing=north,isup=false": { "model": "wbtc:fluid_meter_down" },
+        "facing=south,isup=false": { "model": "wbtc:fluid_meter_down", "y": 180 },
+        "facing=west,isup=false":  { "model": "wbtc:fluid_meter_down", "y": 270 },
+        "facing=east,isup=false":  { "model": "wbtc:fluid_meter_down", "y": 90 },
+        "facing=north,isup=true": { "model": "wbtc:fluid_meter_up" },
+        "facing=south,isup=true": { "model": "wbtc:fluid_meter_up", "y": 180 },
+        "facing=west,isup=true":  { "model": "wbtc:fluid_meter_up", "y": 270 },
+        "facing=east,isup=true":  { "model": "wbtc:fluid_meter_up", "y": 90 }
     }
 }

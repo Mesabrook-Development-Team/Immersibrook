@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import com.google.common.collect.ImmutableList;
+import com.mesabrook.ib.blocks.gui.ImageButton;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;

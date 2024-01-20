@@ -1,5 +1,6 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.net.ClientSoundPacket;
 import com.mesabrook.ib.util.handlers.PacketHandler;

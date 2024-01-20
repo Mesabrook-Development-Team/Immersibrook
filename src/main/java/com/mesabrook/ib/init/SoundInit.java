@@ -212,6 +212,17 @@ public class SoundInit
 	public static final SoundEvent PHONE_CRASH;
 	public static final SoundEvent PHONE_BOOTUP;
 	public static final SoundEvent BATTERY_LOW;
+	
+	// Self-Checkout
+	public static final SoundEvent BILL_ACCEPTOR;
+	public static final SoundEvent COIN_SLOT;
+	public static final SoundEvent POS_CASHBACK;
+	public static final SoundEvent POS_PAYMENT_TYPE;
+	public static final SoundEvent POS_SCAN;
+	public static final SoundEvent POS_SCANNER_BEEP;
+	public static final SoundEvent POS_TAKE_CARD;
+	public static final SoundEvent POS_USE_PINPAD;
+	public static final SoundEvent POS_WELCOME;
 
 	static
 	{
@@ -414,6 +425,17 @@ public class SoundInit
 		DTMF_7 = addSoundsToRegistry("dtmf_7");
 		DTMF_8 = addSoundsToRegistry("dtmf_8");
 		DTMF_9 = addSoundsToRegistry("dtmf_9");
+		
+		// Self-checkout
+		BILL_ACCEPTOR = addSoundsToRegistry("bill_acceptor");
+		COIN_SLOT = addSoundsToRegistry("coin_slot");
+		POS_CASHBACK = addSoundsToRegistry("pos_cashback");
+		POS_PAYMENT_TYPE = addSoundsToRegistry("pos_payment_type");
+		POS_SCAN = addSoundsToRegistry("pos_scan");
+		POS_SCANNER_BEEP = addSoundsToRegistry("pos_scanner_beep");
+		POS_TAKE_CARD = addSoundsToRegistry("pos_take_card");
+		POS_USE_PINPAD = addSoundsToRegistry("pos_use_pinpad");
+		POS_WELCOME = addSoundsToRegistry("pos_welcome");
 	}
 
 	private static SoundEvent addSoundsToRegistry(String soundId)
@@ -615,6 +637,15 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.WC_OFF);
 				event.getRegistry().register(SoundInit.WC_ON);
 				event.getRegistry().register(SoundInit.DING_10);
+				event.getRegistry().register(SoundInit.BILL_ACCEPTOR);
+				event.getRegistry().register(SoundInit.COIN_SLOT);
+				event.getRegistry().register(SoundInit.POS_CASHBACK);
+				event.getRegistry().register(SoundInit.POS_PAYMENT_TYPE);
+				event.getRegistry().register(SoundInit.POS_SCAN);
+				event.getRegistry().register(SoundInit.POS_SCANNER_BEEP);
+				event.getRegistry().register(SoundInit.POS_TAKE_CARD);
+				event.getRegistry().register(SoundInit.POS_USE_PINPAD);
+				event.getRegistry().register(SoundInit.POS_WELCOME);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

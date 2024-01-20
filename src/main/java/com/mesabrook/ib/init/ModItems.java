@@ -1,25 +1,63 @@
 package com.mesabrook.ib.init;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.mesabrook.ib.Main;
-import com.mesabrook.ib.items.*;
-import com.mesabrook.ib.items.armor.*;
+import com.mesabrook.ib.items.ItemBlahaj;
+import com.mesabrook.ib.items.ItemFlagger;
+import com.mesabrook.ib.items.ItemLauncher;
+import com.mesabrook.ib.items.ItemRation;
+import com.mesabrook.ib.items.ItemSponge;
+import com.mesabrook.ib.items.ItemTechRetailBox;
+import com.mesabrook.ib.items.armor.FaceMasks;
+import com.mesabrook.ib.items.armor.FirefighterSuit;
+import com.mesabrook.ib.items.armor.Hardhat;
+import com.mesabrook.ib.items.armor.NightVisionGoggles;
+import com.mesabrook.ib.items.armor.PoliceHelmet;
+import com.mesabrook.ib.items.armor.SACA;
+import com.mesabrook.ib.items.armor.SafetyHelmet;
+import com.mesabrook.ib.items.armor.SafetyVest;
+import com.mesabrook.ib.items.armor.Vest;
+import com.mesabrook.ib.items.armor.WearableHat;
 import com.mesabrook.ib.items.commerce.ItemDebitCard;
 import com.mesabrook.ib.items.commerce.ItemMoney;
+import com.mesabrook.ib.items.commerce.ItemRegisterFluidWrapper;
+import com.mesabrook.ib.items.commerce.ItemSecurityBox;
 import com.mesabrook.ib.items.commerce.ItemShoppingBasket;
 import com.mesabrook.ib.items.commerce.ItemWallet;
-import com.mesabrook.ib.items.misc.*;
+import com.mesabrook.ib.items.misc.ItemDooter;
+import com.mesabrook.ib.items.misc.ItemFirstAidKit;
+import com.mesabrook.ib.items.misc.ItemIBFood;
+import com.mesabrook.ib.items.misc.ItemMesabrookIcon;
+import com.mesabrook.ib.items.misc.ItemPhone;
+import com.mesabrook.ib.items.misc.ItemPlasticIngot;
+import com.mesabrook.ib.items.misc.ItemPresent;
+import com.mesabrook.ib.items.misc.ItemRadio;
+import com.mesabrook.ib.items.misc.ItemRawPlastic;
+import com.mesabrook.ib.items.misc.ItemRubberDuck;
+import com.mesabrook.ib.items.misc.ItemStamp;
 import com.mesabrook.ib.items.misc.ItemStamp.StampTypes;
+import com.mesabrook.ib.items.misc.ItemStampBook;
+import com.mesabrook.ib.items.misc.ItemWineBottle;
+import com.mesabrook.ib.items.misc.MiscItem;
+import com.mesabrook.ib.items.misc.SerpentBar;
+import com.mesabrook.ib.items.misc.SpecialFood;
+import com.mesabrook.ib.items.misc.ToyPopper;
 import com.mesabrook.ib.items.record.MemeRecord;
-import com.mesabrook.ib.items.tools.*;
+import com.mesabrook.ib.items.tools.ItemBanHammer;
+import com.mesabrook.ib.items.tools.ItemEnderChest;
+import com.mesabrook.ib.items.tools.ItemGavel;
+import com.mesabrook.ib.items.tools.ItemIceChisel;
+import com.mesabrook.ib.items.tools.ItemManholeHook;
+import com.mesabrook.ib.items.tools.ItemTapeMeasure;
 import com.mesabrook.ib.items.weapons.ItemWeapon;
 import com.mesabrook.ib.util.ArmorMaterialRegistry;
 import com.mesabrook.ib.util.ToolMaterialRegistry;
+
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ModItems
 {
@@ -431,24 +469,27 @@ public class ModItems
 	public static final Item WALLET_UNI = new ItemWallet("wallet_unisex");
 	public static final Item WALLET_MAS = new ItemWallet("wallet_masculine");
 	public static final Item WALLET_FEM = new ItemWallet("wallet_feminine");
-	public static final Item DEBIT_CARD_RED = new ItemDebitCard("card_red");
-	public static final Item DEBIT_CARD_GREEN = new ItemDebitCard("card_green");
-	public static final Item DEBIT_CARD_BLUE = new ItemDebitCard("card_blue");
+	public static final Item DEBIT_CARD_RED = new ItemDebitCard("card_red", ItemDebitCard.EnumDebitCardType.Business);
+	public static final Item DEBIT_CARD_GREEN = new ItemDebitCard("card_green", ItemDebitCard.EnumDebitCardType.Government);
+	public static final Item DEBIT_CARD_BLUE = new ItemDebitCard("card_blue", ItemDebitCard.EnumDebitCardType.Personal);
+	public static final Item SECURITY_BOX = new ItemSecurityBox();
+	public static final Item REGISTER_FLUID_WRAPPER = new ItemRegisterFluidWrapper();
+	
 
 	// Mesabrookian Dollar Items - Banknotes
-	public static final Item ONE_DOLLAR = new ItemMoney("one_dollar", 100);
-	public static final Item FIVE_DOLLARS = new ItemMoney("five_dollars", 500);
-	public static final Item TEN_DOLLARS = new ItemMoney("ten_dollars", 10000);
-	public static final Item TWENTY_DOLLARS = new ItemMoney("twenty_dollars", 20000);
-	public static final Item FIFTY_DOLLARS = new ItemMoney("fifty_dollars", 50000);
-	public static final Item ONE_HUNDRED_DOLLARS = new ItemMoney("one_hundred_dollars", 100000);
+	public static final Item ONE_DOLLAR = new ItemMoney("one_dollar", 100, ItemMoney.MoneyType.Bill);
+	public static final Item FIVE_DOLLARS = new ItemMoney("five_dollars", 500, ItemMoney.MoneyType.Bill);
+	public static final Item TEN_DOLLARS = new ItemMoney("ten_dollars", 1000, ItemMoney.MoneyType.Bill);
+	public static final Item TWENTY_DOLLARS = new ItemMoney("twenty_dollars", 2000, ItemMoney.MoneyType.Bill);
+	public static final Item FIFTY_DOLLARS = new ItemMoney("fifty_dollars", 5000, ItemMoney.MoneyType.Bill);
+	public static final Item ONE_HUNDRED_DOLLARS = new ItemMoney("one_hundred_dollars", 10000, ItemMoney.MoneyType.Bill);
 
 	// Mesabrookian Dollar Items - Coinage
-	public static final Item PENNY = new ItemMoney("penny", 1);
-	public static final Item FIVE_CENTS = new ItemMoney("five_cents", 5);
-	public static final Item TEN_CENTS = new ItemMoney("ten_cents", 10);
-	public static final Item TWENTY_FIVE_CENTS = new ItemMoney("twenty_five_cents", 25);
-	public static final Item DOLLAR_COIN = new ItemMoney("dollar_coin", 100);
+	public static final Item PENNY = new ItemMoney("penny", 1, ItemMoney.MoneyType.Coin);
+	public static final Item FIVE_CENTS = new ItemMoney("five_cents", 5, ItemMoney.MoneyType.Coin);
+	public static final Item TEN_CENTS = new ItemMoney("ten_cents", 10, ItemMoney.MoneyType.Coin);
+	public static final Item TWENTY_FIVE_CENTS = new ItemMoney("twenty_five_cents", 25, ItemMoney.MoneyType.Coin);
+	public static final Item DOLLAR_COIN = new ItemMoney("dollar_coin", 100, ItemMoney.MoneyType.Coin);
 
 	// Blahaj
 	public static final Item BLAHAJ = new ItemBlahaj("blahaj");

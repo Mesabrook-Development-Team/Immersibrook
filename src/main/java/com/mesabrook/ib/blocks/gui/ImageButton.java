@@ -1,4 +1,4 @@
-package com.mesabrook.ib.blocks.gui.telecom;
+package com.mesabrook.ib.blocks.gui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class ImageButton extends GuiButton {
 
-	private String textureFileName;
+	private ResourceLocation textureRL;
 	private int texWidth;
 	private int texHeight;
 	private int uvWidth;
@@ -19,23 +19,18 @@ public class ImageButton extends GuiButton {
 	
 	public ImageButton(int buttonId, int x, int y, int widthIn, int heightIn, String textureFileName, int texWidth, int texHeight, int uvWidth, int uvHeight)
 	{
+		this(buttonId, x, y, widthIn, heightIn, new ResourceLocation("wbtc", "textures/gui/telecom/" + textureFileName), texWidth, texHeight, uvWidth, uvHeight);
+	}
+	
+	public ImageButton(int buttonId, int x, int y, int widthIn, int heightIn, ResourceLocation textureLocation, int texWidth, int texHeight, int uvWidth, int uvHeight)
+	{
 		super(buttonId, x, y, widthIn, heightIn, "");
-		this.textureFileName = textureFileName;
+		this.textureRL = textureLocation;
 		this.texWidth = texWidth;
 		this.texHeight = texHeight;
 		this.uvWidth = uvWidth;
 		this.uvHeight = uvHeight;
 		this.hover = false;
-	}
-
-	public String getTextureFileName()
-	{
-		return textureFileName;
-	}
-	
-	public void setTextureFileName(String textureFileName)
-	{
-		this.textureFileName = textureFileName;
 	}
 	
 	public int getTexWidth() {
@@ -53,9 +48,36 @@ public class ImageButton extends GuiButton {
 	public void setTexHeight(int texHeight) {
 		this.texHeight = texHeight;
 	}
+	
+	
+	public int getUvWidth() {
+		return uvWidth;
+	}
+
+	public void setUvWidth(int uvWidth) {
+		this.uvWidth = uvWidth;
+	}
+
+	public int getUvHeight() {
+		return uvHeight;
+	}
+
+	public void setUvHeight(int uvHeight) {
+		this.uvHeight = uvHeight;
+	}
+
 	public boolean isHovering()
 	{
 		return this.hover;
+	}
+	
+
+	public ResourceLocation getTextureRL() {
+		return textureRL;
+	}
+
+	public void setTextureRL(ResourceLocation textureRL) {
+		this.textureRL = textureRL;
 	}
 
 	@Override
@@ -64,9 +86,17 @@ public class ImageButton extends GuiButton {
 		{
 			return;
 		}
-		this.hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
-		GlStateManager.color(1, 1, 1);
-		mc.getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/telecom/" + textureFileName));
+
+		this.hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;		
+		if (enabled)
+		{
+			GlStateManager.color(1, 1, 1);
+		}
+		else
+		{
+			GlStateManager.color(0.5F, 0.5F, 0.5F);
+		}
+		mc.getTextureManager().bindTexture(textureRL);
 		drawScaledCustomSizeModalRect(x, y, 0, 0, uvWidth, uvHeight, width, height, texWidth, texHeight);
 	}
 }

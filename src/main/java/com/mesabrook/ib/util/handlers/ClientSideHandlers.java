@@ -1,10 +1,58 @@
 package com.mesabrook.ib.util.handlers;
 
+import java.math.BigDecimal;
+import java.net.URI;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Optional;
+import java.util.function.Consumer;
+
 import com.mesabrook.ib.Main;
+import com.mesabrook.ib.apimodels.account.Account;
+import com.mesabrook.ib.apimodels.company.LocationEmployee;
+import com.mesabrook.ib.apimodels.company.LocationItem;
+import com.mesabrook.ib.blocks.BlockRegister;
+import com.mesabrook.ib.blocks.ImmersiblockRotationalManyBB;
 import com.mesabrook.ib.blocks.gui.GuiAboutImmersibrook;
 import com.mesabrook.ib.blocks.gui.GuiTOS;
-import com.mesabrook.ib.blocks.gui.telecom.*;
+import com.mesabrook.ib.blocks.gui.atm.GuiATMDeposit;
+import com.mesabrook.ib.blocks.gui.atm.GuiATMHome;
+import com.mesabrook.ib.blocks.gui.atm.GuiATMNewCard;
+import com.mesabrook.ib.blocks.gui.atm.GuiATMSettings;
+import com.mesabrook.ib.blocks.gui.atm.GuiATMWithdraw;
+import com.mesabrook.ib.blocks.gui.sco.GuiPOSCardBase;
+import com.mesabrook.ib.blocks.gui.sco.GuiPOSCardDetermine;
+import com.mesabrook.ib.blocks.gui.sco.GuiPOSCardMessage;
+import com.mesabrook.ib.blocks.gui.sco.GuiPOSFluidMeterAddList;
+import com.mesabrook.ib.blocks.gui.sco.GuiPOSIdentifierSetup;
+import com.mesabrook.ib.blocks.gui.sco.GuiPOSSelectFluid;
+import com.mesabrook.ib.blocks.gui.sco.GuiPOSWaitingForNetwork;
+import com.mesabrook.ib.blocks.gui.sco.GuiStoreMode;
+import com.mesabrook.ib.blocks.gui.sco.GuiTaggingStation;
+import com.mesabrook.ib.blocks.gui.telecom.GuiCallEnd;
+import com.mesabrook.ib.blocks.gui.telecom.GuiHome;
+import com.mesabrook.ib.blocks.gui.telecom.GuiIncomingCall;
+import com.mesabrook.ib.blocks.gui.telecom.GuiLockScreen;
+import com.mesabrook.ib.blocks.gui.telecom.GuiNewEmergencyAlert;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneActivate;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneActivate.ActivationScreens;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneBase;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneCall;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneCalling;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneConnected;
+import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneRecents;
+import com.mesabrook.ib.blocks.gui.telecom.SignalStrengths;
+import com.mesabrook.ib.blocks.te.ShelvingTileEntity;
+import com.mesabrook.ib.blocks.te.ShelvingTileEntityRenderer;
+import com.mesabrook.ib.blocks.te.TileEntityFluidMeter;
+import com.mesabrook.ib.blocks.te.TileEntityRegister;
+import com.mesabrook.ib.blocks.te.TileEntityTaggingStation;
+import com.mesabrook.ib.capability.employee.CapabilityEmployee;
+import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.init.SoundInit;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
@@ -15,6 +63,8 @@ import com.mesabrook.ib.util.ModUtils;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.saveData.PhoneLogData;
+
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.ISound.AttenuationType;
@@ -24,32 +74,37 @@ import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.toasts.SystemToast;
 import net.minecraft.client.multiplayer.WorldClient;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderGlobal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.RayTraceResult.Type;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
+import net.minecraftforge.client.event.DrawBlockHighlightEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
-import java.net.URI;
-import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Optional;
-import java.util.function.Consumer;
-
 @SideOnly(Side.CLIENT)
+@EventBusSubscriber(Side.CLIENT)
 public class ClientSideHandlers
 {
 	private static HashMap<Long, PositionedSoundRecord> soundsByBlockPos = new HashMap<>();
@@ -681,9 +736,321 @@ public class ClientSideHandlers
 		ModUtils.openWebLink(uri);
 	}
 
+	public static class SelfCheckOutHandlers
+	{
+		public static void onInitializeRegisterResponse(boolean wasSuccessful, String error, BlockPos pos)
+		{
+			if (!(Minecraft.getMinecraft().currentScreen instanceof GuiPOSIdentifierSetup))
+			{
+				return;
+			}
+			
+			GuiPOSIdentifierSetup gui = (GuiPOSIdentifierSetup)Minecraft.getMinecraft().currentScreen;
+			if (!wasSuccessful)
+			{
+				gui.displayError(error);
+			}
+			else
+			{
+				TileEntityRegister register = (TileEntityRegister)Minecraft.getMinecraft().world.getTileEntity(pos);
+				GuiPOSWaitingForNetwork waitingForNetwork = new GuiPOSWaitingForNetwork(register);
+				Minecraft.getMinecraft().displayGuiScreen(waitingForNetwork);
+			}
+		}
+	
+		public static void onStoreModeGUIResponse(LocationEmployee[] employees)
+		{
+			GuiScreen screen = Minecraft.getMinecraft().currentScreen;
+			if (screen == null || !(screen instanceof GuiStoreMode))
+			{
+				return;
+			}
+			
+			((GuiStoreMode)screen).setLocationEmployees(employees);
+		}
+		
+		public static void openStoreModeGUI()
+		{
+			Minecraft.getMinecraft().displayGuiScreen(new GuiStoreMode());
+		}
+		
+		public static void updateEmployeeCapaiblity(LocationEmployee locationEmployee)
+		{
+			IEmployeeCapability capability = Minecraft.getMinecraft().player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
+			capability.setLocationEmployee(locationEmployee);
+		}
+
+		public static void onOpenCardReaderPacket(BlockPos atmPos)
+		{
+			TileEntity te = Minecraft.getMinecraft().world.getTileEntity(atmPos);
+			if (!(te instanceof TileEntityRegister))
+			{
+				return;
+			}
+			
+			Minecraft.getMinecraft().displayGuiScreen(new GuiPOSCardDetermine((TileEntityRegister)te));
+		}
+		
+		public static void displayCardReaderMessage(String message)
+		{
+			Minecraft mc = Minecraft.getMinecraft();
+			
+			if (!(mc.currentScreen instanceof GuiPOSCardBase))
+			{
+				return;
+			}
+			
+			GuiPOSCardBase processingScreen = (GuiPOSCardBase)mc.currentScreen;
+			processingScreen.showNextGui(GuiPOSCardMessage.class, message);
+		}
+		
+		public static void onAddFluidMeterListResponse(NBTTagList tagList)
+		{
+			if (!(Minecraft.getMinecraft().currentScreen instanceof GuiPOSFluidMeterAddList))
+			{
+				return;
+			}
+			
+			GuiPOSFluidMeterAddList addList = (GuiPOSFluidMeterAddList)Minecraft.getMinecraft().currentScreen;
+			addList.onDataReceived(tagList);
+		}
+		
+		public static void onAddFluidMeterSaveResponse(NBTTagCompound updateTag)
+		{
+			if (!(Minecraft.getMinecraft().currentScreen instanceof GuiPOSFluidMeterAddList))
+			{
+				return;
+			}
+			
+			GuiPOSFluidMeterAddList addList = (GuiPOSFluidMeterAddList)Minecraft.getMinecraft().currentScreen;
+			addList.onSaveResponse(updateTag);
+		}
+		
+		public static void onPayFluidsResponse(NBTTagList tagList)
+		{	
+			if (!(Minecraft.getMinecraft().currentScreen instanceof GuiPOSSelectFluid))
+			{
+				return;
+			}
+			
+			ArrayList<TileEntityFluidMeter> meters = new ArrayList<>();
+			
+			for(NBTBase nbt : tagList)
+			{
+				if (!(nbt instanceof NBTTagCompound))
+				{
+					continue;
+				}
+				
+				TileEntityFluidMeter meter = new TileEntityFluidMeter();
+				meter.handleUpdateTag((NBTTagCompound)nbt);
+				meters.add(meter);
+			}
+			
+			((GuiPOSSelectFluid)Minecraft.getMinecraft().currentScreen).onDataReceived(meters);
+		}
+		
+		public static void onScanFluidResponse(NBTTagCompound updateTag)
+		{
+			if (!(Minecraft.getMinecraft().currentScreen instanceof GuiPOSSelectFluid))
+			{
+				return;
+			}
+			
+			GuiPOSSelectFluid addList = (GuiPOSSelectFluid)Minecraft.getMinecraft().currentScreen;
+			addList.onSaveResponse(updateTag);
+		}
+		
+		public static void onShelfPriceLookupResponse(BlockPos shelfPos, int placementID, LocationItem locationItem)
+		{
+			TileEntity te = Minecraft.getMinecraft().world.getTileEntity(shelfPos);
+			
+			if (te instanceof ShelvingTileEntity)
+			{
+				if (!ShelvingTileEntityRenderer.priceDisplayInformationsByBlockPos.containsKey(shelfPos.toLong()))
+				{
+					return;
+				}
+				
+				Optional<ShelvingTileEntityRenderer.ShelfPriceDisplayInformation> optDisplayInfo = ShelvingTileEntityRenderer.priceDisplayInformationsByBlockPos.get(shelfPos.toLong()).stream().filter(spdi -> spdi.placementID == placementID).findFirst();
+				if (!optDisplayInfo.isPresent())
+				{
+					return;
+				}
+				
+				ShelvingTileEntityRenderer.ShelfPriceDisplayInformation displayInfo = optDisplayInfo.get();
+				displayInfo.isRetrieved = true;
+				displayInfo.locationItem = locationItem;
+				displayInfo.timeInitiallyDisplayed = System.currentTimeMillis();
+			}
+			
+			if (te instanceof TileEntityTaggingStation && Minecraft.getMinecraft().currentScreen instanceof GuiTaggingStation)
+			{
+				GuiTaggingStation gui = (GuiTaggingStation)Minecraft.getMinecraft().currentScreen;
+				gui.onPriceResult(locationItem);
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public static void drawSelectionBoxEvent(DrawBlockHighlightEvent e)
+	{
+		RayTraceResult rtr = e.getTarget();
+		if (rtr.typeOfHit != Type.BLOCK)
+		{
+			return;
+		}
+		
+		World world = e.getPlayer().world;
+		IBlockState blockState = world.getBlockState(rtr.getBlockPos());		
+		if (blockState.getBlock() instanceof ImmersiblockRotationalManyBB)
+		{
+			e.setCanceled(true);
+			drawManyBoundingBoxBlockHighlight(e.getPlayer(), e.getPartialTicks(), rtr.getBlockPos(), blockState);
+		}
+	}
+	
+	private static void drawRegisterBlockHighlight(EntityPlayer player, float partialTicks, BlockPos pos)
+	{
+		final double d3 = player.lastTickPosX + (player.posX - player.lastTickPosX) * partialTicks;
+		final double d4 = player.lastTickPosY + (player.posY - player.lastTickPosY) * partialTicks;
+		final double d5 = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * partialTicks;
+		final Vec3d start = player.getPositionEyes(partialTicks);
+		final Vec3d eyes = player.getLook(partialTicks);
+		final float reach = Minecraft.getMinecraft().playerController.getBlockReachDistance();
+		final Vec3d end = start.addVector(eyes.x * reach, eyes.y * reach, eyes.z * reach);
+		
+		AxisAlignedBB boxToDraw = null;
+		double leastDistance = reach + 1;
+		
+		// Check monitor
+		RayTraceResult result = BlockRegister.monitorBoundingBox.offset(pos).calculateIntercept(start, end);
+		if (result != null)
+		{
+			leastDistance = result.hitVec.distanceTo(start);
+			boxToDraw = BlockRegister.monitorBoundingBox;
+		}
+		
+		// Check card reader
+		result = BlockRegister.cardReaderBoundingBox.offset(pos).calculateIntercept(start, end);
+		if (result != null)
+		{
+			double distance = result.hitVec.distanceTo(start);
+			if (distance < leastDistance)
+			{
+				boxToDraw = BlockRegister.cardReaderBoundingBox;
+			}
+		}
+		
+		if (boxToDraw != null)
+		{			
+			GlStateManager.disableAlpha();
+			GlStateManager.enableBlend();
+	        GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+	        GlStateManager.glLineWidth(2.0F);
+	        GlStateManager.disableTexture2D();
+	        GlStateManager.depthMask(false);
+	        
+			RenderGlobal.drawSelectionBoundingBox(boxToDraw.offset(pos).offset(-d3, -d4, -d5), 0.0F, 0.0F, 0.0F, 1F);
+			
+			GlStateManager.depthMask(true);
+            GlStateManager.enableTexture2D();
+            GlStateManager.disableBlend();
+			GlStateManager.enableAlpha();
+		}
+	}
+	
+	private static void drawManyBoundingBoxBlockHighlight(EntityPlayer player, float partialTicks, BlockPos pos, IBlockState blockState)
+	{
+		AxisAlignedBB boxToDraw = ImmersiblockRotationalManyBB.findSubBoundingBox(pos, blockState, player, partialTicks);
+		
+		if (boxToDraw != null)
+		{			
+			final double d3 = player.lastTickPosX + (player.posX - player.lastTickPosX) * partialTicks;
+			final double d4 = player.lastTickPosY + (player.posY - player.lastTickPosY) * partialTicks;
+			final double d5 = player.lastTickPosZ + (player.posZ - player.lastTickPosZ) * partialTicks;
+			GlStateManager.disableAlpha();
+			GlStateManager.enableBlend();
+	        GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+	        GlStateManager.glLineWidth(2.0F);
+	        GlStateManager.disableTexture2D();
+	        GlStateManager.depthMask(false);
+	        
+			RenderGlobal.drawSelectionBoundingBox(boxToDraw.offset(pos).offset(-d3, -d4, -d5), 0.0F, 0.0F, 0.0F, 1F);
+			
+			GlStateManager.depthMask(true);
+            GlStateManager.enableTexture2D();
+            GlStateManager.disableBlend();
+			GlStateManager.enableAlpha();
+		}
+	}
 	
 	public static void openTOSGUI() {
 		Minecraft.getMinecraft().displayGuiScreen(new GuiTOS());
 	}
 
+	public static class ATMHandlers
+	{
+		public static void onATMFetchAccountsResponse(String error, ArrayList<Account> accounts)
+		{
+			if (!(Minecraft.getMinecraft().currentScreen instanceof GuiATMHome))
+			{
+				return;
+			}
+			
+			GuiATMHome home = (GuiATMHome)Minecraft.getMinecraft().currentScreen;
+			home.setData(error, accounts);;
+		}
+		
+		public static void onATMFetchSettingsResponse(String error, BigDecimal cardChargeAmount, String cardChargeAccount)
+		{
+			if (!(Minecraft.getMinecraft().currentScreen instanceof GuiATMSettings))
+			{
+				return;
+			}
+			
+			GuiATMSettings settings = (GuiATMSettings)Minecraft.getMinecraft().currentScreen;
+			settings.setData(error, cardChargeAmount, cardChargeAccount);
+		}
+		
+		public static void onATMUpdateSettingsResponse()
+		{
+			if (!(Minecraft.getMinecraft().currentScreen instanceof GuiATMSettings))
+			{
+				return;
+			}
+			
+			((GuiATMSettings)Minecraft.getMinecraft().currentScreen).onSettingsSaved();
+		}
+		
+		public static void onATMWithdrawResponse(String error)
+		{
+			if (!(Minecraft.getMinecraft().currentScreen instanceof GuiATMWithdraw))
+			{
+				return;
+			}
+			
+			((GuiATMWithdraw)Minecraft.getMinecraft().currentScreen).onResponse(error);
+		}
+		
+		public static void onATMDepositResponse(String error)
+		{
+			if (!(Minecraft.getMinecraft().currentScreen instanceof GuiATMDeposit))
+			{
+				return;
+			}
+			
+			((GuiATMDeposit)Minecraft.getMinecraft().currentScreen).onResponse(error);
+		}
+		
+		public static void onATMNewCardResponse(String error)
+		{
+			if (!(Minecraft.getMinecraft().currentScreen instanceof GuiATMNewCard))
+			{
+				return;
+			}
+			
+			((GuiATMNewCard)Minecraft.getMinecraft().currentScreen).onResponse(error);
+		}
+	}
 }

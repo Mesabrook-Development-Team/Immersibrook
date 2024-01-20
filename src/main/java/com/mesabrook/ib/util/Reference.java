@@ -27,10 +27,17 @@ public class Reference
 	public static final int GUI_STAMP_BOOK = 6;
 	public static final int GUI_ABOUT = 7;
 	public static final int GUI_WALLSIGN = 8;
-	public static final int GUI_TOS = 9;
-	public static final int GUI_RATION = 10;
-	public static final int GUI_SOUND_EMITTER = 11;
-	public static final int GUI_SMARTPHONE_INV = 12;
+	public static final int GUI_SCO_POS = 9;
+	public static final int GUI_SCO_STOREMODE = 10;
+	public static final int GUI_TAGGING_STATION = 11;	
+	public static final int GUI_TOS = 12;
+	public static final int GUI_RATION = 13;
+	public static final int GUI_SOUND_EMITTER = 14;
+	public static final int GUI_ATM = 15;
+	public static final int GUI_REGISTER_SECURITY_BOX_INVENTORY = 16;
+	public static final int GUI_WALLET = 17;
+	public static final int GUI_TAGGING_STATION_UNTAG = 18;
+		public static final int GUI_SMARTPHONE_INV = 19;
 
 	public static final String NETWORK_CHANNEL_NAME = "wbtc";
 	

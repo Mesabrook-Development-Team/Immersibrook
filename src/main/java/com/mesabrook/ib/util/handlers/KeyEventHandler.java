@@ -1,21 +1,41 @@
 package com.mesabrook.ib.util.handlers;
 
+import java.util.Arrays;
+import java.util.Optional;
+
+import javax.vecmath.Matrix3f;
+
+import com.mesabrook.ib.blocks.sco.BlockShelf;
+import com.mesabrook.ib.blocks.sco.ProductPlacement;
+import com.mesabrook.ib.blocks.te.ShelvingTileEntity;
+import com.mesabrook.ib.blocks.te.ShelvingTileEntity.ProductSpot;
+import com.mesabrook.ib.blocks.te.ShelvingTileEntityRenderer;
+import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
+import com.mesabrook.ib.capability.secureditem.ISecuredItem;
 import com.mesabrook.ib.init.SoundInit;
 import com.mesabrook.ib.items.armor.NightVisionGoggles;
 import com.mesabrook.ib.items.armor.PoliceHelmet;
 import com.mesabrook.ib.items.armor.SafetyVest;
 import com.mesabrook.ib.items.tools.ItemBanHammer;
-import com.mesabrook.ib.net.*;
+import com.mesabrook.ib.net.ClientSoundPacket;
+import com.mesabrook.ib.net.NVTogglePacket;
+import com.mesabrook.ib.net.PoliceEffectsTogglePacket;
+import com.mesabrook.ib.net.SoundRandomizerPacket;
+import com.mesabrook.ib.net.VestTogglePacket;
+import com.mesabrook.ib.net.sco.QueryPricePacket;
 import com.mesabrook.ib.proxy.ClientProxy;
+
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.*;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
@@ -154,6 +174,76 @@ public class KeyEventHandler
 				PoliceEffectsTogglePacket packet = new PoliceEffectsTogglePacket();
 				PacketHandler.INSTANCE.sendToServer(packet);
 			}
+		}
+		
+		if(ClientProxy.shelfPriceKey.isPressed() && WorldRenderHandler.thisTickViewedBlockPos != null)
+		{
+			EntityPlayer player = Minecraft.getMinecraft().player;
+			
+			IBlockState state = player.world.getBlockState(WorldRenderHandler.thisTickViewedBlockPos);
+			ProductPlacement placement = ((BlockShelf)state.getBlock()).getProductPlacementByBoundingBox(WorldRenderHandler.thisTickViewedBoundingBox);
+			if (ShelvingTileEntityRenderer.priceDisplayInformationsByBlockPos.containsKey(WorldRenderHandler.thisTickViewedBlockPos.toLong()) && 
+					ShelvingTileEntityRenderer.priceDisplayInformationsByBlockPos.get(WorldRenderHandler.thisTickViewedBlockPos.toLong()).stream().anyMatch(spdi -> spdi.placementID == placement.getPlacementID()))
+			{
+				return;
+			}
+			
+			ShelvingTileEntity shelving = (ShelvingTileEntity)player.world.getTileEntity(WorldRenderHandler.thisTickViewedBlockPos);
+			Optional<ProductSpot> optProductSpot = Arrays.stream(shelving.getProductSpots()).filter(ps -> ps.getPlacementID() == placement.getPlacementID()).findFirst();
+			if (!optProductSpot.isPresent())
+			{
+				return;
+			}
+			
+			ProductSpot productSpot = optProductSpot.get();
+			
+			ItemStack stack = productSpot.getItems()[0];
+			if (stack.isEmpty())
+			{
+				return;
+			}
+			
+			if (stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
+			{
+				ISecuredItem securedItem = stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
+				stack = securedItem.getInnerStack();
+				if (stack.isEmpty())
+				{
+					return;
+				}
+			}
+			
+			AxisAlignedBB rotatedBB = ((BlockShelf)state.getBlock()).ORIGINAL_BOX_TO_ROTATED_BY_FACING.get(state.getValue(BlockShelf.FACING)).get(placement.getBoundingBox());
+			ShelvingTileEntityRenderer.ShelfPriceDisplayInformation displayInfo = new ShelvingTileEntityRenderer.ShelfPriceDisplayInformation();
+			displayInfo.placementID = placement.getPlacementID();
+			displayInfo.displayY = rotatedBB.maxY + 0.0625;
+			displayInfo.timeInitiallyDisplayed = System.currentTimeMillis();
+			switch(state.getValue(BlockShelf.FACING))
+			{
+				case NORTH:
+					displayInfo.displayX = rotatedBB.maxX - (rotatedBB.maxX - rotatedBB.minX) / 2;
+					displayInfo.displayZ = rotatedBB.minZ;
+					break;
+				case WEST:
+					displayInfo.displayX = rotatedBB.minX;
+					displayInfo.displayZ = rotatedBB.maxZ - (rotatedBB.maxZ - rotatedBB.minZ) / 2;
+					break;
+				case EAST:
+					displayInfo.displayX = rotatedBB.maxX;
+					displayInfo.displayZ = rotatedBB.maxZ - (rotatedBB.maxZ - rotatedBB.minZ) / 2;
+					break;
+				case SOUTH:
+					displayInfo.displayX = rotatedBB.maxX - (rotatedBB.maxX - rotatedBB.minX) / 2;
+					displayInfo.displayZ = rotatedBB.maxZ;
+					break;
+			}
+			ShelvingTileEntityRenderer.priceDisplayInformationsByBlockPos.put(WorldRenderHandler.thisTickViewedBlockPos.toLong(), displayInfo);
+			
+			QueryPricePacket queryPacket = new QueryPricePacket();
+			queryPacket.placementID = placement.getPlacementID();
+			queryPacket.shelfPos = WorldRenderHandler.thisTickViewedBlockPos;			
+			queryPacket.stack = stack;
+			PacketHandler.INSTANCE.sendToServer(queryPacket);
 		}
 	}
 }

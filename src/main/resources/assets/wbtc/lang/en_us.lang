@@ -101,6 +101,7 @@ im.talk.success=You are now talking %s
 im.talk.noglobalperm=You are not allowed to send global messages
 im.access.call=§e§lYou have an incoming call
 im.cmd.wea.usage=Valid arguments: start, stop
+im.cmd.mesasuite.usage=Valid arguments: login, logout
 im.cmd.resettos.singleplayer=Terms Of Service does not apply to Single Player
 
 //First Aid

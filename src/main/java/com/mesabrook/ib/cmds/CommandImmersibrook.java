@@ -3,12 +3,14 @@ package com.mesabrook.ib.cmds;
 import com.google.common.collect.Lists;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.net.CommandProcessorPacket;
-import com.mesabrook.ib.net.OpenTOSPacket;
+import com.mesabrook.ib.net.sco.StoreModeGuiPacket;
 import com.mesabrook.ib.telecom.WirelessEmergencyAlertManager;
 import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.UniversalDeathSource;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.handlers.PacketHandler;
+import com.mesabrook.ib.net.OpenTOSPacket;
 import com.mesabrook.ib.util.saveData.TOSData;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
@@ -146,6 +148,40 @@ public class CommandImmersibrook extends CommandBase
 				else
 				{
 					throw new WrongUsageException("im.cmd.wea.usage", new Object[0]);
+				}
+			}
+			else if ("mesasuite".equals(args[0]))
+			{
+				if (!sender.canUseCommand(4, getName()))
+				{
+					throw new CommandException("command.generic.permission", new Object[0]);
+				}
+				
+				if (args.length < 2)
+				{
+					throw new WrongUsageException("im.cmd.mesasuite.usage", new Object[0]);
+				}
+				
+				if ("login".equals(args[1]))
+				{
+					DataAccess.login(sender.getCommandSenderEntity().getUniqueID());
+				}
+				else if ("logout".equals(args[1]))
+				{
+					DataAccess.logout(sender.getCommandSenderEntity().getUniqueID());
+				}
+				else
+				{
+					throw new WrongUsageException("im.cmd.mesasuite.usage", new Object[0]);
+				}
+			}
+			else if ("storemode".equalsIgnoreCase(args[0]))
+			{
+				if (sender instanceof EntityPlayerMP)
+				{
+					EntityPlayerMP player = (EntityPlayerMP)sender;
+					StoreModeGuiPacket packet = new StoreModeGuiPacket();
+					PacketHandler.INSTANCE.sendTo(packet, player);
 				}
 			}
 			else if ("resettos".equalsIgnoreCase(args[0]))

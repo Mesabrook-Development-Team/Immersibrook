@@ -1,5 +1,6 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.util.ModUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;

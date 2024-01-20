@@ -2,6 +2,13 @@ package com.mesabrook.ib.util.handlers;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
+import com.mesabrook.ib.capability.debitcard.CapabilityDebitCard;
+import com.mesabrook.ib.capability.debitcard.CapabilityDebitCardItemProvider;
+import com.mesabrook.ib.capability.employee.CapabilityEmployee;
+import com.mesabrook.ib.capability.employee.CapabilityEmployeePlayerProvider;
+import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
+import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItemProvider;
+import com.mesabrook.ib.capability.wallet.ItemWalletCapabilityProvider;
 import com.mesabrook.ib.cdm.apps.CompanyStudioLiteApp;
 import com.mesabrook.ib.cdm.apps.GovernmentPortalLiteApp;
 import com.mesabrook.ib.cdm.apps.MesaMailApp;
@@ -15,18 +22,33 @@ import com.mesabrook.ib.events.SeatEvent;
 import com.mesabrook.ib.init.CDMApps;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.items.commerce.ItemDebitCard;
+import com.mesabrook.ib.items.commerce.ItemRegisterFluidWrapper;
+import com.mesabrook.ib.items.commerce.ItemSecurityBox;
+import com.mesabrook.ib.items.commerce.ItemWallet;
 import com.mesabrook.ib.rendering.RenderMesabrookIcon;
 import com.mesabrook.ib.rendering.RenderWineBottle;
 import com.mesabrook.ib.telecom.DynmapAPIListener;
-import com.mesabrook.ib.util.*;
+import com.mesabrook.ib.util.IHasModel;
+import com.mesabrook.ib.util.ItemRandomizer;
+import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.SoundRandomizer;
+import com.mesabrook.ib.util.TooltipRandomizer;
+import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.recipe.RecipesHandler;
+
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.GameRules;
+import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -115,6 +137,10 @@ public class RegistryHandler
 		
 		PacketHandler.registerMessages();
 		Triggers.init();
+		CapabilityEmployee.init();
+		CapabilitySecuredItem.init();
+		CapabilityDebitCard.init();
+		ItemRegisterFluidWrapper.CapabilityRegisterFluidWrapper.init();
 	}
 	
 	public static void initRegistries()
@@ -217,7 +243,8 @@ public class RegistryHandler
 		event.registerServerCommand(new CommandMeme());
 
 		// Gamerules
-		GameRules rules = FMLCommonHandler.instance().getMinecraftServerInstance().getWorld(0).getGameRules();
+		World world = FMLCommonHandler.instance().getMinecraftServerInstance().getWorld(0);
+		GameRules rules = world.getGameRules();
 
 		if(!rules.hasRule("manholeAlert"))
 		{
@@ -242,6 +269,44 @@ public class RegistryHandler
 		if(!rules.hasRule("funnyDeathSound"))
 		{
 			rules.addGameRule("funnyDeathSound", "true", GameRules.ValueType.BOOLEAN_VALUE);
+		}
+		
+		// MesaSuite Data Access
+		DataAccess.init(world);
+	}
+	
+	@SubscribeEvent
+	public static void attachEmployeeCapability(AttachCapabilitiesEvent<Entity> e)
+	{
+		if (!(e.getObject() instanceof EntityPlayer))
+		{
+			return;
+		}
+		
+		e.addCapability(new ResourceLocation(Reference.MODID, "cap_employee"), new CapabilityEmployeePlayerProvider((EntityPlayer)e.getObject()));
+	}
+	
+	@SubscribeEvent
+	public static void attachItemCapabilities(AttachCapabilitiesEvent<ItemStack> e)
+	{
+		if (Main.logger == null ? e.getObject().getItem() instanceof ItemSecurityBox : e.getObject().getItem() == ModItems.SECURITY_BOX)
+		{
+			e.addCapability(new ResourceLocation(Reference.MODID, "cap_secureditem"), new CapabilitySecuredItemProvider());
+		}
+		
+		if (e.getObject().getItem() instanceof ItemDebitCard)
+		{
+			e.addCapability(new ResourceLocation(Reference.MODID, "cap_debitcard"), new CapabilityDebitCardItemProvider());
+		}
+		
+		if (e.getObject().getItem() instanceof ItemWallet)
+		{
+			e.addCapability(new ResourceLocation(Reference.MODID, "cap_walletinv"), new ItemWalletCapabilityProvider());
+		}
+		
+		if (e.getObject().getItem() instanceof ItemRegisterFluidWrapper)
+		{
+			e.addCapability(new ResourceLocation(Reference.MODID, "cap_registerfluidwrapper"), new ItemRegisterFluidWrapper.RegisterFluidWrapperCapabilityProvider());
 		}
 	}
 }

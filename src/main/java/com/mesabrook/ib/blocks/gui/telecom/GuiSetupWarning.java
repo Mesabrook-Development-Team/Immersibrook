@@ -1,6 +1,7 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.google.common.collect.ImmutableList;
+import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.util.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
