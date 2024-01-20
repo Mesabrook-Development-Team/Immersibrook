@@ -2050,22 +2050,7 @@ item.sd_card.name=Memory Card
 item.sim_box.name=Mesabrook Bell SIM Card Kit
 
 //Shopping Baskets
-item.shopping_basket_white.name=Shopping Basket
-item.shopping_basket_orange.name=Shopping Basket
-item.shopping_basket_magenta.name=Shopping Basket
-item.shopping_basket_lblue.name=Shopping Basket
-item.shopping_basket_yellow.name=Shopping Basket
-item.shopping_basket_pink.name=Shopping Basket
-item.shopping_basket_gray.name=Shopping Basket
-item.shopping_basket_silver.name=Shopping Basket
-item.shopping_basket_cyan.name=Shopping Basket
-item.shopping_basket_purple.name=Shopping Basket
-item.shopping_basket_blue.name=Shopping Basket
-item.shopping_basket_brown.name=Shopping Basket
-item.shopping_basket_green.name=Shopping Basket
-item.shopping_basket_red.name=Shopping Basket
-item.shopping_basket_black.name=Shopping Basket
-item.shopping_basket_lime.name=Shopping Basket
+item.shopping_basket.name=Shopping Basket
 
 //Shopping Basket Holders
 tile.basket_holder_red.name=Shopping Basket Holder - Red

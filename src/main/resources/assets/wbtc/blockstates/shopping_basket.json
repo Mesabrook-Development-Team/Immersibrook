@@ -1,0 +1,102 @@
+{ 
+	"forge_marker": 1,
+	"variants":
+	{
+		"color=white": {
+			"model": "wbtc:shopping_basket",
+			"textures": {
+				"basketColor": "wbtc:blocks/plastic_cube_white"
+			}
+		},
+		"color=orange": {
+			"model": "wbtc:shopping_basket",
+			"textures": {
+				"basketColor": "wbtc:blocks/plastic_cube_orange"
+			}
+		},
+		"color=magenta": {
+			"model": "wbtc:shopping_basket",
+			"textures": {
+				"basketColor": "wbtc:blocks/plastic_cube_magenta"
+			}
+		},
+		"color=lightblue": {
+			"model": "wbtc:shopping_basket",
+			"textures": {
+				"basketColor": "wbtc:blocks/plastic_cube_lblue"
+			}
+		},
+		"color=yellow": {
+			"model": "wbtc:shopping_basket",
+			"textures": {
+				"basketColor": "wbtc:blocks/plastic_cube_yellow"
+			}
+		},
+		"color=lime": {
+			"model": "wbtc:shopping_basket",
+			"textures": {
+				"basketColor": "wbtc:blocks/plastic_cube_lime"
+			}
+		},
+		"color=pink": {
+			"model": "wbtc:shopping_basket",
+			"textures": {
+				"basketColor": "wbtc:blocks/plastic_cube_pink"
+			}
+		},
+		"color=gray": {
+			"model": "wbtc:shopping_basket",
+			"textures": {
+				"basketColor": "wbtc:blocks/plastic_cube_gray"
+			}
+		},
+		"color=silver": {
+			"model": "wbtc:shopping_basket",
+			"textures": {
+				"basketColor": "wbtc:blocks/plastic_cube_silver"
+			}
+		},
+		"color=cyan": {
+			"model": "wbtc:shopping_basket",
+			"textures": {
+				"basketColor": "wbtc:blocks/plastic_cube_cyan"
+			}
+		},
+		"color=purple": {
+			"model": "wbtc:shopping_basket",
+			"textures": {
+				"basketColor": "wbtc:blocks/plastic_cube_purple"
+			}
+		},
+		"color=blue": {
+			"model": "wbtc:shopping_basket",
+			"textures": {
+				"basketColor": "wbtc:blocks/plastic_cube_blue"
+			}
+		},
+		"color=brown": {
+			"model": "wbtc:shopping_basket",
+			"textures": {
+				"basketColor": "wbtc:blocks/plastic_cube_brown"
+			}
+		},
+		"color=green": {
+			"model": "wbtc:shopping_basket",
+			"textures": {
+				"basketColor": "wbtc:blocks/plastic_cube_green"
+			}
+		},
+		"color=red": {
+			"model": "wbtc:shopping_basket",
+			"textures": {
+				"basketColor": "wbtc:blocks/plastic_cube_red"
+			}
+		},
+		"color=black": {
+			"model": "wbtc:shopping_basket",
+			"textures": {
+				"basketColor": "wbtc:blocks/plastic_cube_black"
+			}
+		}
+	}
+}
