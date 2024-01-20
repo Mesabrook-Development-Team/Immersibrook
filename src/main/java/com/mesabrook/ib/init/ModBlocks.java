@@ -1244,9 +1244,31 @@ public class ModBlocks
 				ModUtils.getPixelatedAABB(0, 0, 1.025, 16, 1.5, 14.025)
 			});
 	
-			//new ImmersiblockRotational("shelf_one_level_two_peghooks", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
-	public static final Block SHELF_FOUR_PEGHOOKS = new ImmersiblockRotational("shelf_four_peghooks", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
-	public static final Block SHELF_TWO_LEVELS_NO_PEGHOOKS = new ImmersiblockRotational("shelf_two_levels_no_peghooks", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
+	public static final Block SHELF_FOUR_PEGHOOKS = new BlockShelf("shelf_four_peghooks", new ProductPlacement[] {
+				new ProductPlacement(1, 3, ModUtils.getPixelatedAABB(1, 7, 4, 6, 12, 14)),
+				new ProductPlacement(2, 3, ModUtils.getPixelatedAABB(1, 0, 4, 6, 5, 14)),
+				new ProductPlacement(3, 3, ModUtils.getPixelatedAABB(10, 0, 4, 15, 5, 14)),
+				new ProductPlacement(4, 3, ModUtils.getPixelatedAABB(10, 7, 4, 15, 12, 14))
+			},
+			new AxisAlignedBB[]
+			{
+				ModUtils.getPixelatedAABB(0, 0, 14.025, 16, 16, 16.025)
+			});
+	
+	public static final Block SHELF_TWO_LEVELS_NO_PEGHOOKS = new BlockShelf("shelf_two_levels_no_peghooks", new ProductPlacement[] {
+				new ProductPlacement(1, 3, ModUtils.getPixelatedAABB(1, 9.5, 1, 6, 14.5, 14)),
+				new ProductPlacement(2, 3, ModUtils.getPixelatedAABB(1, 1, 1, 6, 6, 14)),
+				new ProductPlacement(3, 3, ModUtils.getPixelatedAABB(10, 1, 1, 15, 6, 14)),
+				new ProductPlacement(4, 3, ModUtils.getPixelatedAABB(10, 9.5, 1, 15, 14.5, 14))
+			},
+			new AxisAlignedBB[]
+			{
+				ModUtils.getPixelatedAABB(0, 0, 14.025, 16, 16, 16.025),
+				ModUtils.getPixelatedAABB(0, 0, 1.025, 16, 1.5, 14.025),
+				ModUtils.getPixelatedAABB(0, 8, 1.025, 16, 9.5, 14.025)
+			});
+//	public static final Block SHELF_FOUR_PEGHOOKS = new ImmersiblockRotational("shelf_four_peghooks", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
+//	public static final Block SHELF_TWO_LEVELS_NO_PEGHOOKS = new ImmersiblockRotational("shelf_two_levels_no_peghooks", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
 
 	// Security Station
 	public static final Block SECURITY_STATION = new BlockSecurityTaggingStation();
