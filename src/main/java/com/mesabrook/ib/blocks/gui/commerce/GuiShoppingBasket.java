@@ -20,6 +20,7 @@ public class GuiShoppingBasket extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+		drawDefaultBackground();
 		EnumDyeColor color = EnumDyeColor.byMetadata(shoppingBasketMeta);
 		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/basket/basket_" + color.getUnlocalizedName() + ".png"));
 		
