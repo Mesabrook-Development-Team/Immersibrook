@@ -2,6 +2,7 @@ package com.mesabrook.ib.util.handlers;
 
 import com.mesabrook.ib.blocks.container.ContainerRation;
 import com.mesabrook.ib.blocks.container.ContainerRegisterSecurityBoxInventory;
+import com.mesabrook.ib.blocks.container.ContainerShoppingBasket;
 import com.mesabrook.ib.blocks.container.ContainerSmartphone;
 import com.mesabrook.ib.blocks.container.ContainerStampBook;
 import com.mesabrook.ib.blocks.container.ContainerTaggingStation;
@@ -19,6 +20,7 @@ import com.mesabrook.ib.blocks.gui.GuiTrashBin;
 import com.mesabrook.ib.blocks.gui.GuiWallSign;
 import com.mesabrook.ib.blocks.gui.GuiWallet;
 import com.mesabrook.ib.blocks.gui.atm.GuiATMHome;
+import com.mesabrook.ib.blocks.gui.commerce.GuiShoppingBasket;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSSecurityBoxInventory;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSStarter;
 import com.mesabrook.ib.blocks.gui.sco.GuiStoreMode;
@@ -61,6 +63,7 @@ public class GuiHandler implements IGuiHandler
 		else if (ID == Reference.GUI_REGISTER_SECURITY_BOX_INVENTORY) return new ContainerRegisterSecurityBoxInventory(player.inventory, (TileEntityRegister)world.getTileEntity(new BlockPos(x,y,z)));
 		else if (ID == Reference.GUI_WALLET) return new ContainerWallet(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]);
 		else if (ID == Reference.GUI_TAGGING_STATION_UNTAG) return new ContainerTaggingStationUntag(player.inventory, new BlockPos(x,y,z));
+		else if (ID == Reference.GUI_SHOPPING_BASKET) return new ContainerShoppingBasket(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]);
 		return null;
 	}
 	
@@ -150,6 +153,7 @@ public class GuiHandler implements IGuiHandler
 		{
 			return new GuiTaggingStationUntag(player.inventory, new BlockPos(x, y, z));
 		}
+		else if (ID == Reference.GUI_SHOPPING_BASKET) return new GuiShoppingBasket(new ContainerShoppingBasket(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]), player.getHeldItem(EnumHand.values()[x]).getMetadata());
 		else return null;
 	}
 	

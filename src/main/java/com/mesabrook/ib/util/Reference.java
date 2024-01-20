@@ -37,7 +37,8 @@ public class Reference
 	public static final int GUI_REGISTER_SECURITY_BOX_INVENTORY = 16;
 	public static final int GUI_WALLET = 17;
 	public static final int GUI_TAGGING_STATION_UNTAG = 18;
-		public static final int GUI_SMARTPHONE_INV = 19;
+	public static final int GUI_SMARTPHONE_INV = 19;
+	public static final int GUI_SHOPPING_BASKET = 20;
 
 	public static final String NETWORK_CHANNEL_NAME = "wbtc";
 	

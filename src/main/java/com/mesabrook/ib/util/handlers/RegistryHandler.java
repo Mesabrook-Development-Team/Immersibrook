@@ -25,6 +25,7 @@ import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.commerce.ItemDebitCard;
 import com.mesabrook.ib.items.commerce.ItemRegisterFluidWrapper;
 import com.mesabrook.ib.items.commerce.ItemSecurityBox;
+import com.mesabrook.ib.items.commerce.ItemShoppingBasket;
 import com.mesabrook.ib.items.commerce.ItemWallet;
 import com.mesabrook.ib.rendering.RenderMesabrookIcon;
 import com.mesabrook.ib.rendering.RenderWineBottle;
@@ -42,12 +43,16 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTBase;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -60,6 +65,8 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
 
 @EventBusSubscriber
 public class RegistryHandler 
@@ -289,7 +296,7 @@ public class RegistryHandler
 	@SubscribeEvent
 	public static void attachItemCapabilities(AttachCapabilitiesEvent<ItemStack> e)
 	{
-		if (Main.logger == null ? e.getObject().getItem() instanceof ItemSecurityBox : e.getObject().getItem() == ModItems.SECURITY_BOX)
+		if (e.getObject().getItem() instanceof ItemSecurityBox)
 		{
 			e.addCapability(new ResourceLocation(Reference.MODID, "cap_secureditem"), new CapabilitySecuredItemProvider());
 		}
@@ -307,6 +314,41 @@ public class RegistryHandler
 		if (e.getObject().getItem() instanceof ItemRegisterFluidWrapper)
 		{
 			e.addCapability(new ResourceLocation(Reference.MODID, "cap_registerfluidwrapper"), new ItemRegisterFluidWrapper.RegisterFluidWrapperCapabilityProvider());
+		}
+		
+		if (e.getObject().getItem() instanceof ItemShoppingBasket)
+		{
+			e.addCapability(new ResourceLocation(Reference.MODID, "cap_inventory"), new ICapabilitySerializable<NBTBase>() {
+				private ItemStackHandler handler;
+				
+				{
+					handler = new ItemStackHandler(27);
+				}
+				
+				@Override
+				public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+					return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
+				}
+				
+				@Override
+				public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+					if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+					{
+						return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(handler);
+					}
+					return null;
+				}
+				
+				@Override
+				public void deserializeNBT(NBTBase nbt) {
+					CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.readNBT(handler, null, nbt);
+				}
+				
+				@Override
+				public NBTBase serializeNBT() {
+					return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.writeNBT(handler, null);
+				}
+			});
 		}
 	}
 }
