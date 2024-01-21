@@ -34,6 +34,7 @@ public abstract class GuiPOSBase extends GuiScreen {
 	
 	@Override
 	public final void drawScreen(int mouseX, int mouseY, float partialTicks) {
+		drawDefaultBackground();
 		bindTexture(getBackingTextureName());
 //		drawTexturedModalRect(innerLeft, innerTop, 0, 0, 256, 204);
 		drawModalRectWithCustomSizedTexture(innerLeft, innerTop, 0, 0, 256, 204, 256, 204);
