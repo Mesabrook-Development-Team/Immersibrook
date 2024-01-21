@@ -58,14 +58,14 @@ public class ItemTechRetailBox extends Item implements IHasModel
     {
         if(stack.getItem().getUnlocalizedName().contains("laptop"))
         {
-            tooltip.add(new TextComponentString(TextFormatting.GRAY + "§oManufactured for Crayfish Ind. by MSAC").getFormattedText());
+            tooltip.add(new TextComponentString(TextFormatting.GRAY + "Manufactured for Crayfish Ind. by MSAC").getFormattedText());
             tooltip.add(new TextComponentString(" ").getFormattedText());
             tooltip.add(new TextComponentString(TextFormatting.WHITE + "Contents").getFormattedText());
             tooltip.add(new TextComponentString("1 Craytech Laptop, ").getFormattedText() + getColor(stack).getFormattedText());
         }
         if(stack.getItem().getUnlocalizedName().contains("router"))
         {
-            tooltip.add(new TextComponentString(TextFormatting.GRAY + "§oManufactured for Crayfish Ind. by MSAC").getFormattedText());
+            tooltip.add(new TextComponentString(TextFormatting.GRAY + "Manufactured for Crayfish Ind. by MSAC").getFormattedText());
             tooltip.add(new TextComponentString(" ").getFormattedText());
             tooltip.add(new TextComponentString(TextFormatting.WHITE + "Contents").getFormattedText());
             tooltip.add(new TextComponentString("1 Craytech Router, ").getFormattedText() + getColor(stack).getFormattedText());
@@ -73,7 +73,7 @@ public class ItemTechRetailBox extends Item implements IHasModel
         }
         if(stack.getItem().getUnlocalizedName().contains("printer"))
         {
-            tooltip.add(new TextComponentString(TextFormatting.GRAY + "§oManufactured for Crayfish Ind. by MSAC").getFormattedText());
+            tooltip.add(new TextComponentString(TextFormatting.GRAY + "Manufactured for Crayfish Ind. by MSAC").getFormattedText());
             tooltip.add(new TextComponentString(" ").getFormattedText());
             tooltip.add(new TextComponentString(TextFormatting.WHITE + "Contents").getFormattedText());
             tooltip.add(new TextComponentString("1 Craytech Printer, ").getFormattedText() + getColor(stack).getFormattedText());
@@ -81,7 +81,7 @@ public class ItemTechRetailBox extends Item implements IHasModel
         }
         if(stack.getItem().getUnlocalizedName().contains("phone"))
         {
-            tooltip.add(new TextComponentString(TextFormatting.GRAY + "§oManufactured by MSAC").getFormattedText());
+            tooltip.add(new TextComponentString(TextFormatting.GRAY + "Manufactured by MSAC").getFormattedText());
             tooltip.add(new TextComponentString(" ").getFormattedText());
             tooltip.add(new TextComponentString(TextFormatting.WHITE + "Contents").getFormattedText());
             tooltip.add(new TextComponentString("1 Minedroid Smartphone, ").getFormattedText() + getColor(stack).getFormattedText());
