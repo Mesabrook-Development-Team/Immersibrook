@@ -38,6 +38,7 @@ public class GuiWallet extends GuiContainer {
 		fontRenderer.drawString("Wallet", guiLeft + 6, guiTop + 6, 0x404040);
 		
 		fontRenderer.drawString("Inventory", guiLeft + 6, guiTop + 59, 0x404040);
+		drawDefaultBackground();
 	}
 	
 	@Override
