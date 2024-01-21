@@ -15,7 +15,8 @@
     }
   },
   "result": {
-    "item": "wbtc:shopping_basket_lime",
-    "count": 1
+    "item": "wbtc:shopping_basket",
+    "count": 1,
+	"data": 5
   }
 }

@@ -15,7 +15,8 @@
     }
   },
   "result": {
-    "item": "wbtc:shopping_basket_black",
-    "count": 1
+    "item": "wbtc:shopping_basket",
+    "count": 1,
+	"data": 15
   }
 }
