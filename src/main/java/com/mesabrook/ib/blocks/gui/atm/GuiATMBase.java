@@ -38,6 +38,7 @@ public abstract class GuiATMBase extends GuiScreen {
 	
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+		drawDefaultBackground();
 		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/atm/atm.png"));
 		drawScaledCustomSizeModalRect(left, top, 0, 0, texWidth, texHeight, texWidth, texHeight, texWidth, texHeight);
 		
