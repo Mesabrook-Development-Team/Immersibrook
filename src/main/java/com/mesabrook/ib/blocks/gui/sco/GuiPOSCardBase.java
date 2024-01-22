@@ -50,6 +50,7 @@ public abstract class GuiPOSCardBase extends GuiScreen {
 	
 	@Override
 	public final void drawScreen(int mouseX, int mouseY, float partialTicks) {
+		drawDefaultBackground();
 		if (register.getInsertedCardStack() != null)
 		{
 			GlStateManager.translate(midWidth + 160, bottom - 175, -200);

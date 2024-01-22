@@ -112,6 +112,12 @@ public class ItemShoppingBasket extends Item implements IHasModel
     	
     	return tag;
     }
+
+    @Override
+    public boolean canDestroyBlockInCreative(World world, BlockPos pos, ItemStack stack, EntityPlayer player)
+    {
+        return false;
+    }
     
     @Override
     public void readNBTShareTag(ItemStack stack, NBTTagCompound nbt) {

@@ -20,19 +20,18 @@ public class GuiShoppingBasket extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+		drawDefaultBackground();
 		EnumDyeColor color = EnumDyeColor.byMetadata(shoppingBasketMeta);
 		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/basket/basket_" + color.getUnlocalizedName() + ".png"));
 		
 		drawModalRectWithCustomSizedTexture(guiLeft, guiTop, 0, 0, xSize, ySize, xSize, ySize);
-		
 		fontRenderer.drawString("Shopping Basket", guiLeft + 6, guiTop + 6, 0x404040);
-		fontRenderer.drawString("Inventory", guiLeft + 6, guiTop + 90, 0x404040);
+		fontRenderer.drawString("Inventory", guiLeft + 6, guiTop + 90, 0x404040); 
 	}
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 		super.drawGuiContainerForegroundLayer(mouseX, mouseY);
-		
 		renderHoveredToolTip(mouseX - guiLeft, mouseY - guiTop);
 	}
 }

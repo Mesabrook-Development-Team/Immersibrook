@@ -21,6 +21,7 @@ public class GuiWallet extends GuiContainer {
 	
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+		drawDefaultBackground();
 		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/wallet_inv.png"));
 		drawModalRectWithCustomSizedTexture(guiLeft, guiTop, 0, 0, xSize, ySize, xSize, ySize);
 		
@@ -43,7 +44,6 @@ public class GuiWallet extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
 		super.drawGuiContainerForegroundLayer(mouseX, mouseY);
-		
 		renderHoveredToolTip(mouseX - guiLeft, mouseY - guiTop);
 	}
 }
