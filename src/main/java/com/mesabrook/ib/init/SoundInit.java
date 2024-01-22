@@ -220,6 +220,7 @@ public class SoundInit
 	public static final SoundEvent POS_PAYMENT_TYPE;
 	public static final SoundEvent POS_SCAN;
 	public static final SoundEvent POS_SCANNER_BEEP;
+	public static final SoundEvent POS_SCANNER_MULTIBEEP;
 	public static final SoundEvent POS_TAKE_CARD;
 	public static final SoundEvent POS_USE_PINPAD;
 	public static final SoundEvent POS_WELCOME;
@@ -433,6 +434,7 @@ public class SoundInit
 		POS_PAYMENT_TYPE = addSoundsToRegistry("pos_payment_type");
 		POS_SCAN = addSoundsToRegistry("pos_scan");
 		POS_SCANNER_BEEP = addSoundsToRegistry("pos_scanner_beep");
+		POS_SCANNER_MULTIBEEP = addSoundsToRegistry("pos_scanner_multibeep");
 		POS_TAKE_CARD = addSoundsToRegistry("pos_take_card");
 		POS_USE_PINPAD = addSoundsToRegistry("pos_use_pinpad");
 		POS_WELCOME = addSoundsToRegistry("pos_welcome");
@@ -643,6 +645,7 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.POS_PAYMENT_TYPE);
 				event.getRegistry().register(SoundInit.POS_SCAN);
 				event.getRegistry().register(SoundInit.POS_SCANNER_BEEP);
+				event.getRegistry().register(SoundInit.POS_SCANNER_MULTIBEEP);
 				event.getRegistry().register(SoundInit.POS_TAKE_CARD);
 				event.getRegistry().register(SoundInit.POS_USE_PINPAD);
 				event.getRegistry().register(SoundInit.POS_WELCOME);

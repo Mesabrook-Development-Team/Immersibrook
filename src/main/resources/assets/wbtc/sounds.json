@@ -1354,6 +1354,12 @@
 			"name": "wbtc:pos_scanner_beep"
 		}]
 	},
+	"pos_scanner_multibeep": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:pos_scanner_multibeep"
+		}]
+	},
 	"pos_take_card": {
 		"category": "block",
 		"sounds": [{

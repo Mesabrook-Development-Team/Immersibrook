@@ -5,10 +5,12 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.mesabrook.ib.Main;
+import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.Reference;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,13 +20,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.common.capabilities.Capability.IStorage;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -60,6 +62,17 @@ public class ItemShoppingBasket extends Item implements IHasModel
     public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag)
     {
         tooltip.add(new TextComponentString(TextFormatting.GREEN + "Your ideal shopping companion!").getFormattedText());
+    }
+    
+    @Override
+    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand,
+    		EnumFacing facing, float hitX, float hitY, float hitZ) {
+    	IBlockState state = worldIn.getBlockState(pos);
+    	if (state.getBlock() == ModBlocks.SCO_SCANNER)
+    	{
+    		return EnumActionResult.SUCCESS;
+    	}
+    	return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
     }
 
     @Override

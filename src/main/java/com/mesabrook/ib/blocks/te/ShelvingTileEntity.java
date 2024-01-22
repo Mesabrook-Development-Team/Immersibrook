@@ -225,7 +225,14 @@ public class ShelvingTileEntity extends TileEntity {
 			else
 			{
 				handler.insertItem(insertIndex, stack, false);
-				player.sendStatusMessage(new TextComponentString(TextFormatting.GOLD + stack.getDisplayName() + " (x" + stack.getCount() + ") added to shopping basket"), true);
+				String stackName = stack.getDisplayName();
+				int stackCount = stack.getCount();
+				if (stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
+				{
+					stackName = stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null).getInnerStack().getDisplayName();
+					stackCount = stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null).getInnerStack().getCount();
+				}
+				player.sendStatusMessage(new TextComponentString(TextFormatting.GOLD + stackName + " (x" + stackCount + ") added to shopping basket"), true);
 			}
 		}
 		else
