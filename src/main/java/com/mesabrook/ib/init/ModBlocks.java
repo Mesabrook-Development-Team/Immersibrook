@@ -45,6 +45,7 @@ import com.mesabrook.ib.blocks.Pillar;
 import com.mesabrook.ib.blocks.SignBlock;
 import com.mesabrook.ib.blocks.SignStand;
 import com.mesabrook.ib.blocks.Truss;
+import com.mesabrook.ib.blocks.commerce.BlockShoppingBasketHolder;
 import com.mesabrook.ib.blocks.food.FoodBlock;
 import com.mesabrook.ib.blocks.metro.TicketMachine;
 import com.mesabrook.ib.blocks.sco.BlockScanner;
@@ -1267,8 +1268,6 @@ public class ModBlocks
 				ModUtils.getPixelatedAABB(0, 0, 1.025, 16, 1.5, 14.025),
 				ModUtils.getPixelatedAABB(0, 8, 1.025, 16, 9.5, 14.025)
 			});
-//	public static final Block SHELF_FOUR_PEGHOOKS = new ImmersiblockRotational("shelf_four_peghooks", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
-//	public static final Block SHELF_TWO_LEVELS_NO_PEGHOOKS = new ImmersiblockRotational("shelf_two_levels_no_peghooks", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
 
 	// Security Station
 	public static final Block SECURITY_STATION = new BlockSecurityTaggingStation();
@@ -1332,8 +1331,8 @@ public class ModBlocks
 	public static final Block THRONE_GOV = new BlockSeat("throne_gov", ModUtils.DOUBLE_AABB, 4.0F);
 
 	// Retail Basket Holders
-	public static final Block BASKET_HOLDER_RED = new ImmersiblockRotational("basket_holder_red", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.25F, 2F, ModUtils.DOUBLE_AABB);
-	public static final Block BASKET_HOLDER_GREEN = new ImmersiblockRotational("basket_holder_green", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.25F, 2F, ModUtils.DOUBLE_AABB);
-	public static final Block BASKET_HOLDER_BLUE = new ImmersiblockRotational("basket_holder_blue", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.25F, 2F, ModUtils.DOUBLE_AABB);
-	public static final Block BASKET_HOLDER_BLACK = new ImmersiblockRotational("basket_holder_black", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.25F, 2F, ModUtils.DOUBLE_AABB);
+	public static final Block BASKET_HOLDER_RED = new BlockShoppingBasketHolder("basket_holder_red");
+	public static final Block BASKET_HOLDER_GREEN = new BlockShoppingBasketHolder("basket_holder_green");
+	public static final Block BASKET_HOLDER_BLUE = new BlockShoppingBasketHolder("basket_holder_blue");
+	public static final Block BASKET_HOLDER_BLACK = new BlockShoppingBasketHolder("basket_holder_black");
 }

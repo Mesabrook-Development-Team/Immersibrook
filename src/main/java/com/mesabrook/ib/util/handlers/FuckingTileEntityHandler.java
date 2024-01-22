@@ -22,5 +22,6 @@ public class FuckingTileEntityHandler
 		GameRegistry.registerTileEntity(TileEntitySmoker.class, new ResourceLocation(Reference.MODID + ":smoker_block"));
 		GameRegistry.registerTileEntity(TileEntityATM.class, new ResourceLocation(Reference.MODID + ":atm"));
 		GameRegistry.registerTileEntity(TileEntityFluidMeter.class, new ResourceLocation(Reference.MODID + ":fluidmeter"));
+		GameRegistry.registerTileEntity(TileEntityShoppingBasketHolder.class, new ResourceLocation(Reference.MODID + ":shoppingbasketholder"));
 	}
 }
