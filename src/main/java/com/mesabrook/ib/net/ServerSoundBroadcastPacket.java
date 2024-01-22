@@ -48,9 +48,15 @@ public class ServerSoundBroadcastPacket implements IMessage
 	
 	public static void playIBSound(World world, String sound, BlockPos pos)
 	{
+		playIBSound(world, sound, pos, false);
+	}
+	
+	public static void playIBSound(World world, String sound, BlockPos pos, boolean rapidSounds)
+	{
 		ServerSoundBroadcastPacket billAcceptorSound = new ServerSoundBroadcastPacket();
 		billAcceptorSound.soundName = sound;
 		billAcceptorSound.pos = pos;
+		billAcceptorSound.rapidSounds = rapidSounds;
 		PacketHandler.INSTANCE.sendToAllAround(billAcceptorSound, new TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 25));
 	}
 	
