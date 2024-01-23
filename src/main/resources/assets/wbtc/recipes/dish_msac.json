@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "wbtc:dish_blank"
+        },
+        {
+            "type": "forge:ore_dict",
+            "ore": "dyeGray"
+        }
+    ],
+    "result": {
+        "item": "wbtc:dish_msac",
+        "count": 1
+    }
+}

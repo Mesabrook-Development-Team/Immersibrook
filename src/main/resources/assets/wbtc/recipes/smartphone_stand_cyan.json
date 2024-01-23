@@ -2,18 +2,20 @@
     "type": "minecraft:crafting_shaped",
     "pattern":
     [
-        "LL "
+        "PPP",
+		" P "
     ],
     "key":
     {
-        "L":
+        "P":
         {
-            "item": "minecraft:leather"
+            "type": "forge:ore_dict",
+            "ore": "itemCyanPlastic"
         }
     },
     "result":
     {
-        "item": "wbtc:wallet_unisex",
+        "item": "wbtc:smartphone_stand_cyan",
         "count": 1
     }
 }
