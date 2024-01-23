@@ -61,70 +61,12 @@ public class TileEntityShoppingBasketHolderRenderer extends TileEntitySpecialRen
 		Tessellator tess = Tessellator.getInstance();
 		BufferBuilder buffer = tess.getBuffer();
 		buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
-		
-		int basketCounter = 0;
-		for(ItemStack basket : te.getBaskets())
+		for(int[] vertexData : te.getModelVertexData())
 		{
-			if (basket == null || basket.isEmpty())
-			{
-				continue;
-			}
-			
-			String variant = "color=";
-			EnumDyeColor dyeColor = EnumDyeColor.byMetadata(basket.getMetadata());
-			variant += dyeColor.getUnlocalizedName() + ",down=true";
-			
-			IBakedModel model = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getModelManager().getModel(new ModelResourceLocation(basket.getItem().getRegistryName(), variant));
-			model = model.getOverrides().handleItemState(model, basket, getWorld(), null);
-			
-			for(EnumFacing facing : facings)
-			{
-				for(BakedQuad quad : model.getQuads(null, facing, 0))
-				{
-					BakedQuad transformedQuad = transform(quad, basketCounter * 0.125F);
-					buffer.addVertexData(transformedQuad.getVertexData());
-				}
-			}
-			
-			basketCounter++;
+			buffer.addVertexData(vertexData);
 		}
 		
 		tess.draw();
 		GlStateManager.popMatrix();
-	}
-	
-	protected static BakedQuad transform(BakedQuad quad, float additionalYOffset) {
-		UnpackedBakedQuad.Builder builder = new UnpackedBakedQuad.Builder(quad.getFormat());
-		final IVertexConsumer consumer = new VertexTransformer(builder) {
-			@Override
-			public void put(int element, float... data) {
-				VertexFormatElement formatElement = quad.getFormat().getElement(element);
-				switch(formatElement.getUsage()) {
-				case POSITION: {
-					float[] newData = new float[4];
-					Vector4f vec = new Vector4f(data);
-					vec.get(newData);
-					float yScale = 1F - (newData[1] / 0.4F);
-					if (newData[0] > 0.5F)
-					{
-						newData[0] -= 0.0625F * yScale;
-					}
-					else
-					{
-						newData[0] += 0.0625F * yScale;
-					}
-					newData[1] += additionalYOffset;
-					parent.put(element, newData);
-					break;
-				}
-				default: {
-					parent.put(element, data);
-					break;
-				}
-				}
-			}
-		};
-		quad.pipe(consumer);
-		return builder.build();
 	}
 }

@@ -135,7 +135,7 @@ public class ItemShoppingBasket extends Item implements IHasModel
     public void readNBTShareTag(ItemStack stack, NBTTagCompound nbt) {
     	super.readNBTShareTag(stack, nbt);
     	
-    	if (nbt.hasKey("wbtc_inv"))
+    	if (nbt != null && nbt.hasKey("wbtc_inv"))
     	{
     		CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.readNBT(stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null), null, nbt.getTag("wbtc_inv"));
     	}
