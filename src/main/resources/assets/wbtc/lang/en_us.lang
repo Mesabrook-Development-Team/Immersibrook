@@ -374,6 +374,7 @@ tile.push_trashcan.name=Trash Can
 tile.synthetic_turf.name=Synthetic Turf
 tile.white_cobblestone.name=Chalked Cobblestone
 tile.white_stone_bricks.name=Chalked Stone Bricks
+tile.automated_tagging_station.name=Automated Tagging Station (NYI)
 
 //Sign stand
 tile.sign_stand.name=Portable Road Sign Stand

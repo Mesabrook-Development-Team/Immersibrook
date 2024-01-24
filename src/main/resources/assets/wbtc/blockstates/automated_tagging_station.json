@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:automated_tagging_station" },
+        "facing=south": { "model": "wbtc:automated_tagging_station", "y": 180 },
+        "facing=west":  { "model": "wbtc:automated_tagging_station", "y": 270 },
+        "facing=east":  { "model": "wbtc:automated_tagging_station", "y": 90 }
+    }
+}
