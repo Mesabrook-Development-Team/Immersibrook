@@ -76,6 +76,7 @@ public class ModItems
 
 	// Joke Items/Tools
 	public static final Item EMERALD_SWORD = new ItemWeapon("emerald_sword", ToolMaterial.GOLD);
+	public static final Item PIANO = new ItemWeapon("piano", ToolMaterialRegistry.ZOE_CANE_MAT);
 
 	// Toys
 	public static final Item POPPER_RED = new ToyPopper("popper_red", 300);

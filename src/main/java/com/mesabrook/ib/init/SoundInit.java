@@ -114,6 +114,7 @@ public class SoundInit
 	public static final SoundEvent COOKING;
 	public static final SoundEvent MEMORY;
 	public static final SoundEvent WIDE;
+	public static final SoundEvent PIANO;
 
 	// Holiday Records
 	public static final SoundEvent SPOOKY;
@@ -314,6 +315,7 @@ public class SoundInit
 		URINAL = addSoundsToRegistry("urinal");
 		WC_OFF = addSoundsToRegistry("wireless_charge_off");
 		WC_ON = addSoundsToRegistry("wireless_charge_on");
+		PIANO = addSoundsToRegistry("piano");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -649,7 +651,7 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.POS_TAKE_CARD);
 				event.getRegistry().register(SoundInit.POS_USE_PINPAD);
 				event.getRegistry().register(SoundInit.POS_WELCOME);
-
+				event.getRegistry().register(SoundInit.PIANO);
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");
 			}

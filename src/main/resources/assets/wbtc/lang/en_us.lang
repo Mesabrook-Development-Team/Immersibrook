@@ -276,6 +276,7 @@ item.tape_measure.name=Tape Measure
 item.portable_ender_chest.name=§dEnder Pouch
 item.tape_roll_measure.name=Measuring Tape
 item.technical_engineering_block.name=Technical Engineering Block
+item.piano.name=Piano
 
 //Smooth Wood Blocks
 tile.smooth_oak.name=Smooth Oak Wood

@@ -6,6 +6,13 @@
 			"stream": true
 		}]
 	},
+	"piano": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:piano",
+			"stream": true
+		}]
+	},
 	"ding_10": {
 		"category": "master",
 		"sounds": [{
