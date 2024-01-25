@@ -209,6 +209,10 @@ public class ImmersiblockRotational extends Block implements IHasModel
             {
                 tooltip.add(TextFormatting.YELLOW + new TextComponentTranslation("im.tooltip.crosswalk").getFormattedText());
             }
+            if(this == ModBlocks.ATS)
+            {
+                tooltip.add(TextFormatting.YELLOW + "(Not Yet Implemented) A machine that automatically places products into Security Boxes for sale.");
+            }
         }
         else
         {

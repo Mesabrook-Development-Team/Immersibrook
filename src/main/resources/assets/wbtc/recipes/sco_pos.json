@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "SSS",
+		"SCS",
+		"SSS"
+    ],
+    "key":
+    {
+        "S":
+        {
+            "type": "forge:ore_dict",
+            "ore": "itemGrayPlastic"
+        },
+        "C":
+        {
+			"item": "wbtc:technical_engineering_block"
+        }
+    },
+    "result":
+    {
+        "item": "wbtc:sco_pos",
+        "count": 1
+    }
+}

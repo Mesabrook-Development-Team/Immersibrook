@@ -1,3 +1,6 @@
 {
-   "parent": "wbtc:block/retail_freezer_upright"
+   "parent": "item/generated",
+   "textures": {
+      "layer0": "wbtc:items/retail_freezer_upright"
+   }
 }

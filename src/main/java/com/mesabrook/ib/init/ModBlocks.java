@@ -1467,4 +1467,7 @@ public class ModBlocks
 	public static final Block BASKET_HOLDER_GREEN = new BlockShoppingBasketHolder("basket_holder_green");
 	public static final Block BASKET_HOLDER_BLUE = new BlockShoppingBasketHolder("basket_holder_blue");
 	public static final Block BASKET_HOLDER_BLACK = new BlockShoppingBasketHolder("basket_holder_black");
+	
+	// Automated Tagging Station Block
+	public static final Block ATS = new ImmersiblockRotational("automated_tagging_station", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.25F, 3.5F, ModUtils.DEFAULT_AABB);
 }

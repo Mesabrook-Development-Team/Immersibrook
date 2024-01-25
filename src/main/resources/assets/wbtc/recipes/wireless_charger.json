@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "SSS",
+		"PCP",
+		"PBP"
+    ],
+    "key":
+    {
+        "P":
+        {
+            "type": "forge:ore_dict",
+            "ore": "itemWhitePlastic"
+        },
+        "S":
+        {
+            "type": "forge:ore_dict",
+            "ore": "platePlastic"
+        },
+        "C":
+        {
+            "item": "wbtc:technical_engineering_block"
+        },
+        "B":
+        {
+			"item": "immersiveengineering:metal_device0",
+			"data": 0
+        }
+    },
+    "result":
+    {
+        "item": "wbtc:wireless_phone_charger_pad",
+        "count": 1
+    }
+}

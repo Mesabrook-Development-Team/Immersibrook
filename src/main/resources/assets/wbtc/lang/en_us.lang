@@ -275,6 +275,8 @@ item.flagger_slow.name=Flagger's Sign
 item.tape_measure.name=Tape Measure
 item.portable_ender_chest.name=§dEnder Pouch
 item.tape_roll_measure.name=Measuring Tape
+item.technical_engineering_block.name=Technical Engineering Block
+item.piano.name=Piano
 
 //Smooth Wood Blocks
 tile.smooth_oak.name=Smooth Oak Wood
@@ -372,6 +374,7 @@ tile.push_trashcan.name=Trash Can
 tile.synthetic_turf.name=Synthetic Turf
 tile.white_cobblestone.name=Chalked Cobblestone
 tile.white_stone_bricks.name=Chalked Stone Bricks
+tile.automated_tagging_station.name=Automated Tagging Station (NYI)
 
 //Sign stand
 tile.sign_stand.name=Portable Road Sign Stand
@@ -2024,6 +2027,7 @@ tile.shelf_two_levels_no_peghooks.name=Retail Shelf - Two Shelves, No Peghooks
 tile.security_station.name=Retail Merchandise Securing Station
 item.peghook.name=Peghook
 item.security_box.name=Merchandise Security Box
+tile.retail_drink_cooler.name=Retail Drinks Cooler
 
 tile.smartphone_stand.name=Smartphone Display Stand
 tile.smartphone_stand_orange.name=Smartphone Display Stand

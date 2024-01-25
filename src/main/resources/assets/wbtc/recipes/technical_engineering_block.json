@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "SSS",
+		"SCS",
+		"SSS"
+    ],
+    "key":
+    {
+        "S":
+        {
+            "type": "forge:ore_dict",
+            "ore": "ingotSteel"
+        },
+        "C":
+        {
+			"item": "immersiveengineering:material",
+			"data": 27
+        }
+    },
+    "result":
+    {
+        "item": "wbtc:technical_engineering_block",
+        "count": 4
+    }
+}

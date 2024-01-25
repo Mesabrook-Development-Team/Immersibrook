@@ -76,6 +76,7 @@ public class ModItems
 
 	// Joke Items/Tools
 	public static final Item EMERALD_SWORD = new ItemWeapon("emerald_sword", ToolMaterial.GOLD);
+	public static final Item PIANO = new ItemWeapon("piano", ToolMaterialRegistry.ZOE_CANE_MAT);
 
 	// Toys
 	public static final Item POPPER_RED = new ToyPopper("popper_red", 300);
@@ -605,4 +606,7 @@ public class ModItems
 	// Smartphone Battery
 	public static final Item SMARTPHONE_BATTERY = new MiscItem("smartphone_battery", 1, Main.IMMERSIBROOK_MAIN);
 	public static final Item SD_CARD = new MiscItem("sd_card", 1, Main.IMMERSIBROOK_MAIN);
+	
+	// Technical Engineering Item
+	public static final Item TECH_BLOCK = new MiscItem("technical_engineering_block", 64, Main.IMMERSIBROOK_MAIN);
 }

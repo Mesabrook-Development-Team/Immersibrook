@@ -1,0 +1,35 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "SCS",
+		"BTB",
+		"SBS"
+    ],
+    "key":
+    {
+        "S":
+        {
+            "type": "forge:ore_dict",
+            "ore": "blockSheetmetalIron"
+        },
+        "T":
+        {
+			"item": "wbtc:technical_engineering_block"
+        },
+        "B":
+        {
+			"item": "immersiveengineering:conveyor"
+        },
+        "C":
+        {
+			"item": "immersiveengineering:metal_device0",
+			"data": 0
+        }
+    },
+    "result":
+    {
+        "item": "wbtc:automated_tagging_station",
+        "count": 1
+    }
+}

@@ -58,6 +58,7 @@ public class CategoryTools extends AbstractCategory {
 		add(ModItems.RS_RATION);
 
 		add(ModItems.ITEM_LAUNCHER);
+		add(ModItems.PIANO);
 	}
 
 }

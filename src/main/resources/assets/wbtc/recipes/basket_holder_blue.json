@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " P ",
+	" I ",
+	"III"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+	  "ore": "stickSteel"
+    },
+    "P": {
+	  "item": "wbtc:blue_plastic"
+    }
+  },
+  "result": {
+    "item": "wbtc:basket_holder_blue",
+    "count": 1
+  }
+}
