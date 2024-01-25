@@ -6,7 +6,7 @@
     		"model": "builtin/generated",
     		"textures":
     		{ 
-    			"layer0": "wbtc:blocks/cube_pufferfish_face"
+    			"layer0": "wbtc:items/retail_freezer_upright"
     		},
     		"transform": "forge:default-item"
     	},
