@@ -51,7 +51,8 @@ import com.mesabrook.ib.blocks.metro.TicketMachine;
 import com.mesabrook.ib.blocks.sco.BlockScanner;
 import com.mesabrook.ib.blocks.sco.BlockSecurityTaggingStation;
 import com.mesabrook.ib.blocks.sco.BlockShelf;
-import com.mesabrook.ib.blocks.sco.BlockShelfCloseable;
+import com.mesabrook.ib.blocks.sco.BlockShelfCloseableLower;
+import com.mesabrook.ib.blocks.sco.BlockShelfCloseableUpper;
 import com.mesabrook.ib.blocks.sco.ProductPlacement;
 import com.mesabrook.ib.blocks.stairs.MiscStairs;
 import com.mesabrook.ib.util.ModUtils;
@@ -60,13 +61,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ModBlocks 
 {
@@ -1304,7 +1299,7 @@ public class ModBlocks
 	public static final Block PHONE_CHARGING_PAD = new BlockSmartphoneChargingPad("wireless_phone_charger_pad", ModUtils.getPixelatedAABB(5,0,4,11,2.5,12));
 
 	// Retail Freezers
-	public static final Block RETAIL_FREEZER_UPRIGHT_TOP = new BlockShelfCloseable("retail_freezer_upright_top", new ProductPlacement[]
+	public static final BlockShelfCloseableUpper RETAIL_FREEZER_UPRIGHT_TOP = new BlockShelfCloseableUpper("retail_freezer_upright_top", new ProductPlacement[]
 			{
 				new ProductPlacement(1, 3, ModUtils.getPixelatedAABB(9.01, -0.5, 1, 14, 4.5, 15)),
 				new ProductPlacement(2, 3, ModUtils.getPixelatedAABB(2.01, -0.5, 1, 7, 4.5, 15)),
@@ -1318,46 +1313,9 @@ public class ModBlocks
 				ModUtils.getPixelatedAABB(1, 0, 15, 15, 14, 16),
 				ModUtils.getPixelatedAABB(0, 0, 0, 1, 14, 16)
 			},
-			ModUtils.getPixelatedAABB(1, 0, 0, 15, 14, 1))
-			{
-				@SideOnly(Side.CLIENT)
-				@Override
-				public net.minecraft.util.BlockRenderLayer getBlockLayer() { return BlockRenderLayer.CUTOUT; }
-				
-				@Override
-				protected void addItemBlock()
-				{
-					// Do nothing
-				}
-				
-				@Override
-				public void registerModels()
-				{
-					// Do nothing
-				}
-				
-				@Override
-				public void neighborChanged(net.minecraft.block.state.IBlockState state, net.minecraft.world.World worldIn, net.minecraft.util.math.BlockPos pos, Block blockIn, net.minecraft.util.math.BlockPos fromPos)
-				{
-					IBlockState lowerState = worldIn.getBlockState(pos.down());
-					if (!(lowerState.getBlock() instanceof BlockShelfCloseable))
-					{
-						worldIn.destroyBlock(pos, false);
-					}
-					else
-					{
-						boolean myClosed = state.getValue(BlockShelfCloseable.CLOSED);
-						boolean otherClosed = lowerState.getValue(BlockShelfCloseable.CLOSED);
-						
-						if (myClosed != otherClosed)
-						{
-							worldIn.setBlockState(pos, state.withProperty(BlockShelfCloseable.CLOSED, otherClosed));
-						}
-					}
-				}
-			};
+			ModUtils.getPixelatedAABB(1, 0, 0, 15, 14, 1));
 			
-	public static final Block RETAIL_FREEZER_UPRIGHT_BOTTOM = new BlockShelfCloseable("retail_freezer_upright_bottom", new ProductPlacement[]
+	public static final Block RETAIL_FREEZER_UPRIGHT_BOTTOM = new BlockShelfCloseableLower("retail_freezer_upright_bottom", new ProductPlacement[]
 			{
 				new ProductPlacement(1, 3, ModUtils.getPixelatedAABB(9.01, 2.5, 1, 14, 7.5, 15)),
 				new ProductPlacement(2, 3, ModUtils.getPixelatedAABB(2.01, 2.5, 1, 7, 7.5, 15)),
@@ -1371,65 +1329,8 @@ public class ModBlocks
 				ModUtils.getPixelatedAABB(0, 1, 0, 1, 16, 16),
 				ModUtils.getPixelatedAABB(0, 0, 0, 16, 1, 16)
 			}, 
-			ModUtils.getPixelatedAABB(1, 1, 0, 15, 16, 1))
-			{
-				@SideOnly(Side.CLIENT)
-				@Override
-				public BlockRenderLayer getBlockLayer() { return BlockRenderLayer.CUTOUT; }
-				
-				@Override
-				public void neighborChanged(net.minecraft.block.state.IBlockState state, net.minecraft.world.World worldIn, net.minecraft.util.math.BlockPos pos, Block blockIn, net.minecraft.util.math.BlockPos fromPos)
-				{
-					IBlockState upperState = worldIn.getBlockState(pos.up());
-					if (!(upperState.getBlock() instanceof BlockShelfCloseable))
-					{
-						worldIn.destroyBlock(pos, false);
-					}
-					else
-					{
-						boolean myClosed = state.getValue(BlockShelfCloseable.CLOSED);
-						boolean otherClosed = upperState.getValue(BlockShelfCloseable.CLOSED);
-						
-						if (myClosed != otherClosed)
-						{
-							worldIn.setBlockState(pos, state.withProperty(BlockShelfCloseable.CLOSED, otherClosed), 3);
-						}
-					}
-					
-					super.neighborChanged(upperState, worldIn, pos, blockIn, fromPos);
-				}
-				
-				@Override
-				protected void addItemBlock()
-				{
-					Item itemBlock = new ItemBlock(this)
-					{
-						public boolean placeBlockAt(net.minecraft.item.ItemStack stack, net.minecraft.entity.player.EntityPlayer player, net.minecraft.world.World world, net.minecraft.util.math.BlockPos pos, net.minecraft.util.EnumFacing side, float hitX, float hitY, float hitZ, IBlockState newState)
-						{
-							if (!world.getBlockState(pos.up()).getBlock().isReplaceable(world, pos.up()))
-							{
-								return false;
-							}
-							
-							return super.placeBlockAt(stack, player, world, pos, side, hitX, hitY, hitZ, newState);
-						}
-					}.setRegistryName(this.getRegistryName());
-					ModItems.ITEMS.add(itemBlock);
-				}
-				
-				@Override
-				public void onBlockPlacedBy(net.minecraft.world.World worldIn, net.minecraft.util.math.BlockPos pos, IBlockState state, net.minecraft.entity.EntityLivingBase placer, net.minecraft.item.ItemStack stack)
-				{
-					super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
-					
-					if (worldIn.getBlockState(pos) == state)
-					{
-						IBlockState newUpperBlockState = RETAIL_FREEZER_UPRIGHT_TOP.getDefaultState().withProperty(BlockShelf.FACING, state.getValue(BlockShelf.FACING));
-						worldIn.setBlockState(pos.up(), newUpperBlockState, 3);
-						newUpperBlockState.getBlock().onBlockPlacedBy(worldIn, pos.up(), newUpperBlockState, placer, stack);
-					}
-				}
-			};
+			ModUtils.getPixelatedAABB(1, 1, 0, 15, 16, 1),
+			RETAIL_FREEZER_UPRIGHT_TOP);
 	public static final Block RETAIL_FREEZER_DEEP = new ImmersiblockRotational("retail_freezer_deep", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
 	public static final Block RETAIL_DRINK_COOLER = new ImmersiblockRotational("retail_drink_cooler", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
 
