@@ -50,7 +50,7 @@ public class CategoryCommerce extends AbstractCategory
         add(ModBlocks.SHELF_TWO_LEVELS_NO_PEGHOOKS);
         add(ModBlocks.RETAIL_FREEZER_UPRIGHT_BOTTOM);
         add(ModBlocks.RETAIL_FREEZER_DEEP);
-        add(ModBlocks.RETAIL_DRINK_COOLER);
+        add(ModBlocks.RETAIL_DRINK_COOLER_BOTTOM);
 
         // Security Station
         add(ModBlocks.SECURITY_STATION);

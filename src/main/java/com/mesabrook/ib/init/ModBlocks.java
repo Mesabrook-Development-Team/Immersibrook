@@ -1301,8 +1301,8 @@ public class ModBlocks
 	// Retail Freezers
 	public static final BlockShelfCloseableUpper RETAIL_FREEZER_UPRIGHT_TOP = new BlockShelfCloseableUpper("retail_freezer_upright_top", new ProductPlacement[]
 			{
-				new ProductPlacement(1, 3, ModUtils.getPixelatedAABB(9.01, -0.5, 1, 14, 4.5, 15)),
-				new ProductPlacement(2, 3, ModUtils.getPixelatedAABB(2.01, -0.5, 1, 7, 4.5, 15)),
+				new ProductPlacement(1, 3, ModUtils.getPixelatedAABB(9.51, 0.5, 1, 13.5, 4.5, 15)),
+				new ProductPlacement(2, 3, ModUtils.getPixelatedAABB(2.51, 0.5, 1, 6.5, 4.5, 15)),
 				new ProductPlacement(3, 3, ModUtils.getPixelatedAABB(9.01, 6.5, 1, 14, 11.5, 15)),
 				new ProductPlacement(4, 3, ModUtils.getPixelatedAABB(2.01, 6.5, 1, 7, 11.5, 15))
 			},
@@ -1332,7 +1332,36 @@ public class ModBlocks
 			ModUtils.getPixelatedAABB(1, 1, 0, 15, 16, 1),
 			RETAIL_FREEZER_UPRIGHT_TOP);
 	public static final Block RETAIL_FREEZER_DEEP = new ImmersiblockRotational("retail_freezer_deep", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
-	public static final Block RETAIL_DRINK_COOLER = new ImmersiblockRotational("retail_drink_cooler", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
+	public static final BlockShelfCloseableUpper RETAIL_DRINK_COOLER_TOP = new BlockShelfCloseableUpper("retail_drink_cooler_top", new ProductPlacement[]
+			{
+				new ProductPlacement(1, 3, ModUtils.getPixelatedAABB(9.01, 0.5, 1, 14, 5.5, 15)),
+				new ProductPlacement(2, 3, ModUtils.getPixelatedAABB(2.01, 0.5, 1, 7, 5.5, 15))
+			},
+			new AxisAlignedBB[]
+			{
+				ModUtils.getPixelatedAABB(0, 10, 0, 16, 11, 16),
+				ModUtils.getPixelatedAABB(15, 0, 0, 16, 10, 16),
+				ModUtils.getPixelatedAABB(1, 0, 15, 15, 10, 16),
+				ModUtils.getPixelatedAABB(0, 0, 0, 1, 10, 16)
+			},
+			ModUtils.getPixelatedAABB(1, 0, 0, 15, 6, 1));
+	
+	public static final Block RETAIL_DRINK_COOLER_BOTTOM = new BlockShelfCloseableLower("retail_drink_cooler_bottom", new ProductPlacement[]
+			{
+				new ProductPlacement(1, 3, ModUtils.getPixelatedAABB(9.01, 2.5, 1, 14, 7.5, 15)),
+				new ProductPlacement(2, 3, ModUtils.getPixelatedAABB(2.01, 2.5, 1, 7, 7.5, 15)),
+				new ProductPlacement(3, 3, ModUtils.getPixelatedAABB(9.01, 9.5, 1, 14, 14.5, 15)),
+				new ProductPlacement(4, 3, ModUtils.getPixelatedAABB(2.01, 9.5, 1, 7, 14.5, 15))
+			},
+			new AxisAlignedBB[]
+			{
+				ModUtils.getPixelatedAABB(15, 1, 0, 16, 16, 16),
+				ModUtils.getPixelatedAABB(1, 1, 15, 15, 16, 16),
+				ModUtils.getPixelatedAABB(0, 1, 0, 1, 16, 16),
+				ModUtils.getPixelatedAABB(0, 0, 0, 16, 1, 16)
+			},
+			ModUtils.getPixelatedAABB(1, 0, 0, 15, 16, 1),
+			RETAIL_DRINK_COOLER_TOP);
 
 	// Sound Emitter
 	public static final Block SOUND_EMITTER_BLOCK = new BlockSoundEmitter("sound_emitter", Material.IRON, SoundType.METAL);
