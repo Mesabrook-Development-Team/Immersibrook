@@ -213,7 +213,7 @@ public class KeyEventHandler
 				}
 			}
 			
-			AxisAlignedBB rotatedBB = ((BlockShelf)state.getBlock()).ORIGINAL_BOX_TO_ROTATED_BY_FACING.get(state.getValue(BlockShelf.FACING)).get(placement.getBoundingBox());
+			AxisAlignedBB rotatedBB = ((BlockShelf)state.getBlock()).getOriginalToRotatedByFacing(state, state.getValue(BlockShelf.FACING)).get(placement.getBoundingBox());
 			ShelvingTileEntityRenderer.ShelfPriceDisplayInformation displayInfo = new ShelvingTileEntityRenderer.ShelfPriceDisplayInformation();
 			displayInfo.placementID = placement.getPlacementID();
 			displayInfo.displayY = rotatedBB.maxY + 0.0625;

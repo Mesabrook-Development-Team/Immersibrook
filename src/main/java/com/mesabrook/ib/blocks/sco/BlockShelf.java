@@ -41,6 +41,12 @@ public class BlockShelf extends ImmersiblockRotationalManyBB {
 		{
 			productPlacementByID.put(placement.getPlacementID(), placement);
 			productPlacementByBB.put(placement.getBoundingBox(), placement);
+			
+			long rotatedBoxesForPlacement = ROTATED_BOX_TO_ORIGINAL.values().stream().filter(aabb -> aabb == placement.getBoundingBox()).count();
+			if (rotatedBoxesForPlacement < 4)
+			{
+				throw new RuntimeException("Unable to find a suitable rotated bounding box for all possible directions for this Product Placement (found " + rotatedBoxesForPlacement + ", expected 4). Try shifting your bounding boxes by a small amount (0.1) so that they are not symmetrical");
+			}
 		}
 	}
 	

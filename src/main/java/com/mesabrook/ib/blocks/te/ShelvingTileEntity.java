@@ -2,6 +2,7 @@ package com.mesabrook.ib.blocks.te;
 
 import java.util.HashMap;
 
+import com.mesabrook.ib.blocks.sco.BlockShelf;
 import com.mesabrook.ib.blocks.sco.ProductPlacement;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
@@ -9,6 +10,7 @@ import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
 import com.mesabrook.ib.capability.secureditem.ISecuredItem;
 import com.mesabrook.ib.init.ModItems;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
@@ -19,6 +21,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -336,6 +339,11 @@ public class ShelvingTileEntity extends TileEntity {
 	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
 		super.onDataPacket(net, pkt);
 		handleUpdateTag(pkt.getNbtCompound());
+	}
+	
+	@Override
+	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate) {
+		return !(oldState.getBlock() instanceof BlockShelf && newSate.getBlock() instanceof BlockShelf);
 	}
 	
 	public static class ProductSpot implements INBTSerializable<NBTTagCompound>

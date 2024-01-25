@@ -68,7 +68,12 @@ public class ImmersiblockRotational extends Block implements IHasModel
         ));
 
         ModBlocks.BLOCKS.add(this);
-        ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
+        addItemBlock();
+    }
+    
+    protected void addItemBlock()
+    {
+    	ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
     }
 
     @Override
@@ -95,10 +100,6 @@ public class ImmersiblockRotational extends Block implements IHasModel
         if(blockState.getBlock() == ModBlocks.SCO_BAGGING)
         {
             return new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D);
-        }
-        if(blockState.getBlock() == ModBlocks.RETAIL_FREEZER_UPRIGHT)
-        {
-            return ModUtils.DOUBLE_AABB;
         }
         if(blockState.getBlock() == ModBlocks.IN_STREET_CROSSWALK_SIGN)
         {

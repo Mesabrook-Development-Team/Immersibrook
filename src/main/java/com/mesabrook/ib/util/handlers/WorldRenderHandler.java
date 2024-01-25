@@ -77,7 +77,7 @@ public class WorldRenderHandler {
 					
 					if (foundBox != null)
 					{
-						foundBox = ((BlockShelf)blockState.getBlock()).ROTATED_BOX_TO_ORIGINAL.get(foundBox);
+						foundBox = ((BlockShelf)blockState.getBlock()).getOriginalBoxFromRotated(blockState, foundBox);
 						ProductPlacement placement = ((BlockShelf)blockState.getBlock()).getProductPlacementByBoundingBox(foundBox);
 						
 						if (placement != null && 

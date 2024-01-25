@@ -1,13 +1,15 @@
 package com.mesabrook.ib.blocks;
 
-import java.util.Arrays;
 import java.util.HashMap;
+import java.util.IdentityHashMap;
 import java.util.List;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ImmutableCollection;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMultimap;
+import com.google.gson.internal.LinkedTreeMap;
 import com.mesabrook.ib.util.ModUtils;
 
 import net.minecraft.block.SoundType;
@@ -24,14 +26,12 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public abstract class ImmersiblockRotationalManyBB extends ImmersiblockRotational {
 
-	public final ImmutableMultimap<EnumFacing, AxisAlignedBB> SUB_BOUNDING_BOXES;
-	public final ImmutableMap<AxisAlignedBB, AxisAlignedBB> ROTATED_BOX_TO_ORIGINAL;
-	public final ImmutableMap<EnumFacing, ImmutableMap<AxisAlignedBB, AxisAlignedBB>> ORIGINAL_BOX_TO_ROTATED_BY_FACING;
+	protected final ImmutableListMultimap<EnumFacing, AxisAlignedBB> SUB_BOUNDING_BOXES;
+	protected final ImmutableMap<AxisAlignedBB, AxisAlignedBB> ROTATED_BOX_TO_ORIGINAL;
+	protected final ImmutableMap<EnumFacing, ImmutableMap<AxisAlignedBB, AxisAlignedBB>> ORIGINAL_BOX_TO_ROTATED_BY_FACING;
 	private final boolean flipBoundingBoxes;
 	
 	public ImmersiblockRotationalManyBB(String name, Material materialIn, SoundType soundTypeIn, String harvestTool,
@@ -81,7 +81,7 @@ public abstract class ImmersiblockRotationalManyBB extends ImmersiblockRotationa
 			addToOriginalBoxToRotatedByFacing(originalBoxToRotatedByFacing, flipBoundingBoxes ? EnumFacing.WEST : EnumFacing.EAST, rotatedBB, boundingBox);
 		}
 		
-		SUB_BOUNDING_BOXES = ImmutableMultimap.copyOf(boundingBoxesByFacing);
+		SUB_BOUNDING_BOXES = ImmutableListMultimap.copyOf(boundingBoxesByFacing);
 		ROTATED_BOX_TO_ORIGINAL = ImmutableMap.copyOf(rotatedToOriginal);
 		HashMap<EnumFacing, ImmutableMap<AxisAlignedBB, AxisAlignedBB>> interim = new HashMap<>();
 		for(EnumFacing facing : originalBoxToRotatedByFacing.keySet())
@@ -104,7 +104,7 @@ public abstract class ImmersiblockRotationalManyBB extends ImmersiblockRotationa
 	@Override
 	public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox,
 			List<AxisAlignedBB> collidingBoxes, Entity entityIn, boolean isActualState) {
-		SUB_BOUNDING_BOXES.get(state.getValue(FACING)).forEach(bb -> addCollisionBoxToList(pos, entityBox, collidingBoxes, bb));
+		getRotatedSubBoundingBoxByFacing(state, state.getValue(FACING)).forEach(bb -> addCollisionBoxToList(pos, entityBox, collidingBoxes, bb));
 	}
 	
 	@Override
@@ -115,7 +115,7 @@ public abstract class ImmersiblockRotationalManyBB extends ImmersiblockRotationa
 		{
 			facing = facing.getOpposite();
 		}
-		for(AxisAlignedBB subBB : SUB_BOUNDING_BOXES.get(facing))
+		for(AxisAlignedBB subBB : getRotatedSubBoundingBoxByFacing(blockState, facing))
 		{
 			bb = subBB.union(bb);
 		}
@@ -129,7 +129,7 @@ public abstract class ImmersiblockRotationalManyBB extends ImmersiblockRotationa
 		
 		if (boxHit != null)
 		{
-			return onSubBoundingBoxActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ, ROTATED_BOX_TO_ORIGINAL.get(boxHit));
+			return onSubBoundingBoxActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ, getOriginalBoxFromRotated(state, boxHit));
 		}
 		
 		return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
@@ -160,7 +160,7 @@ public abstract class ImmersiblockRotationalManyBB extends ImmersiblockRotationa
 	public static AxisAlignedBB findSubBoundingBox(BlockPos rotationalBlockPos, IBlockState rotationalBlockState, EntityPlayer player, float partialTicks)
 	{
 		EnumFacing facing = rotationalBlockState.getValue(ImmersiblockRotationalManyBB.FACING);
-		ImmutableCollection<AxisAlignedBB> boundingBoxesForFacing = ((ImmersiblockRotationalManyBB)rotationalBlockState.getBlock()).SUB_BOUNDING_BOXES.get(facing);
+		ImmutableCollection<AxisAlignedBB> boundingBoxesForFacing = ((ImmersiblockRotationalManyBB)rotationalBlockState.getBlock()).getRotatedSubBoundingBoxByFacing(rotationalBlockState, facing);
 		
 		final Vec3d start = player.getPositionEyes(partialTicks);
 		final Vec3d eyes = player.getLook(partialTicks);
@@ -185,5 +185,20 @@ public abstract class ImmersiblockRotationalManyBB extends ImmersiblockRotationa
 		}
 		
 		return boxToDraw;
+	}
+
+	public ImmutableList<AxisAlignedBB> getRotatedSubBoundingBoxByFacing(IBlockState state, EnumFacing facing)
+	{
+		return SUB_BOUNDING_BOXES.get(facing);
+	}
+	
+	public AxisAlignedBB getOriginalBoxFromRotated(IBlockState state, AxisAlignedBB rotated)
+	{
+		return ROTATED_BOX_TO_ORIGINAL.get(rotated);
+	}
+	
+	public ImmutableMap<AxisAlignedBB, AxisAlignedBB> getOriginalToRotatedByFacing(IBlockState state, EnumFacing facing)
+	{
+		return ORIGINAL_BOX_TO_ROTATED_BY_FACING.get(facing);
 	}
 }

@@ -83,7 +83,7 @@ public class HwylaPlugin implements IWailaPlugin {
 			}
 			
 			BlockShelf block = (BlockShelf)accessor.getBlockState().getBlock();
-			AxisAlignedBB nonRotatedBox = block.ROTATED_BOX_TO_ORIGINAL.get(boundingBoxLookingAt);
+			AxisAlignedBB nonRotatedBox = block.getOriginalBoxFromRotated(accessor.getBlockState(), boundingBoxLookingAt);
 			
 			ProductPlacement placement = ((BlockShelf)accessor.getBlockState().getBlock()).getProductPlacementByBoundingBox(nonRotatedBox);
 			if (placement == null)
