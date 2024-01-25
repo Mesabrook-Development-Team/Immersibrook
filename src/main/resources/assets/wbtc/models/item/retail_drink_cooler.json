@@ -1,3 +1,6 @@
 {
-   "parent": "wbtc:block/retail_drink_cooler"
+   "parent": "item/generated",
+   "textures": {
+      "layer0": "wbtc:items/retail_drink_cooler"
+   }
 }
