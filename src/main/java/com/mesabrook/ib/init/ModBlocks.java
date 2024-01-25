@@ -1342,7 +1342,8 @@ public class ModBlocks
 				ModUtils.getPixelatedAABB(0, 10, 0, 16, 11, 16),
 				ModUtils.getPixelatedAABB(15, 0, 0, 16, 10, 16),
 				ModUtils.getPixelatedAABB(1, 0, 15, 15, 10, 16),
-				ModUtils.getPixelatedAABB(0, 0, 0, 1, 10, 16)
+				ModUtils.getPixelatedAABB(0, 0, 0, 1, 10, 16),
+				ModUtils.getPixelatedAABB(1, 6, 0, 15, 10, 1)
 			},
 			ModUtils.getPixelatedAABB(1, 0, 0, 15, 6, 1));
 	
