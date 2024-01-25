@@ -5,6 +5,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.ImmutableMap;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
@@ -63,6 +64,12 @@ public class BlockShelfCloseable extends BlockShelf {
 			if ((isClosed && subBoundingBox == doorBox) || (!isClosed && playerIn.isSneaking()))
 			{
 				worldIn.setBlockState(pos, state.withProperty(CLOSED, !isClosed), 3);
+				
+				if (!worldIn.isRemote)
+				{
+					ServerSoundBroadcastPacket.playIBSound(worldIn, isClosed ? "fart_4" : "fart_1", pos);
+				}
+				
 				return true;
 			}
 		}
