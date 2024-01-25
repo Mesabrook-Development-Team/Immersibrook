@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.mesabrook.ib.blocks.sco.BlockShelf;
+import com.mesabrook.ib.blocks.sco.BlockShelfCloseableUpper;
 import com.mesabrook.ib.blocks.sco.ProductPlacement;
 import com.mesabrook.ib.blocks.te.ShelvingTileEntity;
 import com.mesabrook.ib.blocks.te.ShelvingTileEntity.ProductSpot;
@@ -17,6 +18,7 @@ import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaPlugin;
 import mcp.mobius.waila.api.IWailaRegistrar;
 import mcp.mobius.waila.api.WailaPlugin;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.AxisAlignedBB;
 
@@ -63,6 +65,11 @@ public class HwylaPlugin implements IWailaPlugin {
 			ItemStack stack = getSpotItemStack(accessor);
 			if (stack == null)
 			{
+				if (accessor.getBlock() instanceof BlockShelfCloseableUpper)
+				{
+					IBlockState lowerBlock = accessor.getWorld().getBlockState(accessor.getPosition().down());
+					return new ItemStack(lowerBlock.getBlock());
+				}
 				return IWailaDataProvider.super.getWailaStack(accessor, config);
 			}
 			
