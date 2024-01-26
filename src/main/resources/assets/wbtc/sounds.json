@@ -6,6 +6,20 @@
 			"stream": true
 		}]
 	},
+	"fridge_open": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:fridge_open",
+			"stream": true
+		}]
+	},
+	"fridge_close": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:fridge_close",
+			"stream": true
+		}]
+	},
 	"piano": {
 		"category": "master",
 		"sounds": [{

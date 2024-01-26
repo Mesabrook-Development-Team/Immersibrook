@@ -98,6 +98,8 @@ public class SoundInit
 	public static final SoundEvent URINAL;
 	public static final SoundEvent WC_ON;
 	public static final SoundEvent WC_OFF;
+	public static final SoundEvent FRIDGE_OPEN;
+	public static final SoundEvent FRIDGE_CLOSE;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -335,6 +337,8 @@ public class SoundInit
 		COOKING = addSoundsToRegistry("cooking");
 		MEMORY = addSoundsToRegistry("memory");
 		WIDE = addSoundsToRegistry("wide");
+		FRIDGE_OPEN = addSoundsToRegistry("fridge_open");
+		FRIDGE_CLOSE = addSoundsToRegistry("fridge_close");
 
 		// Plastic SoundType
 		PLASTIC_BREAK = addSoundsToRegistry("plastic_break");
@@ -652,6 +656,8 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.POS_USE_PINPAD);
 				event.getRegistry().register(SoundInit.POS_WELCOME);
 				event.getRegistry().register(SoundInit.PIANO);
+				event.getRegistry().register(SoundInit.FRIDGE_OPEN);
+				event.getRegistry().register(SoundInit.FRIDGE_CLOSE);
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");
 			}
