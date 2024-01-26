@@ -2027,7 +2027,7 @@ tile.shelf_two_levels_no_peghooks.name=Retail Shelf - Two Shelves, No Peghooks
 tile.security_station.name=Retail Merchandise Securing Station
 item.peghook.name=Peghook
 item.security_box.name=Merchandise Security Box
-tile.retail_drink_cooler.name=Retail Drinks Cooler
+tile.retail_drink_cooler_bottom.name=Retail Drinks Cooler
 
 tile.smartphone_stand.name=Smartphone Display Stand
 tile.smartphone_stand_orange.name=Smartphone Display Stand
@@ -2046,7 +2046,7 @@ tile.smartphone_stand_green.name=Smartphone Display Stand
 tile.smartphone_stand_red.name=Smartphone Display Stand
 tile.smartphone_stand_black.name=Smartphone Display Stand
 
-tile.retail_freezer_upright.name=Retail Freezer
+tile.retail_freezer_upright_bottom.name=Retail Freezer
 tile.retail_freezer_deep.name=Retail Deep Freezer Island
 tile.sim_station.name=Mesabrook Bell SIM Programming Terminal
 item.sim_card.name=Mesabrook Bell SIM Card

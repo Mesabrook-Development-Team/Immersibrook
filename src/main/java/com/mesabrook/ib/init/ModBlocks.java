@@ -51,6 +51,7 @@ import com.mesabrook.ib.blocks.metro.TicketMachine;
 import com.mesabrook.ib.blocks.sco.BlockScanner;
 import com.mesabrook.ib.blocks.sco.BlockSecurityTaggingStation;
 import com.mesabrook.ib.blocks.sco.BlockShelf;
+import com.mesabrook.ib.blocks.sco.BlockShelfCloseable;
 import com.mesabrook.ib.blocks.sco.BlockShelfCloseableLower;
 import com.mesabrook.ib.blocks.sco.BlockShelfCloseableUpper;
 import com.mesabrook.ib.blocks.sco.ProductPlacement;
@@ -1331,7 +1332,21 @@ public class ModBlocks
 			}, 
 			ModUtils.getPixelatedAABB(1, 1, 0, 15, 16, 1),
 			RETAIL_FREEZER_UPRIGHT_TOP);
-	public static final Block RETAIL_FREEZER_DEEP = new ImmersiblockRotational("retail_freezer_deep", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
+	public static final Block RETAIL_FREEZER_DEEP = new BlockShelfCloseable("retail_freezer_deep", new ProductPlacement[]
+	{
+		new ProductPlacement(1, 3, ModUtils.getPixelatedAABB(9.01, 2.1, 1.1, 14, 7.1, 14.9)),
+		new ProductPlacement(2, 3, ModUtils.getPixelatedAABB(2.01, 2.1, 1.1, 7, 7.1, 14.9))
+	}, 
+	new AxisAlignedBB[]
+	{
+		ModUtils.getPixelatedAABB(15, 2, 1, 16, 13, 15),
+		ModUtils.getPixelatedAABB(0, 2, 15, 16, 13, 16),
+		ModUtils.getPixelatedAABB(0, 2, 1, 1, 13, 15),
+		ModUtils.getPixelatedAABB(0, 2, 0, 16, 13, 1),
+		ModUtils.getPixelatedAABB(0, 0, 0, 16, 2, 16)
+	},
+	ModUtils.getPixelatedAABB(0, 13, 0, 16, 14, 16));
+	
 	public static final BlockShelfCloseableUpper RETAIL_DRINK_COOLER_TOP = new BlockShelfCloseableUpper("retail_drink_cooler_top", new ProductPlacement[]
 			{
 				new ProductPlacement(1, 3, ModUtils.getPixelatedAABB(9.01, 0.5, 1, 14, 5.5, 15)),

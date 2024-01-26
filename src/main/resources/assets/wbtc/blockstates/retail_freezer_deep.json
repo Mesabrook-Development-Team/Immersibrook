@@ -1,8 +1,21 @@
 {
+	"forge_marker": 1,
     "variants": {
-        "facing=north": { "model": "wbtc:retail_freezer_deep" },
-        "facing=south": { "model": "wbtc:retail_freezer_deep", "y": 180 },
-        "facing=west":  { "model": "wbtc:retail_freezer_deep", "y": 270 },
-        "facing=east":  { "model": "wbtc:retail_freezer_deep", "y": 90 }
+    	"inventory":
+    	{ 
+    		"model": "wbtc:retail_freezer_deep_closed"
+    	},
+    	"facing":
+    	{ 
+    		"north": {},
+    		"south": { "y": 180 },
+    		"west": { "y": 270 },
+    		"east": { "y": 90 }
+    	},
+		"closed":
+		{ 
+			"true": { "model": "wbtc:retail_freezer_deep_closed" },
+			"false": { "model": "wbtc:retail_freezer_deep" }
+		}
     }
 }

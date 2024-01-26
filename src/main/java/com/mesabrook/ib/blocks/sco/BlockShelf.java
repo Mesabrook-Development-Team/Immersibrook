@@ -123,7 +123,7 @@ public class BlockShelf extends ImmersiblockRotationalManyBB {
 	
 	@Override
 	public BlockRenderLayer getBlockLayer() {
-		return BlockRenderLayer.SOLID;
+		return BlockRenderLayer.CUTOUT;
 	}
 
 	@Override
