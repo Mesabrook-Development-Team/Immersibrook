@@ -67,7 +67,7 @@ public class BlockShelfCloseable extends BlockShelf {
 				
 				if (!worldIn.isRemote)
 				{
-					ServerSoundBroadcastPacket.playIBSound(worldIn, isClosed ? "fart_4" : "fart_1", pos);
+					ServerSoundBroadcastPacket.playIBSound(worldIn, isClosed ? "fridge_open" : "fridge_close", pos, true);
 				}
 				
 				return true;
