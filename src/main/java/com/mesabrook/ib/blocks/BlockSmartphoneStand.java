@@ -1,12 +1,21 @@
 package com.mesabrook.ib.blocks;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.UUID;
+
+import javax.annotation.Nullable;
+
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.te.TileEntityPhoneStand;
+import com.mesabrook.ib.capability.employee.CapabilityEmployee;
+import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.ModUtils;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
@@ -33,11 +42,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.UUID;
 
 public class BlockSmartphoneStand extends Block implements IHasModel
 {
@@ -89,13 +93,19 @@ public class BlockSmartphoneStand extends Block implements IHasModel
         }
 
         TileEntityPhoneStand tileEntityPhoneStand = (TileEntityPhoneStand) tileEntity;
-
-        if(tileEntityPhoneStand.getOwnerUUID().equals(new UUID(0,0)))
+        IEmployeeCapability employee = playerIn.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
+        boolean hasManageInventory = false;
+        if (employee.getLocationEmployee() != null)
         {
-            tileEntityPhoneStand.setOwnerUUID(playerIn.getUniqueID());
+        	hasManageInventory = employee.getLocationEmployee().ManageInventory;
+        }
+        
+        if (tileEntityPhoneStand.getLocationIDOwner() == 0 && employee.getLocationID() != 0 && hasManageInventory)
+        {
+        	tileEntityPhoneStand.setLocationIDOwner(employee.getLocationID());
             if(!worldIn.isRemote)
             {
-                playerIn.sendStatusMessage(new TextComponentString(TextFormatting.GREEN + "You have claimed this block successfully."), true);
+                playerIn.sendStatusMessage(new TextComponentString(TextFormatting.GREEN + "You have claimed this block successfully on behalf of your company."), true);
             }
             playerIn.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5F, 1.5F);
             tileEntityPhoneStand.markDirty();
@@ -103,13 +113,12 @@ public class BlockSmartphoneStand extends Block implements IHasModel
             return true;
         }
 
-        if(!heldItem.isEmpty() && tileEntityPhoneStand.getPhoneItem().isEmpty() && heldItem.getItem() instanceof ItemPhone && tileEntityPhoneStand.getOwnerUUID().equals(playerIn.getUniqueID()))
+        if(!heldItem.isEmpty() && tileEntityPhoneStand.getPhoneItem().isEmpty() && heldItem.getItem() instanceof ItemPhone && tileEntityPhoneStand.getLocationIDOwner() == employee.getLocationID() && hasManageInventory)
         {
             ItemStack copy = heldItem.copy();
             copy.setCount(1);
             tileEntityPhoneStand.setPhone(copy);
             tileEntityPhoneStand.setRotation(playerIn.getHorizontalFacing().getHorizontalIndex());
-            tileEntityPhoneStand.markDirty();
             tileEntityPhoneStand.sync();
             heldItem.shrink(1);
             worldIn.playSound(playerIn, pos, SoundEvents.BLOCK_GLASS_HIT, SoundCategory.BLOCKS, 1.0F, 1.6F);
@@ -120,7 +129,7 @@ public class BlockSmartphoneStand extends Block implements IHasModel
         {
             if(!worldIn.isRemote)
             {
-                if(tileEntityPhoneStand.getOwnerUUID().equals(playerIn.getUniqueID()))
+                if(tileEntityPhoneStand.getLocationIDOwner() == employee.getLocationID() && hasManageInventory)
                 {
                     if(!playerIn.getHeldItem(hand).isEmpty())
                     {
@@ -144,9 +153,9 @@ public class BlockSmartphoneStand extends Block implements IHasModel
         }
 
         // Unclaim block
-        if(tileEntityPhoneStand.getOwnerUUID().equals(playerIn.getUniqueID()) && playerIn.isSneaking())
+        if(tileEntityPhoneStand.getLocationIDOwner() == employee.getLocationID() && hasManageInventory && playerIn.isSneaking())
         {
-            tileEntityPhoneStand.setOwnerUUID(new UUID(0,0));
+            tileEntityPhoneStand.setLocationIDOwner(0);
             playerIn.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 0.5F, 0.5F);
 
             tileEntityPhoneStand.markDirty();
@@ -230,7 +239,38 @@ public class BlockSmartphoneStand extends Block implements IHasModel
         return 1;
     }
 
+@Override
+	public boolean removedByPlayer(IBlockState state, World world, BlockPos pos, EntityPlayer player,
+			boolean willHarvest) {
 
+		TileEntity te = world.getTileEntity(pos);
+		if(te instanceof TileEntityPhoneStand)
+		{
+			TileEntityPhoneStand tileEntityPhoneStand = (TileEntityPhoneStand) te;
+			IEmployeeCapability employee = player.getCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null);
+	
+			if(tileEntityPhoneStand.getLocationIDOwner() != 0)
+			{
+				if(tileEntityPhoneStand.getLocationIDOwner() == employee.getLocationID() && employee.getLocationEmployee().ManageInventory)
+				{
+					if (!world.isRemote)
+					{
+						player.sendMessage(new TextComponentString(TextFormatting.RED + "Unclaim the block first before breaking it."));
+					}
+				}
+				else
+				{
+					if (!world.isRemote)
+					{
+						player.sendMessage(new TextComponentString(TextFormatting.RED + "Only the owner of this block can break it."));
+					}
+				}
+				return false;
+			}
+		}
+		return super.removedByPlayer(state, world, pos, player, willHarvest);
+	}
+    
     private void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state)
     {
         if (!worldIn.isRemote)

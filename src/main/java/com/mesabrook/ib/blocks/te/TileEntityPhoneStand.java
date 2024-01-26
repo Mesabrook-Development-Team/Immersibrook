@@ -11,7 +11,7 @@ import java.util.UUID;
 public class TileEntityPhoneStand extends TileEntitySyncClient implements ISimpleInventory
 {
     private ItemStack phoneItem = ItemStack.EMPTY;
-    private UUID playerUUID = new UUID(0, 0);
+    private long locationIDOwner;
     private int rotation = 0;
 
     public void setPhone(ItemStack phoneIn)
@@ -36,38 +36,26 @@ public class TileEntityPhoneStand extends TileEntitySyncClient implements ISimpl
         return rotation;
     }
 
-    public void setOwnerUUID(UUID ownerUUIDIn)
-    {
-        this.playerUUID = ownerUUIDIn;
-        markDirty();
-    }
+    public long getLocationIDOwner() {
+		return locationIDOwner;
+	}
 
-    public UUID getOwnerUUID()
-    {
-        return this.playerUUID;
-    }
+	public void setLocationIDOwner(long locationIDOwner) {
+		this.locationIDOwner = locationIDOwner;
+		markDirty();
+	}
 
-    @Override
+	@Override
     public void readFromNBT(NBTTagCompound tagCompound)
     {
         super.readFromNBT(tagCompound);
         this.setPhone(ItemStack.EMPTY);
-        if(tagCompound.hasKey("Items", Constants.NBT.TAG_LIST))
-        {
-            NBTTagList tagList = tagCompound.getTagList("Items", Constants.NBT.TAG_COMPOUND);
-            for(int i = 0; i < tagList.tagCount(); ++i)
-            {
-                NBTTagCompound itemTag = tagList.getCompoundTagAt(i);
-                ItemStack stack = new ItemStack(itemTag);
-                this.setPhone(stack);
-            }
-        }
-        else if(tagCompound.hasKey("Item", Constants.NBT.TAG_COMPOUND))
+        if(tagCompound.hasKey("Item", Constants.NBT.TAG_COMPOUND))
         {
             this.setPhone(new ItemStack(tagCompound.getCompoundTag("Item")));
         }
         this.rotation = tagCompound.getInteger("Rotation");
-        this.playerUUID = tagCompound.getUniqueId("Owner");
+        this.locationIDOwner = tagCompound.getLong("locationIDOwner");
     }
 
     @Override
@@ -79,7 +67,7 @@ public class TileEntityPhoneStand extends TileEntitySyncClient implements ISimpl
             tagCompound.setTag("Item", this.phoneItem.writeToNBT(new NBTTagCompound()));
         }
         tagCompound.setInteger("Rotation", this.rotation);
-        tagCompound.setUniqueId("Owner", this.playerUUID);
+        tagCompound.setLong("locationIDOwner", this.locationIDOwner);
         return tagCompound;
     }
 
@@ -99,5 +87,6 @@ public class TileEntityPhoneStand extends TileEntitySyncClient implements ISimpl
     public void clear()
     {
         phoneItem = null;
+        markDirty();
     }
 }
