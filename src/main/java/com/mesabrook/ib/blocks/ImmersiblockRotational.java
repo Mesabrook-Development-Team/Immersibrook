@@ -213,10 +213,22 @@ public class ImmersiblockRotational extends Block implements IHasModel
             {
                 tooltip.add(TextFormatting.YELLOW + "(Not Yet Implemented) A machine that automatically places products into Security Boxes for sale.");
             }
+            if(this == ModBlocks.SCO_POS)
+            {
+                tooltip.add(TextFormatting.YELLOW + "The brain of the Self-Checkout system.");
+            }
+            if(this == ModBlocks.SCO_SCANNER)
+            {
+                tooltip.add(TextFormatting.YELLOW + "'Please scan your items and place them in the bagging area.'");
+            }
+            if(this == ModBlocks.SCO_BAGGING)
+            {
+                tooltip.add(TextFormatting.YELLOW + "The bagging area.");
+            }
         }
         else
         {
-            tooltip.add(TextFormatting.WHITE + new TextComponentTranslation("im.tooltip.hidden").getFormattedText());
+            tooltip.add(TextFormatting.YELLOW + new TextComponentTranslation("im.tooltip.hidden").getFormattedText());
         }
     }
 

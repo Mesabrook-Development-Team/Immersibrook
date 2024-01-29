@@ -102,7 +102,6 @@ public class BlockFluidMeter extends ImmersiblockRotationalManyBB implements IHa
         if(GuiScreen.isShiftKeyDown())
         {
             tooltip.add(new TextComponentString(TextFormatting.GREEN + "A device that meters the flow of any fluid passing through it and then reports it to a Point Of Sale system. \n").getFormattedText());
-            tooltip.add(new TextComponentString(TextFormatting.RED + "[ALERT] Fluid Meter is not paired with a register! You must pair it to a register before it'll work.").getFormattedText());
         }
         else
         {
