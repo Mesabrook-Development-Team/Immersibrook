@@ -1,4 +1,4 @@
-Immersibrook 1.0.0 Pre-Release 2 Build 2 (1.0.0-PR2.1) - The Technology Updatea
+Immersibrook 1.0.0 Pre-Release 2 Build 2 (1.0.0-PR2.1) - The Technology Update
 
 Changes:
 -[IB] Manhole Hook can now remove non-opening Manhole covers.
