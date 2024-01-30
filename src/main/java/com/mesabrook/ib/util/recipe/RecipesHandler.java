@@ -1,8 +1,6 @@
 package com.mesabrook.ib.util.recipe;
 
-import blusunrize.immersiveengineering.api.crafting.BlueprintCraftingRecipe;
-import blusunrize.immersiveengineering.api.crafting.BottlingMachineRecipe;
-import blusunrize.immersiveengineering.api.crafting.CrusherRecipe;
+import blusunrize.immersiveengineering.api.crafting.*;
 import blusunrize.immersiveengineering.common.IEContent;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModBlocks;
@@ -35,7 +33,11 @@ public class RecipesHandler
 			FluidStack water = new FluidStack(FluidRegistry.WATER, 1000);
 			BottlingMachineRecipe.addRecipe(new ItemStack(ModItems.WATER_SACHET, 1), new ItemStack(ModItems.PLASTIC_SILVER), water);
 
+			// SIM Card crafting
 			BlueprintCraftingRecipe.addRecipe("components", new ItemStack(ModItems.SIM_CARD), ModItems.PLASTIC_WHITE, new ItemStack(IEContent.itemMaterial, 1, 27), new ItemStack(IEContent.itemMaterial, 3, 20));
+
+			// Pleather crafting
+			BlueprintCraftingRecipe.addRecipe("components", new ItemStack(ModItems.PLEATHER), ModItems.PLASTIC_PLATE, new ItemStack(Items.STRING, 3), new ItemStack(Items.DYE, 1, 8));
 
 			// <color> Plastic Ingot > <color> Raw Plastic Dust.
 			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_WHITE, outputAmount), new ItemStack(ModItems.PLASTIC_WHITE), 10);
@@ -179,23 +181,12 @@ public class RecipesHandler
 			// Food
 			GameRegistry.addSmelting(ModItems.RAW_CHICKEN_NUGGET, new ItemStack(ModItems.CHICKEN_NUGGET, 1), 5F);
 			GameRegistry.addSmelting(Items.BREAD, new ItemStack(ItemRegistry.toastItem, 1), 5F);
-
-			if(ModConfig.smeltingLeatherForASaddle)
-			{
-				GameRegistry.addSmelting(Items.LEATHER, new ItemStack(Items.SADDLE, 1), 24F);
-				Main.logger.info("[" + Reference.MODNAME + "] Leather to Saddle Smelting Recipe Registered.");
-			}
-			else
-			{
-				Main.logger.info("[" + Reference.MODNAME + "] Leather to Saddle Smelting Recipe Disasbled.");
-			}
-			
 			Main.logger.info("[" + Reference.MODNAME + "] Smelting Recipes Registered.");
 		}
 		catch(Exception e)
 		{
 			Main.logger.error("[" + Reference.MODNAME + "] [ERROR] Something went wrong!" + e.getMessage());
-			Main.logger.error(e.getMessage());
+			e.printStackTrace();
 			Main.logger.error("Ah fuck, I can't believe you've done this.");
 			Main.logger.error("Report this bug, please.");
 

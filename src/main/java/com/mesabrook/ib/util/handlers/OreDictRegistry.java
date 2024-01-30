@@ -17,6 +17,9 @@ public class OreDictRegistry
 			OreDictionary.registerOre("stickConstantan", ModItems.ROD_CONSTANTAN);
 			OreDictionary.registerOre("stickNickel", ModItems.ROD_NICKEL);
 
+			// Pleather
+			OreDictionary.registerOre("leather", ModItems.PLEATHER);
+
 			// Plastics
 			OreDictionary.registerOre("listAllRawPlastic", ModItems.RAW_PLASTIC_WHITE);
 			OreDictionary.registerOre("listAllRawPlastic", ModItems.RAW_PLASTIC_ORANGE);

@@ -169,6 +169,8 @@ item.denim.name=Denim
 
 item.engineers_hat.name=Engineer's Hat
 
+item.synthetic_leather.name=Synthetic Leather
+
 //Stairs
 tile.oak_laminate_stairs.name=Oak Wood Laminate Stairs
 tile.birch_laminate_stairs.name=Birch Wood Laminate Stairs
