@@ -100,6 +100,7 @@ public class SoundInit
 	public static final SoundEvent WC_OFF;
 	public static final SoundEvent FRIDGE_OPEN;
 	public static final SoundEvent FRIDGE_CLOSE;
+	public static final SoundEvent COMING_OUT;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -318,6 +319,7 @@ public class SoundInit
 		WC_OFF = addSoundsToRegistry("wireless_charge_off");
 		WC_ON = addSoundsToRegistry("wireless_charge_on");
 		PIANO = addSoundsToRegistry("piano");
+		COMING_OUT = addSoundsToRegistry("coming_out");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -658,6 +660,8 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.PIANO);
 				event.getRegistry().register(SoundInit.FRIDGE_OPEN);
 				event.getRegistry().register(SoundInit.FRIDGE_CLOSE);
+				event.getRegistry().register(SoundInit.COMING_OUT);
+
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");
 			}

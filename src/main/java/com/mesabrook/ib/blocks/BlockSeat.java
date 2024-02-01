@@ -32,6 +32,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
+import java.time.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -257,6 +258,16 @@ public class BlockSeat extends Block implements IHasModel
             PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));
             return true;
         }
+
+        if(state.getBlock() == ModBlocks.PRISON_TOILET || state.getBlock() == ModBlocks.HOME_TOILET || state.getBlock() == ModBlocks.WALL_TOILET)
+        {
+            if(LocalDate.now().getMonthValue() == 4 && LocalDate.now().getDayOfMonth() == 1)
+            {
+                ServerSoundBroadcastPacket.playIBSound(worldIn, "coming_out", pos);
+            }
+            return true;
+        }
+
         return true;
     }
 

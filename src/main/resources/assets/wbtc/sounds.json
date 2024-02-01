@@ -6,6 +6,13 @@
 			"stream": true
 		}]
 	},
+	"coming_out": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:coming_out",
+			"stream": true
+		}]
+	},
 	"fridge_open": {
 		"category": "master",
 		"sounds": [{
