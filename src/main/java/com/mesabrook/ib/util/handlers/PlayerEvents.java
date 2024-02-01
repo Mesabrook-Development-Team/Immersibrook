@@ -144,10 +144,10 @@ public class PlayerEvents
 				}
 			}
 
-			// This inversion is intentional for testing purposes.
-			if(!player.getServer().isSinglePlayer())
+			// New web-fetched MOTD. Invert to test in singleplayer.
+			if(player.getServer().isSinglePlayer())
 			{
-				player.sendMessage(new TextComponentString(TextFormatting.GOLD + "[" + Reference.MODNAME + " " + Reference.VERSION + "]"  + TextFormatting.LIGHT_PURPLE + " " + "Loaded Successfully"));
+				player.sendMessage(new TextComponentString(TextFormatting.YELLOW + "[" + Reference.MODNAME + "]" + TextFormatting.WHITE + " " + Reference.VERSION + " loaded successfully"));
 			}
 			else
 			{
