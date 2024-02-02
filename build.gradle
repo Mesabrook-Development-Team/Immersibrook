@@ -54,6 +54,9 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+    
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.3.3'
+    compile group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.3.2'
 
 }
 
@@ -75,5 +78,3 @@ processResources {
         exclude 'mcmod.info'
     }
 }
-
-sourceSets { main { output.resourcesDir = output.classesDir } }
