@@ -16,6 +16,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -130,4 +131,31 @@ public class ItemSecurityBox extends Item implements IHasModel {
 		newEntity.motionZ = location.motionZ;
 		return newEntity;
 	}
+    
+    @Override
+    public NBTTagCompound getNBTShareTag(ItemStack stack) {
+    	NBTTagCompound tag = super.getNBTShareTag(stack);
+    	if (tag == null)
+    	{
+    		tag = new NBTTagCompound();
+    	}
+    	
+    	if (stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
+    	{
+    		tag.setTag("securedData", CapabilitySecuredItem.SECURED_ITEM_CAPABILITY.writeNBT(stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null), null));
+    	}
+    	
+    	return tag;
+    }
+    
+    @Override
+    public void readNBTShareTag(ItemStack stack, NBTTagCompound nbt) {
+    	super.readNBTShareTag(stack, nbt);
+    	
+    	if (nbt != null && stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null) && nbt.hasKey("securedData"))
+    	{
+    		ISecuredItem debitCard = stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null);
+    		CapabilitySecuredItem.SECURED_ITEM_CAPABILITY.readNBT(debitCard, null, nbt.getTag("securedData"));
+    	}
+    }
 }

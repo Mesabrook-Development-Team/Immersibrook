@@ -13,6 +13,7 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
@@ -67,6 +68,33 @@ public class ItemDebitCard extends Item implements IHasModel
     				tooltip.add(TextFormatting.WHITE + "Card Number: " + TextFormatting.RESET + cardNumberDisplay);
     			}
     		}
+    	}
+    }
+    
+    @Override
+    public NBTTagCompound getNBTShareTag(ItemStack stack) {
+    	NBTTagCompound tag = super.getNBTShareTag(stack);
+    	if (tag == null)
+    	{
+    		tag = new NBTTagCompound();
+    	}
+    	
+    	if (stack.hasCapability(CapabilityDebitCard.DEBIT_CARD_CAPABILITY, null))
+    	{
+    		tag.setTag("cardData", CapabilityDebitCard.DEBIT_CARD_CAPABILITY.writeNBT(stack.getCapability(CapabilityDebitCard.DEBIT_CARD_CAPABILITY, null), null));
+    	}
+    	
+    	return tag;
+    }
+    
+    @Override
+    public void readNBTShareTag(ItemStack stack, NBTTagCompound nbt) {
+    	super.readNBTShareTag(stack, nbt);
+    	
+    	if (nbt != null && stack.hasCapability(CapabilityDebitCard.DEBIT_CARD_CAPABILITY, null) && nbt.hasKey("cardData"))
+    	{
+    		IDebitCard debitCard = stack.getCapability(CapabilityDebitCard.DEBIT_CARD_CAPABILITY, null);
+    		CapabilityDebitCard.DEBIT_CARD_CAPABILITY.readNBT(debitCard, null, nbt.getTag("cardData"));
     	}
     }
 }

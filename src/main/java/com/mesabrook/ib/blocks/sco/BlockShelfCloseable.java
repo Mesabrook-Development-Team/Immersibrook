@@ -90,6 +90,22 @@ public class BlockShelfCloseable extends BlockShelf {
 			float hitZ, int meta, EntityLivingBase placer) {
 		return super.getStateForPlacement(worldIn, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(CLOSED, true);
 	}
+
+	@Override
+	public int getMetaFromState(IBlockState state) {
+		return super.getMetaFromState(state) + (state.getValue(CLOSED) ? 4 : 0);
+	}
+	
+	@Override
+	public IBlockState getStateFromMeta(int meta) {
+		boolean closed = false;
+		if (meta >= 4)
+		{
+			meta -= 4;
+			closed = true;
+		}
+		return super.getStateFromMeta(meta).withProperty(CLOSED, closed);
+	}
 	
 	@Override
 	public AxisAlignedBB getOriginalBoxFromRotated(IBlockState state, AxisAlignedBB rotated) {
