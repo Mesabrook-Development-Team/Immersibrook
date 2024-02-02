@@ -7,9 +7,22 @@ buildscript {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
     }
 }
+
+plugins {
+    id 'org.ajoberstar.grgit' version '1.7.2'
+    id 'com.github.johnrengelman.shadow' version '1.2.4'
+}
+
 apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
+final commitId
+
+if (hasProperty("grgit")) { // If there's a valid Git repository, get the latest commit ID
+    commitId = "${grgit.head().abbreviatedId}"
+} else { // Else fall back to NOGIT
+    commitId = "NOGIT"
+}
 
 version = "1.0.0.10"
 group = "com.mesabrook.ib" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -54,10 +67,26 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-    
-    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.3.3'
-    compile group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.3.2'
 
+    compile "org.apache.httpcomponents:httpclient:4.3.3"
+	compile "org.apache.httpcomponents:httpcore:4.3.2"
+	provided fileTree(dir:'deps',include:'*.jar')
+}
+
+shadowJar {
+    dependencies {
+        include(dependency('org.apache.httpcomponents:httpclient:4.3.3'))
+		include(dependency('org.apache.httpcomponents:httpcore:4.3.2'))
+    }
+
+    // Relocate http to prevent conflicts with other mods that include it
+    relocate 'org.apache.http', 'com.mesabrook.ib.repack.org.apache.http'
+
+    classifier '' // Replace the default JAR
+}
+
+reobf {
+    shadowJar {} // Reobfuscate the shadowed JAR
 }
 
 processResources {
@@ -77,4 +106,8 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
 }
