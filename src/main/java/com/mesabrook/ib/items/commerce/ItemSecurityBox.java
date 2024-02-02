@@ -86,7 +86,7 @@ public class ItemSecurityBox extends Item implements IHasModel {
 			public void setDead() {
 				super.setDead();
 				
-				if (this.world.isRemote || !itemstack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null) || getAge() < lifespan)
+				if (this.world.isRemote || !itemstack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null) || isDead)
 				{
 					return;
 				}
