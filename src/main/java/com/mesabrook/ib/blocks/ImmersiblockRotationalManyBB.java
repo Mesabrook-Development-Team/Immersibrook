@@ -1,7 +1,6 @@
 package com.mesabrook.ib.blocks;
 
 import java.util.HashMap;
-import java.util.IdentityHashMap;
 import java.util.List;
 
 import com.google.common.collect.ArrayListMultimap;
@@ -9,13 +8,11 @@ import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.ImmutableMap;
-import com.google.gson.internal.LinkedTreeMap;
 import com.mesabrook.ib.util.ModUtils;
 
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
@@ -164,7 +161,7 @@ public abstract class ImmersiblockRotationalManyBB extends ImmersiblockRotationa
 		
 		final Vec3d start = player.getPositionEyes(partialTicks);
 		final Vec3d eyes = player.getLook(partialTicks);
-		final float reach = Minecraft.getMinecraft().playerController.getBlockReachDistance();
+		final float reach = (float)player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).getAttributeValue();
 		final Vec3d end = start.addVector(eyes.x * reach, eyes.y * reach, eyes.z * reach);
 		
 		AxisAlignedBB boxToDraw = null;
