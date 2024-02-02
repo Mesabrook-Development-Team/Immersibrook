@@ -6,8 +6,8 @@ import javax.vecmath.Matrix4f;
 import javax.vecmath.Vector3f;
 import javax.vecmath.Vector4f;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.tuple.Pair;
-import org.dynmap.jetty.util.ArrayUtil;
 import org.lwjgl.opengl.GL11;
 
 import com.google.common.collect.ArrayListMultimap;
@@ -75,7 +75,7 @@ public class ShelvingTileEntityRenderer extends TileEntitySpecialRenderer<Shelvi
 		GlStateManager.translate(-0.5, -0.5, -0.5);
 		
 		EnumFacing[] facings = EnumFacing.VALUES;
-		facings = ArrayUtil.addToArray(facings, null, EnumFacing.class);
+		facings = ArrayUtils.add(facings, null);
 		
 		Tessellator tess = Tessellator.getInstance();
 		BufferBuilder buffer = tess.getBuffer();

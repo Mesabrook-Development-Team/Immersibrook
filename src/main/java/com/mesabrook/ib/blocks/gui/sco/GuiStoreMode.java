@@ -3,11 +3,8 @@ package com.mesabrook.ib.blocks.gui.sco;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.ArrayUtils;
-import org.dynmap.jetty.util.ArrayUtil;
 
 import com.mesabrook.ib.apimodels.company.LocationEmployee;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;

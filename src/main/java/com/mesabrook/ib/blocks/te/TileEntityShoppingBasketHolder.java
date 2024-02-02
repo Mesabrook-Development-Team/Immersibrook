@@ -5,7 +5,7 @@ import java.util.Stack;
 
 import javax.vecmath.Vector4f;
 
-import org.dynmap.jetty.util.ArrayUtil;
+import org.apache.commons.lang3.ArrayUtils;
 
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.init.ModItems;
@@ -185,7 +185,7 @@ public class TileEntityShoppingBasketHolder extends TileEntity {
 		modelVertexData.clear();
 		
 		EnumFacing[] facings = EnumFacing.VALUES;
-		facings = ArrayUtil.addToArray(facings, null, EnumFacing.class);
+		facings = ArrayUtils.add(facings, null);
 		
 		int basketCounter = 0;
 		for(ItemStack basket : getBaskets())

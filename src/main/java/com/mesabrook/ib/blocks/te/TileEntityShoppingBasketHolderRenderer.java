@@ -2,7 +2,7 @@ package com.mesabrook.ib.blocks.te;
 
 import javax.vecmath.Vector4f;
 
-import org.dynmap.jetty.util.ArrayUtil;
+import org.apache.commons.lang3.ArrayUtils;
 import org.lwjgl.opengl.GL11;
 
 import com.mesabrook.ib.blocks.commerce.BlockShoppingBasketHolder;
@@ -56,7 +56,7 @@ public class TileEntityShoppingBasketHolderRenderer extends TileEntitySpecialRen
 		GlStateManager.translate(-0.5, -0.4, -0.5);
 		
 		EnumFacing[] facings = EnumFacing.VALUES;
-		facings = ArrayUtil.addToArray(facings, null, EnumFacing.class);
+		facings = ArrayUtils.add(facings, null);
 		
 		Tessellator tess = Tessellator.getInstance();
 		BufferBuilder buffer = tess.getBuffer();
