@@ -86,7 +86,7 @@ public class ItemSecurityBox extends Item implements IHasModel {
 			public void setDead() {
 				super.setDead();
 				
-				if (this.world.isRemote || !itemstack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null) || isDead)
+				if (this.world.isRemote || !itemstack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null) || getItem().isEmpty())
 				{
 					return;
 				}
@@ -126,6 +126,7 @@ public class ItemSecurityBox extends Item implements IHasModel {
 			}
 		};
 		newEntity.setPickupDelay(40);
+		newEntity.lifespan = 120;
 		newEntity.motionX = location.motionX;
 		newEntity.motionY = location.motionY;
 		newEntity.motionZ = location.motionZ;
