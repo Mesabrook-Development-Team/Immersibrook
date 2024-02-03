@@ -74,74 +74,13 @@ public class ShelvingTileEntityRenderer extends TileEntitySpecialRenderer<Shelvi
 		GlStateManager.rotate(angle, 0, 1, 0);
 		GlStateManager.translate(-0.5, -0.5, -0.5);
 		
-		EnumFacing[] facings = EnumFacing.VALUES;
-		facings = ArrayUtils.add(facings, null);
-		
 		Tessellator tess = Tessellator.getInstance();
 		BufferBuilder buffer = tess.getBuffer();
 		buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
 		
-		for(ProductSpot spot : te.getProductSpots())
+		for(int[] vertexData : te.getModelVertexData())
 		{
-			float positionOffsetZ = 0;
-			ProductPlacement placement = shelf.getProductPlacementByID(spot.getPlacementID());
-			if (placement == null)
-			{
-				continue;
-			}
-			
-			AxisAlignedBB spotBB = placement.getBoundingBox();
-			
-			Vector3f offset = new Vector3f((float)spotBB.minX, (float)spotBB.minY, (float)spotBB.minZ);
-			
-			float scale = (float)(spotBB.maxY - spotBB.minY);
-			if (scale > spotBB.maxX - spotBB.minX)
-			{
-				scale = (float)(spotBB.maxX - spotBB.minX);
-			}
-			
-			TRSRTransformation baseTransform = new TRSRTransformation(
-					null,
-					null,
-					new Vector3f(scale, scale, scale),
-					null);
-			
-			ItemStack[] items = spot.getItems();
-			for (int i = 0; i < items.length; i++)
-			{
-				float maximumZ = Float.MIN_VALUE;
-				ItemStack item = items[i];
-				if (item.isEmpty())
-				{
-					continue;
-				}
-				IBakedModel model = Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(item, getWorld(), null);
-				Pair<? extends IBakedModel, Matrix4f> pair = model.handlePerspective(TransformType.NONE);
-				TRSRTransformation itemTransform = baseTransform;
-				if (pair.getRight() != null)
-				{
-					Matrix4f itemMatrix = itemTransform.getMatrix();
-					itemMatrix.mul(pair.getRight());
-					itemTransform = new TRSRTransformation(itemMatrix);
-				}
-				model = pair.getLeft();
-				for(EnumFacing facing : facings)
-				{
-					for(BakedQuad quad : model.getQuads(null, facing, 0))
-					{
-						Vector3f vecLoc = new Vector3f();
-						BakedQuad newQuad = transform(quad, itemTransform, offset, vecLoc, positionOffsetZ);
-						buffer.addVertexData(newQuad.getVertexData());
-						
-						if (vecLoc.z > maximumZ)
-						{
-							maximumZ = vecLoc.z;
-						}
-					}
-				}
-				
-				positionOffsetZ += maximumZ;
-			}
+			buffer.addVertexData(vertexData);
 		}
 		
 		tess.draw();

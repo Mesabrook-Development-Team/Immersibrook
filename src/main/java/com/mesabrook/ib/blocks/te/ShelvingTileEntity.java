@@ -1,9 +1,18 @@
 package com.mesabrook.ib.blocks.te;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+
+import javax.vecmath.Matrix4f;
+import javax.vecmath.Vector3f;
+import javax.vecmath.Vector4f;
+
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.tuple.Pair;
 
 import com.mesabrook.ib.blocks.sco.BlockShelf;
 import com.mesabrook.ib.blocks.sco.ProductPlacement;
+import com.mesabrook.ib.blocks.te.ShelvingTileEntity.ProductSpot;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
@@ -11,8 +20,15 @@ import com.mesabrook.ib.capability.secureditem.ISecuredItem;
 import com.mesabrook.ib.init.ModItems;
 
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.model.BakedQuad;
+import net.minecraft.client.renderer.block.model.IBakedModel;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
+import net.minecraft.client.renderer.vertex.VertexFormatElement;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -20,12 +36,21 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants.NBT;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.client.model.pipeline.IVertexConsumer;
+import net.minecraftforge.client.model.pipeline.UnpackedBakedQuad;
+import net.minecraftforge.client.model.pipeline.VertexTransformer;
+import net.minecraftforge.common.model.TRSRTransformation;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
@@ -33,6 +58,7 @@ import net.minecraftforge.items.IItemHandler;
 public class ShelvingTileEntity extends TileEntity {	
 	private HashMap<Integer, ProductSpot> productSpotsByPlacementID = new HashMap<>();
 	private long locationIDOwner;
+	private ArrayList<int[]> modelVertexData = new ArrayList<>();
 	
 	public boolean onActivated(EntityPlayer player, EnumHand hand, ProductPlacement placement)
 	{
@@ -305,6 +331,11 @@ public class ShelvingTileEntity extends TileEntity {
 				productSpotsByPlacementID.put(spot.placementID, spot);
 			}
 		}
+		
+		if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
+		{
+			rebuildModel();
+		}
 	}
 	
 	private void writeProductSpots(NBTTagCompound compound)
@@ -399,5 +430,117 @@ public class ShelvingTileEntity extends TileEntity {
 				}
 			}
 		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	private void rebuildModel()
+	{
+		modelVertexData.clear();
+		
+		EnumFacing[] facings = EnumFacing.VALUES;
+		facings = ArrayUtils.add(facings, null);
+		
+		BlockShelf shelf = (BlockShelf)getBlockType();
+		
+		for(ProductSpot spot : getProductSpots())
+		{
+			float positionOffsetZ = 0;
+			ProductPlacement placement = shelf.getProductPlacementByID(spot.getPlacementID());
+			if (placement == null)
+			{
+				continue;
+			}
+			
+			AxisAlignedBB spotBB = placement.getBoundingBox();
+			
+			Vector3f offset = new Vector3f((float)spotBB.minX, (float)spotBB.minY, (float)spotBB.minZ);
+			
+			float scale = (float)(spotBB.maxY - spotBB.minY);
+			if (scale > spotBB.maxX - spotBB.minX)
+			{
+				scale = (float)(spotBB.maxX - spotBB.minX);
+			}
+			
+			TRSRTransformation baseTransform = new TRSRTransformation(
+					null,
+					null,
+					new Vector3f(scale, scale, scale),
+					null);
+			
+			ItemStack[] items = spot.getItems();
+			for (int i = 0; i < items.length; i++)
+			{
+				float maximumZ = Float.MIN_VALUE;
+				ItemStack item = items[i];
+				if (item.isEmpty())
+				{
+					continue;
+				}
+				IBakedModel model = Minecraft.getMinecraft().getRenderItem().getItemModelWithOverrides(item, getWorld(), null);
+				Pair<? extends IBakedModel, Matrix4f> pair = model.handlePerspective(TransformType.NONE);
+				TRSRTransformation itemTransform = baseTransform;
+				if (pair.getRight() != null)
+				{
+					Matrix4f itemMatrix = itemTransform.getMatrix();
+					itemMatrix.mul(pair.getRight());
+					itemTransform = new TRSRTransformation(itemMatrix);
+				}
+				model = pair.getLeft();
+				for(EnumFacing facing : facings)
+				{
+					for(BakedQuad quad : model.getQuads(null, facing, 0))
+					{
+						Vector3f vecLoc = new Vector3f();
+						BakedQuad newQuad = transform(quad, itemTransform, offset, vecLoc, positionOffsetZ);
+						modelVertexData.add(newQuad.getVertexData());
+						
+						if (vecLoc.z > maximumZ)
+						{
+							maximumZ = vecLoc.z;
+						}
+					}
+				}
+				
+				positionOffsetZ += maximumZ;
+			}
+		}
+	}
+	
+	@SideOnly(Side.CLIENT)
+	protected static BakedQuad transform(BakedQuad quad, final TRSRTransformation transform, Vector3f offset, Vector3f ret, float additionalZOffset) {
+		UnpackedBakedQuad.Builder builder = new UnpackedBakedQuad.Builder(quad.getFormat());
+		final IVertexConsumer consumer = new VertexTransformer(builder) {
+			@Override
+			public void put(int element, float... data) {
+				VertexFormatElement formatElement = quad.getFormat().getElement(element);
+				switch(formatElement.getUsage()) {
+				case POSITION: {
+					float[] newData = new float[4];
+					Vector4f vec = new Vector4f(data);
+					transform.getMatrix().transform(vec);
+					vec.get(newData);
+					ret.x = newData[0];
+					ret.y = newData[1];
+					ret.z = newData[2];
+					newData[0] += offset.x;
+					newData[1] += offset.y;
+					newData[2] += offset.z + additionalZOffset;
+					parent.put(element, newData);
+					break;
+				}
+				default: {
+					parent.put(element, data);
+					break;
+				}
+				}
+			}
+		};
+		quad.pipe(consumer);
+		return builder.build();
+	}
+
+	public ArrayList<int[]> getModelVertexData()
+	{
+		return modelVertexData;
 	}
 }
