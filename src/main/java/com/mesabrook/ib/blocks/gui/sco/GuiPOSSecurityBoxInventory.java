@@ -29,6 +29,8 @@ public class GuiPOSSecurityBoxInventory extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+		drawDefaultBackground();
+		
 		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/sco/sco_sec_box_inv.png"));
 		drawModalRectWithCustomSizedTexture(guiLeft, guiTop, 0, 0, xSize, ySize, xSize, ySize);
 	}

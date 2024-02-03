@@ -554,6 +554,12 @@ public class TileEntityRegister extends TileEntity implements ITickable {
 				stackName = wrapper.getFluidStack().getLocalizedName();
 				stackCount = wrapper.getFluidStack().amount;
 			}
+			else if (stack.hasCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null))
+			{
+				ItemStack innerStack = stack.getCapability(CapabilitySecuredItem.SECURED_ITEM_CAPABILITY, null).getInnerStack();
+				stackName = innerStack.getDisplayName();
+				stackCount = innerStack.getCount();
+			}
 			
 			StoreSaleSubParameter param = new StoreSaleSubParameter();
 			param.Name = stackName;
