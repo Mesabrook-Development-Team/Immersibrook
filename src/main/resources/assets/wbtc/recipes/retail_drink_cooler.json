@@ -2,7 +2,7 @@
     "type": "minecraft:crafting_shapeless",
     "ingredients": [
         {
-            "item": "wbtc:retail_freezer_upright"
+            "item": "wbtc:retail_freezer_upright_bottom"
         }
     ],
     "result": {

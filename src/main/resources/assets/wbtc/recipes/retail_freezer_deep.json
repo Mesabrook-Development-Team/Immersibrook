@@ -3,7 +3,7 @@
   "pattern": [
     "BBB",
 	"W W",
-	"WIW"
+	"WTW"
   ],
   "key": {
     "W": {
@@ -13,8 +13,8 @@
     "B": {
 	  "item": "wbtc:black_plastic"
     },
-    "I": {
-	  "item": "minecraft:packed_ice"
+    "T": {
+	  "item": "wbtc:technical_engineering_block"
     }
   },
   "result": {

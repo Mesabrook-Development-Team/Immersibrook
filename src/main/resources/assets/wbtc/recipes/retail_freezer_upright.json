@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "WWB",
+    "WIB",
 	"W B",
-	"WIB"
+	"WTB"
   ],
   "key": {
     "W": {
@@ -15,10 +15,13 @@
     },
     "I": {
 	  "item": "minecraft:packed_ice"
+    },
+    "T": {
+	  "item": "wbtc:technical_engineering_block"
     }
   },
   "result": {
-    "item": "wbtc:retail_freezer_upright",
+    "item": "wbtc:retail_freezer_upright_bottom",
     "count": 1
   }
 }
