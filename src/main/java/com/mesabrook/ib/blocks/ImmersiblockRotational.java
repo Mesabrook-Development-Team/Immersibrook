@@ -225,6 +225,23 @@ public class ImmersiblockRotational extends Block implements IHasModel
             {
                 tooltip.add(TextFormatting.YELLOW + "The bagging area.");
             }
+            if(this == ModBlocks.ATM)
+            {
+                tooltip.add(TextFormatting.YELLOW + "A machine that lets you deposit or withdraw money and get a debit card.");
+                tooltip.add(TextFormatting.RED + "Requires MesaSuite Authorization to work.");
+            }
+            if(this == ModBlocks.SHELF_FOUR_PEGHOOKS || this == ModBlocks.SHELF_ONE_LEVEL_TWO_PEGHOOKS || this == ModBlocks.SHELF_TWO_LEVELS_NO_PEGHOOKS)
+            {
+                tooltip.add(TextFormatting.YELLOW + "Retail shelving, allows you to place and display items and blocks.");
+            }
+            if(this == ModBlocks.SECURITY_STATION)
+            {
+                tooltip.add(TextFormatting.YELLOW + "Allows the user to place products into Merchandise Security Boxes.");
+            }
+            if(this == ModBlocks.RETAIL_FREEZER_UPRIGHT_BOTTOM || this == ModBlocks.RETAIL_DRINK_COOLER_BOTTOM || this == ModBlocks.RETAIL_FREEZER_DEEP)
+            {
+                tooltip.add(TextFormatting.YELLOW + "A frosty place to display cold products.");
+            }
         }
         else
         {
