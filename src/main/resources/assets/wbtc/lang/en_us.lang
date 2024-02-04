@@ -1984,8 +1984,8 @@ item.sponge.name=Sponge
 tooltip.sponge=§eA handheld sponge that can edit signs.
 
 // Blahajs
-item.blahaj.name=§bBlåhaj
-item.gray_blahaj.name=§7Blåhaj
+item.blahaj.name=§bBlahaj
+item.gray_blahaj.name=§7Blahaj
 item.bread_pillow.name=Bread Pillow
 item.isopod.name=Isopod Plushie
 tooltip.blue_shork=§bThis is Blåhaj, he is fren.
