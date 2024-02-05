@@ -1,7 +1,11 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.mesabrook.ib.blocks.gui.ImageButton;
+import com.mesabrook.ib.blocks.gui.sco.GuiStoreMode;
+import com.mesabrook.ib.net.sco.StoreModeGuiPacket;
 import com.mesabrook.ib.util.ModUtils;
+import com.mesabrook.ib.util.handlers.PacketHandler;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
@@ -31,6 +35,7 @@ public class GuiHome extends GuiPhoneBase {
 	ImageButton button5;
 	ImageButton button6;
 	ImageButton button7;
+	ImageButton button8;
 
 	@Override
 	protected String getInnerTextureFileName()
@@ -68,6 +73,10 @@ public class GuiHome extends GuiPhoneBase {
 		// Help App
 		button7 = new ImageButton(6, INNER_X + 86, INNER_Y + 24, 32, 32, phoneStackData.getIconTheme() + "/icn_help.png", 32, 32);
 		buttonList.add(button7);
+		
+		// Store Mode Launcher
+		button8 = new ImageButton(7, button3.x + 40, INNER_Y + 24, 32, 32, phoneStackData.getIconTheme() + "/icn_storemode.png", 32, 32);
+		buttonList.add(button8);
 	}
 
 	@Override
@@ -106,6 +115,10 @@ public class GuiHome extends GuiPhoneBase {
 		else if(mouseX >= button7.x && mouseY >= button7.y && mouseX < button7.x + button7.width && mouseY < button7.y + button7.height)
 		{
 			drawCenteredString(fontRenderer, "Support", INNER_X + 80, INNER_Y + 150, 0xFFFFFF);
+		}
+		else if(mouseX >= button8.x && mouseY >= button8.y && mouseX < button8.x + button8.width && mouseY < button8.y + button8.height)
+		{
+			drawCenteredString(fontRenderer, "Employee Mode", INNER_X + 80, INNER_Y + 150, 0xFFFFFF);
 		}
 		else if(phoneStackData.getBatteryLevel() <= 100)
 		{
@@ -168,6 +181,9 @@ public class GuiHome extends GuiPhoneBase {
 					Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, new TextComponentTranslation("im.misc.error").getFormattedText(), 0xFFFFFF));
 					e.printStackTrace();
 				}
+				break;
+			case 7:
+				Minecraft.getMinecraft().displayGuiScreen(new GuiStoreMode());
 				break;
 		}
 	}
