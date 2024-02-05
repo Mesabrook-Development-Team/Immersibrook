@@ -57,6 +57,7 @@ public class GuiStoreModeLocation extends GuiScreen {
 	
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+		drawDefaultBackground();
 		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/sco/gui_128_blank.png"));
 		drawModalRectWithCustomSizedTexture(modalLeft, modalTop, 0, 0, 256, 256, 256, 256);
 		fontRenderer.drawString(companyName, modalLeft + 4, modalTop + 4, 0x555555);

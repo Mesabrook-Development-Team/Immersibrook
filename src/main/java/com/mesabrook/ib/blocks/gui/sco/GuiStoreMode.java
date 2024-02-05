@@ -86,10 +86,10 @@ public class GuiStoreMode extends GuiScreen {
 				isLoading = false;
 				setCompanyButtons();
 			}
-			
 			firstTick = false;
 		}
 		
+		drawDefaultBackground();
 		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("wbtc", "textures/gui/sco/gui_128_blank.png"));
 		drawModalRectWithCustomSizedTexture(modalLeft, modalTop, 0, 0, 256, 256, 256, 256);
 		fontRenderer.drawString("Store Selector", modalLeft + 4, modalTop + 4, 0x555555);
