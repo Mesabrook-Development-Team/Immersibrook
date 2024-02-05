@@ -74,16 +74,26 @@ public class ShelvingTileEntityRenderer extends TileEntitySpecialRenderer<Shelvi
 		GlStateManager.rotate(angle, 0, 1, 0);
 		GlStateManager.translate(-0.5, -0.5, -0.5);
 		
-		Tessellator tess = Tessellator.getInstance();
-		BufferBuilder buffer = tess.getBuffer();
-		buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
+//		Tessellator tess = Tessellator.getInstance();
+//		BufferBuilder buffer = tess.getBuffer();
+//		buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
+//		
+//		for(int[] vertexData : te.getModelVertexData())
+//		{
+//			buffer.addVertexData(vertexData);
+//		}
+//		
+//		tess.draw();
 		
-		for(int[] vertexData : te.getModelVertexData())
+		if (te.getNeedsRebuild())
 		{
-			buffer.addVertexData(vertexData);
+			te.rebuildModel();
 		}
 		
-		tess.draw();
+		if (te.getDisplayListID() >= 0)
+		{
+			GlStateManager.callList(te.getDisplayListID());
+		}
 		
 		GlStateManager.popMatrix();
 		

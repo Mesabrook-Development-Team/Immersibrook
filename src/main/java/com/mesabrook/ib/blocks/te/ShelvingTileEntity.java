@@ -1,6 +1,5 @@
 package com.mesabrook.ib.blocks.te;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.vecmath.Matrix4f;
@@ -9,10 +8,10 @@ import javax.vecmath.Vector4f;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.tuple.Pair;
+import org.lwjgl.opengl.GL11;
 
 import com.mesabrook.ib.blocks.sco.BlockShelf;
 import com.mesabrook.ib.blocks.sco.ProductPlacement;
-import com.mesabrook.ib.blocks.te.ShelvingTileEntity.ProductSpot;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
@@ -21,14 +20,17 @@ import com.mesabrook.ib.init.ModItems;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BufferBuilder;
+import net.minecraft.client.renderer.GLAllocation;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.IBakedModel;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.renderer.vertex.VertexFormatElement;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
-import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
@@ -43,22 +45,23 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.Constants.NBT;
-import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.client.model.pipeline.IVertexConsumer;
 import net.minecraftforge.client.model.pipeline.UnpackedBakedQuad;
 import net.minecraftforge.client.model.pipeline.VertexTransformer;
 import net.minecraftforge.common.model.TRSRTransformation;
+import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.common.util.INBTSerializable;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 public class ShelvingTileEntity extends TileEntity {	
 	private HashMap<Integer, ProductSpot> productSpotsByPlacementID = new HashMap<>();
 	private long locationIDOwner;
-	private ArrayList<int[]> modelVertexData = new ArrayList<>();
+	private int displayListID = -1;
+	private boolean needsRebuilt = true;
 	
 	public boolean onActivated(EntityPlayer player, EnumHand hand, ProductPlacement placement)
 	{
@@ -334,7 +337,7 @@ public class ShelvingTileEntity extends TileEntity {
 		
 		if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
 		{
-			rebuildModel();
+			markRebuild();
 		}
 	}
 	
@@ -433,14 +436,30 @@ public class ShelvingTileEntity extends TileEntity {
 	}
 
 	@SideOnly(Side.CLIENT)
-	private void rebuildModel()
+	private void markRebuild()
 	{
-		modelVertexData.clear();
+		needsRebuilt = true;
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public void rebuildModel()
+	{
+		if (displayListID >= 0)
+		{
+			GLAllocation.deleteDisplayLists(displayListID);
+		}
 		
 		EnumFacing[] facings = EnumFacing.VALUES;
 		facings = ArrayUtils.add(facings, null);
 		
 		BlockShelf shelf = (BlockShelf)getBlockType();
+
+		
+		Tessellator tess = Tessellator.getInstance();
+		BufferBuilder builder = tess.getBuffer();
+		displayListID = GLAllocation.generateDisplayLists(1);
+		GlStateManager.glNewList(displayListID, GL11.GL_COMPILE);
+		builder.begin(GL11.GL_QUADS, DefaultVertexFormats.ITEM);
 		
 		for(ProductSpot spot : getProductSpots())
 		{
@@ -492,7 +511,7 @@ public class ShelvingTileEntity extends TileEntity {
 					{
 						Vector3f vecLoc = new Vector3f();
 						BakedQuad newQuad = transform(quad, itemTransform, offset, vecLoc, positionOffsetZ);
-						modelVertexData.add(newQuad.getVertexData());
+						builder.addVertexData(newQuad.getVertexData());
 						
 						if (vecLoc.z > maximumZ)
 						{
@@ -504,6 +523,11 @@ public class ShelvingTileEntity extends TileEntity {
 				positionOffsetZ += maximumZ;
 			}
 		}
+		
+		tess.draw();
+		GlStateManager.glEndList();
+		
+		needsRebuilt = false;
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -539,8 +563,13 @@ public class ShelvingTileEntity extends TileEntity {
 		return builder.build();
 	}
 
-	public ArrayList<int[]> getModelVertexData()
+	public int getDisplayListID()
 	{
-		return modelVertexData;
+		return displayListID;
+	}
+	
+	public boolean getNeedsRebuild()
+	{
+		return needsRebuilt;
 	}
 }
