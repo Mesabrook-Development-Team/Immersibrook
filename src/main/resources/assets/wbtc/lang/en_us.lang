@@ -2030,6 +2030,7 @@ tile.security_station.name=Retail Merchandise Securing Station
 item.peghook.name=Peghook
 item.security_box.name=Merchandise Security Box
 tile.retail_drink_cooler_bottom.name=Retail Drinks Cooler
+tile.timeclock.name=Employee Timeclock
 
 tile.smartphone_stand.name=Smartphone Display Stand
 tile.smartphone_stand_orange.name=Smartphone Display Stand

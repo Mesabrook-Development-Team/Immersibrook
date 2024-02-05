@@ -46,6 +46,7 @@ import com.mesabrook.ib.blocks.SignBlock;
 import com.mesabrook.ib.blocks.SignStand;
 import com.mesabrook.ib.blocks.Truss;
 import com.mesabrook.ib.blocks.commerce.BlockShoppingBasketHolder;
+import com.mesabrook.ib.blocks.commerce.BlockTimeClock;
 import com.mesabrook.ib.blocks.food.FoodBlock;
 import com.mesabrook.ib.blocks.metro.TicketMachine;
 import com.mesabrook.ib.blocks.sco.BlockScanner;
@@ -1416,4 +1417,7 @@ public class ModBlocks
 	
 	// Automated Tagging Station Block
 	public static final Block ATS = new ImmersiblockRotational("automated_tagging_station", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.25F, 3.5F, ModUtils.DEFAULT_AABB);
+
+	// Employee Timeclock
+	public static final Block TIMECLOCK = new BlockTimeClock();
 }

@@ -71,6 +71,7 @@ public class CategoryCommerce extends AbstractCategory
         add(ModBlocks.ITEM_STAND_GREEN);
         add(ModBlocks.ITEM_STAND_RED);
         add(ModBlocks.ITEM_STAND_BLACK);
+        add(ModBlocks.TIMECLOCK);
 
         // ATM
         add(ModBlocks.ATM);

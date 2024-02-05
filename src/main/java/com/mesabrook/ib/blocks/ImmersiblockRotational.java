@@ -77,18 +77,6 @@ public class ImmersiblockRotational extends Block implements IHasModel
     }
 
     @Override
-    public boolean isFlammable(IBlockAccess world, BlockPos pos, EnumFacing face)
-    {
-        return false;
-    }
-
-    @Override
-    public int getFlammability(IBlockAccess world, BlockPos pos, EnumFacing face)
-    {
-        return 0;
-    }
-
-    @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
     {
         return AABBs.get(((EnumFacing)state.getValue(FACING)).getIndex() & 0x7);
@@ -102,6 +90,10 @@ public class ImmersiblockRotational extends Block implements IHasModel
             return new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D);
         }
         if(blockState.getBlock() == ModBlocks.IN_STREET_CROSSWALK_SIGN)
+        {
+            return null;
+        }
+        if(blockState.getBlock() == ModBlocks.TIMECLOCK)
         {
             return null;
         }
@@ -241,6 +233,10 @@ public class ImmersiblockRotational extends Block implements IHasModel
             if(this == ModBlocks.RETAIL_FREEZER_UPRIGHT_BOTTOM || this == ModBlocks.RETAIL_DRINK_COOLER_BOTTOM || this == ModBlocks.RETAIL_FREEZER_DEEP)
             {
                 tooltip.add(TextFormatting.YELLOW + "A frosty place to display cold products.");
+            }
+            if(this == ModBlocks.TIMECLOCK)
+            {
+                tooltip.add(TextFormatting.YELLOW + "Allows players to access Store Mode and go on-duty or off-duty.");
             }
         }
         else

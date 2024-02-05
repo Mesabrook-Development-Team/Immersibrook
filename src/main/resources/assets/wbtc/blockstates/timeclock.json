@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:timeclock" },
+        "facing=south": { "model": "wbtc:timeclock", "y": 180 },
+        "facing=west":  { "model": "wbtc:timeclock", "y": 270 },
+        "facing=east":  { "model": "wbtc:timeclock", "y": 90 }
+    }
+}
