@@ -175,15 +175,6 @@ public class CommandImmersibrook extends CommandBase
 					throw new WrongUsageException("im.cmd.mesasuite.usage", new Object[0]);
 				}
 			}
-			else if ("storemode".equalsIgnoreCase(args[0]))
-			{
-				if (sender instanceof EntityPlayerMP)
-				{
-					EntityPlayerMP player = (EntityPlayerMP)sender;
-					StoreModeGuiPacket packet = new StoreModeGuiPacket();
-					PacketHandler.INSTANCE.sendTo(packet, player);
-				}
-			}
 			else if ("resettos".equalsIgnoreCase(args[0]))
 			{
 				World world = server.getWorld(0);
@@ -259,6 +250,10 @@ public class CommandImmersibrook extends CommandBase
 						player.sendMessage(new TextComponentString(TextFormatting.RED + "[IB Debug] ERROR: Tough As Nails mod is not installed."));
 					}
 				}
+			}
+			else
+			{
+				sender.sendMessage(new TextComponentString(TextFormatting.RED + "Invalid Immersibrook command. /ib help"));
 			}
 		}
 	}
