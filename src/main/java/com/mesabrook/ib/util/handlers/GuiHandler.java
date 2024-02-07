@@ -36,6 +36,7 @@ import com.mesabrook.ib.blocks.gui.telecom.GuiSmartphoneInv;
 import com.mesabrook.ib.blocks.gui.telecom.GuiThermalWarning;
 import com.mesabrook.ib.blocks.te.TileEntityATM;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
+import com.mesabrook.ib.blocks.te.TileEntityTaggingStation;
 import com.mesabrook.ib.blocks.te.TileEntityTrashBin;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.net.telecom.PhoneQueryPacket;
@@ -58,7 +59,7 @@ public class GuiHandler implements IGuiHandler
 	{
 		if(ID == Reference.GUI_TRASHBIN) return new ContainerTrashBin(player.inventory, (TileEntityTrashBin)world.getTileEntity(new BlockPos(x,y,z)), player);
 		else if (ID == Reference.GUI_STAMP_BOOK) return new ContainerStampBook(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]);
-		else if (ID == Reference.GUI_TAGGING_STATION) return new ContainerTaggingStation(player.inventory, new BlockPos(x,y,z));
+		else if (ID == Reference.GUI_TAGGING_STATION) return new ContainerTaggingStation(player.inventory, ((TileEntityTaggingStation)world.getTileEntity(new BlockPos(x,y,z))).getTaggingStationInventory(), new BlockPos(x,y,z));
 		else if (ID == Reference.GUI_RATION) return new ContainerRation(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]);
 		else if (ID == Reference.GUI_REGISTER_SECURITY_BOX_INVENTORY) return new ContainerRegisterSecurityBoxInventory(player.inventory, (TileEntityRegister)world.getTileEntity(new BlockPos(x,y,z)));
 		else if (ID == Reference.GUI_WALLET) return new ContainerWallet(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]);
@@ -142,7 +143,7 @@ public class GuiHandler implements IGuiHandler
 		}
 		else if (ID == Reference.GUI_TAGGING_STATION)
 		{
-			return new GuiTaggingStation(player.inventory, new BlockPos(x, y, z));
+			return new GuiTaggingStation(player.inventory, ((TileEntityTaggingStation)world.getTileEntity(new BlockPos(x,y,z))).getTaggingStationInventory(), new BlockPos(x, y, z));
 		}
 		else if (ID == Reference.GUI_TOS) return new GuiTOS();
 		else if (ID == Reference.GUI_SOUND_EMITTER) return new GuiSoundEmitter(player.swingingHand, new BlockPos(x,y,z));
