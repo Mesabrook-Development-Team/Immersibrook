@@ -17,6 +17,7 @@ import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
 import com.mesabrook.ib.capability.secureditem.ISecuredItem;
 import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.items.commerce.ItemSecurityBox;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -56,10 +57,12 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class ShelvingTileEntity extends TileEntity {	
 	private HashMap<Integer, ProductSpot> productSpotsByPlacementID = new HashMap<>();
 	private long locationIDOwner;
+	
 	private int displayListID = -1;
 	private boolean needsRebuilt = true;
 	

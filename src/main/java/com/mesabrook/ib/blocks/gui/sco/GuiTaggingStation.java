@@ -28,6 +28,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.client.config.GuiButtonExt;
+import net.minecraftforge.items.IItemHandler;
 
 public class GuiTaggingStation extends GuiContainer {
 	
@@ -44,8 +45,8 @@ public class GuiTaggingStation extends GuiContainer {
 	GuiButtonExt priceSetButton;
 	GuiButtonExt priceButton;
 	
-	public GuiTaggingStation(InventoryPlayer playerInventory, BlockPos pos) {
-		super(new ContainerTaggingStation(playerInventory, pos));
+	public GuiTaggingStation(InventoryPlayer playerInventory, IItemHandler taggingStationInventory, BlockPos pos) {
+		super(new ContainerTaggingStation(playerInventory, taggingStationInventory, pos));
 		tagStationContainer = (ContainerTaggingStation)this.inventorySlots;
 		taggingPos = pos;
 		
@@ -200,7 +201,7 @@ public class GuiTaggingStation extends GuiContainer {
 			changeTabs.taggingPos = taggingPos;
 			changeTabs.toUntag = true;
 			PacketHandler.INSTANCE.sendToServer(changeTabs);
-			mc.player.openGui(Main.instance, Reference.GUI_TAGGING_STATION_UNTAG, mc.player.world, taggingPos.getX(), taggingPos.getX(), taggingPos.getX());
+			mc.player.openGui(Main.instance, Reference.GUI_TAGGING_STATION_UNTAG, mc.player.world, taggingPos.getX(), taggingPos.getY(), taggingPos.getZ());
 		}
 		
 		super.mouseClicked(mouseX, mouseY, mouseButton);
