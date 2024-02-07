@@ -109,7 +109,7 @@ public class ShelvingTileEntityRenderer extends TileEntitySpecialRenderer<Shelvi
 				String display = "Fetching...";
 				if (priceInfo.isRetrieved)
 				{
-					if (priceInfo.locationItem == null)
+					if (priceInfo.locationItem == null || priceInfo.locationItem.BasePrice == null)
 					{
 						display = TextFormatting.DARK_RED + "Unknown";
 					}
