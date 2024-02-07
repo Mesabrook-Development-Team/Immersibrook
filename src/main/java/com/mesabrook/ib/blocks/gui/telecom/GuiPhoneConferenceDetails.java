@@ -132,7 +132,7 @@ public class GuiPhoneConferenceDetails extends GuiPhoneBase {
 			contact = phoneStackData.getContactByPhoneNumber(strPhoneNumber);
 			if (contact != null)
 			{
-				headRL = GetHeadUtil.getHeadResourceLocation(contact.getUsername());
+				headRL = GetHeadUtil.getHeadResourceLocation(contact.getUsername(), phoneStackData.getSkinFetchingEngine());
 			}
 		
 			Minecraft.getMinecraft().getTextureManager().bindTexture(headRL);

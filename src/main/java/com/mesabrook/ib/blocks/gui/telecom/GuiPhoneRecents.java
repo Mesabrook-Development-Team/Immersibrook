@@ -246,7 +246,7 @@ public class GuiPhoneRecents extends GuiPhoneBase {
 				contact = phoneStackData.getContactByPhoneNumber(Integer.toString(logData.getOtherNumbers()[0]));
 				if (contact != null)
 				{
-					headRL = GetHeadUtil.getHeadResourceLocation(contact.getUsername());
+					headRL = GetHeadUtil.getHeadResourceLocation(contact.getUsername(), phoneStackData.getSkinFetchingEngine());
 				}
 			}
 

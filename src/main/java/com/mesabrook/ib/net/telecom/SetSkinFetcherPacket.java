@@ -1,5 +1,6 @@
 package com.mesabrook.ib.net.telecom;
 
+import com.mesabrook.ib.blocks.gui.telecom.EnumSkinFetchingEngines;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import io.netty.buffer.ByteBuf;
@@ -18,7 +19,7 @@ public class SetSkinFetcherPacket implements IMessage
     public int hand;
     public String guiClassName;
     public String nextGuiClassName;
-    public String engine;
+    public EnumSkinFetchingEngines engine;
 
     @Override
     public void fromBytes(ByteBuf buf)
@@ -26,7 +27,7 @@ public class SetSkinFetcherPacket implements IMessage
         hand = buf.readInt();
         guiClassName = ByteBufUtils.readUTF8String(buf);
         nextGuiClassName = ByteBufUtils.readUTF8String(buf);
-        engine = ByteBufUtils.readUTF8String(buf);
+        engine = EnumSkinFetchingEngines.byEngineID(buf.readByte());
     }
 
     @Override
@@ -35,7 +36,7 @@ public class SetSkinFetcherPacket implements IMessage
         buf.writeInt(hand);
         ByteBufUtils.writeUTF8String(buf, guiClassName);
         ByteBufUtils.writeUTF8String(buf, nextGuiClassName);
-        ByteBufUtils.writeUTF8String(buf, engine);
+        buf.writeByte(engine.getEngineID());
     }
 
     public static class Handler implements IMessageHandler<SetSkinFetcherPacket, IMessage>

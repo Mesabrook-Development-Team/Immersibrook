@@ -109,12 +109,6 @@ public class ClientSideHandlers
 {
 	private static HashMap<Long, PositionedSoundRecord> soundsByBlockPos = new HashMap<>();
 
-	public static void updateSkinRenderer(String engine)
-	{
-		ModConfig.skinFetcherEngine = engine;
-		Minecraft.getMinecraft().player.sendMessage(new TextComponentString(engine));
-	}
-
 	public static void openAboutGUI()
 	{
 		GuiAboutImmersibrook gui = new GuiAboutImmersibrook();
