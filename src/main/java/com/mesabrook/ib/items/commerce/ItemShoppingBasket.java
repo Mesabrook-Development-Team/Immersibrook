@@ -154,7 +154,7 @@ public class ItemShoppingBasket extends Item implements IHasModel
 			public void setDead() {
 				super.setDead();
 				
-				if (this.world.isRemote || !itemstack.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null) || getAge() < lifespan)
+				if (this.world.isRemote || !itemstack.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null) || getItem().isEmpty())
 				{
 					return;
 				}
