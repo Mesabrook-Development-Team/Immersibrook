@@ -139,9 +139,6 @@ public final class ModConfig
 	
 	@Comment("[Minedroid] What is the maximum battery charge for a Smartphone?")
 	public static int smartphoneMaxBattery = 1600;
-
-	@Comment("[Minedroid] Which skin fetching service should Minedroid use? [Available: mc-heads, crafatar] [Default: mc-heads]")
-	public static String skinFetcherEngine = "mc-heads";
 	
 	@Mod.EventBusSubscriber(modid = Reference.MODID)
 	private static class EventHandler

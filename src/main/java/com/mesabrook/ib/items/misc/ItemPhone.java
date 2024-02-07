@@ -2,6 +2,7 @@ package com.mesabrook.ib.items.misc;
 
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.Main;
+import com.mesabrook.ib.blocks.gui.telecom.EnumSkinFetchingEngines;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneBase;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.util.IHasModel;
@@ -147,7 +148,7 @@ public class ItemPhone extends Item implements IHasModel {
 		private boolean needsToDoOOBE = true;
 		private boolean isPhoneDead = false;
 		private boolean useButtonInsteadOfSlider = false;
-		private String skinFetchingEngine = "mc-heads";
+		private EnumSkinFetchingEngines skinFetchingEngine = EnumSkinFetchingEngines.MCHeads;
 		
 		public static NBTData getFromItemStack(ItemStack phoneStack)
 		{
@@ -306,12 +307,12 @@ public class ItemPhone extends Item implements IHasModel {
 			return this.iconTheme = themeIn;
 		}
 
-		public String getSkinFetchingEngine()
+		public EnumSkinFetchingEngines getSkinFetchingEngine()
 		{
 			return skinFetchingEngine;
 		}
 
-		public String setSkinFetchingEngine(String engineIn)
+		public EnumSkinFetchingEngines setSkinFetchingEngine(EnumSkinFetchingEngines engineIn)
 		{
 			return this.skinFetchingEngine = engineIn;
 		}
@@ -405,7 +406,7 @@ public class ItemPhone extends Item implements IHasModel {
 			tag.setBoolean(Reference.SHOW_MILITARY_TIME, getShowingMilitaryIRLTime());
 			tag.setBoolean(Reference.DEBUG_MODE, getIsDebugModeEnabled());
 			tag.setString(Reference.ICON_THEME, getIconTheme());
-			tag.setString(Reference.SKIN_ENGINE, getSkinFetchingEngine());
+			tag.setByte(Reference.SKIN_ENGINE, getSkinFetchingEngine().getEngineID());
 			tag.setBoolean(Reference.OOBE_STATUS, getNeedToDoOOBE());
 			tag.setBoolean(Reference.USE_BUTTON_INSTEAD_OF_SLIDER, getUseButtonInsteadOfSlider());
 			
@@ -493,7 +494,7 @@ public class ItemPhone extends Item implements IHasModel {
 
 			if(nbt.hasKey(Reference.SKIN_ENGINE))
 			{
-				setSkinFetchingEngine(nbt.getString(Reference.SKIN_ENGINE));
+				setSkinFetchingEngine(EnumSkinFetchingEngines.byEngineID(nbt.getByte(Reference.SKIN_ENGINE)));
 			}
 
 			if(nbt.hasKey(Reference.OOBE_STATUS))
