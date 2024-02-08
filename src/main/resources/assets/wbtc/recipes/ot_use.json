@@ -1,0 +1,15 @@
+{ 
+	"type": "wbtc:ot_charger",
+	"ingredients": [
+      {
+         "item": "wbtc:ot_charger"
+      },
+      {
+         "type":"forge:ore_dict",
+		 "ore": "listAllPhones"
+      }
+   ],
+   "result": {
+      "item": "wbtc:smartphone_black"
+   }
+}
