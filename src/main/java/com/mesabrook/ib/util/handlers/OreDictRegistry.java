@@ -146,6 +146,29 @@ public class OreDictRegistry
 			OreDictionary.registerOre("listAllsugar", ModItems.SUGAR_PURPLE);
 			OreDictionary.registerOre("listAllsugar", ModItems.SUGAR_ORANGE);
 			OreDictionary.registerOre("listAllsugar", ModItems.HFCS);
+			
+			// Phones
+			OreDictionary.registerOre("listAllPhones", ModItems.PHONE_WHITE);
+			OreDictionary.registerOre("listAllPhones", ModItems.PHONE_ORANGE);
+			OreDictionary.registerOre("listAllPhones", ModItems.PHONE_MAGENTA);
+			OreDictionary.registerOre("listAllPhones", ModItems.PHONE_LBLUE);
+			OreDictionary.registerOre("listAllPhones", ModItems.PHONE_YELLOW);
+			OreDictionary.registerOre("listAllPhones", ModItems.PHONE_LIME);
+			OreDictionary.registerOre("listAllPhones", ModItems.PHONE_PINK);
+			OreDictionary.registerOre("listAllPhones", ModItems.PHONE_GRAY);
+			OreDictionary.registerOre("listAllPhones", ModItems.PHONE_SILVER);
+			OreDictionary.registerOre("listAllPhones", ModItems.PHONE_CYAN);
+			OreDictionary.registerOre("listAllPhones", ModItems.PHONE_PURPLE);
+			OreDictionary.registerOre("listAllPhones", ModItems.PHONE_BLUE);
+			OreDictionary.registerOre("listAllPhones", ModItems.PHONE_BROWN);
+			OreDictionary.registerOre("listAllPhones", ModItems.PHONE_GREEN);
+			OreDictionary.registerOre("listAllPhones", ModItems.PHONE_RED);
+			OreDictionary.registerOre("listAllPhones", ModItems.PHONE_BLACK);
+			OreDictionary.registerOre("listAllPhones", ModItems.PHONE_SPECIAL);
+			OreDictionary.registerOre("listAllPhones", ModItems.PHONE_MESABROOK);
+			OreDictionary.registerOre("listAllPhones", ModItems.PHONE_RC);
+			OreDictionary.registerOre("listAllPhones", ModItems.PHONE_ZOE);
+			OreDictionary.registerOre("listAllPhones", ModItems.PHONE_FR);
 
 			Main.logger.info("[" + Reference.MODNAME + "] Ore Dictionary Entries Registered.");
 		}
