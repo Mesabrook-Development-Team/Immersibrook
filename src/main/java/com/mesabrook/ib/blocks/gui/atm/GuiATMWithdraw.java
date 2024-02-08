@@ -89,12 +89,24 @@ public class GuiATMWithdraw extends GuiATMBase {
 			}
 			catch(NumberFormatException ex)
 			{
+				error = "Not a number";
+				
 				amount.setTextColor(0xFF0000);
 				return;
 			}
 			
 			if (withdrawAmount.compareTo(new BigDecimal(0)) <= 0 || withdrawAmount.compareTo(account.Balance) > 0)
 			{
+				error = "Amount must be greater than 0 and less than or equal to balance";
+				
+				amount.setTextColor(0xFF0000);
+				return;
+			}
+			
+			if (withdrawAmount.compareTo(new BigDecimal(500)) > 0)
+			{
+				error = "Withdraw must be less than 500";
+				
 				amount.setTextColor(0xFF0000);
 				return;
 			}

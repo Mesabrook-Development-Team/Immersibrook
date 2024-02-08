@@ -80,7 +80,7 @@ public class GuiTaggingStationUntag extends GuiContainer {
 			changeTabs.taggingPos = taggingPos;
 			changeTabs.toUntag = false;
 			PacketHandler.INSTANCE.sendToServer(changeTabs);
-			mc.player.openGui(Main.instance, Reference.GUI_TAGGING_STATION, mc.player.world, taggingPos.getX(), taggingPos.getX(), taggingPos.getX());
+			mc.player.openGui(Main.instance, Reference.GUI_TAGGING_STATION, mc.player.world, taggingPos.getX(), taggingPos.getY(), taggingPos.getZ());
 		}
 		super.mouseClicked(mouseX, mouseY, mouseButton);
 	}

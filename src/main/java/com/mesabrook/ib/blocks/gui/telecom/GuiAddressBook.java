@@ -280,7 +280,7 @@ public class GuiAddressBook extends GuiPhoneBase {
 		{
 			GlStateManager.color(1, 1, 1);
 			
-			Minecraft.getMinecraft().getTextureManager().bindTexture(GetHeadUtil.getHeadResourceLocation(getContact().getUsername()));
+			Minecraft.getMinecraft().getTextureManager().bindTexture(GetHeadUtil.getHeadResourceLocation(getContact().getUsername(), phoneStackData.getSkinFetchingEngine()));
 			drawScaledCustomSizeModalRect(x + 3, y, 0, 0, 160, 160, 32, 32, 160, 160);
 			
 			int availableSpace = getWidth() - (3 + 32 + 3);

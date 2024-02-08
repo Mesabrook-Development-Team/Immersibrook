@@ -37,13 +37,10 @@ public class GuiAddressBookSettings extends GuiPhoneBase
     {
         super.initGui();
 
-        boolean usingCrafatar = ModConfig.skinFetcherEngine.equals("crafatar");
-        boolean usingMCHeads = ModConfig.skinFetcherEngine.equals("mc-heads");
-
         back = new LabelButton(0, INNER_X + 3, INNER_Y + 20, "<", 0xFFFFFF);
 
-        mcheads = new GuiCheckBox(1, INNER_X + 10, INNER_Y + 52, "MC-Heads.net", usingMCHeads);
-        crafatar = new GuiCheckBox(2, INNER_X + 10, INNER_Y + 69, "Crafatar", usingCrafatar);
+        mcheads = new GuiCheckBox(1, INNER_X + 10, INNER_Y + 52, "MC-Heads.net", phoneStackData.getSkinFetchingEngine() == EnumSkinFetchingEngines.MCHeads);
+        crafatar = new GuiCheckBox(2, INNER_X + 10, INNER_Y + 69, "Crafatar", phoneStackData.getSkinFetchingEngine() == EnumSkinFetchingEngines.Crafatar);
 
         int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 32;
 
@@ -99,15 +96,15 @@ public class GuiAddressBookSettings extends GuiPhoneBase
 
             if(mcheads.isChecked())
             {
-                packet.engine = "mc-heads";
+                packet.engine = EnumSkinFetchingEngines.MCHeads;
             }
             else if(crafatar.isChecked())
             {
-                packet.engine = "crafatar";
+                packet.engine = EnumSkinFetchingEngines.Crafatar;
             }
             else
             {
-                packet.engine = "mc-heads";
+                packet.engine = EnumSkinFetchingEngines.MCHeads;
             }
 
             PacketHandler.INSTANCE.sendToServer(packet);
