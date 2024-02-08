@@ -218,10 +218,10 @@ public class RegistryHandler
     	RecipesHandler.registerSmeltingRecipes();
 		RecipesHandler.registerMachineRecipes();
 
-		CDMApps.registerIBApp(new ResourceLocation(Reference.MODID, "ta"), TestApp.class);
-		CDMApps.registerIBApp(new ResourceLocation(Reference.MODID, "cstudio_lite"), CompanyStudioLiteApp.class);
-		CDMApps.registerIBApp(new ResourceLocation(Reference.MODID, "gportal"), GovernmentPortalLiteApp.class);
-		CDMApps.registerIBApp(new ResourceLocation(Reference.MODID, "mesamail"), MesaMailApp.class);
+//		CDMApps.registerIBApp(new ResourceLocation(Reference.MODID, "ta"), TestApp.class);
+//		CDMApps.registerIBApp(new ResourceLocation(Reference.MODID, "cstudio_lite"), CompanyStudioLiteApp.class);
+//		CDMApps.registerIBApp(new ResourceLocation(Reference.MODID, "gportal"), GovernmentPortalLiteApp.class);
+//		CDMApps.registerIBApp(new ResourceLocation(Reference.MODID, "mesamail"), MesaMailApp.class);
 
     	Main.logger.info("[Immersibrook] Version " + Reference.VERSION + " loaded.");
 	}
