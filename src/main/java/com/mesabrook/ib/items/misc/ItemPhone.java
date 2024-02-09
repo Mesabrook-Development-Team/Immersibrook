@@ -682,7 +682,8 @@ public class ItemPhone extends Item implements IHasModel {
 		@Override
 		public int receiveEnergy(int maxReceive, boolean simulate) {
 			NBTData data = NBTData.getFromItemStack(phoneStack);
-			int toReceive = maxReceive + data.getBatteryLevel() > ModConfig.smartphoneMaxBattery ? maxReceive - data.getBatteryLevel() : maxReceive;
+			int modifiedMaxReceive = Math.min(maxReceive, 1);
+			int toReceive = modifiedMaxReceive + data.getBatteryLevel() > ModConfig.smartphoneMaxBattery ? ModConfig.smartphoneMaxBattery - data.getBatteryLevel() : modifiedMaxReceive;
 			
 			if (!simulate)
 			{

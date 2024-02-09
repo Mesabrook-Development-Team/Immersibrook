@@ -11,7 +11,17 @@ public class TileEntitySyncClient extends TileEntity
     @Override
     public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt)
     {
-        readFromNBT(pkt.getNbtCompound());
+    	handleUpdateTag(pkt.getNbtCompound());
+    }
+    
+    @Override
+    public void handleUpdateTag(NBTTagCompound tag) {
+    	readFromNBT(tag);
+    	
+    	if (world.isRemote)
+    	{
+    		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
+    	}
     }
 
     @Override

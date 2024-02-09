@@ -4,6 +4,7 @@
 		"2": "wbtc:misc/plastic_cube_white",
 		"3": "wbtc:blocks/plastic_cube_lime",
 		"4": "wbtc:blocks/plastic_cube_black",
+		"charge": "#charge",
 		"particle": "wbtc:misc/plastic_cube_white"
 	},
 	"elements": [
@@ -81,7 +82,7 @@
 				"east": {"uv": [1, 1, 1.2, 1.1], "texture": "#3"},
 				"south": {"uv": [1.5, 0.5, 6.45, 0.85], "texture": "#4"},
 				"west": {"uv": [1, 1, 1.2, 1.1], "texture": "#3"},
-				"up": {"uv": [0.75, 0, 13.5, 16], "texture": "#4"},
+				"up": {"uv": [0.75, 0, 13.5, 16], "texture": "#charge"},
 				"down": {"uv": [1, 1, 1.2, 1.1], "texture": "#3"}
 			}
 		}

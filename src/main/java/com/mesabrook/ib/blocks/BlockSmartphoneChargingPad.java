@@ -1,7 +1,13 @@
 package com.mesabrook.ib.blocks;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import javax.annotation.Nullable;
+
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.te.TileEntityWirelessChargingPad;
+import com.mesabrook.ib.blocks.te.TileEntityWirelessChargingPad.EnumChargingPadState;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.misc.ItemPhone;
@@ -9,11 +15,13 @@ import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.ModUtils;
 import com.mesabrook.ib.util.handlers.PacketHandler;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
+import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -32,14 +40,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class BlockSmartphoneChargingPad extends Block implements IHasModel
 {
     protected final ArrayList<AxisAlignedBB> AABBs;
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
+    public static final PropertyEnum<TileEntityWirelessChargingPad.EnumChargingPadState> CHARGING_STATE = PropertyEnum.create("chargestate", TileEntityWirelessChargingPad.EnumChargingPadState.class);
     public BlockSmartphoneChargingPad(String name, AxisAlignedBB unrotatedAABB)
     {
         super(Material.IRON);
@@ -242,7 +247,19 @@ public class BlockSmartphoneChargingPad extends Block implements IHasModel
     @Override
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, FACING);
+        return new BlockStateContainer(this, FACING, CHARGING_STATE);
+    }
+    
+    @Override
+    public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+    	TileEntity te = worldIn.getTileEntity(pos);
+    	TileEntityWirelessChargingPad.EnumChargingPadState chargeState = EnumChargingPadState.NoPower;
+    	if (te instanceof TileEntityWirelessChargingPad)
+    	{
+    		chargeState = ((TileEntityWirelessChargingPad)te).getChargePadState();
+    	}
+    	
+    	return super.getActualState(state, worldIn, pos).withProperty(CHARGING_STATE, chargeState);
     }
 
     @Override
