@@ -6,7 +6,8 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.Random;
-import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import org.apache.http.HttpResponse;
@@ -19,7 +20,6 @@ import com.mesabrook.ib.advancements.Triggers;
 import com.mesabrook.ib.blocks.sco.BlockShelf;
 import com.mesabrook.ib.blocks.te.ShelvingTileEntity;
 import com.mesabrook.ib.blocks.te.ShelvingTileEntity.ProductSpot;
-import com.mesabrook.ib.blocks.te.TileEntityPhoneStand;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
@@ -70,8 +70,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.FoodStats;
@@ -79,14 +77,16 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.TextComponentSelector;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.event.ClickEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -163,14 +163,37 @@ public class PlayerEvents
 						BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 						StringBuilder content = new StringBuilder();
 						String line;
+						
+						String urlRegex = "(https?://\\S+)";
+				        Pattern pattern = Pattern.compile(urlRegex);
 
+				        TextComponentString parent = new TextComponentString("");
 						while ((line = reader.readLine()) != null)
 						{
 							line = line.replace("%p", player.getDisplayNameString());
 							content.append(line).append("\n");
+
+					        Matcher matcher = pattern.matcher(line);
+					        
+					        TextComponentString lineParent = new TextComponentString("");
+					        int lastEnd = 0;
+					        while (matcher.find()) {
+					            int start = matcher.start();
+					            int end = matcher.end();
+//					            regularTextBuilder.append(input, lastEnd, start);
+//					            urlsBuilder.append(input, start, end);
+					            TextComponentString lastText = new TextComponentString(line.substring(lastEnd, start));
+					            TextComponentString lineURL = new TextComponentString(line.substring(start, end));
+					            lineURL.getStyle().setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, lineURL.getUnformattedText()));
+					            lineParent.appendSibling(lastText);
+					            lineParent.appendSibling(lineURL);
+					            lastEnd = end;
+					        }
+					        lineParent.appendSibling(new TextComponentString(line.substring(lastEnd) + "\n"));
+					        parent.appendSibling(lineParent);
 						}
 
-						player.sendMessage(new TextComponentString(content.toString()));
+						player.sendMessage(parent);
 						reader.close();
 					}
 				}
