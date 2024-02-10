@@ -1,0 +1,17 @@
+{
+	"forge_marker": 1,
+    "variants": {
+    	"facing":
+    	{ 
+    		"north": {},
+    		"south": { "y": 180 },
+    		"west": { "y": 270 },
+    		"east": { "y": 90 }
+    	},
+		"closed":
+		{ 
+			"true": { "model": "wbtc:retail_freezer_upright_top_closed" },
+			"false": { "model": "wbtc:retail_freezer_upright_top" }
+		}
+    }
+}

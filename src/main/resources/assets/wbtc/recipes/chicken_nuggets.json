@@ -1,0 +1,25 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "type": "forge:ore_dict",
+		 "ore": "toolMortarandpestle"
+      },
+      {
+         "type":"forge:ore_dict",
+		 "ore": "dustSalt"
+      },
+      {
+         "type":"forge:ore_dict",
+		 "ore": "foodToast"
+      },
+      {
+         "type":"forge:ore_dict",
+		 "ore": "foodGroundchicken"
+      }
+   ],
+   "result": {
+      "item": "wbtc:raw_chicken_nugget",
+      "count": 6
+   }
+}

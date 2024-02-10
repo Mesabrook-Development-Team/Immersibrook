@@ -45,6 +45,7 @@ public class CategoryHousehold extends AbstractCategory
 		add(ModBlocks.EXIT_SIGN_GREEN_RIGHT);
 		add(ModBlocks.CEILING_EXIT_SIGN_GREEN);
 		add(ModBlocks.CEILING_EXIT_SIGN_RED);
+		add(ModBlocks.CHARGING_STATION_WALLSIGN);
 
 		// Sign Stand
 		add(ModBlocks.SIGN_STAND);
@@ -135,6 +136,17 @@ public class CategoryHousehold extends AbstractCategory
 		add(ModItems.BLAHAJ);
 		add(ModItems.GRAY_BLAHAJ);
 		add(ModItems.BREAD_PILLOW);
+
+		// Fixtures
+		add(ModBlocks.PRISON_TOILET);
+		add(ModBlocks.WALL_TOILET);
+		add(ModBlocks.HOME_TOILET);
+		add(ModBlocks.URINAL);
+
+		// Chairs
+		add(ModBlocks.THRONE_FC);
+		add(ModBlocks.THRONE);
+		add(ModBlocks.THRONE_GOV);
 	}
 
 }

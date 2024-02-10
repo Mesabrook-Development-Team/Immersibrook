@@ -1,0 +1,12 @@
+{
+   "parent": "block/cube",
+   "textures": {
+	   "particle": "wbtc:blocks/smoker_side",
+       "up": "wbtc:blocks/smoker_top",
+       "down": "wbtc:blocks/smoker_bottom",
+       "south": "wbtc:blocks/smoker_side",
+       "north": "wbtc:blocks/smoker_side",
+       "west": "wbtc:blocks/smoker_side",
+       "east": "wbtc:blocks/smoker_side"
+   }
+}

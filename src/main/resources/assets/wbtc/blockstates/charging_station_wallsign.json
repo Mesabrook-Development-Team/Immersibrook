@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:charging_station_wallsign" },
+        "facing=south": { "model": "wbtc:charging_station_wallsign", "y": 180 },
+        "facing=west":  { "model": "wbtc:charging_station_wallsign", "y": 270 },
+        "facing=east":  { "model": "wbtc:charging_station_wallsign", "y": 90 }
+    }
+}

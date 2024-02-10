@@ -216,12 +216,15 @@ public class WirelessEmergencyAlertManager {
 			for(Tuple<ItemStack, EntityPlayer> phone : phonesToAlert)
 			{
 				NBTData data = NBTData.getFromItemStack(phone.getFirst());
-				
-				BlockPos currentPos = phone.getSecond().getPosition();
-				ServerSoundBroadcastPacket playSound = new ServerSoundBroadcastPacket();
-				playSound.soundName = "alert_tone";
-				playSound.pos = currentPos;
-				PacketHandler.INSTANCE.sendToAllAround(playSound, new TargetPoint(phone.getSecond().dimension, currentPos.getX(), currentPos.getY(), currentPos.getZ(), 25));
+
+				if(data.getBatteryLevel() > 0)
+				{
+					BlockPos currentPos = phone.getSecond().getPosition();
+					ServerSoundBroadcastPacket playSound = new ServerSoundBroadcastPacket();
+					playSound.soundName = "alert_tone";
+					playSound.pos = currentPos;
+					PacketHandler.INSTANCE.sendToAllAround(playSound, new TargetPoint(phone.getSecond().dimension, currentPos.getX(), currentPos.getY(), currentPos.getZ(), 25));
+				}
 				
 				WirelessEmergencyAlertPacket packet = new WirelessEmergencyAlertPacket();
 				packet.phoneNumber = data.getPhoneNumberString();

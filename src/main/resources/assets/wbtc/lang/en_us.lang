@@ -12,6 +12,8 @@ im.death.reverb=%s needs more reverb.
 im.death.rubberduck=%s got their fingers blown off by a rubber duck
 im.death.kekw=%s found an item they weren't supposed to have and used it. Smooooooth...
 im.death.sus=%s got caught in the vents.
+im.death.dodo=%s went the way of the Dodo.
+im.death.fc=%s tried to coup the government and found out.
 
 im.hammer.shift=New Sound Event:
 im.hammer.nosound=Hammer has no sound bound to it.
@@ -65,6 +67,8 @@ advancements.imb.aidothers=First Responder
 advancements.imb.aidothers.desc=Use the First Aid Kit to heal another player or mob.
 advancements.imb.aidmonsters=Medical Malpractice
 advancements.imb.aidmonsters.desc=Use the healing powers of medicine on a hostile mob.
+advancements.imb.tape_measure=Measure Twice, Cut Once
+advancements.imb.tape_measure.desc=Use a Tape Measure to measure a distance.
 
 
 //Config
@@ -97,6 +101,7 @@ im.talk.success=You are now talking %s
 im.talk.noglobalperm=You are not allowed to send global messages
 im.access.call=§e§lYou have an incoming call
 im.cmd.wea.usage=Valid arguments: start, stop
+im.cmd.mesasuite.usage=Valid arguments: login, logout
 im.cmd.resettos.singleplayer=Terms Of Service does not apply to Single Player
 
 //First Aid
@@ -149,6 +154,22 @@ item.icon_immersibrook.name=Small Plastic Disc That You Toss
 item.lblue_vest.name=Light Blue Safety Vest
 item.lblue_vest_x.name=Light Blue Safety Vest - Railroad Pattern
 item.yellow_vest_nc.name=Yellow Safety Vest - Nether Corporation Branding
+
+//Conductor's Uniform
+item.conductors_jacket_blue.name=Blue Conductor's Coat
+item.conductors_jacket_black.name=Black Conductor's Coat
+item.conductors_pants_blue.name=Blue Conductor's Pants
+item.conductors_pants_black.name=Black Conductor's Pants
+item.conductors_hat_blue.name=Blue Conductor's Hat
+item.conductors_hat_black.name=Black Conductor's hat
+
+//Engineer's Uniform
+item.engineers_overalls.name=Denim Overalls
+item.denim.name=Denim
+
+item.engineers_hat.name=Engineer's Hat
+
+item.synthetic_leather.name=Synthetic Leather
 
 //Stairs
 tile.oak_laminate_stairs.name=Oak Wood Laminate Stairs
@@ -251,6 +272,13 @@ item.cell_transmitter.name=Cellular Transmitter
 item.present_red.name=Present
 item.present_green.name=Present
 item.present_blue.name=Present
+item.flagger_stop.name=Flagger's Sign
+item.flagger_slow.name=Flagger's Sign
+item.tape_measure.name=Tape Measure
+item.portable_ender_chest.name=§dEnder Pouch
+item.tape_roll_measure.name=Measuring Tape
+item.technical_engineering_block.name=Technical Engineering Block
+item.piano.name=Piano
 
 //Smooth Wood Blocks
 tile.smooth_oak.name=Smooth Oak Wood
@@ -348,6 +376,7 @@ tile.push_trashcan.name=Trash Can
 tile.synthetic_turf.name=Synthetic Turf
 tile.white_cobblestone.name=Chalked Cobblestone
 tile.white_stone_bricks.name=Chalked Stone Bricks
+tile.automated_tagging_station.name=Automated Tagging Station (NYI)
 
 //Sign stand
 tile.sign_stand.name=Portable Road Sign Stand
@@ -1227,6 +1256,9 @@ tile.wbtc_pillar_white_stonebricks.name=Chalked Stone Brick Pillar
 tile.wbtc_pillar_white_stone.name=Chalked Stone Pillar
 tile.wbtc_pillar_white_cobble.name=Chalked Cobblestone Pillar
 tile.wbtc_pillar_smoothed_stone.name=Smoothed Stone Pillar
+tile.cell_tower.name=Cell Tower Scaffolding
+tile.cell_tower_red.name=Cell Tower Scaffolding (Red)
+tile.cell_tower_combo.name=Cell Tower Scaffolding (Red and White)
 
 //Misc Blocks
 tile.white_stone.name=Chalked Stone
@@ -1276,6 +1308,7 @@ item.disc_ritz.name=Music Disc
 item.disc_pumpkin.name=Music Disc
 item.cooking_music.name=Music Disc
 item.memory.name=Music Disc
+item.wide_record.name=Music Disc
 
 //Record Descriptions
 item.record.amalthea.desc=Amalthea
@@ -1295,10 +1328,12 @@ item.record.disc_ritz.desc=Taco - Puttin' on the Ritz (Re-Recorded)
 item.record.disc_pumpkin.desc=FreeUseMusic - Halloween
 item.record.cooking_music.desc=RavenholmZombie - Calm Cooking Music
 item.record.memory.desc=Bonnie - It's just a Burning Memory (8-bit)
+item.record.wide_record.desc=Слава Україні! (Wide Zelensky)
 
 //Enchantments
 enchantment.thunder=The Power of Thor
 enchantment.randomizer=Curse of Many Tones
+enchantment.auto_feed=Auto Feeding Servo
 
 //Keys
 key.immersibrook.category=Immersibrook
@@ -1402,6 +1437,8 @@ item.hfcs.name=High-Fructose Corn Syrup
 item.pilk.name=Pilk
 item.player_flesh.name=Player Flesh
 item.player_flesh_cooked.name=Player Steak
+item.raw_chicken_nugget.name=Raw Chicken Nugget
+item.cooked_chicken_nugget.name=Chicken Nugget
 
 //Dialog
 im.sugwarn=You wonder if you should risk taking another bite...
@@ -1477,6 +1514,24 @@ tile.colored_stone.blue.name=Dyed Stone (Blue)
 tile.colored_stone.red.name=Dyed Stone (Red)
 tile.colored_stone.green.name=Dyed Stone (Green)
 tile.colored_stone.black.name=Dyed Stone (Black)
+
+//Colored Quartz
+tile.colored_quartz.white.name=Dyed Quartz (White)
+tile.colored_quartz.orange.name=Dyed Quartz (Orange)
+tile.colored_quartz.magenta.name=Dyed Quartz (Magenta)
+tile.colored_quartz.light_blue.name=Dyed Quartz (Light Blue)
+tile.colored_quartz.yellow.name=Dyed Quartz (Yellow)
+tile.colored_quartz.lime.name=Dyed Quartz (Lime)
+tile.colored_quartz.pink.name=Dyed Quartz (Pink)
+tile.colored_quartz.gray.name=Dyed Quartz (Gray)
+tile.colored_quartz.silver.name=Dyed Quartz (Light Gray)
+tile.colored_quartz.cyan.name=Dyed Quartz (Cyan)
+tile.colored_quartz.purple.name=Dyed Quartz (Purple)
+tile.colored_quartz.brown.name=Dyed Quartz (Brown)
+tile.colored_quartz.blue.name=Dyed Quartz (Blue)
+tile.colored_quartz.red.name=Dyed Quartz (Red)
+tile.colored_quartz.green.name=Dyed Quartz (Green)
+tile.colored_quartz.black.name=Dyed Quartz (Black)
 
 //Colored Cobblestone
 tile.colored_cobblestone.white.name=Dyed Cobblestone (White)
@@ -1604,6 +1659,7 @@ item.phone_shell_red.name=Red Phone Shell
 item.phone_shell_black.name=Black Phone Shell
 item.phone_shell_special.name=Rainbow Phone Shell
 item.radio.name=Radio
+tile.wireless_phone_charger_pad.name=Wireless Smartphone Charging Pad
 
 //Ducks
 item.rubber_duck.name=Rubber Ducky
@@ -1734,6 +1790,7 @@ im.tooltip.siding.wood=Rustic Wooden Panels that add an outdoorsy feel to your b
 im.tooltip.manhole.hook=Tool used to open and close Manholes.
 im.tooltip.gavel=Order! Order in the Court!
 im.tooltip.crosswalk=Let them cross, it's the law!
+im.tooltip.chisel=This tool can be used to harvest snowballs from blocks of ice.
 
 
 //Manholes
@@ -1747,6 +1804,7 @@ tile.util_manhole.name=Utilities Manhole Cover
 tile.manhole.name=General Purpose Manhole Cover
 tile.manhole_ladder.name=Manhole Ladder
 tile.metal_ladder.name=Steel Ladder
+item.ice_chisel.name=Ice Chisel
 
 //Vinyl Siding
 tile.siding_white.name=White Vinyl Siding
@@ -1807,7 +1865,7 @@ im.contacts.invalidtoast=Invalid Phone Number
 im.contacts.saved=Saved Successfully
 
 //Minedroid Translation Project - Settings App
-im.settings.title=Minedroid Settings
+im.settings.title=§lMinedroid Settings
 im.settings.securityicon=Security
 im.settings.personalizeicon=Personalize
 im.settings.abouticon=About Phone
@@ -1818,10 +1876,14 @@ im.settings.appname=Settings
 im.settings.pin=PIN
 im.settings.uuid=Player UUID
 im.settings.reset=Reset
+im.settings.factoryreset=Factory Reset
 im.settings.apply=Apply
+im.settings.back=< Back
+im.settings.next=Next >
 im.settings.changepin=Change PIN
 im.settings.changeuuid=Change UUID
-im.settings.securitytitle=Lock Screen Settings
+im.settings.securitytitle=Phone Security
+im.settings.securitytitle1=Screen Lock
 im.settings.strategy=Security Strategy:
 im.settings.pinerror=PIN Required
 im.settings.uuiderror=Player UUID Required
@@ -1832,6 +1894,7 @@ im.settings.lockscreen=Lock Screen
 im.settings.homescreen=Home Screen
 im.settings.chat=Chat Notification:
 im.settings.ringtone=Current Ringtone:
+im.settings.factoryreset=Factory Reset
 im.settings.factoryreset=Factory Reset
 im.minedroid=Minedroid
 im.settings.phoneinfo=Phone Information:
@@ -1844,17 +1907,41 @@ im.settings.personalization.phonename=Phone Name
 im.settings.personalization.phonenamesetup=Name Your Phone
 im.settings.personalization.setphonename=Enter a Phone Name:
 im.settings.personalization.nameinfo1=You can change your phone's name later in §oSettings > Personalization > Phone Name
+im.settings.personalization.themesetupblurb=You can change your phone's theme later in §oSettings > Personalization > Themes
 im.settings.personalization.wallpaperreset=Settings Reset
 im.settings.personalization.clock=Clock Settings
-im.settings.personalization.icontheme=Change Your Icon Pack
-im.settings.personalization.icontheme.current=Current Pack:
+im.settings.personalization.icontheme=Change Your Theme
+im.settings.personalization.iconthemea=System Themes
+im.settings.personalization.iconthemesetup=Choose a Theme
+im.settings.personalization.wallpapersoobe=Choose Wallpapers
+im.settings.personalization.icontheme.current=Current Theme:
 im.settings.personalization.icontheme.plex=Plex (Default)
-im.settings.personalization.icontheme.aero=Aero Bubbles
+im.settings.personalization.icontheme.aero=Frutiger Aero
 im.settings.personalization.icontheme.luna=Luna
 im.alert.name=EMERGENCY ALERT
 im.alert.close=Dismiss
 im.crash.uploaded=Crash Log Uploaded
 im.crash.error=Unable to upload
+
+//Minedroid Retail Packaging
+item.phone_box_white.name=Minedroid Phone - Snow
+item.phone_box_orange.name=Minedroid Phone - Orange
+item.phone_box_magenta.name=Minedroid Phone - Magenta
+item.phone_box_lblue.name=Minedroid Phone - Aqua
+item.phone_box_yellow.name=Minedroid Phone - Sunshine
+item.phone_box_pink.name=Minedroid Phone - Pink
+item.phone_box_lime.name=Minedroid Phone - Lime
+item.phone_box_gray.name=Minedroid Phone - Graphite
+item.phone_box_silver.name=Minedroid Phone - Silver
+item.phone_box_cyan.name=Minedroid Phone - Cyan
+item.phone_box_purple.name=Minedroid Phone - Purple
+item.phone_box_blue.name=Minedroid Phone - Blue
+item.phone_box_brown.name=Minedroid Phone - Chocolate
+item.phone_box_green.name=Minedroid Phone - Leaf
+item.phone_box_red.name=Minedroid Phone - Rose
+item.phone_box_black.name=Minedroid Phone - Midnight
+item.ot_charger.name=One-Time Charger
+item.ot_charger_box.name=MSAC One-Time Charger
 
 //Minedroid Translation Project - Misc
 im.misc.error=An error occurred.
@@ -1890,18 +1977,21 @@ tile.wall_sign_red.name=Red Wall Sign
 tile.wall_sign_green.name=Green Wall Sign
 tile.wall_sign_blue.name=Blue Wall Sign
 tile.in_street_crosswalk_sign.name=In-Street Pedestrian Crossing Sign
+tile.charging_station_wallsign.name=Mesabrook Bell Charging Station Sign
 
 // Sponge
 item.sponge.name=Sponge
 tooltip.sponge=§eA handheld sponge that can edit signs.
 
 // Blahajs
-item.blahaj.name=§bBlåhaj
-item.gray_blahaj.name=§7Blåhaj
+item.blahaj.name=§bBlahaj
+item.gray_blahaj.name=§7Blahaj
 item.bread_pillow.name=Bread Pillow
+item.isopod.name=Isopod Plushie
 tooltip.blue_shork=§bThis is Blåhaj, he is fren.
 tooltip.gray_shork=§7This is Blåhaj, he is fren.
 tooltip.bread=A big soft bread pillow
+tooltip.isopod=A cuddly ocean pal
 
 // Commerce
 item.wallet_unisex.name=Wallet
@@ -1923,3 +2013,135 @@ item.five_cents.name=Five Cents
 item.ten_cents.name=Ten Cents
 item.twenty_five_cents.name=Twenty Five Cents
 item.dollar_coin.name=One Dollar Coin
+
+// Rations
+item.ration_1.name=Emergency Survival Ration
+item.ration_2.name=Radiation Survival Kit
+item.water_sachet.name=Emergency Water
+
+// Retail and SCO
+tile.sco_pos.name=Point Of Sale Terminal
+tile.sco_scanner.name=Point Of Sale Product Scanner
+tile.sco_bagging.name=Point Of Sale Bagging Platform
+tile.shelf_one_level_two_peghooks.name=Retail Shelf - Two Peghooks, One Shelf
+tile.shelf_four_peghooks.name=Retail Shelf - Four Peghooks, No Shelves
+tile.shelf_two_levels_no_peghooks.name=Retail Shelf - Two Shelves, No Peghooks
+tile.security_station.name=Retail Merchandise Securing Station
+item.peghook.name=Peghook
+item.security_box.name=Merchandise Security Box
+tile.retail_drink_cooler_bottom.name=Retail Drinks Cooler
+tile.timeclock.name=Employee Timeclock
+
+tile.smartphone_stand.name=Smartphone Display Stand
+tile.smartphone_stand_orange.name=Smartphone Display Stand
+tile.smartphone_stand_magenta.name=Smartphone Display Stand
+tile.smartphone_stand_lblue.name=Smartphone Display Stand
+tile.smartphone_stand_yellow.name=Smartphone Display Stand
+tile.smartphone_stand_lime.name=Smartphone Display Stand
+tile.smartphone_stand_pink.name=Smartphone Display Stand
+tile.smartphone_stand_gray.name=Smartphone Display Stand
+tile.smartphone_stand_silver.name=Smartphone Display Stand
+tile.smartphone_stand_cyan.name=Smartphone Display Stand
+tile.smartphone_stand_purple.name=Smartphone Display Stand
+tile.smartphone_stand_blue.name=Smartphone Display Stand
+tile.smartphone_stand_brown.name=Smartphone Display Stand
+tile.smartphone_stand_green.name=Smartphone Display Stand
+tile.smartphone_stand_red.name=Smartphone Display Stand
+tile.smartphone_stand_black.name=Smartphone Display Stand
+
+tile.retail_freezer_upright_bottom.name=Retail Freezer
+tile.retail_freezer_deep.name=Retail Deep Freezer Island
+tile.sim_station.name=Mesabrook Bell SIM Programming Terminal
+item.sim_card.name=Mesabrook Bell SIM Card
+item.sd_card.name=Memory Card
+item.sim_box.name=Mesabrook Bell SIM Card Kit
+
+//Shopping Baskets
+item.shopping_basket.name=Shopping Basket
+
+//Shopping Basket Holders
+tile.basket_holder_red.name=Shopping Basket Holder - Red
+tile.basket_holder_green.name=Shopping Basket Holder - Green
+tile.basket_holder_blue.name=Shopping Basket Holder - Blue
+tile.basket_holder_black.name=Shopping Basket Holder - Black
+
+//Sound Emitters
+tile.sound_emitter.name=Sound Emitter
+tile.sound_emitter_wall.name=Wall Mounted Sound Emitter
+
+//Fixtures
+tile.wall_toilet.name=Toilet
+tile.home_toilet.name=Toilet
+tile.urinal.name=Urinal
+
+//ATM
+tile.atm.name=ATM
+
+//Retail Boxes - CDM
+item.laptop_box_white.name=Craytech Laptop
+item.laptop_box_orange.name=Craytech Laptop
+item.laptop_box_magenta.name=Craytech Laptop
+item.laptop_box_lblue.name=Craytech Laptop
+item.laptop_box_yellow.name=Craytech Laptop
+item.laptop_box_pink.name=Craytech Laptop
+item.laptop_box_gray.name=Craytech Laptop
+item.laptop_box_silver.name=Craytech Laptop
+item.laptop_box_cyan.name=Craytech Laptop
+item.laptop_box_purple.name=Craytech Laptop
+item.laptop_box_blue.name=Craytech Laptop
+item.laptop_box_brown.name=Craytech Laptop
+item.laptop_box_green.name=Craytech Laptop
+item.laptop_box_red.name=Craytech Laptop
+item.laptop_box_black.name=Craytech Laptop
+item.laptop_box_lime.name=Craytech Laptop
+item.router_box_white.name=Craytech Router
+item.router_box_orange.name=Craytech Router
+item.router_box_magenta.name=Craytech Router
+item.router_box_lblue.name=Craytech Router
+item.router_box_yellow.name=Craytech Router
+item.router_box_pink.name=Craytech Router
+item.router_box_gray.name=Craytech Router
+item.router_box_silver.name=Craytech Router
+item.router_box_cyan.name=Craytech Router
+item.router_box_purple.name=Craytech Router
+item.router_box_blue.name=Craytech Router
+item.router_box_brown.name=Craytech Router
+item.router_box_green.name=Craytech Router
+item.router_box_red.name=Craytech Router
+item.router_box_black.name=Craytech Router
+item.router_box_lime.name=Craytech Router
+item.printer_box_white.name=Craytech Printer
+item.printer_box_orange.name=Craytech Printer
+item.printer_box_magenta.name=Craytech Printer
+item.printer_box_lblue.name=Craytech Printer
+item.printer_box_yellow.name=Craytech Printer
+item.printer_box_pink.name=Craytech Printer
+item.printer_box_gray.name=Craytech Printer
+item.printer_box_silver.name=Craytech Printer
+item.printer_box_cyan.name=Craytech Printer
+item.printer_box_purple.name=Craytech Printer
+item.printer_box_blue.name=Craytech Printer
+item.printer_box_brown.name=Craytech Printer
+item.printer_box_green.name=Craytech Printer
+item.printer_box_red.name=Craytech Printer
+item.printer_box_black.name=Craytech Printer
+item.printer_box_lime.name=Craytech Printer
+
+//More Food
+item.spam.name=Luncheon Meat
+
+//Dishes
+tile.dish_bell.name=Satellite Dish - Mesabrook Bell
+tile.dish_msac.name=Satellite Dish - MSAC
+tile.dish_blank.name=Satellite Dish
+
+//Machines
+tile.smoker.name=Smoker
+tile.fluid_meter.name=Fluid Meter
+
+//Thrones
+tile.throne.name=Counselor's Chair
+tile.throne_fc.name=First Consul's Chair
+tile.throne_gov.name=Elected Official's Chair
+
+item.smartphone_battery.name=Smartphone Battery

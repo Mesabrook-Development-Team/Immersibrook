@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DWD",
+    "BBB"
+  ],
+  "key": {
+    "D": {
+      "item": "wbtc:denim"
+    },
+    "W": {
+	  "type": "forge:ore_dict",
+	  "ore": "dyeWhite"
+    },
+    "B": {
+      "item": "minecraft:wool",
+	  "data":3 
+    }
+  },
+  "result": {
+    "item": "wbtc:engineers_hat",
+    "count": 1
+  }
+}

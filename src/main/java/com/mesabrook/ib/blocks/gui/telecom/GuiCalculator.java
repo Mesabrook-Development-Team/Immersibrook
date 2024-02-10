@@ -1,6 +1,7 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.google.common.collect.ImmutableList;
+import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.util.Math;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiTextField;
@@ -52,7 +53,7 @@ public class GuiCalculator extends GuiPhoneBase
     @Override
     protected String getInnerTextureFileName()
     {
-        return "app_screen_no_bar.png";
+        return phoneStackData.getIconTheme() + "/app_screen.png";
     }
 
     @Override

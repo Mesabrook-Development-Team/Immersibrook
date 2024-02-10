@@ -1,6 +1,7 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.google.common.collect.ImmutableSet;
+import com.mesabrook.ib.util.IndependentTimer;
 import com.mesabrook.ib.util.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -55,8 +56,18 @@ public class Toaster {
 		tick(0,0,0,0,false);
 	}
 	
+	IndependentTimer indTimer = new IndependentTimer();
 	public void tick(int innerX, int innerY, int innerWidth, int innerHeight, boolean doDraw)
 	{
+		boolean doStageTimerUpdate = false;
+		
+		indTimer.update();
+		if (indTimer.getElapsedTime() >= 20)
+		{
+			doStageTimerUpdate = true;
+			indTimer.reset();
+		}
+		
 		if (currentToast == null)
 		{
 			currentToast = toastQueue.poll();
@@ -70,7 +81,11 @@ public class Toaster {
 		switch(currentStage)
 		{
 			case FadeIn:
-				currentStageTimer += currentToast.getFadeInFactor();
+				if (doStageTimerUpdate)
+				{
+					currentStageTimer += currentToast.getFadeInFactor();
+				}
+				
 				if (currentStageTimer > 100)
 				{
 					currentStageTimer = 100;
@@ -88,7 +103,10 @@ public class Toaster {
 				}
 				break;
 			case Display:
-				currentStageTimer++;
+				if (doStageTimerUpdate)
+				{
+					currentStageTimer++;
+				}
 				if (doDraw)
 				{
 					draw(innerX, innerY, innerWidth, innerHeight, 1F);
@@ -100,7 +118,10 @@ public class Toaster {
 				}
 				break;
 			case FadeOut:
-				currentStageTimer -= currentToast.getFadeOutFactor();
+				if (doStageTimerUpdate)
+				{
+					currentStageTimer -= currentToast.getFadeOutFactor();
+				}
 				if (currentStageTimer <= 0)
 				{
 					currentStage = Stages.FadeIn;

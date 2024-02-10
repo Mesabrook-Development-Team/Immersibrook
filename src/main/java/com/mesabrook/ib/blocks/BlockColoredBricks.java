@@ -4,9 +4,7 @@ import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.util.IHasModel;
-
 import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
@@ -29,7 +27,7 @@ public class BlockColoredBricks extends Block implements IHasModel
 		super(Material.ROCK);
 		setUnlocalizedName("colored_bricks");
 		setRegistryName("colored_bricks");
-        setHardness(5.0F);
+        setHardness(1.5F);
         setResistance(8.0F);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
         setHarvestLevel("pickaxe", 0);

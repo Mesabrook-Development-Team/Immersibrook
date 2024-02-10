@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "PIP",
+        "PCP",
+        "PPP"
+    ],
+    "key": {
+        "P": {
+			"type":"forge:ore_dict",
+			"ore": "itemWhitePlastic"
+        },
+        "I": {
+			"type":"forge:ore_dict",
+			"ore": "ingotIron"
+        },
+		"C": {
+		    "item": "immersiveengineering:metal_device0",
+			"data": 0
+		}
+    },
+    "result": 
+    {
+        "item": "wbtc:ot_charger",
+        "count": 1
+    }
+}

@@ -18,6 +18,8 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class NightVisionGoggles extends Item implements IHasModel
 {
@@ -101,5 +103,19 @@ public class NightVisionGoggles extends Item implements IHasModel
 		{
 			player.removeActivePotionEffect(MobEffects.NIGHT_VISION);
 		}
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean hasEffect(ItemStack stack)
+	{
+		NBTTagCompound tag = stack.getTagCompound();
+		boolean triggerEffect;
+		if(tag != null)
+		{
+			triggerEffect = tag.getBoolean("nightvision");
+			return triggerEffect;
+		}
+		return false;
 	}
 }

@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "PPP",
+		" P "
+    ],
+    "key":
+    {
+        "P":
+        {
+            "type": "forge:ore_dict",
+            "ore": "itemGrayPlastic"
+        }
+    },
+    "result":
+    {
+        "item": "wbtc:smartphone_stand_gray",
+        "count": 1
+    }
+}

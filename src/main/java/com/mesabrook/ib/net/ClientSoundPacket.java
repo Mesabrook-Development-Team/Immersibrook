@@ -49,6 +49,14 @@ public class ClientSoundPacket implements IMessage
         buf.writeFloat(pitch);
         buf.writeInt(range);
     }
+    
+    public static void playIBSound(String soundName, BlockPos pos)
+    {
+    	ClientSoundPacket csp = new ClientSoundPacket();
+    	csp.soundName = soundName;
+    	csp.pos = pos;
+    	PacketHandler.INSTANCE.sendToServer(csp);
+    }
 
     public static class Handler implements IMessageHandler<ClientSoundPacket, IMessage>
     {

@@ -82,5 +82,17 @@ public class CategoryVests extends AbstractCategory
 		add(ModItems.BLACK_GENERIC);
 		add(ModItems.LT_GENERIC);
 		add(ModItems.DT_GENERIC);
+
+		// Conductor's Uniforms
+		add(ModItems.CU_BL_HAT);
+		add(ModItems.CU_BL_VEST);
+		add(ModItems.CU_BL_PANTS);
+		add(ModItems.CU_BLC_HAT);
+		add(ModItems.CU_BLC_VEST);
+		add(ModItems.CU_BLC_PANTS);
+
+		// Engineer's Uniform
+		add(ModItems.E_HAT);
+		add(ModItems.ENGINEERS_OVERALLS);
 	}
 }

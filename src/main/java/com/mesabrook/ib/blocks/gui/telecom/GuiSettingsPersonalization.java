@@ -1,7 +1,7 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.google.common.collect.ImmutableList;
-import com.mesabrook.ib.util.config.ModConfig;
+import com.mesabrook.ib.blocks.gui.ImageButton;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.item.ItemStack;
@@ -33,11 +33,18 @@ public class GuiSettingsPersonalization extends GuiPhoneBase
     @Override
     protected String getInnerTextureFileName()
     {
-        return "app_screen.png";
+        if(phoneStackData.getIconTheme().contains("luna"))
+        {
+            return "luna/app_background_settings_bar.png";
+        }
+        else
+        {
+            return phoneStackData.getIconTheme() + "/app_screen.png";
+        }
     }
 
     @Override
-    public void initGui()
+    public void initGui() 
     {
         super.initGui();
 
@@ -46,13 +53,13 @@ public class GuiSettingsPersonalization extends GuiPhoneBase
         sounds = new LabelButton(2, INNER_X + 31, INNER_Y + 83, new TextComponentTranslation("im.settings.personalization.sounds").getFormattedText(), 0xFFFFFF);
         phoneName = new LabelButton(3, INNER_X + 31, INNER_Y + 113, new TextComponentTranslation("im.settings.personalization.phonename").getFormattedText(), 0xFFFFFF);
         clock = new LabelButton(4, INNER_X + 31, INNER_Y + 143, new TextComponentTranslation("im.settings.personalization.clock").getFormattedText(), 0xFFFFFF);
-        icons = new LabelButton(9, INNER_X + 31, INNER_Y + 173, new TextComponentTranslation("im.settings.personalization.icontheme").getFormattedText(), 0xFFFFFF);
+        icons = new LabelButton(9, INNER_X + 31, INNER_Y + 173, new TextComponentTranslation("im.settings.personalization.iconthemea").getFormattedText(), 0xFFFFFF);
 
-        wallpaperIcon = new ImageButton(5, INNER_X + 0, INNER_Y + 40, 28, 28, "btn_personalize.png", 32, 32);
-        soundsIcon = new ImageButton(6, INNER_X + 0, INNER_Y + 70, 28, 28, "icn_sound.png", 32, 32);
-        phoneNameIcon = new ImageButton(7, INNER_X + 0, INNER_Y + 100, 28, 28, "icn_name.png", 32, 32);
-        clockIcon = new ImageButton(8, INNER_X + 0, INNER_Y + 130, 28, 28, "icn_clock.png", 32, 32);
-        iconsIcon = new ImageButton(10, INNER_X + 0, INNER_Y + 160, 28, 28, "btn_icons.png", 32, 32);
+        wallpaperIcon = new ImageButton(5, INNER_X + 0, INNER_Y + 40, 28, 28, phoneStackData.getIconTheme() + "/btn_personalize.png", 32, 32);
+        soundsIcon = new ImageButton(6, INNER_X + 0, INNER_Y + 70, 28, 28, phoneStackData.getIconTheme() + "/icn_sound.png", 32, 32);
+        phoneNameIcon = new ImageButton(7, INNER_X + 0, INNER_Y + 100, 28, 28, phoneStackData.getIconTheme() + "/icn_name.png", 32, 32);
+        clockIcon = new ImageButton(8, INNER_X + 0, INNER_Y + 130, 28, 28, phoneStackData.getIconTheme() + "/icn_clock.png", 32, 32);
+        iconsIcon = new ImageButton(10, INNER_X + 0, INNER_Y + 160, 28, 28, phoneStackData.getIconTheme() + "/btn_personalize.png", 32, 32);
 
         buttonList.addAll(ImmutableList.<GuiButton>builder()
                 .add(back)

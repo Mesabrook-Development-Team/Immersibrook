@@ -1,6 +1,38 @@
 {
-   "parent": "item/generated",
-   "textures": {
-      "layer0": "wbtc:items/penny"
-   }
+	"credit": "Made by RavenholmZombie using Blockbench",
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "wbtc:items/penny"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 0.75, 1],
+			"scale": [0.05, 0.05, 0.05]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, 0.75, 1],
+			"scale": [0.05, 0.05, 0.05]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, -90, 25],
+			"translation": [-2.87, 3.2, 3.63],
+			"scale": [0.05, 0.05, 0.05]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, -90, 25],
+			"translation": [1.13, 3.2, 1.13],
+			"scale": [0.05, 0.05, 0.05]
+		},
+		"ground": {
+			"translation": [0, -1.75, 0],
+			"scale": [0.1, 0.1, 0.1]
+		},
+		"gui": {
+			"scale": [0.2, 0.2, 0.2]
+		},
+		"fixed": {
+			"rotation": [0, 180, 0],
+			"scale": [0.1, 0.1, 0.1]
+		}
+	}
 }

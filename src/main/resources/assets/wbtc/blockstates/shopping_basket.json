@@ -1,0 +1,99 @@
+{ 
+	"forge_marker": 1,
+	"variants":
+	{
+		"color": {
+			"white": {
+				"textures": {
+					"basketColor": "wbtc:blocks/plastic_cube_white"
+				}
+			},
+			"orange": {
+				"textures": {
+					"basketColor": "wbtc:blocks/plastic_cube_orange"
+				}
+			},
+			"magenta": {
+				"textures": {
+					"basketColor": "wbtc:blocks/plastic_cube_magenta"
+				}
+			},
+			"lightblue": {
+				"textures": {
+					"basketColor": "wbtc:blocks/plastic_cube_lblue"
+				}
+			},
+			"yellow": {
+				"textures": {
+					"basketColor": "wbtc:blocks/plastic_cube_yellow"
+				}
+			},
+			"lime": {
+				"textures": {
+					"basketColor": "wbtc:blocks/plastic_cube_lime"
+				}
+			},
+			"pink": {
+				"textures": {
+					"basketColor": "wbtc:blocks/plastic_cube_pink"
+				}
+			},
+			"gray": {
+				"textures": {
+					"basketColor": "wbtc:blocks/plastic_cube_gray"
+				}
+			},
+			"silver": {
+				"textures": {
+					"basketColor": "wbtc:blocks/plastic_cube_silver"
+				}
+			},
+			"cyan": {
+				"textures": {
+					"basketColor": "wbtc:blocks/plastic_cube_cyan"
+				}
+			},
+			"purple": {
+				"textures": {
+					"basketColor": "wbtc:blocks/plastic_cube_purple"
+				}
+			},
+			"blue": {
+				"textures": {
+					"basketColor": "wbtc:blocks/plastic_cube_blue"
+				}
+			},
+			"brown": {
+				"textures": {
+					"basketColor": "wbtc:blocks/plastic_cube_brown"
+				}
+			},
+			"green": {
+				"textures": {
+					"basketColor": "wbtc:blocks/plastic_cube_green"
+				}
+			},
+			"red": {
+				"textures": {
+					"basketColor": "wbtc:blocks/plastic_cube_red"
+				}
+			},
+			"black": {
+				"textures": {
+					"basketColor": "wbtc:blocks/plastic_cube_black"
+				}
+			}
+		},
+		"down":
+		{ 
+			"true":
+			{ 
+				"model": "wbtc:shopping_basket_down"
+			},
+			"false":
+			{ 
+				"model": "wbtc:shopping_basket"
+			}
+		}
+	}
+}

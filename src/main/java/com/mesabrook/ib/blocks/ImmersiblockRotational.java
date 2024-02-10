@@ -68,33 +68,12 @@ public class ImmersiblockRotational extends Block implements IHasModel
         ));
 
         ModBlocks.BLOCKS.add(this);
-        ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
+        addItemBlock();
     }
-
-    @Override
-    public boolean isFlammable(IBlockAccess world, BlockPos pos, EnumFacing face)
+    
+    protected void addItemBlock()
     {
-        if(this.getUnlocalizedName().contains("siding"))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    @Override
-    public int getFlammability(IBlockAccess world, BlockPos pos, EnumFacing face)
-    {
-        if(this.getUnlocalizedName().contains("siding"))
-        {
-            return 180;
-        }
-        else
-        {
-            return 0;
-        }
+    	ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()));
     }
 
     @Override
@@ -106,7 +85,19 @@ public class ImmersiblockRotational extends Block implements IHasModel
     @Override
     public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos)
     {
-        return NULL_AABB;
+        if(blockState.getBlock() == ModBlocks.SCO_BAGGING)
+        {
+            return new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D);
+        }
+        if(blockState.getBlock() == ModBlocks.IN_STREET_CROSSWALK_SIGN)
+        {
+            return null;
+        }
+        if(blockState.getBlock() == ModBlocks.TIMECLOCK)
+        {
+            return null;
+        }
+        return FULL_BLOCK_AABB;
     }
 
     @Override
@@ -210,10 +201,47 @@ public class ImmersiblockRotational extends Block implements IHasModel
             {
                 tooltip.add(TextFormatting.YELLOW + new TextComponentTranslation("im.tooltip.crosswalk").getFormattedText());
             }
+            if(this == ModBlocks.ATS)
+            {
+                tooltip.add(TextFormatting.YELLOW + "(Not Yet Implemented) A machine that automatically places products into Security Boxes for sale.");
+            }
+            if(this == ModBlocks.SCO_POS)
+            {
+                tooltip.add(TextFormatting.YELLOW + "The brain of the Self-Checkout system.");
+            }
+            if(this == ModBlocks.SCO_SCANNER)
+            {
+                tooltip.add(TextFormatting.YELLOW + "'Please scan your items and place them in the bagging area.'");
+            }
+            if(this == ModBlocks.SCO_BAGGING)
+            {
+                tooltip.add(TextFormatting.YELLOW + "The bagging area.");
+            }
+            if(this == ModBlocks.ATM)
+            {
+                tooltip.add(TextFormatting.YELLOW + "A machine that lets you deposit or withdraw money and get a debit card.");
+                tooltip.add(TextFormatting.RED + "Requires MesaSuite Authorization to work.");
+            }
+            if(this == ModBlocks.SHELF_FOUR_PEGHOOKS || this == ModBlocks.SHELF_ONE_LEVEL_TWO_PEGHOOKS || this == ModBlocks.SHELF_TWO_LEVELS_NO_PEGHOOKS)
+            {
+                tooltip.add(TextFormatting.YELLOW + "Retail shelving, allows you to place and display items and blocks.");
+            }
+            if(this == ModBlocks.SECURITY_STATION)
+            {
+                tooltip.add(TextFormatting.YELLOW + "Allows the user to place products into Merchandise Security Boxes.");
+            }
+            if(this == ModBlocks.RETAIL_FREEZER_UPRIGHT_BOTTOM || this == ModBlocks.RETAIL_DRINK_COOLER_BOTTOM || this == ModBlocks.RETAIL_FREEZER_DEEP)
+            {
+                tooltip.add(TextFormatting.YELLOW + "A frosty place to display cold products.");
+            }
+            if(this == ModBlocks.TIMECLOCK)
+            {
+                tooltip.add(TextFormatting.YELLOW + "Allows players to access Store Mode and go on-duty or off-duty.");
+            }
         }
         else
         {
-            tooltip.add(TextFormatting.WHITE + new TextComponentTranslation("im.tooltip.hidden").getFormattedText());
+            tooltip.add(TextFormatting.YELLOW + new TextComponentTranslation("im.tooltip.hidden").getFormattedText());
         }
     }
 

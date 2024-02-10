@@ -31,7 +31,6 @@ public class ItemBlahaj extends Item implements IHasModel
         setRegistryName(name);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
         setMaxStackSize(1);
-        setMaxDamage(145);
 
         ModItems.ITEMS.add(this);
     }
@@ -57,6 +56,10 @@ public class ItemBlahaj extends Item implements IHasModel
         else if(stack.getItem() == ModItems.BREAD_PILLOW)
         {
             tooltip.add(new TextComponentTranslation("tooltip.bread").getFormattedText());
+        }
+        else if(stack.getItem() == ModItems.ISOPOD)
+        {
+            tooltip.add(new TextComponentTranslation("tooltip.isopod").getFormattedText());
         }
     }
 

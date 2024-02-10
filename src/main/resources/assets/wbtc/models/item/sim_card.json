@@ -1,0 +1,42 @@
+{
+	"credit": "Made by RavenholmZombie using Blockbench",
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "wbtc:items/sim_card"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 0.5, 1],
+			"scale": [0.05, 0.05, 0.05]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, 0.5, 1],
+			"scale": [0.05, 0.05, 0.05]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, -90, 25],
+			"translation": [-2.62, 3.2, 3.13],
+			"scale": [0.05, 0.05, 0.05]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, -90, 25],
+			"translation": [1.13, 3.2, 1.13],
+			"scale": [0.05, 0.05, 0.05]
+		},
+		"ground": {
+			"translation": [0, -1, 0],
+			"scale": [0.15, 0.15, 0.15]
+		},
+		"gui": {
+			"scale": [0.6, 0.6, 0.6]
+		},
+		"head": {
+			"rotation": [0, 180, 0],
+			"translation": [0, 13, 7]
+		},
+		"fixed": {
+			"rotation": [0, 180, 0],
+			"scale": [0.15, 0.15, 0.15]
+		}
+	}
+}

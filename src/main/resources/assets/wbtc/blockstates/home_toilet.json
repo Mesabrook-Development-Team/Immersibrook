@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:home_toilet" },
+        "facing=south": { "model": "wbtc:home_toilet", "y": 180 },
+        "facing=west":  { "model": "wbtc:home_toilet", "y": 270 },
+        "facing=east":  { "model": "wbtc:home_toilet", "y": 90 }
+    }
+}

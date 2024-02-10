@@ -23,6 +23,7 @@ public class GuiPhoneSetupStepPersonalization extends GuiPhoneBase
     LabelButton homeNext;
 
     MinedroidButton next;
+    MinedroidButton back;
 
     private int currentLock;
     private int currentHome;
@@ -30,18 +31,31 @@ public class GuiPhoneSetupStepPersonalization extends GuiPhoneBase
     public GuiPhoneSetupStepPersonalization(ItemStack phoneStack, EnumHand hand)
     {
         super(phoneStack, hand);
-        currentLock = 1;
-        currentHome = 1;
+        try
+        {
+            currentLock = phoneStackData.getLockBackground();
+            currentHome = phoneStackData.getHomeBackground();
+        }
+        catch(Exception ex)
+        {
+            currentLock = 1;
+            currentHome = 1;
+        }
     }
 
     @Override
     protected String getInnerTextureFileName()
     {
-        return "app_screen_blue.png";
+        return phoneStackData.getIconTheme() + "/app_screen_setup.png";
     }
 
     @Override
     protected boolean renderControlBar() {
+        return false;
+    }
+
+    @Override
+    protected boolean renderTopBar() {
         return false;
     }
 
@@ -56,7 +70,8 @@ public class GuiPhoneSetupStepPersonalization extends GuiPhoneBase
         homeNext = new LabelButton(4, INNER_X + 127, INNER_Y + 145, ">", 0xFFFFFF);
 
         int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 32;
-        next = new MinedroidButton(5, INNER_X + 50, INNER_Y + 180, 65, "Next", 0xFFFFFF);
+        back = new MinedroidButton(5, INNER_X + 45, lowerControlsY - 3, 35, new TextComponentTranslation("im.settings.back").getFormattedText(), 0xFFFFFF);
+        next = new MinedroidButton(6, INNER_X + 85, lowerControlsY - 3, 35, new TextComponentTranslation("im.settings.next").getFormattedText(), 0xFFFFFF);
 
         buttonList.addAll(ImmutableList.<GuiButton>builder()
                 .add(lockPrev)
@@ -64,6 +79,7 @@ public class GuiPhoneSetupStepPersonalization extends GuiPhoneBase
                 .add(homePrev)
                 .add(homeNext)
                 .add(next)
+                .add(back)
                 .build());
     }
 
@@ -71,7 +87,7 @@ public class GuiPhoneSetupStepPersonalization extends GuiPhoneBase
     protected void doDraw(int mouseX, int mouseY, float partialticks)
     {
         super.doDraw(mouseX, mouseY, partialticks);
-        fontRenderer.drawString("Make Minedroid Yours", INNER_X + 3, INNER_Y + 20, 0xFFFFFF);
+        drawCenteredString(fontRenderer, new TextComponentTranslation("im.settings.personalization.wallpapersoobe").getFormattedText(), INNER_X + 80, INNER_Y + 20, 0xFFFFFF);
 
         fontRenderer.drawString(new TextComponentTranslation("im.settings.lockscreen").getFormattedText(), INNER_X + 10, INNER_Y + 45, 0xFFFFFF);
         int fontWidth = fontRenderer.getStringWidth(String.valueOf(currentLock));
@@ -84,12 +100,12 @@ public class GuiPhoneSetupStepPersonalization extends GuiPhoneBase
         GlStateManager.color(1, 1, 1);
 
         // Lock Screen Preview
-        Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/telecom/gui_phone_bg_" + currentLock + ".png"));
-        drawScaledCustomSizeModalRect(INNER_X + 7, INNER_Y + 60, 0, 0, 323, 414, 69, 80, 512, 512);
+        Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/telecom/wallpapers/gui_phone_bg_" + currentLock + ".png"));
+        drawScaledCustomSizeModalRect(INNER_X + 7, INNER_Y + 60, 0, 0, 323, 414, 69, 80, 324, 415);
 
         // Home Screen Preview
-        Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/telecom/gui_phone_bg_" + currentHome + ".png"));
-        drawScaledCustomSizeModalRect(INNER_X + 85, INNER_Y + 60, 0, 0, 323, 414, 69, 80, 512, 512);
+        Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/telecom/wallpapers/gui_phone_bg_" + currentHome + ".png"));
+        drawScaledCustomSizeModalRect(INNER_X + 85, INNER_Y + 60, 0, 0, 323, 414, 69, 80, 324, 415);
     }
 
     @Override
@@ -136,14 +152,28 @@ public class GuiPhoneSetupStepPersonalization extends GuiPhoneBase
             }
         }
 
+        if(button == back)
+        {
+            Minecraft.getMinecraft().displayGuiScreen(new GuiPhoneSetupStart(phoneStack, hand));
+        }
+
         if(button == next)
         {
             CustomizationPacket packet = new CustomizationPacket();
             packet.hand = hand.ordinal();
             packet.newName = phoneStack.getDisplayName();
             packet.guiClassName = GuiPhoneSetupStepPersonalization.class.getName();
-            packet.nextGuiClassName = GuiPhoneNameSetup.class.getName();
-            packet.iconTheme = "plex";
+            packet.nextGuiClassName = GuiPhoneSetupThemeStep.class.getName();
+
+            if(phoneStackData.getIconTheme() == null)
+            {
+                packet.iconTheme = "plex";
+            }
+            else
+            {
+                packet.iconTheme = phoneStackData.getIconTheme();
+            }
+
             packet.lockBackground = currentLock;
             packet.homeBackground = currentHome;
             packet.lockTone = phoneStackData.getChatTone();

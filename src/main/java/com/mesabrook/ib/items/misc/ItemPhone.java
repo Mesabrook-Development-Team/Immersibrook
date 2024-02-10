@@ -1,21 +1,14 @@
 package com.mesabrook.ib.items.misc;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
-
-import javax.annotation.Nullable;
-
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.Main;
-import com.mesabrook.ib.advancements.Triggers;
+import com.mesabrook.ib.blocks.gui.telecom.EnumSkinFetchingEngines;
 import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneBase;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SpecialBezelRandomizer;
 import com.mesabrook.ib.util.config.ModConfig;
-
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -38,6 +31,11 @@ import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
+import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
 
 public class ItemPhone extends Item implements IHasModel {
 
@@ -72,14 +70,19 @@ public class ItemPhone extends Item implements IHasModel {
 			phoneNumber = GuiPhoneBase.getFormattedPhoneNumber(stackData.getPhoneNumberString());
 			tooltip.add(TextFormatting.GREEN + phoneNumber);
 
-			if(stackData.getBatteryLevel() <= 0)
+			if(stackData.getBatteryLevel() <= 100)
 			{
-				tooltip.add(TextFormatting.RED + "Battery: " + stackData.getBatteryLevel());
-				tooltip.add(TextFormatting.RED + "Phone battery is dead! Please recharge me!");
+				tooltip.add(TextFormatting.GRAY + "Battery: " + stackData.getBatteryLevel() + " Flux");
+				tooltip.add(TextFormatting.GRAY + "Phone battery is low. Recharge soon to avoid interruptions.");
+			}
+			else if(stackData.getBatteryLevel() <= 0)
+			{
+				tooltip.add(TextFormatting.RED + "Battery: " + stackData.getBatteryLevel() + " Flux");
+				tooltip.add(TextFormatting.RED + "Phone battery is depleted. Recharge required.");
 			}
 			else
 			{
-				tooltip.add(TextFormatting.AQUA + "Battery: " + stackData.getBatteryLevel());
+				tooltip.add(TextFormatting.AQUA + "Battery: " + stackData.getBatteryLevel() + " Flux");
 			}
 		}
 		else
@@ -98,12 +101,16 @@ public class ItemPhone extends Item implements IHasModel {
 				return super.onItemRightClick(worldIn, playerIn, handIn);
 			}
 			SpecialBezelRandomizer.RandomBezel();
-			playerIn.openGui(Main.instance, Reference.GUI_PHONE, worldIn, handIn.ordinal(), 0, 0);
-		}
 
-		if(playerIn instanceof EntityPlayer)
-		{
-			Triggers.trigger(Triggers.PHONE_USE, playerIn);
+			if(!playerIn.isSneaking())
+			{
+				playerIn.openGui(Main.instance, Reference.GUI_PHONE, worldIn, handIn.ordinal(), 0, 0);
+			}
+			else
+			{
+				playerIn.openGui(Main.instance, Reference.GUI_SMARTPHONE_INV, worldIn, handIn.ordinal(), 0, 0);
+			}
+
 		}
 
 		return super.onItemRightClick(worldIn, playerIn, handIn);
@@ -138,6 +145,10 @@ public class ItemPhone extends Item implements IHasModel {
 		private boolean militaryTime = false;
 		private boolean debugMode = false;
 		private String iconTheme = "plex";
+		private boolean needsToDoOOBE = true;
+		private boolean isPhoneDead = false;
+		private boolean useButtonInsteadOfSlider = false;
+		private EnumSkinFetchingEngines skinFetchingEngine = EnumSkinFetchingEngines.MCHeads;
 		
 		public static NBTData getFromItemStack(ItemStack phoneStack)
 		{
@@ -295,6 +306,46 @@ public class ItemPhone extends Item implements IHasModel {
 		{
 			return this.iconTheme = themeIn;
 		}
+
+		public EnumSkinFetchingEngines getSkinFetchingEngine()
+		{
+			return skinFetchingEngine;
+		}
+
+		public EnumSkinFetchingEngines setSkinFetchingEngine(EnumSkinFetchingEngines engineIn)
+		{
+			return this.skinFetchingEngine = engineIn;
+		}
+
+		public boolean getNeedToDoOOBE()
+		{
+			return needsToDoOOBE;
+		}
+
+		public boolean setNeedToDoOOBE(boolean trigger)
+		{
+			return this.needsToDoOOBE = trigger;
+		}
+
+		public boolean getIsPhoneDead()
+		{
+			return isPhoneDead;
+		}
+
+		public boolean setIsPhoneDead(boolean trigger)
+		{
+			return this.isPhoneDead = trigger;
+		}
+
+		public boolean getUseButtonInsteadOfSlider()
+		{
+			return useButtonInsteadOfSlider;
+		}
+
+		public boolean setUseButtonInsteadOfSlider(boolean trigger)
+		{
+			return this.useButtonInsteadOfSlider = trigger;
+		}
 		
 		public Contact getContactByIdentifier(UUID identifier)
 		{
@@ -355,6 +406,9 @@ public class ItemPhone extends Item implements IHasModel {
 			tag.setBoolean(Reference.SHOW_MILITARY_TIME, getShowingMilitaryIRLTime());
 			tag.setBoolean(Reference.DEBUG_MODE, getIsDebugModeEnabled());
 			tag.setString(Reference.ICON_THEME, getIconTheme());
+			tag.setByte(Reference.SKIN_ENGINE, getSkinFetchingEngine().getEngineID());
+			tag.setBoolean(Reference.OOBE_STATUS, getNeedToDoOOBE());
+			tag.setBoolean(Reference.USE_BUTTON_INSTEAD_OF_SLIDER, getUseButtonInsteadOfSlider());
 			
 			NBTTagList contactNBT = new NBTTagList();
 			for(Contact contact : contactsByIdentifier.values())
@@ -436,6 +490,26 @@ public class ItemPhone extends Item implements IHasModel {
 			if(nbt.hasKey(Reference.ICON_THEME))
 			{
 				setIconTheme(nbt.getString(Reference.ICON_THEME));
+			}
+
+			if(nbt.hasKey(Reference.SKIN_ENGINE))
+			{
+				setSkinFetchingEngine(EnumSkinFetchingEngines.byEngineID(nbt.getByte(Reference.SKIN_ENGINE)));
+			}
+
+			if(nbt.hasKey(Reference.OOBE_STATUS))
+			{
+				setNeedToDoOOBE(nbt.getBoolean(Reference.OOBE_STATUS));
+			}
+
+			if(nbt.hasKey(Reference.PHONE_DEAD))
+			{
+				setIsPhoneDead(nbt.getBoolean(Reference.PHONE_DEAD));
+			}
+
+			if(nbt.hasKey(Reference.USE_BUTTON_INSTEAD_OF_SLIDER))
+			{
+				setUseButtonInsteadOfSlider(nbt.getBoolean(Reference.USE_BUTTON_INSTEAD_OF_SLIDER));
 			}
 			
 			if (nbt.hasKey(Reference.CONTACTS_NBTKEY))
@@ -608,7 +682,8 @@ public class ItemPhone extends Item implements IHasModel {
 		@Override
 		public int receiveEnergy(int maxReceive, boolean simulate) {
 			NBTData data = NBTData.getFromItemStack(phoneStack);
-			int toReceive = maxReceive + data.getBatteryLevel() > ModConfig.smartphoneMaxBattery ? maxReceive - data.getBatteryLevel() : maxReceive;
+			int modifiedMaxReceive = Math.min(maxReceive, 1);
+			int toReceive = modifiedMaxReceive + data.getBatteryLevel() > ModConfig.smartphoneMaxBattery ? ModConfig.smartphoneMaxBattery - data.getBatteryLevel() : modifiedMaxReceive;
 			
 			if (!simulate)
 			{

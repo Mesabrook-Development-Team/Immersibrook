@@ -165,6 +165,8 @@ public class CategoryBlocks extends AbstractCategory
 		add(ModBlocks.PILLAR_WHITE_STONE);
 		add(ModBlocks.PILLAR_WHITE_COBBLESTONE);
 		add(ModBlocks.PILLAR_SMOOTHED_STONE);
+		add(ModBlocks.CELL_TOWER);
+		add(ModBlocks.CELL_TOWER_RED);
 
 		// Trusses
 		add(ModBlocks.STEEL_TRUSS);
@@ -260,6 +262,7 @@ public class CategoryBlocks extends AbstractCategory
 		add(ModBlocks.COLORED_COBBLESTONE);
 		add(ModBlocks.COLORED_STONE_BRICKS);
 		add(ModBlocks.COLORED_BRICKS);
+		add(ModBlocks.COLORED_QUARTZ);
 
 		// Doors
 		add(ModBlocks.OAK_PUSH_DOOR);
@@ -268,5 +271,6 @@ public class CategoryBlocks extends AbstractCategory
 		add(ModBlocks.JUNGLE_PUSH_DOOR);
 		add(ModBlocks.ACACIA_PUSH_DOOR);
 		add(ModBlocks.DARK_OAK_PUSH_DOOR);
+		add(ModBlocks.WOOD_JAIL_DOOR);
 	}
 }

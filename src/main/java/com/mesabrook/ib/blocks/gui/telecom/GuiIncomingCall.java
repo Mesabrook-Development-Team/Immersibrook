@@ -1,5 +1,6 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData.Contact;
 import com.mesabrook.ib.net.telecom.AcceptCallPacket;
 import com.mesabrook.ib.net.telecom.RejectCallPacket;
@@ -26,7 +27,7 @@ public class GuiIncomingCall extends GuiPhoneBase {
 
 	@Override
 	protected String getInnerTextureFileName() {
-		return "app_screen.png";
+		return phoneStackData.getIconTheme() + "/app_screen.png";
 	}
 
 	@Override
@@ -59,7 +60,7 @@ public class GuiIncomingCall extends GuiPhoneBase {
 			
 			drawCenteredString(fontRenderer, getFormattedPhoneNumber(incomingNumber), INNER_X + (INNER_TEX_WIDTH / 2), INNER_Y + 40 + scale(fontRenderer.FONT_HEIGHT, uBigFont) + 6, 0xFFFFFF);
 			
-			ResourceLocation faceLocation = GetHeadUtil.getHeadResourceLocation(contact.getUsername());
+			ResourceLocation faceLocation = GetHeadUtil.getHeadResourceLocation(contact.getUsername(), phoneStackData.getSkinFetchingEngine());
 			Minecraft.getMinecraft().getTextureManager().bindTexture(faceLocation);
 			
 			drawScaledCustomSizeModalRect(INNER_X + (INNER_TEX_WIDTH / 2) - 30, INNER_Y + (INNER_TEX_HEIGHT / 2) - INNER_TEX_Y_OFFSET - 22, 0, 0, 160, 160, 60, 60, 160, 160);
@@ -70,7 +71,7 @@ public class GuiIncomingCall extends GuiPhoneBase {
 			drawCenteredString(fontRenderer, getFormattedPhoneNumber(incomingNumber), scale(INNER_X + (INNER_TEX_WIDTH / 2), dBigFont), scale(INNER_Y + 50, dBigFont), 0xFFFFFF);
 			GlStateManager.scale(dBigFont, dBigFont, dBigFont);
 			
-			ResourceLocation faceLocation = GetHeadUtil.getHeadResourceLocation("101girl_crafter671"); // A username that will never work, courtesy of AM9327
+			ResourceLocation faceLocation = GetHeadUtil.getHeadResourceLocation("101girl_crafter671", phoneStackData.getSkinFetchingEngine()); // A username that will never work, courtesy of AM9327
 			Minecraft.getMinecraft().getTextureManager().bindTexture(faceLocation);
 			
 			drawScaledCustomSizeModalRect(INNER_X + (INNER_TEX_WIDTH / 2) - 30, INNER_Y + (INNER_TEX_HEIGHT / 2) - INNER_TEX_Y_OFFSET - 27, 0, 0, 160, 160, 60, 60, 160, 160);

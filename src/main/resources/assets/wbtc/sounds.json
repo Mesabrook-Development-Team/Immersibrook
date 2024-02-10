@@ -6,6 +6,216 @@
 			"stream": true
 		}]
 	},
+	"coming_out": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:coming_out",
+			"stream": true
+		}]
+	},
+	"fridge_open": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:fridge_open",
+			"stream": true
+		}]
+	},
+	"fridge_close": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:fridge_close",
+			"stream": true
+		}]
+	},
+	"piano": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:piano",
+			"stream": true
+		}]
+	},
+	"ding_10": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ding_10",
+			"stream": true
+		}]
+	},
+	"wireless_charge_off": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:wireless_charge_off",
+			"stream": true
+		}]
+	},
+	"wireless_charge_on": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:wireless_charge_on",
+			"stream": true
+		}]
+	},
+	"xp_startup": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:xp_startup",
+			"stream": true
+		}]
+	},
+	"toilet_1": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:toilet_1",
+			"stream": true
+		}]
+	},
+	"toilet_2": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:toilet_2",
+			"stream": true
+		}]
+	},
+	"toilet_3": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:toilet_3",
+			"stream": true
+		}]
+	},
+	"urinal": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:urinal",
+			"stream": true
+		}]
+	},
+	"ring_16": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_16",
+			"stream": true
+		}]
+	},
+	"ring_17": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_17",
+			"stream": true
+		}]
+	},
+	"ring_18": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_18",
+			"stream": true
+		}]
+	},
+	"ring_19": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_19",
+			"stream": true
+		}]
+	},
+	"ring_20": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_20",
+			"stream": true
+		}]
+	},
+	"ring_21": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_21",
+			"stream": true
+		}]
+	},
+	"ring_22": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_22",
+			"stream": true
+		}]
+	},
+	"ring_23": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_23",
+			"stream": true
+		}]
+	},
+	"ring_24": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_24",
+			"stream": true
+		}]
+	},
+	"ring_25": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ring_25",
+			"stream": true
+		}]
+	},
+	"wide": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:wide",
+			"stream": true
+		}]
+	},
+	"alert": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:alert",
+			"stream": true
+		}]
+	},
+	"normal_boot": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:normal_boot",
+			"stream": true
+		}]
+	},
+	"oobe_startup": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:oobe_startup",
+			"stream": true
+		}]
+	},
+	"tape_measure_open": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:tape_measure_open",
+			"stream": true
+		}]
+	},
+	"tape_measure_close": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:tape_measure_close",
+			"stream": true
+		}]
+	},
+	"ration_open": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:ration_open",
+			"stream": true
+		}]
+	},
+	"phone_unbox": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:phone_unbox",
+			"stream": true
+		}]
+	},
 	"rz_trophy": {
 		"category": "master",
 		"sounds": [{
@@ -1091,5 +1301,109 @@
 			"name": "wbtc:minedroid_firstboot"
 		}],
 		"subtitle": "ib.sub.firstboot"
+	},
+	"battery_low": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:battery_low"
+		}],
+		"subtitle": "ib.sub.lowbat"
+	},
+	"chisel": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:chisel"
+		}],
+		"subtitle": "ib.sub.chisel"
+	},
+	"sit_1": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:sit_1"
+		}]
+	},
+	"sit_2": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:sit_2"
+		}]
+	},
+	"sit_3": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:sit_3"
+		}]
+	},
+	"sit_4": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:sit_4"
+		}]
+	},
+	"sit_5": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:sit_5"
+		}]
+	},
+	"bill_acceptor": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:bill_acceptor"
+		}]
+	},
+	"coin_slot": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:coin_slot"
+		}]
+	},
+	"pos_cashback": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:pos_cashback"
+		}]
+	},
+	"pos_payment_type": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:pos_payment_type"
+		}]
+	},
+	"pos_scan": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:pos_scan"
+		}]
+	},
+	"pos_scanner_beep": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:pos_scanner_beep"
+		}]
+	},
+	"pos_scanner_multibeep": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:pos_scanner_multibeep"
+		}]
+	},
+	"pos_take_card": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:pos_take_card"
+		}]
+	},
+	"pos_use_pinpad": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:pos_use_pinpad"
+		}]
+	},
+	"pos_welcome": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:pos_welcome"
+		}]
 	}
 }

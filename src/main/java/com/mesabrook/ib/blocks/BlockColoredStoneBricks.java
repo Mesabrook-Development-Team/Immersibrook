@@ -29,7 +29,7 @@ public class BlockColoredStoneBricks extends Block implements IHasModel {
         setUnlocalizedName("colored_stone_bricks");
         setRegistryName("colored_stone_bricks");
         setSoundType(SoundType.STONE);
-        setHardness(5.0F);
+        setHardness(1.5F);
         setResistance(8.0F);
         setCreativeTab(Main.IMMERSIBROOK_MAIN);
         setHarvestLevel("pickaxe", 0);

@@ -1,0 +1,21 @@
+{
+	"forge_marker": 1,
+    "variants": {
+    	"inventory":
+    	{ 
+    		"model": "wbtc:retail_freezer_deep_closed"
+    	},
+    	"facing":
+    	{ 
+    		"north": {},
+    		"south": { "y": 180 },
+    		"west": { "y": 270 },
+    		"east": { "y": 90 }
+    	},
+		"closed":
+		{ 
+			"true": { "model": "wbtc:retail_freezer_deep_closed" },
+			"false": { "model": "wbtc:retail_freezer_deep" }
+		}
+    }
+}

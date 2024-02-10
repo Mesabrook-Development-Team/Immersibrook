@@ -131,7 +131,7 @@ public class GuiPhoneActivate extends GuiScreen {
 			
 			if (mainScreenDelay >= 150)
 			{
-				GuiFirstPhoneBoot home = new GuiFirstPhoneBoot(Minecraft.getMinecraft().player.getHeldItem(hand), hand);
+				GuiMSACBootScreen home = new GuiMSACBootScreen(Minecraft.getMinecraft().player.getHeldItem(hand), hand);
 				Minecraft.getMinecraft().displayGuiScreen(home);
 			}
 		}

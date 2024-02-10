@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:atm" },
+        "facing=south": { "model": "wbtc:atm", "y": 180 },
+        "facing=west":  { "model": "wbtc:atm", "y": 270 },
+        "facing=east":  { "model": "wbtc:atm", "y": 90 }
+    }
+}

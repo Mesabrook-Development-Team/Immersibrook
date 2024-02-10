@@ -1,35 +1,50 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import java.io.IOException;
+import java.util.UUID;
+
+import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.init.SoundInit;
+import com.mesabrook.ib.util.IndependentTimer;
 import com.mesabrook.ib.util.Reference;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 
-import java.io.IOException;
-import java.util.UUID;
-
 public class GuiLockScreen extends GuiPhoneBase {
 
 	private UnlockSlider unlockSlider;
+	IndependentTimer lockTextureAnim;
+	MinedroidButton unlockButton;
+	ImageButton unlockIcon;
+	String lockIconTexture = phoneStackData.getIconTheme() + "/icn_lock_1.png";
 	public GuiLockScreen(ItemStack phoneStack, EnumHand hand) {
 		super(phoneStack, hand);
 	}
 
 	@Override
 	protected String getInnerTextureFileName() {
-		return "gui_phone_bg_" + Integer.toString(phoneStackData.getLockBackground()) + ".png";		
+		return "wallpapers/gui_phone_bg_" + Integer.toString(phoneStackData.getLockBackground()) + ".png";
 	}
 	
 	@Override
 	public void initGui() {
 		super.initGui();
-		
+		lockTextureAnim = new IndependentTimer();
+		int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 32;
 		unlockSlider = new UnlockSlider(INNER_X + INNER_TEX_WIDTH / 2 - 60, INNER_Y + INNER_TEX_HEIGHT - 75);
+		unlockIcon = new ImageButton(0, INNER_X + 65, lowerControlsY - 30, 30, 30, lockIconTexture, 32, 32);
+
+		if(phoneStackData.getUseButtonInsteadOfSlider())
+		{
+			buttonList.add(unlockIcon);
+		}
 	}
 	
 	@Override
@@ -38,9 +53,9 @@ public class GuiLockScreen extends GuiPhoneBase {
 	}
 	
 	@Override
-	protected void doDraw(int mouseX, int mouseY, float partialticks) {
+	protected void doDraw(int mouseX, int mouseY, float partialticks)
+	{
 		super.doDraw(mouseX, mouseY, partialticks);
-		
 		int stringWidth = fontRenderer.getStringWidth(getTime());
 		int stringWidth2 = fontRenderer.getStringWidth(getIRLTime());
 		
@@ -57,16 +72,25 @@ public class GuiLockScreen extends GuiPhoneBase {
 		stringWidth = fontRenderer.getStringWidth(phoneName);
 		
 		fontRenderer.drawString(phoneName, INNER_X + (INNER_TEX_WIDTH / 2) - (stringWidth / 2), INNER_Y + 20, 0xFFFFFF, true);
-		
-		unlockSlider.draw(mouseX, mouseY, partialticks);
-		String swipeText = "Swipe to unlock";
-		int fontWidth = fontRenderer.getStringWidth(swipeText);
-		
-		fontRenderer.drawString(swipeText, INNER_X + INNER_TEX_WIDTH / 2 - fontWidth / 2, INNER_Y + INNER_TEX_HEIGHT - 60, 0xFFFFFF, true);
-		
-		if (unlockSlider.isSliderComplete())
+
+		if(!phoneStackData.getUseButtonInsteadOfSlider())
 		{
-			onScreenUnlocked();
+			unlockSlider.draw(mouseX, mouseY, partialticks);
+			String swipeText = "Swipe to unlock";
+			int fontWidth = fontRenderer.getStringWidth(swipeText);
+
+			fontRenderer.drawString(swipeText, INNER_X + INNER_TEX_WIDTH / 2 - fontWidth / 2, INNER_Y + INNER_TEX_HEIGHT - 60, 0xFFFFFF, true);
+
+			if (unlockSlider.isSliderComplete())
+			{
+				onScreenUnlocked();
+			}
+		}
+		else
+		{
+			String buttonText = "Tap Lock to Unlock Phone";
+			int fontWidth = fontRenderer.getStringWidth(buttonText);
+			fontRenderer.drawString(buttonText, INNER_X + INNER_TEX_WIDTH / 2 - fontWidth / 2, INNER_Y + INNER_TEX_HEIGHT - 35, 0xFFFFFF, true);
 		}
 	}
 	
@@ -126,6 +150,16 @@ public class GuiLockScreen extends GuiPhoneBase {
 	protected void mouseReleased(int mouseX, int mouseY, int state) {
 		super.mouseReleased(mouseX, mouseY, state);
 		unlockSlider.mouseReleased();
+	}
+
+	@Override
+	protected void actionPerformed(GuiButton button) throws IOException
+	{
+		super.actionPerformed(button);
+		if(button == unlockIcon)
+		{
+			onScreenUnlocked();
+		}
 	}
 	
 	public static class UnlockSlider

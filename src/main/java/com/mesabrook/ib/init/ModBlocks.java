@@ -1,18 +1,69 @@
 package com.mesabrook.ib.init;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.mesabrook.ib.Main;
-import com.mesabrook.ib.blocks.*;
+import com.mesabrook.ib.blocks.BlockATM;
+import com.mesabrook.ib.blocks.BlockBin;
+import com.mesabrook.ib.blocks.BlockCeilingLight;
+import com.mesabrook.ib.blocks.BlockCellAntenna;
+import com.mesabrook.ib.blocks.BlockColoredBricks;
+import com.mesabrook.ib.blocks.BlockColoredCobblestone;
+import com.mesabrook.ib.blocks.BlockColoredQuartz;
+import com.mesabrook.ib.blocks.BlockColoredStone;
+import com.mesabrook.ib.blocks.BlockColoredStoneBricks;
+import com.mesabrook.ib.blocks.BlockColumn;
+import com.mesabrook.ib.blocks.BlockDoorBase;
+import com.mesabrook.ib.blocks.BlockFakeLight;
+import com.mesabrook.ib.blocks.BlockFluidMeter;
+import com.mesabrook.ib.blocks.BlockHandrail;
+import com.mesabrook.ib.blocks.BlockImmersiLadder;
+import com.mesabrook.ib.blocks.BlockLargePlaque;
+import com.mesabrook.ib.blocks.BlockManhole;
+import com.mesabrook.ib.blocks.BlockPlaque;
+import com.mesabrook.ib.blocks.BlockPlexiglass;
+import com.mesabrook.ib.blocks.BlockPlexiglassPane;
+import com.mesabrook.ib.blocks.BlockPole;
+import com.mesabrook.ib.blocks.BlockRawPlastic;
+import com.mesabrook.ib.blocks.BlockRegister;
+import com.mesabrook.ib.blocks.BlockSeat;
+import com.mesabrook.ib.blocks.BlockShippingBox;
+import com.mesabrook.ib.blocks.BlockSiding;
+import com.mesabrook.ib.blocks.BlockSmartphoneChargingPad;
+import com.mesabrook.ib.blocks.BlockSmartphoneStand;
+import com.mesabrook.ib.blocks.BlockSmoker;
+import com.mesabrook.ib.blocks.BlockSoundEmitter;
+import com.mesabrook.ib.blocks.BlockStatue;
+import com.mesabrook.ib.blocks.BlockWallSign;
+import com.mesabrook.ib.blocks.ChromaScreen;
+import com.mesabrook.ib.blocks.DecorPCMouse;
+import com.mesabrook.ib.blocks.FoodBox;
+import com.mesabrook.ib.blocks.Immersiblock;
+import com.mesabrook.ib.blocks.ImmersiblockRotational;
+import com.mesabrook.ib.blocks.Pillar;
+import com.mesabrook.ib.blocks.SignBlock;
+import com.mesabrook.ib.blocks.SignStand;
+import com.mesabrook.ib.blocks.Truss;
+import com.mesabrook.ib.blocks.commerce.BlockShoppingBasketHolder;
+import com.mesabrook.ib.blocks.commerce.BlockTimeClock;
 import com.mesabrook.ib.blocks.food.FoodBlock;
 import com.mesabrook.ib.blocks.metro.TicketMachine;
+import com.mesabrook.ib.blocks.sco.BlockScanner;
+import com.mesabrook.ib.blocks.sco.BlockSecurityTaggingStation;
+import com.mesabrook.ib.blocks.sco.BlockShelf;
+import com.mesabrook.ib.blocks.sco.BlockShelfCloseable;
+import com.mesabrook.ib.blocks.sco.BlockShelfCloseableLower;
+import com.mesabrook.ib.blocks.sco.BlockShelfCloseableUpper;
+import com.mesabrook.ib.blocks.sco.ProductPlacement;
 import com.mesabrook.ib.blocks.stairs.MiscStairs;
 import com.mesabrook.ib.util.ModUtils;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
-
-import java.util.ArrayList;
-import java.util.List;
+import net.minecraft.util.math.AxisAlignedBB;
 
 public class ModBlocks 
 {
@@ -182,6 +233,8 @@ public class ModBlocks
 	public static final Block PILLAR_WHITE_STONE = new Pillar("wbtc_pillar_white_stone", Material.ROCK, SoundType.STONE, "pickaxe", 1);
 	public static final Block PILLAR_WHITE_COBBLESTONE = new Pillar("wbtc_pillar_white_cobble", Material.ROCK, SoundType.STONE, "pickaxe", 1);
 	public static final Block PILLAR_SMOOTHED_STONE = new Pillar("wbtc_pillar_smoothed_stone", Material.ROCK, SoundType.STONE, "pickaxe", 1);
+	public static final Block CELL_TOWER = new Pillar("cell_tower", Material.IRON, SoundType.METAL, "pickaxe", 1);
+	public static final Block CELL_TOWER_RED = new Pillar("cell_tower_red", Material.IRON, SoundType.METAL, "pickaxe", 1);
 
 	// Commercial Kitchen Floor Blocks
 	public static final Block FLOOR_KITCHEN_1 = new Immersiblock("floor_kitchen_1", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
@@ -298,9 +351,12 @@ public class ModBlocks
 	public static final Block EXIT_SIGN_GREEN_RIGHT = new SignBlock("exit_sign_green_right", Material.IRON, SoundType.METAL, 1.0F, 1.0F, "pickaxe", 0, ModUtils.getPixelatedAABB(3,5,0, 13,12,1), 0.4F, Main.IMMERSIBROOK_MAIN);
 	public static final Block CEILING_EXIT_SIGN_GREEN = new SignBlock("ceiling_exit_green", Material.IRON, SoundType.METAL, 1.0F, 1.0F, "pickaxe", 0, ModUtils.getPixelatedAABB(3,9,7, 13,16,9), 0.4F, Main.IMMERSIBROOK_MAIN);
 	public static final Block CEILING_EXIT_SIGN_RED = new SignBlock("ceiling_exit_red", Material.IRON, SoundType.METAL, 1.0F, 1.0F, "pickaxe", 0, ModUtils.getPixelatedAABB(3,9,7, 13,16,9), 0.4F, Main.IMMERSIBROOK_MAIN);
+	public static final Block CHARGING_STATION_WALLSIGN = new SignBlock("charging_station_wallsign", Material.IRON, SoundType.METAL, 1.0F, 1.0F, "pickaxe", 0, ModUtils.DEFAULT_AABB, 0.4F, Main.IMMERSIBROOK_MAIN);
+
 
 	// Decor
 	public static final Block PC_MOUSE = new DecorPCMouse("pc_mouse", Material.IRON, SoundType.METAL, 0.2F, 1.0F, ModUtils.getPixelatedAABB(7,0,6, 9,1,10), 0.4F, Main.IMMERSIBROOK_MAIN);
+	public static final Block POLE = new BlockPole("pole");
 
 	// Trophies
 	public static final Block STATUE_OWO = new BlockStatue("statue_owo", MapColor.BLUE, ModUtils.getPixelatedAABB(3,0,5, 13,25,11)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
@@ -1147,21 +1203,23 @@ public class ModBlocks
 	public static final Block SIDING_DARK_OAK = new BlockSiding("siding_dark_oak", Material.WOOD, SoundType.WOOD, "axe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
 
 	// OBJ Test Block
-	public static final Block OBJ_EYE = new BlockTestEye("eye");
+//	public static final Block OBJ_EYE = new BlockTestEye("eye");
 
 	// Colored Blocks
 	public static final Block COLORED_STONE = new BlockColoredStone();
 	public static final Block COLORED_COBBLESTONE = new BlockColoredCobblestone();
 	public static final Block COLORED_STONE_BRICKS = new BlockColoredStoneBricks();
 	public static final Block COLORED_BRICKS = new BlockColoredBricks();
+	public static final Block COLORED_QUARTZ = new BlockColoredQuartz();
 
 	// Doors
-	public static final Block OAK_PUSH_DOOR = new BlockDoorBase("oak_push_door", Material.WOOD);
-	public static final Block SPRUCE_PUSH_DOOR = new BlockDoorBase("spruce_push_door", Material.WOOD);
-	public static final Block BIRCH_PUSH_DOOR = new BlockDoorBase("birch_push_door", Material.WOOD);
-	public static final Block JUNGLE_PUSH_DOOR = new BlockDoorBase("jungle_push_door", Material.WOOD);
-	public static final Block ACACIA_PUSH_DOOR = new BlockDoorBase("acacia_push_door", Material.WOOD);
-	public static final Block DARK_OAK_PUSH_DOOR = new BlockDoorBase("dark_oak_push_door", Material.WOOD);
+	public static final Block OAK_PUSH_DOOR = new BlockDoorBase("oak_push_door", Material.WOOD, false);
+	public static final Block SPRUCE_PUSH_DOOR = new BlockDoorBase("spruce_push_door", Material.WOOD, false);
+	public static final Block BIRCH_PUSH_DOOR = new BlockDoorBase("birch_push_door", Material.WOOD, false);
+	public static final Block JUNGLE_PUSH_DOOR = new BlockDoorBase("jungle_push_door", Material.WOOD, false);
+	public static final Block ACACIA_PUSH_DOOR = new BlockDoorBase("acacia_push_door", Material.WOOD, false);
+	public static final Block DARK_OAK_PUSH_DOOR = new BlockDoorBase("dark_oak_push_door", Material.WOOD, false);
+	public static final Block WOOD_JAIL_DOOR = new BlockDoorBase("jail_door", Material.IRON, true);
 
 	// Wall Signs
 	public static final Block WALL_SIGN_BLACK = new BlockWallSign("wall_sign_black", MapColor.BLACK, ModUtils.getPixelatedAABB(5,5,0, 11,11,0.8)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
@@ -1171,4 +1229,195 @@ public class ModBlocks
 
 	// In-Street Crosswalk Sign
 	public static final Block IN_STREET_CROSSWALK_SIGN = new ImmersiblockRotational("in_street_crosswalk_sign", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.getPixelatedAABB(3,0,5, 13,21,11));
+
+	// Self-Checkout Blocks
+	public static final Block SCO_POS = new BlockRegister();
+	public static final Block SCO_SCANNER = new BlockScanner();
+	public static final Block SCO_BAGGING = new ImmersiblockRotational("sco_bagging", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
+
+	// Retail Shelving Blocks
+	public static final Block SHELF_ONE_LEVEL_TWO_PEGHOOKS = new BlockShelf("shelf_one_level_two_peghooks", new ProductPlacement[]
+			{
+				new ProductPlacement(1, 3, ModUtils.getPixelatedAABB(1, 7, 4, 6, 12, 14)),
+				new ProductPlacement(2, 3, ModUtils.getPixelatedAABB(1, 1, 1, 6, 6, 14)),
+				new ProductPlacement(3, 3, ModUtils.getPixelatedAABB(10, 1, 1, 15, 6, 14)),
+				new ProductPlacement(4, 3, ModUtils.getPixelatedAABB(10, 7, 4, 15, 12, 14))
+			}, 
+			new AxisAlignedBB[]
+			{
+				ModUtils.getPixelatedAABB(0, 0, 14.025, 16, 16, 16.025),
+				ModUtils.getPixelatedAABB(0, 0, 1.025, 16, 1.5, 14.025)
+			});
+	
+	public static final Block SHELF_FOUR_PEGHOOKS = new BlockShelf("shelf_four_peghooks", new ProductPlacement[] {
+				new ProductPlacement(1, 3, ModUtils.getPixelatedAABB(1, 7, 4, 6, 12, 14)),
+				new ProductPlacement(2, 3, ModUtils.getPixelatedAABB(1, 0, 4, 6, 5, 14)),
+				new ProductPlacement(3, 3, ModUtils.getPixelatedAABB(10, 0, 4, 15, 5, 14)),
+				new ProductPlacement(4, 3, ModUtils.getPixelatedAABB(10, 7, 4, 15, 12, 14))
+			},
+			new AxisAlignedBB[]
+			{
+				ModUtils.getPixelatedAABB(0, 0, 14.025, 16, 16, 16.025)
+			});
+	
+	public static final Block SHELF_TWO_LEVELS_NO_PEGHOOKS = new BlockShelf("shelf_two_levels_no_peghooks", new ProductPlacement[] {
+				new ProductPlacement(1, 3, ModUtils.getPixelatedAABB(1, 9.5, 1, 6, 14.5, 14)),
+				new ProductPlacement(2, 3, ModUtils.getPixelatedAABB(1, 1, 1, 6, 6, 14)),
+				new ProductPlacement(3, 3, ModUtils.getPixelatedAABB(10, 1, 1, 15, 6, 14)),
+				new ProductPlacement(4, 3, ModUtils.getPixelatedAABB(10, 9.5, 1, 15, 14.5, 14))
+			},
+			new AxisAlignedBB[]
+			{
+				ModUtils.getPixelatedAABB(0, 0, 14.025, 16, 16, 16.025),
+				ModUtils.getPixelatedAABB(0, 0, 1.025, 16, 1.5, 14.025),
+				ModUtils.getPixelatedAABB(0, 8, 1.025, 16, 9.5, 14.025)
+			});
+
+	// Security Station
+	public static final Block SECURITY_STATION = new BlockSecurityTaggingStation();
+
+	// SIM Card Programming Station
+	public static final Block SIM_STATION = new ImmersiblockRotational("sim_station", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
+
+	// Smartphone Stands
+	public static final Block ITEM_STAND = new BlockSmartphoneStand("smartphone_stand", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_ORANGE = new BlockSmartphoneStand("smartphone_stand_orange", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_MAGENTA = new BlockSmartphoneStand("smartphone_stand_magenta", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_LBLUE = new BlockSmartphoneStand("smartphone_stand_lblue", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_YELLOW = new BlockSmartphoneStand("smartphone_stand_yellow", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_LIME = new BlockSmartphoneStand("smartphone_stand_lime", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_PINK = new BlockSmartphoneStand("smartphone_stand_pink", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_GRAY = new BlockSmartphoneStand("smartphone_stand_gray", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_SILVER = new BlockSmartphoneStand("smartphone_stand_silver", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_CYAN = new BlockSmartphoneStand("smartphone_stand_cyan", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_PURPLE = new BlockSmartphoneStand("smartphone_stand_purple", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_BROWN = new BlockSmartphoneStand("smartphone_stand_brown", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_BLUE = new BlockSmartphoneStand("smartphone_stand_blue", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_GREEN = new BlockSmartphoneStand("smartphone_stand_green", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_RED = new BlockSmartphoneStand("smartphone_stand_red", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+	public static final Block ITEM_STAND_BLACK = new BlockSmartphoneStand("smartphone_stand_black", ModUtils.getPixelatedAABB(6, 0, 5, 10, 7, 11));
+
+	// Smartphone Charging Pad
+	public static final Block PHONE_CHARGING_PAD = new BlockSmartphoneChargingPad("wireless_phone_charger_pad", ModUtils.getPixelatedAABB(5,0,4,11,2.5,12));
+
+	// Retail Freezers
+	public static final BlockShelfCloseableUpper RETAIL_FREEZER_UPRIGHT_TOP = new BlockShelfCloseableUpper("retail_freezer_upright_top", new ProductPlacement[]
+			{
+				new ProductPlacement(1, 3, ModUtils.getPixelatedAABB(9.51, 0.5, 1, 13.5, 4.5, 15)),
+				new ProductPlacement(2, 3, ModUtils.getPixelatedAABB(2.51, 0.5, 1, 6.5, 4.5, 15)),
+				new ProductPlacement(3, 3, ModUtils.getPixelatedAABB(9.01, 6.5, 1, 14, 11.5, 15)),
+				new ProductPlacement(4, 3, ModUtils.getPixelatedAABB(2.01, 6.5, 1, 7, 11.5, 15))
+			},
+			new AxisAlignedBB[]
+			{
+				ModUtils.getPixelatedAABB(0, 14, 0, 16, 15, 16),
+				ModUtils.getPixelatedAABB(15, 0, 0, 16, 14, 16),
+				ModUtils.getPixelatedAABB(1, 0, 15, 15, 14, 16),
+				ModUtils.getPixelatedAABB(0, 0, 0, 1, 14, 16)
+			},
+			ModUtils.getPixelatedAABB(1, 0, 0, 15, 14, 1));
+			
+	public static final Block RETAIL_FREEZER_UPRIGHT_BOTTOM = new BlockShelfCloseableLower("retail_freezer_upright_bottom", new ProductPlacement[]
+			{
+				new ProductPlacement(1, 3, ModUtils.getPixelatedAABB(9.01, 2.5, 1, 14, 7.5, 15)),
+				new ProductPlacement(2, 3, ModUtils.getPixelatedAABB(2.01, 2.5, 1, 7, 7.5, 15)),
+				new ProductPlacement(3, 3, ModUtils.getPixelatedAABB(9.01, 9.5, 1, 14, 14.5, 15)),
+				new ProductPlacement(4, 3, ModUtils.getPixelatedAABB(2.01, 9.5, 1, 7, 14.5, 15))
+			}, 
+			new AxisAlignedBB[]
+			{
+				ModUtils.getPixelatedAABB(15, 1, 0, 16, 16, 16),
+				ModUtils.getPixelatedAABB(1, 1, 15, 15, 16, 16),
+				ModUtils.getPixelatedAABB(0, 1, 0, 1, 16, 16),
+				ModUtils.getPixelatedAABB(0, 0, 0, 16, 1, 16)
+			}, 
+			ModUtils.getPixelatedAABB(1, 1, 0, 15, 16, 1),
+			RETAIL_FREEZER_UPRIGHT_TOP);
+	public static final Block RETAIL_FREEZER_DEEP = new BlockShelfCloseable("retail_freezer_deep", new ProductPlacement[]
+	{
+		new ProductPlacement(1, 3, ModUtils.getPixelatedAABB(9.01, 2.1, 1.1, 14, 7.1, 14.9)),
+		new ProductPlacement(2, 3, ModUtils.getPixelatedAABB(2.01, 2.1, 1.1, 7, 7.1, 14.9))
+	}, 
+	new AxisAlignedBB[]
+	{
+		ModUtils.getPixelatedAABB(15, 2, 1, 16, 13, 15),
+		ModUtils.getPixelatedAABB(0, 2, 15, 16, 13, 16),
+		ModUtils.getPixelatedAABB(0, 2, 1, 1, 13, 15),
+		ModUtils.getPixelatedAABB(0, 2, 0, 16, 13, 1),
+		ModUtils.getPixelatedAABB(0, 0, 0, 16, 2, 16)
+	},
+	ModUtils.getPixelatedAABB(0, 13, 0, 16, 14, 16));
+	
+	public static final BlockShelfCloseableUpper RETAIL_DRINK_COOLER_TOP = new BlockShelfCloseableUpper("retail_drink_cooler_top", new ProductPlacement[]
+			{
+				new ProductPlacement(1, 3, ModUtils.getPixelatedAABB(9.01, 0.5, 1, 14, 5.5, 15)),
+				new ProductPlacement(2, 3, ModUtils.getPixelatedAABB(2.01, 0.5, 1, 7, 5.5, 15))
+			},
+			new AxisAlignedBB[]
+			{
+				ModUtils.getPixelatedAABB(0, 10, 0, 16, 11, 16),
+				ModUtils.getPixelatedAABB(15, 0, 0, 16, 10, 16),
+				ModUtils.getPixelatedAABB(1, 0, 15, 15, 10, 16),
+				ModUtils.getPixelatedAABB(0, 0, 0, 1, 10, 16),
+				ModUtils.getPixelatedAABB(1, 6, 0, 15, 10, 1)
+			},
+			ModUtils.getPixelatedAABB(1, 0, 0, 15, 6, 1));
+	
+	public static final Block RETAIL_DRINK_COOLER_BOTTOM = new BlockShelfCloseableLower("retail_drink_cooler_bottom", new ProductPlacement[]
+			{
+				new ProductPlacement(1, 3, ModUtils.getPixelatedAABB(9.01, 2.5, 1, 14, 7.5, 15)),
+				new ProductPlacement(2, 3, ModUtils.getPixelatedAABB(2.01, 2.5, 1, 7, 7.5, 15)),
+				new ProductPlacement(3, 3, ModUtils.getPixelatedAABB(9.01, 9.5, 1, 14, 14.5, 15)),
+				new ProductPlacement(4, 3, ModUtils.getPixelatedAABB(2.01, 9.5, 1, 7, 14.5, 15))
+			},
+			new AxisAlignedBB[]
+			{
+				ModUtils.getPixelatedAABB(15, 1, 0, 16, 16, 16),
+				ModUtils.getPixelatedAABB(1, 1, 15, 15, 16, 16),
+				ModUtils.getPixelatedAABB(0, 1, 0, 1, 16, 16),
+				ModUtils.getPixelatedAABB(0, 0, 0, 16, 1, 16)
+			},
+			ModUtils.getPixelatedAABB(1, 0, 0, 15, 16, 1),
+			RETAIL_DRINK_COOLER_TOP);
+
+	// Sound Emitter
+	public static final Block SOUND_EMITTER_BLOCK = new BlockSoundEmitter("sound_emitter", Material.IRON, SoundType.METAL);
+	public static final Block SOUND_EMITTER_WALL = new BlockSoundEmitter("sound_emitter_wall", Material.IRON, SoundType.METAL);
+
+	// ATM
+	public static final Block ATM = new BlockATM();
+
+	// Terlets
+	public static final Block PRISON_TOILET = new BlockSeat("toilet", ModUtils.DEFAULT_AABB, 1.5F);
+	public static final Block WALL_TOILET = new BlockSeat("wall_toilet", ModUtils.DEFAULT_AABB, 1.5F);
+	public static final Block HOME_TOILET = new BlockSeat("home_toilet", ModUtils.DEFAULT_AABB, 1.5F);
+	public static final Block URINAL = new BlockSeat("urinal", ModUtils.getPixelatedAABB(3,5,0, 12,20,0.8), 1.5F);
+
+	// Dishes
+	public static final Block DISH_BELL = new ImmersiblockRotational("dish_bell", Material.IRON, SoundType.METAL, "pickaxe", 1, 10F, 10F, ModUtils.DEFAULT_AABB);
+	public static final Block DISH_MSAC = new ImmersiblockRotational("dish_msac", Material.IRON, SoundType.METAL, "pickaxe", 1, 10F, 10F, ModUtils.DEFAULT_AABB);
+	public static final Block DISH_BLANK = new ImmersiblockRotational("dish_blank", Material.IRON, SoundType.METAL, "pickaxe", 1, 10F, 10F, ModUtils.DEFAULT_AABB);
+
+	// Smoker
+	public static final Block SMOKER = new BlockSmoker("smoker");
+
+	// Fluid Meter
+	public static final Block FLUID_METER = new BlockFluidMeter("fluid_meter");
+
+	// Awesome Chairs
+	public static final Block THRONE_FC = new BlockSeat("throne_fc", ModUtils.DOUBLE_AABB, -1.0F);
+	public static final Block THRONE = new BlockSeat("throne", ModUtils.DOUBLE_AABB, -1.0F);
+	public static final Block THRONE_GOV = new BlockSeat("throne_gov", ModUtils.DOUBLE_AABB, 4.0F);
+
+	// Retail Basket Holders
+	public static final Block BASKET_HOLDER_RED = new BlockShoppingBasketHolder("basket_holder_red");
+	public static final Block BASKET_HOLDER_GREEN = new BlockShoppingBasketHolder("basket_holder_green");
+	public static final Block BASKET_HOLDER_BLUE = new BlockShoppingBasketHolder("basket_holder_blue");
+	public static final Block BASKET_HOLDER_BLACK = new BlockShoppingBasketHolder("basket_holder_black");
+	
+	// Automated Tagging Station Block
+	public static final Block ATS = new ImmersiblockRotational("automated_tagging_station", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.25F, 3.5F, ModUtils.DEFAULT_AABB);
+
+	// Employee Timeclock
+	public static final Block TIMECLOCK = new BlockTimeClock();
 }

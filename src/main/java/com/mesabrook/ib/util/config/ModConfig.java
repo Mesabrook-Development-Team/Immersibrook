@@ -71,9 +71,6 @@ public final class ModConfig
 	@Comment("[Debugging Option] Set to true if you want the fake light block created by Ceiling Lights to be rendered.")
 	public static boolean renderFakeLightBlocks = false;
 
-	@Comment("Set to false to disable the funny death sound effect that plays when a player dies.")
-	public static boolean oofDeathSound = true;
-
 	@Comment("[Float] Phone Ringtone Loudness (default - 0.25F | max - 1.0F)")
 	public static float ringtoneVolume = 0.75F;
 	
@@ -136,6 +133,9 @@ public final class ModConfig
 	
 	@Comment("[MesaSuite] MesaSuite Base OAuth URL")
 	public static String mesasuiteBaseOAuthUrl = "https://auth.mesabrook.com";
+	
+	@Comment("[MesaSuite] MesaSuite Client ID")
+	public static String mesasuiteClientID = "";
 	
 	@Comment("[Minedroid] What is the maximum battery charge for a Smartphone?")
 	public static int smartphoneMaxBattery = 1600;

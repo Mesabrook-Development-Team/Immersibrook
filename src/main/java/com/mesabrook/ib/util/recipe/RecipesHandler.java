@@ -1,19 +1,20 @@
 package com.mesabrook.ib.util.recipe;
 
 import blusunrize.immersiveengineering.api.crafting.*;
-import blusunrize.immersiveengineering.common.util.compat.crafttweaker.*;
+import blusunrize.immersiveengineering.common.IEContent;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.config.ModConfig;
-import com.pam.harvestcraft.blocks.*;
-import com.pam.harvestcraft.item.*;
+import com.pam.harvestcraft.item.ItemRegistry;
 import net.minecraft.init.Items;
-import net.minecraft.item.*;
-import net.minecraft.util.*;
-import net.minecraftforge.fml.common.registry.*;
-import net.minecraftforge.oredict.*;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class RecipesHandler
 {
@@ -27,6 +28,16 @@ public class RecipesHandler
 
 			// White Mushroom > White Dye Dust
 			CrusherRecipe.addRecipe(new ItemStack(ModItems.DUST_WHITE, 2), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("harvestcraft", "whitemushroomitem"))), 20);
+
+			// Emergency Water Sachet Bottling Machine Recipe Thing
+			FluidStack water = new FluidStack(FluidRegistry.WATER, 1000);
+			BottlingMachineRecipe.addRecipe(new ItemStack(ModItems.WATER_SACHET, 1), new ItemStack(ModItems.PLASTIC_SILVER), water);
+
+			// SIM Card crafting
+			BlueprintCraftingRecipe.addRecipe("components", new ItemStack(ModItems.SIM_CARD), ModItems.PLASTIC_WHITE, new ItemStack(IEContent.itemMaterial, 1, 27), new ItemStack(IEContent.itemMaterial, 3, 20));
+
+			// Pleather crafting
+			BlueprintCraftingRecipe.addRecipe("components", new ItemStack(ModItems.PLEATHER), ModItems.PLASTIC_PLATE, new ItemStack(Items.STRING, 3), new ItemStack(Items.DYE, 1, 8));
 
 			// <color> Plastic Ingot > <color> Raw Plastic Dust.
 			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_WHITE, outputAmount), new ItemStack(ModItems.PLASTIC_WHITE), 10);
@@ -167,22 +178,15 @@ public class RecipesHandler
 			// Bread
 			GameRegistry.addSmelting(ItemRegistry.doughItem, new ItemStack(Items.BREAD, 1), 5F);
 
-			if(ModConfig.smeltingLeatherForASaddle)
-			{
-				GameRegistry.addSmelting(Items.LEATHER, new ItemStack(Items.SADDLE, 1), 24F);
-				Main.logger.info("[" + Reference.MODNAME + "] Leather to Saddle Smelting Recipe Registered.");
-			}
-			else
-			{
-				Main.logger.info("[" + Reference.MODNAME + "] Leather to Saddle Smelting Recipe Disasbled.");
-			}
-			
+			// Food
+			GameRegistry.addSmelting(ModItems.RAW_CHICKEN_NUGGET, new ItemStack(ModItems.CHICKEN_NUGGET, 1), 5F);
+			GameRegistry.addSmelting(Items.BREAD, new ItemStack(ItemRegistry.toastItem, 1), 5F);
 			Main.logger.info("[" + Reference.MODNAME + "] Smelting Recipes Registered.");
 		}
 		catch(Exception e)
 		{
 			Main.logger.error("[" + Reference.MODNAME + "] [ERROR] Something went wrong!" + e.getMessage());
-			Main.logger.error(e.getMessage());
+			e.printStackTrace();
 			Main.logger.error("Ah fuck, I can't believe you've done this.");
 			Main.logger.error("Report this bug, please.");
 

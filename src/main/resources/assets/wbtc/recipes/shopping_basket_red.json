@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " I ",
+	"PPP",
+	"PPP"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+	  "ore": "stickIron"
+    },
+    "P": {
+	  "item": "wbtc:red_plastic"
+    }
+  },
+  "result": {
+    "item": "wbtc:shopping_basket",
+    "count": 1,
+	"data": 14
+  }
+}

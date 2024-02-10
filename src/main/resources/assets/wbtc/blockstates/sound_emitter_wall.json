@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:sound_emitter_wall" },
+        "facing=south": { "model": "wbtc:sound_emitter_wall", "y": 180 },
+        "facing=west":  { "model": "wbtc:sound_emitter_wall", "y": 270 },
+        "facing=east":  { "model": "wbtc:sound_emitter_wall", "y": 90 }
+    }
+}

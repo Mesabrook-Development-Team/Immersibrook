@@ -1,0 +1,5 @@
+{
+	"recipes": {
+		"ot_charger": "com.mesabrook.ib.util.recipe.OneTimeChargerRecipe$Factory"
+	}
+}

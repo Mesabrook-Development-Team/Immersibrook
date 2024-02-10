@@ -1,5 +1,6 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.init.SoundInit;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -28,17 +29,17 @@ public class GuiLockChallengePIN extends GuiPhoneBase {
 		
 		for(int i = 1; i <= 9; i++)
 		{
-			ImageButton digit = new ImageButton(i, upperLeftX + 20 * ((i - 1) % 3), upperLeftY + 20 * ((i - 1) / 3), 16, 16, "calcbtn_" + i + ".png", 16, 16);
+			ImageButton digit = new ImageButton(i, upperLeftX + 20 * ((i - 1) % 3), upperLeftY + 20 * ((i - 1) / 3), 16, 16, phoneStackData.getIconTheme() + "/numpad/numpad_" + i + ".png", 16, 16);
 			buttonList.add(digit);
 		}
 		
-		ImageButton zero = new ImageButton(0, upperLeftX + 20, upperLeftY + 60, 16, 16, "calcbtn_0.png", 16, 16);
+		ImageButton zero = new ImageButton(0, upperLeftX + 20, upperLeftY + 60, 16, 16, phoneStackData.getIconTheme() + "/numpad/numpad_0.png", 16, 16);
 		buttonList.add(zero);
 	}
 
 	@Override
 	protected String getInnerTextureFileName() {
-		return "gui_phone_bg_" + Integer.toString(phoneStackData.getLockBackground()) + ".png";
+		return "wallpapers/gui_phone_bg_" + Integer.toString(phoneStackData.getLockBackground()) + ".png";
 	}
 
 	@Override
@@ -73,7 +74,10 @@ public class GuiLockChallengePIN extends GuiPhoneBase {
 			{
 				return;
 			}
-			enteredPIN += String.valueOf(button.id);
+			if(enteredPIN.length() <= 8)
+			{
+				enteredPIN += String.valueOf(button.id);
+			}
 			
 			if (Integer.parseInt(enteredPIN) == phoneStackData.getPin())
 			{

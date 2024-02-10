@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:shelf_two_levels_no_peghooks" },
+        "facing=south": { "model": "wbtc:shelf_two_levels_no_peghooks", "y": 180 },
+        "facing=west":  { "model": "wbtc:shelf_two_levels_no_peghooks", "y": 270 },
+        "facing=east":  { "model": "wbtc:shelf_two_levels_no_peghooks", "y": 90 }
+    }
+}

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData.Contact;
 import com.mesabrook.ib.net.telecom.GetPhoneRecentsPacket;
 import com.mesabrook.ib.util.PhoneLogState;
@@ -49,7 +50,7 @@ public class GuiPhoneRecents extends GuiPhoneBase {
 
 	@Override
 	protected String getInnerTextureFileName() {
-		return "app_screen.png";
+		return phoneStackData.getIconTheme() + "/app_screen.png";
 	}
 
 	@Override
@@ -245,7 +246,7 @@ public class GuiPhoneRecents extends GuiPhoneBase {
 				contact = phoneStackData.getContactByPhoneNumber(Integer.toString(logData.getOtherNumbers()[0]));
 				if (contact != null)
 				{
-					headRL = GetHeadUtil.getHeadResourceLocation(contact.getUsername());
+					headRL = GetHeadUtil.getHeadResourceLocation(contact.getUsername(), phoneStackData.getSkinFetchingEngine());
 				}
 			}
 

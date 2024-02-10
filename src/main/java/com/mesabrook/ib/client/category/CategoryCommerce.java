@@ -38,5 +38,51 @@ public class CategoryCommerce extends AbstractCategory
         add(ModItems.TEN_CENTS);
         add(ModItems.TWENTY_FIVE_CENTS);
         add(ModItems.DOLLAR_COIN);
+
+        // SCO
+        add(ModBlocks.SCO_POS);
+        add(ModBlocks.SCO_SCANNER);
+        add(ModBlocks.SCO_BAGGING);
+
+        // Shelving
+        add(ModBlocks.SHELF_ONE_LEVEL_TWO_PEGHOOKS);
+        add(ModBlocks.SHELF_FOUR_PEGHOOKS);
+        add(ModBlocks.SHELF_TWO_LEVELS_NO_PEGHOOKS);
+        add(ModBlocks.RETAIL_FREEZER_UPRIGHT_BOTTOM);
+        add(ModBlocks.RETAIL_FREEZER_DEEP);
+        add(ModBlocks.RETAIL_DRINK_COOLER_BOTTOM);
+
+        // Security Station
+        add(ModBlocks.SECURITY_STATION);
+        add(ModBlocks.SIM_STATION);
+        add(ModBlocks.ITEM_STAND);
+        add(ModBlocks.ITEM_STAND_ORANGE);
+        add(ModBlocks.ITEM_STAND_MAGENTA);
+        add(ModBlocks.ITEM_STAND_LBLUE);
+        add(ModBlocks.ITEM_STAND_YELLOW);
+        add(ModBlocks.ITEM_STAND_LIME);
+        add(ModBlocks.ITEM_STAND_PINK);
+        add(ModBlocks.ITEM_STAND_GRAY);
+        add(ModBlocks.ITEM_STAND_SILVER);
+        add(ModBlocks.ITEM_STAND_CYAN);
+        add(ModBlocks.ITEM_STAND_PURPLE);
+        add(ModBlocks.ITEM_STAND_BLUE);
+        add(ModBlocks.ITEM_STAND_BROWN);
+        add(ModBlocks.ITEM_STAND_GREEN);
+        add(ModBlocks.ITEM_STAND_RED);
+        add(ModBlocks.ITEM_STAND_BLACK);
+        add(ModBlocks.TIMECLOCK);
+
+        // ATM
+        add(ModBlocks.ATM);
+
+        // Baskets
+        add(ModItems.SHOPPING_BASKET);
+
+        // Basket Holders
+        add(ModBlocks.BASKET_HOLDER_RED);
+        add(ModBlocks.BASKET_HOLDER_GREEN);
+        add(ModBlocks.BASKET_HOLDER_BLUE);
+        add(ModBlocks.BASKET_HOLDER_BLACK);
     }
 }

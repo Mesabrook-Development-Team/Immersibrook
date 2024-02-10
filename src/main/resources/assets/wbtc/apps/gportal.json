@@ -1,0 +1,12 @@
+{
+  "name": "Government Portal Lite",
+  "author": "CSX8600 and RavenholmZombie",
+  "description": "Allows in-game access to parts of Government Portal.",
+  "version": "0.0.1",
+  "icon": "wbtc:textures/app/icon/icn_gp.png",
+  "screenshots": [
+    "https://raw.githubusercontent.com/Ocelot5836/storage/master/mods/device-mod/modelcreator/screenshot1.png",
+    "https://raw.githubusercontent.com/Ocelot5836/storage/master/mods/device-mod/modelcreator/screenshot2.png",
+    "https://raw.githubusercontent.com/Ocelot5836/storage/master/mods/device-mod/modelcreator/screenshot3.png"
+  ]
+}

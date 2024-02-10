@@ -1,0 +1,39 @@
+{
+	"forge_marker": 1,
+    "variants": {
+    	"facing":
+    	{ 
+	        "north": { "model": "wbtc:wireless_phone_charger_pad" },
+	        "south": { "model": "wbtc:wireless_phone_charger_pad", "y": 180 },
+	        "west":  { "model": "wbtc:wireless_phone_charger_pad", "y": 270 },
+	        "east":  { "model": "wbtc:wireless_phone_charger_pad", "y": 90 }
+    	},
+    	"chargestate":
+    	{ 
+    		"nopower":
+    		{ 
+    			"textures": { 
+    				"charge": "wbtc:blocks/plastic_cube_black"
+    			}
+    		},
+    		"standby":
+    		{ 
+    			"textures": { 
+    				"charge": "wbtc:blocks/plastic_cube_yellow"
+    			}
+    		},
+    		"charging":
+    		{ 
+    			"textures": { 
+    				"charge": "wbtc:blocks/plastic_cube_red"
+    			}
+    		},
+    		"chargecomplete":
+    		{ 
+    			"textures": { 
+    				"charge": "wbtc:blocks/plastic_cube_green"
+    			}
+    		}
+    	}
+    }
+}

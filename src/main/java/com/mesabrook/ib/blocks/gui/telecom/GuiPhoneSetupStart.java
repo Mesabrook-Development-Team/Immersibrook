@@ -1,5 +1,7 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import com.mesabrook.ib.blocks.gui.ImageButton;
+import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.net.ClientSoundPacket;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.Minecraft;
@@ -14,7 +16,9 @@ public class GuiPhoneSetupStart extends GuiPhoneBase
 {
     private GuiLockScreen.UnlockSlider complete;
     ImageButton mux;
-    
+    ImageButton divider;
+    ImageButton specialLogo;
+
     public GuiPhoneSetupStart(ItemStack phoneStack, EnumHand hand)
     {
         super(phoneStack, hand);
@@ -23,7 +27,7 @@ public class GuiPhoneSetupStart extends GuiPhoneBase
     @Override
     protected String getInnerTextureFileName()
     {
-        return "app_screen_setup.png";
+        return phoneStackData.getIconTheme() + "/app_screen_setup.png";
     }
 
     @Override
@@ -40,14 +44,36 @@ public class GuiPhoneSetupStart extends GuiPhoneBase
     public void initGui()
     {
         super.initGui();
-        mux = new ImageButton(2, INNER_X + 15, INNER_Y + 27, 25, 25, "icn_mux.png", 32, 32);
+        String specialLogoTexture = "icn_mux.png";
+
+        if(phoneStack.getItem() == ModItems.PHONE_RC)
+        {
+            specialLogoTexture = "rcarm.png";
+        }
+        if(phoneStack.getItem() == ModItems.PHONE_MESABROOK)
+        {
+            specialLogoTexture = "msemblem.png";
+        }
+        if(phoneStack.getItem() == ModItems.PHONE_ZOE)
+        {
+            specialLogoTexture = "phone_logo_zoe.png";
+        }
+        if(phoneStack.getItem() == ModItems.PHONE_FR)
+        {
+            specialLogoTexture = "msemblem.png";
+        }
+
+        mux = new ImageButton(1, INNER_X + 15, INNER_Y + 27, 25, 25, "icn_mux.png", 32, 32);
+        divider = new ImageButton(2, INNER_X + 36, INNER_Y + 27, 15, 25, "divider.png", 32, 32);
+        specialLogo = new ImageButton(3, INNER_X + 47, INNER_Y + 27, 25, 25, specialLogoTexture, 32, 32);
         complete = new GuiLockScreen.UnlockSlider(INNER_X + INNER_TEX_WIDTH / 2 - 60, INNER_Y + INNER_TEX_HEIGHT - 75);
         buttonList.add(mux);
 
-        ClientSoundPacket soundPacket = new ClientSoundPacket();
-        soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
-        soundPacket.soundName = "minedroid_startup";
-        PacketHandler.INSTANCE.sendToServer(soundPacket);
+        if(phoneStack.getItem() == ModItems.PHONE_FR || phoneStack.getItem() == ModItems.PHONE_MESABROOK || phoneStack.getItem() == ModItems.PHONE_RC || phoneStack.getItem() == ModItems.PHONE_ZOE)
+        {
+            buttonList.add(divider);
+            buttonList.add(specialLogo);
+        }
     }
 
     @Override

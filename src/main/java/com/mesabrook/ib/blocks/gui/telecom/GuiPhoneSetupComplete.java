@@ -1,5 +1,6 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.init.SoundInit;
 import com.mesabrook.ib.net.ClientSoundPacket;
 import com.mesabrook.ib.net.telecom.*;
@@ -33,7 +34,7 @@ public class GuiPhoneSetupComplete extends GuiPhoneBase
     @Override
     protected String getInnerTextureFileName()
     {
-        return "app_screen_setup.png";
+        return phoneStackData.getIconTheme() + "/app_screen_setup.png";
     }
 
     @Override
@@ -81,26 +82,22 @@ public class GuiPhoneSetupComplete extends GuiPhoneBase
 
     private void goHome()
     {
-//        CustomizationPacket packet = new CustomizationPacket();
-//        packet.hand = hand.ordinal();
-//        packet.newName = phoneStack.getDisplayName();
-//        packet.guiClassName = GuiPhoneSetupComplete.class.getName();
-//        packet.iconTheme = phoneStackData.getIconTheme();
-//        packet.lockBackground = phoneStackData.getLockBackground();
-//        packet.homeBackground = phoneStackData.getHomeBackground();
-//        packet.lockTone = phoneStackData.getChatTone();
-//        packet.ringtone = phoneStackData.getRingTone();
-//        packet.setShowIRLTime = phoneStackData.getShowIRLTime();
-//        packet.useMilitaryTime = phoneStackData.getShowingMilitaryIRLTime();
-//        packet.toggleDebugMode = phoneStackData.getIsDebugModeEnabled();
-//        packet.resetName = false;
-//        packet.pin = phoneStackData.getPin();
-//        packet.playerID = phoneStackData.getUuid();
-//
-//        PacketHandler.INSTANCE.sendToServer(packet);
-
         GuiPhoneBase.isPhoneUnlocked = true;
-        Minecraft.getMinecraft().displayGuiScreen(new GuiHome(phoneStack, hand));
+
+        OOBEStatusPacket packet = new OOBEStatusPacket();
+        packet.hand = hand.ordinal();
+        packet.guiClassName = GuiPhoneSetupComplete.class.getName();
+        packet.nextGuiClassName = GuiHome.class.getName();
+        packet.needToDoOOBE = false;
+
+        PacketHandler.INSTANCE.sendToServer(packet);
+
+        ClientSoundPacket soundPacket = new ClientSoundPacket();
+        soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
+        soundPacket.soundName = "phone_unlock";
+        soundPacket.useDelay = true;
+        soundPacket.volume = 1.0F;
+        PacketHandler.INSTANCE.sendToServer(soundPacket);
     }
 
     @Override

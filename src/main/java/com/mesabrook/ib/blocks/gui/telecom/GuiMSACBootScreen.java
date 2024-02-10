@@ -1,7 +1,6 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
-import com.mesabrook.ib.net.ClientSoundPacket;
-import com.mesabrook.ib.util.handlers.PacketHandler;
+import com.mesabrook.ib.util.IndependentTimer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.item.ItemStack;
@@ -12,61 +11,58 @@ import java.io.IOException;
 
 public class GuiMSACBootScreen extends GuiPhoneBase
 {
-    private int timerToNextScreen = 0;
-    private int fadeAnimationTimer = 0;
+    private IndependentTimer timer;
+    private IndependentTimer bootTimer;
     private String currentTexture;
+    private String banner;
 
     public GuiMSACBootScreen(ItemStack phoneStack, EnumHand hand)
     {
         super(phoneStack, hand);
-        fadeAnimationTimer++;
+        timer = new IndependentTimer();
+        bootTimer = new IndependentTimer();
     }
 
     @Override
     protected String getInnerTextureFileName()
     {
-        if(fadeAnimationTimer == 0)
+        if(timer.getElapsedTime() < 100)
         {
-            currentTexture = "app_screen_no_bar.png";
+            currentTexture = "system/boot_screen_msac_1.png";
         }
-        if(fadeAnimationTimer == 50)
+        if(timer.getElapsedTime() >= 150)
         {
-            currentTexture = "msac/boot_screen_msac_0.png";
+            currentTexture = "system/boot_screen_msac_1.png";
         }
-        if(fadeAnimationTimer == 100)
+        if(timer.getElapsedTime() >= 200)
         {
-            currentTexture = "msac/boot_screen_msac_1.png";
+            currentTexture = "system/boot_screen_msac_1.png";
+            banner = "Starting Minedroid";
         }
-        if(fadeAnimationTimer == 150)
+        if(timer.getElapsedTime() >= 400)
         {
-            currentTexture = "msac/boot_screen_msac_2.png";
+            currentTexture = "system/boot_screen_msac_2.png";
         }
-        if(fadeAnimationTimer == 200)
+        if(timer.getElapsedTime() >= 600)
         {
-            currentTexture = "msac/boot_screen_msac_3.png";
+            currentTexture = "system/boot_screen_msac_3.png";
         }
-        if(fadeAnimationTimer == 250)
+        if(timer.getElapsedTime() >= 800)
         {
-            currentTexture = "msac/boot_screen_msac_4.png";
+            currentTexture = "system/boot_screen_msac_4.png";
         }
-        if(fadeAnimationTimer == 300)
+        if(timer.getElapsedTime() >= 1000)
         {
-            currentTexture = "msac/boot_screen_msac_5.png";
+            currentTexture = "system/boot_screen_msac_5.png";
         }
-        if(fadeAnimationTimer == 400)
+        if(timer.getElapsedTime() >= 1200)
         {
-            currentTexture = "msac/boot_screen_msac_6.png";
+            currentTexture = "system/boot_screen_msac_6.png";
         }
-        if(fadeAnimationTimer == 500)
+        if(timer.getElapsedTime() >= 1400)
         {
-            currentTexture = "msac/boot_screen_msac_1.png";
+            timer.reset();
         }
-
-        if(fadeAnimationTimer > 550)
-        {
-            fadeAnimationTimer = 100;
-        }
-
         return currentTexture;
     }
 
@@ -90,10 +86,12 @@ public class GuiMSACBootScreen extends GuiPhoneBase
     protected void doDraw(int mouseX, int mouseY, float partialticks)
     {
         super.doDraw(mouseX, mouseY, partialticks);
-        timerToNextScreen++;
-        fadeAnimationTimer++;
+        timer.update();
+        bootTimer.update();
 
-        if(timerToNextScreen >= 1500)
+        drawCenteredString(fontRenderer, banner, INNER_X + 80, INNER_Y + 180, 0xFFFFFF);
+
+        if(bootTimer.getElapsedTime() >= 3000)
         {
             finishBoot();
         }
@@ -101,11 +99,7 @@ public class GuiMSACBootScreen extends GuiPhoneBase
 
     private void finishBoot()
     {
-        ClientSoundPacket soundPacket = new ClientSoundPacket();
-        soundPacket.pos = Minecraft.getMinecraft().player.getPosition();
-        soundPacket.soundName = "minedroid_firstboot";
-        PacketHandler.INSTANCE.sendToServer(soundPacket);
-        GuiBootScreen boot = new GuiBootScreen(Minecraft.getMinecraft().player.getHeldItem(hand), hand);
+        GuiBellIntroAnimation boot = new GuiBellIntroAnimation(phoneStack, hand);
         Minecraft.getMinecraft().displayGuiScreen(boot);
     }
 
@@ -119,7 +113,9 @@ public class GuiMSACBootScreen extends GuiPhoneBase
     public void onGuiClosed()
     {
         super.onGuiClosed();
-        timerToNextScreen = 0;
-        fadeAnimationTimer = 0;
+        timer.reset();
+        timer.stop();
+        bootTimer.reset();
+        bootTimer.stop();
     }
 }

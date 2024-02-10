@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "YYY",
+        "YRL",
+        "GGG"
+    ],
+    "key": {
+        "Y": {
+            "item": "wbtc:yellow_plastic"
+        },
+        "G": {
+            "item": "wbtc:gray_plastic"
+        },
+        "R": {
+            "item": "wbtc:tape_roll_measure"
+        },
+        "L": {
+            "item": "wbtc:silver_plastic"
+        }
+    },
+    "result": 
+    {
+        "item": "wbtc:tape_measure",
+        "count": 1
+    }
+}

@@ -88,6 +88,19 @@ public class SoundInit
 	public static final SoundEvent FART_5;
 	public static final SoundEvent COUGH_M;
 	public static final SoundEvent COUGH_F;
+	public static final SoundEvent CHISEL;
+	public static final SoundEvent RATION_OPEN;
+	public static final SoundEvent TAPE_MEASURE_OPEN;
+	public static final SoundEvent TAPE_MEASURE_CLOSE;
+	public static final SoundEvent TOILET_1;
+	public static final SoundEvent TOILET_2;
+	public static final SoundEvent TOILET_3;
+	public static final SoundEvent URINAL;
+	public static final SoundEvent WC_ON;
+	public static final SoundEvent WC_OFF;
+	public static final SoundEvent FRIDGE_OPEN;
+	public static final SoundEvent FRIDGE_CLOSE;
+	public static final SoundEvent COMING_OUT;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -103,6 +116,8 @@ public class SoundInit
 	public static final SoundEvent MS_XP;
 	public static final SoundEvent COOKING;
 	public static final SoundEvent MEMORY;
+	public static final SoundEvent WIDE;
+	public static final SoundEvent PIANO;
 
 	// Holiday Records
 	public static final SoundEvent SPOOKY;
@@ -138,8 +153,14 @@ public class SoundInit
 	public static final SoundEvent DING_7;
 	public static final SoundEvent DING_8;
 	public static final SoundEvent DING_9;
+	public static final SoundEvent DING_10;
 	public static final SoundEvent OUTGOING_CALL;
 	public static final SoundEvent SIT;
+	public static final SoundEvent SIT_1;
+	public static final SoundEvent SIT_2;
+	public static final SoundEvent SIT_3;
+	public static final SoundEvent SIT_4;
+	public static final SoundEvent SIT_5;
 	public static final SoundEvent STARTCALL;
 	public static final SoundEvent ENDCALL;
 	public static final SoundEvent PHONE_UNLOCK;
@@ -148,6 +169,11 @@ public class SoundInit
 	public static final SoundEvent PHONE_OFF;
 	public static final SoundEvent MINEDROID_STARTUP;
 	public static final SoundEvent PHONE_BATTERY_LOW;
+	public static final SoundEvent PHONE_UNBOX;
+	public static final SoundEvent ALERT;
+	public static final SoundEvent NORMAL_BOOT;
+	public static final SoundEvent OOBE_BOOT;
+	public static final SoundEvent XP_STARTUP;
 
 	// Ringtones
 	public static final SoundEvent RING_1;
@@ -165,6 +191,16 @@ public class SoundInit
 	public static final SoundEvent RING_13;
 	public static final SoundEvent RING_14;
 	public static final SoundEvent RING_15;
+	public static final SoundEvent RING_16;
+	public static final SoundEvent RING_17;
+	public static final SoundEvent RING_18;
+	public static final SoundEvent RING_19;
+	public static final SoundEvent RING_20;
+	public static final SoundEvent RING_21;
+	public static final SoundEvent RING_22;
+	public static final SoundEvent RING_23;
+	public static final SoundEvent RING_24;
+	public static final SoundEvent RING_25;
 
 	// DTMF Phone Tones
 	public static final SoundEvent DTMF_0;
@@ -179,6 +215,19 @@ public class SoundInit
 	public static final SoundEvent DTMF_9;
 	public static final SoundEvent PHONE_CRASH;
 	public static final SoundEvent PHONE_BOOTUP;
+	public static final SoundEvent BATTERY_LOW;
+	
+	// Self-Checkout
+	public static final SoundEvent BILL_ACCEPTOR;
+	public static final SoundEvent COIN_SLOT;
+	public static final SoundEvent POS_CASHBACK;
+	public static final SoundEvent POS_PAYMENT_TYPE;
+	public static final SoundEvent POS_SCAN;
+	public static final SoundEvent POS_SCANNER_BEEP;
+	public static final SoundEvent POS_SCANNER_MULTIBEEP;
+	public static final SoundEvent POS_TAKE_CARD;
+	public static final SoundEvent POS_USE_PINPAD;
+	public static final SoundEvent POS_WELCOME;
 
 	static
 	{
@@ -259,6 +308,18 @@ public class SoundInit
 		FART_5 = addSoundsToRegistry("fart_5");
 		COUGH_M = addSoundsToRegistry("cough_m");
 		COUGH_F = addSoundsToRegistry("cough_f");
+		CHISEL = addSoundsToRegistry("chisel");
+		RATION_OPEN = addSoundsToRegistry("ration_open");
+		TAPE_MEASURE_OPEN = addSoundsToRegistry("tape_measure_open");
+		TAPE_MEASURE_CLOSE = addSoundsToRegistry("tape_measure_close");
+		TOILET_1 = addSoundsToRegistry("toilet_1");
+		TOILET_2 = addSoundsToRegistry("toilet_2");
+		TOILET_3 = addSoundsToRegistry("toilet_3");
+		URINAL = addSoundsToRegistry("urinal");
+		WC_OFF = addSoundsToRegistry("wireless_charge_off");
+		WC_ON = addSoundsToRegistry("wireless_charge_on");
+		PIANO = addSoundsToRegistry("piano");
+		COMING_OUT = addSoundsToRegistry("coming_out");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -277,6 +338,9 @@ public class SoundInit
 		HL3 = addSoundsToRegistry("hl3");
 		COOKING = addSoundsToRegistry("cooking");
 		MEMORY = addSoundsToRegistry("memory");
+		WIDE = addSoundsToRegistry("wide");
+		FRIDGE_OPEN = addSoundsToRegistry("fridge_open");
+		FRIDGE_CLOSE = addSoundsToRegistry("fridge_close");
 
 		// Plastic SoundType
 		PLASTIC_BREAK = addSoundsToRegistry("plastic_break");
@@ -306,8 +370,14 @@ public class SoundInit
 		DING_7 = addSoundsToRegistry("ding_7");
 		DING_8 = addSoundsToRegistry("ding_8");
 		DING_9 = addSoundsToRegistry("ding_9");
+		DING_10 = addSoundsToRegistry("ding_10");
 		OUTGOING_CALL = addSoundsToRegistry("outgoingcall");
 		SIT = addSoundsToRegistry("sit");
+		SIT_1 = addSoundsToRegistry("sit_1");
+		SIT_2 = addSoundsToRegistry("sit_2");
+		SIT_3 = addSoundsToRegistry("sit_3");
+		SIT_4 = addSoundsToRegistry("sit_4");
+		SIT_5 = addSoundsToRegistry("sit_5");
 		STARTCALL = addSoundsToRegistry("startcall");
 		ENDCALL = addSoundsToRegistry("endcall");
 		PHONE_ACTIVATE = addSoundsToRegistry("welcome");
@@ -319,6 +389,12 @@ public class SoundInit
 		PHONE_CRASH = addSoundsToRegistry("phone_crash");
 		PHONE_BATTERY_LOW = addSoundsToRegistry("phone_battery_low");
 		PHONE_BOOTUP = addSoundsToRegistry("minedroid_firstboot");
+		BATTERY_LOW = addSoundsToRegistry("battery_low");
+		PHONE_UNBOX = addSoundsToRegistry("phone_unbox");
+		ALERT = addSoundsToRegistry("alert");
+		NORMAL_BOOT = addSoundsToRegistry("normal_boot");
+		OOBE_BOOT = addSoundsToRegistry("oobe_startup");
+		XP_STARTUP = addSoundsToRegistry("xp_startup");
 
 		// Ringtones
 		RING_1 = addSoundsToRegistry("ring_1");
@@ -336,6 +412,16 @@ public class SoundInit
 		RING_13 = addSoundsToRegistry("ring_13");
 		RING_14 = addSoundsToRegistry("ring_14");
 		RING_15 = addSoundsToRegistry("ring_15");
+		RING_16 = addSoundsToRegistry("ring_16");
+		RING_17 = addSoundsToRegistry("ring_17");
+		RING_18 = addSoundsToRegistry("ring_18");
+		RING_19 = addSoundsToRegistry("ring_19");
+		RING_20 = addSoundsToRegistry("ring_20");
+		RING_21 = addSoundsToRegistry("ring_21");
+		RING_22 = addSoundsToRegistry("ring_22");
+		RING_23 = addSoundsToRegistry("ring_23");
+		RING_24 = addSoundsToRegistry("ring_24");
+		RING_25 = addSoundsToRegistry("ring_25");
 
 		// DTMF Phone Tones
 		DTMF_0 = addSoundsToRegistry("dtmf_0");
@@ -348,6 +434,18 @@ public class SoundInit
 		DTMF_7 = addSoundsToRegistry("dtmf_7");
 		DTMF_8 = addSoundsToRegistry("dtmf_8");
 		DTMF_9 = addSoundsToRegistry("dtmf_9");
+		
+		// Self-checkout
+		BILL_ACCEPTOR = addSoundsToRegistry("bill_acceptor");
+		COIN_SLOT = addSoundsToRegistry("coin_slot");
+		POS_CASHBACK = addSoundsToRegistry("pos_cashback");
+		POS_PAYMENT_TYPE = addSoundsToRegistry("pos_payment_type");
+		POS_SCAN = addSoundsToRegistry("pos_scan");
+		POS_SCANNER_BEEP = addSoundsToRegistry("pos_scanner_beep");
+		POS_SCANNER_MULTIBEEP = addSoundsToRegistry("pos_scanner_multibeep");
+		POS_TAKE_CARD = addSoundsToRegistry("pos_take_card");
+		POS_USE_PINPAD = addSoundsToRegistry("pos_use_pinpad");
+		POS_WELCOME = addSoundsToRegistry("pos_welcome");
 	}
 
 	private static SoundEvent addSoundsToRegistry(String soundId)
@@ -367,6 +465,7 @@ public class SoundInit
 			try
 			{
 				event.getRegistry().registerAll(SoundInit.OWO_SFX);
+				event.getRegistry().registerAll(SoundInit.WIDE);
 				event.getRegistry().registerAll(SoundInit.RZ_TROPHY);
 				event.getRegistry().registerAll(SoundInit.CSX_TROPHY);
 				event.getRegistry().registerAll(SoundInit.TLZ_TROPHY);
@@ -492,6 +591,16 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.RING_13);
 				event.getRegistry().register(SoundInit.RING_14);
 				event.getRegistry().register(SoundInit.RING_15);
+				event.getRegistry().register(SoundInit.RING_16);
+				event.getRegistry().register(SoundInit.RING_17);
+				event.getRegistry().register(SoundInit.RING_18);
+				event.getRegistry().register(SoundInit.RING_19);
+				event.getRegistry().register(SoundInit.RING_20);
+				event.getRegistry().register(SoundInit.RING_21);
+				event.getRegistry().register(SoundInit.RING_22);
+				event.getRegistry().register(SoundInit.RING_23);
+				event.getRegistry().register(SoundInit.RING_24);
+				event.getRegistry().register(SoundInit.RING_25);
 				event.getRegistry().register(SoundInit.MANHOLE_OPEN);
 				event.getRegistry().register(SoundInit.MANHOLE_CLOSE);
 				event.getRegistry().register(SoundInit.MANHOLE_BREAK);
@@ -516,6 +625,42 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.PHONE_CRASH);
 				event.getRegistry().register(SoundInit.PHONE_BATTERY_LOW);
 				event.getRegistry().register(SoundInit.PHONE_BOOTUP);
+				event.getRegistry().register(SoundInit.BATTERY_LOW);
+				event.getRegistry().register(SoundInit.CHISEL);
+				event.getRegistry().register(SoundInit.SIT_1);
+				event.getRegistry().register(SoundInit.SIT_2);
+				event.getRegistry().register(SoundInit.SIT_3);
+				event.getRegistry().register(SoundInit.SIT_4);
+				event.getRegistry().register(SoundInit.SIT_5);
+				event.getRegistry().register(SoundInit.PHONE_UNBOX);
+				event.getRegistry().register(SoundInit.RATION_OPEN);
+				event.getRegistry().register(SoundInit.TAPE_MEASURE_OPEN);
+				event.getRegistry().register(SoundInit.TAPE_MEASURE_CLOSE);
+				event.getRegistry().register(SoundInit.ALERT);
+				event.getRegistry().register(SoundInit.NORMAL_BOOT);
+				event.getRegistry().register(SoundInit.OOBE_BOOT);
+				event.getRegistry().register(SoundInit.TOILET_1);
+				event.getRegistry().register(SoundInit.TOILET_2);
+				event.getRegistry().register(SoundInit.TOILET_3);
+				event.getRegistry().register(SoundInit.URINAL);
+				event.getRegistry().register(SoundInit.XP_STARTUP);
+				event.getRegistry().register(SoundInit.WC_OFF);
+				event.getRegistry().register(SoundInit.WC_ON);
+				event.getRegistry().register(SoundInit.DING_10);
+				event.getRegistry().register(SoundInit.BILL_ACCEPTOR);
+				event.getRegistry().register(SoundInit.COIN_SLOT);
+				event.getRegistry().register(SoundInit.POS_CASHBACK);
+				event.getRegistry().register(SoundInit.POS_PAYMENT_TYPE);
+				event.getRegistry().register(SoundInit.POS_SCAN);
+				event.getRegistry().register(SoundInit.POS_SCANNER_BEEP);
+				event.getRegistry().register(SoundInit.POS_SCANNER_MULTIBEEP);
+				event.getRegistry().register(SoundInit.POS_TAKE_CARD);
+				event.getRegistry().register(SoundInit.POS_USE_PINPAD);
+				event.getRegistry().register(SoundInit.POS_WELCOME);
+				event.getRegistry().register(SoundInit.PIANO);
+				event.getRegistry().register(SoundInit.FRIDGE_OPEN);
+				event.getRegistry().register(SoundInit.FRIDGE_CLOSE);
+				event.getRegistry().register(SoundInit.COMING_OUT);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

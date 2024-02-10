@@ -2,14 +2,20 @@ package com.mesabrook.ib.items.weapons;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.config.ModConfig;
+import com.mesabrook.ib.util.handlers.PacketHandler;
+
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -49,8 +55,31 @@ public class ItemWeapon extends ItemSword implements IHasModel
 		{
 			tooltip.add(emerald.getFormattedText());
 		}
+		if(stack.getItem() == ModItems.PIANO)
+		{
+			tooltip.add(TextFormatting.RED + "Wait, where'd you get that piano?");
+		}
 		super.addInformation(stack, world, tooltip, flag);
 	}
+	
+    @Override
+    public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
+    {
+		if(stack.getItem() == ModItems.PIANO)
+		{
+			if(player.world.isRemote)
+			{
+				ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
+				packet.pos = player.getPosition();
+				packet.soundName = "piano";
+				packet.rapidSounds = false;
+				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
+				return false;
+			}
+			return false;
+		}
+		return false;
+    }
 
 	@Override
 	public void registerModels()

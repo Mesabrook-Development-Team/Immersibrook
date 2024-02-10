@@ -1,24 +1,63 @@
 package com.mesabrook.ib.init;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.mesabrook.ib.Main;
-import com.mesabrook.ib.items.*;
-import com.mesabrook.ib.items.armor.*;
-import com.mesabrook.ib.items.commerce.*;
-import com.mesabrook.ib.items.misc.*;
+import com.mesabrook.ib.items.ItemBlahaj;
+import com.mesabrook.ib.items.ItemFlagger;
+import com.mesabrook.ib.items.ItemLauncher;
+import com.mesabrook.ib.items.ItemRation;
+import com.mesabrook.ib.items.ItemSponge;
+import com.mesabrook.ib.items.ItemTechRetailBox;
+import com.mesabrook.ib.items.armor.FaceMasks;
+import com.mesabrook.ib.items.armor.FirefighterSuit;
+import com.mesabrook.ib.items.armor.Hardhat;
+import com.mesabrook.ib.items.armor.NightVisionGoggles;
+import com.mesabrook.ib.items.armor.PoliceHelmet;
+import com.mesabrook.ib.items.armor.SACA;
+import com.mesabrook.ib.items.armor.SafetyHelmet;
+import com.mesabrook.ib.items.armor.SafetyVest;
+import com.mesabrook.ib.items.armor.Vest;
+import com.mesabrook.ib.items.armor.WearableHat;
+import com.mesabrook.ib.items.commerce.ItemDebitCard;
+import com.mesabrook.ib.items.commerce.ItemMoney;
+import com.mesabrook.ib.items.commerce.ItemRegisterFluidWrapper;
+import com.mesabrook.ib.items.commerce.ItemSecurityBox;
+import com.mesabrook.ib.items.commerce.ItemShoppingBasket;
+import com.mesabrook.ib.items.commerce.ItemWallet;
+import com.mesabrook.ib.items.misc.ItemDooter;
+import com.mesabrook.ib.items.misc.ItemFirstAidKit;
+import com.mesabrook.ib.items.misc.ItemIBFood;
+import com.mesabrook.ib.items.misc.ItemMesabrookIcon;
+import com.mesabrook.ib.items.misc.ItemPhone;
+import com.mesabrook.ib.items.misc.ItemPlasticIngot;
+import com.mesabrook.ib.items.misc.ItemPresent;
+import com.mesabrook.ib.items.misc.ItemRadio;
+import com.mesabrook.ib.items.misc.ItemRawPlastic;
+import com.mesabrook.ib.items.misc.ItemRubberDuck;
+import com.mesabrook.ib.items.misc.ItemStamp;
 import com.mesabrook.ib.items.misc.ItemStamp.StampTypes;
+import com.mesabrook.ib.items.misc.ItemStampBook;
+import com.mesabrook.ib.items.misc.ItemWineBottle;
+import com.mesabrook.ib.items.misc.MiscItem;
+import com.mesabrook.ib.items.misc.SerpentBar;
+import com.mesabrook.ib.items.misc.SpecialFood;
+import com.mesabrook.ib.items.misc.ToyPopper;
 import com.mesabrook.ib.items.record.MemeRecord;
 import com.mesabrook.ib.items.tools.ItemBanHammer;
+import com.mesabrook.ib.items.tools.ItemEnderChest;
 import com.mesabrook.ib.items.tools.ItemGavel;
+import com.mesabrook.ib.items.tools.ItemIceChisel;
 import com.mesabrook.ib.items.tools.ItemManholeHook;
+import com.mesabrook.ib.items.tools.ItemTapeMeasure;
 import com.mesabrook.ib.items.weapons.ItemWeapon;
 import com.mesabrook.ib.util.ArmorMaterialRegistry;
 import com.mesabrook.ib.util.ToolMaterialRegistry;
+
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ModItems
 {
@@ -33,9 +72,11 @@ public class ModItems
 	public static final Item ALUMINUM_SOD = new ItemWeapon("aluminum_sod", ToolMaterialRegistry.SOD_ALUMINUM);
 	public static final Item ALUMINUM_SWORD = new ItemWeapon("aluminum_sword", ToolMaterialRegistry.SWORD_ALUMINUM);
 	public static final Item MANHOLE_HOOK = new ItemManholeHook("manhole_hook");
+	public static final Item ICE_CHISEL = new ItemIceChisel("ice_chisel");
 
 	// Joke Items/Tools
 	public static final Item EMERALD_SWORD = new ItemWeapon("emerald_sword", ToolMaterial.GOLD);
+	public static final Item PIANO = new ItemWeapon("piano", ToolMaterialRegistry.ZOE_CANE_MAT);
 
 	// Toys
 	public static final Item POPPER_RED = new ToyPopper("popper_red", 300);
@@ -127,6 +168,7 @@ public class ModItems
 	public static final Item DISC_RITZ = new MemeRecord("disc_ritz", SoundInit.RITZ);
 	public static final Item DISC_HL3 = new MemeRecord("disc_pumpkin", SoundInit.HL3);
 	public static final Item DISC_MEMORY = new MemeRecord("memory", SoundInit.MEMORY);
+	public static final Item WIDE_DISC = new MemeRecord("wide_record", SoundInit.WIDE); 
 
 	// First Aid Kit
 	public static final Item FIRST_AID_KIT = new ItemFirstAidKit("first_aid", Main.IMMERSIBROOK_MAIN);
@@ -158,6 +200,25 @@ public class ModItems
 	// Branded Vests
 	public static final Item IRW_VEST = new SafetyVest("irw_vest", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.IRW_SAFETY_VEST_MAT, EntityEquipmentSlot.CHEST);
 	public static final Item NC_VEST = new SafetyVest("yellow_vest_nc", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.YELLOW_VEST_NC, EntityEquipmentSlot.CHEST);
+
+	// Conductor's Jackets
+	public static final Item CU_BL_VEST = new SafetyVest("conductors_jacket_blue", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.CU_BL_VEST, EntityEquipmentSlot.CHEST);
+	public static final Item CU_BLC_VEST = new SafetyVest("conductors_jacket_black", Main.IMMERSIBROOK_MAIN, ArmorMaterialRegistry.CU_BLC_VEST, EntityEquipmentSlot.CHEST);
+
+	// Conductor's Pants
+	public static final Item CU_BL_PANTS = new FirefighterSuit("conductors_pants_blue", ArmorMaterialRegistry.CU_BL_PANTS, EntityEquipmentSlot.LEGS, 1);
+	public static final Item CU_BLC_PANTS = new FirefighterSuit("conductors_pants_black", ArmorMaterialRegistry.CU_BLC_PANTS, EntityEquipmentSlot.LEGS, 1);
+
+	// Engineer's Overalls
+	public static final Item ENGINEERS_OVERALLS = new FirefighterSuit("engineers_overalls", ArmorMaterialRegistry.EO, EntityEquipmentSlot.LEGS, 1);
+
+	// Conductor and Engineer Hats
+	public static final Item CU_BL_HAT = new FirefighterSuit("conductors_hat_blue", ArmorMaterialRegistry.CU_BL_HAT, EntityEquipmentSlot.HEAD, 1);
+	public static final Item CU_BLC_HAT = new FirefighterSuit("conductors_hat_black", ArmorMaterialRegistry.CU_BLC_HAT, EntityEquipmentSlot.HEAD, 1);
+	public static final Item E_HAT = new FirefighterSuit("engineers_hat", ArmorMaterialRegistry.EO_HAT, EntityEquipmentSlot.HEAD, 1);
+
+	// Denim crafting item
+	public static final Item DENIM = new MiscItem("denim", 64, Main.IMMERSIBROOK_MAIN);
 
 	// Cooling Vest
 	public static final Item COOLING_VEST = new SACA("cooling_vest", ArmorMaterialRegistry.COOLING_VEST, EntityEquipmentSlot.CHEST);
@@ -236,8 +297,11 @@ public class ModItems
 	public static final Item CANDY_PINK_LEMONADE = new ItemIBFood("pl_candy", 16, 0,8, 10, false);
 	public static final Item PINK_LEMONADE_DRINK = new ItemIBFood("pink_lemonade_drink", 1, 0, 5, 10, false);
 	public static final Item SPARKLING_PINK_LEMONADE = new ItemIBFood("sparkling_pink_lemonade", 1, 0, 10, 12, false);
+	public static final Item WATER_SACHET = new ItemIBFood("water_sachet", 15, 0, 0, 0, false);
 	public static final Item SHITTLES = new ItemIBFood("shittles", 16, 0, 5, 12, false);
 	public static final Item TASTYJUICE = new ItemIBFood("tastyjuice", 1, 0, 8, 15, false);
+	public static final Item RAW_CHICKEN_NUGGET = new ItemIBFood("raw_chicken_nugget", 64, 0, 5, 10, true);
+	public static final Item CHICKEN_NUGGET = new ItemIBFood("cooked_chicken_nugget", 64, 0, 8, 16, true);
 
 	// Non-Edible Candy Items
 	public static final Item RAW_CANDY_RED = new MiscItem("raw_candy_red", 64, Main.IMMERSIBROOK_MAIN);
@@ -406,27 +470,144 @@ public class ModItems
 	public static final Item WALLET_UNI = new ItemWallet("wallet_unisex");
 	public static final Item WALLET_MAS = new ItemWallet("wallet_masculine");
 	public static final Item WALLET_FEM = new ItemWallet("wallet_feminine");
-	public static final Item DEBIT_CARD_RED = new ItemDebitCard("card_red");
-	public static final Item DEBIT_CARD_GREEN = new ItemDebitCard("card_green");
-	public static final Item DEBIT_CARD_BLUE = new ItemDebitCard("card_blue");
+	public static final Item DEBIT_CARD_RED = new ItemDebitCard("card_red", ItemDebitCard.EnumDebitCardType.Business);
+	public static final Item DEBIT_CARD_GREEN = new ItemDebitCard("card_green", ItemDebitCard.EnumDebitCardType.Government);
+	public static final Item DEBIT_CARD_BLUE = new ItemDebitCard("card_blue", ItemDebitCard.EnumDebitCardType.Personal);
+	public static final Item SECURITY_BOX = new ItemSecurityBox();
+	public static final Item REGISTER_FLUID_WRAPPER = new ItemRegisterFluidWrapper();
+	
 
 	// Mesabrookian Dollar Items - Banknotes
-	public static final Item ONE_DOLLAR = new ItemMoney("one_dollar", 100);
-	public static final Item FIVE_DOLLARS = new ItemMoney("five_dollars", 500);
-	public static final Item TEN_DOLLARS = new ItemMoney("ten_dollars", 10000);
-	public static final Item TWENTY_DOLLARS = new ItemMoney("twenty_dollars", 20000);
-	public static final Item FIFTY_DOLLARS = new ItemMoney("fifty_dollars", 50000);
-	public static final Item ONE_HUNDRED_DOLLARS = new ItemMoney("one_hundred_dollars", 100000);
+	public static final Item ONE_DOLLAR = new ItemMoney("one_dollar", 100, ItemMoney.MoneyType.Bill);
+	public static final Item FIVE_DOLLARS = new ItemMoney("five_dollars", 500, ItemMoney.MoneyType.Bill);
+	public static final Item TEN_DOLLARS = new ItemMoney("ten_dollars", 1000, ItemMoney.MoneyType.Bill);
+	public static final Item TWENTY_DOLLARS = new ItemMoney("twenty_dollars", 2000, ItemMoney.MoneyType.Bill);
+	public static final Item FIFTY_DOLLARS = new ItemMoney("fifty_dollars", 5000, ItemMoney.MoneyType.Bill);
+	public static final Item ONE_HUNDRED_DOLLARS = new ItemMoney("one_hundred_dollars", 10000, ItemMoney.MoneyType.Bill);
 
 	// Mesabrookian Dollar Items - Coinage
-	public static final Item PENNY = new ItemMoney("penny", 1);
-	public static final Item FIVE_CENTS = new ItemMoney("five_cents", 5);
-	public static final Item TEN_CENTS = new ItemMoney("ten_cents", 10);
-	public static final Item TWENTY_FIVE_CENTS = new ItemMoney("twenty_five_cents", 25);
-	public static final Item DOLLAR_COIN = new ItemMoney("dollar_coin", 100);
+	public static final Item PENNY = new ItemMoney("penny", 1, ItemMoney.MoneyType.Coin);
+	public static final Item FIVE_CENTS = new ItemMoney("five_cents", 5, ItemMoney.MoneyType.Coin);
+	public static final Item TEN_CENTS = new ItemMoney("ten_cents", 10, ItemMoney.MoneyType.Coin);
+	public static final Item TWENTY_FIVE_CENTS = new ItemMoney("twenty_five_cents", 25, ItemMoney.MoneyType.Coin);
+	public static final Item DOLLAR_COIN = new ItemMoney("dollar_coin", 100, ItemMoney.MoneyType.Coin);
 
 	// Blahaj
 	public static final Item BLAHAJ = new ItemBlahaj("blahaj");
 	public static final Item GRAY_BLAHAJ = new ItemBlahaj("gray_blahaj");
 	public static final Item BREAD_PILLOW = new ItemBlahaj("bread_pillow");
+	public static final Item ISOPOD = new ItemBlahaj("isopod");
+
+	// SIM
+	public static final Item SIM_CARD = new MiscItem("sim_card", 1, Main.IMMERSIBROOK_MAIN);
+
+	// Flagger
+	public static final Item FLAGGER_STOP = new ItemFlagger("flagger_stop");
+	public static final Item FLAGGER_SLOW = new ItemFlagger("flagger_slow");
+
+	// Minedroid retail boxes uwu
+	public static final Item BOX_WHITE = new ItemTechRetailBox("phone_box_white");
+	public static final Item BOX_ORANGE = new ItemTechRetailBox("phone_box_orange");
+	public static final Item BOX_MAGENTA = new ItemTechRetailBox("phone_box_magenta");
+	public static final Item BOX_YELLOW = new ItemTechRetailBox("phone_box_yellow");
+	public static final Item BOX_LIME = new ItemTechRetailBox("phone_box_lime");
+	public static final Item BOX_PINK = new ItemTechRetailBox("phone_box_pink");
+	public static final Item BOX_GRAY = new ItemTechRetailBox("phone_box_gray");
+	public static final Item BOX_SILVER = new ItemTechRetailBox("phone_box_silver");
+	public static final Item BOX_CYAN = new ItemTechRetailBox("phone_box_cyan");
+	public static final Item BOX_LBLUE = new ItemTechRetailBox("phone_box_lblue");
+	public static final Item BOX_PURPLE = new ItemTechRetailBox("phone_box_purple");
+	public static final Item BOX_BROWN = new ItemTechRetailBox("phone_box_brown");
+	public static final Item BOX_GREEN = new ItemTechRetailBox("phone_box_green");
+	public static final Item BOX_RED = new ItemTechRetailBox("phone_box_red");
+	public static final Item BOX_BLACK = new ItemTechRetailBox("phone_box_black");
+	public static final Item BOX_BLUE = new ItemTechRetailBox("phone_box_blue");
+	public static final Item OT_CHARGER_BOX = new ItemTechRetailBox("ot_charger_box");
+	public static final Item OT_CHARGER = new MiscItem("ot_charger", 1, Main.IMMERSIBROOK_MAIN);
+	public static final Item SIM_BOX = new ItemTechRetailBox("sim_box");
+
+	// CDM Retail Boxes - Laptops
+	public static final Item LAPTOP_BOX_BLACK = new ItemTechRetailBox("laptop_box_black");
+	public static final Item LAPTOP_BOX_WHITE = new ItemTechRetailBox("laptop_box_white");
+	public static final Item LAPTOP_BOX_ORANGE = new ItemTechRetailBox("laptop_box_orange");
+	public static final Item LAPTOP_BOX_MAGENTA = new ItemTechRetailBox("laptop_box_magenta");
+	public static final Item LAPTOP_BOX_YELLOW = new ItemTechRetailBox("laptop_box_yellow");
+	public static final Item LAPTOP_BOX_LIME = new ItemTechRetailBox("laptop_box_lime");
+	public static final Item LAPTOP_BOX_PINK = new ItemTechRetailBox("laptop_box_pink");
+	public static final Item LAPTOP_BOX_GRAY = new ItemTechRetailBox("laptop_box_gray");
+	public static final Item LAPTOP_BOX_SILVER = new ItemTechRetailBox("laptop_box_silver");
+	public static final Item LAPTOP_BOX_LBLUE = new ItemTechRetailBox("laptop_box_lblue");
+	public static final Item LAPTOP_BOX_CYAN = new ItemTechRetailBox("laptop_box_cyan");
+	public static final Item LAPTOP_BOX_BLUE = new ItemTechRetailBox("laptop_box_blue");
+	public static final Item LAPTOP_BOX_PURPLE = new ItemTechRetailBox("laptop_box_purple");
+	public static final Item LAPTOP_BOX_BROWN = new ItemTechRetailBox("laptop_box_brown");
+	public static final Item LAPTOP_BOX_GREEN = new ItemTechRetailBox("laptop_box_green");
+	public static final Item LAPTOP_BOX_RED = new ItemTechRetailBox("laptop_box_red");
+
+	// CDM Retail Boxes - Routers
+	public static final Item ROUTER_BOX_WHITE = new ItemTechRetailBox("router_box_white");
+	public static final Item ROUTER_BOX_ORANGE = new ItemTechRetailBox("router_box_orange");
+	public static final Item ROUTER_BOX_MAGENTA = new ItemTechRetailBox("router_box_magenta");
+	public static final Item ROUTER_BOX_LBLUE = new ItemTechRetailBox("router_box_lblue");
+	public static final Item ROUTER_BOX_YELLOW = new ItemTechRetailBox("router_box_yellow");
+	public static final Item ROUTER_BOX_PINK = new ItemTechRetailBox("router_box_pink");
+	public static final Item ROUTER_BOX_GRAY = new ItemTechRetailBox("router_box_gray");
+	public static final Item ROUTER_BOX_SILVER = new ItemTechRetailBox("router_box_silver");
+	public static final Item ROUTER_BOX_LIME = new ItemTechRetailBox("router_box_lime");
+	public static final Item ROUTER_BOX_CYAN = new ItemTechRetailBox("router_box_cyan");
+	public static final Item ROUTER_BOX_PURPLE = new ItemTechRetailBox("router_box_purple");
+	public static final Item ROUTER_BOX_BLUE = new ItemTechRetailBox("router_box_blue");
+	public static final Item ROUTER_BOX_BROWN = new ItemTechRetailBox("router_box_brown");
+	public static final Item ROUTER_BOX_GREEN = new ItemTechRetailBox("router_box_green");
+	public static final Item ROUTER_BOX_RED = new ItemTechRetailBox("router_box_red");
+	public static final Item ROUTER_BOX_BLACK = new ItemTechRetailBox("router_box_black");
+
+	// CDM Retail Boxes - Printers
+	public static final Item PRINTER_BOX_WHITE = new ItemTechRetailBox("printer_box_white");
+	public static final Item PRINTER_BOX_ORANGE = new ItemTechRetailBox("printer_box_orange");
+	public static final Item PRINTER_BOX_MAGENTA = new ItemTechRetailBox("printer_box_magenta");
+	public static final Item PRINTER_BOX_LBLUE = new ItemTechRetailBox("printer_box_lblue");
+	public static final Item PRINTER_BOX_YELLOW = new ItemTechRetailBox("printer_box_yellow");
+	public static final Item PRINTER_BOX_PINK = new ItemTechRetailBox("printer_box_pink");
+	public static final Item PRINTER_BOX_GRAY = new ItemTechRetailBox("printer_box_gray");
+	public static final Item PRINTER_BOX_SILVER = new ItemTechRetailBox("printer_box_silver");
+	public static final Item PRINTER_BOX_LIME = new ItemTechRetailBox("printer_box_lime");
+	public static final Item PRINTER_BOX_CYAN = new ItemTechRetailBox("printer_box_cyan");
+	public static final Item PRINTER_BOX_PURPLE = new ItemTechRetailBox("printer_box_purple");
+	public static final Item PRINTER_BOX_BLUE = new ItemTechRetailBox("printer_box_blue");
+	public static final Item PRINTER_BOX_BROWN = new ItemTechRetailBox("printer_box_brown");
+	public static final Item PRINTER_BOX_GREEN = new ItemTechRetailBox("printer_box_green");
+	public static final Item PRINTER_BOX_RED = new ItemTechRetailBox("printer_box_red");
+	public static final Item PRINTER_BOX_BLACK = new ItemTechRetailBox("printer_box_black");
+
+	// Rations
+	public static final Item ES_RATION = new ItemRation("ration_1");
+	public static final Item RS_RATION = new ItemRation("ration_2");
+
+	// Tape Measure
+	public static final Item TAPE_MEASURE = new ItemTapeMeasure("tape_measure");
+	public static final Item TAPE_CRAFTING = new MiscItem("tape_roll_measure", 64, Main.IMMERSIBROOK_MAIN);
+
+	// Portable Ender Chest
+	public static final Item PORTABLE_ENDER_CHEST = new ItemEnderChest("portable_ender_chest");
+
+	// Shopping Basket Item
+	public static final Item SHOPPING_BASKET = new ItemShoppingBasket();
+
+	// More food
+	public static final Item SPAM = new SpecialFood("spam", 5, 4F, false);
+
+	// Item Launcher
+	public static final Item ITEM_LAUNCHER = new ItemLauncher("item_launcher");
+
+	// Retail Crafting Item
+	public static final Item PEGHOOK = new MiscItem("peghook", 16, Main.IMMERSIBROOK_MAIN);
+
+	// Smartphone Battery
+	public static final Item SMARTPHONE_BATTERY = new MiscItem("smartphone_battery", 1, Main.IMMERSIBROOK_MAIN);
+	public static final Item SD_CARD = new MiscItem("sd_card", 1, Main.IMMERSIBROOK_MAIN);
+	
+	// Technical Engineering Item
+	public static final Item TECH_BLOCK = new MiscItem("technical_engineering_block", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item PLEATHER = new MiscItem("synthetic_leather", 64, Main.IMMERSIBROOK_MAIN);
 }

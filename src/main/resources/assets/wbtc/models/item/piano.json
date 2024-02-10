@@ -1,0 +1,23 @@
+{
+	"credit": "Made by RavenholmZombie using Blockbench",
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "wbtc:items/keyboard"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0, 0, 90],
+			"translation": [0, 6.5, 0]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0, 0, 90],
+			"translation": [0, 6.5, 0]
+		},
+		"firstperson_righthand": {
+			"rotation": [133.57, 7.72, -86.25]
+		},
+		"firstperson_lefthand": {
+			"rotation": [130.98, 6.94, -79.57]
+		}
+	}
+}

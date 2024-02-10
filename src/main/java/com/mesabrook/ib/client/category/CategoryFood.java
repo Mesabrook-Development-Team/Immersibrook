@@ -10,7 +10,7 @@ public class CategoryFood extends AbstractCategory
 	
 	public CategoryFood()
 	{
-		super("im.filter.food", new ItemStack(ModBlocks.CUBE_APPLES));
+		super("im.filter.food", new ItemStack(ModItems.CHICKEN_NUGGET));
 	}
 
 	@Override
@@ -106,6 +106,9 @@ public class CategoryFood extends AbstractCategory
 		add(ModItems.PLAYER_MEAT);
 		add(ModItems.PLAYER_MEAT_COOKED);
 		add(ModItems.TASTYJUICE);
+		add(ModItems.RAW_CHICKEN_NUGGET);
+		add(ModItems.CHICKEN_NUGGET);
+		add(ModItems.SPAM);
 
 		// Food Crafting Items
 		add(ModItems.DYE_RED);
@@ -133,6 +136,5 @@ public class CategoryFood extends AbstractCategory
 		add(ModItems.RAW_CANDY_RB);
 		add(ModItems.RAW_CANDY_CHOC);
 		add(ModItems.RAW_CANDY_PL);
-
 	}
 }

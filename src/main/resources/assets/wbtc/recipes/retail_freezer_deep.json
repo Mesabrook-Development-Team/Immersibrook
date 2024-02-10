@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB",
+	"W W",
+	"WTW"
+  ],
+  "key": {
+    "W": {
+      "type": "forge:ore_dict",
+	  "ore": "plateIron"
+    },
+    "B": {
+	  "item": "wbtc:black_plastic"
+    },
+    "T": {
+	  "item": "wbtc:technical_engineering_block"
+    }
+  },
+  "result": {
+    "item": "wbtc:retail_freezer_deep",
+    "count": 1
+  }
+}

@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "G  ",
+		"SSS",
+		"BBB"
+    ],
+    "key":
+    {
+        "S":
+        {
+            "type": "forge:ore_dict",
+            "ore": "itemSilverPlastic"
+        },
+        "G":
+        {
+            "type": "forge:ore_dict",
+            "ore": "itemGreenPlastic"
+        },
+        "B":
+        {
+            "type": "forge:ore_dict",
+            "ore": "itemGrayPlastic"
+        }
+    },
+    "result":
+    {
+        "item": "wbtc:sco_bagging",
+        "count": 1
+    }
+}

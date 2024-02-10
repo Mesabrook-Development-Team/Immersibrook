@@ -1,9 +1,26 @@
 package com.mesabrook.ib.util;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiConfirmOpenLink;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.net.*;
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 /**
 ** Immersibrook Utilities Class
@@ -11,6 +28,36 @@ import java.net.*;
 
 public class ModUtils 
 {
+	// Default AABB
+	public static final AxisAlignedBB DEFAULT_AABB = new AxisAlignedBB(0D, 0D, 0D, 1D, 1D, 1D);
+	public static final AxisAlignedBB DOUBLE_AABB = new AxisAlignedBB(0D, 0D, 0D, 1D, 2D, 1D);
+
+	public static void dropTileEntityInventoryItems(World world, BlockPos pos, TileEntity te)
+	{
+		if(te instanceof ISimpleInventory)
+		{
+			dropInventoryItems(world, pos, (ISimpleInventory) te);
+		}
+		if(te instanceof IInventory)
+		{
+			InventoryHelper.dropInventoryItems(world, pos, (IInventory) te);
+		}
+	}
+
+	public static void dropInventoryItems(World world, BlockPos pos, ISimpleInventory inv)
+	{
+		for(int i = 0; i < inv.getSize(); i++)
+		{
+			ItemStack stack = inv.getItem(i);
+
+			if(stack != null && !stack.isEmpty())
+			{
+				InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+			}
+		}
+	}
+
+
 	/**
 	 * A basic handler that allows us to open the user's default browser and navigate to the provided URL.
 	 *
@@ -27,6 +74,61 @@ public class ModUtils
 		catch(Exception e)
 		{
 			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * An extension of openWebLink that funnels the request through Minecraft's built-in External Website confirmation GUI.
+	 *
+	 * NOTE: THIS CAN ONLY BE RUN ON THE CLIENT SIDE, RUNNING IT ON THE SERVER SIDE WILL CAUSE CRASHING!
+	 * USE A PACKET IF NECESSARY TO USE THIS UTILITY ON THE SERVER SIDE.
+	 *
+	 * @param urlIn
+	 */
+	@SideOnly(Side.CLIENT)
+	public static void openWebLinkThroughMC(String urlIn)
+	{
+		try
+		{
+			GuiConfirmOpenLink guiConfirmOpenLink = new GuiConfirmOpenLink(Minecraft.getMinecraft().currentScreen, urlIn, 1, true)
+			{
+				@Override
+				protected void actionPerformed(GuiButton button) throws IOException
+				{
+					if (button.id == 0)
+					{
+						// Handle Yes button click
+						try
+						{
+							ModUtils.openWebLink(new URI(urlIn));
+						}
+						catch (URISyntaxException e)
+						{
+							return;
+						}
+						Minecraft.getMinecraft().displayGuiScreen(null);
+					}
+					else if (button.id == 1)
+					{
+						// Handle No button click
+						Minecraft.getMinecraft().displayGuiScreen(null);
+					}
+					else if (button.id == 2)
+					{
+						// Handle Copy to Clipboard button click
+						StringSelection stringSelection = new StringSelection(urlIn);
+						Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+						clipboard.setContents(stringSelection, null);
+						Minecraft.getMinecraft().displayGuiScreen(null);
+						Minecraft.getMinecraft().player.sendMessage(new TextComponentString("Link copied to clipboard."));
+					}
+				}
+			};
+			Minecraft.getMinecraft().displayGuiScreen(guiConfirmOpenLink);
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
 		}
 	}
 

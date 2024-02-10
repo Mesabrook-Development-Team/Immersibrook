@@ -125,5 +125,8 @@ public class CategoryResources extends AbstractCategory
 		add(ModItems.REFLECTIVE_YELLOW);
 		add(ModItems.PLASTIC_PLATE);
 		add(ModItems.PLASTIGLASS_SHEET);
+		add(ModItems.TAPE_CRAFTING);
+		add(ModItems.DENIM);
+		add(ModItems.PEGHOOK);
 	}
 }

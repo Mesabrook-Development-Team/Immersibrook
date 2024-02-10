@@ -3,6 +3,7 @@ package com.mesabrook.ib.blocks.gui.telecom;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.items.misc.ItemPhone.NBTData.Contact;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.saveData.PhoneLogData.LogData;
@@ -34,7 +35,7 @@ public class GuiPhoneConferenceDetails extends GuiPhoneBase {
 
 	@Override
 	protected String getInnerTextureFileName() {
-		return "app_screen.png";
+		return phoneStackData.getIconTheme() + "/app_screen.png";
 	}
 	
 	@Override
@@ -131,7 +132,7 @@ public class GuiPhoneConferenceDetails extends GuiPhoneBase {
 			contact = phoneStackData.getContactByPhoneNumber(strPhoneNumber);
 			if (contact != null)
 			{
-				headRL = GetHeadUtil.getHeadResourceLocation(contact.getUsername());
+				headRL = GetHeadUtil.getHeadResourceLocation(contact.getUsername(), phoneStackData.getSkinFetchingEngine());
 			}
 		
 			Minecraft.getMinecraft().getTextureManager().bindTexture(headRL);

@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GW ",
+    "LW ",
+    "LLL"
+  ],
+  "key": {
+    "G": 
+	{
+        "type":"forge:ore_dict",
+		"ore": "ingotGold"
+    },
+    "W": 
+	{
+		"item": "minecraft:wool",
+		"data": 11
+    },
+    "L": 
+	{
+		"item": "minecraft:log2",
+		"data": 1
+    }
+  },
+  "result": {
+    "item": "wbtc:throne_gov",
+    "count": 1
+  }
+}
