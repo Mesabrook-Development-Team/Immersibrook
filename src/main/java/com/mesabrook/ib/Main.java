@@ -46,6 +46,7 @@ public class Main
     public static Logger logger;
     public static boolean THERCMOD = false;
     public static boolean DYNMAP = false;
+    public static boolean XNET = false;
     public static final Random rand = new Random();
     public IndependentTimer timer;
     
