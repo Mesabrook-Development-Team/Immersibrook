@@ -85,12 +85,15 @@ public class ItemWallet extends Item implements IHasModel
     @Override
     public void readNBTShareTag(ItemStack stack, NBTTagCompound nbt) {
     	super.readNBTShareTag(stack, nbt);
-    	if (!nbt.hasKey("inventory") || !stack.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null))
+    	if (nbt != null)
     	{
-    		return;
+	    	if (!nbt.hasKey("inventory") || !stack.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null))
+	    	{
+	    		return;
+	    	}
+	    	
+	    	IItemHandler handler = stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+	    	CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.readNBT(handler, null, nbt.getTag("inventory"));
     	}
-    	
-    	IItemHandler handler = stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-    	CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.readNBT(handler, null, nbt.getTag("inventory"));
     }
 }
