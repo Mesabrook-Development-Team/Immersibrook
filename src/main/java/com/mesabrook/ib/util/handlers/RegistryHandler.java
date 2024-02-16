@@ -22,6 +22,7 @@ import com.mesabrook.ib.events.SeatEvent;
 import com.mesabrook.ib.init.CDMApps;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.init.XNetAPI;
 import com.mesabrook.ib.items.commerce.ItemDebitCard;
 import com.mesabrook.ib.items.commerce.ItemRegisterFluidWrapper;
 import com.mesabrook.ib.items.commerce.ItemSecurityBox;
@@ -142,6 +143,12 @@ public class RegistryHandler
 			Main.logger.info("[" + Reference.MODNAME + "] Dynmap Detected.");
 		}
 		
+		Main.XNET = Loader.isModLoaded("xnet");
+		if (Main.XNET)
+		{
+			Main.logger.info("[" + Reference.MODNAME + "] XNet Detected.");
+		}
+		
 		PacketHandler.registerMessages();
 		Triggers.init();
 		CapabilityEmployee.init();
@@ -186,6 +193,11 @@ public class RegistryHandler
 		if (Main.DYNMAP)
 		{
 			DynmapAPIListener.register();
+		}
+		
+		if (Main.XNET)
+		{
+			XNetAPI.registerConnectables();
 		}
 	}
 	

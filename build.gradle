@@ -46,6 +46,11 @@ minecraft {
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 
+repositories
+{
+	maven { url = "https://cursemaven.com" }
+}
+
 dependencies {
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
@@ -71,6 +76,8 @@ dependencies {
     compile "org.apache.httpcomponents:httpclient:4.3.3"
 	compile "org.apache.httpcomponents:httpcore:4.3.2"
 	compile "commons-logging:commons-logging:1.1.3"
+	provided "curse.maven:xnet-260912:2745852"
+	provided "curse.maven:mcjtylib-233105:2745846"
 	provided fileTree(dir:'deps',include:'*.jar')
 }
 

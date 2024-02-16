@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "BBB",
+		"R R",
+		"RRR"
+    ],
+    "key":
+    {
+        "R":
+        {
+            "type": "forge:ore_dict",
+            "ore": "stickIron"
+        },
+        "B":
+        {
+			"item": "wbtc:black_plastic"
+        }
+    },
+    "result":
+    {
+        "item": "wbtc:security_box",
+        "count": 6
+    }
+}
