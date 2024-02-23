@@ -9,6 +9,8 @@ import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SpecialBezelRandomizer;
 import com.mesabrook.ib.util.config.ModConfig;
+
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -68,22 +70,56 @@ public class ItemPhone extends Item implements IHasModel {
 		if(stackData.getPhoneNumberString() != null)
 		{
 			phoneNumber = GuiPhoneBase.getFormattedPhoneNumber(stackData.getPhoneNumberString());
-			tooltip.add(TextFormatting.GREEN + phoneNumber);
+			if(GuiScreen.isShiftKeyDown())
+			{
+				tooltip.add(TextFormatting.GRAY + phoneNumber);
 
-			if(stackData.getBatteryLevel() <= 100)
-			{
-				tooltip.add(TextFormatting.GRAY + "Battery: " + stackData.getBatteryLevel() + " Flux");
-				tooltip.add(TextFormatting.GRAY + "Phone battery is low. Recharge soon to avoid interruptions.");
-			}
-			else if(stackData.getBatteryLevel() <= 0)
-			{
-				tooltip.add(TextFormatting.RED + "Battery: " + stackData.getBatteryLevel() + " Flux");
-				tooltip.add(TextFormatting.RED + "Phone battery is depleted. Recharge required.");
+				if(stackData.getBatteryLevel() <= 100)
+				{
+					tooltip.add(TextFormatting.GRAY + "Battery: " + stackData.getBatteryLevel() + " Flux");
+					tooltip.add(TextFormatting.GRAY + "Phone battery is low. Recharge soon to avoid interruptions.");
+				}
+				else
+				{
+					tooltip.add(TextFormatting.GRAY + "Battery: " + stackData.getBatteryLevel() + " Flux");
+				}
+				
+				if(stackData.getBatteryLevel() <= 0)
+				{
+					tooltip.add(TextFormatting.RED + "Battery: " + stackData.getBatteryLevel() + " Flux");
+					tooltip.add(TextFormatting.RED + "Phone battery is depleted. Recharge required.");
+				}
 			}
 			else
 			{
-				tooltip.add(TextFormatting.AQUA + "Battery: " + stackData.getBatteryLevel() + " Flux");
+				tooltip.add(TextFormatting.YELLOW + "Press [SHIFT] for more info.");
 			}
+			
+			if(stackData.debugMode)
+			{
+				if(GuiScreen.isCtrlKeyDown())
+				{
+					tooltip.add(TextFormatting.BOLD + "Debug Information for " + stack.getDisplayName());
+					tooltip.add("");
+					tooltip.add(TextFormatting.GRAY + "Service Number: " + phoneNumber);
+					tooltip.add(TextFormatting.GRAY + "Carrier: MB_BELL_1G");
+					tooltip.add(TextFormatting.GRAY + "OS: Minedroid");
+					tooltip.add(TextFormatting.GRAY + "OS Version: " + Reference.MINEDROID_VERSION);
+					tooltip.add(TextFormatting.GRAY + "Security: " + stackData.getSecurityStrategy().toString());
+					tooltip.add("");
+					tooltip.add(TextFormatting.GRAY + "OS Theme: " + stackData.getIconTheme());
+					tooltip.add(TextFormatting.GRAY + "LS: " + stackData.getLockBackground());
+					tooltip.add(TextFormatting.GRAY + "HS: " + stackData.getHomeBackground());
+					tooltip.add(TextFormatting.GRAY + "Ringtone: " + stackData.getRingTone());
+					tooltip.add(TextFormatting.GRAY + "CT: " + stackData.getChatTone());
+				}
+				else
+				{
+					tooltip.add(TextFormatting.YELLOW + "Press [CTRL] for debug info.");
+				}
+				
+			}
+			
 		}
 		else
 		{

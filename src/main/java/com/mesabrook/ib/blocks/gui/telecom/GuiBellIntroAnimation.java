@@ -90,6 +90,10 @@ public class GuiBellIntroAnimation extends GuiPhoneBase
             {
                 soundPacket.soundName = "xp_startup";
             }
+            else if(phoneStackData.getIconTheme().contains("aero"))
+            {
+                soundPacket.soundName = "aero_startup";
+            }
             else
             {
                 soundPacket.soundName = "normal_boot";

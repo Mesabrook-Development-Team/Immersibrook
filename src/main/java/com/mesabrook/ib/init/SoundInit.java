@@ -174,6 +174,7 @@ public class SoundInit
 	public static final SoundEvent NORMAL_BOOT;
 	public static final SoundEvent OOBE_BOOT;
 	public static final SoundEvent XP_STARTUP;
+	public static final SoundEvent AERO_STARTUP;
 
 	// Ringtones
 	public static final SoundEvent RING_1;
@@ -395,6 +396,7 @@ public class SoundInit
 		NORMAL_BOOT = addSoundsToRegistry("normal_boot");
 		OOBE_BOOT = addSoundsToRegistry("oobe_startup");
 		XP_STARTUP = addSoundsToRegistry("xp_startup");
+		AERO_STARTUP = addSoundsToRegistry("aero_startup");
 
 		// Ringtones
 		RING_1 = addSoundsToRegistry("ring_1");
@@ -661,6 +663,7 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.FRIDGE_OPEN);
 				event.getRegistry().register(SoundInit.FRIDGE_CLOSE);
 				event.getRegistry().register(SoundInit.COMING_OUT);
+				event.getRegistry().register(SoundInit.AERO_STARTUP);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

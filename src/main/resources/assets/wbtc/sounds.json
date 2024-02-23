@@ -6,6 +6,13 @@
 			"stream": true
 		}]
 	},
+	"aero_startup": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:aero_startup",
+			"stream": true
+		}]
+	},
 	"coming_out": {
 		"category": "master",
 		"sounds": [{
