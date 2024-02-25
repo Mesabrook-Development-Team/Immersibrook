@@ -66,11 +66,6 @@ public class Pillar extends Block implements IHasModel
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess world, BlockPos pos)
 	{
-		if(state.getBlock() == ModBlocks.CELL_TOWER || state.getBlock() == ModBlocks.CELL_TOWER_RED)
-		{
-			AxisAlignedBB AABB = ModUtils.getPixelatedAABB(2, 0, 2, 14, 16.25, 14);
-			return AABB;
-		}
 		AxisAlignedBB AABB = this.CORE;
 		return AABB;
 	}
