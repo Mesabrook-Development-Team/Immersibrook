@@ -1,6 +1,7 @@
 package com.mesabrook.ib.blocks;
 
 import com.mesabrook.ib.Main;
+import com.mesabrook.ib.blocks.sco.BlockScanner;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.items.tools.ItemManholeHook;
@@ -85,7 +86,7 @@ public class ImmersiblockRotational extends Block implements IHasModel
     @Override
     public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos)
     {
-        if(blockState.getBlock() == ModBlocks.SCO_BAGGING)
+        if(blockState.getBlock().getUnlocalizedName().contains("bagging"))
         {
             return new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 1.0D);
         }
@@ -209,11 +210,11 @@ public class ImmersiblockRotational extends Block implements IHasModel
             {
                 tooltip.add(TextFormatting.YELLOW + "The brain of the Self-Checkout system.");
             }
-            if(this == ModBlocks.SCO_SCANNER)
+            if(this.getUnlocalizedName().contains("scanner"))
             {
                 tooltip.add(TextFormatting.YELLOW + "'Please scan your items and place them in the bagging area.'");
             }
-            if(this == ModBlocks.SCO_BAGGING)
+            if(this.getUnlocalizedName().contains("bagging"))
             {
                 tooltip.add(TextFormatting.YELLOW + "The bagging area.");
             }

@@ -14,6 +14,7 @@ import com.mesabrook.ib.blocks.BlockColoredQuartz;
 import com.mesabrook.ib.blocks.BlockColoredStone;
 import com.mesabrook.ib.blocks.BlockColoredStoneBricks;
 import com.mesabrook.ib.blocks.BlockColumn;
+import com.mesabrook.ib.blocks.BlockDeskBell;
 import com.mesabrook.ib.blocks.BlockDoorBase;
 import com.mesabrook.ib.blocks.BlockFakeLight;
 import com.mesabrook.ib.blocks.BlockFluidMeter;
@@ -1232,8 +1233,16 @@ public class ModBlocks
 
 	// Self-Checkout Blocks
 	public static final Block SCO_POS = new BlockRegister();
-	public static final Block SCO_SCANNER = new BlockScanner();
+	public static final Block SCO_SCANNER = new BlockScanner("sco_scanner");
+	public static final Block SCO_SCANNER_R = new BlockScanner("sco_scanner_red");
+	public static final Block SCO_SCANNER_G = new BlockScanner("sco_scanner_green");
+	public static final Block SCO_SCANNER_B = new BlockScanner("sco_scanner_blue");
+	public static final Block SCO_SCANNER_P = new BlockScanner("sco_scanner_purple");
 	public static final Block SCO_BAGGING = new ImmersiblockRotational("sco_bagging", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
+	public static final Block SCO_BAGGING_R = new ImmersiblockRotational("sco_bagging_red", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
+	public static final Block SCO_BAGGING_G = new ImmersiblockRotational("sco_bagging_green", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
+	public static final Block SCO_BAGGING_B = new ImmersiblockRotational("sco_bagging_blue", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
+	public static final Block SCO_BAGGING_P = new ImmersiblockRotational("sco_bagging_purple", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
 
 	// Retail Shelving Blocks
 	public static final Block SHELF_ONE_LEVEL_TWO_PEGHOOKS = new BlockShelf("shelf_one_level_two_peghooks", new ProductPlacement[]
@@ -1420,4 +1429,8 @@ public class ModBlocks
 
 	// Employee Timeclock
 	public static final Block TIMECLOCK = new BlockTimeClock();
+	
+	// Bells
+	public static final Block DESK_BELL_GOLD = new BlockDeskBell("gold_bell");
+	public static final Block DESK_BELL_IRON = new BlockDeskBell("iron_bell");
 }

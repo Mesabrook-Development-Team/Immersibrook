@@ -76,17 +76,17 @@ public class ItemPhone extends Item implements IHasModel {
 
 				if(stackData.getBatteryLevel() <= 100)
 				{
-					tooltip.add(TextFormatting.GRAY + "Battery: " + stackData.getBatteryLevel() + " Flux");
+					tooltip.add(TextFormatting.GRAY + "Battery: " + stackData.getBatteryLevel() + " FE");
 					tooltip.add(TextFormatting.GRAY + "Phone battery is low. Recharge soon to avoid interruptions.");
 				}
 				else
 				{
-					tooltip.add(TextFormatting.GRAY + "Battery: " + stackData.getBatteryLevel() + " Flux");
+					tooltip.add(TextFormatting.GRAY + "Battery: " + stackData.getBatteryLevel() + " FE");
 				}
 				
 				if(stackData.getBatteryLevel() <= 0)
 				{
-					tooltip.add(TextFormatting.RED + "Battery: " + stackData.getBatteryLevel() + " Flux");
+					tooltip.add(TextFormatting.RED + "Battery: " + stackData.getBatteryLevel() + " FE");
 					tooltip.add(TextFormatting.RED + "Phone battery is depleted. Recharge required.");
 				}
 			}

@@ -5,6 +5,7 @@
 		"0": "wbtc:blocks/plastic_cube_lime",
 		"2": "wbtc:blocks/plastic_cube_black",
 		"3": "wbtc:blocks/plastic_cube_gray",
+		"4": "wbtc:blocks/plastic_cube_purple",
 		"5": "wbtc:blocks/plastic_cube_silver",
 		"particle": "wbtc:blocks/plastic_cube_lime"
 	},
@@ -14,12 +15,12 @@
 			"from": [0, 0, -4],
 			"to": [16, 16, 13],
 			"faces": {
-				"north": {"uv": [3.25, 5.75, 11.25, 13.75], "texture": "#3"},
-				"east": {"uv": [3.25, 5.75, 11.25, 13.75], "texture": "#3"},
-				"south": {"uv": [3.25, 5.75, 11.25, 13.75], "texture": "#3"},
-				"west": {"uv": [3.25, 5.75, 11.25, 13.75], "texture": "#3"},
-				"up": {"uv": [3.25, 5.75, 11.25, 13.75], "texture": "#3"},
-				"down": {"uv": [3.25, 5.75, 11.25, 13.75], "texture": "#3"}
+				"north": {"uv": [3.25, 5.75, 11.25, 13.75], "texture": "#4"},
+				"east": {"uv": [3.25, 5.75, 11.25, 13.75], "texture": "#4"},
+				"south": {"uv": [3.25, 5.75, 11.25, 13.75], "texture": "#4"},
+				"west": {"uv": [3.25, 5.75, 11.25, 13.75], "texture": "#4"},
+				"up": {"uv": [3.25, 5.75, 11.25, 13.75], "texture": "#4"},
+				"down": {"uv": [3.25, 5.75, 11.25, 13.75], "texture": "#4"}
 			}
 		},
 		{

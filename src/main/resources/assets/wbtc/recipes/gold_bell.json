@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "NPN",
+		"N N",
+		"BBB"
+    ],
+    "key":
+    {
+        "N":
+        {
+            "type": "forge:ore_dict",
+            "ore": "nuggetGold"
+        },
+        "P":
+        {
+            "type": "forge:ore_dict",
+            "ore": "itemGrayPlastic"
+        },
+        "B":
+        {
+            "type": "forge:ore_dict",
+            "ore": "itemBlackPlastic"
+        }
+    },
+    "result":
+    {
+        "item": "wbtc:gold_bell",
+        "count": 1
+    }
+}

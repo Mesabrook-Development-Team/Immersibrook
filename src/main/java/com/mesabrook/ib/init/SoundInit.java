@@ -101,6 +101,8 @@ public class SoundInit
 	public static final SoundEvent FRIDGE_OPEN;
 	public static final SoundEvent FRIDGE_CLOSE;
 	public static final SoundEvent COMING_OUT;
+	public static final SoundEvent DESK_BELL;
+	public static final SoundEvent DESK_BELL_AF;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -321,6 +323,8 @@ public class SoundInit
 		WC_ON = addSoundsToRegistry("wireless_charge_on");
 		PIANO = addSoundsToRegistry("piano");
 		COMING_OUT = addSoundsToRegistry("coming_out");
+		DESK_BELL = addSoundsToRegistry("desk_bell");
+		DESK_BELL_AF = addSoundsToRegistry("desk_bell_af");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -664,6 +668,8 @@ public class SoundInit
 				event.getRegistry().register(SoundInit.FRIDGE_CLOSE);
 				event.getRegistry().register(SoundInit.COMING_OUT);
 				event.getRegistry().register(SoundInit.AERO_STARTUP);
+				event.getRegistry().register(SoundInit.DESK_BELL);
+				event.getRegistry().register(SoundInit.DESK_BELL_AF);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");
