@@ -31,6 +31,7 @@ public class ModUtils
 	// Default AABB
 	public static final AxisAlignedBB DEFAULT_AABB = new AxisAlignedBB(0D, 0D, 0D, 1D, 1D, 1D);
 	public static final AxisAlignedBB DOUBLE_AABB = new AxisAlignedBB(0D, 0D, 0D, 1D, 2D, 1D);
+	public static final AxisAlignedBB HALF_AABB = new AxisAlignedBB(0D, 0D, 0D, 1D, 0.5D, 1D);
 
 	public static void dropTileEntityInventoryItems(World world, BlockPos pos, TileEntity te)
 	{

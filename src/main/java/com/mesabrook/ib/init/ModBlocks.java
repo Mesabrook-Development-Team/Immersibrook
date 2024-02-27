@@ -1240,11 +1240,11 @@ public class ModBlocks
 	public static final Block SCO_SCANNER_G = new BlockScanner("sco_scanner_green");
 	public static final Block SCO_SCANNER_B = new BlockScanner("sco_scanner_blue");
 	public static final Block SCO_SCANNER_P = new BlockScanner("sco_scanner_purple");
-	public static final Block SCO_BAGGING = new ImmersiblockRotational("sco_bagging", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
-	public static final Block SCO_BAGGING_R = new ImmersiblockRotational("sco_bagging_red", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
-	public static final Block SCO_BAGGING_G = new ImmersiblockRotational("sco_bagging_green", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
-	public static final Block SCO_BAGGING_B = new ImmersiblockRotational("sco_bagging_blue", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
-	public static final Block SCO_BAGGING_P = new ImmersiblockRotational("sco_bagging_purple", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.DEFAULT_AABB);
+	public static final Block SCO_BAGGING = new ImmersiblockRotational("sco_bagging", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.getPixelatedAABB(16-1.75,0,16-0.5, 16-16,8,16-16.25));
+	public static final Block SCO_BAGGING_R = new ImmersiblockRotational("sco_bagging_red", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.getPixelatedAABB(1.75,0,0.5, 16,8,16.25));
+	public static final Block SCO_BAGGING_G = new ImmersiblockRotational("sco_bagging_green", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.getPixelatedAABB(1.75,0,0.5, 16,8,16.25));
+	public static final Block SCO_BAGGING_B = new ImmersiblockRotational("sco_bagging_blue", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.getPixelatedAABB(1.75,0,0.5, 16,8,16.25));
+	public static final Block SCO_BAGGING_P = new ImmersiblockRotational("sco_bagging_purple", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, ModUtils.getPixelatedAABB(1.75,0,0.5, 16,8,16.25));
 
 	// Retail Shelving Blocks
 	public static final Block SHELF_ONE_LEVEL_TWO_PEGHOOKS = new BlockShelf("shelf_one_level_two_peghooks", new ProductPlacement[]

@@ -89,7 +89,7 @@ public class TileEntityRegisterRenderer extends TileEntitySpecialRenderer<TileEn
 	{
 		GlStateManager.pushMatrix();
 		GlStateManager.disableLighting();
-		GlStateManager.translate(x + 0.5, y + 0.5, z + 0.5);
+		GlStateManager.translate(x + 0.5, y + 0.5, z + 0.68);
 		IBlockState registerState = getWorld().getBlockState(te.getPos());
 		switch(registerState.getValue(BlockRegister.FACING))
 		{
