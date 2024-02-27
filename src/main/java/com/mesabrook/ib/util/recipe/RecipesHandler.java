@@ -76,6 +76,24 @@ public class RecipesHandler
 			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_RED, 7), new ItemStack(ModBlocks.PLASTIC_CUBE_RED), 20);
 			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_BLACK, 7), new ItemStack(ModBlocks.PLASTIC_CUBE_BLACK), 20);
 			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_GLOWING, 7), new ItemStack(ModBlocks.PLASTIC_CUBE_GLOWING), 20);
+			
+			// <color> Plastic Bricks > <color> Raw Plastic Dusts.28
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_WHITE, 28), new ItemStack(ModBlocks.PLASTIC_BRICKS, 1, 0), 60);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_ORANGE, 28), new ItemStack(ModBlocks.PLASTIC_BRICKS, 1, 1), 60);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_MAGENTA, 28), new ItemStack(ModBlocks.PLASTIC_BRICKS, 1, 2), 60);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_LBLUE, 28), new ItemStack(ModBlocks.PLASTIC_BRICKS, 1, 3), 60);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_LIME, 28), new ItemStack(ModBlocks.PLASTIC_BRICKS, 1, 5), 60);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_PINK, 28), new ItemStack(ModBlocks.PLASTIC_BRICKS, 1, 6), 60);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_YELLOW, 28), new ItemStack(ModBlocks.PLASTIC_BRICKS, 1, 4), 60);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_GRAY, 28), new ItemStack(ModBlocks.PLASTIC_BRICKS, 1, 7), 60);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_SILVER, 28), new ItemStack(ModBlocks.PLASTIC_BRICKS, 1, 8), 60);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_CYAN, 28), new ItemStack(ModBlocks.PLASTIC_BRICKS, 1, 9), 60);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_PURPLE, 28), new ItemStack(ModBlocks.PLASTIC_BRICKS, 1, 10), 60);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_BLUE, 28), new ItemStack(ModBlocks.PLASTIC_BRICKS, 1, 11), 60);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_GREEN, 28), new ItemStack(ModBlocks.PLASTIC_BRICKS, 1, 13), 60);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_BROWN, 28), new ItemStack(ModBlocks.PLASTIC_BRICKS, 1, 12), 60);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_RED, 28), new ItemStack(ModBlocks.PLASTIC_BRICKS, 1, 14), 60);
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_BLACK, 28), new ItemStack(ModBlocks.PLASTIC_BRICKS, 1, 15), 60);
 
 			// Food Blocks
 			CrusherRecipe.addRecipe(new ItemStack(ItemRegistry.groundbeefItem, 16), new ItemStack(ModBlocks.CUBE_BEEF), 20);
