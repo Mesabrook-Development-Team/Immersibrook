@@ -23,6 +23,7 @@ import com.mesabrook.ib.blocks.BlockImmersiLadder;
 import com.mesabrook.ib.blocks.BlockLargePlaque;
 import com.mesabrook.ib.blocks.BlockManhole;
 import com.mesabrook.ib.blocks.BlockPlaque;
+import com.mesabrook.ib.blocks.BlockPlasticBricks;
 import com.mesabrook.ib.blocks.BlockPlexiglass;
 import com.mesabrook.ib.blocks.BlockPlexiglassPane;
 import com.mesabrook.ib.blocks.BlockPole;
@@ -1212,6 +1213,7 @@ public class ModBlocks
 	public static final Block COLORED_STONE_BRICKS = new BlockColoredStoneBricks();
 	public static final Block COLORED_BRICKS = new BlockColoredBricks();
 	public static final Block COLORED_QUARTZ = new BlockColoredQuartz();
+	public static final Block PLASTIC_BRICKS = new BlockPlasticBricks();
 
 	// Doors
 	public static final Block OAK_PUSH_DOOR = new BlockDoorBase("oak_push_door", Material.WOOD, false);

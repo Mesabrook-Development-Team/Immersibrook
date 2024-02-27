@@ -1537,6 +1537,24 @@ tile.colored_quartz.red.name=Dyed Quartz (Red)
 tile.colored_quartz.green.name=Dyed Quartz (Green)
 tile.colored_quartz.black.name=Dyed Quartz (Black)
 
+//Plastic Bricks
+tile.plastic_bricks.white.name=White Plastic Bricks
+tile.plastic_bricks.orange.name=Orange Plastic Bricks
+tile.plastic_bricks.magenta.name=Magenta Plastic Bricks
+tile.plastic_bricks.light_blue.name=Light Blue Plastic Bricks
+tile.plastic_bricks.yellow.name=Yellow Plastic Bricks
+tile.plastic_bricks.lime.name=Lime Plastic Bricks
+tile.plastic_bricks.pink.name=Pink Plastic Bricks
+tile.plastic_bricks.gray.name=Gray Plastic Bricks
+tile.plastic_bricks.silver.name=Light Gray Plastic Bricks
+tile.plastic_bricks.cyan.name=Cyan Plastic Bricks
+tile.plastic_bricks.purple.name=Purple Plastic Bricks
+tile.plastic_bricks.brown.name=Brown Plastic Bricks
+tile.plastic_bricks.blue.name=Blue Plastic Bricks
+tile.plastic_bricks.red.name=Red Plastic Bricks
+tile.plastic_bricks.green.name=Green Plastic Bricks
+tile.plastic_bricks.black.name=Black Plastic Bricks
+
 //Colored Cobblestone
 tile.colored_cobblestone.white.name=Dyed Cobblestone (White)
 tile.colored_cobblestone.orange.name=Dyed Cobblestone (Orange)
