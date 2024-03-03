@@ -28,7 +28,7 @@ public class GuiBellIntroAnimation extends GuiPhoneBase
         int elapsedTime = (int) timer.getElapsedTime();
         int frameNumber = (elapsedTime - 50) / 27;
 
-        frameNumber = Math.max(0, Math.min(frameNumber, 198));
+        frameNumber = Math.max(0, Math.min(frameNumber, 113));
 
         currentTexture = "system/newboot/frame_" + frameNumber + ".png";
         return currentTexture;
@@ -63,11 +63,6 @@ public class GuiBellIntroAnimation extends GuiPhoneBase
     {
         super.doDraw(mouseX, mouseY, partialticks);
         timer.update();
-
-        if(timer.getElapsedTime() > 4600)
-        {
-            drawCenteredString(fontRenderer, "A service of", INNER_X + 80, INNER_Y + 55, 0xFFFFFF);
-        }
 
         if(timer.getElapsedTime() >= 6000)
         {
