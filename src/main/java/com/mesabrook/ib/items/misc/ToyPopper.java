@@ -2,7 +2,7 @@ package com.mesabrook.ib.items.misc;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.init.SoundInit;
+import com.mesabrook.ib.init.ModSounds;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.SoundRandomizer;
@@ -79,7 +79,7 @@ public class ToyPopper extends Item implements IHasModel
                 if(SoundRandomizer.popResultSP == null)
                 {
                     SoundRandomizer.SPPopRandomizer();
-                    world.playSound(player, player.getPosition(), SoundInit.POP, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                    world.playSound(player, player.getPosition(), ModSounds.POP, SoundCategory.BLOCKS, 1.0F, 1.0F);
                     return new ActionResult<ItemStack>(EnumActionResult.FAIL, item);
                 }
                 else

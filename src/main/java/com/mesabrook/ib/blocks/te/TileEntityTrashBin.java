@@ -1,7 +1,7 @@
 package com.mesabrook.ib.blocks.te;
 
 import com.mesabrook.ib.blocks.container.ContainerTrashBin;
-import com.mesabrook.ib.init.SoundInit;
+import com.mesabrook.ib.init.ModSounds;
 import com.mesabrook.ib.util.Reference;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -164,7 +164,7 @@ public class TileEntityTrashBin extends TileEntityLockableLoot implements ITicka
 			
 			double d1 = (double)pos.getX() + 0.5D;
 	        double d2 = (double)pos.getZ() + 0.5D;
-	        this.world.playSound((EntityPlayer)null, d1, (double)pos.getY() + 0.5D, d2, SoundInit.CAN_OPEN, SoundCategory.AMBIENT, 0.5F, this.world.rand.nextFloat() * 0.1F + 0.9F);
+	        this.world.playSound((EntityPlayer)null, d1, (double)pos.getY() + 0.5D, d2, ModSounds.CAN_OPEN, SoundCategory.AMBIENT, 0.5F, this.world.rand.nextFloat() * 0.1F + 0.9F);
 		}
 	}
 	
@@ -177,6 +177,6 @@ public class TileEntityTrashBin extends TileEntityLockableLoot implements ITicka
 		
         double d3 = (double)pos.getX() + 0.5D;
         double d0 = (double)pos.getZ() + 0.5D;
-        this.world.playSound((EntityPlayer)null, d3, (double)pos.getY() + 0.5D, d0, SoundInit.CAN_CLOSE, SoundCategory.BLOCKS, 0.5F, this.world.rand.nextFloat() * 0.1F + 0.9F);
+        this.world.playSound((EntityPlayer)null, d3, (double)pos.getY() + 0.5D, d0, ModSounds.CAN_CLOSE, SoundCategory.BLOCKS, 0.5F, this.world.rand.nextFloat() * 0.1F + 0.9F);
 	}	
 }

@@ -1,6 +1,6 @@
 package com.mesabrook.ib.util;
 
-import com.mesabrook.ib.init.SoundInit;
+import com.mesabrook.ib.init.ModSounds;
 import net.minecraft.util.SoundEvent;
 
 import java.util.Random;
@@ -118,10 +118,10 @@ public class SoundRandomizer
 		switch(snds)
 		{
 			case 0:
-				popResultSP = SoundInit.POP;
+				popResultSP = ModSounds.POP;
 				break;
 			case 1:
-				popResultSP = SoundInit.POP_SINGLE;
+				popResultSP = ModSounds.POP_SINGLE;
 				break;
 		}
 	}

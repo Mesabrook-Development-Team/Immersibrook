@@ -1,7 +1,7 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
 import com.mesabrook.ib.blocks.gui.ImageButton;
-import com.mesabrook.ib.init.SoundInit;
+import com.mesabrook.ib.init.ModSounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.GuiButton;
@@ -82,7 +82,7 @@ public class GuiLockChallengePIN extends GuiPhoneBase {
 			if (Integer.parseInt(enteredPIN) == phoneStackData.getPin())
 			{
 				isPhoneUnlocked = true;
-				Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundInit.PHONE_UNLOCK, 1F));
+				Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(ModSounds.PHONE_UNLOCK, 1F));
 				Minecraft.getMinecraft().displayGuiScreen(new GuiHome(phoneStack, hand));
 			}
 		}

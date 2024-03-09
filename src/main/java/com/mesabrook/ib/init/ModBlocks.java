@@ -302,23 +302,23 @@ public class ModBlocks
 	public static final Block CUBE_POT_PIE = new FoodBlock("cube_pot_pie", MapColor.BROWN, SoundType.SLIME, Main.IMMERSIBROOK_MAIN);
 
 	// Plastic Blocks
-	public static final Block PLASTIC_CUBE_WHITE = new Immersiblock("plastic_cube_white", Material.ROCK, SoundTypeInit.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block PLASTIC_CUBE_ORANGE = new Immersiblock("plastic_cube_orange", Material.ROCK, SoundTypeInit.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block PLASTIC_CUBE_MAGENTA = new Immersiblock("plastic_cube_magenta", Material.ROCK, SoundTypeInit.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block PLASTIC_CUBE_LBLUE = new Immersiblock("plastic_cube_lblue", Material.ROCK, SoundTypeInit.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block PLASTIC_CUBE_YELLOW = new Immersiblock("plastic_cube_yellow", Material.ROCK, SoundTypeInit.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block PLASTIC_CUBE_LIME = new Immersiblock("plastic_cube_lime", Material.ROCK, SoundTypeInit.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block PLASTIC_CUBE_PINK = new Immersiblock("plastic_cube_pink", Material.ROCK, SoundTypeInit.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block PLASTIC_CUBE_GRAY = new Immersiblock("plastic_cube_gray", Material.ROCK, SoundTypeInit.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block PLASTIC_CUBE_SILVER = new Immersiblock("plastic_cube_silver", Material.ROCK, SoundTypeInit.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block PLASTIC_CUBE_CYAN = new Immersiblock("plastic_cube_cyan", Material.ROCK, SoundTypeInit.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block PLASTIC_CUBE_PURPLE = new Immersiblock("plastic_cube_purple", Material.ROCK, SoundTypeInit.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block PLASTIC_CUBE_BLUE = new Immersiblock("plastic_cube_blue", Material.ROCK, SoundTypeInit.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block PLASTIC_CUBE_BROWN = new Immersiblock("plastic_cube_brown", Material.ROCK, SoundTypeInit.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block PLASTIC_CUBE_GREEN = new Immersiblock("plastic_cube_green", Material.ROCK, SoundTypeInit.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block PLASTIC_CUBE_RED = new Immersiblock("plastic_cube_red", Material.ROCK, SoundTypeInit.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block PLASTIC_CUBE_BLACK = new Immersiblock("plastic_cube_black", Material.ROCK, SoundTypeInit.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
-	public static final Block PLASTIC_CUBE_GLOWING = new Immersiblock("plastic_cube_glowing", Material.ROCK, SoundTypeInit.PLASTIC, Main.IMMERSIBROOK_MAIN, 1F);
+	public static final Block PLASTIC_CUBE_WHITE = new Immersiblock("plastic_cube_white", Material.ROCK, ModSoundTypes.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_ORANGE = new Immersiblock("plastic_cube_orange", Material.ROCK, ModSoundTypes.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_MAGENTA = new Immersiblock("plastic_cube_magenta", Material.ROCK, ModSoundTypes.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_LBLUE = new Immersiblock("plastic_cube_lblue", Material.ROCK, ModSoundTypes.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_YELLOW = new Immersiblock("plastic_cube_yellow", Material.ROCK, ModSoundTypes.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_LIME = new Immersiblock("plastic_cube_lime", Material.ROCK, ModSoundTypes.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_PINK = new Immersiblock("plastic_cube_pink", Material.ROCK, ModSoundTypes.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_GRAY = new Immersiblock("plastic_cube_gray", Material.ROCK, ModSoundTypes.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_SILVER = new Immersiblock("plastic_cube_silver", Material.ROCK, ModSoundTypes.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_CYAN = new Immersiblock("plastic_cube_cyan", Material.ROCK, ModSoundTypes.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_PURPLE = new Immersiblock("plastic_cube_purple", Material.ROCK, ModSoundTypes.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_BLUE = new Immersiblock("plastic_cube_blue", Material.ROCK, ModSoundTypes.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_BROWN = new Immersiblock("plastic_cube_brown", Material.ROCK, ModSoundTypes.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_GREEN = new Immersiblock("plastic_cube_green", Material.ROCK, ModSoundTypes.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_RED = new Immersiblock("plastic_cube_red", Material.ROCK, ModSoundTypes.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_BLACK = new Immersiblock("plastic_cube_black", Material.ROCK, ModSoundTypes.PLASTIC, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block PLASTIC_CUBE_GLOWING = new Immersiblock("plastic_cube_glowing", Material.ROCK, ModSoundTypes.PLASTIC, Main.IMMERSIBROOK_MAIN, 1F);
 
 	// Raw Plastic Blocks
 	public static final Block RAW_PLASTIC_CUBE_WHITE = new BlockRawPlastic("raw_plastic_block_white", 0F);
@@ -1151,18 +1151,18 @@ public class ModBlocks
 	public static final Block TICKET_MACHINE = new TicketMachine("ticket_machine");
 
 	// Underground Utilities Marker Poles
-	public static final Block MARKER_POLE_ORANGE = new ImmersiblockRotational("marker_pole", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 2.5F, 3.0F, ModUtils.getPixelatedAABB(7,0,7, 9,26,9));
-	public static final Block MARKER_POLE_RED = new ImmersiblockRotational("marker_pole_red", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 2.5F, 3.0F, ModUtils.getPixelatedAABB(7,0,7, 9,26,9));
-	public static final Block MARKER_POLE_BLUE = new ImmersiblockRotational("marker_pole_blue", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 2.5F, 3.0F, ModUtils.getPixelatedAABB(7,0,7, 9,26,9));
+	public static final Block MARKER_POLE_ORANGE = new ImmersiblockRotational("marker_pole", Material.ROCK, ModSoundTypes.PLASTIC, "pickaxe", 1, 2.5F, 3.0F, ModUtils.getPixelatedAABB(7,0,7, 9,26,9));
+	public static final Block MARKER_POLE_RED = new ImmersiblockRotational("marker_pole_red", Material.ROCK, ModSoundTypes.PLASTIC, "pickaxe", 1, 2.5F, 3.0F, ModUtils.getPixelatedAABB(7,0,7, 9,26,9));
+	public static final Block MARKER_POLE_BLUE = new ImmersiblockRotational("marker_pole_blue", Material.ROCK, ModSoundTypes.PLASTIC, "pickaxe", 1, 2.5F, 3.0F, ModUtils.getPixelatedAABB(7,0,7, 9,26,9));
 	public static final Block MARKER_POLE_WOOD_ORANGE = new ImmersiblockRotational("marker_pole_wood", Material.ROCK, SoundType.WOOD, "axe", 1, 2.5F, 3.0F, ModUtils.getPixelatedAABB(7,0,7, 9,26,9));
 	public static final Block MARKER_POLE_WOOD_RED = new ImmersiblockRotational("marker_pole_wood_red", Material.ROCK, SoundType.WOOD, "axe", 1, 2.5F, 3.0F, ModUtils.getPixelatedAABB(7,0,7, 9,26,9));
 	public static final Block MARKER_POLE_WOOD_BLUE = new ImmersiblockRotational("marker_pole_wood_blue", Material.ROCK, SoundType.WOOD, "axe", 1, 2.5F, 3.0F, ModUtils.getPixelatedAABB(7,0,7, 9,26,9));
 
 	// Manhole Covers
-	public static final Block RELAY_MANHOLE = new ImmersiblockRotational("relay_manhole", Material.IRON, SoundTypeInit.MANHOLE, "pickaxe", 1, 1.0F, 2.0F, ModUtils.getPixelatedAABB(0,0,0, 16,1,16));
-	public static final Block LVN_MANHOLE = new ImmersiblockRotational("lvn_manhole", Material.IRON, SoundTypeInit.MANHOLE, "pickaxe", 1, 1.0F, 2.0F, ModUtils.getPixelatedAABB(0,0,0, 16,1,16));
-	public static final Block UTIL_MANHOLE = new ImmersiblockRotational("util_manhole", Material.IRON, SoundTypeInit.MANHOLE, "pickaxe", 1, 1.0F, 2.0F, ModUtils.getPixelatedAABB(0,0,0, 16,1,16));
-	public static final Block BLANK_MANHOLE = new ImmersiblockRotational("manhole", Material.IRON, SoundTypeInit.MANHOLE, "pickaxe", 1, 1.0F, 2.0F, ModUtils.getPixelatedAABB(0,0,0, 16,1,16));
+	public static final Block RELAY_MANHOLE = new ImmersiblockRotational("relay_manhole", Material.IRON, ModSoundTypes.MANHOLE, "pickaxe", 1, 1.0F, 2.0F, ModUtils.getPixelatedAABB(0,0,0, 16,1,16));
+	public static final Block LVN_MANHOLE = new ImmersiblockRotational("lvn_manhole", Material.IRON, ModSoundTypes.MANHOLE, "pickaxe", 1, 1.0F, 2.0F, ModUtils.getPixelatedAABB(0,0,0, 16,1,16));
+	public static final Block UTIL_MANHOLE = new ImmersiblockRotational("util_manhole", Material.IRON, ModSoundTypes.MANHOLE, "pickaxe", 1, 1.0F, 2.0F, ModUtils.getPixelatedAABB(0,0,0, 16,1,16));
+	public static final Block BLANK_MANHOLE = new ImmersiblockRotational("manhole", Material.IRON, ModSoundTypes.MANHOLE, "pickaxe", 1, 1.0F, 2.0F, ModUtils.getPixelatedAABB(0,0,0, 16,1,16));
 
 	// Manhole Blocks
 	public static final Block MANHOLE_CLOSED = new BlockManhole("relay_manhole_closed", ModUtils.getPixelatedAABB(0,0,0, 16,16,16)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
@@ -1181,22 +1181,22 @@ public class ModBlocks
 	public static final Block METAL_LADDER = new BlockImmersiLadder("metal_ladder");
 
 	// Vinyl Siding Panels
-	public static final Block SIDING_WHITE = new BlockSiding("siding_white", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_ORANGE = new BlockSiding("siding_orange", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_MAGENTA = new BlockSiding("siding_magenta", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_LBLUE = new BlockSiding("siding_lblue", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_YELLOW = new BlockSiding("siding_yellow", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_LIME = new BlockSiding("siding_lime", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_PINK = new BlockSiding("siding_pink", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_GRAY = new BlockSiding("siding_gray", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_SILVER = new BlockSiding("siding_silver", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_CYAN = new BlockSiding("siding_cyan", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_PURPLE = new BlockSiding("siding_purple", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_BROWN = new BlockSiding("siding_brown", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_BLUE = new BlockSiding("siding_blue", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_RED = new BlockSiding("siding_red", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_GREEN = new BlockSiding("siding_green", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
-	public static final Block SIDING_BLACK = new BlockSiding("siding_black", Material.ROCK, SoundTypeInit.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_WHITE = new BlockSiding("siding_white", Material.ROCK, ModSoundTypes.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_ORANGE = new BlockSiding("siding_orange", Material.ROCK, ModSoundTypes.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_MAGENTA = new BlockSiding("siding_magenta", Material.ROCK, ModSoundTypes.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_LBLUE = new BlockSiding("siding_lblue", Material.ROCK, ModSoundTypes.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_YELLOW = new BlockSiding("siding_yellow", Material.ROCK, ModSoundTypes.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_LIME = new BlockSiding("siding_lime", Material.ROCK, ModSoundTypes.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_PINK = new BlockSiding("siding_pink", Material.ROCK, ModSoundTypes.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_GRAY = new BlockSiding("siding_gray", Material.ROCK, ModSoundTypes.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_SILVER = new BlockSiding("siding_silver", Material.ROCK, ModSoundTypes.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_CYAN = new BlockSiding("siding_cyan", Material.ROCK, ModSoundTypes.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_PURPLE = new BlockSiding("siding_purple", Material.ROCK, ModSoundTypes.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_BROWN = new BlockSiding("siding_brown", Material.ROCK, ModSoundTypes.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_BLUE = new BlockSiding("siding_blue", Material.ROCK, ModSoundTypes.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_RED = new BlockSiding("siding_red", Material.ROCK, ModSoundTypes.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_GREEN = new BlockSiding("siding_green", Material.ROCK, ModSoundTypes.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
+	public static final Block SIDING_BLACK = new BlockSiding("siding_black", Material.ROCK, ModSoundTypes.PLASTIC, "pickaxe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
 	public static final Block SIDING_OAK = new BlockSiding("siding_oak", Material.WOOD, SoundType.WOOD, "axe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
 	public static final Block SIDING_SPRUCE = new BlockSiding("siding_spruce", Material.WOOD, SoundType.WOOD, "axe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));
 	public static final Block SIDING_BIRCH = new BlockSiding("siding_birch", Material.WOOD, SoundType.WOOD, "axe", 1, 0.5F, 1.0F, ModUtils.getPixelatedAABB(0,0,0, 16,16,1));

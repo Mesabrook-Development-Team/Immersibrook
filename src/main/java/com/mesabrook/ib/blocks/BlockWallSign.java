@@ -36,7 +36,7 @@ public class BlockWallSign extends Block implements IHasModel
         super(Material.IRON, color);
         setUnlocalizedName(name);
         setRegistryName(name);
-        setSoundType(SoundTypeInit.PLASTIC);
+        setSoundType(ModSoundTypes.PLASTIC);
         setHardness(1.0F);
         setResistance(3.0F);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));

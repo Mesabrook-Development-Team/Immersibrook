@@ -12,7 +12,7 @@ import com.mesabrook.ib.blocks.te.ShelvingTileEntity.ProductSpot;
 import com.mesabrook.ib.blocks.te.ShelvingTileEntityRenderer;
 import com.mesabrook.ib.capability.secureditem.CapabilitySecuredItem;
 import com.mesabrook.ib.capability.secureditem.ISecuredItem;
-import com.mesabrook.ib.init.SoundInit;
+import com.mesabrook.ib.init.ModSounds;
 import com.mesabrook.ib.items.armor.NightVisionGoggles;
 import com.mesabrook.ib.items.armor.PoliceHelmet;
 import com.mesabrook.ib.items.armor.SafetyVest;
@@ -161,13 +161,13 @@ public class KeyEventHandler
 				if(player.isPotionActive(MobEffects.SPEED))
 				{
 					player.sendStatusMessage(new TextComponentString(policeOff.getFormattedText()), true);
-					player.playSound(SoundInit.RADIO_CLOSE, 1.0F, 1.0F);
-					player.playSound(SoundInit.LEOTEU_OFF, 1.0F, 1.0F);
+					player.playSound(ModSounds.RADIO_CLOSE, 1.0F, 1.0F);
+					player.playSound(ModSounds.LEOTEU_OFF, 1.0F, 1.0F);
 				}
 				else
 				{
 					player.sendStatusMessage(new TextComponentString(policeOn.getFormattedText()), true);
-					player.playSound(SoundInit.LEOTEU_ON, 1.0F, 1.0F);
+					player.playSound(ModSounds.LEOTEU_ON, 1.0F, 1.0F);
 				}
 
 				player.playSound(SoundEvents.UI_BUTTON_CLICK, 0.3F, 1.0F);

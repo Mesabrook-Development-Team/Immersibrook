@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 import com.mesabrook.ib.blocks.gui.ImageButton;
-import com.mesabrook.ib.init.SoundInit;
+import com.mesabrook.ib.init.ModSounds;
 import com.mesabrook.ib.util.IndependentTimer;
 import com.mesabrook.ib.util.Reference;
 
@@ -112,7 +112,7 @@ public class GuiLockScreen extends GuiPhoneBase {
 	
 	private void goHome()
 	{
-		Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundInit.PHONE_UNLOCK, 1F));
+		Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(ModSounds.PHONE_UNLOCK, 1F));
 		GuiPhoneBase.isPhoneUnlocked = true;
 		Minecraft.getMinecraft().displayGuiScreen(new GuiHome(phoneStack, hand));
 	}

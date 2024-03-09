@@ -53,7 +53,7 @@ import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.blocks.te.TileEntityTaggingStation;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
-import com.mesabrook.ib.init.SoundInit;
+import com.mesabrook.ib.init.ModSounds;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket;
@@ -324,7 +324,7 @@ public class ClientSideHandlers
 					return;
 				}
 
-				outgoingCall = new PositionedSoundRecord(SoundInit.OUTGOING_CALL.getSoundName(), SoundCategory.MASTER, 0.25F, 1F, true, 0, AttenuationType.NONE, 0, 0, 0);
+				outgoingCall = new PositionedSoundRecord(ModSounds.OUTGOING_CALL.getSoundName(), SoundCategory.MASTER, 0.25F, 1F, true, 0, AttenuationType.NONE, 0, 0, 0);
 				outgoingCallsByPhone.put(phoneNumber, outgoingCall);
 				handler.playSound(outgoingCall);
 			}
@@ -350,7 +350,7 @@ public class ClientSideHandlers
 				}
 
 				SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
-				ISound sit = PositionedSoundRecord.getMasterRecord(SoundInit.SIT_2, 1F);
+				ISound sit = PositionedSoundRecord.getMasterRecord(ModSounds.SIT_2, 1F);
 				handler.playSound(sit);
 
 				GuiCallEnd end = new GuiCallEnd(calling.getPhoneStack(), calling.getHand(), toNumber);
@@ -378,7 +378,7 @@ public class ClientSideHandlers
 		public static void onCallBusy(String fromNumber, String toNumber)
 		{
 			SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
-			ISound busy = PositionedSoundRecord.getMasterRecord(SoundInit.BUSY, 1F);
+			ISound busy = PositionedSoundRecord.getMasterRecord(ModSounds.BUSY, 1F);
 			handler.playSound(busy);
 
 			if (Minecraft.getMinecraft().currentScreen instanceof GuiPhoneCalling)
@@ -474,7 +474,7 @@ public class ClientSideHandlers
 				outgoingCallsByPhone.remove(forNumber);
 			}
 
-			PositionedSoundRecord startSound = PositionedSoundRecord.getMasterRecord(SoundInit.ENDCALL, 1F);
+			PositionedSoundRecord startSound = PositionedSoundRecord.getMasterRecord(ModSounds.ENDCALL, 1F);
 			mc.getSoundHandler().playSound(startSound);
 
 			if (mc.currentScreen instanceof GuiIncomingCall)
@@ -589,7 +589,7 @@ public class ClientSideHandlers
 			}
 			else if (mc.currentScreen instanceof GuiPhoneCalling || mc.currentScreen instanceof GuiPhoneConnected)
 			{
-				PositionedSoundRecord startSound = PositionedSoundRecord.getMasterRecord(SoundInit.ENDCALL, 1F);
+				PositionedSoundRecord startSound = PositionedSoundRecord.getMasterRecord(ModSounds.ENDCALL, 1F);
 				mc.getSoundHandler().playSound(startSound);
 
 				GuiPhoneBase callingScreen = (GuiPhoneBase)mc.currentScreen;

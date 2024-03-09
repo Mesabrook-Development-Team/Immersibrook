@@ -3,7 +3,7 @@ package com.mesabrook.ib.blocks;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.init.SoundTypeInit;
+import com.mesabrook.ib.init.ModSoundTypes;
 import com.mesabrook.ib.util.IHasModel;
 
 import net.minecraft.block.Block;

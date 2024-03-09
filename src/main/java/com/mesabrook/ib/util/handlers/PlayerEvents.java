@@ -655,7 +655,12 @@ public class PlayerEvents
 			if (!foodToConsume.isEmpty())
 			{
 				foodStats.addStats((ItemFood) foodToConsume.getItem(), foodToConsume);
-				player.playSound(SoundEvents.ENTITY_PLAYER_BURP, 0.3F, 1.0F);
+
+				ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
+				packet.pos = player.getPosition();
+				packet.modID = "minecraft";
+				packet.soundName = "entity.player.burp";
+				PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
 
 				ItemStack helmet = player.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
 				helmet.damageItem(1, player);
