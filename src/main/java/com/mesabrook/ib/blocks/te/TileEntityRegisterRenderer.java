@@ -89,19 +89,24 @@ public class TileEntityRegisterRenderer extends TileEntitySpecialRenderer<TileEn
 	{
 		GlStateManager.pushMatrix();
 		GlStateManager.disableLighting();
-		GlStateManager.translate(x + 0.5, y + 0.5, z + 0.68);
+		//GlStateManager.translate(x + 0.5, y + 0.5, z + 0.68);
 		IBlockState registerState = getWorld().getBlockState(te.getPos());
 		switch(registerState.getValue(BlockRegister.FACING))
 		{
 			case NORTH:
+				GlStateManager.translate(x + 0.5, y + 0.5, z + 0.68);
 				GlStateManager.rotate(180, 0, 1, 0);
 				break;
 			case WEST:
+				GlStateManager.translate(x + 0.68, y + 0.5, z + 0.5);
 				GlStateManager.rotate(270, 0, 1, 0);
 				break;
 			case SOUTH:
+				GlStateManager.translate(x + 0.5, y + 0.5, z + 0.316);
+				//GlStateManager.rotate(360, 0, 1, 0);
 				break;
 			case EAST:
+				GlStateManager.translate(x + 0.316, y + 0.5, z + 0.5);
 				GlStateManager.rotate(90, 0, 1, 0);
 				break;
 		}
