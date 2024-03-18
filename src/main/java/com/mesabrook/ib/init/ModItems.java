@@ -150,25 +150,25 @@ public class ModItems
 
 	// Music Discs
 	public static final Item BLANK_DISC = new MiscItem("blank_vinyl",  16, Main.IMMERSIBROOK_MAIN);
-	public static final Item DISC_AMALTHEA = new MemeRecord("amalthea", SoundInit.AMALTHEA);
-	public static final Item DISC_NYAN = new MemeRecord("nyan", SoundInit.NYAN);
-	public static final Item DISC_USSR1 = new MemeRecord("ussr1", SoundInit.USSR1);
-	public static final Item DISC_USSR2 = new MemeRecord("ussr2", SoundInit.USSR2);
-	public static final Item DISC_BOOEY = new MemeRecord("baba_booey", SoundInit.BOOEY);
-	public static final Item DISC_DOLAN = new MemeRecord("dolan", SoundInit.DOLAN);
-	public static final Item DISC_MURICA = new MemeRecord("murica", SoundInit.MURICA);
-	public static final Item DISC_PIGSTEP = new MemeRecord("pigstep", SoundInit.PIGSTEP);
-	public static final Item DISC_KRAB_BORG = new MemeRecord("krab_borg", SoundInit.KRAB_BORG);
-	public static final Item DISC_KRAB_BORG_FULL = new MemeRecord("krab_borg_full", SoundInit.KRAB_BORG_FULL);
-	public static final Item DISC_FISH = new MemeRecord("fish_full", SoundInit.FISH_FULL);
-	public static final Item DISC_XP = new MemeRecord("ms_xp", SoundInit.MS_XP);
-	public static final Item DISC_COOKINg = new MemeRecord("cooking_music", SoundInit.COOKING);
+	public static final Item DISC_AMALTHEA = new MemeRecord("amalthea", ModSounds.AMALTHEA);
+	public static final Item DISC_NYAN = new MemeRecord("nyan", ModSounds.NYAN);
+	public static final Item DISC_USSR1 = new MemeRecord("ussr1", ModSounds.USSR1);
+	public static final Item DISC_USSR2 = new MemeRecord("ussr2", ModSounds.USSR2);
+	public static final Item DISC_BOOEY = new MemeRecord("baba_booey", ModSounds.BOOEY);
+	public static final Item DISC_DOLAN = new MemeRecord("dolan", ModSounds.DOLAN);
+	public static final Item DISC_MURICA = new MemeRecord("murica", ModSounds.MURICA);
+	public static final Item DISC_PIGSTEP = new MemeRecord("pigstep", ModSounds.PIGSTEP);
+	public static final Item DISC_KRAB_BORG = new MemeRecord("krab_borg", ModSounds.KRAB_BORG);
+	public static final Item DISC_KRAB_BORG_FULL = new MemeRecord("krab_borg_full", ModSounds.KRAB_BORG_FULL);
+	public static final Item DISC_FISH = new MemeRecord("fish_full", ModSounds.FISH_FULL);
+	public static final Item DISC_XP = new MemeRecord("ms_xp", ModSounds.MS_XP);
+	public static final Item DISC_COOKINg = new MemeRecord("cooking_music", ModSounds.COOKING);
 	public static final Item DOOTER = new ItemDooter("dooter");
-	public static final Item DISC_SPOOKY = new MemeRecord("disc_spooky", SoundInit.SPOOKY);
-	public static final Item DISC_RITZ = new MemeRecord("disc_ritz", SoundInit.RITZ);
-	public static final Item DISC_HL3 = new MemeRecord("disc_pumpkin", SoundInit.HL3);
-	public static final Item DISC_MEMORY = new MemeRecord("memory", SoundInit.MEMORY);
-	public static final Item WIDE_DISC = new MemeRecord("wide_record", SoundInit.WIDE); 
+	public static final Item DISC_SPOOKY = new MemeRecord("disc_spooky", ModSounds.SPOOKY);
+	public static final Item DISC_RITZ = new MemeRecord("disc_ritz", ModSounds.RITZ);
+	public static final Item DISC_HL3 = new MemeRecord("disc_pumpkin", ModSounds.HL3);
+	public static final Item DISC_MEMORY = new MemeRecord("memory", ModSounds.MEMORY);
+	public static final Item WIDE_DISC = new MemeRecord("wide_record", ModSounds.WIDE); 
 
 	// First Aid Kit
 	public static final Item FIRST_AID_KIT = new ItemFirstAidKit("first_aid", Main.IMMERSIBROOK_MAIN);

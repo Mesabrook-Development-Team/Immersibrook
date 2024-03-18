@@ -6,6 +6,27 @@
 			"stream": true
 		}]
 	},
+	"desk_bell": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:desk_bell",
+			"stream": true
+		}]
+	},
+	"desk_bell_af": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:desk_bell_af",
+			"stream": true
+		}]
+	},
+	"aero_startup": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:aero_startup",
+			"stream": true
+		}]
+	},
 	"coming_out": {
 		"category": "master",
 		"sounds": [{

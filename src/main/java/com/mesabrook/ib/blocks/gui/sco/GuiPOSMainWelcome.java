@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.mesabrook.ib.blocks.gui.GuiImageLabelButton;
 import com.mesabrook.ib.blocks.gui.GuiImageLabelButton.ImageOrientation;
+import com.mesabrook.ib.blocks.sco.BlockScanner;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.blocks.te.TileEntityRegister.RegisterStatuses;
 import com.mesabrook.ib.init.ModBlocks;
@@ -30,7 +31,8 @@ public class GuiPOSMainWelcome extends GuiPOSMainBase {
 	@Override
 	public void initGui() {
 		super.initGui();
-		missingScanner = register.getWorld().getBlockState(register.getPos().down()).getBlock() != ModBlocks.SCO_SCANNER;
+		//missingScanner = register.getWorld().getBlockState(register.getPos().down()).getBlock() != ModBlocks.SCO_SCANNER;
+		missingScanner = !(register.getWorld().getBlockState(register.getPos().down()).getBlock() instanceof BlockScanner);
 		missingScannerMessageWidth = fontRenderer.getStringWidth(MISSING_SCANNER_MESSAGE);
 		
 		startButton = new GuiImageLabelButton(0, innerLeft + innerWidth - 52, innerTop + innerHeight - 21, 46, 15, "Start   ", new ResourceLocation(Reference.MODID, "textures/gui/sco/arrow_right.png"), 10, 10, 10, 10, ImageOrientation.Right)

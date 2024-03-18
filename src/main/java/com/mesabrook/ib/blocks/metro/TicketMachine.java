@@ -3,7 +3,7 @@ package com.mesabrook.ib.blocks.metro;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.init.SoundInit;
+import com.mesabrook.ib.init.ModSounds;
 import com.mesabrook.ib.util.IHasModel;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
@@ -105,7 +105,7 @@ public class TicketMachine extends Block implements IHasModel
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
-        world.playSound(player, pos, SoundInit.TM_BEEP, SoundCategory.BLOCKS, 0.6F, 1F);
+        world.playSound(player, pos, ModSounds.TM_BEEP, SoundCategory.BLOCKS, 0.6F, 1F);
         return true;
     }
 

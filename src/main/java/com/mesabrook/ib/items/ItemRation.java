@@ -2,7 +2,7 @@ package com.mesabrook.ib.items;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.init.SoundInit;
+import com.mesabrook.ib.init.ModSounds;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.Reference;
 import net.minecraft.entity.player.EntityPlayer;
@@ -51,7 +51,7 @@ public class ItemRation extends Item implements IHasModel
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
     {
         ItemStack itemstack = playerIn.getHeldItem(handIn);
-        playerIn.playSound(SoundInit.RATION_OPEN, 1.0F, 1.0F);
+        playerIn.playSound(ModSounds.RATION_OPEN, 1.0F, 1.0F);
         playerIn.openGui(Main.instance, Reference.GUI_RATION, worldIn, handIn.ordinal(), 0, 0);
 
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemstack);

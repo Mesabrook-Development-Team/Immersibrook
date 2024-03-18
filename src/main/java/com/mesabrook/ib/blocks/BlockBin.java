@@ -5,7 +5,7 @@ import com.mesabrook.ib.advancements.Triggers;
 import com.mesabrook.ib.blocks.te.TileEntityTrashBin;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
-import com.mesabrook.ib.init.SoundTypeInit;
+import com.mesabrook.ib.init.ModSoundTypes;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.IHasModel;
 import com.mesabrook.ib.util.Reference;
@@ -41,7 +41,7 @@ public class BlockBin extends BlockContainer implements IHasModel
 		setRegistryName(name);
 		setHardness(1.0F);
 		setResistance(3.0F);
-		setSoundType(SoundTypeInit.PLASTIC);
+		setSoundType(ModSoundTypes.PLASTIC);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 		
 		ModBlocks.BLOCKS.add(this);

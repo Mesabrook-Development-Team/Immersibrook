@@ -9,6 +9,7 @@ import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.items.commerce.ItemMoney;
 import com.mesabrook.ib.items.commerce.ItemRegisterFluidWrapper.CapabilityRegisterFluidWrapper;
+import com.mesabrook.ib.util.ModUtils;
 import com.mesabrook.ib.util.Reference;
 
 import net.minecraft.block.SoundType;
@@ -31,8 +32,8 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 public class BlockRegister extends ImmersiblockRotationalManyBB {	
-	public static AxisAlignedBB monitorBoundingBox = new AxisAlignedBB(0.18, 0, 0.165, 0.812, 0.73, 0.68);
-	public static AxisAlignedBB cardReaderBoundingBox = new AxisAlignedBB(0.88, 0.33, 0.39, 1.055, 0.55, 0.525);
+	public static AxisAlignedBB monitorBoundingBox = ModUtils.getPixelatedAABB(3, 0, 5, 13.1, 12, 14);
+	public static AxisAlignedBB cardReaderBoundingBox = ModUtils.getPixelatedAABB(13.25, 4, 9, 16, 9, 11.5);
 	
 	public BlockRegister() {
 		super("sco_pos", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, true, monitorBoundingBox, cardReaderBoundingBox);

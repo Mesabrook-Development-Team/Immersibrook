@@ -35,13 +35,13 @@ import net.minecraftforge.items.IItemHandler;
 
 public class BlockScanner extends ImmersiblockRotationalManyBB {
 
-	private static final AxisAlignedBB SCANNER = ModUtils.getPixelatedAABB(4, 16.5, -4, 12, 16.75, 2);
-	private static final AxisAlignedBB BILL_ACCEPTER = ModUtils.getPixelatedAABB(3.75, 11.5, -4.75, 5.75, 13.75, -2.5);
-	private static final AxisAlignedBB COIN_SLOT = ModUtils.getPixelatedAABB(1, 10.75, -5, 3, 13.75, -2.5);
-	private static final AxisAlignedBB BASE_BOX = ModUtils.getPixelatedAABB(0, 0, -4, 16, 16.5, 13);
-	public BlockScanner()
+	private static final AxisAlignedBB SCANNER = ModUtils.getPixelatedAABB(4, 15, -0.75, 12, 17, 6.75);
+	private static final AxisAlignedBB BILL_ACCEPTER = ModUtils.getPixelatedAABB(3.75, 11.5, -0.75, 5.75, 13.5, 1.5);
+	private static final AxisAlignedBB COIN_SLOT = ModUtils.getPixelatedAABB(1, 11.5, -1, 3, 13.5, 1.5);
+	private static final AxisAlignedBB BASE_BOX = ModUtils.getPixelatedAABB(0, 0, 0, 16, 16, 16);
+	public BlockScanner(String name)
 	{
-		super("sco_scanner", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, true, SCANNER, BILL_ACCEPTER, COIN_SLOT, BASE_BOX);
+		super(name, Material.IRON, SoundType.METAL, "pickaxe", 1, 1.5F, 3.0F, true, SCANNER, BILL_ACCEPTER, COIN_SLOT, BASE_BOX);
 	}
 	
 	@Override

@@ -26,9 +26,9 @@ public class GuiBellIntroAnimation extends GuiPhoneBase
     protected String getInnerTextureFileName()
     {
         int elapsedTime = (int) timer.getElapsedTime();
-        int frameNumber = (elapsedTime - 50) / 27;
+        int frameNumber = (elapsedTime - 15) / 43;
 
-        frameNumber = Math.max(0, Math.min(frameNumber, 198));
+        frameNumber = Math.max(0, Math.min(frameNumber, 113));
 
         currentTexture = "system/newboot/frame_" + frameNumber + ".png";
         return currentTexture;
@@ -64,11 +64,6 @@ public class GuiBellIntroAnimation extends GuiPhoneBase
         super.doDraw(mouseX, mouseY, partialticks);
         timer.update();
 
-        if(timer.getElapsedTime() > 4600)
-        {
-            drawCenteredString(fontRenderer, "A service of", INNER_X + 80, INNER_Y + 55, 0xFFFFFF);
-        }
-
         if(timer.getElapsedTime() >= 6000)
         {
             finishBoot();
@@ -89,6 +84,10 @@ public class GuiBellIntroAnimation extends GuiPhoneBase
             if(phoneStackData.getIconTheme().contains("luna"))
             {
                 soundPacket.soundName = "xp_startup";
+            }
+            else if(phoneStackData.getIconTheme().contains("aero"))
+            {
+                soundPacket.soundName = "aero_startup";
             }
             else
             {

@@ -3,7 +3,7 @@ package com.mesabrook.ib.blocks.gui.telecom;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.gui.ImageButton;
 
-import com.mesabrook.ib.init.SoundInit;
+import com.mesabrook.ib.init.ModSounds;
 import com.mesabrook.ib.net.telecom.InitiateCallPacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
@@ -110,12 +110,12 @@ public class GuiPhoneCall extends GuiPhoneBase {
 			{
 				if(player.world.provider.getDimension() == 0)
 				{
-					PositionedSoundRecord startSound = PositionedSoundRecord.getMasterRecord(SoundInit.STARTCALL, 1F);
+					PositionedSoundRecord startSound = PositionedSoundRecord.getMasterRecord(ModSounds.STARTCALL, 1F);
 					Minecraft.getMinecraft().getSoundHandler().playSound(startSound);
 
 					if (currentlyTypedNumber == null || currentlyTypedNumber.equals(""))
 					{
-						PositionedSoundRecord sit = PositionedSoundRecord.getMasterRecord(SoundInit.SIT_1, 1F);
+						PositionedSoundRecord sit = PositionedSoundRecord.getMasterRecord(ModSounds.SIT_1, 1F);
 						Minecraft.getMinecraft().getSoundHandler().playSound(sit);
 
 						GuiCallEnd badCall = new GuiCallEnd(getPhoneStack(), getHand(), "");
@@ -127,7 +127,7 @@ public class GuiPhoneCall extends GuiPhoneBase {
 
 					if (currentlyTypedNumber.equals(getCurrentPhoneNumber()))
 					{
-						PositionedSoundRecord sit = PositionedSoundRecord.getMasterRecord(SoundInit.SIT_1, 1F);
+						PositionedSoundRecord sit = PositionedSoundRecord.getMasterRecord(ModSounds.SIT_1, 1F);
 						Minecraft.getMinecraft().getSoundHandler().playSound(sit);
 
 						GuiCallEnd badCall = new GuiCallEnd(getPhoneStack(), getHand(), currentlyTypedNumber);
@@ -146,7 +146,7 @@ public class GuiPhoneCall extends GuiPhoneBase {
 				}
 				else
 				{
-					PositionedSoundRecord sit = PositionedSoundRecord.getMasterRecord(SoundInit.SIT_5, 1F);
+					PositionedSoundRecord sit = PositionedSoundRecord.getMasterRecord(ModSounds.SIT_5, 1F);
 					Minecraft.getMinecraft().getSoundHandler().playSound(sit);
 					GuiCallEnd badCall = new GuiCallEnd(getPhoneStack(), getHand(), currentlyTypedNumber);
 					badCall.setMessage("Unsupported Dimension");
@@ -155,7 +155,7 @@ public class GuiPhoneCall extends GuiPhoneBase {
 			}
 			catch(Exception ex)
 			{
-				PositionedSoundRecord sit = PositionedSoundRecord.getMasterRecord(SoundInit.SIT_4, 1F);
+				PositionedSoundRecord sit = PositionedSoundRecord.getMasterRecord(ModSounds.SIT_4, 1F);
 				Minecraft.getMinecraft().getSoundHandler().playSound(sit);
 				GuiCallEnd badCall = new GuiCallEnd(getPhoneStack(), getHand(), currentlyTypedNumber);
 				badCall.setMessage("Unable to complete call");
