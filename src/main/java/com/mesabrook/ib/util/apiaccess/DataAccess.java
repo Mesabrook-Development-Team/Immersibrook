@@ -323,6 +323,7 @@ public abstract class DataAccess {
 		{
 			URL url = getBaseURL();
 			connection = (HttpURLConnection)url.openConnection();
+			connection.setRequestMethod(getMethod());
 		}
 		catch (Exception ex)
 		{
