@@ -210,11 +210,11 @@ public class ImmersiblockRotational extends Block implements IHasModel
             {
                 tooltip.add(TextFormatting.YELLOW + "The brain of the Self-Checkout system.");
             }
-            if(this.getUnlocalizedName().contains("scanner"))
+            if(this == ModBlocks.SCO_SCANNER || this == ModBlocks.SCO_SCANNER_R || this == ModBlocks.SCO_SCANNER_G || this == ModBlocks.SCO_SCANNER_B || this == ModBlocks.SCO_SCANNER_P)
             {
                 tooltip.add(TextFormatting.YELLOW + "'Please scan your items and place them in the bagging area.'");
             }
-            if(this.getUnlocalizedName().contains("bagging"))
+            if(this == ModBlocks.SCO_BAGGING || this == ModBlocks.SCO_BAGGING_R || this == ModBlocks.SCO_BAGGING_G || this == ModBlocks.SCO_BAGGING_B || this == ModBlocks.SCO_BAGGING_P)
             {
                 tooltip.add(TextFormatting.YELLOW + "The bagging area.");
             }

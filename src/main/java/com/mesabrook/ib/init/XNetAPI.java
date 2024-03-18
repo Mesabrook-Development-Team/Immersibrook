@@ -16,6 +16,7 @@ public class XNetAPI {
 	{
 		XNet.xNetApi.registerConnectable(new WirelessChargingPadConnectable());
 		XNet.xNetApi.registerConnectable(new FluidMeterConnectable());
+		XNet.xNetApi.registerConnectable(new SoundEmitterConnectable());
 	}
 	
 	public static class WirelessChargingPadConnectable implements IConnectable
@@ -53,7 +54,7 @@ public class XNetAPI {
 		{
 			if (te instanceof TileEntitySoundEmitter)
 			{
-				return (facing == EnumFacing.UP || facing == EnumFacing.DOWN || facing == EnumFacing.NORTH || facing == EnumFacing.SOUTH || facing == EnumFacing.EAST || facing == EnumFacing.WEST) ? ConnectResult.YES : ConnectResult.NO;
+				return facing != null ? ConnectResult.YES : ConnectResult.NO;
 			}
 			return ConnectResult.DEFAULT;
 		}
