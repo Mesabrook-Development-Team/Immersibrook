@@ -14,6 +14,7 @@ im.death.kekw=%s found an item they weren't supposed to have and used it. Smoooo
 im.death.sus=%s got caught in the vents.
 im.death.dodo=%s went the way of the Dodo.
 im.death.fc=%s tried to coup the government and found out.
+im.death.asbestos=%s was diagnosed with mesothelioma and may be entitled to financial compensation.
 
 im.hammer.shift=New Sound Event:
 im.hammer.nosound=Hammer has no sound bound to it.
@@ -2175,3 +2176,11 @@ tile.throne_fc.name=First Consul's Chair
 tile.throne_gov.name=Elected Official's Chair
 
 item.smartphone_battery.name=Smartphone Battery
+item.asbestos.name=Asbestos
+
+//Potion
+effect.asbestos=Mesothelioma
+potion.effect.asbestos=Potion of Mesothelioma
+splash_potion.effect.asbestos=Splash Potion of Mesothelioma
+lingering_potion.effect.asbestos=Lingering Potion of Mesothelioma
+tipped_arrow.effect.asbestos=Arrow of Asbestos

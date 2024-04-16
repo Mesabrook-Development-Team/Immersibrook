@@ -23,6 +23,7 @@ import com.mesabrook.ib.events.SeatEvent;
 import com.mesabrook.ib.init.CDMApps;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.init.PotionInit;
 import com.mesabrook.ib.init.XNetAPI;
 import com.mesabrook.ib.items.commerce.ItemDebitCard;
 import com.mesabrook.ib.items.commerce.ItemRegisterFluidWrapper;
@@ -156,6 +157,7 @@ public class RegistryHandler
 		CapabilitySecuredItem.init();
 		CapabilityDebitCard.init();
 		ItemRegisterFluidWrapper.CapabilityRegisterFluidWrapper.init();
+		PotionInit.registerPotions();
 	}
 	
 	public static void initRegistries()

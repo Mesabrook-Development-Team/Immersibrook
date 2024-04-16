@@ -128,5 +128,6 @@ public class CategoryResources extends AbstractCategory
 		add(ModItems.TAPE_CRAFTING);
 		add(ModItems.DENIM);
 		add(ModItems.PEGHOOK);
+		add(ModItems.ASBESTOS);
 	}
 }

@@ -27,6 +27,7 @@ import com.mesabrook.ib.capability.secureditem.ISecuredItem;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModEnchants;
 import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.init.PotionInit;
 import com.mesabrook.ib.items.ItemSponge;
 import com.mesabrook.ib.items.ItemTechRetailBox;
 import com.mesabrook.ib.items.misc.ItemIBFood;
@@ -41,6 +42,7 @@ import com.mesabrook.ib.telecom.CallManager;
 import com.mesabrook.ib.util.ItemRandomizer;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SoundRandomizer;
+import com.mesabrook.ib.util.UniversalDeathSource;
 import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.apiaccess.DataAccess.API;
 import com.mesabrook.ib.util.apiaccess.DataAccess.AuthenticationStatus;
@@ -63,6 +65,7 @@ import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -70,6 +73,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.FoodStats;
@@ -87,16 +92,22 @@ import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
+@Mod.EventBusSubscriber(modid = Reference.MODID)
 public class PlayerEvents 
 {
+	public static final DamageSource MESO = new UniversalDeathSource("meso", "im.death.asbestos");
+	public Random random;
 	public PlayerEvents()
 	{
 		Main.logger.info("[" + Reference.MODNAME + "] Registering PlayerEvents class...");
@@ -583,7 +594,21 @@ public class PlayerEvents
 		{
 			EntityPlayer player = (EntityPlayer)e.getEntityLiving();
 			ItemStack helmet = player.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+			ItemStack asbestos = player.getHeldItem(player.getActiveHand());
+			
+			if(asbestos.getItem() == ModItems.ASBESTOS) 
+			{
+				player.addPotionEffect(new PotionEffect(PotionInit.ASBESTOS_EFFECT, 100000, 0, true, false));
+			}
 
+			if(player.getActivePotionEffect(PotionInit.ASBESTOS_EFFECT) != null)
+			{
+				if(player.world.rand.nextInt(10000) < 1)
+				{
+					player.attackEntityFrom(MESO, player.getHealth());
+				}
+			}
+			
 			if (EnchantmentHelper.getEnchantmentLevel(ModEnchants.AUTO_FEED, helmet) > 0)
 			{
 				autoFeedPlayer(player);
@@ -638,6 +663,21 @@ public class PlayerEvents
 					shelf.markDirty();
 					player.world.notifyBlockUpdate(shelf.getPos(), state, state, 3);
 				}
+			}
+		}
+	}
+	
+	@SubscribeEvent
+	public static void onBlockBreak(BlockEvent.BreakEvent event)
+	{
+		Block block = event.getState().getBlock();
+		if(block == Blocks.STONE && event.getState().getBlock().getMetaFromState(event.getState()) == 5)
+		{
+			Random rand = event.getWorld().rand;
+			if(rand.nextInt(100) == 10 && !event.getPlayer().isCreative())
+			{
+				event.getPlayer().sendMessage(new TextComponentString("Yes"));
+				event.getWorld().spawnEntity(new EntityItem(event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), new ItemStack(ModItems.ASBESTOS)));
 			}
 		}
 	}

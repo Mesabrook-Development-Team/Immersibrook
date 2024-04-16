@@ -610,4 +610,5 @@ public class ModItems
 	// Technical Engineering Item
 	public static final Item TECH_BLOCK = new MiscItem("technical_engineering_block", 64, Main.IMMERSIBROOK_MAIN);
 	public static final Item PLEATHER = new MiscItem("synthetic_leather", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item ASBESTOS = new MiscItem("asbestos", 64, Main.IMMERSIBROOK_MAIN);
 }
