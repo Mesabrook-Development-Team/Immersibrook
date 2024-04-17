@@ -60,6 +60,7 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -68,6 +69,7 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
@@ -158,6 +160,7 @@ public class RegistryHandler
 		CapabilityDebitCard.init();
 		ItemRegisterFluidWrapper.CapabilityRegisterFluidWrapper.init();
 		PotionInit.registerPotions();
+		GameRegistry.registerWorldGenerator(new WorldGenOre(), 3);
 	}
 	
 	public static void initRegistries()
@@ -191,8 +194,7 @@ public class RegistryHandler
 		EntityRegistry.registerModEntity(nameLoc, EntityMesabrookM.class, nameLoc.toString(), 1, Main.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(nameLoc2, EntityWineBottle.class, nameLoc2.toString(), 2, Main.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(nameLoc3, SeatEvent.SeatEntity.class, nameLoc2.toString(), 3, Main.instance, 80, 1, false);
-
-
+		
 		if (Main.DYNMAP)
 		{
 			DynmapAPIListener.register();

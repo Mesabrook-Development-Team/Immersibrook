@@ -13,6 +13,7 @@ import com.mesabrook.ib.items.ItemTechRetailBox;
 import com.mesabrook.ib.items.armor.FaceMasks;
 import com.mesabrook.ib.items.armor.FirefighterSuit;
 import com.mesabrook.ib.items.armor.Hardhat;
+import com.mesabrook.ib.items.armor.ItemRespirator;
 import com.mesabrook.ib.items.armor.NightVisionGoggles;
 import com.mesabrook.ib.items.armor.PoliceHelmet;
 import com.mesabrook.ib.items.armor.SACA;
@@ -611,4 +612,5 @@ public class ModItems
 	public static final Item TECH_BLOCK = new MiscItem("technical_engineering_block", 64, Main.IMMERSIBROOK_MAIN);
 	public static final Item PLEATHER = new MiscItem("synthetic_leather", 64, Main.IMMERSIBROOK_MAIN);
 	public static final Item ASBESTOS = new MiscItem("asbestos", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item RESPIRATOR = new ItemRespirator("respirator");
 }

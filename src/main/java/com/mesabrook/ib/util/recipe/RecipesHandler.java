@@ -26,6 +26,9 @@ public class RecipesHandler
 		{
 			int outputAmount = 1;
 
+			// smooth_chrysotile to chrysotile
+			CrusherRecipe.addRecipe(new ItemStack(ModBlocks.CHRYSOTILE, 2), new ItemStack(ModBlocks.CHRYSOTILE_SMOOTHED), 100);
+			
 			// White Mushroom > White Dye Dust
 			CrusherRecipe.addRecipe(new ItemStack(ModItems.DUST_WHITE, 2), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("harvestcraft", "whitemushroomitem"))), 20);
 

@@ -8,6 +8,7 @@ import com.mesabrook.ib.blocks.BlockATM;
 import com.mesabrook.ib.blocks.BlockBin;
 import com.mesabrook.ib.blocks.BlockCeilingLight;
 import com.mesabrook.ib.blocks.BlockCellAntenna;
+import com.mesabrook.ib.blocks.BlockChrysotile;
 import com.mesabrook.ib.blocks.BlockColoredBricks;
 import com.mesabrook.ib.blocks.BlockColoredCobblestone;
 import com.mesabrook.ib.blocks.BlockColoredQuartz;
@@ -1435,4 +1436,8 @@ public class ModBlocks
 	// Bells
 	public static final Block DESK_BELL_GOLD = new BlockDeskBell("gold_bell");
 	public static final Block DESK_BELL_IRON = new BlockDeskBell("iron_bell");
+	
+	// World Blocks
+	public static final Block CHRYSOTILE = new BlockChrysotile("chrysotile");
+	public static final Block CHRYSOTILE_SMOOTHED = new Immersiblock("smooth_chrysotile", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 }

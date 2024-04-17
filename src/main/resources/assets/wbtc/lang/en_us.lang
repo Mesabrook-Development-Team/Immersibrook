@@ -2177,6 +2177,8 @@ tile.throne_gov.name=Elected Official's Chair
 
 item.smartphone_battery.name=Smartphone Battery
 item.asbestos.name=Asbestos
+tile.chrysotile.name=Chrysotile
+tile.smooth_chrysotile.name=Polished Chrysotile
 
 //Potion
 effect.asbestos=Mesothelioma

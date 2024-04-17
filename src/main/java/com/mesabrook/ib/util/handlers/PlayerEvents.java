@@ -30,6 +30,7 @@ import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.init.PotionInit;
 import com.mesabrook.ib.items.ItemSponge;
 import com.mesabrook.ib.items.ItemTechRetailBox;
+import com.mesabrook.ib.items.armor.ItemRespirator;
 import com.mesabrook.ib.items.misc.ItemIBFood;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.items.tools.ItemBanHammer;
@@ -596,9 +597,16 @@ public class PlayerEvents
 			ItemStack helmet = player.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
 			ItemStack asbestos = player.getHeldItem(player.getActiveHand());
 			
-			if(asbestos.getItem() == ModItems.ASBESTOS) 
+			if(asbestos.getItem() == ModItems.ASBESTOS && !(helmet.getItem() instanceof ItemRespirator)) 
 			{
 				player.addPotionEffect(new PotionEffect(PotionInit.ASBESTOS_EFFECT, 100000, 0, true, false));
+			}
+			else
+			{
+				if(player.world.rand.nextInt(100) == 10)
+				{
+					helmet.damageItem(1, player);
+				}
 			}
 
 			if(player.getActivePotionEffect(PotionInit.ASBESTOS_EFFECT) != null)
@@ -671,15 +679,6 @@ public class PlayerEvents
 	public static void onBlockBreak(BlockEvent.BreakEvent event)
 	{
 		Block block = event.getState().getBlock();
-		if(block == Blocks.STONE && event.getState().getBlock().getMetaFromState(event.getState()) == 5)
-		{
-			Random rand = event.getWorld().rand;
-			if(rand.nextInt(100) == 10 && !event.getPlayer().isCreative())
-			{
-				event.getPlayer().sendMessage(new TextComponentString("Yes"));
-				event.getWorld().spawnEntity(new EntityItem(event.getWorld(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), new ItemStack(ModItems.ASBESTOS)));
-			}
-		}
 	}
 
 	private void autoFeedPlayer(EntityPlayer player)

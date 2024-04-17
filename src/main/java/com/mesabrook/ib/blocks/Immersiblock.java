@@ -34,8 +34,8 @@ public class Immersiblock extends Block implements IHasModel
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setSoundType(sound);
-		setHardness(5.0F);
-		setResistance(8.0F);
+		setHardness(1.5F);
+		setResistance(3.0F);
 		setCreativeTab(tab);
 		setHarvestLevel("pickaxe", 0);
 		setLightLevel(lightLevel);

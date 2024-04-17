@@ -129,5 +129,7 @@ public class CategoryResources extends AbstractCategory
 		add(ModItems.DENIM);
 		add(ModItems.PEGHOOK);
 		add(ModItems.ASBESTOS);
+		add(ModBlocks.CHRYSOTILE);
+		add(ModBlocks.CHRYSOTILE_SMOOTHED);
 	}
 }
