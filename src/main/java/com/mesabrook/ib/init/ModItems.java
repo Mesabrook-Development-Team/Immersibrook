@@ -170,6 +170,8 @@ public class ModItems
 	public static final Item DISC_HL3 = new MemeRecord("disc_pumpkin", ModSounds.HL3);
 	public static final Item DISC_MEMORY = new MemeRecord("memory", ModSounds.MEMORY);
 	public static final Item WIDE_DISC = new MemeRecord("wide_record", ModSounds.WIDE); 
+	public static final Item CAKE_DISC = new MemeRecord("disc_cake", ModSounds.CAKE);
+	public static final Item HALLOW_DISC = new MemeRecord("disc_hallow", ModSounds.HALLOW);
 
 	// First Aid Kit
 	public static final Item FIRST_AID_KIT = new ItemFirstAidKit("first_aid", Main.IMMERSIBROOK_MAIN);

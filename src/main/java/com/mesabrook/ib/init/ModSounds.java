@@ -125,6 +125,8 @@ public class ModSounds
 	public static final SoundEvent SPOOKY;
 	public static final SoundEvent RITZ;
 	public static final SoundEvent HL3;
+	public static final SoundEvent HALLOW;
+	public static final SoundEvent CAKE;
 
 	// Plastic SoundType
 	public static final SoundEvent PLASTIC_PLACE;
@@ -344,6 +346,8 @@ public class ModSounds
 		COOKING = addSoundsToRegistry("cooking");
 		MEMORY = addSoundsToRegistry("memory");
 		WIDE = addSoundsToRegistry("wide");
+		HALLOW = addSoundsToRegistry("hallow");
+		CAKE = addSoundsToRegistry("cake");
 		FRIDGE_OPEN = addSoundsToRegistry("fridge_open");
 		FRIDGE_CLOSE = addSoundsToRegistry("fridge_close");
 
@@ -670,6 +674,8 @@ public class ModSounds
 				event.getRegistry().register(ModSounds.AERO_STARTUP);
 				event.getRegistry().register(ModSounds.DESK_BELL);
 				event.getRegistry().register(ModSounds.DESK_BELL_AF);
+				event.getRegistry().register(ModSounds.CAKE);
+				event.getRegistry().register(ModSounds.HALLOW);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

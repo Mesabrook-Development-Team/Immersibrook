@@ -1314,6 +1314,8 @@ item.disc_pumpkin.name=Music Disc
 item.cooking_music.name=Music Disc
 item.memory.name=Music Disc
 item.wide_record.name=Music Disc
+item.disc_hallow.name=Music Disc
+item.disc_cake.name=Music Disc
 
 //Record Descriptions
 item.record.amalthea.desc=Amalthea
@@ -1334,6 +1336,8 @@ item.record.disc_pumpkin.desc=FreeUseMusic - Halloween
 item.record.cooking_music.desc=RavenholmZombie - Calm Cooking Music
 item.record.memory.desc=Bonnie - It's just a Burning Memory (8-bit)
 item.record.wide_record.desc=Слава Україні! (Wide Zelensky)
+item.record.disc_cake.desc=ShinkoNet - Holiday Snowfall (Hypixel Skyblock OST)
+item.record.disc_hallow.desc=ShinkoNet - Hallow Hallow (Hypixel Halloween Event OST)
 
 //Enchantments
 enchantment.thunder=The Power of Thor

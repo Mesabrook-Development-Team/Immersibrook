@@ -1,4 +1,18 @@
 {
+	"cake": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:cake",
+			"stream": true
+		}]
+	},
+	"hallow": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:hallow",
+			"stream": true
+		}]
+	},
 	"owo": {
 		"category": "master",
 		"sounds": [{
