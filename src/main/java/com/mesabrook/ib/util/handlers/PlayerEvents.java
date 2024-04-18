@@ -603,7 +603,7 @@ public class PlayerEvents
 			}
 			else
 			{
-				if(player.world.rand.nextInt(100) == 10)
+				if(player.world.rand.nextInt(420) == 10)
 				{
 					helmet.damageItem(1, player);
 				}
