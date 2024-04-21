@@ -1740,6 +1740,7 @@ item.scfd_chest.name=Black Turnout Jacket
 item.irfd_chest.name=Dark Tan Turnout Jacket
 item.cbfd_chest.name=Light Tan Turnout Jacket
 item.avfd_chest.name=Light Tan Turnout Jacket
+item.npfd_chest.name=Light Tan Turnout Jacket
 item.police_helmet.name=Mesabrook Marshals Standard Issue Safety Helmet
 item.police_vest.name=Mesabrook Marshals Standard Issue Bulletproof Vest
 item.firehelmet_black.name=Black Structural Helmet

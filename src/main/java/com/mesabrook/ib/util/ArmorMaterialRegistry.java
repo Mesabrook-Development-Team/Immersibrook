@@ -53,6 +53,7 @@ public class ArmorMaterialRegistry
     public static final ItemArmor.ArmorMaterial FF_DT_IRFD = EnumHelper.addArmorMaterial("ff_dt_irfd", Reference.MODID + ":ff_dt_irfd", 10, new int[] {4,4,4,4}, 0, ModSounds.VEST, 4.0F);
     public static final ItemArmor.ArmorMaterial FF_LT_CBFD = EnumHelper.addArmorMaterial("ff_lt_cbfd", Reference.MODID + ":ff_lt_cbfd", 10, new int[] {4,4,4,4}, 0, ModSounds.VEST, 4.0F);
     public static final ItemArmor.ArmorMaterial FF_LT_AVFD = EnumHelper.addArmorMaterial("ff_lt_avfd", Reference.MODID + ":ff_lt_avfd", 10, new int[] {4,4,4,4}, 0, ModSounds.VEST, 4.0F);
+    public static final ItemArmor.ArmorMaterial FF_LT_NPFD = EnumHelper.addArmorMaterial("ff_lt_npfd", Reference.MODID + ":ff_lt_npfd", 10, new int[] {4,4,4,4}, 0, ModSounds.VEST, 4.0F);
     public static final ItemArmor.ArmorMaterial FF_BLACK_SCFD = EnumHelper.addArmorMaterial("ff_black_scfd", Reference.MODID + ":ff_black_scfd", 10, new int[] {4,4,4,4}, 0, ModSounds.VEST, 4.0F);
 
     // Generic Fire Jackets

@@ -295,6 +295,10 @@ public class RegistryHandler
 		{
 			rules.addGameRule("funnyDeathSound", "true", GameRules.ValueType.BOOLEAN_VALUE);
 		}
+		if(!rules.hasRule("asbestosRealism"))
+		{
+			rules.addGameRule("asbestosRealism", "false", GameRules.ValueType.BOOLEAN_VALUE);
+		}
 		
 		// MesaSuite Data Access
 		DataAccess.init(world);

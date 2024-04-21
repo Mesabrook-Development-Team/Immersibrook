@@ -599,7 +599,10 @@ public class PlayerEvents
 			
 			if(asbestos.getItem() == ModItems.ASBESTOS && !(helmet.getItem() instanceof ItemRespirator)) 
 			{
-				player.addPotionEffect(new PotionEffect(PotionInit.ASBESTOS_EFFECT, 100000, 0, true, false));
+				if(player.world.getGameRules().getBoolean("asbestosRealism"))
+				{
+					player.addPotionEffect(new PotionEffect(PotionInit.ASBESTOS_EFFECT, 100000, 0, true, false));
+				}
 			}
 			else
 			{
