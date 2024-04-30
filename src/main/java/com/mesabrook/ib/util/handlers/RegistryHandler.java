@@ -160,7 +160,8 @@ public class RegistryHandler
 		CapabilityDebitCard.init();
 		ItemRegisterFluidWrapper.CapabilityRegisterFluidWrapper.init();
 		PotionInit.registerPotions();
-		GameRegistry.registerWorldGenerator(new WorldGenOre(), 3);
+		GameRegistry.registerWorldGenerator(new WorldGenChrysotile(), 3);
+		GameRegistry.registerWorldGenerator(new WorldGenBismuth(), 3);
 	}
 	
 	public static void initRegistries()

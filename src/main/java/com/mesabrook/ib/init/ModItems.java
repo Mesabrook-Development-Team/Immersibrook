@@ -616,4 +616,6 @@ public class ModItems
 	public static final Item PLEATHER = new MiscItem("synthetic_leather", 64, Main.IMMERSIBROOK_MAIN);
 	public static final Item ASBESTOS = new MiscItem("asbestos", 64, Main.IMMERSIBROOK_MAIN);
 	public static final Item RESPIRATOR = new ItemRespirator("respirator");
-}
+	
+	public static final Item RAW_BISMUTH = new MiscItem("raw_bismuth", 64, Main.IMMERSIBROOK_MAIN);
+	}

@@ -5,10 +5,13 @@ import com.mesabrook.ib.advancements.Triggers;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
 import com.mesabrook.ib.util.IHasModel;
+import com.mesabrook.ib.util.IndependentTimer;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
@@ -25,9 +28,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Immersiblock extends Block implements IHasModel
-{
+{	
 	public Immersiblock(String name, Material material, SoundType sound, CreativeTabs tab, float lightLevel)
 	{
 		super(material);
@@ -47,7 +52,21 @@ public class Immersiblock extends Block implements IHasModel
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune)
 	{
+		if(state.getBlock() == ModBlocks.BISMUTH_ORE)
+		{
+			return ModItems.RAW_BISMUTH;
+		}
 		return Item.getItemFromBlock(this);
+	}
+	
+	@Override
+	public int quantityDropped(IBlockState state, int fortune, Random random)
+	{
+		if(state.getBlock() == ModBlocks.BISMUTH_ORE)
+		{
+			return random.nextInt(2) + 1;
+		}
+		return super.quantityDropped(random);
 	}
 
 	@Override
@@ -77,6 +96,17 @@ public class Immersiblock extends Block implements IHasModel
 		{
 			tooltip.add(TextFormatting.AQUA + "It's baaaaack");
 		}
+		
+		if(this.getBlockState().getBlock() == ModBlocks.BISMUTH_BLOCK)
+		{
+			tooltip.add(TextFormatting.GREEN + "Taste the Rainbow!");
+		}
+		if(this.getBlockState().getBlock() == ModBlocks.DARK_BISMUTH)
+		{
+			tooltip.add(TextFormatting.GRAY + "Taste the Rainbow?");
+			tooltip.add(TextFormatting.BLUE + "To make Iridescent Bismuth, process this block in an Arc Furnace");
+		}
+		
 		super.addInformation(stack, world, tooltip, flag);
 	}
 	

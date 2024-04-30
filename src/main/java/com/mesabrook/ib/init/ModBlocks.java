@@ -1440,4 +1440,9 @@ public class ModBlocks
 	// World Blocks
 	public static final Block CHRYSOTILE = new BlockChrysotile("chrysotile");
 	public static final Block CHRYSOTILE_SMOOTHED = new Immersiblock("smooth_chrysotile", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block BISMUTH_ORE = new Immersiblock("bismuth_ore", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block BISMUTH_BLOCK = new Immersiblock("bismuth_block", Material.IRON, SoundType.METAL, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block RAW_BISMUTH_BLOCK = new Immersiblock("raw_bismuth_block", Material.IRON, SoundType.METAL, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block DARK_BISMUTH = new Immersiblock("dark_bismuth_block", Material.IRON, SoundType.METAL, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block BISMUTH_BRICKS = new Immersiblock("bismuth_bricks", Material.IRON, SoundType.METAL, Main.IMMERSIBROOK_MAIN, 0F);
 }

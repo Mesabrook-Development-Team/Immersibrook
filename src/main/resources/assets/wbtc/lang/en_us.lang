@@ -2191,3 +2191,10 @@ potion.effect.asbestos=Potion of Mesothelioma
 splash_potion.effect.asbestos=Splash Potion of Mesothelioma
 lingering_potion.effect.asbestos=Lingering Potion of Mesothelioma
 tipped_arrow.effect.asbestos=Arrow of Asbestos
+
+tile.bismuth_block.name=Block of Iridescent Bismuth
+tile.bismuth_ore.name=Bismuth Ore
+item.raw_bismuth.name=Raw Bismuth
+tile.dark_bismuth_block.name=Smelted Bismuth
+tile.raw_bismuth_block.name=Block of Raw Bismuth
+tile.bismuth_bricks.name=Iridescent Bismuth Bricks
