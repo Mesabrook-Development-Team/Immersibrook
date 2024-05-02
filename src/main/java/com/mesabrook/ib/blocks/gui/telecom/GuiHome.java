@@ -36,6 +36,7 @@ public class GuiHome extends GuiPhoneBase {
 	ImageButton button6;
 	ImageButton button7;
 	ImageButton button8;
+	ImageButton button9;
 
 	@Override
 	protected String getInnerTextureFileName()
@@ -77,6 +78,10 @@ public class GuiHome extends GuiPhoneBase {
 		// Store Mode Launcher
 		button8 = new ImageButton(7, button3.x + 40, INNER_Y + 24, 32, 32, phoneStackData.getIconTheme() + "/icn_storemode.png", 32, 32);
 		buttonList.add(button8);
+		
+		// Magic 8 Ball App
+		button9 = new ImageButton(8, INNER_X + 5, INNER_Y + 64, 32, 32, phoneStackData.getIconTheme() + "/icn_eightball.png", 32, 32);
+		buttonList.add(button9);
 	}
 
 	@Override
@@ -119,6 +124,10 @@ public class GuiHome extends GuiPhoneBase {
 		else if(mouseX >= button8.x && mouseY >= button8.y && mouseX < button8.x + button8.width && mouseY < button8.y + button8.height)
 		{
 			drawCenteredString(fontRenderer, "Employee Mode", INNER_X + 80, INNER_Y + 150, 0xFFFFFF);
+		}
+		else if(mouseX >= button9.x && mouseY >= button9.y && mouseX < button9.x + button9.width && mouseY < button9.y + button9.height)
+		{
+			drawCenteredString(fontRenderer, "Magic 8 Ball", INNER_X + 80, INNER_Y + 150, 0xFFFFFF);
 		}
 		else if(phoneStackData.getBatteryLevel() <= 100)
 		{
@@ -184,6 +193,13 @@ public class GuiHome extends GuiPhoneBase {
 				break;
 			case 7:
 				Minecraft.getMinecraft().displayGuiScreen(new GuiStoreMode());
+				break;
+			case 8:
+				GuiAppSplashScreen guiAA = new GuiAppSplashScreen(phoneStack, hand);
+				guiAA.setLogoPath("icn_eightball.png");
+				guiAA.setAppName("Magic 8 Ball");
+				guiAA.setSplashColor("red");
+				Minecraft.getMinecraft().displayGuiScreen(guiAA);
 				break;
 		}
 	}

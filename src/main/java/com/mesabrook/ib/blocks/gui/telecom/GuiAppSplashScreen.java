@@ -105,6 +105,10 @@ public class GuiAppSplashScreen extends GuiPhoneBase
             {
                 Minecraft.getMinecraft().displayGuiScreen(new GuiSettings(phoneStack, hand));
             }
+            if(getLogoPath().contains("icn_eightball"))
+            {
+                Minecraft.getMinecraft().displayGuiScreen(new GuiMagicEightBall(phoneStack, hand));
+            }
             if(getLogoPath().contains("phone"))
             {
                 Minecraft.getMinecraft().displayGuiScreen(new GuiEmptyPhone(phoneStack, hand));
