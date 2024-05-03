@@ -58,6 +58,7 @@ public class GuiMagicEightBall extends GuiPhoneBase
 	public GuiMagicEightBall(ItemStack phoneStack, EnumHand hand) 
 	{
 		super(phoneStack, hand);
+		displayAnswer = "Ask me your questions.";
 	}
 
 	@Override
@@ -78,8 +79,8 @@ public class GuiMagicEightBall extends GuiPhoneBase
 	{
 		super.initGui();
 		
-		questionBox = new GuiTextField(1, fontRenderer, INNER_X + 60, INNER_Y + 50, 85, 10);
-		submit = new MinedroidButton(2, INNER_X + 61, lowerControlsY + 15, 40, "OK", 0xFFFFFF);
+		questionBox = new GuiTextField(1, fontRenderer, INNER_X + 5, INNER_Y + 165, 151, 10);
+		submit = new MinedroidButton(2, INNER_X + 61, lowerControlsY + 85, 40, "Ask", 0x000000);
 		buttonList.add(submit);
 	}
 	
@@ -93,6 +94,8 @@ public class GuiMagicEightBall extends GuiPhoneBase
 		drawCenteredString(fontRenderer, new TextComponentString(TextFormatting.ITALIC + displayAnswer).getFormattedText(), INNER_X + 80, INNER_Y + 130, 0xFFFFFF);
 		
 		questionBox.drawTextBox();
+		
+		fontRenderer.drawString("Ask the Magic 8 Ball!", questionBox.x, questionBox.y - 10, 0x0b520a);
 	}
 	
     @Override
@@ -115,14 +118,14 @@ public class GuiMagicEightBall extends GuiPhoneBase
 		super.actionPerformed(button);
 		if(button == submit)
 		{
-			if(questionBox.getText() != null)
+			if(questionBox.getText() != "")
 			{
 				getRandomAnswer();
 				questionBox.setText("");
 			}
 			else
 			{
-				
+				displayAnswer = "Ask me your questions.";
 			}
 		}
 	}
