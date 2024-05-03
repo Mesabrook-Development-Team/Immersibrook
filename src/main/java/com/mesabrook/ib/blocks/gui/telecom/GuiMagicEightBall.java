@@ -137,14 +137,14 @@ public class GuiMagicEightBall extends GuiPhoneBase
 		super.actionPerformed(button);
 		if(button == submit)
 		{
-			if(questionBox.getText() != "")
+			if(questionBox.getText() != "" && questionBox.getText().contains("?"))
 			{
 				getRandomAnswer();
 				Minecraft.getMinecraft().player.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 1F, 1F);
 			}
 			else
 			{
-				displayAnswer = "~Ask me your questions~";
+				displayAnswer = "~That is not a question~";
 			}
 		}
 	}
