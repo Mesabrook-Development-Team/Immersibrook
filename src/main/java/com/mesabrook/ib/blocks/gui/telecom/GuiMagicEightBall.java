@@ -29,7 +29,7 @@ public class GuiMagicEightBall extends GuiPhoneBase
 	private int submitButtonX;
 	private int submitButtonY;
 	private int submitButtonWidth;
-	int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 50;
+	
 	
 	static 
 	{
@@ -79,8 +79,9 @@ public class GuiMagicEightBall extends GuiPhoneBase
 	{
 		super.initGui();
 		
+		int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 50;
 		questionBox = new GuiTextField(1, fontRenderer, INNER_X + 5, INNER_Y + 165, 151, 10);
-		submit = new MinedroidButton(2, INNER_X + 61, lowerControlsY + 85, 40, "Ask", 0x000000);
+		submit = new MinedroidButton(2, INNER_X + 61, lowerControlsY + 15, 40, "Ask", 0x000000);
 		buttonList.add(submit);
 	}
 	
