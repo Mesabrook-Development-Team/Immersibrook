@@ -28,7 +28,7 @@ public class RecipesHandler
 		try
 		{
 			int outputAmount = 1;
-
+			
 			ArcFurnaceRecipe.addRecipe(new ItemStack(ModBlocks.BISMUTH_BLOCK), new ItemStack(ModBlocks.DARK_BISMUTH), ItemStack.EMPTY, 128, 345, ItemStack.EMPTY);
 			ArcFurnaceRecipe.addRecipe(new ItemStack(ModBlocks.BISMUTH_BLOCK, 3), new ItemStack(ModBlocks.BISMUTH_BRICKS), ModUtils.getItemStackFromOreDictionary("itemSlag", 3), 128, 345, new ItemStack(ModItems.RAW_BISMUTH, 2));
 			

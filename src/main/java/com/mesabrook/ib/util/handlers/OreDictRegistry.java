@@ -169,6 +169,10 @@ public class OreDictRegistry
 			OreDictionary.registerOre("listAllPhones", ModItems.PHONE_RC);
 			OreDictionary.registerOre("listAllPhones", ModItems.PHONE_ZOE);
 			OreDictionary.registerOre("listAllPhones", ModItems.PHONE_FR);
+			
+			OreDictionary.registerOre("nuggetAnyBismoid", ModItems.RAW_BISMUTH);
+			OreDictionary.registerOre("tinyAnyBismoid", ModItems.RAW_BISMUTH);
+			OreDictionary.registerOre("dustAsbestos", ModItems.ASBESTOS);
 
 			Main.logger.info("[" + Reference.MODNAME + "] Ore Dictionary Entries Registered.");
 		}

@@ -7,6 +7,7 @@ import java.util.Random;
 
 import org.lwjgl.input.Keyboard;
 
+import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.util.IndependentTimer;
 import com.mesabrook.ib.util.Reference;
 
@@ -26,6 +27,8 @@ public class GuiMagicEightBall extends GuiPhoneBase
 {
     GuiTextField questionBox;
     MinedroidButton submit;
+    ImageButton help;
+    
     private static String displayAnswer = "Ask me your questions.";
 	private static final List<String> answers = new ArrayList<>();
 	
@@ -79,7 +82,7 @@ public class GuiMagicEightBall extends GuiPhoneBase
 	{
         Random random = new Random();
         int index = random.nextInt(answers.size());
-        return displayAnswer = "~" + answers.get(index) + "~";
+        return displayAnswer = new TextComponentString(TextFormatting.LIGHT_PURPLE + "~" + answers.get(index) + "~").getFormattedText();
     }
 	
 	@Override
@@ -90,7 +93,11 @@ public class GuiMagicEightBall extends GuiPhoneBase
 		int lowerControlsY = INNER_Y + INNER_TEX_HEIGHT - INNER_TEX_Y_OFFSET - 50;
 		questionBox = new GuiTextField(1, fontRenderer, INNER_X + 5, INNER_Y + 165, 151, 10);
 		submit = new MinedroidButton(2, INNER_X + 61, lowerControlsY + 15, 40, "Ask", 0x000000);
+		
+		help = new ImageButton(4, INNER_X + 145, INNER_Y + 18, 12, 12, "plex" + "/icn_help.png", 32, 32); 
+		
 		buttonList.add(submit);
+		buttonList.add(help);
 		
 		Minecraft.getMinecraft().player.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1F, 1F);
 	}
@@ -111,7 +118,7 @@ public class GuiMagicEightBall extends GuiPhoneBase
 	
     private void showBall()
     {
-    	Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/telecom/" + phoneStackData.getIconTheme() + "/eightball.png"));
+    	Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/telecom/" + "plex" + "/eightball.png"));
     	GlStateManager.color(1, 1, 1);
     	drawScaledCustomSizeModalRect(INNER_X + 45, INNER_Y + 50, 0, 0, 70, 70, 70, 70, 70, 70);
     }
@@ -146,6 +153,11 @@ public class GuiMagicEightBall extends GuiPhoneBase
 			{
 				displayAnswer = "~That is not a question~";
 			}
+		}
+		
+		if(button == help)
+		{
+			Minecraft.getMinecraft().displayGuiScreen(new GuiAboutMagicEightBall(phoneStack, hand));
 		}
 	}
 }

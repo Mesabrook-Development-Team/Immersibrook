@@ -7,6 +7,7 @@ import com.mesabrook.ib.Main;
 import com.mesabrook.ib.items.ItemBlahaj;
 import com.mesabrook.ib.items.ItemFlagger;
 import com.mesabrook.ib.items.ItemLauncher;
+import com.mesabrook.ib.items.ItemPepto;
 import com.mesabrook.ib.items.ItemRation;
 import com.mesabrook.ib.items.ItemSponge;
 import com.mesabrook.ib.items.ItemTechRetailBox;
@@ -618,4 +619,5 @@ public class ModItems
 	public static final Item RESPIRATOR = new ItemRespirator("respirator");
 	
 	public static final Item RAW_BISMUTH = new MiscItem("raw_bismuth", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item PEPTO_BISMOL = new ItemPepto("pepto").setAlwaysEdible();
 	}
