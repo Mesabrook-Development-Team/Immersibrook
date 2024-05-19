@@ -2199,3 +2199,6 @@ tile.dark_bismuth_block.name=Smelted Bismuth
 tile.raw_bismuth_block.name=Block of Raw Bismuth
 tile.bismuth_bricks.name=Iridescent Bismuth Bricks
 item.pepto.name=Pepto-Bismol
+
+tile.bollard.name=Collapsing Bollard
+tile.bollard_extended.name=Collapsing Bollard

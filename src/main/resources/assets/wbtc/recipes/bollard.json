@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " R ",
+    " R ",
+    "IPI"
+  ],
+  "key": {
+    "R": {
+	  "type": "forge:ore_dict",
+      "ore": "stickIron"
+    },
+    "P": {
+	  "item": "minecraft:sticky_piston"
+    },
+    "I": {
+	  "type": "forge:ore_dict",
+      "ore": "plateIron"
+    }
+  },
+  "result": {
+    "item": "wbtc:bollard",
+    "count": 1
+  }
+}

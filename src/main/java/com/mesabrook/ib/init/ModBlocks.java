@@ -6,6 +6,7 @@ import java.util.List;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.BlockATM;
 import com.mesabrook.ib.blocks.BlockBin;
+import com.mesabrook.ib.blocks.BlockBollard;
 import com.mesabrook.ib.blocks.BlockCeilingLight;
 import com.mesabrook.ib.blocks.BlockCellAntenna;
 import com.mesabrook.ib.blocks.BlockChrysotile;
@@ -1445,4 +1446,8 @@ public class ModBlocks
 	public static final Block RAW_BISMUTH_BLOCK = new Immersiblock("raw_bismuth_block", Material.IRON, SoundType.METAL, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block DARK_BISMUTH = new Immersiblock("dark_bismuth_block", Material.IRON, SoundType.METAL, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block BISMUTH_BRICKS = new Immersiblock("bismuth_bricks", Material.IRON, SoundType.METAL, Main.IMMERSIBROOK_MAIN, 0F);
+	
+	// Bollards
+	public static final Block BOLLARD = new BlockBollard("bollard");
+	public static final Block BOLLARD_EXTENDED = new BlockBollard("bollard_extended");
 }

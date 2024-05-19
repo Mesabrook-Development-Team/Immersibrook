@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ModSounds
 {
+	public static final SoundEvent BOLLARD;
 	public static final SoundEvent OWO_SFX;
 	public static final SoundEvent RZ_TROPHY;
 	public static final SoundEvent CSX_TROPHY;
@@ -236,6 +237,7 @@ public class ModSounds
 
 	static
 	{
+		BOLLARD = addSoundsToRegistry("bollard_sound");
 		OWO_SFX = addSoundsToRegistry("owo");
 		RZ_TROPHY = addSoundsToRegistry("rz_trophy");
 		CSX_TROPHY = addSoundsToRegistry("csx_trophy");
@@ -474,6 +476,7 @@ public class ModSounds
 		{
 			try
 			{
+				event.getRegistry().registerAll(ModSounds.BOLLARD);
 				event.getRegistry().registerAll(ModSounds.OWO_SFX);
 				event.getRegistry().registerAll(ModSounds.WIDE);
 				event.getRegistry().registerAll(ModSounds.RZ_TROPHY);
