@@ -1,5 +1,6 @@
 package com.mesabrook.ib.init;
 
+import com.mesabrook.ib.blocks.BlockBollard;
 import com.mesabrook.ib.blocks.te.TileEntityFluidMeter;
 import com.mesabrook.ib.blocks.te.TileEntitySoundEmitter;
 import com.mesabrook.ib.blocks.te.TileEntityWirelessChargingPad;
@@ -17,6 +18,7 @@ public class XNetAPI {
 		XNet.xNetApi.registerConnectable(new WirelessChargingPadConnectable());
 		XNet.xNetApi.registerConnectable(new FluidMeterConnectable());
 		XNet.xNetApi.registerConnectable(new SoundEmitterConnectable());
+		XNet.xNetApi.registerConnectable(new BollardConnectable());
 	}
 	
 	public static class WirelessChargingPadConnectable implements IConnectable
@@ -55,6 +57,19 @@ public class XNetAPI {
 			if (te instanceof TileEntitySoundEmitter)
 			{
 				return facing != null ? ConnectResult.YES : ConnectResult.NO;
+			}
+			return ConnectResult.DEFAULT;
+		}
+	}
+	
+	public static class BollardConnectable implements IConnectable
+	{
+		@Override
+		public ConnectResult canConnect(IBlockAccess world, BlockPos connectorPos, BlockPos blockPos, TileEntity te, EnumFacing facing)
+		{
+			if(world.getBlockState(blockPos).getBlock() instanceof BlockBollard && facing == EnumFacing.UP)
+			{
+				return ConnectResult.YES;
 			}
 			return ConnectResult.DEFAULT;
 		}

@@ -1,5 +1,7 @@
 package com.mesabrook.ib.blocks;
 
+import java.util.List;
+
 import javax.annotation.Nullable;
 
 import com.mesabrook.ib.Main;
@@ -14,7 +16,9 @@ import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -22,9 +26,12 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockBollard extends Block implements IHasModel
 {
@@ -32,12 +39,21 @@ public class BlockBollard extends Block implements IHasModel
 	private static final AxisAlignedBB EXTENDED_BB = ModUtils.getPixelatedAABB(5, 0, 5, 11, 20, 11);
 	private static final AxisAlignedBB EXTENDED_COL_BB = ModUtils.getPixelatedAABB(5, 0, 5, 11, 24, 11);
 	
-	public BlockBollard(String name)
+	private String styleForTooltip = null;
+	
+	public BlockBollard(String name, String styleTooltip)
 	{
 		super(Material.IRON);
 		setRegistryName(name);
 		setUnlocalizedName(name);
 		setCreativeTab(Main.IMMERSIBROOK_MAIN);
+		
+		this.styleForTooltip = styleTooltip;
+		
+		if(styleTooltip == null)
+		{
+			styleForTooltip = "Collapsing Bollard";
+		}
 		
         ModBlocks.BLOCKS.add(this);
         ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()).setMaxStackSize(64));
@@ -52,7 +68,10 @@ public class BlockBollard extends Block implements IHasModel
     @Override
     public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
     {
-    	return new ItemStack(ModBlocks.BOLLARD);
+    	if(state.getBlock() == ModBlocks.BOLLARD_EXTENDED) return new ItemStack(ModBlocks.BOLLARD);
+    	if(state.getBlock() == ModBlocks.BOLLARD) return new ItemStack(ModBlocks.BOLLARD);
+    	
+    	return ItemStack.EMPTY;
     }
     
     @Override
@@ -60,11 +79,11 @@ public class BlockBollard extends Block implements IHasModel
     {
     	if(worldIn.isBlockPowered(pos))
     	{
-    		worldIn.setBlockState(pos, ModBlocks.BOLLARD_EXTENDED.getDefaultState());
+    		if(state.getBlock() == ModBlocks.BOLLARD) worldIn.setBlockState(pos, ModBlocks.BOLLARD_EXTENDED.getDefaultState());  		
     	}
     	else
     	{
-    		worldIn.setBlockState(pos, ModBlocks.BOLLARD.getDefaultState());
+    		if(state.getBlock() == ModBlocks.BOLLARD_EXTENDED) worldIn.setBlockState(pos, ModBlocks.BOLLARD.getDefaultState());
     	}
     }
     
@@ -76,11 +95,12 @@ public class BlockBollard extends Block implements IHasModel
     		World worldIn = (World) world;
         	if(worldIn.isBlockPowered(pos))
         	{
-        		worldIn.setBlockState(pos, ModBlocks.BOLLARD_EXTENDED.getDefaultState());
+        		if(world.getBlockState(pos).getBlock() == ModBlocks.BOLLARD) worldIn.setBlockState(pos, ModBlocks.BOLLARD_EXTENDED.getDefaultState());	
+        		
         	}
         	else
         	{
-        		worldIn.setBlockState(pos, ModBlocks.BOLLARD.getDefaultState());
+        		if(world.getBlockState(pos).getBlock() == ModBlocks.BOLLARD_EXTENDED) worldIn.setBlockState(pos, ModBlocks.BOLLARD.getDefaultState());
         	}
     	}
     }
@@ -129,4 +149,14 @@ public class BlockBollard extends Block implements IHasModel
     {
         return 1;
     }
+    
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag)
+	{
+		String name = this.styleForTooltip;
+		tooltip.add(TextFormatting.GRAY + "Style: " + name);
+		tooltip.add(TextFormatting.BLUE + "Creates a 1-1/2 blocks tall hitbox when extended, preventing larger entities (like vehicles) from passing over them.");
+		tooltip.add("Requires " + TextFormatting.RED + "Redstone" + TextFormatting.RESET + " to activate.");
+	}
 }

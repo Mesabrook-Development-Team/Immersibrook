@@ -1448,6 +1448,6 @@ public class ModBlocks
 	public static final Block BISMUTH_BRICKS = new Immersiblock("bismuth_bricks", Material.IRON, SoundType.METAL, Main.IMMERSIBROOK_MAIN, 0F);
 	
 	// Bollards
-	public static final Block BOLLARD = new BlockBollard("bollard");
-	public static final Block BOLLARD_EXTENDED = new BlockBollard("bollard_extended");
+	public static final Block BOLLARD = new BlockBollard("bollard", "Gray Bollard");
+	public static final Block BOLLARD_EXTENDED = new BlockBollard("bollard_extended", null);
 }
