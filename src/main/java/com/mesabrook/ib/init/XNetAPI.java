@@ -18,7 +18,6 @@ public class XNetAPI {
 		XNet.xNetApi.registerConnectable(new WirelessChargingPadConnectable());
 		XNet.xNetApi.registerConnectable(new FluidMeterConnectable());
 		XNet.xNetApi.registerConnectable(new SoundEmitterConnectable());
-		XNet.xNetApi.registerConnectable(new BollardConnectable());
 	}
 	
 	public static class WirelessChargingPadConnectable implements IConnectable
@@ -62,16 +61,17 @@ public class XNetAPI {
 		}
 	}
 	
-	public static class BollardConnectable implements IConnectable
-	{
-		@Override
-		public ConnectResult canConnect(IBlockAccess world, BlockPos connectorPos, BlockPos blockPos, TileEntity te, EnumFacing facing)
-		{
-			if(world.getBlockState(blockPos).getBlock() instanceof BlockBollard && facing == EnumFacing.UP)
-			{
-				return ConnectResult.YES;
-			}
-			return ConnectResult.DEFAULT;
-		}
-	}
+	// TODO: Fix eventually so that collision will update properly.
+//	public static class BollardConnectable implements IConnectable
+//	{
+//		@Override
+//		public ConnectResult canConnect(IBlockAccess world, BlockPos connectorPos, BlockPos blockPos, TileEntity te, EnumFacing facing)
+//		{
+//			if(world.getBlockState(blockPos).getBlock() instanceof BlockBollard && facing == EnumFacing.UP)
+//			{
+//				return ConnectResult.YES;
+//			}
+//			return ConnectResult.DEFAULT;
+//		}
+//	}
 }
