@@ -2202,3 +2202,12 @@ item.pepto.name=Pepto-Bismol
 
 tile.bollard.name=Collapsing Bollard
 tile.bollard_extended.name=Collapsing Bollard
+tile.wall_down.name=Extending Wall Barricade
+tile.wall_up.name=Extending Wall Barricade
+
+item.army_cap.name=Service Cap
+item.navy_cap.name=Service Cap
+item.air_force_cap.name=Service Cap
+item.marines_cap.name=Service Cap
+item.space_force_cap.name=Service Cap
+item.marshals_cap.name=Service Cap

@@ -96,5 +96,13 @@ public class CategoryVests extends AbstractCategory
 		// Engineer's Uniform
 		add(ModItems.E_HAT);
 		add(ModItems.ENGINEERS_OVERALLS);
+		
+		// More Wearable Items
+		add(ModItems.ARMY_CAP);
+		add(ModItems.NAVY_CAP);
+		add(ModItems.AF_CAP);
+		add(ModItems.MC_CAP);
+		add(ModItems.SF_CAP);
+		add(ModItems.MARSHALS_CAP);
 	}
 }

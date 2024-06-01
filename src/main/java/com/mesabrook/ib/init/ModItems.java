@@ -620,4 +620,12 @@ public class ModItems
 	
 	public static final Item RAW_BISMUTH = new MiscItem("raw_bismuth", 64, Main.IMMERSIBROOK_MAIN);
 	public static final Item PEPTO_BISMOL = new ItemPepto("pepto").setAlwaysEdible();
-	}
+	
+	// Military Hats lmbo
+	public static final Item ARMY_CAP = new WearableHat("army_cap");
+	public static final Item NAVY_CAP = new WearableHat("navy_cap");
+	public static final Item AF_CAP = new WearableHat("air_force_cap");
+	public static final Item MC_CAP = new WearableHat("marines_cap");
+	public static final Item SF_CAP = new WearableHat("space_force_cap");
+	public static final Item MARSHALS_CAP = new WearableHat("marshals_cap");
+}
