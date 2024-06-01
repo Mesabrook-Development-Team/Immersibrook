@@ -44,6 +44,9 @@ public class RecipesHandler
 
 			// SIM Card crafting
 			BlueprintCraftingRecipe.addRecipe("components", new ItemStack(ModItems.SIM_CARD), ModItems.PLASTIC_WHITE, new ItemStack(IEContent.itemMaterial, 1, 27), new ItemStack(IEContent.itemMaterial, 3, 20));
+			
+			// Bollards
+			BlueprintCraftingRecipe.addRecipe("components", new ItemStack(ModBlocks.WALL_DOWN), new ItemStack(Blocks.CONCRETE, 1, 8), new ItemStack(Blocks.CONCRETE, 2, 14), new ItemStack(Blocks.PISTON), new ItemStack(Blocks.REDSTONE_LAMP, 3));
 
 			// Pleather crafting
 			BlueprintCraftingRecipe.addRecipe("components", new ItemStack(ModItems.PLEATHER), ModItems.PLASTIC_PLATE, new ItemStack(Items.STRING, 3), new ItemStack(Items.DYE, 1, 8));

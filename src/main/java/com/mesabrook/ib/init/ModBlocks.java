@@ -31,6 +31,7 @@ import com.mesabrook.ib.blocks.BlockPlexiglassPane;
 import com.mesabrook.ib.blocks.BlockPole;
 import com.mesabrook.ib.blocks.BlockRawPlastic;
 import com.mesabrook.ib.blocks.BlockRegister;
+import com.mesabrook.ib.blocks.BlockRotationalBollard;
 import com.mesabrook.ib.blocks.BlockSeat;
 import com.mesabrook.ib.blocks.BlockShippingBox;
 import com.mesabrook.ib.blocks.BlockSiding;
@@ -1450,4 +1451,8 @@ public class ModBlocks
 	// Bollards
 	public static final Block BOLLARD = new BlockBollard("bollard", "Gray Bollard");
 	public static final Block BOLLARD_EXTENDED = new BlockBollard("bollard_extended", null);
+	
+	// Directional Bollards
+	public static final Block WALL_DOWN = new BlockRotationalBollard("wall_down", ModUtils.getPixelatedAABB(0, 0, 6, 16, 1, 10), ModUtils.getPixelatedAABB(0, 0, 6, 16, 1, 10), 0F);
+	public static final Block WALL_UP = new BlockRotationalBollard("wall_up", ModUtils.getPixelatedAABB(0, 0, 6, 16, 19.25, 10), ModUtils.getPixelatedAABB(0, 0, 6, 16, 24, 10), 0.5F);
 }
