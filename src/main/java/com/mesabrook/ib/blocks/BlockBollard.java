@@ -17,6 +17,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
@@ -41,12 +42,12 @@ public class BlockBollard extends Block implements IHasModel
 	
 	private String styleForTooltip = null;
 	
-	public BlockBollard(String name, String styleTooltip, float hardness)
+	public BlockBollard(String name, String styleTooltip, float hardness, CreativeTabs tab)
 	{
 		super(Material.IRON);
 		setRegistryName(name);
 		setUnlocalizedName(name);
-		setCreativeTab(Main.IMMERSIBROOK_MAIN);
+		setCreativeTab(tab);
 		setHardness(hardness);
 		
 		this.styleForTooltip = styleTooltip;

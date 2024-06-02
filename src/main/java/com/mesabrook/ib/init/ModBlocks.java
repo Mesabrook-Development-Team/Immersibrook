@@ -1449,13 +1449,13 @@ public class ModBlocks
 	public static final Block BISMUTH_BRICKS = new Immersiblock("bismuth_bricks", Material.IRON, SoundType.METAL, Main.IMMERSIBROOK_MAIN, 0F);
 	
 	// Bollards
-	public static final Block BOLLARD = new BlockBollard("bollard", "Gray Bollard", 1.5F);
-	public static final Block BOLLARD_EXTENDED = new BlockBollard("bollard_extended", null, -1.0F);
+	public static final Block BOLLARD = new BlockBollard("bollard", "Gray Bollard", 1.5F, Main.IMMERSIBROOK_MAIN);
+	public static final Block BOLLARD_EXTENDED = new BlockBollard("bollard_extended", null, -1.0F, null);
 	
 	// Directional Bollards
-	public static final Block WALL_DOWN = new BlockRotationalBollard("wall_down", ModUtils.getPixelatedAABB(0, 0, 6, 16, 1, 10), ModUtils.getPixelatedAABB(0, 0, 6, 16, 1, 10), 0F, "Retracting Barricade", 2.5F);
-	public static final Block WALL_UP = new BlockRotationalBollard("wall_up", ModUtils.getPixelatedAABB(0, 0, 6, 16, 19.25, 10), ModUtils.getPixelatedAABB(0, 0, 6, 16, 24, 10), 0.5F, "Retracting Barricade", -1.0F);
+	public static final Block WALL_DOWN = new BlockRotationalBollard("wall_down", ModUtils.getPixelatedAABB(0, 0, 6, 16, 1, 10), ModUtils.getPixelatedAABB(0, 0, 6, 16, 1, 10), 0F, "Retracting Barricade", 2.5F, Main.IMMERSIBROOK_MAIN);
+	public static final Block WALL_UP = new BlockRotationalBollard("wall_up", ModUtils.getPixelatedAABB(0, 0, 6, 16, 19.25, 10), ModUtils.getPixelatedAABB(0, 0, 6, 16, 24, 10), 0.5F, "Retracting Barricade", -1.0F, null);
 
-	public static final Block SHOCK_BOLLARD_DOWN = new BlockRotationalBollard("shock_bollard_down", ModUtils.getPixelatedAABB(6, 0, 6, 10, 0.25, 10), ModUtils.getPixelatedAABB(6, 0, 6, 10, 0.25, 10), 0, "Electrified Bollard", 4.5F);
-	public static final Block SHOCK_BOLLARD_UP = new BlockRotationalBollard("shock_bollard_up", ModUtils.getPixelatedAABB(6, 0, 6, 10, 19, 10), ModUtils.getPixelatedAABB(6, 0, 6, 10, 24, 10), 0, "Electrified Bollard", -1.0F);
+	public static final Block SHOCK_BOLLARD_DOWN = new BlockRotationalBollard("shock_bollard_down", ModUtils.getPixelatedAABB(6, 0, 6, 10, 0.25, 10), ModUtils.getPixelatedAABB(6, 0, 6, 10, 0.25, 10), 0, "Electrified Bollard", 4.5F, Main.IMMERSIBROOK_MAIN);
+	public static final Block SHOCK_BOLLARD_UP = new BlockRotationalBollard("shock_bollard_up", ModUtils.getPixelatedAABB(6, 0, 6, 10, 19, 10), ModUtils.getPixelatedAABB(6, 0, 6, 10, 24, 10), 0, "Electrified Bollard", -1.0F, null);
 }

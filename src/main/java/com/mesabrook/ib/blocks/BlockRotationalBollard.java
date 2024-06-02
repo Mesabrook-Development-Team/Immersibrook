@@ -24,6 +24,7 @@ import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -50,7 +51,7 @@ public class BlockRotationalBollard extends Block implements IHasModel
     protected final ArrayList<AxisAlignedBB> AABBs;
     private String styleForTooltip = null;
     
-    public BlockRotationalBollard(String name, AxisAlignedBB unrotatedAABB, AxisAlignedBB colliderAABB, float lightLevel, String tooltip, float hardness)
+    public BlockRotationalBollard(String name, AxisAlignedBB unrotatedAABB, AxisAlignedBB colliderAABB, float lightLevel, String tooltip, float hardness, CreativeTabs tab)
     {
     	super(Material.IRON);
         setUnlocalizedName(name);
@@ -62,6 +63,7 @@ public class BlockRotationalBollard extends Block implements IHasModel
         this.EXTENDED_COL_BB = colliderAABB;
         this.styleForTooltip = tooltip;
         setTickRandomly(true);
+        setCreativeTab(tab);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 
         AABBs = new ArrayList<AxisAlignedBB>(Arrays.asList(
