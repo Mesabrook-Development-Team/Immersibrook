@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ModSounds
 {
+	public static final SoundEvent ZAP;
 	public static final SoundEvent BOLLARD;
 	public static final SoundEvent OWO_SFX;
 	public static final SoundEvent RZ_TROPHY;
@@ -237,6 +238,7 @@ public class ModSounds
 
 	static
 	{
+		ZAP = addSoundsToRegistry("zap");
 		BOLLARD = addSoundsToRegistry("bollard_sound");
 		OWO_SFX = addSoundsToRegistry("owo");
 		RZ_TROPHY = addSoundsToRegistry("rz_trophy");
@@ -679,6 +681,7 @@ public class ModSounds
 				event.getRegistry().register(ModSounds.DESK_BELL_AF);
 				event.getRegistry().register(ModSounds.CAKE);
 				event.getRegistry().register(ModSounds.HALLOW);
+				event.getRegistry().register(ModSounds.ZAP);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

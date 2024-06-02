@@ -41,12 +41,13 @@ public class BlockBollard extends Block implements IHasModel
 	
 	private String styleForTooltip = null;
 	
-	public BlockBollard(String name, String styleTooltip)
+	public BlockBollard(String name, String styleTooltip, float hardness)
 	{
 		super(Material.IRON);
 		setRegistryName(name);
 		setUnlocalizedName(name);
 		setCreativeTab(Main.IMMERSIBROOK_MAIN);
+		setHardness(hardness);
 		
 		this.styleForTooltip = styleTooltip;
 		

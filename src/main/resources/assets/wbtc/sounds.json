@@ -6,6 +6,13 @@
 			"stream": true
 		}]
 	},
+	"zap": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:zap",
+			"stream": true
+		}]
+	},
 	"bollard_sound": {
 		"category": "master",
 		"sounds": [{

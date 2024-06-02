@@ -15,6 +15,7 @@ im.death.sus=%s got caught in the vents.
 im.death.dodo=%s went the way of the Dodo.
 im.death.fc=%s tried to coup the government and found out.
 im.death.asbestos=%s was diagnosed with mesothelioma and may be entitled to financial compensation.
+im.death.zap=%s got zapped to death.
 
 im.hammer.shift=New Sound Event:
 im.hammer.nosound=Hammer has no sound bound to it.
@@ -2204,6 +2205,8 @@ tile.bollard.name=Collapsing Bollard
 tile.bollard_extended.name=Collapsing Bollard
 tile.wall_down.name=Extending Wall Barricade
 tile.wall_up.name=Extending Wall Barricade
+tile.shock_bollard_up.name=Electrified Bollard
+tile.shock_bollard_down.name=Electrified Bollard
 
 item.army_cap.name=Service Cap
 item.navy_cap.name=Service Cap
