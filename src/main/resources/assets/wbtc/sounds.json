@@ -6,6 +6,13 @@
 			"stream": true
 		}]
 	},
+	"cash_out": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:cash_out",
+			"stream": true
+		}]
+	},
 	"zap": {
 		"category": "master",
 		"sounds": [{

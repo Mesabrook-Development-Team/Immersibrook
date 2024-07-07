@@ -105,6 +105,7 @@ public class ModSounds
 	public static final SoundEvent COMING_OUT;
 	public static final SoundEvent DESK_BELL;
 	public static final SoundEvent DESK_BELL_AF;
+	public static final SoundEvent CASH_OUT;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -331,6 +332,7 @@ public class ModSounds
 		COMING_OUT = addSoundsToRegistry("coming_out");
 		DESK_BELL = addSoundsToRegistry("desk_bell");
 		DESK_BELL_AF = addSoundsToRegistry("desk_bell_af");
+		CASH_OUT = addSoundsToRegistry("cash_out");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -479,6 +481,7 @@ public class ModSounds
 			try
 			{
 				event.getRegistry().registerAll(ModSounds.BOLLARD);
+				event.getRegistry().registerAll(ModSounds.CASH_OUT);
 				event.getRegistry().registerAll(ModSounds.OWO_SFX);
 				event.getRegistry().registerAll(ModSounds.WIDE);
 				event.getRegistry().registerAll(ModSounds.RZ_TROPHY);

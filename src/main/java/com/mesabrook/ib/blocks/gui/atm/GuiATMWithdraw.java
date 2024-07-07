@@ -9,14 +9,17 @@ import com.mesabrook.ib.blocks.BlockATM;
 import com.mesabrook.ib.blocks.gui.GuiImageLabelButton;
 import com.mesabrook.ib.blocks.gui.GuiImageLabelButton.ImageOrientation;
 import com.mesabrook.ib.blocks.te.TileEntityATM;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.net.atm.WithdrawATMPacket;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 public class GuiATMWithdraw extends GuiATMBase {
 
@@ -151,6 +154,11 @@ public class GuiATMWithdraw extends GuiATMBase {
 		if (error.isEmpty())
 		{
 			mc.displayGuiScreen(null);
+			ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
+			packet.pos = Minecraft.getMinecraft().player.getPosition();
+			packet.modID = "wbtc";
+			packet.soundName = "cash_out";
+			PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(Minecraft.getMinecraft().player.dimension, Minecraft.getMinecraft().player.posX, Minecraft.getMinecraft().player.posY, Minecraft.getMinecraft().player.posZ, 25));
 			return;
 		}
 		

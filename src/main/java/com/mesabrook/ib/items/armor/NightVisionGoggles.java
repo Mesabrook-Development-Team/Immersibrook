@@ -144,6 +144,8 @@ public class NightVisionGoggles extends Item implements IHasModel, ICapabilityPr
             {
                 player.removeActivePotionEffect(MobEffects.NIGHT_VISION);
             }
+            
+            
         }
     }
 
