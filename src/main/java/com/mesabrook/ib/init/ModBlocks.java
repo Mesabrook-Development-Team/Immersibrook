@@ -1399,7 +1399,8 @@ public class ModBlocks
 	public static final Block SOUND_EMITTER_WALL = new BlockSoundEmitter("sound_emitter_wall", Material.IRON, SoundType.METAL);
 
 	// ATM
-	public static final Block ATM = new BlockATM();
+	public static final Block ATM = new BlockATM("atm", ModUtils.DEFAULT_AABB);
+	public static final Block STANDALONE_ATM = new BlockATM("standalone_atm", ModUtils.DOUBLE_AABB);
 
 	// Terlets
 	public static final Block PRISON_TOILET = new BlockSeat("toilet", ModUtils.DEFAULT_AABB, 1.5F);

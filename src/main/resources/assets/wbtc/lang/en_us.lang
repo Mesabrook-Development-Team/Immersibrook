@@ -2111,8 +2111,9 @@ tile.wall_toilet.name=Toilet
 tile.home_toilet.name=Toilet
 tile.urinal.name=Urinal
 
-//ATM
+//ATMs
 tile.atm.name=ATM
+tile.standalone_atm.name=ATM
 
 //Retail Boxes - CDM
 item.laptop_box_white.name=Craytech Laptop

@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:standalone_atm" },
+        "facing=south": { "model": "wbtc:standalone_atm", "y": 180 },
+        "facing=west":  { "model": "wbtc:standalone_atm", "y": 270 },
+        "facing=east":  { "model": "wbtc:standalone_atm", "y": 90 }
+    }
+}
