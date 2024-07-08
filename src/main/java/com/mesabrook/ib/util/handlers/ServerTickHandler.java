@@ -24,12 +24,14 @@ import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.items.commerce.ItemDebitCard;
 import com.mesabrook.ib.items.commerce.ItemMoney;
 import com.mesabrook.ib.items.commerce.ItemRegisterFluidWrapper;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.net.atm.CreateNewDebitCardATMResponsePacket;
 import com.mesabrook.ib.net.atm.DepositATMResponsePacket;
 import com.mesabrook.ib.net.atm.FetchAccountsResponsePacket;
 import com.mesabrook.ib.net.atm.WithdrawATMResponsePacket;
 import com.mesabrook.ib.net.sco.QueryPriceResponsePacket;
 import com.mesabrook.ib.net.sco.StoreModeGuiResponse;
+import com.mesabrook.ib.util.IndependentTimer;
 import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.apiaccess.DataAccess.API;
 import com.mesabrook.ib.util.apiaccess.DataAccess.GenericErrorResponse;
@@ -38,6 +40,7 @@ import com.mesabrook.ib.util.apiaccess.DataRequestTask;
 import com.mesabrook.ib.util.apiaccess.DataRequestTaskStatus;
 import com.mesabrook.ib.util.apiaccess.GetData;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
@@ -49,6 +52,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.ServerTickEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.items.CapabilityItemHandler;
 
 @EventBusSubscriber
@@ -469,6 +473,12 @@ public class ServerTickHandler {
 						
 						BlockPos spawnPos = (BlockPos)task.getData().get("spawnPos");
 						InventoryHelper.spawnItemStack(player.world, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), cardStack);
+						
+						ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
+						packet.pos = player.getPosition();
+						packet.modID = "wbtc";
+						packet.soundName = "card_out";
+						PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
 					}
 				}
 			}

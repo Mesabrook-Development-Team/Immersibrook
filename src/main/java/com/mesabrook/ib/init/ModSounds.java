@@ -106,6 +106,7 @@ public class ModSounds
 	public static final SoundEvent DESK_BELL;
 	public static final SoundEvent DESK_BELL_AF;
 	public static final SoundEvent CASH_OUT;
+	public static final SoundEvent CARD_OUT;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -333,6 +334,7 @@ public class ModSounds
 		DESK_BELL = addSoundsToRegistry("desk_bell");
 		DESK_BELL_AF = addSoundsToRegistry("desk_bell_af");
 		CASH_OUT = addSoundsToRegistry("cash_out");
+		CARD_OUT = addSoundsToRegistry("card_out");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -685,6 +687,7 @@ public class ModSounds
 				event.getRegistry().register(ModSounds.CAKE);
 				event.getRegistry().register(ModSounds.HALLOW);
 				event.getRegistry().register(ModSounds.ZAP);
+				event.getRegistry().register(ModSounds.CARD_OUT);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");
