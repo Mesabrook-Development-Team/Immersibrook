@@ -72,7 +72,7 @@ public class GuiATMNewCard extends GuiATMBase {
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
 		super.actionPerformed(button);
-		
+		playButtonSound();
 		if (button == back)
 		{
 			mc.displayGuiScreen(new GuiATMMainMenu(atm, account));
@@ -115,7 +115,10 @@ public class GuiATMNewCard extends GuiATMBase {
 	protected void keyTyped(char typedChar, int keyCode) throws IOException {
 		super.keyTyped(typedChar, keyCode);
 		
-		pin.textboxKeyTyped(typedChar, keyCode);
+		if(pin.textboxKeyTyped(typedChar, keyCode))
+		{
+			playButtonSound();
+		}
 	}
 	
 	@Override

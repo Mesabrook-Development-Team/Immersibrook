@@ -78,7 +78,7 @@ public class GuiATMWithdraw extends GuiATMBase {
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
 		super.actionPerformed(button);
-		
+		playButtonSound();
 		if (button == back)
 		{
 			mc.displayGuiScreen(new GuiATMMainMenu(atm, account));
@@ -138,6 +138,7 @@ public class GuiATMWithdraw extends GuiATMBase {
 		
 		if (amount.textboxKeyTyped(typedChar, keyCode))
 		{
+			playButtonSound();
 			amount.setTextColor(14737632);
 		}
 	}

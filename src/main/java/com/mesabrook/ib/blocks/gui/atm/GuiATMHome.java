@@ -186,7 +186,7 @@ public class GuiATMHome extends GuiATMBase {
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
 		super.actionPerformed(button);
-		
+		playButtonSound();
 		if (button == settings)
 		{
 			mc.displayGuiScreen(new GuiATMSettings(atm));

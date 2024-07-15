@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ModSounds
 {
+	public static final SoundEvent ATM_BEEP;
 	public static final SoundEvent ZAP;
 	public static final SoundEvent BOLLARD;
 	public static final SoundEvent OWO_SFX;
@@ -240,6 +241,7 @@ public class ModSounds
 
 	static
 	{
+		ATM_BEEP = addSoundsToRegistry("atm_button_beep");
 		ZAP = addSoundsToRegistry("zap");
 		BOLLARD = addSoundsToRegistry("bollard_sound");
 		OWO_SFX = addSoundsToRegistry("owo");
@@ -482,6 +484,7 @@ public class ModSounds
 		{
 			try
 			{
+				event.getRegistry().registerAll(ModSounds.ATM_BEEP);
 				event.getRegistry().registerAll(ModSounds.BOLLARD);
 				event.getRegistry().registerAll(ModSounds.CASH_OUT);
 				event.getRegistry().registerAll(ModSounds.OWO_SFX);

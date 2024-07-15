@@ -6,6 +6,13 @@
 			"stream": true
 		}]
 	},
+	"atm_button_beep": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:atm_button_beep",
+			"stream": true
+		}]
+	},
 	"card_out": {
 		"category": "master",
 		"sounds": [{

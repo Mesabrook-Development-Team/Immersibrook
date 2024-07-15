@@ -57,7 +57,7 @@ public class GuiATMMainMenu extends GuiATMBase {
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
 		super.actionPerformed(button);
-		
+		playButtonSound();
 		if (button == back)
 		{
 			mc.displayGuiScreen(new GuiATMHome(atm));

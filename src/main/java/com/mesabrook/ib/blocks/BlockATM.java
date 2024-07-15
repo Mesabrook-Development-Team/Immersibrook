@@ -5,9 +5,11 @@ import com.mesabrook.ib.blocks.te.TileEntityATM;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.init.ModBlocks;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.ModUtils;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.ClientSideHandlers;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -27,6 +29,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 public class BlockATM extends ImmersiblockRotational {
 
@@ -38,6 +41,11 @@ public class BlockATM extends ImmersiblockRotational {
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
 			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		playerIn.openGui(Main.instance, Reference.GUI_ATM, worldIn, pos.getX(), pos.getY(), pos.getZ());
+		
+		ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
+		packet.pos = pos;
+		packet.soundName = "atm_button_beep";
+		PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));
 		
 		return true;
 	}
