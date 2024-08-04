@@ -6,6 +6,13 @@
 			"stream": true
 		}]
 	},
+	"kreative": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:kreative",
+			"stream": true
+		}]
+	},
 	"atm_button_beep": {
 		"category": "master",
 		"sounds": [{

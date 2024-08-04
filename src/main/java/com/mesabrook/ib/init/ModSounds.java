@@ -21,6 +21,7 @@ public class ModSounds
 	public static final SoundEvent LW_TROPHY;
 	public static final SoundEvent MD_TROPHY;
 	public static final SoundEvent SVV_TROPHY;
+	public static final SoundEvent KT_TROPHY;
 	public static final SoundEvent TROPHY_BREAK;
 	public static final SoundEvent OOF;
 	public static final SoundEvent CAN_OPEN;
@@ -241,6 +242,7 @@ public class ModSounds
 
 	static
 	{
+		KT_TROPHY = addSoundsToRegistry("kreative");
 		ATM_BEEP = addSoundsToRegistry("atm_button_beep");
 		ZAP = addSoundsToRegistry("zap");
 		BOLLARD = addSoundsToRegistry("bollard_sound");
@@ -484,6 +486,7 @@ public class ModSounds
 		{
 			try
 			{
+				event.getRegistry().registerAll(ModSounds.KT_TROPHY);			
 				event.getRegistry().registerAll(ModSounds.ATM_BEEP);
 				event.getRegistry().registerAll(ModSounds.BOLLARD);
 				event.getRegistry().registerAll(ModSounds.CASH_OUT);
