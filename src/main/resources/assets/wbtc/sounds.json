@@ -1,4 +1,11 @@
 {
+	"whelen_siren": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:whelen_siren",
+			"stream": true
+		}]
+	},
 	"cake": {
 		"category": "master",
 		"sounds": [{

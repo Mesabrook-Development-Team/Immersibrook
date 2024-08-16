@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ModSounds
 {
+	public static final SoundEvent WHELEN_SIREN;
 	public static final SoundEvent ATM_BEEP;
 	public static final SoundEvent ZAP;
 	public static final SoundEvent BOLLARD;
@@ -242,6 +243,7 @@ public class ModSounds
 
 	static
 	{
+		WHELEN_SIREN = addSoundsToRegistry("whelen_siren");
 		KT_TROPHY = addSoundsToRegistry("kreative");
 		ATM_BEEP = addSoundsToRegistry("atm_button_beep");
 		ZAP = addSoundsToRegistry("zap");
@@ -486,7 +488,8 @@ public class ModSounds
 		{
 			try
 			{
-				event.getRegistry().registerAll(ModSounds.KT_TROPHY);			
+				event.getRegistry().registerAll(ModSounds.KT_TROPHY);
+				event.getRegistry().registerAll(ModSounds.WHELEN_SIREN);
 				event.getRegistry().registerAll(ModSounds.ATM_BEEP);
 				event.getRegistry().registerAll(ModSounds.BOLLARD);
 				event.getRegistry().registerAll(ModSounds.CASH_OUT);

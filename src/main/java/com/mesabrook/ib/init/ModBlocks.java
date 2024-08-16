@@ -35,6 +35,7 @@ import com.mesabrook.ib.blocks.BlockRotationalBollard;
 import com.mesabrook.ib.blocks.BlockSeat;
 import com.mesabrook.ib.blocks.BlockShippingBox;
 import com.mesabrook.ib.blocks.BlockSiding;
+import com.mesabrook.ib.blocks.BlockSiren;
 import com.mesabrook.ib.blocks.BlockSmartphoneChargingPad;
 import com.mesabrook.ib.blocks.BlockSmartphoneStand;
 import com.mesabrook.ib.blocks.BlockSmoker;
@@ -1460,4 +1461,7 @@ public class ModBlocks
 
 	public static final Block SHOCK_BOLLARD_DOWN = new BlockRotationalBollard("shock_bollard_down", ModUtils.getPixelatedAABB(6, 0, 6, 10, 0.25, 10), ModUtils.getPixelatedAABB(6, 0, 6, 10, 0.25, 10), 0, "Electrified Bollard", 4.5F, Main.IMMERSIBROOK_MAIN);
 	public static final Block SHOCK_BOLLARD_UP = new BlockRotationalBollard("shock_bollard_up", ModUtils.getPixelatedAABB(6, 0, 6, 10, 19, 10), ModUtils.getPixelatedAABB(6, 0, 6, 10, 24, 10), 0, "Electrified Bollard", -1.0F, null);
+
+	// Sirens
+	public static final Block WHELEN_SIREN = new BlockSiren("whelen_siren", ModSounds.WHELEN_SIREN, 1520, 64);
 }
