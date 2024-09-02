@@ -9,6 +9,7 @@ import com.mesabrook.ib.net.EngravePacket;
 import com.mesabrook.ib.net.FoodBoxPacket;
 import com.mesabrook.ib.net.NVTogglePacket;
 import com.mesabrook.ib.net.OpenTOSPacket;
+import com.mesabrook.ib.net.PacketPlayRecord;
 import com.mesabrook.ib.net.PoliceEffectsTogglePacket;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.net.SoundEmitterBlockPacket;
@@ -124,6 +125,7 @@ public class PacketHandler
 		INSTANCE.registerMessage(OpenTOSPacket.Handler.class, OpenTOSPacket.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(ClosedTOSPacket.Handler.class, ClosedTOSPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(SoundEmitterBlockPacket.Handler.class, SoundEmitterBlockPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(PacketPlayRecord.Handler.class, PacketPlayRecord.class, nextID(), Side.CLIENT);
 
 		// TELECOM
 		INSTANCE.registerMessage(ActivatePhonePacket.Handler.class, ActivatePhonePacket.class, nextID(), Side.SERVER);

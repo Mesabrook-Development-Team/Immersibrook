@@ -41,6 +41,7 @@ import com.mesabrook.ib.blocks.BlockSmartphoneStand;
 import com.mesabrook.ib.blocks.BlockSmoker;
 import com.mesabrook.ib.blocks.BlockSoundEmitter;
 import com.mesabrook.ib.blocks.BlockStatue;
+import com.mesabrook.ib.blocks.BlockSuperJukebox;
 import com.mesabrook.ib.blocks.BlockWallSign;
 import com.mesabrook.ib.blocks.ChromaScreen;
 import com.mesabrook.ib.blocks.DecorPCMouse;
@@ -1464,4 +1465,7 @@ public class ModBlocks
 
 	// Sirens
 	public static final Block WHELEN_SIREN = new BlockSiren("whelen_siren", ModSounds.WHELEN_SIREN, 1520, 64);
+	
+	// Super Jukebox
+	public static final Block SUPER_JUKEBOX = new BlockSuperJukebox("super_jukebox");
 }
