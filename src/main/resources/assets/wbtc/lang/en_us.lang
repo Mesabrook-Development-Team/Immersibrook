@@ -2027,9 +2027,24 @@ tooltip.isopod=A cuddly ocean pal
 item.wallet_unisex.name=Wallet
 item.wallet_masculine.name=§7Wallet
 item.wallet_feminine.name=§dWallet
-item.card_red.name=§cBusiness Debit Card
-item.card_green.name=§aGovernment Debit Card
-item.card_blue.name=§bDebit Card
+item.card_business.name=Business Debit Card
+item.card_govt.name=Government Debit Card
+
+item.card_personal_blue.name=Personal Debit Card
+item.card_vaporwave.name=Personal Debit Card
+item.card_slate.name=Personal Debit Card
+item.card_silver.name=Personal Debit Card
+item.card_sapphire.name=Personal Debit Card
+item.card_ruby.name=Personal Debit Card
+item.card_rgb.name=Personal Debit Card
+item.card_rc.name=Personal Debit Card
+item.card_pride.name=Personal Debit Card
+item.card_gold.name=Personal Debit Card
+item.card_bronze.name=Personal Debit Card
+item.card_cyan.name=Personal Debit Card
+item.card_bliss.name=Personal Debit Card
+item.card_aurora.name=Personal Debit Card
+item.card_personal_green.name=Personal Debit Card
 
 // Money
 item.one_dollar.name=One Dollar

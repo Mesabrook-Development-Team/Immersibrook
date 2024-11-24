@@ -21,14 +21,14 @@ public class GuiPOSCardPIN extends GuiPOSCardBase {
 	public void initGui() {
 		super.initGui();
 		
-		pin = new PINTextField(0, fontRenderer, midWidth - 30, midHeight + 4, 60, 20);
+		pin = new PINTextField(0, fontRenderer, midWidth - 30, midHeight - 35, 60, 20);
 		pin.setMaxStringLength(4);
 		pin.setFocused(true);
 	}
 	
 	@Override
 	public void doDraw(int mouseX, int mouseY, float partialTicks) {		
-		drawCenteredStringNoShadow(TextFormatting.BOLD + "= PIN Required =", midWidth, top + 10, 0);
+		drawCenteredStringNoShadow(TextFormatting.BOLD + "= PIN Required =", midWidth, top + 60, 0);
 		
 		drawCenteredStringNoShadow("Enter PIN:", midWidth, midHeight - fontRenderer.FONT_HEIGHT - 4, 0);
 		pin.drawTextBox();
@@ -45,7 +45,10 @@ public class GuiPOSCardPIN extends GuiPOSCardBase {
 	protected void keyTyped(char typedChar, int keyCode) throws IOException {
 		super.keyTyped(typedChar, keyCode);
 		
-		pin.textboxKeyTyped(typedChar, keyCode);
+		if(pin.textboxKeyTyped(typedChar, keyCode))
+		{
+			playButtonSound();
+		}
 		
 		if (keyCode == Keyboard.KEY_NUMPADENTER || keyCode == Keyboard.KEY_RETURN)
 		{

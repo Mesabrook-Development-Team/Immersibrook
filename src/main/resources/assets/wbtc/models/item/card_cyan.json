@@ -1,0 +1,42 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "wbtc:cards/card_cyan"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 1.25, 1],
+			"scale": [0.25, 0.25, 0.10742]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, 1.25, 1],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"firstperson_righthand": {
+			"rotation": [-7.74, -7.75, 1.96],
+			"translation": [0, 2.25, 0],
+			"scale": [0.25, 0.25, 0]
+		},
+		"firstperson_lefthand": {
+			"rotation": [-8.27, -21.82, 3.67],
+			"translation": [-0.62, 3.2, 1.13],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"ground": {
+			"translation": [0, 2, 0],
+			"scale": [0.25, 0.25, 0.0957]
+		},
+		"gui": {
+			"scale": [0.75, 0.75, 0.75]
+		},
+		"head": {
+			"rotation": [0, 180, 0],
+			"translation": [0, 13, 7]
+		},
+		"fixed": {
+			"rotation": [0, 180, 0],
+			"scale": [0.5, 0.5, 0.5]
+		}
+	}
+}

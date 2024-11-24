@@ -23,8 +23,8 @@ public class GuiPOSCardAskTotal extends GuiPOSCardBase {
 	public void initGui() {
 		super.initGui();
 		
-		yes = new GuiImageLabelButton(0, midWidth - 32, midHeight + 4, 30, 20, "Yes", null, 0, 0, 0, 0, null).setEnabledColor(0xFFFFFF);
-		no = new GuiImageLabelButton(0, midWidth + 2, midHeight + 4, 30, 20, "No", null, 0, 0, 0, 0, null).setEnabledColor(0xFFFFFF);
+		yes = new GuiImageLabelButton(0, midWidth - 32, midHeight - 35, 30, 20, "Yes", null, 0, 0, 0, 0, null).setEnabledColor(0x30c918);
+		no = new GuiImageLabelButton(0, midWidth + 2, midHeight - 35, 30, 20, "No", null, 0, 0, 0, 0, null).setEnabledColor(0x30c918);
 		
 		buttonList.add(yes);
 		buttonList.add(no);
@@ -34,11 +34,12 @@ public class GuiPOSCardAskTotal extends GuiPOSCardBase {
 	protected void doDraw(int mouseX, int mouseY, float partialTicks) {
 		super.doDraw(mouseX, mouseY, partialTicks);
 		
-		drawCenteredStringNoShadow(TextFormatting.BOLD + "Authorize " + readerInfo.authorizedAmount.toPlainString() + "?", midWidth, midHeight - 2 - fontRenderer.FONT_HEIGHT, 0);
+		drawCenteredStringNoShadow(TextFormatting.BOLD + "Authorize MBD$" + readerInfo.authorizedAmount.toPlainString() + "?", midWidth, midHeight - 2 - fontRenderer.FONT_HEIGHT, 0);
 	}
 	
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
+		playButtonSound();
 		if (button == yes)
 		{
 			POSCardProcessPacket process = new POSCardProcessPacket();

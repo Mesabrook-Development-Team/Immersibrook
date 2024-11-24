@@ -5,20 +5,24 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.math.BigDecimal;
 
+import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
+import com.mesabrook.ib.init.ModSounds;
 import com.mesabrook.ib.net.sco.POSCardEjectPacket;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.client.config.GuiButtonExt;
 
 public abstract class GuiPOSCardBase extends GuiScreen {
-	protected final int texWidth = 263;
-	protected final int texHeight = 150;
+	protected final int texWidth = 476 / 2;
+	protected final int texHeight = 357 / 2;
 	
 	protected int left;
 	protected int top;
@@ -29,6 +33,8 @@ public abstract class GuiPOSCardBase extends GuiScreen {
 	
 	protected final TileEntityRegister register;
 	protected final CardReaderInfo readerInfo;
+	
+	protected GuiButtonExt keypad;
 	
 	public GuiPOSCardBase(TileEntityRegister register, CardReaderInfo readerInfo)
 	{
@@ -46,6 +52,13 @@ public abstract class GuiPOSCardBase extends GuiScreen {
 		bottom = top + texHeight;
 		midWidth = width / 2;
 		midHeight = height / 2;
+		
+		
+	}
+	
+	public void playButtonSound()
+	{
+		Minecraft.getMinecraft().player.playSound(ModSounds.ATM_BEEP, 0.5F, 1.5F);
 	}
 	
 	@Override
@@ -57,14 +70,14 @@ public abstract class GuiPOSCardBase extends GuiScreen {
 			GlStateManager.rotate(90F, 0, 0, 1);
 			GlStateManager.scale(22, 22, 1);
 			
-			itemRender.renderItemIntoGUI(register.getInsertedCardStack(), 0, 0);
+			itemRender.renderItemIntoGUI(register.getInsertedCardStack(), 0, -60);
 			
 			GlStateManager.scale(1F/22, 1F/22, 1);
 			GlStateManager.rotate(-90F, 0, 0, 1);
 			GlStateManager.translate(-(midWidth + 160), -(bottom - 175), 200);
 		}
 		
-		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MODID, "textures/blocks/plastic_cube_lime.png"));
+		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/card_reader.png"));
 		
 		drawModalRectWithCustomSizedTexture(left, top, 0, 0, texWidth, texHeight, texWidth, texHeight);
 		
@@ -100,7 +113,7 @@ public abstract class GuiPOSCardBase extends GuiScreen {
 	}
 	
 	public void drawCenteredStringNoShadow(String text, int x, int y, int color) {		
-		fontRenderer.drawString(text, x - fontRenderer.getStringWidth(text) / 2, y, color);
+		fontRenderer.drawString(text, x - fontRenderer.getStringWidth(text) / 2, y - 40, 0x30c918);
 	}
 	
 	protected boolean isHoveringOverEject(int mouseX, int mouseY)

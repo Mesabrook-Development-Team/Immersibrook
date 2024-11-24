@@ -23,7 +23,7 @@ public class GuiPOSCardCashbackAmount extends GuiPOSCardBase {
 	public void initGui() {
 		super.initGui();
 		
-		amount = new GuiTextField(0, fontRenderer, midWidth - 50, midHeight + 2, 100, 20);
+		amount = new GuiTextField(0, fontRenderer, midWidth - 50, midHeight - 35, 100, 20);
 		amount.setValidator(str -> validateAmount(str));
 		amount.setFocused(true);
 		
@@ -51,9 +51,9 @@ public class GuiPOSCardCashbackAmount extends GuiPOSCardBase {
 	protected void doDraw(int mouseX, int mouseY, float partialTicks) {
 		super.doDraw(mouseX, mouseY, partialTicks);
 		
-		drawCenteredStringNoShadow(TextFormatting.BOLD + "= Cash Back Entry =", midWidth, top + 10, 0);
+		drawCenteredStringNoShadow(TextFormatting.BOLD + "= Cash Back Entry =", midWidth, top + 60, 0);
 		drawCenteredStringNoShadow("Enter cash back amount:", midWidth, midHeight - 2 - fontRenderer.FONT_HEIGHT, 0);
-		drawCenteredStringNoShadow(TextFormatting.ITALIC + "Enter '0' to skip", midWidth, amount.y + amount.height + 4, 0x666666);
+		drawCenteredStringNoShadow(TextFormatting.ITALIC + "Enter '0' to skip", midWidth, amount.y + amount.height + 44, 0x666666);
 		
 		amount.drawTextBox();
 	}
@@ -62,7 +62,10 @@ public class GuiPOSCardCashbackAmount extends GuiPOSCardBase {
 	protected void keyTyped(char typedChar, int keyCode) throws IOException {
 		super.keyTyped(typedChar, keyCode);
 		
-		amount.textboxKeyTyped(typedChar, keyCode);
+		if(amount.textboxKeyTyped(typedChar, keyCode))
+		{
+			playButtonSound();
+		}
 		
 		if (!amount.getText().isEmpty() && (keyCode == Keyboard.KEY_NUMPADENTER || keyCode == Keyboard.KEY_RETURN))
 		{
