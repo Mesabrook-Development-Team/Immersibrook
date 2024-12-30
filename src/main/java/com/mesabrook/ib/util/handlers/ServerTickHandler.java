@@ -633,39 +633,7 @@ public class ServerTickHandler {
 			
 			FetchCSNotificationPacket.FetchTypes fetchType = (FetchCSNotificationPacket.FetchTypes)task.getData().get("fetchType");
 			if (fetchType == FetchTypes.InitialLogin)
-			{
-//				TextComponentString parentNotificationText = new TextComponentString("You have ");
-//				int i = 0;
-//				Map<TextFormatting, List<EmployeeToDoItem>> toDoItemMap = Arrays.stream(toDoItems).collect(Collectors.groupingBy(item -> item.getTextFormat()));
-//				for(java.util.Map.Entry<TextFormatting, List<EmployeeToDoItem>> entry : toDoItemMap.entrySet())
-//				{
-//					String severity;
-//					switch(entry.getKey())
-//					{
-//						case RED:
-//							severity = "urgent";
-//							break;
-//						case YELLOW:
-//							severity = "important";
-//							break;
-//						case BLUE:
-//							severity = "informational";
-//							break;
-//						default:
-//							continue;
-//					}
-//					
-//					TextComponentString notificationComponent = new TextComponentString("" + entry.getValue().size() + " " + severity + " task(s)" + (i == toDoItemMap.size() - 1 ? "" : ", "));
-//					notificationComponent.setStyle(new Style()
-//							.setColor(entry.getKey())
-//							.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentString("Click to view details")))
-//							.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/ib csnotifications")));
-//					parentNotificationText.appendSibling(notificationComponent);
-//					i++;
-//				}
-//				
-//				player.sendMessage(parentNotificationText);
-				
+			{				
 				Stream<EmployeeToDoItem> itemsStream = Arrays.stream(toDoItems);
 				long urgentCount = itemsStream.filter(e -> e.getTextFormat() == TextFormatting.RED).collect(Collectors.counting());
 				itemsStream = Arrays.stream(toDoItems);
