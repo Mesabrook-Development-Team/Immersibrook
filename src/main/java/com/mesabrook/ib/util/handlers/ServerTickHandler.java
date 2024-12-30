@@ -10,10 +10,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.apimodels.account.Account;
 import com.mesabrook.ib.apimodels.account.DebitCard;
+import com.mesabrook.ib.apimodels.company.EmployeeToDoItem;
 import com.mesabrook.ib.apimodels.company.LocationEmployee;
 import com.mesabrook.ib.apimodels.company.LocationItem;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
@@ -24,6 +27,9 @@ import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.items.commerce.ItemDebitCard;
 import com.mesabrook.ib.items.commerce.ItemMoney;
 import com.mesabrook.ib.items.commerce.ItemRegisterFluidWrapper;
+import com.mesabrook.ib.net.FetchCSNotificationPacket;
+import com.mesabrook.ib.net.FetchCSNotificationPacket.FetchTypes;
+import com.mesabrook.ib.net.FetchCSNotificationResponsePacket;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.net.atm.CreateNewDebitCardATMResponsePacket;
 import com.mesabrook.ib.net.atm.DepositATMResponsePacket;
@@ -31,7 +37,6 @@ import com.mesabrook.ib.net.atm.FetchAccountsResponsePacket;
 import com.mesabrook.ib.net.atm.WithdrawATMResponsePacket;
 import com.mesabrook.ib.net.sco.QueryPriceResponsePacket;
 import com.mesabrook.ib.net.sco.StoreModeGuiResponse;
-import com.mesabrook.ib.util.IndependentTimer;
 import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.apiaccess.DataAccess.API;
 import com.mesabrook.ib.util.apiaccess.DataAccess.GenericErrorResponse;
@@ -40,12 +45,16 @@ import com.mesabrook.ib.util.apiaccess.DataRequestTask;
 import com.mesabrook.ib.util.apiaccess.DataRequestTaskStatus;
 import com.mesabrook.ib.util.apiaccess.GetData;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.event.ClickEvent;
+import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -82,6 +91,7 @@ public class ServerTickHandler {
 		handleNewCardRequests();
 		handleShelfPriceLookupTasks();
 		handlePriceSetTasks();
+		handleCompanyToDoQueryTasks();
 	}
 	
 	public static HashMap<UUID, DataRequestTask> storeModeRequestsByUser = new HashMap<UUID, DataRequestTask>();
@@ -587,5 +597,130 @@ public class ServerTickHandler {
 		}
 		
 		priceSetTasks.removeAll(tasksToRemove);
+	}
+
+	public static ArrayList<DataRequestTask> companyToDoQueryTasks = new ArrayList<>();
+	private static void handleCompanyToDoQueryTasks()
+	{
+		if (checkerCounter != 19 || companyToDoQueryTasks.size() <= 0)
+		{
+			return;
+		}
+		
+		ArrayList<DataRequestTask> tasksToRemove = new ArrayList<>();
+		for(DataRequestTask task : companyToDoQueryTasks)
+		{
+			if (task.getStatus() != DataRequestTaskStatus.Complete.Complete)
+			{
+				continue;
+			}
+			
+			tasksToRemove.add(task);
+			
+			if (!task.getTask().getRequestSuccessful())
+			{
+				continue;
+			}
+			
+			UUID playerID = (UUID)task.getData().get("playerID");
+			EntityPlayerMP player = FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerByUUID(playerID);			
+			EmployeeToDoItem[] toDoItems = task.getTask().getResult(EmployeeToDoItem[].class);
+			
+			if (player == null || toDoItems.length <= 0)
+			{
+				continue;
+			}
+			
+			FetchCSNotificationPacket.FetchTypes fetchType = (FetchCSNotificationPacket.FetchTypes)task.getData().get("fetchType");
+			if (fetchType == FetchTypes.InitialLogin)
+			{
+//				TextComponentString parentNotificationText = new TextComponentString("You have ");
+//				int i = 0;
+//				Map<TextFormatting, List<EmployeeToDoItem>> toDoItemMap = Arrays.stream(toDoItems).collect(Collectors.groupingBy(item -> item.getTextFormat()));
+//				for(java.util.Map.Entry<TextFormatting, List<EmployeeToDoItem>> entry : toDoItemMap.entrySet())
+//				{
+//					String severity;
+//					switch(entry.getKey())
+//					{
+//						case RED:
+//							severity = "urgent";
+//							break;
+//						case YELLOW:
+//							severity = "important";
+//							break;
+//						case BLUE:
+//							severity = "informational";
+//							break;
+//						default:
+//							continue;
+//					}
+//					
+//					TextComponentString notificationComponent = new TextComponentString("" + entry.getValue().size() + " " + severity + " task(s)" + (i == toDoItemMap.size() - 1 ? "" : ", "));
+//					notificationComponent.setStyle(new Style()
+//							.setColor(entry.getKey())
+//							.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentString("Click to view details")))
+//							.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/ib csnotifications")));
+//					parentNotificationText.appendSibling(notificationComponent);
+//					i++;
+//				}
+//				
+//				player.sendMessage(parentNotificationText);
+				
+				Stream<EmployeeToDoItem> itemsStream = Arrays.stream(toDoItems);
+				long urgentCount = itemsStream.filter(e -> e.getTextFormat() == TextFormatting.RED).collect(Collectors.counting());
+				itemsStream = Arrays.stream(toDoItems);
+				long importantCount = itemsStream.filter(e -> e.getTextFormat() == TextFormatting.YELLOW).collect(Collectors.counting());
+				itemsStream = Arrays.stream(toDoItems);
+				long infoCount = itemsStream.filter(e -> e.getTextFormat() == TextFormatting.BLUE).collect(Collectors.counting());
+				
+				if (urgentCount > 0 || importantCount > 0 || infoCount > 0)
+				{
+					String message = "";
+					if (urgentCount > 0)
+					{
+						message = "" + TextFormatting.RED + urgentCount + " urgent task(s)";
+						
+						if (importantCount > 0 || infoCount > 0)
+						{
+							message += ", ";
+						}
+					}
+					
+					if (importantCount > 0)
+					{
+						message += "" + TextFormatting.YELLOW + importantCount + " important task(s)";
+						
+						if (infoCount > 0)
+						{
+							message += ", ";
+						}
+					}
+					
+					if (infoCount > 0)
+					{
+						message += "" + TextFormatting.BLUE + infoCount + " informational task(s)";
+					}
+					
+					TextComponentString textToPlayer = new TextComponentString(message);
+					textToPlayer.setStyle(new Style()
+							.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentString("Click to view details")))
+							.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/ib csnotifications")));
+					
+					player.sendMessage(textToPlayer);
+				}
+			}
+			else
+			{
+				FetchCSNotificationResponsePacket response = new FetchCSNotificationResponsePacket();
+				response.employeeToDoItems.addAll(Arrays.stream(toDoItems).collect(Collectors.toList()));
+				response.fetchType = fetchType;
+				PacketHandler.INSTANCE.sendTo(response, player);
+			}
+		}
+		
+		for(DataRequestTask taskToRemove : tasksToRemove)
+		{
+			companyToDoQueryTasks.remove(taskToRemove);
+		}
 	}
 }

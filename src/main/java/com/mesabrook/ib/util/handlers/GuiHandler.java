@@ -10,6 +10,7 @@ import com.mesabrook.ib.blocks.container.ContainerTaggingStationUntag;
 import com.mesabrook.ib.blocks.container.ContainerTrashBin;
 import com.mesabrook.ib.blocks.container.ContainerWallet;
 import com.mesabrook.ib.blocks.gui.GuiAboutImmersibrook;
+import com.mesabrook.ib.blocks.gui.GuiCompanyNotifications;
 import com.mesabrook.ib.blocks.gui.GuiFoodBox;
 import com.mesabrook.ib.blocks.gui.GuiPlaque;
 import com.mesabrook.ib.blocks.gui.GuiRation;
@@ -155,6 +156,7 @@ public class GuiHandler implements IGuiHandler
 			return new GuiTaggingStationUntag(player.inventory, new BlockPos(x, y, z));
 		}
 		else if (ID == Reference.GUI_SHOPPING_BASKET) return new GuiShoppingBasket(new ContainerShoppingBasket(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]), player.getHeldItem(EnumHand.values()[x]).getMetadata());
+		else if (ID == Reference.GUI_COMPANY_NOTIFICATIONS) return new GuiCompanyNotifications();
 		else return null;
 	}
 	

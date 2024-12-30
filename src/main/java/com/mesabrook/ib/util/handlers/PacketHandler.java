@@ -6,8 +6,11 @@ import com.mesabrook.ib.net.ClosedTOSPacket;
 import com.mesabrook.ib.net.CommandProcessorPacket;
 import com.mesabrook.ib.net.CoughPacket;
 import com.mesabrook.ib.net.EngravePacket;
+import com.mesabrook.ib.net.FetchCSNotificationPacket;
+import com.mesabrook.ib.net.FetchCSNotificationResponsePacket;
 import com.mesabrook.ib.net.FoodBoxPacket;
 import com.mesabrook.ib.net.NVTogglePacket;
+import com.mesabrook.ib.net.OpenNotificationsGUIPacket;
 import com.mesabrook.ib.net.OpenTOSPacket;
 import com.mesabrook.ib.net.PacketPlayRecord;
 import com.mesabrook.ib.net.PoliceEffectsTogglePacket;
@@ -126,6 +129,9 @@ public class PacketHandler
 		INSTANCE.registerMessage(ClosedTOSPacket.Handler.class, ClosedTOSPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(SoundEmitterBlockPacket.Handler.class, SoundEmitterBlockPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(PacketPlayRecord.Handler.class, PacketPlayRecord.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(OpenNotificationsGUIPacket.Handler.class, OpenNotificationsGUIPacket.class, nextID(), Side.CLIENT);
+		INSTANCE.registerMessage(FetchCSNotificationPacket.Handler.class, FetchCSNotificationPacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(FetchCSNotificationResponsePacket.Handler.class, FetchCSNotificationResponsePacket.class, nextID(), Side.CLIENT);
 
 		// TELECOM
 		INSTANCE.registerMessage(ActivatePhonePacket.Handler.class, ActivatePhonePacket.class, nextID(), Side.SERVER);
