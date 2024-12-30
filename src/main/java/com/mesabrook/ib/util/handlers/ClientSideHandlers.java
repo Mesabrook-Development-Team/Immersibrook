@@ -35,6 +35,7 @@ import com.mesabrook.ib.blocks.gui.sco.GuiPOSWaitingForNetwork;
 import com.mesabrook.ib.blocks.gui.sco.GuiStoreMode;
 import com.mesabrook.ib.blocks.gui.sco.GuiTaggingStation;
 import com.mesabrook.ib.blocks.gui.telecom.GuiCallEnd;
+import com.mesabrook.ib.blocks.gui.telecom.GuiCompanyStudioNotifications;
 import com.mesabrook.ib.blocks.gui.telecom.GuiHome;
 import com.mesabrook.ib.blocks.gui.telecom.GuiIncomingCall;
 import com.mesabrook.ib.blocks.gui.telecom.GuiLockScreen;
@@ -1002,6 +1003,15 @@ public class ClientSideHandlers
 				
 				GuiCompanyNotifications notifications = (GuiCompanyNotifications)mc.currentScreen;
 				notifications.setToDoItems(response.employeeToDoItems);
+				break;
+			case MinedroidApp:
+				if (!(mc.currentScreen instanceof GuiCompanyStudioNotifications))
+				{
+					return;
+				}
+				
+				GuiCompanyStudioNotifications appNotifications = (GuiCompanyStudioNotifications)mc.currentScreen;
+				appNotifications.setToDoItems(response.employeeToDoItems);
 				break;
 		}
 	}

@@ -170,7 +170,7 @@ public class GuiPhoneCall extends GuiPhoneBase {
 
 		if(button == contacts)
 		{
-			GuiAppSplashScreen guiA = new GuiAppSplashScreen(phoneStack, hand);
+			GuiAppSplashScreen<GuiAddressBook> guiA = new GuiAppSplashScreen<GuiAddressBook>(phoneStack, hand, GuiAddressBook.class);
 			guiA.setLogoPath("icn_contacts.png");
 			guiA.setAppName("Contacts");
 			guiA.setSplashColor("green");
