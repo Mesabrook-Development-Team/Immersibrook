@@ -669,7 +669,7 @@ public class ServerTickHandler {
 						message += "" + TextFormatting.BLUE + infoCount + " informational task(s)";
 					}
 					
-					TextComponentString textToPlayer = new TextComponentString(message);
+					TextComponentString textToPlayer = new TextComponentString("You have " + message + TextFormatting.RESET + ". Click to view.");
 					textToPlayer.setStyle(new Style()
 							.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentString("Click to view details")))
 							.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/ib csnotifications")));

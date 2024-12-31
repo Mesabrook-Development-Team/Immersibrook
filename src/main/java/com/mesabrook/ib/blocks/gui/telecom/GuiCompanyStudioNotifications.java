@@ -4,14 +4,17 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.lwjgl.opengl.GL11;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.apimodels.company.EmployeeToDoItem;
+import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.net.FetchCSNotificationPacket;
 import com.mesabrook.ib.net.FetchCSNotificationPacket.FetchTypes;
 import com.mesabrook.ib.util.GuiUtil;
+import com.mesabrook.ib.util.ModUtils;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import net.minecraft.client.Minecraft;
@@ -34,12 +37,15 @@ public class GuiCompanyStudioNotifications extends GuiPhoneBase {
 	private ArrayList<EmployeeToDoItem> employeeToDoItems = new ArrayList<>();
 	private ArrayList<ToDoItem> displayedToDoItems = new ArrayList<>();
 	private int page;
+	private int totalFilteredPages = 1;
 	
 	public GuiCheckBox urgent;
 	public GuiCheckBox important;
 	public GuiCheckBox information;
 	public MinedroidButton prevButton;
 	public MinedroidButton nextButton;
+	public ImageButton refreshButton;
+	public ImageButton filterButton;
 	
 	public GuiCompanyStudioNotifications(ItemStack phoneStack, EnumHand hand) {
 		super(phoneStack, hand);
@@ -63,14 +69,36 @@ public class GuiCompanyStudioNotifications extends GuiPhoneBase {
 		nextButton.visible = false;
 		nextButton.enabled = false;
 		buttonList.add(nextButton);
+		
+		filterButton = new ImageButton(0, INNER_X + INNER_TEX_WIDTH - 16, INNER_Y + 16, 16, 16, phoneStackData.getIconTheme() + "/icn_settings.png", 1024, 1024);
+		buttonList.add(filterButton);
+		
+		refreshButton = new ImageButton(0, filterButton.x - 16, filterButton.y, 16, 16, phoneStackData.getIconTheme() + "/icn_eightball.png", 64, 64);
+		refreshButton.visible = false;
+		buttonList.add(refreshButton);
+		
+		// Start with informational because it's the longest and we want everything left-aligned
+		information = new GuiCheckBox(0, filterButton.x, filterButton.y, TextFormatting.BLUE + "Informational", true);
+		information.x = information.x - information.width - 2;
+		information.y = information.y + information.height * 2;
+		information.visible = false;
+		buttonList.add(information);
+		
+		important = new GuiCheckBox(0, information.x, information.y - information.height, TextFormatting.YELLOW + "Important", true);
+		important.visible = false;
+		buttonList.add(important);
+		
+		urgent = new GuiCheckBox(0, information.x, important.y - important.height, TextFormatting.RED + "Urgent", true);
+		urgent.visible = false;
+		buttonList.add(urgent);
 	}
 	
 	@Override
 	protected void doDraw(int mouseX, int mouseY, float partialticks) {
 		super.doDraw(mouseX, mouseY, partialticks);
 		
-		fontRenderer.drawString("Company Notifications", INNER_X + 5, INNER_Y + 20, 0xFFFFFF);
-		drawCenteredString(fontRenderer, "Page " + (page + 1) + "/" + (employeeToDoItems.size() / recordsPerPage + 1), INNER_X + INNER_TEX_WIDTH / 2, prevButton.y + 3, 0xFFFFFF);
+		fontRenderer.drawString("Company Notifications", INNER_X + 2, INNER_Y + 20, 0xFFFFFF);
+		drawCenteredString(fontRenderer, "Page " + (page + 1) + "/" + totalFilteredPages, INNER_X + INNER_TEX_WIDTH / 2, prevButton.y + 3, 0xFFFFFF);
 		
 		int fontWidth;
 		if (!isFetched)
@@ -85,21 +113,54 @@ public class GuiCompanyStudioNotifications extends GuiPhoneBase {
 		}
 		else
 		{
-			
+			for(ToDoItem item : displayedToDoItems)
+			{
+				item.draw(mouseX, mouseY);
+			}
 		}
+		
+		drawFilterMenu();
+	}
+	
+	private boolean isFilterMenuShown;
+	private void drawFilterMenu()
+	{
+		if (!isFilterMenuShown)
+		{
+			return;
+		}
+		
+		GlStateManager.disableTexture2D();
+		GlStateManager.color(1F, 1F, 1F);
+		
+		Tessellator tess = Tessellator.getInstance();
+		BufferBuilder builder = tess.getBuffer();
+		builder.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION);
+		
+		builder.pos(filterButton.x, filterButton.y, 0).endVertex();
+		builder.pos(urgent.x, filterButton.y, 0).endVertex();
+		builder.pos(urgent.x, information.y + information.height, 0).endVertex();
+		builder.pos(filterButton.x, information.y + information.height, 0).endVertex();
+		
+		tess.draw();
+		
+		GlStateManager.enableTexture2D();
 	}
 	
 	@Override
 	protected void postDraw(int mouseX, int mouseY, float partialticks) {
 		super.postDraw(mouseX, mouseY, partialticks);
 		
+		if (isFilterMenuShown)
+		{
+			return;
+		}
+		
 		if (isFetched && displayedToDoItems.size() > 0)
 		{
 			EmployeeToDoItem hoveredToDoItem = null;
 			for(ToDoItem item : displayedToDoItems)
-			{
-				item.draw(mouseX, mouseY);
-				
+			{				
 				if (GuiUtil.isPointWithinBounds(mouseX, mouseY, item.x, item.y, item.width, item.height))
 				{
 					hoveredToDoItem = item.toDoItem;
@@ -123,6 +184,12 @@ public class GuiCompanyStudioNotifications extends GuiPhoneBase {
 	protected void firstDrawingTick(int mouseX, int mouseY, float partialTicks) {
 		super.firstDrawingTick(mouseX, mouseY, partialTicks);
 		
+		isFetched = false;
+		employeeToDoItems.clear();
+		displayedToDoItems.clear();
+		page = 0;
+		totalFilteredPages = 1;
+		
 		FetchCSNotificationPacket fetch = new FetchCSNotificationPacket();
 		fetch.fetchType = FetchTypes.MinedroidApp;
 		PacketHandler.INSTANCE.sendToServer(fetch);
@@ -130,17 +197,49 @@ public class GuiCompanyStudioNotifications extends GuiPhoneBase {
 	
 	@Override
 	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
-		super.mouseClicked(mouseX, mouseY, mouseButton);
 		
-		for(ToDoItem item : displayedToDoItems)
+		if (!isFilterMenuShown)
 		{
-			item.mouseClick(mouseX, mouseY);
+			for(ToDoItem item : displayedToDoItems)
+			{
+				if (GuiUtil.isPointWithinBounds(mouseX, mouseY, item.x, item.y, item.width, item.height))
+				{
+					if (!item.mouseClick())
+					{
+						//Chris
+						//MesaSuite apparently isn't installed on this machine, so prompt them to download it instead of
+						//displaying this Toast
+						Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("MesaSuite not found", 0xFF0000));
+					}
+				}
+			}
 		}
+		
+		if (isFilterMenuShown && !filterButton.isMouseOver() && !GuiUtil.isPointWithinBounds(mouseX, mouseY, urgent.x, urgent.y, information.width, information.y + information.height - urgent.y))
+		{
+			toggleFilterMenu();
+		}
+		
+		super.mouseClicked(mouseX, mouseY, mouseButton);
 	}
 	
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
 		super.actionPerformed(button);
+		
+		if (button == filterButton)
+		{
+			toggleFilterMenu();
+		}
+		else if (button == urgent || button == important || button == information)
+		{
+			displayToDoItems();
+		}
+		
+		if (isFilterMenuShown)
+		{
+			return;
+		}
 		
 		if (button == nextButton)
 		{
@@ -152,6 +251,23 @@ public class GuiCompanyStudioNotifications extends GuiPhoneBase {
 			page--;
 			displayToDoItems();
 		}
+		else if (button == refreshButton)
+		{
+			refreshButton.visible = false;
+			prevButton.visible = false;
+			nextButton.visible = false;
+			firstDrawingTick(0, 0, 0);
+		}
+	}
+	
+	private void toggleFilterMenu()
+	{
+		isFilterMenuShown = !isFilterMenuShown;
+		urgent.visible = isFilterMenuShown;
+		important.visible = isFilterMenuShown;
+		information.visible = isFilterMenuShown;
+		
+		refreshButton.visible = !isFilterMenuShown; // Hacky but whatever - it'd logically be hidden behind the menu anyway
 	}
 	
 	private boolean isFetched;
@@ -161,13 +277,21 @@ public class GuiCompanyStudioNotifications extends GuiPhoneBase {
 		page = 0;
 		displayToDoItems();
 		
+		if (!isFilterMenuShown)
+		{
+			refreshButton.visible = true;
+		}
+		
 		isFetched = true;
 	}
 	
 	private void displayToDoItems()
 	{
 		displayedToDoItems.clear();
-		List<EmployeeToDoItem> filteredItems = employeeToDoItems;
+		List<EmployeeToDoItem> filteredItems = employeeToDoItems.stream().filter(e -> (urgent.isChecked() && e.getTextFormat() == TextFormatting.RED) ||
+												(important.isChecked() && e.getTextFormat() == TextFormatting.YELLOW) ||
+												(information.isChecked() && e.getTextFormat() == TextFormatting.BLUE)).collect(Collectors.toList());
+		totalFilteredPages = filteredItems.size() / recordsPerPage + 1;
 		
 		if (page * recordsPerPage > filteredItems.size())
 		{
@@ -250,24 +374,9 @@ public class GuiCompanyStudioNotifications extends GuiPhoneBase {
 			GlStateManager.scale(2, 2, 1);
 		}
 		
-		public void mouseClick(int mouseX, int mouseY)
+		public boolean mouseClick()
 		{
-			if (GuiUtil.isPointWithinBounds(mouseX, mouseY, x, y, width, height))
-			{
-				try
-		        {
-		            Class<?> oclass = Class.forName("java.awt.Desktop");
-		            Object object = oclass.getMethod("getDesktop").invoke((Object)null);
-		            oclass.getMethod("browse", URI.class).invoke(object, URI.create(toDoItem.MesaSuiteURI));
-		            
-		            Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
-		        }
-		        catch (Throwable throwable1)
-		        {
-		            Throwable throwable = throwable1.getCause();
-		            Main.logger.error("Couldn't open link: {}", (Object)(throwable == null ? "<UNKNOWN>" : throwable.getMessage()));
-		        }
-			}
+			return ModUtils.openMesaSuiteLink(URI.create(toDoItem.MesaSuiteURI));
 		}
 	}
 }

@@ -13,11 +13,10 @@ import com.mesabrook.ib.apimodels.company.EmployeeToDoItem;
 import com.mesabrook.ib.net.FetchCSNotificationPacket;
 import com.mesabrook.ib.net.FetchCSNotificationPacket.FetchTypes;
 import com.mesabrook.ib.util.GuiUtil;
+import com.mesabrook.ib.util.ModUtils;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -25,7 +24,6 @@ import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.client.config.GuiButtonExt;
@@ -263,19 +261,10 @@ public class GuiCompanyNotifications extends GuiScreen {
 		{
 			if (GuiUtil.isPointWithinBounds(mouseX, mouseY, x, y, width, height))
 			{
-				try
-		        {
-		            Class<?> oclass = Class.forName("java.awt.Desktop");
-		            Object object = oclass.getMethod("getDesktop").invoke((Object)null);
-		            oclass.getMethod("browse", URI.class).invoke(object, URI.create(toDoItem.MesaSuiteURI));
-		            
-		            Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
-		        }
-		        catch (Throwable throwable1)
-		        {
-		            Throwable throwable = throwable1.getCause();
-		            Main.logger.error("Couldn't open link: {}", (Object)(throwable == null ? "<UNKNOWN>" : throwable.getMessage()));
-		        }
+				if (!ModUtils.openMesaSuiteLink(URI.create(toDoItem.MesaSuiteURI)))
+				{
+					Main.logger.error("Could not find MesaSuite to open To Do item");
+				}
 			}
 		}
 	}
