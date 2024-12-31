@@ -42,10 +42,13 @@ public class BlockATM extends ImmersiblockRotational {
 			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		playerIn.openGui(Main.instance, Reference.GUI_ATM, worldIn, pos.getX(), pos.getY(), pos.getZ());
 		
-		ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
-		packet.pos = pos;
-		packet.soundName = "atm_button_beep";
-		PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));
+		if (!worldIn.isRemote)
+		{
+			ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
+			packet.pos = pos;
+			packet.soundName = "atm_button_beep";
+			PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));
+		}
 		
 		return true;
 	}

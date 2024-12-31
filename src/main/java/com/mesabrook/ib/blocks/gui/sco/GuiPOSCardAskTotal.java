@@ -2,6 +2,7 @@ package com.mesabrook.ib.blocks.gui.sco;
 
 import java.io.IOException;
 
+import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.gui.GuiImageLabelButton;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.net.sco.POSCardProcessPacket;
@@ -39,6 +40,7 @@ public class GuiPOSCardAskTotal extends GuiPOSCardBase {
 	
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
+		super.actionPerformed(button);
 		playButtonSound();
 		if (button == yes)
 		{
@@ -55,6 +57,25 @@ public class GuiPOSCardAskTotal extends GuiPOSCardBase {
 		if (button == no)
 		{
 			ejectCard();
+		}
+	}
+	
+	@Override
+	protected void numpadButtonPressed(String character, boolean cancelPressed, boolean okPressed) {
+		try
+		{
+			if (okPressed)
+			{
+				actionPerformed(yes);
+			}
+			else if (cancelPressed)
+			{
+				actionPerformed(no);
+			}
+		}
+		catch(IOException ex)
+		{
+			Main.logger.error("Error occurred handling action perform", ex);
 		}
 	}
 }

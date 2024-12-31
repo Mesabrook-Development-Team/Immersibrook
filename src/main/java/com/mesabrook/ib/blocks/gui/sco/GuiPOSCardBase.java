@@ -14,6 +14,7 @@ import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.init.SoundEvents;
@@ -34,6 +35,9 @@ public abstract class GuiPOSCardBase extends GuiScreen {
 	protected final TileEntityRegister register;
 	protected final CardReaderInfo readerInfo;
 	
+	protected ImageButton cancelButton;
+	protected ImageButton okButton;
+	
 	protected GuiButtonExt keypad;
 	
 	public GuiPOSCardBase(TileEntityRegister register, CardReaderInfo readerInfo)
@@ -53,7 +57,27 @@ public abstract class GuiPOSCardBase extends GuiScreen {
 		midWidth = width / 2;
 		midHeight = height / 2;
 		
+		int numpadLeft = left + 63;
+		int numpadTop = top + 93;
 		
+		for(int i = 1; i <= 9; i++)
+		{
+			int row = (i - 1) / 3;
+			int column = (i - 1) % 3;
+			
+			int numpadButtonX = column == 0 ? numpadLeft :
+								column == 1 ? numpadLeft + 37 :
+								numpadLeft + 75;
+			
+			ImageButton numpadButton = new ImageButton(i + 100, numpadButtonX, numpadTop + 19 * row, column == 1 ? 38 : 37, 19, "calcbtn_" + i + ".png", 32, 32);
+			buttonList.add(numpadButton);
+		}
+		
+		buttonList.add(new ImageButton(100, numpadLeft + 37, numpadTop + 57, 38, 19, "calcbtn_0.png", 32, 32));
+		cancelButton = new ImageButton(110, numpadLeft, numpadTop + 57, 37, 19, new ResourceLocation(Reference.MODID, "textures/misc/cancel.png"), 32, 32, 32, 32);
+		buttonList.add(cancelButton);
+		okButton = new ImageButton(111, numpadLeft + 75, numpadTop + 57, 37, 19, new ResourceLocation(Reference.MODID, "textures/misc/go.png"), 32, 32, 32, 32);
+		buttonList.add(okButton);
 	}
 	
 	public void playButtonSound()
@@ -66,15 +90,15 @@ public abstract class GuiPOSCardBase extends GuiScreen {
 		drawDefaultBackground();
 		if (register.getInsertedCardStack() != null)
 		{
-			GlStateManager.translate(midWidth + 160, bottom - 175, -200);
+			GlStateManager.translate(midWidth + 175, midHeight - 35, -100);
 			GlStateManager.rotate(90F, 0, 0, 1);
 			GlStateManager.scale(22, 22, 1);
-			
-			itemRender.renderItemIntoGUI(register.getInsertedCardStack(), 0, -60);
-			
+			GlStateManager.disableDepth();
+			itemRender.renderItemIntoGUI(register.getInsertedCardStack(), 0, 0);
+			GlStateManager.enableDepth();
 			GlStateManager.scale(1F/22, 1F/22, 1);
 			GlStateManager.rotate(-90F, 0, 0, 1);
-			GlStateManager.translate(-(midWidth + 160), -(bottom - 175), 200);
+			GlStateManager.translate(-(midWidth + 175), -(midHeight - 35), 100);
 		}
 		
 		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/card_reader.png"));
@@ -91,6 +115,22 @@ public abstract class GuiPOSCardBase extends GuiScreen {
 	}
 	
 	protected void doDraw(int mouseX, int mouseY, float partialTicks) {}
+	
+	@Override
+	protected void actionPerformed(GuiButton button) throws IOException {
+		super.actionPerformed(button);
+		
+		if (button.id >= 100 && button.id <= 109)
+		{
+			numpadButtonPressed(Integer.toString(button.id - 100), false, false);
+		}
+		else if (button == okButton || button == cancelButton)
+		{
+			numpadButtonPressed("", button == cancelButton, button == okButton);
+		}
+	}
+	
+	protected void numpadButtonPressed(String character, boolean cancelPressed, boolean okPressed) {}
 	
 	@Override
 	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {

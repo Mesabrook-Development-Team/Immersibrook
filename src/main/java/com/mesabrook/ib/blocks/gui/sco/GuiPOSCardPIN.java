@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.lwjgl.input.Keyboard;
 
+import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.gui.PINTextField;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
 
@@ -38,7 +39,8 @@ public class GuiPOSCardPIN extends GuiPOSCardBase {
 	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
 		super.mouseClicked(mouseX, mouseY, mouseButton);
 		
-		pin.mouseClicked(mouseX, mouseY, mouseButton);
+//		pin.mouseClicked(mouseX, mouseY, mouseButton);
+		pin.setFocused(true);
 	}
 	
 	@Override
@@ -55,6 +57,30 @@ public class GuiPOSCardPIN extends GuiPOSCardBase {
 			readerInfo.pin = pin.getMaskedText();
 			
 			mc.displayGuiScreen(new GuiPOSCardAskCashback(register, readerInfo));
+		}
+	}
+	
+	@Override
+	protected void numpadButtonPressed(String character, boolean cancelPressed, boolean okPressed) {
+		try
+		{
+			if (character != "")
+			{
+				keyTyped(character.toCharArray()[0], 0);
+				pin.setFocused(true);
+			}
+			else if (okPressed)
+			{
+				keyTyped(' ', Keyboard.KEY_RETURN);
+			}
+			else if (cancelPressed)
+			{
+				ejectCard();
+			}
+		}
+		catch(IOException ex)
+		{
+			Main.logger.error("Error occurred handling key typed", ex);
 		}
 	}
 }
