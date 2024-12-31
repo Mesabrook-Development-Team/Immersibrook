@@ -209,7 +209,8 @@ public class GuiCompanyStudioNotifications extends GuiPhoneBase {
 						//Chris
 						//MesaSuite apparently isn't installed on this machine, so prompt them to download it instead of
 						//displaying this Toast
-						Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("MesaSuite not found", 0xFF0000));
+						//Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast("MesaSuite not found", 0xFF0000));
+						Minecraft.getMinecraft().displayGuiScreen(new GuiDownloadMesaSuite(phoneStack, hand));
 					}
 				}
 			}
