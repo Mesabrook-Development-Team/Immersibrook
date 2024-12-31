@@ -626,7 +626,7 @@ public class ServerTickHandler {
 			EntityPlayerMP player = FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerByUUID(playerID);			
 			EmployeeToDoItem[] toDoItems = task.getTask().getResult(EmployeeToDoItem[].class);
 			
-			if (player == null || toDoItems.length <= 0)
+			if (player == null || toDoItems == null)
 			{
 				continue;
 			}
