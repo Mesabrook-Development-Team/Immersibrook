@@ -20,6 +20,8 @@ import com.mesabrook.ib.util.handlers.PacketHandler;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.GuiYesNo;
+import net.minecraft.client.gui.GuiYesNoCallback;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -29,7 +31,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.client.config.GuiButtonExt;
 import net.minecraftforge.fml.client.config.GuiCheckBox;
 
-public class GuiCompanyNotifications extends GuiScreen {
+public class GuiCompanyNotifications extends GuiScreen implements GuiYesNoCallback {
 
 	private final int guiWidth = 176;
 	private final int guiHeight = 153;
@@ -167,7 +169,14 @@ public class GuiCompanyNotifications extends GuiScreen {
 		
 		for(ToDoItem item : displayedToDoItems)
 		{
-			item.mouseClick(mouseX, mouseY);
+			if (GuiUtil.isPointWithinBounds(mouseX, mouseY, item.x, item.y, item.width, item.height))
+			{
+				if (!item.mouseClick(mouseX, mouseY))
+				{
+					GuiYesNo promptForMesaSuite = new GuiYesNo(this, TextFormatting.BOLD + "MesaSuite has not been detected!", "Would you like to be taken to the page to download MesaSuite now?", mouseButton);
+					mc.displayGuiScreen(promptForMesaSuite);
+				}
+			}
 		}
 	}
 	
@@ -189,6 +198,16 @@ public class GuiCompanyNotifications extends GuiScreen {
 		{
 			displayToDoItems();
 		}
+	}
+	
+	@Override
+	public void confirmClicked(boolean result, int id) {
+		if (result)
+		{
+			ModUtils.openWebLink(URI.create("https://www.mesabrook.com/downloads.html"));
+		}
+		
+		mc.displayGuiScreen(this);
 	}
 
 	protected static class ToDoItem
@@ -257,15 +276,9 @@ public class GuiCompanyNotifications extends GuiScreen {
 			GlStateManager.scale(2, 2, 1);
 		}
 		
-		public void mouseClick(int mouseX, int mouseY)
+		public boolean mouseClick(int mouseX, int mouseY)
 		{
-			if (GuiUtil.isPointWithinBounds(mouseX, mouseY, x, y, width, height))
-			{
-				if (!ModUtils.openMesaSuiteLink(URI.create(toDoItem.MesaSuiteURI)))
-				{
-					Main.logger.error("Could not find MesaSuite to open To Do item");
-				}
-			}
+			return ModUtils.openMesaSuiteLink(URI.create(toDoItem.MesaSuiteURI));
 		}
 	}
 }
