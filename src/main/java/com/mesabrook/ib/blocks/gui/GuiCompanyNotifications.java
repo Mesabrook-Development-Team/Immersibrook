@@ -19,6 +19,7 @@ import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiConfirmOpenLink;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiYesNo;
 import net.minecraft.client.gui.GuiYesNoCallback;
@@ -173,7 +174,7 @@ public class GuiCompanyNotifications extends GuiScreen implements GuiYesNoCallba
 			{
 				if (!item.mouseClick(mouseX, mouseY))
 				{
-					GuiYesNo promptForMesaSuite = new GuiYesNo(this, TextFormatting.BOLD + "MesaSuite has not been detected!", "Would you like to be taken to the page to download MesaSuite now?", mouseButton);
+					GuiYesNo promptForMesaSuite = new GuiYesNo(this, TextFormatting.BOLD + "MesaSuite Required!", "In order to access this feature, you need to download MesaSuite.\n\nDo you want to download it now?\n\n(Only available for Windows)", 0);
 					mc.displayGuiScreen(promptForMesaSuite);
 				}
 			}
@@ -204,7 +205,16 @@ public class GuiCompanyNotifications extends GuiScreen implements GuiYesNoCallba
 	public void confirmClicked(boolean result, int id) {
 		if (result)
 		{
-			ModUtils.openWebLink(URI.create("https://www.mesabrook.com/downloads.html"));
+			if (id == 0)
+			{
+				GuiConfirmOpenLink openLink = new GuiConfirmOpenLink(this, "https://www.mesabrook.com/downloads.html", 1, false);
+				mc.displayGuiScreen(openLink);
+				return;
+			}
+			else if (id == 1)
+			{
+				ModUtils.openWebLink(URI.create("https://www.mesabrook.com/downloads.html"));
+			}
 		}
 		
 		mc.displayGuiScreen(this);
