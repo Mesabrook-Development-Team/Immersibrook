@@ -22,8 +22,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.config.GuiButtonExt;
 
 public abstract class GuiPOSCardBase extends GuiScreen {
-	protected final int texWidth = 476 / 2;
-	protected final int texHeight = 357 / 2;
+	protected final int texWidth = 351 / 2;
+	protected final int texHeight = 410 / 2;
 	
 	protected int left;
 	protected int top;
@@ -57,8 +57,8 @@ public abstract class GuiPOSCardBase extends GuiScreen {
 		midWidth = width / 2;
 		midHeight = height / 2;
 		
-		int numpadLeft = left + 63;
-		int numpadTop = top + 93;
+		int numpadLeft = left + 62;
+		int numpadTop = top + 124;
 		
 		for(int i = 1; i <= 9; i++)
 		{
@@ -66,17 +66,17 @@ public abstract class GuiPOSCardBase extends GuiScreen {
 			int column = (i - 1) % 3;
 			
 			int numpadButtonX = column == 0 ? numpadLeft :
-								column == 1 ? numpadLeft + 37 :
-								numpadLeft + 75;
+								column == 1 ? numpadLeft + 18 :
+								numpadLeft + 36;
 			
-			ImageButton numpadButton = new ImageButton(i + 100, numpadButtonX, numpadTop + 19 * row, column == 1 ? 38 : 37, 19, "calcbtn_" + i + ".png", 32, 32);
+			ImageButton numpadButton = new ImageButton(i + 100, numpadButtonX, numpadTop + 18 * row, 16, 16, "calcbtn_" + i + ".png", 32, 32);
 			buttonList.add(numpadButton);
 		}
 		
-		buttonList.add(new ImageButton(100, numpadLeft + 37, numpadTop + 57, 38, 19, "calcbtn_0.png", 32, 32));
-		cancelButton = new ImageButton(110, numpadLeft, numpadTop + 57, 37, 19, new ResourceLocation(Reference.MODID, "textures/misc/cancel.png"), 32, 32, 32, 32);
+		buttonList.add(new ImageButton(100, numpadLeft + 18, numpadTop + 54, 16, 16, "calcbtn_0.png", 32, 32));
+		cancelButton = new ImageButton(110, numpadLeft, numpadTop + 54, 16, 16, new ResourceLocation(Reference.MODID, "textures/misc/cancel.png"), 32, 32, 32, 32);
 		buttonList.add(cancelButton);
-		okButton = new ImageButton(111, numpadLeft + 75, numpadTop + 57, 37, 19, new ResourceLocation(Reference.MODID, "textures/misc/go.png"), 32, 32, 32, 32);
+		okButton = new ImageButton(111, numpadLeft + 36, numpadTop + 54, 16, 16, new ResourceLocation(Reference.MODID, "textures/misc/go.png"), 32, 32, 32, 32);
 		buttonList.add(okButton);
 	}
 	
@@ -90,20 +90,20 @@ public abstract class GuiPOSCardBase extends GuiScreen {
 		drawDefaultBackground();
 		if (register.getInsertedCardStack() != null)
 		{
-			GlStateManager.translate(midWidth + 175, midHeight - 35, -100);
+			GlStateManager.translate(midWidth + 154, midHeight - 35, -100);
 			GlStateManager.rotate(90F, 0, 0, 1);
-			GlStateManager.scale(22, 22, 1);
+			GlStateManager.scale(19, 19, 1);
 			GlStateManager.disableDepth();
 			itemRender.renderItemIntoGUI(register.getInsertedCardStack(), 0, 0);
 			GlStateManager.enableDepth();
-			GlStateManager.scale(1F/22, 1F/22, 1);
+			GlStateManager.scale(1F/19, 1F/19, 1);
 			GlStateManager.rotate(-90F, 0, 0, 1);
-			GlStateManager.translate(-(midWidth + 175), -(midHeight - 35), 100);
+			GlStateManager.translate(-(midWidth + 154), -(midHeight - 35), 100);
 		}
 		
 		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/card_reader.png"));
 		
-		drawModalRectWithCustomSizedTexture(left, top, 0, 0, texWidth, texHeight, texWidth, texHeight);
+		drawModalRectWithCustomSizedTexture(left, top, 0, 0, texWidth, texHeight, 512/2, 512/2);
 		
 		super.drawScreen(mouseX, mouseY, partialTicks);
 		doDraw(mouseX, mouseY, partialTicks);
@@ -153,7 +153,7 @@ public abstract class GuiPOSCardBase extends GuiScreen {
 	}
 	
 	public void drawCenteredStringNoShadow(String text, int x, int y, int color) {		
-		fontRenderer.drawString(text, x - fontRenderer.getStringWidth(text) / 2, y - 40, 0x30c918);
+		fontRenderer.drawString(text, x - fontRenderer.getStringWidth(text) / 2, y - 40, 0x424242);
 	}
 	
 	protected boolean isHoveringOverEject(int mouseX, int mouseY)

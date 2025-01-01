@@ -79,7 +79,7 @@ public class GuiPOSPaymentSelect extends GuiPOSPaymentBase {
 		for(int i = 0; i < stringList.size(); i++)
 		{
 			String errorLine = stringList.get(i);
-			fontRenderer.drawString(errorLine, innerLeft + 13, innerTop + 92 + fontRenderer.FONT_HEIGHT * i, 0xFF0000);
+			fontRenderer.drawString(errorLine, innerLeft + 13, innerTop + 103 + fontRenderer.FONT_HEIGHT * i, 0xFF0000);
 		}
 	}
 	

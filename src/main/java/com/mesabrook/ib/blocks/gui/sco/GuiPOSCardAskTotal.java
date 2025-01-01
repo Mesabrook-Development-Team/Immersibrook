@@ -24,8 +24,8 @@ public class GuiPOSCardAskTotal extends GuiPOSCardBase {
 	public void initGui() {
 		super.initGui();
 		
-		yes = new GuiImageLabelButton(0, midWidth - 32, midHeight - 35, 30, 20, "Yes", null, 0, 0, 0, 0, null).setEnabledColor(0x30c918);
-		no = new GuiImageLabelButton(0, midWidth + 2, midHeight - 35, 30, 20, "No", null, 0, 0, 0, 0, null).setEnabledColor(0x30c918);
+		yes = new GuiImageLabelButton(0, midWidth - 32, midHeight - 35, 30, 20, "Yes", null, 0, 0, 0, 0, null).setEnabledColor(0x424242);
+		no = new GuiImageLabelButton(0, midWidth + 2, midHeight - 35, 30, 20, "No", null, 0, 0, 0, 0, null).setEnabledColor(0x424242);
 		
 		buttonList.add(yes);
 		buttonList.add(no);

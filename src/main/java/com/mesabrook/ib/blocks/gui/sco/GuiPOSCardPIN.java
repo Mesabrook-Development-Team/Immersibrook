@@ -39,7 +39,6 @@ public class GuiPOSCardPIN extends GuiPOSCardBase {
 	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
 		super.mouseClicked(mouseX, mouseY, mouseButton);
 		
-//		pin.mouseClicked(mouseX, mouseY, mouseButton);
 		pin.setFocused(true);
 	}
 	
