@@ -10,6 +10,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.apimodels.company.EmployeeToDoItem;
+import com.mesabrook.ib.apimodels.company.EmployeeToDoItem.Severities;
 import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.net.FetchCSNotificationPacket;
 import com.mesabrook.ib.net.FetchCSNotificationPacket.FetchTypes;
@@ -289,9 +290,9 @@ public class GuiCompanyStudioNotifications extends GuiPhoneBase {
 	private void displayToDoItems()
 	{
 		displayedToDoItems.clear();
-		List<EmployeeToDoItem> filteredItems = employeeToDoItems.stream().filter(e -> (urgent.isChecked() && e.getTextFormat() == TextFormatting.RED) ||
-												(important.isChecked() && e.getTextFormat() == TextFormatting.YELLOW) ||
-												(information.isChecked() && e.getTextFormat() == TextFormatting.BLUE)).collect(Collectors.toList());
+		List<EmployeeToDoItem> filteredItems = employeeToDoItems.stream().filter(e -> (urgent.isChecked() && e.Severity == Severities.Urgent) ||
+												(important.isChecked() && e.Severity == Severities.Important) ||
+												(information.isChecked() && e.Severity == Severities.Informational)).collect(Collectors.toList());
 		totalFilteredPages = filteredItems.size() / recordsPerPage + 1;
 		
 		if (page * recordsPerPage > filteredItems.size())

@@ -17,6 +17,7 @@ import com.mesabrook.ib.Main;
 import com.mesabrook.ib.apimodels.account.Account;
 import com.mesabrook.ib.apimodels.account.DebitCard;
 import com.mesabrook.ib.apimodels.company.EmployeeToDoItem;
+import com.mesabrook.ib.apimodels.company.EmployeeToDoItem.Severities;
 import com.mesabrook.ib.apimodels.company.LocationEmployee;
 import com.mesabrook.ib.apimodels.company.LocationItem;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
@@ -635,11 +636,11 @@ public class ServerTickHandler {
 			if (fetchType == FetchTypes.InitialLogin)
 			{				
 				Stream<EmployeeToDoItem> itemsStream = Arrays.stream(toDoItems);
-				long urgentCount = itemsStream.filter(e -> e.getTextFormat() == TextFormatting.RED).collect(Collectors.counting());
+				long urgentCount = itemsStream.filter(e -> e.Severity == Severities.Urgent).collect(Collectors.counting());
 				itemsStream = Arrays.stream(toDoItems);
-				long importantCount = itemsStream.filter(e -> e.getTextFormat() == TextFormatting.YELLOW).collect(Collectors.counting());
+				long importantCount = itemsStream.filter(e -> e.Severity == Severities.Important).collect(Collectors.counting());
 				itemsStream = Arrays.stream(toDoItems);
-				long infoCount = itemsStream.filter(e -> e.getTextFormat() == TextFormatting.BLUE).collect(Collectors.counting());
+				long infoCount = itemsStream.filter(e -> e.Severity == Severities.Informational).collect(Collectors.counting());
 				
 				if (urgentCount > 0 || importantCount > 0 || infoCount > 0)
 				{

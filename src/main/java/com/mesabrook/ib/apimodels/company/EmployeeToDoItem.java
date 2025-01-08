@@ -29,6 +29,17 @@ public class EmployeeToDoItem implements INBTSerializable<NBTTagCompound> {
 		OpenPurchaseOrders
 	}
 	
+	public enum Severities
+	{
+		@SerializedName("0")
+		Informational,
+		@SerializedName("1")
+		Important,
+		@SerializedName("2")
+		Urgent
+	}
+	
+	public Severities Severity;
 	public Types Type;
 	public String Message;
 	public long CompanyID;
@@ -39,20 +50,14 @@ public class EmployeeToDoItem implements INBTSerializable<NBTTagCompound> {
 	public String MesaSuiteURI;
 	
 	public TextFormatting getTextFormat()
-	{
-		switch(Type)
+	{		
+		switch(Severity)
 		{
-			case PayablePastDueInvoice:
-			case ReceivablePastDueInvoice:
+			case Urgent:
 				return TextFormatting.RED;
-			case PayableInvoiceWaiting:
-			case ReceivableInvoiceWaiting:
-			case RegisterOffline:
-			case PurchaseOrderWaitingApproval:
-			case QuotationRequestWaiting:
+			case Important:
 				return TextFormatting.YELLOW;
-			case RailcarAwaitingAction:
-			case OpenPurchaseOrders:
+			case Informational:
 				return TextFormatting.BLUE;
 			default:
 				return TextFormatting.WHITE;
@@ -80,13 +85,13 @@ public class EmployeeToDoItem implements INBTSerializable<NBTTagCompound> {
 	
 		private Integer getTypePriority(EmployeeToDoItem item)
 		{
-			switch(item.getTextFormat())
+			switch(item.Severity)
 			{
-				case RED:
+				case Urgent:
 					return 0;
-				case YELLOW:
+				case Important:
 					return 1;
-				case BLUE:
+				case Informational:
 					return 2;
 				default:
 					return Integer.MAX_VALUE;
@@ -105,6 +110,7 @@ public class EmployeeToDoItem implements INBTSerializable<NBTTagCompound> {
 		tag.setString("message", Message);
 		tag.setLong("sourceID", SourceID);
 		tag.setString("type", Type.toString());
+		tag.setString("severity", Severity.toString());
 		return tag;
 	}
 
@@ -118,5 +124,6 @@ public class EmployeeToDoItem implements INBTSerializable<NBTTagCompound> {
 		Message = nbt.getString("message");
 		SourceID = nbt.getLong("sourceID");
 		Type = Types.valueOf(nbt.getString("type"));
+		Severity = Severities.valueOf(nbt.getString("severity"));
 	}
 }
