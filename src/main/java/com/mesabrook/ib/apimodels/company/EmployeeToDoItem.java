@@ -26,7 +26,9 @@ public class EmployeeToDoItem implements INBTSerializable<NBTTagCompound> {
 		@SerializedName("7")
 		RegisterOffline,
 		@SerializedName("8")
-		OpenPurchaseOrders
+		OpenPurchaseOrders,
+		@SerializedName("9")
+		AutomaticPaymentsAlmostComplete
 	}
 	
 	public enum Severities
