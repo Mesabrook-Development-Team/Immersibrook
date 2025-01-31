@@ -6,6 +6,7 @@ import java.math.RoundingMode;
 
 import org.lwjgl.input.Keyboard;
 
+import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.net.ClientSoundPacket;
 
@@ -53,7 +54,7 @@ public class GuiPOSCardCashbackAmount extends GuiPOSCardBase {
 		
 		drawCenteredStringNoShadow(TextFormatting.BOLD + "= Cash Back Entry =", midWidth, top + 60, 0);
 		drawCenteredStringNoShadow("Enter cash back amount:", midWidth, midHeight - 2 - fontRenderer.FONT_HEIGHT, 0);
-		drawCenteredStringNoShadow(TextFormatting.ITALIC + "Enter '0' to skip", midWidth, amount.y + amount.height + 44, 0x666666);
+		drawCenteredStringNoShadow(TextFormatting.ITALIC + "Enter '0' or press 'X' to skip", midWidth, amount.y + amount.height + 44, 0x666666);
 		
 		amount.drawTextBox();
 	}
@@ -89,6 +90,30 @@ public class GuiPOSCardCashbackAmount extends GuiPOSCardBase {
 	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
 		super.mouseClicked(mouseX, mouseY, mouseButton);
 		
-		amount.mouseClicked(mouseX, mouseY, mouseButton);
+		amount.setFocused(true);
+	}
+	
+	@Override
+	protected void numpadButtonPressed(String character, boolean cancelPressed, boolean okPressed) {
+		try
+		{
+			if (character != "")
+			{
+				keyTyped(character.toCharArray()[0], 0);
+			}
+			else if (okPressed)
+			{
+				keyTyped(' ', Keyboard.KEY_RETURN);
+			}
+			else if (cancelPressed)
+			{
+				amount.setText("0");
+				keyTyped(' ', Keyboard.KEY_RETURN);
+			}
+		}
+		catch(IOException ex)
+		{
+			Main.logger.error("Error occurred handling key typed", ex);
+		}
 	}
 }

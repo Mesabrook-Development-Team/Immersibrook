@@ -3,6 +3,7 @@ package com.mesabrook.ib.util.handlers;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.Random;
@@ -17,6 +18,7 @@ import org.apache.http.impl.client.HttpClients;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
+import com.mesabrook.ib.apimodels.company.EmployeeToDoItem;
 import com.mesabrook.ib.blocks.sco.BlockShelf;
 import com.mesabrook.ib.blocks.te.ShelvingTileEntity;
 import com.mesabrook.ib.blocks.te.ShelvingTileEntity.ProductSpot;
@@ -37,6 +39,7 @@ import com.mesabrook.ib.items.tools.ItemBanHammer;
 import com.mesabrook.ib.items.tools.ItemGavel;
 import com.mesabrook.ib.items.tools.ItemIceChisel;
 import com.mesabrook.ib.net.ClientSoundPacket;
+import com.mesabrook.ib.net.FetchCSNotificationPacket;
 import com.mesabrook.ib.net.OpenTOSPacket;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.telecom.CallManager;
@@ -47,6 +50,9 @@ import com.mesabrook.ib.util.UniversalDeathSource;
 import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.apiaccess.DataAccess.API;
 import com.mesabrook.ib.util.apiaccess.DataAccess.AuthenticationStatus;
+import com.mesabrook.ib.util.apiaccess.DataRequestQueue;
+import com.mesabrook.ib.util.apiaccess.DataRequestTask;
+import com.mesabrook.ib.util.apiaccess.GetData;
 import com.mesabrook.ib.util.apiaccess.PutData;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.saveData.SpecialDropTrackingData;
@@ -237,12 +243,26 @@ public class PlayerEvents
 			{
 				PacketHandler.INSTANCE.sendTo(new OpenTOSPacket(), FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerByUUID(player.getUniqueID()));
 			}
+			
+			createCSNotificationsDataRequest(player, FetchCSNotificationPacket.FetchTypes.InitialLogin);
 		}
 		
 		if (DataAccess.getAuthenticationStatus() == AuthenticationStatus.LoggedOut && player.canUseCommand(2, ""))
 		{
 			player.sendMessage(new TextComponentString("" + TextFormatting.BOLD + TextFormatting.YELLOW + "WARNING! The server is currently NOT signed into MesaSuite!"));
 		}
+	}
+	
+	public static void createCSNotificationsDataRequest(EntityPlayer player, FetchCSNotificationPacket.FetchTypes fetchType)
+	{
+		GetData get = new GetData(API.Company, "EmployeeIBAccess/GetToDoItemsForUser", EmployeeToDoItem[].class);
+		get.addQueryString("username", player.getName());
+		
+		DataRequestTask requestTask = new DataRequestTask(get);
+		requestTask.getData().put("playerID", player.getUniqueID());
+		requestTask.getData().put("fetchType", fetchType);
+		ServerTickHandler.companyToDoQueryTasks.add(requestTask);
+		DataRequestQueue.INSTANCE.addTask(requestTask);
 	}
 	
 	private class ResetInactivityParam

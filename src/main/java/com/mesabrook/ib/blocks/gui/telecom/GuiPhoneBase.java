@@ -248,6 +248,8 @@ public abstract class GuiPhoneBase extends GuiScreen
 			}
 
 			super.drawScreen(mouseX, mouseY, partialTicks);
+			
+			postDraw(mouseX, mouseY, partialTicks);
 
 			Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).tick(INNER_X, INNER_Y, INNER_TEX_WIDTH, INNER_TEX_HEIGHT);
 		}
@@ -275,6 +277,11 @@ public abstract class GuiPhoneBase extends GuiScreen
 	protected boolean closeOnDeadBattery() { return true; }
 
 	protected void doDraw(int mouseX, int mouseY, float partialticks){}
+	
+	/**
+	 * This will draw things over the top of the phone's top and bottom bars and buttons. USE SPARINGLY!
+	 */
+	protected void postDraw(int mouseX, int mouseY, float partialticks) {}
 
 	protected void firstDrawingTick(int mouseX, int mouseY, float partialTicks)
 	{

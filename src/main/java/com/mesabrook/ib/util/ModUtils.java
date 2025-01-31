@@ -1,5 +1,16 @@
 package com.mesabrook.ib.util;
 
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URI;
+import java.net.URISyntaxException;
+
+import com.mesabrook.ib.Main;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiConfirmOpenLink;
@@ -15,13 +26,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
-
-import java.awt.*;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 /**
 ** Immersibrook Utilities Class
@@ -89,18 +93,23 @@ public class ModUtils
 	 *
 	 * @param url URI
 	 */
-	public static void openWebLink(URI url)
+	public static boolean openWebLink(URI url)
 	{
 		try
 		{
 			Class<?> oclass = Class.forName("java.awt.Desktop");
 			Object object = oclass.getMethod("getDesktop", new Class[0]).invoke(null);
 			oclass.getMethod("browse", new Class[]{URI.class}).invoke(object, url);
+			
+			return true;
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			Throwable throwable = e.getCause();
+            Main.logger.error("Couldn't open link: {}", (Object)(throwable == null ? "<UNKNOWN>" : throwable.getMessage()));
 		}
+		
+		return false;
 	}
 
 	/**
@@ -233,4 +242,38 @@ public class ModUtils
 		}
 		return bb;
 	}
+
+	public static boolean openMesaSuiteLink(URI uri)
+	{
+		if (!isMesaSuiteProtocolHandled())
+		{
+			return false;
+		}
+		
+		return openWebLink(uri);
+	}
+	
+	private static boolean isMesaSuiteProtocolHandled() {
+        try {
+            // Use reg query to find the command associated with the protocol
+            Process process = Runtime.getRuntime().exec(
+                "reg query HKEY_CLASSES_ROOT\\mesasuite\\shell\\open\\command /ve"
+            );
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.contains("REG_SZ")) {
+                    // Extract the program path from the command
+                    String command = line.split("REG_SZ")[1].trim();
+                    // Check if the expected program path is part of the command
+                    return command.contains("MesaSuite.exe");
+                }
+            }
+        } catch (IOException e) {
+            Main.logger.error("An error occurred while checking the registry to see if MesaSuite was installed", e);
+        }
+
+        return false;
+    }
 }
