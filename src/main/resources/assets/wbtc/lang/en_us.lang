@@ -14,6 +14,8 @@ im.death.kekw=%s found an item they weren't supposed to have and used it. Smoooo
 im.death.sus=%s got caught in the vents.
 im.death.dodo=%s went the way of the Dodo.
 im.death.fc=%s tried to coup the government and found out.
+im.death.asbestos=%s was diagnosed with mesothelioma and may be entitled to financial compensation.
+im.death.zap=%s got zapped to death.
 
 im.hammer.shift=New Sound Event:
 im.hammer.nosound=Hammer has no sound bound to it.
@@ -437,6 +439,7 @@ tile.cube_pot_pie.name=Comically Large Chicken Pot Pie
 //Statues
 tile.statue_owo.name=Trophy - Outstanding OwO Behavior
 tile.statue_rz.name=Trophy for RavenholmZombie - Mesabrook Founders Award
+tile.statue_kt.name=Trophy for KreativeKngYT - Mesabrook Founders Award
 tile.statue_csx.name=Trophy for CSX8600 - Mesabrook Founders Award
 tile.statue_tlz.name=Trophy for timelady_zoe - Mesabrook Founders Award
 tile.statue_md.name=Trophy for MineDouble - Mesabrook Founders Award
@@ -1313,6 +1316,8 @@ item.disc_pumpkin.name=Music Disc
 item.cooking_music.name=Music Disc
 item.memory.name=Music Disc
 item.wide_record.name=Music Disc
+item.disc_hallow.name=Music Disc
+item.disc_cake.name=Music Disc - Holiday Snowfall
 
 //Record Descriptions
 item.record.amalthea.desc=Amalthea
@@ -1333,6 +1338,8 @@ item.record.disc_pumpkin.desc=FreeUseMusic - Halloween
 item.record.cooking_music.desc=RavenholmZombie - Calm Cooking Music
 item.record.memory.desc=Bonnie - It's just a Burning Memory (8-bit)
 item.record.wide_record.desc=Слава Україні! (Wide Zelensky)
+item.record.disc_cake.desc=ShinkoNet - Let Them Eat Cake (Hypixel Skyblock OST)
+item.record.disc_hallow.desc=ShinkoNet - Hallow Hallow (Hypixel Halloween Event OST)
 
 //Enchantments
 enchantment.thunder=The Power of Thor
@@ -1735,6 +1742,7 @@ item.scfd_chest.name=Black Turnout Jacket
 item.irfd_chest.name=Dark Tan Turnout Jacket
 item.cbfd_chest.name=Light Tan Turnout Jacket
 item.avfd_chest.name=Light Tan Turnout Jacket
+item.npfd_chest.name=Light Tan Turnout Jacket
 item.police_helmet.name=Mesabrook Marshals Standard Issue Safety Helmet
 item.police_vest.name=Mesabrook Marshals Standard Issue Bulletproof Vest
 item.firehelmet_black.name=Black Structural Helmet
@@ -2019,9 +2027,24 @@ tooltip.isopod=A cuddly ocean pal
 item.wallet_unisex.name=Wallet
 item.wallet_masculine.name=§7Wallet
 item.wallet_feminine.name=§dWallet
-item.card_red.name=§cBusiness Debit Card
-item.card_green.name=§aGovernment Debit Card
-item.card_blue.name=§bDebit Card
+item.card_business.name=Business Debit Card
+item.card_govt.name=Government Debit Card
+
+item.card_personal_blue.name=Personal Debit Card
+item.card_vaporwave.name=Personal Debit Card
+item.card_slate.name=Personal Debit Card
+item.card_silver.name=Personal Debit Card
+item.card_sapphire.name=Personal Debit Card
+item.card_ruby.name=Personal Debit Card
+item.card_rgb.name=Personal Debit Card
+item.card_rc.name=Personal Debit Card
+item.card_pride.name=Personal Debit Card
+item.card_gold.name=Personal Debit Card
+item.card_bronze.name=Personal Debit Card
+item.card_cyan.name=Personal Debit Card
+item.card_bliss.name=Personal Debit Card
+item.card_aurora.name=Personal Debit Card
+item.card_personal_green.name=Personal Debit Card
 
 // Money
 item.one_dollar.name=One Dollar
@@ -2104,8 +2127,9 @@ tile.wall_toilet.name=Toilet
 tile.home_toilet.name=Toilet
 tile.urinal.name=Urinal
 
-//ATM
+//ATMs
 tile.atm.name=ATM
+tile.standalone_atm.name=ATM
 
 //Retail Boxes - CDM
 item.laptop_box_white.name=Craytech Laptop
@@ -2175,3 +2199,35 @@ tile.throne_fc.name=First Consul's Chair
 tile.throne_gov.name=Elected Official's Chair
 
 item.smartphone_battery.name=Smartphone Battery
+item.asbestos.name=Asbestos
+tile.chrysotile.name=Chrysotile
+tile.smooth_chrysotile.name=Polished Chrysotile
+
+//Potion
+effect.asbestos=Mesothelioma
+potion.effect.asbestos=Potion of Mesothelioma
+splash_potion.effect.asbestos=Splash Potion of Mesothelioma
+lingering_potion.effect.asbestos=Lingering Potion of Mesothelioma
+tipped_arrow.effect.asbestos=Arrow of Asbestos
+
+tile.bismuth_block.name=Block of Iridescent Bismuth
+tile.bismuth_ore.name=Bismuth Ore
+item.raw_bismuth.name=Raw Bismuth
+tile.dark_bismuth_block.name=Smelted Bismuth
+tile.raw_bismuth_block.name=Block of Raw Bismuth
+tile.bismuth_bricks.name=Iridescent Bismuth Bricks
+item.pepto.name=Pepto-Bismol
+
+tile.bollard.name=Collapsing Bollard
+tile.bollard_extended.name=Collapsing Bollard
+tile.wall_down.name=Extending Wall Barricade
+tile.wall_up.name=Extending Wall Barricade
+tile.shock_bollard_up.name=Electrified Bollard
+tile.shock_bollard_down.name=Electrified Bollard
+
+item.army_cap.name=Service Cap
+item.navy_cap.name=Service Cap
+item.air_force_cap.name=Service Cap
+item.marines_cap.name=Service Cap
+item.space_force_cap.name=Service Cap
+item.marshals_cap.name=Service Cap

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP",
+    "GPG",
+    "PSP"
+  ],
+  "key": {
+    "P": {
+      "item": "wbtc:gray_plastic"
+    },
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "S": {
+      "item": "minecraft:sponge",
+	  "data": 0
+    }
+  },
+  "result": {
+    "item": "wbtc:respirator",
+    "count": 1
+  }
+}

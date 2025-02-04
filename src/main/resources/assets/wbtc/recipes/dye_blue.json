@@ -2,7 +2,8 @@
    "type": "minecraft:crafting_shapeless",
    "ingredients": [
       {
-         "item": "minecraft:water_bucket"
+         "type": "forge:ore_dict",
+         "ore": "listAllwater"
       },
       {
          "item": "minecraft:dye",

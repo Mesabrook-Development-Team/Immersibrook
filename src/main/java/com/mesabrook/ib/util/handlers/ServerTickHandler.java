@@ -10,10 +10,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.apimodels.account.Account;
 import com.mesabrook.ib.apimodels.account.DebitCard;
+import com.mesabrook.ib.apimodels.company.EmployeeToDoItem;
+import com.mesabrook.ib.apimodels.company.EmployeeToDoItem.Severities;
 import com.mesabrook.ib.apimodels.company.LocationEmployee;
 import com.mesabrook.ib.apimodels.company.LocationItem;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
@@ -24,6 +28,10 @@ import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.items.commerce.ItemDebitCard;
 import com.mesabrook.ib.items.commerce.ItemMoney;
 import com.mesabrook.ib.items.commerce.ItemRegisterFluidWrapper;
+import com.mesabrook.ib.net.FetchCSNotificationPacket;
+import com.mesabrook.ib.net.FetchCSNotificationPacket.FetchTypes;
+import com.mesabrook.ib.net.FetchCSNotificationResponsePacket;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.net.atm.CreateNewDebitCardATMResponsePacket;
 import com.mesabrook.ib.net.atm.DepositATMResponsePacket;
 import com.mesabrook.ib.net.atm.FetchAccountsResponsePacket;
@@ -43,12 +51,18 @@ import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.event.ClickEvent;
+import net.minecraft.util.text.event.HoverEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.ServerTickEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.items.CapabilityItemHandler;
 
 @EventBusSubscriber
@@ -78,6 +92,7 @@ public class ServerTickHandler {
 		handleNewCardRequests();
 		handleShelfPriceLookupTasks();
 		handlePriceSetTasks();
+		handleCompanyToDoQueryTasks();
 	}
 	
 	public static HashMap<UUID, DataRequestTask> storeModeRequestsByUser = new HashMap<UUID, DataRequestTask>();
@@ -469,6 +484,12 @@ public class ServerTickHandler {
 						
 						BlockPos spawnPos = (BlockPos)task.getData().get("spawnPos");
 						InventoryHelper.spawnItemStack(player.world, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), cardStack);
+						
+						ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
+						packet.pos = player.getPosition();
+						packet.modID = "wbtc";
+						packet.soundName = "card_out";
+						PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(player.dimension, player.posX, player.posY, player.posZ, 25));
 					}
 				}
 			}
@@ -577,5 +598,98 @@ public class ServerTickHandler {
 		}
 		
 		priceSetTasks.removeAll(tasksToRemove);
+	}
+
+	public static ArrayList<DataRequestTask> companyToDoQueryTasks = new ArrayList<>();
+	private static void handleCompanyToDoQueryTasks()
+	{
+		if (checkerCounter != 19 || companyToDoQueryTasks.size() <= 0)
+		{
+			return;
+		}
+		
+		ArrayList<DataRequestTask> tasksToRemove = new ArrayList<>();
+		for(DataRequestTask task : companyToDoQueryTasks)
+		{
+			if (task.getStatus() != DataRequestTaskStatus.Complete.Complete)
+			{
+				continue;
+			}
+			
+			tasksToRemove.add(task);
+			
+			if (!task.getTask().getRequestSuccessful())
+			{
+				continue;
+			}
+			
+			UUID playerID = (UUID)task.getData().get("playerID");
+			EntityPlayerMP player = FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerByUUID(playerID);			
+			EmployeeToDoItem[] toDoItems = task.getTask().getResult(EmployeeToDoItem[].class);
+			
+			if (player == null || toDoItems == null)
+			{
+				continue;
+			}
+			
+			FetchCSNotificationPacket.FetchTypes fetchType = (FetchCSNotificationPacket.FetchTypes)task.getData().get("fetchType");
+			if (fetchType == FetchTypes.InitialLogin)
+			{				
+				Stream<EmployeeToDoItem> itemsStream = Arrays.stream(toDoItems);
+				long urgentCount = itemsStream.filter(e -> e.Severity == Severities.Urgent).collect(Collectors.counting());
+				itemsStream = Arrays.stream(toDoItems);
+				long importantCount = itemsStream.filter(e -> e.Severity == Severities.Important).collect(Collectors.counting());
+				itemsStream = Arrays.stream(toDoItems);
+				long infoCount = itemsStream.filter(e -> e.Severity == Severities.Informational).collect(Collectors.counting());
+				
+				if (urgentCount > 0 || importantCount > 0 || infoCount > 0)
+				{
+					String message = "";
+					if (urgentCount > 0)
+					{
+						message = "" + TextFormatting.RED + urgentCount + " urgent task(s)";
+						
+						if (importantCount > 0 || infoCount > 0)
+						{
+							message += ", ";
+						}
+					}
+					
+					if (importantCount > 0)
+					{
+						message += "" + TextFormatting.YELLOW + importantCount + " important task(s)";
+						
+						if (infoCount > 0)
+						{
+							message += ", ";
+						}
+					}
+					
+					if (infoCount > 0)
+					{
+						message += "" + TextFormatting.BLUE + infoCount + " informational task(s)";
+					}
+					
+					TextComponentString textToPlayer = new TextComponentString("You have " + message + TextFormatting.RESET + ". Click to view.");
+					textToPlayer.setStyle(new Style()
+							.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TextComponentString("Click to view details")))
+							.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/ib csnotifications")));
+					
+					player.sendMessage(textToPlayer);
+				}
+			}
+			else
+			{
+				FetchCSNotificationResponsePacket response = new FetchCSNotificationResponsePacket();
+				response.employeeToDoItems.addAll(Arrays.stream(toDoItems).collect(Collectors.toList()));
+				response.fetchType = fetchType;
+				PacketHandler.INSTANCE.sendTo(response, player);
+			}
+		}
+		
+		for(DataRequestTask taskToRemove : tasksToRemove)
+		{
+			companyToDoQueryTasks.remove(taskToRemove);
+		}
 	}
 }

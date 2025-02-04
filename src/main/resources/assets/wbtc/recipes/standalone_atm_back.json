@@ -1,0 +1,12 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "item": "wbtc:standalone_atm"
+      }
+   ],
+   "result": {
+      "item": "wbtc:atm",
+      "count": 1
+   }
+}

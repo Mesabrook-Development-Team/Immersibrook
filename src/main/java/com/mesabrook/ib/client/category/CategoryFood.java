@@ -80,6 +80,7 @@ public class CategoryFood extends AbstractCategory
 		add(ModItems.KRISP_BAR);
 		add(ModItems.CARAMEL_BAR);
 		add(ModItems.WHITE_CHOCOLATE);
+		add(ModItems.PEPTO_BISMOL);
 		add(ModBlocks.SUGAR_BOX);
 		add(ModBlocks.FLOUR_BOX);
 		add(ModBlocks.CORNMEAL_BOX);

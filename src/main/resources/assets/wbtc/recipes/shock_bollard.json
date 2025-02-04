@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " C ",
+    " R ",
+    "LPL"
+  ],
+  "key": {
+    "R": {
+	  "type": "forge:ore_dict",
+      "ore": "stickIron"
+    },
+    "C": {
+	  "item": "immersiveengineering:metal_decoration0",
+	  "data": 0
+    },
+    "P": {
+	  "item": "minecraft:piston"
+    },
+    "L": {
+	  "item": "immersiveengineering:metal_device0",
+	  "data": 0
+    }
+  },
+  "result": {
+    "item": "wbtc:shock_bollard_down",
+    "count": 1
+  }
+}

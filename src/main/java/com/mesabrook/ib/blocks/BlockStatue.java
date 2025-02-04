@@ -223,6 +223,11 @@ public class BlockStatue extends Block implements IHasModel
 			tooltip.add(TextFormatting.GRAY + "In Loving Memory of Montague");
 			tooltip.add(TextFormatting.GRAY + "May 2022 - September 2022");
 		}
+		else if(this.getUnlocalizedName().contains("statue_kt"))
+		{
+			tooltip.add(TextFormatting.LIGHT_PURPLE + "Awarded By: " + TextFormatting.BLUE + "Government of Mesabrook");
+			tooltip.add(TextFormatting.LIGHT_PURPLE + "For: " + TextFormatting.GOLD +  "Being one of Mesabrook's founding members.");
+		}
 	}
 
 	@Override
@@ -254,6 +259,13 @@ public class BlockStatue extends Block implements IHasModel
 				ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
 				packet.pos = pos;
 				packet.soundName = "rz_trophy";
+				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
+			}
+			if(state.getBlock() == ModBlocks.STATUE_KT)
+			{
+				ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
+				packet.pos = pos;
+				packet.soundName = "kreative";
 				PacketHandler.INSTANCE.sendToAllAround(packet, new TargetPoint(player.dimension, pos.getX(), pos.getY(), pos.getZ(), 25));
 			}
 			if(state.getBlock() == ModBlocks.STATUE_CSX)

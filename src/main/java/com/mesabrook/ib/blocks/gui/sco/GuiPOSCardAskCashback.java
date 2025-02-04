@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.gui.GuiImageLabelButton;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
 
@@ -23,8 +24,8 @@ public class GuiPOSCardAskCashback extends GuiPOSCardBase {
 	public void initGui() {
 		super.initGui();
 		
-		yes = new GuiImageLabelButton(0, midWidth - 32, midHeight + 4, 30, 20, "Yes", null, 0, 0, 0, 0, null).setEnabledColor(0xFFFFFF);
-		no = new GuiImageLabelButton(0, midWidth + 2, midHeight + 4, 30, 20, "No", null, 0, 0, 0, 0, null).setEnabledColor(0xFFFFFF);
+		yes = new GuiImageLabelButton(0, midWidth - 32, midHeight - 35, 30, 20, "Yes", null, 0, 0, 0, 0, null).setEnabledColor(0x424242);
+		no = new GuiImageLabelButton(0, midWidth + 2, midHeight - 35, 30, 20, "No", null, 0, 0, 0, 0, null).setEnabledColor(0x424242);
 		
 		buttonList.add(yes);
 		buttonList.add(no);
@@ -39,7 +40,9 @@ public class GuiPOSCardAskCashback extends GuiPOSCardBase {
 	
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
+		super.actionPerformed(button);
 		readerInfo.authorizedAmount = register.getDueAmount().setScale(2, RoundingMode.HALF_UP);
+		playButtonSound(); 
 		if (button == no)
 		{			
 			readerInfo.cashBack = new BigDecimal("0.00");
@@ -50,6 +53,25 @@ public class GuiPOSCardAskCashback extends GuiPOSCardBase {
 		if (button == yes)
 		{
 			mc.displayGuiScreen(new GuiPOSCardCashbackAmount(register, readerInfo));
+		}
+	}
+	
+	@Override
+	protected void numpadButtonPressed(String character, boolean cancelPressed, boolean okPressed) {
+		try
+		{
+			if (okPressed)
+			{
+				actionPerformed(yes);
+			}
+			else if (cancelPressed)
+			{
+				actionPerformed(no);
+			}
+		}
+		catch(IOException ex)
+		{
+			Main.logger.error("Error occurred handling action perform", ex);
 		}
 	}
 }

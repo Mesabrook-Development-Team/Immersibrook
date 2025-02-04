@@ -12,6 +12,6 @@ public class GuiPOSCardMessage extends GuiPOSCardBase {
 
 	@Override
 	public void doDraw(int mouseX, int mouseY, float partialTicks) {		
-		drawCenteredStringNoShadow(message, midWidth, midHeight - fontRenderer.FONT_HEIGHT / 2, 0);
+		drawCenteredStringNoShadow(message, midWidth, midHeight - fontRenderer.FONT_HEIGHT / 2, 0x30c918); 
 	}
 }

@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:shock_bollard_down" },
+        "facing=south": { "model": "wbtc:shock_bollard_down", "y": 180 },
+        "facing=west":  { "model": "wbtc:shock_bollard_down", "y": 270 },
+        "facing=east":  { "model": "wbtc:shock_bollard_down", "y": 90 }
+    }
+}

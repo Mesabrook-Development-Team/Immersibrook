@@ -6,8 +6,10 @@ import java.util.List;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.BlockATM;
 import com.mesabrook.ib.blocks.BlockBin;
+import com.mesabrook.ib.blocks.BlockBollard;
 import com.mesabrook.ib.blocks.BlockCeilingLight;
 import com.mesabrook.ib.blocks.BlockCellAntenna;
+import com.mesabrook.ib.blocks.BlockChrysotile;
 import com.mesabrook.ib.blocks.BlockColoredBricks;
 import com.mesabrook.ib.blocks.BlockColoredCobblestone;
 import com.mesabrook.ib.blocks.BlockColoredQuartz;
@@ -29,14 +31,17 @@ import com.mesabrook.ib.blocks.BlockPlexiglassPane;
 import com.mesabrook.ib.blocks.BlockPole;
 import com.mesabrook.ib.blocks.BlockRawPlastic;
 import com.mesabrook.ib.blocks.BlockRegister;
+import com.mesabrook.ib.blocks.BlockRotationalBollard;
 import com.mesabrook.ib.blocks.BlockSeat;
 import com.mesabrook.ib.blocks.BlockShippingBox;
 import com.mesabrook.ib.blocks.BlockSiding;
+import com.mesabrook.ib.blocks.BlockSiren;
 import com.mesabrook.ib.blocks.BlockSmartphoneChargingPad;
 import com.mesabrook.ib.blocks.BlockSmartphoneStand;
 import com.mesabrook.ib.blocks.BlockSmoker;
 import com.mesabrook.ib.blocks.BlockSoundEmitter;
 import com.mesabrook.ib.blocks.BlockStatue;
+import com.mesabrook.ib.blocks.BlockSuperJukebox;
 import com.mesabrook.ib.blocks.BlockWallSign;
 import com.mesabrook.ib.blocks.ChromaScreen;
 import com.mesabrook.ib.blocks.DecorPCMouse;
@@ -370,7 +375,8 @@ public class ModBlocks
 	public static final Block STATUE_SVV = new BlockStatue("statue_svv", MapColor.GRAY, ModUtils.getPixelatedAABB(3,0,5, 13,30,11)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block STATUE_TWO = new BlockStatue("trophy_two_years", MapColor.GRAY, ModUtils.getPixelatedAABB(3,0,5, 13,30,11)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block STATUE_MONTY = new BlockStatue("statue_monty", MapColor.BLACK, ModUtils.getPixelatedAABB(0,0,0, 16,16,16)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
-
+	public static final Block STATUE_KT = new BlockStatue("statue_kt", MapColor.GRAY, ModUtils.getPixelatedAABB(3,0,5, 13,30,11)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
+	
 	// Plaques
 	public static final Block PLAQUE_DEV = new BlockPlaque("plaque_dev", MapColor.GOLD, ModUtils.getPixelatedAABB(3,0,0, 13,12,1.5)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
 	public static final Block PLAQUE_SUPPORTER = new BlockPlaque("plaque_supporter", MapColor.GOLD, ModUtils.getPixelatedAABB(3,0,0, 13,12,1.5)).setCreativeTab(Main.IMMERSIBROOK_MAIN);
@@ -1396,7 +1402,8 @@ public class ModBlocks
 	public static final Block SOUND_EMITTER_WALL = new BlockSoundEmitter("sound_emitter_wall", Material.IRON, SoundType.METAL);
 
 	// ATM
-	public static final Block ATM = new BlockATM();
+	public static final Block ATM = new BlockATM("atm", ModUtils.DEFAULT_AABB);
+	public static final Block STANDALONE_ATM = new BlockATM("standalone_atm", ModUtils.DOUBLE_AABB);
 
 	// Terlets
 	public static final Block PRISON_TOILET = new BlockSeat("toilet", ModUtils.DEFAULT_AABB, 1.5F);
@@ -1435,4 +1442,30 @@ public class ModBlocks
 	// Bells
 	public static final Block DESK_BELL_GOLD = new BlockDeskBell("gold_bell");
 	public static final Block DESK_BELL_IRON = new BlockDeskBell("iron_bell");
+	
+	// World Blocks
+	public static final Block CHRYSOTILE = new BlockChrysotile("chrysotile");
+	public static final Block CHRYSOTILE_SMOOTHED = new Immersiblock("smooth_chrysotile", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block BISMUTH_ORE = new Immersiblock("bismuth_ore", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block BISMUTH_BLOCK = new Immersiblock("bismuth_block", Material.IRON, SoundType.METAL, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block RAW_BISMUTH_BLOCK = new Immersiblock("raw_bismuth_block", Material.IRON, SoundType.METAL, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block DARK_BISMUTH = new Immersiblock("dark_bismuth_block", Material.IRON, SoundType.METAL, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block BISMUTH_BRICKS = new Immersiblock("bismuth_bricks", Material.IRON, SoundType.METAL, Main.IMMERSIBROOK_MAIN, 0F);
+	
+	// Bollards
+	public static final Block BOLLARD = new BlockBollard("bollard", "Gray Bollard", 1.5F, Main.IMMERSIBROOK_MAIN);
+	public static final Block BOLLARD_EXTENDED = new BlockBollard("bollard_extended", null, -1.0F, null);
+	
+	// Directional Bollards
+	public static final Block WALL_DOWN = new BlockRotationalBollard("wall_down", ModUtils.getPixelatedAABB(0, 0, 6, 16, 1, 10), ModUtils.getPixelatedAABB(0, 0, 6, 16, 1, 10), 0F, "Retracting Barricade", 2.5F, Main.IMMERSIBROOK_MAIN);
+	public static final Block WALL_UP = new BlockRotationalBollard("wall_up", ModUtils.getPixelatedAABB(0, 0, 6, 16, 19.25, 10), ModUtils.getPixelatedAABB(0, 0, 6, 16, 24, 10), 0.5F, "Retracting Barricade", -1.0F, null);
+
+	public static final Block SHOCK_BOLLARD_DOWN = new BlockRotationalBollard("shock_bollard_down", ModUtils.getPixelatedAABB(6, 0, 6, 10, 0.25, 10), ModUtils.getPixelatedAABB(6, 0, 6, 10, 0.25, 10), 0, "Electrified Bollard", 4.5F, Main.IMMERSIBROOK_MAIN);
+	public static final Block SHOCK_BOLLARD_UP = new BlockRotationalBollard("shock_bollard_up", ModUtils.getPixelatedAABB(6, 0, 6, 10, 19, 10), ModUtils.getPixelatedAABB(6, 0, 6, 10, 24, 10), 0, "Electrified Bollard", -1.0F, null);
+
+	// Sirens
+	public static final Block WHELEN_SIREN = new BlockSiren("whelen_siren", ModSounds.WHELEN_SIREN, 1520, 64);
+	
+	// Super Jukebox
+	public static final Block SUPER_JUKEBOX = new BlockSuperJukebox("super_jukebox");
 }

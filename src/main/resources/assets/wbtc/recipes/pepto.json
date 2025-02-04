@@ -1,0 +1,34 @@
+{
+   "type": "minecraft:crafting_shapeless",
+   "ingredients": [
+      {
+         "type": "forge:ore_dict",
+         "ore": "nuggetAnyBismoid"
+      },
+      {
+         "type": "forge:ore_dict",
+         "ore": "listAllsugar"
+      },
+      {
+         "type": "forge:ore_dict",
+         "ore": "dyePink"
+      },
+      {
+         "item": "minecraft:glass_bottle",
+         "data": 0
+      },
+      {
+         "type": "forge:ore_dict",
+         "ore": "listAllwater"
+      },
+      {
+         "type": "forge:ore_dict",
+         "ore": "cropSpiceleaf"
+      }
+   ],
+   "result": {
+      "item": "wbtc:pepto",
+      "data": 0,
+      "count": 1
+   }
+}

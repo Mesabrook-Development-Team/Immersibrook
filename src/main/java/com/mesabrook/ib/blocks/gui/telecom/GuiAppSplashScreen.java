@@ -1,26 +1,28 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import java.io.IOException;
+
+import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.gui.ImageButton;
-import com.mesabrook.ib.net.telecom.PhoneQueryPacket;
 import com.mesabrook.ib.util.IndependentTimer;
-import com.mesabrook.ib.util.handlers.ClientSideHandlers;
-import com.mesabrook.ib.util.handlers.PacketHandler;
-import net.minecraft.client.Minecraft;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 
-import java.io.IOException;
-
-public class GuiAppSplashScreen extends GuiPhoneBase
+public class GuiAppSplashScreen<NextApp extends GuiPhoneBase> extends GuiPhoneBase
 {
     ImageButton logo;
     private String logoPath;
+    private ResourceLocation logoResourceLocation;
     private String appName;
     private String splashColor;
     int progress = 0;
     IndependentTimer timer;
+    private Class<NextApp> nextAppClazz;
+    private Runnable postOpen;
 
     public String getSplashColor()
     {
@@ -42,7 +44,15 @@ public class GuiAppSplashScreen extends GuiPhoneBase
         return this.logoPath = logoPathIn;
     }
 
-    public String getAppName()
+    public ResourceLocation getLogoResourceLocation() {
+		return logoResourceLocation;
+	}
+
+	public void setLogoResourceLocation(ResourceLocation logoResourceLocation) {
+		this.logoResourceLocation = logoResourceLocation;
+	}
+
+	public String getAppName()
     {
         return appName;
     }
@@ -52,9 +62,16 @@ public class GuiAppSplashScreen extends GuiPhoneBase
         return this.appName = appNameIn;
     }
 
-    public GuiAppSplashScreen(ItemStack phoneStack, EnumHand hand)
+    public GuiAppSplashScreen(ItemStack phoneStack, EnumHand hand, Class<NextApp> nextAppClazz, Runnable postOpen)
     {
         super(phoneStack, hand);
+        this.nextAppClazz = nextAppClazz;
+        this.postOpen = postOpen;
+    }
+    
+    public GuiAppSplashScreen(ItemStack phoneStack, EnumHand hand, Class<NextApp> nextAppClazz)
+    {
+    	this(phoneStack, hand, nextAppClazz, null);
     }
 
     @Override
@@ -74,7 +91,14 @@ public class GuiAppSplashScreen extends GuiPhoneBase
     public void initGui()
     {
     	super.initGui();
-        logo = new ImageButton(0, INNER_X + (INNER_TEX_WIDTH / 2) - 16, INNER_Y + 70, 32, 32, phoneStackData.getIconTheme() + "/" + getLogoPath(), 32, 32);
+    	if (getLogoResourceLocation() != null)
+    	{
+    		logo = new ImageButton(0, INNER_X + (INNER_TEX_WIDTH / 2) - 16, INNER_Y + 70, 32, 32, getLogoResourceLocation(), 32, 32, 32, 32);
+    	}
+    	else
+    	{
+    		logo = new ImageButton(0, INNER_X + (INNER_TEX_WIDTH / 2) - 16, INNER_Y + 70, 32, 32, phoneStackData.getIconTheme() + "/" + getLogoPath(), 32, 32);
+    	}
         buttonList.add(logo);
         timer = new IndependentTimer();
         timer.update();
@@ -89,34 +113,24 @@ public class GuiAppSplashScreen extends GuiPhoneBase
         timer.update();
         if(timer.getElapsedTime() > 300)
         {
-            if(getLogoPath().contains("icn_calc"))
+        	NextApp phoneBase;
+        	try
+        	{
+        		phoneBase = nextAppClazz.getConstructor(ItemStack.class, EnumHand.class).newInstance(phoneStack, hand);
+        	}
+        	catch(Exception ex)
+        	{
+        		Main.logger.error("An error occurred while trying to go to next app", ex);
+                timer.stop();
+                timer.reset();
+        		return;
+        	}
+        	
+        	mc.displayGuiScreen(phoneBase);
+            
+            if (postOpen != null)
             {
-                Minecraft.getMinecraft().displayGuiScreen(new GuiCalculator(phoneStack, hand));
-            }
-            if(getLogoPath().contains("icn_musicplayer"))
-            {
-                Minecraft.getMinecraft().displayGuiScreen(new GuiSoundPlayer(phoneStack, hand));
-            }
-            if(getLogoPath().contains("icn_contacts"))
-            {
-                Minecraft.getMinecraft().displayGuiScreen(new GuiAddressBook(phoneStack, hand));
-            }
-            if(getLogoPath().contains("icn_settings"))
-            {
-                Minecraft.getMinecraft().displayGuiScreen(new GuiSettings(phoneStack, hand));
-            }
-            if(getLogoPath().contains("phone"))
-            {
-                Minecraft.getMinecraft().displayGuiScreen(new GuiEmptyPhone(phoneStack, hand));
-
-                PhoneQueryPacket queryPacket = new PhoneQueryPacket();
-                queryPacket.forNumber = getCurrentPhoneNumber();
-
-                int nextID = ClientSideHandlers.TelecomClientHandlers.getNextHandlerID();
-
-                ClientSideHandlers.TelecomClientHandlers.phoneQueryResponseHandlers.put(nextID, ClientSideHandlers.TelecomClientHandlers::onPhoneQueryResponseForPhoneApp);
-                queryPacket.clientHandlerCode = nextID;
-                PacketHandler.INSTANCE.sendToServer(queryPacket);
+            	postOpen.run();
             }
             timer.stop();
             timer.reset();
