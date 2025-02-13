@@ -7,12 +7,14 @@ import com.mesabrook.ib.Main;
 import com.mesabrook.ib.items.ItemBlahaj;
 import com.mesabrook.ib.items.ItemFlagger;
 import com.mesabrook.ib.items.ItemLauncher;
+import com.mesabrook.ib.items.ItemPepto;
 import com.mesabrook.ib.items.ItemRation;
 import com.mesabrook.ib.items.ItemSponge;
 import com.mesabrook.ib.items.ItemTechRetailBox;
 import com.mesabrook.ib.items.armor.FaceMasks;
 import com.mesabrook.ib.items.armor.FirefighterSuit;
 import com.mesabrook.ib.items.armor.Hardhat;
+import com.mesabrook.ib.items.armor.ItemRespirator;
 import com.mesabrook.ib.items.armor.NightVisionGoggles;
 import com.mesabrook.ib.items.armor.PoliceHelmet;
 import com.mesabrook.ib.items.armor.SACA;
@@ -169,6 +171,8 @@ public class ModItems
 	public static final Item DISC_HL3 = new MemeRecord("disc_pumpkin", ModSounds.HL3);
 	public static final Item DISC_MEMORY = new MemeRecord("memory", ModSounds.MEMORY);
 	public static final Item WIDE_DISC = new MemeRecord("wide_record", ModSounds.WIDE); 
+	public static final Item CAKE_DISC = new MemeRecord("disc_cake", ModSounds.CAKE);
+	public static final Item HALLOW_DISC = new MemeRecord("disc_hallow", ModSounds.HALLOW);
 
 	// First Aid Kit
 	public static final Item FIRST_AID_KIT = new ItemFirstAidKit("first_aid", Main.IMMERSIBROOK_MAIN);
@@ -265,6 +269,7 @@ public class ModItems
 	public static final Item IRFD_CHEST = new FirefighterSuit("irfd_chest", ArmorMaterialRegistry.FF_DT_IRFD, EntityEquipmentSlot.CHEST, 1);
 	public static final Item CBFD_CHEST = new FirefighterSuit("cbfd_chest", ArmorMaterialRegistry.FF_LT_CBFD, EntityEquipmentSlot.CHEST, 1);
 	public static final Item AVFD_CHEST = new FirefighterSuit("avfd_chest", ArmorMaterialRegistry.FF_LT_AVFD, EntityEquipmentSlot.CHEST, 1);
+	public static final Item NPFD_CHEST = new FirefighterSuit("npfd_chest", ArmorMaterialRegistry.FF_LT_NPFD, EntityEquipmentSlot.CHEST, 1);
 	public static final Item SCFD_CHEST = new FirefighterSuit("scfd_chest", ArmorMaterialRegistry.FF_BLACK_SCFD, EntityEquipmentSlot.CHEST, 1);
 	public static final Item BLACK_GENERIC = new FirefighterSuit("ff_black_generic", ArmorMaterialRegistry.FF_BLACK_GENERIC, EntityEquipmentSlot.CHEST, 1);
 	public static final Item LT_GENERIC = new FirefighterSuit("ff_lt_generic", ArmorMaterialRegistry.FF_LT_GENERIC, EntityEquipmentSlot.CHEST, 1);
@@ -470,13 +475,32 @@ public class ModItems
 	public static final Item WALLET_UNI = new ItemWallet("wallet_unisex");
 	public static final Item WALLET_MAS = new ItemWallet("wallet_masculine");
 	public static final Item WALLET_FEM = new ItemWallet("wallet_feminine");
-	public static final Item DEBIT_CARD_RED = new ItemDebitCard("card_red", ItemDebitCard.EnumDebitCardType.Business);
-	public static final Item DEBIT_CARD_GREEN = new ItemDebitCard("card_green", ItemDebitCard.EnumDebitCardType.Government);
-	public static final Item DEBIT_CARD_BLUE = new ItemDebitCard("card_blue", ItemDebitCard.EnumDebitCardType.Personal);
+	
 	public static final Item SECURITY_BOX = new ItemSecurityBox();
 	public static final Item REGISTER_FLUID_WRAPPER = new ItemRegisterFluidWrapper();
 	
+	// Debit Cards
+	public static final Item DEBIT_CARD_RED = new ItemDebitCard("card_business", ItemDebitCard.EnumDebitCardType.Business);
+	public static final Item DEBIT_CARD_GREEN = new ItemDebitCard("card_govt", ItemDebitCard.EnumDebitCardType.Government);
+	public static final Item DEBIT_CARD_BLUE = new ItemDebitCard("card_personal_blue", ItemDebitCard.EnumDebitCardType.Personal);
+	public static final Item DEBIT_CARD_PERSONAL_GREEN = new ItemDebitCard("card_personal_green", ItemDebitCard.EnumDebitCardType.Personal);
+	
+	// Vanity Debit Cards
+	public static final Item DEBIT_CARD_VAPORWAVE = new ItemDebitCard("card_vaporwave", ItemDebitCard.EnumDebitCardType.Personal);
+	public static final Item DEBIT_CARD_SLATE = new ItemDebitCard("card_slate", ItemDebitCard.EnumDebitCardType.Personal);
+	public static final Item DEBIT_CARD_SILVER = new ItemDebitCard("card_silver", ItemDebitCard.EnumDebitCardType.Personal);
+	public static final Item DEBIT_CARD_SAPPHIRE = new ItemDebitCard("card_sapphire", ItemDebitCard.EnumDebitCardType.Personal);
+	public static final Item DEBIT_CARD_RUBY = new ItemDebitCard("card_ruby", ItemDebitCard.EnumDebitCardType.Personal);
+	public static final Item DEBIT_CARD_RGB = new ItemDebitCard("card_rgb", ItemDebitCard.EnumDebitCardType.Personal);
+	public static final Item DEBIT_CARD_RC = new ItemDebitCard("card_rc", ItemDebitCard.EnumDebitCardType.Personal);
+	public static final Item DEBIT_CARD_LGBTQIA = new ItemDebitCard("card_pride", ItemDebitCard.EnumDebitCardType.Personal);
+	public static final Item DEBIT_CARD_GOLD = new ItemDebitCard("card_gold", ItemDebitCard.EnumDebitCardType.Personal);
+	public static final Item DEBIT_CARD_BRONZE = new ItemDebitCard("card_bronze", ItemDebitCard.EnumDebitCardType.Personal);
+	public static final Item DEBIT_CARD_CYAN = new ItemDebitCard("card_cyan", ItemDebitCard.EnumDebitCardType.Personal);
+	public static final Item DEBIT_CARD_XP = new ItemDebitCard("card_bliss", ItemDebitCard.EnumDebitCardType.Personal);
+	public static final Item DEBIT_CARD_AURORA = new ItemDebitCard("card_aurora", ItemDebitCard.EnumDebitCardType.Personal);
 
+	
 	// Mesabrookian Dollar Items - Banknotes
 	public static final Item ONE_DOLLAR = new ItemMoney("one_dollar", 100, ItemMoney.MoneyType.Bill);
 	public static final Item FIVE_DOLLARS = new ItemMoney("five_dollars", 500, ItemMoney.MoneyType.Bill);
@@ -610,4 +634,17 @@ public class ModItems
 	// Technical Engineering Item
 	public static final Item TECH_BLOCK = new MiscItem("technical_engineering_block", 64, Main.IMMERSIBROOK_MAIN);
 	public static final Item PLEATHER = new MiscItem("synthetic_leather", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item ASBESTOS = new MiscItem("asbestos", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item RESPIRATOR = new ItemRespirator("respirator");
+	
+	public static final Item RAW_BISMUTH = new MiscItem("raw_bismuth", 64, Main.IMMERSIBROOK_MAIN);
+	public static final Item PEPTO_BISMOL = new ItemPepto("pepto").setAlwaysEdible();
+	
+	// Military Hats lmbo
+	public static final Item ARMY_CAP = new WearableHat("army_cap");
+	public static final Item NAVY_CAP = new WearableHat("navy_cap");
+	public static final Item AF_CAP = new WearableHat("air_force_cap");
+	public static final Item MC_CAP = new WearableHat("marines_cap");
+	public static final Item SF_CAP = new WearableHat("space_force_cap");
+	public static final Item MARSHALS_CAP = new WearableHat("marshals_cap");
 }

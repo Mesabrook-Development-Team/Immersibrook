@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:statue_kt" },
+        "facing=south": { "model": "wbtc:statue_kt", "y": 180 },
+        "facing=west":  { "model": "wbtc:statue_kt", "y": 270 },
+        "facing=east":  { "model": "wbtc:statue_kt", "y": 90 }
+    }
+}

@@ -1,5 +1,6 @@
 package com.mesabrook.ib.init;
 
+import com.mesabrook.ib.blocks.BlockBollard;
 import com.mesabrook.ib.blocks.te.TileEntityFluidMeter;
 import com.mesabrook.ib.blocks.te.TileEntitySoundEmitter;
 import com.mesabrook.ib.blocks.te.TileEntityWirelessChargingPad;
@@ -59,4 +60,18 @@ public class XNetAPI {
 			return ConnectResult.DEFAULT;
 		}
 	}
+	
+	// TODO: Fix eventually so that collision will update properly.
+//	public static class BollardConnectable implements IConnectable
+//	{
+//		@Override
+//		public ConnectResult canConnect(IBlockAccess world, BlockPos connectorPos, BlockPos blockPos, TileEntity te, EnumFacing facing)
+//		{
+//			if(world.getBlockState(blockPos).getBlock() instanceof BlockBollard && facing == EnumFacing.UP)
+//			{
+//				return ConnectResult.YES;
+//			}
+//			return ConnectResult.DEFAULT;
+//		}
+//	}
 }

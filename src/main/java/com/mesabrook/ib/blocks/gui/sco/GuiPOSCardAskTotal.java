@@ -2,6 +2,7 @@ package com.mesabrook.ib.blocks.gui.sco;
 
 import java.io.IOException;
 
+import com.mesabrook.ib.Main;
 import com.mesabrook.ib.blocks.gui.GuiImageLabelButton;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.net.sco.POSCardProcessPacket;
@@ -23,8 +24,8 @@ public class GuiPOSCardAskTotal extends GuiPOSCardBase {
 	public void initGui() {
 		super.initGui();
 		
-		yes = new GuiImageLabelButton(0, midWidth - 32, midHeight + 4, 30, 20, "Yes", null, 0, 0, 0, 0, null).setEnabledColor(0xFFFFFF);
-		no = new GuiImageLabelButton(0, midWidth + 2, midHeight + 4, 30, 20, "No", null, 0, 0, 0, 0, null).setEnabledColor(0xFFFFFF);
+		yes = new GuiImageLabelButton(0, midWidth - 32, midHeight - 35, 30, 20, "Yes", null, 0, 0, 0, 0, null).setEnabledColor(0x424242);
+		no = new GuiImageLabelButton(0, midWidth + 2, midHeight - 35, 30, 20, "No", null, 0, 0, 0, 0, null).setEnabledColor(0x424242);
 		
 		buttonList.add(yes);
 		buttonList.add(no);
@@ -34,11 +35,13 @@ public class GuiPOSCardAskTotal extends GuiPOSCardBase {
 	protected void doDraw(int mouseX, int mouseY, float partialTicks) {
 		super.doDraw(mouseX, mouseY, partialTicks);
 		
-		drawCenteredStringNoShadow(TextFormatting.BOLD + "Authorize " + readerInfo.authorizedAmount.toPlainString() + "?", midWidth, midHeight - 2 - fontRenderer.FONT_HEIGHT, 0);
+		drawCenteredStringNoShadow(TextFormatting.BOLD + "Authorize MBD$" + readerInfo.authorizedAmount.toPlainString() + "?", midWidth, midHeight - 2 - fontRenderer.FONT_HEIGHT, 0);
 	}
 	
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
+		super.actionPerformed(button);
+		playButtonSound();
 		if (button == yes)
 		{
 			POSCardProcessPacket process = new POSCardProcessPacket();
@@ -54,6 +57,25 @@ public class GuiPOSCardAskTotal extends GuiPOSCardBase {
 		if (button == no)
 		{
 			ejectCard();
+		}
+	}
+	
+	@Override
+	protected void numpadButtonPressed(String character, boolean cancelPressed, boolean okPressed) {
+		try
+		{
+			if (okPressed)
+			{
+				actionPerformed(yes);
+			}
+			else if (cancelPressed)
+			{
+				actionPerformed(no);
+			}
+		}
+		catch(IOException ex)
+		{
+			Main.logger.error("Error occurred handling action perform", ex);
 		}
 	}
 }

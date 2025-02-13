@@ -3,6 +3,7 @@ package com.mesabrook.ib.cmds;
 import com.google.common.collect.Lists;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.net.CommandProcessorPacket;
+import com.mesabrook.ib.net.OpenNotificationsGUIPacket;
 import com.mesabrook.ib.net.sco.StoreModeGuiPacket;
 import com.mesabrook.ib.telecom.WirelessEmergencyAlertManager;
 import com.mesabrook.ib.util.Reference;
@@ -250,6 +251,11 @@ public class CommandImmersibrook extends CommandBase
 						player.sendMessage(new TextComponentString(TextFormatting.RED + "[IB Debug] ERROR: Tough As Nails mod is not installed."));
 					}
 				}
+			}
+			else if("csnotifications".equalsIgnoreCase(args[0]) && sender instanceof EntityPlayerMP)
+			{
+				OpenNotificationsGUIPacket openPacket = new OpenNotificationsGUIPacket();
+				PacketHandler.INSTANCE.sendTo(openPacket, (EntityPlayerMP)sender);
 			}
 			else
 			{

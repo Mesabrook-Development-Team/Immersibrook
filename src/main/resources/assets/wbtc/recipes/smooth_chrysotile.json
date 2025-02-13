@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "wbtc:chrysotile"
+    }
+  },
+  "result": {
+    "item": "wbtc:smooth_chrysotile",
+    "count": 4
+  }
+}

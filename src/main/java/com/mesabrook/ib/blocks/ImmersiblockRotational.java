@@ -218,7 +218,7 @@ public class ImmersiblockRotational extends Block implements IHasModel
             {
                 tooltip.add(TextFormatting.YELLOW + "The bagging area.");
             }
-            if(this == ModBlocks.ATM)
+            if(this == ModBlocks.ATM || this == ModBlocks.STANDALONE_ATM)
             {
                 tooltip.add(TextFormatting.YELLOW + "A machine that lets you deposit or withdraw money and get a debit card.");
                 tooltip.add(TextFormatting.RED + "Requires MesaSuite Authorization to work.");

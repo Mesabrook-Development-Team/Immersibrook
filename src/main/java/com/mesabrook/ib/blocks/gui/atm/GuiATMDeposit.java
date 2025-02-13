@@ -10,18 +10,23 @@ import com.mesabrook.ib.blocks.gui.GuiImageLabelButton;
 import com.mesabrook.ib.blocks.gui.GuiImageLabelButton.ImageOrientation;
 import com.mesabrook.ib.blocks.te.TileEntityATM;
 import com.mesabrook.ib.items.commerce.ItemMoney;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.net.atm.DepositATMPacket;
+import com.mesabrook.ib.util.IndependentTimer;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 public class GuiATMDeposit extends GuiATMBase {
 
 	private Account account;
+	private IndependentTimer timer;
 	
 	private BigDecimal pocketAmount;
 	GuiImageLabelButton back; 
@@ -33,6 +38,7 @@ public class GuiATMDeposit extends GuiATMBase {
 	public GuiATMDeposit(TileEntityATM atm, Account account) {
 		super(atm);
 		this.account = account;
+		timer = new IndependentTimer();
 	}
 	
 	@Override
@@ -87,7 +93,7 @@ public class GuiATMDeposit extends GuiATMBase {
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
 		super.actionPerformed(button);
-		
+		playButtonSound();
 		if (button == back)
 		{
 			mc.displayGuiScreen(new GuiATMMainMenu(atm, account));
@@ -126,8 +132,11 @@ public class GuiATMDeposit extends GuiATMBase {
 	@Override
 	protected void keyTyped(char typedChar, int keyCode) throws IOException {
 		super.keyTyped(typedChar, keyCode);
-		
-		amount.textboxKeyTyped(typedChar, keyCode);
+
+		if(amount.textboxKeyTyped(typedChar, keyCode))
+		{
+			playButtonSound();
+		}
 	}
 	
 	@Override
@@ -142,6 +151,11 @@ public class GuiATMDeposit extends GuiATMBase {
 		if (error.isEmpty())
 		{
 			mc.displayGuiScreen(null);
+			ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
+			packet.pos = Minecraft.getMinecraft().player.getPosition();
+			packet.modID = "wbtc";
+			packet.soundName = "bill_acceptor";
+			PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(Minecraft.getMinecraft().player.dimension, Minecraft.getMinecraft().player.posX, Minecraft.getMinecraft().player.posY, Minecraft.getMinecraft().player.posZ, 25));
 			return;
 		}
 		

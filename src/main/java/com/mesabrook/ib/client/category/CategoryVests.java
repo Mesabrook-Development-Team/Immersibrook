@@ -74,6 +74,7 @@ public class CategoryVests extends AbstractCategory
 		add(ModItems.CBFD_CHEST);
 		add(ModItems.AVFD_CHEST);
 		add(ModItems.SCFD_CHEST);
+		add(ModItems.NPFD_CHEST);
 		add(ModItems.FIRE_BOOTS);
 		add(ModItems.FF_PANTS_BLACK);
 		add(ModItems.FF_PANTS_BLACK_WS);
@@ -82,6 +83,7 @@ public class CategoryVests extends AbstractCategory
 		add(ModItems.BLACK_GENERIC);
 		add(ModItems.LT_GENERIC);
 		add(ModItems.DT_GENERIC);
+		add(ModItems.RESPIRATOR);
 
 		// Conductor's Uniforms
 		add(ModItems.CU_BL_HAT);
@@ -94,5 +96,13 @@ public class CategoryVests extends AbstractCategory
 		// Engineer's Uniform
 		add(ModItems.E_HAT);
 		add(ModItems.ENGINEERS_OVERALLS);
+		
+		// More Wearable Items
+		add(ModItems.ARMY_CAP);
+		add(ModItems.NAVY_CAP);
+		add(ModItems.AF_CAP);
+		add(ModItems.MC_CAP);
+		add(ModItems.SF_CAP);
+		add(ModItems.MARSHALS_CAP);
 	}
 }

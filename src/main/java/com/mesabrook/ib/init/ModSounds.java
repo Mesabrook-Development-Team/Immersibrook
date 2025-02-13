@@ -11,6 +11,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ModSounds
 {
+	public static final SoundEvent WHELEN_SIREN;
+	public static final SoundEvent ATM_BEEP;
+	public static final SoundEvent ZAP;
+	public static final SoundEvent BOLLARD;
 	public static final SoundEvent OWO_SFX;
 	public static final SoundEvent RZ_TROPHY;
 	public static final SoundEvent CSX_TROPHY;
@@ -18,6 +22,7 @@ public class ModSounds
 	public static final SoundEvent LW_TROPHY;
 	public static final SoundEvent MD_TROPHY;
 	public static final SoundEvent SVV_TROPHY;
+	public static final SoundEvent KT_TROPHY;
 	public static final SoundEvent TROPHY_BREAK;
 	public static final SoundEvent OOF;
 	public static final SoundEvent CAN_OPEN;
@@ -103,6 +108,8 @@ public class ModSounds
 	public static final SoundEvent COMING_OUT;
 	public static final SoundEvent DESK_BELL;
 	public static final SoundEvent DESK_BELL_AF;
+	public static final SoundEvent CASH_OUT;
+	public static final SoundEvent CARD_OUT;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -125,6 +132,8 @@ public class ModSounds
 	public static final SoundEvent SPOOKY;
 	public static final SoundEvent RITZ;
 	public static final SoundEvent HL3;
+	public static final SoundEvent HALLOW;
+	public static final SoundEvent CAKE;
 
 	// Plastic SoundType
 	public static final SoundEvent PLASTIC_PLACE;
@@ -234,6 +243,11 @@ public class ModSounds
 
 	static
 	{
+		WHELEN_SIREN = addSoundsToRegistry("whelen_siren");
+		KT_TROPHY = addSoundsToRegistry("kreative");
+		ATM_BEEP = addSoundsToRegistry("atm_button_beep");
+		ZAP = addSoundsToRegistry("zap");
+		BOLLARD = addSoundsToRegistry("bollard_sound");
 		OWO_SFX = addSoundsToRegistry("owo");
 		RZ_TROPHY = addSoundsToRegistry("rz_trophy");
 		CSX_TROPHY = addSoundsToRegistry("csx_trophy");
@@ -325,6 +339,8 @@ public class ModSounds
 		COMING_OUT = addSoundsToRegistry("coming_out");
 		DESK_BELL = addSoundsToRegistry("desk_bell");
 		DESK_BELL_AF = addSoundsToRegistry("desk_bell_af");
+		CASH_OUT = addSoundsToRegistry("cash_out");
+		CARD_OUT = addSoundsToRegistry("card_out");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -344,6 +360,8 @@ public class ModSounds
 		COOKING = addSoundsToRegistry("cooking");
 		MEMORY = addSoundsToRegistry("memory");
 		WIDE = addSoundsToRegistry("wide");
+		HALLOW = addSoundsToRegistry("hallow");
+		CAKE = addSoundsToRegistry("cake");
 		FRIDGE_OPEN = addSoundsToRegistry("fridge_open");
 		FRIDGE_CLOSE = addSoundsToRegistry("fridge_close");
 
@@ -470,6 +488,11 @@ public class ModSounds
 		{
 			try
 			{
+				event.getRegistry().registerAll(ModSounds.KT_TROPHY);
+				event.getRegistry().registerAll(ModSounds.WHELEN_SIREN);
+				event.getRegistry().registerAll(ModSounds.ATM_BEEP);
+				event.getRegistry().registerAll(ModSounds.BOLLARD);
+				event.getRegistry().registerAll(ModSounds.CASH_OUT);
 				event.getRegistry().registerAll(ModSounds.OWO_SFX);
 				event.getRegistry().registerAll(ModSounds.WIDE);
 				event.getRegistry().registerAll(ModSounds.RZ_TROPHY);
@@ -670,6 +693,10 @@ public class ModSounds
 				event.getRegistry().register(ModSounds.AERO_STARTUP);
 				event.getRegistry().register(ModSounds.DESK_BELL);
 				event.getRegistry().register(ModSounds.DESK_BELL_AF);
+				event.getRegistry().register(ModSounds.CAKE);
+				event.getRegistry().register(ModSounds.HALLOW);
+				event.getRegistry().register(ModSounds.ZAP);
+				event.getRegistry().register(ModSounds.CARD_OUT);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

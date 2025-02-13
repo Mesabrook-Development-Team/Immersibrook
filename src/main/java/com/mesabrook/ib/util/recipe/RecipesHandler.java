@@ -5,9 +5,12 @@ import blusunrize.immersiveengineering.common.IEContent;
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.util.ModUtils;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.pam.harvestcraft.item.ItemRegistry;
+
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -25,7 +28,13 @@ public class RecipesHandler
 		try
 		{
 			int outputAmount = 1;
-
+			
+			ArcFurnaceRecipe.addRecipe(new ItemStack(ModBlocks.BISMUTH_BLOCK), new ItemStack(ModBlocks.DARK_BISMUTH), ItemStack.EMPTY, 128, 345, ItemStack.EMPTY);
+			ArcFurnaceRecipe.addRecipe(new ItemStack(ModBlocks.BISMUTH_BLOCK, 3), new ItemStack(ModBlocks.BISMUTH_BRICKS), ModUtils.getItemStackFromOreDictionary("itemSlag", 3), 128, 345, new ItemStack(ModItems.RAW_BISMUTH, 2));
+			
+			// smooth_chrysotile to chrysotile
+			CrusherRecipe.addRecipe(new ItemStack(ModBlocks.CHRYSOTILE, 2), new ItemStack(ModBlocks.CHRYSOTILE_SMOOTHED), 100);
+			
 			// White Mushroom > White Dye Dust
 			CrusherRecipe.addRecipe(new ItemStack(ModItems.DUST_WHITE, 2), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("harvestcraft", "whitemushroomitem"))), 20);
 
@@ -35,6 +44,9 @@ public class RecipesHandler
 
 			// SIM Card crafting
 			BlueprintCraftingRecipe.addRecipe("components", new ItemStack(ModItems.SIM_CARD), ModItems.PLASTIC_WHITE, new ItemStack(IEContent.itemMaterial, 1, 27), new ItemStack(IEContent.itemMaterial, 3, 20));
+			
+			// Bollards
+			BlueprintCraftingRecipe.addRecipe("components", new ItemStack(ModBlocks.WALL_DOWN), new ItemStack(Blocks.CONCRETE, 1, 8), new ItemStack(Blocks.CONCRETE, 2, 14), new ItemStack(Blocks.PISTON), new ItemStack(Blocks.REDSTONE_LAMP, 3));
 
 			// Pleather crafting
 			BlueprintCraftingRecipe.addRecipe("components", new ItemStack(ModItems.PLEATHER), ModItems.PLASTIC_PLATE, new ItemStack(Items.STRING, 3), new ItemStack(Items.DYE, 1, 8));
@@ -108,6 +120,8 @@ public class RecipesHandler
 			CrusherRecipe.addRecipe(new ItemStack(ItemRegistry.groundchickenItem, 2), new ItemStack(Items.CHICKEN), 10);
 			CrusherRecipe.addRecipe(new ItemStack(ItemRegistry.groundporkItem, 2), new ItemStack(Items.PORKCHOP), 10);
 			CrusherRecipe.addRecipe(new ItemStack(ItemRegistry.groundfishItem, 2), new ItemStack(Items.FISH), 10);
+			
+			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_BISMUTH, 7), new ItemStack(ModBlocks.RAW_BISMUTH_BLOCK), 45);
 		}
 		catch(Exception ex)
 		{
@@ -199,6 +213,11 @@ public class RecipesHandler
 			// Food
 			GameRegistry.addSmelting(ModItems.RAW_CHICKEN_NUGGET, new ItemStack(ModItems.CHICKEN_NUGGET, 1), 5F);
 			GameRegistry.addSmelting(Items.BREAD, new ItemStack(ItemRegistry.toastItem, 1), 5F);
+			
+			// Misc
+			GameRegistry.addSmelting(ModBlocks.BISMUTH_ORE, new ItemStack(ModItems.RAW_BISMUTH, 2), 5F);
+			GameRegistry.addSmelting(ModBlocks.RAW_BISMUTH_BLOCK, new ItemStack(ModBlocks.DARK_BISMUTH, 1), 10F);
+			
 			Main.logger.info("[" + Reference.MODNAME + "] Smelting Recipes Registered.");
 		}
 		catch(Exception e)

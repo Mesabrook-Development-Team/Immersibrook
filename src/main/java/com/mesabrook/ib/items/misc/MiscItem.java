@@ -171,6 +171,10 @@ public class MiscItem extends Item implements IHasModel
 			{
 				tooltip.add(TextFormatting.YELLOW + "100% Plastic, 0% Leather");
 			}
+			if(stack.getItem() == ModItems.ASBESTOS)
+			{
+				tooltip.add(TextFormatting.RED + "SURGEON GENERAL WARNING: MAY CAUSE LUNG CANCER.");
+			}
 			else
 			{
 				tooltip.add(TextFormatting.YELLOW + "Crafting Ingredient");

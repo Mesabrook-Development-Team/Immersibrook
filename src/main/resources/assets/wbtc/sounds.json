@@ -1,4 +1,67 @@
 {
+	"whelen_siren": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:whelen_siren",
+			"stream": true
+		}]
+	},
+	"cake": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:cake",
+			"stream": true
+		}]
+	},
+	"kreative": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:kreative",
+			"stream": true
+		}]
+	},
+	"atm_button_beep": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:atm_button_beep",
+			"stream": true
+		}]
+	},
+	"card_out": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:card_out",
+			"stream": true
+		}]
+	},
+	"cash_out": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:cash_out",
+			"stream": true
+		}]
+	},
+	"zap": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:zap",
+			"stream": true
+		}]
+	},
+	"bollard_sound": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:bollard_sound",
+			"stream": true
+		}]
+	},
+	"hallow": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:hallow",
+			"stream": true
+		}]
+	},
 	"owo": {
 		"category": "master",
 		"sounds": [{

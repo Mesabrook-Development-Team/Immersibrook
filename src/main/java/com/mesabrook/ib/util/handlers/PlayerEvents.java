@@ -3,6 +3,7 @@ package com.mesabrook.ib.util.handlers;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.Random;
@@ -17,6 +18,7 @@ import org.apache.http.impl.client.HttpClients;
 
 import com.mesabrook.ib.Main;
 import com.mesabrook.ib.advancements.Triggers;
+import com.mesabrook.ib.apimodels.company.EmployeeToDoItem;
 import com.mesabrook.ib.blocks.sco.BlockShelf;
 import com.mesabrook.ib.blocks.te.ShelvingTileEntity;
 import com.mesabrook.ib.blocks.te.ShelvingTileEntity.ProductSpot;
@@ -27,23 +29,30 @@ import com.mesabrook.ib.capability.secureditem.ISecuredItem;
 import com.mesabrook.ib.init.ModBlocks;
 import com.mesabrook.ib.init.ModEnchants;
 import com.mesabrook.ib.init.ModItems;
+import com.mesabrook.ib.init.PotionInit;
 import com.mesabrook.ib.items.ItemSponge;
 import com.mesabrook.ib.items.ItemTechRetailBox;
+import com.mesabrook.ib.items.armor.ItemRespirator;
 import com.mesabrook.ib.items.misc.ItemIBFood;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.items.tools.ItemBanHammer;
 import com.mesabrook.ib.items.tools.ItemGavel;
 import com.mesabrook.ib.items.tools.ItemIceChisel;
 import com.mesabrook.ib.net.ClientSoundPacket;
+import com.mesabrook.ib.net.FetchCSNotificationPacket;
 import com.mesabrook.ib.net.OpenTOSPacket;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.telecom.CallManager;
 import com.mesabrook.ib.util.ItemRandomizer;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.SoundRandomizer;
+import com.mesabrook.ib.util.UniversalDeathSource;
 import com.mesabrook.ib.util.apiaccess.DataAccess;
 import com.mesabrook.ib.util.apiaccess.DataAccess.API;
 import com.mesabrook.ib.util.apiaccess.DataAccess.AuthenticationStatus;
+import com.mesabrook.ib.util.apiaccess.DataRequestQueue;
+import com.mesabrook.ib.util.apiaccess.DataRequestTask;
+import com.mesabrook.ib.util.apiaccess.GetData;
 import com.mesabrook.ib.util.apiaccess.PutData;
 import com.mesabrook.ib.util.config.ModConfig;
 import com.mesabrook.ib.util.saveData.SpecialDropTrackingData;
@@ -63,6 +72,7 @@ import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -70,6 +80,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.FoodStats;
@@ -87,16 +99,22 @@ import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
+@Mod.EventBusSubscriber(modid = Reference.MODID)
 public class PlayerEvents 
 {
+	public static final DamageSource MESO = new UniversalDeathSource("meso", "im.death.asbestos");
+	public Random random;
 	public PlayerEvents()
 	{
 		Main.logger.info("[" + Reference.MODNAME + "] Registering PlayerEvents class...");
@@ -225,12 +243,26 @@ public class PlayerEvents
 			{
 				PacketHandler.INSTANCE.sendTo(new OpenTOSPacket(), FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerByUUID(player.getUniqueID()));
 			}
+			
+			createCSNotificationsDataRequest(player, FetchCSNotificationPacket.FetchTypes.InitialLogin);
 		}
 		
 		if (DataAccess.getAuthenticationStatus() == AuthenticationStatus.LoggedOut && player.canUseCommand(2, ""))
 		{
 			player.sendMessage(new TextComponentString("" + TextFormatting.BOLD + TextFormatting.YELLOW + "WARNING! The server is currently NOT signed into MesaSuite!"));
 		}
+	}
+	
+	public static void createCSNotificationsDataRequest(EntityPlayer player, FetchCSNotificationPacket.FetchTypes fetchType)
+	{
+		GetData get = new GetData(API.Company, "EmployeeIBAccess/GetToDoItemsForUser", EmployeeToDoItem[].class);
+		get.addQueryString("username", player.getName());
+		
+		DataRequestTask requestTask = new DataRequestTask(get);
+		requestTask.getData().put("playerID", player.getUniqueID());
+		requestTask.getData().put("fetchType", fetchType);
+		ServerTickHandler.companyToDoQueryTasks.add(requestTask);
+		DataRequestQueue.INSTANCE.addTask(requestTask);
 	}
 	
 	private class ResetInactivityParam
@@ -583,7 +615,31 @@ public class PlayerEvents
 		{
 			EntityPlayer player = (EntityPlayer)e.getEntityLiving();
 			ItemStack helmet = player.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+			ItemStack asbestos = player.getHeldItem(player.getActiveHand());
+			
+			if(asbestos.getItem() == ModItems.ASBESTOS && !(helmet.getItem() instanceof ItemRespirator)) 
+			{
+				if(player.world.getGameRules().getBoolean("asbestosRealism"))
+				{
+					player.addPotionEffect(new PotionEffect(PotionInit.ASBESTOS_EFFECT, 100000, 0, true, false));
+				}
+			}
+			else
+			{
+				if(player.world.rand.nextInt(420) == 10)
+				{
+					helmet.damageItem(1, player);
+				}
+			}
 
+			if(player.getActivePotionEffect(PotionInit.ASBESTOS_EFFECT) != null)
+			{
+				if(player.world.rand.nextInt(10000) < 1)
+				{
+					player.attackEntityFrom(MESO, player.getHealth());
+				}
+			}
+			
 			if (EnchantmentHelper.getEnchantmentLevel(ModEnchants.AUTO_FEED, helmet) > 0)
 			{
 				autoFeedPlayer(player);
@@ -640,6 +696,12 @@ public class PlayerEvents
 				}
 			}
 		}
+	}
+	
+	@SubscribeEvent
+	public static void onBlockBreak(BlockEvent.BreakEvent event)
+	{
+		Block block = event.getState().getBlock();
 	}
 
 	private void autoFeedPlayer(EntityPlayer player)

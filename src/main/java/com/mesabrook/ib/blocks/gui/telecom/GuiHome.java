@@ -1,9 +1,14 @@
 package com.mesabrook.ib.blocks.gui.telecom;
 
+import java.io.IOException;
+
 import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.blocks.gui.sco.GuiStoreMode;
-import com.mesabrook.ib.net.sco.StoreModeGuiPacket;
+import com.mesabrook.ib.net.telecom.PhoneQueryPacket;
+import com.mesabrook.ib.util.GuiUtil;
 import com.mesabrook.ib.util.ModUtils;
+import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.handlers.ClientSideHandlers;
 import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import net.minecraft.client.Minecraft;
@@ -17,8 +22,6 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.io.IOException;
 
 @SideOnly(Side.CLIENT)
 public class GuiHome extends GuiPhoneBase {
@@ -36,6 +39,8 @@ public class GuiHome extends GuiPhoneBase {
 	ImageButton button6;
 	ImageButton button7;
 	ImageButton button8;
+	ImageButton button9;
+	ImageButton csNotifications;
 
 	@Override
 	protected String getInnerTextureFileName()
@@ -77,6 +82,14 @@ public class GuiHome extends GuiPhoneBase {
 		// Store Mode Launcher
 		button8 = new ImageButton(7, button3.x + 40, INNER_Y + 24, 32, 32, phoneStackData.getIconTheme() + "/icn_storemode.png", 32, 32);
 		buttonList.add(button8);
+		
+		// Magic 8 Ball App
+		button9 = new ImageButton(8, INNER_X + 5, INNER_Y + 64, 32, 32, phoneStackData.getIconTheme() + "/icn_eightball.png", 32, 32);
+		buttonList.add(button9);
+		
+		// Company Studio Notifications App
+		csNotifications = new ImageButton(9, INNER_X + 46, INNER_Y + 64, 32, 32, new ResourceLocation(Reference.MODID, "textures/app/icon/icn_cstudio.png"), 64, 64, 64, 64);
+		buttonList.add(csNotifications);
 	}
 
 	@Override
@@ -120,6 +133,14 @@ public class GuiHome extends GuiPhoneBase {
 		{
 			drawCenteredString(fontRenderer, "Employee Mode", INNER_X + 80, INNER_Y + 150, 0xFFFFFF);
 		}
+		else if(mouseX >= button9.x && mouseY >= button9.y && mouseX < button9.x + button9.width && mouseY < button9.y + button9.height)
+		{
+			drawCenteredString(fontRenderer, "Magic 8 Ball", INNER_X + 80, INNER_Y + 150, 0xFFFFFF);
+		}
+		else if (GuiUtil.isPointWithinBounds(mouseX, mouseY, csNotifications.x, csNotifications.y, csNotifications.width, csNotifications.height))
+		{
+			drawCenteredString(fontRenderer, "Company Notifications", INNER_X + 80, INNER_Y + 150, 0xFFFFFF);
+		}
 		else if(phoneStackData.getBatteryLevel() <= 100)
 		{
 			drawCenteredString(fontRenderer, new TextComponentString(TextFormatting.DARK_RED + "Low Battery").getFormattedText(), INNER_X + 80, INNER_Y + 148, 0xFFFFFF);
@@ -133,43 +154,33 @@ public class GuiHome extends GuiPhoneBase {
 	protected void actionPerformed(GuiButton button) throws IOException {
 		super.actionPerformed(button);
 		switch(button.id) {
-			case 0:
-				GuiAppSplashScreen gui = new GuiAppSplashScreen(phoneStack, hand);
-				gui.setLogoPath("icn_phone.png");
-				gui.setAppName("Phone");
-				gui.setSplashColor("green");
-				Minecraft.getMinecraft().displayGuiScreen(gui);
+			case 0:				
+				launchAppViaSplashScreen("icn_phone.png", "Phone", "green", GuiEmptyPhone.class, () ->
+				{
+					PhoneQueryPacket queryPacket = new PhoneQueryPacket();
+	                queryPacket.forNumber = getCurrentPhoneNumber();
+
+	                int nextID = ClientSideHandlers.TelecomClientHandlers.getNextHandlerID();
+
+	                ClientSideHandlers.TelecomClientHandlers.phoneQueryResponseHandlers.put(nextID, ClientSideHandlers.TelecomClientHandlers::onPhoneQueryResponseForPhoneApp);
+	                queryPacket.clientHandlerCode = nextID;
+	                PacketHandler.INSTANCE.sendToServer(queryPacket);
+				});
 				break;
 			case 1:
 				Toaster.forPhoneNumber(phoneStackData.getPhoneNumberString()).queueToast(new Toast(2, 300, 2, "App Coming Soon", 0xFFFFFF));
 				break;
 			case 2:
-				GuiAppSplashScreen guiA = new GuiAppSplashScreen(phoneStack, hand);
-				guiA.setLogoPath("icn_contacts.png");
-				guiA.setAppName("Contacts");
-				guiA.setSplashColor("green");
-				Minecraft.getMinecraft().displayGuiScreen(guiA);
+				launchAppViaSplashScreen("icn_contacts.png", "Contacts", "green", GuiAddressBook.class);
 				break;
 			case 3:
-				GuiAppSplashScreen guiS = new GuiAppSplashScreen(phoneStack, hand);
-				guiS.setLogoPath("icn_settings.png");
-				guiS.setAppName("Settings");
-				guiS.setSplashColor("blue");
-				Minecraft.getMinecraft().displayGuiScreen(guiS);
+				launchAppViaSplashScreen("icn_settings.png", "Settings", "blue", GuiSettings.class);
 				break;
-			case 4:
-				GuiAppSplashScreen guiM = new GuiAppSplashScreen(phoneStack, hand);
-				guiM.setLogoPath("icn_musicplayer.png");
-				guiM.setAppName("Sound Player");
-				guiM.setSplashColor("blue");
-				Minecraft.getMinecraft().displayGuiScreen(guiM);
+			case 4:				
+				launchAppViaSplashScreen("icn_musicplayer.png", "Sound Player", "blue", GuiSoundPlayer.class);
 				break;
 			case 5:
-				GuiAppSplashScreen guiC = new GuiAppSplashScreen(phoneStack, hand);
-				guiC.setLogoPath("icn_calc.png");
-				guiC.setAppName("Calculator");
-				guiC.setSplashColor("red");
-				Minecraft.getMinecraft().displayGuiScreen(guiC);
+				launchAppViaSplashScreen("icn_calc.png", "Calculator", "red", GuiCalculator.class);
 				break;
 			case 6:
 				try
@@ -185,6 +196,37 @@ public class GuiHome extends GuiPhoneBase {
 			case 7:
 				Minecraft.getMinecraft().displayGuiScreen(new GuiStoreMode());
 				break;
+			case 8:
+				launchAppViaSplashScreen("icn_eightball.png", "Magic 8 Ball", "red", GuiMagicEightBall.class);
+				break;
+			case 9:
+				launchAppViaSplashScreen(new ResourceLocation(Reference.MODID, "textures/app/icon/icn_cstudio.png"), "Company Notifications", "blue", GuiCompanyStudioNotifications.class);
+				break;
 		}
+	}
+	
+	private <NextApp extends GuiPhoneBase> void launchAppViaSplashScreen(String logoPath, String appName, String splashColor, Class<NextApp> nextAppClazz)
+	{
+		launchAppViaSplashScreen(logoPath, null, appName, splashColor, nextAppClazz, null);
+	}
+	
+	private <NextApp extends GuiPhoneBase> void launchAppViaSplashScreen(String logoPath, String appName, String splashColor, Class<NextApp> nextAppClazz, Runnable postOpenRun)
+	{
+		launchAppViaSplashScreen(logoPath, null, appName, splashColor, nextAppClazz, postOpenRun);
+	}
+	
+	private <NextApp extends GuiPhoneBase> void launchAppViaSplashScreen(ResourceLocation logoResourceLocation, String appName, String splashColor, Class<NextApp> nextAppClazz)
+	{
+		launchAppViaSplashScreen(null, logoResourceLocation, appName, splashColor, nextAppClazz, null);
+	}
+	
+	private <NextApp extends GuiPhoneBase> void launchAppViaSplashScreen(String logoPath, ResourceLocation logoResourceLocation, String appName, String splashColor, Class<NextApp> nextAppClazz, Runnable postOpenRun)
+	{
+		GuiAppSplashScreen<NextApp> guiC = new GuiAppSplashScreen<NextApp>(phoneStack, hand, nextAppClazz, postOpenRun);
+		guiC.setLogoPath(logoPath);
+		guiC.setLogoResourceLocation(logoResourceLocation);
+		guiC.setAppName(appName);
+		guiC.setSplashColor(splashColor);
+		Minecraft.getMinecraft().displayGuiScreen(guiC);
 	}
 }

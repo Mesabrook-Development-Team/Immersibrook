@@ -18,6 +18,7 @@ import com.mesabrook.ib.apimodels.company.LocationItem;
 import com.mesabrook.ib.blocks.BlockRegister;
 import com.mesabrook.ib.blocks.ImmersiblockRotationalManyBB;
 import com.mesabrook.ib.blocks.gui.GuiAboutImmersibrook;
+import com.mesabrook.ib.blocks.gui.GuiCompanyNotifications;
 import com.mesabrook.ib.blocks.gui.GuiTOS;
 import com.mesabrook.ib.blocks.gui.atm.GuiATMDeposit;
 import com.mesabrook.ib.blocks.gui.atm.GuiATMHome;
@@ -34,6 +35,7 @@ import com.mesabrook.ib.blocks.gui.sco.GuiPOSWaitingForNetwork;
 import com.mesabrook.ib.blocks.gui.sco.GuiStoreMode;
 import com.mesabrook.ib.blocks.gui.sco.GuiTaggingStation;
 import com.mesabrook.ib.blocks.gui.telecom.GuiCallEnd;
+import com.mesabrook.ib.blocks.gui.telecom.GuiCompanyStudioNotifications;
 import com.mesabrook.ib.blocks.gui.telecom.GuiHome;
 import com.mesabrook.ib.blocks.gui.telecom.GuiIncomingCall;
 import com.mesabrook.ib.blocks.gui.telecom.GuiLockScreen;
@@ -55,6 +57,7 @@ import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.init.ModSounds;
 import com.mesabrook.ib.items.misc.ItemPhone;
+import com.mesabrook.ib.net.FetchCSNotificationResponsePacket;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket;
 import com.mesabrook.ib.net.telecom.PhoneQueryResponsePacket.ResponseTypes;
@@ -983,6 +986,36 @@ public class ClientSideHandlers
 		Minecraft.getMinecraft().displayGuiScreen(new GuiTOS());
 	}
 
+	public static void openCSNotificationsGUI() {
+		Minecraft.getMinecraft().displayGuiScreen(new GuiCompanyNotifications());
+	}
+	
+	public static void onCSNotificationResponse(FetchCSNotificationResponsePacket response)
+	{
+		Minecraft mc = Minecraft.getMinecraft();
+		switch(response.fetchType)
+		{
+			case NotificationsGUI:
+				if (!(mc.currentScreen instanceof GuiCompanyNotifications))
+				{
+					return;
+				}
+				
+				GuiCompanyNotifications notifications = (GuiCompanyNotifications)mc.currentScreen;
+				notifications.setToDoItems(response.employeeToDoItems);
+				break;
+			case MinedroidApp:
+				if (!(mc.currentScreen instanceof GuiCompanyStudioNotifications))
+				{
+					return;
+				}
+				
+				GuiCompanyStudioNotifications appNotifications = (GuiCompanyStudioNotifications)mc.currentScreen;
+				appNotifications.setToDoItems(response.employeeToDoItems);
+				break;
+		}
+	}
+	
 	public static class ATMHandlers
 	{
 		public static void onATMFetchAccountsResponse(String error, ArrayList<Account> accounts)

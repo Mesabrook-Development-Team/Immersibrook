@@ -5,9 +5,11 @@ import com.mesabrook.ib.blocks.te.TileEntityATM;
 import com.mesabrook.ib.capability.employee.CapabilityEmployee;
 import com.mesabrook.ib.capability.employee.IEmployeeCapability;
 import com.mesabrook.ib.init.ModBlocks;
+import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.util.ModUtils;
 import com.mesabrook.ib.util.Reference;
 import com.mesabrook.ib.util.handlers.ClientSideHandlers;
+import com.mesabrook.ib.util.handlers.PacketHandler;
 
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -18,6 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
@@ -26,17 +29,26 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 public class BlockATM extends ImmersiblockRotational {
 
-	public BlockATM() {
-		super("atm", Material.IRON, SoundType.METAL, "pickaxe", 1, 10F, 10F, ModUtils.DEFAULT_AABB);
+	public BlockATM(String name, AxisAlignedBB hitbox) {
+		super(name, Material.IRON, SoundType.METAL, "pickaxe", 1, 10F, 10F, hitbox);
 	}
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
 			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		playerIn.openGui(Main.instance, Reference.GUI_ATM, worldIn, pos.getX(), pos.getY(), pos.getZ());
+		
+		if (!worldIn.isRemote)
+		{
+			ServerSoundBroadcastPacket packet = new ServerSoundBroadcastPacket();
+			packet.pos = pos;
+			packet.soundName = "atm_button_beep";
+			PacketHandler.INSTANCE.sendToAllAround(packet, new NetworkRegistry.TargetPoint(playerIn.dimension, playerIn.posX, playerIn.posY, playerIn.posZ, 25));
+		}
 		
 		return true;
 	}
@@ -78,7 +90,7 @@ public class BlockATM extends ImmersiblockRotational {
 		@SubscribeEvent
 		public static void onBlockBreak(BlockEvent.BreakEvent e)
 		{
-			if (e.getState().getBlock() != ModBlocks.ATM || !e.getPlayer().hasCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null))
+			if (!(e.getState().getBlock() instanceof BlockATM) || !e.getPlayer().hasCapability(CapabilityEmployee.EMPLOYEE_CAPABILITY, null))
 			{
 				return;
 			}

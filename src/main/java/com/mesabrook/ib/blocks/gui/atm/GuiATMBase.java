@@ -1,8 +1,10 @@
 package com.mesabrook.ib.blocks.gui.atm;
 
 import com.mesabrook.ib.blocks.te.TileEntityATM;
+import com.mesabrook.ib.init.ModSounds;
 import com.mesabrook.ib.util.Reference;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
 
@@ -21,6 +23,11 @@ public abstract class GuiATMBase extends GuiScreen {
 	public GuiATMBase(TileEntityATM atm)
 	{
 		this.atm = atm;
+	}
+	
+	public void playButtonSound()
+	{
+		Minecraft.getMinecraft().player.playSound(ModSounds.ATM_BEEP, 0.5F, 1.0F);
 	}
 	
 	@Override
