@@ -1,13 +1,17 @@
 package com.mesabrook.ib.util.config;
 
 import com.mesabrook.ib.util.Reference;
+import com.mesabrook.ib.util.apiaccess.BlockAuditQueue;
+
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.Config.Comment;
 import net.minecraftforge.common.config.Config.LangKey;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
 
 @SuppressWarnings("WeakerAccess")
 @Config(modid = Reference.MODID)
@@ -140,6 +144,12 @@ public final class ModConfig
 	@Comment("[Minedroid] What is the maximum battery charge for a Smartphone?")
 	public static int smartphoneMaxBattery = 1600;
 	
+	@Comment("[MesaSuite] Transmit block audit data to MesaSuite API")
+	public static boolean transmitBlockAuditData = false;
+	
+	@Comment("[MesaSuite] How often, in ms, should audit data be transmitted to MesaSuite API")
+	public static int transmitBlockAuditDataFrequency = 10000;
+	
 	@Mod.EventBusSubscriber(modid = Reference.MODID)
 	private static class EventHandler
 	{
@@ -149,6 +159,15 @@ public final class ModConfig
 			if(event.getModID().equals(Reference.MODID))
 			{
 				ConfigManager.sync(Reference.MODID, Config.Type.INSTANCE);
+				
+				if (transmitBlockAuditData)
+				{
+					BlockAuditQueue.INSTANCE.start();
+				}
+				else
+				{
+					BlockAuditQueue.INSTANCE.stop();
+				}
 			}
 		}
 	}
