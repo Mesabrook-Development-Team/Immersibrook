@@ -185,7 +185,9 @@ public abstract class DataAccess {
 		OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
 		if (connection.getRequestProperty("Content-Type").equalsIgnoreCase("application/json"))
 		{
-			Gson gson = new Gson();
+			Gson gson = new GsonBuilder()
+							.setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ") // ISO 8601 with milliseconds
+			                .create();
 			data = gson.toJson(sendableObject);
 		}	
 		else
@@ -376,6 +378,7 @@ public abstract class DataAccess {
 	public static void init(World world)
 	{
 		DataRequestQueue.INSTANCE.start();
+		BlockAuditQueue.INSTANCE.start();
 		
 		AuthWorldData data = (AuthWorldData)world.loadData(AuthWorldData.class, "ib_authdata");
 		if (data == null)
@@ -410,6 +413,7 @@ public abstract class DataAccess {
 	public static void shutdown(World world)
 	{
 		DataRequestQueue.INSTANCE.stop();
+		BlockAuditQueue.INSTANCE.stop();		
 	}
 	
 	public static class AuthWorldData extends WorldSavedData
