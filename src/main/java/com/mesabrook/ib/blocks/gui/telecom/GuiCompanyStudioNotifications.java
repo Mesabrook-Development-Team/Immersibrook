@@ -54,7 +54,7 @@ public class GuiCompanyStudioNotifications extends GuiPhoneBase {
 
 	@Override
 	protected String getInnerTextureFileName() {
-		return phoneStackData.getIconTheme() + "/app_screen_purple.png";
+		return phoneStackData.getIconTheme() + "/app_screen.png";
 	}
 
 	@Override
