@@ -180,6 +180,11 @@ public class BlockAuditQueue {
 		{
 			auditsToSend.clear();
 			running = false;
+			
+			if (!cancel) // Restart if cancel wasn't requested
+			{
+				start();
+			}
 			cancel = false;
 		}
 	}
