@@ -74,7 +74,7 @@ public class GuiCompanyStudioNotifications extends GuiPhoneBase {
 		filterButton = new ImageButton(0, INNER_X + INNER_TEX_WIDTH - 16, INNER_Y + 16, 16, 16, phoneStackData.getIconTheme() + "/icn_settings.png", 1024, 1024);
 		buttonList.add(filterButton);
 		
-		refreshButton = new ImageButton(0, filterButton.x - 16, filterButton.y, 16, 16, phoneStackData.getIconTheme() + "/icn_eightball.png", 64, 64);
+		refreshButton = new ImageButton(0, filterButton.x - 16, filterButton.y, 16, 16, "system/icn_refresh.png", 64, 64);
 		refreshButton.visible = false;
 		buttonList.add(refreshButton);
 		
