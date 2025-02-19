@@ -22,7 +22,7 @@ public class BlockAuditEventHandlers {
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void logBlockBreak(BlockEvent.BreakEvent event)
 	{
-		if (!ModConfig.transmitBlockAuditData && event.getResult() != Result.DENY && event.getPlayer() != null)
+		if (!ModConfig.transmitBlockAuditData || event.getResult() == Result.DENY || event.getPlayer() == null)
 		{
 			return;
 		}
@@ -32,7 +32,7 @@ public class BlockAuditEventHandlers {
 	
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void logRightClick(PlayerInteractEvent.RightClickBlock evt) {
-		if (!ModConfig.transmitBlockAuditData && evt.getUseBlock() != Result.DENY && evt.getEntity() != null)
+		if (!ModConfig.transmitBlockAuditData || evt.getUseBlock() == Result.DENY || evt.getEntity() == null)
 		{
 			return;
 		}
@@ -43,7 +43,7 @@ public class BlockAuditEventHandlers {
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void logBlockPlace(BlockEvent.EntityPlaceEvent event)
 	{
-		if (!ModConfig.transmitBlockAuditData && event.getResult() != Result.DENY && event.getEntity() != null)
+		if (!ModConfig.transmitBlockAuditData || event.getResult() == Result.DENY || event.getEntity() == null)
 		{
 			return;
 		}
@@ -54,7 +54,7 @@ public class BlockAuditEventHandlers {
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void logBlockPlace(BlockEvent.MultiPlaceEvent event)
 	{
-		if (!ModConfig.transmitBlockAuditData && event.getResult() != Result.DENY && event.getEntity() != null)
+		if (!ModConfig.transmitBlockAuditData || event.getResult() == Result.DENY || event.getEntity() == null || event.getReplacedBlockSnapshots() == null)
 		{
 			return;
 		}
