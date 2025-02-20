@@ -208,43 +208,47 @@ public class BlockAuditQueue {
 		{
 			for(UseToCheck useToCheck : usesToCheck)
 			{
-				boolean hasActivated = false;
-				Class<?> workingClass = useToCheck.blockClazz;
-				while(!hasActivated && workingClass != Block.class)
+				try
 				{
-					Method onBlockActivatedMethod = null;
-					try
+					boolean hasActivated = false;
+					Class<?> workingClass = useToCheck.blockClazz;
+					while(!hasActivated && workingClass != Block.class)
 					{
-						onBlockActivatedMethod = workingClass.getDeclaredMethod("onBlockActivated", onBlockActivatedSignature);
-					}
-					catch(Exception ex) {}
-					
-					if (onBlockActivatedMethod == null) // Check obfuscated name
-					{
+						Method onBlockActivatedMethod = null;
 						try
 						{
-							onBlockActivatedMethod = workingClass.getDeclaredMethod("func_180639_a", onBlockActivatedSignature);
+							onBlockActivatedMethod = workingClass.getDeclaredMethod("onBlockActivated", onBlockActivatedSignature);
 						}
 						catch(Exception ex) {}
+						
+						if (onBlockActivatedMethod == null) // Check obfuscated name
+						{
+							try
+							{
+								onBlockActivatedMethod = workingClass.getDeclaredMethod("func_180639_a", onBlockActivatedSignature);
+							}
+							catch(Exception ex) {}
+						}
+						
+						hasActivated = onBlockActivatedMethod != null;
+						
+						workingClass = workingClass.getSuperclass();
 					}
 					
-					hasActivated = onBlockActivatedMethod != null;
-					
-					workingClass = workingClass.getSuperclass();
+					if (hasActivated)
+					{
+						BlockAudit audit = new BlockAudit();
+						audit.AuditTime = useToCheck.auditTime;
+						audit.PositionX = useToCheck.pos.getX();
+						audit.PositionY = useToCheck.pos.getY();
+						audit.PositionZ = useToCheck.pos.getZ();
+						audit.AuditType = AuditTypes.Use;
+						audit.BlockName = useToCheck.blockName;
+						audit.PlayerName = useToCheck.player;
+						auditsToSend.add(audit);
+					}
 				}
-				
-				if (hasActivated)
-				{
-					BlockAudit audit = new BlockAudit();
-					audit.AuditTime = useToCheck.auditTime;
-					audit.PositionX = useToCheck.pos.getX();
-					audit.PositionY = useToCheck.pos.getY();
-					audit.PositionZ = useToCheck.pos.getZ();
-					audit.AuditType = AuditTypes.Use;
-					audit.BlockName = useToCheck.blockName;
-					audit.PlayerName = useToCheck.player;
-					auditsToSend.add(audit);
-				}
+				catch(Exception ex) {}
 			}
 			
 			usesToCheck.clear();
