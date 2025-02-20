@@ -29,7 +29,7 @@ if (hasProperty("grgit")) { // If there's a valid Git repository, get the latest
     commitId = "NOGIT"
 }
 
-version = "1.0.0.13.2"
+version = "1.0.0.13.3"
 group = "com.mesabrook.ib" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "wbtc"
 
