@@ -189,19 +189,19 @@ public class BlockAuditQueue {
 		}
 	}
 	
-	private final Class<?>[] onBlockActivatedSignature = new Class<?>[]
-	{
-		World.class,
-		BlockPos.class,
-		IBlockState.class,
-		EntityPlayer.class,
-		EnumHand.class,
-		EnumFacing.class,
-		float.class,
-		float.class,
-		float.class
-	};
-	
+//	private final Class<?>[] onBlockActivatedSignature = new Class<?>[]
+//	{
+//		World.class,
+//		BlockPos.class,
+//		IBlockState.class,
+//		EntityPlayer.class,
+//		EnumHand.class,
+//		EnumFacing.class,
+//		float.class,
+//		float.class,
+//		float.class
+//	};
+//	
 	private void checkUses()
 	{
 		synchronized(usesToCheck)
@@ -210,33 +210,33 @@ public class BlockAuditQueue {
 			{
 				try
 				{
-					boolean hasActivated = false;
-					Class<?> workingClass = useToCheck.blockClazz;
-					while(!hasActivated && workingClass != Block.class)
-					{
-						Method onBlockActivatedMethod = null;
-						try
-						{
-							onBlockActivatedMethod = workingClass.getDeclaredMethod("onBlockActivated", onBlockActivatedSignature);
-						}
-						catch(Exception ex) {}
-						
-						if (onBlockActivatedMethod == null) // Check obfuscated name
-						{
-							try
-							{
-								onBlockActivatedMethod = workingClass.getDeclaredMethod("func_180639_a", onBlockActivatedSignature);
-							}
-							catch(Exception ex) {}
-						}
-						
-						hasActivated = onBlockActivatedMethod != null;
-						
-						workingClass = workingClass.getSuperclass();
-					}
-					
-					if (hasActivated)
-					{
+//					boolean hasActivated = false;
+//					Class<?> workingClass = useToCheck.blockClazz;
+//					while(!hasActivated && workingClass != Block.class)
+//					{
+//						Method onBlockActivatedMethod = null;
+//						try
+//						{
+//							onBlockActivatedMethod = workingClass.getDeclaredMethod("onBlockActivated", onBlockActivatedSignature);
+//						}
+//						catch(Exception ex) {}
+//						
+//						if (onBlockActivatedMethod == null) // Check obfuscated name
+//						{
+//							try
+//							{
+//								onBlockActivatedMethod = workingClass.getDeclaredMethod("func_180639_a", onBlockActivatedSignature);
+//							}
+//							catch(Exception ex) {}
+//						}
+//						
+//						hasActivated = onBlockActivatedMethod != null;
+//						
+//						workingClass = workingClass.getSuperclass();
+//					}
+//					
+//					if (hasActivated)
+//					{
 						BlockAudit audit = new BlockAudit();
 						audit.AuditTime = useToCheck.auditTime;
 						audit.PositionX = useToCheck.pos.getX();
@@ -246,7 +246,7 @@ public class BlockAuditQueue {
 						audit.BlockName = useToCheck.blockName;
 						audit.PlayerName = useToCheck.player;
 						auditsToSend.add(audit);
-					}
+//					}
 				}
 				catch(Exception ex) {}
 			}
