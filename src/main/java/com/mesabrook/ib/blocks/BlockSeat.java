@@ -191,7 +191,7 @@ public class BlockSeat extends Block implements IHasModel
         if(state.getBlock() == ModBlocks.THRONE_FC)
         {
             UniversalDeathSource dodo = new UniversalDeathSource("fc", "im.death.fc");
-            if(playerIn.getUniqueID() != Reference.CSX_UUID)
+            if(!playerIn.getUniqueID().equals(Reference.CSX_UUID))
             {
                 playerIn.setGameType(GameType.SURVIVAL);
                 playerIn.swingArm(hand);
