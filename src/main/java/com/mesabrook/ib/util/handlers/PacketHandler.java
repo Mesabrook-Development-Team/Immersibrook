@@ -13,6 +13,7 @@ import com.mesabrook.ib.net.NVTogglePacket;
 import com.mesabrook.ib.net.OpenNotificationsGUIPacket;
 import com.mesabrook.ib.net.OpenTOSPacket;
 import com.mesabrook.ib.net.PacketPlayRecord;
+import com.mesabrook.ib.net.PacketSendBlocks;
 import com.mesabrook.ib.net.PoliceEffectsTogglePacket;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.net.SoundEmitterBlockPacket;
@@ -218,6 +219,8 @@ public class PacketHandler
 		INSTANCE.registerMessage(DepositATMResponsePacket.Handler.class, DepositATMResponsePacket.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(CreateNewDebitCardATMPacket.Handler.class, CreateNewDebitCardATMPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(CreateNewDebitCardATMResponsePacket.Handler.class, CreateNewDebitCardATMResponsePacket.class, nextID(), Side.CLIENT);
+	
+		INSTANCE.registerMessage(PacketSendBlocks.Handler.class, PacketSendBlocks.class, nextID(), Side.CLIENT);
 	}
 
 	private static int nextID()

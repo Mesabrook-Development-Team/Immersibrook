@@ -13,6 +13,7 @@ import com.mesabrook.ib.cdm.apps.CompanyStudioLiteApp;
 import com.mesabrook.ib.cdm.apps.GovernmentPortalLiteApp;
 import com.mesabrook.ib.cdm.apps.MesaMailApp;
 import com.mesabrook.ib.cdm.apps.TestApp;
+import com.mesabrook.ib.cmds.CommandDumpBlocks;
 import com.mesabrook.ib.cmds.CommandImmersibrook;
 import com.mesabrook.ib.cmds.CommandMeme;
 import com.mesabrook.ib.cmds.CommandSkull;
@@ -267,6 +268,7 @@ public class RegistryHandler
 		event.registerServerCommand(new CommandTalk());
 		event.registerServerCommand(new CommandMeme());
 		event.registerServerCommand(new CommandSkull());
+		event.registerServerCommand(new CommandDumpBlocks());
 
 		// Gamerules
 		World world = FMLCommonHandler.instance().getMinecraftServerInstance().getWorld(0);
