@@ -33,7 +33,7 @@ public class CommandDumpBlocks extends CommandBase {
         }
 
         if (!(sender instanceof EntityPlayerMP)) {
-            throw new CommandException("Only players can use this command!");
+            throw new CommandException("Invalid sender - Only players can execute this command.");
         }
 
         String modid = args[0];
@@ -46,6 +46,7 @@ public class CommandDumpBlocks extends CommandBase {
 
         if (blockList.isEmpty()) {
             sender.sendMessage(new TextComponentString(TextFormatting.RED + "No blocks found for mod: " + modid));
+            sender.sendMessage(new TextComponentString(TextFormatting.RED + "Either the mod ID provided is invalid or the mod has no registered blocks."));
             return;
         }
 

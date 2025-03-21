@@ -33,7 +33,8 @@ public class PacketSendBlocks implements IMessage
 	{
         int size = buf.readInt();
         blocks = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) 
+        {
             int length = buf.readInt();
             byte[] bytes = new byte[length];
             buf.readBytes(bytes);
@@ -46,7 +47,8 @@ public class PacketSendBlocks implements IMessage
     public void toBytes(ByteBuf buf) 
 	{
         buf.writeInt(blocks.size());
-        for (String block : blocks) {
+        for (String block : blocks) 
+        {
             byte[] bytes = block.getBytes();
             buf.writeInt(bytes.length);
             buf.writeBytes(bytes);
