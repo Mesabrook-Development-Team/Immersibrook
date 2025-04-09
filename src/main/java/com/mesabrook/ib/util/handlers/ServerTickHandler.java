@@ -153,7 +153,7 @@ public class ServerTickHandler {
 				if (employeeCap.getLocationID() == 0)
 				{
 					employeeCap.serverToClientSync();
-					return;
+					continue;
 				}
 				
 				enqueueStoreModeUpdateNow(player);
