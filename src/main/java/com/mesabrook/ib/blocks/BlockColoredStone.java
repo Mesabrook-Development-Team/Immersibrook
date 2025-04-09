@@ -76,6 +76,12 @@ public class BlockColoredStone extends Block implements IHasModel {
 	public IBlockState getStateFromMeta(int meta) {
 		return getDefaultState().withProperty(COLOR, EnumDyeColor.byMetadata(meta));
 	}
+	
+    @Override
+    public int damageDropped(IBlockState state)
+    {
+        return ((EnumDyeColor)state.getValue(COLOR)).getMetadata();
+    }
 
 	@Override
 	public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
