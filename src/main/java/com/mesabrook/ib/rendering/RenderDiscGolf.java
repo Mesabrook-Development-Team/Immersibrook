@@ -38,7 +38,6 @@ public class RenderDiscGolf extends Render<EntityDiscGolf>
         GlStateManager.rotate((float)(this.renderManager.options.thirdPersonView == 2 ? -1 : 1) * this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
         GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
         GlStateManager.rotate(90.0F, 1, 0, 0);
-//        GlStateManager.rotate((entity.ticksExisted + partialTicks) * ROTATION_SPEED, 0, 0, 1);
         this.bindTexture(getEntityTexture(entity));
 
         if (this.renderOutlines)

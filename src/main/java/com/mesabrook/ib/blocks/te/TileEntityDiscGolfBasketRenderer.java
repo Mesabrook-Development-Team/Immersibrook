@@ -30,16 +30,6 @@ public class TileEntityDiscGolfBasketRenderer extends TileEntitySpecialRenderer<
 			float alpha) {
 		super.render(te, x, y, z, partialTicks, destroyStage, alpha);
 		
-		basketLocations[0] = new DiscInBasketLocation(new Vec3d(.25, .1875, -.0625));
-		basketLocations[1] = new DiscInBasketLocation(new Vec3d(.5, .625, -.0625));
-		basketLocations[2] = new DiscInBasketLocation(new Vec3d(.75, .44, -.0625));
-		basketLocations[3] = new DiscInBasketLocation(new Vec3d(.75, .125, -.0625));
-		basketLocations[4] = new DiscInBasketLocation(new Vec3d(.25, .6, -.0625), Axis.Y, 10);
-		basketLocations[5] = new DiscInBasketLocation(new Vec3d(.5, .125, -.0625), Axis.Y, 10);
-		basketLocations[6] = new DiscInBasketLocation(new Vec3d(.75, .67, -.1), Axis.X, 10);
-		basketLocations[7] = new DiscInBasketLocation(new Vec3d(.25, .4, -.1));
-		basketLocations[8] = new DiscInBasketLocation(new Vec3d(.75, .3, -.1));
-		
 		GlStateManager.translate(x, y, z);
 		int effectiveIndex = 0;
 		GlStateManager.rotate(90F, 1, 0, 0);

@@ -88,12 +88,10 @@ public class EntityDiscGolf extends EntityThrowable
         fade = compound.getFloat("fade");
     }
 
-    private boolean impacted = false;
     @Override
     @SuppressWarnings("deprecated")
     protected void onImpact(RayTraceResult result)
     {
-    	impacted = true;
         if(result.entityHit != null)
         {
             boolean hit = false;
