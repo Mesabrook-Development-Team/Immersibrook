@@ -1489,5 +1489,18 @@
 		"sounds": [{
 			"name": "wbtc:pos_welcome"
 		}]
+	},
+	"discgolf_in": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:discgolf_in"
+		}]
+	},
+	"discgolf_miss": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:discgolf_miss"
+		}]
 	}
+}
 }

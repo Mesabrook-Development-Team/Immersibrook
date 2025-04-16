@@ -1,0 +1,6 @@
+{
+   "variants": {
+		  "inventory": { "model": "wbtc:disc_golf_basket" },
+          "normal": { "model": "wbtc:disc_golf_basket" }
+   }
+}

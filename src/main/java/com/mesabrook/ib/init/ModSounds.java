@@ -110,6 +110,8 @@ public class ModSounds
 	public static final SoundEvent DESK_BELL_AF;
 	public static final SoundEvent CASH_OUT;
 	public static final SoundEvent CARD_OUT;
+	public static final SoundEvent DISCGOLF_IN;
+	public static final SoundEvent DISCGOLF_MISS;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -341,6 +343,8 @@ public class ModSounds
 		DESK_BELL_AF = addSoundsToRegistry("desk_bell_af");
 		CASH_OUT = addSoundsToRegistry("cash_out");
 		CARD_OUT = addSoundsToRegistry("card_out");
+		DISCGOLF_IN = addSoundsToRegistry("discgolf_in");
+		DISCGOLF_MISS = addSoundsToRegistry("discgolf_miss");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -697,6 +701,8 @@ public class ModSounds
 				event.getRegistry().register(ModSounds.HALLOW);
 				event.getRegistry().register(ModSounds.ZAP);
 				event.getRegistry().register(ModSounds.CARD_OUT);
+				event.getRegistry().register(ModSounds.DISCGOLF_IN);
+				event.getRegistry().register(ModSounds.DISCGOLF_MISS);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");

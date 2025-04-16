@@ -156,7 +156,10 @@ item.brown_vest.name=Brown Safety Vest
 item.green_vest.name=Green Safety Vest
 item.black_vest.name=Black Safety Vest
 item.cooling_vest.name=Supplemental Abdominal Cooling Apparatus
-item.icon_immersibrook.name=Small Plastic Disc That You Toss
+item.discgolf_driver.name=Disc Golf (Driver)
+item.discgolf_fairway.name=Disc Golf (Fairway)
+item.discgolf_midrange.name=Disc Golf (Midrange)
+item.discgolf_putter.name=Disc Golf (Putter)
 item.lblue_vest.name=Light Blue Safety Vest
 item.lblue_vest_x.name=Light Blue Safety Vest - Railroad Pattern
 item.yellow_vest_nc.name=Yellow Safety Vest - Nether Corporation Branding
@@ -383,6 +386,7 @@ tile.synthetic_turf.name=Synthetic Turf
 tile.white_cobblestone.name=Chalked Cobblestone
 tile.white_stone_bricks.name=Chalked Stone Bricks
 tile.automated_tagging_station.name=Automated Tagging Station (NYI)
+tile.disc_golf_basket.name=Disc Golf Basket
 
 //Sign stand
 tile.sign_stand.name=Portable Road Sign Stand

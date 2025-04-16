@@ -1,6 +1,6 @@
 {
    "parent": "item/generated",
    "textures": {
-       "layer0": "wbtc:items/icon_immersibrook"
+       "layer0": "wbtc:items/discgolf_fairway"
    }
 }
