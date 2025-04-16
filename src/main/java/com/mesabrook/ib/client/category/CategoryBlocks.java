@@ -125,6 +125,7 @@ public class CategoryBlocks extends AbstractCategory
 		add(ModBlocks.WHITE_STONE_BRICKS);
 		add(ModBlocks.SMOOTHED_STONE);
 		add(ModBlocks.ASTRO_TURF);
+		add(ModBlocks.DISC_GOLF_BASKET);
 		
 		// Commercial Kitchen Blocks
 		add(ModBlocks.FLOOR_KITCHEN_1);

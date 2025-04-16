@@ -31,7 +31,7 @@ import com.mesabrook.ib.items.commerce.ItemWallet;
 import com.mesabrook.ib.items.misc.ItemDooter;
 import com.mesabrook.ib.items.misc.ItemFirstAidKit;
 import com.mesabrook.ib.items.misc.ItemIBFood;
-import com.mesabrook.ib.items.misc.ItemMesabrookIcon;
+import com.mesabrook.ib.items.misc.ItemDiscGolf;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.items.misc.ItemPlasticIngot;
 import com.mesabrook.ib.items.misc.ItemPresent;
@@ -98,7 +98,10 @@ public class ModItems
 	public static final Item LEVI_HAMMER_STICK = new ItemWeapon("hammer_stick_levi", ToolMaterial.WOOD);
 
 	// Immersibrook Icons
-	public static final Item IMMERSIBROOK_ICON = new ItemMesabrookIcon("icon_immersibrook");
+	public static final Item DISCGOLF_DRIVER = new ItemDiscGolf("discgolf_driver", 12, 7, -2, 2); // aka a distance driver
+	public static final Item DISCGOLF_FAIRWAY = new ItemDiscGolf("discgolf_fairway", 7, 5, -1, 2);
+	public static final Item DISCGOLF_MIDRANGE = new ItemDiscGolf("discgolf_midrange", 5, 3, -1, 1);
+	public static final Item DISCGOLF_PUTTER = new ItemDiscGolf("discgolf_putter", 2, 4, 0, 1);
 	public static final Item IB_ICON_NEW = new MiscItem("icn_ib", 1, null);
 	public static final Item IB_ICON_OCT = new MiscItem("icn_ib_oct", 1, null);
 	public static final Item IB_ICON_XMAS = new MiscItem("icn_ib_xmas", 1, null);

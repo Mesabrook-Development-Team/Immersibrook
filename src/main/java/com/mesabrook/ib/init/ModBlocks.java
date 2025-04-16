@@ -17,6 +17,7 @@ import com.mesabrook.ib.blocks.BlockColoredStone;
 import com.mesabrook.ib.blocks.BlockColoredStoneBricks;
 import com.mesabrook.ib.blocks.BlockColumn;
 import com.mesabrook.ib.blocks.BlockDeskBell;
+import com.mesabrook.ib.blocks.BlockDiscGolfBasket;
 import com.mesabrook.ib.blocks.BlockDoorBase;
 import com.mesabrook.ib.blocks.BlockFakeLight;
 import com.mesabrook.ib.blocks.BlockFluidMeter;
@@ -224,6 +225,7 @@ public class ModBlocks
 	public static final Block ASTRO_TURF = new Immersiblock("synthetic_turf", Material.PLANTS, SoundType.PLANT, Main.IMMERSIBROOK_MAIN, 0.7F);
 	public static final Block WHITE_COBBLE = new Immersiblock("white_cobblestone", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
 	public static final Block WHITE_STONE_BRICKS = new Immersiblock("white_stone_bricks", Material.ROCK, SoundType.STONE, Main.IMMERSIBROOK_MAIN, 0F);
+	public static final Block DISC_GOLF_BASKET = new BlockDiscGolfBasket();
 
 	// Dynamic Pillars - Credit to CSX8600
 	public static final Block PILLAR_POST = new Pillar("wbtc_pillar", Material.ROCK, SoundType.STONE, "pickaxe", 1);

@@ -67,7 +67,10 @@ public class CategoryHousehold extends AbstractCategory
 		add(ModItems.POPPER_RED);
 		add(ModItems.POPPER_GREEN);
 		add(ModItems.POPPER_BLUE);
-		add(ModItems.IMMERSIBROOK_ICON);
+		add(ModItems.DISCGOLF_DRIVER);
+		add(ModItems.DISCGOLF_FAIRWAY);
+		add(ModItems.DISCGOLF_MIDRANGE);
+		add(ModItems.DISCGOLF_PUTTER);
 		add(ModItems.DOOTER);
 		add(ModItems.MASK_JASON);
 		add(ModItems.MASK_SKELETON);
