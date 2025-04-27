@@ -51,6 +51,9 @@ public class RecipesHandler
 			// Pleather crafting
 			BlueprintCraftingRecipe.addRecipe("components", new ItemStack(ModItems.PLEATHER), ModItems.PLASTIC_PLATE, new ItemStack(Items.STRING, 3), new ItemStack(Items.DYE, 1, 8));
 
+			// Disc Golf Basket
+			BlueprintCraftingRecipe.addRecipe("components", new ItemStack(ModBlocks.DISC_GOLF_BASKET), ModUtils.getItemStackFromOreDictionary("stickIron", 5), ModUtils.getItemStackFromOreDictionary("plateIron", 3), new ItemStack(ModItems.PLASTIC_ORANGE, 5));
+			
 			// <color> Plastic Ingot > <color> Raw Plastic Dust.
 			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_WHITE, outputAmount), new ItemStack(ModItems.PLASTIC_WHITE), 10);
 			CrusherRecipe.addRecipe(new ItemStack(ModItems.RAW_PLASTIC_ORANGE, outputAmount), new ItemStack(ModItems.PLASTIC_ORANGE), 10);
