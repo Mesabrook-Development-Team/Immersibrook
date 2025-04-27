@@ -98,16 +98,18 @@ public class ModItems
 	public static final Item LEVI_HAMMER_STICK = new ItemWeapon("hammer_stick_levi", ToolMaterial.WOOD);
 
 	// Immersibrook Icons
-	public static final Item DISCGOLF_DRIVER = new ItemDiscGolf("discgolf_driver", 12, 7, -2, 2); // aka a distance driver
-	public static final Item DISCGOLF_FAIRWAY = new ItemDiscGolf("discgolf_fairway", 7, 5, -1, 2);
-	public static final Item DISCGOLF_MIDRANGE = new ItemDiscGolf("discgolf_midrange", 5, 3, -1, 1);
-	public static final Item DISCGOLF_PUTTER = new ItemDiscGolf("discgolf_putter", 2, 4, 0, 1);
 	public static final Item IB_ICON_NEW = new MiscItem("icn_ib", 1, null);
 	public static final Item IB_ICON_OCT = new MiscItem("icn_ib_oct", 1, null);
 	public static final Item IB_ICON_XMAS = new MiscItem("icn_ib_xmas", 1, null);
 	public static final Item IB_ICON_SUMMER = new MiscItem("icn_ib_summer", 1, null);
 	public static final Item DOOT_ICON = new MiscItem("doot_icon", 1, null);
 	public static final Item KEKW = new MiscItem("wheezing", 1, null);
+	
+	// Disc Golf Discs
+	public static final Item DISCGOLF_DRIVER = new ItemDiscGolf("discgolf_driver", 12, 7, -2, 2); // aka a distance driver
+	public static final Item DISCGOLF_FAIRWAY = new ItemDiscGolf("discgolf_fairway", 7, 5, -1, 2);
+	public static final Item DISCGOLF_MIDRANGE = new ItemDiscGolf("discgolf_midrange", 5, 3, -1, 1);
+	public static final Item DISCGOLF_PUTTER = new ItemDiscGolf("discgolf_putter", 2, 4, 0, 1);
 
 	// Metals
 	public static final Item IRON_ROD = new MiscItem("iron_rod", 64, Main.IMMERSIBROOK_MAIN);
