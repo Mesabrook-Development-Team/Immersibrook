@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " S ",
+        "SPS",
+        " S "
+    ],
+    "key": {
+        "P": {
+            "item": "wbtc:plastic_plate"
+        },
+		"S": {
+		    "item": "wbtc:green_plastic"
+		}
+    },
+    "result": 
+    {
+        "item": "wbtc:discgolf_midrange",
+        "count": 1
+    }
+}
