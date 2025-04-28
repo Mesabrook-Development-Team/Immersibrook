@@ -1,7 +1,7 @@
 {
     "display": {
         "icon": {
-            "item": "wbtc:icon_immersibrook"
+            "item": "wbtc:icn_ib"
         },
         "title": {
             "translate": "advancements.imb.welcome"
