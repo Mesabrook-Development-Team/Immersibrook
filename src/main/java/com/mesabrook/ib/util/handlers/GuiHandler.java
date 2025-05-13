@@ -1,5 +1,6 @@
 package com.mesabrook.ib.util.handlers;
 
+import com.mesabrook.ib.blocks.container.ContainerAutomatedTaggingStation;
 import com.mesabrook.ib.blocks.container.ContainerDiscGolfBasket;
 import com.mesabrook.ib.blocks.container.ContainerRation;
 import com.mesabrook.ib.blocks.container.ContainerRegisterSecurityBoxInventory;
@@ -24,6 +25,7 @@ import com.mesabrook.ib.blocks.gui.GuiWallSign;
 import com.mesabrook.ib.blocks.gui.GuiWallet;
 import com.mesabrook.ib.blocks.gui.atm.GuiATMHome;
 import com.mesabrook.ib.blocks.gui.commerce.GuiShoppingBasket;
+import com.mesabrook.ib.blocks.gui.sco.GuiAutomatedTaggingStation;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSSecurityBoxInventory;
 import com.mesabrook.ib.blocks.gui.sco.GuiPOSStarter;
 import com.mesabrook.ib.blocks.gui.sco.GuiStoreMode;
@@ -38,6 +40,7 @@ import com.mesabrook.ib.blocks.gui.telecom.GuiPhoneActivate;
 import com.mesabrook.ib.blocks.gui.telecom.GuiSmartphoneInv;
 import com.mesabrook.ib.blocks.gui.telecom.GuiThermalWarning;
 import com.mesabrook.ib.blocks.te.TileEntityATM;
+import com.mesabrook.ib.blocks.te.TileEntityAutomatedTaggingStation;
 import com.mesabrook.ib.blocks.te.TileEntityDiscGolfBasket;
 import com.mesabrook.ib.blocks.te.TileEntityRegister;
 import com.mesabrook.ib.blocks.te.TileEntityTaggingStation;
@@ -70,6 +73,7 @@ public class GuiHandler implements IGuiHandler
 		else if (ID == Reference.GUI_TAGGING_STATION_UNTAG) return new ContainerTaggingStationUntag(player.inventory, new BlockPos(x,y,z));
 		else if (ID == Reference.GUI_SHOPPING_BASKET) return new ContainerShoppingBasket(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]);
 		else if (ID == Reference.GUI_DISC_GOLF_BASKET) return new ContainerDiscGolfBasket(player.inventory, ((TileEntityDiscGolfBasket)world.getTileEntity(new BlockPos(x,y,z))));
+		else if (ID == Reference.GUI_AUTOMATED_TAGGING_STATION) return new ContainerAutomatedTaggingStation(player, (TileEntityAutomatedTaggingStation)world.getTileEntity(new BlockPos(x,y,z)));
 		return null;
 	}
 	
@@ -162,6 +166,7 @@ public class GuiHandler implements IGuiHandler
 		else if (ID == Reference.GUI_SHOPPING_BASKET) return new GuiShoppingBasket(new ContainerShoppingBasket(player.inventory, player.getHeldItem(EnumHand.values()[x]), EnumHand.values()[x]), player.getHeldItem(EnumHand.values()[x]).getMetadata());
 		else if (ID == Reference.GUI_COMPANY_NOTIFICATIONS) return new GuiCompanyNotifications();
 		else if (ID == Reference.GUI_DISC_GOLF_BASKET) return new GuiDiscGolfBasket(player.inventory, ((TileEntityDiscGolfBasket)world.getTileEntity(new BlockPos(x,y,z))));
+		else if (ID == Reference.GUI_AUTOMATED_TAGGING_STATION) return new GuiAutomatedTaggingStation(new ContainerAutomatedTaggingStation(player, (TileEntityAutomatedTaggingStation)world.getTileEntity(new BlockPos(x,y,z))));
 		else return null;
 	}
 	

@@ -32,6 +32,7 @@ import com.mesabrook.ib.net.atm.UpdateATMSettingsPacket;
 import com.mesabrook.ib.net.atm.UpdateATMSettingsResponsePacket;
 import com.mesabrook.ib.net.atm.WithdrawATMPacket;
 import com.mesabrook.ib.net.atm.WithdrawATMResponsePacket;
+import com.mesabrook.ib.net.sco.AutomatedTaggingStationSetStackSizePacket;
 import com.mesabrook.ib.net.sco.EmployeeCapServerToClientPacket;
 import com.mesabrook.ib.net.sco.POSAddNewFluidMetersAcknowledgePacket;
 import com.mesabrook.ib.net.sco.POSAddNewFluidMetersPacket;
@@ -205,6 +206,7 @@ public class PacketHandler
 		INSTANCE.registerMessage(QueryPricePacket.Handler.class, QueryPricePacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(QueryPriceResponsePacket.Handler.class, QueryPriceResponsePacket.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(TaggingStationSetPricePacket.Handler.class, TaggingStationSetPricePacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(AutomatedTaggingStationSetStackSizePacket.Handler.class, AutomatedTaggingStationSetStackSizePacket.class, nextID(), Side.SERVER);
 		
 		// ATM
 		INSTANCE.registerMessage(FetchAccountsPacket.Handler.class, FetchAccountsPacket.class, nextID(), Side.SERVER);
