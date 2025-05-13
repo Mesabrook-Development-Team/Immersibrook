@@ -26,5 +26,6 @@ public class FuckingTileEntityHandler
 		GameRegistry.registerTileEntity(TileEntitySiren.class, new ResourceLocation(Reference.MODID + ":siren"));
 		GameRegistry.registerTileEntity(TileEntityCustomJukebox.class, new ResourceLocation(Reference.MODID + ":superjukebox"));
 		GameRegistry.registerTileEntity(TileEntityDiscGolfBasket.class, new ResourceLocation(Reference.MODID + ":discgolfbasket"));
+		GameRegistry.registerTileEntity(TileEntityAutomatedTaggingStation.class, new ResourceLocation(Reference.MODID + ":automatedtaggingstation"));
 	}
 }

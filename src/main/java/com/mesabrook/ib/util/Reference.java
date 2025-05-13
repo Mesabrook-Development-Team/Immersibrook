@@ -41,6 +41,7 @@ public class Reference
 	public static final int GUI_SHOPPING_BASKET = 20;
 	public static final int GUI_COMPANY_NOTIFICATIONS = 21;
 	public static final int GUI_DISC_GOLF_BASKET = 22;
+	public static final int GUI_AUTOMATED_TAGGING_STATION = 23;
 
 	public static final String NETWORK_CHANNEL_NAME = "wbtc";
 	
