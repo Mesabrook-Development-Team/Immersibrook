@@ -180,6 +180,8 @@ item.engineers_hat.name=Engineer's Hat
 
 item.synthetic_leather.name=Synthetic Leather
 
+item.item_launcher.name=Item Launcher
+
 //Stairs
 tile.oak_laminate_stairs.name=Oak Wood Laminate Stairs
 tile.birch_laminate_stairs.name=Birch Wood Laminate Stairs

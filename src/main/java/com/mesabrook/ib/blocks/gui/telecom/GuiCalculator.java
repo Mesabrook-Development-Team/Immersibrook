@@ -3,17 +3,29 @@ package com.mesabrook.ib.blocks.gui.telecom;
 import com.google.common.collect.ImmutableList;
 import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.util.Math;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 import org.lwjgl.input.Keyboard;
 
 public class GuiCalculator extends GuiPhoneBase
 {
+	// Le epic funny easter egg roflmao
+	private int errors;
+	
     // Text field
     GuiTextField calcText;
 
@@ -48,6 +60,7 @@ public class GuiCalculator extends GuiPhoneBase
     public GuiCalculator(ItemStack phoneStack, EnumHand hand)
     {
         super(phoneStack, hand);
+        errors = 0;
     }
 
     @Override
@@ -249,6 +262,7 @@ public class GuiCalculator extends GuiPhoneBase
             catch(Exception ex)
             {
                 calcText.setText("Math Error (" + ex + ")");
+                errors++;
             }
         }
         
@@ -278,6 +292,17 @@ public class GuiCalculator extends GuiPhoneBase
 		catch(NumberFormatException ex)
 		{
 			Toaster.forPhoneNumber(getCurrentPhoneNumber()).queueToast(new Toast("Not a number!", 0xFF0000));
+            errors++;
+            
+            if(errors >= 3)
+            {
+    			GuiPhoneCrashed crashGui = new GuiPhoneCrashed(phoneStack, hand);
+
+    			crashGui.setErrorTitle("Exception thrown in app Calculator");
+    			crashGui.setErrorStackTrace("You broke the math machine...");
+
+    			Minecraft.getMinecraft().displayGuiScreen(crashGui);
+            }
 			return Float.MIN_VALUE;
 		}
     	

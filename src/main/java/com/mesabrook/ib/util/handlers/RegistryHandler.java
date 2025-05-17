@@ -195,7 +195,7 @@ public class RegistryHandler
 
 		EntityRegistry.registerModEntity(nameLoc, EntityDiscGolf.class, nameLoc.toString(), 1, Main.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(nameLoc2, EntityWineBottle.class, nameLoc2.toString(), 2, Main.instance, 64, 1, true);
-		EntityRegistry.registerModEntity(nameLoc3, SeatEvent.SeatEntity.class, nameLoc2.toString(), 3, Main.instance, 80, 1, false);
+		EntityRegistry.registerModEntity(nameLoc3, SeatEvent.SeatEntity.class, nameLoc3.toString(), 3, Main.instance, 80, 1, false);
 		
 		if (Main.DYNMAP)
 		{
