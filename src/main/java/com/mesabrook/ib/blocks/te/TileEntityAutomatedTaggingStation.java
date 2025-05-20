@@ -26,6 +26,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -44,6 +45,7 @@ public class TileEntityAutomatedTaggingStation extends TileEntity implements ITi
 	private double resetDistance;
 	private Location locationOwner;
 	private boolean active;
+	private LightStates lightState = LightStates.Dark;
 	public static final int MAX_ENERGY = 1000;
 	
 	public final EnumFacing INPUT_SIDE = EnumFacing.WEST;
@@ -166,6 +168,11 @@ public class TileEntityAutomatedTaggingStation extends TileEntity implements ITi
 		{
 			active = compound.getBoolean("active");
 		}
+		
+		if (compound.hasKey("lightState"))
+		{
+			lightState = LightStates.values()[compound.getInteger("lightState")];
+		}
 	}
 	
 	@Override
@@ -185,6 +192,8 @@ public class TileEntityAutomatedTaggingStation extends TileEntity implements ITi
 			locationOwnerTag.setString("LocationName", locationOwner.Name == null ? "" : locationOwner.Name);
 			compound.setTag("locationOwner", locationOwnerTag);
 		}
+		
+		compound.setInteger("lightState", lightState.ordinal());
 		return super.writeToNBT(compound);
 	}
 	
@@ -355,12 +364,16 @@ public class TileEntityAutomatedTaggingStation extends TileEntity implements ITi
 	private LinkedHashSet<ItemStackKey> approvedItemStacks = new LinkedHashSet<>(50);
 	
 	private boolean wasActiveLastTick = false;
+	private int cooldown = 0;
 	@Override
 	public void update() {
-		if (world.isRemote)
+		if (world.isRemote || cooldown-- > 0)
 		{
 			return;
 		}
+		
+		cooldown = 0;
+		setLightState(LightStates.Dark);
 		
 		if (!active)
 		{
@@ -368,6 +381,8 @@ public class TileEntityAutomatedTaggingStation extends TileEntity implements ITi
 			{
 				wasActiveLastTick = false;
 				ServerSoundBroadcastPacket.playIBSound(world, getSoundNameShutdown(), pos, true);
+				
+				cooldown = 360; // ~18 seconds
 			}
 			
 			return;
@@ -377,6 +392,9 @@ public class TileEntityAutomatedTaggingStation extends TileEntity implements ITi
 		{
 			wasActiveLastTick = true;
 			ServerSoundBroadcastPacket.playIBSound(world, getSoundNameStartup(), pos, true);
+			cooldown = 460; // ~23 seconds
+			
+			return;
 		}
 		
 		if (priceLookupTask != null)
@@ -441,8 +459,10 @@ public class TileEntityAutomatedTaggingStation extends TileEntity implements ITi
 		// At this point, we know the item stack from the data request and the next item stack to box are the same.
 		// Accepting or rejecting will cost energy, so check and subtract first.
 		
-		if (energyStorage.receiveEnergy(-1, false) >= 0) // lol hax - receiving -1 is the same as extracting 1 but it isn't caught by the validation check
+		if (energyStorage.getEnergyStored() <= 0 || energyStorage.receiveEnergy(-1, false) >= 0) // lol hax - receiving -1 is the same as extracting 1 but it isn't caught by the validation check
 		{
+			cooldown = 40;
+			setLightState(LightStates.Red);
 			return; // No energy
 		}
 		
@@ -457,6 +477,8 @@ public class TileEntityAutomatedTaggingStation extends TileEntity implements ITi
 			securityBoxInventory.setStackInSlot(firstStackToBoxIndex, ItemStack.EMPTY);
 			
 			ServerSoundBroadcastPacket.playIBSound(world, getSoundNameReject(), pos, true);
+			cooldown = 40;
+			setLightState(LightStates.Red);
 			return;
 		}
 		else // Accept - we found a price
@@ -487,6 +509,8 @@ public class TileEntityAutomatedTaggingStation extends TileEntity implements ITi
 			insertOrSpawnAt(spawnPos, stackToSpawn);
 			
 			ServerSoundBroadcastPacket.playIBSound(world, getSoundNamePack(), pos, true);
+			cooldown = 40;
+			setLightState(LightStates.Green);
 		}
 	}
 	
@@ -526,8 +550,10 @@ public class TileEntityAutomatedTaggingStation extends TileEntity implements ITi
 		ItemStackKey key = new ItemStackKey(firstStackToBox);
 		if (approvedItemStacks.contains(key))
 		{
-			if (energyStorage.receiveEnergy(-1, false) >= 0) // lol hax - receiving -1 is the same as extracting 1 but it isn't caught by the validation check
+			if (energyStorage.getEnergyStored() <= 0 || energyStorage.receiveEnergy(-1, false) >= 0) // lol hax - receiving -1 is the same as extracting 1 but it isn't caught by the validation check
 			{
+				cooldown = 40;
+				setLightState(LightStates.Red);
 				return; // No energy
 			}
 			
@@ -550,6 +576,8 @@ public class TileEntityAutomatedTaggingStation extends TileEntity implements ITi
 			insertOrSpawnAt(spawnPos, stackToSpawn);
 
 			ServerSoundBroadcastPacket.playIBSound(world, getSoundNamePack(), pos, true);
+			cooldown = 40;
+			setLightState(LightStates.Green);
 		}
 		else // Need to query
 		{
@@ -621,6 +649,11 @@ public class TileEntityAutomatedTaggingStation extends TileEntity implements ITi
 	}
 
 	public long getLocationIDOwner() {
+		if (locationOwner == null)
+		{
+			return 0;
+		}
+		
 		return locationOwner.LocationID;
 	}
 	
@@ -654,8 +687,36 @@ public class TileEntityAutomatedTaggingStation extends TileEntity implements ITi
 		world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
 	}
 	
-	private String getSoundNameStartup() { return "owo"; }
-	private String getSoundNameShutdown() { return "piano"; }
-	private String getSoundNamePack() { return "tape_measure_open"; }
-	private String getSoundNameReject() { return "toilet_1"; }
+	public LightStates getLightState()
+	{
+		return lightState;
+	}
+	
+	private void setLightState(LightStates state) {
+		boolean didChange = !lightState.equals(state);
+		
+		if (didChange)
+		{
+			this.lightState = state;
+			markDirty();
+			world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
+		}
+	}
+	
+	private String getSoundNameStartup() { return "apm_startup"; }
+	private String getSoundNameShutdown() { return "apm_shutdown"; }
+	private String getSoundNamePack() { return "apm_pack_success"; }
+	private String getSoundNameReject() { return "apm_pack_fail"; }
+	
+	public enum LightStates implements IStringSerializable
+	{
+		Dark,
+		Red,
+		Green;
+
+		@Override
+		public String getName() {
+			return toString().toLowerCase();
+		}		
+	}
 }

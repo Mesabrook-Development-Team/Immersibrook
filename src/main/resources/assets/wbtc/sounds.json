@@ -1501,6 +1501,29 @@
 		"sounds": [{
 			"name": "wbtc:discgolf_miss"
 		}]
+	},
+	"apm_pack_fail": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:apm_pack_fail"
+		}]
+	},
+	"apm_pack_success": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:apm_pack_success"
+		}]
+	},
+	"apm_shutdown": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:apm_shutdown"
+		}]
+	},
+	"apm_startup": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:apm_startup"
+		}]
 	}
-}
 }

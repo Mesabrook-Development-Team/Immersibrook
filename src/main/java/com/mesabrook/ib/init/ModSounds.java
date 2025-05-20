@@ -112,6 +112,10 @@ public class ModSounds
 	public static final SoundEvent CARD_OUT;
 	public static final SoundEvent DISCGOLF_IN;
 	public static final SoundEvent DISCGOLF_MISS;
+	public static final SoundEvent APM_PACK_FAIL;
+	public static final SoundEvent APM_PACK_SUCCESS;
+	public static final SoundEvent APM_SHUTDOWN;
+	public static final SoundEvent APM_STARTUP;
 
 	// Meme Records integration
 	public static final SoundEvent AMALTHEA;
@@ -345,6 +349,10 @@ public class ModSounds
 		CARD_OUT = addSoundsToRegistry("card_out");
 		DISCGOLF_IN = addSoundsToRegistry("discgolf_in");
 		DISCGOLF_MISS = addSoundsToRegistry("discgolf_miss");
+		APM_PACK_FAIL = addSoundsToRegistry("apm_pack_fail");
+		APM_PACK_SUCCESS = addSoundsToRegistry("apm_pack_success");
+		APM_SHUTDOWN = addSoundsToRegistry("apm_shutdown");
+		APM_STARTUP = addSoundsToRegistry("apm_startup");
 
 		// Begin Records
 		AMALTHEA = addSoundsToRegistry("amalthea");
@@ -703,6 +711,10 @@ public class ModSounds
 				event.getRegistry().register(ModSounds.CARD_OUT);
 				event.getRegistry().register(ModSounds.DISCGOLF_IN);
 				event.getRegistry().register(ModSounds.DISCGOLF_MISS);
+				event.getRegistry().register(ModSounds.APM_PACK_FAIL);
+				event.getRegistry().register(ModSounds.APM_PACK_SUCCESS);
+				event.getRegistry().register(ModSounds.APM_SHUTDOWN);
+				event.getRegistry().register(ModSounds.APM_STARTUP);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");
