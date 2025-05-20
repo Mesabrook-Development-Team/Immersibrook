@@ -10,6 +10,8 @@ import com.mesabrook.ib.util.Reference;
 
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyEnum;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,10 +21,12 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockAutomatedTaggingStation extends ImmersiblockRotational {
 
+	public static final PropertyEnum<TileEntityAutomatedTaggingStation.LightStates> LIGHT_STATE = PropertyEnum.create("light_state", TileEntityAutomatedTaggingStation.LightStates.class);
 	public BlockAutomatedTaggingStation() {
 		super("automated_tagging_station", Material.IRON, SoundType.METAL, "pickaxe", 1, 1.25F, 3.5F, ModUtils.DEFAULT_AABB);
 	}
@@ -125,5 +129,21 @@ public class BlockAutomatedTaggingStation extends ImmersiblockRotational {
 			return super.removedByPlayer(state, world, pos, player, willHarvest);
 		}
 		return false;
+	}
+	
+	@Override
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, FACING, LIGHT_STATE);
+	}
+	
+	@Override
+	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+		TileEntityAutomatedTaggingStation te = (TileEntityAutomatedTaggingStation)worldIn.getTileEntity(pos);
+		if (te == null)
+		{
+			return state.withProperty(LIGHT_STATE, TileEntityAutomatedTaggingStation.LightStates.Dark);
+		}
+		
+		return state.withProperty(LIGHT_STATE, te.getLightState());
 	}
 }

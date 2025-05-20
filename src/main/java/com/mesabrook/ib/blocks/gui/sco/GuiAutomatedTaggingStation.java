@@ -8,6 +8,7 @@ import org.lwjgl.opengl.GL11;
 import com.mesabrook.ib.blocks.container.ContainerAutomatedTaggingStation;
 import com.mesabrook.ib.blocks.gui.ImageButton;
 import com.mesabrook.ib.blocks.te.TileEntityAutomatedTaggingStation;
+import com.mesabrook.ib.blocks.te.TileEntityAutomatedTaggingStation.LightStates;
 import com.mesabrook.ib.util.Reference;
 
 import net.minecraft.client.Minecraft;
@@ -104,14 +105,16 @@ public class GuiAutomatedTaggingStation extends GuiContainer {
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
         super.drawScreen(mouseX, mouseY, partialTicks);
+
         
-        GlStateManager.disableLighting();
-        tagStackSizeField.drawTextBox();
-        resetDistanceField.drawTextBox();
+		GlStateManager.disableLighting();
+		tagStackSizeField.drawTextBox();
+		resetDistanceField.drawTextBox();
 		GlStateManager.enableLighting();
 		
 		drawEnergyGauge();
 		drawEnergyGaugeLines();
+		drawActivityIndicator();
 		
 		renderHoveredToolTip(mouseX, mouseY);
 		renderEnergyGaugeTooltip(mouseX, mouseY);
@@ -176,6 +179,42 @@ public class GuiAutomatedTaggingStation extends GuiContainer {
     	GlStateManager.color(1F, 1F, 1F);
     }
     
+	private void drawActivityIndicator() {
+		GlStateManager.color(1F, 1F, 1F);
+		GlStateManager.disableLighting();
+		mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MODID, "textures/gui/ats_activity_indicator.png"));
+		drawModalRectWithCustomSizedTexture(guiLeft + 129, guiTop + 71, 0, 0, 40, 20, 40, 20);
+		
+		if (taggingStationContainer.taggingStation.getLightState() == LightStates.Green)
+		{
+			GlStateManager.disableTexture2D();
+			Tessellator tess = Tessellator.getInstance();
+			BufferBuilder builder = tess.getBuffer();
+			builder.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_COLOR);
+			builder.pos(guiLeft + 135, guiTop + 76, 0).color(0F, 0.8F, 0F, 1F).endVertex();
+			builder.pos(guiLeft + 135, guiTop + 86, 0).color(0F, 0.8F, 0F, 1F).endVertex();
+			builder.pos(guiLeft + 145, guiTop + 86, 0).color(0F, 0.8F, 0F, 1F).endVertex();
+			builder.pos(guiLeft + 145, guiTop + 76, 0).color(0F, 0.8F, 0F, 1F).endVertex();
+			tess.draw();
+			GlStateManager.enableTexture2D();
+		}
+		else if (taggingStationContainer.taggingStation.getLightState() == LightStates.Red)
+		{
+			GlStateManager.disableTexture2D();
+			Tessellator tess = Tessellator.getInstance();
+			BufferBuilder builder = tess.getBuffer();
+			builder.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_COLOR);
+			builder.pos(guiLeft + 153, guiTop + 76, 0).color(1F, 0F, 0F, 1F).endVertex();
+			builder.pos(guiLeft + 153, guiTop + 86, 0).color(1F, 0F, 0F, 1F).endVertex();
+			builder.pos(guiLeft + 163, guiTop + 86, 0).color(1F, 0F, 0F, 1F).endVertex();
+			builder.pos(guiLeft + 163, guiTop + 76, 0).color(1F, 0F, 0F, 1F).endVertex();
+			tess.draw();
+			GlStateManager.enableTexture2D();
+		}
+		
+		GlStateManager.enableLighting();
+	}
+	
     @Override
     protected void keyTyped(char typedChar, int keyCode) throws IOException {
     	super.keyTyped(typedChar, keyCode);
