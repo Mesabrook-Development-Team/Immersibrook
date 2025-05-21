@@ -727,6 +727,6 @@ public class TileEntityAutomatedTaggingStation extends TileEntity implements ITi
 		@Override
 		public String getName() {
 			return toString().toLowerCase();
-		}		
+		}		  
 	}
 }
