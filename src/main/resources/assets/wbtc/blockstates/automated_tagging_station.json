@@ -4,18 +4,15 @@
         "facing":
 		{
 			"north": {
-				"model": "wbtc:automated_tagging_station" 	
+
 			},
 			"south": {
-				"model": "wbtc:automated_tagging_station",
 				"y": 180
 			},
 			"west": {
-				"model": "wbtc:automated_tagging_station",
 				"y": 270
 			},
 			"east": {
-				"model": "wbtc:automated_tagging_station",
 				"y": 90
 			}
 		},

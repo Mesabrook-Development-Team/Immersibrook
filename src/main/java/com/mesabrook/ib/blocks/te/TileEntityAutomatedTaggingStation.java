@@ -207,7 +207,12 @@ public class TileEntityAutomatedTaggingStation extends TileEntity implements ITi
 	@Override
 	public void handleUpdateTag(NBTTagCompound tag) {
 		super.handleUpdateTag(tag);
-		readFromNBT(tag);
+		LightStates oldLightState = lightState;
+		  readFromNBT(tag);
+		  if (!oldLightState.equals(lightState))
+		  {
+		    world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
+		  }
 	}
 	
 	@Override
@@ -217,7 +222,12 @@ public class TileEntityAutomatedTaggingStation extends TileEntity implements ITi
 	
 	@Override
 	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
-		readFromNBT(pkt.getNbtCompound());
+		LightStates oldLightState = lightState;
+		  readFromNBT(pkt.getNbtCompound());
+		  if (!oldLightState.equals(lightState))
+		  {
+		    world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
+		  }
 	}
 	
 	@Override
