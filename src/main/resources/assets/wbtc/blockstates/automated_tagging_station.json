@@ -21,9 +21,9 @@
 		},
 		"light_state":
 		{
-			"dark": {},
-			"green": {},
-			"red": {}
+			"dark": { "model": "wbtc:automated_tagging_station" },
+			"green": { "model": "wbtc:ats_good" },
+			"red": { "model": "wbtc:ats_fail" }
 		}
     }
 }
