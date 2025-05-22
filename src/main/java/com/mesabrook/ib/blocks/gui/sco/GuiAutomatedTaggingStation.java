@@ -85,12 +85,12 @@ public class GuiAutomatedTaggingStation extends GuiContainer {
     @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
     {
-        this.fontRenderer.drawString("Security Boxes", 7, 7, 0x0f0f0f, false);
-        this.fontRenderer.drawString("Energy", 182, 5, 0x0f0f0f, false);
+        this.fontRenderer.drawString("Security Boxes", 4, 5, 0xFFFFFF, false);
+        this.fontRenderer.drawString("Energy", 182, 7, 0x0f0f0f, false);
         this.fontRenderer.drawString("Items To Tag", 7, 39, 0x0f0f0f, false);
         this.fontRenderer.drawString("Tag Stack Size:", 7, 71, 0x0f0f0f, false);
         this.fontRenderer.drawString("Reset Distance:", 7, 83, 0x0f0f0f, false);
-        this.fontRenderer.drawString("Active", 182, 59, 0x0f0f0f, false);
+        this.fontRenderer.drawString("Active", 182, 61, 0x0f0f0f, false);
     }
 
 	@Override
@@ -118,6 +118,7 @@ public class GuiAutomatedTaggingStation extends GuiContainer {
 		
 		renderHoveredToolTip(mouseX, mouseY);
 		renderEnergyGaugeTooltip(mouseX, mouseY);
+		renderTagSizeHelperTooltip(mouseX, mouseY);
     }
     
     private void drawEnergyGauge() {
@@ -140,6 +141,31 @@ public class GuiAutomatedTaggingStation extends GuiContainer {
 			GlStateManager.enableLighting();
 		}
 	}
+    
+    private void renderTagSizeHelperTooltip(int mouseX, int mouseY)
+    {
+    	// Tag Stack Size Tooltip
+    	if (isPointInRegion(1, 69, 80, 9, mouseX, mouseY))
+    	{
+    		TileEntityAutomatedTaggingStation taggingStation = (TileEntityAutomatedTaggingStation)mc.world.getTileEntity(taggingStationContainer.taggingStation.getPos());
+			if (taggingStation == null)
+			{
+				return;
+			}
+	    	drawHoveringText(Arrays.asList(TextFormatting.LIGHT_PURPLE + "Tag Stack Size", TextFormatting.RESET + "The number of items to be packed into a single security box.", TextFormatting.RED + "NOTE: It's important that the amount of an item going into a box matches what you have in the Price Manager in Company Studio. If not, this machine will reject the items."), mouseX, mouseY);
+    	}
+    	
+    	// Reset Distance Tooltip
+    	if (isPointInRegion(1, 81, 80, 9, mouseX, mouseY))
+    	{
+    		TileEntityAutomatedTaggingStation taggingStation = (TileEntityAutomatedTaggingStation)mc.world.getTileEntity(taggingStationContainer.taggingStation.getPos());
+			if (taggingStation == null)
+			{
+				return;
+			}
+	    	drawHoveringText(Arrays.asList(TextFormatting.LIGHT_PURPLE + "Reset Distance", TextFormatting.RESET + "The total distance a boxed product can travel from its home shelf before it's removed from the player's inventory and restocked.", TextFormatting.RED + "NOTE: It's recommended that this number be greater than zero because otherwise players can just walk off with boxed items."), mouseX, mouseY);
+    	}
+    }
     
     private void renderEnergyGaugeTooltip(int mouseX, int mouseY) {
 	    if (isPointInRegion(188, 18, 26, 31, mouseX, mouseY))
