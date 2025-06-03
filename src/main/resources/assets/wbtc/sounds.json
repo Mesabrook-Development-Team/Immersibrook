@@ -6,6 +6,13 @@
 			"stream": true
 		}]
 	},
+	"new_welcome": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:new_welcome",
+			"stream": true
+		}]
+	},
 	"cake": {
 		"category": "master",
 		"sounds": [{
