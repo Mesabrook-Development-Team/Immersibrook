@@ -26,9 +26,9 @@ public class GuiBellIntroAnimation extends GuiPhoneBase
     protected String getInnerTextureFileName()
     {
         int elapsedTime = (int) timer.getElapsedTime();
-        int frameNumber = (elapsedTime - 50) / 35;
+        int frameNumber = (elapsedTime - 50) / 30;
 
-        frameNumber = Math.max(0, Math.min(frameNumber, 205));
+        frameNumber = Math.max(0, Math.min(frameNumber, 473));
 
         currentTexture = "system/newboot_renew/frame_" + frameNumber + ".png";
         return currentTexture;
@@ -64,7 +64,7 @@ public class GuiBellIntroAnimation extends GuiPhoneBase
         super.doDraw(mouseX, mouseY, partialticks);
         timer.update();
 
-        if(timer.getElapsedTime() >= 6500)
+        if(timer.getElapsedTime() >= 15000)
         {
             finishBoot();
         }
