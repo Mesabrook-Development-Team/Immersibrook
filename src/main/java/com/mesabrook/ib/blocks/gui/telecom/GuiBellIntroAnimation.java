@@ -26,7 +26,7 @@ public class GuiBellIntroAnimation extends GuiPhoneBase
     protected String getInnerTextureFileName()
     {
         int elapsedTime = (int) timer.getElapsedTime();
-        int frameNumber = (elapsedTime - 30) / 30;
+        int frameNumber = (elapsedTime - 10) / 30;
 
         frameNumber = Math.max(0, Math.min(frameNumber, 407));
 
