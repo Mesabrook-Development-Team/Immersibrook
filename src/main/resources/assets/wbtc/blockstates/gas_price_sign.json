@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "wbtc:gas_price_sign" },
+        "facing=south": { "model": "wbtc:gas_price_sign", "y": 180 },
+        "facing=west":  { "model": "wbtc:gas_price_sign", "y": 270 },
+        "facing=east":  { "model": "wbtc:gas_price_sign", "y": 90 }
+    }
+}
