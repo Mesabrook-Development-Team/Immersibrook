@@ -1324,6 +1324,21 @@ item.memory.name=Music Disc
 item.wide_record.name=Music Disc
 item.disc_hallow.name=Music Disc
 item.disc_cake.name=Music Disc - Holiday Snowfall
+item.disc_lotion_in_the_goon_cave.name=Religious Music Disc
+
+item.disc_o_come_divine_messiah.name=Religious Music Disc
+item.disc_o_come_o_come_emmanuel.name=Religious Music Disc
+item.disc_all_creatures_of_our_god_and_king.name=Religious Music Disc
+item.disc_glory_and_praise_to_our_god.name=Religious Music Disc
+item.disc_hail_holy_queen.name=Religious Music Disc
+item.disc_hark_the_herald_angle.name=Religious Music Disc
+item.disc_holy_god_we_praise_thy_name.name=Religious Music Disc
+item.disc_immaculate_mary.name=Religious Music Disc
+item.disc_jesus_christ_is_risen_today.name=Religious Music Disc
+item.disc_joy_to_the_world.name=Religious Music Disc
+item.disc_lift_high_the_cross.name=Religious Music Disc
+item.disc_lord_who_throughout_these_forty_days.name=Religious Music Disc
+
 
 //Record Descriptions
 item.record.amalthea.desc=Amalthea
@@ -1346,6 +1361,21 @@ item.record.memory.desc=Bonnie - It's just a Burning Memory (8-bit)
 item.record.wide_record.desc=Слава Україні! (Wide Zelensky)
 item.record.disc_cake.desc=ShinkoNet - Let Them Eat Cake (Hypixel Skyblock OST)
 item.record.disc_hallow.desc=ShinkoNet - Hallow Hallow (Hypixel Halloween Event OST)
+
+item.record.disc_o_come_divine_messiah.desc=O Come Divine Messiah
+item.record.disc_o_come_o_come_emmanuel.desc=O Come O Come Emmanuel
+item.record.disc_all_creatures_of_our_god_and_king.desc=All Creatures of Our God and King
+item.record.disc_glory_and_praise_to_our_god.desc=Glory and Praise to our God
+item.record.disc_hail_holy_queen.desc=Hail Holy Queen
+item.record.disc_hark_the_herald_angle.desc=Hark the Herald Angel
+item.record.disc_holy_god_we_praise_thy_name.desc=Holy God we praise thy name
+item.record.disc_immaculate_mary.desc=Immaculate Mary
+item.record.disc_jesus_christ_is_risen_today.desc=Jesus Christ is Risen Today
+item.record.disc_joy_to_the_world.desc=Joy to the World
+item.record.disc_lift_high_the_cross.desc=Lift High the Cross
+item.record.disc_lord_who_throughout_these_forty_days.desc=Lord who throughout these forty days
+item.record.disc_lotion_in_the_goon_cave.desc=Lotion in the Goon Cave
+
 
 //Enchantments
 enchantment.thunder=The Power of Thor

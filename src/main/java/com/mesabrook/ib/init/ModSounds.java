@@ -133,6 +133,19 @@ public class ModSounds
 	public static final SoundEvent MEMORY;
 	public static final SoundEvent WIDE;
 	public static final SoundEvent PIANO;
+	public static final SoundEvent O_COME_DIVINE_MESSIAH;
+	public static final SoundEvent O_COME_O_COME_EMMANUEL;
+	public static final SoundEvent ALL_CREATURES_OF_OUR_GOD_AND_KING;
+	public static final SoundEvent GLORY_AND_PRAISE_TO_OUR_GOD;
+	public static final SoundEvent HAIL_HOLY_QUEEN;
+	public static final SoundEvent HARK_THE_HERALD_ANGLE;
+	public static final SoundEvent HOLY_GOD_WE_PRAISE_THY_NAME;
+	public static final SoundEvent IMMACULATE_MARY;
+	public static final SoundEvent JESUS_CHRIST_IS_RISEN_TODAY;
+	public static final SoundEvent JOY_TO_THE_WORLD;
+	public static final SoundEvent LIFT_HIGH_THE_CROSS;
+	public static final SoundEvent LORD_WHO_THROUGHOUT_THESE_40_DAYS;
+	public static final SoundEvent LOTION_IN_THE_GOON_CAVE;
 
 	// Holiday Records
 	public static final SoundEvent SPOOKY;
@@ -375,8 +388,21 @@ public class ModSounds
 		WIDE = addSoundsToRegistry("wide");
 		HALLOW = addSoundsToRegistry("hallow");
 		CAKE = addSoundsToRegistry("cake");
-		FRIDGE_OPEN = addSoundsToRegistry("fridge_open");
-		FRIDGE_CLOSE = addSoundsToRegistry("fridge_close");
+
+		// Commissioned Discs 
+		O_COME_DIVINE_MESSIAH = addSoundsToRegistry("o_come_divine_messiah");
+		O_COME_O_COME_EMMANUEL = addSoundsToRegistry("o_come_o_come_emmanuel");
+		ALL_CREATURES_OF_OUR_GOD_AND_KING = addSoundsToRegistry("all_creatures_of_our_god_and_king");
+		GLORY_AND_PRAISE_TO_OUR_GOD = addSoundsToRegistry("glory_and_praise_to_our_god");
+		HAIL_HOLY_QUEEN = addSoundsToRegistry("hail_holy_queen");
+		HARK_THE_HERALD_ANGLE = addSoundsToRegistry("hark_the_herald_angle");
+		HOLY_GOD_WE_PRAISE_THY_NAME = addSoundsToRegistry("holy_god_we_praise_thy_name");
+		IMMACULATE_MARY = addSoundsToRegistry("immaculate_mary");
+		JESUS_CHRIST_IS_RISEN_TODAY = addSoundsToRegistry("jesus_christ_is_risen_today");
+		JOY_TO_THE_WORLD = addSoundsToRegistry("joy_to_the_world");
+		LIFT_HIGH_THE_CROSS = addSoundsToRegistry("lift_high_the_cross");
+		LORD_WHO_THROUGHOUT_THESE_40_DAYS = addSoundsToRegistry("lord_who_throughout_these_forty_days");
+		LOTION_IN_THE_GOON_CAVE = addSoundsToRegistry("lotion_in_the_goon_cave");
 
 		// Plastic SoundType
 		PLASTIC_BREAK = addSoundsToRegistry("plastic_break");
@@ -484,6 +510,9 @@ public class ModSounds
 		POS_TAKE_CARD = addSoundsToRegistry("pos_take_card");
 		POS_USE_PINPAD = addSoundsToRegistry("pos_use_pinpad");
 		POS_WELCOME = addSoundsToRegistry("pos_welcome");
+		
+		FRIDGE_OPEN = addSoundsToRegistry("fridge_open");
+		FRIDGE_CLOSE = addSoundsToRegistry("fridge_close");
 	}
 
 	private static SoundEvent addSoundsToRegistry(String soundId)
@@ -718,6 +747,20 @@ public class ModSounds
 				event.getRegistry().register(ModSounds.APM_SHUTDOWN);
 				event.getRegistry().register(ModSounds.APM_STARTUP);
 				event.getRegistry().register(ModSounds.NEW_STARTUP);
+				
+				event.getRegistry().register(ModSounds.O_COME_DIVINE_MESSIAH);
+				event.getRegistry().register(ModSounds.O_COME_O_COME_EMMANUEL);
+				event.getRegistry().register(ModSounds.ALL_CREATURES_OF_OUR_GOD_AND_KING);
+				event.getRegistry().register(ModSounds.HOLY_GOD_WE_PRAISE_THY_NAME);
+				event.getRegistry().register(ModSounds.GLORY_AND_PRAISE_TO_OUR_GOD);
+				event.getRegistry().register(ModSounds.JESUS_CHRIST_IS_RISEN_TODAY);
+				event.getRegistry().register(ModSounds.LIFT_HIGH_THE_CROSS);
+				event.getRegistry().register(ModSounds.LORD_WHO_THROUGHOUT_THESE_40_DAYS);
+				event.getRegistry().register(ModSounds.JOY_TO_THE_WORLD);
+				event.getRegistry().register(ModSounds.HARK_THE_HERALD_ANGLE);
+				event.getRegistry().register(ModSounds.HAIL_HOLY_QUEEN);
+				event.getRegistry().register(ModSounds.IMMACULATE_MARY);
+				event.getRegistry().register(ModSounds.LOTION_IN_THE_GOON_CAVE);
 
 				MinecraftForge.EVENT_BUS.register(new SoundRegisterListener());
 				Main.logger.info("[" + Reference.MODNAME + " SoundLoader] Loaded");
