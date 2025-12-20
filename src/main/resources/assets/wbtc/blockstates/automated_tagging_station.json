@@ -1,8 +1,26 @@
 {
+	"forge_marker": 1,
     "variants": {
-        "facing=north": { "model": "wbtc:automated_tagging_station" },
-        "facing=south": { "model": "wbtc:automated_tagging_station", "y": 180 },
-        "facing=west":  { "model": "wbtc:automated_tagging_station", "y": 270 },
-        "facing=east":  { "model": "wbtc:automated_tagging_station", "y": 90 }
+        "facing":
+		{
+			"north": {
+
+			},
+			"south": {
+				"y": 180
+			},
+			"west": {
+				"y": 270
+			},
+			"east": {
+				"y": 90
+			}
+		},
+		"light_state":
+		{
+			"dark": { "model": "wbtc:automated_tagging_station" },
+			"green": { "model": "wbtc:ats_good" },
+			"red": { "model": "wbtc:ats_fail" }
+		}
     }
 }

@@ -13,11 +13,12 @@ import com.mesabrook.ib.cdm.apps.CompanyStudioLiteApp;
 import com.mesabrook.ib.cdm.apps.GovernmentPortalLiteApp;
 import com.mesabrook.ib.cdm.apps.MesaMailApp;
 import com.mesabrook.ib.cdm.apps.TestApp;
+import com.mesabrook.ib.cmds.CommandDumpBlocks;
 import com.mesabrook.ib.cmds.CommandImmersibrook;
 import com.mesabrook.ib.cmds.CommandMeme;
 import com.mesabrook.ib.cmds.CommandSkull;
 import com.mesabrook.ib.cmds.CommandTalk;
-import com.mesabrook.ib.entity.EntityMesabrookM;
+import com.mesabrook.ib.entity.EntityDiscGolf;
 import com.mesabrook.ib.entity.EntityWineBottle;
 import com.mesabrook.ib.events.SeatEvent;
 import com.mesabrook.ib.init.CDMApps;
@@ -30,7 +31,7 @@ import com.mesabrook.ib.items.commerce.ItemRegisterFluidWrapper;
 import com.mesabrook.ib.items.commerce.ItemSecurityBox;
 import com.mesabrook.ib.items.commerce.ItemShoppingBasket;
 import com.mesabrook.ib.items.commerce.ItemWallet;
-import com.mesabrook.ib.rendering.RenderMesabrookIcon;
+import com.mesabrook.ib.rendering.RenderDiscGolf;
 import com.mesabrook.ib.rendering.RenderWineBottle;
 import com.mesabrook.ib.telecom.DynmapAPIListener;
 import com.mesabrook.ib.util.IHasModel;
@@ -110,7 +111,7 @@ public class RegistryHandler
 			}
 		}
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityMesabrookM.class, RenderMesabrookIcon::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityDiscGolf.class, RenderDiscGolf::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityWineBottle.class, RenderWineBottle::new);
 	}
 	
@@ -192,9 +193,9 @@ public class RegistryHandler
 		ResourceLocation nameLoc2 = new ResourceLocation(Reference.MODID + ":wine_bottle");
 		ResourceLocation nameLoc3 = new ResourceLocation(Reference.MODID + ":ibseat");
 
-		EntityRegistry.registerModEntity(nameLoc, EntityMesabrookM.class, nameLoc.toString(), 1, Main.instance, 64, 1, true);
+		EntityRegistry.registerModEntity(nameLoc, EntityDiscGolf.class, nameLoc.toString(), 1, Main.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(nameLoc2, EntityWineBottle.class, nameLoc2.toString(), 2, Main.instance, 64, 1, true);
-		EntityRegistry.registerModEntity(nameLoc3, SeatEvent.SeatEntity.class, nameLoc2.toString(), 3, Main.instance, 80, 1, false);
+		EntityRegistry.registerModEntity(nameLoc3, SeatEvent.SeatEntity.class, nameLoc3.toString(), 3, Main.instance, 80, 1, false);
 		
 		if (Main.DYNMAP)
 		{
@@ -267,6 +268,7 @@ public class RegistryHandler
 		event.registerServerCommand(new CommandTalk());
 		event.registerServerCommand(new CommandMeme());
 		event.registerServerCommand(new CommandSkull());
+		event.registerServerCommand(new CommandDumpBlocks());
 
 		// Gamerules
 		World world = FMLCommonHandler.instance().getMinecraftServerInstance().getWorld(0);

@@ -1,5 +1,8 @@
 package com.mesabrook.ib.util.handlers;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.math.BigDecimal;
 import java.net.URI;
 import java.time.LocalDateTime;
@@ -79,6 +82,7 @@ import net.minecraft.client.gui.toasts.SystemToast;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderGlobal;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTBase;
@@ -95,6 +99,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.RayTraceResult.Type;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.DrawBlockHighlightEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -116,6 +121,33 @@ public class ClientSideHandlers
 	{
 		GuiAboutImmersibrook gui = new GuiAboutImmersibrook();
 		Minecraft.getMinecraft().displayGuiScreen(gui);
+	}
+	
+	public static void processBlockList(List<String> blocks, String modID)
+	{
+		File outputFile = new File(Minecraft.getMinecraft().mcDataDir, "blocks_" + modID + ".txt");
+		
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile)))
+		{
+			for (String entry : blocks)
+			{
+				String[] parts = entry.split(";", 2);
+                String registryName = parts[0];
+                String unlocalizedName = parts[1] + ".name";
+                
+                // Localize the block name
+                String localizedName = I18n.hasKey(unlocalizedName) ? I18n.format(unlocalizedName) : "Unknown";
+                
+                writer.write(registryName + " - " + localizedName);
+                writer.newLine();
+			}
+			Minecraft.getMinecraft().player.sendMessage(new TextComponentString("Successfully wrote block list to file at " + outputFile.getAbsolutePath()));
+		}
+		catch(Exception ex)
+		{
+			Minecraft.getMinecraft().player.sendMessage(new TextComponentString(TextFormatting.RED + "Unable to write block list to file. See console for more details."));
+			ex.printStackTrace();
+		}
 	}
 
 	public static void playSoundHandler(ServerSoundBroadcastPacket message, MessageContext ctx)

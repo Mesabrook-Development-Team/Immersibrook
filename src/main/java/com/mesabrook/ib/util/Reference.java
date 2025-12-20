@@ -10,7 +10,7 @@ public class Reference
 	public static final String MODNAME = "Immersibrook";
 	public static final String UPDATE_NAME = "The Technology Update";
 	public static String MOTTO = Main.instance.getRandomMotto();
-	public static final String VERSION = "1.0.0.13.4";
+	public static final String VERSION = "1.0.0.14";
 	public static final String MINEDROID_VERSION = VERSION + "MD";
 	public static final String CHANGELOG = "https://github.com/RavenholmZombie/Immersibrook/releases/tag/" + VERSION;
 	public static final String UPDATE_URL = "https://raw.githubusercontent.com/RavenholmZombie/RavenholmZombie/main/update.json";
@@ -40,6 +40,8 @@ public class Reference
 	public static final int GUI_SMARTPHONE_INV = 19;
 	public static final int GUI_SHOPPING_BASKET = 20;
 	public static final int GUI_COMPANY_NOTIFICATIONS = 21;
+	public static final int GUI_DISC_GOLF_BASKET = 22;
+	public static final int GUI_AUTOMATED_TAGGING_STATION = 23;
 
 	public static final String NETWORK_CHANNEL_NAME = "wbtc";
 	

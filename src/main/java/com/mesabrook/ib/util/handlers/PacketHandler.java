@@ -13,6 +13,7 @@ import com.mesabrook.ib.net.NVTogglePacket;
 import com.mesabrook.ib.net.OpenNotificationsGUIPacket;
 import com.mesabrook.ib.net.OpenTOSPacket;
 import com.mesabrook.ib.net.PacketPlayRecord;
+import com.mesabrook.ib.net.PacketSendBlocks;
 import com.mesabrook.ib.net.PoliceEffectsTogglePacket;
 import com.mesabrook.ib.net.ServerSoundBroadcastPacket;
 import com.mesabrook.ib.net.SoundEmitterBlockPacket;
@@ -31,6 +32,7 @@ import com.mesabrook.ib.net.atm.UpdateATMSettingsPacket;
 import com.mesabrook.ib.net.atm.UpdateATMSettingsResponsePacket;
 import com.mesabrook.ib.net.atm.WithdrawATMPacket;
 import com.mesabrook.ib.net.atm.WithdrawATMResponsePacket;
+import com.mesabrook.ib.net.sco.AutomatedTaggingStationSetStackSizePacket;
 import com.mesabrook.ib.net.sco.EmployeeCapServerToClientPacket;
 import com.mesabrook.ib.net.sco.POSAddNewFluidMetersAcknowledgePacket;
 import com.mesabrook.ib.net.sco.POSAddNewFluidMetersPacket;
@@ -204,6 +206,7 @@ public class PacketHandler
 		INSTANCE.registerMessage(QueryPricePacket.Handler.class, QueryPricePacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(QueryPriceResponsePacket.Handler.class, QueryPriceResponsePacket.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(TaggingStationSetPricePacket.Handler.class, TaggingStationSetPricePacket.class, nextID(), Side.SERVER);
+		INSTANCE.registerMessage(AutomatedTaggingStationSetStackSizePacket.Handler.class, AutomatedTaggingStationSetStackSizePacket.class, nextID(), Side.SERVER);
 		
 		// ATM
 		INSTANCE.registerMessage(FetchAccountsPacket.Handler.class, FetchAccountsPacket.class, nextID(), Side.SERVER);
@@ -218,6 +221,8 @@ public class PacketHandler
 		INSTANCE.registerMessage(DepositATMResponsePacket.Handler.class, DepositATMResponsePacket.class, nextID(), Side.CLIENT);
 		INSTANCE.registerMessage(CreateNewDebitCardATMPacket.Handler.class, CreateNewDebitCardATMPacket.class, nextID(), Side.SERVER);
 		INSTANCE.registerMessage(CreateNewDebitCardATMResponsePacket.Handler.class, CreateNewDebitCardATMResponsePacket.class, nextID(), Side.CLIENT);
+	
+		INSTANCE.registerMessage(PacketSendBlocks.Handler.class, PacketSendBlocks.class, nextID(), Side.CLIENT);
 	}
 
 	private static int nextID()

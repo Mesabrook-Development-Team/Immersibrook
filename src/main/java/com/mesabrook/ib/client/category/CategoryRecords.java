@@ -40,6 +40,19 @@ public class CategoryRecords extends AbstractCategory
 		add(ModItems.DISC_COOKINg);
 		add(ModItems.DISC_MEMORY);
 		add(ModItems.WIDE_DISC);
+		add(ModItems.DISC_O_COME_DIVINE_MESSIAH);
+		add(ModItems.DISC_O_COME_O_COME_EMMANUEL);
+		add(ModItems.DISC_ALL_CREATURES_OF_OUR_GOD_AND_KING);
+		add(ModItems.DISC_GLORY_AND_PRAISE_TO_OUR_GOD);
+		add(ModItems.DISC_HAIL_HOLY_QUEEN);
+		add(ModItems.DISC_HARK_THE_HERALD_ANGLE);
+		add(ModItems.DISC_HOLY_GOD_WE_PRAISE_THY_NAME);
+		add(ModItems.DISC_IMMACULATE_MARY);
+		add(ModItems.DISC_JESUS_CHRIST_IS_RISEN_TODAY);
+		add(ModItems.DISC_JOY_TO_THE_WORLD);
+		add(ModItems.DISC_LIFT_HIGH_THE_CROSS);
+		add(ModItems.DISC_LORD_WHO_THROUGHOUT_THESE_FORTY_DAYS);
+		add(ModItems.DISC_LOTION_IN_THE_GOON_CAVE);
 	}
 
 }

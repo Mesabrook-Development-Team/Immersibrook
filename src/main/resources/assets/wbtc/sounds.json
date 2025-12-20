@@ -1,8 +1,106 @@
 {
+	"all_creatures_of_our_god_and_king": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:all_creatures_of_our_god_and_king",
+			"stream": true
+		}]
+	},
+	"glory_and_praise_to_our_god": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:glory_and_praise_to_our_god",
+			"stream": true
+		}]
+	},
+	"hail_holy_queen": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:hail_holy_queen",
+			"stream": true
+		}]
+	},
+	"hark_the_herald_angle": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:hark_the_herald_angle",
+			"stream": true
+		}]
+	},
+	"holy_god_we_praise_thy_name": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:holy_god_we_praise_thy_name",
+			"stream": true
+		}]
+	},
+	"immaculate_mary": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:immaculate_mary",
+			"stream": true
+		}]
+	},
+	"jesus_christ_is_risen_today": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:jesus_christ_is_risen_today",
+			"stream": true
+		}]
+	},
+	"joy_to_the_world": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:joy_to_the_world",
+			"stream": true
+		}]
+	},
+	"lift_high_the_cross": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:joy_to_the_world",
+			"stream": true
+		}]
+	},
+	"lord_who_throughout_these_forty_days": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:lord_who_throughout_these_forty_days",
+			"stream": true
+		}]
+	},
+	"lotion_in_the_goon_cave": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:lotion_in_the_goon_cave",
+			"stream": true
+		}]
+	},
+	"o_come_divine_messiah": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:o_come_divine_messiah",
+			"stream": true
+		}]
+	},
+	"o_come_o_come_emmanuel": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:o_come_o_come_emmanuel",
+			"stream": true
+		}]
+	},
 	"whelen_siren": {
 		"category": "master",
 		"sounds": [{
 			"name": "wbtc:whelen_siren",
+			"stream": true
+		}]
+	},
+	"new_welcome": {
+		"category": "master",
+		"sounds": [{
+			"name": "wbtc:new_welcome",
 			"stream": true
 		}]
 	},
@@ -1488,6 +1586,42 @@
 		"category": "block",
 		"sounds": [{
 			"name": "wbtc:pos_welcome"
+		}]
+	},
+	"discgolf_in": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:discgolf_in"
+		}]
+	},
+	"discgolf_miss": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:discgolf_miss"
+		}]
+	},
+	"apm_pack_fail": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:apm_pack_fail"
+		}]
+	},
+	"apm_pack_success": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:apm_pack_success"
+		}]
+	},
+	"apm_shutdown": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:apm_shutdown"
+		}]
+	},
+	"apm_startup": {
+		"category": "block",
+		"sounds": [{
+			"name": "wbtc:apm_startup"
 		}]
 	}
 }

@@ -31,7 +31,7 @@ import com.mesabrook.ib.items.commerce.ItemWallet;
 import com.mesabrook.ib.items.misc.ItemDooter;
 import com.mesabrook.ib.items.misc.ItemFirstAidKit;
 import com.mesabrook.ib.items.misc.ItemIBFood;
-import com.mesabrook.ib.items.misc.ItemMesabrookIcon;
+import com.mesabrook.ib.items.misc.ItemDiscGolf;
 import com.mesabrook.ib.items.misc.ItemPhone;
 import com.mesabrook.ib.items.misc.ItemPlasticIngot;
 import com.mesabrook.ib.items.misc.ItemPresent;
@@ -98,13 +98,18 @@ public class ModItems
 	public static final Item LEVI_HAMMER_STICK = new ItemWeapon("hammer_stick_levi", ToolMaterial.WOOD);
 
 	// Immersibrook Icons
-	public static final Item IMMERSIBROOK_ICON = new ItemMesabrookIcon("icon_immersibrook");
 	public static final Item IB_ICON_NEW = new MiscItem("icn_ib", 1, null);
 	public static final Item IB_ICON_OCT = new MiscItem("icn_ib_oct", 1, null);
 	public static final Item IB_ICON_XMAS = new MiscItem("icn_ib_xmas", 1, null);
 	public static final Item IB_ICON_SUMMER = new MiscItem("icn_ib_summer", 1, null);
 	public static final Item DOOT_ICON = new MiscItem("doot_icon", 1, null);
 	public static final Item KEKW = new MiscItem("wheezing", 1, null);
+	
+	// Disc Golf Discs
+	public static final Item DISCGOLF_DRIVER = new ItemDiscGolf("discgolf_driver", 12, 7, -2, 2); // aka a distance driver
+	public static final Item DISCGOLF_FAIRWAY = new ItemDiscGolf("discgolf_fairway", 7, 5, -1, 2);
+	public static final Item DISCGOLF_MIDRANGE = new ItemDiscGolf("discgolf_midrange", 5, 3, -1, 1);
+	public static final Item DISCGOLF_PUTTER = new ItemDiscGolf("discgolf_putter", 2, 4, 0, 1);
 
 	// Metals
 	public static final Item IRON_ROD = new MiscItem("iron_rod", 64, Main.IMMERSIBROOK_MAIN);
@@ -173,7 +178,23 @@ public class ModItems
 	public static final Item WIDE_DISC = new MemeRecord("wide_record", ModSounds.WIDE); 
 	public static final Item CAKE_DISC = new MemeRecord("disc_cake", ModSounds.CAKE);
 	public static final Item HALLOW_DISC = new MemeRecord("disc_hallow", ModSounds.HALLOW);
-
+	
+	// Commissioned Music Discs
+	public static final Item DISC_O_COME_DIVINE_MESSIAH = new MemeRecord("disc_o_come_divine_messiah", ModSounds.O_COME_DIVINE_MESSIAH);
+	public static final Item DISC_O_COME_O_COME_EMMANUEL = new MemeRecord("disc_o_come_o_come_emmanuel", ModSounds.O_COME_O_COME_EMMANUEL);
+	public static final Item DISC_ALL_CREATURES_OF_OUR_GOD_AND_KING = new MemeRecord("disc_all_creatures_of_our_god_and_king", ModSounds.ALL_CREATURES_OF_OUR_GOD_AND_KING);
+	public static final Item DISC_GLORY_AND_PRAISE_TO_OUR_GOD = new MemeRecord("disc_glory_and_praise_to_our_god", ModSounds.GLORY_AND_PRAISE_TO_OUR_GOD);
+	public static final Item DISC_HAIL_HOLY_QUEEN = new MemeRecord("disc_hail_holy_queen", ModSounds.HAIL_HOLY_QUEEN);
+	public static final Item DISC_HARK_THE_HERALD_ANGLE = new MemeRecord("disc_hark_the_herald_angle", ModSounds.HARK_THE_HERALD_ANGLE);
+	public static final Item DISC_HOLY_GOD_WE_PRAISE_THY_NAME = new MemeRecord("disc_holy_god_we_praise_thy_name", ModSounds.HOLY_GOD_WE_PRAISE_THY_NAME);
+	public static final Item DISC_IMMACULATE_MARY = new MemeRecord("disc_immaculate_mary", ModSounds.IMMACULATE_MARY);
+	public static final Item DISC_JESUS_CHRIST_IS_RISEN_TODAY = new MemeRecord("disc_jesus_christ_is_risen_today", ModSounds.JESUS_CHRIST_IS_RISEN_TODAY);
+	public static final Item DISC_JOY_TO_THE_WORLD = new MemeRecord("disc_joy_to_the_world", ModSounds.JOY_TO_THE_WORLD);
+	public static final Item DISC_LIFT_HIGH_THE_CROSS = new MemeRecord("disc_lift_high_the_cross", ModSounds.LIFT_HIGH_THE_CROSS);
+	public static final Item DISC_LORD_WHO_THROUGHOUT_THESE_FORTY_DAYS = new MemeRecord("disc_lord_who_throughout_these_forty_days", ModSounds.LORD_WHO_THROUGHOUT_THESE_40_DAYS);
+	public static final Item DISC_LOTION_IN_THE_GOON_CAVE = new MemeRecord("disc_lotion_in_the_goon_cave", ModSounds.LOTION_IN_THE_GOON_CAVE);
+	
+	
 	// First Aid Kit
 	public static final Item FIRST_AID_KIT = new ItemFirstAidKit("first_aid", Main.IMMERSIBROOK_MAIN);
 

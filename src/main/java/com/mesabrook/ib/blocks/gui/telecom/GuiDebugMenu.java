@@ -22,11 +22,14 @@ public class GuiDebugMenu extends GuiPhoneBase
     LabelButton oobeLabel;
     LabelButton crashLabel;
     LabelButton viewPhoneNBT;
+    LabelButton replayIntroMovie;
 
     ImageButton weaIcon;
     ImageButton oobeIcon;
     ImageButton crashIcon;
     ImageButton viewPhoneNBTIcon;
+    ImageButton replayIntroMovieIcon;
+    
     public GuiDebugMenu(ItemStack phoneStack, EnumHand hand) {
         super(phoneStack, hand);
     }
@@ -54,17 +57,22 @@ public class GuiDebugMenu extends GuiPhoneBase
         oobeLabel = new LabelButton(2, INNER_X + 31, INNER_Y + 83, new TextComponentTranslation("im.settings.debug.oobe").getFormattedText(), 0xFFFFFF);
         crashLabel = new LabelButton(3, INNER_X + 31, INNER_Y + 113, new TextComponentString("Crash Device").getFormattedText(), 0xFFFFFF);
         viewPhoneNBT = new LabelButton(4, INNER_X + 31, INNER_Y + 145, new TextComponentString("View Phone NBT Data").getFormattedText(), 0xFFFFFF);
-
+        replayIntroMovie = new LabelButton(5, INNER_X + 31, INNER_Y + 175, new TextComponentString("Replay Intro Movie").getFormattedText(), 0xFFFFFF);
+        
+        
         weaIcon = new ImageButton(100, INNER_X + 0, INNER_Y + 40, 28, 28, phoneStackData.getIconTheme() + "/btn_debug.png", 32, 32);
         oobeIcon = new ImageButton(101, INNER_X + 0, INNER_Y + 70, 28, 28, phoneStackData.getIconTheme() + "/btn_debug.png", 32, 32);
         crashIcon = new ImageButton(102, INNER_X + 0, INNER_Y + 100, 28, 28, phoneStackData.getIconTheme() + "/btn_debug.png", 32, 32);
         viewPhoneNBTIcon = new ImageButton(103, INNER_X + 0, INNER_Y + 133, 28, 28, phoneStackData.getIconTheme() + "/btn_debug.png", 32, 32);
+        replayIntroMovieIcon = new ImageButton(104, INNER_X + 0, INNER_Y + 163, 28, 28, phoneStackData.getIconTheme() + "/btn_debug.png", 32, 32);
 
         buttonList.addAll(ImmutableList.<GuiButton>builder()
                 .add(back)
                 .add(weaLabel)
                 .add(oobeLabel)
                 .add(crashLabel)
+                .add(replayIntroMovie)
+                .add(replayIntroMovieIcon)
                 .add(weaIcon)
                 .add(oobeIcon)
                 .add(crashIcon)
@@ -78,7 +86,7 @@ public class GuiDebugMenu extends GuiPhoneBase
     {
         super.doDraw(mouseX, mouseY, partialticks);
         fontRenderer.drawString(new TextComponentTranslation("im.settings.debug").getFormattedText(), INNER_X + 15, INNER_Y + 20, 0xFFFFFF);
-    }
+    } 
 
     @Override
     protected void actionPerformed(GuiButton button) throws IOException
@@ -142,6 +150,11 @@ public class GuiDebugMenu extends GuiPhoneBase
 
                 Minecraft.getMinecraft().displayGuiScreen(crashGui);
             }
+        }
+        
+        if(button == replayIntroMovie || button == replayIntroMovieIcon)
+        {
+        	Minecraft.getMinecraft().displayGuiScreen(new GuiBellIntroAnimation(phoneStack, hand));
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.mesabrook.ib.init;
 
 import com.mesabrook.ib.blocks.BlockBollard;
+import com.mesabrook.ib.blocks.te.TileEntityAutomatedTaggingStation;
 import com.mesabrook.ib.blocks.te.TileEntityFluidMeter;
 import com.mesabrook.ib.blocks.te.TileEntitySoundEmitter;
 import com.mesabrook.ib.blocks.te.TileEntityWirelessChargingPad;
@@ -18,6 +19,7 @@ public class XNetAPI {
 		XNet.xNetApi.registerConnectable(new WirelessChargingPadConnectable());
 		XNet.xNetApi.registerConnectable(new FluidMeterConnectable());
 		XNet.xNetApi.registerConnectable(new SoundEmitterConnectable());
+		XNet.xNetApi.registerConnectable(new AutomaticTaggingStationConnectable());
 	}
 	
 	public static class WirelessChargingPadConnectable implements IConnectable
@@ -28,6 +30,20 @@ public class XNetAPI {
 			if (te instanceof TileEntityWirelessChargingPad)
 			{
 				return facing.getOpposite() == EnumFacing.DOWN ? ConnectResult.YES : ConnectResult.NO;
+			}
+			
+			return ConnectResult.DEFAULT;
+		}
+	}
+	
+	public static class AutomaticTaggingStationConnectable implements IConnectable
+	{
+		@Override
+		public ConnectResult canConnect(IBlockAccess world, BlockPos connectorPos, BlockPos blockPos, TileEntity te, EnumFacing facing)
+		{
+			if(te instanceof TileEntityAutomatedTaggingStation)
+			{
+				return facing.getOpposite() == EnumFacing.UP ? ConnectResult.YES : ConnectResult.NO;
 			}
 			
 			return ConnectResult.DEFAULT;
